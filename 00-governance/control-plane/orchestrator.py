@@ -21,6 +21,7 @@ ORCH_SCHEMA = load_schema(HERE / "orchestration.schema.json")
 PROVIDER_ORDER = ["current_authority", "github", "drive", "file_library", "runtime"]
 MATERIALIZATION_PROVIDERS = ["github", "drive", "file_library", "runtime"]
 REQUIRED_SYNC_SYSTEMS = ["notion", "github", "drive"]
+MASTER_REVIEW_TYPES = {"ARTIFACT", "TECHNICAL", "EVIDENCE", "DISCIPLINE", "DESIGN", "PERSISTENCE"}
 VALID_TRANSITIONS = {
     ("CANDIDATE_PROMOTION", "WORKING_SOURCE", "CANDIDATE_AUTHORITY", "CANDIDATE"),
     ("CANONICAL_PROMOTION", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY", "PROMOTED"),
@@ -361,6 +362,190 @@ def scan_contradictions(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def evaluate_master_runtime(state: dict[str, Any]) -> dict[str, Any]:
+    """Evaluate the thin complex-project Master Runtime without self-promoting a project.
+
+    This function compiles existing Design Intelligence, integration, review,
+    dependency and change-propagation states. It owns no specialist truth and
+    never converts machine completeness into Design KEEP or Promotion.
+    """
+    findings = _schema_findings(state)
+    if findings or state.get("kind") != "MASTER_RUNTIME_STATE":
+        return {
+            "status": "BLOCKED",
+            "code": "MASTER_RUNTIME_SCHEMA_BLOCKED",
+            "findings": findings,
+            "required_actions": [],
+            "claim_ceiling_inputs": [],
+            "human_decision_required": False,
+        }
+
+    required_actions: list[dict[str, str]] = []
+    semantic_findings: list[dict[str, str]] = []
+
+    design_intelligence = state["design_intelligence"]
+    if design_intelligence["state"] != "CURRENT" or not design_intelligence.get("packet_id"):
+        required_actions.append({
+            "scope": "DESIGN_INTELLIGENCE",
+            "action": "RESOLVE_OR_REFRESH_DESIGN_INTELLIGENCE_PACKET",
+            "reason": f"state={design_intelligence['state']}; packet_id={design_intelligence.get('packet_id')!r}",
+        })
+
+    integration = state["integration"]
+    if integration["triggered"]:
+        if integration["state"] == "NOT_REQUIRED" or integration["verdict"] == "N_A":
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_INTEGRATION_TRIGGER_STATE_CONTRADICTION",
+                "message": "triggered integration cannot use NOT_REQUIRED/N_A state",
+            })
+        if not integration.get("packet_id"):
+            required_actions.append({"scope": "INTEGRATION", "action": "COMPILE_INTEGRATION_PACKET", "reason": "triggered integration has no packet_id"})
+        if not integration.get("receipt_id"):
+            required_actions.append({"scope": "INTEGRATION", "action": "RUN_INTEGRATION_READBACK", "reason": "triggered integration has no current receipt_id"})
+        if integration["state"] != "CURRENT":
+            required_actions.append({"scope": "INTEGRATION", "action": "REFRESH_OR_RECONCILE_INTEGRATION", "reason": f"integration state={integration['state']}"})
+        if integration["verdict"] != "PASS":
+            required_actions.append({"scope": "INTEGRATION", "action": "RESOLVE_INTEGRATION_VERDICT", "reason": f"integration verdict={integration['verdict']}"})
+        if integration["open_major_critical_interfaces"] > 0:
+            required_actions.append({
+                "scope": "INTEGRATION", "action": "CLOSE_MAJOR_CRITICAL_INTERFACES",
+                "reason": f"open_major_critical_interfaces={integration['open_major_critical_interfaces']}",
+            })
+        if integration["unresolved_authority_conflicts"] > 0:
+            required_actions.append({
+                "scope": "AUTHORITY", "action": "RESOLVE_SHARED_VARIABLE_OR_INTERFACE_AUTHORITY",
+                "reason": f"unresolved_authority_conflicts={integration['unresolved_authority_conflicts']}",
+            })
+    else:
+        if integration["state"] != "NOT_REQUIRED" or integration["verdict"] != "N_A":
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_INTEGRATION_NOT_TRIGGERED_STATE_CONTRADICTION",
+                "message": "non-triggered integration must use state=NOT_REQUIRED and verdict=N_A",
+            })
+        if integration.get("packet_id") or integration.get("receipt_id"):
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_INTEGRATION_NOT_TRIGGERED_RECEIPT_CONTRADICTION",
+                "message": "non-triggered integration cannot claim packet/receipt closure",
+            })
+        if integration["open_major_critical_interfaces"] or integration["unresolved_authority_conflicts"]:
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_INTEGRATION_NOT_TRIGGERED_OPEN_STATE",
+                "message": "non-triggered integration cannot carry open major/critical interfaces or authority conflicts",
+            })
+
+    reviews = state["reviews"]
+    observed_types = [r["review_type"] for r in reviews]
+    duplicates = sorted({x for x in observed_types if observed_types.count(x) > 1})
+    missing = sorted(MASTER_REVIEW_TYPES - set(observed_types))
+    extras = sorted(set(observed_types) - MASTER_REVIEW_TYPES)
+    if duplicates or missing or extras:
+        semantic_findings.append({
+            "level": "ERROR", "code": "MASTER_REVIEW_SET_INVALID",
+            "message": f"reviews must contain each canonical review class exactly once; missing={missing}; duplicates={duplicates}; extras={extras}",
+        })
+
+    for review in reviews:
+        kind = review["review_type"]
+        triggered = review["triggered"]
+        result = review["result"]
+        receipt_ref = review.get("receipt_ref")
+        if not triggered:
+            if result != "N_A" or receipt_ref is not None:
+                semantic_findings.append({
+                    "level": "ERROR", "code": "MASTER_REVIEW_NOT_TRIGGERED_CONTRADICTION",
+                    "message": f"{kind}: non-triggered review must be N_A with no receipt_ref",
+                })
+            continue
+        if result == "N_A":
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_TRIGGERED_REVIEW_NA",
+                "message": f"{kind}: triggered review cannot be N_A",
+            })
+            continue
+        if result != "NOT_RUN" and not receipt_ref:
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_REVIEW_RECEIPT_REQUIRED",
+                "message": f"{kind}: executed review result {result} requires receipt_ref",
+            })
+        expected = "KEEP" if kind == "DESIGN" else "PASS"
+        if result != expected:
+            required_actions.append({
+                "scope": f"REVIEW:{kind}",
+                "action": "RUN_OR_RESOLVE_TRIGGERED_REVIEW" if result == "NOT_RUN" else "REPAIR_AND_REVIEW",
+                "reason": f"required promotion result={expected}; current={result}",
+            })
+
+    for dep in state["dependencies"]:
+        if dep["state"] != "CURRENT":
+            required_actions.append({
+                "scope": f"DEPENDENCY:{dep['object_id']}",
+                "action": "RECONCILE_DEPENDENCY",
+                "reason": f"dependency state={dep['state']}",
+            })
+
+    for event in state["change_events"]:
+        impact = event["impact_class"]
+        propagation = event["propagation_state"]
+        allowed = {"NOT_REQUIRED", "APPLIED"} if impact == "NON_MATERIAL" else {"APPLIED"}
+        if propagation not in allowed:
+            required_actions.append({
+                "scope": f"CHANGE:{event['change_id']}",
+                "action": "PROPAGATE_AND_REOPEN_AFFECTED_STATE",
+                "reason": f"impact_class={impact}; propagation_state={propagation}",
+            })
+
+    for blocker in state["open_blockers"]:
+        required_actions.append({"scope": "BLOCKER", "action": "RESOLVE_BLOCKER", "reason": blocker})
+
+    claim_ceiling_inputs = [
+        {"owner": "DESIGN_INTELLIGENCE", "claim_ceiling": design_intelligence["claim_ceiling"]},
+        {"owner": "INTEGRATION", "claim_ceiling": integration["claim_ceiling"]},
+    ]
+
+    if semantic_findings:
+        return {
+            "status": "BLOCKED",
+            "code": "MASTER_RUNTIME_STATE_CONTRADICTION",
+            "findings": semantic_findings,
+            "required_actions": required_actions,
+            "claim_ceiling_inputs": claim_ceiling_inputs,
+            "claim_ceiling_rule": "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN-SPECIFIC_CLAIM_TEXT",
+            "human_decision_required": False,
+        }
+
+    if required_actions:
+        return {
+            "status": "RECONCILIATION_REQUIRED" if any(a["scope"].startswith(("DEPENDENCY:", "CHANGE:")) or a["scope"] in {"AUTHORITY", "INTEGRATION"} for a in required_actions) else "IN_PROGRESS",
+            "code": "MASTER_RUNTIME_OPEN_WORK",
+            "findings": [],
+            "required_actions": required_actions,
+            "claim_ceiling_inputs": claim_ceiling_inputs,
+            "claim_ceiling_rule": "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN-SPECIFIC_CLAIM_TEXT",
+            "human_decision_required": False,
+        }
+
+    if state["promotion_requested"]:
+        return {
+            "status": "READY_FOR_HUMAN_DECISION",
+            "code": "MASTER_RUNTIME_PROMOTION_PREREQUISITES_PASS",
+            "findings": [],
+            "required_actions": [],
+            "claim_ceiling_inputs": claim_ceiling_inputs,
+            "claim_ceiling_rule": "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN-SPECIFIC_CLAIM_TEXT",
+            "human_decision_required": True,
+        }
+
+    return {
+        "status": "RUNNABLE",
+        "code": "MASTER_RUNTIME_CURRENT_AND_RUNNABLE",
+        "findings": [],
+        "required_actions": [],
+        "claim_ceiling_inputs": claim_ceiling_inputs,
+        "claim_ceiling_rule": "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN-SPECIFIC_CLAIM_TEXT",
+        "human_decision_required": False,
+    }
+
+
 def _print(value: Any) -> None:
     print(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True))
 
@@ -371,6 +556,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("providers"); p.add_argument("snapshot")
     p = sub.add_parser("promotion"); p.add_argument("card"); p.add_argument("gate_receipts")
     p = sub.add_parser("contradictions"); p.add_argument("manifest")
+    p = sub.add_parser("master-runtime"); p.add_argument("state")
     return parser
 
 
@@ -385,6 +571,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "contradictions":
         result = scan_contradictions(load_json(args.manifest)); _print(result)
         return 0 if result["status"] == "PASS" else 8
+    if args.command == "master-runtime":
+        result = evaluate_master_runtime(load_json(args.state)); _print(result)
+        return 0 if result["status"] in {"RUNNABLE", "READY_FOR_HUMAN_DECISION"} else 9
     return 1
 
 

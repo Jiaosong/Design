@@ -99,11 +99,95 @@
         "semantic_expected":{"type":"object","minProperties":1},
         "systems":{"type":"object","additionalProperties":false,"required":["notion","github","drive"],"properties":{"notion":{"$ref":"#/$defs/systemSnapshot"},"github":{"$ref":"#/$defs/systemSnapshot"},"drive":{"$ref":"#/$defs/systemSnapshot"}}}
       }
+    },
+    "masterRuntimeState": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "schema_version", "kind", "master_runtime_version", "project_id", "decision_object_id",
+        "authority_snapshot_ref", "knowledge_snapshot_ref", "design_intelligence", "integration",
+        "reviews", "dependencies", "change_events", "open_blockers", "promotion_requested"
+      ],
+      "properties": {
+        "schema_version": {"const": "0.3"},
+        "kind": {"const": "MASTER_RUNTIME_STATE"},
+        "master_runtime_version": {"const": "1.0"},
+        "project_id": {"type": "string", "minLength": 1},
+        "workstream_id": {"type": ["string", "null"]},
+        "decision_object_id": {"type": "string", "minLength": 1},
+        "authority_snapshot_ref": {"type": "string", "minLength": 1},
+        "knowledge_snapshot_ref": {"type": "string", "minLength": 1},
+        "design_intelligence": {
+          "type": "object", "additionalProperties": false,
+          "required": ["packet_id", "state", "claim_ceiling"],
+          "properties": {
+            "packet_id": {"type": ["string", "null"]},
+            "state": {"enum": ["CURRENT", "STALE", "MISSING", "BLOCKED"]},
+            "claim_ceiling": {"type": "string", "minLength": 1}
+          }
+        },
+        "integration": {
+          "type": "object", "additionalProperties": false,
+          "required": [
+            "triggered", "packet_id", "receipt_id", "state", "verdict",
+            "open_major_critical_interfaces", "unresolved_authority_conflicts", "claim_ceiling"
+          ],
+          "properties": {
+            "triggered": {"type": "boolean"},
+            "packet_id": {"type": ["string", "null"]},
+            "receipt_id": {"type": ["string", "null"]},
+            "state": {"enum": ["NOT_REQUIRED", "CURRENT", "STALE", "MISSING", "BLOCKED"]},
+            "verdict": {"enum": ["N_A", "PASS", "REVISE", "REJECT", "HOLD"]},
+            "open_major_critical_interfaces": {"type": "integer", "minimum": 0},
+            "unresolved_authority_conflicts": {"type": "integer", "minimum": 0},
+            "claim_ceiling": {"type": "string", "minLength": 1}
+          }
+        },
+        "reviews": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["review_type", "triggered", "result", "receipt_ref"],
+            "properties": {
+              "review_type": {"enum": ["ARTIFACT", "TECHNICAL", "EVIDENCE", "DISCIPLINE", "DESIGN", "PERSISTENCE"]},
+              "triggered": {"type": "boolean"},
+              "result": {"enum": ["PASS", "FAIL", "HOLD", "NOT_RUN", "N_A", "KEEP", "REVISE", "REJECT"]},
+              "receipt_ref": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["object_id", "state"],
+            "properties": {
+              "object_id": {"type": "string", "minLength": 1},
+              "state": {"enum": ["CURRENT", "STALE", "REOPEN_REQUIRED", "HOLD"]}
+            }
+          }
+        },
+        "change_events": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["change_id", "impact_class", "propagation_state", "affected_refs"],
+            "properties": {
+              "change_id": {"type": "string", "minLength": 1},
+              "impact_class": {"enum": ["NON_MATERIAL", "LOCAL_MATERIAL", "INTERFACE_MATERIAL", "COUPLED_SYSTEM", "PROMOTION_BREAKING"]},
+              "propagation_state": {"enum": ["NOT_REQUIRED", "PENDING", "APPLIED", "HOLD"]},
+              "affected_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+            }
+          }
+        },
+        "open_blockers": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "promotion_requested": {"type": "boolean"}
+      }
     }
   },
   "oneOf": [
     {"$ref":"#/$defs/providerChain"},
     {"$ref":"#/$defs/gateBundle"},
-    {"$ref":"#/$defs/contradictionManifest"}
+    {"$ref":"#/$defs/contradictionManifest"},
+    {"$ref":"#/$defs/masterRuntimeState"}
   ]
 }

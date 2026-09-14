@@ -169,6 +169,13 @@ export async function inventoryMissingPageIds(db: D1Database, scanStartedAt: str
 
 function relations(page: NormalizedPage): Array<{ type: string; target: string }> {
   return [
+    ...page.primaryDomainIds.map((target) => ({ type: "PRIMARY_DOMAIN", target })),
+    ...page.relatedDomainIds.map((target) => ({ type: "RELATED_DOMAIN", target })),
+    ...page.canonicalParentIds.map((target) => ({ type: "CANONICAL_PARENT", target })),
+    ...page.canonicalChildrenIds.map((target) => ({ type: "CANONICAL_CHILD", target })),
+    ...page.semanticRelatedIds.map((target) => ({ type: "RELATED", target })),
+    ...page.primaryProjectIds.map((target) => ({ type: "PRIMARY_PROJECT", target })),
+    ...page.relatedProjectIds.map((target) => ({ type: "RELATED_PROJECT", target })),
     ...page.sourceRelationIds.map((target) => ({ type: "SOURCE", target })),
     ...page.methodRelationIds.map((target) => ({ type: "METHOD", target })),
     ...page.replacementIds.map((target) => ({ type: "REPLACEMENT", target })),
@@ -198,21 +205,30 @@ export async function saveDocumentAndChunks(
         `INSERT INTO documents (
           page_id, canonical_id, title, notion_url, notion_last_edited_time,
           retrieval_space, effective_space, search_eligibility, trust_state,
-          governance_state, relation_state, content_level, knowledge_role,
-          primary_domain_ids_json, related_domain_ids_json, source_relation_ids_json,
+          governance_state, relation_state, content_level, knowledge_role, framework_type,
+          primary_domain_ids_json, related_domain_ids_json,
+          canonical_parent_ids_json, canonical_children_ids_json, semantic_related_ids_json,
+          primary_project_ids_json, related_project_ids_json, source_relation_ids_json,
           method_relation_ids_json, replacement_ids_json, replaced_document_ids_json,
           content_hash, structure_hash, markdown_truncated, unknown_block_ids_json,
           index_state, authority_reason, in_trash, active, observed_at, indexed_at,
           notion_seen_at, index_revision
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'INDEXED', ?, ?, 1, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'INDEXED', ?, ?, 1, ?, ?, ?, ?)
         ON CONFLICT(page_id) DO UPDATE SET
           canonical_id=excluded.canonical_id, title=excluded.title, notion_url=excluded.notion_url,
           notion_last_edited_time=excluded.notion_last_edited_time, retrieval_space=excluded.retrieval_space,
           effective_space=excluded.effective_space, search_eligibility=excluded.search_eligibility,
           trust_state=excluded.trust_state, governance_state=excluded.governance_state,
           relation_state=excluded.relation_state, content_level=excluded.content_level,
-          knowledge_role=excluded.knowledge_role, primary_domain_ids_json=excluded.primary_domain_ids_json,
-          related_domain_ids_json=excluded.related_domain_ids_json, source_relation_ids_json=excluded.source_relation_ids_json,
+          knowledge_role=excluded.knowledge_role, framework_type=excluded.framework_type,
+          primary_domain_ids_json=excluded.primary_domain_ids_json,
+          related_domain_ids_json=excluded.related_domain_ids_json,
+          canonical_parent_ids_json=excluded.canonical_parent_ids_json,
+          canonical_children_ids_json=excluded.canonical_children_ids_json,
+          semantic_related_ids_json=excluded.semantic_related_ids_json,
+          primary_project_ids_json=excluded.primary_project_ids_json,
+          related_project_ids_json=excluded.related_project_ids_json,
+          source_relation_ids_json=excluded.source_relation_ids_json,
           method_relation_ids_json=excluded.method_relation_ids_json, replacement_ids_json=excluded.replacement_ids_json,
           replaced_document_ids_json=excluded.replaced_document_ids_json, content_hash=excluded.content_hash,
           structure_hash=excluded.structure_hash, markdown_truncated=excluded.markdown_truncated,
@@ -235,8 +251,14 @@ export async function saveDocumentAndChunks(
         p.relationState,
         p.contentLevel,
         p.knowledgeRole,
+        p.frameworkType,
         JSON.stringify(p.primaryDomainIds),
         JSON.stringify(p.relatedDomainIds),
+        JSON.stringify(p.canonicalParentIds),
+        JSON.stringify(p.canonicalChildrenIds),
+        JSON.stringify(p.semanticRelatedIds),
+        JSON.stringify(p.primaryProjectIds),
+        JSON.stringify(p.relatedProjectIds),
         JSON.stringify(p.sourceRelationIds),
         JSON.stringify(p.methodRelationIds),
         JSON.stringify(p.replacementIds),
@@ -307,7 +329,7 @@ export async function fetchManifestHits(
 ): Promise<Map<string, ManifestChunkRow & Record<string, unknown>>> {
   if (vectorIds.length === 0) return new Map();
   const placeholders = vectorIds.map(() => "?").join(",");
-  let sql = `SELECT c.*, d.canonical_id, d.title, d.knowledge_role, d.content_level,
+  let sql = `SELECT c.*, d.canonical_id, d.title, d.knowledge_role, d.content_level, d.framework_type,
                     d.trust_state, d.effective_space, d.index_state, d.active AS document_active
              FROM chunks c JOIN documents d ON d.page_id=c.page_id
              WHERE c.vector_id IN (${placeholders})

@@ -13,6 +13,7 @@ function embeddingText(input: {
   canonicalId: string | null;
   knowledgeRole: string | null;
   contentLevel: string | null;
+  frameworkType: string | null;
   headingPath: string[];
   text: string;
 }): string {
@@ -21,6 +22,7 @@ function embeddingText(input: {
     input.canonicalId ? `Canonical ID: ${input.canonicalId}` : "",
     input.knowledgeRole ? `Role: ${input.knowledgeRole}` : "",
     input.contentLevel ? `Level: ${input.contentLevel}` : "",
+    input.frameworkType ? `Framework Type: ${input.frameworkType}` : "",
     input.headingPath.length ? `Path: ${input.headingPath.join(" > ")}` : "",
     input.text,
   ]
@@ -106,8 +108,14 @@ export async function syncPage(env: Env, message: IngestMessage): Promise<{ stat
         relation_state: page.relationState,
         content_level: page.contentLevel,
         knowledge_role: page.knowledgeRole,
+        framework_type: page.frameworkType,
         primary_domains: page.primaryDomainIds,
         related_domains: page.relatedDomainIds,
+        canonical_parents: page.canonicalParentIds,
+        canonical_children: page.canonicalChildrenIds,
+        semantic_related: page.semanticRelatedIds,
+        primary_projects: page.primaryProjectIds,
+        related_projects: page.relatedProjectIds,
         source_relations: page.sourceRelationIds,
         method_relations: page.methodRelationIds,
         replacements: page.replacementIds,
@@ -125,6 +133,7 @@ export async function syncPage(env: Env, message: IngestMessage): Promise<{ stat
       canonicalId: page.canonicalId,
       knowledgeRole: page.knowledgeRole,
       contentLevel: page.contentLevel,
+      frameworkType: page.frameworkType,
       headingPath: chunk.headingPath,
       text: chunk.text,
     }),
@@ -147,6 +156,7 @@ export async function syncPage(env: Env, message: IngestMessage): Promise<{ stat
       heading: chunk.headingPath.join(" > ").slice(0, 500),
       knowledge_role: page.knowledgeRole ?? "",
       content_level: page.contentLevel ?? "",
+      framework_type: page.frameworkType ?? "",
       trust_state: page.trustState ?? "",
       content_hash: contentHash,
     };

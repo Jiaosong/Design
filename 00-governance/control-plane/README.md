@@ -148,6 +148,16 @@ Current cards outside explicit provenance/replay zones must use schema v0.3. v0.
 
 The scanner does not create a second registry. The repository checkout remains the discovery surface, and the existing Control Plane remains the validator.
 
+### 8. Complex Project Master Runtime state
+
+`MASTER_RUNTIME_STATE` is an orchestration document inside the existing `orchestration.schema.json`; it is not a second Project State database or a new Gate family.
+
+It compiles the current Design Intelligence packet, conditional Cross-Disciplinary Integration state, six independent review classes, dependency freshness, material-change propagation and open blockers. The evaluator returns only:
+
+`BLOCKED / IN_PROGRESS / RECONCILIATION_REQUIRED / RUNNABLE / READY_FOR_HUMAN_DECISION`.
+
+It never returns `PROMOTED` and never converts machine completeness, technical PASS or Integration PASS into Design KEEP.
+
 ## Commands
 
 ```bash
@@ -156,6 +166,8 @@ python 00-governance/control-plane/scan_control_cards.py
 python 00-governance/control-plane/orchestrator.py providers PROVIDER_RECEIPTS.json
 python 00-governance/control-plane/orchestrator.py promotion CARD.json GATE_RECEIPTS.json
 python 00-governance/control-plane/orchestrator.py contradictions MANIFEST.json
+python 00-governance/control-plane/orchestrator.py master-runtime examples/example-master-runtime.json
+python 00-governance/control-plane/validate_master_runtime.py
 ```
 
 ## Non-negotiable boundaries
@@ -176,6 +188,7 @@ python 00-governance/control-plane/control_plane.py check 00-governance/control-
 python 00-governance/control-plane/scan_control_cards.py
 python 00-governance/control-plane/orchestrator.py promotion 00-governance/control-plane/replays/pr85-control-card.json 00-governance/control-plane/replays/pr85-gate-receipts.json
 python 00-governance/control-plane/orchestrator.py contradictions 00-governance/control-plane/replays/pr85-contradiction-manifest.json
+python 00-governance/control-plane/validate_master_runtime.py
 ```
 
 Historical hardened baseline: `27/27 PASS` on PR #90 head validation. Any later regression count must be taken from the current CI run, not inferred from this historical baseline.

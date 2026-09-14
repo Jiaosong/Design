@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.3",
+  "kind": "MASTER_RUNTIME_STATE",
+  "master_runtime_version": "1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+  "decision_object_id": "DECISION-R06-INTEGRATION",
+  "authority_snapshot_ref": "authority:example-current",
+  "knowledge_snapshot_ref": "knowledge:graph:example-current",
+  "design_intelligence": {
+    "packet_id": "DIP-EXAMPLE-001",
+    "state": "CURRENT",
+    "claim_ceiling": "DESIGN_CANDIDATE"
+  },
+  "integration": {
+    "triggered": true,
+    "packet_id": "CDIP-EXAMPLE-001",
+    "receipt_id": "CDIR-EXAMPLE-001",
+    "state": "CURRENT",
+    "verdict": "PASS",
+    "open_major_critical_interfaces": 0,
+    "unresolved_authority_conflicts": 0,
+    "claim_ceiling": "INTEGRATED_PROTOTYPE_VERIFIED"
+  },
+  "reviews": [
+    {"review_type": "ARTIFACT", "triggered": true, "result": "PASS", "receipt_ref": "receipt:artifact"},
+    {"review_type": "TECHNICAL", "triggered": true, "result": "PASS", "receipt_ref": "receipt:technical"},
+    {"review_type": "EVIDENCE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:evidence"},
+    {"review_type": "DISCIPLINE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:discipline"},
+    {"review_type": "DESIGN", "triggered": true, "result": "KEEP", "receipt_ref": "receipt:design"},
+    {"review_type": "PERSISTENCE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:persistence"}
+  ],
+  "dependencies": [
+    {"object_id": "AUTH-R06", "state": "CURRENT"}
+  ],
+  "change_events": [
+    {
+      "change_id": "CH-EXAMPLE-001",
+      "impact_class": "INTERFACE_MATERIAL",
+      "propagation_state": "APPLIED",
+      "affected_refs": ["IF-R06-01"]
+    }
+  ],
+  "open_blockers": [],
+  "promotion_requested": false
+}

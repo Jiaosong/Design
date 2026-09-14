@@ -93,11 +93,15 @@ export interface NormalizedPage {
   relationState: string | null;
   contentLevel: string | null;
   knowledgeRole: string | null;
+  frameworkType: string | null;
   canonicalParentIds: string[];
   canonicalChildrenIds: string[];
+  semanticRelatedIds: string[];
   methodFamilies: string[];
   primaryDomainIds: string[];
   relatedDomainIds: string[];
+  primaryProjectIds: string[];
+  relatedProjectIds: string[];
   sourceRelationIds: string[];
   methodRelationIds: string[];
   replacementIds: string[];
@@ -155,6 +159,7 @@ export interface KnowledgeHit {
   content_hash: string;
   knowledge_role: string | null;
   content_level: string | null;
+  framework_type: string | null;
   trust_state: string | null;
 }
 
@@ -174,6 +179,7 @@ export interface KnowledgeReaderSnapshot {
     canonicalId?: string;
     role?: string;
     level?: string;
+    frameworkType?: string;
     retrievalSpace?: string;
     searchEligibility?: string;
     trustState?: string;
@@ -307,6 +313,7 @@ export interface KnowledgeReaderFrameworkReadback {
     relationState: string | null;
     contentLevel: string | null;
     knowledgeRole: string | null;
+    frameworkType: string | null;
     inTrash?: boolean;
     fieldsReadable: {
       canonicalId: boolean;
@@ -317,6 +324,7 @@ export interface KnowledgeReaderFrameworkReadback {
       relationState: boolean;
       contentLevel: boolean;
       knowledgeRole: boolean;
+      frameworkType: boolean;
       allFieldsReadable: boolean;
     };
   };
@@ -387,6 +395,7 @@ export interface KnowledgeReaderFrameworkReadback {
   };
   routingInputs: {
     knowledgeRole?: string;
+    frameworkType?: string;
     methodFamily: string[];
     methodFamilyComplete: boolean;
     primaryDomainRoutingReady: boolean;
@@ -406,6 +415,7 @@ export interface KnowledgeReaderDetail {
   url?: string;
   role?: string;
   level?: string;
+  frameworkType?: string;
   retrievalSpace?: string;
   searchEligibility?: string;
   trustState?: string;
@@ -428,12 +438,24 @@ export interface KnowledgeReaderDetail {
       declared: {
         primaryDomain: number;
         relatedDomain: number;
+        canonicalParent: number;
+        canonicalChild: number;
+        related: number;
+        primaryProject: number;
+        relatedProject: number;
         source: number;
         method: number;
         replacement: number;
         replacedDocument: number;
       };
       indexedOutgoing: {
+        primaryDomain: number;
+        relatedDomain: number;
+        canonicalParent: number;
+        canonicalChild: number;
+        related: number;
+        primaryProject: number;
+        relatedProject: number;
         source: number;
         method: number;
         replacement: number;

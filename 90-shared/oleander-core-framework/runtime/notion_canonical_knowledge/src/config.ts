@@ -8,6 +8,7 @@ export const FIELDS = {
   relationState: "关系状态",
   contentLevel: "内容层级",
   knowledgeRole: "知识角色",
+  frameworkType: "Framework Type｜框架类型",
   primaryDomain: "主领域",
   relatedDomains: "关联领域",
   canonicalParent: "Canonical Parent｜层级上位",
@@ -21,6 +22,20 @@ export const FIELDS = {
   replacements: "替代文档",
   replacedDocuments: "被替代文档",
 } as const;
+
+export const FRAMEWORK_TYPES = [
+  "NAVIGATION_MAP",
+  "CONCEPTUAL_MODEL",
+  "METHOD_FAMILY",
+  "PROCESS_ORCHESTRATION",
+  "PROFESSIONAL_SYSTEM_MAP",
+  "TYPOLOGY_FRAMEWORK",
+  "APPLICATION_FRAMEWORK",
+  "DESIGN_LANGUAGE_SYSTEM",
+  "STRATEGY_FRAMEWORK",
+  "EVALUATION_FRAMEWORK",
+  "HISTORICAL_COMPARATIVE_SYNTHESIS",
+] as const;
 
 // Existing Current Project Registry identity fields. Reader hydration treats
 // these as live readback only; Project identity remains Project ID + level and

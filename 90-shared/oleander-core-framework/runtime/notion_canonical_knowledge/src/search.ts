@@ -39,6 +39,7 @@ async function queryNamespace(
       content_hash: String(row.content_hash ?? ""),
       knowledge_role: row.knowledge_role ? String(row.knowledge_role) : null,
       content_level: row.content_level ? String(row.content_level) : null,
+      framework_type: row.framework_type ? String(row.framework_type) : null,
       trust_state: row.trust_state ? String(row.trust_state) : null,
     });
   }

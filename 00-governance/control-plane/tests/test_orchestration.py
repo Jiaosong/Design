@@ -4,7 +4,7 @@ import sys
 
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
-from orchestrator import evaluate_provider_chain, evaluate_promotion, scan_contradictions, snapshot_payload_hash
+from orchestrator import evaluate_master_runtime, evaluate_provider_chain, evaluate_promotion, scan_contradictions, snapshot_payload_hash
 
 H = "a" * 64
 
@@ -64,6 +64,44 @@ def snapshot(system, semantic=None, observed="2026-08-13T02:00:00Z"):
     snap = {"status": "FOUND", "object_id": "AUTO-R29A", "source_ref": f"{system}:ref", "observed_at": observed, "revision": f"{system}-rev-1", "payload_sha256": "0" * 64, "fields": {"version": "v0.11", "authority_state": "CANONICAL_AUTHORITY", "design_state": "PROMOTED"}, "semantic": semantic or {"candidate_superseded": True, "pap_pass": True, "canonical_receipt_present": True}}
     snap["payload_sha256"] = snapshot_payload_hash(snap)
     return snap
+
+
+def master_runtime_state(triggered=True, promotion_requested=False):
+    reviews = []
+    for review_type in ["ARTIFACT", "TECHNICAL", "EVIDENCE", "DISCIPLINE", "DESIGN", "PERSISTENCE"]:
+        reviews.append({
+            "review_type": review_type,
+            "triggered": True,
+            "result": "KEEP" if review_type == "DESIGN" else "PASS",
+            "receipt_ref": f"receipt:{review_type.lower()}",
+        })
+    integration = {
+        "triggered": triggered,
+        "packet_id": "CDIP-1" if triggered else None,
+        "receipt_id": "CDIR-1" if triggered else None,
+        "state": "CURRENT" if triggered else "NOT_REQUIRED",
+        "verdict": "PASS" if triggered else "N_A",
+        "open_major_critical_interfaces": 0,
+        "unresolved_authority_conflicts": 0,
+        "claim_ceiling": "INTEGRATED_PROTOTYPE_VERIFIED" if triggered else "NOT_APPLICABLE",
+    }
+    return {
+        "schema_version": "0.3",
+        "kind": "MASTER_RUNTIME_STATE",
+        "master_runtime_version": "1.0",
+        "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+        "workstream_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+        "decision_object_id": "DECISION-R06-INTEGRATION",
+        "authority_snapshot_ref": "authority:current:1",
+        "knowledge_snapshot_ref": "knowledge:graph:1213:20260914",
+        "design_intelligence": {"packet_id": "DIP-1", "state": "CURRENT", "claim_ceiling": "DESIGN_CANDIDATE"},
+        "integration": integration,
+        "reviews": reviews,
+        "dependencies": [{"object_id": "AUTH-R06", "state": "CURRENT"}],
+        "change_events": [{"change_id": "CH-1", "impact_class": "INTERFACE_MATERIAL", "propagation_state": "APPLIED", "affected_refs": ["IF-R06-01"]}],
+        "open_blockers": [],
+        "promotion_requested": promotion_requested,
+    }
 
 
 class OrchestrationTests(unittest.TestCase):
@@ -143,6 +181,53 @@ class OrchestrationTests(unittest.TestCase):
         systems = {x: snapshot(x) for x in ["notion", "github", "drive"]}
         manifest = {"schema_version": "0.3", "kind": "CONTRADICTION_MANIFEST", "object_id": "AUTO-R29A", "scan_as_of": "2026-08-13T02:05:00Z", "max_age_seconds": 600, "expected": {"version": "v0.11", "authority_state": "CANONICAL_AUTHORITY", "design_state": "PROMOTED"}, "semantic_expected": {"candidate_superseded": True, "pap_pass": True, "canonical_receipt_present": True}, "systems": systems}
         self.assertEqual(scan_contradictions(manifest)["status"], "PASS")
+
+    def test_master_runtime_current_state_is_runnable_without_promotion_request(self):
+        result = evaluate_master_runtime(master_runtime_state())
+        self.assertEqual(result["status"], "RUNNABLE")
+        self.assertFalse(result["human_decision_required"])
+
+    def test_master_runtime_promotion_stops_at_human_decision(self):
+        result = evaluate_master_runtime(master_runtime_state(promotion_requested=True))
+        self.assertEqual(result["status"], "READY_FOR_HUMAN_DECISION")
+        self.assertTrue(result["human_decision_required"])
+        self.assertNotEqual(result["status"], "PROMOTED")
+
+    def test_master_runtime_triggered_integration_stale_requires_reconciliation(self):
+        state = master_runtime_state(promotion_requested=True)
+        state["integration"]["state"] = "STALE"
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "RECONCILIATION_REQUIRED")
+        self.assertTrue(any(a["scope"] == "INTEGRATION" for a in result["required_actions"]))
+
+    def test_master_runtime_nontriggered_integration_cannot_claim_receipt(self):
+        state = master_runtime_state(triggered=False)
+        state["integration"]["receipt_id"] = "INVALID-RECEIPT"
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertEqual(result["code"], "MASTER_RUNTIME_STATE_CONTRADICTION")
+
+    def test_master_runtime_pending_material_change_reopens_dependency_chain(self):
+        state = master_runtime_state(promotion_requested=True)
+        state["change_events"][0]["propagation_state"] = "PENDING"
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "RECONCILIATION_REQUIRED")
+        self.assertTrue(any(a["scope"].startswith("CHANGE:") for a in result["required_actions"]))
+
+    def test_master_runtime_design_review_requires_keep_not_generic_pass(self):
+        state = master_runtime_state(promotion_requested=True)
+        design = next(r for r in state["reviews"] if r["review_type"] == "DESIGN")
+        design["result"] = "PASS"
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "IN_PROGRESS")
+        self.assertTrue(any(a["scope"] == "REVIEW:DESIGN" for a in result["required_actions"]))
+
+    def test_master_runtime_requires_complete_unique_review_set(self):
+        state = master_runtime_state()
+        state["reviews"].pop()
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertTrue(any(f["code"] == "MASTER_REVIEW_SET_INVALID" for f in result["findings"]))
 
 
 if __name__ == "__main__":

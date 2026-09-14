@@ -1,10 +1,12 @@
 import { WorkerEntrypoint } from "cloudflare:workers";
 import {
+  DOMAIN_FIELDS,
   FIELDS,
   INDEX_PIPELINE_REVISION,
   INCREMENTAL_SYNC_INTERVAL_MS,
   INCREMENTAL_SYNC_OVERLAP_MS,
   INVENTORY_SYNC_INTERVAL_MS,
+  PROJECT_FIELDS,
   SCHEDULED_SYNC_BATCH_SIZE,
   SCHEDULED_SYNC_MAX_ATTEMPTS,
   SCHEDULED_SYNC_STALE_PROCESSING_MS,
@@ -47,18 +49,24 @@ import {
   createViewOnDatabase,
   fetchCompleteMarkdown,
   fetchPage,
+  ensureFrameworkTypeSchema,
+  inspectFrameworkTypeSchema,
   listNotesPages,
   listDatabaseViews,
   queryNotesPagesEditedBetween,
   queryNotesInventoryPage,
+  queryDomainRegistryPages,
+  queryProjectRegistryPages,
   replaceReaderIntroMarkdown,
   retrieveNotesDataSource,
   retrieveView,
   updatePageGovernanceFields,
+  updatePageGraphFields,
   updatePageMarkdownContent,
   updateView,
+  type GraphMutationUpdates,
 } from "./notion";
-import { normalizePage } from "./normalize";
+import { belongsToDataSource, normalizePage, propertyText } from "./normalize";
 import { buildReaderLiveStatus } from "./live-status";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
 import { knowledgePackByCanonicalId, knowledgeSearch } from "./search";
@@ -113,6 +121,191 @@ function boundedReaderInput(value: string | null | undefined, max: number): stri
   if (typeof value !== "string") return null;
   const trimmed = value.trim();
   return trimmed && trimmed.length <= max ? trimmed : null;
+}
+
+const GRAPH_MUTATION_KEYS = new Set<keyof GraphMutationUpdates>([
+  "content_level",
+  "knowledge_role",
+  "framework_type",
+  "primary_domain_ids",
+  "related_domain_ids",
+  "canonical_parent_ids",
+  "canonical_children_ids",
+  "semantic_related_ids",
+  "source_relation_ids",
+  "method_relation_ids",
+  "primary_project_ids",
+  "related_project_ids",
+  "replacement_ids",
+  "replaced_document_ids",
+]);
+
+function sortedIds(value: string[] | undefined): string[] {
+  return [...new Set(value ?? [])].sort();
+}
+
+function sameIds(a: string[] | undefined, b: string[] | undefined): boolean {
+  return JSON.stringify(sortedIds(a)) === JSON.stringify(sortedIds(b));
+}
+
+function normalizedGraphField(page: ReturnType<typeof normalizePage>, key: keyof GraphMutationUpdates): string | string[] | null {
+  if (key === "content_level") return page.contentLevel;
+  if (key === "knowledge_role") return page.knowledgeRole;
+  if (key === "framework_type") return page.frameworkType;
+  if (key === "primary_domain_ids") return page.primaryDomainIds;
+  if (key === "related_domain_ids") return page.relatedDomainIds;
+  if (key === "canonical_parent_ids") return page.canonicalParentIds;
+  if (key === "canonical_children_ids") return page.canonicalChildrenIds;
+  if (key === "semantic_related_ids") return page.semanticRelatedIds;
+  if (key === "source_relation_ids") return page.sourceRelationIds;
+  if (key === "method_relation_ids") return page.methodRelationIds;
+  if (key === "primary_project_ids") return page.primaryProjectIds;
+  if (key === "related_project_ids") return page.relatedProjectIds;
+  if (key === "replacement_ids") return page.replacementIds;
+  return page.replacedDocumentIds;
+}
+
+function expectedGraphFieldMatches(
+  page: ReturnType<typeof normalizePage>,
+  key: keyof GraphMutationUpdates,
+  expected: unknown,
+): boolean {
+  const actual = normalizedGraphField(page, key);
+  if (Array.isArray(actual)) return Array.isArray(expected) && sameIds(actual, expected.filter((x): x is string => typeof x === "string"));
+  return actual === expected;
+}
+
+function updatedGraphFieldMatches(
+  page: ReturnType<typeof normalizePage>,
+  key: keyof GraphMutationUpdates,
+  expected: unknown,
+): boolean {
+  return expectedGraphFieldMatches(page, key, expected);
+}
+
+function levelNumber(value: string | null | undefined): number | null {
+  const match = value?.match(/^L(\d)/);
+  return match ? Number(match[1]) : null;
+}
+
+async function validateGraphMutationTargets(
+  env: Env,
+  before: ReturnType<typeof normalizePage>,
+  updates: GraphMutationUpdates,
+): Promise<{ ok: true; checked: Record<string, unknown> } | { ok: false; error: string; detail?: unknown }> {
+  const checked: Record<string, unknown> = {};
+  const projectedLevel = updates.content_level ?? before.contentLevel;
+  const projectedRole = updates.knowledge_role ?? before.knowledgeRole;
+  const projectedFrameworkType = updates.framework_type !== undefined ? updates.framework_type : before.frameworkType;
+
+  if (String(projectedLevel ?? "").startsWith("L4")) {
+    if (!projectedFrameworkType) return { ok: false, error: "l4_framework_type_required" };
+  } else if (projectedFrameworkType) {
+    return { ok: false, error: "framework_type_forbidden_outside_l4", detail: { projectedLevel, projectedFrameworkType } };
+  }
+
+  const domainKeys: Array<"primary_domain_ids" | "related_domain_ids"> = ["primary_domain_ids", "related_domain_ids"];
+  if (domainKeys.some((key) => updates[key] !== undefined)) {
+    const inventory = await queryDomainRegistryPages(env);
+    if (!inventory.complete) return { ok: false, error: "domain_registry_readback_incomplete" };
+    const domains = new Map(inventory.pages.map((page) => [page.id, page]));
+    for (const key of domainKeys) {
+      const ids = updates[key];
+      if (ids === undefined) continue;
+      for (const id of ids) {
+        const target = domains.get(id);
+        if (!target || !belongsToDataSource(target, env.NOTION_DOMAINS_DATA_SOURCE_ID)) {
+          return { ok: false, error: "domain_target_not_in_current_registry", detail: { key, id } };
+        }
+        const level = propertyText(target.properties?.[DOMAIN_FIELDS.level]);
+        const governance = propertyText(target.properties?.[DOMAIN_FIELDS.governanceState]);
+        if (!level?.startsWith("L2") || governance !== "ACTIVE" || target.in_trash === true) {
+          return { ok: false, error: "domain_target_must_be_active_l2", detail: { key, id, level, governance } };
+        }
+      }
+    }
+    checked.domains = "ACTIVE_L2_VERIFIED";
+  }
+
+  const projectKeys: Array<"primary_project_ids" | "related_project_ids"> = ["primary_project_ids", "related_project_ids"];
+  if (projectKeys.some((key) => updates[key] !== undefined)) {
+    const inventory = await queryProjectRegistryPages(env);
+    if (!inventory.complete) return { ok: false, error: "project_registry_readback_incomplete" };
+    const projects = new Map(inventory.pages.map((page) => [page.id, page]));
+    for (const key of projectKeys) {
+      const ids = updates[key];
+      if (ids === undefined) continue;
+      for (const id of ids) {
+        const target = projects.get(id);
+        if (!target || !belongsToDataSource(target, env.NOTION_PROJECTS_DATA_SOURCE_ID) || target.in_trash === true) {
+          return { ok: false, error: "project_target_not_in_current_registry", detail: { key, id } };
+        }
+        const governance = propertyText(target.properties?.[PROJECT_FIELDS.governanceState]);
+        if (governance && governance !== "ACTIVE") {
+          return { ok: false, error: "project_target_not_active", detail: { key, id, governance } };
+        }
+      }
+    }
+    checked.projects = "CURRENT_REGISTRY_VERIFIED";
+  }
+
+  const noteRelationKeys: Array<keyof GraphMutationUpdates> = [
+    "canonical_parent_ids", "canonical_children_ids", "semantic_related_ids", "source_relation_ids",
+    "method_relation_ids", "replacement_ids", "replaced_document_ids",
+  ];
+  const noteIds = [...new Set(noteRelationKeys.flatMap((key) => {
+    const value = updates[key];
+    return Array.isArray(value) ? value : [];
+  }))];
+  const notes = new Map<string, ReturnType<typeof normalizePage>>();
+  for (const id of noteIds) {
+    if (id === before.pageId) return { ok: false, error: "self_relation_forbidden", detail: { id } };
+    const target = normalizePage(await fetchPage(env, id));
+    if (target.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID || target.inTrash) {
+      return { ok: false, error: "note_relation_target_not_live_notes_object", detail: { id } };
+    }
+    notes.set(id, target);
+  }
+
+  const parentIds = updates.canonical_parent_ids ?? before.canonicalParentIds;
+  if (parentIds.length > 1) return { ok: false, error: "canonical_parent_cardinality_gt_1" };
+  const sourceLevelNumber = levelNumber(projectedLevel);
+  if (parentIds.length) {
+    if (sourceLevelNumber !== 5) return { ok: false, error: "canonical_parent_only_allowed_for_l5", detail: { projectedLevel } };
+    for (const id of parentIds) {
+      const target = notes.get(id) ?? normalizePage(await fetchPage(env, id));
+      if (target.retrievalSpace === "PROVENANCE" || levelNumber(target.contentLevel) !== 4) {
+        return { ok: false, error: "l5_parent_must_be_nonprovenance_l4", detail: { id, level: target.contentLevel, retrievalSpace: target.retrievalSpace } };
+      }
+    }
+  }
+
+  const childIds = updates.canonical_children_ids ?? before.canonicalChildrenIds;
+  if (childIds.length) {
+    if (sourceLevelNumber !== 4) return { ok: false, error: "canonical_children_only_allowed_for_l4", detail: { projectedLevel } };
+    for (const id of childIds) {
+      const target = notes.get(id) ?? normalizePage(await fetchPage(env, id));
+      if (target.retrievalSpace === "PROVENANCE" || levelNumber(target.contentLevel) !== 5) {
+        return { ok: false, error: "l4_child_must_be_nonprovenance_l5", detail: { id, level: target.contentLevel, retrievalSpace: target.retrievalSpace } };
+      }
+    }
+  }
+
+  for (const id of updates.source_relation_ids ?? []) {
+    const target = notes.get(id)!;
+    if (!target || !["SOURCE", "EVIDENCE", "CASE"].includes(target.knowledgeRole ?? "")) {
+      return { ok: false, error: "source_relation_target_role_invalid", detail: { id, role: target?.knowledgeRole ?? null } };
+    }
+  }
+  for (const id of updates.method_relation_ids ?? []) {
+    const target = notes.get(id)!;
+    if (!target || !["METHOD", "TOOL"].includes(target.knowledgeRole ?? "")) {
+      return { ok: false, error: "method_relation_target_role_invalid", detail: { id, role: target?.knowledgeRole ?? null } };
+    }
+  }
+  checked.notes = noteIds.length ? "IDENTITY_AND_ROLE_VERIFIED" : "NO_NOTE_TARGET_CHANGE";
+  checked.projected = { level: projectedLevel, role: projectedRole, framework_type: projectedFrameworkType };
+  return { ok: true, checked };
 }
 
 async function buildReaderDetailResult(
@@ -694,6 +887,7 @@ async function ensureReaderDashboard(
       {
         or: [
           { property: FIELDS.contentLevel, select: { equals: "L4｜Framework" } },
+          { property: FIELDS.contentLevel, select: { equals: "L4｜Integrating Framework / Cluster" } },
           { property: FIELDS.contentLevel, select: { equals: "L5｜Knowledge Object" } },
         ],
       },
@@ -703,7 +897,12 @@ async function ensureReaderDashboard(
   };
   const evidenceFilter = {
     and: [
-      { property: FIELDS.contentLevel, select: { equals: "L6｜Evidence / Case" } },
+      {
+        or: [
+          { property: FIELDS.contentLevel, select: { equals: "L6｜Evidence / Case" } },
+          { property: FIELDS.contentLevel, select: { equals: "L6｜Source / Evidence / Case" } },
+        ],
+      },
       { property: FIELDS.governanceState, select: { equals: "ACTIVE" } },
       { property: FIELDS.relationState, select: { equals: "VALID" } },
     ],
@@ -814,9 +1013,9 @@ async function buildReaderVisualization(
 ): Promise<{ markdown: string; counts: ReaderCounts; academic_done: number; academic_total: number; academic_next: string | null }> {
   const counts = await env.MANIFEST.prepare(
     `SELECT
-      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level IN ('L4｜Framework','L5｜Knowledge Object') THEN 1 ELSE 0 END) AS core,
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level IN ('L4｜Framework','L4｜Integrating Framework / Cluster','L5｜Knowledge Object') THEN 1 ELSE 0 END) AS core,
       SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND knowledge_role='METHOD' THEN 1 ELSE 0 END) AS methods,
-      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level='L6｜Evidence / Case' THEN 1 ELSE 0 END) AS evidence,
+      SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND relation_state='VALID' AND content_level IN ('L6｜Evidence / Case','L6｜Source / Evidence / Case') THEN 1 ELSE 0 END) AS evidence,
       SUM(CASE WHEN active=1 AND governance_state='ACTIVE' AND content_level='L7｜Practice / Output' THEN 1 ELSE 0 END) AS practice,
       SUM(CASE WHEN active=1 AND (effective_space='PROVENANCE' OR governance_state IN ('LEGACY','ARCHIVED','HOLD')) THEN 1 ELSE 0 END) AS history
      FROM documents`,
@@ -1051,6 +1250,204 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
 
+  if (url.pathname === "/v1/knowledge-graph-schema") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    if (request.method === "GET") {
+      const dataSource = await retrieveNotesDataSource(env);
+      return json({
+        ok: true,
+        notes_data_source_id: env.NOTION_NOTES_DATA_SOURCE_ID,
+        framework_type: inspectFrameworkTypeSchema(dataSource),
+      });
+    }
+    if (request.method === "POST") {
+      const body = (await request.json().catch(() => ({}))) as { action?: string; reason?: string };
+      const reason = body.reason?.trim() ?? "";
+      if (body.action !== "ENSURE_FRAMEWORK_TYPE") return json({ ok: false, error: "unsupported_schema_action" }, 400);
+      if (reason.length < 12 || reason.length > 2000) return json({ ok: false, error: "schema_change_reason_required" }, 400);
+      try {
+        const result = await ensureFrameworkTypeSchema(env);
+        return json({
+          ok: true,
+          action: body.action,
+          reason,
+          ...result,
+          does_not_prove: ["L4 object classification completion", "knowledge graph migration completion", "Design KEEP", "Project promotion"],
+        });
+      } catch (error) {
+        return json({ ok: false, error: error instanceof Error ? error.message : String(error) }, 409);
+      }
+    }
+    return json({ ok: false, error: "method_not_allowed" }, 405);
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/knowledge-graph-mutation") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      page_id?: string;
+      reason?: string;
+      expected?: Record<string, unknown> & {
+        canonical_id?: string;
+        notion_last_edited_time?: string;
+        relation_state?: string | null;
+      };
+      updates?: GraphMutationUpdates;
+    };
+    const pageId = body.page_id?.trim() ?? "";
+    const reason = body.reason?.trim() ?? "";
+    if (!pageId) return json({ ok: false, error: "page_id_required" }, 400);
+    if (reason.length < 12 || reason.length > 2000) return json({ ok: false, error: "graph_mutation_reason_required" }, 400);
+    if (!body.expected?.canonical_id || !body.expected?.notion_last_edited_time || !body.expected?.relation_state) {
+      return json({ ok: false, error: "graph_mutation_requires_expected_identity_revision_and_relation_state" }, 400);
+    }
+    if (!body.updates || typeof body.updates !== "object" || Array.isArray(body.updates)) {
+      return json({ ok: false, error: "graph_mutation_updates_required" }, 400);
+    }
+    const updateEntries = Object.entries(body.updates);
+    if (!updateEntries.length) return json({ ok: false, error: "graph_mutation_updates_required" }, 400);
+    const unknownKeys = updateEntries.map(([key]) => key).filter((key) => !GRAPH_MUTATION_KEYS.has(key as keyof GraphMutationUpdates));
+    if (unknownKeys.length) return json({ ok: false, error: "graph_mutation_unknown_update_keys", unknown_keys: unknownKeys }, 400);
+    for (const [key, value] of updateEntries) {
+      if (Array.isArray(value) && value.length > 100) return json({ ok: false, error: "graph_mutation_relation_too_large", key }, 413);
+      if (!Object.prototype.hasOwnProperty.call(body.expected, key)) {
+        return json({ ok: false, error: "graph_mutation_expected_before_field_required", key }, 400);
+      }
+    }
+
+    const before = normalizePage(await fetchPage(env, pageId));
+    if (before.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+      return json({ ok: false, error: "graph_mutation_page_not_in_notes_data_source" }, 409);
+    }
+    if (!before.canonicalId || !["CURRENT", "SUPPORT"].includes(before.retrievalSpace ?? "") || !["ACTIVE", "REVIEW"].includes(before.governanceState ?? "")) {
+      return json({
+        ok: false,
+        error: "graph_mutation_requires_active_current_or_support_object",
+        before,
+      }, 409);
+    }
+    if (before.canonicalId !== body.expected.canonical_id) {
+      return json({ ok: false, error: "canonical_identity_drift", expected: body.expected.canonical_id, actual: before.canonicalId }, 409);
+    }
+    if (before.lastEditedTime !== body.expected.notion_last_edited_time) {
+      return json({ ok: false, error: "notion_revision_drift", expected: body.expected.notion_last_edited_time, actual: before.lastEditedTime }, 409);
+    }
+    if (before.relationState !== body.expected.relation_state) {
+      return json({ ok: false, error: "relation_state_drift", expected: body.expected.relation_state, actual: before.relationState }, 409);
+    }
+    for (const [key] of updateEntries) {
+      const typedKey = key as keyof GraphMutationUpdates;
+      if (!expectedGraphFieldMatches(before, typedKey, body.expected[key])) {
+        return json({
+          ok: false,
+          error: "graph_mutation_before_state_drift",
+          key,
+          expected: body.expected[key],
+          actual: normalizedGraphField(before, typedKey),
+        }, 409);
+      }
+    }
+    const materialDelta = updateEntries.some(([key, value]) => {
+      const actual = normalizedGraphField(before, key as keyof GraphMutationUpdates);
+      return Array.isArray(actual)
+        ? !(Array.isArray(value) && sameIds(actual, value.filter((x): x is string => typeof x === "string")))
+        : actual !== value;
+    });
+    if (!materialDelta) return json({ ok: false, error: "no_material_graph_delta", before }, 409);
+
+    const targetValidation = await validateGraphMutationTargets(env, before, body.updates);
+    if (!targetValidation.ok) return json({ ok: false, error: targetValidation.error, detail: targetValidation.detail ?? null, before }, 409);
+
+    const reviewPatched = normalizePage(await updatePageGraphFields(env, pageId, body.updates, "REVIEW"));
+    const afterReview = normalizePage(await fetchPage(env, pageId));
+    const reviewMatches = afterReview.relationState === "REVIEW" && updateEntries.every(([key, value]) =>
+      updatedGraphFieldMatches(afterReview, key as keyof GraphMutationUpdates, value)
+    );
+    if (!reviewMatches) {
+      return json({
+        ok: false,
+        error: "graph_mutation_post_write_readback_mismatch",
+        notion_write_applied: true,
+        before,
+        after: afterReview,
+        patched: reviewPatched,
+        target_validation: targetValidation.checked,
+      }, 502);
+    }
+
+    let reviewSync: unknown = null;
+    try {
+      reviewSync = await syncPage(env, {
+        kind: "notion-page-sync",
+        page_id: pageId,
+        cause_id: `graph-mutation-review:${crypto.randomUUID()}`,
+        cause_type: "manual",
+      });
+    } catch (error) {
+      return json({
+        ok: false,
+        error: "graph_mutation_review_sync_failed_after_notion_write",
+        notion_write_applied: true,
+        before,
+        after: afterReview,
+        sync_error: error instanceof Error ? error.message : String(error),
+        target_validation: targetValidation.checked,
+      }, 502);
+    }
+
+    const validPatched = normalizePage(await updatePageGovernanceFields(env, pageId, { relation_state: "VALID" }));
+    let validSync: unknown = null;
+    try {
+      validSync = await syncPage(env, {
+        kind: "notion-page-sync",
+        page_id: pageId,
+        cause_id: `graph-mutation-valid:${crypto.randomUUID()}`,
+        cause_type: "manual",
+      });
+    } catch (error) {
+      return json({
+        ok: false,
+        error: "graph_mutation_valid_sync_failed_after_notion_write",
+        notion_write_applied: true,
+        before,
+        after_review: afterReview,
+        after_valid: validPatched,
+        review_sync: reviewSync,
+        sync_error: error instanceof Error ? error.message : String(error),
+        target_validation: targetValidation.checked,
+      }, 502);
+    }
+    const after = normalizePage(await fetchPage(env, pageId));
+    const finalMatches = after.relationState === "VALID" && updateEntries.every(([key, value]) =>
+      updatedGraphFieldMatches(after, key as keyof GraphMutationUpdates, value)
+    );
+    if (!finalMatches) {
+      return json({
+        ok: false,
+        error: "graph_mutation_final_readback_mismatch",
+        notion_write_applied: true,
+        before,
+        after_review: afterReview,
+        after,
+        review_sync: reviewSync,
+        valid_sync: validSync,
+        target_validation: targetValidation.checked,
+      }, 502);
+    }
+
+    return json({
+      ok: true,
+      mutation: "KNOWLEDGE_GRAPH_SINGLE_OBJECT_V1",
+      reason,
+      before,
+      after_review: afterReview,
+      after,
+      review_sync: reviewSync,
+      valid_sync: validSync,
+      target_validation: targetValidation.checked,
+      does_not_prove: ["body semantic correctness beyond supplied decision", "Design KEEP", "Project promotion", "field/engineering truth"],
+    });
+  }
+
   if (url.pathname === "/v1/governance-page") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
     if (request.method === "GET") {
@@ -1260,7 +1657,14 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     const allowedTrust = new Set(["UNKNOWN", "UNVERIFIED", "VERIFIED"]);
     const allowedGovernance = new Set(["ACTIVE", "ARCHIVED", "HOLD", "LEGACY", "REVIEW"]);
     const allowedRelation = new Set(["REVIEW", "VALID"]);
-    const allowedLevels = new Set(["L4｜Framework", "L5｜Knowledge Object", "L6｜Evidence / Case", "L7｜Practice / Output"]);
+    const allowedLevels = new Set([
+      "L4｜Framework",
+      "L4｜Integrating Framework / Cluster",
+      "L5｜Knowledge Object",
+      "L6｜Evidence / Case",
+      "L6｜Source / Evidence / Case",
+      "L7｜Practice / Output",
+    ]);
     const allowedRoles = new Set(["INDEX", "THEORY", "METHOD", "EVIDENCE", "SOURCE", "CASE", "PRACTICE", "TOOL"]);
     if (body.retrieval_space && !allowedRetrieval.has(body.retrieval_space)) return json({ ok: false, error: "invalid_retrieval_space" }, 400);
     if (body.search_eligibility && !allowedEligibility.has(body.search_eligibility)) return json({ ok: false, error: "invalid_search_eligibility" }, 400);
@@ -1323,6 +1727,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
           {
             or: [
               { property: "内容层级", select: { equals: "L4｜Framework" } },
+              { property: "内容层级", select: { equals: "L4｜Integrating Framework / Cluster" } },
               { property: "内容层级", select: { equals: "L5｜Knowledge Object" } },
             ],
           },
@@ -1349,7 +1754,12 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       type: "list",
       filter: {
         and: [
-          { property: "内容层级", select: { equals: "L6｜Evidence / Case" } },
+          {
+            or: [
+              { property: "内容层级", select: { equals: "L6｜Evidence / Case" } },
+              { property: "内容层级", select: { equals: "L6｜Source / Evidence / Case" } },
+            ],
+          },
           { property: "治理状态", select: { equals: "ACTIVE" } },
           { property: "关系状态", select: { equals: "VALID" } },
         ],

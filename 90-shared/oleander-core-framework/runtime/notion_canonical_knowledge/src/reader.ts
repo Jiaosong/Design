@@ -25,7 +25,8 @@ import type {
 } from "./types";
 import type { ExecutionLiveStatusProjection, ExecutionReceiptLiveContext } from "./manifest";
 
-const CORE_LEVELS = new Set(["L4｜Framework", "L5｜Knowledge Object"]);
+const CORE_LEVELS = new Set(["L4｜Framework", "L4｜Integrating Framework / Cluster", "L5｜Knowledge Object"]);
+const EVIDENCE_LEVELS = new Set(["L6｜Evidence / Case", "L6｜Source / Evidence / Case"]);
 const EVIDENCE_ROLES = new Set(["SOURCE", "EVIDENCE", "CASE"]);
 const PRACTICE_ROLES = new Set(["PRACTICE", "TOOL"]);
 export const FRAMEWORK_READBACK_BUDGET_MS = 8_000;
@@ -47,7 +48,7 @@ function readerGroup(row: Record<string, unknown>): "current" | "methods" | "evi
   const role = String(row.knowledge_role ?? "");
   const level = String(row.content_level ?? "");
   if (role === "METHOD") return "methods";
-  if (level === "L6｜Evidence / Case" || EVIDENCE_ROLES.has(role)) return "evidence";
+  if (EVIDENCE_LEVELS.has(level) || EVIDENCE_ROLES.has(role)) return "evidence";
   if (level === "L7｜Practice / Output" || PRACTICE_ROLES.has(role)) return "practice";
   return "current";
 }
@@ -238,6 +239,7 @@ const CANONICAL_OBJECT_FIELD_SPECS: ReadonlyArray<{
   { key: "relationState", fieldName: FIELDS.relationState, expectedType: "select" },
   { key: "contentLevel", fieldName: FIELDS.contentLevel, expectedType: "select" },
   { key: "knowledgeRole", fieldName: FIELDS.knowledgeRole, expectedType: "select" },
+  { key: "frameworkType", fieldName: FIELDS.frameworkType, expectedType: "select" },
 ];
 
 function unavailableCanonicalObjectState(): CanonicalObjectState {
@@ -250,6 +252,7 @@ function unavailableCanonicalObjectState(): CanonicalObjectState {
     relationState: null,
     contentLevel: null,
     knowledgeRole: null,
+    frameworkType: null,
     fieldsReadable: {
       canonicalId: false,
       retrievalSpace: false,
@@ -259,6 +262,7 @@ function unavailableCanonicalObjectState(): CanonicalObjectState {
       relationState: false,
       contentLevel: false,
       knowledgeRole: false,
+      frameworkType: false,
       allFieldsReadable: false,
     },
   };
@@ -281,6 +285,7 @@ export function canonicalObjectStateReadback(page: NotionPage): CanonicalObjectS
     relationState: value("relationState", FIELDS.relationState),
     contentLevel: value("contentLevel", FIELDS.contentLevel),
     knowledgeRole: value("knowledgeRole", FIELDS.knowledgeRole),
+    frameworkType: value("frameworkType", FIELDS.frameworkType),
     inTrash: page.in_trash === true,
     fieldsReadable: {
       ...readable,
@@ -740,6 +745,9 @@ export async function hydrateKnowledgeReaderFramework(
   const liveKnowledgeRole = canonicalObjectState.fieldsReadable.knowledgeRole
     ? canonicalObjectState.knowledgeRole
     : null;
+  const liveFrameworkType = canonicalObjectState.fieldsReadable.frameworkType
+    ? canonicalObjectState.frameworkType
+    : null;
   const readbackStartedRevision = page.last_edited_time ?? null;
   const [
     primaryRelation,
@@ -949,6 +957,7 @@ export async function hydrateKnowledgeReaderFramework(
     },
     routingInputs: {
       ...(liveKnowledgeRole ? { knowledgeRole: liveKnowledgeRole } : {}),
+      ...(liveFrameworkType ? { frameworkType: liveFrameworkType } : {}),
       methodFamily: methodFamilyRead.names,
       methodFamilyComplete: methodFamilyRead.complete,
       primaryDomainRoutingReady: primaryDomainRouting.ready,
@@ -961,6 +970,7 @@ export async function hydrateKnowledgeReaderFramework(
         ...ownerBlockingInputs.filter((input) => input !== "authoritative_execution_owner_resolver_runtime_readback"),
         ...(!methodFamilyRead.complete ? ["method_family_schema_readback"] : []),
         ...(!canonicalObjectState.fieldsReadable.allFieldsReadable ? ["canonical_object_state_schema_readback"] : []),
+        ...(String(canonicalObjectState.contentLevel ?? "").startsWith("L4") && !liveFrameworkType ? ["l4_framework_type"] : []),
         ...(!primaryRelation.complete ? ["primary_domain_relation_readback"] : []),
         ...(!domainRegistryComplete ? ["domain_registry_inventory_readback"] : []),
         ...(!readbackRevisionCoherent ? ["framework_revision_coherence"] : []),
@@ -1033,9 +1043,11 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
   const document = await db.prepare(`
     SELECT page_id, canonical_id, title, notion_url, notion_last_edited_time,
            effective_space, search_eligibility, trust_state, governance_state,
-           relation_state, content_level, knowledge_role, index_state,
+           relation_state, content_level, knowledge_role, framework_type, index_state,
            authority_reason, markdown_truncated, unknown_block_ids_json, indexed_at,
            primary_domain_ids_json, related_domain_ids_json,
+           canonical_parent_ids_json, canonical_children_ids_json, semantic_related_ids_json,
+           primary_project_ids_json, related_project_ids_json,
            source_relation_ids_json, method_relation_ids_json,
            replacement_ids_json, replaced_document_ids_json
       FROM documents
@@ -1083,6 +1095,13 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
   const primaryDomainIds = stringArray(document.primary_domain_ids_json);
   const relatedDomainIds = stringArray(document.related_domain_ids_json);
   const declaredRelationIds = {
+    PRIMARY_DOMAIN: primaryDomainIds,
+    RELATED_DOMAIN: relatedDomainIds,
+    CANONICAL_PARENT: stringArray(document.canonical_parent_ids_json),
+    CANONICAL_CHILD: stringArray(document.canonical_children_ids_json),
+    RELATED: stringArray(document.semantic_related_ids_json),
+    PRIMARY_PROJECT: stringArray(document.primary_project_ids_json),
+    RELATED_PROJECT: stringArray(document.related_project_ids_json),
     SOURCE: stringArray(document.source_relation_ids_json),
     METHOD: stringArray(document.method_relation_ids_json),
     REPLACEMENT: stringArray(document.replacement_ids_json),
@@ -1099,6 +1118,13 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
     .filter((relation) => !relation.title && !relation.canonicalId)
     .map((relation) => ({ relationType: relation.relationType, pageId: relation.pageId }));
   const indexedOutgoing = {
+    primaryDomain: outgoing.filter((relation) => relation.relationType === "PRIMARY_DOMAIN").length,
+    relatedDomain: outgoing.filter((relation) => relation.relationType === "RELATED_DOMAIN").length,
+    canonicalParent: outgoing.filter((relation) => relation.relationType === "CANONICAL_PARENT").length,
+    canonicalChild: outgoing.filter((relation) => relation.relationType === "CANONICAL_CHILD").length,
+    related: outgoing.filter((relation) => relation.relationType === "RELATED").length,
+    primaryProject: outgoing.filter((relation) => relation.relationType === "PRIMARY_PROJECT").length,
+    relatedProject: outgoing.filter((relation) => relation.relationType === "RELATED_PROJECT").length,
     source: outgoing.filter((relation) => relation.relationType === "SOURCE").length,
     method: outgoing.filter((relation) => relation.relationType === "METHOD").length,
     replacement: outgoing.filter((relation) => relation.relationType === "REPLACEMENT").length,
@@ -1114,6 +1140,7 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
     ...(optionalString(document.notion_url) ? { url: String(document.notion_url) } : {}),
     ...(optionalString(document.knowledge_role) ? { role: String(document.knowledge_role) } : {}),
     ...(optionalString(document.content_level) ? { level: String(document.content_level) } : {}),
+    ...(optionalString(document.framework_type) ? { frameworkType: String(document.framework_type) } : {}),
     ...(optionalString(document.effective_space) ? { retrievalSpace: String(document.effective_space) } : {}),
     ...(optionalString(document.search_eligibility) ? { searchEligibility: String(document.search_eligibility) } : {}),
     ...(optionalString(document.trust_state) ? { trustState: String(document.trust_state) } : {}),
@@ -1135,6 +1162,11 @@ export async function buildKnowledgeReaderDetail(db: D1Database, pageId: string)
         declared: {
           primaryDomain: primaryDomainIds.length,
           relatedDomain: relatedDomainIds.length,
+          canonicalParent: declaredRelationIds.CANONICAL_PARENT.length,
+          canonicalChild: declaredRelationIds.CANONICAL_CHILD.length,
+          related: declaredRelationIds.RELATED.length,
+          primaryProject: declaredRelationIds.PRIMARY_PROJECT.length,
+          relatedProject: declaredRelationIds.RELATED_PROJECT.length,
           source: declaredRelationIds.SOURCE.length,
           method: declaredRelationIds.METHOD.length,
           replacement: declaredRelationIds.REPLACEMENT.length,
@@ -1159,17 +1191,17 @@ export async function buildKnowledgeReaderSnapshot(db: D1Database): Promise<Know
         SUM(CASE WHEN effective_space='SUPPORT' THEN 1 ELSE 0 END) AS support,
         SUM(CASE WHEN effective_space='PROVENANCE' THEN 1 ELSE 0 END) AS provenance,
         SUM(CASE WHEN index_state='INDEXED' THEN 1 ELSE 0 END) AS indexed,
-        SUM(CASE WHEN content_level IN ('L4｜Framework','L5｜Knowledge Object')
+        SUM(CASE WHEN content_level IN ('L4｜Framework','L4｜Integrating Framework / Cluster','L5｜Knowledge Object')
                   AND governance_state='ACTIVE' AND relation_state='VALID'
                   AND COALESCE(effective_space,'')!='PROVENANCE'
                   AND COALESCE(search_eligibility,'')!='HISTORY_ONLY' THEN 1 ELSE 0 END) AS core,
-        SUM(CASE WHEN content_level IN ('L4｜Framework','L5｜Knowledge Object')
+        SUM(CASE WHEN content_level IN ('L4｜Framework','L4｜Integrating Framework / Cluster','L5｜Knowledge Object')
                   AND governance_state='ACTIVE' AND relation_state='VALID'
                   AND effective_space='CURRENT' THEN 1 ELSE 0 END) AS core_current,
         SUM(CASE WHEN knowledge_role='METHOD'
                   AND COALESCE(effective_space,'')!='PROVENANCE'
                   AND COALESCE(search_eligibility,'')!='HISTORY_ONLY' THEN 1 ELSE 0 END) AS methods,
-        SUM(CASE WHEN (content_level='L6｜Evidence / Case' OR knowledge_role IN ('SOURCE','EVIDENCE','CASE'))
+        SUM(CASE WHEN (content_level IN ('L6｜Evidence / Case','L6｜Source / Evidence / Case') OR knowledge_role IN ('SOURCE','EVIDENCE','CASE'))
                   AND COALESCE(effective_space,'')!='PROVENANCE'
                   AND COALESCE(search_eligibility,'')!='HISTORY_ONLY' THEN 1 ELSE 0 END) AS evidence,
         SUM(CASE WHEN (content_level='L7｜Practice / Output' OR knowledge_role IN ('PRACTICE','TOOL'))
@@ -1193,7 +1225,7 @@ export async function buildKnowledgeReaderSnapshot(db: D1Database): Promise<Know
     db.prepare(`
       SELECT d.page_id, d.canonical_id, d.title, d.notion_url, d.effective_space,
              d.search_eligibility, d.trust_state, d.governance_state, d.relation_state,
-             d.content_level, d.knowledge_role, d.index_state, d.authority_reason,
+             d.content_level, d.knowledge_role, d.framework_type, d.index_state, d.authority_reason,
              d.notion_last_edited_time, d.indexed_at,
              (SELECT substr(c.chunk_text,1,700) FROM chunks c
                WHERE c.page_id=d.page_id AND c.active=1 ORDER BY c.ordinal ASC LIMIT 1) AS summary
@@ -1222,6 +1254,7 @@ export async function buildKnowledgeReaderSnapshot(db: D1Database): Promise<Know
       ...(row.canonical_id ? { canonicalId: String(row.canonical_id) } : {}),
       ...(row.knowledge_role ? { role: String(row.knowledge_role) } : {}),
       ...(row.content_level ? { level: String(row.content_level) } : {}),
+      ...(row.framework_type ? { frameworkType: String(row.framework_type) } : {}),
       ...(row.effective_space ? { retrievalSpace: String(row.effective_space) } : {}),
       ...(row.search_eligibility ? { searchEligibility: String(row.search_eligibility) } : {}),
       ...(row.trust_state ? { trustState: String(row.trust_state) } : {}),

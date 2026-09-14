@@ -56,16 +56,16 @@ For a knowledge object:
 - `关联领域` = secondary / cross-domain support;
 - Application Mapping `B / CU / IP / SP` must not be used as Domain identity.
 
-### L4–L7｜Knowledge objects / evidence / practice / output
+### L4–L7｜Knowledge framework/object/evidence/practice levels
 
 Primary store: **Notes Registry**.
 
-- L4 = Framework / Cluster
-- L5 = Knowledge Object / Index
-- L6 = Evidence / Case
+- L4 = Integrating Framework / Cluster
+- L5 = Knowledge Object
+- L6 = Source / Evidence / Case
 - L7 = Practice / Output
 
-Methods, theories, tools, sources, cases, evidence, indices and practices stay as Notes Registry knowledge objects with the correct `知识角色` and evidence/governance state.
+`Level`, `知识角色 / Knowledge Role`, and L4-only `Framework Type` are independent. `INDEX` is a Role rather than part of L5; `FRAMEWORK` is not a Knowledge Role. Methods, theories, tools, sources, cases, evidence, indices and practices stay as Notes Registry objects with the correct role and evidence/governance state.
 
 ### Project use
 
