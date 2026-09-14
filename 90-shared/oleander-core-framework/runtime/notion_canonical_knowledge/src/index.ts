@@ -67,6 +67,7 @@ import {
   type GraphMutationUpdates,
 } from "./notion";
 import { belongsToDataSource, normalizePage, propertyText } from "./normalize";
+import { activeL2DomainRows, domainRegistrySurfaceRows } from "./domain-registry";
 import { buildReaderLiveStatus } from "./live-status";
 import { resolveAuthority } from "./authority";
 import { decryptSetupSecret, encryptSetupSecret, isAuthorized, verifyNotionSignature } from "./security";
@@ -1250,6 +1251,26 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   }
   if (request.method === "POST" && url.pathname === "/webhooks/notion") return handleWebhook(request, env);
   if (request.method === "POST" && url.pathname === "/v1/reconcile") return handleReconcile(request, env);
+
+  if (request.method === "GET" && url.pathname === "/v1/domain-registry") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    try {
+      const inventory = await queryDomainRegistryPages(env);
+      if (!inventory.complete) return json({ ok: false, error: "domain_registry_readback_incomplete" }, 503);
+      const pages = domainRegistrySurfaceRows(inventory.pages);
+      const activeL2 = activeL2DomainRows(pages);
+      return json({
+        ok: true,
+        complete: true,
+        count: pages.length,
+        active_l2_count: activeL2.length,
+        pages,
+        active_l2: activeL2,
+      });
+    } catch (error) {
+      return json({ ok: false, error: error instanceof Error ? error.message : String(error) }, 503);
+    }
+  }
 
   if (url.pathname === "/v1/knowledge-graph-schema") {
     if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
