@@ -135,6 +135,12 @@ Canonical system: [`complex-project-master-runtime-v1.0.md`](complex-project-mas
 
 `Resolve Authority → Route Current Knowledge → Compile Design Intelligence → Resolve Integration Trigger → Execute / Prototype → Close Triggered Reviews → Integration Readback → Independent Whole-System Design Decision → Persist when required → Human Promotion Decision → G9 bounded re-entry`。
 
+## Knowledge Content Review Layer v1.0
+
+Canonical system: runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md
+
+Knowledge objects require two independent terminal states: Graph Terminal + Content Terminal. Correct taxonomy and relations do not imply body completion. Every canonical body must be read and receive KEEP / RESTRUCTURE / ENRICH / MERGE / HOLD / LINEAGE_ONLY. RESTRUCTURE / ENRICH / MERGE become terminal only after the action is applied and independently read back. Global completion requires graphTerminal && contentTerminal; classification evidence must never substitute for body review.
+
 ## Design Intelligence Routing & Review System v1.0
 
 Canonical system: [`design-intelligence-routing-and-review-v1.0.md`](design-intelligence-routing-and-review-v1.0.md)
