@@ -1,0 +1,137 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08F_CURRENT_LEGACY_SOURCE_RETYPE",
+  "purpose": "Retype nine CURRENT SOURCE edges that incorrectly use same-topic LEGACY/PROVENANCE predecessor pages as evidence authority. Preserve those predecessor links as semantic Related while keeping existing replacement lineage intact.",
+  "safeguards": [
+    "All nine targets were freshly hydrated and confirmed LEGACY/PROVENANCE with no SOURCE/EVIDENCE/CASE role.",
+    "These pages are predecessor/history carriers, not evidence authority; SOURCE is semantically invalid.",
+    "Retype is atomic: remove the exact Source edge and add the same page to semantic Related.",
+    "Existing Replaced Document / Replacement lineage is not modified.",
+    "Complete current Source and semantic Related sets are guarded before mutation.",
+    "Objects with unresolved Primary Domain ownership remain unresolved; this batch does not guess domains.",
+    "Production mutation stops on first drift/error and requires final preflight, derivative reconcile and fresh Reader audit."
+  ],
+  "plannedCount": 8,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-ARCH-CLIMATE-RESILIENCE-001",
+      "pageId": "3d9b86be-5c47-8128-b1e3-c4302bc5b646",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "THEORY", "relationState": "VALID",
+        "primaryDomainIds": ["390b86be-5c47-8107-ae93-c20460f137ea"],
+        "sourceRelationIds": ["3adb86be-5c47-81eb-acdb-fa74fd980f62"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "The D03 predecessor is preserved lineage/context, not a SOURCE/EVIDENCE/CASE authority object.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-81eb-acdb-fa74fd980f62", "targetCanonicalId": "LEGACY-KN-ARCH-CLIMATE-RESILIENCE-D03-20260807" }]
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-ARCH-DIGITAL-INFO-001",
+      "pageId": "3d9b86be-5c47-81de-a512-d8bfcfbe8d13",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "THEORY", "relationState": "REVIEW",
+        "primaryDomainIds": [], "sourceRelationIds": ["3adb86be-5c47-815e-8d31-e1dfaedfe2d4"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "The D04 predecessor is historical/current-lineage context, not evidence authority; Primary Domain remains HOLD.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-815e-8d31-e1dfaedfe2d4", "targetCanonicalId": "LEGACY-KN-ARCH-DIGITAL-INFO-D04-20260807" }]
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "KN-ARCH-HOUSING-DAILY-LIFE-001",
+      "pageId": "3d9b86be-5c47-814c-8ec5-cafebf91551a",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "THEORY", "relationState": "REVIEW",
+        "primaryDomainIds": [], "sourceRelationIds": ["3adb86be-5c47-81ac-8ad9-d03508d6bed0"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "The D07 predecessor is lineage/context, not a SOURCE/EVIDENCE/CASE object; Primary Domain remains HOLD.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-81ac-8ad9-d03508d6bed0", "targetCanonicalId": "LEGACY-KN-ARCH-HOUSING-DAILY-LIFE-D07-20260807" }]
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "KN-ARCH-LIFECYCLE-VALUE-001",
+      "pageId": "3d9b86be-5c47-8127-9574-f1106e228ccd",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "THEORY", "relationState": "REVIEW",
+        "primaryDomainIds": [], "sourceRelationIds": ["3adb86be-5c47-813f-b1bb-e16e9e5d1cab"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "The D05 predecessor is lineage/context, not evidence authority; Primary Domain remains HOLD.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-813f-b1bb-e16e9e5d1cab", "targetCanonicalId": "LEGACY-KN-ARCH-LIFECYCLE-VALUE-D05-20260807" }]
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "KN-ARCH-PUBLIC-SOCIAL-INFRA-001",
+      "pageId": "3d9b86be-5c47-81e9-a88f-ff76e9dcd57a",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "THEORY", "relationState": "REVIEW",
+        "primaryDomainIds": [], "sourceRelationIds": ["3adb86be-5c47-81b7-977a-c348972ae019"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "The D06 predecessor is lineage/context, not evidence authority; Primary Domain remains HOLD.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-81b7-977a-c348972ae019", "targetCanonicalId": "LEGACY-KN-ARCH-PUBLIC-SOCIAL-INFRA-D06-20260807" }]
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "MTH-ARCH-EVIDENCE-GOV-001",
+      "pageId": "3d9b86be-5c47-81c6-ac53-fd563117d66c",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "METHOD", "relationState": "VALID",
+        "primaryDomainIds": ["3bbb86be-5c47-8123-a36d-f4a4d517552e"],
+        "sourceRelationIds": ["3acb86be-5c47-815a-808c-ee3edf88de2a", "3b5b86be-5c47-818a-9178-f289fc1257bd"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "METHOD", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "K03 is a LEGACY predecessor and must not occupy SOURCE; the other valid source relation is preserved.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3acb86be-5c47-815a-808c-ee3edf88de2a", "targetCanonicalId": "LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824" }]
+    },
+    {
+      "sequence": 7,
+      "canonicalId": "MTH-ARCH-RESEARCH-001",
+      "pageId": "3d9b86be-5c47-8158-bf00-c8aa879f7394",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "METHOD", "relationState": "VALID",
+        "primaryDomainIds": ["3bbb86be-5c47-81b5-b692-ef7b8f978058"],
+        "sourceRelationIds": ["3adb86be-5c47-81c4-9d25-dc6e0068857f"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "METHOD", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "D08 is a LEGACY predecessor/history carrier rather than evidence authority.",
+      "edgeRepairs": [{ "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-81c4-9d25-dc6e0068857f", "targetCanonicalId": "LEGACY-MTH-ARCH-RESEARCH-D08-20260730" }]
+    },
+    {
+      "sequence": 8,
+      "canonicalId": "MTH-KNOWLEDGE-ACADEMIC-NOTE-001",
+      "pageId": "3d9b86be-5c47-813e-aac0-ca3b6ae63fff",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object", "role": "METHOD", "relationState": "REVIEW",
+        "primaryDomainIds": [],
+        "sourceRelationIds": ["3acb86be-5c47-815a-808c-ee3edf88de2a", "3adb86be-5c47-81c4-9d25-dc6e0068857f"], "semanticRelatedIds": []
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "METHOD", "frameworkType": null },
+      "migrationAction": "RETYPE_LEGACY_SOURCE_TO_RELATED", "confidence": "HIGH",
+      "reason": "Both K03 and D08 are LEGACY predecessor/context pages, not evidence authority. Primary Domain remains HOLD.",
+      "edgeRepairs": [
+        { "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3acb86be-5c47-815a-808c-ee3edf88de2a", "targetCanonicalId": "LEGACY-MTH-ARCH-EVIDENCE-GOV-K03-20260824" },
+        { "action": "RETYPE_SOURCE_TO_RELATED", "targetPageId": "3adb86be-5c47-81c4-9d25-dc6e0068857f", "targetCanonicalId": "LEGACY-MTH-ARCH-RESEARCH-D08-20260730" }
+      ]
+    }
+  ]
+}
