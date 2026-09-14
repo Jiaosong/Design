@@ -5,6 +5,7 @@
   "authority_boundary": "EXTENDS_NOTION_CURRENT_AUTHORITY_NO_PARALLEL_AUTHORITY",
   "backward_compatible_research_gate": "PROFESSIONAL_RESEARCH_GATE_v0.1.md",
   "skill_binding": "oleander-skills/oleander-research/SKILL.md",
+  "eval_binding": "oleander-skills/oleander-research/evals/evals.json",
   "gates": {
     "R1": {"name": "Research Conduct", "states": ["PASS","REVISE","HOLD","REJECT","NOT_APPLICABLE"]},
     "R2": {"name": "Study-Type Reporting", "states": ["PASS","REVISE","HOLD","REJECT","NOT_APPLICABLE"]},
