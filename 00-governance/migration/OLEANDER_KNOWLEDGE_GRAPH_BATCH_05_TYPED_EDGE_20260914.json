@@ -1,0 +1,345 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T13:06:09.143Z",
+  "status": "BATCH_05_PROVEN_LIVE_TYPED_EDGE_REPAIR",
+  "purpose": "Repair ten freshly confirmed L6/L7 structural-parent defects while preserving semantic Related vs Method distinctions. No node classification or Primary Domain mutation.",
+  "safeguards": [
+    "Fresh Reader detail succeeded 10/10 with no unresolved hierarchy targets.",
+    "The two L7 Practice objects received complete current-body readback before choosing Related vs Method.",
+    "Notion canonical write first; exact before-state guards; serial apply; stop on first failure.",
+    "No Primary Domain mutation and no title-only inference."
+  ],
+  "plannedCount": 10,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "EVD-MULTISCRIPT-005",
+      "pageId": "3b5b86be-5c47-812c-8d1f-cf0821098609",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 CASE uses the L5 multiscript theory as semantic context, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3b5b86be-5c47-81e4-9fa9-ce2672192518",
+          "targetCanonicalId": "KN-DESIGN-MULTISCRIPT-001",
+          "reason": "L6 CASE uses the L5 multiscript theory as semantic context, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:01.409Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "SRC-CN-CONCRETE-ADMIXTURES-2026",
+      "pageId": "3c0b86be-5c47-8159-a436-ebd01af47f36",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 SOURCE supports the L5 material-QA method but does not participate in structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-81f7-bd3b-d65704dce84e",
+          "targetCanonicalId": "KN-METHOD-MATERIAL-QA-009",
+          "reason": "L6 SOURCE supports the L5 material-QA method but does not participate in structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:06.116Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "PRAC-20260814-01",
+      "pageId": "3c0b86be-5c47-810c-b297-e3314639e087",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Current body names Product Semantics as knowledge owner/context; as L7 Practice this is semantic ownership, not structural hierarchy or method invocation.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-8105-ac46-f1585ff97ef1",
+          "targetCanonicalId": "KN-THEORY-PRODUCT-SEMANTICS-001",
+          "reason": "Current body names Product Semantics as knowledge owner/context; as L7 Practice this is semantic ownership, not structural hierarchy or method invocation."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:10.757Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": true
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "CASE-DATAVIZ-D3-001",
+      "pageId": "3bfb86be-5c47-81f4-8967-df193b253a28",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-8115-a9d0-f74b1a92ffce",
+          "targetCanonicalId": "KN-METHOD-DATAVIZ-001",
+          "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:15.547Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "CASE-DATAVIZ-ANTV-G6-001",
+      "pageId": "3bfb86be-5c47-81d2-bc6d-f3c1740f674d",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-8115-a9d0-f74b1a92ffce",
+          "targetCanonicalId": "KN-METHOD-DATAVIZ-001",
+          "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:20.246Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "CASE-DATAVIZ-BEAUTIFUL-NEWS-001",
+      "pageId": "3bfb86be-5c47-815b-ad1e-e8a0869984ed",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-8115-a9d0-f74b1a92ffce",
+          "targetCanonicalId": "KN-METHOD-DATAVIZ-001",
+          "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:25.303Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 7,
+      "canonicalId": "CASE-DATAVIZ-ANTV-G2-001",
+      "pageId": "3bfb86be-5c47-8119-b77e-c6afedaee507",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "CASE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3a8b86be-5c47-8115-a9d0-f74b1a92ffce",
+          "targetCanonicalId": "KN-METHOD-DATAVIZ-001",
+          "reason": "L6 CASE is application/evidence context for the L5 Data Visualization method, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:30.016Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 8,
+      "canonicalId": "SRC-CN-REACTION-FIRE-TESTMETHODS-2026",
+      "pageId": "3beb86be-5c47-81f6-bb0f-fab393afe5d5",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 SOURCE is compliance evidence associated with the L4 compliance index, not a structural child.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-8124-8e40-d8d60132275a",
+          "targetCanonicalId": "IDX-CN-MATERIAL-COMPLIANCE-008",
+          "reason": "L6 SOURCE is compliance evidence associated with the L4 compliance index, not a structural child."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:34.304Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 9,
+      "canonicalId": "EVD-MOTION-SKILL-V03-MERGE-20260811",
+      "pageId": "3bcb86be-5c47-818c-a4d7-cbac1f1fa21c",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 EVIDENCE records/supports the L5 motion routing tool, not structural hierarchy.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3bcb86be-5c47-8155-b527-d77e5042f9a6",
+          "targetCanonicalId": "TOOL-MOTION-RUNTIME-ROUTING-001",
+          "reason": "L6 EVIDENCE records/supports the L5 motion routing tool, not structural hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:39.612Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 10,
+      "canonicalId": "PRAC-20260815-01",
+      "pageId": "3c0b86be-5c47-811a-9549-ef1177b0e299",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Current body explicitly says this L7 Practice consumes and extends KN-METHOD-OLEANDER-3D-MODELING-001; preserve that exact invocation as Method rather than Canonical Parent.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_METHOD",
+          "targetPageId": "3ccb86be-5c47-81d2-b8c2-e3f4ac88a109",
+          "targetCanonicalId": "KN-METHOD-OLEANDER-3D-MODELING-001",
+          "reason": "Current body explicitly says this L7 Practice consumes and extends KN-METHOD-OLEANDER-3D-MODELING-001; preserve that exact invocation as Method rather than Canonical Parent."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:03:44.077Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": true
+      }
+    }
+  ]
+}

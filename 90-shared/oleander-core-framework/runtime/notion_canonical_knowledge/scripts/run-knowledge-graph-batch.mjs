@@ -75,6 +75,15 @@ function plannedUpdates(node, live) {
       if (!related.includes(target)) updates.semantic_related_ids = [...related, target];
       continue;
     }
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_METHOD") {
+      const target = repair.targetPageId;
+      if (!target) throw new Error(`${node.canonicalId}: RETYPE_CANONICAL_PARENT_TO_METHOD requires targetPageId`);
+      const parents = [...new Set(updates.canonical_parent_ids ?? live.canonicalParentIds ?? [])];
+      const methods = [...new Set(updates.method_relation_ids ?? live.methodRelationIds ?? [])];
+      if (parents.includes(target)) updates.canonical_parent_ids = parents.filter((id) => id !== target);
+      if (!methods.includes(target)) updates.method_relation_ids = [...methods, target];
+      continue;
+    }
     if (["RETYPE_CANONICAL_CHILDREN_TO_RELATED", "RETYPE_CANONICAL_CHILDREN_TO_SOURCE"].includes(repair.action)) {
       const targets = [...new Set(repair.targetPageIds ?? [])];
       if (!targets.length) throw new Error(`${node.canonicalId}: ${repair.action} requires targetPageIds`);
@@ -117,6 +126,10 @@ function edgeRepairsAtTarget(node, live) {
       const target = repair.targetPageId;
       return !(live.canonicalParentIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
     }
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_METHOD") {
+      const target = repair.targetPageId;
+      return !(live.canonicalParentIds ?? []).includes(target) && (live.methodRelationIds ?? []).includes(target);
+    }
     if (repair.action === "RETYPE_CANONICAL_CHILDREN_TO_RELATED") {
       const targets = repair.targetPageIds ?? [];
       return targets.every((target) => !(live.canonicalChildrenIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target));
@@ -158,6 +171,17 @@ function edgeRepairDrift(node, live) {
       const hasParent = (live.canonicalParentIds ?? []).includes(target);
       const hasRelated = (live.semanticRelatedIds ?? []).includes(target);
       if (!hasParent && !hasRelated) drift.push(`edgeRepairSourceMissing:${target}`);
+      continue;
+    }
+    if (repair.action === "RETYPE_CANONICAL_PARENT_TO_METHOD") {
+      const target = repair.targetPageId;
+      if (!target) {
+        drift.push("RETYPE_CANONICAL_PARENT_TO_METHOD:targetPageIdMissing");
+        continue;
+      }
+      const hasParent = (live.canonicalParentIds ?? []).includes(target);
+      const hasMethod = (live.methodRelationIds ?? []).includes(target);
+      if (!hasParent && !hasMethod) drift.push(`edgeRepairSourceMissing:${target}`);
       continue;
     }
     if (["RETYPE_CANONICAL_CHILDREN_TO_RELATED", "RETYPE_CANONICAL_CHILDREN_TO_SOURCE"].includes(repair.action)) {
