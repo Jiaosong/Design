@@ -1,0 +1,69 @@
+{
+  "version": "oleander-knowledge-graph-domain-hold/v1",
+  "generatedAt": "2026-09-14T15:13:00.000Z",
+  "status": "TERMINAL_UNTIL_DOMAIN_REGISTRY_OR_AUTHORITY_CHANGE",
+  "purpose": "Record the four remaining Primary Domain blockers as explicit fail-closed terminal HOLD decisions rather than leaving them in an undifferentiated repair backlog.",
+  "policy": [
+    "A Primary Domain must identify one exact ACTIVE L2 owner; title proximity or partial overlap is insufficient.",
+    "When the complete current 30-object ACTIVE L2 registry contains no unique owner for the full current body semantics, the object remains HOLD rather than being assigned to a nearest-looking domain.",
+    "A HOLD is reopened only when the Domain Registry changes materially or an explicit authority decision resolves ownership.",
+    "No Notion, D1, classification, body, structural hierarchy or typed relation mutation is authorized by this file."
+  ],
+  "holdCount": 4,
+  "holds": [
+    {
+      "canonicalId": "KN-ARCH-URBAN-REGEN-001",
+      "pageId": "3d9b86be-5c47-81b9-afdd-ea21838fdc16",
+      "retrievalSpace": "CURRENT",
+      "currentRelationState": "REVIEW",
+      "currentPrimaryDomainIds": [],
+      "holdType": "DOMAIN_REGISTRY_GAP",
+      "confidence": "HIGH",
+      "reason": "The complete current body treats urban regeneration as a compound spatial and institutional process spanning property/rights, displacement, local economy, publicness/participation, environmental performance and long-term governance. The current ACTIVE L2 registry has no Urbanism, Urban Regeneration or equivalent city-scale owner. Participatory & Collaborative Design, Sustainable Design, Pre-design & Briefing and Design Governance & Quality each cover only a subset.",
+      "reopenCondition": "Create/rename an ACTIVE L2 that explicitly owns urban regeneration/city-scale transformation, or issue an explicit authority decision assigning this compound subject to an existing L2."
+    },
+    {
+      "canonicalId": "IDX-DESIGN-001",
+      "pageId": "3adb86be-5c47-81ab-a960-d3aa12f18486",
+      "retrievalSpace": "SUPPORT",
+      "currentRelationState": "VALID",
+      "currentPrimaryDomainIds": [
+        "3b5b86be-5c47-8150-abe7-d2f1eef737d2"
+      ],
+      "holdType": "NON_AUTHORITATIVE_MULTI_DOMAIN_NAVIGATION",
+      "confidence": "HIGH",
+      "reason": "The body explicitly declares a general-design master navigation surface spanning Research & Strategy, Brand & Visual, Product & Experience, Human Factors, Material & CMF, Digital & Interaction, Media/Information/Motion, Service/Governance, Theory/History/Culture and Methods & Design Intelligence. No single ACTIVE L2 can own this without falsifying scope. Runtime authority also already states the old 20｜General Design Knowledge navigation surface is not default structural-routing authority.",
+      "reopenCondition": "Resolve the non-authoritative navigation/index disposition explicitly; do not promote it to L1 structural authority or attach it to an arbitrary L2."
+    },
+    {
+      "canonicalId": "IDX-ARCH-TYPOLOGY-MED-004",
+      "pageId": "3acb86be-5c47-81fc-b3e2-e349d9b59f52",
+      "retrievalSpace": "SUPPORT",
+      "currentRelationState": "VALID",
+      "currentPrimaryDomainIds": [],
+      "holdType": "DOMAIN_REGISTRY_GAP",
+      "confidence": "HIGH",
+      "reason": "The healthcare typology body owns care mission/pathway, patient/staff/material states, clinical operations, infection/environmental control, equipment/MEP, emergency/resilience and standards/validation. The current ACTIVE L2 registry has no Healthcare or Building Typology domain; Architectural Form Theory, Pre-design, MEP, Standards and Life Safety are only partial owners.",
+      "reopenCondition": "Add an ACTIVE L2 that owns healthcare/building typology, or issue an explicit authority decision defining which current L2 owns multidisciplinary building-typology frameworks."
+    },
+    {
+      "canonicalId": "IDX-ARCH-OPS-SOCIAL-007",
+      "pageId": "3acb86be-5c47-818f-af48-f10512f6e3e0",
+      "retrievalSpace": "SUPPORT",
+      "currentRelationState": "VALID",
+      "currentPrimaryDomainIds": [],
+      "holdType": "MULTI_DOMAIN_OWNERSHIP_AMBIGUOUS",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The body spans actors/program, operating model, frontstage/backstage logistics, capacity/economics, cultural/social context, rights, risk and G9 feedback. Its own Service Design section says Service Design is called conditionally for cross-touchpoint service, so Service Design is an adjacent route rather than the unique owner; Pre-design & Briefing also covers only part of the lifecycle/operations/social subject.",
+      "reopenCondition": "Clarify an ACTIVE L2 owner for architectural program/operations/social systems, or issue an explicit cross-domain ownership rule that assigns these routing maps without collapsing their scope."
+    }
+  ],
+  "evidence": {
+    "activeL2Registry": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+    "registryInventoryComplete": true,
+    "activeL2RegistryCount": 30,
+    "urbanBody": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_RELATION_BATCH_H_BODY_RESULT_20260914.json",
+    "supportBodies": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_C_SUPPORT_RESULT_20260914.json",
+    "postBatch07DSnapshot": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json"
+  }
+}
