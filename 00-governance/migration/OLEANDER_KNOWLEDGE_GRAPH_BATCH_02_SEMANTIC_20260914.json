@@ -1,0 +1,505 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T12:20:28.538Z",
+  "status": "BATCH_02_SEMANTIC_AND_STRUCTURAL_RELATION_REPAIR",
+  "purpose": "Apply fresh current-body semantic decisions for 15 SUPPORT objects and atomically retype only proven-invalid structural Parent/Children edges. Primary Domain gaps are explicitly deferred until exact ACTIVE L2 ownership is proven.",
+  "sourceDecisionOverlay": "D:\\Desgin\\.mcp-runtime\\diagnostics\\OLEANDER_GRAPH_SPECIAL_DECISIONS_POST_BATCH01_20260914.json",
+  "safeguards": [
+    "Notion canonical write first; D1/Reader derivative sync/readback after mutation.",
+    "Exact Canonical ID, Notion revision, relation state and per-field before-state guards.",
+    "Serial application; stop on first DRIFT/FAILED/ERROR.",
+    "No title-only Primary Domain inference.",
+    "No weakening of graph validators."
+  ],
+  "executionOrder": "LEVEL_DOWN first, then remaining objects by Canonical ID; edge repair is atomic with classification mutation.",
+  "plannedCount": 15,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "FW-SOFTWARE-KNOWLEDGE-GOV-001",
+      "pageId": "3b9b86be-5c47-819b-9a0d-f55c1d1fb930",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "LEVEL_DOWN",
+      "confidence": "HIGH",
+      "reason": "Current body defines one reusable software-knowledge governance model (stable principle, version-specific operation, execution status, source priority, interoperability/version guards and migration rules) rather than an L4 cross-object integrating framework.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:41:43.127Z",
+        "notionLastEditedTime": "2026-08-11T02:52:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "FW-ARCH-MATERIAL-SYSTEM-001",
+      "pageId": "3acb86be-5c47-81c6-bf9f-e297f22a122c",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "CONCEPTUAL_MODEL"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body owns the cross-object material→system→interface model linking intent, performance, material state, product, connection, fabrication, installation, QC, maintenance, failure and evidence.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:41:22.774Z",
+        "notionLastEditedTime": "2026-08-13T13:27:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "FW-DESIGN-VISUAL-COMM-001",
+      "pageId": "3b9b86be-5c47-819e-9f8b-ce9ab4295ae7",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "DESIGN_LANGUAGE_SYSTEM"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body is a canonical cross-object visual-communication system organizing information, user/task, medium, hierarchy, production, accessibility and evidence across multiple L5 owners; its current structural children are valid L5 objects.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:21.404Z",
+        "notionLastEditedTime": "2026-09-13T07:21:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "VALID_ACTIVE_L2"
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "FW-STRUCT-OPT-001",
+      "pageId": "3b9b86be-5c47-81ef-b61f-c43fd7bd7387",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "METHOD_FAMILY"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Complete current body integrates Size/Shape/Topology Optimization, SIMP/BESO/Level Set/MMC, objective/constraint formulation, solver choice, reconstruction, independent validation and manufacturing constraints. It owns a method family, not one L5 method.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:41:38.365Z",
+        "notionLastEditedTime": "2026-08-13T15:44:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "VALID_ACTIVE_L2"
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "IDX-ARCH-DELIVERY-001",
+      "pageId": "3acb86be-5c47-81a0-9e5b-e076806bec1b",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "PROCESS_ORCHESTRATION"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Current body is an L4 delivery routing process from design intent through system/interface/detail/product/submittal/RFQ/mockup/installation/QC/commissioning/handover/G9; METHOD is the semantic owner.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:41:28.315Z",
+        "notionLastEditedTime": "2026-08-13T13:36:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "IDX-ARCH-HUMAN-006",
+      "pageId": "3acb86be-5c47-8150-93db-f530fc5a4f25",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body integrates body/task/equipment/motion, reach/view/control, acoustics/sensory, privacy/dignity, storage/support, adaptation, regulatory gates, mockups and G9 as a human-centered spatial professional system map.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:44:06.383Z",
+        "notionLastEditedTime": "2026-08-13T13:36:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 7,
+      "canonicalId": "IDX-ARCH-OPS-SOCIAL-007",
+      "pageId": "3acb86be-5c47-818f-af48-f10512f6e3e0",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "PROFESSIONAL_SYSTEM_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body is a program/operations/social routing system spanning actors, offer/program, operating model, front/backstage, capacity/economics, culture/rights, validation and G9 without storing fixed typological values.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:44:01.404Z",
+        "notionLastEditedTime": "2026-08-13T13:36:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 8,
+      "canonicalId": "IDX-ARCH-TYPOLOGY-MED-004",
+      "pageId": "3acb86be-5c47-81fc-b3e2-e349d9b59f52",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "TYPOLOGY_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body explicitly calls itself a Healthcare Typology Routing Framework and organizes care mission, patient/risk groups, pathways, clinical units, equipment, environmental/MEP conditions, safety, validation and G9.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-81aa-9f26-f1039f5b3fea",
+          "targetCanonicalId": "FW-ARCH-TYPOLOGY-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:55.976Z",
+        "notionLastEditedTime": "2026-08-13T13:38:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 9,
+      "canonicalId": "IDX-CMF-GOV-007",
+      "pageId": "3adb86be-5c47-815c-80d1-ed812f218592",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "EVALUATION_FRAMEWORK"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Current body governs CMF evaluation through evidence classes, non-compensable hard gates, trend/claim controls, sampling and production verification, compliance routing and lifecycle/G9 review; it is an evaluation METHOD, not merely an index.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:41.076Z",
+        "notionLastEditedTime": "2026-08-24T00:05:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 10,
+      "canonicalId": "IDX-DESIGN-001",
+      "pageId": "3adb86be-5c47-81ab-a960-d3aa12f18486",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "INDEX",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "frameworkType": "NAVIGATION_MAP"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body is a broad discovery/recovery routing index across Current, Support and Legacy. Runtime authority explicitly forbids the old 20｜General Design Knowledge page from becoming L1 structural authority; it remains a non-authoritative SUPPORT navigation map.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:37:03.883Z",
+        "notionLastEditedTime": "2026-08-29T02:24:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "INVALID_NOT_L2"
+      }
+    },
+    {
+      "sequence": 11,
+      "canonicalId": "KN-ARCH-HIST-002",
+      "pageId": "3acb86be-5c47-8118-b115-e8a7d5946d59",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body explicitly defines an L4 research framework for climate–construction–life mechanisms, separates historical/cultural fact from performance evidence and governs transferability across object-level cases.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        },
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_SOURCE",
+          "targetPageIds": [
+            "3b9b86be-5c47-810e-911f-c58d23ddadad",
+            "3b9b86be-5c47-81c5-85cc-f5e813d3b264",
+            "3b9b86be-5c47-81e4-8788-eba954d05dac"
+          ],
+          "reason": "L6 SOURCE/EVIDENCE/CASE objects are evidence lineage, not L4 structural children."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:41:33.590Z",
+        "notionLastEditedTime": "2026-08-13T13:30:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "INVALID_NOT_L2"
+      }
+    },
+    {
+      "sequence": 12,
+      "canonicalId": "KN-ARCH-THEORY-003",
+      "pageId": "3acb86be-5c47-8119-bd6c-d2cd340eb985",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Recovered current body review established a phenomenology/sensory-experience translation framework that applies cross-object theoretical relations to design decisions; fresh readback confirms the remaining defects are relational, not semantic.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "reason": "L4 objects cannot use L4 peers as structural Canonical Parent."
+        }
+      ],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:37:09.180Z",
+        "notionLastEditedTime": "2026-08-13T13:29:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "INVALID_NOT_L2"
+      }
+    },
+    {
+      "sequence": 13,
+      "canonicalId": "KN-DESIGN-CN-TRANS-001",
+      "pageId": "3a8b86be-5c47-81ff-bfd3-f91642e1cad3",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "APPLICATION_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body defines a reusable Contemporary Chinese Design Translation Framework that separates historical fact, cultural interpretation, form mechanism and project hypothesis and governs transfer into contemporary design.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:26.350Z",
+        "notionLastEditedTime": "2026-08-25T15:04:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 14,
+      "canonicalId": "KN-THEORY-DESIGN-ETHICS-001",
+      "pageId": "3a8b86be-5c47-81a4-af2c-f582b3d28936",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "EVALUATION_FRAMEWORK"
+      },
+      "migrationAction": "ROLE_RECLASSIFY",
+      "confidence": "HIGH",
+      "reason": "Current body is an executable ethics audit: actor/rights map, benefit-harm distribution, power/consent attack, hard gates, alternatives, recourse, evidence gaps and approve/hold/reject decisions; METHOD is more accurate than THEORY.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [
+        "PRIMARY_DOMAIN_REPAIR_OR_ASSIGNMENT_REQUIRES_EXACT_ACTIVE_L2_OWNER"
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:31.390Z",
+        "notionLastEditedTime": "2026-08-11T03:25:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "MISSING"
+      }
+    },
+    {
+      "sequence": 15,
+      "canonicalId": "KN-THEORY-PRODUCT-STRATEGY-001",
+      "pageId": "3a8b86be-5c47-8127-b310-cd77e9bded13",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Framework",
+        "role": "THEORY",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "THEORY",
+        "frameworkType": "STRATEGY_FRAMEWORK"
+      },
+      "migrationAction": "TYPE_ASSIGN",
+      "confidence": "HIGH",
+      "reason": "Current body integrates value, alternatives, capability, mechanism, actors, evidence and trade-offs into a reusable product-strategy synthesis and decision model rather than a single operational procedure.",
+      "edgeRepairs": [],
+      "unresolvedRelationFollowup": [],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T08:43:36.410Z",
+        "notionLastEditedTime": "2026-08-29T02:01:00.000Z",
+        "bodyState": "CURRENT_BODY_COMPLETE",
+        "domainState": "VALID_ACTIVE_L2"
+      }
+    }
+  ]
+}
