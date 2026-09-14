@@ -77,6 +77,8 @@ Mandatory boundaries:
 
 When reviewing the existing knowledge graph, always read the **CURRENT full body** of the exact object before assigning `CONTENT PASS`. Existing graph classification, lineage or older review evidence is not a substitute for current body review.
 
+Regression coverage for these boundaries lives in `evals/evals.json` and must include at least: structure-vs-content separation, bilingual semantic parity, simulation-vs-field truth, and anti-fabrication during bulk migration.
+
 ## Reference sourcing + how-made deconstruction capability
 
 Use this branch when the task is not only "find evidence" but "find better precedents and understand how they were made".
@@ -203,4 +205,5 @@ For formal knowledge-body creation or review, also report the applicable `R1 / R
 - Formal professional knowledge-body work satisfies the applicable gates and Claim–Evidence Ledger rules in `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`.
 - Existing graph classification or old review evidence never substitutes for reading the CURRENT full body when assigning content state.
 - English｜中文 formal content preserves claim, evidence strength, uncertainty, boundary, numbers/units/version and status parity when bilingual content is required.
+- Regression evals cover structure-vs-content, bilingual parity, simulation-vs-field, and anti-fabrication migration failures.
 - The result is usable by `oleander-design-process`, `oleander-data-viz`, `oleander-story-and-board`, `oleander-image-art-direction`, `oleander-web-ui`, `oleander-motion`, and `oleander-3d-pipeline`.
