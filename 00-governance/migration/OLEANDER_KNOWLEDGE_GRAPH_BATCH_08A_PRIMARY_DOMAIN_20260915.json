@@ -1,0 +1,158 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08A_CURRENT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair four CURRENT Primary Domain defects that were confirmed by fresh targeted Reader hydration and full-body semantic review. Keep all unrelated relation types unchanged.",
+  "safeguards": [
+    "Every target was re-read through the current Reader before this plan; no target depends on a reader_detail_budget_exceeded inference.",
+    "Every SET_PRIMARY_DOMAIN target is an exact ACTIVE L2 page from the complete 30-object Domain Registry.",
+    "This batch changes Primary Domain only. SOURCE, RELATED_DOMAIN, Canonical Parent/Child, project, replacement and semantic-related relations are intentionally deferred.",
+    "Objects without a unique ACTIVE L2 owner remain HOLD and are not forced into this batch.",
+    "Production mutation must be preceded by a fresh runner preflight and must stop on first drift or error."
+  ],
+  "plannedCount": 4,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-ARCH-CLIMATE-RESILIENCE-001",
+      "pageId": "3d9b86be-5c47-8128-b1e3-c4302bc5b646",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The body couples lifecycle-carbon mitigation with future-climate adaptation, thermal risk and functional continuity. Structural, fire and MEP concerns are subordinate validation interfaces; Sustainable Design is the unique ACTIVE L2 that owns the mitigation-and-resilience design subject as a whole.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "390b86be-5c47-8107-ae93-c20460f137ea",
+          "targetTitle": "可持续设计（Sustainable Design）",
+          "targetFrameworkPath": "General Design Knowledge / Material & CMF / Sustainable Design"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_01_RESULT_20260914.json",
+        "semanticAudit": "worker-16 current relation-semantics audit 2026-09-14",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-METHOD-GRASSHOPPER-PARAMETRIC-001",
+      "pageId": "3ccb86be-5c47-81cb-8712-eb0f87d6bd8d",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW",
+        "primaryDomainIds": [
+          "3b5b86be-5c47-81f5-b219-dba332da807c"
+        ]
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The method is explicitly about data trees, geometry relationships, parametric generation and algorithmic model control. The current Primary Domain is the L1 Digital Design & Delivery branch, which is invalid under L2-only routing. Generative, Relational & Computational Methods is the direct ACTIVE L2 owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-817d-9ecf-f8e13dbf2cd5",
+          "targetTitle": "Generative, Relational & Computational Methods｜生成·关系·计算方法",
+          "targetFrameworkPath": "General Design Knowledge / Methods & Design Intelligence / Generative, Relational & Computational Methods"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_01_RESULT_20260914.json",
+        "semanticAudit": "worker-16 current relation-semantics audit 2026-09-14",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "MTH-ARCH-EVIDENCE-GOV-001",
+      "pageId": "3d9b86be-5c47-81c6-ac53-fd563117d66c",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The method governs authority, applicability, jurisdiction, edition/version, conflicts and validation of architectural evidence and standards. Standards, Evidence & Compliance is the exact ACTIVE L2 professional owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-8123-a36d-f4a4d517552e",
+          "targetTitle": "Standards, Evidence & Compliance｜规范、证据与合规",
+          "targetFrameworkPath": "Architecture Knowledge / Evidence, Regulation & Practice / Standards, Evidence & Compliance"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_02_RESULT_20260914.json",
+        "semanticAudit": "worker-16 current relation-semantics audit 2026-09-14",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "MTH-ARCH-RESEARCH-001",
+      "pageId": "3d9b86be-5c47-8158-bf00-c8aa879f7394",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The body is architecture-specific research practice centered on cases, sampling, field evidence, measurement validity, negative cases and POE. Case Research, Failure & POE is the closest and uniquely profession-specific ACTIVE L2 owner; generic Evaluation & Validation remains an adjacent method domain rather than the primary owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-81b5-b692-ef7b8f978058",
+          "targetTitle": "Case Research, Failure & POE｜案例研究、失败与使用后评估",
+          "targetFrameworkPath": "Architecture Knowledge / Evidence, Regulation & Practice / Case Research, Failure & POE"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_02_RESULT_20260914.json",
+        "semanticAudit": "worker-16 current relation-semantics audit 2026-09-14",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
