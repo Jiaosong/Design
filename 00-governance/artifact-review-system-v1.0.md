@@ -56,6 +56,8 @@ SVG, DXF, CAD exports, technical PDF/PNG. Review hierarchy, text/graphic boundar
 ### AR-S02｜Model Review
 OBJ, STL, GLB and native 3D models. Review units, origin/axis, geometry integrity, topology, normals, non-manifold/self-intersection, hierarchy, collision/clearance, assembly, parameter consistency, 2D consistency, export fidelity, reopen and reproduction.
 
+For spatial / architectural / built-environment models that claim complete high-fidelity realism, close constructive completeness, coordinated building services, construction-aware, near-as-built or digital-twin-ready representation, AR-S02 additionally triggers `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`. The requested/achieved `BA0–BA4` state, in-scope system coverage, critical connection/support/service continuity, detail carrier, drainage/serviceability, defect truth state and overall/working/inspection readback must be explicit. AR-S02 model hygiene, photoreal rendering or a BIM/LOD label alone cannot grant BA3/BA4 PASS.
+
 ### AR-S03｜Data Review
 JSON, CSV, XLSX, parameter matrices and QA data. Review schema, type, unit, range, missing, duplicate, formula, dependency, outlier, evidence status and artifact consistency. Data-to-artifact mismatch is FAIL.
 
