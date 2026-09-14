@@ -252,6 +252,7 @@ for (const node of plan.nodes) {
       canonical_children_ids: "canonicalChildrenIds",
       semantic_related_ids: "semanticRelatedIds",
       source_relation_ids: "sourceRelationIds",
+      method_relation_ids: "methodRelationIds",
     };
     for (const key of Object.keys(updates)) expected[key] = live[fieldMap[key]];
     const body = {
