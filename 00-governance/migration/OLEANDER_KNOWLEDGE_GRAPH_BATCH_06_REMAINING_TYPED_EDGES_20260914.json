@@ -1,0 +1,213 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T13:16:18.516Z",
+  "status": "BATCH_06_REMAINING_TYPED_EDGE_REPAIR",
+  "purpose": "Close six remaining current/support typed structural-parent defects using fresh Reader evidence and complete current-body semantics for all L7 Practice objects.",
+  "safeguards": [
+    "Fresh Reader relation readback is complete for all six targets.",
+    "L7 Practice Parent→Method decisions are current-body supported, not title inferred.",
+    "L6 Evidence/Source Parent→Related decisions preserve semantic association without structural hierarchy pollution.",
+    "No node classification or Primary Domain mutation in this batch."
+  ],
+  "plannedCount": 6,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "PRAC-20260817-12",
+      "pageId": "3c0b86be-5c47-8185-8114-f03049422e49",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Current body says this L7 Practice is evidence under the existing Editorial Publication METHOD and does not create a parallel method; preserve the owner as Method, not Canonical Parent.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_METHOD",
+          "targetPageId": "3cbb86be-5c47-81a0-8f5e-ff949b21a82c",
+          "targetCanonicalId": "KN-METHOD-EDITORIAL-PUBLICATION-001",
+          "reason": "Current body says this L7 Practice is evidence under the existing Editorial Publication METHOD and does not create a parallel method; preserve the owner as Method, not Canonical Parent."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:02.283Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": true
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "PRAC-20260817-06",
+      "pageId": "3c0b86be-5c47-8167-8776-eda8fc8cf2d7",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Current body explicitly calls KN-METHOD-PHYSICAL-SIGNAGE-001 the Method owner while this page remains L7 Practice; retype structural parent to Method invocation/ownership.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_METHOD",
+          "targetPageId": "3cbb86be-5c47-8170-b998-d2f00ff1691b",
+          "targetCanonicalId": "KN-METHOD-PHYSICAL-SIGNAGE-001",
+          "reason": "Current body explicitly calls KN-METHOD-PHYSICAL-SIGNAGE-001 the Method owner while this page remains L7 Practice; retype structural parent to Method invocation/ownership."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:08.272Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": true
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "PRAC-DATATABLE-SCAN-GRAMMAR-20260819",
+      "pageId": "3c1b86be-5c47-8176-9c03-c477dd86b9c7",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Current body states the L7 Practice contributes a bounded rule to the existing KN-METHOD-DATA-TABLE-INFO-001 owner and does not create a second method; preserve that exact typed relation as Method.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_METHOD",
+          "targetPageId": "3cbb86be-5c47-810f-8320-fa949171d9db",
+          "targetCanonicalId": "KN-METHOD-DATA-TABLE-INFO-001",
+          "reason": "Current body states the L7 Practice contributes a bounded rule to the existing KN-METHOD-DATA-TABLE-INFO-001 owner and does not create a second method; preserve that exact typed relation as Method."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:13.653Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": true
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "EVD-PDF-PROCESSING-STEPS-OCG-20260829",
+      "pageId": "3cbb86be-5c47-8146-abf7-e7e4e7f6ddaa",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 EVIDENCE supports packaging/dieline practice but does not participate in structural hierarchy; preserve semantic association as Related.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3cbb86be-5c47-81bc-9d8f-ce1aad97b47d",
+          "targetCanonicalId": "KN-METHOD-PACKAGING-STRUCTURE-DIELINE-001",
+          "reason": "L6 EVIDENCE supports packaging/dieline practice but does not participate in structural hierarchy; preserve semantic association as Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:31.993Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "EVD-PDF-PAGEBOX-20260829",
+      "pageId": "3cab86be-5c47-814c-a463-d04be25bc177",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "EVIDENCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 EVIDENCE supports packaging/dieline practice but does not participate in structural hierarchy; preserve semantic association as Related.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3cbb86be-5c47-81bc-9d8f-ce1aad97b47d",
+          "targetCanonicalId": "KN-METHOD-PACKAGING-STRUCTURE-DIELINE-001",
+          "reason": "L6 EVIDENCE supports packaging/dieline practice but does not participate in structural hierarchy; preserve semantic association as Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:36.463Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "SRC-CN-TEXTILE-AIR-PERMEABILITY-2025",
+      "pageId": "3c6b86be-5c47-8196-815b-c01033d7dc83",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "L6 SOURCE supports the Material QA method but is evidence/source lineage, not a structural child; preserve semantic association as Related.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3adb86be-5c47-81f7-bd3b-d65704dce84e",
+          "targetCanonicalId": "KN-METHOD-MATERIAL-QA-009",
+          "reason": "L6 SOURCE supports the Material QA method but is evidence/source lineage, not a structural child; preserve semantic association as Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T13:14:41.150Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": [],
+        "currentBodyConfirmed": false
+      }
+    }
+  ]
+}
