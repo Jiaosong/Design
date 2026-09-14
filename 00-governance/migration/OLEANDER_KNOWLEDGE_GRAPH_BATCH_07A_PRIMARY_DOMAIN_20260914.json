@@ -1,0 +1,124 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T13:38:00.000Z",
+  "status": "BATCH_07A_CURRENT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair three unambiguous CURRENT Primary Domain routes using complete current-body readback and the canonical 30-object ACTIVE L2 Domain Registry.",
+  "safeguards": [
+    "All three target bodies were read completely after Batch 06; no body is truncated and no Reader budget failure occurred.",
+    "Primary Domain targets are exact current Notion Domain Registry page IDs and must pass the canonical ACTIVE L2 target validator.",
+    "The plan records the exact current Primary Domain set and the runner fails closed if that set drifts before mutation.",
+    "No classification, structural hierarchy, Source, Method, Project, Related or provenance relation is changed in this batch.",
+    "KN-ARCH-URBAN-REGEN-001 is intentionally excluded because the current 30-domain registry does not provide an unambiguous urban-regeneration owner."
+  ],
+  "plannedCount": 3,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "MTH-OLEANDER-CROSS-DISCIPLINARY-INTEGRATION-001",
+      "pageId": "3dbb86be-5c47-8167-a621-e1e99514191b",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The current method governs cross-disciplinary interface ownership, shared-variable authority, change propagation, joint decisions, integration receipts and promotion closure. These are design governance/quality responsibilities; they are not participatory-design rights, a new design taxonomy, or a discipline-specific technical domain.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-8152-8ef1-dc5881d2464d",
+          "targetTitle": "Design Governance & Quality｜设计治理与质量",
+          "targetDomainCode": "KD-DESIGN-070-20",
+          "reason": "The ACTIVE L2 domain explicitly owns design review, quality control, decision records, knowledge governance, versioning and collaboration rules, matching the method's governing function."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_A_CURRENT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "MTH-OLEANDER-DESIGN-INTELLIGENCE-001",
+      "pageId": "3dbb86be-5c47-813d-bff5-f63d43962ac7",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The current method governs design-intelligence routing, discipline review resolution, design-review receipts, benchmark/adversarial review, promotion criteria and knowledge write-back while explicitly refusing to create a second taxonomy. Its primary function is design governance and quality control rather than AI-specific generation or one validation technique.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-8152-8ef1-dc5881d2464d",
+          "targetTitle": "Design Governance & Quality｜设计治理与质量",
+          "targetDomainCode": "KD-DESIGN-070-20",
+          "reason": "The ACTIVE L2 domain explicitly owns design review, quality control, decision records, knowledge governance, versioning and collaboration rules, which are the method's core operating responsibilities."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_A_CURRENT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "KN-THEORY-DESIGN-RELATION-INTEGRITY-001",
+      "pageId": "3d9b86be-5c47-81c5-a957-dbec80be99ca",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body defines design-relation integrity through actor/task, topology, clearance, interface/ownership/coupling, support/service, state/information, dependency/source change and representation relations. Its subject is reusable relational/dependency design logic; validation/readback is used to test those relations rather than being the primary subject.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-817d-9ecf-f8e13dbf2cd5",
+          "targetTitle": "Generative, Relational & Computational Methods｜生成·关系·计算方法",
+          "targetDomainCode": "KD-DESIGN-091",
+          "reason": "The ACTIVE L2 domain owns cross-domain design intent expressed as relations, parameters and dependencies under explicit constraints; this directly matches the theory's relation/dependency subject."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_A_CURRENT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
