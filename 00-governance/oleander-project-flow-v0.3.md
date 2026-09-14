@@ -18,7 +18,7 @@ The cognitive method remains:
 
 `Read → Frame → Hypothesize → Vary → Construct → Attack → Test → Decide → Archive`
 
-The project flow adds the execution and governance semantics required to use that method across product/CMF, brand, spatial/architecture, digital/interaction and other OLEANDER work.
+The project flow adds the execution and governance semantics required to use that method across product/CMF, brand, spatial/architecture, digital/interaction and other OLEANDER work. Design Intelligence routing is governed by `design-intelligence-routing-and-review-v1.0.md`: it resolves existing L4/L5 methods/frameworks, L6 source/evidence/case material and relevant L7 practice into a project-runtime Design Intelligence Packet and Design Review Contract without creating a parallel knowledge taxonomy.
 
 This flow is subordinate to already-active fail-closed governance. In particular, `Production Asset Persistence Gate v1.0` remains mandatory before AR-S09 / Promotion whenever its trigger conditions apply. A project- or Practice-specific logging/sync contract also remains binding; this flow does not silently cancel existing Notion/Drive/GitHub obligations.
 
@@ -26,7 +26,7 @@ This flow is subordinate to already-active fail-closed governance. In particular
 
 ### Loop A｜Exploration Sandbox
 
-`Design Question → Sandbox → Variants → Compare → Reject / Branch / Candidate`
+`Design Question → Knowledge Route → Frame / Intent → Sandbox → Variants → Compare → Attack / Test → Reject / Branch / Candidate`
 
 Rules:
 - one Decision Question per experiment;
@@ -44,15 +44,19 @@ A Candidate may enter Canonical Production only when:
 2. the retention reason is explicit;
 3. Locked and Open Variables are recorded;
 4. it is more valuable to continue than rejected alternatives;
-5. the next step requires reproducible/measurable execution.
+5. the next step requires reproducible/measurable execution;
+6. when design-quality promotion is intended, relevant knowledge routes, review lenses, technical/evidence triggers and the current claim ceiling are resolvable through the Design Intelligence Packet;
+7. when multiple disciplines materially couple, the critical interfaces, integration owner, coupling / criticality, shared variables, required maturity, acceptance basis and required integrated readbacks are resolvable under `cross-disciplinary-design-integration-v1.0.md`.
 
 Candidate is not Canonical.
 
 ### Loop B｜Canonical Production
 
-`Candidate → Contract Compile → Authority Resolve → Capability Resolve → Execute → Machine QA → Visual QA → Project QA → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
+`Candidate → Contract Compile → Design Review Resolve → Cross-Disciplinary Integration Resolve when triggered → Authority Resolve → Capability Resolve → Execute → Machine QA → Visual QA → Project QA → Artifact Review → Triggered Design Review → Integration Readback when triggered → Specialized Acceptance Gates when triggered → Evidence / Truth Review → Independent Design Decision → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
 
 Execution should be deterministic wherever possible.
+
+When cross-disciplinary integration is triggered, the promotion-relevant `Integration Readback` emits or refreshes the current `CROSS_DISCIPLINARY_INTEGRATION_RECEIPT`. A material interface / system change makes affected receipt conclusions stale until the required reopen scope has been reconciled and read back.
 
 **Hard ordering:** if PAP is triggered, durable upload + independent retrieval + hash/size/open verification must PASS before AR-S09 and before `PROMOTED`. Cross-system registration/synchronization may continue after promotion, but the durable binary gate cannot be deferred until after promotion.
 
