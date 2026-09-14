@@ -1,0 +1,121 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08B_CURRENT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair three additional CURRENT Primary Domain gaps confirmed by fresh targeted Reader hydration and complete body-semantic review.",
+  "safeguards": [
+    "Every target was re-read successfully through the current Reader; no target relies on an unresolved detail-budget result.",
+    "All target domains are exact ACTIVE L2 objects from the complete 30-object Domain Registry.",
+    "This batch changes Primary Domain only; all source, related-domain, hierarchy and project repairs remain deferred.",
+    "Rural/local-construction remains HOLD because the current registry has no unique L2 owner.",
+    "Production mutation must stop on first drift or error and must be followed by reconcile plus fresh Reader audit."
+  ],
+  "plannedCount": 3,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-METHOD-DESIGN-SYSTEM-001",
+      "pageId": "3a8b86be-5c47-8180-a2ba-e138440bbdb5",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body is explicitly a design-system method covering principles, tokens, components, content, accessibility, code alignment, governance, adoption, versioning and migration. Design System is the exact ACTIVE L2 owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "390b86be-5c47-816c-b587-d03af2e0b950",
+          "targetTitle": "设计系统（Design System）",
+          "targetFrameworkPath": "General Design Knowledge / Digital & Interaction / Design System"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_03_RESULT_20260914.json",
+        "semanticAudit": "worker-16 batch03-05 semantic follow-up 2026-09-15",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-METHOD-OLEANDER-SKILL-RESOLVER-001",
+      "pageId": "3c0b86be-5c47-8162-993d-f939a1c2bf03",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The method governs authority routing, execution ownership, quality gates, drift detection and execution contracts. AI/agent execution is subordinate; Design Governance & Quality is the primary reusable subject and exact ACTIVE L2 owner.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-8152-8ef1-dc5881d2464d",
+          "targetTitle": "Design Governance & Quality｜设计治理与质量",
+          "targetFrameworkPath": "General Design Knowledge / Service, Systems & Governance / Design Governance & Quality"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_04_RESULT_20260914.json",
+        "semanticAudit": "worker-16 batch03-05 semantic follow-up 2026-09-15",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "SRC-KANO-1984-001",
+      "pageId": "3c0b86be-5c47-8137-b063-c980aec07e35",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L6｜Evidence / Case",
+        "role": "SOURCE",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The source's primary reusable subject is product quality-attribute classification and nonlinear satisfaction/dissatisfaction relationships. Questionnaire mechanics are evidence methodology rather than the semantic owner; Product Thinking is the closest unique ACTIVE L2.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "390b86be-5c47-8106-98dd-dda6067af0e9",
+          "targetTitle": "💡 产品思维",
+          "targetFrameworkPath": "General Design Knowledge / Product & Experience / Product Thinking"
+        }
+      ],
+      "freshEvidence": {
+        "readerBatch": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_CURRENT_RELATION_VALIDATION_BATCH_05_RESULT_20260914.json",
+        "semanticAudit": "worker-16 batch03-05 semantic follow-up 2026-09-15",
+        "bodyReviewed": true,
+        "registryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
