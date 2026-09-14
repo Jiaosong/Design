@@ -1,0 +1,130 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T15:09:00.000Z",
+  "status": "BATCH_07D_SUPPORT_PRIMARY_DOMAIN_REPAIR",
+  "purpose": "Repair three remaining SUPPORT Primary Domain routes whose current bodies now resolve to a unique ACTIVE L2 owner under the complete 30-domain registry.",
+  "safeguards": [
+    "All three target bodies were read completely in targeted diagnostics; no target body is truncated and no Reader budget failure occurred.",
+    "Each target is an exact ACTIVE L2 Notion Domain Registry page ID from the complete 30-object registry readback.",
+    "The plan records the exact current Primary Domain set and current relation state; the runner must fail closed on drift before mutation.",
+    "No classification, structural hierarchy, Source, Method, Project, Related or provenance relation is changed in this batch.",
+    "Domain codes are not invented because the current ACTIVE L2 registry readback does not export a domainCode field.",
+    "KN-ARCH-URBAN-REGEN-001, IDX-DESIGN-001, IDX-ARCH-TYPOLOGY-MED-004 and IDX-ARCH-OPS-SOCIAL-007 remain HOLD because the current registry has no unique ACTIVE L2 owner for their full body semantics."
+  ],
+  "plannedCount": 3,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-THEORY-DESIGN-ETHICS-001",
+      "pageId": "3a8b86be-5c47-81a4-af2c-f582b3d28936",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "METHOD",
+        "frameworkType": "EVALUATION_FRAMEWORK"
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body is an executable ethics evaluation method: Actor/Rights mapping, benefit-harm distribution, power/consent attack, accessibility/data/labor/environment/culture scans, hard-gate decisions, alternatives, recourse and evidence gaps culminating in Approve/Hold/Reject. Governance and the individual ethical dimensions are evaluated subjects; the reusable operation is evaluation/validation.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-8143-8331-cb56a52670b5",
+          "targetTitle": "Evaluation & Validation Methods｜评估与验证方法",
+          "targetFrameworkPath": "General Design Knowledge / Methods & Design Intelligence / Evaluation & Validation Methods",
+          "reason": "The ACTIVE L2 domain exactly owns reusable evaluation/validation procedures. Accessibility, participation, sustainability and governance are explicit dimensions or adjacent scopes, not the primary method family."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "FW-SOFTWARE-KNOWLEDGE-GOV-001",
+      "pageId": "3b9b86be-5c47-819b-9a0d-f55c1d1fb930",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "VALID",
+        "primaryDomainIds": []
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "HIGH",
+      "reason": "The body governs software knowledge as stable principle versus version-specific operation, execution-state taxonomy, source priority, interoperability evidence, version guards, migration and rollback. Its durable subject is knowledge/version governance and quality rather than one software feature, AI method or computational-design technique.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-8152-8ef1-dc5881d2464d",
+          "targetTitle": "Design Governance & Quality｜设计治理与质量",
+          "targetFrameworkPath": "General Design Knowledge / Service, Systems & Governance / Design Governance & Quality",
+          "reason": "The ACTIVE L2 domain owns knowledge governance, versioning, review and quality controls. Design System, computational methods, AI methods and evaluation are narrower adjacent execution scopes."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_DOMAIN_BATCH_B_SUPPORT_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "KN-ARTSYS-CANON-004",
+      "pageId": "3b5b86be-5c47-8101-92d5-c8d24f2489d1",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": [
+          "3b5b86be-5c47-8150-abe7-d2f1eef737d2"
+        ]
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "frameworkType": null
+      },
+      "migrationAction": "PRIMARY_DOMAIN_REPAIR",
+      "confidence": "MEDIUM-HIGH",
+      "reason": "The body studies canon formation and criticism through collection, chronology, classification, institutional authority, naming/custody/repatriation and feminist, Indigenous and disability critiques. The downstream Canon & Authority Gate is an application of that theory/history subject rather than a generic process-governance object.",
+      "edgeRepairs": [
+        {
+          "action": "SET_PRIMARY_DOMAIN",
+          "targetPageId": "3bbb86be-5c47-81de-95be-fd3ec8ff6b99",
+          "targetTitle": "Design Theory & History｜设计理论与设计史",
+          "targetFrameworkPath": "General Design Knowledge / Theory, History & Culture / Design Theory & History",
+          "reason": "Among the ACTIVE L2 registry, Design Theory & History is the only domain that owns canon formation, historical framing and criticism without collapsing feminist, Indigenous and disability critiques into one inclusion checklist."
+        }
+      ],
+      "freshEvidence": {
+        "readerResult": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_GRAPH_RELATION_BATCH_H_BODY_RESULT_20260914.json",
+        "currentBodyConfirmed": true,
+        "bodyTruncated": false,
+        "registryReadback": "D:/Desgin/.mcp-runtime/diagnostics/OLEANDER_ACTIVE_L2_DOMAIN_REGISTRY_READBACK_20260914.json",
+        "registryInventoryComplete": true,
+        "activeL2RegistryCount": 30
+      }
+    }
+  ]
+}
