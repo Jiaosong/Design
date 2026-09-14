@@ -54,6 +54,16 @@ Record:
 
 If exact field dimensions are unavailable, do not invent them for visual completeness. Use a recommended value + reasonable range + basis + sensitivity + explicit FIELD verification item where the project allows design estimates.
 
+## Built-asset high-fidelity acceptance route
+
+When the task asks for a complete / realistic / high-fidelity building, spatial or infrastructure model, requires close construction inspection, or describes the result as construction-aware, near-as-built or digital-twin-ready, read and apply:
+
+`oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`
+
+Before tertiary detail work, declare the requested `BA0_MASSING / BA1_DESIGN / BA2_COORDINATED_ASSEMBLY / BA3_HIGH_FIDELITY_CONSTRUCTIVE / BA4_NEAR_AS_BUILT_CANDIDATE` level. The triggered gate audits in-scope architecture/structure/MEP/system coverage, connection/support continuity, critical-detail representation carrier, drainage/service logic, maintenance clearance, defect/aging truth state and multi-distance actual readback.
+
+External BIM LOD/LOI classifications may be mapped when a project requires them, but a LOD label, object/poly/modifier count or photoreal render cannot self-pass OLEANDER built-asset acceptance. `BA4` is a candidate review descriptor only; field/as-built/commissioning/code/engineering/manufacturing approval remains separate.
+
 ## Current-runtime producer preflight and failure scope
 
 Before an expensive native 3D dispatch, resolve the Current runtime/version and use its existing bounded producer preflight when one exists. Read `PROJECT_USAGE_FEEDBACK_CURRENT.md` for owner-local project failures that have already been repaired and retested; do not rediscover the same failure by deliberately running a known-bad producer.
@@ -175,6 +185,7 @@ If generated pixels conflict with verified model geometry, dimensions or source 
 - Cameras, frame rate, frame range, and color management are documented.
 - External plugins and licenses are listed.
 - Cross-software exchange records known losses/bakes and passes reopen/round-trip when applicable.
+- When the Built-asset High-Fidelity Gate is triggered, the requested/achieved BA target, system coverage, critical-detail carrier, representative joint/service readbacks, truth-state ledger and unresolved blockers are explicit; `BA3/BA4` cannot pass with an applicable hard blocker.
 - A low-resolution review file and thumbnail are included.
 - Renders/viewers/AI supplements are clearly derivatives, not master replacements.
 - Material project use that changes or falsifies a reusable 3D rule is recorded through the existing project/Skill feedback lineage; project-specific facts remain project-specific.
@@ -188,3 +199,5 @@ When project use materially confirms, falsifies or repairs a reusable 3D rule, a
 For parametric CAD/assembly work, also return the named parameter/datum contract, deterministic geometry checks actually executed, purchased-component provenance or proxy boundary, diagnostic visual readback, source repair/retest record, and remaining manufacturing/engineering HOLD.
 
 For OpenSCAD/fabrication work, also return the `.scad` source identity, user-parameter contract, derived/reference-frame logic, process/orientation context, fabrication derivative identities, target-tool reopen when available, and physical fit/strength/finish HOLD.
+
+For triggered built-asset high-fidelity work, also return `BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT` as defined by `BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`; this receipt is specialist evidence and does not replace independent Artifact Review / Professional Design Crit.

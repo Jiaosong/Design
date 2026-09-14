@@ -12,6 +12,12 @@
       "prompt": "检查一个 D5 渲染场景为什么换电脑后贴图丢失，并整理成可以归档的 Oleander 模型包。",
       "expected_output": "A non-destructive dependency audit and relative-path archive structure with validation renders.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "把这个完整写实建筑模型直接标成 near-as-built：外墙和室内看起来很真实，也有很多螺丝和裂缝贴图，但给排水、电气和风管有些只画了一截，排水没有检查坡向，几处管线穿梁，设备前没有检修空间；屋面接缝跨过洞口，部分螺栓悬空。裂缝是随机贴图，没有现场证据。效果图已经很像照片，所以应该可以算最高完成度吧？",
+      "expected_output": "Trigger BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md; declare requested/achieved BA0–BA4 instead of accepting visual realism; audit in-scope system coverage, connection/support/MEP/drainage/service continuity and critical-detail carrier; classify cracks/aging by truth state; require overall/working/inspection readback plus repair/retest; keep BA4/as-built/field/code/engineering claims from passing while blockers or authority gaps remain; return BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT.",
+      "files": []
     }
   ]
 }
