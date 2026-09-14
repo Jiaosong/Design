@@ -1,0 +1,311 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-14T12:31:05.624Z",
+  "status": "BATCH_03_PROVEN_LIVE_STRUCTURAL_RELATION_REPAIR",
+  "purpose": "Repair nine post-Batch02 structural relation defects confirmed by fresh Reader detail. No node classification changes and no Primary Domain guessing.",
+  "safeguards": [
+    "Fresh Reader detail 9/9 succeeded with complete hierarchy readback.",
+    "Notion canonical mutation uses exact identity/revision/before-state guards and stops on first failure.",
+    "Dedicated METHOD/SOURCE/RELATED semantics are preserved rather than collapsed into Canonical Parent/Children.",
+    "No Primary Domain mutation is included in this batch."
+  ],
+  "plannedCount": 9,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "KN-METHOD-COLOR-SYSTEM-001",
+      "pageId": "3c0b86be-5c47-8118-849b-f6ca16d56e17",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_CHILDREN",
+          "targetPageIds": [
+            "3b9b86be-5c47-819e-9f8b-ce9ab4295ae7"
+          ],
+          "reason": "L5 METHOD cannot own Canonical Children; the same L4 Visual Communication framework is already the valid Canonical Parent, so the reverse child edge is removed rather than duplicated as Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:28:59.167Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-METHOD-DATAVIZ-001",
+      "pageId": "3a8b86be-5c47-8115-a9d0-f74b1a92ffce",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_SOURCE",
+          "targetPageIds": [
+            "3b8b86be-5c47-8110-a6bf-cb1f5781416a",
+            "3b8b86be-5c47-8127-bdc9-d49fe0b38b08",
+            "3b8b86be-5c47-8132-9b83-ffcfe79dfb50",
+            "3b8b86be-5c47-816e-8ce6-fb5070a34de6",
+            "3b8b86be-5c47-81ee-a366-c29c5939ee14"
+          ],
+          "reason": "L6 CASE objects are evidence/application support for this L5 method, not structural children."
+        },
+        {
+          "action": "RETYPE_CANONICAL_CHILDREN_TO_RELATED",
+          "targetPageIds": [
+            "3c0b86be-5c47-818b-bd07-c87f866ceb85"
+          ],
+          "reason": "The L7 Practice is an application/output related to the method, not a structural child."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:04.504Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 3,
+      "canonicalId": "KN-METHOD-PHYSICAL-SIGNAGE-001",
+      "pageId": "3cbb86be-5c47-8170-b998-d2f00ff1691b",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_CHILDREN",
+          "targetPageIds": [
+            "3b9b86be-5c47-819e-9f8b-ce9ab4295ae7"
+          ],
+          "reason": "L5 METHOD cannot own Canonical Children; the L4 Visual Communication framework is already its valid structural parent."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:08.838Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 4,
+      "canonicalId": "KN-METHOD-DATA-TABLE-INFO-001",
+      "pageId": "3cbb86be-5c47-810f-8320-fa949171d9db",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3b9b86be-5c47-8160-8b0c-c6b942f9c600",
+          "reason": "L5 can only use a non-provenance L4 Canonical Parent. The L5 Information Design theory is semantic context, so preserve it as Related instead of hierarchy."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:13.618Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 5,
+      "canonicalId": "KN-METHOD-CONTENT-MICROCOPY-001",
+      "pageId": "3cbb86be-5c47-8106-b02a-c3a6e5a4ca46",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L5｜Knowledge Object",
+        "role": "METHOD",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3b9b86be-5c47-8160-8b0c-c6b942f9c600",
+          "reason": "L5 can only use a non-provenance L4 Canonical Parent. The L5 Information Design theory remains semantic context as Related."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:18.028Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 6,
+      "canonicalId": "PRAC-20260813-01",
+      "pageId": "3c0b86be-5c47-8100-82db-fc2397fe2c91",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_PARENT",
+          "targetPageId": "3bfb86be-5c47-81f4-8586-d31380f1b25a",
+          "reason": "L7 Practice does not participate in L4→L5 structural hierarchy and must not structurally depend on a PROVENANCE method. The same target is already preserved in the dedicated Method relation."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:21.988Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 7,
+      "canonicalId": "PRAC-20260817-03",
+      "pageId": "3c0b86be-5c47-8138-9107-f1b5c4cb392e",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_PARENT",
+          "targetPageId": "3bfb86be-5c47-814e-a385-ded39679093f",
+          "reason": "L7 Practice cannot use Canonical Parent, and the provenance method invocation is already recorded in the dedicated Method relation."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:26.250Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 8,
+      "canonicalId": "PRAC-20260816-04",
+      "pageId": "3c0b86be-5c47-811b-adb9-d6ce0c1b16c4",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "REVIEW"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_PARENT",
+          "targetPageId": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
+          "reason": "L7 Practice cannot use Canonical Parent. Preserve the provenance method only through its existing Method relation."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:30.546Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    },
+    {
+      "sequence": 9,
+      "canonicalId": "PRAC-20260817-02",
+      "pageId": "3c0b86be-5c47-8111-b67d-c4bf9dac78bd",
+      "retrievalSpace": "SUPPORT",
+      "current": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "relationState": "VALID"
+      },
+      "target": {
+        "level": "L7｜Practice / Output",
+        "role": "PRACTICE",
+        "frameworkType": null
+      },
+      "migrationAction": "RELATION_REPAIR_ONLY",
+      "confidence": "HIGH",
+      "reason": "Fresh post-Batch02 Reader detail confirms a structural relation that violates current hierarchy semantics and validators; classification itself remains unchanged.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_CANONICAL_PARENT",
+          "targetPageId": "3c0b86be-5c47-81b4-9b2c-d311531daf1a",
+          "reason": "L7 Practice cannot use Canonical Parent. Preserve the existing dedicated Method invocation and do not create a duplicate Related edge."
+        }
+      ],
+      "freshEvidence": {
+        "readerGeneratedAt": "2026-09-14T12:29:34.843Z",
+        "hierarchyReadbackComplete": true,
+        "unresolvedHierarchyTargets": []
+      }
+    }
+  ]
+}
