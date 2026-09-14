@@ -1,0 +1,69 @@
+{
+  "version": "oleander-knowledge-graph-migration-plan/v2",
+  "generatedAt": "2026-09-15T00:00:00+08:00",
+  "status": "BATCH_08E_CURRENT_RELATED_DOMAIN_REMOVE",
+  "purpose": "Remove two invalid Related Domain edges that point to the L1 Digital Design & Delivery branch where current body semantics do not justify forcing a replacement L2.",
+  "safeguards": [
+    "Both objects were reviewed from current body semantics.",
+    "The removed target is an L1 Branch and is invalid for Related Domain semantics.",
+    "No replacement L2 is invented when the body does not establish a unique semantic owner.",
+    "All other Primary and Related Domain relations are preserved exactly.",
+    "The runner guards complete current relatedDomainIds before mutation.",
+    "Production mutation stops on first drift/error and requires final preflight, derivative reconcile and fresh Reader audit."
+  ],
+  "plannedCount": 2,
+  "nodes": [
+    {
+      "sequence": 1,
+      "canonicalId": "FW-CG-3D-PRODUCTION-001",
+      "pageId": "3ccb86be-5c47-816a-bab9-d1e67a4ffbed",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L4｜Integrating Framework / Cluster",
+        "role": "INDEX",
+        "relationState": "VALID",
+        "primaryDomainIds": ["390b86be-5c47-81a7-aabc-fa351fc32312"],
+        "relatedDomainIds": [
+          "390b86be-5c47-81e7-9b61-ee2fee3df75f",
+          "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "39db86be-5c47-81df-ad8d-e08a743c2932"
+        ]
+      },
+      "target": { "level": "L4｜Integrating Framework / Cluster", "role": "INDEX", "frameworkType": "PROFESSIONAL_SYSTEM_MAP" },
+      "migrationAction": "RELATED_DOMAIN_REMOVE_INVALID_L1",
+      "confidence": "HIGH",
+      "reason": "Digital Design & Delivery is an L1 branch, not an eligible Related Domain. The 3D Production framework already retains exact Form Language primary ownership plus CMF and Light & Shadow related domains; the body does not require inventing another replacement domain for this broad branch edge.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_RELATED_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "targetTitle": "Digital Design & Delivery｜数字设计与交付"
+        }
+      ]
+    },
+    {
+      "sequence": 2,
+      "canonicalId": "KN-THEORY-BIO-MATH-STREAMLINED-FORM-001",
+      "pageId": "3ccb86be-5c47-81ef-ae25-c8759b38fb8f",
+      "retrievalSpace": "CURRENT",
+      "current": {
+        "level": "L5｜Knowledge Object",
+        "role": "THEORY",
+        "relationState": "REVIEW",
+        "primaryDomainIds": ["390b86be-5c47-81a7-aabc-fa351fc32312"],
+        "relatedDomainIds": ["3b5b86be-5c47-81f5-b219-dba332da807c"]
+      },
+      "target": { "level": "L5｜Knowledge Object", "role": "THEORY", "frameworkType": null },
+      "migrationAction": "RELATED_DOMAIN_REMOVE_INVALID_L1",
+      "confidence": "HIGH",
+      "reason": "The current related-domain target is only the L1 Digital Design & Delivery branch. The body does not establish a unique replacement L2 strongly enough to force a new domain edge, so the safe repair is removal of the invalid L1 relation while preserving valid Form Language primary ownership.",
+      "edgeRepairs": [
+        {
+          "action": "REMOVE_RELATED_DOMAIN",
+          "targetPageId": "3b5b86be-5c47-81f5-b219-dba332da807c",
+          "targetTitle": "Digital Design & Delivery｜数字设计与交付"
+        }
+      ]
+    }
+  ]
+}

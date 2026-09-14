@@ -75,6 +75,22 @@ function plannedUpdates(node, live) {
       if (!sameIds(relatedDomains, next)) updates.related_domain_ids = next;
       continue;
     }
+    if (repair.action === "REMOVE_RELATED_DOMAIN") {
+      const target = repair.targetPageId;
+      if (!target) throw new Error(`${node.canonicalId}: REMOVE_RELATED_DOMAIN requires targetPageId`);
+      const relatedDomains = [...new Set(updates.related_domain_ids ?? live.relatedDomainIds ?? [])];
+      if (relatedDomains.includes(target)) updates.related_domain_ids = relatedDomains.filter((id) => id !== target);
+      continue;
+    }
+    if (repair.action === "RETYPE_SOURCE_TO_RELATED") {
+      const target = repair.targetPageId;
+      if (!target) throw new Error(`${node.canonicalId}: RETYPE_SOURCE_TO_RELATED requires targetPageId`);
+      const sources = [...new Set(updates.source_relation_ids ?? live.sourceRelationIds ?? [])];
+      const related = [...new Set(updates.semantic_related_ids ?? live.semanticRelatedIds ?? [])];
+      if (sources.includes(target)) updates.source_relation_ids = sources.filter((id) => id !== target);
+      if (!related.includes(target)) updates.semantic_related_ids = [...related, target];
+      continue;
+    }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
       const target = repair.targetPageId;
       if (!target) throw new Error(`${node.canonicalId}: REMOVE_CANONICAL_PARENT requires targetPageId`);
@@ -147,6 +163,13 @@ function edgeRepairsAtTarget(node, live) {
       const newTarget = repair.newTargetPageId;
       return !(live.relatedDomainIds ?? []).includes(oldTarget) && (live.relatedDomainIds ?? []).includes(newTarget);
     }
+    if (repair.action === "REMOVE_RELATED_DOMAIN") {
+      return !(live.relatedDomainIds ?? []).includes(repair.targetPageId);
+    }
+    if (repair.action === "RETYPE_SOURCE_TO_RELATED") {
+      const target = repair.targetPageId;
+      return !(live.sourceRelationIds ?? []).includes(target) && (live.semanticRelatedIds ?? []).includes(target);
+    }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
       return !(live.canonicalParentIds ?? []).includes(repair.targetPageId);
     }
@@ -192,6 +215,26 @@ function edgeRepairDrift(node, live) {
       const hasOld = related.includes(oldTarget);
       const hasNew = related.includes(newTarget);
       if (!hasOld && !hasNew) drift.push(`edgeRepairSourceMissing:${oldTarget}`);
+      continue;
+    }
+    if (repair.action === "REMOVE_RELATED_DOMAIN") {
+      const target = repair.targetPageId;
+      if (!target) {
+        drift.push("REMOVE_RELATED_DOMAIN:targetPageIdMissing");
+        continue;
+      }
+      if (!(live.relatedDomainIds ?? []).includes(target)) drift.push(`edgeRepairSourceMissing:${target}`);
+      continue;
+    }
+    if (repair.action === "RETYPE_SOURCE_TO_RELATED") {
+      const target = repair.targetPageId;
+      if (!target) {
+        drift.push("RETYPE_SOURCE_TO_RELATED:targetPageIdMissing");
+        continue;
+      }
+      const hasSource = (live.sourceRelationIds ?? []).includes(target);
+      const hasRelated = (live.semanticRelatedIds ?? []).includes(target);
+      if (!hasSource && !hasRelated) drift.push(`edgeRepairSourceMissing:${target}`);
       continue;
     }
     if (repair.action === "REMOVE_CANONICAL_PARENT") {
