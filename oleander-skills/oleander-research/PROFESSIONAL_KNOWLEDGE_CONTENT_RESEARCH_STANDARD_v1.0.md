@@ -2,6 +2,8 @@
 
 Status: **EXECUTION CONTRACT / GOVERNANCE EXTENSION**. This document extends the existing OLEANDER Authority, Control Plane, Knowledge Retrieval & Lifecycle, and `oleander-research` Skill. It is **not** a new Authority, Registry, taxonomy, Method family, Project State, or parallel knowledge system.
 
+Sync state｜同步状态：**GitHub execution mirror saved; Notion Current Authority remains the canonical Source of Truth and must carry the corresponding current rule binding before this contract is treated as cross-platform synchronized.**
+
 Authority boundary｜权威边界：
 
 `NOTION CURRENT AUTHORITY → LIVE REGISTRY IDENTITY → CURRENT OBJECT / RELATIONS → THIS EXECUTION CONTRACT → GITHUB SKILL / VALIDATOR`
