@@ -469,7 +469,16 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "正文明确分出 Performance/Music、Museum/Gallery、Library/Knowledge、Sport/Event 四个子类型，以共用 mission/program/audience/operator/backstage/system/evidence 轴比较并路由各自专项要求。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-81aa-9f26-f1039f5b3fea",
+          "targetCanonicalId": "FW-ARCH-TYPOLOGY-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 19,
@@ -489,7 +498,16 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body separates Structure/Fire/Civil Defense/Accessibility into independent responsibility tracks and only coordinates interfaces/evidence closure.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 20,
@@ -529,7 +547,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body organizes many periods/regions/institutions/materials into comparison clusters and source routes while explicitly withholding a single unified explanatory conclusion.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 22,
@@ -549,7 +576,16 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body routes six independently meaningful MEP tracks and defines their architectural interfaces, commissioning evidence and closure boundaries.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 23,
@@ -569,7 +605,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body distinguishes typology, urban morphology and space syntax as separate analysis tracks and routes question→representation→method→evidence→decision while delegating formulas/software specifics downward.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 24,
@@ -609,7 +654,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body orchestrates legal status, significance, condition/risk, stakeholders, intervention, reuse, specialist evidence, permission and monitoring as a reusable heritage decision flow with explicit transfer limits.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 26,
@@ -643,6 +697,13 @@
           ],
           "evidenceStrength": "PROVEN_LIVE_OR_DIAGNOSTIC_CURRENT",
           "sourceDecision": "Batch 01 live preflight + OLEANDER_KNOWLEDGE_GRAPH_NODE_MIGRATION_20260914.json"
+        },
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
         }
       ]
     },
@@ -704,7 +765,16 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body coordinates boundary/rights, survey, geotech, planning, climate/ecology, mobility and utilities as independent evidence/professional packages with authority gates.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 30,
@@ -899,7 +969,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body converts rights/law, accessibility, participation governance, equity distribution and feedback/appeal into a repeatable architectural decision chain while keeping underlying theory/method owners separate.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 36,
@@ -919,7 +998,16 @@
       "migrationAction": "TYPE_ASSIGN",
       "confidence": "HIGH",
       "reason": "Body explicitly routes legal/approval, technical compliance, environmental/health and sustainability-target responsibilities to distinct source/project evidence and closure paths.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 37,
@@ -939,7 +1027,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "Body is a global comparative survey/routing structure across media, periods, institutions and regional topic booklets and explicitly frames its visual-analysis card as non-validated method, so navigation/synthesis dominates theory.",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3bbb86be-5c47-8130-8e3d-ed7e199570cb",
+          "targetCanonicalId": "FW-DESIGN-THEORY-HISTORY-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 38,
@@ -959,7 +1056,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "正文把多个区域、时期与独立 L5/L6 历史对象放入共同比较维度和补全路由，并明确六项检查不是通用因果模型，因此不可约价值是跨对象史学组织而非自有解释理论。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+          "targetCanonicalId": "IDX-ARCH-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 39,
@@ -979,7 +1085,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "正文以仪式、赞助、公共文化、学院、博物馆、媒介和平台等并行制度板块组织多个独立专题，并将具体结论下沉 L5/L6，主要承担比较与研究入口而非单一解释命题。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3bbb86be-5c47-8130-8e3d-ed7e199570cb",
+          "targetCanonicalId": "FW-DESIGN-THEORY-HISTORY-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 40,
@@ -999,7 +1114,16 @@
       "migrationAction": "ROLE_RECLASSIFY",
       "confidence": "HIGH",
       "reason": "正文用跨区域、生产、媒介、制度、服务与数字系统的问题轴组织多组独立历史对象并维护区域补全队列，且明确分析卡不是普遍定义或评分理论。",
-      "status": "PENDING"
+      "status": "PENDING",
+      "edgeRepairs": [
+        {
+          "action": "RETYPE_CANONICAL_PARENT_TO_RELATED",
+          "targetPageId": "3bbb86be-5c47-8130-8e3d-ed7e199570cb",
+          "targetCanonicalId": "FW-DESIGN-THEORY-HISTORY-001",
+          "evidenceStrength": "PROVEN_LIVE",
+          "sourceDecision": "LIVE_BATCH_STRUCTURAL_SCAN_20260914"
+        }
+      ]
     },
     {
       "sequence": 41,
@@ -1208,5 +1332,10 @@
     }
   ],
   "resumePolicy": "ALREADY_TARGET objects are read-only skipped; partially changed objects must still match original guarded state or fail closed.",
-  "edgeRepairPolicy": "Known PROVEN_LIVE same-level structural-parent conflicts are atomically retyped to semantic Related during the same object mutation."
+  "edgeRepairPolicy": "Known PROVEN_LIVE same-level structural-parent conflicts are atomically retyped to semantic Related during the same object mutation.",
+  "structuralScan": {
+    "generatedAt": "2026-09-14T07:58:15.524Z",
+    "source": "live preflight R3 + full node migration ledger",
+    "rule": "L4 same-level structural parent/child -> Related; L4 child pointing to L6 SOURCE/EVIDENCE/CASE -> Source relation; preserve true L4->L5 hierarchy."
+  }
 }
