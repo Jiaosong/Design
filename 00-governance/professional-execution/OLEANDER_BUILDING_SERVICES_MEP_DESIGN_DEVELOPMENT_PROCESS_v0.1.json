@@ -1,0 +1,112 @@
+{
+  "schema": "OLEANDER_BUILDING_SERVICES_MEP_DESIGN_DEVELOPMENT_PROCESS_v0.1",
+  "status": "DRAFT_RESEARCH_PROCESS_NOT_CURRENT",
+  "process_id": "MEP-DD-v0.1-CANDIDATE",
+  "title": "Building Services / MEP Design Development Process",
+  "domain": "BUILDING_SERVICES_MEP",
+  "semantic_owner": "PROFESSIONAL_DOMAIN_EXECUTION",
+  "contract_ref": "OLEANDER_DOMAIN_EXECUTION_PROCESS_CONTRACT_v0.1.json",
+  "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+  "source_refs": [
+    "https://www.cibse.org/knowledge-research/knowledge-resources/engineering-guidance/cibse-codes-of-practice/",
+    "https://www.architecture.com/-/media/GatherContent/Test-resources-page/Additional-Documents/2020RIBAPlanofWorkoverviewpdf.pdf"
+  ],
+  "source_boundary": "CIBSE stage-oriented Codes of Practice and the RIBA Plan of Work reference to BSRIA BG6 inform the process structure. Exact technical criteria remain discipline-, system-, code-, climate- and project-specific and are not invented by this draft.",
+  "stages": [
+    {
+      "stage_id": "MEP-00",
+      "stage_name": "Strategic Services Definition",
+      "purpose": "Establish building-services outcomes, environmental targets, operational strategy, resilience needs, utility constraints and service scope.",
+      "required_outputs": ["services_scope", "performance_objectives", "utility_and_infrastructure_unknowns", "initial_energy_environment_operations_strategy"],
+      "critical_interfaces": ["CLIENT", "ARCHITECTURE", "ENERGY_SUSTAINABILITY", "UTILITIES", "OPERATIONS"],
+      "exit_conditions": ["goals_and_responsibilities_declared", "critical_utility_unknowns_owned", "no_load_or_capacity_assumption_promoted_to fact"]
+    },
+    {
+      "stage_id": "MEP-01",
+      "stage_name": "Basis of Design and Requirements",
+      "purpose": "Translate brief, occupancy, climate, process loads, comfort, indoor-environment, water, electrical, fire/life-safety and operational requirements into a controlled basis of design.",
+      "required_outputs": ["basis_of_design", "load_input_register", "system_requirements", "design_responsibility_matrix", "investigation_and_metering_needs"],
+      "critical_interfaces": ["ARCHITECTURE", "OPERATIONS", "FIRE", "SPECIALIST_SYSTEMS", "ENERGY"],
+      "exit_conditions": ["load_inputs_traceable", "design_conditions_and_assumptions_explicit", "responsibilities_assigned"]
+    },
+    {
+      "stage_id": "MEP-02",
+      "stage_name": "System Concept Selection",
+      "purpose": "Develop and compare HVAC, electrical, public-health/plumbing, controls and specialist-system concepts against performance, spatial, energy, cost, maintainability and resilience criteria.",
+      "required_outputs": ["system_options", "selected_system_concepts", "plant_and_riser_allowances", "preliminary_loads_and_capacity_ranges", "controls_concept"],
+      "critical_interfaces": ["ARCHITECTURAL_ZONES", "STRUCTURE", "ROOF_AND_PLANT", "RISERS", "FACADE", "UTILITIES"],
+      "exit_conditions": ["selection_basis_traceable", "major_space_and_utility_dependencies_declared", "capacity_ranges_not_presented_as_final_verified sizing"]
+    },
+    {
+      "stage_id": "MEP-03",
+      "stage_name": "Spatial Coordination",
+      "purpose": "Coordinate plant, risers, ducts, pipes, cable routes, terminal devices, maintenance zones, access, penetrations and service clearances with architecture and structure.",
+      "required_outputs": ["coordinated_services_zones", "riser_and_plant_layout", "major_distribution_routes", "penetration_and_access_requirements", "interface_register"],
+      "critical_interfaces": ["ARCHITECTURE", "STRUCTURE", "FIRE", "FACADE", "INTERIORS", "LIGHTING"],
+      "exit_conditions": ["material_clashes_resolved_or_owned", "maintenance_access_modeled", "shared_variables_have_change_authority"]
+    },
+    {
+      "stage_id": "MEP-04",
+      "stage_name": "Technical Design",
+      "purpose": "Develop calculations, equipment selections, distribution sizing, controls sequences, schematics and technical details to the required design-responsibility level.",
+      "required_outputs": ["technical_calculations", "equipment_selection_basis", "system_schematics", "controls_sequences", "coordinated_drawings_and_specs", "commissioning_requirements"],
+      "critical_interfaces": ["CONTROLS", "BMS", "FIRE_ALARM", "ELECTRICAL_POWER", "HYDRAULICS", "SPECIALISTS"],
+      "exit_conditions": ["assurance_targets_closed_for_declared_scope", "supplier_or_specialist_design boundaries explicit", "commissioning intent defined"]
+    },
+    {
+      "stage_id": "MEP-05",
+      "stage_name": "Production / Installation Information",
+      "purpose": "Translate technical design into coordinated installation, fabrication and specialist information while controlling substitutions and delegated design.",
+      "required_outputs": ["installation_information", "builders_work_information", "reviewed_specialist_submissions", "updated_schedules_and_sequences"],
+      "critical_interfaces": ["CONTRACTOR", "SPECIALIST_SUBCONTRACTORS", "STRUCTURE", "ARCHITECTURE"],
+      "exit_conditions": ["delegated_design_boundaries_clear", "material_changes_reassured", "installation_handoff_readback_complete"]
+    },
+    {
+      "stage_id": "MEP-06",
+      "stage_name": "Construction, Testing and Commissioning",
+      "purpose": "Support installation, manage technical changes, execute or review testing/commissioning evidence and resolve defects within assigned responsibilities.",
+      "required_outputs": ["change_records", "test_and_commissioning_results", "defect_and_issue_records", "controls_validation_records", "site_observation_or_witness_records_if_in_scope"],
+      "critical_interfaces": ["CONTRACTOR", "COMMISSIONING_MANAGER", "CONTROLS", "OPERATIONS", "AUTHORITIES_AS_APPLICABLE"],
+      "exit_conditions": ["commissioning_results_target_bound", "defects_owned", "simulation_design_values_and_measured_results_kept distinct"]
+    },
+    {
+      "stage_id": "MEP-07",
+      "stage_name": "Handover and Operational Readiness",
+      "purpose": "Transfer systems, setpoints, controls, maintenance, training and asset information to operations with residual risks and limitations explicit.",
+      "required_outputs": ["O&M_information", "commissioning_summary", "controls_and_setpoint_record", "training_and_handover_records", "asset_information", "residual_risk_items"],
+      "critical_interfaces": ["FACILITIES", "OPERATIONS", "CLIENT", "COMMISSIONING", "CONTROLS"],
+      "exit_conditions": ["operations_acceptance_scope_defined", "known_limitations_transferred", "as_operated_configuration identity established"]
+    },
+    {
+      "stage_id": "MEP-08",
+      "stage_name": "In-Use Evaluation and Tuning",
+      "purpose": "Evaluate actual system performance, comfort, energy/water use, controls behavior and maintainability; tune or reopen design decisions where evidence justifies it.",
+      "required_outputs": ["in_use_performance_findings", "tuning_actions", "operational_issues", "change_proposals", "G9_reuse_candidates_if_transferable"],
+      "critical_interfaces": ["FACILITIES", "OCCUPANTS", "ENERGY_MANAGEMENT", "CONTROLS"],
+      "exit_conditions": ["measured_and_inferred_performance_separated", "tuning_changes_configuration_bound", "cross_project lessons separately admitted"]
+    }
+  ],
+  "runtime_binding": {
+    "P0": "system_equipment_zone_riser_route_control_point_and_artifact_identity",
+    "P1": "basis_of_design_system_selection_specialist_change_and_commissioning_authority",
+    "P2": "system_option_selection_setpoint_control_and_change_decisions",
+    "P3": "comfort_load_capacity_energy_water_safety_operations_and_maintainability_requirements",
+    "P4": "plant_riser_distribution_penetration_access_control_and_cross_discipline_interfaces",
+    "P5": "basis_of_design_calculation_model_equipment_configuration_changes_and_staleness",
+    "P6": "calculation_simulation_product_data_testing_commissioning_and_in_use_assurance",
+    "P7": "capacity_resilience_installation_commissioning_controls_and_operational_uncertainty",
+    "P8": "models_schematics_calculations_specs_controls_sequences_test_reports_and_handoffs",
+    "P9": "cross_project_MEP_method_admission_only_via_G9",
+    "P10": "system_diagrams_dashboards_and_visualization_do_not_raise_engineering_claim_ceiling",
+    "P11": "reader_preserves_design_simulation_commissioning_measured_and_operational_states"
+  },
+  "hard_boundaries": [
+    "LOAD_ESTIMATE_IS_NOT_MEASURED_DEMAND",
+    "SPATIAL_CLEARANCE_PASS_IS_NOT_SYSTEM_PERFORMANCE_PASS",
+    "MANUFACTURER_SELECTION_DATA_IS_NOT_INSTALLED_SYSTEM_VERIFICATION",
+    "SIMULATION_PASS_IS_NOT_COMMISSIONING_PASS",
+    "COMMISSIONING_PASS_IS_TARGET_AND_CONFIGURATION_SPECIFIC",
+    "BUILDING_MANAGEMENT_SYSTEM_VISIBLE_DATA_IS_NOT_AUTOMATIC_SENSOR_TRUTH_WITHOUT_POINT_IDENTITY_AND_CALIBRATION_CONTEXT"
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_PROCESS_ONLY"
+}
