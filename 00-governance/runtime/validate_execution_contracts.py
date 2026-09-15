@@ -391,6 +391,55 @@ def validate_receipts() -> None:
     if not contract_path.is_file():
         fail("runtime-layer handoff contract ref missing")
 
+    recovery_ext = schema.get("recovery_incident_extension", {})
+    require_fields(
+        recovery_ext,
+        [
+            "required_when",
+            "prospective_only",
+            "historical_receipts_immutable",
+            "contract_ref",
+            "fields",
+            "required_fields",
+            "conditional_fields",
+            "incident_state_is_local_only",
+            "closed_requires_actual_recovery_readback",
+            "unaffected_verified_state_preserved",
+            "reaccept_only_affected_handoffs_after_readback",
+            "telemetry_only_event_no_new_receipt",
+            "no_material_delta_no_new_receipt",
+        ],
+        "execution-receipt:recovery-incident-extension",
+    )
+    expected_recovery_fields = {
+        "incident_id", "failure_class", "failure_code", "failure_owner_ref", "detected_at", "owning_layer",
+        "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision",
+        "trigger_source_ref", "trigger_event_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure",
+        "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove",
+    }
+    if set(recovery_ext.get("fields", [])) != expected_recovery_fields:
+        fail("recovery-incident extension fields drift")
+    expected_recovery_required_fields = expected_recovery_fields - {"failure_code", "trigger_event_ref"}
+    if set(recovery_ext.get("required_fields", [])) != expected_recovery_required_fields:
+        fail("recovery-incident required fields drift")
+    if set(recovery_ext.get("conditional_fields", {})) != {"failure_code", "trigger_event_ref"}:
+        fail("recovery-incident conditional fields drift")
+    if recovery_ext.get("prospective_only") is not True or recovery_ext.get("historical_receipts_immutable") is not True:
+        fail("recovery-incident extension must be prospective and preserve historical receipts")
+    if recovery_ext.get("incident_state_is_local_only") is not True:
+        fail("recovery incident state must remain incident-local")
+    if recovery_ext.get("closed_requires_actual_recovery_readback") is not True:
+        fail("recovery incident closure must require actual readback")
+    if recovery_ext.get("unaffected_verified_state_preserved") is not True:
+        fail("recovery incident must preserve unaffected verified state")
+    if recovery_ext.get("reaccept_only_affected_handoffs_after_readback") is not True:
+        fail("recovery may only reaccept affected handoffs after readback")
+    if recovery_ext.get("telemetry_only_event_no_new_receipt") is not True or recovery_ext.get("no_material_delta_no_new_receipt") is not True:
+        fail("telemetry/no-delta recovery observations may not create a new receipt")
+    recovery_contract_path = ROOT / recovery_ext.get("contract_ref", "")
+    if not recovery_contract_path.is_file():
+        fail("recovery-incident contract ref missing")
+
     branch_ref = schema.get("branch_ref_disposition_extension", {})
     require_fields(
         branch_ref,
@@ -436,6 +485,12 @@ def validate_receipts() -> None:
         if review.get("reviewer_independence_state") == "INDEPENDENT" and review.get("producer_id") == review.get("reviewer_id"):
             fail(f"receipt:{path.name} independent reviewer cannot equal producer")
         require_fields(r.get("closure", {}), closure_fields, f"receipt:{path.name}:closure")
+        if "recovery_incident" in r:
+            incident = r["recovery_incident"]
+            require_present_fields(incident, expected_recovery_required_fields, f"receipt:{path.name}:recovery-incident")
+            for field in {"failure_code", "trigger_event_ref"}:
+                if field in incident and incident[field] in (None, ""):
+                    fail(f"receipt:{path.name}:recovery-incident conditional field {field} may not be empty when present")
 
 
 def validate_lifecycle_baseline(capability: dict) -> None:

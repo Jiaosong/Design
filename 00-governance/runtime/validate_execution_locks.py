@@ -653,6 +653,39 @@ def validate_receipt_contract() -> dict:
     if handoff_ext.get("prospective_only") is not True or handoff_ext.get("historical_receipts_immutable") is not True:
         fail("Receipt runtime-layer handoff extension must remain prospective")
 
+    recovery_ext = data.get("recovery_incident_extension", {})
+    expected_recovery_required_when = "MATERIAL_FAILURE_OR_CONTRADICTION_REQUIRES_CONTAINMENT_RECOVERY_OR_RECOVERY_CLOSURE_TO_SUPPORT_CONTINUATION_REVIEW_OR_PROMOTION"
+    if recovery_ext.get("required_when") != expected_recovery_required_when:
+        fail("Receipt recovery-incident extension missing or invalid")
+    required_recovery_fields = {
+        "incident_id", "failure_class", "failure_code", "failure_owner_ref", "detected_at", "owning_layer",
+        "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision",
+        "trigger_source_ref", "trigger_event_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure",
+        "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove",
+    }
+    if set(recovery_ext.get("fields", [])) != required_recovery_fields:
+        fail("Receipt recovery-incident fields incomplete or drifted")
+    required_recovery_instance_fields = required_recovery_fields - {"failure_code", "trigger_event_ref"}
+    if set(recovery_ext.get("required_fields", [])) != required_recovery_instance_fields:
+        fail("Receipt recovery-incident required fields incomplete or drifted")
+    if set(recovery_ext.get("conditional_fields", {})) != {"failure_code", "trigger_event_ref"}:
+        fail("Receipt recovery-incident conditional fields drift")
+    if recovery_ext.get("prospective_only") is not True or recovery_ext.get("historical_receipts_immutable") is not True:
+        fail("Receipt recovery-incident extension must remain prospective")
+    if recovery_ext.get("incident_state_is_local_only") is not True:
+        fail("Receipt recovery-incident lifecycle must remain incident-local")
+    if recovery_ext.get("closed_requires_actual_recovery_readback") is not True:
+        fail("Receipt recovery-incident closure must require actual readback")
+    if recovery_ext.get("unaffected_verified_state_preserved") is not True:
+        fail("Receipt recovery-incident must preserve unaffected verified state")
+    if recovery_ext.get("reaccept_only_affected_handoffs_after_readback") is not True:
+        fail("Receipt recovery may only reaccept affected handoffs after readback")
+    if recovery_ext.get("telemetry_only_event_no_new_receipt") is not True or recovery_ext.get("no_material_delta_no_new_receipt") is not True:
+        fail("Receipt recovery extension must not persist telemetry-only/no-delta observations")
+    recovery_contract = RUNTIME / "OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
+    if recovery_ext.get("contract_ref") != str(recovery_contract.relative_to(ROOT)).replace("\\", "/") or not recovery_contract.is_file():
+        fail("Receipt recovery-incident contract ref missing or drifted")
+
     checkpoint_ext = data.get("continuation_checkpoint_extension", {})
     if checkpoint_ext.get("required_when") != "SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS_AND_STATUS_IS_WORKING_OR_HOLD":
         fail("Receipt continuation checkpoint extension missing or invalid")
@@ -955,6 +988,7 @@ def validate_new_receipts(contract: dict) -> int:
     route_fields = contract.get("adapter_route_decision_extension", {}).get("fields", [])
     concurrency_fields = contract.get("concurrency_guard_extension", {}).get("fields", [])
     idempotency_fields = contract.get("remote_mutation_idempotency_extension", {}).get("fields", [])
+    recovery_incident_fields = contract.get("recovery_incident_extension", {}).get("required_fields", [])
     current_policy_count = 0
 
     for path in sorted(RECEIPT_DIR.glob("*.json")):
@@ -990,6 +1024,24 @@ def validate_new_receipts(contract: dict) -> int:
             require_present(r["concurrency_guard"], concurrency_fields, f"receipt:{rid}:concurrency_guard")
         if "remote_mutation_idempotency" in r:
             require_present(r["remote_mutation_idempotency"], idempotency_fields, f"receipt:{rid}:remote_mutation_idempotency")
+        if "recovery_incident" in r:
+            incident = r["recovery_incident"]
+            require_present(incident, recovery_incident_fields, f"receipt:{rid}:recovery_incident")
+            for field in {"failure_code", "trigger_event_ref"}:
+                if field in incident and incident[field] in (None, ""):
+                    fail(f"receipt:{rid} recovery_incident conditional field {field} may not be empty when present")
+            containment = incident.get("containment")
+            recovery = incident.get("recovery")
+            incident_closure = incident.get("closure")
+            if not isinstance(containment, dict) or not isinstance(recovery, dict) or not isinstance(incident_closure, dict):
+                fail(f"receipt:{rid} recovery_incident containment/recovery/closure must be objects")
+            if incident.get("incident_state") == "CLOSED":
+                if containment.get("containment_complete") is not True:
+                    fail(f"receipt:{rid} CLOSED recovery incident requires containment_complete=true")
+                if not incident_closure.get("recovery_readback_ref"):
+                    fail(f"receipt:{rid} CLOSED recovery incident requires recovery_readback_ref")
+                if not incident_closure.get("resume_condition") or not incident_closure.get("resume_decision_owner_ref"):
+                    fail(f"receipt:{rid} CLOSED recovery incident requires explicit resume condition and owner")
         if r.get("status") == "CLOSED":
             if flow.get("completion_gate") != "PASS":
                 fail(f"receipt:{rid} CLOSED requires completion_gate PASS")

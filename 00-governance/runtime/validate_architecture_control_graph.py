@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GRAPH = ROOT / "00-governance" / "runtime" / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
 LAYER_INTERFACE = ROOT / "00-governance" / "runtime" / "OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+OBSERVABILITY_RECOVERY = ROOT / "00-governance" / "runtime" / "OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
 EXPECTED_LAYERS = ["R-A", "R-B", "R-C", "R-D", "R-E", "R-F", "R-G", "R-H", "R-I", "R-J", "R-K"]
 EXPECTED_PLANES = {"CONTROL_PLANE", "STATE_PLANE", "ACQUISITION_READER_PLANE", "EXECUTION_PLANE", "OBSERVABILITY_PLANE", "EVOLUTION_PLANE"}
 EXPECTED_MATURITY = {
@@ -235,6 +236,132 @@ def validate_layer_interface_contract(graph: dict, layers_by_id: dict[str, dict]
         fail("R-K feedback may not be represented as a dependency handoff")
 
 
+def validate_observability_recovery_contract(graph: dict, layers_by_id: dict[str, dict]) -> None:
+    ref = graph.get("observability_recovery_contract_ref")
+    expected_ref = "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
+    if ref != expected_ref:
+        fail("observability/recovery contract pointer drift")
+    check_ref(ref)
+    try:
+        contract = json.loads(OBSERVABILITY_RECOVERY.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"cannot load observability/recovery contract: {exc}")
+
+    if contract.get("schema") != "oleander.observability-recovery-contract.v1":
+        fail("observability/recovery schema drift")
+    if contract.get("version") != "1.0" or contract.get("status") != "ACTIVE_CURRENT_CONTRACT":
+        fail("observability/recovery contract must be ACTIVE_CURRENT_CONTRACT v1.0")
+    if contract.get("architecture_ref") != graph.get("canonical_markdown_ref"):
+        fail("observability/recovery architecture pointer drift")
+    if contract.get("control_graph_ref") != "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json":
+        fail("observability/recovery control-graph pointer drift")
+    if contract.get("layer_interface_ref") != graph.get("runtime_layer_interface_contract_ref"):
+        fail("observability/recovery layer-interface pointer drift")
+    if contract.get("execution_receipt_ref") != "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json":
+        fail("observability/recovery execution-receipt pointer drift")
+    check_ref(contract["execution_receipt_ref"])
+
+    observability = contract.get("observability", {})
+    if observability.get("semantic_class") != "READ_ONLY_OR_RECEIPT_BACKED_PROJECTION":
+        fail("observability event must remain a read-only or receipt-backed projection")
+    if observability.get("authority_ceiling") != "OBSERVABILITY_ONLY":
+        fail("observability authority ceiling must remain OBSERVABILITY_ONLY")
+    if set(observability.get("snapshot_required_fields", [])) != REQUIRED_OBSERVABILITY:
+        fail("observability/recovery snapshot fields drift from architecture observability contract")
+    event_fields = set(observability.get("event_core_required_fields", []))
+    for required in {
+        "event_id", "event_type", "project_or_scope_id", "decision_object_id", "owner_ref",
+        "authority_fingerprint", "source_revision", "source_ref", "object_refs", "observed_at", "does_not_prove",
+    }:
+        if required not in event_fields:
+            fail(f"observability event core field missing: {required}")
+    if observability.get("event_type_is_state_family") is not False:
+        fail("observability event type may not become a state family")
+    conditional = observability.get("event_conditional_fields", {})
+    for required in {"current_task_id", "runtime_layer_id", "checkpoint_sequence", "handoff_refs", "incident_ref", "readback_refs", "failure_class", "failure_code"}:
+        if required not in conditional:
+            fail(f"observability conditional event field missing: {required}")
+    if observability.get("authority_resolution_rule") != "AN_OBSERVABILITY_EVENT_MAY_POINT_TO_OWNER_NATIVE_EVIDENCE_BUT_NEVER_OUTRANK_OR_REPLACE_THAT_OWNER_NATIVE_SOURCE":
+        fail("observability event may not outrank owner-native authority")
+    live = observability.get("live_projection", {})
+    if live.get("version") != "oleander-execution-live-status/v1":
+        fail("execution live-status projection version drift")
+    check_ref(live.get("publisher_ref"))
+    if set(live.get("required_fields", [])) != {"version", "task_id", "executor_id", "checkpoint_sequence", "status"}:
+        fail("execution live-status required-field contract drift")
+    if set(live.get("allowed_status_values", [])) != {"WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"}:
+        fail("execution live-status status vocabulary drift")
+    if live.get("projection_is_project_state") is not False or live.get("projection_is_authority") is not False:
+        fail("execution live-status must remain non-authoritative observability")
+    if live.get("durable_event_or_incident_store") is not False or live.get("event_history_must_not_be_added_to_runtime_state") is not True:
+        fail("runtime_state may not become a durable event/incident authority store")
+    if live.get("newer_checkpoint_sequence_wins") is not True or live.get("same_sequence_requires_identical_stable_payload") is not True:
+        fail("execution live-status checkpoint concurrency guard drift")
+
+    incident = contract.get("recovery_incident", {})
+    if incident.get("semantic_class") != "BOUNDED_INCIDENT_LIFECYCLE_NOT_PROJECT_STATE_FAMILY":
+        fail("recovery incident must remain bounded and separate from Project State")
+    if incident.get("lifecycle_scope") != "INCIDENT_LOCAL_ONLY":
+        fail("recovery incident lifecycle must remain incident-local")
+    if incident.get("owning_layer_values") != EXPECTED_LAYERS:
+        fail("recovery incident owning-layer vocabulary must be exactly R-A..R-K")
+    incident_fields = set(incident.get("required_fields", []))
+    for required in {
+        "incident_id", "failure_class", "failure_owner_ref", "owning_layer",
+        "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint",
+        "source_revision", "trigger_source_ref", "blast_radius", "preserved_state", "containment",
+        "recovery", "closure", "incident_state", "remaining_blockers", "next_allowed_action", "does_not_prove",
+    }:
+        if required not in incident_fields:
+            fail(f"recovery incident required field missing: {required}")
+    incident_conditional = incident.get("conditional_fields", {})
+    if set(incident_conditional) != {"failure_code", "trigger_event_ref"}:
+        fail("recovery incident conditional-field contract drift")
+    recovery = graph.get("recovery", {})
+    if set(incident.get("failure_classes", [])) != set(recovery.get("failure_classes", {}).keys()):
+        fail("recovery incident failure-class vocabulary drift from architecture recovery owner")
+    if incident.get("failure_class_actions") != recovery.get("failure_classes"):
+        fail("recovery incident failure actions drift from architecture recovery owner")
+    if incident.get("recovery_sequence", []) != recovery.get("sequence", []):
+        fail("recovery incident sequence drift from architecture recovery owner")
+    if not {"affected_layer_ids", "affected_handoff_refs", "affected_consumer_refs", "affected_claim_refs", "unaffected_verified_refs"}.issubset(set(incident.get("blast_radius_required_fields", []))):
+        fail("recovery blast-radius contract incomplete")
+    if "last_verified_state_refs" not in set(incident.get("preserved_state_required_fields", [])):
+        fail("recovery must preserve last verified state refs")
+    if not {"unsafe_or_duplicate_mutation_stopped", "containment_evidence_refs", "containment_complete"}.issubset(set(incident.get("containment_required_fields", []))):
+        fail("recovery containment contract incomplete")
+    if not {"selected_smallest_valid_action", "required_postcondition", "required_readback", "affected_review_rerun_refs", "affected_handoff_reacceptance_refs"}.issubset(set(incident.get("recovery_required_fields", []))):
+        fail("recovery action/readback contract incomplete")
+    if not {"recovery_readback_ref", "closure_evidence_refs", "resume_condition", "resume_decision_owner_ref"}.issubset(set(incident.get("closure_required_fields", []))):
+        fail("recovery closure/resume contract incomplete")
+    if incident.get("allowed_transitions", {}).get("CLOSED") != []:
+        fail("closed incident must be terminal until an explicit reopen condition creates a new material incident/reopen decision")
+    if incident.get("closed_incident_reentry_rule") != "A_NEW_MATERIAL_FAILURE_OR_CONTRADICTION_AFTER_CLOSURE_CREATES_A_SUCCESSOR_INCIDENT_OR_AN_EXPLICIT_OWNER_REOPEN_RECORD_WITH_PROVENANCE; THE_CLOSED_RECORD_IS_NOT_SILENTLY_REWRITTEN":
+        fail("closed recovery incident may not be silently rewritten")
+    incident_rules = set(incident.get("hard_rules", []))
+    for required in {
+        "INCIDENT_STATE_IS_NOT_PROJECT_STATE_JOB_STATE_REVIEW_STATE_OR_HANDOFF_STATE",
+        "FAILURE_DOES_NOT_ERASE_UNRELATED_VERIFIED_STATE",
+        "RECOVERY_SCOPE_IS_SMALLEST_VALID_BLAST_RADIUS",
+        "CLOSED_REQUIRES_POST_RECOVERY_READBACK",
+        "RECOVERY_MAY_REACCEPT_AFFECTED_HANDOFFS_ONLY_AFTER_REQUIRED_READBACK",
+        "UNRELATED_HANDOFFS_AND_REVIEWS_ARE_NOT_REOPENED_BY_DEFAULT",
+        "REMOTE_UNCERTAINTY_USES_VERIFY_BEFORE_RETRY",
+    }:
+        if required not in incident_rules:
+            fail(f"recovery incident hard rule missing: {required}")
+
+    binding = contract.get("execution_receipt_binding", {})
+    if binding.get("prospective_only") is not True or binding.get("historical_receipts_immutable") is not True:
+        fail("recovery incident receipt binding must remain prospective and preserve history")
+    if binding.get("receipt_field") != "recovery_incident":
+        fail("recovery incident receipt field drift")
+    if binding.get("telemetry_only_event_must_not_create_receipt") is not True:
+        fail("telemetry-only events may not create execution receipts")
+    if binding.get("existing_receipt_remains_execution_truth_carrier") is not True:
+        fail("recovery contract may not replace the Execution Receipt truth carrier")
+
+
 def main() -> None:
     graph = load_graph()
 
@@ -319,6 +446,7 @@ def main() -> None:
 
     validate_dag(layers_by_id)
     validate_layer_interface_contract(graph, layers_by_id, plane_ids)
+    validate_observability_recovery_contract(graph, layers_by_id)
 
     feedback = graph.get("feedback_edges", [])
     if not feedback:
@@ -578,6 +706,13 @@ def main() -> None:
         "PRODUCER_CANNOT_SELF_ACCEPT_HANDOFF",
         "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
         "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
+        "OBSERVABILITY_EVENT_NOT_AUTHORITY",
+        "RECOVERY_INCIDENT_NOT_PROJECT_STATE",
+        "RECOVERY_BLAST_RADIUS_PRESERVES_UNAFFECTED_VALID_STATE",
+        "RECOVERY_CLOSURE_REQUIRES_ACTUAL_READBACK",
+        "INCIDENT_CLOSED_DOES_NOT_PROVE_DESIGN_PROFESSIONAL_OR_PROMOTION_PASS",
+        "RECOVERY_REACCEPTS_ONLY_AFFECTED_HANDOFFS_AFTER_REQUIRED_READBACK",
+        "LIVE_STATUS_REMAINS_OBSERVABILITY_ONLY",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -597,6 +732,7 @@ def main() -> None:
     print("execution_frontier_concurrency=PASS")
     print("current_drift_reconciliation_projection=PASS")
     print("runtime_layer_interfaces=PASS")
+    print("observability_recovery_contract=PASS")
 
 
 if __name__ == "__main__":
