@@ -45,6 +45,25 @@ EXECUTABLE_SNAPSHOT_RULES = {
     "P5/CSA-RP02",
     "P5/CONC-RP04",
     "P6/ASR-RP02",
+    "P6/APP-RP04",
+    "P6/ADM-RP04",
+    "P6/APP-RP05",
+    "P6/TGT-RP01",
+    "P6/INDP-RP02",
+    "P6/CEIL-RP04",
+    "P6/RDY-RP02",
+    "P6/CEIL-RP05",
+    "P6/TRF-RP01",
+    "P6/CONTRA-RP02",
+    "P6/UNC-RP02",
+    "P6/UNC-RP03",
+    "P6/UNC-RP04",
+    "P6/DISP-RP02",
+    "P6/IND-RP02",
+    "P6/INDP-RP03",
+    "P6/INDP-RP04",
+    "P6/CONTRA-RP03",
+    "P6/CEIL-RP06",
     "P7/OPEN-RP01",
     "P9/CORPUS-RP01",
     "P9/TERM-RP01",
@@ -415,6 +434,141 @@ def snapshot_checks(s: dict[str, Any]) -> list[Finding]:
             if isinstance(tr, dict) and len(set(tr.values())) > 1 and o.get("summary_result") in {"PASS","FAIL"} and not o.get("aggregation_policy"):
                 out.append(Finding("P6/ASR-RP02","FAIL","S3_MAJOR",oid(o),"mixed target results require explicit aggregation policy",{"target_results":tr,"summary_result":o.get("summary_result")}))
 
+            disposition = o.get("disposition") or o.get("summary_result")
+            material_dims = set(o.get("material_applicability_dimensions", []))
+            resolved_dims = set(o.get("resolved_applicability_dimensions", []))
+            missing_dims = sorted(material_dims - resolved_dims)
+            if o.get("evidence_acquisition_state") == "ACQUIRED" and o.get("target_admissibility") in {"NOT_EVALUATED","APPLICABILITY_UNRESOLVED","REJECTED"} and disposition == "PASS":
+                out.append(Finding(
+                    "P6/ADM-RP04","FAIL","S3_MAJOR",oid(o),
+                    "acquired evidence cannot be treated as target-admissible by acquisition state alone",
+                    {"target_admissibility":o.get("target_admissibility")},
+                ))
+            if o.get("direct_project_closure_claimed") is True and missing_dims:
+                out.append(Finding(
+                    "P6/APP-RP04","FAIL","S3_MAJOR",oid(o),
+                    "direct project assurance cannot close while material applicability dimensions remain unresolved",
+                    {"unresolved_dimensions":missing_dims},
+                ))
+                if o.get("evidence_source_kind") in {"EXTERNAL_REFERENCE","VENDOR_EVIDENCE","PRECEDENT","STANDARD_REFERENCE"}:
+                    out.append(Finding(
+                        "P6/APP-RP05","FAIL","S3_MAJOR",oid(o),
+                        "external/reference/vendor evidence requires explicit target applicability before direct project closure",
+                        {"unresolved_dimensions":missing_dims},
+                    ))
+
+            if o.get("assurance_target_id") and o.get("result_reused_for_target_id") and o.get("assurance_target_id") != o.get("result_reused_for_target_id") and not o.get("separate_target_decision_ref"):
+                out.append(Finding(
+                    "P6/TGT-RP01","FAIL","S4_CRITICAL",oid(o),
+                    "assurance PASS cannot be reused across a different target identity without a separate target decision",
+                    {"source_target":o.get("assurance_target_id"),"reused_target":o.get("result_reused_for_target_id")},
+                ))
+
+            required_independence = o.get("required_independence_level")
+            if o.get("review_performer_relationship") in {"PRODUCER","REPAIRER","PRODUCER_OR_REPAIRER"} and required_independence in {"INDEPENDENT_PROJECT_REVIEW","EXTERNAL_SPECIALIST","AUTHORIZED_PROFESSIONAL_OR_BODY"} and (o.get("independent_review_status") == "PASS" or o.get("downstream_active_granted") is True):
+                out.append(Finding(
+                    "P6/INDP-RP02","FAIL","S4_CRITICAL",oid(o),
+                    "producer/repair retest cannot satisfy a required independent review or grant dependent active state",
+                    {"required_independence_level":required_independence},
+                ))
+
+            if disposition == "PASS" and o.get("promotion_ambiguity_possible") is True:
+                missing_boundary_fields = [k for k in ("grants","leaves_unchanged","excludes","does_not_establish") if k not in o]
+                if missing_boundary_fields:
+                    out.append(Finding(
+                        "P6/CEIL-RP04","FAIL","S3_MAJOR",oid(o),
+                        "PASS with promotion ambiguity must name granted, unchanged, excluded and non-established boundaries",
+                        {"missing":missing_boundary_fields},
+                    ))
+            if disposition == "PASS" and o.get("adjacent_high_risk_claims") and not o.get("does_not_establish"):
+                out.append(Finding(
+                    "P6/CEIL-RP05","FAIL","S3_MAJOR",oid(o),
+                    "assurance artifact that can be misread as broader proof must state adjacent high-risk claims it does not establish",
+                    {"adjacent_high_risk_claims":o.get("adjacent_high_risk_claims")},
+                ))
+            if o.get("output_role") in {"QUANTITATIVE_READINESS","LIMITED_ACCEPTANCE"} and o.get("source_evidence_quality_upgraded") is True:
+                out.append(Finding(
+                    "P6/RDY-RP02","FAIL","S3_MAJOR",oid(o),
+                    "readiness/limited-acceptance disposition cannot upgrade the quality class of its source evidence",
+                ))
+            if o.get("evidence_modality") in {"PROTOTYPE","SIMULATION","RENDER","CALIBRATION"} and o.get("claim_target_modality") in {"FIELD_OPERATIONAL","FIELD_MEASURED","REAL_USE_VALIDATION"} and disposition == "PASS" and not o.get("validation_bridge_ref"):
+                out.append(Finding(
+                    "P6/TRF-RP01","FAIL","S4_CRITICAL",oid(o),
+                    "prototype/simulation/render/calibration evidence cannot directly close field/real-use claim without an explicit validation bridge",
+                ))
+            if o.get("invalid_or_inapplicable_for_target") is True and (o.get("retained_in_current_assurance_basis") is True or not o.get("correction_lineage_ref")):
+                out.append(Finding(
+                    "P6/CONTRA-RP02","FAIL","S3_MAJOR",oid(o),
+                    "invalid/inapplicable evidence must leave the current assurance basis while preserving correction lineage",
+                    {"retained_in_current_assurance_basis":o.get("retained_in_current_assurance_basis"),"correction_lineage_ref":o.get("correction_lineage_ref")},
+                ))
+
+            if o.get("decision_rule_material") is True:
+                if disposition == "PASS" and not o.get("decision_rule_id"):
+                    out.append(Finding(
+                        "P6/UNC-RP02","FAIL","S3_MAJOR",oid(o),
+                        "quantitative conformity PASS cannot be inferred from a point result when the decision rule/uncertainty is material but undefined",
+                    ))
+                if o.get("decision_rule_changes_acceptance_boundary") is True and o.get("acceptance_zone_declared") is not True:
+                    out.append(Finding(
+                        "P6/UNC-RP03","FAIL","S3_MAJOR",oid(o),
+                        "decision-rule-modified acceptance boundary must be declared separately from the source specification zone",
+                    ))
+                if o.get("source_requirement_rewritten_by_decision_rule") is True:
+                    out.append(Finding(
+                        "P6/UNC-RP04","FAIL","S4_CRITICAL",oid(o),
+                        "assurance decision rule cannot silently rewrite the source requirement/specification",
+                    ))
+                if o.get("uncertainty_or_decision_boundary_material") is True and disposition in {"PASS","FAIL","INCONCLUSIVE","ACCEPTED_WITH_LIMITATIONS"} and not o.get("disposition_reason_code"):
+                    out.append(Finding(
+                        "P6/DISP-RP02","FAIL","S3_MAJOR",oid(o),
+                        "quantitative boundary disposition requires an explicit reason code when uncertainty/decision boundary is material",
+                    ))
+
+            claimed_independent = o.get("claimed_independent_source_count")
+            if claimed_independent is not None:
+                groups = {x for x in o.get("source_independence_groups", []) if x}
+                if claimed_independent > len(groups):
+                    out.append(Finding(
+                        "P6/IND-RP02","FAIL","S3_MAJOR",oid(o),
+                        "evidence instance count cannot be used as independent-source count when sources share dependence groups",
+                        {"claimed_independent_source_count":claimed_independent,"independence_group_count":len(groups)},
+                    ))
+
+            if o.get("independence_claimed_satisfied") is True:
+                profile = o.get("independence_profile", {})
+                required = o.get("required_independence_dimensions", [])
+                unsatisfied = {dim:profile.get(dim,"NOT_EVALUATED") for dim in required if profile.get(dim) != "SATISFIED"}
+                if unsatisfied:
+                    out.append(Finding(
+                        "P6/INDP-RP03","FAIL","S3_MAJOR",oid(o),
+                        "independent-review claim cannot collapse required technical/managerial/financial dimensions to one boolean",
+                        {"unsatisfied_dimensions":unsatisfied},
+                    ))
+            if o.get("independent_review_status") == "REQUIRED_INDEPENDENCE_NOT_MET" and o.get("underlying_self_check_evidence_status") == "INVALIDATED_BY_INDEPENDENCE_ONLY":
+                out.append(Finding(
+                    "P6/INDP-RP04","FAIL","S2_MATERIAL",oid(o),
+                    "failure to meet independent-review requirement downgrades the independence claim, not automatically the underlying self-check evidence",
+                ))
+
+            if o.get("contradictory_evidence_present") is True and o.get("contradiction_adjudication_complete") is not True and disposition in {"PASS","FAIL"}:
+                out.append(Finding(
+                    "P6/CONTRA-RP03","FAIL","S3_MAJOR",oid(o),
+                    "material contradictory evidence requires adjudication across target/configuration/condition/method/uncertainty/dependence before final PASS/FAIL",
+                ))
+
+            if disposition == "PASS" and o.get("declared_target_ceiling_dimensions") is not None:
+                allowed = set(o.get("declared_target_ceiling_dimensions", []))
+                grants = o.get("granted_ceilings", {})
+                if isinstance(grants, dict):
+                    overreach = {k:v for k,v in grants.items() if k not in allowed and v not in {None,"UNASSESSED","OPEN","UNCHANGED","NOT_FIELD"}}
+                    if overreach:
+                        out.append(Finding(
+                            "P6/CEIL-RP06","FAIL","S4_CRITICAL",oid(o),
+                            "quantitative/conformity PASS grants ceiling dimensions outside the declared assurance target",
+                            {"overreach":overreach,"declared_target_ceiling_dimensions":sorted(allowed)},
+                        ))
+
     for o in objects:
         if o.get("migration_origin_state") == "OPEN_UNCLASSIFIED" and o.get("semantic_class") in {"RISK","ISSUE","ASSUMPTION","UNKNOWN"} and not o.get("classification_basis"):
             out.append(Finding("P7/OPEN-RP01","FAIL","S2_MATERIAL",oid(o),"OPEN state force-classified without semantic basis"))
@@ -476,6 +630,17 @@ def self_test() -> list[Finding]:
             {"id":"GIT-RESET","plane":"PROJECT","semantic_class":"CHANGE","rollback_mechanism":"POINTER_RESELECTION","baseline_pointer_moved":True,"lineage_preserved":False},
             {"id":"GIT-CONTEXT","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","dependency_or_base_context_changed":True,"local_changeset_unchanged":True,"integration_assurance_status":"PASS"},
             {"id":"M","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","target_results":{"G1":"REVISE","G4":"PASS"},"summary_result":"PASS"},
+            {"id":"P6-APP","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","evidence_acquisition_state":"ACQUIRED","target_admissibility":"APPLICABILITY_UNRESOLVED","material_applicability_dimensions":["CONFIGURATION","CONDITION"],"resolved_applicability_dimensions":["CONFIGURATION"],"direct_project_closure_claimed":True,"evidence_source_kind":"EXTERNAL_REFERENCE","disposition":"PASS"},
+            {"id":"P6-TARGET","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","assurance_target_id":"ARTIFACT_QA","result_reused_for_target_id":"TECHNICAL_REQUIREMENT","disposition":"PASS"},
+            {"id":"P6-INDEP-PRODUCER","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","review_performer_relationship":"PRODUCER_OR_REPAIRER","required_independence_level":"INDEPENDENT_PROJECT_REVIEW","independent_review_status":"PASS","downstream_active_granted":True},
+            {"id":"P6-BOUNDARY","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","disposition":"PASS","promotion_ambiguity_possible":True,"adjacent_high_risk_claims":["FIELD_VALIDITY"],"output_role":"QUANTITATIVE_READINESS","source_evidence_quality_upgraded":True},
+            {"id":"P6-TRANSFER","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","evidence_modality":"SIMULATION","claim_target_modality":"FIELD_OPERATIONAL","disposition":"PASS"},
+            {"id":"P6-CORRECTION","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","invalid_or_inapplicable_for_target":True,"retained_in_current_assurance_basis":True},
+            {"id":"P6-UNC","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","decision_rule_material":True,"decision_rule_changes_acceptance_boundary":True,"acceptance_zone_declared":False,"source_requirement_rewritten_by_decision_rule":True,"uncertainty_or_decision_boundary_material":True,"disposition":"PASS"},
+            {"id":"P6-GROUPS","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","claimed_independent_source_count":3,"source_independence_groups":["SHARED-LAB"],"disposition":"PASS"},
+            {"id":"P6-INDEP-PROFILE","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","required_independence_dimensions":["technical","managerial","financial"],"independence_profile":{"technical":"SATISFIED","managerial":"NOT_SATISFIED","financial":"NOT_EVALUATED"},"independence_claimed_satisfied":True,"independent_review_status":"REQUIRED_INDEPENDENCE_NOT_MET","underlying_self_check_evidence_status":"INVALIDATED_BY_INDEPENDENCE_ONLY"},
+            {"id":"P6-CONTRA","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","contradictory_evidence_present":True,"contradiction_adjudication_complete":False,"disposition":"PASS"},
+            {"id":"P6-CEILING","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","disposition":"PASS","declared_target_ceiling_dimensions":["technical_fit"],"granted_ceilings":{"technical_fit":"PASS","field_operational":"PASS"}},
             {"id":"K","plane":"KNOWLEDGE","semantic_class":"METHOD","retrieval_space":"CURRENT","professional_state":"NOT_PROVEN_PROFESSIONAL_PASS","summary_badge":"CURRENT_VERIFIED"}
         ],
         "corpus_census":{"counts":{"TOTAL":1215},"hard_ceiling":True},
@@ -487,7 +652,7 @@ def self_test() -> list[Finding]:
         "presentation_release":{"id":"R","global_status":"PASS","medium_readback":{"PDF_PRINT":"PASS","DESKTOP_BROWSER":"WAIT"}}
     }
     findings = snapshot_checks(snap)
-    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P4/VAR-RP09","P4/VAR-RP10","P4/VAR-RP11","P4/AUTH-RP06","P4/VAR-RP12","P4/IFC-RP10","P4/IFC-RP11","P4/IFC-RP12","P4/IFC-RP13","P5/CHG-RP01","P5/CFG-RP05","P5/CARRY-RP04","P5/CONC-RP03","P5/PROM-RP05","P5/ROLL-RP04","P5/ROLL-RP05","P5/CARRY-RP05","P5/STALE-RP05","P5/CSA-RP02","P5/CONC-RP04","P6/ASR-RP02","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
+    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P4/VAR-RP09","P4/VAR-RP10","P4/VAR-RP11","P4/AUTH-RP06","P4/VAR-RP12","P4/IFC-RP10","P4/IFC-RP11","P4/IFC-RP12","P4/IFC-RP13","P5/CHG-RP01","P5/CFG-RP05","P5/CARRY-RP04","P5/CONC-RP03","P5/PROM-RP05","P5/ROLL-RP04","P5/ROLL-RP05","P5/CARRY-RP05","P5/STALE-RP05","P5/CSA-RP02","P5/CONC-RP04","P6/ASR-RP02","P6/APP-RP04","P6/ADM-RP04","P6/APP-RP05","P6/TGT-RP01","P6/INDP-RP02","P6/CEIL-RP04","P6/RDY-RP02","P6/CEIL-RP05","P6/TRF-RP01","P6/CONTRA-RP02","P6/UNC-RP02","P6/UNC-RP03","P6/UNC-RP04","P6/DISP-RP02","P6/IND-RP02","P6/INDP-RP03","P6/INDP-RP04","P6/CONTRA-RP03","P6/CEIL-RP06","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
     got = {f.rule_id for f in findings}
     missing = sorted(expected - got)
     if missing:

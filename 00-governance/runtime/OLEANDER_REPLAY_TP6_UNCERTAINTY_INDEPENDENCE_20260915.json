@@ -4,6 +4,14 @@
   "status":"DRAFT_EXTERNAL_REPLAY_NOT_CURRENT",
   "external_cases":["NIST_ILAC_MEASUREMENT_UNCERTAINTY_DECISION_RULES","NASA_IVV_INDEPENDENCE"],
   "source_boundary":"OFFICIAL_PUBLIC_GUIDANCE_AND_STANDARDS_SUMMARY_ONLY_OLEANDER_MAPPING_ANALYTICAL",
+  "source_binding_as_of":"2026-09-15",
+  "external_sources":[
+    {"authority":"ILAC","title":"Guidance Documents (G Series)","url":"https://ilac.org/publications-and-resources/ilac-guidance-series/","supports":["ILAC_G8_DECISION_RULES_AND_CONFORMITY","ILAC_G17_MEASUREMENT_UNCERTAINTY_IN_TESTING"]},
+    {"authority":"NIST","title":"Decision Rule","url":"https://www.nist.gov/glossary-term/21621","supports":["DECISION_RULE_ACCOUNTS_FOR_MEASUREMENT_UNCERTAINTY_IN_CONFORMITY_STATEMENT"]},
+    {"authority":"NIST","title":"Assessment of Conformity, Decision Rules and Risk Analysis","url":"https://www.nist.gov/publications/assessment-conformity-decision-rules-and-risk-analysis","supports":["SPECIFICATION_ZONE_AND_ACCEPTANCE_ZONE_ARE_DISTINCT","FALSE_ACCEPT_AND_FALSE_REJECT_RISK_DEPEND_ON_DECISION_RULE"]},
+    {"authority":"NASA","title":"NASA-STD-8739.8B","url":"https://standards.nasa.gov/sites/default/files/standards/NASA/B/0/NASA-STD-87398RevB.pdf","supports":["IVV_INDEPENDENCE_HAS_TECHNICAL_MANAGERIAL_FINANCIAL_DIMENSIONS","IVV_PROVIDES_INDEPENDENT_ASSURANCE_ASSESSMENT"]},
+    {"authority":"NASA","title":"Software Assurance and Software Safety Standard","url":"https://standards.nasa.gov/standard/NASA/NASA-STD-87398","supports":["NASA_STD_8739_8B_IS_ACTIVE_PUBLIC_STANDARD"]}
+  ],
   "quantitative_fixture":{
     "specification_tolerance":"PLUS_MINUS_10_UNITS",
     "test_uncertainty":"PLUS_MINUS_2_UNITS",

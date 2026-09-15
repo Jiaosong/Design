@@ -15,12 +15,16 @@ The two cases are deliberately separate. Measurement uncertainty and reviewer in
 
 ### A. Measurement uncertainty / conformity
 
-Public-source facts:
+Public-source facts, with explicit authoritative bindings verified 2026-09-15:
 
 - ILAC G8:09/2019 provides guidance on decision rules and statements of conformity under ISO/IEC 17025:2017.
+- https://ilac.org/publications-and-resources/ilac-guidance-series/
 - ILAC G17:01/2021 provides guidance for evaluating/reporting measurement uncertainty in testing.
+- https://ilac.org/publications-and-resources/ilac-guidance-series/
 - NIST defines a decision rule as the rule describing how measurement uncertainty is taken into account when stating conformity with a specified requirement.
+- https://www.nist.gov/glossary-term/21621
 - NIST publications explain that uncertainty and the selected decision rule influence false-accept and false-reject risk.
+- https://www.nist.gov/publications/assessment-conformity-decision-rules-and-risk-analysis
 - A NIST/National Conference on Weights and Measures example illustrates guard banding: if equipment tolerance is ±10 units and test uncertainty is ±2 units, one guard-band approach passes only errors up to ±8 units.
 - ISO/IEC Guide 98-4:2012 remains current and addresses the role of measurement uncertainty in conformity assessment.
 
@@ -30,8 +34,10 @@ Public-source facts:
 
 - NASA distinguishes Verification (“building the product right”) from Validation (“building the right product”).
 - NASA IV&V defines independence in technical, managerial and financial dimensions.
+- https://standards.nasa.gov/sites/default/files/standards/NASA/B/0/NASA-STD-87398RevB.pdf
 - NASA describes IV&V as objective independent examination providing assurance conclusions based on evidence from development artifacts and risks.
 - NASA's active Software Assurance and Software Safety Standard includes IV&V requirements across the software lifecycle.
+- https://standards.nasa.gov/standard/NASA/NASA-STD-87398
 
 Source boundary:
 
