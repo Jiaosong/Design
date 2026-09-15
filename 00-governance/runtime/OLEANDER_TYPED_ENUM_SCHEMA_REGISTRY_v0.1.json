@@ -1,0 +1,320 @@
+{
+  "schema": "OLEANDER_TYPED_ENUM_SCHEMA_REGISTRY_v0.1",
+  "status": "DRAFT_COMPILER_INPUT_NOT_CURRENT",
+  "principle": "ONE_SEMANTIC_ENUM_ONE_OWNER_POINTER_NO_VALUE_COPY",
+  "compiler_rule": "ENUM_VALUES_ARE_READ_FROM_OWNER_SOURCE_AT_COMPILE_TIME",
+  "symbols": {
+    "OBJECT_PLANE": {
+      "namespace": "P0",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/primary_object_planes",
+      "semantic_scope": "PRIMARY_OBJECT_PLANE"
+    },
+    "KNOWLEDGE_ROLE": {
+      "namespace": "KCLS",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/knowledge_roles",
+      "semantic_scope": "KNOWLEDGE_PRIMARY_ROLE"
+    },
+    "KNOWLEDGE_INFORMATION_ROLE": {
+      "namespace": "KCLS",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/information_roles",
+      "semantic_scope": "KNOWLEDGE_INFORMATION_ROLE"
+    },
+    "FRAMEWORK_TYPE": {
+      "namespace": "KCLS",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/framework_types",
+      "semantic_scope": "L4_FRAMEWORK_TYPE_ONLY"
+    },
+    "PROJECT_SEMANTIC_CLASS_FAMILIES": {
+      "namespace": "P0",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/project_semantic_families",
+      "semantic_scope": "PROJECT_OBJECT_CLASS_MODEL"
+    },
+    "RUNTIME_CONTROL_TYPE": {
+      "namespace": "P0",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/runtime_control_types",
+      "semantic_scope": "RUNTIME_CONTROL_OBJECT_TYPE"
+    },
+    "RETRIEVAL_SPACE": {
+      "namespace": "P11",
+      "owner": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0",
+      "source_file": "OLEANDER_OBJECT_PLANE_TYPED_SYSTEM_ARCHITECTURE_v1.0.json",
+      "json_pointer": "/retrieval_positions",
+      "semantic_scope": "CURRENT_SUPPORT_PROVENANCE_EXCLUDED"
+    },
+    "AUTHORITY_CONFLICT_OUTCOME": {
+      "namespace": "P1",
+      "owner": "OLEANDER_AUTHORITY_INVOCATION_STALENESS_CLAIM_PROMOTION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P1_AUTHORITY_EXECUTION_MATRICES_v1.1.json",
+      "json_pointer": "/conflict_outcomes",
+      "semantic_scope": "AUTHORITY_CONFLICT_RESOLUTION"
+    },
+    "MUTATION_CLASS": {
+      "namespace": "P1",
+      "owner": "OLEANDER_AUTHORITY_INVOCATION_STALENESS_CLAIM_PROMOTION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P1_AUTHORITY_EXECUTION_MATRICES_v1.1.json",
+      "json_pointer": "/mutation_readback/@keys",
+      "semantic_scope": "INVOCATION_MUTATION_CLASS"
+    },
+    "READBACK_LEVEL": {
+      "namespace": "P1",
+      "owner": "OLEANDER_AUTHORITY_INVOCATION_STALENESS_CLAIM_PROMOTION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P1_AUTHORITY_EXECUTION_MATRICES_v1.1.json",
+      "json_pointer": "/mutation_readback/@derived_readback_tokens",
+      "semantic_scope": "RB0_RB4_READBACK_BURDEN",
+      "compiler_transform": "EXTRACT_RB_TOKEN_PREFIXES"
+    },
+    "CLAIM_CEILING_AXIS": {
+      "namespace": "P1",
+      "owner": "OLEANDER_AUTHORITY_INVOCATION_STALENESS_CLAIM_PROMOTION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P1_AUTHORITY_EXECUTION_MATRICES_v1.1.json",
+      "json_pointer": "/claim_ceiling_axes",
+      "semantic_scope": "INDEPENDENT_CLAIM_CEILING_DIMENSIONS"
+    },
+    "PROJECT_OPERATIONAL_STATUS": {
+      "namespace": "P2",
+      "owner": "OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P2_PROJECT_STATE_DECISION_MATRICES_v1.1.json",
+      "json_pointer": "/project_operational_status",
+      "semantic_scope": "PROJECT_OPERATIONAL_AVAILABILITY"
+    },
+    "WORKSTREAM_COUPLING": {
+      "namespace": "P2",
+      "owner": "OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P2_PROJECT_STATE_DECISION_MATRICES_v1.1.json",
+      "json_pointer": "/workstream_coupling/@keys",
+      "semantic_scope": "WORKSTREAM_EXECUTION_COUPLING"
+    },
+    "SCOPE_FLAG": {
+      "namespace": "P2",
+      "owner": "OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P2_PROJECT_STATE_DECISION_MATRICES_v1.1.json",
+      "json_pointer": "/scope_flags",
+      "semantic_scope": "LOCKED_OPEN_PROTECTED"
+    },
+    "DEPENDENCY_DISPOSITION": {
+      "namespace": "P2",
+      "owner": "OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P2_PROJECT_STATE_DECISION_MATRICES_v1.1.json",
+      "json_pointer": "/dependency_dispositions/@keys",
+      "semantic_scope": "ACTIVE_DECISION_DEPENDENCY_STATUS"
+    },
+    "DECISION_OBJECT_LIFECYCLE": {
+      "namespace": "P2",
+      "owner": "OLEANDER_PROJECT_STATE_DECISION_SCOPE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P2_PROJECT_STATE_DECISION_MATRICES_v1.1.json",
+      "json_pointer": "/decision_object_lifecycle",
+      "semantic_scope": "RUNTIME_DECISION_OBJECT_PRIMARY_LIFECYCLE"
+    },
+    "REQUIREMENT_CONFLICT_CLASS": {
+      "namespace": "P3",
+      "owner": "OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P3_REQUIREMENT_CLAIM_MATRICES_v1.1.json",
+      "json_pointer": "/requirement_conflict_classes",
+      "semantic_scope": "REQUIREMENT_CONFLICT_DIAGNOSIS"
+    },
+    "PROJECT_CLAIM_TYPE": {
+      "namespace": "P3",
+      "owner": "OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P3_REQUIREMENT_CLAIM_MATRICES_v1.1.json",
+      "json_pointer": "/project_claim_types",
+      "semantic_scope": "PROJECT_CLAIM_SEMANTIC_TYPE"
+    },
+    "CLAIM_EVIDENCE_EDGE": {
+      "namespace": "P3",
+      "owner": "OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P3_REQUIREMENT_CLAIM_MATRICES_v1.1.json",
+      "json_pointer": "/claim_evidence_edges",
+      "semantic_scope": "PROJECT_CLAIM_EVIDENCE_RELATION"
+    },
+    "CONTROLLED_VARIABLE_CLASS": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/controlled_variable_classes",
+      "semantic_scope": "CONTROLLED_VARIABLE_TYPE"
+    },
+    "INTERFACE_N_WAY_MODEL": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/n_way_models",
+      "semantic_scope": "INTERFACE_TOPOLOGY"
+    },
+    "INTERFACE_COUPLING": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/coupling",
+      "semantic_scope": "INTERFACE_COUPLING"
+    },
+    "INTERFACE_CRITICALITY": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/criticality",
+      "semantic_scope": "INTERFACE_CRITICALITY"
+    },
+    "INTERFACE_MATURITY": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/maturity",
+      "semantic_scope": "INTERFACE_MATURITY"
+    },
+    "INTERFACE_DISPOSITION": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/disposition",
+      "semantic_scope": "INTERFACE_DISPOSITION"
+    },
+    "MATERIAL_DEPENDENCY_CLASS": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/material_dependency_classes",
+      "semantic_scope": "MATERIAL_DEPENDENCY_TYPE"
+    },
+    "VALIDITY_DISPOSITION": {
+      "namespace": "P5",
+      "owner": "OLEANDER_BASELINE_CHANGE_STALENESS_PROPAGATION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P5_BASELINE_CHANGE_MATRICES_v1.1.json",
+      "json_pointer": "/validity_disposition",
+      "semantic_scope": "ORTHOGONAL_CURRENT_APPLICABILITY"
+    },
+    "CONFIGURATION_STATUS_ACCOUNTING": {
+      "namespace": "P5",
+      "owner": "OLEANDER_BASELINE_CHANGE_STALENESS_PROPAGATION_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P5_BASELINE_CHANGE_MATRICES_v1.1.json",
+      "json_pointer": "/configuration_status_accounting",
+      "semantic_scope": "CONFIGURATION_ACCOUNTING_STATUS"
+    },
+    "ASSURANCE_TYPE": {
+      "namespace": "P6",
+      "owner": "OLEANDER_EVIDENCE_FORMAL_ASSURANCE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P6_EVIDENCE_ASSURANCE_MATRICES_v1.1.json",
+      "json_pointer": "/assurance_target_map/@keys",
+      "semantic_scope": "FORMAL_ASSURANCE_TYPE"
+    },
+    "ASSURANCE_INDEPENDENCE_LEVEL": {
+      "namespace": "P6",
+      "owner": "OLEANDER_EVIDENCE_FORMAL_ASSURANCE_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P6_EVIDENCE_ASSURANCE_MATRICES_v1.1.json",
+      "json_pointer": "/independence_levels",
+      "semantic_scope": "ASSURANCE_REVIEW_INDEPENDENCE"
+    },
+    "RISK_TREATMENT": {
+      "namespace": "P7",
+      "owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P7_UNCERTAINTY_PROBLEM_MATRICES_v1.1.json",
+      "json_pointer": "/risk_treatments",
+      "semantic_scope": "RISK_TREATMENT_STRATEGY"
+    },
+    "ISSUE_ROOT_CAUSE_STATE": {
+      "namespace": "P7",
+      "owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P7_UNCERTAINTY_PROBLEM_MATRICES_v1.1.json",
+      "json_pointer": "/issue_root_cause_states",
+      "semantic_scope": "ISSUE_ROOT_CAUSE_CONFIDENCE_STATE"
+    },
+    "UNKNOWN_SUBCLASS": {
+      "namespace": "P7",
+      "owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P7_UNCERTAINTY_PROBLEM_MATRICES_v1.1.json",
+      "json_pointer": "/unknown_subclasses",
+      "semantic_scope": "UNKNOWN_DIAGNOSTIC_SUBCLASS"
+    },
+    "ARTIFACT_CARRIER_ROLE": {
+      "namespace": "P8",
+      "owner": "OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P8_WORK_ARTIFACT_MATRICES_v1.1.json",
+      "json_pointer": "/carrier_roles",
+      "semantic_scope": "PROJECT_ARTIFACT_CARRIER_ROLE"
+    },
+    "ARTIFACT_LOSS_FLAG": {
+      "namespace": "P8",
+      "owner": "OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P8_WORK_ARTIFACT_MATRICES_v1.1.json",
+      "json_pointer": "/loss_flags",
+      "semantic_scope": "CROSS_SURFACE_INFORMATION_LOSS_TYPE"
+    },
+    "ARTIFACT_LOSS_SEVERITY": {
+      "namespace": "P8",
+      "owner": "OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P8_WORK_ARTIFACT_MATRICES_v1.1.json",
+      "json_pointer": "/loss_severity",
+      "semantic_scope": "CROSS_SURFACE_INFORMATION_LOSS_SEVERITY"
+    },
+    "PRESENTATION_STYLE_STATE": {
+      "namespace": "P10",
+      "owner": "OLEANDER_PRESENTATION_STYLE_TECHNIQUE_SYSTEM_v1.0",
+      "source_file": "OLEANDER_P10_STYLE_EXECUTION_PROFILES_v1.1.json",
+      "json_pointer": "/style_state_machine",
+      "semantic_scope": "STYLE_PROFILE_LIFECYCLE"
+    },
+    "PRESENTATION_READBACK_CONTEXT": {
+      "namespace": "P10",
+      "owner": "OLEANDER_PRESENTATION_STYLE_TECHNIQUE_SYSTEM_v1.0",
+      "source_file": "OLEANDER_P10_STYLE_EXECUTION_PROFILES_v1.1.json",
+      "json_pointer": "/readback_contexts",
+      "semantic_scope": "PRESENTATION_TARGET_CONDITION"
+    },
+    "QUERY_PLANE": {
+      "namespace": "P11",
+      "owner": "OLEANDER_RETRIEVAL_READER_ROUTING_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P11_READER_ROUTING_MATRICES_v1.1.json",
+      "json_pointer": "/query_planes",
+      "semantic_scope": "RETRIEVAL_QUERY_PLANE"
+    },
+    "RETRIEVAL_CANDIDATE_POOL": {
+      "namespace": "P11",
+      "owner": "OLEANDER_RETRIEVAL_READER_ROUTING_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P11_READER_ROUTING_MATRICES_v1.1.json",
+      "json_pointer": "/candidate_pools",
+      "semantic_scope": "RETRIEVAL_CANDIDATE_POOL"
+    },
+    "READER_VIEW": {
+      "namespace": "P11",
+      "owner": "OLEANDER_RETRIEVAL_READER_ROUTING_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P11_READER_ROUTING_MATRICES_v1.1.json",
+      "json_pointer": "/reader_views",
+      "semantic_scope": "READER_PROJECTION_VIEW"
+    },
+    "READER_ALLOWED_USE_LABEL": {
+      "namespace": "P11",
+      "owner": "OLEANDER_RETRIEVAL_READER_ROUTING_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P11_READER_ROUTING_MATRICES_v1.1.json",
+      "json_pointer": "/allowed_use_labels",
+      "semantic_scope": "READER_CONSUMPTION_BOUNDARY"
+    }
+  },
+  "non_mergeable_same_token_examples": [
+    {
+      "token": "OPEN",
+      "symbols": ["INTERFACE_DISPOSITION", "PROJECT_NATIVE_STATES", "RESEARCH_GATE_STATES"],
+      "rule": "SAME_LITERAL_DOES_NOT_IMPLY_SHARED_ENUM"
+    },
+    {
+      "token": "BLOCKED",
+      "symbols": ["PROJECT_OPERATIONAL_STATUS", "INTERFACE_DISPOSITION", "SEARCH_ELIGIBILITY"],
+      "rule": "QUALIFY_BY_SEMANTIC_OWNER"
+    },
+    {
+      "token": "STALE",
+      "symbols": ["LEGACY_CLASS_STATE", "VALIDITY_DISPOSITION_COMPATIBILITY"],
+      "rule": "MIGRATE_TO_ORTHOGONAL_VALIDITY_WHERE_APPLICABLE"
+    }
+  ]
+}
