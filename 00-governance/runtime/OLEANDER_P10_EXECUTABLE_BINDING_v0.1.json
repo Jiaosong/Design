@@ -1,0 +1,28 @@
+{
+  "schema": "OLEANDER_P10_EXECUTABLE_BINDING_v0.1",
+  "status": "DRAFT_EXECUTABLE_COMPANION_NOT_CURRENT",
+  "semantic_owners": [
+    "OLEANDER_PROJECT_PRESENTATION_LAYER_v1.0",
+    "OLEANDER_PRESENTATION_STYLE_TECHNIQUE_SYSTEM_v1.0",
+    "OLEANDER_PRESENTATION_COMPATIBILITY_MATRICES_v1.0"
+  ],
+  "semantic_companion": "OLEANDER_P10_STYLE_EXECUTION_PROFILES_v1.1.json",
+  "implementation": "validate_p10_targets.py",
+  "deterministic_self_test": "test_p10_targets.py",
+  "regression_corpus": "OLEANDER_P10_EXECUTABLE_REGRESSION_EVALS_v0.1.json",
+  "replay_sources": ["RP-TP10-C04-WEB-430E-20260915"],
+  "principle": "EXECUTABLE_COMPANION_DOES_NOT_BECOME_SECOND_SEMANTIC_OWNER",
+  "executable_rules": [
+    "P10/MED-RP02",
+    "P10/MED-RP03",
+    "P10/READ-RP02",
+    "P10/BOUND-RP02",
+    "P10/ASSET-RP02",
+    "P10/ASSET-RP03",
+    "P10/ROLE-RP03",
+    "P10/SEQ-RP02",
+    "P10/MOTION-RP02",
+    "P10/MED-RP04"
+  ],
+  "promotion_effect": "NONE_DRAFT_EXECUTABLE_COMPANION_ONLY"
+}
