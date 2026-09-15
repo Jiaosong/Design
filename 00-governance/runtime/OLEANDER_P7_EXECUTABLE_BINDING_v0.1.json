@@ -1,0 +1,49 @@
+{
+  "schema": "OLEANDER_P7_EXECUTABLE_BINDING_v0.1",
+  "status": "DRAFT_EXECUTABLE_COMPANION_NOT_CURRENT",
+  "semantic_owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+  "semantic_companion": "OLEANDER_P7_UNCERTAINTY_PROBLEM_MATRICES_v1.1.json",
+  "implementation": "validate_p7_conversions.py",
+  "deterministic_self_test": "test_p7_conversions.py",
+  "regression_corpus": "OLEANDER_P7_EXECUTABLE_REGRESSION_EVALS_v0.1.json",
+  "replay_sources": [
+    "RP-TP7-RIAU-20260915",
+    "RP-TP7-RIAU-CONVERSIONS-20260915"
+  ],
+  "principle": "EXECUTABLE_COMPANION_DOES_NOT_BECOME_SECOND_SEMANTIC_OWNER",
+  "executable_rules": [
+    "P7/ISS-RP02",
+    "P7/ROOT-RP02",
+    "P7/ISS-RP03",
+    "P7/ISS-RP04",
+    "P7/LINE-RP02",
+    "P7/UNK-RP02",
+    "P7/RSK-RP04",
+    "P7/ISS-RP05",
+    "P7/ISS-RP06",
+    "P7/ISS-RP07",
+    "P7/LINE-RP03",
+    "P7/ROOT-RP03",
+    "P7/ROOT-RP04",
+    "P7/ISS-RP08",
+    "P7/ISS-RP09",
+    "P7/UNK-RP03",
+    "P7/UNK-RP04",
+    "P7/ASM-RP05",
+    "P7/ROOT-RP05",
+    "P7/ISS-RP10"
+  ],
+  "non_executable_open_semantics": [
+    {
+      "topic": "AUTHORIZED_RESIDUAL_RISK_ACCEPTANCE_CHAIN",
+      "state": "NOT_EVALUATED_OPEN",
+      "reason": "No complete executed authorized residual-risk acceptance chain is established by current replay evidence."
+    },
+    {
+      "topic": "PRIOR_RISK_TO_REALIZED_ISSUE_REAL_CASE",
+      "state": "NOT_EVALUATED_OPEN",
+      "reason": "Semantic model is executable, but current public replay does not establish an explicit prior Risk record that later realized as the Cloudflare Issue."
+    }
+  ],
+  "promotion_effect": "NONE_DRAFT_EXECUTABLE_COMPANION_ONLY"
+}
