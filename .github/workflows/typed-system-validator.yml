@@ -13,9 +13,11 @@ on:
       - '00-governance/runtime/OLEANDER_P8_EXECUTABLE_*'
       - '00-governance/runtime/OLEANDER_P9_EXECUTABLE_*'
       - '00-governance/runtime/OLEANDER_P10_EXECUTABLE_*'
+      - '00-governance/runtime/OLEANDER_P11_EXECUTABLE_*'
       - '00-governance/runtime/OLEANDER_REPLAY_*'
       - '00-governance/runtime/validate_typed_system.py'
       - '00-governance/runtime/test_typed_system.py'
+      - '00-governance/runtime/validate_executable_companions.py'
       - '00-governance/runtime/validate_p7_conversions.py'
       - '00-governance/runtime/test_p7_conversions.py'
       - '00-governance/runtime/validate_p8_handoffs.py'
@@ -53,6 +55,7 @@ jobs:
           python -m py_compile
           00-governance/runtime/validate_typed_system.py
           00-governance/runtime/test_typed_system.py
+          00-governance/runtime/validate_executable_companions.py
           00-governance/runtime/validate_p7_conversions.py
           00-governance/runtime/test_p7_conversions.py
           00-governance/runtime/validate_p8_handoffs.py
@@ -72,8 +75,11 @@ jobs:
       - name: Run typed schema compiler self-test
         run: python 00-governance/runtime/test_typed_schema_compiler.py
 
-      - name: Validate rule registry and regression corpus
+      - name: Validate rule registry and central regression corpus
         run: python 00-governance/runtime/validate_typed_system.py --contracts-only
+
+      - name: Validate executable companion discovery and coverage
+        run: python 00-governance/runtime/validate_executable_companions.py
 
       - name: Run deterministic replay-derived engine self-test
         run: python 00-governance/runtime/test_typed_system.py
