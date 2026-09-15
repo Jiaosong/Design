@@ -1,0 +1,113 @@
+{
+  "schema": "OLEANDER_LANDSCAPE_ARCHITECTURE_DESIGN_DEVELOPMENT_PROCESS_v0.1",
+  "status": "DRAFT_RESEARCH_PROCESS_NOT_CURRENT",
+  "process_id": "LA-DD-v0.1-CANDIDATE",
+  "title": "Landscape Architecture Design Development Process",
+  "domain": "LANDSCAPE_ARCHITECTURE",
+  "semantic_owner": "PROFESSIONAL_DOMAIN_EXECUTION",
+  "contract_ref": "OLEANDER_DOMAIN_EXECUTION_PROCESS_CONTRACT_v0.1.json",
+  "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+  "source_refs": [
+    "https://www.asla.org/focus-areas/climate-biodiversity-action/practice-and-operations-guides/decarbonizing-the-design-process",
+    "https://www.asla.org/resources/practitioners/professional-practice-networks-home/ppservice/guide-to-public-practice-landscape-architecture",
+    "https://www.asla.org/resources/practitioners/professional-practice-networks-home/public-practice-service/guide-to-public-practice-landscape-architecture/public-practice-design"
+  ],
+  "source_boundary": "ASLA materials are used as professional references for phase structure, site analysis, design, engagement, project management, regulation, asset stewardship and operations. This OLEANDER draft is not a jurisdictional or licensure authority.",
+  "stages": [
+    {
+      "stage_id": "LA-00",
+      "stage_name": "Project Kickoff and Scope",
+      "purpose": "Define landscape outcomes, site/system boundaries, stakeholders, performance goals, operational context and investigation needs.",
+      "required_outputs": ["scope_and_outcomes", "stakeholder_map", "site_information_plan", "initial_risk_unknown_register"],
+      "critical_interfaces": ["CLIENT", "ARCHITECTURE", "CIVIL", "ECOLOGY", "OPERATIONS"],
+      "exit_conditions": ["scope_defined", "site_evidence_plan_defined", "unverified_site_conditions_not_promoted"]
+    },
+    {
+      "stage_id": "LA-01",
+      "stage_name": "Site Data Collection and Analysis",
+      "purpose": "Establish terrain, drainage, soils, vegetation, climate, circulation, existing assets, ecology, utilities, cultural/contextual evidence and regulatory constraints.",
+      "required_outputs": ["site_analysis", "terrain_and_water_model", "existing_asset_inventory", "ecology_and_vegetation_basis", "constraints_opportunities_map"],
+      "critical_interfaces": ["SURVEY", "CIVIL", "GEOTECHNICAL", "ECOLOGY", "UTILITIES", "PLANNING"],
+      "exit_conditions": ["source_lineage_declared", "measured_vs_inferred_data_separated", "critical_unknowns_owned"]
+    },
+    {
+      "stage_id": "LA-02",
+      "stage_name": "Programming and Conceptual Design",
+      "purpose": "Translate uses, experiences, ecological functions, access, water, maintenance and public-realm objectives into alternative landscape concepts.",
+      "required_outputs": ["landscape_program", "concept_options", "movement_and_open_space_logic", "water_ecology_strategy", "maintenance_strategy_candidate"],
+      "critical_interfaces": ["ARCHITECTURE", "PUBLIC_REALM", "ACCESSIBILITY", "CIVIL", "OPERATIONS"],
+      "exit_conditions": ["selected_concept_traceable", "functional_and_ecological_intent_explicit", "maintenance_capacity_considered"]
+    },
+    {
+      "stage_id": "LA-03",
+      "stage_name": "Schematic Design",
+      "purpose": "Develop grading intent, circulation, spatial systems, planting structure, site elements, water systems and material zones to coordinated schematic level.",
+      "required_outputs": ["schematic_plan", "grading_and_drainage_intent", "circulation_and_access_network", "planting_structure", "material_and_site_element_strategy"],
+      "critical_interfaces": ["CIVIL", "ARCHITECTURE", "STRUCTURE", "LIGHTING", "IRRIGATION", "WAYFINDING"],
+      "exit_conditions": ["major_systems_spatially_coordinated", "access_and_water_interfaces_tested", "material_conflicts_recorded"]
+    },
+    {
+      "stage_id": "LA-04",
+      "stage_name": "Design Development",
+      "purpose": "Resolve grading, drainage, planting, soils, irrigation, hardscape, site furniture, edge conditions, lighting/wayfinding interfaces and maintenance implications.",
+      "required_outputs": ["developed_landscape_plan", "grading_and_drainage_design", "planting_and_soil_design", "material_site_furniture_schedules", "details_and_interface_zones"],
+      "critical_interfaces": ["CIVIL", "ARCHITECTURE", "STRUCTURE", "MEP", "LIGHTING", "IRRIGATION", "OPERATIONS"],
+      "exit_conditions": ["controlled_levels_and_interfaces_defined", "plant_and_material_basis_traceable", "maintenance_and_access_requirements_declared"]
+    },
+    {
+      "stage_id": "LA-05",
+      "stage_name": "Construction Documentation and Permitting",
+      "purpose": "Produce coordinated drawings, specifications, schedules and authority submissions for construction within the declared scope.",
+      "required_outputs": ["construction_documents", "specifications", "planting_schedules", "grading_drainage_details", "permit_or_review_submissions_as_applicable"],
+      "critical_interfaces": ["CIVIL", "ARCHITECTURE", "CONTRACTOR", "AUTHORITIES", "SPECIALISTS"],
+      "exit_conditions": ["documents_coordinated", "authority_scope_clear", "open_field_or_specialist_items_visible"]
+    },
+    {
+      "stage_id": "LA-06",
+      "stage_name": "Procurement and Construction Administration",
+      "purpose": "Review submittals, substitutions, samples, nursery/material selections, site queries and design changes while preserving ecological and design intent.",
+      "required_outputs": ["submittal_reviews", "sample_and_material_reviews", "plant_or_nursery_review_records_if_in_scope", "change_records", "site_observation_records"],
+      "critical_interfaces": ["CONTRACTOR", "SUPPLIERS", "NURSERIES", "CLIENT", "CIVIL"],
+      "exit_conditions": ["material_changes_traced", "site_deviations_owned", "observation_claim_ceiling_explicit"]
+    },
+    {
+      "stage_id": "LA-07",
+      "stage_name": "Handover, Operations and Maintenance",
+      "purpose": "Transfer landscape systems into operation with maintenance, establishment, irrigation, stewardship and monitoring requirements.",
+      "required_outputs": ["operations_and_maintenance_information", "plant_establishment_requirements", "residual_risk_and_monitoring_items", "asset_information"],
+      "critical_interfaces": ["FACILITIES", "GROUNDS_TEAM", "CLIENT", "IRRIGATION", "ECOLOGY"],
+      "exit_conditions": ["maintenance_responsibility_transferred", "establishment_and_monitoring_requirements_owned", "record_information_authority_declared"]
+    },
+    {
+      "stage_id": "LA-08",
+      "stage_name": "Post-Occupancy / Performance Evaluation",
+      "purpose": "Assess use, accessibility, ecological performance, water behavior, planting establishment, maintenance and user outcomes where evidence is available.",
+      "required_outputs": ["post_occupancy_findings", "ecological_or_water_performance_findings_if_measured", "maintenance_feedback", "future_change_and_G9_candidates"],
+      "critical_interfaces": ["USERS", "FACILITIES", "ECOLOGY", "CLIENT"],
+      "exit_conditions": ["observed_measured_inferred_states_separated", "lessons_bounded_to_evidence", "knowledge_promotion_separate"]
+    }
+  ],
+  "runtime_binding": {
+    "P0": "site_zone_asset_level_route_planting_and_artifact_identity",
+    "P1": "survey_design_ecology_maintenance_and_change_authority",
+    "P2": "concept_system_material_and_implementation_decisions",
+    "P3": "use_access_ecology_water_maintenance_regulatory_and_performance_requirements",
+    "P4": "levels_drainage_routes_edges_rootzones_utilities_irrigation_lighting_and_building_interfaces",
+    "P5": "site_data_design_baseline_seasonal_context_changes_and_staleness",
+    "P6": "survey_analysis_simulation_material_planting_and_field_assurance_with_explicit_target",
+    "P7": "site_risks_issues_assumptions_unknowns_climate_and_establishment_uncertainty",
+    "P8": "GIS_CAD_BIM_drawings_schedules_specs_samples_and_handoffs",
+    "P9": "cross_project_landscape_method_admission_only_via_G9",
+    "P10": "maps_renders_and_atmospheric_views_do_not_raise_site_truth_ceiling",
+    "P11": "reader_preserves_field_observed_measured_inferred_design_and_maintenance_states"
+  },
+  "hard_boundaries": [
+    "REMOTE_MAP_OR_IMAGE_IS_NOT_SURVEY",
+    "CONCEPTUAL_GRADING_IS_NOT_ENGINEERED_DRAINAGE_PROOF",
+    "PLANT_PALETTE_IS_NOT_ESTABLISHMENT_PERFORMANCE_PROOF",
+    "VISUAL_GREENNESS_IS_NOT_ECOLOGICAL_PERFORMANCE",
+    "MAINTENANCE_PLAN_EXISTENCE_IS_NOT_OPERATIONAL_CAPACITY_PROOF",
+    "POST_OCCUPANCY_FINDING_REQUIRES_OBSERVED_OR_MEASURED_EVIDENCE_SCOPE"
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_PROCESS_ONLY"
+}
