@@ -932,6 +932,147 @@ def main() -> None:
     ]:
         fail("authority snapshot/fingerprint mismatch action sequence drift")
 
+    knowledge_mount = graph.get("knowledge_mount_consumption_boundary", {})
+    if knowledge_mount.get("semantic_class") != "CONTROL_PROJECTION_NOT_KNOWLEDGE_REGISTRY_MOUNT_DATABASE_KI_OE_STATE_FAMILY_OR_ELIGIBILITY_AUTHORITY":
+        fail("Knowledge mount consumption boundary must remain a projection rather than a Knowledge registry/mount DB/KI-OE family/eligibility authority")
+    for required_true in {
+        "projection_only_not_replacement_knowledge_mount_contract",
+        "existing_knowledge_mount_owner_retains_ki_oe_and_admission_authority",
+        "content_state_owner_does_not_own_ki_or_oe",
+        "discovery_does_not_grant_decision_authority",
+        "bare_canonical_ref_does_not_grant_consequential_operational_eligibility",
+        "current_retrieval_state_does_not_imply_ki4_or_oe3",
+        "ki4_does_not_imply_oe3",
+        "oe3_is_task_claim_scope_bounded",
+        "oe3_does_not_imply_dq_or_professional_pass",
+        "professional_or_design_consumer_may_reference_mount_but_not_reissue_ki_oe",
+        "consumer_may_narrow_but_not_widen_mount_claim_without_owner_revalidation",
+        "stale_mount_reopens_only_actual_consumers",
+        "unrelated_knowledge_change_does_not_stale_consumer_by_chronology_or_folder_membership",
+        "historical_mount_use_remains_immutable_provenance",
+        "historical_mount_use_does_not_auto_grant_current_eligibility_after_revalidation_trigger",
+        "machine_may_validate_binding_not_self_award_semantic_ki4_or_consequential_oe3",
+        "valid_mount_does_not_prove_design_professional_technical_or_statutory_pass",
+        "parallel_knowledge_registry_corpus_or_mount_database_forbidden",
+        "duplicate_ki_oe_state_family_forbidden",
+        "resolvable_consumer_semantics_do_not_require_duplicate_mount_persistence",
+    }:
+        if knowledge_mount.get(required_true) is not True:
+            fail(f"Knowledge mount consumption boundary missing {required_true}")
+    if knowledge_mount.get("knowledge_mount_owner_ref") != "00-governance/knowledge-integrity-and-operational-mount-v1.0.md":
+        fail("Knowledge mount KI/OE/admission owner ref drift")
+    if knowledge_mount.get("content_state_owner_ref") != "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md":
+        fail("Knowledge Content state owner ref drift")
+    if set(knowledge_mount.get("runtime_carrier_refs", [])) != {
+        "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+    }:
+        fail("Knowledge mount runtime-carrier refs drift")
+    if set(knowledge_mount.get("downstream_consumer_refs", [])) != {
+        "00-governance/design-intelligence-routing-and-review-v1.0.md",
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+    }:
+        fail("Knowledge mount downstream-consumer refs drift")
+    for ref in [knowledge_mount.get("knowledge_mount_owner_ref"), knowledge_mount.get("content_state_owner_ref")] + knowledge_mount.get("runtime_carrier_refs", []) + knowledge_mount.get("downstream_consumer_refs", []):
+        check_ref(ref)
+    expected_owner_binding_fields = {
+        "knowledge_ref",
+        "eligibility_state",
+        "eligibility_scope",
+        "claim_ceiling",
+        "applicability",
+        "conditions",
+        "unresolved_items",
+        "freshness_or_revalidation_trigger",
+        "review_basis",
+    }
+    if set(knowledge_mount.get("owner_minimum_eligibility_binding_fields", [])) != expected_owner_binding_fields:
+        fail("Knowledge mount owner minimum eligibility-binding fields drift")
+    expected_consumer_semantics = {
+        "knowledge_ref",
+        "operational_eligibility",
+        "eligibility_scope_or_professional_question",
+        "claim_ceiling",
+        "applicability",
+        "conditions_or_unresolved_items",
+        "freshness_or_revalidation_trigger",
+        "does_not_prove",
+        "review_basis",
+        "owner_native_mount_ref",
+    }
+    if set(knowledge_mount.get("consequential_consumer_required_resolvable_semantics", [])) != expected_consumer_semantics:
+        fail("Knowledge mount downstream consequential-consumption semantics drift")
+    if set(knowledge_mount.get("state_family_separation", [])) != {
+        "CORPUS_OR_RETRIEVAL",
+        "CONTENT_REMEDIATION",
+        "KNOWLEDGE_INTEGRITY",
+        "OPERATIONAL_ELIGIBILITY",
+        "DOWNSTREAM_DESIGN_AND_PROFESSIONAL_STATE",
+    }:
+        fail("Knowledge mount state-family separation drift")
+    expected_oe_states = {"OE0_NOT_EVALUATED", "OE1_NOT_ELIGIBLE", "OE2_CONDITIONAL", "OE3_ELIGIBLE"}
+    if set(knowledge_mount.get("oe_states", [])) != expected_oe_states:
+        fail("Knowledge mount OE state vocabulary drift")
+    expected_conditional_preservation = {
+        "CONDITIONS",
+        "APPLICABILITY",
+        "CLAIM_CEILING",
+        "FRESHNESS_OR_REVALIDATION_TRIGGER",
+        "UNRESOLVED_ITEMS_WHEN_MATERIAL",
+        "DOES_NOT_PROVE",
+    }
+    if set(knowledge_mount.get("conditional_mount_must_preserve", [])) != expected_conditional_preservation:
+        fail("Knowledge mount conditional-consumption preservation set drift")
+    if set(knowledge_mount.get("material_revalidation_triggers", [])) != {
+        "KNOWLEDGE_IDENTITY_OR_OWNER_RELATION_CHANGED",
+        "SOURCE_VERSION_OR_FRESHNESS_CHANGED",
+        "APPLICABILITY_OR_JURISDICTION_CHANGED",
+        "CLAIM_CEILING_CHANGED",
+        "CONDITIONS_OR_UNRESOLVED_ITEMS_MATERIALLY_CHANGED",
+        "ELIGIBILITY_REVIEW_BASIS_WITHDRAWN_OR_MATERIALLY_SUPERSEDED",
+    }:
+        fail("Knowledge mount material revalidation-trigger set drift")
+    existing_mount = json.loads(
+        (ROOT / "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json").read_text(encoding="utf-8")
+    )
+    if existing_mount.get("mount_mode") != "REFERENCE_ONLY":
+        fail("Existing Knowledge Mount must remain REFERENCE_ONLY")
+    if set(existing_mount.get("state_families", {}).get("operational_eligibility", [])) != expected_oe_states:
+        fail("Existing Knowledge Mount OE vocabulary drift")
+    for guard in {
+        "NO_COPY_INTO_DD_OR_PROFESSIONAL_PROCESS",
+        "CURRENT_DOES_NOT_IMPLY_CLEAN",
+        "KNOWLEDGE_CLEAN_DOES_NOT_IMPLY_UNIVERSAL_ELIGIBILITY",
+        "OPERATIONAL_ELIGIBILITY_DOES_NOT_IMPLY_DQ_MATURITY",
+        "DQ_MATURITY_DOES_NOT_IMPLY_PROFESSIONAL_STAGE_PASS",
+        "KI3_QUARANTINED_CANNOT_BE_OE3_FOR_AFFECTED_CLAIM",
+        "SUPERSEDED_RETIRED_CANNOT_BE_ACTIVE_PRIMARY_DECISION_OWNER",
+    }:
+        if guard not in set(existing_mount.get("hard_guards", [])):
+            fail(f"Existing Knowledge Mount lost hard guard {guard}")
+    knowledge_mount_text = (ROOT / "00-governance/knowledge-integrity-and-operational-mount-v1.0.md").read_text(encoding="utf-8")
+    for required_phrase in {
+        "Discovery does not grant decision authority.",
+        "The condition and `does_not_prove` boundary must travel with the mount.",
+        "A `KI3 QUARANTINED`, materially stale, unresolved duplicate, wrong-role, wrong-authority or graph-corrupt object cannot become `OE3` for the affected claim merely because its prose is strong.",
+        "A stage may discover many candidate objects but should mount the minimum sufficient set needed to support the actual decision.",
+    }:
+        if required_phrase not in knowledge_mount_text:
+            fail(f"Knowledge Mount owner lost required consumption boundary: {required_phrase}")
+    content_review_text = (ROOT / "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md").read_text(encoding="utf-8")
+    if "This layer owns body completion only. It does not by itself certify the separate Knowledge Integrity or task/claim-scoped Operational Eligibility states" not in content_review_text:
+        fail("Knowledge Content owner lost Content vs KI/OE authority separation")
+    if "`CONTENT TERMINAL != KNOWLEDGE INTEGRITY VERIFIED != OPERATIONALLY ELIGIBLE`." not in content_review_text:
+        fail("Knowledge Content owner lost terminal/integrity/eligibility separation invariant")
+    professional_text = (ROOT / "00-governance/professional-domain-process-contract-v1.0.md").read_text(encoding="utf-8")
+    for required_phrase in {
+        "For consequential use, a stage must not silently consume a bare knowledge page reference as professional authority.",
+        "The stage instance does not reissue KI/OE judgments.",
+    }:
+        if required_phrase not in professional_text:
+            fail(f"Professional Domain consumer lost Knowledge mount boundary: {required_phrase}")
+
     control_domains = graph.get("control_domains", {})
     file_domain = control_domains.get("FILE_ARTIFACT_MANAGEMENT", {})
     reader_domain = control_domains.get("AI_FILE_AND_READER", {})
@@ -1616,6 +1757,13 @@ def main() -> None:
         "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
         "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
         "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM",
+        "KNOWLEDGE_DISCOVERY_OR_BARE_REF_IS_NOT_CONSEQUENTIAL_ELIGIBILITY",
+        "KNOWLEDGE_STATE_FAMILIES_REMAIN_SEPARATE_ACROSS_MOUNT",
+        "OE3_REMAINS_TASK_CLAIM_SCOPE_BOUNDED",
+        "OE2_CONDITIONS_CLAIM_CEILING_FRESHNESS_AND_DOES_NOT_PROVE_TRAVEL_WITH_CONSUMPTION",
+        "KNOWLEDGE_MOUNT_STALENESS_REOPENS_ONLY_ACTUAL_CONSUMERS",
+        "DOWNSTREAM_CONSUMER_CANNOT_REISSUE_KI_OR_OE",
+        "KNOWLEDGE_MOUNT_CONSUMPTION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_DATABASE_OR_STATE_FAMILY",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1636,6 +1784,7 @@ def main() -> None:
     print("independent_review_boundary=PASS")
     print("current_supersession_boundary=PASS")
     print("authority_snapshot_fingerprint_boundary=PASS")
+    print("knowledge_mount_consumption_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
