@@ -219,7 +219,11 @@ Every professional stage maps, where applicable, to:
 
 `Professional Question → Candidate Knowledge Resolution → Operational Knowledge Mount → Required DD Responsibilities → Required Native Outputs → Interfaces → Required Capability → Tool/Adapter → Actual Readback → Professional Review → Design Review → Reopen Triggers`.
 
-This is a binding view, not a replacement stage system.
+The reusable envelope is defined in `../professional-domain-process-contract-v1.0.md`. It separates the reusable `PROFESSIONAL_DOMAIN_PROCESS` definition from project `DOMAIN_PROCESS_INSTANCE` and runtime `DOMAIN_STAGE_INSTANCE` objects while keeping the Master Runtime summary intentionally thin.
+
+Architecture's stage-level cross-domain view is `../architecture-professional-domain-interface-matrix-v1.0.md`. It compiles `ADD-00..ADD-17` interface requirements using the existing Integration maturity / disposition / coupling / criticality semantics. It does not create same-number stages for Structural, MEP, Interior, Landscape or other professions.
+
+This is a binding view, not a replacement stage system, second runtime or second knowledge tree.
 
 The stage-side knowledge mount preserves canonical refs and carries use role, `OE*` state, applicability, claim ceiling, freshness and `does_not_prove` where material. `KNOWLEDGE MOUNT PASS != PROFESSIONAL STAGE PASS`.
 
