@@ -5,6 +5,8 @@
 **Scope:** shared runtime structure for OLEANDER projects.
 **Authority:** subordinate to `00-governance/README.md`, Current Project / Source Authority and the canonical `00-governance/complex-project-master-runtime-v1.0.md`. This document is an operator/integration view over existing owners; it does not create a second Master Runtime, taxonomy, Project Axis, Gate family or professional stage system.
 
+**Architecture classification:** `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` controls architecture naming/counting. This document expands the eleven stable Runtime Layers of the single Current OLEANDER system architecture; it must not be read as eleven parallel architectures.
+
 ## 1 | Runtime principle
 
 OLEANDER separates **authority, knowledge, design development, professional execution, integration, artifact production, review, promotion and learning** while keeping them in one operational chain.

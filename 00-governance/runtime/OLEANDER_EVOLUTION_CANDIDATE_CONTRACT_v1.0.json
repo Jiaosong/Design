@@ -1,0 +1,153 @@
+{
+  "schema": "oleander.evolution-candidate-contract.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT_CONTRACT",
+  "effective_date": "2026-09-15",
+  "purpose": "Machine-readable contract for bounded OLEANDER self-improvement candidates. Evolution may propose and evaluate changes but may not self-promote Current authority, human Design KEEP, project Promotion, active user constraints or statutory authority.",
+  "state_values": [
+    "EV0_OBSERVED",
+    "EV1_CANDIDATE",
+    "EV2_EVAL_READY",
+    "EV3_EVAL_PASSED",
+    "EV4_INDEPENDENT_REVIEWED",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "EV7_MONITORED",
+    "EVH_HOLD",
+    "EVR_REJECTED"
+  ],
+  "target_classes": [
+    "KNOWLEDGE_METHODS",
+    "SKILLS",
+    "CAPABILITY_ROUTING",
+    "TOOL_DESCRIPTIONS",
+    "TOOL_ADAPTERS",
+    "READER_RETRIEVAL_RUNTIME",
+    "FILE_HANDLING_ROUTES",
+    "VALIDATORS",
+    "SCHEMAS",
+    "PROFESSIONAL_PROCESS_DEFINITIONS",
+    "ARCHITECTURE_CONTROL_GRAPH"
+  ],
+  "protected_targets": [
+    "CURRENT_AUTHORITY_IDENTITY",
+    "ACTIVE_USER_CONSTRAINTS",
+    "HUMAN_DESIGN_KEEP_RIGHT",
+    "HUMAN_PROMOTION_RIGHT",
+    "STATUTORY_LICENSED_AUTHORITY"
+  ],
+  "trigger_classes": [
+    "TRACE_FAILURE",
+    "REPEATED_REPAIR",
+    "HUMAN_CORRECTION",
+    "PROJECT_SUCCESS",
+    "PROJECT_COUNTEREXAMPLE",
+    "RETRIEVAL_MISS",
+    "TOOL_FAILURE",
+    "COST_LATENCY",
+    "PROFESSIONAL_REVIEW",
+    "NEW_EXTERNAL_EVIDENCE"
+  ],
+  "required_candidate_fields": [
+    "candidate_id",
+    "state",
+    "target_class",
+    "target_owner",
+    "target_ref",
+    "baseline",
+    "trigger_evidence",
+    "hypothesis",
+    "mutation_scope",
+    "evaluation",
+    "constraints",
+    "comparison",
+    "independent_review",
+    "promotion",
+    "migration",
+    "rollback",
+    "monitoring",
+    "does_not_prove"
+  ],
+  "baseline_required_fields": [
+    "current_version_or_revision",
+    "authority_fingerprint",
+    "source_hash_or_commit",
+    "frozen_at"
+  ],
+  "evaluation_required_fields": [
+    "eval_set_refs",
+    "real_case_refs",
+    "counterexample_refs",
+    "regression_refs",
+    "metrics",
+    "acceptance_thresholds",
+    "result"
+  ],
+  "constraint_required_fields": [
+    "semantic_purpose_preserved",
+    "no_compression_no_loss",
+    "authority_boundary_preserved",
+    "user_constraints_preserved",
+    "no_direct_current_mutation",
+    "no_false_promotion"
+  ],
+  "comparison_required_fields": [
+    "baseline_result",
+    "candidate_result",
+    "regressions",
+    "quality_delta",
+    "reliability_delta",
+    "cost_latency_delta",
+    "decision_basis"
+  ],
+  "independent_review_required_fields": [
+    "reviewer_id",
+    "independence_state",
+    "review_input_revision",
+    "verdict",
+    "blocking_findings"
+  ],
+  "promotion_required_fields": [
+    "eligible",
+    "human_decision_required",
+    "decision",
+    "decision_by",
+    "decision_at"
+  ],
+  "migration_required_fields": [
+    "compatibility_class",
+    "affected_carriers",
+    "affected_scope",
+    "migration_steps",
+    "readback_required"
+  ],
+  "rollback_required_fields": [
+    "previous_pointer",
+    "rollback_action",
+    "rollback_test",
+    "provenance_ref"
+  ],
+  "monitoring_required_fields": [
+    "monitor_window_or_condition",
+    "regression_signals",
+    "reopen_rule",
+    "post_adoption_readback_ref"
+  ],
+  "invariants": [
+    "CANDIDATE_MAY_NOT_MODIFY_LIVE_BASELINE_DURING_EVALUATION",
+    "EVAL_PASS_DOES_NOT_EQUAL_HUMAN_PROMOTION",
+    "PR_MERGED_DOES_NOT_EQUAL_PROJECT_DESIGN_PASS",
+    "ADOPTION_DOES_NOT_REINTERPRET_OLD_RECEIPTS",
+    "ONE_PROJECT_SUCCESS_DOES_NOT_UNIVERSALIZE_RULE",
+    "ROLLBACK_AND_PROVENANCE_REQUIRED",
+    "TARGET_OWNER_RETAINS_SEMANTIC_AUTHORITY",
+    "G9_IS_CANDIDATE_INTAKE_NOT_SUPER_AUTHORITY"
+  ],
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}
