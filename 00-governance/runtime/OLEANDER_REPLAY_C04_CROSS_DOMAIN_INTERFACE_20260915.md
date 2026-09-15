@@ -4,38 +4,53 @@ Status: **DRAFT REPLAY / SOURCE-BOUNDED / NOT CURRENT**.
 
 Project: `PRJ-C04-QINGJIANG-SHISHU`.
 
-Source basis includes:
-- `C04_CURRENT_WEB_INTEGRATION_v1_1_RECEIPT.md`;
-- `OLEANDER 清江 C04｜E/F 离线原型操作说明`;
-- current CH08 / App / Web handoff evidence where explicitly referenced.
+Replay target: route/service semantics × App/Web × Brand Presence × optional content × Return × offline/degraded behavior × truth boundary.
 
-The replay tests whether P4 `Controlled Variable / Interface / Material Dependency` works across **physical route × service logic × App/Web × offline fallback × optional content**, rather than only architecture/geometry.
+Source basis:
 
-No source project authority is changed.
+- `C04_APP_P08_PRESENCE_BINDING_v1_0_HANDOFF.json`;
+- `C04_APP_P08_PRESENCE_BINDING_v1_0.html`;
+- `C04_B_EVIDENCE_TO_STORY_MAPPING_r1.json`;
+- earlier C04 Web/offline/current integration evidence only where consistent with the above current replay sources.
+
+No source project authority, route geometry, approved App master, field truth or operator state is modified by this replay.
 
 ---
 
-## 1. Source-supported cross-domain system
+## 1. Why this is a valid TP4 cross-domain replay
 
-The project preserves these invariants:
+This case crosses multiple domains at once:
 
-- `BOAT → CABLE → WALK → RETURN` as the first-read journey/service spine;
-- Service / Return priority;
-- a complete no-phone route;
-- physical and digital are complementary;
-- Thirteen Imprints are optional and reorderable;
-- no score, no `13/13` completion authority and no mandatory task-route logic;
-- state family `NORMAL / DEGRADED / CLOSED / UNKNOWN` remains a behavior constraint;
-- state family `FULL / LIGHT / OFF` remains an information-density constraint;
-- App ROUTE is a supporting product surface, not route/source authority;
-- the offline prototype needs no network, GPS, account or location permission;
-- the route/network graphic is relational, not survey geometry and not “you are here” positioning;
-- status demonstrations are preset states, not real-time service/open-state evidence;
-- `FULL / LIGHT / OFF` changes information density, not route truth;
-- no-phone path uses color band + node number + Return logic;
-- current hard truth boundary remains `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION / NTS / NOT FOR CONSTRUCTION`.
+- physical route / journey logic;
+- digital interaction state;
+- service and Return semantics;
+- brand-attention behavior;
+- editorial/read-depth behavior;
+- offline/degraded behavior;
+- presentation truth-state;
+- source/field authority boundary.
 
-This provides a genuine non-architectural interface network.
+The App handoff explicitly reframes Brand Presence as an **attention-authority layer, not a page skin**. Presence may reduce or disappear while functional semantics remain stable.
+
+Source-supported critical rules include:
+
+- Brand Presence never mutates route geometry or route authority;
+- `UNKNOWN/CLOSED` cannot visually inherit a NORMAL brand-green status reading;
+- `RETURN/SERVICE/ROUTE` functional semantics survive when Brand Presence is `OFF`;
+- MY BOOK remains memory-not-score;
+- runtime readback passed the current prototype mappings;
+- the result remains an interaction prototype, not replacement of the approved App master and not field/operator validation.
+
+The broader C04 evidence-to-story mapping also keeps:
+
+- route authority above reading-page authority;
+- optional reading rather than 13/13 completion;
+- `NORMAL / DEGRADED / CLOSED / UNKNOWN` as behavior states;
+- information presence reducing to LIGHT/OFF when appropriate;
+- `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION`;
+- prototype logic distinct from live operations, field signage/service and safety validation.
+
+This is therefore a real N-way coordination problem, not a styling-only example.
 
 ---
 
@@ -46,12 +61,15 @@ This provides a genuine non-architectural interface network.
 This is a P4 `STATE` variable family, but its semantic dimension is **service/behavior availability interpretation**, not generic UI state.
 
 Consumers include:
-- App;
-- Web integration;
-- route/service explanation;
-- potentially physical/fallback communication where the same state must be legible.
 
-The prototype explicitly says these states are **demonstration presets**, not actual real-time site status.
+- App interaction;
+- Web/presentation integration;
+- route/service explanation;
+- Return priority behavior;
+- optional-content availability;
+- visible truth-state communication.
+
+The prototype uses controlled demonstration states and explicitly does not claim live operational status.
 
 Therefore the variable needs both:
 
@@ -65,7 +83,7 @@ For the current prototype:
 
 `state_source_mode = DEMONSTRATION_PRESET`.
 
-A consumer may demonstrate the semantics but cannot promote it to `LIVE_AUTHORITY`.
+A consumer may demonstrate state semantics but cannot promote the state to `LIVE_AUTHORITY`.
 
 ### Replay rule
 
@@ -73,15 +91,26 @@ A consumer may demonstrate the semantics but cannot promote it to `LIVE_AUTHORIT
 
 ---
 
-## 2.2 `FULL / LIGHT / OFF`
+## 2.2 Information / Brand Presence modes
 
-This is also state-like, but it controls **information density/presence**, not service truth.
+Current C04 evidence uses both project-level reading/presence concepts and a later App binding with:
 
-The source explicitly states:
+`FULL / LIGHT / TRACE / OFF`.
 
-`FULL / LIGHT / OFF controls reading information density and does not alter route truth.`
+The actual App binding maps page + operating state into `effectivePresence`, for example:
 
-Therefore same-literal-class modeling (`STATE`) is insufficient by itself.
+```text
+TODAY + NORMAL → LIGHT
+ROUTE + NORMAL → LIGHT
+READ + NORMAL → TRACE
+MY_BOOK + NORMAL → LIGHT
+RETURN → OFF
+DEGRADED → TRACE except RETURN=OFF
+CLOSED → OFF
+UNKNOWN → OFF
+```
+
+This presence state controls **information/identity density**, not route truth or operational source truth.
 
 Preferred metadata:
 
@@ -89,7 +118,7 @@ Preferred metadata:
 variable_class: STATE
 semantic_dimension: INFORMATION_PRESENCE_MODE
 truth_effect: PRESENTATION_OR_INFORMATION_DENSITY_ONLY
-must_not_mutate: ROUTE_TOPOLOGY / SERVICE_TRUTH / SOURCE_STATUS
+must_not_mutate: [ROUTE_TOPOLOGY, ROUTE_AUTHORITY, SERVICE_SOURCE_TRUTH]
 ```
 
 ### Replay rule
@@ -100,11 +129,49 @@ No new top-level variable class is needed; semantic dimension is the missing dis
 
 ---
 
-# 3. Route spine as shared controlled semantic
+# 3. Derived Controlled Variable replay
 
-`BOAT → CABLE → WALK → RETURN` appears in Web/Journey and Return logic and must remain coherent across carriers.
+The App prototype computes `effectivePresence` from at least two upstream inputs:
 
-However it is not a survey-grade geometric path.
+- `page`;
+- `state`.
+
+`effectivePresence` is therefore not an independent source authority. It is a **derived controlled variable** produced by an explicit binding rule.
+
+This distinction matters because a derived value can be coordination-critical without owning its inputs.
+
+Recommended metadata:
+
+```yaml
+variable_value_origin:
+  SOURCE_CONTROLLED
+  DERIVED_CONTROLLED
+  LOCAL_COMPUTED_NONAUTHORITATIVE
+
+derived_from: []
+derivation_rule_ref:
+```
+
+For C04:
+
+```yaml
+EFFECTIVE_BRAND_PRESENCE:
+  variable_value_origin: DERIVED_CONTROLLED
+  derived_from: [PAGE_CONTEXT, OPERATION_STATE]
+  derivation_rule_ref: C04_APP_P08_PRESENCE_BINDING_v1_0
+```
+
+### Replay-derived rule
+
+`P4/VAR-RP06 DERIVED_CONTROLLED_VARIABLE_MUST_DECLARE_INPUT_VARIABLES_AND_DERIVATION_RULE_AND_CANNOT_SELF_BECOME_SOURCE_AUTHORITY`.
+
+This is a genuine cross-domain gap exposed by replay; it is not a new Object Class.
+
+---
+
+# 4. Route spine as shared controlled semantic
+
+`BOAT → CABLE → WALK → RETURN` and the broader M0–M7 route/service spine are reused across digital, editorial and Return logic, while route geometry remains relational/NTS rather than survey-grade.
 
 The controlled responsibility is primarily:
 
@@ -121,7 +188,6 @@ Preferred representation:
 ```yaml
 variable_class: CONTENT_SEMANTIC
 semantic_dimension: ROUTE_SERVICE_SPINE
-value: [BOAT, CABLE, WALK, RETURN]
 geometry_authority: NTS_RELATIONAL_ONLY
 ```
 
@@ -131,9 +197,9 @@ geometry_authority: NTS_RELATIONAL_ONLY
 
 ---
 
-# 4. Producer / consumer authority at interfaces
+# 5. Producer / consumer authority at interfaces
 
-The current Web integration explicitly consumes App behavior without redesigning or promoting App authority. App ROUTE remains support rather than route authority.
+The current App/Web logic consumes route/state semantics without acquiring route authority.
 
 This reveals a useful P4 interface field:
 
@@ -146,48 +212,105 @@ interface_binding_mode:
   FALLBACK_EQUIVALENT
 ```
 
-For Web consuming App journey state:
-
-`READ_ONLY_CONSUMER` or bounded `TRANSFORMING_CONSUMER` depending on presentation transformation.
-
-A consumer cannot silently become producer/change authority because it renders the state more prominently.
+A consumer cannot silently become producer/change authority because it renders a state more prominently or implements a derived behavior.
 
 ### Replay rule
 
 `P4/AUTH-RP05 INTERFACE_CONSUMER_BINDING_MUST_NOT_INHERIT_UPSTREAM_CHANGE_AUTHORITY_FROM_VISIBILITY_OR_IMPLEMENTATION_OWNERSHIP`.
 
+Cross-domain confirmation:
+
+`P4/VAR-RP07 CONSUMING_A_CONTROLLED_VARIABLE_DOES_NOT_GRANT_CHANGE_AUTHORITY_OVER_THAT_VARIABLE_OR_ITS_UPSTREAM_SOURCE`.
+
 ---
 
-# 5. Digital ↔ no-phone fallback interface
+# 6. Bounded propagation and protected non-propagation
 
-The no-phone route remains complete and uses low-tech color band + node number + Return logic.
+When `state` changes to `CLOSED` or `UNKNOWN`, the current prototype changes:
 
-This is not simply another presentation. It is a **fallback continuity interface**.
+- Brand Presence → `OFF`;
+- optional content visibility;
+- fail-closed state cover/copy;
+- interaction availability;
+- Return/service/route priority.
 
-The digital system may offer richer state/content, but critical route/Return comprehension must retain a non-digital path.
+But the same transition must **not** mutate:
 
-Acceptance dimensions include:
+- route geometry;
+- route authority;
+- source truth;
+- field/operator truth;
+- field safety truth.
+
+This demonstrates that a material propagation graph needs both downstream effects **and protected non-propagation boundaries**.
+
+Recommended structure:
+
+```yaml
+controlled_variable_ref:
+when_changed:
+  must_affect: []
+  may_affect: []
+  must_not_affect: []
+reopen_targets: []
+readback_targets: []
+```
+
+### Replay-derived rule
+
+`P4/PROP-RP01 MATERIAL_STATE_PROPAGATION_MUST_DECLARE_AFFECTED_CONSUMERS_AND_PROTECTED_NON_PROPAGATION_TARGETS_WHERE_AUTHORITY_BOUNDARIES_MATTER`.
+
+This is preferable to inventing one negative relation type per forbidden mutation.
+
+---
+
+# 7. Material Dependency: state-behavior semantics
+
+The current dependency classes cover input, sequence, configuration, evidence, resource, authority and availability. This replay exposes one material dependency with distinct behavior:
+
+`operation state → allowed interaction / presence / Return priority`.
+
+Generic `INPUT_DEPENDENCY` is too weak because the contract requires behavior to change on a controlled state transition.
+
+One new subclass is justified:
+
+`STATE_BEHAVIOR_DEPENDENCY` — a dependency where a controlled state transition materially changes allowed behavior/output while preserving declared non-propagation invariants.
+
+### Replay-derived rule
+
+`P4/DEP-RP01 STATE_BEHAVIOR_DEPENDENCY_REQUIRES_TRANSITION_BEHAVIOR_AND_NON_PROPAGATION_BOUNDARY_WHEN_MATERIAL`.
+
+No broader dependency-family expansion is justified.
+
+---
+
+# 8. Digital ↔ no-phone / reduced-digital fallback interface
+
+The C04 system is designed so critical route/Return responsibility does not depend on optional digital richness. The evidence-to-story mapping explicitly treats Digital Silence as interaction-architecture resilience, while field signage/service sufficiency remains open.
+
+This is a **fallback continuity interface**, not feature parity.
+
+Acceptance dimensions include, where source-supported:
 
 - `ROUTE_IDENTITY_CONTINUITY`;
 - `RETURN_DISCOVERABILITY`;
 - `NODE_ID_CROSS_REFERENCE`;
 - `NO_NETWORK_DEPENDENCE`;
-- `NO_GPS_DEPENDENCE`;
 - `CRITICAL_MEANING_NOT_DIGITAL_ONLY`.
 
 ### Replay rule
 
 `P4/IFC-RP02 FALLBACK_INTERFACE_CLOSURE_REQUIRES_CRITICAL_TASK_CONTINUITY_NOT_FEATURE_PARITY`.
 
-This is a useful cross-domain refinement: fallback systems need not duplicate every feature, but must preserve defined critical tasks/claims.
+And:
+
+`P4/IFC-RP08 OFFLINE_OR_DEGRADED_INTERFACE_PASS_PROVES_DEFINED_FALLBACK_BEHAVIOR_ONLY_AND_DOES_NOT_ESTABLISH_FIELD_FALLBACK_SUFFICIENCY_WITHOUT_FIELD_EVIDENCE`.
 
 ---
 
-# 6. Optional-content interface
+# 9. Optional-content interface
 
-Thirteen Imprints are optional/reorderable and have no score/13-of-13 completion authority.
-
-This optionality is consumed by Web/App interaction.
+Thirteen Imprints/Reading Library are optional/reorderable and have no score/13-of-13 completion authority.
 
 The interface must preserve:
 
@@ -197,19 +320,17 @@ The interface must preserve:
 - no mandatory completion semantics;
 - no score authority.
 
-A UI implementation that adds progress/completion pressure would therefore violate the upstream content/service contract even if all 13 items are technically present.
+A UI that technically renders all content but adds progress pressure can therefore fail the Interface contract.
 
 ### Replay rule
 
 `P4/IFC-RP03 CONTENT_INTERFACE_ACCEPTANCE_INCLUDES_BEHAVIORAL_SEMANTICS_SUCH_AS_OPTIONALITY_ORDER_FREEDOM_AND_NO_SCORE_NOT_JUST_OBJECT_PRESENCE`.
 
-This demonstrates that Interface acceptance is not limited to geometry/data correctness.
-
 ---
 
-# 7. Return as cross-system invariant
+# 10. Return as cross-system invariant
 
-Return is explicitly prioritized in journey, digital interaction and no-phone fallback.
+Return is prioritized in journey logic, digital interaction and reduced-digital/fallback behavior.
 
 This makes Return a candidate **cross-system controlled invariant**, not merely one screen or button.
 
@@ -219,58 +340,93 @@ Preferred representation:
 controlled_variable_or_policy_id: RETURN_PRIORITY
 variable_class: HUMAN_FACTOR or CONTENT_SEMANTIC
 semantic_dimension: RECOVERY_RETURN_PRIORITY
-consumers: [ROUTE_SERVICE, APP, WEB, NO_PHONE_FALLBACK, MOTION/NARRATIVE]
+consumers: [ROUTE_SERVICE, APP, WEB, FALLBACK, MOTION_NARRATIVE]
 change_authority: one explicit system owner
 ```
-
-The exact carrier expression may differ; the semantic priority must persist.
 
 ### Replay rule
 
 `P4/VAR-RP05 CROSS_SYSTEM_POLICY_OR_PRIORITY_MAY_BE_CONTROLLED_AS_A_SHARED_SEMANTIC_VARIABLE_WHEN_MULTIPLE_CONSUMERS_DEPEND_ON_THE_SAME_INVARIANT`.
 
-This avoids duplicating “Return priority” as unrelated local decisions in every medium.
-
 ---
 
-# 8. N-way Interface topology replay
+# 11. N-way Interface topology replay
 
-The cross-domain network includes at least:
+The coordination network includes at least:
 
 - route/service system;
-- App;
-- Web;
-- no-phone physical fallback;
-- optional content/Imprints;
-- presentation/motion surfaces.
+- operation state;
+- App interaction;
+- Web/presentation projection;
+- Brand Presence;
+- reduced-digital/fallback behavior;
+- optional reading/content;
+- Return/service behavior;
+- truth boundary.
 
 A single giant hub would hide important pairwise transformations, while fully pairwise modeling would explode maintenance.
 
 Preferred hybrid:
 
 ```text
-HUB: ROUTE_SERVICE_SEMANTIC_CONTRACT
+HUB: STATE_TO_EXPERIENCE / ROUTE_SERVICE SEMANTIC CONTRACT
   ↕
-  consumers / subinterfaces
+  subinterfaces
   - APP binding
-  - WEB binding
-  - NO_PHONE fallback binding
-  - IMPRINT optionality binding
+  - WEB/presentation binding
+  - fallback binding
+  - optional-content binding
 
-PAIRWISE interface only where transformation/failure/acceptance differs materially.
+PAIRWISE edge only where transformation/failure/acceptance differs materially.
 ```
 
-### Replay rule
+Pairwise passes alone are insufficient to prove global invariants such as:
+
+- `UNKNOWN` fails closed across all relevant channels;
+- Brand Presence can disappear while functional semantics survive;
+- Return priority dominates optional reading;
+- route authority remains upstream and unchanged.
+
+### Replay rules
 
 `P4/IFC-RP04 N_WAY_INTERFACE_MAY_USE_HUB_PLUS_SELECTIVE_PAIRWISE_EDGES; FULL_PAIRWISE_EXPANSION_IS_REQUIRED_ONLY_WHERE_ACCEPTANCE_OR_FAILURE_SEMANTICS_DIFFER`.
 
-This is an anti-overmodeling rule.
+`P4/IFC-RP06 N_WAY_INTERFACE_REQUIRES_HUB_LEVEL_INVARIANTS_WHEN_PAIRWISE_PASSES_CANNOT_PROVE_SYSTEM_LEVEL_COORDINATION`.
 
 ---
 
-# 9. Interface acceptance dimensions from C04
+# 12. Acceptance is multi-dimensional and responsibility-specific
 
-The replay extends the KH46 geometric acceptance-dimension lesson into non-spatial systems.
+The runtime checks establish bounded prototype dimensions such as:
+
+- mapping correctness;
+- function visibility;
+- degraded presence reduction;
+- closed-state functional survival;
+- unknown fail-closed visibility.
+
+They do **not** establish:
+
+- real operator status integration;
+- field signage sufficiency;
+- field service sufficiency;
+- real-condition accessibility;
+- actual safety performance;
+- live route state correctness.
+
+A valid result may therefore be:
+
+```text
+STATE_MAPPING = PASS
+FUNCTIONAL_CONTINUITY = PASS
+TRUTH_STATE_FAIL_CLOSED = PASS
+AUTHORITY_NON_MUTATION = PASS_BOUNDED
+OPTIONALITY_NO_SCORE = PASS_BOUNDED
+OFFLINE_FALLBACK_LOGIC = PASS_BOUNDED
+FIELD_OPERATIONAL_VALIDATION = OPEN
+FIELD_SERVICE_SIGNAGE_SUFFICIENCY = OPEN
+FIELD_SAFETY_ACCESSIBILITY = OPEN
+```
 
 Cross-domain acceptance dimensions may include:
 
@@ -285,68 +441,158 @@ Cross-domain acceptance dimensions may include:
 - `TRUTH_BOUNDARY`;
 - `ACCESSIBILITY_INPUT`;
 - `VISUAL_OR_INTERACTION_READBACK`;
-- `GEOMETRY_OR_DATA` where actually applicable.
+- `GEOMETRY_OR_DATA` where applicable.
 
-The set is interface-specific; this is not a mandatory universal checklist.
+The set is interface-specific, not a universal mandatory checklist.
 
-### Replay rule
+### Replay rules
 
 `P4/IFC-RP05 ACCEPTANCE_DIMENSIONS_ARE_TYPED_BY_INTERFACE_RESPONSIBILITY_AND_MUST_NOT_DEFAULT_TO_GEOMETRY_OR_FILE_TRANSFER_ONLY`.
 
+`P4/IFC-RP07 CROSS_DOMAIN_INTERFACE_CLOSURE_MUST_PRESERVE_ACCEPTANCE_DIMENSIONS_AND_CANNOT_COLLAPSE_PROTOTYPE_RUNTIME_PASS_INTO_FIELD_OPERATIONAL_PASS`.
+
+This independently confirms the earlier KH46 `P4/IFC-RP01` dimensional-acceptance rule outside architecture.
+
 ---
 
-# 10. Failure propagation replay
+# 13. Interface maturity is scoped
 
-Examples:
+The interface has actual integrated runtime execution and can therefore be called at least `EXERCISED` for the prototype configuration.
 
-### App renders `UNKNOWN` as if it were live site status
+It cannot be globally called `VERIFIED` if that is interpreted as field/operator verification.
+
+Maturity therefore needs condition/configuration scope:
+
+```yaml
+maturity: EXERCISED | VERIFIED
+maturity_scope:
+configuration_ref:
+condition_ref:
+medium_or_environment:
+claim_boundary:
+```
+
+Example:
+
+`EXERCISED @ Chromium prototype / current binding / no live operator feed`.
+
+### Replay-derived rule
+
+`P4/IFC-RP09 INTERFACE_MATURITY_VALUE_IS_INVALID_WITHOUT_CONFIGURATION_AND_CONDITION_SCOPE_WHERE_RESULTS_ARE_ENVIRONMENT_DEPENDENT`.
+
+---
+
+# 14. UNKNOWN fail-closed behavior does not rewrite source truth
+
+The prototype maps `UNKNOWN → OFF` for Brand Presence and shows an explicit fail-closed state.
+
+This is a derived behavior. It does not mean the underlying operational truth is now known to be `CLOSED`.
+
+### Replay-derived rule
+
+`P4/VAR-RP08 FAIL_CLOSED_DERIVED_BEHAVIOR_MUST_NOT_REWRITE_UNKNOWN_SOURCE_STATE_AS_KNOWN_DOMAIN_STATE`.
+
+This keeps UI fallback logic separate from domain truth.
+
+---
+
+# 15. Failure propagation examples
+
+### A. App renders `UNKNOWN` as if it were live normal/open status
 
 Affected:
-- service-state interpretation;
+- state interpretation;
 - public claim ceiling;
-- Web/App truth boundary.
+- App/Web truth boundary.
 
 Not necessarily affected:
 - route semantic spine itself.
 
-### `FULL/LIGHT/OFF` implementation accidentally changes route data
+### B. `FULL/LIGHT/TRACE/OFF` implementation mutates route data
 
 Affected:
-- controlled route semantics;
+- route semantics;
 - digital interface;
 - fallback consistency;
-- potentially presentation release.
+- potentially release eligibility.
 
-This is more severe because an information-density variable improperly mutated source truth.
+Severity is high because an information-density variable improperly mutated source truth.
 
-### Web adds `13/13` completion
+### C. Web adds `13/13` completion
 
 Affected:
 - optionality interface;
 - experience behavior;
-- Return/service priorities if completion pressure changes route behavior.
+- Return/service priority if completion pressure changes route behavior.
 
 No geometry need be wrong for the Interface to fail.
 
+### D. Prototype runtime PASS is presented as field safety/service PASS
+
+Affected:
+- interface claim ceiling;
+- P6 evidence/assurance;
+- public presentation truth boundary.
+
+The underlying prototype mapping may remain valid while the promoted claim fails.
+
 ---
 
-# 11. TP4 replay deltas
+# 16. Normalized replay object model
 
-Add/clarify:
+```yaml
+interface_id: C04_STATE_TO_EXPERIENCE_COORDINATION_INTERFACE
+model: HUB_INTERFACE_WITH_SELECTIVE_PAIRWISE_EDGES
+participants:
+  - ROUTE_NETWORK
+  - OPERATION_STATE
+  - APP_INTERACTION
+  - WEB_PRESENTATION
+  - BRAND_PRESENCE
+  - OPTIONAL_READING
+  - RETURN_SERVICE
+  - FALLBACK_LAYER
+  - PRESENTATION_TRUTH_BOUNDARY
+controlled_variables:
+  OPERATION_STATE:
+    class: STATE
+    semantic_dimension: SERVICE_BEHAVIOR_STATE
+    state_source_mode: DEMONSTRATION_PRESET
+  PAGE_CONTEXT:
+    class: STATE
+    semantic_dimension: INTERACTION_CONTEXT
+    value_origin: SOURCE_CONTROLLED
+  EFFECTIVE_BRAND_PRESENCE:
+    class: STATE
+    semantic_dimension: INFORMATION_PRESENCE_MODE
+    value_origin: DERIVED_CONTROLLED
+    derived_from: [OPERATION_STATE, PAGE_CONTEXT]
+    derivation_rule_ref: C04_APP_P08_PRESENCE_BINDING_v1_0
+propagation_contract:
+  must_affect: [BRAND_PRESENCE, OPTIONAL_CONTENT, FAIL_CLOSED_COVER, RETURN_SERVICE_PRIORITY]
+  must_not_affect: [ROUTE_GEOMETRY, ROUTE_AUTHORITY, FIELD_TRUTH, FIELD_SAFETY_TRUTH]
+acceptance_dimensions:
+  STATE_MAPPING: PASS
+  FUNCTIONAL_CONTINUITY: PASS
+  UNKNOWN_FAIL_CLOSED: PASS
+  AUTHORITY_PRESERVATION: PASS_BOUNDED
+  OPTIONALITY_NO_SCORE: PASS_BOUNDED
+  OFFLINE_FALLBACK_LOGIC: PASS_BOUNDED
+  FIELD_OPERATIONAL_VALIDATION: OPEN
+  FIELD_SERVICE_SIGNAGE_SUFFICIENCY: OPEN
+  FIELD_SAFETY_ACCESSIBILITY: OPEN
+maturity: EXERCISED
+maturity_scope: CHROMIUM_PROTOTYPE_CURRENT_BINDING
+truth_boundary: NO_FIELD_OR_OPERATOR_VALIDATION
+```
 
-1. `semantic_dimension` on shared Controlled Variables;
-2. `state_source_mode` for status-like variables;
-3. `truth_effect / must_not_mutate` for presentation/information state variables;
-4. `interface_binding_mode` for producer/consumer authority;
-5. fallback acceptance based on critical-task continuity, not feature parity;
-6. behavioral-semantic acceptance dimensions such as optionality/no-score;
-7. cross-system policy/priority as valid shared semantic variable;
-8. hybrid N-way hub + selective pairwise topology;
-9. non-geometric Interface acceptance dimension vocabulary.
+---
 
-Replay-derived rules:
+# 17. TP4 replay deltas
 
-- `P4/VAR-RP02` shared state enum needs semantic dimension + source mode;
+Existing replay-derived rules retained and strengthened:
+
+- `P4/VAR-RP02` state enum requires semantic dimension + source mode;
 - `P4/VAR-RP03` same STATE class does not make variables substitutable;
 - `P4/VAR-RP04` route semantic spine cannot self-promote to survey authority;
 - `P4/AUTH-RP05` consumer does not inherit upstream change authority;
@@ -356,12 +602,39 @@ Replay-derived rules:
 - `P4/IFC-RP04` N-way may use hub + selective pairwise modeling;
 - `P4/IFC-RP05` acceptance dimensions follow interface responsibility, not geometry default.
 
+New source-grounded deltas:
+
+- `P4/VAR-RP06` derived controlled variable declares inputs + derivation rule;
+- `P4/PROP-RP01` propagation declares must/may/must-not-affect where authority boundaries matter;
+- `P4/DEP-RP01` state-behavior dependency;
+- `P4/IFC-RP06` hub-level invariants for N-way coordination;
+- `P4/IFC-RP07` prototype runtime PASS cannot collapse into field-operational PASS;
+- `P4/VAR-RP07` consuming variable does not grant change authority;
+- `P4/VAR-RP08` fail-closed derived behavior cannot rewrite UNKNOWN source truth;
+- `P4/IFC-RP08` offline/degraded fallback logic does not prove field fallback sufficiency;
+- `P4/IFC-RP09` environment-dependent maturity requires configuration/condition scope.
+
+New orthogonal metadata:
+
+- `semantic_dimension`;
+- `state_source_mode`;
+- `variable_value_origin`;
+- `derived_from`;
+- `derivation_rule_ref`;
+- `interface_binding_mode`;
+- `must_affect / may_affect / must_not_affect`;
+- maturity scope fields.
+
+One new material-dependency subclass is justified:
+
+- `STATE_BEHAVIOR_DEPENDENCY`.
+
 ---
 
-# 12. TP4 disposition
+# 18. TP4 disposition
 
-`TP4 CROSS-DOMAIN INTERFACE/VARIABLE REPLAY = FIRST PASS COMPLETE WITH DELTAS`.
+`TP4 CROSS-DOMAIN INTERFACE / VARIABLE REPLAY = FIRST PASS COMPLETE WITH DELTAS`.
 
-The replay strongly supports the P4 model as genuinely cross-domain. The principal refinement is not a new Object Class; it is richer variable/interface semantics so state, optionality, recovery, fallback and authority survive across physical/digital/service carriers.
+The replay strongly supports the P4 model as genuinely cross-domain. The principal refinement is not another Object Class; it is richer variable/interface semantics so state, derivation, optionality, recovery, fallback, authority and protected non-propagation survive across physical/digital/service carriers.
 
 No Current promotion is authorized.
