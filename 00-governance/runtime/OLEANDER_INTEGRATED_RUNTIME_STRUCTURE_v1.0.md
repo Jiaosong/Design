@@ -160,6 +160,14 @@ Observed outcomes return as bounded lesson candidates:
 
 Project practice does not automatically become reusable knowledge.
 
+## 2A | Runtime Layer Interface Contract
+
+The stable `R-A ... R-K` layer names are now paired with a machine-readable internal interface contract: `OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json`. Each layer resolves external inputs, dependency inputs, outputs, entry/exit conditions, bounded write authority, required readback, failure codes, operational-plane bindings, dependency handoff targets, persistence policy and claim boundary.
+
+A producer may emit a handoff as `READY`, but the consumer owns `ACCEPTED` after checking the required objects and readback. Handoff acceptance is not downstream PASS. Staleness propagates only to affected consumers. `R-K -> R-B` remains feedback, not a dependency handoff.
+
+This interface contract adds internal execution detail only; it does not create a new Runtime Layer, Project State, professional stage namespace, Review class or Knowledge Architecture.
+
 ## 3 | Canonical production sequence
 
 For a design-quality Candidate:

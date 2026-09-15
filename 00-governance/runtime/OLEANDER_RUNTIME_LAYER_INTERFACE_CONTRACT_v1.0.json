@@ -1,0 +1,927 @@
+{
+  "schema": "oleander.runtime-layer-interface-contract.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT_CONTRACT",
+  "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+  "control_graph_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+  "purpose": "Define executable internal interfaces for R-A through R-K without creating another runtime, project state, professional stage system, knowledge tree or review class.",
+  "common": {
+    "instance_identity_fields": [
+      "layer_instance_id",
+      "runtime_layer_id",
+      "project_or_scope_id",
+      "current_task_id",
+      "decision_object_id",
+      "authority_fingerprint",
+      "source_revision",
+      "owner",
+      "created_at",
+      "updated_at"
+    ],
+    "required_interface_fields": [
+      "external_inputs",
+      "inputs",
+      "outputs",
+      "entry_conditions",
+      "exit_conditions",
+      "write_authority",
+      "required_readback",
+      "failure_codes",
+      "plane_bindings",
+      "handoff_targets",
+      "persistence_policy",
+      "claim_boundary"
+    ],
+    "handoff_envelope_fields": [
+      "handoff_id",
+      "from_layer",
+      "to_layer",
+      "project_or_scope_id",
+      "decision_object_id",
+      "authority_fingerprint",
+      "source_revision",
+      "object_refs",
+      "claim_boundary",
+      "open_blockers",
+      "stale_if",
+      "readback_refs",
+      "handoff_state",
+      "observed_at",
+      "does_not_prove"
+    ],
+    "handoff_state_values": [
+      "UNRESOLVED",
+      "READY",
+      "ACCEPTED",
+      "HOLD",
+      "STALE",
+      "SUPERSEDED"
+    ],
+    "handoff_rules": [
+      "PRODUCER_MAY_EMIT_READY_BUT_MAY_NOT_SELF_AWARD_ACCEPTED",
+      "CONSUMER_ACCEPTS_ONLY_AFTER_REQUIRED_OBJECT_AND_READBACK_CHECK",
+      "AUTHORITY_OR_SOURCE_REVISION_CHANGE_MARKS_AFFECTED_HANDOFF_STALE",
+      "HOLD_PRESERVES_LAST_VERIFIED_UPSTREAM_STATE",
+      "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+      "FEEDBACK_EDGE_IS_NOT_A_DEPENDENCY_HANDOFF"
+    ],
+    "failure_rules": [
+      "FAILURE_CODE_MUST_RESOLVE_TO_CANONICAL_OWNER",
+      "FAILURE_REOPENS_ONLY_AFFECTED_CONSUMERS",
+      "UNRESOLVED_OWNER_OR_AUTHORITY_FAILS_CLOSED",
+      "VALID_UNRELATED_STATE_IS_PRESERVED"
+    ],
+    "staleness_rules": [
+      "STALE_IS_DEPENDENCY_SCOPED_NOT_GLOBAL_RESET",
+      "STALE_HANDOFF_MAY_NOT_SUPPORT_PROMOTION",
+      "REFRESH_REQUIRES_CURRENT_SOURCE_AND_REQUIRED_READBACK"
+    ],
+    "claim_rules": [
+      "LAYER_MAY_ONLY_MAKE_CLAIMS_OWNED_BY_ITS_CANONICAL_CONTRACT",
+      "HANDOFF_MAY_NARROW_BUT_NOT_SILENTLY_WIDEN_UPSTREAM_CLAIM_BOUNDARY",
+      "ONE_LAYER_PASS_MAY_NOT_SUBSTITUTE_FOR_ANOTHER_TRIGGERED_LAYER_OR_REVIEW"
+    ],
+    "no_universal_layer_progress_state": true
+  },
+  "layers": {
+    "R-A": {
+      "name": "Authority & Identity",
+      "external_inputs": [
+        "CURRENT_ROOT_AUTHORITY",
+        "PROJECT_OR_SCOPE_AUTHORITY_POINTER",
+        "SOURCE_AUTHORITY_POINTER",
+        "CURRENT_TASK_ID",
+        "ACTIVE_USER_CONSTRAINTS"
+      ],
+      "inputs": [],
+      "outputs": [
+        "AUTHORITY_SNAPSHOT",
+        "AUTHORITY_FINGERPRINT",
+        "IDENTITY_RESOLUTION",
+        "SUPERSESSION_RESOLUTION"
+      ],
+      "entry_conditions": [
+        "MATERIAL_RUNTIME_INVOCATION_OR_AUTHORITY_BEARING_CHANGE_EXISTS"
+      ],
+      "exit_conditions": [
+        "ONE_CURRENT_IDENTITY_RESOLVED_AT_SCOPE",
+        "PROJECT_AND_SOURCE_AUTHORITY_RESOLVED_OR_EXPLICIT_HOLD",
+        "AUTHORITY_FINGERPRINT_EMITTED"
+      ],
+      "write_authority": [
+        "CURRENT_POINTER_BINDING",
+        "IDENTITY_BINDING",
+        "SUPERSESSION_BINDING",
+        "AUTHORITY_SNAPSHOT"
+      ],
+      "required_readback": [
+        "CURRENT_ROOT_READBACK",
+        "PROJECT_OR_SCOPE_AUTHORITY_READBACK",
+        "SOURCE_AUTHORITY_READBACK",
+        "SUPERSESSION_AND_IDENTITY_READBACK"
+      ],
+      "failure_codes": [
+        "AUTHORITY_UNRESOLVED",
+        "AUTHORITY_CONFLICT",
+        "IDENTITY_COLLISION",
+        "SUPERSESSION_AMBIGUOUS",
+        "AUTHORITY_STALE"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "OBSERVABILITY_PLANE",
+        "EVOLUTION_PLANE"
+      ],
+      "handoff_targets": [
+        "R-B",
+        "R-C",
+        "R-D",
+        "R-E",
+        "R-F",
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "persistence_policy": "PERSIST_ON_MATERIAL_AUTHORITY_IDENTITY_OR_SUPERSESSION_CHANGE",
+      "claim_boundary": "MAY_DEFINE_WHAT_IS_CURRENT_AND_BIND_IDENTITY; DOES_NOT_PROVE_DESIGN_PROFESSIONAL_TECHNICAL_OR_STATUTORY_VALIDITY"
+    },
+    "R-B": {
+      "name": "Knowledge & Evidence Resolution",
+      "external_inputs": [
+        "TASK_OR_CLAIM_SCOPE",
+        "CANDIDATE_KNOWLEDGE_REFS",
+        "FRESHNESS_OR_REVALIDATION_CONTEXT"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-A:AUTHORITY_FINGERPRINT"
+      ],
+      "outputs": [
+        "KNOWLEDGE_SNAPSHOT_REF",
+        "KNOWLEDGE_MOUNT_RECORD",
+        "CONTENT_REMEDIATION_STATE",
+        "KNOWLEDGE_INTEGRITY_STATE",
+        "OPERATIONAL_ELIGIBILITY_RECORD",
+        "KNOWLEDGE_OWNER_AND_TRANSFER_CRITERIA"
+      ],
+      "entry_conditions": [
+        "R-A_AUTHORITY_CURRENT",
+        "CONSEQUENTIAL_KNOWLEDGE_OR_EVIDENCE_IS_REQUIRED"
+      ],
+      "exit_conditions": [
+        "CANONICAL_REFS_RESOLVED",
+        "CONTENT_AND_INTEGRITY_STATE_EXPLICIT",
+        "OE_STATE_EXPLICIT_AT_TASK_CLAIM_SCOPE",
+        "FRESHNESS_AND_DOES_NOT_PROVE_BOUNDARY_EXPLICIT"
+      ],
+      "write_authority": [
+        "CORPUS_PARTICIPATION_STATE",
+        "CONTENT_REMEDIATION_STATE",
+        "KNOWLEDGE_INTEGRITY_STATE",
+        "TASK_CLAIM_OPERATIONAL_ELIGIBILITY",
+        "KNOWLEDGE_MOUNT_RECORD"
+      ],
+      "required_readback": [
+        "CANONICAL_BODY_AND_METADATA",
+        "ROLE_LEVEL_DOMAIN_RELATIONS",
+        "SOURCE_OR_EVIDENCE_RELATIONS",
+        "FRESHNESS_AND_VERSION_STATE",
+        "MOUNT_SCOPE_AND_CLAIM_BOUNDARY"
+      ],
+      "failure_codes": [
+        "KNOWLEDGE_REF_UNRESOLVED",
+        "CONTENT_INCOMPLETE_FOR_CLAIM",
+        "KNOWLEDGE_INTEGRITY_HOLD",
+        "OPERATIONAL_ELIGIBILITY_HOLD",
+        "FRESHNESS_EXPIRED",
+        "CLAIM_SCOPE_MISMATCH"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "OBSERVABILITY_PLANE",
+        "EVOLUTION_PLANE"
+      ],
+      "handoff_targets": [
+        "R-C",
+        "R-D",
+        "R-E",
+        "R-K"
+      ],
+      "persistence_policy": "PERSIST_MOUNT_AND_STATE_BY_REFERENCE; NEVER_COPY_A_PARALLEL_CORPUS_FOR_EXECUTION",
+      "claim_boundary": "MAY_RESOLVE_KNOWLEDGE_INTEGRITY_AND_TASK_CLAIM_ELIGIBILITY; DOES_NOT_PROVE_DQ_OR_PROFESSIONAL_STAGE_PASS"
+    },
+    "R-C": {
+      "name": "Design Intelligence",
+      "external_inputs": [
+        "CURRENT_TASK_OR_PROJECT_STATE",
+        "DESIGN_AUTHORITY",
+        "USER_INTENT_AND_LOCKED_CONSTRAINTS"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-B:KNOWLEDGE_SNAPSHOT_REF",
+        "R-B:KNOWLEDGE_MOUNT_RECORD"
+      ],
+      "outputs": [
+        "DESIGN_INTELLIGENCE_PACKET",
+        "DESIGN_QUESTION",
+        "DESIGN_INTENT",
+        "LOCKED_AND_OPEN_VARIABLES",
+        "REVIEW_TRIGGER_SET",
+        "INTEGRATION_TRIGGER",
+        "CLAIM_CEILING_INPUT"
+      ],
+      "entry_conditions": [
+        "MATERIAL_DESIGN_DECISION_OR_CANDIDATE_EXISTS",
+        "R-A_AND_REQUIRED_R-B_INPUTS_CURRENT"
+      ],
+      "exit_conditions": [
+        "DESIGN_QUESTION_AND_INTENT_RESOLVED",
+        "LOCKED_AND_OPEN_VARIABLES_EXPLICIT",
+        "KNOWLEDGE_ROUTES_AND_REVIEW_TRIGGERS_EXPLICIT",
+        "CLAIM_CEILING_AND_EXIT_CONDITION_EXPLICIT"
+      ],
+      "write_authority": [
+        "DESIGN_INTELLIGENCE_PACKET",
+        "DESIGN_QUESTION",
+        "DESIGN_INTENT",
+        "REVIEW_AND_INTEGRATION_TRIGGERS",
+        "DESIGN_INTELLIGENCE_CLAIM_CEILING"
+      ],
+      "required_readback": [
+        "PACKET_IDENTITY_AND_AUTHORITY",
+        "MOUNTED_KNOWLEDGE_REFS",
+        "INTENT_AND_VARIABLES",
+        "REVIEW_AND_INTEGRATION_TRIGGER_DECISIONS",
+        "CLAIM_CEILING"
+      ],
+      "failure_codes": [
+        "DESIGN_QUESTION_UNRESOLVED",
+        "INTENT_CONFLICT",
+        "KNOWLEDGE_ROUTE_INSUFFICIENT",
+        "CLAIM_CEILING_UNRESOLVED",
+        "REVIEW_TRIGGER_UNRESOLVED",
+        "INTEGRATION_TRIGGER_UNRESOLVED"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-D",
+        "R-E",
+        "R-F"
+      ],
+      "persistence_policy": "PERSIST_WHEN_PACKET_DRIVES_MATERIAL_PRODUCTION_OR_PROMOTION_RELEVANT_DECISION",
+      "claim_boundary": "MAY_DEFINE_DESIGN_QUESTION_ROUTE_TRIGGERS_AND_ITS_CLAIM_CEILING_INPUT; DOES_NOT_AWARD_DESIGN_KEEP_OR_PROFESSIONAL_PASS"
+    },
+    "R-D": {
+      "name": "Shared Design Quality & Design Development",
+      "external_inputs": [
+        "PROJECT_DESIGN_DNA_OR_DNA_OPEN_STATE",
+        "PROJECT_DESIGN_CONSTRAINTS",
+        "REQUIRED_DESIGN_COMMUNICATION_CONTEXT"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-B:KNOWLEDGE_MOUNT_RECORD",
+        "R-C:DESIGN_INTELLIGENCE_PACKET"
+      ],
+      "outputs": [
+        "PROJECT_DESIGN_DNA",
+        "DD_SCOPE",
+        "DESIGN_READBACK_REQUIREMENTS",
+        "DESIGN_REOPEN_REQUIREMENTS",
+        "DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
+        "DQ_MATURITY_STATE"
+      ],
+      "entry_conditions": [
+        "CURRENT_DESIGN_INTELLIGENCE_PACKET_EXISTS",
+        "DESIGN_BEARING_WORK_IS_TRIGGERED"
+      ],
+      "exit_conditions": [
+        "PRE_EXECUTION_DD_SCOPE_AND_DNA_STATE_EXPLICIT",
+        "REQUIRED_DESIGN_READBACK_DECLARED",
+        "PROMOTION_RELEVANT_RECEIPT_CURRENT_WHEN_CLOSURE_IS_CLAIMED"
+      ],
+      "write_authority": [
+        "PROJECT_DESIGN_DNA_STATE",
+        "DD_RESPONSIBILITY_SCOPE",
+        "DESIGN_READBACK_REQUIREMENTS",
+        "DQ_MATURITY_WITHIN_HUMAN_MACHINE_BOUNDARY",
+        "DESIGN_QUALITY_DEVELOPMENT_RECEIPT"
+      ],
+      "required_readback": [
+        "DESIGN_DNA_AND_LANGUAGE_STATE",
+        "APPLICABLE_DD_DIMENSIONS",
+        "MULTISCALE_OR_MULTISTATE_READBACK_AS_TRIGGERED",
+        "DQ_RECEIPT_AND_STALENESS",
+        "DESIGN_REOPEN_PROPAGATION"
+      ],
+      "failure_codes": [
+        "PROJECT_DESIGN_DNA_UNRESOLVED",
+        "DD_SCOPE_UNRESOLVED",
+        "DESIGN_READBACK_MISSING",
+        "DQ_RECEIPT_STALE",
+        "DESIGN_REOPEN_REQUIRED",
+        "DQ_HUMAN_JUDGMENT_REQUIRED"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-E",
+        "R-F",
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "persistence_policy": "PERSIST_DNA_DD_SCOPE_AND_PROMOTION_RELEVANT_DQ_RECEIPTS_WHEN_TRIGGERED",
+      "claim_boundary": "MAY_RESOLVE_SHARED_DD_RESPONSIBILITIES_AND_DQ_STATE_WITHIN_DECLARED_HUMAN_BOUNDARY; DOES_NOT_REPLACE_DOMAIN_STAGE_OR_STATUTORY_AUTHORITY"
+    },
+    "R-E": {
+      "name": "Professional Domain Execution Process",
+      "external_inputs": [
+        "PROFESSIONAL_DOMAIN_TRIGGER",
+        "CURRENT_DOMAIN_PROCESS_DEFINITION",
+        "PROJECT_SCOPE_AND_DOMAIN_RESPONSIBILITY"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-B:KNOWLEDGE_MOUNT_RECORD",
+        "R-C:DESIGN_INTELLIGENCE_PACKET",
+        "R-D:DD_SCOPE",
+        "R-D:PROJECT_DESIGN_DNA"
+      ],
+      "outputs": [
+        "DOMAIN_PROCESS_INSTANCE",
+        "DOMAIN_STAGE_INSTANCE",
+        "REQUIRED_NATIVE_OUTPUT",
+        "PROFESSIONAL_CONTROLLED_VARIABLES",
+        "INTERFACE_REQUIREMENTS",
+        "PROFESSIONAL_READBACK_REQUIREMENTS",
+        "DOMAIN_RECEIPT"
+      ],
+      "entry_conditions": [
+        "DOMAIN_PROCESS_TRIGGERED",
+        "CURRENT_AUTHENTIC_PROCESS_DEFINITION_EXISTS",
+        "REQUIRED_KNOWLEDGE_MOUNTS_AND_DD_INPUTS_CURRENT"
+      ],
+      "exit_conditions": [
+        "AUTHENTIC_STAGE_EXIT_CONDITIONS_MET_AT_CLAIM_SCOPE",
+        "REQUIRED_NATIVE_OUTPUTS_AND_INTERFACES_EXPLICIT",
+        "PROFESSIONAL_READBACK_COMPLETE_OR_EXPLICIT_HOLD",
+        "DOMAIN_RECEIPT_CURRENT_WHEN_CLOSURE_IS_CLAIMED"
+      ],
+      "write_authority": [
+        "DOMAIN_PROCESS_AND_STAGE_INSTANCE",
+        "PROFESSIONAL_CONTROLLED_VARIABLES",
+        "PROFESSIONAL_NATIVE_OUTPUT_REQUIREMENTS",
+        "DOMAIN_RECEIPT_WITHIN_PROFESSIONAL_CLAIM_CEILING"
+      ],
+      "required_readback": [
+        "CURRENT_PROCESS_DEFINITION_AND_STAGE_IDENTITY",
+        "KNOWLEDGE_MOUNT_REFS",
+        "NATIVE_OUTPUT_AND_CONTROLLED_VARIABLES",
+        "INTERFACE_REQUIREMENTS",
+        "PROFESSIONAL_REVIEW_AND_RECEIPT"
+      ],
+      "failure_codes": [
+        "DOMAIN_PROCESS_DEFINITION_OPEN",
+        "PROFESSIONAL_STAGE_INPUT_MISSING",
+        "KNOWLEDGE_MOUNT_MISSING",
+        "NATIVE_OUTPUT_UNRESOLVED",
+        "PROFESSIONAL_REVIEW_OPEN",
+        "PROFESSIONAL_STAGE_REOPEN_REQUIRED"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-F",
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "persistence_policy": "PERSIST_DOMAIN_STAGE_STATE_RECEIPT_AND_CONTROLLED_VARIABLES_WHEN_MATERIAL",
+      "claim_boundary": "MAY_MAKE_BOUNDED_DOMAIN_PROFESSIONAL_CLAIMS_AT_STAGE_CEILING; DOES_NOT_AWARD_DESIGN_KEEP_INTEGRATION_PASS_OR_STATUTORY_APPROVAL"
+    },
+    "R-F": {
+      "name": "Cross-Disciplinary Integration",
+      "external_inputs": [
+        "MATERIAL_COUPLING_OBSERVATIONS",
+        "SHARED_VARIABLE_CANDIDATES",
+        "JOINT_ACCEPTANCE_NEED"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-C:INTEGRATION_TRIGGER",
+        "R-D:DD_SCOPE",
+        "R-E:DOMAIN_STAGE_INSTANCE",
+        "R-E:PROFESSIONAL_CONTROLLED_VARIABLES",
+        "R-E:INTERFACE_REQUIREMENTS"
+      ],
+      "outputs": [
+        "INTEGRATION_PACKET",
+        "INTERFACE_REGISTER",
+        "SHARED_VARIABLE_AUTHORITY_MAP",
+        "ACCEPTANCE_CONTRACT",
+        "JOINT_DECISION_RECORD",
+        "INTEGRATION_RECEIPT",
+        "CHANGE_PROPAGATION_RECORD",
+        "COORDINATED_INTERFACE_CONSTRAINTS"
+      ],
+      "entry_conditions": [
+        "MATERIAL_COUPLING_TRIGGERED_OR_EXPLICIT_NOT_REQUIRED_DECISION_NEEDED"
+      ],
+      "exit_conditions": [
+        "IN_CLAIM_INTERFACES_HAVE_EXPLICIT_MATURITY_AND_DISPOSITION",
+        "SHARED_VARIABLE_AUTHORITY_RESOLVED_OR_EXPLICIT_BLOCK",
+        "REQUIRED_ACCEPTANCE_AND_INTEGRATION_READBACK_COMPLETE"
+      ],
+      "write_authority": [
+        "INTERFACE_STATE",
+        "SHARED_VARIABLE_AUTHORITY_WITHIN_INTEGRATION_SCOPE",
+        "INTERFACE_MATURITY_AND_DISPOSITION",
+        "JOINT_ACCEPTANCE_RECORD",
+        "INTEGRATION_RECEIPT"
+      ],
+      "required_readback": [
+        "INTERFACE_REGISTER",
+        "SHARED_VARIABLE_VALUES_AND_AUTHORITIES",
+        "ACCEPTANCE_CONTRACTS",
+        "CHANGE_PROPAGATION",
+        "INTEGRATION_RECEIPT"
+      ],
+      "failure_codes": [
+        "INTERFACE_AUTHORITY_CONFLICT",
+        "SHARED_VARIABLE_DIVERGED",
+        "CRITICAL_INTERFACE_OPEN",
+        "INTEGRATION_READBACK_MISSING",
+        "ACCEPTANCE_CONTRACT_OPEN",
+        "CHANGE_PROPAGATION_INCOMPLETE"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "persistence_policy": "PERSIST_WHEN_MATERIAL_COUPLING_OR_JOINT_ACCEPTANCE_EXISTS",
+      "claim_boundary": "MAY_RESOLVE_CROSS_DOMAIN_INTERFACE_AND_INTEGRATION_STATE; DOES_NOT_AWARD_DISCIPLINE_PASS_OR_DESIGN_KEEP"
+    },
+    "R-G": {
+      "name": "Capability / Skill / Tool Runtime",
+      "external_inputs": [
+        "RUNTIME_AVAILABILITY",
+        "ACTIVE_CONSTRAINT_LOCK",
+        "ALLOWED_EXECUTION_SURFACES"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-E:REQUIRED_NATIVE_OUTPUT",
+        "R-D:DESIGN_READBACK_REQUIREMENTS",
+        "R-F:COORDINATED_INTERFACE_CONSTRAINTS"
+      ],
+      "outputs": [
+        "CAPABILITY_ROUTE",
+        "MINIMUM_SUFFICIENT_OWNER_SET",
+        "TOOL_ADAPTER_ROUTE",
+        "FALLBACK_ROUTE",
+        "RUNTIME_AVAILABILITY_DECISION"
+      ],
+      "entry_conditions": [
+        "EXECUTABLE_NATIVE_OUTPUT_REQUIRED",
+        "UPSTREAM_OUTPUT_SEMANTICS_AND_CONSTRAINTS_RESOLVED"
+      ],
+      "exit_conditions": [
+        "MINIMUM_SUFFICIENT_OWNER_SET_RESOLVED",
+        "CALLABLE_ROUTE_OR_EXPLICIT_HOLD_RESOLVED",
+        "CONSTRAINT_LOCK_HONORED",
+        "READBACK_SURFACE_AND_FALLBACK_DECLARED_WHEN_MATERIAL"
+      ],
+      "write_authority": [
+        "CAPABILITY_ROUTE",
+        "EXECUTION_OWNER_SET",
+        "TOOL_ADAPTER_ROUTE",
+        "RUNTIME_FALLBACK_ROUTE"
+      ],
+      "required_readback": [
+        "OWNER_AND_CAPABILITY_MATCH",
+        "TOOL_ADAPTER_CALLABILITY",
+        "CONSTRAINT_LOCK",
+        "RUNTIME_AVAILABILITY",
+        "READBACK_SURFACE_AND_FALLBACK"
+      ],
+      "failure_codes": [
+        "CAPABILITY_GAP",
+        "OWNER_SET_UNRESOLVED",
+        "TOOL_OR_ADAPTER_UNAVAILABLE",
+        "CONSTRAINT_DENY",
+        "FALLBACK_INADEQUATE",
+        "READBACK_SURFACE_UNRESOLVED"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "EXECUTION_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-H"
+      ],
+      "persistence_policy": "EPHEMERAL_UNLESS_ROUTE_IS_MATERIAL_TO_REPRODUCIBILITY_OR_NONDEFAULT_FALLBACK",
+      "claim_boundary": "MAY_PROVE_ROUTE_AND_RUNTIME_SELECTION; DOES_NOT_PROVE_METHOD_AUTHORITY_PROFESSIONAL_PASS_OR_DESIGN_QUALITY"
+    },
+    "R-H": {
+      "name": "Native Execution & Artifact",
+      "external_inputs": [
+        "EDITABLE_OR_NATIVE_SOURCE_BYTES_WHEN_REQUIRED",
+        "WORKING_SOURCE_LOCATION",
+        "MUTATION_PERMISSION"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-E:REQUIRED_NATIVE_OUTPUT",
+        "R-G:CAPABILITY_ROUTE",
+        "R-G:TOOL_ADAPTER_ROUTE",
+        "R-D:DESIGN_READBACK_REQUIREMENTS",
+        "R-F:COORDINATED_INTERFACE_CONSTRAINTS"
+      ],
+      "outputs": [
+        "NATIVE_ARTIFACT",
+        "ARTIFACT_DELTA",
+        "EXECUTION_RECEIPT",
+        "ARTIFACT_IDENTITY_AND_PROVENANCE",
+        "HASH_OR_COMMIT",
+        "READBACK_TARGET"
+      ],
+      "entry_conditions": [
+        "AUTHORIZED_MUTATION_OR_CREATION_SCOPE_EXISTS",
+        "REQUIRED_DEPENDENCIES_CURRENT",
+        "CALLABLE_EXECUTION_ROUTE_EXISTS"
+      ],
+      "exit_conditions": [
+        "NATIVE_ARTIFACT_OR_EXPLICIT_FAILURE_EXISTS",
+        "ARTIFACT_IDENTITY_AND_PROVENANCE_RECORDED",
+        "MATERIAL_DELTA_AND_SOURCE_AUTHORITY_PRESERVED",
+        "READBACK_TARGET_AVAILABLE"
+      ],
+      "write_authority": [
+        "AUTHORIZED_NATIVE_OR_EDITABLE_ARTIFACT",
+        "ARTIFACT_IDENTITY_AND_PROVENANCE",
+        "EXECUTION_RECEIPT"
+      ],
+      "required_readback": [
+        "ACTUAL_NATIVE_OR_EDITABLE_RESULT",
+        "ARTIFACT_IDENTITY",
+        "SOURCE_AND_DERIVATION_CHAIN",
+        "HASH_OR_COMMIT",
+        "MATERIAL_DELTA",
+        "READBACK_TARGET"
+      ],
+      "failure_codes": [
+        "SOURCE_AUTHORITY_MISSING",
+        "MUTATION_UNAUTHORIZED",
+        "NATIVE_FORMAT_UNAVAILABLE",
+        "ARTIFACT_WRITE_FAILED",
+        "ARTIFACT_IDENTITY_OR_PROVENANCE_GAP",
+        "EXECUTION_DEPENDENCY_STALE"
+      ],
+      "plane_bindings": [
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "EXECUTION_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-I"
+      ],
+      "persistence_policy": "PERSIST_ARTIFACT_IDENTITY_ALWAYS; PERSIST_BINARY_WHEN_PAP_IS_TRIGGERED",
+      "claim_boundary": "MAY_PROVE_AN_AUTHORIZED_ARTIFACT_MUTATION_AND_ITS_OBSERVED_IDENTITY; DOES_NOT_PROVE_VALIDATION_DESIGN_KEEP_OR_PROMOTION"
+    },
+    "R-I": {
+      "name": "Actual Readback & Review",
+      "external_inputs": [
+        "TRIGGERED_REVIEW_SET",
+        "REVIEWER_IDENTITY_AND_INDEPENDENCE",
+        "TARGET_MEDIUM_SCALE_STATE"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-H:NATIVE_ARTIFACT",
+        "R-H:EXECUTION_RECEIPT",
+        "R-D:DESIGN_READBACK_REQUIREMENTS",
+        "R-E:PROFESSIONAL_READBACK_REQUIREMENTS",
+        "R-F:INTEGRATION_RECEIPT"
+      ],
+      "outputs": [
+        "ACTUAL_READBACK",
+        "REVIEW_RECEIPT",
+        "BLOCKING_DEFECT",
+        "NONBLOCKING_DEFECT",
+        "REVIEW_VERDICT",
+        "REPAIR_ROUTE",
+        "REVIEWER_INDEPENDENCE_STATE"
+      ],
+      "entry_conditions": [
+        "ACTUAL_RESULT_OR_READBACK_TARGET_EXISTS",
+        "TRIGGERED_REVIEW_CLASSES_RESOLVED"
+      ],
+      "exit_conditions": [
+        "ACTUAL_RESULT_READBACK_COMPLETE_OR_EXPLICIT_HOLD",
+        "EVERY_TRIGGERED_REVIEW_HAS_RESULT_OR_OPEN_REASON",
+        "FAILURES_ROUTED_TO_CANONICAL_OWNER",
+        "INDEPENDENCE_STATE_RECORDED"
+      ],
+      "write_authority": [
+        "READBACK_OBSERVATION",
+        "BOUNDED_REVIEW_VERDICT",
+        "DEFECT_CLASSIFICATION",
+        "REPAIR_ROUTE",
+        "INDEPENDENCE_STATE"
+      ],
+      "required_readback": [
+        "ACTUAL_ARTIFACT_OR_EXPERIENCE",
+        "TRIGGERED_REVIEW_COVERAGE",
+        "REVIEW_INPUT_HASH_OR_COMMIT",
+        "REVIEWER_INDEPENDENCE",
+        "DEFECT_AND_VERDICT",
+        "REPAIR_OWNER"
+      ],
+      "failure_codes": [
+        "ACTUAL_READBACK_INCOMPLETE",
+        "TRIGGERED_REVIEW_MISSING",
+        "REVIEWER_INDEPENDENCE_INSUFFICIENT",
+        "BLOCKING_DEFECT_PRESENT",
+        "REVIEW_CLASS_OPEN",
+        "REVIEW_EVIDENCE_GAP"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-J",
+        "R-K"
+      ],
+      "persistence_policy": "PERSIST_PROMOTION_RELEVANT_READBACK_REVIEWS_AND_REPAIR_ROUTES",
+      "claim_boundary": "MAY_PROVE_ONLY_THE_SPECIFIC_TRIGGERED_REVIEW_OR_READBACK_VERDICT; ONE_REVIEW_CLASS_DOES_NOT_PROVE_ANOTHER_OR_AUTOMATIC_PROMOTION"
+    },
+    "R-J": {
+      "name": "Persistence / Promotion / Synchronization",
+      "external_inputs": [
+        "PROMOTION_REQUEST",
+        "PERSISTENCE_TRIGGER",
+        "TARGET_SYNC_SURFACES",
+        "AUTHORIZED_HUMAN_DECISION"
+      ],
+      "inputs": [
+        "R-A:AUTHORITY_SNAPSHOT",
+        "R-I:ACTUAL_READBACK",
+        "R-I:REVIEW_RECEIPT",
+        "R-D:DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
+        "R-E:DOMAIN_RECEIPT",
+        "R-F:INTEGRATION_RECEIPT"
+      ],
+      "outputs": [
+        "PERSISTENCE_RECEIPT",
+        "PROMOTION_ELIGIBILITY",
+        "HUMAN_PROMOTION_DECISION_RECORD",
+        "SYNC_READBACK",
+        "DRIFT_STATE"
+      ],
+      "entry_conditions": [
+        "PROMOTION_PERSISTENCE_OR_SYNC_ACTION_TRIGGERED",
+        "REQUIRED_UPSTREAM_RECEIPTS_CURRENT"
+      ],
+      "exit_conditions": [
+        "PERSISTENCE_CLOSED_WHEN_TRIGGERED",
+        "MACHINE_REPORTS_ONLY_ELIGIBILITY_NOT_PROMOTION",
+        "HUMAN_DECISION_RECORDED_WHEN_PROMOTION_OCCURS",
+        "TARGET_PLATFORM_READBACK_CLOSES_SYNC_CLAIM"
+      ],
+      "write_authority": [
+        "PERSISTENCE_RECEIPT",
+        "PROMOTION_ELIGIBILITY_REPORT",
+        "AUTHORIZED_PROMOTION_TRANSITION_RECORD",
+        "TARGET_SYNC_AND_DRIFT_READBACK"
+      ],
+      "required_readback": [
+        "DURABLE_PERSISTENCE_WHEN_TRIGGERED",
+        "PROMOTION_PREREQUISITES_AND_CLAIM_BOUNDARY",
+        "AUTHORIZED_HUMAN_DECISION",
+        "TARGET_PLATFORM_STATE",
+        "CROSS_PLATFORM_DRIFT"
+      ],
+      "failure_codes": [
+        "PERSISTENCE_REQUIRED_BUT_MISSING",
+        "PROMOTION_PREREQUISITE_OPEN",
+        "HUMAN_PROMOTION_DECISION_REQUIRED",
+        "TARGET_SYNC_READBACK_FAILED",
+        "CROSS_PLATFORM_DRIFT",
+        "PROMOTION_CLAIM_BOUNDARY_EXCEEDED"
+      ],
+      "plane_bindings": [
+        "CONTROL_PLANE",
+        "STATE_PLANE",
+        "EXECUTION_PLANE",
+        "OBSERVABILITY_PLANE"
+      ],
+      "handoff_targets": [
+        "R-K"
+      ],
+      "persistence_policy": "DURABLE_BY_DEFINITION_FOR_PERSISTENCE_PROMOTION_AND_SYNC_RECORDS",
+      "claim_boundary": "MAY_REPORT_PERSISTENCE_SYNC_AND_PROMOTION_ELIGIBILITY; PROMOTION_REQUIRES_AUTHORIZED_HUMAN_TRANSITION_AND_DOES_NOT_GRANT_STATUTORY_APPROVAL"
+    },
+    "R-K": {
+      "name": "G9 / Knowledge Return",
+      "external_inputs": [
+        "OBSERVED_PROJECT_OUTCOME",
+        "FAILURE_OR_SUCCESS_PATTERN",
+        "REPAIR_AND_RETEST_HISTORY",
+        "COUNTEREXAMPLES"
+      ],
+      "inputs": [
+        "R-B:KNOWLEDGE_OWNER_AND_TRANSFER_CRITERIA",
+        "R-I:ACTUAL_READBACK",
+        "R-I:REVIEW_RECEIPT",
+        "R-J:HUMAN_PROMOTION_DECISION_RECORD",
+        "R-J:PERSISTENCE_RECEIPT",
+        "R-J:SYNC_READBACK"
+      ],
+      "outputs": [
+        "LESSON_CANDIDATE",
+        "CAUSAL_HYPOTHESIS",
+        "TRANSFER_BOUNDARY",
+        "COUNTEREXAMPLE_SET",
+        "KNOWLEDGE_VALIDATION_ROUTE",
+        "EVOLUTION_CANDIDATE_REF"
+      ],
+      "entry_conditions": [
+        "MEANINGFUL_OBSERVED_OUTCOME_OR_REPEATABLE_PATTERN_EXISTS"
+      ],
+      "exit_conditions": [
+        "LESSON_CANDIDATE_PRESERVES_PROJECT_CONTEXT_AND_UNCERTAINTY",
+        "TRANSFER_BOUNDARY_EXPLICIT",
+        "TARGET_KNOWLEDGE_OR_EVOLUTION_OWNER_RESOLVED",
+        "NO_AUTOMATIC_CURRENT_PROMOTION"
+      ],
+      "write_authority": [
+        "BOUNDED_LESSON_CANDIDATE",
+        "TRANSFER_BOUNDARY",
+        "KNOWLEDGE_VALIDATION_ROUTE",
+        "EVOLUTION_CANDIDATE_PROPOSAL"
+      ],
+      "required_readback": [
+        "OBSERVED_OUTCOME",
+        "FAILURE_REPAIR_RETEST_CHAIN",
+        "COUNTEREXAMPLES",
+        "TRANSFER_BOUNDARY",
+        "TARGET_OWNER_AND_VALIDATION_STATE"
+      ],
+      "failure_codes": [
+        "CAUSAL_STORY_UNSUPPORTED",
+        "TRANSFER_BOUNDARY_MISSING",
+        "PROJECT_SPECIFIC_ONLY",
+        "COUNTEREVIDENCE_UNRESOLVED",
+        "CANDIDATE_OWNER_UNRESOLVED",
+        "AUTO_PROMOTION_ATTEMPT_BLOCKED"
+      ],
+      "plane_bindings": [
+        "STATE_PLANE",
+        "ACQUISITION_READER_PLANE",
+        "OBSERVABILITY_PLANE",
+        "EVOLUTION_PLANE"
+      ],
+      "handoff_targets": [],
+      "feedback_targets": [
+        "R-B"
+      ],
+      "persistence_policy": "PERSIST_AS_PROJECT_OR_CANDIDATE_UNTIL_VALIDATED; NEVER_AS_CURRENT_KNOWLEDGE_BY_DEFAULT",
+      "claim_boundary": "MAY_PROPOSE_BOUNDED_REUSABLE_LEARNING_OR_EVOLUTION_CANDIDATE; DOES_NOT_PROMOTE_CURRENT_KNOWLEDGE_OR_MUTATE_RUNTIME_DIRECTLY"
+    }
+  },
+  "plane_intersections": [
+    {
+      "id": "CONTROL_STATE",
+      "from_plane": "CONTROL_PLANE",
+      "to_plane": "STATE_PLANE",
+      "allowed_flow": [
+        "READ_CURRENT_STATE",
+        "WRITE_DECISION_REF",
+        "WRITE_REOPEN_OR_NEXT_ACTION_REF"
+      ],
+      "forbidden_inference": [
+        "RECORDED_STATE_IS_AUTHORITY",
+        "CONTROL_DECISION_IS_DESIGN_PASS"
+      ]
+    },
+    {
+      "id": "CONTROL_OBSERVABILITY",
+      "from_plane": "OBSERVABILITY_PLANE",
+      "to_plane": "CONTROL_PLANE",
+      "allowed_flow": [
+        "REPORT_CURRENT_NODE",
+        "REPORT_BLOCKER",
+        "REPORT_STALE_DEPENDENCY",
+        "REPORT_NEXT_ACTION_CANDIDATE"
+      ],
+      "forbidden_inference": [
+        "TELEMETRY_CAN_MUTATE_AUTHORITY",
+        "LATEST_TIMESTAMP_IS_CURRENT"
+      ]
+    },
+    {
+      "id": "ACQUISITION_STATE",
+      "from_plane": "ACQUISITION_READER_PLANE",
+      "to_plane": "STATE_PLANE",
+      "allowed_flow": [
+        "HYDRATE_CANONICAL_REF",
+        "ATTACH_READBACK_REF",
+        "ATTACH_SOURCE_REVISION"
+      ],
+      "forbidden_inference": [
+        "VECTOR_OR_DERIVATIVE_IS_CANONICAL",
+        "READABLE_IS_KI_VERIFIED_OR_OE_ELIGIBLE"
+      ]
+    },
+    {
+      "id": "ACQUISITION_EXECUTION",
+      "from_plane": "ACQUISITION_READER_PLANE",
+      "to_plane": "EXECUTION_PLANE",
+      "allowed_flow": [
+        "MATERIALIZE_REQUIRED_BYTES",
+        "PROVIDE_READ_ONLY_SOURCE",
+        "PROVIDE_RENDER_OR_PARSE_INPUT"
+      ],
+      "forbidden_inference": [
+        "MATERIALIZED_COPY_GAINS_SOURCE_AUTHORITY",
+        "READ_ACCESS_GRANTS_MUTATION_PERMISSION"
+      ]
+    },
+    {
+      "id": "EXECUTION_OBSERVABILITY",
+      "from_plane": "EXECUTION_PLANE",
+      "to_plane": "OBSERVABILITY_PLANE",
+      "allowed_flow": [
+        "EMIT_ARTIFACT_REF",
+        "EMIT_EXECUTION_RECEIPT_REF",
+        "EMIT_RUNTIME_FAILURE",
+        "EMIT_READBACK_TARGET"
+      ],
+      "forbidden_inference": [
+        "EXECUTION_SUCCESS_IS_VALIDATION",
+        "ARTIFACT_EXISTS_IS_DESIGN_KEEP"
+      ]
+    },
+    {
+      "id": "EVOLUTION_CONTROL",
+      "from_plane": "EVOLUTION_PLANE",
+      "to_plane": "CONTROL_PLANE",
+      "allowed_flow": [
+        "PROPOSE_CANDIDATE",
+        "REPORT_EVAL_RESULT",
+        "REPORT_COMPATIBILITY_AND_ROLLBACK"
+      ],
+      "forbidden_inference": [
+        "CANDIDATE_CAN_REWRITE_LIVE_CONTROL_BASELINE",
+        "EVAL_PASS_IS_HUMAN_PROMOTION"
+      ]
+    },
+    {
+      "id": "EVOLUTION_STATE",
+      "from_plane": "EVOLUTION_PLANE",
+      "to_plane": "STATE_PLANE",
+      "allowed_flow": [
+        "STORE_CANDIDATE_STATE",
+        "STORE_BASELINE_REF",
+        "STORE_MIGRATION_AND_ROLLBACK_REF"
+      ],
+      "forbidden_inference": [
+        "CANDIDATE_STATE_IS_CURRENT_STATE",
+        "ONE_SUCCESS_UNIVERSALIZES_RULE"
+      ]
+    }
+  ]
+}

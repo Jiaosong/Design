@@ -5,7 +5,7 @@ This directory contains cross-project runtime and capability-routing contracts. 
 Cross-module complex-project orchestration is governed by `../complex-project-master-runtime-v1.0.md` and compiled through the existing Control Plane `MASTER_RUNTIME_STATE`; runtime contracts in this directory remain capability/execution owners beneath that Master rather than a parallel Master system.
 
 `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` is the Current architecture **classification + executable control view** for the whole OLEANDER operating-system architecture. Its canonical count is `1 Current system architecture / 1 Complex Project Master Runtime / 11 stable Runtime Layers (R-A...R-K)`. Contracts, professional processes, state families, Reviews/Gates, Skills, tools and artifacts are object classes inside that architecture rather than additional top-level architectures.
-The executable companion is `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`, validated by `validate_architecture_control_graph.py`. It compiles owner resolution, dependency/reopen routing, six cross-cutting operational planes, File & Artifact Management, AI File Handling/Knowledge Reader, failure recovery, compatibility and Controlled Evolution. `OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json` is the machine contract for proposed system improvements; candidate/eval state never self-promotes Current.
+The executable companion is `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`, validated by `validate_architecture_control_graph.py`. It compiles owner resolution, dependency/reopen routing, six cross-cutting operational planes, File & Artifact Management, AI File Handling/Knowledge Reader, failure recovery, compatibility and Controlled Evolution. `OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json` is the machine contract for proposed system improvements; candidate/eval state never self-promotes Current. `OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json` defines the internal I/O, entry/exit, write-authority, readback, failure, plane-binding, handoff, persistence and claim-boundary contract for every R-A...R-K layer.
 
 
 `OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md` is the Current operator/integration view under that Master. It expands the path through Design Intelligence ? Shared Design Quality & Design Development ? authentic Professional Domain Process ? Integration when coupled ? Skill/Tool execution ? native artifact ? actual readback ? independent reviews, without creating another orchestration authority.
@@ -17,6 +17,7 @@ Use:
 - `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md`
 - `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`
 - `OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json`
+- `OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json`
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md`
 - `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json` — Current implementation revision `1.2.5`
 - `OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md/.json`

@@ -6,6 +6,7 @@
   "effective_date": "2026-09-15",
   "canonical_markdown_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
   "compatible_predecessor": "2.0",
+  "runtime_layer_interface_contract_ref": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
   "system_architecture_count": 1,
   "master_runtime_count": 1,
   "master_runtime": {
@@ -846,7 +847,11 @@
     "ONE_LOGICAL_ARTIFACT_ONE_CURRENT_REVISION_N_REPRESENTATIONS",
     "EVOLUTION_CANDIDATE_NO_SELF_PROMOTION",
     "EVOLUTION_REQUIRES_FROZEN_BASELINE_EVAL_REVIEW_HUMAN_PROMOTION",
-    "EVOLUTION_REQUIRES_ROLLBACK_AND_PROVENANCE"
+    "EVOLUTION_REQUIRES_ROLLBACK_AND_PROVENANCE",
+    "RUNTIME_LAYER_INTERFACE_CONTRACT_REQUIRED",
+    "PRODUCER_CANNOT_SELF_ACCEPT_HANDOFF",
+    "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+    "NO_UNIVERSAL_LAYER_PROGRESS_STATE"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

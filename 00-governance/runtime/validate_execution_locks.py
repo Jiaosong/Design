@@ -626,6 +626,33 @@ def validate_receipt_contract() -> dict:
     if not required_image_fields.issubset(set(image_ext.get("fields", []))):
         fail("Receipt image-consumption fields incomplete")
 
+    handoff_ext = data.get("runtime_layer_handoff_extension", {})
+    if handoff_ext.get("required_when") != "MATERIAL_EXECUTION_CROSSES_AN_R_A_TO_R_K_DEPENDENCY_BOUNDARY_AND_THE_HANDOFF_SUPPORTS_CONTINUATION_REVIEW_OR_PROMOTION":
+        fail("Receipt runtime-layer handoff extension missing or invalid")
+    required_handoff_fields = {
+        "handoff_id", "from_layer", "to_layer", "project_or_scope_id", "decision_object_id",
+        "authority_fingerprint", "source_revision", "object_refs", "claim_boundary", "open_blockers",
+        "stale_if", "readback_refs", "handoff_state", "observed_at", "does_not_prove",
+    }
+    if set(handoff_ext.get("fields", [])) != required_handoff_fields:
+        fail("Receipt runtime-layer handoff fields incomplete or drifted")
+    if set(handoff_ext.get("handoff_state_values", [])) != {"UNRESOLVED", "READY", "ACCEPTED", "HOLD", "STALE", "SUPERSEDED"}:
+        fail("Receipt runtime-layer handoff state vocabulary drift")
+    if handoff_ext.get("producer_max_state") != "READY":
+        fail("Receipt producer may not self-award ACCEPTED handoff")
+    if handoff_ext.get("consumer_accepts_after_required_readback") is not True:
+        fail("Receipt consumer acceptance must require readback")
+    if handoff_ext.get("accepted_does_not_prove_downstream_pass") is not True:
+        fail("Receipt handoff acceptance must not equal downstream PASS")
+    if handoff_ext.get("authority_or_source_change_marks_affected_handoff_stale") is not True:
+        fail("Receipt handoff must become stale on material authority/source change")
+    if handoff_ext.get("hold_preserves_last_verified_upstream_state") is not True:
+        fail("Receipt HOLD handoff must preserve last verified upstream state")
+    if handoff_ext.get("feedback_edge_not_dependency_handoff") != "R-K_TO_R-B":
+        fail("Receipt must preserve R-K to R-B as feedback edge")
+    if handoff_ext.get("prospective_only") is not True or handoff_ext.get("historical_receipts_immutable") is not True:
+        fail("Receipt runtime-layer handoff extension must remain prospective")
+
     checkpoint_ext = data.get("continuation_checkpoint_extension", {})
     if checkpoint_ext.get("required_when") != "SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS_AND_STATUS_IS_WORKING_OR_HOLD":
         fail("Receipt continuation checkpoint extension missing or invalid")
