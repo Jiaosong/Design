@@ -1,0 +1,103 @@
+{
+  "schema": "OLEANDER_LIGHTING_DESIGN_DEVELOPMENT_PROCESS_v0.1",
+  "status": "DRAFT_RESEARCH_PROCESS_NOT_CURRENT",
+  "process_id": "LGT-DD-v0.1-CANDIDATE",
+  "title": "Lighting Design Development Process",
+  "domain": "LIGHTING_DESIGN",
+  "semantic_owner": "PROFESSIONAL_DOMAIN_EXECUTION",
+  "contract_ref": "OLEANDER_DOMAIN_EXECUTION_PROCESS_CONTRACT_v0.1.json",
+  "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+  "source_refs": [
+    "https://store.ies.org/product/lighting-practice-designing-quality-lighting-for-people-and-buildings/"
+  ],
+  "source_boundary": "ANSI/IES LP-1-24 establishes a professional lighting-practice reference including information collection, team responsibilities, phases of lighting design, construction documentation and quality assurance. This OLEANDER draft does not reproduce the standard or replace project-specific code, energy, electrical or field verification requirements.",
+  "stages": [
+    {
+      "stage_id": "LGT-00",
+      "stage_name": "Project Information and Visual Task Definition",
+      "purpose": "Establish users, visual tasks, architectural intent, daylight context, operating conditions, energy/environmental constraints, maintenance context and evidence gaps.",
+      "required_outputs": ["lighting_brief", "visual_task_register", "daylight_and_context_basis", "initial_constraints_unknowns"],
+      "critical_interfaces": ["ARCHITECTURE", "INTERIORS", "ELECTRICAL", "DAYLIGHT", "OPERATIONS"],
+      "exit_conditions": ["visual_tasks_defined", "information_sources_traceable", "unmeasured_existing_conditions_not_promoted"]
+    },
+    {
+      "stage_id": "LGT-01",
+      "stage_name": "Lighting Concept and Quality Strategy",
+      "purpose": "Define light hierarchy, brightness relationships, visual comfort intent, color/modeling strategy, daylight-electric light relationship and experience goals.",
+      "required_outputs": ["lighting_concept", "quality_strategy", "preliminary_luminaire_families", "daylight_and_control_concept"],
+      "critical_interfaces": ["ARCHITECTURE", "INTERIORS", "FACADE", "BRAND_EXPERIENCE"],
+      "exit_conditions": ["concept_linked_to_visual_tasks", "aesthetic_intent_separate_from_performance_claim", "major_constraints_identified"]
+    },
+    {
+      "stage_id": "LGT-02",
+      "stage_name": "Schematic Lighting Design",
+      "purpose": "Develop fixture locations, lighting layers, preliminary photometric strategy, circuit/control zones and coordination zones at schematic level.",
+      "required_outputs": ["schematic_lighting_layout", "preliminary_fixture_schedule", "control_zone_strategy", "preliminary_photometric_model"],
+      "critical_interfaces": ["CEILINGS", "STRUCTURE", "MEP", "ELECTRICAL", "DAYLIGHT", "AV_SPECIAL_SYSTEMS"],
+      "exit_conditions": ["major_fixture_and_control_zones_coordinated", "simulation_inputs_declared", "unresolved_glare_or_integration risks visible"]
+    },
+    {
+      "stage_id": "LGT-03",
+      "stage_name": "Design Development",
+      "purpose": "Resolve fixture types, optics, mounting, aiming intent, illuminance/luminance targets, glare/comfort checks, color qualities, controls, emergency/safety interfaces and maintenance considerations.",
+      "required_outputs": ["developed_lighting_layout", "luminaire_schedule", "photometric_calculations", "control_sequences", "mounting_and_aiming_details", "coordination_details"],
+      "critical_interfaces": ["INTERIORS", "ARCHITECTURE", "ELECTRICAL", "FIRE_LIFE_SAFETY", "CONTROLS", "FACADE"],
+      "exit_conditions": ["calculation_targets_scoped", "product_data_bound_to_exact_fixture_configuration", "coordination_and_control_interfaces explicit"]
+    },
+    {
+      "stage_id": "LGT-04",
+      "stage_name": "Documentation and Specification",
+      "purpose": "Produce drawings, schedules, control intent, specifications and coordination information suitable for procurement and construction within the declared scope.",
+      "required_outputs": ["lighting_drawings", "fixture_and_control_schedules", "specifications", "control_narrative", "details_and_coordination_notes"],
+      "critical_interfaces": ["ELECTRICAL", "CONTROLS", "ARCHITECTURE", "INTERIORS", "PROCUREMENT"],
+      "exit_conditions": ["documentation_coordinated", "performance_requirements_not_lost_in_product_naming", "open_code_or_energy items visible"]
+    },
+    {
+      "stage_id": "LGT-05",
+      "stage_name": "Procurement / Submittal Review",
+      "purpose": "Review proposed luminaires, drivers, controls, substitutions, mockups and samples against the design and performance intent.",
+      "required_outputs": ["submittal_reviews", "substitution_evaluations", "mockup_or_sample_findings_if_applicable", "change_records"],
+      "critical_interfaces": ["SUPPLIERS", "CONTRACTOR", "ELECTRICAL", "CONTROLS", "CLIENT"],
+      "exit_conditions": ["substitutions_compared_on_material_dimensions", "visual_similarity_not_used_as_full_equivalence", "change_impacts recorded"]
+    },
+    {
+      "stage_id": "LGT-06",
+      "stage_name": "Installation, Aiming and Commissioning",
+      "purpose": "Verify installation configuration, aiming, dimming/control behavior and declared commissioning targets in the actual environment where within scope.",
+      "required_outputs": ["installation_observations", "aiming_records", "control_commissioning_results", "defect_or_issue_records", "measured_performance_results_if_taken"],
+      "critical_interfaces": ["ELECTRICAL_CONTRACTOR", "CONTROLS", "ARCHITECTURE", "INTERIORS", "OPERATIONS"],
+      "exit_conditions": ["commissioning_configuration_identified", "measured_vs_simulated_results separated", "open_issues_owned"]
+    },
+    {
+      "stage_id": "LGT-07",
+      "stage_name": "Handover and In-Use Review",
+      "purpose": "Transfer controls, scenes, maintenance and fixture information and evaluate user/operational performance where evidence is available.",
+      "required_outputs": ["handover_information", "control_scene_record", "maintenance_requirements", "post_occupancy_or_in_use_findings", "G9_candidates_if_transferable"],
+      "critical_interfaces": ["FACILITIES", "USERS", "CLIENT", "CONTROLS"],
+      "exit_conditions": ["operational_information_transferred", "user_feedback_and_measurement_states separated", "knowledge_promotion separate"]
+    }
+  ],
+  "runtime_binding": {
+    "P0": "luminaire_control_zone_scene_mounting_point_and_artifact_identity",
+    "P1": "lighting_design_product_selection_control_and_change_authority",
+    "P2": "concept_fixture_control_scene_and_substitution decisions",
+    "P3": "visual_task_comfort_color_energy_safety_maintenance_and_control requirements",
+    "P4": "ceiling_fixture_daylight_electrical_control_mounting_and_architectural interfaces",
+    "P5": "photometric_model_fixture_configuration_control_sequence changes and staleness",
+    "P6": "photometric_calculation_mockup_product_data commissioning measurement and QA",
+    "P7": "glare_control_daylight_substitution_installation_and_operational uncertainty",
+    "P8": "lighting_models_drawings_schedules_specs_calculations_submittals_and_handoffs",
+    "P9": "cross_project_lighting_method_admission_only_via_G9",
+    "P10": "rendered_lighting_image_is_presentation_not_measured_luminance_or_field_proof",
+    "P11": "reader_preserves_concept_simulation_product_commissioning_and_measured states"
+  },
+  "hard_boundaries": [
+    "RENDERED_BRIGHTNESS_IS_NOT_PHOTOMETRIC_MEASUREMENT",
+    "PHOTOMETRIC_SIMULATION_PASS_IS_INPUT_AND_CONFIGURATION_SPECIFIC",
+    "IES_OR_MANUFACTURER_FILE_EXISTENCE_IS_NOT_INSTALLED_PERFORMANCE_PROOF",
+    "SUBSTITUTE_FIXTURE_VISUAL_SIMILARITY_IS_NOT_TECHNICAL_EQUIVALENCE",
+    "CONTROL_SEQUENCE_DOCUMENTATION_IS_NOT_COMMISSIONED_BEHAVIOR",
+    "USER_PREFERENCE_IS_NOT_UNIVERSAL_VISUAL_COMFORT_PROOF"
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_PROCESS_ONLY"
+}
