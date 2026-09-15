@@ -612,6 +612,117 @@ def main() -> None:
     ):
         fail("decision authorization projection lost native reviewer/promotion authority evidence")
 
+    review_boundary = graph.get("independent_review_boundary", {})
+    if review_boundary.get("semantic_class") != "CONTROL_PROJECTION_NOT_REVIEW_AUTHORITY_REGISTRY_STATE_FAMILY_OR_VERDICT_SCHEMA":
+        fail("independent review boundary must remain a control projection rather than a review authority/registry/state family/verdict schema")
+    if review_boundary.get("projection_only_not_replacement_owner_review_contract") is not True:
+        fail("independent review boundary may not replace owner-native review contracts")
+    if review_boundary.get("owner_native_review_and_verdict_semantics_remain_authoritative") is not True:
+        fail("independent review boundary may not replace owner-native review/verdict semantics")
+    if review_boundary.get("central_reviewer_registry_or_review_state_family_forbidden") is not True:
+        fail("independent review boundary may not create a central reviewer registry or review state family")
+    required_review_sources = {
+        "00-governance/complex-project-master-runtime-v1.0.md",
+        "00-governance/OLEANDER_INDEPENDENT_DESIGN_VERDICT_POLICY_v1.0.md",
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+    }
+    if set(review_boundary.get("source_refs", [])) != required_review_sources:
+        fail("independent review source-owner projection drift")
+    for ref in review_boundary.get("source_refs", []):
+        check_ref(ref)
+    required_review_binding_fields = {
+        "project_or_scope_id",
+        "producer_id",
+        "reviewer_id",
+        "review_input_artifact_id",
+        "review_input_hash_or_commit",
+        "reviewer_independence_state",
+        "review_scope_or_claim_ref",
+        "owner_native_verdict_or_gate_ref",
+        "does_not_prove",
+    }
+    if set(review_boundary.get("review_input_required_resolvable_fields", [])) != required_review_binding_fields:
+        fail("independent review required input-binding fields drift")
+    expected_execution_review_fields = {
+        "producer_id",
+        "reviewer_id",
+        "review_input_artifact_id",
+        "review_input_hash_or_commit",
+        "reviewer_independence_state",
+        "evidence_gate",
+        "design_quality_gate",
+        "promotion_authority",
+    }
+    if set(review_boundary.get("owner_native_execution_receipt_fields", [])) != expected_execution_review_fields:
+        fail("independent review projection drifted from the declared native Execution Receipt fields")
+    if set(receipt_contract.get("review_required_fields", [])) != expected_execution_review_fields:
+        fail("Execution Receipt review field contract drift")
+    expected_independence_states = {"INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED"}
+    if set(review_boundary.get("reviewer_independence_states", [])) != expected_independence_states:
+        fail("independent review projection independence-state vocabulary drift")
+    if set(receipt_contract.get("reviewer_independence_states", [])) != expected_independence_states:
+        fail("Execution Receipt reviewer-independence state vocabulary drift")
+    required_review_classes = {
+        "DESIGN_QUALITY",
+        "PROFESSIONAL_DOMAIN",
+        "INTEGRATION",
+        "TECHNICAL_OR_ENGINEERING",
+        "EVIDENCE_OR_TRUTH",
+        "STATUTORY_OR_LICENSED_WHERE_APPLICABLE",
+    }
+    if set(review_boundary.get("triggered_review_or_gate_classes", [])) != required_review_classes:
+        fail("independent review triggered review/gate class separation drift")
+    required_review_revalidation_triggers = {
+        "REVIEW_INPUT_IDENTITY_OR_HASH",
+        "REVIEW_SCOPE_OR_CLAIM",
+        "DECISION_AUTHORIZATION_OR_COMPETENCE_OR_INDEPENDENCE_BASIS",
+        "MATERIAL_DEPENDENCY_OR_ACCEPTANCE_BASIS_CONSUMED_BY_REVIEW",
+    }
+    if set(review_boundary.get("material_review_revalidation_triggers", [])) != required_review_revalidation_triggers:
+        fail("independent review material revalidation trigger set drift")
+    if set(review_boundary.get("machine_may_validate", [])) != {
+        "FIELD_PRESENCE",
+        "REFERENCE_RESOLUTION",
+        "EXACT_INPUT_HASH_BINDING",
+        "ENCODED_PRODUCER_REVIEWER_IDENTITY_DIFFERENCE",
+        "ENCODED_STALENESS_TRIGGER",
+    }:
+        fail("independent review machine-validation boundary drift")
+    if set(review_boundary.get("machine_may_not_award", [])) != {
+        "OWNER_NATIVE_REVIEW_VERDICT_REQUIRING_HUMAN_JUDGMENT",
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS_WHERE_JUDGMENT_REQUIRED",
+        "INTEGRATION_PASS_WHERE_JUDGMENT_REQUIRED",
+        "HUMAN_PROMOTION",
+        "STATUTORY_OR_LICENSED_APPROVAL",
+    }:
+        fail("independent review machine verdict firewall drift")
+    for required_true in {
+        "independent_identity_difference_is_required_but_not_sufficient",
+        "producer_self_check_cannot_satisfy_independent_review",
+        "different_tool_session_or_surface_does_not_prove_independence",
+        "independence_does_not_prove_competence_or_authorization",
+        "review_must_bind_exact_input_identity_and_hash_or_commit",
+        "review_pass_does_not_auto_apply_to_changed_input",
+        "review_domain_pass_cannot_substitute_for_other_triggered_domain",
+        "unrelated_file_timestamp_or_nonconsumed_change_does_not_stale_review",
+        "reopen_only_affected_review_scope",
+        "stale_or_unbound_review_uses_existing_blocker_reconciliation_semantics",
+        "review_binding_valid_does_not_prove_verdict_pass",
+        "review_result_is_not_promotion",
+        "independent_review_is_not_statutory_approval",
+        "resolvable_fields_do_not_require_duplicate_central_persistence",
+    }:
+        if review_boundary.get(required_true) is not True:
+            fail(f"independent review boundary missing {required_true}")
+    if set(review_boundary.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("stale/unbound independent review must reuse existing blocker/reconciliation outcomes")
+    if "producer_self_check_is_not_independent_review" not in set(receipt_contract.get("hard_guards", [])):
+        fail("Execution Receipt lost producer-self-check independent-review guard")
+
     control_domains = graph.get("control_domains", {})
     file_domain = control_domains.get("FILE_ARTIFACT_MANAGEMENT", {})
     reader_domain = control_domains.get("AI_FILE_AND_READER", {})
@@ -1275,6 +1386,13 @@ def main() -> None:
         "CURRENT_KNOWLEDGE_DOES_NOT_AUTO_GRANT_OE3",
         "G9_EVOLUTION_CANDIDATE_CANNOT_MUTATE_LIVE_RUNTIME",
         "PROJECT_REOPEN_AND_REUSABLE_KNOWLEDGE_PROMOTION_REMAIN_SEPARATE",
+        "INDEPENDENT_REVIEW_BINDS_EXACT_INPUT_IDENTITY_AND_HASH_OR_COMMIT",
+        "PRODUCER_SELF_CHECK_IS_NOT_INDEPENDENT_REVIEW",
+        "INDEPENDENCE_DOES_NOT_PROVE_COMPETENCE_OR_AUTHORIZATION",
+        "REVIEW_CLASS_PASS_DOES_NOT_SUBSTITUTE_FOR_OTHER_TRIGGERED_REVIEW",
+        "MATERIAL_REVIEW_CHANGE_STALES_ONLY_AFFECTED_REVIEW_SCOPE",
+        "MACHINE_CANNOT_AWARD_HUMAN_REVIEW_VERDICT",
+        "INDEPENDENT_REVIEW_BOUNDARY_DOES_NOT_CREATE_REVIEWER_REGISTRY_OR_STATE_FAMILY",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1292,6 +1410,7 @@ def main() -> None:
     print("compatibility_impact_projection=PASS")
     print("promotion_persistence_sync_boundary=PASS")
     print("g9_knowledge_return_boundary=PASS")
+    print("independent_review_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
