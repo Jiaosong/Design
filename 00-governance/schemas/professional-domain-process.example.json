@@ -12,6 +12,7 @@
   "owner": "Architecture professional process owner",
   "current_baseline": "BASELINE-EXAMPLE-001",
   "execution_state": "IN_PROGRESS",
+  "professional_verdict": "NOT_RUN",
   "claim_ceiling": "ARCHITECTURAL_DESIGN_DEVELOPMENT",
   "stage_instances": [
     {
@@ -25,6 +26,8 @@
       "claim_ceiling": "ARCHITECTURAL_CIRCULATION_DESIGN",
       "inputs": ["current plan geometry", "current circulation requirements"],
       "outputs": ["CIRCULATION_READBACK"],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": ["KM-EXAMPLE-OE2-001"],
       "interface_refs": ["IF-EXAMPLE-ARCH-FLS-001", "IF-EXAMPLE-ARCH-ACC-001"],
       "evidence_refs": [],
       "review_refs": [],

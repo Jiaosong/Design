@@ -136,7 +136,7 @@ The OLEANDER architecture is composed of several **object classes**. These class
 | **Master orchestrator** | `complex-project-master-runtime-v1.0.md` | decides invocation, precedence, propagation and promotion readiness | **NO** — orchestrates the one architecture |
 | **Runtime layers** | `R-A ... R-K` | stable functional partitions of the runtime | **NO — 11 layers** |
 | **Canonical contracts / specifications** | Design Intelligence, Shared DD, Professional Domain Contract, Integration, Knowledge Mount | define owner-specific obligations and semantics | **NO** |
-| **Professional process definitions** | Architecture Design Development Process v1.0; future domain-native processes | profession-specific authentic development logic | **NO** |
+| **Professional process definitions** | Architecture, Structural Engineering and Building Services / MEP current v1.0 processes; other domain-native processes as formalized | profession-specific authentic development logic | **NO** |
 | **Professional process/stage instances** | project Architecture process instance; project ADD-07 instance | project/runtime execution state | **NO** |
 | **Review / Gate systems** | Artifact Review, Post-Generation Review, PAP, High-Fidelity Built-Environment, specialist technical/evidence gates | bounded assurance / acceptance | **NO** |
 | **State families** | CURRENT/SUPPORT/PROVENANCE/EXCLUDED; KI; OE; DQ; Project State; Job State; interface maturity/disposition | describe independent states | **NO** |
@@ -184,43 +184,40 @@ No `DD-*`, `ADD-*`, professional domain or project may create a copied parallel 
 
 ---
 
-## 6｜Professional architecture inside the one system architecture
+## 6?Professional architecture inside the one system architecture
 
 `R-E` has one shared **Professional Domain Process Contract** but does not impose one professional process.
 
 ```text
 PROFESSIONAL DOMAIN PROCESS CONTRACT
-│
-├─ Architecture
-│  └─ Architecture Design Development Process v1.0
-│     └─ ADD-00 ... ADD-17
-│
-├─ Structural Engineering
-│  └─ authentic domain-native process definition
-│
-├─ Building Services / MEP
-│  └─ authentic domain-native process definition
-│
-├─ Interior Design
-│  └─ authentic domain-native process definition
-│
-├─ Landscape Architecture
-│  └─ authentic domain-native process definition
-│
-├─ Lighting Design
-│  └─ authentic domain-native process definition
-│
-├─ Digital Product / HCD
-│  └─ authentic domain-native process definition
-│
-├─ Systems Engineering
-│  └─ authentic domain-native process definition
-│
-└─ other materially triggered professional domains
-   └─ authentic domain-native process definition
+?
+?? Architecture
+?  ?? Architecture Design Development Process v1.0
+?     ?? ADD-00 ... ADD-17
+?
+?? Structural Engineering
+?  ?? Structural Engineering Design Process v1.0
+?     ?? SE-SPW0 / 1 / 2 / 3 / 4 / 4.5 / 5 / 6 / 7
+?
+?? Building Services / MEP
+?  ?? Building Services / MEP Design Process v1.0
+?     ?? BSP-STRATEGIC / BRIEF / CONCEPT / SPATIAL / TECHNICAL / PRODUCTION / CONSTRUCTION-CX / HANDOVER / INUSE
+?
+?? Interior Design
+?  ?? authentic domain-native process definition OPEN
+?? Landscape Architecture
+?  ?? authentic domain-native process definition OPEN
+?? Lighting Design
+?  ?? authentic domain-native process definition OPEN
+?? Digital Product / HCD
+?  ?? authentic domain-native process definition OPEN
+?? Systems Engineering
+?  ?? authentic domain-native process definition OPEN
+?? other materially triggered professional domains
+   ?? authentic domain-native process definition as required
 ```
 
-As of this map's effective date, **Architecture is the current fully formalized reference professional process** with `ADD-00 ... ADD-17`. The shared Professional Domain Process Contract is already Current, but naming a future domain in the envelope does not mean that domain's authentic process has already been fully formalized.
+As of the latest Current main baseline on 2026-09-15, **Architecture, Structural Engineering and Building Services / MEP have Current formalized professional process definitions**. Architecture remains the current project-exercised reference process. Structural and MEP have machine-readable definitions and CI validation, but this architecture map does **not** infer project-exercised closure merely from their Current document/schema status.
 
 Professional synchronization is by **interface requirement and required maturity**, never by matching stage numbers.
 
@@ -603,17 +600,17 @@ They are cumulative implementation evidence, not design-quality grades. A machin
 Current process-definition state:
 
 ```text
-Architecture            = FORMALIZED + PROJECT_EXERCISED
-Structural Engineering  = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-MEP                      = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
+Architecture            = FORMALIZED + MACHINE_BOUND + PROJECT_EXERCISED
+Structural Engineering  = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
+Building Services / MEP = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
 Interior Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
 Landscape Architecture   = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-Lighting Design           = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
+Lighting Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
 Digital Product / HCD    = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
 Systems Engineering      = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
 ```
 
-Listing a domain in the shared envelope never upgrades its process maturity.
+A Current process document and passing machine schema prove that a domain definition is formalized/machine-bound. They do not by themselves prove project execution, independent readback, professional PASS or Design KEEP.
 
 ---
 

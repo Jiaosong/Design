@@ -379,10 +379,12 @@
       "name": "Professional Domain Execution Process",
       "owner_refs": [
         "00-governance/professional-domain-process-contract-v1.0.md",
-        "00-governance/architecture-design-development-process-v1.0.md"
+        "00-governance/architecture-design-development-process-v1.0.md",
+        "00-governance/structural-engineering-design-process-v1.0.md",
+        "00-governance/building-services-mep-design-process-v1.0.md"
       ],
       "maturity": "M4_PROJECT_EXERCISED",
-      "maturity_scope": "ARCHITECTURE_ONLY_FOR_M4",
+      "maturity_scope": "ARCHITECTURE_M4_PROJECT_EXERCISED; STRUCTURAL_AND_MEP_M3_MACHINE_BOUND; OTHER_DOMAINS_OPEN",
       "dependencies": [
         "R-A",
         "R-B",
@@ -705,17 +707,23 @@
     {
       "domain": "Architecture",
       "state": "FORMALIZED_PROJECT_EXERCISED",
-      "current_process_ref": "00-governance/architecture-design-development-process-v1.0.md"
+      "current_process_ref": "00-governance/architecture-design-development-process-v1.0.md",
+      "machine_schema_ref": "00-governance/schemas/professional-domain-process.example.json",
+      "project_exercised_claim": true
     },
     {
       "domain": "Structural Engineering",
-      "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "state": "FORMALIZED_MACHINE_BOUND",
+      "current_process_ref": "00-governance/structural-engineering-design-process-v1.0.md",
+      "machine_schema_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "project_exercised_claim": false
     },
     {
       "domain": "Building Services / MEP",
-      "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "state": "FORMALIZED_MACHINE_BOUND",
+      "current_process_ref": "00-governance/building-services-mep-design-process-v1.0.md",
+      "machine_schema_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "project_exercised_claim": false
     },
     {
       "domain": "Interior Design",

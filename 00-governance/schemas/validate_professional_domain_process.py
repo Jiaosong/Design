@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Validate OLEANDER Professional Domain Process definition/instance objects.
 
-This validator is deliberately narrow. It validates structure and a few runtime
-consistency invariants; it does not infer professional quality, Design KEEP,
-engineering/statutory approval, DQ maturity, or Promotion.
+This validator is deliberately narrow. It validates structure, closure evidence,
+operational-mount linkage and runtime consistency; it does not infer professional
+quality, Design KEEP, engineering/statutory approval, DQ maturity, interface
+maturity, or Promotion.
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from pathlib import Path
 from typing import Any
@@ -20,6 +22,7 @@ except ImportError:  # CI/runtime may intentionally expose only Python stdlib.
 
 
 SCHEMA_PATH = Path(__file__).with_name("professional-domain-process.v1.schema.json")
+EXAMPLE_PATH = Path(__file__).with_name("professional-domain-process.example.json")
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -45,14 +48,16 @@ def require_keys(
         errors.append(f"{label}: missing required keys: {', '.join(missing)}")
 
 
-def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
-    """Stdlib-only structural floor for CI environments without jsonschema.
+def require_nonempty_list(
+    obj: dict[str, Any], key: str, label: str, errors: list[str]
+) -> None:
+    value = obj.get(key)
+    if not isinstance(value, list) or not value:
+        errors.append(f"{label}: {key} must be a non-empty array")
 
-    The JSON Schema remains the full machine contract. This fallback deliberately
-    checks the contract fields that are consequential to routing, integration,
-    readback and reopen semantics so CI does not silently degrade to a top-level
-    kind check when the optional jsonschema package is unavailable.
-    """
+
+def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
+    """Stdlib-only structural floor for CI environments without jsonschema."""
 
     errors: list[str] = []
     kind = payload.get("kind")
@@ -93,6 +98,8 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "mandatory_reopen_triggers",
             },
             "knowledge_binding": {
+                "operational_mount_contract_ref",
+                "consequential_knowledge_rule",
                 "required_methods",
                 "theory_routes",
                 "source_routes",
@@ -106,8 +113,7 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "outputs_to_domains",
                 "shared_variables",
                 "controlling_authority_requirements",
-                "required_interface_maturity_to_enter",
-                "required_interface_maturity_to_close",
+                "interface_maturity_policy",
                 "allowed_open_interface_conditions",
                 "integration_readback_requirements",
             },
@@ -152,10 +158,15 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
             elif field in payload:
                 errors.append(f"{field}: expected object")
 
+        for field in ("assurance", "completion_contract"):
+            value = payload.get(field)
+            if isinstance(value, dict):
+                require_nonempty_list(value, "does_not_prove", field, errors)
+
         stages = payload.get("stages")
         if not isinstance(stages, list) or not stages:
             errors.append("definition: stages must be a non-empty array")
-        elif stages:
+        else:
             stage_required = {
                 "stage_id",
                 "stage_name",
@@ -163,12 +174,18 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "entry_conditions",
                 "required_inputs",
                 "knowledge_inputs",
+                "knowledge_mount_requirement",
                 "required_dd_dimensions",
                 "required_native_outputs",
                 "interface_requirements",
                 "interface_bindings",
+                "human_experience_consequences",
+                "design_language_consequences",
+                "technical_consequences",
+                "content_projection_requirements",
                 "required_readback",
                 "professional_review_owner",
+                "independent_review_requirement",
                 "open_items_allowed",
                 "exit_conditions",
                 "reopen_triggers",
@@ -193,21 +210,27 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 if not isinstance(stage, dict):
                     errors.append(f"stages[{index}]: expected object")
                     continue
-                require_keys(stage, stage_required, f"stages[{index}]", errors)
+                label = f"stages[{index}]"
+                require_keys(stage, stage_required, label, errors)
+                require_nonempty_list(stage, "does_not_prove", label, errors)
+                if not stage.get("independent_review_requirement"):
+                    errors.append(
+                        f"{label}: independent_review_requirement must be non-empty"
+                    )
                 bindings = stage.get("interface_bindings", [])
                 if not isinstance(bindings, list):
-                    errors.append(f"stages[{index}].interface_bindings: expected array")
+                    errors.append(f"{label}.interface_bindings: expected array")
                     continue
                 for binding_index, binding in enumerate(bindings):
                     if not isinstance(binding, dict):
                         errors.append(
-                            f"stages[{index}].interface_bindings[{binding_index}]: expected object"
+                            f"{label}.interface_bindings[{binding_index}]: expected object"
                         )
                         continue
                     require_keys(
                         binding,
                         binding_required,
-                        f"stages[{index}].interface_bindings[{binding_index}]",
+                        f"{label}.interface_bindings[{binding_index}]",
                         errors,
                     )
 
@@ -223,6 +246,7 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
             "owner",
             "current_baseline",
             "execution_state",
+            "professional_verdict",
             "claim_ceiling",
             "stage_instances",
             "active_interface_refs",
@@ -249,6 +273,8 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "claim_ceiling",
                 "inputs",
                 "outputs",
+                "consequential_knowledge_mount_required",
+                "knowledge_mount_refs",
                 "interface_refs",
                 "evidence_refs",
                 "review_refs",
@@ -315,25 +341,72 @@ def validate_semantics(payload: dict[str, Any]) -> list[str]:
                 + ", ".join(duplicate_instance_ids)
             )
 
+        execution_state = payload.get("execution_state")
+        professional_verdict = payload.get("professional_verdict")
+        if execution_state == "CLOSED":
+            if professional_verdict in {"NOT_RUN", "HOLD"}:
+                errors.append(
+                    "process instance: CLOSED cannot use professional_verdict NOT_RUN or HOLD"
+                )
+            if not stages:
+                errors.append("process instance: CLOSED requires stage_instances evidence")
+            if not payload.get("professional_receipt_refs"):
+                errors.append(
+                    "process instance: CLOSED requires professional_receipt_refs"
+                )
+        if (
+            execution_state in {"CURRENT", "CLOSED"}
+            and professional_verdict == "PASS"
+            and not payload.get("professional_receipt_refs")
+        ):
+            errors.append(
+                "process instance: CURRENT/CLOSED PASS requires professional_receipt_refs"
+            )
+        if execution_state == "BLOCKED" and not payload.get("open_items"):
+            errors.append("process instance: BLOCKED requires open_items")
+        if execution_state == "STALE" and not payload.get("stale_scope"):
+            errors.append("process instance: STALE requires stale_scope")
+
         for stage in stages:
             stage_instance_id = stage.get("stage_instance_id", "<unknown>")
-            execution_state = stage.get("execution_state")
+            stage_state = stage.get("execution_state")
             exit_state = stage.get("exit_condition_state")
             verdict = stage.get("review_verdict")
 
-            if execution_state == "CLOSED" and exit_state != "SATISFIED":
-                errors.append(
-                    f"{stage_instance_id}: CLOSED requires exit_condition_state=SATISFIED"
-                )
-            if execution_state == "CLOSED" and verdict not in {"PASS", "N_A"}:
-                errors.append(
-                    f"{stage_instance_id}: CLOSED requires review_verdict PASS or N_A"
-                )
-            if execution_state == "BLOCKED" and not stage.get("open_items"):
+            if stage_state == "CLOSED":
+                if exit_state != "SATISFIED":
+                    errors.append(
+                        f"{stage_instance_id}: CLOSED requires exit_condition_state=SATISFIED"
+                    )
+                if verdict in {"NOT_RUN", "HOLD"}:
+                    errors.append(
+                        f"{stage_instance_id}: CLOSED cannot use review_verdict NOT_RUN or HOLD"
+                    )
+                if verdict in {"PASS", "REVISE", "REJECT"}:
+                    if not stage.get("outputs"):
+                        errors.append(
+                            f"{stage_instance_id}: CLOSED {verdict} requires outputs"
+                        )
+                    if not stage.get("review_refs"):
+                        errors.append(
+                            f"{stage_instance_id}: CLOSED {verdict} requires review_refs"
+                        )
+                    if not stage.get("actual_readback_refs"):
+                        errors.append(
+                            f"{stage_instance_id}: CLOSED {verdict} requires actual_readback_refs"
+                        )
+                if (
+                    stage.get("consequential_knowledge_mount_required") is True
+                    and not stage.get("knowledge_mount_refs")
+                ):
+                    errors.append(
+                        f"{stage_instance_id}: CLOSED consequential-knowledge stage requires knowledge_mount_refs"
+                    )
+            if stage_state == "BLOCKED" and not stage.get("open_items"):
                 errors.append(
                     f"{stage_instance_id}: BLOCKED requires at least one open_items entry"
                 )
-            if execution_state == "STALE" and not stage.get("stale_scope"):
+            if stage_state == "STALE" and not stage.get("stale_scope"):
                 errors.append(
                     f"{stage_instance_id}: STALE requires at least one stale_scope entry"
                 )
@@ -359,10 +432,135 @@ def validate_payload(payload: dict[str, Any]) -> list[str]:
     return errors
 
 
+def make_closed_instance(
+    source: dict[str, Any], verdict: str = "PASS"
+) -> dict[str, Any]:
+    payload = copy.deepcopy(source)
+    payload["execution_state"] = "CLOSED"
+    payload["professional_verdict"] = verdict
+    payload["professional_receipt_refs"] = [f"PROF-RECEIPT-{verdict}"]
+    stage = payload["stage_instances"][0]
+    stage["execution_state"] = "CLOSED"
+    stage["review_verdict"] = verdict
+    stage["exit_condition_state"] = "SATISFIED"
+    stage["outputs"] = ["CIRCULATION_READBACK"]
+    stage["review_refs"] = [f"STAGE-REVIEW-{verdict}"]
+    stage["actual_readback_refs"] = [f"READBACK-{verdict}"]
+    stage["consequential_knowledge_mount_required"] = True
+    stage["knowledge_mount_refs"] = ["KM-EXAMPLE-OE2-001"]
+    return payload
+
+
+def run_self_tests() -> list[str]:
+    """Regression cases for previously observed false-positive/false-negative closure."""
+
+    failures: list[str] = []
+    schema = load_json(SCHEMA_PATH)
+    stage_required = set(schema["$defs"]["stageDefinition"]["required"])
+    expected_stage_required = {
+        "knowledge_mount_requirement",
+        "human_experience_consequences",
+        "design_language_consequences",
+        "technical_consequences",
+        "content_projection_requirements",
+        "independent_review_requirement",
+        "does_not_prove",
+    }
+    missing_stage_contract = sorted(expected_stage_required - stage_required)
+    if missing_stage_contract:
+        failures.append(
+            "schema stageDefinition missing hardened fields: "
+            + ", ".join(missing_stage_contract)
+        )
+
+    knowledge_required = set(
+        schema["$defs"]["processDefinition"]["properties"]["knowledge_binding"][
+            "required"
+        ]
+    )
+    for field in {"operational_mount_contract_ref", "consequential_knowledge_rule"}:
+        if field not in knowledge_required:
+            failures.append(f"schema knowledge_binding missing {field}")
+
+    interface_props = schema["$defs"]["processDefinition"]["properties"][
+        "interface_contract"
+    ]["properties"]
+    if "interface_maturity_policy" not in interface_props:
+        failures.append("schema interface_contract missing interface_maturity_policy")
+    for forbidden in {
+        "required_interface_maturity_to_enter",
+        "required_interface_maturity_to_close",
+    }:
+        if forbidden in interface_props:
+            failures.append(
+                f"schema interface_contract retains duplicate maturity truth source: {forbidden}"
+            )
+
+    example = load_json(EXAMPLE_PATH)
+    positive_errors = validate_payload(example)
+    if positive_errors:
+        failures.append("example must validate: " + " | ".join(positive_errors))
+
+    closed_pass = make_closed_instance(example, "PASS")
+    closed_pass_errors = validate_payload(closed_pass)
+    if closed_pass_errors:
+        failures.append(
+            "evidence-complete CLOSED PASS must validate: "
+            + " | ".join(closed_pass_errors)
+        )
+
+    closed_reject = make_closed_instance(example, "REJECT")
+    closed_reject_errors = validate_payload(closed_reject)
+    if closed_reject_errors:
+        failures.append(
+            "evidence-complete CLOSED REJECT must remain legal: "
+            + " | ".join(closed_reject_errors)
+        )
+
+    missing_stage_evidence = make_closed_instance(example, "PASS")
+    stage = missing_stage_evidence["stage_instances"][0]
+    stage["outputs"] = []
+    stage["review_refs"] = []
+    stage["actual_readback_refs"] = []
+    stage["knowledge_mount_refs"] = []
+    evidence_errors = validate_payload(missing_stage_evidence)
+    if not evidence_errors:
+        failures.append("CLOSED PASS with empty stage evidence was false-accepted")
+
+    missing_process_receipt = make_closed_instance(example, "PASS")
+    missing_process_receipt["professional_receipt_refs"] = []
+    receipt_errors = validate_payload(missing_process_receipt)
+    if not receipt_errors:
+        failures.append("CLOSED PASS with no professional receipt was false-accepted")
+
+    empty_process = make_closed_instance(example, "REJECT")
+    empty_process["stage_instances"] = []
+    empty_errors = validate_payload(empty_process)
+    if not empty_errors:
+        failures.append("CLOSED process with zero stage instances was false-accepted")
+
+    return failures
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("json_file", type=Path)
+    parser.add_argument("json_file", type=Path, nargs="?")
+    parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
+
+    self_test_failures = run_self_tests()
+    if self_test_failures:
+        print("PROFESSIONAL DOMAIN PROCESS SELF-TEST: FAIL")
+        for error in self_test_failures:
+            print(f"- {error}")
+        return 1
+
+    if args.self_test and args.json_file is None:
+        print("PROFESSIONAL DOMAIN PROCESS SELF-TEST: PASS")
+        return 0
+
+    if args.json_file is None:
+        parser.error("json_file is required unless --self-test is used")
 
     payload = load_json(args.json_file)
     errors = validate_payload(payload)

@@ -194,8 +194,20 @@ def main() -> None:
     if architecture.get("state") != "FORMALIZED_PROJECT_EXERCISED":
         fail("Architecture reference-process state drift")
     check_ref(architecture.get("current_process_ref"))
+    check_ref(architecture.get("machine_schema_ref"))
+    if architecture.get("project_exercised_claim") is not True:
+        fail("Architecture project-exercised reference claim drift")
+    for domain in ("Structural Engineering", "Building Services / MEP"):
+        row = by_domain.get(domain)
+        if not row or row.get("state") != "FORMALIZED_MACHINE_BOUND":
+            fail(f"{domain} must resolve as FORMALIZED_MACHINE_BOUND on the current main baseline")
+        if row.get("project_exercised_claim") is not False:
+            fail(f"{domain} may not infer project-exercised maturity from Current schema/document status")
+        check_ref(row.get("current_process_ref"))
+        check_ref(row.get("machine_schema_ref"))
+
     for domain, row in by_domain.items():
-        if domain == "Architecture":
+        if domain in {"Architecture", "Structural Engineering", "Building Services / MEP"}:
             continue
         if row.get("state") != "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN":
             fail(f"{domain} must not be auto-promoted beyond current evidence")
