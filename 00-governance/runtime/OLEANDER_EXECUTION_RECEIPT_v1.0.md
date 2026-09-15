@@ -272,6 +272,26 @@ Every material handoff records the Native Artifact Contract fields, including:
 
 Material derivatives receive a new artifact ID. A new artifact ID does **not** automatically create a new semantic-image identity.
 
+
+### 7.1 Runtime Layer Handoff｜when material
+
+When a material execution crosses an `R-A ... R-K` dependency boundary and that transition must support continuation, review or Promotion, record the Runtime Layer Interface handoff envelope in the same Execution Receipt:
+
+`handoff_id / from_layer / to_layer / project_or_scope_id / decision_object_id / authority_fingerprint / source_revision / object_refs[] / claim_boundary / open_blockers[] / stale_if[] / readback_refs[] / handoff_state / observed_at / does_not_prove[]`.
+
+Authoritative interface contract: `OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json`.
+
+Rules:
+
+- producer maximum is `READY`; producer may not self-award `ACCEPTED`;
+- consumer sets `ACCEPTED` only after required object/readback checks;
+- `ACCEPTED` proves the transport/interface handoff only, not downstream PASS;
+- material authority/source revision change makes only affected handoffs `STALE`;
+- `HOLD` preserves the last verified upstream state;
+- `R-K → R-B` is feedback, not a dependency handoff;
+- historical receipts remain immutable and this extension is prospective only;
+- `NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD HANDOFF`.
+
 ## 7A｜Image Consumption｜when applicable
 
 Required whenever a visual execution binds a semantic content image. Record:

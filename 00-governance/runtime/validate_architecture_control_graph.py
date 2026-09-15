@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 GRAPH = ROOT / "00-governance" / "runtime" / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
+LAYER_INTERFACE = ROOT / "00-governance" / "runtime" / "OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
 EXPECTED_LAYERS = ["R-A", "R-B", "R-C", "R-D", "R-E", "R-F", "R-G", "R-H", "R-I", "R-J", "R-K"]
 EXPECTED_PLANES = {"CONTROL_PLANE", "STATE_PLANE", "ACQUISITION_READER_PLANE", "EXECUTION_PLANE", "OBSERVABILITY_PLANE", "EVOLUTION_PLANE"}
 EXPECTED_MATURITY = {
@@ -108,6 +109,132 @@ def validate_dag(layers_by_id: dict[str, dict]) -> None:
         visit(layer_id)
 
 
+def validate_layer_interface_contract(graph: dict, layers_by_id: dict[str, dict], plane_ids: set[str]) -> None:
+    import re
+
+    ref = graph.get("runtime_layer_interface_contract_ref")
+    expected_ref = "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+    if ref != expected_ref:
+        fail("runtime layer interface contract pointer drift")
+    check_ref(ref)
+
+    try:
+        contract = json.loads(LAYER_INTERFACE.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"cannot load runtime layer interface contract: {exc}")
+
+    if contract.get("schema") != "oleander.runtime-layer-interface-contract.v1":
+        fail("runtime layer interface schema drift")
+    if contract.get("version") != "1.0":
+        fail("runtime layer interface contract must be v1.0")
+    if contract.get("status") != "ACTIVE_CURRENT_CONTRACT":
+        fail("runtime layer interface contract must be ACTIVE_CURRENT_CONTRACT")
+    if contract.get("architecture_ref") != graph.get("canonical_markdown_ref"):
+        fail("runtime layer interface architecture pointer drift")
+    if contract.get("control_graph_ref") != "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json":
+        fail("runtime layer interface control-graph pointer drift")
+
+    common = contract.get("common", {})
+    required_fields = set(common.get("required_interface_fields", []))
+    expected_required = {
+        "external_inputs", "inputs", "outputs", "entry_conditions", "exit_conditions",
+        "write_authority", "required_readback", "failure_codes", "plane_bindings",
+        "handoff_targets", "persistence_policy", "claim_boundary",
+    }
+    if required_fields != expected_required:
+        fail("runtime layer interface required-field set drift")
+    if common.get("no_universal_layer_progress_state") is not True:
+        fail("runtime layer interface must not create a universal layer progress state")
+
+    handoff_fields = set(common.get("handoff_envelope_fields", []))
+    for field in {
+        "handoff_id", "from_layer", "to_layer", "project_or_scope_id", "decision_object_id",
+        "authority_fingerprint", "source_revision", "object_refs", "claim_boundary", "open_blockers",
+        "stale_if", "readback_refs", "handoff_state", "observed_at", "does_not_prove",
+    }:
+        if field not in handoff_fields:
+            fail(f"handoff envelope missing field {field}")
+    if set(common.get("handoff_state_values", [])) != {"UNRESOLVED", "READY", "ACCEPTED", "HOLD", "STALE", "SUPERSEDED"}:
+        fail("handoff state vocabulary drift")
+    for rule in {
+        "PRODUCER_MAY_EMIT_READY_BUT_MAY_NOT_SELF_AWARD_ACCEPTED",
+        "CONSUMER_ACCEPTS_ONLY_AFTER_REQUIRED_OBJECT_AND_READBACK_CHECK",
+        "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+        "FEEDBACK_EDGE_IS_NOT_A_DEPENDENCY_HANDOFF",
+    }:
+        if rule not in set(common.get("handoff_rules", [])):
+            fail(f"handoff rule missing: {rule}")
+
+    intersections = contract.get("plane_intersections", [])
+    expected_intersections = {"CONTROL_STATE", "CONTROL_OBSERVABILITY", "ACQUISITION_STATE", "ACQUISITION_EXECUTION", "EXECUTION_OBSERVABILITY", "EVOLUTION_CONTROL", "EVOLUTION_STATE"}
+    if {row.get("id") for row in intersections} != expected_intersections:
+        fail("operational-plane intersection set drift")
+    for row in intersections:
+        if row.get("from_plane") not in plane_ids or row.get("to_plane") not in plane_ids:
+            fail(f"plane intersection {row.get('id')} references unknown plane")
+        if not row.get("allowed_flow") or not row.get("forbidden_inference"):
+            fail(f"plane intersection {row.get('id')} missing allowed/forbidden semantics")
+
+    interfaces = contract.get("layers", {})
+    if list(interfaces.keys()) != EXPECTED_LAYERS:
+        fail("runtime layer interface contract must contain R-A..R-K exactly once in canonical order")
+
+    consumers: dict[str, list[str]] = {layer_id: [] for layer_id in EXPECTED_LAYERS}
+    for target_id, layer in layers_by_id.items():
+        for source_id in layer.get("dependencies", []) + layer.get("conditional_dependencies", []):
+            consumers[source_id].append(target_id)
+
+    failure_pattern = re.compile(r"^[A-Z][A-Z0-9_]+$")
+    for layer_id in EXPECTED_LAYERS:
+        interface = interfaces[layer_id]
+        if interface.get("name") != layers_by_id[layer_id].get("name"):
+            fail(f"{layer_id} interface name drift")
+        for key in expected_required:
+            if key not in interface:
+                fail(f"{layer_id} interface missing {key}")
+        for key in ("external_inputs", "outputs", "entry_conditions", "exit_conditions", "write_authority", "required_readback", "failure_codes", "plane_bindings"):
+            if not isinstance(interface.get(key), list) or not interface[key]:
+                fail(f"{layer_id} interface {key} must be a non-empty list")
+        if not isinstance(interface.get("inputs"), list):
+            fail(f"{layer_id} interface inputs must be a list")
+        if layer_id != "R-A" and not interface["inputs"]:
+            fail(f"{layer_id} must declare dependency inputs")
+        if layer_id == "R-A" and interface["inputs"]:
+            fail("R-A must not pretend to consume another runtime layer")
+
+        input_sources = {item.split(":", 1)[0] for item in interface["inputs"] if ":" in item}
+        expected_sources = set(layers_by_id[layer_id].get("dependencies", []) + layers_by_id[layer_id].get("conditional_dependencies", []))
+        if input_sources != expected_sources:
+            fail(f"{layer_id} dependency input coverage drift: expected {sorted(expected_sources)}, got {sorted(input_sources)}")
+        for item in interface["inputs"]:
+            if ":" not in item:
+                fail(f"{layer_id} dependency input must use SOURCE_LAYER:OUTPUT_TOKEN: {item}")
+            source_id, output_token = item.split(":", 1)
+            source_interface = interfaces.get(source_id, {})
+            if output_token not in set(source_interface.get("outputs", [])):
+                fail(f"{layer_id} input {item} is not declared by upstream {source_id} outputs")
+
+        if interface.get("handoff_targets") != consumers[layer_id]:
+            fail(f"{layer_id} handoff_targets drift from dependency graph")
+        if not set(interface.get("plane_bindings", [])).issubset(plane_ids):
+            fail(f"{layer_id} binds unknown operational plane")
+        if len(interface["failure_codes"]) != len(set(interface["failure_codes"])):
+            fail(f"{layer_id} duplicate failure code")
+        for code in interface["failure_codes"]:
+            if not failure_pattern.fullmatch(code):
+                fail(f"{layer_id} invalid failure code {code}")
+        if not isinstance(interface.get("persistence_policy"), str) or not interface["persistence_policy"].strip():
+            fail(f"{layer_id} persistence policy missing")
+        if not isinstance(interface.get("claim_boundary"), str) or not interface["claim_boundary"].strip():
+            fail(f"{layer_id} claim boundary missing")
+
+    rk = interfaces["R-K"]
+    if rk.get("feedback_targets") != ["R-B"]:
+        fail("R-K feedback target must remain bounded to R-B")
+    if "R-B" in rk.get("handoff_targets", []):
+        fail("R-K feedback may not be represented as a dependency handoff")
+
+
 def main() -> None:
     graph = load_graph()
 
@@ -191,6 +318,7 @@ def main() -> None:
                     fail(f"{layer_id} may not depend on itself")
 
     validate_dag(layers_by_id)
+    validate_layer_interface_contract(graph, layers_by_id, plane_ids)
 
     feedback = graph.get("feedback_edges", [])
     if not feedback:
@@ -446,6 +574,10 @@ def main() -> None:
         "VERIFY_REMOTE_POSTCONDITION_BEFORE_RETRY",
         "STATIC_REPO_CHECK_NOT_LIVE_CROSS_PLATFORM_CURRENT",
         "DRIFT_RECONCILIATION_PRESERVES_CANONICAL_OWNER",
+        "RUNTIME_LAYER_INTERFACE_CONTRACT_REQUIRED",
+        "PRODUCER_CANNOT_SELF_ACCEPT_HANDOFF",
+        "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+        "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -464,6 +596,7 @@ def main() -> None:
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
     print("current_drift_reconciliation_projection=PASS")
+    print("runtime_layer_interfaces=PASS")
 
 
 if __name__ == "__main__":
