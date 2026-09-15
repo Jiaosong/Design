@@ -1,0 +1,82 @@
+{
+  "candidate_id": "EV-PROF-FLS-20260916",
+  "candidate_type": "PROFESSIONAL_DOMAIN_PROCESS_CONTROLLED_EVOLUTION",
+  "domain": "Fire / Life Safety",
+  "state": "EV2_EVAL_READY",
+  "created_date": "2026-09-16",
+  "baseline": {
+    "current_main_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "current_architecture_map": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "current_domain_state": "OTHER_MATERIALLY_TRIGGERED_DOMAIN / NO_CURRENT_FLS_PROCESS_DEFINITION",
+    "current_map_mutated": false
+  },
+  "candidate_artifacts": [
+    "00-governance/fire-life-safety-design-process-v1.0.md",
+    "00-governance/schemas/fire-life-safety-design-process.v1.json"
+  ],
+  "existing_owner_mounts": [
+    {
+      "notion_canonical_id": "IDX-ARCH-STRUCT-SAFETY-005",
+      "role": "L4 Structure & Life-Safety routing framework",
+      "does_not_become": "Fire / Life Safety Professional Process authority"
+    },
+    {
+      "route": "existing fire alarm / suppression / smoke-control / firestopping / emergency-lighting / structural-fire / facade-fire / accessibility source-system objects",
+      "role": "task/claim-scoped Knowledge/System mounts",
+      "does_not_become": "parallel Fire Safety knowledge tree"
+    }
+  ],
+  "professional_basis": [
+    {
+      "source": "ISO 23932-1:2018",
+      "status": "published; reviewed and confirmed current in 2024",
+      "use": "general FSE principles and process linkages where performance-based fire safety engineering is applicable",
+      "boundary": "does not replace prescriptive code, project jurisdiction or AHJ"
+    },
+    {
+      "source": "ISO 20710-1:2022",
+      "status": "published",
+      "use": "active fire protection systems within the ISO 23932-1 engineering context",
+      "boundary": "not a detailed project design guide or product/system approval"
+    },
+    {
+      "source": "SFPE Handbook of Fire Protection Engineering, 6th edition",
+      "status": "published 2026",
+      "use": "current professional reference",
+      "boundary": "professional reference, not project statutory authority"
+    }
+  ],
+  "hard_boundaries": [
+    "PRESCRIPTIVE ROUTE != PERFORMANCE-BASED FSE ROUTE",
+    "PERFORMANCE MODEL PASS != AHJ OR STATUTORY APPROVAL",
+    "PRODUCT OR ASSEMBLY EVIDENCE != INSTALLED SYSTEM PASS",
+    "CONTROLLER COMMAND != PHYSICAL END STATE",
+    "ELEMENT-DOMAIN PASS != WHOLE FIRE/LIFE-SAFETY PASS",
+    "FLS COORDINATION != R-F INTEGRATION PASS",
+    "PROFESSIONAL PROCESS STATE != KNOWLEDGE/KI/OE STATE",
+    "CI PASS != PROFESSIONAL PASS != DESIGN KEEP != PROMOTION"
+  ],
+  "review_state": "NOT_REVIEWED",
+  "professional_verdict": "NOT_RUN",
+  "promotion_state": "NOT_ELIGIBLE",
+  "notion_sync_state": "NOT_RUN",
+  "next_required_steps": [
+    "create draft PR against main",
+    "run candidate-specific Professional Domain Process validation plus full regression",
+    "if fresh machine regression passes, issue immutable EV3 successor receipt",
+    "then bind exact-input Independent Review packet under Current PR #635 rules",
+    "candidate routing sync may occur only after packet-head validation and must not mutate Knowledge states"
+  ],
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "AHJ_APPROVAL",
+    "STATUTORY_OR_LICENSED_APPROVAL",
+    "R_F_INTEGRATION_PASS",
+    "OTHER_DOMAIN_PASS",
+    "FIELD_TRUTH",
+    "DESIGN_KEEP",
+    "CURRENT_PROCESS_ADOPTION",
+    "CURRENT_KNOWLEDGE",
+    "PROMOTION"
+  ]
+}
