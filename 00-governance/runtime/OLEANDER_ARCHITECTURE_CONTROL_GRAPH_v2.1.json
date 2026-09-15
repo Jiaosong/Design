@@ -878,7 +878,133 @@
       "RENAMING_DOES_NOT_CREATE_NEW_LOGICAL_OBJECT",
       "MIGRATION_PRESERVES_PROVENANCE",
       "BREAKING_CHANGE_REQUIRES_AFFECTED_SCOPE_REVALIDATION"
-    ]
+    ],
+    "impact_projection": {
+      "semantic_class": "CONTROL_PROJECTION_NOT_MIGRATION_STATE_FAMILY_OR_LEDGER",
+      "projection_only_not_replacement_migration_schema": true,
+      "owner_native_migration_fields_remain_authoritative": true,
+      "projection_source_refs": [
+        "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ],
+      "migration_required_resolvable_fields": [
+        "target_ref",
+        "target_owner",
+        "baseline_current_version_or_revision",
+        "compatibility_class",
+        "affected_carriers",
+        "affected_scope",
+        "migration_steps",
+        "readback_required",
+        "rollback_previous_pointer",
+        "rollback_provenance_ref"
+      ],
+      "owner_native_field_map": {
+        "target_ref": "evolution_candidate.target_ref",
+        "target_owner": "evolution_candidate.target_owner",
+        "baseline_current_version_or_revision": "evolution_candidate.baseline.current_version_or_revision",
+        "compatibility_class": "evolution_candidate.migration.compatibility_class",
+        "affected_carriers": "evolution_candidate.migration.affected_carriers",
+        "affected_scope": "evolution_candidate.migration.affected_scope",
+        "migration_steps": "evolution_candidate.migration.migration_steps",
+        "readback_required": "evolution_candidate.migration.readback_required",
+        "rollback_previous_pointer": "evolution_candidate.rollback.previous_pointer",
+        "rollback_provenance_ref": "evolution_candidate.rollback.provenance_ref"
+      },
+      "impact_scope_projection_fields": [
+        "affected_object_refs",
+        "affected_handoff_refs",
+        "affected_consumer_refs",
+        "affected_claim_refs",
+        "unaffected_verified_refs"
+      ],
+      "impact_scope_sources": [
+        "EXPLICIT_MIGRATION_AFFECTED_CARRIERS_AND_SCOPE",
+        "CURRENT_DEPENDENCY_GRAPH",
+        "RUNTIME_LAYER_HANDOFF_RELATIONS",
+        "CLAIM_CONSUMPTION_RELATIONS",
+        "AUTHORITY_BINDINGS",
+        "RECOVERY_BLAST_RADIUS_WHEN_AN_ACTUAL_INCIDENT_EXISTS"
+      ],
+      "affectedness_exclusions": [
+        "CREATED_BEFORE_CHANGE_ALONE",
+        "SAME_REPOSITORY_ALONE",
+        "FILENAME_PATTERN_ALONE",
+        "SAME_PROJECT_ALONE",
+        "NEWER_TIMESTAMP_ALONE"
+      ],
+      "control_actions_are_not_state_family": true,
+      "control_action_vocabulary": [
+        "PRESERVE_UNAFFECTED_VERIFIED",
+        "APPLY_NEW_REQUIREMENT_PROSPECTIVELY",
+        "UPDATE_AFFECTED_VALIDATOR_ADAPTER",
+        "MARK_AFFECTED_STALE",
+        "REOPEN_AFFECTED_CONSUMERS",
+        "MIGRATE_AFFECTED_CARRIERS",
+        "REFRESH_AUTHORITY_BINDING",
+        "RERUN_AFFECTED_READBACK_OR_REVIEW",
+        "SUPERSEDE_OLD_POINTER_WHEN_APPLICABLE"
+      ],
+      "minimum_actions_by_change_class": {
+        "DOC_CLARIFICATION": [
+          "PRESERVE_UNAFFECTED_VERIFIED"
+        ],
+        "BACKWARD_COMPATIBLE_EXTENSION": [
+          "PRESERVE_UNAFFECTED_VERIFIED",
+          "APPLY_NEW_REQUIREMENT_PROSPECTIVELY",
+          "UPDATE_AFFECTED_VALIDATOR_ADAPTER"
+        ],
+        "SEMANTIC_OWNER_CHANGE": [
+          "MARK_AFFECTED_STALE",
+          "REFRESH_AUTHORITY_BINDING",
+          "REOPEN_AFFECTED_CONSUMERS",
+          "RERUN_AFFECTED_READBACK_OR_REVIEW"
+        ],
+        "STATE_CONTRACT_CHANGE": [
+          "MARK_AFFECTED_STALE",
+          "MIGRATE_AFFECTED_CARRIERS",
+          "REOPEN_AFFECTED_CONSUMERS",
+          "RERUN_AFFECTED_READBACK_OR_REVIEW"
+        ],
+        "SCHEMA_BREAKING_CHANGE": [
+          "MARK_AFFECTED_STALE",
+          "MIGRATE_AFFECTED_CARRIERS",
+          "REOPEN_AFFECTED_CONSUMERS",
+          "RERUN_AFFECTED_READBACK_OR_REVIEW"
+        ],
+        "PROFESSIONAL_PROCESS_REVISION": [
+          "PRESERVE_UNAFFECTED_VERIFIED",
+          "MARK_AFFECTED_STALE",
+          "REOPEN_AFFECTED_CONSUMERS",
+          "RERUN_AFFECTED_READBACK_OR_REVIEW"
+        ],
+        "AUTHORITY_REPLACEMENT": [
+          "SUPERSEDE_OLD_POINTER_WHEN_APPLICABLE",
+          "REFRESH_AUTHORITY_BINDING",
+          "MARK_AFFECTED_STALE",
+          "REOPEN_AFFECTED_CONSUMERS",
+          "RERUN_AFFECTED_READBACK_OR_REVIEW"
+        ]
+      },
+      "historical_receipt_rule": "PRESERVE_RAW_RECEIPT_UNDER_ORIGINAL_CONTRACT_AND_RECORD_SUCCESSOR_MIGRATION_OR_REVALIDATION_EVIDENCE; NEVER_REWRITE_HISTORY_TO_LOOK_CURRENT",
+      "whole_system_invalidation_forbidden_when_affected_scope_known": true,
+      "relation_scoped_propagation_only": true,
+      "backward_compatible_extension_is_prospective_by_default": true,
+      "canonical_owner_may_explicitly_require_named_existing_carrier_migration": true,
+      "new_field_does_not_auto_upgrade_old_evidence": true,
+      "review_rerun_only_when_review_input_claim_authorization_or_acceptance_dependency_is_affected": true,
+      "change_classification_alone_does_not_open_recovery_incident": true,
+      "actual_failure_or_contradiction_may_use_recovery_incident_contract": true,
+      "unresolved_affected_scope_runtime_outcomes": [
+        "BLOCKED",
+        "RECONCILIATION_REQUIRED"
+      ],
+      "post_migration_readback_required_when_declared": true,
+      "rollback_uses_evolution_candidate_pointer_and_provenance": true,
+      "persistent_migration_ledger_forbidden": true
+    }
   },
   "trigger_applicability_contract": {
     "semantic_class": "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY",
@@ -1110,7 +1236,11 @@
     "RECOVERY_CLOSURE_REQUIRES_ACTUAL_READBACK",
     "INCIDENT_CLOSED_DOES_NOT_PROVE_DESIGN_PROFESSIONAL_OR_PROMOTION_PASS",
     "RECOVERY_REACCEPTS_ONLY_AFFECTED_HANDOFFS_AFTER_REQUIRED_READBACK",
-    "LIVE_STATUS_REMAINS_OBSERVABILITY_ONLY"
+    "LIVE_STATUS_REMAINS_OBSERVABILITY_ONLY",
+    "COMPATIBILITY_IMPACT_IS_RELATION_SCOPED_NOT_GLOBAL_RESET",
+    "HISTORICAL_RECEIPTS_IMMUTABLE_ACROSS_MIGRATION",
+    "BACKWARD_COMPATIBLE_EXTENSION_PROSPECTIVE_BY_DEFAULT",
+    "MIGRATION_ACTIONS_DO_NOT_CREATE_STATE_FAMILY_OR_LEDGER"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {
