@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from validate_p7_conversions import EXECUTABLE_RULES, check_snapshot
+
+RUNTIME = Path(__file__).resolve().parent
+EVALS = RUNTIME / "OLEANDER_P7_EXECUTABLE_REGRESSION_EVALS_v0.1.json"
 
 
 def main() -> None:
@@ -93,7 +99,28 @@ def main() -> None:
     unexpected = sorted(actual - EXECUTABLE_RULES)
     if unexpected:
         raise SystemExit(f"P7 executable self-test failed: unexpected findings {unexpected}")
-    print(f"P7 executable self-test PASS: rules={len(EXECUTABLE_RULES)} findings={len(findings)}")
+
+    payload = json.loads(EVALS.read_text(encoding="utf-8"))
+    referenced: set[str] = set()
+    ids: list[str] = []
+    for case in payload.get("cases", []):
+        ids.append(case.get("id"))
+        for expected in case.get("expected", []):
+            if isinstance(expected, str):
+                referenced.add(expected.split(":", 1)[0])
+    if len(ids) != len(set(ids)):
+        raise SystemExit("P7 executable regression corpus failed: duplicate case IDs")
+    uncovered = sorted(EXECUTABLE_RULES - referenced)
+    if uncovered:
+        raise SystemExit(f"P7 executable regression corpus failed: uncovered rules {uncovered}")
+    unknown_refs = sorted(referenced - EXECUTABLE_RULES)
+    if unknown_refs:
+        raise SystemExit(f"P7 executable regression corpus failed: references non-executable rules {unknown_refs}")
+
+    print(
+        "P7 executable self-test PASS: "
+        f"rules={len(EXECUTABLE_RULES)} findings={len(findings)} cases={len(ids)}"
+    )
 
 
 if __name__ == "__main__":
