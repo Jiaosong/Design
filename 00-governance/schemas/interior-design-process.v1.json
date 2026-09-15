@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.0",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "domain": "Interior Design",
+  "version": "1.0",
+  "title": "OLEANDER Interior Design Process v1.0",
+  "purpose": "Run authentic interior-design development from strategic appointment and briefing through concept, spatial and technical design, procurement/construction administration, handover and post-occupancy evaluation while preserving human-use, material/product, FF&E, procurement and cross-disciplinary responsibility boundaries.",
+  "scope_in": [
+    "interior spatial experience and room planning",
+    "partitions, ceilings, floors, wall systems and finishes",
+    "fixed joinery and custom interior elements",
+    "FF&E and equipment interfaces",
+    "interior material/product evidence and samples",
+    "lighting/acoustic/MEP/fire/accessibility interior interfaces",
+    "interior sourcing/procurement responsibility when appointed",
+    "mockups, specialist submittals and construction administration",
+    "handover, snagging and post-occupancy evaluation"
+  ],
+  "scope_out": [
+    "automatic fire or accessibility approval",
+    "automatic MEP/electrical/acoustic certification",
+    "automatic product-to-room compliance inference",
+    "automatic procurement authority beyond appointment",
+    "automatic field verification",
+    "automatic Design KEEP or Promotion"
+  ],
+  "authority_position": "Subordinate to OLEANDER Master Runtime, Professional Domain Process Contract, Current Knowledge Authority, Cross-Disciplinary Integration, project appointment and applicable jurisdiction/professional authority.",
+  "current_definition_ref": "00-governance/interior-design-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim requires professional interior spatial, material, FF&E, technical, procurement, construction or in-use judgment.",
+    "design_question_types": [
+      "interior brief and human-use requirements",
+      "interior concept and experience",
+      "room/FF&E spatial coordination",
+      "technical interior design",
+      "materials/products/procurement",
+      "construction administration and mockups",
+      "handover and post-occupancy evaluation"
+    ],
+    "responsibility_triggers": [
+      "interior design decision controls another discipline or procurement package",
+      "product/material/FF&E claim has project consequence",
+      "interior field or installed-performance claim",
+      "commercial sourcing/supply responsibility is assumed"
+    ],
+    "claim_ceiling_rule": "The lowest applicable current claim ceiling across appointment scope, mounted knowledge/product evidence, interface maturity, native interior evidence, mockup/site evidence and external statutory/professional authority governs.",
+    "not_triggered_when": [
+      "decorative reference imagery with explicit exclusion of professional interior-design claims"
+    ],
+    "mandatory_reopen_triggers": [
+      "user/use/room brief change",
+      "architecture/MEP/fire/accessibility/lighting/acoustic interface change",
+      "material/product/FF&E substitution",
+      "procurement/commercial responsibility change",
+      "specialist/fabricator/submittal change",
+      "site nonconformity or field dimension change",
+      "post-occupancy evidence materially contradicts design assumptions"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential user, material/product, accessibility, fire, lighting, acoustic, MEP, procurement and field evidence must be admitted through task/claim-scoped Operational Mount before supporting a professional interior decision.",
+    "required_methods": [
+      "current OLEANDER design-quality and material/product routing",
+      "BIID professional-practice and project-stage methods"
+    ],
+    "theory_routes": [
+      "human/body/activity and interior spatial experience",
+      "material/detail/craft",
+      "interior environmental and sensory performance",
+      "adaptation and lifecycle"
+    ],
+    "source_routes": [
+      "BIID guidance on RIBA Plan of Work and Interior Designers",
+      "BIID Project Book",
+      "RIBA/BIID forms of appointment",
+      "BIID FF&E/procurement professional-practice guidance",
+      "current applicable interior material/product and building requirements"
+    ],
+    "evidence_routes": [
+      "room/user evidence",
+      "product/material/manufacturer evidence",
+      "samples/mockups/prototypes",
+      "submittal/procurement/site records",
+      "post-occupancy evidence"
+    ],
+    "standard_code_routes": [
+      "jurisdiction-specific interior, accessibility, fire, material, health and safety requirements"
+    ],
+    "precedent_case_routes": [
+      "bounded interior precedents where applicability is established"
+    ],
+    "practice_routes": [
+      "current OLEANDER interior/material/detail/FF&E practice evidence"
+    ],
+    "tool_knowledge_routes": [
+      "current CAD/BIM, schedule, material and visualization execution guidance when used"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "ID-PW0",
+      "stage_name": "Strategic Definition",
+      "professional_question": "What interior scope, reuse constraints, appointment and procurement responsibilities materially affect the strategic project decision?",
+      "entry_conditions": ["strategic project need exists"],
+      "required_inputs": ["project need", "high-level use", "existing asset context", "appointment/procurement context"],
+      "knowledge_inputs": ["interior strategic constraints", "existing-condition evidence", "professional/commercial role guidance"],
+      "knowledge_mount_requirement": "Mount consequential existing-condition, appointment and procurement-role sources before making strategic interior claims.",
+      "required_dd_dimensions": ["DD-01", "DD-02", "DD-05", "DD-12"],
+      "required_native_outputs": ["strategic interior constraints/opportunities note", "survey need list", "initial responsibility/procurement-role map"],
+      "interface_requirements": ["Architecture", "Client/Operations", "Cost/Procurement", "Fire/Accessibility as triggered"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW0-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["project use", "existing/new-build scope", "spatial extent", "major interior responsibility boundary"],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "strategic brief plus interior scope/responsibility record",
+          "change_reopen_rule": "Reopen when project scope, use or architecture/interior responsibility materially changes."
+        }
+      ],
+      "human_experience_consequences": ["high-level user/use and interior experience consequences"],
+      "design_language_consequences": ["high-level interior identity/character scope where material"],
+      "technical_consequences": ["strategic survey, specialist and procurement constraints"],
+      "content_projection_requirements": ["show scope, role, assumptions and unresolved evidence"],
+      "required_readback": ["read strategic interior scope against actual appointment/existing evidence"],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Distinct review where consequence, novelty, commercial role or safety/interface risk requires it.",
+      "open_items_allowed": ["later briefing/concept/technical work"],
+      "exit_conditions": ["material interior scope/responsibility/unknowns are explicit"],
+      "reopen_triggers": ["scope/use/existing condition/procurement role change"],
+      "claim_ceiling": "INTERIOR_STRATEGIC_DEFINITION",
+      "does_not_prove": ["interior concept quality", "technical buildability", "product/material compliance", "procurement completion"]
+    },
+    {
+      "stage_id": "ID-PW1",
+      "stage_name": "Preparation and Briefing",
+      "professional_question": "Is there a sufficiently complete interior brief, user/activity basis and scope-of-services boundary to begin concept design?",
+      "entry_conditions": ["project brief development active"],
+      "required_inputs": ["user/activity needs", "room/program basis", "existing-condition evidence", "budget/procurement/operations"],
+      "knowledge_inputs": ["human-use methods", "accessibility/fire/material/product routes", "professional scope guidance"],
+      "knowledge_mount_requirement": "Mount consequential user, accessibility, fire, material/product and existing-condition evidence at current claim ceiling.",
+      "required_dd_dimensions": ["DD-01", "DD-03", "DD-05", "DD-06", "DD-12"],
+      "required_native_outputs": ["Interior Design Brief", "User-Activity-Experience Matrix", "Interior Responsibility/Schedule of Services", "initial Room/FF&E Interface Register", "procurement-role statement", "sample/mockup strategy"],
+      "interface_requirements": ["Architecture", "MEP", "Fire", "Accessibility", "Lighting", "Acoustics", "FM/Operations", "Cost/Procurement"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW1-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["rooms", "use/occupancy", "circulation", "privacy/supervision", "door/partition boundary"],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "native_source_of_truth": "current architectural brief plus Interior Design Brief",
+          "change_reopen_rule": "Reopen when room/use/occupancy/circulation or responsibility changes."
+        }
+      ],
+      "human_experience_consequences": ["activity, privacy, inclusion, storage, sensory and operational requirements"],
+      "design_language_consequences": ["brief-level interior identity and material-expression requirements"],
+      "technical_consequences": ["evidence and interface requirements for concept work"],
+      "content_projection_requirements": ["make user/activity/room/interface and procurement assumptions explicit"],
+      "required_readback": ["brief/readback against current project/user/appointment evidence"],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Review brief completeness and interface assumptions separately from visual concept preference.",
+      "open_items_allowed": ["later concept and technical design"],
+      "exit_conditions": ["interior brief and responsibility boundary are sufficient for concept comparison"],
+      "reopen_triggers": ["brief/user/operation/appointment/procurement change"],
+      "claim_ceiling": "INTERIOR_PREPARATION_BRIEF",
+      "does_not_prove": ["selected concept", "final layout", "material/system performance", "statutory compliance"]
+    },
+    {
+      "stage_id": "ID-PW2",
+      "stage_name": "Concept Design",
+      "professional_question": "Which interior concept credibly resolves user activity, spatial experience, material direction and controlling interfaces?",
+      "entry_conditions": ["current Interior Design Brief and responsibility basis"],
+      "required_inputs": ["brief", "architecture concept", "initial MEP/fire/accessibility/lighting/acoustic requirements", "budget/procurement constraints"],
+      "knowledge_inputs": ["interior composition/experience", "material/design-language methods", "FF&E and sensory knowledge"],
+      "knowledge_mount_requirement": "Mount consequential material/product, accessibility/fire and specialist requirements before retaining a concept on professional grounds.",
+      "required_dd_dimensions": ["DD-02", "DD-03", "DD-04", "DD-05", "DD-06", "DD-07", "DD-12"],
+      "required_native_outputs": ["concept plans/sections", "experience/sequence diagrams", "material/finish concept", "FF&E concept", "RCP/service intent", "sample palette", "option comparison/decision record"],
+      "interface_requirements": ["Architecture", "MEP", "Fire", "Accessibility", "Lighting", "Acoustics", "Cost/Procurement"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW2-MEP",
+          "source_domain": "Building Services / MEP Engineering",
+          "source_stage_ref": "BSP-CONCEPT",
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["ceiling/service zones", "terminals/controls", "wet/service equipment", "plant/access constraints"],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "interior concept plus MEP concept schematics/reserves",
+          "change_reopen_rule": "Reopen when system concept/service-zone/equipment strategy materially changes."
+        }
+      ],
+      "human_experience_consequences": ["spatial sequence, scale, privacy, inclusion and sensory character"],
+      "design_language_consequences": ["material, colour, light, joinery and FF&E concept language"],
+      "technical_consequences": ["concept-level partition/ceiling/service/product consequences"],
+      "content_projection_requirements": ["comparison-first concept rationale with fixed conditions and failure signs"],
+      "required_readback": ["plan/section/experience/material readback at actual concept geometry"],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Concept review must attack human use, interfaces and design quality, not producer preference alone.",
+      "open_items_allowed": ["later technical products/details"],
+      "exit_conditions": ["credible interior concept selected with bounded assumptions and controlling interfaces visible"],
+      "reopen_triggers": ["use/architecture/MEP/fire/accessibility/material/procurement change"],
+      "claim_ceiling": "INTERIOR_CONCEPT_DESIGN",
+      "does_not_prove": ["technical buildability", "final product identity", "installed performance", "statutory compliance"]
+    },
+    {
+      "stage_id": "ID-PW3",
+      "stage_name": "Spatial Coordination",
+      "professional_question": "Are room geometry, FF&E/equipment, ceiling/service zones and human-use interfaces coordinated enough for other professions to rely on them?",
+      "entry_conditions": ["selected interior concept", "current architecture and system geometry"],
+      "required_inputs": ["concept geometry", "room/FF&E requirements", "current professional interfaces"],
+      "knowledge_inputs": ["human clearances", "room planning", "ceiling/service coordination", "acoustic/accessibility/fire interfaces"],
+      "knowledge_mount_requirement": "Mount changed consequential accessibility, fire, product/system and room-use knowledge before coordinated geometry is treated as current.",
+      "required_dd_dimensions": ["DD-03", "DD-04", "DD-05", "DD-06", "DD-08", "DD-12"],
+      "required_native_outputs": ["coordinated interior plans/sections/elevations/RCP", "room data", "FF&E/equipment layouts", "interface register", "updated material/sample schedule"],
+      "interface_requirements": ["Architecture", "MEP", "Fire", "Accessibility", "Lighting", "Acoustics", "Structure", "FM"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW3-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["room dimensions", "partitions/doors", "thresholds", "circulation", "critical clearances"],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "native_source_of_truth": "coordinated interior and architectural drawings/models",
+          "change_reopen_rule": "Reopen when room/partition/door/threshold/circulation geometry changes."
+        },
+        {
+          "interface_binding_id": "ID-PW3-MEP",
+          "source_domain": "Building Services / MEP Engineering",
+          "source_stage_ref": "BSP-SPATIAL",
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["RCP/service zones", "terminals/controls", "access panels", "wet/equipment interfaces", "maintenance access"],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "native_source_of_truth": "coordinated interior/RCP and MEP drawings/models",
+          "change_reopen_rule": "Reopen when terminal/service/access/equipment geometry changes."
+        }
+      ],
+      "human_experience_consequences": ["actual room use, manoeuvre, furniture/equipment and sensory clearances"],
+      "design_language_consequences": ["coordinated interior composition and visible-system integration"],
+      "technical_consequences": ["room/ceiling/interface geometry suitable for technical development"],
+      "content_projection_requirements": ["critical room plans/sections/RCP and human-use readback"],
+      "required_readback": ["actual coordinated plans/sections/RCP at critical rooms/interfaces"],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Spatial/interface review distinct from clash detection and visual review alone.",
+      "open_items_allowed": ["later technical detail outside spatial claim"],
+      "exit_conditions": ["in-claim major/critical interior interfaces meet required Integration maturity"],
+      "reopen_triggers": ["room/FF&E/MEP/fire/accessibility/lighting/acoustic geometry change"],
+      "claim_ceiling": "INTERIOR_SPATIAL_COORDINATION",
+      "does_not_prove": ["final detailing", "fabrication", "procurement/delivery", "field installation"]
+    },
+    {
+      "stage_id": "ID-PW4",
+      "stage_name": "Technical Design",
+      "professional_question": "Is the interior technically resolved at the declared responsibility boundary for specialist production, procurement and construction?",
+      "entry_conditions": ["spatially coordinated interior basis", "current professional interfaces"],
+      "required_inputs": ["coordinated drawings/model", "current room/FF&E/material registers", "specialist requirements"],
+      "knowledge_inputs": ["interior detailing/build-ups", "materials/products", "joinery/FF&E", "accessibility/fire/MEP/lighting/acoustic requirements"],
+      "knowledge_mount_requirement": "Mount current product/material/compliance/specialist evidence before technical closure.",
+      "required_dd_dimensions": ["DD-05", "DD-06", "DD-07", "DD-08", "DD-10", "DD-12"],
+      "required_native_outputs": ["technical interior drawings/model", "room/finish/joinery/FF&E schedules", "specifications", "product/interface register", "mockup/sample requirements", "technical review record"],
+      "interface_requirements": ["Architecture", "MEP", "Fire", "Accessibility", "Lighting", "Acoustics", "Structure", "Suppliers/Specialists"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW4-FIRE",
+          "source_domain": "Fire / Life Safety",
+          "source_stage_ref": null,
+          "direction": "IN",
+          "shared_variables": ["lining/material requirements", "doors/compartments", "egress interfaces", "firestopping/device coordination"],
+          "coupling": "DEPENDENT",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "current fire strategy/authority input plus technical interior design",
+          "change_reopen_rule": "Reopen when controlling fire strategy/material/door/compartment requirement changes."
+        }
+      ],
+      "human_experience_consequences": ["technical realization of human clearances, controls, sensory and maintenance needs"],
+      "design_language_consequences": ["material/joint/edge/joinery/fixture/FF&E language at technical resolution"],
+      "technical_consequences": ["build-ups, details, product/performance requirements and specialist boundaries"],
+      "content_projection_requirements": ["drawing-schedule-specification-product evidence consistency", "detail and sample/mockup status"],
+      "required_readback": ["technical plans/sections/elevations/RCP/details/schedules and evidence refs"],
+      "professional_review_owner": "Responsible Interior Design professional owner",
+      "independent_review_requirement": "Technical/detail/product/interface review appropriate to project risk and appointment.",
+      "open_items_allowed": ["specialist/shop information explicitly assigned to later production"],
+      "exit_conditions": ["technical interior design and required reviews close at declared responsibility boundary"],
+      "reopen_triggers": ["product/material/detail/interface/specialist/procurement change"],
+      "claim_ceiling": "INTERIOR_TECHNICAL_DESIGN",
+      "does_not_prove": ["shop/fabrication completeness", "delivered product identity", "installation conformity", "statutory approval"]
+    },
+    {
+      "stage_id": "ID-PW5",
+      "stage_name": "Manufacturing and Construction / Procurement / Administration",
+      "professional_question": "Do specialist production information, procured items and observed installation preserve approved interior intent and requirements?",
+      "entry_conditions": ["technical interior design current", "procurement/construction active"],
+      "required_inputs": ["technical design", "submittals/shop drawings", "product/material/FF&E procurement information", "site conditions"],
+      "knowledge_inputs": ["fabrication/installation", "procurement/commercial role", "samples/mockups", "site review/change control"],
+      "knowledge_mount_requirement": "Mount current specialist/product/site evidence before accepting submittals, substitutions, samples or field claims.",
+      "required_dd_dimensions": ["DD-07", "DD-08", "DD-10", "DD-12"],
+      "required_native_outputs": ["submittal/sample/mockup register", "procurement status", "site-review records", "change/nonconformity decisions", "updated drawings/schedules", "observed installation evidence"],
+      "interface_requirements": ["Contractor", "Suppliers/Fabricators", "Architecture", "MEP", "Fire", "Lighting", "FM"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW5-SPECIALIST",
+          "source_domain": "Interior Specialist / Supplier / Fabricator",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["shop/fabrication geometry", "material/product identity", "samples/mockups", "installation method", "lead time/substitution"],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "current specialist/submittal/procurement/sample records plus interior review decisions",
+          "change_reopen_rule": "Reopen when specialist geometry, product/material identity, sample benchmark or installation method changes."
+        }
+      ],
+      "human_experience_consequences": ["actual installed clearances, usability and sensory/detail consequences where observed"],
+      "design_language_consequences": ["fabricated/installed detail, finish, FF&E and visible-system quality"],
+      "technical_consequences": ["bounded submittal/procurement/site conformity evidence"],
+      "content_projection_requirements": ["distinguish approved design, approved sample/mockup, procured item, observed installation and unresolved deviation"],
+      "required_readback": ["actual submittals/samples/mockups/site records for claimed scope"],
+      "professional_review_owner": "Interior Design professional owner within appointed administration/site-review scope",
+      "independent_review_requirement": "Site/sample/submittal verification distinct from supplier/installer self-declaration where required.",
+      "open_items_allowed": ["explicit defects/deferred delivery outside current handover claim"],
+      "exit_conditions": ["required production/procurement/site review evidence is current and material deviations resolved or held"],
+      "reopen_triggers": ["substitution/site dimension/nonconformity/procurement/mockup change"],
+      "claim_ceiling": "INTERIOR_CONSTRUCTION_PROCUREMENT_OBSERVED_SCOPE",
+      "does_not_prove": ["unobserved workmanship", "concealed conditions", "all delivered items", "universal field conformity"]
+    },
+    {
+      "stage_id": "ID-PW6",
+      "stage_name": "Handover",
+      "professional_question": "Is the interior handed over with defects, FF&E/product status, maintenance information and unresolved items explicit?",
+      "entry_conditions": ["interior construction/procurement sufficiently complete for handover decision"],
+      "required_inputs": ["snagging/defect state", "current FF&E/product/material records", "warranty/O&M information"],
+      "knowledge_inputs": ["handover/snagging", "material/FF&E maintenance and replacement"],
+      "knowledge_mount_requirement": "Mount current handover/product/warranty/maintenance evidence before closure.",
+      "required_dd_dimensions": ["DD-05", "DD-08", "DD-10", "DD-12"],
+      "required_native_outputs": ["interior handover/snagging record", "current FF&E/finish/product schedules", "warranty/O&M refs", "outstanding-items register"],
+      "interface_requirements": ["Client/FM", "Architecture", "Contractor", "Suppliers"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW6-FM",
+          "source_domain": "Facilities Management / Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["care/cleaning", "maintenance", "replacement/spares", "warranties", "outstanding defects"],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "current handover/FF&E/product/O&M/defect records",
+          "change_reopen_rule": "Reopen when final installed/product/defect/maintenance information changes."
+        }
+      ],
+      "human_experience_consequences": ["operational usability and maintenance readiness"],
+      "design_language_consequences": ["final observed interior benchmark/finish state where documented"],
+      "technical_consequences": ["bounded handover and product/maintenance information"],
+      "content_projection_requirements": ["co-locate handover status, defects, product identity and maintenance responsibility"],
+      "required_readback": ["final observed interior/FF&E state and current handover records"],
+      "professional_review_owner": "Interior Design professional owner with client/FM participation as applicable",
+      "independent_review_requirement": "Handover/snagging verification distinct from installer self-declaration where required.",
+      "open_items_allowed": ["explicit deferred defects/items with owner and claim boundary"],
+      "exit_conditions": ["handover claim supported by current defect/product/maintenance evidence"],
+      "reopen_triggers": ["installed/product/defect/warranty/maintenance record change"],
+      "claim_ceiling": "INTERIOR_HANDOVER",
+      "does_not_prove": ["future durability", "absence of latent defects", "user satisfaction", "long-term maintenance quality"]
+    },
+    {
+      "stage_id": "ID-PW7",
+      "stage_name": "Use / Post-Occupancy Evaluation",
+      "professional_question": "What does actual use reveal about interior usability, sensory performance, durability and operational fit?",
+      "entry_conditions": ["interior in use", "bounded POE/use question and evidence window exist"],
+      "required_inputs": ["design/handover baseline", "user/FM feedback", "defect/wear/maintenance evidence"],
+      "knowledge_inputs": ["post-occupancy evaluation", "material ageing/maintenance", "inclusive-use evaluation"],
+      "knowledge_mount_requirement": "Mount current observation/method/context evidence before drawing in-use or causal conclusions.",
+      "required_dd_dimensions": ["DD-03", "DD-05", "DD-06", "DD-08", "DD-10", "DD-12"],
+      "required_native_outputs": ["POE/in-use interior review", "defect/wear/maintenance evidence", "corrective-action register", "bounded G9 lesson candidates"],
+      "interface_requirements": ["FM/Operations", "Users", "Architecture", "MEP", "Lighting", "Acoustics", "Accessibility"],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ID-PW7-FM",
+          "source_domain": "Facilities Management / Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": ["actual use", "maintenance", "defects/wear", "complaints", "operational changes"],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "native_source_of_truth": "actual use/FM/maintenance evidence plus design/handover baseline",
+          "change_reopen_rule": "Reopen when use, operation, maintenance state or observation evidence materially changes."
+        }
+      ],
+      "human_experience_consequences": ["actual usability, inclusion, comfort, privacy and sensory outcomes where evidenced"],
+      "design_language_consequences": ["actual ageing/wear/adaptation consequences for interior language"],
+      "technical_consequences": ["bounded corrective/adaptation consequences"],
+      "content_projection_requirements": ["separate design intent, observed state, user report, maintenance evidence, uncertainty and causal inference"],
+      "required_readback": ["actual use/defect/wear/maintenance evidence for declared POE scope"],
+      "professional_review_owner": "Interior Design professional owner with FM/user/specialist participation as applicable",
+      "independent_review_requirement": "Distinct POE/evidence review where consequential claims depend on it.",
+      "open_items_allowed": ["future use states outside observation window"],
+      "exit_conditions": ["bounded in-use question assessed at current evidence ceiling"],
+      "reopen_triggers": ["use/operation/maintenance/evidence change"],
+      "claim_ceiling": "INTERIOR_IN_USE_EVALUATION",
+      "does_not_prove": ["universal user preference", "future performance", "causality without evidence", "transferable rule validity"]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": ["Architecture", "Building Services / MEP", "Fire / Life Safety", "Accessibility", "Lighting", "Acoustics", "Structural Engineering", "Cost/Procurement", "FM/Operations", "Suppliers/Specialists"],
+    "outputs_to_domains": ["Architecture", "Building Services / MEP", "Fire / Life Safety", "Accessibility", "Lighting", "Acoustics", "Cost/Procurement", "FM/Operations", "Construction/Specialists"],
+    "shared_variables": ["room geometry", "partitions/doors/thresholds", "FF&E/equipment", "ceilings/service zones", "materials/finishes", "accessibility clearances", "fire interfaces", "lighting/acoustics", "product identity", "maintenance/replacement access", "procurement/substitution status"],
+    "controlling_authority_requirements": ["current project/appointment scope", "current statutory/specialist requirements", "current product/material evidence", "current native room/interior geometry"],
+    "interface_maturity_policy": "Resolve actual enter/close maturity per interface binding and Acceptance Contract; interior stage number does not imply interface maturity or synchronization.",
+    "allowed_open_interface_conditions": ["remaining work is explicitly later/outside claim", "current required maturity is met", "no unresolved controlling-authority conflict", "owner/reopen trigger/claim boundary are explicit"],
+    "integration_readback_requirements": ["critical room plans/sections/RCP", "FF&E/equipment and human-use readback", "detail/product/material interface readback", "site/mockup readback when claimed"]
+  },
+  "execution_binding": {
+    "required_native_outputs": ["interior drawings/models", "room/finish/joinery/FF&E schedules", "specifications", "material/product/sample/mockup records", "procurement/submittal/site records when triggered", "handover/POE records when triggered"],
+    "native_source_of_truth_rules": ["editable/native interior source remains authoritative over renders/screenshots", "sample/product datasheet does not replace assembled-system/room evidence", "render does not replace dimensional/detail readback", "site claim requires site evidence"],
+    "execution_owner_requirements": ["responsible interior-design owner", "supplier/fabricator/procurement/contract-administration roles explicit"],
+    "required_capabilities": ["interior spatial design", "technical detailing", "materials/products/FF&E", "CAD/BIM/schedules", "mockup/site/procurement review"],
+    "tool_adapter_requirements": ["Current Skill Resolver selects current capabilities/tools; no hardcoded global inventory"],
+    "typed_handoff_contracts": ["Architecture↔Interior", "MEP↔Interior", "Fire/Accessibility↔Interior", "Lighting/Acoustics↔Interior", "Interior↔Suppliers/Procurement/FM"],
+    "actual_readback_requirements": ["actual room/interior geometry", "critical detail/schedule/product evidence", "sample/mockup/site state when claimed", "actual use evidence for POE claims"]
+  },
+  "assurance": {
+    "professional_review": "Interior professional review at the current stage/claim ceiling, separate from pure visual preference.",
+    "evidence_review": "Check user/room, product/material, specialist, procurement, sample/mockup, site and POE evidence against claimed use.",
+    "technical_gates": ["accessibility/fire/MEP interface gate where triggered", "product/material evidence gate", "mockup/sample gate where required", "site/handover gate when field claims are made"],
+    "independent_review": "Required where risk, safety/interface consequence, procurement conflict, complexity or stage demands a distinct reviewer; producer self-check alone does not satisfy independence.",
+    "receipt_contract": "Professional receipt records stage/process verdict, claim ceiling, appointment/scope, native/readback refs, product/sample/site evidence, open items and does-not-prove boundary.",
+    "does_not_prove": ["fire/accessibility/MEP/electrical approval", "field truth without field evidence", "procurement completion beyond evidence", "Design KEEP", "Promotion"]
+  },
+  "change_contract": {
+    "reopen_triggers": ["user/use/room change", "professional interface change", "product/material/FF&E substitution", "procurement/scope change", "specialist/submittal change", "site nonconformity", "POE contradiction"],
+    "stale_scope_rules": ["invalidate only affected room/detail/product/interface/procurement/site evidence unless dependencies show wider consequence"],
+    "upstream_impact_rules": ["changed Architecture/MEP/Fire/Accessibility/Lighting/Acoustic/product evidence propagates to consuming interior stages"],
+    "downstream_impact_rules": ["changed room/partition/FF&E/material/detail/procurement variables propagate to consuming professions, suppliers and FM"],
+    "interface_reopen_rules": ["reopen affected Integration interfaces when shared variables/acceptance criteria change"],
+    "receipt_stale_rules": ["professional receipt becomes stale at affected scope when appointment, native design, product identity, sample benchmark, site or evidence basis changes"]
+  },
+  "completion_contract": {
+    "process_exit_conditions": ["all triggered interior stages close at declared current claim ceiling", "required native/readback/review evidence exists", "open items are explicit later/outside claim and non-contradictory", "handover/use state explicit when triggered"],
+    "open_items_allowed": ["explicit later/outside-claim specialist, procurement, defect or POE items that do not contradict current professional verdict"],
+    "professional_receipt": "INTERIOR_DESIGN_PROCESS_RECEIPT",
+    "promotion_effect": "A current professional PASS may satisfy only the bounded Interior professional-process dependency; it does not grant statutory approval, field validity, Design KEEP or Promotion.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_INTERIOR_CLAIM_GOVERNS",
+    "does_not_prove": ["statutory approval", "field verification beyond evidence", "future product/material performance", "Design KEEP", "Promotion"]
+  }
+}
