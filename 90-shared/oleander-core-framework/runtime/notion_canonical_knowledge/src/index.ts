@@ -83,6 +83,7 @@ import {
   validateReaderBeginContentReviewInput,
   validateReaderContentPatchInput,
   validateReaderSupportContentPatchInput,
+  verifyReaderSupportContentPatchReadback,
 } from "./reader-edit";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
@@ -513,8 +514,18 @@ async function patchReaderSupportAcademicContent(
   if (afterMarkdown.truncated || afterMarkdown.unknown_block_ids.length > 0) {
     return { status: 502, body: { ok: false, error: "support_content_patch_post_readback_incomplete" } };
   }
-  if (!afterMarkdown.markdown.includes(newStr) || afterMarkdown.markdown.includes(oldStr)) {
-    return { status: 502, body: { ok: false, error: "support_content_patch_readback_failed" } };
+  const patchReadback = verifyReaderSupportContentPatchReadback(afterMarkdown.markdown, oldStr, newStr);
+  if (!patchReadback.ok) {
+    return {
+      status: 502,
+      body: {
+        ok: false,
+        error: "support_content_patch_readback_failed",
+        new_str_present: patchReadback.newStrPresent,
+        old_str_present: patchReadback.oldStrPresent,
+        preserve_anchor: patchReadback.preserveAnchor,
+      },
+    };
   }
 
   const afterPage = normalizePage(await fetchPage(env, pageId));

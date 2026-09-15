@@ -27,6 +27,13 @@ export type ReaderSupportContentPatchValidation =
   | { ok: true; input: ReaderSupportContentPatchInput }
   | { ok: false; status: 400 | 413; error: string };
 
+export type ReaderSupportContentPatchReadback = {
+  ok: boolean;
+  newStrPresent: boolean;
+  oldStrPresent: boolean;
+  preserveAnchor: boolean;
+};
+
 export function validateReaderContentPatchInput(
   pageIdInput: unknown,
   oldStrInput: unknown,
@@ -68,6 +75,22 @@ export function validateReaderSupportContentPatchInput(
       expectedCanonicalId,
       expectedNotionLastEditedTime,
     },
+  };
+}
+
+export function verifyReaderSupportContentPatchReadback(
+  markdown: string,
+  oldStr: string,
+  newStr: string,
+): ReaderSupportContentPatchReadback {
+  const newStrPresent = markdown.includes(newStr);
+  const oldStrPresent = markdown.includes(oldStr);
+  const preserveAnchor = newStr.includes(oldStr);
+  return {
+    ok: newStrPresent && (preserveAnchor || !oldStrPresent),
+    newStrPresent,
+    oldStrPresent,
+    preserveAnchor,
   };
 }
 
