@@ -135,13 +135,16 @@ Canonical system: [`complex-project-master-runtime-v1.0.md`](complex-project-mas
 
 `Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Execute / Prototype -> Actual Readback -> Close Triggered Reviews -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> G9 bounded re-entry`.
 
-## Current Architecture Map v2.0
+## Current Architecture Control Map v2.1
 
-Canonical architecture classification view: [`runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md`](runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md)
+Canonical architecture classification view: [`runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md`](runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md)
 
 OLEANDER has **one Current system architecture**, orchestrated by **one Complex Project Master Runtime**, and operationally expanded as **eleven stable Runtime Layers `R-A ... R-K`**. The map formally separates Runtime Layers from canonical contracts, authentic Professional Domain Processes, state families, Reviews/Gates, schemas/receipts, Skills/capabilities/tools and native artifacts. These object classes belong inside the one operating-system architecture and must not be added together as a top-level “architecture count”.
 
 Canonical counting rule: `1 OLEANDER system architecture / 1 Master Runtime / 11 Runtime Layers`. `DD-*` is a shared design-development responsibility namespace; Architecture `ADD-*` is an Architecture-specific professional stage namespace; `KI* / OE* / DQ*` are state families. None is an additional top-level architecture.
+
+The v2.1 map is also the Current **architecture control map**. It adds six cross-cutting operational planes (`Control / State / Acquisition-Reader / Execution / Observability / Evolution`) plus explicit File & Artifact Management and AI File Handling/Knowledge Reader control domains without increasing the `R-A...R-K` count. Controlled Evolution routes verified project/runtime learning through isolated candidates, eval/regression gates, compatibility migration, independent review, human Promotion and rollback; it may not directly rewrite Current authority, user constraints or professional/statutory decision rights. Machine carrier: `runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`.
+
 
 ## Knowledge Content Review Layer v1.0
 

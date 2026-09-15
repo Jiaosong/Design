@@ -9,7 +9,7 @@ Scope: **GitHub execution routing into the current Notion knowledge architecture
 
 This file does not define a second knowledge architecture. It is a GitHub-side execution mirror of the current Notion authority so that reusable Skills, agents, automations and validators write to the correct Notion object, relation and location.
 
-System-level architecture naming/counting is owned by `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md`. The word `Architecture` in this binding refers specifically to the current **Notion Knowledge Architecture / registry binding**, not to a second OLEANDER operating-system architecture and not to one of eleven parallel system architectures.
+System-level architecture naming/counting is owned by `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md`. The word `Architecture` in this binding refers specifically to the current **Notion Knowledge Architecture / registry binding**, not to a second OLEANDER operating-system architecture and not to one of eleven parallel system architectures.
 
 The binding rule is:
 

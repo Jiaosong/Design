@@ -384,7 +384,7 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 |---|---|
 | Root authority / namespace | `00-governance/README.md` + Current root authority |
 | Master cross-module orchestration | **this file** |
-| Current architecture classification / counting | `runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md` — one Current system architecture / one Master Runtime / eleven stable Runtime Layers; contracts, processes, states, gates and Skills are not additional top-level architectures |
+| Current architecture classification / counting | `runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` — one Current system architecture / one Master Runtime / eleven stable Runtime Layers; contracts, processes, states, gates and Skills are not additional top-level architectures |
 | Canonical project execution flow | `oleander-project-flow-v0.3.md` |
 | Design intelligence / review routing | `design-intelligence-routing-and-review-v1.0.md` |
 | Shared design quality / design development | `design-quality-and-design-development-specification-v1.0.md` |

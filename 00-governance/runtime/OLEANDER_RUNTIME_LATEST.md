@@ -5,7 +5,10 @@
 
 All OLEANDER project, knowledge-remediation and professional-execution runs should resolve these current runtime contracts before continuing work:
 
-1. `00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md` — canonical classification/counting view: one Current OLEANDER system architecture, one Master Runtime, eleven stable Runtime Layers; contracts/processes/state families/gates/Skills are not additional top-level architectures.
+1. `00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` — canonical classification/counting view: one Current OLEANDER system architecture, one Master Runtime, eleven stable Runtime Layers; contracts/processes/state families/gates/Skills are not additional top-level architectures.
+   - machine carrier: `00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`
+   - validator: `python 00-governance/runtime/validate_architecture_control_graph.py`
+   - controlled evolution candidate contract: `00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json`
 2. `00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`
 3. `00-governance/knowledge-integrity-and-operational-mount-v1.0.md`
 4. `00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json`
@@ -38,4 +41,8 @@ Existing knowledge is mounted by canonical reference. Do not create copied DD/AD
 
 If a run loaded an earlier governance snapshot, it must re-read these files before making new knowledge, DD, professional-stage or promotion decisions.
 
-Architecture terminology must follow `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md`: `R-A...R-K` means Runtime Layers, not eleven parallel OLEANDER architectures.
+Architecture terminology must follow `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md`: `R-A...R-K` means Runtime Layers, not eleven parallel OLEANDER architectures.
+
+Cross-cutting control views under the same 11 Runtime Layers: `Control / State / Acquisition-Reader / Execution / Observability / Evolution`. File & Artifact Management and AI File Handling/Knowledge Reader are control domains compiled into the v2.1 architecture map; they are not additional Runtime Layers.
+
+Controlled evolution rule: `verified trace ? bounded G9 candidate ? frozen baseline ? isolated variant ? eval/regression/constraint gates ? independent review ? candidate PR/migration ? human promotion ? readback/monitoring/rollback`. No evolved candidate may directly rewrite Current authority or active user constraints.
