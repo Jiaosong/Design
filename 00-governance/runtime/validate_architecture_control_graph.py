@@ -723,6 +723,103 @@ def main() -> None:
     if "producer_self_check_is_not_independent_review" not in set(receipt_contract.get("hard_guards", [])):
         fail("Execution Receipt lost producer-self-check independent-review guard")
 
+    supersession = graph.get("current_supersession_boundary", {})
+    if supersession.get("semantic_class") != "CONTROL_PROJECTION_NOT_DUPLICATE_CURRENT_REGISTRY_VERSION_DATABASE_STATE_FAMILY_OR_PROMOTION_AUTHORITY":
+        fail("Current/supersession boundary must remain a projection rather than a duplicate registry/version database/state family/promotion authority")
+    if supersession.get("projection_only_not_replacement_owner_supersession_contract") is not True:
+        fail("Current/supersession projection may not replace owner-native supersession contracts")
+    if supersession.get("owner_native_lifecycle_authority_and_current_pointers_remain_authoritative") is not True:
+        fail("Current/supersession projection may not replace owner-native lifecycle/authority/current pointers")
+    if supersession.get("duplicate_architecture_level_current_registry_or_version_database_forbidden") is not True:
+        fail("Current/supersession projection may not create a duplicate architecture-level Current registry/version database")
+    required_supersession_sources = {
+        "00-governance/complex-project-master-runtime-v1.0.md",
+        "00-governance/naming-status.md",
+        "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
+        "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+        "00-governance/cross-platform-sync-contract-v1.1.md",
+    }
+    if set(supersession.get("source_refs", [])) != required_supersession_sources:
+        fail("Current/supersession owner-source projection drift")
+    for ref in supersession.get("source_refs", []):
+        check_ref(ref)
+    required_current_identity_fields = {
+        "logical_object_id",
+        "project_or_scope_id",
+        "object_class_or_owner_domain",
+        "owner_or_authority_ref",
+        "current_ref_or_revision",
+        "current_authority_state",
+        "authority_fingerprint",
+    }
+    if set(supersession.get("current_identity_required_resolvable_fields", [])) != required_current_identity_fields:
+        fail("Current/supersession current-identity projection fields drift")
+    required_successor_transition_fields = {
+        "predecessor_ref",
+        "successor_ref",
+        "adoption_authorization_or_owner_native_transition_ref",
+        "supersession_relation",
+        "affected_dependency_or_pointer_refs",
+        "transition_readback_ref",
+        "provenance_ref",
+    }
+    if set(supersession.get("successor_transition_required_resolvable_fields_when_applicable", [])) != required_successor_transition_fields:
+        fail("Current/supersession successor-transition projection fields drift")
+    required_successor_sequence = [
+        "RESOLVE_LOGICAL_OBJECT_AND_OWNER",
+        "RESOLVE_EXISTING_CURRENT_AND_PREDECESSOR",
+        "VERIFY_OWNER_NATIVE_ADOPTION_AUTHORIZATION",
+        "COMPUTE_AFFECTED_RELATIONS",
+        "APPLY_CANONICAL_SUCCESSOR_CURRENT_TRANSITION",
+        "DEMOTE_OR_CLOSE_PREDECESSOR_AUTHORITY_IN_SAME_CLOSURE_TRANSACTION",
+        "PRESERVE_PREDECESSOR_PROVENANCE_AND_HISTORICAL_RECEIPTS",
+        "REFRESH_AFFECTED_POINTERS_INDEXES_AND_DEPENDENCIES",
+        "READ_BACK_CANONICAL_AUTHORITY_AND_AFFECTED_SURFACES",
+        "HOLD_DEPENDENT_CROSS_PLATFORM_CURRENT_CLAIM_WHERE_MIRROR_STILL_STALE",
+    ]
+    if supersession.get("successor_adoption_sequence", []) != required_successor_sequence:
+        fail("Current/supersession successor-adoption sequence drift")
+    for required_true in {
+        "one_logical_object_one_current_authority",
+        "successor_adoption_requires_predecessor_closure_same_control_transaction",
+        "owner_native_adoption_or_authority_transition_required_before_current_claim",
+        "recency_filename_branch_pr_merge_or_upload_does_not_select_current",
+        "candidate_or_new_revision_may_not_self_promote",
+        "supersession_relation_is_not_structural_related_dependency_or_derivation_relation",
+        "historical_receipts_immutable_under_original_revision_contract",
+        "predecessor_provenance_preserved",
+        "superseded_does_not_mean_false_or_delete_authority",
+        "deletion_or_ref_cleanup_requires_separate_owner_native_authority",
+        "unresolved_competing_current_claims_fail_closed",
+        "canonical_transition_may_precede_ordinary_mirror_sync_when_owner_contract_allows",
+        "stale_mirror_is_not_coequal_current_authority",
+        "mirror_failure_does_not_resurrect_predecessor_canonical_authority",
+        "uncertain_canonical_transition_fails_closed",
+        "current_or_superseded_lifecycle_disposition_does_not_substitute_for_project_promotion_design_keep_or_statutory_approval",
+        "resolvable_fields_do_not_require_duplicate_central_persistence",
+    }:
+        if supersession.get(required_true) is not True:
+            fail(f"Current/supersession boundary missing {required_true}")
+    if set(supersession.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("competing/unresolved Current claims must reuse existing blocker/reconciliation outcomes")
+    anti_pollution = json.loads(
+        (ROOT / "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json").read_text(encoding="utf-8")
+    )
+    single_current_rules = anti_pollution.get("single_current_rules", {})
+    if single_current_rules.get("one_logical_object_one_current") is not True:
+        fail("anti-pollution owner lost one-logical-object-one-Current rule")
+    if single_current_rules.get("candidate_may_not_self_promote") is not True:
+        fail("anti-pollution owner lost candidate self-promotion firewall")
+    if anti_pollution.get("git_branch_hygiene", {}).get("branch_ref_is_current_authority") is not False:
+        fail("branch ref must remain non-authoritative for Current resolution")
+    if "resolve_supersession_and_readback" not in set(anti_pollution.get("mandatory_preflight", [])):
+        fail("anti-pollution owner lost supersession/readback preflight")
+    naming_text = (ROOT / "00-governance/naming-status.md").read_text(encoding="utf-8")
+    if "SUCCESSOR ADOPTION REQUIRES PREDECESSOR CLOSURE" not in naming_text:
+        fail("naming/status owner lost successor/predecessor closure invariant")
+    if "ONE LOGICAL OBJECT → MAX 1 ACTIVE PRODUCTION FRONTIER + MAX 1 ACTIVE INDEPENDENT REVIEW FRONTIER" not in naming_text:
+        fail("naming/status owner lost per-logical-object active-frontier bound")
+
     control_domains = graph.get("control_domains", {})
     file_domain = control_domains.get("FILE_ARTIFACT_MANAGEMENT", {})
     reader_domain = control_domains.get("AI_FILE_AND_READER", {})
@@ -1393,6 +1490,13 @@ def main() -> None:
         "MATERIAL_REVIEW_CHANGE_STALES_ONLY_AFFECTED_REVIEW_SCOPE",
         "MACHINE_CANNOT_AWARD_HUMAN_REVIEW_VERDICT",
         "INDEPENDENT_REVIEW_BOUNDARY_DOES_NOT_CREATE_REVIEWER_REGISTRY_OR_STATE_FAMILY",
+        "ONE_LOGICAL_OBJECT_ONE_CURRENT_AUTHORITY",
+        "SUCCESSOR_ADOPTION_CLOSES_PREDECESSOR_AUTHORITY_IN_SAME_CONTROL_TRANSACTION",
+        "RECENCY_BRANCH_PR_MERGE_DO_NOT_SELECT_CURRENT",
+        "SUPERSESSION_PRESERVES_PROVENANCE_AND_HISTORICAL_RECEIPTS",
+        "SUPERSEDED_IS_NOT_DELETE_AUTHORITY_OR_FALSEHOOD",
+        "STALE_MIRROR_IS_NOT_COEQUAL_CURRENT_AUTHORITY",
+        "CURRENT_SUPERSESSION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_VERSION_DB_STATE_FAMILY_OR_PROMOTION_AUTHORITY",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1411,6 +1515,7 @@ def main() -> None:
     print("promotion_persistence_sync_boundary=PASS")
     print("g9_knowledge_return_boundary=PASS")
     print("independent_review_boundary=PASS")
+    print("current_supersession_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
