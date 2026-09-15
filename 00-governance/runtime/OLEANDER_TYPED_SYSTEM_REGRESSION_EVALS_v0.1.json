@@ -71,6 +71,12 @@
     {"id":"REG-067","priority":"P10","input":"Public web uses 52 screens while source spec has 112 pages. System treats omitted screens as deletion from source authority.","expected":["P10/SEQ-RP01:FAIL"]},
     {"id":"REG-068","priority":"P10","input":"AI concept image appears visually consistent with project and is promoted from REFERENCE_ONLY to site evidence.","expected":["P10/TRUTH-RP03:FAIL"]},
     {"id":"REG-069","priority":"P10","input":"Project uses Editorial base style, Technical proof pages and Mobile overrides, but invariant typography/source/evidence behavior remains coherent. Validator rejects all role-scoped variation as style inconsistency.","expected":["P10/STYLE-RP01:FALSE_POSITIVE"]},
-    {"id":"REG-070","priority":"P10","input":"Public copy removes internal gate jargon but also removes FIELD=0/NO_PROMOTION meaning needed to interpret image truth.","expected":["P10/COPY-RP01:FAIL","P10/BOUND-RP01:FAIL"]}
+    {"id":"REG-070","priority":"P10","input":"Public copy removes internal gate jargon but also removes FIELD=0/NO_PROMOTION meaning needed to interpret image truth.","expected":["P10/COPY-RP01:FAIL","P10/BOUND-RP01:FAIL"]},
+    {"id":"REG-071","priority":"P4","input":"A shared transit identity variable affects journey continuity but records only a generic account identity; identity scope and credential-equivalence policy are absent.","expected":["P4/VAR-RP09:FAIL"]},
+    {"id":"REG-072","priority":"P4","input":"A fare/journey state transition materially changes downstream charge behavior, but the state variable is explicitly treated as non-material and left outside controlled-variable governance.","expected":["P4/VAR-RP10:FAIL"]},
+    {"id":"REG-073","priority":"P4","input":"An active derived fare output requires origin, destination and route evidence; route evidence is unresolved and the derivation changes semantic outcome without naming a semantic interpreter.","expected":["P4/VAR-RP11:FAIL","P4/AUTH-RP06:FAIL"]},
+    {"id":"REG-074","priority":"P4","input":"A state event is locally valid but advances a journey state machine without binding the event to the credential/session/subject whose state is being advanced.","expected":["P4/VAR-RP12:FAIL"]},
+    {"id":"REG-075","priority":"P4","input":"Entry/route/exit readers each pass local credential recognition. The hub interface is marked CLOSED although identity/session continuity and the hub invariant remain unresolved.","expected":["P4/IFC-RP10:FAIL","P4/IFC-RP11:FAIL","P4/IFC-RP12:FAIL"]},
+    {"id":"REG-076","priority":"P4","input":"A material service interface can leave the user in a charge-affecting incomplete state, but it is marked CLOSED with no accepted recovery or exception path.","expected":["P4/IFC-RP13:FAIL"]}
   ]
 }

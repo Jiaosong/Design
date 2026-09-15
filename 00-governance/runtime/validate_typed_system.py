@@ -18,6 +18,33 @@ PLANES = {"KNOWLEDGE","PROJECT","RUNTIME_CONTROL"}
 OUTCOMES = {"PASS","FAIL","HOLD","REVIEW_SIGNAL","NOT_APPLICABLE","NOT_EVALUATED"}
 CLOSED = {"PASS","ACCEPTED","OUTSIDE_CLAIM","NOT_APPLICABLE"}
 HIGH_BADGES = {"PASS","VERIFIED","CURRENT_VERIFIED","PROFESSIONAL_PASS","KEEP_MAIN"}
+EXECUTABLE_SNAPSHOT_RULES = {
+    "P0/PLANE-001",
+    "P0/ID-002",
+    "P1/CLAIM-RP01",
+    "P3/MIG-RP01",
+    "P4/IFC-RP01",
+    "P4/VAR-RP09",
+    "P4/VAR-RP10",
+    "P4/VAR-RP11",
+    "P4/AUTH-RP06",
+    "P4/VAR-RP12",
+    "P4/IFC-RP10",
+    "P4/IFC-RP11",
+    "P4/IFC-RP12",
+    "P4/IFC-RP13",
+    "P5/CHG-RP01",
+    "P6/ASR-RP02",
+    "P7/OPEN-RP01",
+    "P9/CORPUS-RP01",
+    "P9/TERM-RP01",
+    "P9/BODY-RP01",
+    "P10/ASSET-RP01",
+    "P10/ROLE-RP02",
+    "P10/TRUTH-RP03",
+    "P10/MED-RP01",
+    "P11/BADGE-RP02",
+}
 
 @dataclass
 class Finding:
@@ -69,9 +96,95 @@ def contract_checks() -> list[Finding]:
     if dup:
         out.append(Finding("INT/REGISTRY-004","FAIL","S3_MAJOR",None,"duplicate rule ids",{"duplicates":sorted(dup)}))
 
+    unregistered_executable = sorted(EXECUTABLE_SNAPSHOT_RULES - seen)
+    if unregistered_executable:
+        out.append(Finding(
+            "INT/REGISTRY-006","FAIL","S3_MAJOR",None,
+            "executable snapshot rule is absent from rule registry",
+            {"missing":unregistered_executable},
+        ))
+
     missing = sorted(set(reg.get("replay_derived_rules", {})) - seen)
     if missing:
         out.append(Finding("INT/REGISTRY-005","FAIL","S2_MATERIAL",None,"replay-derived rules absent from namespace lists",{"missing":missing}))
+
+    discovered_replay_rules: dict[str, list[str]] = {}
+    discovered_replay_sources: set[str] = set()
+    for replay_path in sorted(RUNTIME.glob("OLEANDER_REPLAY_*.json")):
+        replay = load(replay_path)
+        replay_id = replay.get("replay_id")
+        replay_rules = replay.get("replay_derived_rules", [])
+        if isinstance(replay_rules, dict):
+            replay_rules = list(replay_rules)
+        if replay_rules is None:
+            replay_rules = []
+        if not isinstance(replay_rules, list):
+            out.append(Finding(
+                "INT/REPLAY-001","FAIL","S2_MATERIAL",None,
+                "replay_derived_rules must be a list or object",
+                {"file":replay_path.name,"actual_type":type(replay_rules).__name__},
+            ))
+            continue
+        if replay_rules and not replay_id:
+            out.append(Finding(
+                "INT/REPLAY-002","FAIL","S2_MATERIAL",None,
+                "replay with derived rules must declare replay_id",
+                {"file":replay_path.name},
+            ))
+        if replay_id:
+            discovered_replay_sources.add(str(replay_id))
+        for rule_id in replay_rules:
+            if not isinstance(rule_id, str) or "/" not in rule_id:
+                out.append(Finding(
+                    "INT/REPLAY-003","FAIL","S2_MATERIAL",None,
+                    "replay-derived rule must be a namespaced string",
+                    {"file":replay_path.name,"rule":rule_id},
+                ))
+                continue
+            discovered_replay_rules.setdefault(rule_id, []).append(str(replay_id or replay_path.name))
+
+    missing_registered = sorted(set(discovered_replay_rules) - seen)
+    if missing_registered:
+        out.append(Finding(
+            "INT/REPLAY-004","FAIL","S3_MAJOR",None,
+            "replay-derived rules exist in replay records but are absent from validator namespace registry",
+            {"count":len(missing_registered),"missing":missing_registered},
+        ))
+
+    defined_replay_rules = set(reg.get("replay_derived_rules", {}))
+    missing_definitions = sorted(set(discovered_replay_rules) - defined_replay_rules)
+    if missing_definitions:
+        out.append(Finding(
+            "INT/REPLAY-005","FAIL","S2_MATERIAL",None,
+            "replay-derived rules are registered but lack registry definitions",
+            {"count":len(missing_definitions),"missing":missing_definitions},
+        ))
+
+    registered_sources = set(reg.get("replay_sources", []))
+    missing_sources = sorted(discovered_replay_sources - registered_sources)
+    if missing_sources:
+        out.append(Finding(
+            "INT/REPLAY-006","FAIL","S2_MATERIAL",None,
+            "replay source IDs are not bound into validator registry",
+            {"count":len(missing_sources),"missing":missing_sources},
+        ))
+
+    declared_origins = reg.get("replay_rule_origins", {})
+    origin_mismatch: dict[str, dict[str, list[str]]] = {}
+    for rule_id, source_ids in discovered_replay_rules.items():
+        declared = set(declared_origins.get(rule_id, []))
+        expected = set(source_ids)
+        if not expected.issubset(declared):
+            origin_mismatch[rule_id] = {
+                "missing_origins": sorted(expected - declared),
+                "declared_origins": sorted(declared),
+            }
+    if origin_mismatch:
+        out.append(Finding(
+            "INT/REPLAY-007","FAIL","S2_MATERIAL",None,
+            "replay rule origin bindings are incomplete",
+            {"count":len(origin_mismatch),"mismatch":origin_mismatch},
+        ))
 
     cases = ev.get("cases", [])
     ids = [c.get("id") for c in cases]
@@ -82,7 +195,20 @@ def contract_checks() -> list[Finding]:
         if not c.get("id") or not c.get("priority") or not c.get("input") or not c.get("expected"):
             out.append(Finding("INT/EVAL-002","FAIL","S2_MATERIAL",c.get("id"),"regression case missing required fields"))
 
-    if not out:
+    eval_rule_refs: set[str] = set()
+    for c in cases:
+        for expected in c.get("expected", []):
+            if isinstance(expected, str):
+                eval_rule_refs.add(expected.split(":", 1)[0])
+    uncovered_replay_rules = sorted(set(discovered_replay_rules) - eval_rule_refs)
+    if uncovered_replay_rules:
+        out.append(Finding(
+            "INT/EVAL-003","REVIEW_SIGNAL","S1_REVIEW",None,
+            "replay-derived rules without explicit regression-case references remain visible coverage debt",
+            {"count":len(uncovered_replay_rules),"rules":uncovered_replay_rules},
+        ))
+
+    if not any(f.outcome == "FAIL" for f in out):
         out.append(Finding("INT/CONTRACTS-000","PASS","S0_INFO",None,f"registry/evals structurally valid; rules={len(seen)} cases={len(cases)}"))
     return out
 
@@ -121,6 +247,77 @@ def snapshot_checks(s: dict[str, Any]) -> list[Finding]:
             unresolved = {k:v for k,v in dims.items() if v not in CLOSED}
             if unresolved:
                 out.append(Finding("P4/IFC-RP01","FAIL","S3_MAJOR",oid(o),"interface has unresolved material acceptance dimensions",{"unresolved_dimensions":unresolved}))
+
+            required = set(o.get("required_acceptance_dimensions", []))
+            missing_required = sorted(required - set(dims))
+            unresolved_required = {k:dims.get(k) for k in sorted(required & set(dims)) if dims.get(k) not in CLOSED}
+            identity_or_session = {"IDENTITY_CONTINUITY","TRANSACTION_SESSION_CONTINUITY"}
+            semantic_outcome = identity_or_session | {"ROUTE_ATTRIBUTION","FARE_OR_RULE_OUTCOME","RECOVERY_CORRECTION","PRIVACY_AUTHORIZED_USE"}
+            if dims.get("CREDENTIAL_RECOGNITION") in CLOSED and (
+                missing_required or unresolved_required
+            ) and required & identity_or_session:
+                out.append(Finding(
+                    "P4/IFC-RP10","FAIL","S3_MAJOR",oid(o),
+                    "local credential/device acceptance cannot close unresolved end-to-end identity or session continuity",
+                    {"missing_required":missing_required,"unresolved_required":unresolved_required},
+                ))
+            if dims.get("CREDENTIAL_RECOGNITION") in CLOSED and (
+                missing_required or unresolved_required
+            ) and required & semantic_outcome:
+                out.append(Finding(
+                    "P4/IFC-RP12","FAIL","S3_MAJOR",oid(o),
+                    "technical communication/recognition pass cannot close unresolved semantic transaction or service outcome dimensions",
+                    {"missing_required":missing_required,"unresolved_required":unresolved_required},
+                ))
+            if o.get("n_way_model") in {"HUB_INTERFACE","HUB_WITH_SELECTIVE_PAIRWISE_EDGES"} and o.get("pairwise_acceptance_complete") is True and o.get("hub_invariant_result") not in CLOSED:
+                out.append(Finding(
+                    "P4/IFC-RP11","FAIL","S3_MAJOR",oid(o),
+                    "pairwise acceptance cannot prove required hub-level transaction/session coherence",
+                    {"hub_invariant_result":o.get("hub_invariant_result")},
+                ))
+            if o.get("failure_user_consequence_material") is True and o.get("recovery_path_status") not in CLOSED:
+                out.append(Finding(
+                    "P4/IFC-RP13","FAIL","S3_MAJOR",oid(o),
+                    "material service interface cannot close without a defined accepted recovery/exception path",
+                    {"recovery_path_status":o.get("recovery_path_status")},
+                ))
+
+    for o in objects:
+        if o.get("semantic_class") == "CONTROLLED_VARIABLE":
+            if o.get("identity_equivalence_material") is True:
+                missing_identity = [k for k in ("identity_scope","equivalence_policy") if not o.get(k)]
+                if missing_identity:
+                    out.append(Finding(
+                        "P4/VAR-RP09","FAIL","S3_MAJOR",oid(o),
+                        "identity-sensitive controlled variable must declare identity scope and equivalence policy",
+                        {"missing":missing_identity},
+                    ))
+            if o.get("transition_changes_downstream_behavior_or_outcome") is True and o.get("treated_as_material") is False:
+                out.append(Finding(
+                    "P4/VAR-RP10","FAIL","S3_MAJOR",oid(o),
+                    "state variable that changes allowed downstream behavior/outcome cannot be treated as non-material",
+                ))
+            if o.get("derived_output_active") is True:
+                required_inputs = set(o.get("required_input_dimensions", []))
+                resolved_inputs = set(o.get("resolved_input_dimensions", []))
+                missing_inputs = sorted(required_inputs - resolved_inputs)
+                if missing_inputs:
+                    out.append(Finding(
+                        "P4/VAR-RP11","FAIL","S3_MAJOR",oid(o),
+                        "active derived controlled output is missing required non-substitutable input dimensions",
+                        {"missing_input_dimensions":missing_inputs},
+                    ))
+            if o.get("derivation_changes_meaning_or_outcome") is True and not o.get("semantic_interpreter"):
+                out.append(Finding(
+                    "P4/AUTH-RP06","FAIL","S3_MAJOR",oid(o),
+                    "meaning/outcome-changing derivation must name semantic interpreter separately from raw value production",
+                ))
+
+        if o.get("semantic_class") == "STATE_EVENT" and o.get("advances_state_machine") is True and not o.get("subject_or_session_ref"):
+            out.append(Finding(
+                "P4/VAR-RP12","FAIL","S3_MAJOR",oid(o),
+                "state-advancing event must bind to the semantic subject/session whose state it advances",
+            ))
 
     for o in objects:
         if o.get("semantic_class") == "CHANGE" and o.get("change_scope") == "SUPPORT_DERIVATIVE_ONLY" and o.get("upstream_source_changed") is False:
@@ -181,6 +378,11 @@ def self_test() -> list[Finding]:
         "objects":[
             {"id":"A","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","scope_kind":"SUPPORT_ONLY","granted_ceilings":{"design_quality":"KEEP_MAIN"}},
             {"id":"I","plane":"PROJECT","semantic_class":"INTERFACE","disposition":"CLOSED","acceptance_dimensions":{"GEOMETRY":"PASS","OPERATIONAL":"OPEN"}},
+            {"id":"TFL-I","plane":"PROJECT","semantic_class":"INTERFACE","disposition":"CLOSED","n_way_model":"HUB_WITH_SELECTIVE_PAIRWISE_EDGES","pairwise_acceptance_complete":True,"hub_invariant_result":"OPEN","required_acceptance_dimensions":["CREDENTIAL_RECOGNITION","IDENTITY_CONTINUITY","TRANSACTION_SESSION_CONTINUITY"],"acceptance_dimensions":{"CREDENTIAL_RECOGNITION":"PASS","IDENTITY_CONTINUITY":"OPEN"},"failure_user_consequence_material":True,"recovery_path_status":"OPEN"},
+            {"id":"TFL-ID","plane":"PROJECT","semantic_class":"CONTROLLED_VARIABLE","controlled_variable_class":"CONTENT_SEMANTIC","identity_equivalence_material":True},
+            {"id":"TFL-STATE","plane":"PROJECT","semantic_class":"CONTROLLED_VARIABLE","controlled_variable_class":"STATE","transition_changes_downstream_behavior_or_outcome":True,"treated_as_material":False},
+            {"id":"TFL-FARE","plane":"PROJECT","semantic_class":"CONTROLLED_VARIABLE","derived_output_active":True,"required_input_dimensions":["ORIGIN","DESTINATION","ROUTE_EVIDENCE"],"resolved_input_dimensions":["ORIGIN","DESTINATION"],"derivation_changes_meaning_or_outcome":True},
+            {"id":"TFL-EVENT","plane":"PROJECT","semantic_class":"STATE_EVENT","advances_state_machine":True},
             {"id":"C","plane":"PROJECT","semantic_class":"CHANGE","change_scope":"SUPPORT_DERIVATIVE_ONLY","upstream_source_changed":False,"stale_effects":["UPSTREAM_SOURCE_CONFIGURATION"]},
             {"id":"M","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","target_results":{"G1":"REVISE","G4":"PASS"},"summary_result":"PASS"},
             {"id":"K","plane":"KNOWLEDGE","semantic_class":"METHOD","retrieval_space":"CURRENT","professional_state":"NOT_PROVEN_PROFESSIONAL_PASS","summary_badge":"CURRENT_VERIFIED"}
@@ -194,7 +396,7 @@ def self_test() -> list[Finding]:
         "presentation_release":{"id":"R","global_status":"PASS","medium_readback":{"PDF_PRINT":"PASS","DESKTOP_BROWSER":"WAIT"}}
     }
     findings = snapshot_checks(snap)
-    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P5/CHG-RP01","P6/ASR-RP02","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
+    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P4/VAR-RP09","P4/VAR-RP10","P4/VAR-RP11","P4/AUTH-RP06","P4/VAR-RP12","P4/IFC-RP10","P4/IFC-RP11","P4/IFC-RP12","P4/IFC-RP13","P5/CHG-RP01","P6/ASR-RP02","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
     got = {f.rule_id for f in findings}
     missing = sorted(expected - got)
     if missing:

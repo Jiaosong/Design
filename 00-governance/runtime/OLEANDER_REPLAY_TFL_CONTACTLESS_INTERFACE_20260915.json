@@ -4,6 +4,15 @@
   "status":"DRAFT_EXTERNAL_REPLAY_NOT_CURRENT",
   "external_case":"Transport for London Oyster / Contactless PAYG",
   "source_boundary":"PUBLIC_DOCUMENTED_SERVICE_BEHAVIOR_ONLY_NO_INTERNAL_ARCHITECTURE_CLAIM",
+  "source_binding_as_of":"2026-09-15",
+  "external_sources":[
+    {"authority":"Transport for London","title":"Pay as you go","url":"https://tfl.gov.uk/fares/ways-to-pay/pay-as-you-go","supports":["SAME_CARD_OR_DEVICE_EXPECTED_FOR_TOUCH_IN_OUT_CONTINUITY","MOBILE_DEVICE_BATTERY_AVAILABILITY_IS_OPERATIONALLY_MATERIAL"]},
+    {"authority":"Transport for London","title":"Contactless payment — automated processing and profiling","url":"https://tfl.gov.uk/corporate/privacy-and-cookies/contactless-payment","supports":["AUTOMATED_FARE_CALCULATION_USES_JOURNEY_OBSERVATIONS","PINK_READER_ROUTE_DATA_CAN_CHANGE_FARE_OUTCOME","INCOMPLETE_JOURNEYS_CAN_BE_AUTO_COMPLETED_OR_REFUNDED"]},
+    {"authority":"Transport for London","title":"Touch a pink card reader when changing trains","url":"https://tfl.gov.uk/fares/touch-pink-card-reader-when-changing-trains","supports":["PINK_READER_ROUTE_DATA_CAN_CHANGE_FARE_OUTCOME"]},
+    {"authority":"Transport for London","title":"Contactless payment — publications and reports","url":"https://tfl.gov.uk/corporate/publications-and-reports/contactless-payment","supports":["INCOMPLETE_JOURNEYS_HAVE_MATERIAL_CORRECTION_REFUND_BEHAVIOR"]},
+    {"authority":"Transport for London","title":"Contactless Cards and Devices — Conditions of Use","url":"https://tfl.gov.uk/cdn/static/cms/documents/tfl-contactless-cards-and-devices-conditions-of-use.pdf","supports":["DIFFERENT_DEVICE_PRESENTATIONS_CAN_CREATE_TWO_SEPARATE_INCOMPLETE_JOURNEYS","MOBILE_DEVICE_BATTERY_AVAILABILITY_IS_OPERATIONALLY_MATERIAL","PINK_READER_ROUTE_DATA_CAN_CHANGE_FARE_OUTCOME"]},
+    {"authority":"Transport for London","title":"Apply for a refund","url":"https://tfl.gov.uk/fares/refunds/","supports":["INCOMPLETE_JOURNEY_RECOVERY_IS_PART_OF_OPERATIONAL_SERVICE_PATH"]}
+  ],
   "source_facts":[
     "SAME_CARD_OR_DEVICE_EXPECTED_FOR_TOUCH_IN_OUT_CONTINUITY",
     "PINK_READER_ROUTE_DATA_CAN_CHANGE_FARE_OUTCOME",

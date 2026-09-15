@@ -312,22 +312,47 @@
       "source_file": "OLEANDER_P11_READER_ROUTING_MATRICES_v1.1.json",
       "json_pointer": "/allowed_use_labels",
       "semantic_scope": "READER_CONSUMPTION_BOUNDARY"
+    },
+    "NEED_ORIGIN_KIND": {
+      "namespace": "P3",
+      "owner": "OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P3_REQUIREMENT_CLAIM_MATRICES_v1.1.json",
+      "json_pointer": "/need_origin_kind",
+      "semantic_scope": "NEED_ORIGIN_CREDIBILITY_KIND"
+    },
+    "NEED_ORIGIN_VALIDATION_STATE": {
+      "namespace": "P3",
+      "owner": "OLEANDER_NEED_REQUIREMENT_CONSTRAINT_CLAIM_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P3_REQUIREMENT_CLAIM_MATRICES_v1.1.json",
+      "json_pointer": "/need_origin_validation_state",
+      "semantic_scope": "NEED_ORIGIN_VALIDATION_STATE"
     }
   },
   "non_mergeable_same_token_examples": [
     {
       "token": "OPEN",
-      "symbols": ["INTERFACE_DISPOSITION", "PROJECT_NATIVE_STATES", "RESEARCH_GATE_STATES"],
+      "symbols": [
+        "INTERFACE_DISPOSITION",
+        "PROJECT_NATIVE_STATES",
+        "RESEARCH_GATE_STATES"
+      ],
       "rule": "SAME_LITERAL_DOES_NOT_IMPLY_SHARED_ENUM"
     },
     {
       "token": "BLOCKED",
-      "symbols": ["PROJECT_OPERATIONAL_STATUS", "INTERFACE_DISPOSITION", "SEARCH_ELIGIBILITY"],
+      "symbols": [
+        "PROJECT_OPERATIONAL_STATUS",
+        "INTERFACE_DISPOSITION",
+        "SEARCH_ELIGIBILITY"
+      ],
       "rule": "QUALIFY_BY_SEMANTIC_OWNER"
     },
     {
       "token": "STALE",
-      "symbols": ["LEGACY_CLASS_STATE", "VALIDITY_DISPOSITION_COMPATIBILITY"],
+      "symbols": [
+        "LEGACY_CLASS_STATE",
+        "VALIDITY_DISPOSITION_COMPATIBILITY"
+      ],
       "rule": "MIGRATE_TO_ORTHOGONAL_VALIDITY_WHERE_APPLICABLE"
     }
   ]

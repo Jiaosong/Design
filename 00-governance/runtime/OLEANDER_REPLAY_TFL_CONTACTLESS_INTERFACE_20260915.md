@@ -8,9 +8,10 @@ This replay does **not** claim access to TfL's unpublished internal architecture
 
 ## 1. Public-source basis
 
-Primary external sources reviewed:
+Primary external sources reviewed, with explicit public bindings verified 2026-09-15:
 
 1. Transport for London — `Pay as you go`.
+   - https://tfl.gov.uk/fares/ways-to-pay/pay-as-you-go
    - Oyster/contactless card/device is used across TfL services.
    - rail journeys generally require touch-in and touch-out.
    - the same card or device should be used for both ends of a journey.
@@ -18,21 +19,30 @@ Primary external sources reviewed:
    - mobile device battery availability can affect successful presentation.
 
 2. Transport for London — `Contactless payment` privacy/automated processing.
+   - https://tfl.gov.uk/corporate/privacy-and-cookies/contactless-payment
    - fare calculation uses touch-in origin, touch-out destination and, where relevant, pink-reader route data.
    - incomplete journeys can in some circumstances be automatically completed.
    - refunds can be triggered automatically or reviewed through customer service.
 
 3. Transport for London — `Touch a pink card reader when changing trains`.
+   - https://tfl.gov.uk/fares/touch-pink-card-reader-when-changing-trains
    - pink-reader touches communicate route information and can affect the fare charged.
 
 4. Transport for London — contactless-payment public statistics.
+   - https://tfl.gov.uk/corporate/publications-and-reports/contactless-payment
    - TfL separately publishes incomplete-journey counts/revenue and correction/refund categories, confirming incomplete journey handling is a material operational state rather than an edge-case UI label.
 
-5. EMVCo — Payment Tokenisation use-case guidance.
-   - a rider may present the same underlying payment relationship in different credential forms; some transit systems can treat those presentations as separate journeys unless explicit account-reference linkage exists.
+5. Transport for London — `Contactless Cards and Devices — Conditions of Use`.
+   - https://tfl.gov.uk/cdn/static/cms/documents/tfl-contactless-cards-and-devices-conditions-of-use.pdf
+   - section 2.7 states that the same card/device must be used to touch in/out and that phone→watch/card changes can result in two separate incomplete journeys.
+   - sections 2.8–2.10 establish maximum-fare, battery and journey-time consequences.
+   - section 2.13 establishes pink-reader route signalling.
 
-6. EMVCo — contactless/transit operator specifications and approval context.
-   - transit is a distinct operational context within contactless payment infrastructure.
+6. Transport for London — `Apply for a refund`.
+   - https://tfl.gov.uk/fares/refunds/
+   - incomplete-journey refunds and automatic processing confirm recovery/correction is part of the operational service path.
+
+The replay no longer requires an inferred EMVCo tokenisation claim to establish its core identity/session findings: TfL's own conditions explicitly document separate incomplete journeys when different device presentations are used. External payment-standard material may remain contextual background, but it is not part of the minimum evidence chain for the replay rules below.
 
 Source boundary:
 
