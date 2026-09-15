@@ -1,0 +1,28 @@
+{
+  "schema":"OLEANDER_RIAU_CONVERSION_REPLAY_v0.1",
+  "replay_id":"RP-TP7-RIAU-CONVERSIONS-20260915",
+  "status":"DRAFT_EXTERNAL_REPLAY_NOT_CURRENT",
+  "external_cases":["CLOUDFLARE_1_1_1_1_INCIDENT_2025_07_14","NASA_SYSTEMS_ENGINEERING_TBR_ASSUMPTION_GUIDANCE"],
+  "source_boundary":"PUBLIC_SOURCE_FACTS_ONLY_OLEANDER_CONVERSION_MODEL_ANALYTICAL",
+  "cloudflare_timeline":{
+    "issue_introduced_no_impact":"2025-06-06T17:38Z",
+    "impact_started":"2025-07-14T21:48Z",
+    "impact_detected":"2025-07-14T22:01Z",
+    "incident_declared":"2025-07-14T22:01Z",
+    "fix_deployed":"2025-07-14T22:20Z",
+    "impact_ended":"2025-07-14T22:54Z",
+    "incident_resolved":"2025-07-14T22:55Z"
+  },
+  "new_machine_concepts":{
+    "issue_time_fields":["introduced_or_effective_at","impact_started_at","detected_at","declared_at","contained_at","repair_implemented_at","retest_completed_at","impact_ended_at","resolved_at"],
+    "causal_roles":["LATENT_CONDITION","TRIGGER_EVENT","CONTRIBUTING_FACTOR","ROOT_CAUSE","PROPAGATION_FACTOR","DETECTION_FAILURE","RECOVERY_LIMITATION","NON_CAUSAL_COINCIDENT_EVENT"],
+    "unknown_resolution_mode":["NO_WORKING_VALUE","TBR_PROVISIONAL_VALUE","INVESTIGATION_IN_PROGRESS","EXTERNAL_DECISION_PENDING","OTHER_EXPLICIT"],
+    "unknown_provisional_fields":["provisional_value","provisional_value_basis","resolution_owner","resolution_action","resolution_due","claim_ceiling_while_unresolved"],
+    "risk_realization_disposition":"REALIZED_AS_ISSUE"
+  },
+  "replay_derived_rules":["P7/ISS-RP06","P7/ISS-RP07","P7/LINE-RP03","P7/ROOT-RP03","P7/ROOT-RP04","P7/ISS-RP08","P7/ISS-RP09","P7/UNK-RP03","P7/UNK-RP04","P7/ASM-RP05","P7/ROOT-RP05","P7/ISS-RP10"],
+  "closed_gaps":["LATENT_ISSUE_VS_RISK","ISSUE_TEMPORAL_MODEL","RISK_REALIZATION_LINEAGE_MODEL","CAUSAL_ROLE_DECOMPOSITION","REPAIR_RETEST_CLOSURE_SEPARATION","UNKNOWN_TBR_PROVISIONAL_VALUE","UNKNOWN_TO_ASSUMPTION_ADMISSION_RULE"],
+  "still_open":["EXECUTED_PRIOR_RISK_TO_ISSUE_CHAIN","EXECUTED_UNKNOWN_TO_ASSUMPTION_TO_CONFIRM_OR_REFUTE_CHAIN","AUTHORIZED_RESIDUAL_RISK_ACCEPTANCE_CHAIN"],
+  "tp7_status":"PARTIALLY_COMPLETE_WITH_MATERIAL_DELTAS",
+  "promotion_effect":"NONE_REPLAY_ONLY"
+}
