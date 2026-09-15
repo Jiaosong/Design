@@ -1,0 +1,65 @@
+{
+  "schema": "OLEANDER_TYPED_COMPATIBILITY_MIGRATION_MAP_v0.1",
+  "status": "DRAFT_MIGRATION_MAP_NOT_CURRENT",
+  "principle": "COMPATIBILITY_ALIAS_DOES_NOT_CREATE_SECOND_SEMANTIC_OWNER",
+  "mappings": {
+    "PROJECT_CLASS_CLAIM": {
+      "legacy": "CLAIM",
+      "canonical": "PROJECT_CLAIM",
+      "owner": "P3",
+      "migration": "LOSSLESS_ALIAS",
+      "write_policy": "WRITE_CANONICAL_READ_LEGACY_AND_CANONICAL"
+    },
+    "P4_REGISTRY_LABEL": {
+      "legacy_physical_label": "P4 Validation",
+      "logical_model": "P4 Formal Assurance",
+      "required_discriminator": "assurance_type",
+      "allowed_assurance_types": ["VERIFICATION","VALIDATION","CERTIFICATION","INDEPENDENT_REVIEW","AUDIT","ACCEPTANCE"],
+      "owner": "P6",
+      "migration": "PHYSICAL_LABEL_COMPATIBILITY_NO_REGISTRY_RENAME_YET",
+      "write_policy": "PRESERVE_PHYSICAL_LABEL_UNTIL_SCHEMA_MIGRATION_AUTHORIZED"
+    },
+    "STALE_STATE": {
+      "legacy": "NATIVE_CLASS_STATE_STALE",
+      "canonical_model": "NATIVE_CLASS_STATE_PLUS_VALIDITY_DISPOSITION",
+      "canonical_owner": "P5",
+      "canonical_symbol": "VALIDITY_DISPOSITION",
+      "migration": "CONTEXTUAL_NOT_ONE_TO_ONE",
+      "mapping_guidance": {
+        "still_usable_but_needs_review": "RECHECK_REQUIRED",
+        "closure_no_longer_sufficient": "REOPEN_REQUIRED",
+        "cannot_support_current_claim": "INVALID_FOR_CURRENT_CLAIM",
+        "valid_only_for_old_configuration": "HISTORICAL_ONLY"
+      },
+      "write_policy": "DO_NOT_DROP_LEGACY_STATE_UNTIL_REPLAYED"
+    },
+    "PROMOTION_T0_T4": {
+      "legacy_summary": ["T0_WORKING","T1_REVIEWABLE","T2_CONTROLLED_CANDIDATE","T3_CURRENT_OR_BASELINED_FOR_SCOPE","T4_ASSURED_CURRENT"],
+      "canonical_model": "CLASS_SPECIFIC_PROMOTION_PLUS_VECTOR_CLAIM_CEILINGS",
+      "owner": "P1",
+      "migration": "SUMMARY_ONLY_NOT_REVERSIBLE",
+      "write_policy": "MAY_DISPLAY_COARSE_SUMMARY_BUT_CANNOT_DERIVE_VECTOR_CEILINGS_FROM_TIER"
+    },
+    "EVIDENCE_STRENGTH_VS_CEILING": {
+      "p6_symbol": "EVIDENCE_RECORD_STRENGTH",
+      "p1_symbol": "EVIDENCE_CLAIM_CEILING",
+      "migration": "NO_ALIAS_DISTINCT_SEMANTICS",
+      "rule": "DO_NOT_COLLAPSE"
+    },
+    "CURRENT_BADGE": {
+      "legacy_risk": "CURRENT_MAY_BE_RENDERED_AS_SINGLE_SUCCESS_BADGE",
+      "canonical_model": "RETRIEVAL_SPACE_CURRENT_PLUS_INDEPENDENT_CONTENT_RESEARCH_BILINGUAL_IR_STATES",
+      "owner": "P11",
+      "migration": "UI_PROJECTION_CHANGE",
+      "rule": "CURRENT_DOES_NOT_IMPLY_PROFESSIONAL_PASS"
+    }
+  },
+  "migration_outcomes": ["LOSSLESS_ALIAS","CONTEXTUAL_MAP","SUMMARY_ONLY","NO_ALIAS_DISTINCT_SEMANTICS","UI_PROJECTION_CHANGE","HOLD_FOR_MANUAL_REVIEW"],
+  "hard_rules": [
+    "ALIAS_MUST_NAME_CANONICAL_OWNER",
+    "LOSSY_OR_CONTEXTUAL_MAPPING_CANNOT_AUTO_REWRITE_SOURCE",
+    "MIGRATION_MAP_CANNOT_PROMOTE_STATE",
+    "PHYSICAL_LABEL_COMPATIBILITY_CANNOT_OVERRIDE_LOGICAL_SEMANTICS",
+    "SAME_LITERAL_ACROSS_ENUMS_CANNOT_CREATE_IMPLICIT_ALIAS"
+  ]
+}
