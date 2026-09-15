@@ -7,6 +7,7 @@
   "canonical_markdown_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
   "compatible_predecessor": "2.0",
   "runtime_layer_interface_contract_ref": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+  "observability_recovery_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
   "system_architecture_count": 1,
   "master_runtime_count": 1,
   "master_runtime": {
@@ -157,7 +158,8 @@
       ],
       "refs": [
         "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
-        "00-governance/runtime/publish_execution_live_status.py"
+        "00-governance/runtime/publish_execution_live_status.py",
+        "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
       ],
       "does_not_prove": [
         "PROJECT_AUTHORITY",
@@ -1101,7 +1103,14 @@
     "DELEGATION_OR_ASSIGNMENT_CANNOT_WIDEN_SOURCE_AUTHORITY",
     "UNRESOLVED_MATERIAL_DECISION_AUTHORIZATION_FAILS_CLOSED",
     "MACHINE_CANNOT_INVENT_DECISION_AUTHORITY_OR_COMPETENCE",
-    "NO_UNIVERSAL_LAYER_PROGRESS_STATE"
+    "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
+    "OBSERVABILITY_EVENT_NOT_AUTHORITY",
+    "RECOVERY_INCIDENT_NOT_PROJECT_STATE",
+    "RECOVERY_BLAST_RADIUS_PRESERVES_UNAFFECTED_VALID_STATE",
+    "RECOVERY_CLOSURE_REQUIRES_ACTUAL_READBACK",
+    "INCIDENT_CLOSED_DOES_NOT_PROVE_DESIGN_PROFESSIONAL_OR_PROMOTION_PASS",
+    "RECOVERY_REACCEPTS_ONLY_AFFECTED_HANDOFFS_AFTER_REQUIRED_READBACK",
+    "LIVE_STATUS_REMAINS_OBSERVABILITY_ONLY"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

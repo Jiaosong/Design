@@ -12,13 +12,14 @@
     {"date": "2026-09-09", "name": "Optimistic Concurrency + Verify-Before-Retry"},
     {"date": "2026-09-12", "name": "Git Branch Ref Disposition at Closure"},
     {"date": "2026-09-15", "name": "Runtime Layer Interface Handoff"},
-    {"date": "2026-09-15", "name": "Multi-Surface Partial-Commit Reconciliation"}
+    {"date": "2026-09-15", "name": "Multi-Surface Partial-Commit Reconciliation"},
+    {"date": "2026-09-15", "name": "Observability Event + Recovery Incident"}
   ],
-  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, continuation/frontier state when applicable, concurrency/idempotency evidence when material, adapter route evidence when material, existing visual authority/image consumption when applicable, owner selection, DAG, artifacts, execution, regression, readback, review, flow completion and drift.",
+  "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, continuation/frontier state when applicable, concurrency/idempotency evidence when material, adapter route evidence when material, existing visual authority/image consumption when applicable, runtime-layer handoff, multi-surface partial-commit reconciliation when material, bounded recovery incident when material, owner selection, DAG, artifacts, execution, regression, readback, review, flow completion and drift.",
   "required_core_fields": ["receipt_id", "status", "execution_type", "task_id", "authority", "required_native_output", "owner_set", "artifacts", "execution", "readback", "regression", "review", "closure", "does_not_prove"],
   "policy_1_1_additional_required_core_fields": ["constraint_lock", "flow_completion"],
   "legacy_receipts_without_policy_1_1_fields": ["EXR-20260818-PR246-IMAGE-OPS-ADAPTER", "EXR-20260818-PR248-CONTRACT-LAYER", "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"],
-  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES MUST ADD IMAGE_CONSUMPTION; CONTINUING_TASKS MUST ADD CONTINUATION_CHECKPOINT WHEN APPLICABLE; MATERIAL_CROSS_LAYER_HANDOFFS MUST ADD RUNTIME_LAYER_HANDOFF WHEN THE HANDOFF SUPPORTS CONTINUATION_REVIEW_OR_PROMOTION; MULTI_SURFACE_MATERIAL_MUTATIONS MUST ADD PARTIAL_COMMIT_RECONCILIATION WHEN DEPENDENT_ADVANCE_OR_HANDOFF_REQUIRES_COHERENT_SIDE_EFFECTS; CONCURRENCY_GUARD_AND_REMOTE_MUTATION_IDEMPOTENCY ARE RECORDED ONLY WHEN MATERIAL EXECUTION USES THEM; CROSS_CONTEXT_DISCOVERY_ADAPTER_ROUTE_AND_MULTI_NODE_AUTO_ADVANCE ARE RECORDED ONLY WHEN MATERIAL_EXECUTION_USES_THEM_AND_AN_EXISTING_PERSISTENCE_TRIGGER_APPLIES",
+  "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES MUST ADD IMAGE_CONSUMPTION; CONTINUING_TASKS MUST ADD CONTINUATION_CHECKPOINT WHEN APPLICABLE; MATERIAL_CROSS_LAYER_HANDOFFS MUST ADD RUNTIME_LAYER_HANDOFF WHEN THE HANDOFF SUPPORTS CONTINUATION_REVIEW_OR_PROMOTION; MULTI_SURFACE_MATERIAL_MUTATIONS MUST ADD PARTIAL_COMMIT_RECONCILIATION WHEN DEPENDENT_ADVANCE_OR_HANDOFF_REQUIRES_COHERENT_SIDE_EFFECTS; MATERIAL_FAILURE_OR_CONTRADICTION_REQUIRING_CONTAINMENT_RECOVERY_OR_RECOVERY_CLOSURE_TO_SUPPORT_CONTINUATION_REVIEW_OR_PROMOTION MUST ADD RECOVERY_INCIDENT; CONCURRENCY_GUARD_AND_REMOTE_MUTATION_IDEMPOTENCY ARE RECORDED ONLY WHEN MATERIAL EXECUTION USES THEM; CROSS_CONTEXT_DISCOVERY_ADAPTER_ROUTE_AND_MULTI_NODE_AUTO_ADVANCE ARE RECORDED ONLY WHEN MATERIAL_EXECUTION_USES_THEM_AND_AN_EXISTING_PERSISTENCE_TRIGGER_APPLIES",
   "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
   "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
   "authority_required_fields": ["notion_root_page_id", "notion_root_version", "project_or_scope_authority", "source_authority", "design_authority", "canonical_ids", "github_resolver", "github_commit_or_ref"],
@@ -126,6 +127,26 @@
     "compensation_requires_existing_legal_authorized_path": true,
     "distributed_transaction_manager_forbidden": true,
     "persistent_transaction_ledger_forbidden": true,
+    "no_material_delta_no_new_receipt": true
+  },
+  "recovery_incident_extension": {
+    "required_when": "MATERIAL_FAILURE_OR_CONTRADICTION_REQUIRES_CONTAINMENT_RECOVERY_OR_RECOVERY_CLOSURE_TO_SUPPORT_CONTINUATION_REVIEW_OR_PROMOTION",
+    "prospective_only": true,
+    "historical_receipts_immutable": true,
+    "contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+    "fields": ["incident_id", "failure_class", "failure_code", "failure_owner_ref", "detected_at", "owning_layer", "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision", "trigger_source_ref", "trigger_event_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure", "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove"],
+    "required_fields": ["incident_id", "failure_class", "failure_owner_ref", "detected_at", "owning_layer", "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision", "trigger_source_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure", "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove"],
+    "conditional_fields": {
+      "failure_code": "REQUIRED_WHEN_THE_CANONICAL_FAILURE_OWNER_EXPOSES_AN_OWNER_NATIVE_FAILURE_CODE",
+      "trigger_event_ref": "REQUIRED_WHEN_A_DURABLE_OBSERVABILITY_EVENT_RECORD_EXISTS_FOR_THE_INCIDENT_TRIGGER"
+    },
+    "incident_state_is_local_only": true,
+    "closed_requires_actual_recovery_readback": true,
+    "unaffected_verified_state_preserved": true,
+    "reaccept_only_affected_handoffs_after_readback": true,
+    "owner_refs_do_not_grant_authority": true,
+    "consequential_resume_requires_resolvable_authorization_basis": true,
+    "telemetry_only_event_no_new_receipt": true,
     "no_material_delta_no_new_receipt": true
   },
   "image_consumption_extension": {

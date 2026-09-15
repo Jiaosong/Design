@@ -1,0 +1,357 @@
+{
+  "schema": "oleander.observability-recovery-contract.v1",
+  "version": "1.0",
+  "status": "ACTIVE_CURRENT_CONTRACT",
+  "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+  "control_graph_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+  "layer_interface_ref": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+  "execution_receipt_ref": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+  "purpose": "Define observability-event and bounded recovery-incident semantics over existing receipts, checkpoints, layer handoffs and readbacks without creating a second Project State, authority database, job system or universal runtime state family.",
+  "observability": {
+    "semantic_class": "READ_ONLY_OR_RECEIPT_BACKED_PROJECTION",
+    "authority_ceiling": "OBSERVABILITY_ONLY",
+    "snapshot_required_fields": [
+      "project_or_scope_id",
+      "current_task_id",
+      "current_decision_object",
+      "active_runtime_layer",
+      "active_owner",
+      "authority_fingerprint",
+      "current_state",
+      "stale_or_reopen_refs",
+      "open_blockers",
+      "last_verified_artifact_ref",
+      "last_readback_ref",
+      "current_receipt_refs",
+      "dependency_health",
+      "next_allowed_action",
+      "observed_at"
+    ],
+    "optional_context_fields": [
+      "active_professional_process",
+      "active_professional_stage",
+      "active_handoff_ids",
+      "active_incident_ids",
+      "sync_state",
+      "executor_id",
+      "checkpoint_sequence"
+    ],
+    "event_core_required_fields": [
+      "event_id",
+      "event_type",
+      "project_or_scope_id",
+      "decision_object_id",
+      "owner_ref",
+      "authority_fingerprint",
+      "source_revision",
+      "source_ref",
+      "object_refs",
+      "observed_at",
+      "does_not_prove"
+    ],
+    "event_conditional_fields": {
+      "current_task_id": "REQUIRED_WHEN_EVENT_IS_BOUND_TO_AN_ACTIVE_TASK_OR_EXECUTION_RECEIPT",
+      "runtime_layer_id": "REQUIRED_WHEN_EVENT_IS_LAYER_SCOPED",
+      "checkpoint_sequence": "REQUIRED_WHEN_EVENT_OBSERVES_OR_ADVANCES_A_CONTINUATION_CHECKPOINT",
+      "handoff_refs": "REQUIRED_WHEN_EVENT_OBSERVES_A_RUNTIME_LAYER_HANDOFF",
+      "incident_ref": "REQUIRED_WHEN_EVENT_OPENS_UPDATES_CONTAINS_OR_CLOSES_A_RECOVERY_INCIDENT",
+      "blocker_refs": "REQUIRED_WHEN_EVENT_OPENS_CLOSES_OR_DEPENDS_ON_A_BLOCKER",
+      "stale_refs": "REQUIRED_WHEN_EVENT_OBSERVES_STALENESS_OR_REOPEN",
+      "readback_refs": "REQUIRED_WHEN_EVENT_OBSERVES_ACTUAL_READBACK_OR_RECOVERY_READBACK",
+      "failure_class": "REQUIRED_WHEN_EVENT_OPENS_OR_UPDATES_A_FAILURE_INCIDENT",
+      "failure_code": "REQUIRED_WHEN_AN_OWNER_NATIVE_FAILURE_CODE_EXISTS",
+      "next_allowed_action": "REQUIRED_WHEN_THE_EVENT_MATERIALLY_CHANGES_CONTINUATION"
+    },
+    "event_types": [
+      "AUTHORITY_RESOLVED",
+      "AUTHORITY_CHANGED",
+      "DEPENDENCY_STALE",
+      "HANDOFF_READY",
+      "HANDOFF_ACCEPTED",
+      "NATIVE_MUTATION_STARTED",
+      "NATIVE_MUTATION_COMPLETED",
+      "NATIVE_MUTATION_FAILED",
+      "ACTUAL_READBACK_COMPLETED",
+      "ACTUAL_READBACK_FAILED",
+      "REVIEW_OPENED",
+      "REVIEW_RESOLVED",
+      "BLOCKER_OPENED",
+      "BLOCKER_CLOSED",
+      "CHECKPOINT_ADVANCED",
+      "UNCERTAIN_REMOTE_MUTATION_DETECTED",
+      "UNCERTAIN_REMOTE_MUTATION_RESOLVED",
+      "INCIDENT_OPENED",
+      "INCIDENT_CONTAINED",
+      "RECOVERY_ACTION_APPLIED",
+      "RECOVERY_READBACK_RECORDED",
+      "INCIDENT_CLOSED",
+      "DRIFT_DETECTED",
+      "DRIFT_RECONCILED",
+      "SYNC_READBACK_CHANGED"
+    ],
+    "event_type_is_state_family": false,
+    "material_event_rule": "RECORD_ONLY_EVENTS_NEEDED_FOR_CONTINUATION_REVIEW_RECOVERY_PROMOTION_OR_CROSS_SURFACE_READBACK; DO_NOT_CREATE_A_NEW_EXECUTION_RECEIPT_FOR_TELEMETRY_ONLY_WITHOUT_MATERIAL_DELTA",
+    "authority_resolution_order": [
+      "CURRENT_AUTHORITY_OR_OWNER_NATIVE_STATE",
+      "CURRENT_EXECUTION_OR_DOMAIN_RECEIPT",
+      "ACTUAL_READBACK",
+      "LATEST_VALID_CHECKPOINT",
+      "OBSERVABILITY_EVENT"
+    ],
+    "authority_resolution_rule": "AN_OBSERVABILITY_EVENT_MAY_POINT_TO_OWNER_NATIVE_EVIDENCE_BUT_NEVER_OUTRANK_OR_REPLACE_THAT_OWNER_NATIVE_SOURCE",
+    "live_projection": {
+      "version": "oleander-execution-live-status/v1",
+      "publisher_ref": "00-governance/runtime/publish_execution_live_status.py",
+      "storage_semantics": "LATEST_ONLY_PER_TASK_EXECUTOR_WITH_CHECKPOINT_SEQUENCE_GUARD",
+      "required_fields": [
+        "version",
+        "task_id",
+        "executor_id",
+        "checkpoint_sequence",
+        "status"
+      ],
+      "optional_fields": [
+        "current_node",
+        "next_allowed_action",
+        "receipt_id",
+        "readback_verdict",
+        "flow_completion_gate",
+        "note",
+        "execution_context",
+        "updated_at"
+      ],
+      "allowed_status_values": [
+        "WORKING",
+        "REVIEW_PENDING",
+        "HOLD",
+        "CLOSED"
+      ],
+      "projection_is_project_state": false,
+      "projection_is_authority": false,
+      "durable_event_or_incident_store": false,
+      "event_history_must_not_be_added_to_runtime_state": true,
+      "newer_checkpoint_sequence_wins": true,
+      "same_sequence_requires_identical_stable_payload": true,
+      "stale_projection_cannot_override_authoritative_readback": true
+    },
+    "hard_rules": [
+      "EVENT_IS_EVIDENCE_OF_OBSERVED_RUNTIME_ACTIVITY_NOT_AUTHORITY",
+      "EVENT_ORDER_DOES_NOT_OVERRIDE_AUTHORITY_PRECEDENCE",
+      "LATEST_TIMESTAMP_IS_NOT_CURRENT_AUTHORITY",
+      "ABSENCE_OF_EVENT_DOES_NOT_ERASE_AUTHORITATIVE_STATE",
+      "OBSERVABILITY_MAY_REPORT_NEXT_ACTION_BUT_NOT_GRANT_MUTATION_AUTHORITY",
+      "CLOSED_LIVE_STATUS_REQUIRES_EXISTING_COMPLETION_CONTRACT_NOT_TELEMETRY_ALONE"
+    ]
+  },
+  "recovery_incident": {
+    "semantic_class": "BOUNDED_INCIDENT_LIFECYCLE_NOT_PROJECT_STATE_FAMILY",
+    "lifecycle_scope": "INCIDENT_LOCAL_ONLY",
+    "required_fields": [
+      "incident_id",
+      "failure_class",
+      "failure_owner_ref",
+      "detected_at",
+      "owning_layer",
+      "project_or_scope_id",
+      "current_task_id",
+      "decision_object_id",
+      "authority_fingerprint",
+      "source_revision",
+      "trigger_source_ref",
+      "blast_radius",
+      "preserved_state",
+      "containment",
+      "recovery",
+      "closure",
+      "incident_state",
+      "remaining_blockers",
+      "next_allowed_action",
+      "observed_at",
+      "does_not_prove"
+    ],
+    "conditional_fields": {
+      "failure_code": "REQUIRED_WHEN_THE_CANONICAL_FAILURE_OWNER_EXPOSES_AN_OWNER_NATIVE_FAILURE_CODE",
+      "trigger_event_ref": "REQUIRED_WHEN_A_DURABLE_OBSERVABILITY_EVENT_RECORD_EXISTS_FOR_THE_INCIDENT_TRIGGER"
+    },
+    "owning_layer_values": [
+      "R-A",
+      "R-B",
+      "R-C",
+      "R-D",
+      "R-E",
+      "R-F",
+      "R-G",
+      "R-H",
+      "R-I",
+      "R-J",
+      "R-K"
+    ],
+    "failure_classes": [
+      "AUTHORITY_CONFLICT",
+      "STALE_DEPENDENCY",
+      "TOOL_RUNTIME_UNAVAILABLE",
+      "UNCERTAIN_REMOTE_MUTATION",
+      "NATIVE_ARTIFACT_FAILURE",
+      "REVIEW_FAILURE",
+      "INTEGRATION_FAILURE",
+      "PERSISTENCE_SYNC_FAILURE",
+      "EXTERNAL_AUTHORITY_MISSING"
+    ],
+    "failure_code_rule": "USE_THE_OWNER_NATIVE_RUNTIME_LAYER_OR_OWNER_CONTRACT_FAILURE_CODE_WHEN_AVAILABLE; FAILURE_CLASS_NORMALIZES_RECOVERY_ROUTING_BUT_DOES_NOT_REPLACE_OWNER_NATIVE_FAILURE_SEMANTICS",
+    "blast_radius_required_fields": [
+      "affected_layer_ids",
+      "affected_object_refs",
+      "affected_handoff_refs",
+      "affected_consumer_refs",
+      "affected_claim_refs",
+      "unaffected_verified_refs"
+    ],
+    "preserved_state_required_fields": [
+      "last_verified_state_refs",
+      "preserved_artifact_refs",
+      "preserved_receipt_refs",
+      "invalidated_or_stale_refs"
+    ],
+    "containment_required_fields": [
+      "unsafe_or_duplicate_mutation_stopped",
+      "stopped_mutation_refs",
+      "stale_or_hold_refs",
+      "containment_evidence_refs",
+      "containment_complete"
+    ],
+    "recovery_required_fields": [
+      "selected_smallest_valid_action",
+      "recovery_action_refs",
+      "required_postcondition",
+      "required_readback",
+      "affected_review_rerun_refs",
+      "affected_handoff_reacceptance_refs"
+    ],
+    "closure_required_fields": [
+      "recovery_readback_ref",
+      "closure_evidence_refs",
+      "affected_reviews_closed_or_explicitly_not_required",
+      "affected_handoffs_refreshed_or_explicitly_held",
+      "resume_condition",
+      "resume_decision_owner_ref",
+      "closed_at"
+    ],
+    "authorization_binding": {
+      "failure_owner_ref_is_reference_not_grant": true,
+      "resume_decision_owner_ref_is_reference_not_grant": true,
+      "consequential_resume_requires_current_decision_authorization_projection": true,
+      "unresolved_authorization_fails_closed": true,
+      "authorization_change_revalidates_affected_recovery_decision": true
+    },
+    "incident_states": [
+      "OPEN",
+      "CONTAINED",
+      "RECOVERING",
+      "READBACK_PENDING",
+      "REVIEW_PENDING",
+      "CLOSED",
+      "HOLD"
+    ],
+    "allowed_transitions": {
+      "OPEN": [
+        "CONTAINED",
+        "HOLD"
+      ],
+      "CONTAINED": [
+        "RECOVERING",
+        "HOLD"
+      ],
+      "RECOVERING": [
+        "READBACK_PENDING",
+        "HOLD"
+      ],
+      "READBACK_PENDING": [
+        "RECOVERING",
+        "REVIEW_PENDING",
+        "CLOSED",
+        "HOLD"
+      ],
+      "REVIEW_PENDING": [
+        "RECOVERING",
+        "CLOSED",
+        "HOLD"
+      ],
+      "HOLD": [
+        "CONTAINED",
+        "RECOVERING",
+        "READBACK_PENDING",
+        "REVIEW_PENDING"
+      ],
+      "CLOSED": []
+    },
+    "closed_incident_reentry_rule": "A_NEW_MATERIAL_FAILURE_OR_CONTRADICTION_AFTER_CLOSURE_CREATES_A_SUCCESSOR_INCIDENT_OR_AN_EXPLICIT_OWNER_REOPEN_RECORD_WITH_PROVENANCE; THE_CLOSED_RECORD_IS_NOT_SILENTLY_REWRITTEN",
+    "closure_requires": [
+      "FAILURE_OWNER_RESOLVED",
+      "BLAST_RADIUS_BOUNDED",
+      "UNSAFE_OR_DUPLICATE_MUTATION_STOPPED_WHEN_APPLICABLE",
+      "LAST_VERIFIED_UNAFFECTED_STATE_PRESERVED",
+      "RECOVERY_ACTION_APPLIED_OR_EXPLICITLY_NOT_REQUIRED_BY_OWNER",
+      "ACTUAL_READBACK_CLOSES_RECOVERY_POSTCONDITION",
+      "AFFECTED_REVIEWS_RERUN_OR_EXPLICITLY_NOT_REQUIRED_BY_OWNER_WHEN_AFFECTED_REVIEWS_EXIST",
+      "AFFECTED_HANDOFFS_REACCEPTED_OR_REMAIN_EXPLICIT_HOLD_WHEN_AFFECTED_HANDOFFS_EXIST",
+      "REMAINING_BLOCKERS_DO_NOT_CONTRADICT_CLOSURE_CLAIM"
+    ],
+    "empty_affected_scope_rule": "EMPTY_AFFECTED_REVIEW_OR_HANDOFF_SCOPE_MUST_BE_EXPLICIT_IN_BLAST_RADIUS; DO_NOT_INVENT_PLACEHOLDER_REVIEWS_OR_HANDOFFS",
+    "recovery_sequence": [
+      "DETECT",
+      "IDENTIFY_OWNER_AND_BLAST_RADIUS",
+      "STOP_UNSAFE_OR_DUPLICATE_MUTATION",
+      "PRESERVE_LAST_VERIFIED_STATE",
+      "MARK_AFFECTED_STALE_OR_HOLD",
+      "SELECT_SMALLEST_VALID_RECOVERY",
+      "REEXECUTE_OR_RECONCILE",
+      "ACTUAL_READBACK",
+      "RERUN_AFFECTED_REVIEWS",
+      "RESTORE_RUNTIME_STATE_WHEN_JUSTIFIED"
+    ],
+    "failure_class_actions": {
+      "AUTHORITY_CONFLICT": "HOLD_REFRESH_CURRENT_NO_PARALLEL_CURRENT",
+      "STALE_DEPENDENCY": "RECONCILIATION_REQUIRED_REOPEN_CONSUMERS",
+      "TOOL_RUNTIME_UNAVAILABLE": "USE_EQUIVALENT_ALLOWED_FALLBACK_OR_HOLD",
+      "UNCERTAIN_REMOTE_MUTATION": "VERIFY_POSTCONDITION_BEFORE_RETRY",
+      "NATIVE_ARTIFACT_FAILURE": "PRESERVE_LAST_VERIFIED_AND_REPAIR_BOUNDED_SCOPE",
+      "REVIEW_FAILURE": "ROUTE_TO_FAILED_RELATION_OWNER",
+      "INTEGRATION_FAILURE": "PRESERVE_LOCAL_DISCIPLINE_EVIDENCE_BLOCK_INTEGRATED_CLAIM",
+      "PERSISTENCE_SYNC_FAILURE": "BLOCK_RELEVANT_PROMOTION_OR_SYNC_CLAIM_ONLY",
+      "EXTERNAL_AUTHORITY_MISSING": "CONTINUE_WITHIN_CLAIM_CEILING_OR_HOLD_DEPENDENT_DECISION"
+    },
+    "hard_rules": [
+      "INCIDENT_STATE_IS_NOT_PROJECT_STATE_JOB_STATE_REVIEW_STATE_OR_HANDOFF_STATE",
+      "FAILURE_DOES_NOT_ERASE_UNRELATED_VERIFIED_STATE",
+      "RECOVERY_SCOPE_IS_SMALLEST_VALID_BLAST_RADIUS",
+      "CLOSED_REQUIRES_POST_RECOVERY_READBACK",
+      "CLOSED_DOES_NOT_MEAN_DESIGN_KEEP_PROFESSIONAL_PASS_OR_STATUTORY_APPROVAL",
+      "HOLD_DOES_NOT_AUTHORIZE_BLIND_RETRY",
+      "RECOVERY_MAY_REACCEPT_AFFECTED_HANDOFFS_ONLY_AFTER_REQUIRED_READBACK",
+      "UNRELATED_HANDOFFS_AND_REVIEWS_ARE_NOT_REOPENED_BY_DEFAULT",
+      "INCIDENT_OWNER_REFS_DO_NOT_GRANT_AUTHORITY",
+      "REMOTE_UNCERTAINTY_USES_VERIFY_BEFORE_RETRY"
+    ]
+  },
+  "execution_receipt_binding": {
+    "prospective_only": true,
+    "historical_receipts_immutable": true,
+    "required_when": "MATERIAL_FAILURE_OR_CONTRADICTION_REQUIRES_CONTAINMENT_RECOVERY_OR_RECOVERY_CLOSURE_TO_SUPPORT_CONTINUATION_REVIEW_OR_PROMOTION",
+    "extension_name": "recovery_incident_extension",
+    "receipt_field": "recovery_incident",
+    "observability_events_may_attach_to_existing_receipt_when_material": true,
+    "telemetry_only_event_must_not_create_receipt": true,
+    "no_material_delta_no_new_receipt_for_telemetry_only": true,
+    "existing_receipt_remains_execution_truth_carrier": true
+  },
+  "does_not_prove": [
+    "PROJECT_AUTHORITY",
+    "KNOWLEDGE_AUTHORITY",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "INTEGRATION_PASS",
+    "STATUTORY_APPROVAL",
+    "FIELD_TRUTH",
+    "PROMOTION"
+  ]
+}

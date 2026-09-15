@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry**  
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry; 2026-09-15 — Runtime Layer Interface Handoff; 2026-09-15 — Multi-Surface Partial-Commit Reconciliation; 2026-09-15 — Observability Event + Recovery Incident**
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -24,7 +24,9 @@ The 2026-09-09 runtime extensions additionally support:
 - **Concurrency Guard** when a resumable checkpoint is about to drive Remote/Authority/Release mutation;
 - **Adapter Route Decision** when a material execution evaluates multiple surfaces or uses a currently exposed ephemeral connector;
 - **Remote Mutation Idempotency** when a remote write outcome is uncertain or retry is considered;
-- **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion.
+- **Continuous Execution** when multiple ready nodes execute in one material run or auto-advance stops before Flow Completion;
+- **Runtime Layer Interface Handoff** when a material dependency boundary must support continuation, review or Promotion;
+- **Recovery Incident** when a material failure or contradiction requires bounded containment, recovery, postcondition readback and affected-scope rerun before continuation.
 
 These are conditional runtime sections inside the existing Receipt. They do not create a new Project State, METHOD, Skill, framework, Agent taxonomy, plugin database, state database, checkpoint database or lock service.
 
@@ -389,6 +391,41 @@ Record actual runtime/tool action, result, failures, repairs and re-execution st
 
 Do not infer EXECUTED from a promise, plan, prompt, path, PR or CI state.
 
+## 9A｜Recovery Incident｜when material
+
+Use this section only when a material failure or contradiction requires containment, recovery or recovery closure to support continuation, review or Promotion. Authoritative machine contract: `OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json`.
+
+Record one bounded incident object in `recovery_incident` with:
+
+`incident_id / failure_class / failure_owner_ref / detected_at / owning_layer / project_or_scope_id / current_task_id / decision_object_id / authority_fingerprint / source_revision / trigger_source_ref / blast_radius / preserved_state / containment / recovery / closure / incident_state / remaining_blockers / next_allowed_action / observed_at / does_not_prove`.
+
+`failure_class` normalizes architecture-level recovery routing. `failure_code` is additionally required only when the canonical failure owner exposes an owner-native failure code. `trigger_event_ref` is required only when a durable observability-event record actually exists; `trigger_source_ref` always points back to the authoritative evidence that opened the incident. The normalized class may not erase or replace owner-native failure semantics.
+
+`failure_owner_ref` and `resume_decision_owner_ref` are references only. They do not grant authority or competence. Consequential recovery closure/resume still requires a current resolvable authorization basis under the architecture Decision Rights projection; unresolved authorization fails closed.
+
+The incident lifecycle is local only:
+
+`OPEN / CONTAINED / RECOVERING / READBACK_PENDING / REVIEW_PENDING / HOLD / CLOSED`.
+
+It is **not** a Project State, Job State, review state, handoff state, professional stage or Master Runtime outcome.
+
+The incident must explicitly bound:
+
+- affected layers, objects, handoffs, consumers and claims;
+- unaffected verified refs that remain valid;
+- last verified state/artifact/receipt refs preserved through repair;
+- unsafe or duplicate mutations stopped when applicable;
+- the smallest valid recovery action;
+- required recovery postcondition and actual readback;
+- only the affected reviews to rerun and handoffs to reaccept;
+- closure evidence plus the owner-bound condition for resuming continuation.
+
+`incident_state=CLOSED` requires post-recovery Actual Readback closing the declared recovery postcondition. Affected reviews must be rerun only where actually affected; affected handoffs may be reaccepted only after required readback. Empty affected-review or handoff scope is explicit rather than filled with placeholder work.
+
+Telemetry-only events and no-material-delta observations do not create a new Execution Receipt. Historical receipts remain immutable; this extension is prospective.
+
+`RECOVERY INCIDENT CLOSED ≠ DESIGN KEEP ≠ PROFESSIONAL PASS ≠ INTEGRATION PASS ≠ STATUTORY APPROVAL ≠ PROMOTION`.
+
 ## 10｜Actual readback
 
 Record actual target/runtime, observed result, blockers, warnings and verdict.
@@ -400,6 +437,8 @@ For a continuing task, a successful readback is the preferred checkpoint boundar
 For continuous execution, readback is also the dependency boundary between successive material mutations.
 
 For uncertain remote outcomes, readback is additionally the verification boundary that decides whether a retry is legal. For cross-system state changes, it is part of reconciliation evidence.
+
+For a material recovery incident, Actual Readback additionally closes the declared recovery postcondition before incident closure, affected handoff reacceptance or continuation resume can be justified.
 
 ## 11｜Four-layer regression
 

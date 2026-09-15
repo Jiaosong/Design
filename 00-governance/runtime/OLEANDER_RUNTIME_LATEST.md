@@ -10,6 +10,7 @@ All OLEANDER project, knowledge-remediation and professional-execution runs shou
    - validator: `python 00-governance/runtime/validate_architecture_control_graph.py`
    - controlled evolution candidate contract: `00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json`
    - runtime-layer internal I/O / handoff contract: `00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json`
+   - observability-event / bounded recovery-incident contract: `00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json`
 2. `00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`
 3. `00-governance/knowledge-integrity-and-operational-mount-v1.0.md`
 4. `00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json`

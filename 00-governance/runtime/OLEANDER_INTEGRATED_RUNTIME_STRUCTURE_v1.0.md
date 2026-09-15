@@ -170,6 +170,14 @@ When one logical material mutation spans multiple physical/control surfaces, the
 
 This interface contract adds internal execution detail only; it does not create a new Runtime Layer, Project State, professional stage namespace, Review class or Knowledge Architecture.
 
+## 2B | Observability Event & Recovery Incident Contract
+
+`OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json` operationalizes the existing Observability and Failure/Recovery controls without changing the eleven Runtime Layers or the Master Runtime state model.
+
+An observability event is a non-authoritative projection over owner-native state, receipts, readbacks, checkpoints and handoffs. A recovery incident is a bounded incident-local record that resolves the failure owner, blast radius, preserved last-verified state, stopped unsafe mutation, smallest valid repair, required postcondition/readback, affected review reruns and affected handoff reacceptance.
+
+Recovery is dependency-scoped: unrelated verified work remains valid. Incident `CLOSED` requires actual recovery readback but does not prove Design KEEP, professional PASS, Integration PASS, statutory approval or Promotion. Existing `oleander-execution-live-status/v1` remains latest-only telemetry rather than a durable incident store or authority source.
+
 ## 3 | Canonical production sequence
 
 For a design-quality Candidate:

@@ -364,7 +364,7 @@ When architecture descriptions conflict, resolve in this order:
 7. historical diagrams, summaries, handoffs and prose explanations
 ```
 
-This map does not override the substantive rules owned by an owner-specific canonical contract. It controls **architecture classification / naming / counting plus cross-cutting architecture-control invariants** such as owner resolution, dependency/reopen boundaries, observability, recovery, compatibility and the explicit control projections compiled in §§14–29. Professional judgment, Knowledge semantics, Design Quality judgment, domain-stage semantics, statutory authority and other owner-specific substantive decisions remain with their canonical owners.
+This map does not override the substantive rules owned by an owner-specific canonical contract. It controls **architecture classification / naming / counting plus cross-cutting architecture-control invariants** such as owner resolution, dependency/reopen boundaries, observability, recovery, compatibility and the explicit control projections compiled in §§14–31. Professional judgment, Knowledge semantics, Design Quality judgment, domain-stage semantics, statutory authority and other owner-specific substantive decisions remain with their canonical owners.
 
 Any older diagram that presents A-K / R-A-R-K as eleven independent OLEANDER architectures is superseded **for classification/counting purposes** by this map. The underlying module responsibilities remain valid where they agree with their current canonical owners.
 
@@ -1524,3 +1524,94 @@ Canonical rules:
 Current runtime implementation for reconciliation behavior: `00-governance/runtime/validate_runtime_resilience.py`. Semantic ownership remains with the existing Runtime Layer Interface / Execution Receipt / Tool Adapter contracts; the implementation file is not an authority surface. Idempotency/readback semantics remain owned by `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json`, and persistence of material evidence remains conditional through the existing Execution Receipt contract.
 
 `COHERENT MUTATION ≠ HANDOFF ACCEPTED ≠ DOWNSTREAM PASS ≠ PROMOTION`.
+
+---
+
+## 31｜Observability Event & Recovery Incident Contract
+
+The architecture now binds §19 Observability and §20 Failure/Recovery to one subordinate machine contract:
+
+`00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json`
+
+It closes the operational gap between detecting a failure and proving a bounded recovery without introducing a twelfth Runtime Layer, second Project State, second Master Runtime, new review class or authority database.
+
+### 31.1 Observability event envelope
+
+An `OBSERVABILITY_EVENT` is evidence that a material runtime fact was observed. It is not a global execution state and it does not gain semantic authority merely because it is recent.
+
+Core event identity is limited to:
+
+```text
+event_id / event_type
+project_or_scope_id / decision_object_id
+owner_ref / authority_fingerprint / source_revision / source_ref
+object_refs[] / observed_at / does_not_prove[]
+```
+
+Task, Runtime Layer, checkpoint sequence, handoff, incident, blocker, stale/readback refs and next action are conditional fields only when the event actually observes those relations. The runtime must not fabricate a checkpoint, incident or handoff merely to satisfy telemetry shape.
+
+Authority resolution remains one-way:
+
+`owner-native Current / receipt / actual readback / valid checkpoint → event projection`, never the reverse.
+
+### 31.2 Incident boundary and failure ownership
+
+A `RECOVERY_INCIDENT` is a **bounded incident-local lifecycle**, not a replacement for Master Runtime outcomes, checkpoint state, handoff state, Review state, Job state, Project design state or professional stages.
+
+It keeps two failure concepts separate:
+
+- `failure_class` = the existing architecture-level recovery class used to normalize routing;
+- `failure_code` = the owner-native Runtime Layer or canonical owner failure code where one exists.
+
+The normalized class cannot overwrite owner-native failure meaning or steal the failure owner's decision rights.
+
+Every incident cites `trigger_source_ref` back to the authoritative evidence that opened it. `failure_code` is conditional on the canonical owner actually exposing an owner-native code; `trigger_event_ref` is conditional on a durable observability-event record actually existing. The runtime does not manufacture either value to make the incident look complete.
+
+`failure_owner_ref` identifies the canonical failure owner but does not grant authority. Any consequential containment, closure or resume decision must resolve through the Current §18.1 authorization projection for the exact decision object, scope and claim boundary; unresolved authorization fails closed.
+
+Incident-local states are limited to `OPEN / CONTAINED / RECOVERING / READBACK_PENDING / REVIEW_PENDING / HOLD / CLOSED`. They exist only inside the incident record.
+
+### 31.3 Containment and bounded blast radius
+
+Every material incident must identify the smallest valid blast radius and explicitly preserve unaffected verified work:
+
+```text
+affected layers / objects / handoffs / consumers / claims
++ unaffected_verified_refs[]
++ last_verified_state / artifact / receipt refs
++ invalidated_or_stale_refs[]
++ stopped unsafe or duplicate mutations
++ containment evidence
+```
+
+Failure does not authorize a whole-system reset. Unaffected reviews, receipts and accepted handoffs remain valid unless a real dependency relation places them inside the blast radius.
+
+### 31.4 Recovery execution and readback
+
+Recovery selects the smallest valid action and records:
+
+`selected recovery action → required postcondition → required actual readback → affected review reruns → affected handoff reacceptance`.
+
+Only affected reviews are rerun. Only affected handoffs may be reaccepted, and reacceptance requires their required readback; the producer still cannot self-award `ACCEPTED`.
+
+Uncertain remote mutation keeps the existing rule:
+
+`UNCERTAIN → VERIFY EXPECTED POSTCONDITION BEFORE RETRY`.
+
+### 31.5 Closure and continuation resume
+
+An incident may close only when owner, blast radius and containment are resolved and actual post-recovery readback closes the declared recovery postcondition. Closure records closure evidence, affected-review/handoff disposition, remaining blockers, and an explicit owner-bound resume condition.
+
+`resume_decision_owner_ref` is also a reference, not a delegation. If continuation resume is consequential, the actor/authority basis must still be resolvable under §18.1; a recovery record cannot manufacture competence, independence, statutory power or Promotion authority.
+
+If no reviews or handoffs were affected, that empty affected scope is recorded explicitly rather than inventing placeholder work.
+
+`RECOVERY INCIDENT CLOSED ≠ DESIGN KEEP ≠ PROFESSIONAL PASS ≠ INTEGRATION PASS ≠ STATUTORY APPROVAL ≠ PROMOTION`.
+
+Recovery closure can restore continuation only within the claims and dependencies actually repaired. It does not widen the pre-existing claim ceiling.
+
+### 31.6 Relationship to live execution status
+
+`oleander-execution-live-status/v1` remains the existing latest-only observability projection keyed by task/executor and guarded by checkpoint sequence. It is not a durable event/incident store, Project State or authority database.
+
+Durable material recovery evidence belongs in the prospective Execution Receipt recovery-incident extension. Telemetry-only events and no-material-delta observations do not create a new Execution Receipt. Historical receipts remain immutable.
