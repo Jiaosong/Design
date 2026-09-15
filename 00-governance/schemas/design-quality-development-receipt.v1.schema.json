@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.design-quality-development-receipt.v1",
+  "title": "OLEANDER Design Quality & Development Receipt v1",
+  "type": "object",
+  "required": [
+    "receipt_type",
+    "project_id",
+    "design_question",
+    "design_intent",
+    "claim_ceiling",
+    "triggered_design_dimensions",
+    "artifact_refs",
+    "design_maturity",
+    "resolution_scales_reviewed",
+    "coherence_state",
+    "genericity_attack",
+    "readback_conditions",
+    "strongest_design_decision",
+    "weakest_or_open_design_decision",
+    "open_items",
+    "reopened_items",
+    "does_not_prove",
+    "independent_design_review",
+    "result",
+    "stale"
+  ],
+  "properties": {
+    "receipt_type": {"const": "DESIGN_QUALITY_DEVELOPMENT_RECEIPT"},
+    "project_id": {"type": "string", "minLength": 1},
+    "design_question": {"type": "string", "minLength": 1},
+    "design_intent": {"type": "string", "minLength": 1},
+    "claim_ceiling": {"type": "string", "minLength": 1},
+    "triggered_design_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DD-01_INTENT",
+          "DD-02_CONCEPT",
+          "DD-03_EXPERIENCE",
+          "DD-04_FORM_COMPOSITION",
+          "DD-05_HUMAN_RELATION",
+          "DD-06_SENSORY",
+          "DD-07_DESIGN_LANGUAGE_STYLE",
+          "DD-08_DETAIL_CRAFT",
+          "DD-09_PROTOTYPE_EXPERIMENT",
+          "DD-10_ADAPTATION_VARIATION",
+          "DD-11_MEANING_MEMORY",
+          "DD-12_INTEGRATION_COHERENCE"
+        ]
+      }
+    },
+    "project_design_dna_ref": {"type": ["string", "null"]},
+    "professional_process_refs": {"type": "array", "items": {"type": "string"}},
+    "artifact_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "design_maturity": {
+      "enum": [
+        "DQ0_UNDEFINED",
+        "DQ1_DIRECTION",
+        "DQ2_COHERENT_CANDIDATE",
+        "DQ3_DEVELOPED_SYSTEM",
+        "DQ4_DISTINCTIVE_RESOLVED_SYSTEM",
+        "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
+      ]
+    },
+    "resolution_scales_reviewed": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"enum": ["R0_SYSTEM", "R1_WHOLE", "R2_ZONE_SUBSYSTEM", "R3_ELEMENT", "R4_COMPONENT", "R5_DETAIL", "R6_MICRO_FINISH"]}
+    },
+    "candidate_comparison": {
+      "type": "object",
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "candidate_refs": {"type": "array", "items": {"type": "string"}},
+        "fixed_comparison_conditions": {"type": "array", "items": {"type": "string"}},
+        "decision": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "design_language_state": {"$ref": "#/$defs/reviewState"},
+    "experience_state": {"$ref": "#/$defs/reviewState"},
+    "human_relation_state": {"$ref": "#/$defs/reviewState"},
+    "sensory_state": {"$ref": "#/$defs/reviewState"},
+    "detail_craft_state": {"$ref": "#/$defs/reviewState"},
+    "adaptation_state": {"$ref": "#/$defs/reviewState"},
+    "meaning_memory_state": {"$ref": "#/$defs/reviewState"},
+    "coherence_state": {"$ref": "#/$defs/reviewState"},
+    "genericity_attack": {
+      "type": "object",
+      "required": ["status", "findings"],
+      "properties": {
+        "status": {"enum": ["NOT_APPLICABLE_WITH_REASON", "PASS", "REVISE", "REJECT", "HOLD"]},
+        "findings": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "content_projection_state": {"$ref": "#/$defs/reviewState"},
+    "readback_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["artifact_ref", "condition", "status"],
+        "properties": {
+          "artifact_ref": {"type": "string", "minLength": 1},
+          "condition": {"type": "string", "minLength": 1},
+          "status": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "strongest_design_decision": {"type": "string", "minLength": 1},
+    "weakest_or_open_design_decision": {"type": "string", "minLength": 1},
+    "root_cause": {"type": ["string", "null"]},
+    "open_items": {"type": "array", "items": {"type": "string"}},
+    "reopened_items": {"type": "array", "items": {"type": "string"}},
+    "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "independent_design_review": {
+      "type": "object",
+      "required": ["status", "reviewer_independent_from_producer", "reason"],
+      "properties": {
+        "status": {"enum": ["PENDING", "KEEP", "REVISE", "REJECT", "HOLD"]},
+        "reviewer_independent_from_producer": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "result": {"enum": ["KEEP", "REVISE", "REJECT", "HOLD"]},
+    "stale": {"type": "boolean"}
+  },
+  "$defs": {
+    "reviewState": {
+      "enum": ["NOT_APPLICABLE_WITH_REASON", "OPEN", "IN_PROGRESS", "KEEP", "REVISE", "REJECT", "HOLD"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"result": {"const": "KEEP"}}},
+      "then": {
+        "properties": {
+          "independent_design_review": {
+            "properties": {
+              "status": {"const": "KEEP"},
+              "reviewer_independent_from_producer": {"const": true}
+            }
+          },
+          "stale": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"result": {"const": "REVISE"}}},
+      "then": {
+        "required": ["root_cause"],
+        "properties": {"root_cause": {"type": "string", "minLength": 1}}
+      }
+    },
+    {
+      "if": {"properties": {"design_maturity": {"enum": ["DQ4_DISTINCTIVE_RESOLVED_SYSTEM", "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"]}}},
+      "then": {
+        "properties": {
+          "independent_design_review": {
+            "properties": {"reviewer_independent_from_producer": {"const": true}}
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

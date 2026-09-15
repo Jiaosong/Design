@@ -95,6 +95,16 @@ def master_runtime_state(triggered=True, promotion_requested=False):
         "authority_snapshot_ref": "authority:current:1",
         "knowledge_snapshot_ref": "knowledge:graph:1213:20260914",
         "design_intelligence": {"packet_id": "DIP-1", "state": "CURRENT", "claim_ceiling": "DESIGN_CANDIDATE"},
+        "design_quality_development": {
+            "triggered": True,
+            "receipt_id": "DQDR-1",
+            "state": "CURRENT",
+            "verdict": "KEEP",
+            "maturity": "DQ3_DEVELOPED_SYSTEM",
+            "stale": False,
+            "claim_ceiling": "DESIGN_DEVELOPED",
+        },
+        "professional_processes": [],
         "integration": integration,
         "reviews": reviews,
         "dependencies": [{"object_id": "AUTH-R06", "state": "CURRENT"}],
@@ -192,6 +202,51 @@ class OrchestrationTests(unittest.TestCase):
         self.assertEqual(result["status"], "READY_FOR_HUMAN_DECISION")
         self.assertTrue(result["human_decision_required"])
         self.assertNotEqual(result["status"], "PROMOTED")
+
+    def test_master_runtime_stale_design_quality_requires_reconciliation(self):
+        state = master_runtime_state(promotion_requested=True)
+        state["design_quality_development"]["stale"] = True
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "RECONCILIATION_REQUIRED")
+        self.assertTrue(any(a["scope"] == "STALE:DESIGN_QUALITY" for a in result["required_actions"]))
+
+    def test_master_runtime_design_quality_requires_keep_receipt(self):
+        state = master_runtime_state(promotion_requested=True)
+        state["design_quality_development"]["receipt_id"] = None
+        state["design_quality_development"]["verdict"] = "REVISE"
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "IN_PROGRESS")
+        self.assertTrue(any(a["scope"] == "DESIGN_QUALITY" for a in result["required_actions"]))
+
+    def test_master_runtime_triggered_professional_process_requires_current_pass(self):
+        state = master_runtime_state(promotion_requested=True)
+        state["professional_processes"] = [{
+            "domain": "ARCHITECTURE",
+            "process_id": "ARCHITECTURE_DESIGN_DEVELOPMENT_V1",
+            "triggered": True,
+            "receipt_id": "ADDR-1",
+            "state": "STALE",
+            "verdict": "PASS",
+            "claim_ceiling": "ARCHITECTURE_DESIGN_DEVELOPED",
+        }]
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "RECONCILIATION_REQUIRED")
+        self.assertTrue(any(a["scope"].startswith("STALE:PROFESSIONAL_PROCESS:") for a in result["required_actions"]))
+
+    def test_master_runtime_nontriggered_design_quality_cannot_claim_receipt(self):
+        state = master_runtime_state()
+        state["design_quality_development"] = {
+            "triggered": False,
+            "receipt_id": "INVALID-DQ",
+            "state": "NOT_REQUIRED",
+            "verdict": "N_A",
+            "maturity": "N_A",
+            "stale": False,
+            "claim_ceiling": "NOT_APPLICABLE",
+        }
+        result = evaluate_master_runtime(state)
+        self.assertEqual(result["status"], "BLOCKED")
+        self.assertTrue(any(f["code"] == "MASTER_DESIGN_QUALITY_NOT_TRIGGERED_RECEIPT_CONTRADICTION" for f in result["findings"]))
 
     def test_master_runtime_triggered_integration_stale_requires_reconciliation(self):
         state = master_runtime_state(promotion_requested=True)

@@ -4,6 +4,8 @@ This directory contains cross-project runtime and capability-routing contracts. 
 
 Cross-module complex-project orchestration is governed by `../complex-project-master-runtime-v1.0.md` and compiled through the existing Control Plane `MASTER_RUNTIME_STATE`; runtime contracts in this directory remain capability/execution owners beneath that Master rather than a parallel Master system.
 
+`OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md` is the Current operator/integration view under that Master. It expands the path through Design Intelligence ? Shared Design Quality & Design Development ? authentic Professional Domain Process ? Integration when coupled ? Skill/Tool execution ? native artifact ? actual readback ? independent reviews, without creating another orchestration authority.
+
 ## Current default capability resolution
 
 Use:

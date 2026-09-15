@@ -104,7 +104,8 @@
       "type": "object", "additionalProperties": false,
       "required": [
         "schema_version", "kind", "master_runtime_version", "project_id", "decision_object_id",
-        "authority_snapshot_ref", "knowledge_snapshot_ref", "design_intelligence", "integration",
+        "authority_snapshot_ref", "knowledge_snapshot_ref", "design_intelligence", "design_quality_development",
+        "professional_processes", "integration",
         "reviews", "dependencies", "change_events", "open_blockers", "promotion_requested"
       ],
       "properties": {
@@ -123,6 +124,35 @@
             "packet_id": {"type": ["string", "null"]},
             "state": {"enum": ["CURRENT", "STALE", "MISSING", "BLOCKED"]},
             "claim_ceiling": {"type": "string", "minLength": 1}
+          }
+        },
+        "design_quality_development": {
+          "type": "object", "additionalProperties": false,
+          "required": ["triggered", "receipt_id", "state", "verdict", "maturity", "stale", "claim_ceiling"],
+          "properties": {
+            "triggered": {"type": "boolean"},
+            "receipt_id": {"type": ["string", "null"]},
+            "state": {"enum": ["NOT_REQUIRED", "CURRENT", "STALE", "MISSING", "BLOCKED"]},
+            "verdict": {"enum": ["N_A", "KEEP", "REVISE", "REJECT", "HOLD"]},
+            "maturity": {"enum": ["N_A", "DQ0_UNDEFINED", "DQ1_DIRECTION", "DQ2_COHERENT_CANDIDATE", "DQ3_DEVELOPED_SYSTEM", "DQ4_DISTINCTIVE_RESOLVED_SYSTEM", "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"]},
+            "stale": {"type": "boolean"},
+            "claim_ceiling": {"type": "string", "minLength": 1}
+          }
+        },
+        "professional_processes": {
+          "type": "array",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["domain", "process_id", "triggered", "receipt_id", "state", "verdict", "claim_ceiling"],
+            "properties": {
+              "domain": {"type": "string", "minLength": 1},
+              "process_id": {"type": "string", "minLength": 1},
+              "triggered": {"type": "boolean"},
+              "receipt_id": {"type": ["string", "null"]},
+              "state": {"enum": ["NOT_REQUIRED", "CURRENT", "STALE", "MISSING", "BLOCKED"]},
+              "verdict": {"enum": ["N_A", "PASS", "REVISE", "REJECT", "HOLD"]},
+              "claim_ceiling": {"type": "string", "minLength": 1}
+            }
           }
         },
         "integration": {

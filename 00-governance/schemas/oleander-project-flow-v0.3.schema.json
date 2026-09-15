@@ -140,6 +140,35 @@
         "notes": {"type": "array", "items": {"type": "string"}}
       }
     },
+    "design_quality_development": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "KEEP", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "maturity": {"enum": ["DQ0_UNDEFINED", "DQ1_DIRECTION", "DQ2_COHERENT_CANDIDATE", "DQ3_DEVELOPED_SYSTEM", "DQ4_DISTINCTIVE_RESOLVED_SYSTEM", "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE", null]},
+        "receipt": {"type": ["string", "null"]},
+        "receipt_hash": {"type": ["string", "null"]},
+        "project_design_dna_ref": {"type": ["string", "null"]},
+        "open_items": {"type": "array", "items": {"type": "string"}},
+        "reopened_items": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "architecture_design_development": {
+      "type": "object",
+      "required": ["triggered", "status"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "receipt": {"type": ["string", "null"]},
+        "receipt_hash": {"type": ["string", "null"]},
+        "open_items": {"type": "array", "items": {"type": "string"}},
+        "reopened_items": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
     "exit_condition": {"type": "string", "minLength": 1},
     "promotion": {
       "type": "object",
@@ -177,6 +206,59 @@
     }
   },
   "allOf": [
+    {
+      "if": {
+        "required": ["promotion", "design_quality_development"],
+        "properties": {
+          "promotion": {
+            "required": ["decision"],
+            "properties": {"decision": {"const": "PROMOTE"}}
+          },
+          "design_quality_development": {
+            "required": ["triggered"],
+            "properties": {"triggered": {"const": true}}
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "design_quality_development": {
+            "required": ["status", "receipt", "stale"],
+            "properties": {
+              "status": {"const": "KEEP"},
+              "receipt": {"type": "string", "minLength": 1},
+              "stale": {"const": false}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "architecture_design_development"],
+        "properties": {
+          "promotion": {
+            "required": ["decision"],
+            "properties": {"decision": {"const": "PROMOTE"}}
+          },
+          "architecture_design_development": {
+            "required": ["triggered"],
+            "properties": {"triggered": {"const": true}}
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "architecture_design_development": {
+            "required": ["status", "receipt"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "receipt": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
     {
       "if": {
         "required": ["promotion", "persistence"],

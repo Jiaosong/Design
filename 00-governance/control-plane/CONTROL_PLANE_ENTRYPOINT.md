@@ -14,6 +14,8 @@ python 00-governance/control-plane/scan_control_cards.py
 
 This entrypoint is subordinate to current governance and compiles existing rules into execution. It does not redefine Knowledge Architecture, Application Mapping, Project Axis, Case Axis, delivery priority, evidence levels, Artifact Review, Post-Generation Review, PAP, Rights, Reality, Engineering, Human Test or project-specific contracts.
 
+Canonical runtime integration is documented in `00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`, subordinate to `00-governance/complex-project-master-runtime-v1.0.md`. Shared Design Quality & Design Development, authentic Professional Domain Processes and Cross-Disciplinary Integration remain distinct receipt owners; this entrypoint may validate their structural presence but cannot collapse them into one generic PASS or infer Design KEEP.
+
 It also compiles the global default `NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS` policy into the existing Control Card.
 
 Current stored Control Cards use schema v0.3. v0.2 remains supported for immutable replay/backward compatibility in explicit provenance/replay zones; repository-wide Current-card scanning rejects v0.2 outside those zones.

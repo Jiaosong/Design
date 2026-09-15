@@ -48,13 +48,15 @@ A Candidate may enter Canonical Production only when:
 4. it is more valuable to continue than rejected alternatives;
 5. the next step requires reproducible/measurable execution;
 6. when design-quality promotion is intended, relevant knowledge routes, review lenses, technical/evidence triggers and the current claim ceiling are resolvable through the Design Intelligence Packet;
-7. when multiple disciplines materially couple, the critical interfaces, integration owner, coupling / criticality, shared variables, required maturity, acceptance basis and required integrated readbacks are resolvable under `cross-disciplinary-design-integration-v1.0.md`.
+7. the applicable shared design-development responsibilities are resolved through `design-quality-and-design-development-specification-v1.0.md`, including whether `PROJECT_DESIGN_DNA`, multi-scale/state readback, comparison, content projection or other DD responsibilities are triggered;
+8. when a professional domain process is triggered, its authentic professional stages, required outputs and review/readback obligations are resolvable; architecture uses `architecture-design-development-process-v1.0.md` and `ADD-00?ADD-17` rather than replacing those stages with shared DD identifiers;
+9. when multiple disciplines materially couple, the critical interfaces, integration owner, coupling / criticality, shared variables, required maturity, acceptance basis and required integrated readbacks are resolvable under `cross-disciplinary-design-integration-v1.0.md`.
 
 Candidate is not Canonical.
 
 ### Loop B｜Canonical Production
 
-`Candidate → Contract Compile → Design Review Resolve → Cross-Disciplinary Integration Resolve when triggered → Authority Resolve → Capability Resolve → Execute → Machine QA → Visual QA → Project QA → Artifact Review → Triggered Design Review → Integration Readback when triggered → Specialized Acceptance Gates when triggered → Evidence / Truth Review → Independent Design Decision → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
+`Candidate ? Contract Compile ? Design Intelligence Resolve ? Shared Design Quality & Development Scope Resolve ? Professional Domain Process Resolve when triggered ? Cross-Disciplinary Integration Resolve when triggered ? Authority Resolve ? Required Native Output / Capability Resolve ? Skill / Tool Adapter Resolve ? Execute ? Machine QA ? Visual QA ? Project QA ? Artifact Review ? Design Quality Actual Readback ? Professional Domain Readback when triggered ? Integration Readback when triggered ? Specialized Acceptance Gates when triggered ? Evidence / Truth Review ? Independent Design Decision ? Persistence Gate when triggered ? Promote / Revise / Reject ? Artifact Register ? Cross-System Sync`
 
 Execution should be deterministic wherever possible.
 
@@ -181,7 +183,30 @@ Review outcome: `PASS / REVISE / REJECT / BLOCKED`.
 
 Machine / Visual / Project QA do not substitute for specialized gates such as rights, field/reality, engineering, human-test or PAP when those are applicable.
 
-For spatial / architectural / built-environment models that claim complete high-fidelity realism, close constructive completeness, construction-aware, near-as-built or digital-twin-ready representation, the `oleander-3d-pipeline` Built-asset High-Fidelity Gate is one of these specialized acceptance gates. It runs after general QA and before Promotion, and emits `BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT`. Its `BA0–BA4` namespace describes built-asset representation depth and is independent from this flow's execution/render `FID0–FID3`, external BIM LOD, FIELD state and engineering/code/manufacturing authority.
+Machine / Visual / Project QA also do not substitute for professional design judgment. Triggered design lenses are resolved through `design-intelligence-routing-and-review-v1.0.md`; material design-development work additionally compiles the shared responsibilities in `design-quality-and-design-development-specification-v1.0.md`. Those DD responsibilities are cross-domain contracts, not professional stages. A technically correct, evidence-correct artifact may still receive `DESIGN REVISE / REJECT`.
+
+For complex multidisciplinary work, `cross-disciplinary-design-integration-v1.0.md` governs interfaces, coupling / criticality, shared variables, interface maturity, acceptance contracts, dependency/change propagation, joint decisions and integrated readback. `ALL DISCIPLINES PASS` does not imply system-level Integration PASS, and a stale Integration Receipt cannot support Promotion.
+
+For architecture / building-planning work that makes a material claim about functional zoning, adjacency, circulation, room usability, operational states, service/hygiene/security, life-safety-aware planning or accessibility-aware planning, `architecture-design-development-process-v1.0.md` is mandatory. A program overlay, area balance, no-overlap result, detailed model, render or technical QA PASS cannot replace the ADD chain.
+
+For spatial / architectural / built-environment models that claim complete high-fidelity realism, close constructive completeness, construction-aware, near-as-built or digital-twin-ready representation, the canonical `high-fidelity-built-environment-model-gate-v1.0.md` is the specialized governance Gate. Its 3D execution / receipt implementation is `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`. It runs after general QA and before Promotion and emits `BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT`. Its `BA0?BA4` namespace describes built-asset representation depth and is independent from this flow's execution/render `FID0?FID3`, external BIM LOD, FIELD state and engineering/code/manufacturing authority.
+
+### Shared Design Quality & Design Development result semantics
+
+When material design-quality promotion is intended, emit a current `DESIGN_QUALITY_DEVELOPMENT_RECEIPT` under `schemas/design-quality-development-receipt.v1.schema.json`.
+
+- `KEEP` means the Design Axis is sufficiently developed at the declared claim ceiling, the actual artifact/experience has been read back at the required size/state/medium, no in-scope Design hard fail remains, and independent design review agrees.
+- `REVISE` means a material design relation remains under-developed and the current dominant root cause must be named before the next revision.
+- `REJECT` means the current design direction is not viable at the declared intent/claim.
+- `HOLD` means a material design decision genuinely depends on missing authority/input that cannot be truthfully resolved inside the current cycle.
+
+Material changes to Design Intent, Project Design DNA, primary content/asset, formal grammar, composition/geometry, material/typography/color identity, target medium/state, professional interface or contradictory evidence make the affected Design Quality receipt stale until actual readback and independent design review are rerun.
+
+### Professional Domain Process result semantics
+
+Each triggered professional process owns its own stage semantics and receipt. Shared DD state never substitutes for professional process closure. Architecture currently emits `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`; equivalent future domains must bind their own authentic process receipt rather than reuse `ADD-*` or `DD-*` as generic stage IDs.
+
+For Architecture, material changes to capacity, program, room location, circulation, major openings, stairs/lifts, public/private boundaries, operational states, structure/MEP/fire/accessibility interfaces, site access or retained fabric make the affected architecture receipt scope stale and require reopen/readback.
 
 ## 11｜Revision Boundary
 
@@ -263,6 +288,6 @@ No G-stage is upgraded merely because a Job State is `SUCCEEDED`, a fidelity lev
 
 ## 18｜Canonical Formula
 
-**Read → Frame → Explore → Compare → Candidate → Construct / Execute → Validate → Decide → Persist when required → Promote → Deliver → Observe → Archive → Re-enter**
+**Read / Route Knowledge ? Frame / Intent ? Explore ? Compare ? Candidate ? Compile Shared Design Development ? Execute Authentic Professional Domain Process ? Integrate when coupled ? Resolve Capability / Tool ? Construct / Execute ? Actual Readback ? Validate Truth + Performance + Design ? Design Crit / Decide ? Persist when required ? Promote ? Deliver ? Observe ? Extract Learning ? Archive / Re-enter**
 
 Exploration may branch. Candidate Gate separates exploration from production. Workers construct/execute. Validation is Machine + Visual + Project QA plus any applicable specialized gates. Human design judgment owns Decide. When PAP applies, persistence closes before Promotion. Promotion establishes Canonical Authority and triggers default canonical cross-system synchronization. G9 can reopen a locked conclusion into the next Read cycle.

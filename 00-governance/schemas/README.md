@@ -6,6 +6,8 @@ Current machine authority:
 - `c01-evidence-manifest.v1.schema.json` — canonical C01 evidence manifest contract.
 - `c01-evidence-manifest.template.json` — current C01 starter template.
 - `oleander-project-flow-v0.3.schema.json` — Project Flow machine contract. It separates `project_level + project_id`, Case ID, Delivery Priority, Application Mapping and `Domain / exact L0–L7` knowledge context; old `primary_layer / primary_node / supporting_nodes` semantics are not current authority.
+- `architecture-design-development-receipt.v1.schema.json` — machine contract for triggered architectural design-development receipts; it records the current architecture process state, independent plan review, stale/reopen status and promotion result without converting design-process PASS into statutory/code/engineering approval.
+- `design-quality-development-receipt.v1.schema.json` — machine contract for the shared OLEANDER Design Quality & Design Development Specification; it records triggered design-development dimensions, design maturity, multi-scale readback, genericity/coherence review, stale/reopen state and independent Design KEEP without turning design judgment into an automated score.
 - `production-asset-persistence-manifest.v1.schema.json` — canonical machine-readable contract for durable production binary persistence receipts.
 - `production-asset-persistence-manifest.template.json` — starter receipt for native source + canonical model + production ZIP + checksum persistence.
 - `validate_architecture_namespaces.py` — fail-closed architecture gate for Project Axis / AIG / current routing / frozen Legacy roots / Project Flow schema separation.

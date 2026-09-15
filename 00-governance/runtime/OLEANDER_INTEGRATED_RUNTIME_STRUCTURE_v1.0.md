@@ -1,0 +1,275 @@
+# OLEANDER Integrated Runtime Structure v1.0
+
+**Status:** ACTIVE
+**Date:** 2026-09-15
+**Scope:** shared runtime structure for OLEANDER projects.
+**Authority:** subordinate to `00-governance/README.md`, Current Project / Source Authority and the canonical `00-governance/complex-project-master-runtime-v1.0.md`. This document is an operator/integration view over existing owners; it does not create a second Master Runtime, taxonomy, Project Axis, Gate family or professional stage system.
+
+## 1 | Runtime principle
+
+OLEANDER separates **authority, knowledge, design development, professional execution, integration, artifact production, review, promotion and learning** while keeping them in one operational chain.
+
+The Current Master Runtime remains the orchestration authority. This view expands its operational path as:
+
+`Current Authority → Live Knowledge / Registry Resolution → Design Intelligence Packet → Candidate Gate → Shared Design Quality & Design Development Contract → Triggered Professional Domain Process → Cross-Disciplinary Integration when coupled → Capability / Skill Resolution → Tool / Adapter → Native Execution → Actual Readback → Artifact + Design + Professional + Integration + Technical + Evidence Review → Independent Decision → Persistence when triggered → Promotion → Cross-System Sync → G9 / Knowledge Return`.
+
+No stage in this chain may silently inherit the authority of another stage.
+
+## 2 | Stable runtime layers
+
+### R-A | Authority & Identity
+
+Owns:
+- current root authority;
+- Project / Case / Knowledge identities;
+- Source Authority;
+- Current Task;
+- revision / supersession / provenance state.
+
+Does not own design quality.
+
+### R-B | Knowledge & Evidence Resolution
+
+Owns:
+- L0-L7 resolution;
+- METHOD / THEORY / SOURCE / EVIDENCE / CASE / PRACTICE roles;
+- provenance, freshness and claim boundaries;
+- minimum relevant knowledge routing.
+
+Does not become a project stage sequence.
+
+### R-C | Design Intelligence
+
+Owns:
+- design question;
+- intent;
+- audience / people;
+- desired change / experience;
+- locked and open variables;
+- knowledge / evidence / precedent / practice routes;
+- review lenses;
+- technical / integration triggers;
+- claim ceiling;
+- exit condition.
+
+Canonical owner: `design-intelligence-routing-and-review-v1.0.md`.
+
+### R-D | Shared Design Quality & Design Development
+
+Owns the shared cross-domain design-development responsibilities:
+
+`DD-01 Intent / DD-02 Concept / DD-03 Experience / DD-04 Form-Composition / DD-05 Human Relation / DD-06 Sensory / DD-07 Design Language-Style / DD-08 Detail-Craft / DD-09 Prototype-Experiment / DD-10 Adaptation-Variation / DD-11 Meaning-Memory / DD-12 Integration-Coherence`.
+
+Also owns the shared contracts for Project Design DNA, design language, content projection, genericity attack, multi-scale readback, design maturity and design-quality reopen propagation.
+
+It does **not** replace authentic professional stage semantics.
+
+Canonical owner: `design-quality-and-design-development-specification-v1.0.md`.
+
+### R-E | Professional Domain Execution Process
+
+Each profession owns its real professional design-development process.
+
+Current reference implementation:
+- Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17`.
+
+Future domains retain their own stage semantics, including Interior, Landscape, Structural, MEP, Lighting, HCD, Systems Engineering and other professional domains.
+
+Professional stages bind to DD responsibilities; they are not renamed as DD stages.
+
+### R-F | Cross-Disciplinary Integration
+
+Triggered when disciplines materially constrain one another.
+
+Owns:
+- interfaces;
+- shared variables;
+- dependencies;
+- coupling / criticality;
+- interface maturity / disposition;
+- acceptance contracts;
+- joint decisions;
+- change propagation;
+- integrated readback / receipt.
+
+Canonical owner: `cross-disciplinary-design-integration-v1.0.md`.
+
+### R-G | Capability / Skill / Tool Runtime
+
+Resolution order:
+
+`Required Native Output → Required Capability → Minimum Sufficient Owner Set → Skill / Execution Owner → Tool / Adapter → Runtime Availability → Execute`.
+
+Hard distinctions:
+- Professional Process != Skill;
+- Skill != Tool;
+- Tool != METHOD;
+- Tool documented != tool callable;
+- tool execution != design validity.
+
+### R-H | Native Execution & Artifact
+
+Execution produces real editable/native artifacts where the task requires them, including drawings, models, code, datasets, simulations, prototypes, publications and interactive systems.
+
+Source / working source / derived execution / diagnostic / visualization identities remain explicit.
+
+### R-I | Actual Readback & Review
+
+Triggered review classes remain independent:
+- Machine QA;
+- Visual QA;
+- Project QA;
+- Artifact Review;
+- Design Quality / Design Review;
+- Professional-domain readback;
+- Cross-disciplinary Integration Readback;
+- specialized technical / statutory / field / accessibility / fabrication / engineering gates;
+- Evidence / Truth Review;
+- independent whole-result decision.
+
+`MACHINE PASS != DESIGN KEEP`
+`DISCIPLINE PASS != INTEGRATION PASS`
+`DESIGN KEEP != STATUTORY / ENGINEERING / FIELD PASS`.
+
+### R-J | Persistence, Promotion & Synchronization
+
+Promotion requires all triggered responsibilities needed by the claim to agree.
+
+When PAP is triggered, durable binary persistence closes before Promotion.
+
+After Promotion, canonical cross-system synchronization follows the current Sync Contract. A platform is not `SYNCED` until target-platform readback passes.
+
+### R-K | G9 / Knowledge Return
+
+Observed outcomes return as bounded lesson candidates:
+
+`intended relation → observed outcome → difference → cause / uncertainty → lesson candidate → knowledge validation → CURRENT / SUPPORT / PROVENANCE / EXCLUDED`.
+
+Project practice does not automatically become reusable knowledge.
+
+## 3 | Canonical production sequence
+
+For a design-quality Candidate:
+
+1. Resolve Current Authority and identity.
+2. Resolve the minimum relevant Knowledge / Evidence context.
+3. Compile the Design Intelligence Packet.
+4. Pass Candidate Gate.
+5. Compile the shared Design Quality & Development scope (`DD-*` responsibilities actually triggered).
+6. Trigger and execute the authentic Professional Domain Process.
+7. Resolve Cross-Disciplinary Integration where coupling is material.
+8. Resolve required native outputs and capability owners.
+9. Select callable Tool / Adapter runtime.
+10. Execute real native/editable artifacts.
+11. Reopen/read back the actual artifact or experience at the intended size/state/medium.
+12. Run all triggered independent review classes.
+13. Emit/update current professional, design-quality and integration receipts as applicable.
+14. Resolve `KEEP / REVISE / REJECT / HOLD` without averaged-score substitution.
+15. Run PAP before Promotion when required.
+16. Promote only inside the declared claim ceiling.
+17. Register and synchronize promoted authority with target-platform readback.
+18. Capture G9 observations and bounded knowledge candidates.
+
+The sequence is logically ordered but iterative. Any material change propagates to affected upstream/downstream contracts and marks prior receipts stale at affected scope.
+
+## 4 | Runtime objects and their owners
+
+| Runtime object | Primary owner | Purpose |
+|---|---|---|
+| Current Authority / identity | Governance / registry | what is current |
+| Design Intelligence Packet | Design Intelligence | what is being designed and why |
+| PROJECT_DESIGN_DNA | Design Quality specification + project authority | project-specific design language |
+| DD scope / Design Quality receipt | Design Quality specification | shared design-development state |
+| Professional process receipt | each domain process | professional development state |
+| Integration Packet / Receipt | Cross-Disciplinary Integration | coupled interface state |
+| Capability contract | Skill Resolver | execution capability selection |
+| Tool runtime contract | Tool Adapter | callable environment / IO / limits |
+| Native Artifact | Execution owner | actual editable result |
+| Artifact Review receipt | Artifact Review | artifact integrity |
+| Technical / evidence receipts | specialized owners | bounded technical/truth claims |
+| Independent decision | authorized reviewer / authority | KEEP / REVISE / REJECT / HOLD |
+| PAP receipt | Persistence gate | durable binary recovery |
+| Sync readback | Sync contract | target-platform persistence |
+| G9 lesson candidate | Learning / Knowledge validation | bounded return to knowledge |
+
+## 5 | Three-axis result model
+
+Every material design result may carry three independent states:
+
+- **Truth Axis** — factual / source / evidence validity.
+- **Performance Axis** — use / technical / operational / lifecycle validity.
+- **Design Axis** — intent / concept / form / experience / language / craft / coherence / distinctiveness.
+
+A promotion claim must state which axes are in scope and must not use one axis as proof of another.
+
+## 6 | Professional-process binding contract
+
+Every professional stage maps, where applicable, to:
+
+`Professional Question → Knowledge Inputs → Required DD Responsibilities → Required Native Outputs → Interfaces → Required Capability → Tool/Adapter → Actual Readback → Professional Review → Design Review → Reopen Triggers`.
+
+This is a binding view, not a replacement stage system.
+
+## 7 | Design communication binding
+
+Design artifacts may trigger the following cross-cutting contracts independently:
+
+- Content Governance;
+- Information Architecture;
+- Language / Terminology / bilingual parity;
+- Visual Communication;
+- Image / Diagram / Technical Drawing systems;
+- Editorial / Publication;
+- Presentation / Projection;
+- Interaction / Motion / Temporal Communication;
+- Production / Delivery.
+
+Project Design DNA controls design character; it must not be confused with truth/evidence status or a universal OLEANDER house style.
+
+## 8 | State separation
+
+Keep these state families separate:
+
+- Project / Design State: `EXPLORE / CANDIDATE / REVISE / REJECTED / PROMOTED / LOCKED / SUPERSEDED`;
+- Job State: `CREATED / RESOLVED / QUEUED / RUNNING / SUCCEEDED / FAILED / CANCELLED / CACHED`;
+- Authority State: `NONE / WORKING_SOURCE / CANDIDATE_AUTHORITY / CANONICAL_AUTHORITY / FROZEN_AUTHORITY`;
+- Design Quality Maturity: `DQ0 ... DQ5`;
+- professional-process states owned by each domain;
+- interface maturity/disposition owned by Integration;
+- evidence / retrieval / lifecycle states owned by their existing governance systems.
+
+A state label in one family never upgrades another family.
+
+## 9 | Machine / human boundary
+
+Machines may:
+- validate schemas and required fields;
+- resolve references;
+- detect namespace collisions;
+- detect invalid state combinations;
+- detect stale receipts;
+- confirm artifact existence, hash and readback metadata;
+- produce diagnostic measurements.
+
+Machines may not auto-award:
+- Design KEEP;
+- DQ3-DQ5;
+- aesthetic quality;
+- cultural appropriateness;
+- coherence / distinctiveness / memorability / craft;
+- statutory / licensed-professional / field authority unless separately proven by the correct owner.
+
+## 10 | Promotion invariant
+
+`PROMOTABLE CURRENT RESULT = Current Authority + valid Design Intelligence + current applicable Professional Process + current applicable Design Quality Development + closed in-claim critical Integration + actual artifact readback + applicable Artifact/Technical/Evidence reviews + independent decision + PAP when triggered`.
+
+The exact set is trigger-dependent. `N/A` requires a reason; omission is not an implicit pass.
+
+## 11 | Sync invariant
+
+`LOCAL WRITE != SYNCED`
+`COMMIT != GITHUB SYNCED`
+`NOTION WRITE != NOTION SYNCED`
+`UPLOAD != DRIVE SYNCED`.
+
+Only target-platform readback permits a `SYNCED` claim.

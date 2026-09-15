@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.architecture-design-development-receipt.v1",
+  "title": "OLEANDER Architecture Design Development Receipt v1",
+  "type": "object",
+  "required": [
+    "receipt_type",
+    "triggered",
+    "trigger_reason",
+    "project_stage",
+    "claim_ceiling",
+    "phase_status",
+    "open_items",
+    "reopened_items",
+    "does_not_prove",
+    "independent_plan_review",
+    "result",
+    "stale"
+  ],
+  "properties": {
+    "receipt_type": {"const": "ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT"},
+    "triggered": {"const": true},
+    "trigger_reason": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "project_stage": {"type": "string", "minLength": 1},
+    "claim_ceiling": {"type": "string", "minLength": 1},
+    "jurisdiction_state": {"type": "string"},
+    "program_authority_state": {"type": "string"},
+    "occupancy_authority_state": {"type": "string"},
+    "site_authority_state": {"type": "string"},
+    "phase_status": {
+      "type": "object",
+      "required": [
+        "site_context",
+        "users_operations",
+        "program_room_brief",
+        "adjacency",
+        "zoning_options",
+        "flow_systems",
+        "circulation",
+        "life_safety_aware_planning",
+        "accessibility_aware_planning",
+        "operations_security_hygiene",
+        "system_fitback",
+        "climate_daylight_acoustics",
+        "ffe_room_use",
+        "area_cost_maintenance",
+        "code_matrix"
+      ],
+      "additionalProperties": {
+        "enum": ["NOT_APPLICABLE_WITH_REASON", "OPEN", "IN_PROGRESS", "PASS_AT_CLAIM_CEILING", "REVISE", "BLOCKED_BY_AUTHORITY"]
+      }
+    },
+    "evidence": {"type": "object"},
+    "open_items": {"type": "array", "items": {"type": "string"}},
+    "reopened_items": {"type": "array", "items": {"type": "string"}},
+    "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "independent_plan_review": {
+      "type": "object",
+      "required": ["status", "reviewer_independent_from_producer", "reason"],
+      "properties": {
+        "status": {"enum": ["PENDING", "PASS", "REVISE", "REJECT", "HOLD"]},
+        "reviewer_independent_from_producer": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "result": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+    "stale": {"type": "boolean"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"result": {"const": "PASS"}}},
+      "then": {
+        "properties": {
+          "independent_plan_review": {
+            "properties": {
+              "status": {"const": "PASS"},
+              "reviewer_independent_from_producer": {"const": true}
+            }
+          },
+          "stale": {"const": false}
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}
