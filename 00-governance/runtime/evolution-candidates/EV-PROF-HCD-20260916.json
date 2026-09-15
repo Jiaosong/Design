@@ -1,0 +1,183 @@
+{
+  "candidate_id": "EV-PROF-HCD-20260916",
+  "state": "EV2_EVAL_READY",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "R-E Professional Domain Execution Process / domain-native Digital Product / Human-Centred Design owner",
+  "target_ref": [
+    "00-governance/digital-product-hcd-process-v1.0.md",
+    "00-governance/schemas/digital-product-hcd-process.v1.json"
+  ],
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture Map v2.1 through PR #637; Digital Product / HCD = DOMAIN PROCESS OPEN",
+    "authority_fingerprint": "OLEANDER-CURRENT-ARCHITECTURE-CONTROL@2.1|main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T00:00:00+09:00"
+  },
+  "trigger_evidence": [
+    "User instruction: continue under OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1 and synchronize knowledge without pollution",
+    "Current Architecture Map v2.1 lists Digital Product / HCD as authentic domain-native process definition OPEN",
+    "Existing Notion knowledge already contains HCD, Information Architecture, usability/accessibility, Service Blueprinting, Human Factors Validation and digital/UI practice objects",
+    "ISO 9241-210:2019 provides current human-centred design principles and activities for interactive systems",
+    "ISO 9241-220:2019 and ISO 9241-221:2023 provide organizational HCD process/outcome and assessment-model context",
+    "ISO 9241-11:2018 preserves usability as an outcome of use rather than a visual interface property",
+    "Current PR #634 forbids G9/project observations from self-promoting into reusable knowledge",
+    "Current PR #635 binds Independent Review to exact reviewed input and competent/authorized independence",
+    "Current PR #636/#637 require owner-native Current/supersession and authority-snapshot/fingerprint resolution rather than recency promotion"
+  ],
+  "hypothesis": "Digital Product / HCD can become an authentic R-E professional process that owns context-of-use, human-centred requirements, interaction/information/content design, representative evaluation and implementation/in-use HCD readback without becoming Product Management, Software Engineering, Service Design, Accessibility authority, Security/Privacy authority or a second HCD knowledge tree.",
+  "mutation_scope": [
+    "add candidate Digital Product / HCD professional process definition",
+    "add candidate machine definition using the existing Professional Domain Process schema",
+    "add isolated CI validation for the HCD candidate",
+    "reuse existing HCD/IA/usability/accessibility/Human Factors/Service knowledge objects as mounts rather than creating a second knowledge tree",
+    "keep Current Architecture Map HCD maturity unchanged until independent review and authorized adoption",
+    "do not write candidate routing to Notion before machine evaluation closes"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      ".github/workflows/ai-governance-evals.yml"
+    ],
+    "real_case_refs": [
+      "Notion MTH-DESIGN-HCD-IDEO-001 existing HCD method object",
+      "Notion MTH-DESIGN-SERVICE-BLUEPRINT-001 existing service-blueprinting method",
+      "Notion KN-METHOD-HUMAN-FACTORS-VALIDATION-001 existing Human Factors validation object",
+      "Notion existing Information Architecture / usability / accessibility objects",
+      "ISO 9241-210:2019",
+      "ISO 9241-220:2019",
+      "ISO 9241-221:2023",
+      "ISO 9241-11:2018"
+    ],
+    "counterexample_refs": [
+      "polished UI treated as HCD PASS",
+      "design system existence treated as product usability",
+      "prototype result generalized to production experience",
+      "analytics correlation treated as user intent or causation",
+      "automated accessibility checker treated as formal accessibility conformance",
+      "AI synthetic persona/user treated as representative human evidence",
+      "HCD process absorbing Product, Software Engineering, Service Design, Security/Privacy or specialist Accessibility authority",
+      "same-number stage synchronization across professions",
+      "candidate process creating a second HCD knowledge tree",
+      "machine/schema/CI PASS treated as professional PASS, Design KEEP or Current adoption"
+    ],
+    "regression_refs": [
+      "OLEANDER Current Architecture Map v2.1",
+      "Professional Domain Process Contract v1.0",
+      "Knowledge Integrity / Operational Mount",
+      "Shared Design Quality & Design Development",
+      "Cross-Disciplinary Integration",
+      "PR #634 G9 Knowledge Return boundary",
+      "PR #635 Independent Review boundary",
+      "PR #636 Current/Supersession boundary",
+      "PR #637 Authority Snapshot/Fingerprint boundary"
+    ],
+    "metrics": [
+      "schema validity",
+      "unique HCD stage IDs",
+      "required professional-stage contract coverage",
+      "context-to-requirement-to-solution-to-evaluation traceability",
+      "representative human evidence boundary",
+      "AI synthetic-user anti-substitution",
+      "R-F and adjacent-authority preservation",
+      "knowledge-owner reuse without duplicate tree",
+      "no Current/Promotion pollution"
+    ],
+    "acceptance_thresholds": [
+      "HCD definition passes the existing Professional Domain Process validator",
+      "Current architecture-control/runtime validators remain PASS",
+      "AI Governance and Project Anti-Pollution CI remain PASS",
+      "HCD remains a bounded R-E process and does not absorb Product/Engineering/Accessibility/Security/Privacy/Service authority",
+      "existing HCD knowledge objects remain mounts rather than professional-process authority",
+      "Independent Review remains NOT RUN until an exact-revision eligible reviewer actually reviews the candidate",
+      "Current Architecture Map remains unchanged"
+    ],
+    "result": "PENDING_FRESH_MACHINE_REGRESSION"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Digital Product / HCD remains DOMAIN PROCESS OPEN; current Knowledge objects provide methods/sources/practices but do not constitute an adopted R-E professional process.",
+    "candidate_result": "A domain-native HCD process and machine carrier are ready for isolated machine evaluation while Current authority remains unchanged.",
+    "regressions": [],
+    "quality_delta": "PENDING_MACHINE_EVALUATION",
+    "reliability_delta": "PENDING_MACHINE_EVALUATION",
+    "cost_latency_delta": "Bounded candidate/CI/review cost; no runtime layer, knowledge tree, review class or authority database added.",
+    "decision_basis": "Advance only through EV3 machine evaluation, exact-input Independent Review, and authorized human adoption."
+  },
+  "independent_review": {
+    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "NOT_YET_ESTABLISHED",
+    "review_input_revision": "PENDING_FRESH_EV3",
+    "verdict": "NOT_RUN",
+    "blocking_findings": [
+      "Fresh machine regression has not yet closed",
+      "Exact-revision independent Professional Domain review is required before EV4/EV5"
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING",
+    "decision_by": null,
+    "decision_at": null
+  },
+  "migration": {
+    "compatibility_class": "BACKWARD_COMPATIBLE_EXTENSION",
+    "affected_carriers": [
+      "R-E HCD professional-domain view after adoption",
+      "AI Governance professional-process validation",
+      "existing HCD-related Notion owners only as candidate-routing annotations after EV3",
+      "Current Architecture Map HCD maturity only after authorized adoption"
+    ],
+    "affected_scope": "Prospective Digital Product / HCD professional-process consumers only; existing knowledge objects, projects, receipts and unrelated runtime state remain unchanged unless explicitly bound.",
+    "migration_steps": [
+      "run isolated machine/regression/anti-pollution evaluation",
+      "if EV3 closes, issue exact-revision Independent Review packet",
+      "only after EV3, append clearly marked candidate-routing annotations to existing knowledge owners if useful",
+      "perform eligible Independent Review",
+      "obtain authorized owner-native adoption transition/readback",
+      "only then update Current maturity and required mirrors"
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "main@76dbd8d16d09b2d5e57401453e39967b5aa36202 with Digital Product / HCD DOMAIN PROCESS OPEN",
+    "rollback_action": "Reject/close the isolated candidate and remove only candidate-specific CI/routing artifacts; preserve Current HCD knowledge and unrelated v2.1 state.",
+    "rollback_test": "Latest Current architecture-control, Professional Domain contract, Knowledge, Integration and anti-pollution validation remain unchanged.",
+    "provenance_ref": "agent/v21-digital-product-hcd-evolution-20260916"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After any future adoption, monitor first HCD invocation, first representative evaluation, first implementation readback and first G9 return.",
+    "regression_signals": [
+      "UI polish substituted for HCD evidence",
+      "AI synthetic user substituted for representative human evidence",
+      "analytics correlation promoted to causal truth",
+      "HCD absorbs adjacent professional/statutory authority",
+      "candidate routing presented as Current",
+      "machine PASS presented as Professional PASS",
+      "Current maturity exceeds owner-native adoption evidence"
+    ],
+    "reopen_rule": "Reopen only HCD consumers of the affected relation; preserve unrelated valid state.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "INTEGRATION_PASS",
+    "SOFTWARE_PASS",
+    "ACCESSIBILITY_CONFORMANCE",
+    "SECURITY_PRIVACY_SAFETY_LEGAL_APPROVAL",
+    "PRODUCT_MARKET_FIT",
+    "CURRENT_PROCESS_ADOPTION",
+    "PROJECT_PROMOTION"
+  ]
+}
