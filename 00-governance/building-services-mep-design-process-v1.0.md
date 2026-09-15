@@ -1,6 +1,6 @@
 # OLEANDER Building Services / MEP Design Process v1.0
 
-**Status:** CANDIDATE PROFESSIONAL DOMAIN PROCESS / CURRENT PR REVIEW BASIS
+**Status:** CURRENT PROFESSIONAL DOMAIN PROCESS
 **Domain:** Building Services / MEP Engineering
 **Authority position:** subordinate to `complex-project-master-runtime-v1.0.md`, `professional-domain-process-contract-v1.0.md`, Current Knowledge Authority and applicable jurisdiction / responsible building-services engineering authority.
 **External professional basis:** BSRIA BG 6/2018 *Design framework for building services* as a current responsibility/deliverable framework aligned to building-project stages; CIBSE Commissioning Code M (2022) for commissioning management from preparation/briefing through in-use; CIBSE TM54 (2022) for design-stage operational-energy evaluation and design-to-measured-performance boundaries.

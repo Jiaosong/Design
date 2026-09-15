@@ -1,6 +1,6 @@
 # OLEANDER Structural Engineering Design Process v1.0
 
-**Status:** CANDIDATE PROFESSIONAL DOMAIN PROCESS / CURRENT PR REVIEW BASIS
+**Status:** CURRENT PROFESSIONAL DOMAIN PROCESS
 **Domain:** Structural Engineering
 **Authority position:** subordinate to `complex-project-master-runtime-v1.0.md`, `professional-domain-process-contract-v1.0.md`, Current Knowledge Authority and applicable jurisdiction / responsible structural engineer authority.
 **External professional basis:** Institution of Structural Engineers (IStructE), *The Structural Plan of Work 2020* and current structural checking guidance; stage names below preserve the source plan's authentic lifecycle semantics.
