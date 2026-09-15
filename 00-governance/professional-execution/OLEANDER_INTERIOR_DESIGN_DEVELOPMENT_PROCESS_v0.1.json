@@ -1,0 +1,122 @@
+{
+  "schema": "OLEANDER_INTERIOR_DESIGN_DEVELOPMENT_PROCESS_v0.1",
+  "status": "DRAFT_RESEARCH_PROCESS_NOT_CURRENT",
+  "process_id": "INT-DD-v0.1-CANDIDATE",
+  "title": "Interior Design Development Process",
+  "domain": "INTERIOR_DESIGN",
+  "semantic_owner": "PROFESSIONAL_DOMAIN_EXECUTION",
+  "contract_ref": "OLEANDER_DOMAIN_EXECUTION_PROCESS_CONTRACT_v0.1.json",
+  "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+  "source_refs": [
+    "https://www.cidq.org/about-cidq/what-is-interior-design/",
+    "https://www.cidq.org/for-certificate-holders/jurisdictions-and-requirements/",
+    "https://www.cidq.org/wp-content/uploads/2026/01/NCIDQ-Candidate-Handbook-FINAL-1225.pdf"
+  ],
+  "source_boundary": "CIDQ materials establish professional practice areas and a typical interior-design process. OLEANDER uses them as external reference only; this draft is not a licensing, code or jurisdictional authority.",
+  "stages": [
+    {
+      "stage_id": "INT-00",
+      "stage_name": "Existing Conditions and Discovery",
+      "purpose": "Establish the actual interior context, stakeholder needs, occupancy patterns, constraints and evidence boundary before planning.",
+      "required_inputs": ["existing_drawings_or_survey", "client_goals", "occupant_context", "known_code_and_building_constraints"],
+      "required_outputs": ["existing_condition_record", "stakeholder_need_register", "initial_constraints", "unknown_and_assumption_register"],
+      "critical_interfaces": ["ARCHITECTURE", "BASE_BUILDING", "OWNER", "FACILITIES", "CODE_LIFE_SAFETY"],
+      "exit_conditions": ["existing_conditions_scoped", "unknowns_explicit", "no_unverified_dimension_promoted_to_fact"]
+    },
+    {
+      "stage_id": "INT-01",
+      "stage_name": "Programming",
+      "purpose": "Translate user, operational and organizational needs into room, function, adjacency, capacity, accessibility and performance requirements.",
+      "required_inputs": ["stakeholder_needs", "operational_workflows", "occupancy_and_capacity_basis", "project_constraints"],
+      "required_outputs": ["program", "room_and_function_requirements", "adjacency_and_separation_logic", "performance_and_accessibility_requirements"],
+      "critical_interfaces": ["OWNER", "OPERATIONS", "ARCHITECTURE", "MEP", "ACCESSIBILITY"],
+      "exit_conditions": ["requirements_operationalized", "conflicting_needs_identified", "program_authority_declared"]
+    },
+    {
+      "stage_id": "INT-02",
+      "stage_name": "Space Planning",
+      "purpose": "Develop alternative spatial arrangements and test circulation, clearances, furniture/equipment envelopes and operational relationships.",
+      "required_inputs": ["program", "base_building_geometry", "accessibility_requirements", "major_equipment_and_furniture_envelopes"],
+      "required_outputs": ["space_plan_options", "selected_space_plan_candidate", "circulation_and_clearance_model", "interface_conflict_register"],
+      "critical_interfaces": ["ARCHITECTURE", "MEP", "FIRE_LIFE_SAFETY", "FF&E", "WAYFINDING"],
+      "exit_conditions": ["selected_option_traceable", "material_clearances_tested", "unresolved_interfaces_explicit"]
+    },
+    {
+      "stage_id": "INT-03",
+      "stage_name": "Concept and Schematic Design",
+      "purpose": "Define interior concept, spatial character, material direction, preliminary FF&E and key experiential/functional systems without overclaiming technical closure.",
+      "required_inputs": ["selected_space_plan", "brand_or_identity_inputs_if_applicable", "performance_requirements", "budget_basis"],
+      "required_outputs": ["schematic_design", "material_and_finish_direction", "preliminary_FFE", "key_interaction_and_wayfinding_concepts"],
+      "critical_interfaces": ["ARCHITECTURE", "LIGHTING", "ACOUSTICS", "MEP", "BRAND_WAYFINDING"],
+      "exit_conditions": ["concept_and_function_coherent", "major_material_constraints_identified", "presentation_not_used_as_technical_proof"]
+    },
+    {
+      "stage_id": "INT-04",
+      "stage_name": "Design Development and Selections",
+      "purpose": "Resolve materials, finishes, fixtures, furnishings, equipment, details, built-in elements and consultant coordination to a technically reviewable state.",
+      "required_inputs": ["schematic_design", "manufacturer_or_supplier_data", "consultant_system_requirements", "budget_and_procurement_constraints"],
+      "required_outputs": ["developed_plans_elevations_sections", "finish_and_material_schedule", "FFE_schedule", "built_in_and_detail_design", "coordinated_reflected_ceiling_and_services_interfaces"],
+      "critical_interfaces": ["MEP", "LIGHTING", "ACOUSTICS", "FIRE", "ARCHITECTURE", "STRUCTURE", "VENDORS"],
+      "exit_conditions": ["material_and_FFE_identity_traceable", "critical_interfaces_coordinated", "supplier_data_not_misrepresented_as_project_verification"]
+    },
+    {
+      "stage_id": "INT-05",
+      "stage_name": "Technical Documentation and Specification",
+      "purpose": "Produce coordinated technical drawings, schedules and specifications suitable for permit/procurement/construction within the declared scope.",
+      "required_inputs": ["developed_design", "applicable_code_basis", "coordinated_consultant_information", "selected_products_or_performance_specs"],
+      "required_outputs": ["construction_documents", "specifications", "schedules", "code_and_accessibility_coordination_record", "issue_for_review_or_construction_package_as_applicable"],
+      "critical_interfaces": ["ARCHITECT", "ENGINEERS", "CONTRACTOR", "AUTHORITY_HAVING_JURISDICTION_WHERE_APPLICABLE"],
+      "exit_conditions": ["documents_coordinated", "scope_and_authority_of_issue_clear", "open_compliance_items_not_hidden"]
+    },
+    {
+      "stage_id": "INT-06",
+      "stage_name": "Procurement / Bidding / Negotiation",
+      "purpose": "Support selection, substitutions, pricing and procurement while preserving design intent, performance requirements and authority boundaries.",
+      "required_inputs": ["issued_documents", "bids_quotes_submittals", "substitution_requests", "budget_constraints"],
+      "required_outputs": ["bid_or_procurement_responses", "substitution_evaluations", "selection_decisions", "updated_cost_and_scope_implications"],
+      "critical_interfaces": ["OWNER", "CONTRACTOR", "VENDORS", "PROCUREMENT"],
+      "exit_conditions": ["material_substitutions_traceable", "performance_impacts_reviewed", "cost_decision_not_rewritten_as_design_equivalence"]
+    },
+    {
+      "stage_id": "INT-07",
+      "stage_name": "Construction Administration and Installation Review",
+      "purpose": "Review submittals, respond to site questions, manage design changes and observe implementation within the contractual scope without converting observation into unlimited field certification.",
+      "required_inputs": ["construction_documents", "submittals", "RFIs", "site_observations", "change_proposals"],
+      "required_outputs": ["submittal_reviews", "RFI_responses", "change_records", "site_observation_records", "punch_or_deficiency_items_if_in_scope"],
+      "critical_interfaces": ["CONTRACTOR", "ARCHITECT", "MEP", "VENDORS", "OWNER"],
+      "exit_conditions": ["material_changes_controlled", "deficiencies_owned", "field_observation_claim_ceiling_explicit"]
+    },
+    {
+      "stage_id": "INT-08",
+      "stage_name": "Handover and Post-Occupancy Evaluation",
+      "purpose": "Support handover, assess whether the interior performs for occupants and operations, and identify improvements or reusable knowledge.",
+      "required_inputs": ["handover_information", "occupant_feedback", "operational_observation_or_measurement_if_available", "maintenance_feedback"],
+      "required_outputs": ["post_occupancy_findings", "operational_issues", "future_change_recommendations", "G9_reuse_candidates_if_transferable"],
+      "critical_interfaces": ["OWNER", "OCCUPANTS", "FACILITIES", "OPERATIONS"],
+      "exit_conditions": ["findings_scoped_to_actual_evidence", "project_closeout_separate_from_knowledge_promotion", "future_changes_have_reopen_route"]
+    }
+  ],
+  "runtime_binding": {
+    "P0": "room_zone_FFE_finish_detail_and_artifact_identity",
+    "P1": "program_design_selection_substitution_and_source_authority",
+    "P2": "space_plan_concept_selection_and_implementation_decisions",
+    "P3": "occupant_operational_accessibility_code_material_and_performance_requirements",
+    "P4": "adjacency_clearance_services_ceiling_lighting_acoustic_FFE_and_wayfinding_interfaces",
+    "P5": "space_plan_finish_FFE_document_baselines_changes_and_staleness",
+    "P6": "design_checks_accessibility_code_coordination_product_evidence_and_post_occupancy_assurance",
+    "P7": "risks_issues_assumptions_unknowns_substitution_and_site_deficiencies",
+    "P8": "plans_schedules_specs_samples_native_models_submittals_and_handoffs",
+    "P9": "interior_method_or_typology_learning_only_via_G9",
+    "P10": "moodboards_renders_and_presentations_remain_projection_not_technical_authority",
+    "P11": "reader_preserves_design_selection_compliance_and_field_states_as_independent_axes"
+  },
+  "hard_boundaries": [
+    "MOODBOARD_OR_RENDER_IS_NOT_MATERIAL_PERFORMANCE_PROOF",
+    "SPACE_PLAN_GEOMETRY_IS_NOT_ACCESSIBILITY_COMPLIANCE_UNLESS_APPLICABLE_REQUIREMENTS_AND_ASSURANCE_CLOSE",
+    "MANUFACTURER_DATA_IS_NOT_PROJECT_INSTALLATION_VERIFICATION",
+    "SUBSTITUTION_PRICE_ACCEPTANCE_IS_NOT_AUTOMATIC_DESIGN_EQUIVALENCE",
+    "SITE_OBSERVATION_IS_NOT_UNLIMITED_FIELD_CERTIFICATION",
+    "POST_OCCUPANCY_FEEDBACK_IS_CONTEXTUAL_EVIDENCE_NOT_UNIVERSAL_NEED"
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_PROCESS_ONLY"
+}
