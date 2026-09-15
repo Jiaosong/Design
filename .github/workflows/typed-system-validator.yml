@@ -1,0 +1,38 @@
+name: OLEANDER Typed System Draft Validator
+
+on:
+  pull_request:
+    paths:
+      - '00-governance/runtime/OLEANDER_TYPED_SYSTEM_*'
+      - '00-governance/runtime/OLEANDER_TYPED_SNAPSHOT_SCHEMA_v0.1.json'
+      - '00-governance/runtime/OLEANDER_REPLAY_*'
+      - '00-governance/runtime/validate_typed_system.py'
+      - '00-governance/runtime/test_typed_system.py'
+      - '.github/workflows/typed-system-validator.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  typed-system:
+    name: Validate typed runtime contracts and replay rules
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825ca76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: Compile typed-system validator
+        run: python -m py_compile 00-governance/runtime/validate_typed_system.py 00-governance/runtime/test_typed_system.py
+
+      - name: Validate rule registry and regression corpus
+        run: python 00-governance/runtime/validate_typed_system.py --contracts-only
+
+      - name: Run deterministic replay-derived engine self-test
+        run: python 00-governance/runtime/test_typed_system.py
