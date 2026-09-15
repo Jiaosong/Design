@@ -1,0 +1,59 @@
+{
+  "schema": "OLEANDER_P7_EXECUTABLE_REGRESSION_EVALS_v0.1",
+  "status": "DRAFT_EXECUTABLE_REGRESSION_COMPANION_NOT_CURRENT",
+  "semantic_owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
+  "cases": [
+    {
+      "id": "P7-REG-001",
+      "input": "A prior producer PASS is kept as current closure proof after a later material review finding establishes a real Issue.",
+      "expected": ["P7/ISS-RP02:FAIL"]
+    },
+    {
+      "id": "P7-REG-002",
+      "input": "Issue root-cause state is promoted to SUPPORTED/CONFIRMED with no evidence reference or bounded scope.",
+      "expected": ["P7/ROOT-RP02:FAIL"]
+    },
+    {
+      "id": "P7-REG-003",
+      "input": "Repair is implemented and producer retest passes; Issue is closed while required higher review is still pending, and parent design state is also auto-closed.",
+      "expected": ["P7/ISS-RP03:FAIL", "P7/ISS-RP04:FAIL", "P7/ISS-RP05:FAIL"]
+    },
+    {
+      "id": "P7-REG-004",
+      "input": "Material repair exists but defect→repair→retest lineage and invalidated prior receipts are not retained.",
+      "expected": ["P7/LINE-RP02:FAIL"]
+    },
+    {
+      "id": "P7-REG-005",
+      "input": "A post-hoc Issue is rewritten as though it had been a pre-existing Risk; another Risk is realized by mutating the Risk record in place instead of linking a distinct Issue.",
+      "expected": ["P7/RSK-RP04:FAIL", "P7/LINE-RP03:FAIL"]
+    },
+    {
+      "id": "P7-REG-006",
+      "input": "A latent defect is retrospectively called Risk because it had no prior impact, detection time is rewritten as origin, and repair/retest/impact-end/resolution are collapsed into one done timestamp.",
+      "expected": ["P7/ISS-RP06:FAIL", "P7/ISS-RP07:FAIL", "P7/ISS-RP08:FAIL"]
+    },
+    {
+      "id": "P7-REG-007",
+      "input": "A temporally coincident event is promoted to root cause without causal basis; a material incident is represented by one generic cause field despite multiple material causal roles; containment urgency is used to raise causal confidence.",
+      "expected": ["P7/ROOT-RP03:FAIL", "P7/ROOT-RP04:FAIL", "P7/ROOT-RP05:FAIL"]
+    },
+    {
+      "id": "P7-REG-008",
+      "input": "Issue closure automatically sets related residual/future risk to zero and a material postmortem records failure cause but omits why detection failed and any detection-control change.",
+      "expected": ["P7/ISS-RP09:FAIL", "P7/ISS-RP10:FAIL"]
+    },
+    {
+      "id": "P7-REG-009",
+      "input": "An unresolved TBR value is converted to fact/Assumption without rationale, owner, resolution action/date, claim ceiling, or an authorized Assumption admission event.",
+      "expected": ["P7/UNK-RP02:FAIL", "P7/UNK-RP03:FAIL", "P7/UNK-RP04:FAIL"]
+    },
+    {
+      "id": "P7-REG-010",
+      "input": "An Assumption is refuted but only one of several affected Decision/Requirement/Interface/Assurance dependencies is reopened.",
+      "expected": ["P7/ASM-RP05:FAIL"]
+    }
+  ],
+  "coverage_rule": "EVERY_EXECUTABLE_P7_RULE_MUST_APPEAR_IN_AT_LEAST_ONE_EXPECTED_REGRESSION_REFERENCE",
+  "promotion_effect": "NONE_DRAFT_TEST_CORPUS_ONLY"
+}
