@@ -1,0 +1,154 @@
+{
+  "candidate_id": "EV-PROF-INTERIOR-LANDSCAPE-20260915",
+  "state": "EV2_EVAL_READY",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "R-E Professional Domain Execution Process / domain-native Interior Design and Landscape Architecture owners",
+  "target_ref": [
+    "00-governance/interior-design-process-v1.0.md",
+    "00-governance/landscape-architecture-design-process-v1.0.md",
+    "00-governance/schemas/interior-design-process.v1.json",
+    "00-governance/schemas/landscape-architecture-design-process.v1.json"
+  ],
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture Control Map v2.1; Interior Design OPEN; Landscape Architecture OPEN",
+    "authority_fingerprint": "OLEANDER-CURRENT-ARCHITECTURE-CONTROL@2.1|main@6b4c5af7caec0067785675c4efb48cf717fa8bbd",
+    "source_hash_or_commit": "6b4c5af7caec0067785675c4efb48cf717fa8bbd",
+    "frozen_at": "2026-09-15T14:40:00+08:00"
+  },
+  "trigger_evidence": [
+    "User instruction to continue OLEANDER professional-domain integration under OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1",
+    "Current Architecture Map v2.1 lists Interior Design and Landscape Architecture as CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
+    "Existing Interior SYS-10 specialty item is Draft with blank body and therefore is not an authentic Current domain process",
+    "Existing IDX-ARCH-SITE-003 is a Current L4 Site/Planning routing owner and can be mounted by Landscape without becoming a professional-process substitute"
+  ],
+  "hypothesis": "Interior Design and Landscape Architecture can be added as authentic domain-native R-E process definitions using the existing Professional Domain Process Contract, Knowledge Operational Mount and Cross-Disciplinary Integration owners without creating a second runtime, copied knowledge tree, universal stage prefix or duplicate interface truth.",
+  "mutation_scope": [
+    "add candidate Interior Design process definition and machine carrier",
+    "add candidate Landscape Architecture process definition and machine carrier",
+    "add CI validation of the two candidate machine definitions",
+    "optionally extend Architecture source-stage companion mapping after the domain definitions validate",
+    "do not modify Current Architecture Map professional maturity until evaluation and promotion are complete"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      ".github/workflows/ai-governance-evals.yml"
+    ],
+    "real_case_refs": [
+      "00-governance/architecture-design-development-process-v1.0.md",
+      "00-governance/structural-engineering-design-process-v1.0.md",
+      "00-governance/building-services-mep-design-process-v1.0.md",
+      "Notion IDX-ARCH-SITE-003 current site/planning routing owner",
+      "Notion Interior SYS-10 Draft specialty control item"
+    ],
+    "counterexample_refs": [
+      "reject treating Interior as decoration/render/FF&E-only workflow",
+      "reject treating Landscape as planting-plan-after-architecture workflow",
+      "reject same-number professional-stage synchronization",
+      "reject domain process as second Knowledge Architecture or second Runtime",
+      "reject machine/schema PASS as professional PASS or Design KEEP"
+    ],
+    "regression_refs": [
+      "Current R-A...R-K architecture-control invariants",
+      "Professional Domain Process Contract non-substitution boundaries",
+      "Cross-Disciplinary Integration ownership of maturity/disposition",
+      "Knowledge Integrity / OE operational-mount authority"
+    ],
+    "metrics": [
+      "schema validity",
+      "stage-id uniqueness",
+      "required stage contract coverage",
+      "material interface binding coverage",
+      "no duplicate Integration truth fields",
+      "no architecture-control regression",
+      "no namespace pollution"
+    ],
+    "acceptance_thresholds": [
+      "all candidate professional-process definitions pass the existing professional-domain validator",
+      "architecture-control validator remains PASS",
+      "AI Governance and anti-pollution CI remain PASS",
+      "no second runtime/knowledge tree/review class/state family is introduced",
+      "independent review has no blocking finding before promotion"
+    ],
+    "result": "PENDING_CI_AND_INDEPENDENT_REVIEW"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Interior and Landscape remain OPEN domain-process definitions under R-E; existing routing/specialty knowledge remains available but cannot substitute for authentic process execution.",
+    "candidate_result": "Two bounded domain-native candidate definitions and machine carriers exist on an isolated branch; Current Architecture Map remains unchanged pending evaluation/promotion.",
+    "regressions": [],
+    "quality_delta": "PENDING_EVALUATION",
+    "reliability_delta": "PENDING_EVALUATION",
+    "cost_latency_delta": "Small additional governance/CI validation cost; no runtime layer added.",
+    "decision_basis": "Promote only if existing contracts/validators pass, no authority pollution is introduced, and independent review supports the domain semantics."
+  },
+  "independent_review": {
+    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "NOT_YET_ESTABLISHED",
+    "review_input_revision": "agent/v21-interior-landscape-evolution-20260915",
+    "verdict": "NOT_RUN",
+    "blocking_findings": ["Independent professional/process review required before EV4/EV5 promotion state"]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING",
+    "decision_by": null,
+    "decision_at": null
+  },
+  "migration": {
+    "compatibility_class": "BACKWARD_COMPATIBLE_EXTENSION",
+    "affected_carriers": [
+      "R-E professional-domain registry/view",
+      "AI Governance process-definition validation",
+      "Architecture professional source-stage companion map if extended",
+      "OLEANDER Current Architecture Map professional-domain maturity table only after adoption",
+      "Notion Current architecture mirror only after GitHub Current readback"
+    ],
+    "affected_scope": "Interior Design and Landscape Architecture professional-process definitions only; existing Architecture, Structural, MEP and unrelated valid runtime state remain current.",
+    "migration_steps": [
+      "validate candidate definitions on isolated branch",
+      "run regression/anti-pollution gates",
+      "perform independent review",
+      "human promotion/merge decision",
+      "currentize adopted process headers and architecture maturity view",
+      "read back GitHub main and then sync/read back Notion Current surfaces"
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "main@6b4c5af7caec0067785675c4efb48cf717fa8bbd with Interior/Landscape DOMAIN PROCESS OPEN",
+    "rollback_action": "Reject/close the isolated candidate branch or revert only the adopted Interior/Landscape process carriers and dependent mappings; preserve unrelated v2.1 Current state.",
+    "rollback_test": "Architecture-control validator and existing Architecture/Structural/MEP professional-process validators must return to their prior passing state.",
+    "provenance_ref": "agent/v21-interior-landscape-evolution-20260915"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After adoption, monitor first project/process invocation and first materially coupled Architecture interface use.",
+    "regression_signals": [
+      "domain stage used as universal stage prefix",
+      "routing knowledge promoted into professional authority",
+      "machine PASS treated as professional PASS",
+      "interface maturity duplicated outside R-F",
+      "Current Architecture Map maturity exceeds actual evidence"
+    ],
+    "reopen_rule": "Reopen only Interior/Landscape consumers of the affected professional relation; preserve unrelated valid state.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "FIELD_TRUTH",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}
