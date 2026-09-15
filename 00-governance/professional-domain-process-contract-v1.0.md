@@ -28,6 +28,7 @@ This contract closes a structural gap between:
 - the Master Runtime's compact `professional_processes[]` summary;
 - authentic domain process definitions such as Architecture `ADD-00 ... ADD-17`;
 - the shared `DD-01 ... DD-12` design-development responsibilities;
+- Knowledge Integrity / Operational Mount admission;
 - Cross-Disciplinary Integration interface state;
 - Skill / Capability / Tool execution;
 - project-level stage execution and reopen state.
@@ -44,6 +45,7 @@ The canonical relationship remains:
 Current Authority
 → Master Runtime
 → Current Knowledge Resolution
+→ Knowledge Integrity / Task-Claim Operational Mount
 → Design Intelligence
 → Shared Design Quality & Design Development
 → Authentic Professional Domain Process
@@ -61,11 +63,14 @@ Current Authority
 → G9 bounded knowledge return
 ```
 
-The professional process owns the **discipline's authentic development logic**. It does not own unrelated review or integration authority.
+The professional process owns the **discipline's authentic development logic**. It does not own unrelated review, knowledge-integrity, operational-eligibility or integration authority.
 
 Hard boundaries:
 
 ```text
+CONTENT COMPLETE ≠ KNOWLEDGE CLEAN
+KNOWLEDGE CLEAN ≠ OPERATIONALLY ELIGIBLE FOR EVERY CLAIM
+OPERATIONAL ELIGIBILITY ≠ PROFESSIONAL STAGE PASS
 DD RESPONSIBILITY ≠ PROFESSIONAL STAGE
 PROFESSIONAL STAGE ≠ SKILL
 SKILL ≠ TOOL
@@ -107,7 +112,7 @@ KH_LY46
 → project-specific Architecture process instance
 ```
 
-The instance records project identity, baseline, current stages, active interfaces, open items, receipts and claim ceiling. It is not reusable knowledge merely because it exists.
+The instance records project identity, baseline, current stages, active interfaces, professional verdict, open items, receipts and claim ceiling. It is not reusable knowledge merely because it exists.
 
 ### 3.3 Domain Stage Instance｜运行层
 
@@ -118,7 +123,7 @@ Example:
 ```text
 Architecture ADD-07 definition
 → KH_LY46 ADD-07 instance
-→ cycle N / baseline Rxx / active interface refs / current readback / reopen state
+→ cycle N / baseline Rxx / task-claim knowledge mounts / active interface refs / current readback / reopen state
 ```
 
 Stage instances record runtime execution state. They do not become new canonical Knowledge Objects by default.
@@ -171,6 +176,8 @@ Triggering a professional process means the project is making a material claim t
 
 Resolve the existing Knowledge Architecture routes needed to run the process:
 
+- `operational_mount_contract_ref` → Current owner is `knowledge-integrity-and-operational-mount-v1.0.md`;
+- `consequential_knowledge_rule` → consequential knowledge must be admitted by task/claim-scoped Operational Eligibility before it drives a professional decision;
 - `required_methods[]`;
 - `theory_routes[]`;
 - `source_routes[]`;
@@ -181,6 +188,24 @@ Resolve the existing Knowledge Architecture routes needed to run the process:
 - `tool_knowledge_routes[]` when relevant.
 
 These are references into the existing L0–L7 architecture. They are not a new "Professional Process Knowledge Base".
+
+The process definition does not duplicate `KI0...KI5` or `OE0...OE3`. It declares the mount requirement; the Current Knowledge Integrity & Operational Mount owner resolves canonical knowledge refs, task/claim eligibility, applicability, freshness/revalidation, claim ceiling, conditions and `does_not_prove`. A professional stage instance stores only the mount-record refs needed to prove that admission happened.
+
+For consequential use, a stage must not silently consume a bare knowledge page reference as professional authority. The stage-side mount must preserve the Current contract's minimum semantics:
+
+```text
+knowledge_ref
+operational_eligibility
+eligibility_scope / professional question
+claim_ceiling
+applicability
+conditions / unresolved items
+freshness or revalidation trigger
+does_not_prove
+review basis
+```
+
+`KNOWLEDGE MOUNT PASS ≠ PROFESSIONAL STAGE PASS`.
 
 ### D. Authentic Professional Stages
 
@@ -193,6 +218,7 @@ professional_question
 entry_conditions[]
 required_inputs[]
 knowledge_inputs[]
+knowledge_mount_requirement
 required_dd_dimensions[]
 required_native_outputs[]
 interface_requirements[]
@@ -210,9 +236,13 @@ claim_ceiling
 does_not_prove[]
 ```
 
+`knowledge_inputs[]` names required knowledge routes/questions. `knowledge_mount_requirement` declares when actual task/claim-scoped mount records are required before consequential decisions or closure. It does not copy Knowledge Integrity fields into the professional process.
+
 `required_dd_dimensions[]` binds shared Design Quality responsibilities into the professional process without renaming the stage.
 
 `content_projection_requirements[]` binds the Design Quality specification's content / body-text / figure / caption / no-loss requirements where a stage produces communicative artifacts. It does not turn presentation into the professional decision itself.
+
+`does_not_prove[]` is mandatory and non-empty for a Current professional-stage definition. A professional stage may make a bounded claim, but it may not leave its authority ceiling implicit.
 
 ### E. Interface Contract
 
@@ -223,14 +253,13 @@ Every materially coupled stage must declare enough information for `cross-discip
 - `shared_variables[]`;
 - `interface_refs[]`;
 - `controlling_authority_requirements[]`;
-- `required_interface_maturity_to_enter`;
-- `required_interface_maturity_to_close`;
+- `interface_maturity_policy`;
 - `allowed_open_interface_conditions[]`;
 - `integration_readback_requirements[]`.
 
 The professional process **references** interface state. It does not redefine Cross-Disciplinary Integration maturity, disposition, coupling, criticality or Acceptance Contract semantics.
 
-Any process-level enter/close maturity recorded in a machine definition is only a **default/floor**. The actual requirement for a professional stage is carried by that stage's interface bindings and may be higher because of interface criticality, coupling, project claim ceiling or a project-specific Acceptance Contract.
+There is deliberately **no process-level numeric/scalar enter/close maturity truth** in the Current machine contract. Actual enter/close maturity is owned per interface binding / Acceptance Contract by Cross-Disciplinary Integration. `interface_maturity_policy` may only state the rule for resolving those per-interface requirements; it cannot override them with a profession-wide scalar.
 
 ### F. Execution Binding
 
@@ -271,6 +300,8 @@ Resolve:
 
 Professional assurance may consume the canonical Review classes, but it must not create a parallel review taxonomy solely for the domain.
 
+`does_not_prove[]` must be non-empty. Passing the process contract cannot be used to widen the professional, statutory, engineering, field or Design claim.
+
 ### H. Change / Reopen
 
 Resolve:
@@ -307,6 +338,8 @@ Resolve:
 - `does_not_prove[]`.
 
 A professional process closes only at its declared claim ceiling. Unresolved items may remain only if they are explicitly allowed, outside the promoted claim, and do not contradict an in-claim decision.
+
+`does_not_prove[]` must be non-empty. Process closure does not inherit a broader claim from a downstream Design or Promotion decision.
 
 ---
 
@@ -396,6 +429,7 @@ domain
 owner
 current_baseline
 execution_state
+professional_verdict
 claim_ceiling
 stage_instances[]
 active_interface_refs[]
@@ -406,6 +440,8 @@ stale_scope[]
 reopen_events[]
 last_updated
 ```
+
+`professional_verdict` is the bounded professional judgment that compiles to the Master Runtime's existing `professional_processes[].verdict`. `execution_state` and `professional_verdict` are independent fields.
 
 The instance may be embedded in the existing project/runtime carrier or persisted as a dedicated runtime artifact when the existing persistence policy triggers. **This contract does not create a mandatory new database.**
 
@@ -428,6 +464,8 @@ review_verdict
 claim_ceiling
 inputs[]
 outputs[]
+consequential_knowledge_mount_required
+knowledge_mount_refs[]
 interface_refs[]
 evidence_refs[]
 review_refs[]
@@ -438,6 +476,8 @@ exit_condition_state
 actual_readback_refs[]
 last_updated
 ```
+
+`knowledge_mount_refs[]` point to the Current task/claim-scoped mount records governed by `knowledge-integrity-and-operational-mount-v1.0.md`. The stage instance does not reissue KI/OE judgments.
 
 The stage instance is a runtime carrier, not a Knowledge level and not an automatic separate page/file.
 
@@ -477,6 +517,8 @@ Domains may have richer internal states, but the compiled Master summary must re
 
 `CURRENT` describes runtime currency. `PASS` describes a bounded professional verdict. Neither is Design KEEP.
 
+`CLOSED` means the represented execution cycle is terminal at its declared claim ceiling; it does **not** mean `PASS`. A domain-authentic terminal `REJECT` remains legal when it is backed by actual readback/review evidence. Generic machine validation must not outlaw legitimate domain terminal semantics merely to simplify orchestration. Conversely, `CLOSED + NOT_RUN` and `CLOSED + HOLD` are structurally contradictory and fail closed.
+
 ---
 
 ## 11｜Interface-state compilation
@@ -509,6 +551,8 @@ A stage may close with an `OPEN` interface only when:
 
 An in-claim `MAJOR / CRITICAL` interface below required maturity prevents closure of the dependent professional claim.
 
+The process definition may express `interface_maturity_policy`, but the actual maturity requirement remains a property of each referenced interface / stage binding / Acceptance Contract. The process instance must not become a second interface-state truth source.
+
 ---
 
 ## 12｜Native artifact and source-of-truth rule
@@ -539,6 +583,7 @@ Example:
 ```text
 Architecture ADD-07
 ├─ current knowledge resolution
+├─ task/claim operational knowledge mount
 ├─ CAD / plan execution
 ├─ 3D spatial readback
 ├─ area / data checks
@@ -586,6 +631,7 @@ After any accepted material change:
 ```text
 changed professional decision / shared variable
 → consuming stage instances
+→ task/claim knowledge mounts when applicability/freshness changes
 → active interfaces
 → native artifacts
 → professional reviews
@@ -596,7 +642,7 @@ changed professional decision / shared variable
 
 Only affected scope becomes stale. Do not invalidate an entire profession merely because one local interface changed, unless dependency analysis shows whole-process consequence.
 
-Likewise, a local valid result must not remain falsely current when a controlling shared variable changed upstream.
+Likewise, a local valid result must not remain falsely current when a controlling shared variable, mounted source applicability, source version or other governing input changed upstream.
 
 ---
 
@@ -615,7 +661,22 @@ professional_processes[]
 └─ claim_ceiling
 ```
 
+Compilation rule:
+
+```text
+DOMAIN_PROCESS_INSTANCE.execution_state
+→ Master professional_processes[].state mapping
+
+DOMAIN_PROCESS_INSTANCE.professional_verdict
+→ Master professional_processes[].verdict
+
+current professional receipt ref
+→ Master professional_processes[].receipt_id
+```
+
 The Master summary is intentionally thin. It is not the source of stage semantics.
+
+A `CLOSED` process instance must have at least one stage instance and a professional receipt. A `CURRENT/CLOSED + PASS` process cannot compile promotion-relevant PASS without the current professional receipt required by the Master. This closure evidence rule is structural only; the machine still does not award the professional verdict.
 
 No additional Master fields are required merely because this contract exists.
 
@@ -629,15 +690,19 @@ Machine validation may verify:
 - required references;
 - stage identity uniqueness within an instance;
 - baseline / cycle fields;
-- interface reference presence;
+- Knowledge Operational Mount refs are present when the stage declares consequential mounted knowledge is required;
+- interface reference presence without re-awarding interface maturity;
 - stale/open/reopen fields;
 - receipt linkage;
 - state/verdict compatibility;
+- closure evidence presence (`outputs / review refs / actual readback / receipt refs` as applicable);
 - claim-ceiling field presence;
+- non-empty `does_not_prove` boundaries;
 - no duplicate process-instance identity where the carrier requires uniqueness.
 
 Machine validation must not infer:
 
+- `KI4 VERIFIED` or `OE3 ELIGIBLE`;
 - professional excellence;
 - architectural quality;
 - engineering adequacy;
@@ -645,6 +710,7 @@ Machine validation must not infer:
 - field validity;
 - Design KEEP;
 - DQ3–DQ5;
+- interface maturity;
 - Promotion.
 
 ---
@@ -656,15 +722,18 @@ Before a new professional-domain process is treated as Current, verify:
 1. authentic professional semantics have been researched rather than copied from Architecture ADD;
 2. scope and claim ceiling are explicit;
 3. stage questions / entry / exit / reopen conditions exist;
-4. shared DD responsibilities are mapped without renaming stages;
-5. cross-domain interfaces use the existing Integration owner and vocabulary;
-6. required native outputs precede Skill/Tool selection;
-7. Current Skill Resolver / live registry is used rather than a hardcoded inventory;
-8. actual readback and independent review requirements are explicit;
-9. content / presentation / no-loss requirements are bound where communicative artifacts carry professional claims;
-10. process receipt and `does_not_prove` boundary exist;
-11. project instances do not create a parallel knowledge taxonomy;
-12. Master Runtime receives only the compact summary required for orchestration.
+4. consequential knowledge routes through the Current Knowledge Integrity & Operational Mount contract, with task/claim applicability, freshness, claim ceiling and `does_not_prove` preserved by mount refs;
+5. shared DD responsibilities are mapped without renaming stages;
+6. cross-domain interfaces use the existing Integration owner and vocabulary;
+7. interface maturity is owned per interface / Acceptance Contract rather than duplicated as a profession-wide enter/close scalar;
+8. required native outputs precede Skill/Tool selection;
+9. Current Skill Resolver / live registry is used rather than a hardcoded inventory;
+10. actual readback and independent review requirements are explicit;
+11. human-experience / design-language / technical / content-projection consequences are present as explicit stage fields even when the domain records a bounded N/A reason;
+12. process receipt and non-empty `does_not_prove` boundary exist;
+13. project instances do not create a parallel knowledge taxonomy;
+14. process instance exposes a professional verdict separately from execution state;
+15. Master Runtime receives only the compact summary required for orchestration.
 
 ---
 
@@ -673,12 +742,15 @@ Before a new professional-domain process is treated as Current, verify:
 ```text
 ONE MASTER RUNTIME
 ONE EXISTING KNOWLEDGE ARCHITECTURE
+CONSEQUENTIAL KNOWLEDGE → TASK/CLAIM OPERATIONAL MOUNT BEFORE PROFESSIONAL DECISION
 AUTHENTIC DOMAIN PROCESS SEMANTICS
 SHARED CONTRACT ENVELOPE
-INTERFACE MATURITY, NOT STAGE-NUMBER MATCHING
+INTERFACE MATURITY OWNED PER INTERFACE, NOT BY STAGE-NUMBER MATCHING OR PROCESS-WIDE SCALAR
 NATIVE OUTPUT BEFORE TOOL SELECTION
 ACTUAL READBACK BEFORE PROFESSIONAL CLOSURE
 INDEPENDENT REVIEW WHERE REQUIRED
+CLOSED ≠ PASS
+TERMINAL REJECT REMAINS LEGAL WHEN DOMAIN-AUTHENTIC AND EVIDENCED
 NO LOSS / NO COMPRESSION
 NO AUTOMATIC DESIGN OR PROMOTION INFERENCE
 ```

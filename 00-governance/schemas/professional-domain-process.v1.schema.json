@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://oleander.local/schemas/professional-domain-process.v1.schema.json",
   "title": "OLEANDER Professional Domain Process v1",
-  "description": "Subordinate machine contract for reusable professional-domain process definitions and project/runtime process instances. It does not define universal professional stages or replace the Master Runtime, Knowledge Architecture, Cross-Disciplinary Integration, Design Quality review, or domain-specific receipts.",
+  "description": "Subordinate machine contract for reusable professional-domain process definitions and project/runtime process instances. It preserves authentic domain stages, delegates consequential knowledge admission to the Knowledge Integrity & Operational Mount contract, and does not replace the Master Runtime, Knowledge Architecture, Cross-Disciplinary Integration, Design Quality review, or domain-specific receipts.",
   "$defs": {
     "nonEmptyString": {
       "type": "string",
@@ -11,6 +11,17 @@
     "stringArray": {
       "type": "array",
       "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "professionalVerdict": {
+      "enum": ["NOT_RUN", "N_A", "PASS", "REVISE", "REJECT", "HOLD"]
+    },
+    "executionState": {
+      "enum": ["NOT_STARTED", "READY", "IN_PROGRESS", "BLOCKED", "CURRENT", "STALE", "CLOSED", "SUPERSEDED"]
     },
     "interfaceBinding": {
       "type": "object",
@@ -60,12 +71,18 @@
         "entry_conditions",
         "required_inputs",
         "knowledge_inputs",
+        "knowledge_mount_requirement",
         "required_dd_dimensions",
         "required_native_outputs",
         "interface_requirements",
         "interface_bindings",
+        "human_experience_consequences",
+        "design_language_consequences",
+        "technical_consequences",
+        "content_projection_requirements",
         "required_readback",
         "professional_review_owner",
+        "independent_review_requirement",
         "open_items_allowed",
         "exit_conditions",
         "reopen_triggers",
@@ -79,6 +96,7 @@
         "entry_conditions": {"$ref": "#/$defs/stringArray"},
         "required_inputs": {"$ref": "#/$defs/stringArray"},
         "knowledge_inputs": {"$ref": "#/$defs/stringArray"},
+        "knowledge_mount_requirement": {"$ref": "#/$defs/nonEmptyString"},
         "required_dd_dimensions": {
           "type": "array",
           "uniqueItems": true,
@@ -98,12 +116,12 @@
         "content_projection_requirements": {"$ref": "#/$defs/stringArray"},
         "required_readback": {"$ref": "#/$defs/stringArray"},
         "professional_review_owner": {"$ref": "#/$defs/nonEmptyString"},
-        "independent_review_requirement": {"type": "string"},
+        "independent_review_requirement": {"$ref": "#/$defs/nonEmptyString"},
         "open_items_allowed": {"$ref": "#/$defs/stringArray"},
         "exit_conditions": {"$ref": "#/$defs/stringArray"},
         "reopen_triggers": {"$ref": "#/$defs/stringArray"},
         "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
-        "does_not_prove": {"$ref": "#/$defs/stringArray"}
+        "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
       }
     },
     "processDefinition": {
@@ -158,8 +176,10 @@
         "knowledge_binding": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["required_methods", "theory_routes", "source_routes", "evidence_routes", "precedent_case_routes", "practice_routes"],
+          "required": ["operational_mount_contract_ref", "consequential_knowledge_rule", "required_methods", "theory_routes", "source_routes", "evidence_routes", "precedent_case_routes", "practice_routes"],
           "properties": {
+            "operational_mount_contract_ref": {"$ref": "#/$defs/nonEmptyString"},
+            "consequential_knowledge_rule": {"$ref": "#/$defs/nonEmptyString"},
             "required_methods": {"$ref": "#/$defs/stringArray"},
             "theory_routes": {"$ref": "#/$defs/stringArray"},
             "source_routes": {"$ref": "#/$defs/stringArray"},
@@ -178,15 +198,14 @@
         "interface_contract": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["integration_owner_ref", "inputs_from_domains", "outputs_to_domains", "shared_variables", "controlling_authority_requirements", "required_interface_maturity_to_enter", "required_interface_maturity_to_close", "allowed_open_interface_conditions", "integration_readback_requirements"],
+          "required": ["integration_owner_ref", "inputs_from_domains", "outputs_to_domains", "shared_variables", "controlling_authority_requirements", "interface_maturity_policy", "allowed_open_interface_conditions", "integration_readback_requirements"],
           "properties": {
             "integration_owner_ref": {"$ref": "#/$defs/nonEmptyString"},
             "inputs_from_domains": {"$ref": "#/$defs/stringArray"},
             "outputs_to_domains": {"$ref": "#/$defs/stringArray"},
             "shared_variables": {"$ref": "#/$defs/stringArray"},
             "controlling_authority_requirements": {"$ref": "#/$defs/stringArray"},
-            "required_interface_maturity_to_enter": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
-            "required_interface_maturity_to_close": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+            "interface_maturity_policy": {"$ref": "#/$defs/nonEmptyString"},
             "allowed_open_interface_conditions": {"$ref": "#/$defs/stringArray"},
             "integration_readback_requirements": {"$ref": "#/$defs/stringArray"}
           }
@@ -215,7 +234,7 @@
             "technical_gates": {"$ref": "#/$defs/stringArray"},
             "independent_review": {"$ref": "#/$defs/nonEmptyString"},
             "receipt_contract": {"$ref": "#/$defs/nonEmptyString"},
-            "does_not_prove": {"$ref": "#/$defs/stringArray"}
+            "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
           }
         },
         "change_contract": {
@@ -241,7 +260,7 @@
             "professional_receipt": {"$ref": "#/$defs/nonEmptyString"},
             "promotion_effect": {"$ref": "#/$defs/nonEmptyString"},
             "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
-            "does_not_prove": {"$ref": "#/$defs/stringArray"}
+            "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
           }
         }
       }
@@ -260,6 +279,8 @@
         "claim_ceiling",
         "inputs",
         "outputs",
+        "consequential_knowledge_mount_required",
+        "knowledge_mount_refs",
         "interface_refs",
         "evidence_refs",
         "review_refs",
@@ -276,11 +297,13 @@
         "stage_id": {"$ref": "#/$defs/nonEmptyString"},
         "cycle": {"type": "integer", "minimum": 1},
         "baseline_ref": {"$ref": "#/$defs/nonEmptyString"},
-        "execution_state": {"enum": ["NOT_STARTED", "READY", "IN_PROGRESS", "BLOCKED", "CURRENT", "STALE", "CLOSED", "SUPERSEDED"]},
-        "review_verdict": {"enum": ["NOT_RUN", "N_A", "PASS", "REVISE", "REJECT", "HOLD"]},
+        "execution_state": {"$ref": "#/$defs/executionState"},
+        "review_verdict": {"$ref": "#/$defs/professionalVerdict"},
         "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
         "inputs": {"$ref": "#/$defs/stringArray"},
         "outputs": {"$ref": "#/$defs/stringArray"},
+        "consequential_knowledge_mount_required": {"type": "boolean"},
+        "knowledge_mount_refs": {"$ref": "#/$defs/stringArray"},
         "interface_refs": {"$ref": "#/$defs/stringArray"},
         "evidence_refs": {"$ref": "#/$defs/stringArray"},
         "review_refs": {"$ref": "#/$defs/stringArray"},
@@ -290,7 +313,44 @@
         "exit_condition_state": {"enum": ["NOT_EVALUATED", "OPEN", "SATISFIED", "BLOCKED", "STALE"]},
         "actual_readback_refs": {"$ref": "#/$defs/stringArray"},
         "last_updated": {"$ref": "#/$defs/nonEmptyString"}
-      }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"execution_state": {"const": "BLOCKED"}}, "required": ["execution_state"]},
+          "then": {"properties": {"open_items": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"execution_state": {"const": "STALE"}}, "required": ["execution_state"]},
+          "then": {"properties": {"stale_scope": {"minItems": 1}}}
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {"const": "CLOSED"},
+              "review_verdict": {"enum": ["PASS", "REVISE", "REJECT"]}
+            },
+            "required": ["execution_state", "review_verdict"]
+          },
+          "then": {
+            "properties": {
+              "outputs": {"minItems": 1},
+              "review_refs": {"minItems": 1},
+              "actual_readback_refs": {"minItems": 1},
+              "exit_condition_state": {"const": "SATISFIED"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {"const": "CLOSED"},
+              "consequential_knowledge_mount_required": {"const": true}
+            },
+            "required": ["execution_state", "consequential_knowledge_mount_required"]
+          },
+          "then": {"properties": {"knowledge_mount_refs": {"minItems": 1}}}
+        }
+      ]
     },
     "processInstance": {
       "type": "object",
@@ -308,6 +368,7 @@
         "owner",
         "current_baseline",
         "execution_state",
+        "professional_verdict",
         "claim_ceiling",
         "stage_instances",
         "active_interface_refs",
@@ -331,7 +392,8 @@
         "domain": {"$ref": "#/$defs/nonEmptyString"},
         "owner": {"$ref": "#/$defs/nonEmptyString"},
         "current_baseline": {"$ref": "#/$defs/nonEmptyString"},
-        "execution_state": {"enum": ["NOT_STARTED", "READY", "IN_PROGRESS", "BLOCKED", "CURRENT", "STALE", "CLOSED", "SUPERSEDED"]},
+        "execution_state": {"$ref": "#/$defs/executionState"},
+        "professional_verdict": {"$ref": "#/$defs/professionalVerdict"},
         "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
         "stage_instances": {
           "type": "array",
@@ -344,7 +406,26 @@
         "stale_scope": {"$ref": "#/$defs/stringArray"},
         "reopen_events": {"$ref": "#/$defs/stringArray"},
         "last_updated": {"$ref": "#/$defs/nonEmptyString"}
-      }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"execution_state": {"const": "BLOCKED"}}, "required": ["execution_state"]},
+          "then": {"properties": {"open_items": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"execution_state": {"const": "STALE"}}, "required": ["execution_state"]},
+          "then": {"properties": {"stale_scope": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"execution_state": {"const": "CLOSED"}}, "required": ["execution_state"]},
+          "then": {
+            "properties": {
+              "stage_instances": {"minItems": 1},
+              "professional_receipt_refs": {"minItems": 1}
+            }
+          }
+        }
+      ]
     }
   },
   "oneOf": [
