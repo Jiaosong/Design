@@ -1,0 +1,17 @@
+{
+  "schema": "OLEANDER_P9_EXECUTABLE_REGRESSION_EVALS_v0.1",
+  "status": "DRAFT_EXECUTABLE_REGRESSION_COMPANION_NOT_CURRENT",
+  "cases": [
+    {"id":"P9-REG-001","input":"G9 replay ends as a lesson summary with no explicit existing-owner action, new-object decision or rejection.","expected":["P9/G9-RP02:FAIL"]},
+    {"id":"P9-REG-002","input":"A matching Current canonical owner is found, but automation creates a new peer object with no split/collision justification.","expected":["P9/OWN-RP03:FAIL"]},
+    {"id":"P9-REG-003","input":"Cross-domain method transfer is claimed but the transfer statement omits NOT-BEYOND and REVALIDATE-WHEN boundaries.","expected":["P9/TRF-RP02:FAIL"]},
+    {"id":"P9-REG-004","input":"Direct project replay and contextual external analogy are flattened to the same evidence strength.","expected":["P9/CLM-RP02:FAIL"]},
+    {"id":"P9-REG-005","input":"A generalized method rule is admitted without counterexample or explicit does-not-establish boundary.","expected":["P9/BOUND-RP01:FAIL"]},
+    {"id":"P9-REG-006","input":"A safe additive patch candidate automatically writes canonical content and promotes Current without explicit authority.","expected":["P9/PATCH-RP02:FAIL"]},
+    {"id":"P9-REG-007","input":"R1 and R2 are NOT_APPLICABLE, so K1-K5/B1/provenance/lifecycle/IR are skipped.","expected":["P9/GATE-RP02:FAIL"]},
+    {"id":"P9-REG-008","input":"Bilingual parity passes for the new candidate block and is used to self-grant B1 PASS to the entire existing owner body.","expected":["P9/B1-RP02:FAIL"]},
+    {"id":"P9-REG-009","input":"Producer-side G9 synthesis grants itself Independent Review PASS.","expected":["P9/IR-RP01:FAIL"]}
+  ],
+  "coverage_rule": "EVERY_EXECUTABLE_P9_RULE_MUST_APPEAR_IN_AT_LEAST_ONE_EXPECTED_REGRESSION_REFERENCE",
+  "promotion_effect": "NONE_DRAFT_TEST_CORPUS_ONLY"
+}
