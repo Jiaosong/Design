@@ -837,6 +837,94 @@
       "machine_may_validate_encoded_binding_not_invent_authority_or_competence": true
     }
   },
+  "independent_review_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_REVIEW_AUTHORITY_REGISTRY_STATE_FAMILY_OR_VERDICT_SCHEMA",
+    "projection_only_not_replacement_owner_review_contract": true,
+    "owner_native_review_and_verdict_semantics_remain_authoritative": true,
+    "central_reviewer_registry_or_review_state_family_forbidden": true,
+    "source_refs": [
+      "00-governance/complex-project-master-runtime-v1.0.md",
+      "00-governance/OLEANDER_INDEPENDENT_DESIGN_VERDICT_POLICY_v1.0.md",
+      "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "00-governance/professional-domain-process-contract-v1.0.md",
+      "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+    ],
+    "review_input_required_resolvable_fields": [
+      "project_or_scope_id",
+      "producer_id",
+      "reviewer_id",
+      "review_input_artifact_id",
+      "review_input_hash_or_commit",
+      "reviewer_independence_state",
+      "review_scope_or_claim_ref",
+      "owner_native_verdict_or_gate_ref",
+      "does_not_prove"
+    ],
+    "owner_native_execution_receipt_fields": [
+      "producer_id",
+      "reviewer_id",
+      "review_input_artifact_id",
+      "review_input_hash_or_commit",
+      "reviewer_independence_state",
+      "evidence_gate",
+      "design_quality_gate",
+      "promotion_authority"
+    ],
+    "reviewer_independence_states": [
+      "INDEPENDENT",
+      "PARTIALLY_INDEPENDENT",
+      "NOT_INDEPENDENT",
+      "NOT_REQUIRED"
+    ],
+    "triggered_review_or_gate_classes": [
+      "DESIGN_QUALITY",
+      "PROFESSIONAL_DOMAIN",
+      "INTEGRATION",
+      "TECHNICAL_OR_ENGINEERING",
+      "EVIDENCE_OR_TRUTH",
+      "STATUTORY_OR_LICENSED_WHERE_APPLICABLE"
+    ],
+    "material_review_revalidation_triggers": [
+      "REVIEW_INPUT_IDENTITY_OR_HASH",
+      "REVIEW_SCOPE_OR_CLAIM",
+      "DECISION_AUTHORIZATION_OR_COMPETENCE_OR_INDEPENDENCE_BASIS",
+      "MATERIAL_DEPENDENCY_OR_ACCEPTANCE_BASIS_CONSUMED_BY_REVIEW"
+    ],
+    "machine_may_validate": [
+      "FIELD_PRESENCE",
+      "REFERENCE_RESOLUTION",
+      "EXACT_INPUT_HASH_BINDING",
+      "ENCODED_PRODUCER_REVIEWER_IDENTITY_DIFFERENCE",
+      "ENCODED_STALENESS_TRIGGER"
+    ],
+    "machine_may_not_award": [
+      "OWNER_NATIVE_REVIEW_VERDICT_REQUIRING_HUMAN_JUDGMENT",
+      "DESIGN_KEEP",
+      "PROFESSIONAL_PASS_WHERE_JUDGMENT_REQUIRED",
+      "INTEGRATION_PASS_WHERE_JUDGMENT_REQUIRED",
+      "HUMAN_PROMOTION",
+      "STATUTORY_OR_LICENSED_APPROVAL"
+    ],
+    "independent_identity_difference_is_required_but_not_sufficient": true,
+    "producer_self_check_cannot_satisfy_independent_review": true,
+    "different_tool_session_or_surface_does_not_prove_independence": true,
+    "independence_does_not_prove_competence_or_authorization": true,
+    "review_must_bind_exact_input_identity_and_hash_or_commit": true,
+    "review_pass_does_not_auto_apply_to_changed_input": true,
+    "review_domain_pass_cannot_substitute_for_other_triggered_domain": true,
+    "unrelated_file_timestamp_or_nonconsumed_change_does_not_stale_review": true,
+    "reopen_only_affected_review_scope": true,
+    "stale_or_unbound_review_uses_existing_blocker_reconciliation_semantics": true,
+    "unresolved_runtime_outcomes": [
+      "BLOCKED",
+      "RECONCILIATION_REQUIRED"
+    ],
+    "review_binding_valid_does_not_prove_verdict_pass": true,
+    "review_result_is_not_promotion": true,
+    "independent_review_is_not_statutory_approval": true,
+    "resolvable_fields_do_not_require_duplicate_central_persistence": true
+  },
   "recovery": {
     "sequence": [
       "DETECT",
@@ -1419,7 +1507,14 @@
     "G9_KNOWLEDGE_LIFECYCLE_DISPOSITION_REMAINS_WITH_KNOWLEDGE_OWNER",
     "CURRENT_KNOWLEDGE_DOES_NOT_AUTO_GRANT_OE3",
     "G9_EVOLUTION_CANDIDATE_CANNOT_MUTATE_LIVE_RUNTIME",
-    "PROJECT_REOPEN_AND_REUSABLE_KNOWLEDGE_PROMOTION_REMAIN_SEPARATE"
+    "PROJECT_REOPEN_AND_REUSABLE_KNOWLEDGE_PROMOTION_REMAIN_SEPARATE",
+    "INDEPENDENT_REVIEW_BINDS_EXACT_INPUT_IDENTITY_AND_HASH_OR_COMMIT",
+    "PRODUCER_SELF_CHECK_IS_NOT_INDEPENDENT_REVIEW",
+    "INDEPENDENCE_DOES_NOT_PROVE_COMPETENCE_OR_AUTHORIZATION",
+    "REVIEW_CLASS_PASS_DOES_NOT_SUBSTITUTE_FOR_OTHER_TRIGGERED_REVIEW",
+    "MATERIAL_REVIEW_CHANGE_STALES_ONLY_AFFECTED_REVIEW_SCOPE",
+    "MACHINE_CANNOT_AWARD_HUMAN_REVIEW_VERDICT",
+    "INDEPENDENT_REVIEW_BOUNDARY_DOES_NOT_CREATE_REVIEWER_REGISTRY_OR_STATE_FAMILY"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

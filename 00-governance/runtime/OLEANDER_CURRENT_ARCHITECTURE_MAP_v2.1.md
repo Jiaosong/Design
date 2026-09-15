@@ -1195,6 +1195,13 @@ The system is considered **architecture-control runnable** only when all of the 
 54. Knowledge lifecycle disposition remains with the existing Knowledge owner and research/content/integrity contracts; G9 candidate intake does not create a second Knowledge authority;
 55. even knowledge promoted to `CURRENT` still requires task/claim-scoped Operational Eligibility before consequential downstream use;
 56. G9/Evolution candidate routing may not directly mutate the live Knowledge corpus, active runtime or professional owner.
+57. an Independent Review that is required for a consequential claim must bind the exact reviewed artifact identity plus hash/commit (or the owner-native equivalent immutable revision identity), not merely a filename, branch name, screenshot or producer narrative;
+58. producer self-check, a different tool/session, or a different execution surface does not establish reviewer independence; distinct producer/reviewer identity is necessary where encoded but is not by itself competence, authorization or independence proof;
+59. Design Quality, Professional Domain, Integration, Technical/Engineering, Evidence/Truth and Statutory/Licensed review/gate classes remain orthogonal; PASS in one triggered class cannot substitute for another;
+60. a material change to the reviewed input, claim/scope, authorization/competence/independence basis, or a dependency/acceptance basis consumed by that review stales only the affected review scope and requires re-readback/review before that verdict is consumed again;
+61. unrelated file/timestamp/branch activity does not stale a review merely by chronology, and review refresh must not become a whole-system reset when affected scope is known;
+62. machines may validate encoded review bindings, identity separation and staleness triggers but may not award the owner-native human/professional review verdict, Design KEEP, Professional PASS, Integration judgment, Human Promotion or statutory approval;
+63. the Independent Review boundary is a control projection over existing review owners/receipts and may not create a central reviewer registry, second review authority, universal review state family or replacement verdict schema.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1892,3 +1899,85 @@ When the reusable lesson concerns OLEANDER runtime/process/schema/validator beha
 `G9 EVOLUTION CANDIDATE ≠ CURRENT RUNTIME`.
 
 `KNOWLEDGE CURRENT ≠ PROJECT DESIGN PASS`.
+
+---
+
+## 34｜Independent Review Binding & Freshness Boundary
+
+`R-I` already owns Actual Readback & Review and the domain owners already define what must be reviewed and what verdict vocabulary is legal. v2.1 therefore compiles only the **binding/freshness boundary** needed to stop a stale or self-produced review from being consumed as if it were a current independent decision.
+
+This is a control projection over existing review evidence. It is **not** a reviewer registry, reviewer-assignment database, new review authority, universal review state machine or replacement verdict schema.
+
+### 34.1 Independent review binds an exact reviewed input
+
+Where Independent Review is required, the runtime must be able to resolve the current project/scope plus:
+
+`producer_id / reviewer_id / review_input_artifact_id / review_input_hash_or_commit / reviewer_independence_state / review_scope_or_claim_ref / owner_native_verdict_or_gate_ref / does_not_prove`.
+
+The exact owner-native carrier remains authoritative. For the common Execution Receipt, current native review fields already include `producer_id`, `reviewer_id`, `review_input_artifact_id`, `review_input_hash_or_commit`, `reviewer_independence_state`, `evidence_gate`, `design_quality_gate` and `promotion_authority`.
+
+The architecture does not require a duplicate central review record when those facts are already resolvable without loss.
+
+`REVIEW OF ARTIFACT A@HASH-1 ≠ REVIEW OF ARTIFACT A@HASH-2`.
+
+A matching filename, branch, PR number, screenshot, exported derivative or producer explanation is not sufficient to carry a prior verdict onto materially changed native content unless the owner-native review contract explicitly establishes equivalent identity.
+
+### 34.2 Independence is necessary where required, but identity difference is not sufficient
+
+Current owner contracts already prohibit producer self-check from satisfying Independent Review where independence is required.
+
+The architecture therefore preserves these separations:
+
+`PRODUCER SELF-CHECK ≠ INDEPENDENT REVIEW`.
+
+`DIFFERENT TOOL / CHAT / SESSION / SURFACE ≠ INDEPENDENT REVIEW`.
+
+`REVIEWER_ID != PRODUCER_ID ≠ COMPETENCE PROVEN ≠ AUTHORIZATION PROVEN`.
+
+A title such as “professional reviewer”, a different model, a different worker, or a PR-review UI event is not by itself independence or competence evidence. Decision authorization, professional competence and any statutory/legal authority continue to resolve through their existing owners and the §18.1 authorization projection.
+
+### 34.3 Triggered review classes do not substitute for one another
+
+The architecture does not collapse review/gate classes into one PASS. At minimum, the following remain distinct when triggered:
+
+- Design Quality / Design Review;
+- Professional Domain review/readback;
+- Cross-Disciplinary Integration judgment;
+- Technical / Engineering review;
+- Evidence / Truth review;
+- Statutory / Licensed authority review or approval where applicable.
+
+`DESIGN KEEP ≠ PROFESSIONAL PROCESS PASS ≠ INTEGRATION PASS ≠ TECHNICAL PASS ≠ EVIDENCE PASS ≠ STATUTORY APPROVAL`.
+
+An independent reviewer may be relevant to more than one class only when the relevant owner contracts and authorization/competence basis actually cover each class. A single review record cannot silently widen its claim boundary.
+
+### 34.4 Material change stales only the affected review scope
+
+An existing Independent Review must be revalidated before downstream consumption when a material change affects any basis the review actually consumed, including:
+
+- reviewed artifact identity or hash/commit;
+- review scope or promoted claim;
+- decision authorization, reviewer competence or independence basis;
+- a material dependency / interface acceptance / authority basis consumed by the review.
+
+Chronology alone is not a dependency relation. An unrelated file edit, timestamp change, branch movement or new receipt elsewhere does not stale a review unless a real reviewed-input / claim / authorization / dependency relation is affected.
+
+When the affected scope is known, only that review scope reopens. Unaffected reviews and verified work remain valid. If the current verdict cannot be proven to bind the current input/scope, the dependent claim fails closed through existing `BLOCKED / RECONCILIATION_REQUIRED`, stale/reopen and owner-native HOLD semantics rather than a new review-state family.
+
+### 34.5 Machine validation stops before the verdict
+
+Machines may validate encoded facts such as field presence, ref resolution, exact input-hash binding, producer/reviewer identity difference and declared staleness triggers.
+
+Machines may not infer the human/professional verdict from those checks. In particular they cannot self-award:
+
+- Design KEEP / DQ3-DQ5;
+- a Professional Domain PASS that requires judgment;
+- Integration PASS where judgment is required;
+- Human Promotion;
+- statutory/licensed approval.
+
+`REVIEW BINDING VALID ≠ REVIEW VERDICT PASS`.
+
+`INDEPENDENT REVIEW PASS ≠ PROMOTED`.
+
+`INDEPENDENT REVIEW ≠ STATUTORY APPROVAL`.
