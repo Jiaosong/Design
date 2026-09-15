@@ -1189,6 +1189,12 @@ The system is considered **architecture-control runnable** only when all of the 
 48. PR / CI / merge / persistence / sync success do not independently grant Promotion, and Promotion does not independently prove statutory approval or release;
 49. a confirmed owner-native Promotion is not erased merely because a downstream mirror is `UNSYNCED / PARTIAL / DIVERGED`; that failure blocks only the affected sync/cross-platform-Current claim unless the canonical authority transition itself is uncertain;
 50. Promotion/persistence/sync sequencing is a control projection over existing owners and may not create a second Promotion state family, ledger or authority surface.
+51. G9 captures bounded lesson/evolution candidates but cannot itself award `CURRENT` knowledge, `KI4`, `OE3` or a universal rule;
+52. observed outcome, repeated pattern and causal hypothesis remain distinct; reusable routing requires an explicit transfer boundary, uncertainty and counterevidence treatment;
+53. project-specific feedback/reopen, reusable Knowledge validation and runtime/process Evolution are separate routes and none automatically implies the others;
+54. Knowledge lifecycle disposition remains with the existing Knowledge owner and research/content/integrity contracts; G9 candidate intake does not create a second Knowledge authority;
+55. even knowledge promoted to `CURRENT` still requires task/claim-scoped Operational Eligibility before consequential downstream use;
+56. G9/Evolution candidate routing may not directly mutate the live Knowledge corpus, active runtime or professional owner.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1782,3 +1788,107 @@ R-J retains its existing owner-native failure codes and sync vocabulary. In part
 `PROMOTED ≠ RELEASED ≠ STATUTORY APPROVAL`.
 
 The Skill Capability contract's Skill-lifecycle `promotion_record_fields` remain scoped to GitHub execution-owner lifecycle. They are **not** the Project Promotion schema and must not be promoted into one by this architecture projection.
+
+---
+
+## 33｜G9 / Knowledge Return Validation Boundary
+
+`R-K` is the bounded return path from observed project reality into existing Knowledge / Evolution owners. It is **candidate intake and routing**, not a super-authority that can turn project experience into reusable truth.
+
+The architecture keeps three consequences separate when a meaningful post-use / post-test / post-delivery observation appears:
+
+1. **Project feedback / reopen** — a real observed failure or changed condition may reopen an affected project conclusion through the existing dependency/change/recovery controls;
+2. **Reusable Knowledge candidate** — a bounded lesson may be routed to the existing Knowledge owner for research/content/object/lifecycle validation;
+3. **Evolution candidate** — a reusable runtime/process improvement may enter the existing Evolution Candidate contract for isolated evaluation.
+
+One observation may legitimately produce more than one route, but no route inherits the authority of another.
+
+### 33.1 Observation is not causal proof
+
+G9 begins from actual observed evidence and preserves the distinction:
+
+`intended relation / baseline → observed outcome → difference / pattern → causal hypothesis + uncertainty → repair → retest → counterexamples → transfer boundary → lesson candidate`.
+
+Hard separations:
+
+`OBSERVED OUTCOME ≠ CAUSAL EXPLANATION`.
+
+`REPEATED PATTERN ≠ UNIVERSAL RULE`.
+
+`SUCCESSFUL PROJECT ≠ TRANSFERABILITY PROVEN`.
+
+`FAILED PROJECT ≠ PRIOR KNOWLEDGE AUTOMATICALLY INVALID`.
+
+The candidate must preserve its project/context scope, measurement/readback limits, unresolved causes, negative evidence and counterexamples. If the causal story is unsupported, the existing `CAUSAL_STORY_UNSUPPORTED` boundary applies; if transferability is unknown, the finding remains Project / Practice / Evidence / Provenance rather than being generalized by prose.
+
+### 33.2 Candidate handoff to the existing Knowledge owner
+
+For a proposed reusable lesson, the architecture must be able to resolve — without forcing a duplicate central G9 database — the observed-outcome evidence, intended baseline/relation, project/context scope, causal hypothesis/uncertainty, repair/retest evidence where applicable, counterexamples, transfer boundary, proposed reusable form/role, target Knowledge owner, validation route and `does_not_prove` boundary.
+
+The target owner then applies existing Knowledge controls. G9 does **not** award their results.
+
+For formal reusable knowledge, the current Professional Knowledge Content & Research Standard already separates:
+
+- `R1` Research Conduct;
+- `R2` Study-Type Reporting;
+- `K1` Knowledge Content;
+- `K2` Knowledge Object;
+- `K3` Graph Semantics;
+- `K4` Metadata / Provenance / Retrieval;
+- `K5` Lifecycle / Reuse / Staleness;
+- `B1` bilingual semantic parity when applicable;
+- `IR` independent review when applicable.
+
+Its own canonical-current rule remains owner-native. G9 cannot bypass those gates or reinterpret a project receipt as their PASS evidence.
+
+Knowledge lifecycle remains the existing bounded family:
+
+`WORKING / TEMP → CANDIDATE → CURRENT | SUPPORT | PROVENANCE | SUPERSEDED | REJECTED | DELETE_CANDIDATE`.
+
+The lifecycle disposition is made by the existing Knowledge/Authority owner. `R-K` may propose the candidate and route evidence; it may not create a parallel `G9_CURRENT`, silently overwrite an existing L4/L5 owner, or create a duplicate knowledge tree.
+
+### 33.3 Content, integrity and Operational Eligibility remain separate
+
+A reusable lesson that reaches a Knowledge candidate still passes the existing separation:
+
+`research/content/object validation → corpus/lifecycle disposition → Content Remediation → Knowledge Integrity → task/claim-scoped Operational Eligibility`.
+
+These dimensions do not collapse:
+
+`KNOWLEDGE CONTENT PASS ≠ KI4 VERIFIED`.
+
+`CURRENT KNOWLEDGE ≠ OE3 ELIGIBLE FOR EVERY CLAIM`.
+
+`G9 CANDIDATE ≠ KI4 ≠ OE3`.
+
+`OE3` is resolved only later for a concrete task/claim under the Knowledge Integrity & Operational Mount contract. A successful G9 validation cannot pre-authorize every future project or professional decision.
+
+### 33.4 Project reopen and reusable promotion are independent
+
+Real use may expose a material failure in a previously locked/promoted project conclusion. The affected project conclusion may reopen immediately through existing Project/Control/Recovery dependencies when the evidence justifies it; the team does **not** need to wait for reusable Knowledge promotion before correcting the project.
+
+Conversely, reopening a project conclusion does not prove that a reusable rule should change. Knowledge revision still requires the Knowledge owner's evidence, transfer and validation process.
+
+This keeps two questions separate:
+
+`WHAT MUST THIS PROJECT REOPEN NOW?`
+
+versus
+
+`WHAT, IF ANYTHING, IS TRANSFERABLE ENOUGH TO CHANGE REUSABLE KNOWLEDGE?`
+
+### 33.5 Evolution route remains subordinate
+
+When the reusable lesson concerns OLEANDER runtime/process/schema/validator behavior rather than domain Knowledge, `R-K` may propose an `EVOLUTION_CANDIDATE_REF`. The existing Evolution Candidate contract retains its invariants:
+
+- one project success does not universalize a rule;
+- G9 is candidate intake, not super-authority;
+- candidate evaluation cannot mutate its live baseline;
+- eval PASS is not human Promotion;
+- target owner retains semantic authority.
+
+`G9 LESSON CANDIDATE ≠ REUSABLE KNOWLEDGE`.
+
+`G9 EVOLUTION CANDIDATE ≠ CURRENT RUNTIME`.
+
+`KNOWLEDGE CURRENT ≠ PROJECT DESIGN PASS`.
