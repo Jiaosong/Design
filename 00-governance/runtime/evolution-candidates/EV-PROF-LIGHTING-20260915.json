@@ -1,0 +1,127 @@
+{
+  "candidate_id": "EV-PROF-LIGHTING-20260915",
+  "state": "EV3_EVAL_PASSED",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "R-E Professional Domain Execution Process / domain-native Lighting Design owner",
+  "target_ref": ["00-governance/lighting-design-process-v1.0.md", "00-governance/schemas/lighting-design-process.v1.json"],
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture Map v2.1 through PR #634; Lighting Design remains DOMAIN PROCESS OPEN",
+    "authority_fingerprint": "OLEANDER-CURRENT-ARCHITECTURE-CONTROL@2.1|main@db786e3af5a9ecca03c0b841c47521d1708f2dcd",
+    "source_hash_or_commit": "db786e3af5a9ecca03c0b841c47521d1708f2dcd",
+    "frozen_at": "2026-09-15T16:04:00+08:00"
+  },
+  "trigger_evidence": [
+    "User instruction: continue knowledge content and push/synchronize without pollution",
+    "Current Architecture Map v2.1 explicitly lists Lighting Design as DOMAIN PROCESS OPEN",
+    "Existing Building Physics/light environment, A33 lighting SOURCE, DALI-2 and emergency-lighting objects remain R-B knowledge/system owners rather than an adopted Lighting process",
+    "SLL/CIBSE current professional basis supports a domain-native Lighting process spanning design, technical resolution, controls, commissioning and in-use readback",
+    "PR #631 requires relation-scoped compatibility impact and immutable historical receipts",
+    "PR #633 separates machine Promotion eligibility, owner-native Promotion transition and synchronization; PR/CI/merge/sync do not grant Promotion",
+    "PR #634 binds R-K/G9 to bounded candidate intake/routing only: observation is not causal proof, transfer boundary/counterevidence are required before reusable Knowledge routing, Current Knowledge still needs task-scoped OE, and G9 cannot create a duplicate Knowledge tree or mutate live runtime"
+  ],
+  "hypothesis": "Lighting Design can become an authentic domain-native R-E process while consuming existing R-B knowledge/system owners and preserving R-F Integration, fire/statutory authority, compatibility, Promotion/Sync and G9 Knowledge Return boundaries without creating duplicate knowledge or universalizing project observations.",
+  "mutation_scope": [
+    "retain candidate Lighting Design process and machine definition",
+    "retain CI validation for the candidate",
+    "reuse existing Lighting-related knowledge/system owners as mounts/interfaces",
+    "permit only clearly labelled CANDIDATE / NOT CURRENT routing annotations on existing knowledge owners before adoption",
+    "do not convert project observations or candidate routing into reusable Current Knowledge without the existing Knowledge validation route",
+    "do not modify Current Architecture Map Lighting maturity before EV4 independent review and authorized adoption",
+    "preserve all earlier EV3 results and review packets as provenance after Current drift"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      ".github/workflows/ai-governance-evals.yml",
+      "GitHub Actions run 34993083748 / AI Governance Evals / SUCCESS",
+      "GitHub Actions run 34993083709 / OLEANDER Project Anti-Pollution Gate / SUCCESS",
+      "GitHub Actions run 34993083857 / OLEANDER Blender Runtime Contract / SUCCESS"
+    ],
+    "real_case_refs": [
+      "Notion 3acb86be-5c47-81b8-92d1-eeffb3c2577a Building Physics/light-environment routing",
+      "Notion 3aeb86be-5c47-814b-8c2a-fefe836583bf A33 GB/T 50034-2024 SOURCE",
+      "Notion 3c1b86be-5c47-8127-94dc-ca880edc6a9a DALI-2 system evidence",
+      "Notion 3c2b86be-5c47-81ba-ba3d-d5c42d2bdd19 emergency-lighting system evidence",
+      "SLL LG23 2026 / Code for Lighting / Lighting Handbook / Commissioning Code L / Integrative Lighting Position Statement"
+    ],
+    "counterexample_refs": [
+      "lux compliance treated as Lighting Design",
+      "Lighting collapsed into Electrical/MEP",
+      "render or datasheet treated as field truth",
+      "DALI/controller state treated as actual spatial lighting output",
+      "emergency-lighting interface treated as fire approval",
+      "integrative/circadian metric treated as proven health outcome",
+      "project observation or repeated pattern generalized without causal/transfer evidence",
+      "candidate Notion annotation presented as Current Knowledge or adopted professional process",
+      "G9 used to award KI4/OE3 or mutate live Knowledge",
+      "PR/CI/merge/persistence/sync treated as Promotion",
+      "machine/schema PASS treated as professional PASS or Design KEEP"
+    ],
+    "regression_refs": [
+      "OLEANDER Current Architecture Map v2.1",
+      "Professional Domain Process Contract v1.0",
+      "Knowledge Integrity / Operational Mount authority",
+      "Professional Knowledge Content & Research Standard R1/R2/K1-K5/B1/IR",
+      "Cross-Disciplinary Integration owner boundaries",
+      "PR #628 transaction reconciliation",
+      "PR #629 decision authorization",
+      "PR #630 observability/recovery",
+      "PR #631 compatibility impact",
+      "PR #633 Promotion/Persistence/Sync boundary",
+      "PR #634 G9 Knowledge Return boundary"
+    ],
+    "metrics": ["professional-process schema validity", "native stage/output/readback coverage", "Lighting versus MEP/fire/knowledge authority separation", "relation-scoped compatibility and historical-receipt immutability", "candidate synchronization cannot manufacture Current/Promotion/OE", "G9 observation/causation/transfer boundary preserved", "no duplicate knowledge tree, R-F truth or runtime state family", "no architecture-control or namespace pollution"],
+    "acceptance_thresholds": [
+      "Lighting definition passes the existing Professional Domain Process validator on main@db786e3a",
+      "Current Architecture Control including PR #634 remains PASS",
+      "AI Governance, Anti-Pollution and Blender Runtime Contract remain PASS",
+      "existing R-B knowledge/system owners remain authoritative for their own claims",
+      "pre-adoption Notion writes are candidate-routing annotations only and do not claim Current Knowledge, OE, professional adoption or Promotion",
+      "independent review on the exact fresh EV3 revision has no blocking finding before adoption"
+    ],
+    "result": "MACHINE_EVAL_PASSED_ON_main_db786e3a; LIGHTING_DEFINITION_VALIDATION_SUCCESS; AI_GOVERNANCE_SUCCESS; ANTI_POLLUTION_SUCCESS; BLENDER_RUNTIME_CONTRACT_SUCCESS; G9_KNOWLEDGE_RETURN_BOUNDARY_PRESERVED; INDEPENDENT_REVIEW_NOT_RUN"
+  },
+  "constraints": {"semantic_purpose_preserved": true, "no_compression_no_loss": true, "authority_boundary_preserved": true, "user_constraints_preserved": true, "no_direct_current_mutation": true, "no_false_promotion": true},
+  "comparison": {
+    "baseline_result": "Lighting remains DOMAIN PROCESS OPEN on main@db786e3a; G9 restricts knowledge return to bounded candidate routing.",
+    "candidate_result": "Lighting professional-process candidate validates on the exact G9-bounded Current while consuming existing Knowledge owners without replacing or promoting them.",
+    "regressions": [],
+    "quality_delta": "POSITIVE_MACHINE_CONTRACT_DELTA_WITH_G9_BOUNDARY: domain-native Lighting stages, outputs, controls/daylight, commissioning/readback and knowledge-mount semantics validate without duplicate knowledge authority.",
+    "reliability_delta": "POSITIVE_MACHINE_VALIDATION_DELTA: Lighting validator, Current architecture control through #634, Anti-Pollution and runtime contracts pass on the frozen baseline.",
+    "cost_latency_delta": "Bounded re-evaluation and routing annotation cost; no new knowledge tree/runtime/ledger.",
+    "decision_basis": "Machine evaluation supports exact-revision independent review and bounded candidate-routing synchronization only. EV4/EV5/adoption remain blocked."
+  },
+  "independent_review": {
+    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "NOT_YET_ESTABLISHED",
+    "review_input_revision": "SUCCESSOR_PACKET_REQUIRED_FOR_EXACT_POST_EV3_HEAD_ON_main_db786e3a",
+    "verdict": "NOT_RUN",
+    "blocking_findings": ["Existing v001 packet targets an earlier Current baseline", "Fresh exact-revision independent review required before EV4/EV5"]
+  },
+  "promotion": {"eligible": false, "human_decision_required": true, "decision": "PENDING", "decision_by": null, "decision_at": null},
+  "migration": {
+    "compatibility_class": "BACKWARD_COMPATIBLE_EXTENSION",
+    "affected_carriers": ["AI Governance professional-process validation", "candidate-routing annotations on existing Lighting knowledge owners before adoption", "R-E professional-domain registry/view and Current Architecture maturity only after authorized adoption"],
+    "affected_scope": "Prospective Lighting professional-process consumers and explicit candidate-routing annotations only; unrelated Current Knowledge, historical receipts and professional processes remain unaffected.",
+    "migration_steps": ["fresh machine/regression/anti-pollution evaluation completed on main@db786e3a", "preserve prior EV3/packet evidence as provenance", "issue successor exact-revision independent-review packet", "append candidate-routing annotations to existing Lighting knowledge owners with CANDIDATE / NOT CURRENT / NO OE PROMOTION labels", "perform eligible independent review", "obtain authorized adoption transition/readback before any Current maturity sync"],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "main@db786e3af5a9ecca03c0b841c47521d1708f2dcd with Lighting Design DOMAIN PROCESS OPEN",
+    "rollback_action": "Reject/close isolated candidate and remove only candidate-routing annotations if necessary; preserve existing Knowledge owners and historical evidence.",
+    "rollback_test": "Current architecture control through G9 Knowledge Return and existing professional/knowledge owners remain unchanged and valid.",
+    "provenance_ref": "PR #632; earlier EV3 runs and v001 packet retained as provenance"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After adoption, monitor first Lighting invocation, interface use, commissioning readback and any proposed G9 lesson return.",
+    "regression_signals": ["candidate annotation presented as Current", "project observation generalized without transfer evidence", "G9 awards KI4/OE3", "Lighting collapsed into MEP", "sync treated as Promotion", "Current maturity exceeds evidence"],
+    "reopen_rule": "Reopen only affected Lighting consumers or knowledge candidates through their existing owners; preserve unrelated valid state.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": ["DESIGN_KEEP", "PROFESSIONAL_PASS", "INTEGRATION_PASS", "FIRE_STATUTORY_APPROVAL", "HEALTH_OUTCOME", "CURRENT_KNOWLEDGE", "KI4", "OE3", "PROJECT_PROMOTION", "CURRENT_PROCESS_ADOPTION", "SYNC_EQUALS_PROMOTION", "UNIVERSAL_TRANSFERABILITY"]
+}
