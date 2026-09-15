@@ -1,0 +1,27 @@
+{
+  "schema": "OLEANDER_P9_EXECUTABLE_BINDING_v0.1",
+  "status": "DRAFT_EXECUTABLE_COMPANION_NOT_CURRENT",
+  "semantic_owners": [
+    "OLEANDER_G9_KNOWLEDGE_DISTILLATION_ADMISSION_CONTRACT_v1.0",
+    "OLEANDER_KNOWLEDGE_CLASSIFICATION_CONTRACT_v1.1_DRAFT",
+    "PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0"
+  ],
+  "semantic_companion": "OLEANDER_P9_KNOWLEDGE_ADMISSION_MATRICES_v1.1.json",
+  "implementation": "validate_p9_admission.py",
+  "deterministic_self_test": "test_p9_admission.py",
+  "regression_corpus": "OLEANDER_P9_EXECUTABLE_REGRESSION_EVALS_v0.1.json",
+  "replay_sources": ["RP-TP9-G9-SUPPORT-AUTHORITY-20260915"],
+  "principle": "EXECUTABLE_COMPANION_DOES_NOT_BECOME_SECOND_SEMANTIC_OWNER",
+  "executable_rules": [
+    "P9/G9-RP02",
+    "P9/OWN-RP03",
+    "P9/TRF-RP02",
+    "P9/CLM-RP02",
+    "P9/BOUND-RP01",
+    "P9/PATCH-RP02",
+    "P9/GATE-RP02",
+    "P9/B1-RP02",
+    "P9/IR-RP01"
+  ],
+  "promotion_effect": "NONE_DRAFT_EXECUTABLE_COMPANION_ONLY"
+}
