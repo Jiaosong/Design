@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "kind": "ARCHITECTURE_PROFESSIONAL_SOURCE_STAGE_MAP",
+  "status": "MATRIX_COMPANION_ONLY",
+  "matrix_owner_ref": "00-governance/architecture-professional-domain-interface-matrix-v1.0.md",
+  "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+  "architecture_process_ref": "00-governance/architecture-design-development-process-v1.0.md",
+  "structural_process_ref": "00-governance/structural-engineering-design-process-v1.0.md",
+  "mep_process_ref": "00-governance/building-services-mep-design-process-v1.0.md",
+  "purpose": "Resolve real Structural Engineering and Building Services/MEP professional source-stage references for Architecture ADD interfaces without matching by stage number and without duplicating interface maturity/disposition authority.",
+  "rules": [
+    "Architecture ADD stages consume the actual current professional milestone/artifact required for the architectural claim, not a same-number stage.",
+    "A listed source_stage_ref is the normal professional source candidate; project-specific responsibility, criticality, claim ceiling or Acceptance Contract may require an earlier/later current stage or multiple stage artifacts.",
+    "Interface maturity, disposition, coupling, criticality and closure remain owned by Cross-Disciplinary Integration and the Architecture interface matrix.",
+    "A source-stage reference does not award professional PASS, statutory approval, field validity or Design KEEP."
+  ],
+  "mappings": [
+    {
+      "architecture_stage_id": "ADD-00",
+      "architecture_decision": "scope / authority / claim ceiling",
+      "structural_source_stage_refs": ["SE-SPW0", "SE-SPW1"],
+      "structural_expected_sources": ["structural strategic constraints", "initial Structural Responsibility Matrix", "initial Basis of Structural Design"],
+      "mep_source_stage_refs": ["BSP-STRATEGIC", "BSP-BRIEF"],
+      "mep_expected_sources": ["strategic services constraints", "MEP Responsibility / Deliverables Matrix", "Basis of Building Services Design"]
+    },
+    {
+      "architecture_stage_id": "ADD-01",
+      "architecture_decision": "site / context / arrival systems",
+      "structural_source_stage_refs": ["SE-SPW0", "SE-SPW1", "SE-SPW2"],
+      "structural_expected_sources": ["site/existing structural constraints", "survey/geotechnical needs", "foundation/site-structure concept where controlling"],
+      "mep_source_stage_refs": ["BSP-STRATEGIC", "BSP-BRIEF", "BSP-CONCEPT"],
+      "mep_expected_sources": ["utility/service-entry constraints", "site drainage/services basis", "plant/intake/exhaust/site-service concept where controlling"]
+    },
+    {
+      "architecture_stage_id": "ADD-02",
+      "architecture_decision": "brief / users / operational states",
+      "structural_source_stage_refs": ["SE-SPW1"],
+      "structural_expected_sources": ["use/occupancy/load assumptions entering structural brief"],
+      "mep_source_stage_refs": ["BSP-STRATEGIC", "BSP-BRIEF"],
+      "mep_expected_sources": ["operating schedules", "environmental/service performance requirements", "commissioning/operational objectives"]
+    },
+    {
+      "architecture_stage_id": "ADD-03",
+      "architecture_decision": "program / room-level brief",
+      "structural_source_stage_refs": ["SE-SPW1", "SE-SPW2"],
+      "structural_expected_sources": ["special load/span/height constraints", "concept structural zones where room requirements control structure"],
+      "mep_source_stage_refs": ["BSP-BRIEF", "BSP-CONCEPT"],
+      "mep_expected_sources": ["room environmental/service criteria", "wet/exhaust/power/data requirements", "plant/riser adjacency needs"]
+    },
+    {
+      "architecture_stage_id": "ADD-04",
+      "architecture_decision": "adjacency / separation logic",
+      "structural_source_stage_refs": ["SE-SPW2"],
+      "structural_expected_sources": ["concept cores/grids/transfers/openings where adjacency depends on them"],
+      "mep_source_stage_refs": ["BSP-CONCEPT"],
+      "mep_expected_sources": ["wet/service clustering", "exhaust/intake separation", "plant/distribution adjacency concept"]
+    },
+    {
+      "architecture_stage_id": "ADD-05",
+      "architecture_decision": "zoning alternatives / selection",
+      "structural_source_stage_refs": ["SE-SPW2"],
+      "structural_expected_sources": ["structural option consequences", "grid/span/core/transfer/foundation concept", "concept embodied-resource consequence where in claim"],
+      "mep_source_stage_refs": ["BSP-CONCEPT"],
+      "mep_expected_sources": ["system option consequences", "plant/riser/service-zone strategy", "concept load/energy/commissionability consequence"]
+    },
+    {
+      "architecture_stage_id": "ADD-06",
+      "architecture_decision": "multi-flow systems",
+      "structural_source_stage_refs": ["SE-SPW2", "SE-SPW3"],
+      "structural_expected_sources": ["core/stair/void/loading structural constraints", "coordinated openings and structural zones where flow geometry depends on them"],
+      "mep_source_stage_refs": ["BSP-CONCEPT", "BSP-SPATIAL"],
+      "mep_expected_sources": ["service/logistics flow implications", "plant/service access routes", "riser/distribution/access coordination"]
+    },
+    {
+      "architecture_stage_id": "ADD-07",
+      "architecture_decision": "horizontal / vertical circulation",
+      "structural_source_stage_refs": ["SE-SPW2", "SE-SPW3"],
+      "structural_expected_sources": ["stair/core/opening concept", "spatially coordinated structural geometry at critical circulation interfaces"],
+      "mep_source_stage_refs": ["BSP-SPATIAL"],
+      "mep_expected_sources": ["riser/shaft/ceiling/service route geometry", "vertical-transport service requirements where assigned", "access/replacement routes"]
+    },
+    {
+      "architecture_stage_id": "ADD-08",
+      "architecture_decision": "life-safety / accessibility-aware planning",
+      "structural_source_stage_refs": ["SE-SPW2", "SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["structural fire-resistance input interface", "protected/core/opening structural coordination", "technical support/robustness information where architectural closure depends on it"],
+      "mep_source_stage_refs": ["BSP-SPATIAL", "BSP-TECHNICAL"],
+      "mep_expected_sources": ["life-safety MEP reserves/interfaces", "smoke/fire/emergency-power/control interface design where within MEP responsibility"]
+    },
+    {
+      "architecture_stage_id": "ADD-09",
+      "architecture_decision": "service / hygiene / supervision / security",
+      "structural_source_stage_refs": ["SE-SPW3"],
+      "structural_expected_sources": ["service/equipment/support/opening constraints where material"],
+      "mep_source_stage_refs": ["BSP-CONCEPT", "BSP-SPATIAL", "BSP-TECHNICAL"],
+      "mep_expected_sources": ["public-health/service topology", "plant/route/access coordination", "technical hygiene/control/service requirements"]
+    },
+    {
+      "architecture_stage_id": "ADD-10",
+      "architecture_decision": "structure / MEP / envelope fit-back",
+      "structural_source_stage_refs": ["SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["spatially coordinated structural model/drawings", "movement/tolerance/opening/transfer information", "technical structural design where fit-back claim requires it"],
+      "mep_source_stage_refs": ["BSP-SPATIAL", "BSP-TECHNICAL"],
+      "mep_expected_sources": ["coordinated plant/riser/distribution geometry", "builder's-work/access/replacement interfaces", "technical equipment/network/control requirements"]
+    },
+    {
+      "architecture_stage_id": "ADD-11",
+      "architecture_decision": "climate / daylight / acoustics / environment",
+      "structural_source_stage_refs": ["SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["movement/serviceability/facade-support constraints where relevant", "technical structural consequences of environmental strategy"],
+      "mep_source_stage_refs": ["BSP-CONCEPT", "BSP-TECHNICAL"],
+      "mep_expected_sources": ["environmental-system concept", "loads/controls/energy model", "acoustic/vibration and commissioning criteria"]
+    },
+    {
+      "architecture_stage_id": "ADD-12",
+      "architecture_decision": "landscape / external space",
+      "structural_source_stage_refs": ["SE-SPW2", "SE-SPW3"],
+      "structural_expected_sources": ["external structure/retaining/foundation concept where triggered", "coordinated structural/site-level interfaces"],
+      "mep_source_stage_refs": ["BSP-CONCEPT", "BSP-SPATIAL"],
+      "mep_expected_sources": ["site drainage/services concept", "external equipment/service routes", "coordinated utility interfaces"]
+    },
+    {
+      "architecture_stage_id": "ADD-13",
+      "architecture_decision": "FF&E / equipment / room usability",
+      "structural_source_stage_refs": ["SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["equipment loads/support zones/openings", "technical support/fixing requirements where structural"],
+      "mep_source_stage_refs": ["BSP-SPATIAL", "BSP-TECHNICAL"],
+      "mep_expected_sources": ["equipment service connections", "maintenance/replacement clearances", "terminal/control technical requirements"]
+    },
+    {
+      "architecture_stage_id": "ADD-14",
+      "architecture_decision": "area / cost / lifecycle",
+      "structural_source_stage_refs": ["SE-SPW2", "SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["structural quantity/system consequence", "embodied-resource/carbon tracking where in claim", "maintenance/adaptation/deconstruction strategy"],
+      "mep_source_stage_refs": ["BSP-CONCEPT", "BSP-TECHNICAL", "BSP-INUSE"],
+      "mep_expected_sources": ["system/capacity/cost consequence", "operational-energy prediction and sensitivity", "measured lifecycle performance only when real in-use evidence exists"]
+    },
+    {
+      "architecture_stage_id": "ADD-15",
+      "architecture_decision": "existing building / phasing",
+      "structural_source_stage_refs": ["SE-SPW0", "SE-SPW1", "SE-SPW2", "SE-SPW3", "SE-SPW4", "SE-SPW4.5", "SE-SPW5"],
+      "structural_expected_sources": ["existing-condition/survey authority", "alteration/retention structural concept", "technical strengthening/opening design", "temporary works/construction-stage evidence as applicable"],
+      "mep_source_stage_refs": ["BSP-STRATEGIC", "BSP-BRIEF", "BSP-CONCEPT", "BSP-SPATIAL", "BSP-PRODUCTION", "BSP-CONSTRUCTION-CX"],
+      "mep_expected_sources": ["existing-system survey/measurement", "reuse/replacement concept", "phased service continuity", "installation and commissioning evidence as applicable"]
+    },
+    {
+      "architecture_stage_id": "ADD-16",
+      "architecture_decision": "jurisdictional code / standard matrix",
+      "structural_source_stage_refs": ["SE-SPW1", "SE-SPW2", "SE-SPW3", "SE-SPW4"],
+      "structural_expected_sources": ["current structural standard/code route", "Basis of Structural Design", "technical compliance-supporting information at actual current ceiling"],
+      "mep_source_stage_refs": ["BSP-BRIEF", "BSP-TECHNICAL", "BSP-CONSTRUCTION-CX"],
+      "mep_expected_sources": ["current MEP/energy/electrical/public-health code route", "technical compliance-supporting information", "tested/commissioned evidence only where authority requires and evidence exists"]
+    },
+    {
+      "architecture_stage_id": "ADD-17",
+      "architecture_decision": "independent plan / section review",
+      "structural_source_stage_refs": ["CURRENT_APPLICABLE_SE_STAGE"],
+      "structural_expected_sources": ["actual current structural drawings/model/calculations/checking/readback appropriate to the Architecture claim"],
+      "mep_source_stage_refs": ["CURRENT_APPLICABLE_BSP_STAGE"],
+      "mep_expected_sources": ["actual current MEP drawings/model/schematics/calculations/controls/commissioning evidence appropriate to the Architecture claim"]
+    }
+  ],
+  "does_not_prove": [
+    "professional stage PASS",
+    "interface maturity",
+    "statutory compliance",
+    "field validity",
+    "Design KEEP",
+    "Promotion"
+  ]
+}
