@@ -1,0 +1,102 @@
+{
+  "schema": "OLEANDER_CROSS_DOMAIN_INTERFACE_REPLAY_v0.1",
+  "replay_id": "RP-C04-CROSS-DOMAIN-IFC-20260915",
+  "status": "DRAFT_REPLAY_NOT_CURRENT",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "source_policy": "SOURCE_BOUNDED_NO_AUTHORITY_PROMOTION",
+  "source_refs": [
+    "C04_APP_P08_PRESENCE_BINDING_v1_0_HANDOFF.json",
+    "C04_APP_P08_PRESENCE_BINDING_v1_0.html",
+    "C04_B_EVIDENCE_TO_STORY_MAPPING_r1.json"
+  ],
+  "interface_id": "C04_STATE_TO_EXPERIENCE_COORDINATION_INTERFACE",
+  "interface_model": "HUB_INTERFACE_WITH_SELECTIVE_PAIRWISE_EDGES",
+  "participants": [
+    "ROUTE_NETWORK",
+    "OPERATION_STATE",
+    "APP_INTERACTION",
+    "WEB_PRESENTATION",
+    "BRAND_PRESENCE",
+    "OPTIONAL_READING",
+    "RETURN_SERVICE",
+    "FALLBACK_LAYER",
+    "PRESENTATION_TRUTH_BOUNDARY"
+  ],
+  "controlled_variables": {
+    "OPERATION_STATE": {
+      "class": "STATE",
+      "semantic_dimension": "SERVICE_BEHAVIOR_STATE",
+      "state_source_mode": "DEMONSTRATION_PRESET",
+      "values": ["NORMAL", "DEGRADED", "CLOSED", "UNKNOWN"]
+    },
+    "PAGE_CONTEXT": {
+      "class": "STATE",
+      "semantic_dimension": "INTERACTION_CONTEXT",
+      "variable_value_origin": "SOURCE_CONTROLLED",
+      "values": ["TODAY", "ROUTE", "READ", "MY_BOOK", "RETURN"]
+    },
+    "EFFECTIVE_BRAND_PRESENCE": {
+      "class": "STATE",
+      "semantic_dimension": "INFORMATION_PRESENCE_MODE",
+      "variable_value_origin": "DERIVED_CONTROLLED",
+      "derived_from": ["OPERATION_STATE", "PAGE_CONTEXT"],
+      "derivation_rule_ref": "C04_APP_P08_PRESENCE_BINDING_v1_0",
+      "values": ["FULL", "LIGHT", "TRACE", "OFF"]
+    }
+  },
+  "propagation_contract": {
+    "must_affect": ["BRAND_PRESENCE", "OPTIONAL_CONTENT", "FAIL_CLOSED_COVER", "RETURN_SERVICE_PRIORITY"],
+    "may_affect": ["WEB_PRESENTATION_DEPTH", "EDITORIAL_VISIBILITY"],
+    "must_not_affect": ["ROUTE_GEOMETRY", "ROUTE_AUTHORITY", "FIELD_TRUTH", "FIELD_SAFETY_TRUTH"],
+    "readback_targets": ["APP_RUNTIME", "WEB_PRESENTATION", "RETURN_FUNCTION_VISIBILITY"]
+  },
+  "runtime_readback": {
+    "today_normal_light": true,
+    "read_normal_trace": true,
+    "mybook_normal_light": true,
+    "return_off": true,
+    "return_function_visible": true,
+    "degraded_reduces_presence": true,
+    "closed_off": true,
+    "closed_function_survives": true,
+    "unknown_off": true,
+    "unknown_fail_closed_visible": true,
+    "all_pass": true
+  },
+  "acceptance_dimensions": {
+    "STATE_MAPPING": "PASS",
+    "FUNCTIONAL_CONTINUITY": "PASS",
+    "UNKNOWN_FAIL_CLOSED": "PASS",
+    "AUTHORITY_PRESERVATION": "PASS_BOUNDED",
+    "OPTIONALITY_NO_SCORE": "PASS_BOUNDED",
+    "OFFLINE_FALLBACK_LOGIC": "PASS_BOUNDED",
+    "FIELD_OPERATIONAL_VALIDATION": "OPEN",
+    "FIELD_SERVICE_SIGNAGE_SUFFICIENCY": "OPEN",
+    "FIELD_SAFETY_ACCESSIBILITY": "OPEN"
+  },
+  "maturity": "EXERCISED",
+  "maturity_scope": "CHROMIUM_PROTOTYPE_CURRENT_BINDING_NO_LIVE_OPERATOR_FEED",
+  "truth_boundary": "PROJECT_INTERACTION_PROTOTYPE_NOT_APPROVED_APP_REPLACEMENT_NO_FIELD_OR_OPERATOR_VALIDATION",
+  "replay_derived_rules": [
+    "P4/VAR-RP02",
+    "P4/VAR-RP03",
+    "P4/VAR-RP04",
+    "P4/AUTH-RP05",
+    "P4/IFC-RP02",
+    "P4/IFC-RP03",
+    "P4/VAR-RP05",
+    "P4/IFC-RP04",
+    "P4/IFC-RP05",
+    "P4/VAR-RP06",
+    "P4/PROP-RP01",
+    "P4/DEP-RP01",
+    "P4/IFC-RP06",
+    "P4/IFC-RP07",
+    "P4/VAR-RP07",
+    "P4/VAR-RP08",
+    "P4/IFC-RP08",
+    "P4/IFC-RP09"
+  ],
+  "new_dependency_subclass": "STATE_BEHAVIOR_DEPENDENCY",
+  "promotion_effect": "NONE_REPLAY_ONLY"
+}
