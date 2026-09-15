@@ -135,6 +135,14 @@ Canonical system: [`complex-project-master-runtime-v1.0.md`](complex-project-mas
 
 `Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Execute / Prototype -> Actual Readback -> Close Triggered Reviews -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> G9 bounded re-entry`.
 
+## Current Architecture Map v2.0
+
+Canonical architecture classification view: [`runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md`](runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.0.md)
+
+OLEANDER has **one Current system architecture**, orchestrated by **one Complex Project Master Runtime**, and operationally expanded as **eleven stable Runtime Layers `R-A ... R-K`**. The map formally separates Runtime Layers from canonical contracts, authentic Professional Domain Processes, state families, Reviews/Gates, schemas/receipts, Skills/capabilities/tools and native artifacts. These object classes belong inside the one operating-system architecture and must not be added together as a top-level “architecture count”.
+
+Canonical counting rule: `1 OLEANDER system architecture / 1 Master Runtime / 11 Runtime Layers`. `DD-*` is a shared design-development responsibility namespace; Architecture `ADD-*` is an Architecture-specific professional stage namespace; `KI* / OE* / DQ*` are state families. None is an additional top-level architecture.
+
 ## Knowledge Content Review Layer v1.0
 
 Canonical system: runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md
