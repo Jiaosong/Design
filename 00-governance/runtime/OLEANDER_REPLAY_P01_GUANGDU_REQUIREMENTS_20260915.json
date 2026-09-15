@@ -1,0 +1,36 @@
+{
+  "schema":"OLEANDER_REQUIREMENT_REPLAY_v0.1",
+  "replay_id":"RP-P01-GUANGDU-REQ-20260915",
+  "status":"DRAFT_REPLAY_NOT_CURRENT",
+  "project_id":"P01_YIMAI_GUANGDU",
+  "source":"OLEANDER_一脉广渡_项目上下文基线_v0.1.md",
+  "source_date":"2026-07-24",
+  "source_policy":"FULL_FILE_READ_NO_INVENTED_STAKEHOLDER_AGREEMENT",
+  "observed_state":{
+    "project_version":"v0.2",
+    "review_state":"EVIDENCE_REVIEW",
+    "evidence_sufficiency":"PARTIALLY_CONFIRMED",
+    "public_use":false,
+    "stage_02_blocked":true,
+    "next_target":"v0.3_LOCAL_REVIEW_CANDIDATE"
+  },
+  "replay_findings":{
+    "project_thesis":"INTENT_OR_PROJECT_CLAIM_CANDIDATE_NOT_VALIDATED_NEED",
+    "relationship_questions":"RESEARCH_DECISION_QUESTIONS_NOT_REQUIREMENTS",
+    "node_template":"EXTRACTION_SOURCE_FOR_CANDIDATES_NOT_PROJECT_REQUIREMENT",
+    "participation_rule":"CLAIM_ACCEPTANCE_LOGIC_NOT_OCCURRENCE_EVIDENCE",
+    "public_release_threshold":"HETEROGENEOUS_PROMOTION_PREREQUISITES_REQUIRE_TYPED_ROUTING",
+    "unknown_data":"MUST_REMAIN_UNKNOWN_UNTIL_RESOLVED",
+    "verification_validation":"DESIGN_MECHANISM_VERIFICATION_CANNOT_ESTABLISH_PARTICIPATORY_OUTCOME_VALIDATION"
+  },
+  "new_need_metadata":{
+    "need_origin_kind":["STAKEHOLDER_STATED","USER_OBSERVED_OR_RESEARCHED","OPERATIONAL_SOURCE","EXTERNAL_MANDATE_DERIVED","PROJECT_HYPOTHESIS","DESIGN_RESEARCH_HYPOTHESIS","OTHER_EXPLICIT"],
+    "origin_validation_state":["UNVALIDATED","PARTIALLY_VALIDATED","AGREED_FOR_SCOPE","REFUTED","SUPERSEDED"]
+  },
+  "replay_derived_rules":["P3/NEED-RP02","P3/REQ-RP02","P3/REQ-RP03","P3/CLM-RP03","P3/CON-RP04","P3/REQ-RP05","P3/VAL-RP06"],
+  "tp3_status":{
+    "legacy_requirement_migration_replay":"COMPLETE_WITH_DELTAS",
+    "mature_requirement_register_stress_replay":"OPEN_NO_SUITABLE_FULL_CHAIN_LOCATED"
+  },
+  "promotion_effect":"NONE_REPLAY_ONLY"
+}
