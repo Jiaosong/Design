@@ -1,0 +1,99 @@
+{
+  "schema": "KH_LY46_ADD_RUNTIME_BINDING_SNAPSHOT_v0.1",
+  "status": "DRAFT_PROJECT_BINDING_SNAPSHOT_NOT_PROJECT_CURRENT",
+  "project_id": "KH_LY46",
+  "project_workspace": "D:\\.claw\\kharkiv_gym46",
+  "professional_process": "Architecture Design Development Process v1.0",
+  "process_authority_ref": "D:\\Desgin\\00-governance\\architecture-design-development-process-v1.0.md",
+  "runtime_binding_ref": "00-governance/professional-execution/OLEANDER_ARCHITECTURE_ADD_RUNTIME_BINDING_v0.1.json",
+  "known_execution_state": {
+    "design_revision": "v010",
+    "process_progress": "ADD-05_COMPLETE_OR_REPLAYED_TO_DECLARED_SCOPE__ADD-06_EARLY_AND_MATERIAL_REMEDIATION_ACTIVE",
+    "current_stage": "ADD-06",
+    "current_stage_state": "REVISE_MATERIAL",
+    "next_stage": "ADD-07",
+    "next_stage_state": "BLOCKED_BY_ADD06_MATERIAL_REVISE",
+    "no_jump_rule": true
+  },
+  "current_ADD06_priority_native_geometry_gaps": [
+    "GENERAL_WC",
+    "JANITOR_CLEANING",
+    "WARDROBE",
+    "TRAINING_AFTER_HOURS_CHANGING_CONTINUITY"
+  ],
+  "required_execution_sequence": [
+    "READ_CURRENT_V010_NATIVE_MODEL_AND_INDEX",
+    "IMPLEMENT_NATIVE_EDITABLE_GEOMETRY_FOR_DECLARED_ADD06_GAPS",
+    "REBUILD_OR_REGENERATE_NATIVE_MODEL_IF_REQUIRED_BY_EXISTING_BUILDER",
+    "FULL_NATIVE_READBACK",
+    "RERUN_ADD03_RELEVANT_DEPENDENT_CHECKS",
+    "RERUN_ADD04_RELEVANT_DEPENDENT_CHECKS",
+    "RERUN_ADD06",
+    "ONLY_IF_MATERIAL_ADD06_EXIT_CONDITIONS_CLOSE_CONSIDER_ADD07"
+  ],
+  "P0_P11_stage_binding": {
+    "P0": {
+      "required_now": ["v010_identity", "ADD06_stage_identity", "native_artifact_identity"],
+      "state": "REQUIRED"
+    },
+    "P1": {
+      "required_now": ["selected_design_authority", "native_model_authority", "claim_ceiling"],
+      "state": "REQUIRED_NO_PROMOTION"
+    },
+    "P2": {
+      "required_now": ["ADD06_REVISE_decision", "remediation_implementation_state", "readback_state"],
+      "state": "ACTIVE"
+    },
+    "P3": {
+      "required_now": ["functional_requirements", "operational_requirements", "accessibility_and_service_constraints_as_requirements_not_assumed_compliance"],
+      "state": "ACTIVE"
+    },
+    "P4": {
+      "required_now": ["room_and_flow_controlled_variables", "accessibility_interfaces", "cleaning_service_interfaces", "changing_continuity_interfaces"],
+      "state": "ACTIVE_HIGH_PRIORITY"
+    },
+    "P5": {
+      "required_now": ["v010_baseline_or_candidate_identity", "geometry_change_records", "dependent_check_staleness"],
+      "state": "ACTIVE"
+    },
+    "P6": {
+      "required_now": ["native_geometry_readback", "stage_specific_assurance", "explicit_non_compliance_boundary"],
+      "state": "ACTIVE_NO_CODE_ENGINEERING_FIELD_PASS"
+    },
+    "P7": {
+      "required_now": ["open_issue_lineage", "unknowns", "assumptions_if_any", "reopen_dependencies"],
+      "state": "ACTIVE"
+    },
+    "P8": {
+      "required_now": ["native_SketchUp_or_editable_architectural_artifact", "builder_or_generator_lineage", "readback_receipt"],
+      "state": "ACTIVE_NATIVE_ASSET_REQUIRED"
+    },
+    "P9": {
+      "required_now": ["only_after_project_replay_yields_cross_project_learning", "existing_owner_search_before_new_method"],
+      "state": "NOT_A_STAGE_CLOSURE_GATE"
+    },
+    "P10": {
+      "required_now": ["presentation_only_if_needed_for_review", "presentation_must_not_replace_native_geometry_evidence"],
+      "state": "SECONDARY"
+    },
+    "P11": {
+      "required_now": ["project_reader_must_show_ADD06_REVISE_and_any_local_PASS_together", "no_global_green_pass"],
+      "state": "REQUIRED_FOR_REVIEW"
+    }
+  },
+  "forbidden_promotions": [
+    "MODEL_GEOMETRY_PASS_TO_CODE_COMPLIANCE",
+    "NON_OVERLAP_TO_OPERATIONAL_VALIDITY",
+    "STEP_FREE_RESERVE_TO_ACCESSIBILITY_COMPLIANCE",
+    "EGRESS_RESERVE_TO_FIRE_COMPLIANCE",
+    "NATIVE_READBACK_TO_PROFESSIONAL_KEEP",
+    "ADD06_LOCAL_REPAIR_TO_WHOLE_PROJECT_PASS"
+  ],
+  "source_limitations": [
+    "This governance snapshot does not mutate D:\\.claw\\kharkiv_gym46.",
+    "The exact full ADD stage list is not reproduced because the authoritative local process body is not available through the current connected surfaces.",
+    "No SketchUp execution or code/engineering authority approval is claimed by this snapshot."
+  ],
+  "next_project_action": "CONTINUE_ADD06_NATIVE_GEOMETRY_REMEDIATION_THEN_DEPENDENT_READBACK_AND_REPLAY",
+  "promotion_effect": "NONE_BINDING_SNAPSHOT_ONLY"
+}
