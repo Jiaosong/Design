@@ -1006,6 +1006,95 @@
       "persistent_migration_ledger_forbidden": true
     }
   },
+  "promotion_persistence_sync_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_PROMOTION_STATE_FAMILY_LEDGER_OR_AUTHORITY",
+    "projection_only_not_replacement_promotion_schema": true,
+    "owner_native_project_design_authority_states_remain_authoritative": true,
+    "resolvable_fields_do_not_require_duplicate_central_persistence": true,
+    "owner_native_source_refs": [
+      "00-governance/complex-project-master-runtime-v1.0.md",
+      "00-governance/oleander-project-flow-v0.3.md",
+      "00-governance/production-asset-persistence-gate-v1.0.md",
+      "00-governance/cross-platform-sync-contract-v1.1.md"
+    ],
+    "runtime_carrier_or_implementation_refs": [
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/control-plane/orchestration.schema.json",
+      "00-governance/control-plane/orchestrator.py"
+    ],
+    "eligibility_required_resolvable_fields": [
+      "project_or_scope_id",
+      "decision_object_id",
+      "authority_fingerprint",
+      "promotion_request_or_intent_ref",
+      "claim_boundary",
+      "eligibility_result_ref",
+      "eligibility_evidence_refs",
+      "open_blockers"
+    ],
+    "triggered_pre_promotion_persistence_fields": [
+      "persistence_trigger_basis_ref_or_fields",
+      "persistence_receipt_ref",
+      "persistence_readback_ref"
+    ],
+    "promotion_transition_required_resolvable_fields": [
+      "human_decision_actor_or_authority_ref",
+      "authorization_basis_ref_or_fields",
+      "human_decision_ref",
+      "promotion_transition_owner_ref",
+      "promotion_transition_ref",
+      "authoritative_transition_readback_ref"
+    ],
+    "conditional_owner_native_transition_fields": [
+      "transition_kind",
+      "from_authority_state",
+      "target_authority_state",
+      "target_design_state"
+    ],
+    "post_promotion_sync_fields": [
+      "required_sync_target_refs",
+      "sync_readback_refs",
+      "cross_line_readback_ref",
+      "drift_or_partial_sync_refs"
+    ],
+    "control_actions_are_not_state_family": true,
+    "control_action_sequence": [
+      "RESOLVE_PROMOTION_PREREQUISITES_AND_CLAIM_BOUNDARY",
+      "CLOSE_TRIGGERED_PRE_PROMOTION_PERSISTENCE",
+      "REPORT_ELIGIBILITY_ONLY",
+      "RESOLVE_HUMAN_DECISION_AUTHORIZATION",
+      "RECORD_AUTHORIZED_HUMAN_DECISION",
+      "APPLY_OWNER_NATIVE_PROMOTION_TRANSITION",
+      "READBACK_AUTHORITATIVE_PROMOTION_STATE",
+      "REGISTER_PROMOTED_ARTIFACT_OR_AUTHORITY_AS_APPLICABLE",
+      "PROPAGATE_REQUIRED_POST_PROMOTION_SYNC",
+      "READBACK_REQUIRED_SYNC_TARGETS_AND_DRIFT"
+    ],
+    "machine_terminal_before_human_transition": "READY_FOR_HUMAN_DECISION",
+    "machine_terminal_is_promotion": false,
+    "owner_native_pre_promotion_persistence_gate_closes_before_promotion_when_triggered": true,
+    "persistence_pass_does_not_prove_promotion": true,
+    "human_decision_requires_current_decision_authorization": true,
+    "human_decision_record_alone_does_not_prove_transition_unless_same_owner_native_carrier_mutates_and_reads_back_target_state": true,
+    "authoritative_transition_readback_required_for_effective_promotion_claim": true,
+    "full_cross_platform_sync_is_not_universal_pre_promotion_gate": true,
+    "post_promotion_sync_may_follow_confirmed_promotion": true,
+    "post_promotion_mirror_failure_does_not_erase_confirmed_canonical_promotion": true,
+    "post_promotion_mirror_failure_blocks_affected_sync_or_cross_platform_current_claim_only": true,
+    "canonical_authority_transition_uncertainty_blocks_effective_promotion_claim": true,
+    "multi_surface_authority_transition_reuses_partial_commit_reconciliation": true,
+    "ordinary_post_promotion_mirrors_are_not_automatically_transaction_legs": true,
+    "pr_ci_merge_do_not_prove_promotion": true,
+    "sync_success_does_not_prove_promotion": true,
+    "promotion_does_not_prove_release_or_statutory_approval": true,
+    "one_current_per_authority_surface_preserved": true,
+    "unresolved_runtime_outcomes": [
+      "BLOCKED",
+      "RECONCILIATION_REQUIRED"
+    ],
+    "skill_lifecycle_promotion_record_not_project_promotion_schema": true,
+    "persistent_promotion_ledger_forbidden": true
+  },
   "trigger_applicability_contract": {
     "semantic_class": "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY",
     "projection_only_not_replacement_schema": true,
@@ -1240,7 +1329,12 @@
     "COMPATIBILITY_IMPACT_IS_RELATION_SCOPED_NOT_GLOBAL_RESET",
     "HISTORICAL_RECEIPTS_IMMUTABLE_ACROSS_MIGRATION",
     "BACKWARD_COMPATIBLE_EXTENSION_PROSPECTIVE_BY_DEFAULT",
-    "MIGRATION_ACTIONS_DO_NOT_CREATE_STATE_FAMILY_OR_LEDGER"
+    "MIGRATION_ACTIONS_DO_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
+    "READY_FOR_HUMAN_DECISION_IS_NOT_PROMOTION",
+    "TRIGGERED_PERSISTENCE_CLOSES_BEFORE_PROMOTION",
+    "PROMOTION_REQUIRES_AUTHORIZED_OWNER_NATIVE_TRANSITION_AND_READBACK",
+    "POST_PROMOTION_SYNC_FAILURE_DOES_NOT_ERASE_CONFIRMED_CANONICAL_PROMOTION",
+    "PROMOTION_SYNC_BOUNDARY_DOES_NOT_CREATE_STATE_FAMILY_OR_LEDGER"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {
