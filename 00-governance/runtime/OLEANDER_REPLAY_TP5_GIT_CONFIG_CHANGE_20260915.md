@@ -10,17 +10,24 @@ This replay maps official Git/GitHub semantics into OLEANDER configuration-manag
 
 ## 1. Official source facts used
 
-Primary source facts:
+Primary source facts, with explicit official bindings verified 2026-09-15:
 
 1. GitHub protected branches can require status checks before merging and can require the branch to be up to date with the base branch.
+   - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches
 2. Required checks must pass on the latest commit SHA; successful checks on earlier commits do not satisfy the latest-head requirement.
+   - https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks
 3. GitHub merge queues test a temporary `merge_group` configuration that combines the pull request with the latest base branch and, where relevant, pull requests ahead of it in the queue.
+   - https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue
 4. The merge-group SHA differs from the pull-request SHA and required CI must report against that merge-group context.
 5. A queued pull request can be removed when the merged-group configuration fails required checks or conflicts with the base branch.
 6. `git revert` records new commit(s) that reverse effects of earlier commits; it preserves the historical commits being reversed.
+   - https://git-scm.com/docs/git-revert
 7. GitHub reverting a merged pull request creates a new pull request that reverts the original merge commit.
+   - https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/reverting-a-pull-request
 8. `git reset` moves `HEAD`/branch tip to another commit; hard reset can also make working tree/index match the target and can discard local state.
+   - https://git-scm.com/docs/git-reset
 9. Git records `ORIG_HEAD` for operations that move HEAD drastically, including reset, merge and rebase.
+   - https://git-scm.com/docs/gitrevisions
 
 Source boundary:
 

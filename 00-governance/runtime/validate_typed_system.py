@@ -34,6 +34,16 @@ EXECUTABLE_SNAPSHOT_RULES = {
     "P4/IFC-RP12",
     "P4/IFC-RP13",
     "P5/CHG-RP01",
+    "P5/CFG-RP05",
+    "P5/CARRY-RP04",
+    "P5/CONC-RP03",
+    "P5/PROM-RP05",
+    "P5/ROLL-RP04",
+    "P5/ROLL-RP05",
+    "P5/CARRY-RP05",
+    "P5/STALE-RP05",
+    "P5/CSA-RP02",
+    "P5/CONC-RP04",
     "P6/ASR-RP02",
     "P7/OPEN-RP01",
     "P9/CORPUS-RP01",
@@ -325,6 +335,81 @@ def snapshot_checks(s: dict[str, Any]) -> list[Finding]:
                 out.append(Finding("P5/CHG-RP01","FAIL","S3_MAJOR",oid(o),"support-only change cannot stale unchanged upstream source configuration"))
 
     for o in objects:
+        if o.get("semantic_class") in {"ASSURANCE_ACTIVITY","ASSURANCE_DECISION","CONFIGURATION_STATUS"}:
+            checked = o.get("check_target_revision")
+            used_for = o.get("current_use_revision") or o.get("candidate_revision")
+            has_bridge = bool(o.get("equivalence_or_applicability_ref"))
+            if checked and used_for and checked != used_for and not has_bridge:
+                if o.get("configuration_identity_mode") == "EXACT_REVISION":
+                    out.append(Finding(
+                        "P5/CFG-RP05","FAIL","S3_MAJOR",oid(o),
+                        "exact-revision assurance cannot silently become assurance for a different revision",
+                        {"check_target_revision":checked,"current_use_revision":used_for},
+                    ))
+                out.append(Finding(
+                    "P5/CARRY-RP04","FAIL","S3_MAJOR",oid(o),
+                    "earlier revision assurance requires explicit equivalence/applicability or re-assurance before carry-forward",
+                    {"check_target_revision":checked,"current_use_revision":used_for},
+                ))
+                out.append(Finding(
+                    "P5/CSA-RP02","FAIL","S3_MAJOR",oid(o),
+                    "configuration status accounting projects an assurance result beyond the revision it evaluated",
+                    {"check_target_revision":checked,"current_use_revision":used_for},
+                ))
+
+            if o.get("dependency_or_base_context_changed") is True and o.get("local_changeset_unchanged") is True and o.get("integration_assurance_status") in {"PASS","CURRENT_VALID","VERIFIED"} and not has_bridge:
+                out.append(Finding(
+                    "P5/STALE-RP05","FAIL","S3_MAJOR",oid(o),
+                    "integration assurance cannot remain current solely because local bytes are unchanged when dependency/base context changed",
+                ))
+
+        if o.get("semantic_class") == "INTEGRATION_CONFIGURATION":
+            composed = o.get("composed_change_refs", [])
+            if len(composed) >= 2 and o.get("component_assurance_complete") is True and o.get("base_or_interaction_context_changed") is True and o.get("integration_assurance_status") not in CLOSED:
+                out.append(Finding(
+                    "P5/CONC-RP03","FAIL","S3_MAJOR",oid(o),
+                    "individually assured concurrent changes require assurance on the actual composed integration configuration",
+                    {"composed_change_refs":composed,"integration_assurance_status":o.get("integration_assurance_status")},
+                ))
+            if o.get("mechanical_merge_status") in CLOSED and o.get("semantic_integration_claimed_pass") is True and o.get("semantic_integration_status") not in CLOSED:
+                out.append(Finding(
+                    "P5/CONC-RP04","FAIL","S3_MAJOR",oid(o),
+                    "successful mechanical merge cannot self-grant semantic/integration compatibility",
+                    {"mechanical_merge_status":o.get("mechanical_merge_status"),"semantic_integration_status":o.get("semantic_integration_status")},
+                ))
+
+        if o.get("semantic_class") in {"CONFIGURATION_PROMOTION","BASELINE"} and o.get("candidate_assurance_status") in CLOSED and o.get("baseline_pointer_moved") is True and not o.get("authorized_promotion_event_ref"):
+            out.append(Finding(
+                "P5/PROM-RP05","FAIL","S4_CRITICAL",oid(o),
+                "candidate assurance PASS cannot move Current/baseline pointer without an authorized promotion event",
+            ))
+
+        if o.get("rollback_mechanism") == "COMPENSATING_CHANGE" and o.get("reuses_prior_configuration_identity") is True:
+            out.append(Finding(
+                "P5/ROLL-RP04","FAIL","S3_MAJOR",oid(o),
+                "compensating rollback/revert creates a new configuration identity and cannot reuse the prior identity",
+            ))
+
+        if o.get("rollback_mechanism") == "POINTER_RESELECTION" and o.get("baseline_pointer_moved") is True:
+            missing = []
+            if not o.get("pointer_rewrite_authority_ref"):
+                missing.append("pointer_rewrite_authority_ref")
+            if o.get("lineage_preserved") is not True:
+                missing.append("lineage_preserved")
+            if missing:
+                out.append(Finding(
+                    "P5/ROLL-RP05","FAIL","S4_CRITICAL",oid(o),
+                    "shared Current/baseline pointer rewrite requires explicit authority and preserved lineage",
+                    {"missing":missing},
+                ))
+
+        if o.get("rollback_mechanism") in {"COMPENSATING_CHANGE","POINTER_RESELECTION","EXACT_RESTORE_FROM_CONTROLLED_BASELINE","REIMPLEMENT_PRIOR_INTENT"} and o.get("reactivated_prior_assurance") is True and not o.get("post_rollback_applicability_review_ref"):
+            out.append(Finding(
+                "P5/CARRY-RP05","FAIL","S3_MAJOR",oid(o),
+                "rollback cannot automatically reactivate prior assurance without post-rollback applicability review",
+            ))
+
+    for o in objects:
         if o.get("semantic_class") in {"ASSURANCE_ACTIVITY","ASSURANCE_DECISION"}:
             tr = o.get("target_results", {})
             if isinstance(tr, dict) and len(set(tr.values())) > 1 and o.get("summary_result") in {"PASS","FAIL"} and not o.get("aggregation_policy"):
@@ -384,6 +469,12 @@ def self_test() -> list[Finding]:
             {"id":"TFL-FARE","plane":"PROJECT","semantic_class":"CONTROLLED_VARIABLE","derived_output_active":True,"required_input_dimensions":["ORIGIN","DESTINATION","ROUTE_EVIDENCE"],"resolved_input_dimensions":["ORIGIN","DESTINATION"],"derivation_changes_meaning_or_outcome":True},
             {"id":"TFL-EVENT","plane":"PROJECT","semantic_class":"STATE_EVENT","advances_state_machine":True},
             {"id":"C","plane":"PROJECT","semantic_class":"CHANGE","change_scope":"SUPPORT_DERIVATIVE_ONLY","upstream_source_changed":False,"stale_effects":["UPSTREAM_SOURCE_CONFIGURATION"]},
+            {"id":"GIT-CHECK","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","configuration_identity_mode":"EXACT_REVISION","check_target_revision":"sha-old","current_use_revision":"sha-new"},
+            {"id":"GIT-MERGE","plane":"PROJECT","semantic_class":"INTEGRATION_CONFIGURATION","composed_change_refs":["PR-1","PR-2"],"component_assurance_complete":True,"base_or_interaction_context_changed":True,"integration_assurance_status":"OPEN","mechanical_merge_status":"PASS","semantic_integration_claimed_pass":True,"semantic_integration_status":"OPEN"},
+            {"id":"GIT-PROMOTE","plane":"PROJECT","semantic_class":"CONFIGURATION_PROMOTION","candidate_assurance_status":"PASS","baseline_pointer_moved":True},
+            {"id":"GIT-REVERT","plane":"PROJECT","semantic_class":"CHANGE","rollback_mechanism":"COMPENSATING_CHANGE","reuses_prior_configuration_identity":True,"reactivated_prior_assurance":True},
+            {"id":"GIT-RESET","plane":"PROJECT","semantic_class":"CHANGE","rollback_mechanism":"POINTER_RESELECTION","baseline_pointer_moved":True,"lineage_preserved":False},
+            {"id":"GIT-CONTEXT","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","dependency_or_base_context_changed":True,"local_changeset_unchanged":True,"integration_assurance_status":"PASS"},
             {"id":"M","plane":"PROJECT","semantic_class":"ASSURANCE_DECISION","target_results":{"G1":"REVISE","G4":"PASS"},"summary_result":"PASS"},
             {"id":"K","plane":"KNOWLEDGE","semantic_class":"METHOD","retrieval_space":"CURRENT","professional_state":"NOT_PROVEN_PROFESSIONAL_PASS","summary_badge":"CURRENT_VERIFIED"}
         ],
@@ -396,7 +487,7 @@ def self_test() -> list[Finding]:
         "presentation_release":{"id":"R","global_status":"PASS","medium_readback":{"PDF_PRINT":"PASS","DESKTOP_BROWSER":"WAIT"}}
     }
     findings = snapshot_checks(snap)
-    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P4/VAR-RP09","P4/VAR-RP10","P4/VAR-RP11","P4/AUTH-RP06","P4/VAR-RP12","P4/IFC-RP10","P4/IFC-RP11","P4/IFC-RP12","P4/IFC-RP13","P5/CHG-RP01","P6/ASR-RP02","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
+    expected = {"P1/CLAIM-RP01","P4/IFC-RP01","P4/VAR-RP09","P4/VAR-RP10","P4/VAR-RP11","P4/AUTH-RP06","P4/VAR-RP12","P4/IFC-RP10","P4/IFC-RP11","P4/IFC-RP12","P4/IFC-RP13","P5/CHG-RP01","P5/CFG-RP05","P5/CARRY-RP04","P5/CONC-RP03","P5/PROM-RP05","P5/ROLL-RP04","P5/ROLL-RP05","P5/CARRY-RP05","P5/STALE-RP05","P5/CSA-RP02","P5/CONC-RP04","P6/ASR-RP02","P9/CORPUS-RP01","P10/ASSET-RP01","P10/TRUTH-RP03","P10/MED-RP01","P11/BADGE-RP02"}
     got = {f.rule_id for f in findings}
     missing = sorted(expected - got)
     if missing:

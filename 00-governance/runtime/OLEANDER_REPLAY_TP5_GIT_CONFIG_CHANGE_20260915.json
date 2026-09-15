@@ -4,6 +4,16 @@
   "status":"DRAFT_EXTERNAL_REPLAY_NOT_CURRENT",
   "external_case":"Git + GitHub protected branch / required checks / merge queue / revert-reset semantics",
   "source_boundary":"OFFICIAL_GIT_GITHUB_DOCUMENTED_BEHAVIOR_ONLY_OLEANDER_MAPPING_ANALYTICAL",
+  "source_binding_as_of":"2026-09-15",
+  "external_sources":[
+    {"authority":"GitHub Docs","title":"About protected branches","url":"https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches","supports":["PROTECTED_TARGET_BRANCH_HAS_EXPLICIT_MERGE_PROMOTION_RULES"]},
+    {"authority":"GitHub Docs","title":"Troubleshooting required status checks","url":"https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks","supports":["REQUIRED_STATUS_CHECKS_MUST_PASS_ON_LATEST_COMMIT_SHA"]},
+    {"authority":"GitHub Docs","title":"Managing a merge queue","url":"https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue","supports":["MERGE_QUEUE_TESTS_DERIVED_MERGE_GROUP_WITH_LATEST_BASE_AND_AHEAD_QUEUE_CHANGES","MERGE_GROUP_SHA_DIFFERS_FROM_PULL_REQUEST_SHA"]},
+    {"authority":"Git","title":"git-revert","url":"https://git-scm.com/docs/git-revert","supports":["GIT_REVERT_CREATES_NEW_COMMIT_TO_REVERSE_PRIOR_CHANGE"]},
+    {"authority":"GitHub Docs","title":"Reverting a pull request","url":"https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/reverting-a-pull-request","supports":["GITHUB_REVERT_PULL_REQUEST_CREATES_NEW_REVERT_PULL_REQUEST"]},
+    {"authority":"Git","title":"git-reset","url":"https://git-scm.com/docs/git-reset","supports":["GIT_RESET_MOVES_HEAD_BRANCH_TIP_AND_CAN_REWRITE_WORKTREE_INDEX_STATE"]},
+    {"authority":"Git","title":"gitrevisions","url":"https://git-scm.com/docs/gitrevisions","supports":["ORIG_HEAD_RECORDS_PRE_OPERATION_POSITION_FOR_DRASTIC_HEAD_MOVES"]}
+  ],
   "source_facts":[
     "REQUIRED_STATUS_CHECKS_MUST_PASS_ON_LATEST_COMMIT_SHA",
     "MERGE_QUEUE_TESTS_DERIVED_MERGE_GROUP_WITH_LATEST_BASE_AND_AHEAD_QUEUE_CHANGES",
