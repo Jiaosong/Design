@@ -1095,6 +1095,84 @@
     "skill_lifecycle_promotion_record_not_project_promotion_schema": true,
     "persistent_promotion_ledger_forbidden": true
   },
+  "g9_knowledge_return_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_KNOWLEDGE_AUTHORITY_STATE_FAMILY_OR_PARALLEL_LEARNING_DATABASE",
+    "projection_only_not_replacement_knowledge_validation_schema": true,
+    "r_b_and_current_knowledge_owner_retain_knowledge_authority": true,
+    "resolvable_fields_do_not_require_duplicate_central_persistence": true,
+    "projection_source_refs": [
+      "00-governance/complex-project-master-runtime-v1.0.md",
+      "00-governance/design-intelligence-routing-and-review-v1.0.md",
+      "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+      "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
+      "oleander-skills/oleander-research/PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.json",
+      "00-governance/naming-status.md",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json"
+    ],
+    "candidate_required_resolvable_fields": [
+      "project_or_context_scope_ref",
+      "intended_relation_or_baseline_ref",
+      "observed_outcome_ref",
+      "difference_or_pattern",
+      "causal_hypothesis_or_uncertainty",
+      "repair_retest_refs",
+      "counterexample_refs",
+      "transfer_boundary",
+      "proposed_reusable_form_or_role",
+      "target_knowledge_or_evolution_owner_ref",
+      "validation_route_ref",
+      "does_not_prove"
+    ],
+    "common_control_actions_are_not_state_family": true,
+    "common_control_action_sequence": [
+      "CAPTURE_ACTUAL_OBSERVED_OUTCOME",
+      "BIND_INTENDED_RELATION_OR_BASELINE",
+      "SEPARATE_OBSERVATION_FROM_CAUSAL_HYPOTHESIS",
+      "PRESERVE_PROJECT_CONTEXT_UNCERTAINTY_AND_NEGATIVE_EVIDENCE",
+      "PRESERVE_REPAIR_RETEST_AND_COUNTEREXAMPLES_WHEN_AVAILABLE",
+      "DEFINE_TRANSFER_BOUNDARY",
+      "RESOLVE_TARGET_OWNER_AND_VALIDATION_ROUTE"
+    ],
+    "bounded_route_actions": [
+      "ROUTE_PROJECT_SPECIFIC_FINDING_TO_PROJECT_PRACTICE_EVIDENCE",
+      "ROUTE_MATERIAL_PROJECT_FAILURE_TO_EXISTING_REOPEN_CONTROLS",
+      "ROUTE_REUSABLE_LESSON_TO_EXISTING_KNOWLEDGE_VALIDATION",
+      "ROUTE_RUNTIME_OR_PROCESS_LESSON_TO_EVOLUTION_CANDIDATE_CONTRACT"
+    ],
+    "routes_are_not_mutually_exclusive_but_do_not_inherit_each_others_authority": true,
+    "observation_does_not_prove_causation": true,
+    "repeated_pattern_does_not_prove_universal_rule": true,
+    "one_project_success_does_not_prove_transferability": true,
+    "project_failure_does_not_automatically_invalidate_current_knowledge": true,
+    "transfer_boundary_required_before_reusable_knowledge_route": true,
+    "unsupported_causal_story_cannot_be_promoted_by_g9": true,
+    "counterevidence_and_failed_attempts_preserved_when_material": true,
+    "project_specific_or_unresolved_transfer_may_remain_project_practice_evidence": true,
+    "knowledge_validation_gate_results_owned_by_existing_knowledge_research_contracts": true,
+    "g9_cannot_award_knowledge_research_gate_pass": true,
+    "knowledge_lifecycle_disposition_owned_by_existing_knowledge_authority": true,
+    "knowledge_lifecycle_vocabulary_reused_not_redefined": true,
+    "current_knowledge_does_not_auto_grant_task_scoped_oe3": true,
+    "g9_cannot_award_ki4_or_oe3": true,
+    "project_reopen_does_not_require_prior_reusable_knowledge_promotion": true,
+    "project_reopen_does_not_prove_reusable_knowledge_revision": true,
+    "g9_may_propose_evolution_candidate_but_not_mutate_live_runtime": true,
+    "evolution_target_owner_retains_semantic_authority": true,
+    "parallel_g9_knowledge_tree_forbidden": true,
+    "parallel_persistent_g9_learning_authority_database_forbidden": true,
+    "g9_feedback_edge_to_r_b_is_candidate_feedback_not_dependency_handoff": true,
+    "existing_r_k_failure_codes": [
+      "CAUSAL_STORY_UNSUPPORTED",
+      "TRANSFER_BOUNDARY_MISSING",
+      "PROJECT_SPECIFIC_ONLY",
+      "COUNTEREVIDENCE_UNRESOLVED",
+      "CANDIDATE_OWNER_UNRESOLVED",
+      "AUTO_PROMOTION_ATTEMPT_BLOCKED"
+    ]
+  },
   "trigger_applicability_contract": {
     "semantic_class": "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY",
     "projection_only_not_replacement_schema": true,
@@ -1334,7 +1412,14 @@
     "TRIGGERED_PERSISTENCE_CLOSES_BEFORE_PROMOTION",
     "PROMOTION_REQUIRES_AUTHORIZED_OWNER_NATIVE_TRANSITION_AND_READBACK",
     "POST_PROMOTION_SYNC_FAILURE_DOES_NOT_ERASE_CONFIRMED_CANONICAL_PROMOTION",
-    "PROMOTION_SYNC_BOUNDARY_DOES_NOT_CREATE_STATE_FAMILY_OR_LEDGER"
+    "PROMOTION_SYNC_BOUNDARY_DOES_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
+    "G9_CANDIDATE_IS_NOT_CURRENT_KNOWLEDGE",
+    "G9_OBSERVATION_IS_NOT_CAUSAL_PROOF",
+    "G9_REUSABLE_ROUTE_REQUIRES_TRANSFER_BOUNDARY",
+    "G9_KNOWLEDGE_LIFECYCLE_DISPOSITION_REMAINS_WITH_KNOWLEDGE_OWNER",
+    "CURRENT_KNOWLEDGE_DOES_NOT_AUTO_GRANT_OE3",
+    "G9_EVOLUTION_CANDIDATE_CANNOT_MUTATE_LIVE_RUNTIME",
+    "PROJECT_REOPEN_AND_REUSABLE_KNOWLEDGE_PROMOTION_REMAIN_SEPARATE"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

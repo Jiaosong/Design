@@ -942,6 +942,124 @@ def main() -> None:
     if skill_capability.get("scope") != "github_execution_owners":
         fail("Skill Capability promotion record scope drift")
 
+    g9 = graph.get("g9_knowledge_return_boundary", {})
+    if g9.get("semantic_class") != "CONTROL_PROJECTION_NOT_KNOWLEDGE_AUTHORITY_STATE_FAMILY_OR_PARALLEL_LEARNING_DATABASE":
+        fail("G9 knowledge return must remain a control projection rather than a knowledge authority/state/database")
+    for required_true in {
+        "projection_only_not_replacement_knowledge_validation_schema",
+        "r_b_and_current_knowledge_owner_retain_knowledge_authority",
+        "resolvable_fields_do_not_require_duplicate_central_persistence",
+        "common_control_actions_are_not_state_family",
+        "routes_are_not_mutually_exclusive_but_do_not_inherit_each_others_authority",
+        "observation_does_not_prove_causation",
+        "repeated_pattern_does_not_prove_universal_rule",
+        "one_project_success_does_not_prove_transferability",
+        "project_failure_does_not_automatically_invalidate_current_knowledge",
+        "transfer_boundary_required_before_reusable_knowledge_route",
+        "unsupported_causal_story_cannot_be_promoted_by_g9",
+        "counterevidence_and_failed_attempts_preserved_when_material",
+        "project_specific_or_unresolved_transfer_may_remain_project_practice_evidence",
+        "knowledge_validation_gate_results_owned_by_existing_knowledge_research_contracts",
+        "g9_cannot_award_knowledge_research_gate_pass",
+        "knowledge_lifecycle_disposition_owned_by_existing_knowledge_authority",
+        "knowledge_lifecycle_vocabulary_reused_not_redefined",
+        "current_knowledge_does_not_auto_grant_task_scoped_oe3",
+        "g9_cannot_award_ki4_or_oe3",
+        "project_reopen_does_not_require_prior_reusable_knowledge_promotion",
+        "project_reopen_does_not_prove_reusable_knowledge_revision",
+        "g9_may_propose_evolution_candidate_but_not_mutate_live_runtime",
+        "evolution_target_owner_retains_semantic_authority",
+        "parallel_g9_knowledge_tree_forbidden",
+        "parallel_persistent_g9_learning_authority_database_forbidden",
+        "g9_feedback_edge_to_r_b_is_candidate_feedback_not_dependency_handoff",
+    }:
+        if g9.get(required_true) is not True:
+            fail(f"G9 knowledge return boundary missing {required_true}")
+    expected_g9_refs = {
+        "00-governance/complex-project-master-runtime-v1.0.md",
+        "00-governance/design-intelligence-routing-and-review-v1.0.md",
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+        "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
+        "oleander-skills/oleander-research/PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.json",
+        "00-governance/naming-status.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
+    }
+    if set(g9.get("projection_source_refs", [])) != expected_g9_refs:
+        fail("G9 projection source refs drift")
+    for ref in g9.get("projection_source_refs", []):
+        check_ref(ref)
+    if set(g9.get("candidate_required_resolvable_fields", [])) != {
+        "project_or_context_scope_ref", "intended_relation_or_baseline_ref", "observed_outcome_ref",
+        "difference_or_pattern", "causal_hypothesis_or_uncertainty", "repair_retest_refs",
+        "counterexample_refs", "transfer_boundary", "proposed_reusable_form_or_role",
+        "target_knowledge_or_evolution_owner_ref", "validation_route_ref", "does_not_prove",
+    }:
+        fail("G9 candidate projection fields drift")
+    if g9.get("common_control_action_sequence") != [
+        "CAPTURE_ACTUAL_OBSERVED_OUTCOME",
+        "BIND_INTENDED_RELATION_OR_BASELINE",
+        "SEPARATE_OBSERVATION_FROM_CAUSAL_HYPOTHESIS",
+        "PRESERVE_PROJECT_CONTEXT_UNCERTAINTY_AND_NEGATIVE_EVIDENCE",
+        "PRESERVE_REPAIR_RETEST_AND_COUNTEREXAMPLES_WHEN_AVAILABLE",
+        "DEFINE_TRANSFER_BOUNDARY",
+        "RESOLVE_TARGET_OWNER_AND_VALIDATION_ROUTE",
+    ]:
+        fail("G9 common control action sequence drift")
+    if set(g9.get("bounded_route_actions", [])) != {
+        "ROUTE_PROJECT_SPECIFIC_FINDING_TO_PROJECT_PRACTICE_EVIDENCE",
+        "ROUTE_MATERIAL_PROJECT_FAILURE_TO_EXISTING_REOPEN_CONTROLS",
+        "ROUTE_REUSABLE_LESSON_TO_EXISTING_KNOWLEDGE_VALIDATION",
+        "ROUTE_RUNTIME_OR_PROCESS_LESSON_TO_EVOLUTION_CANDIDATE_CONTRACT",
+    }:
+        fail("G9 bounded route actions drift")
+
+    expected_rk_failure_codes = {
+        "CAUSAL_STORY_UNSUPPORTED", "TRANSFER_BOUNDARY_MISSING", "PROJECT_SPECIFIC_ONLY",
+        "COUNTEREVIDENCE_UNRESOLVED", "CANDIDATE_OWNER_UNRESOLVED", "AUTO_PROMOTION_ATTEMPT_BLOCKED",
+    }
+    if set(g9.get("existing_r_k_failure_codes", [])) != expected_rk_failure_codes:
+        fail("G9 projection failure-code set drift")
+    r_k = layer_contract.get("layers", {}).get("R-K", {})
+    if set(r_k.get("failure_codes", [])) != expected_rk_failure_codes:
+        fail("R-K owner-native failure codes drift from G9 projection")
+    if set(r_k.get("outputs", [])) != {"LESSON_CANDIDATE", "CAUSAL_HYPOTHESIS", "TRANSFER_BOUNDARY", "COUNTEREXAMPLE_SET", "KNOWLEDGE_VALIDATION_ROUTE", "EVOLUTION_CANDIDATE_REF"}:
+        fail("R-K owner-native output contract drift")
+    if r_k.get("persistence_policy") != "PERSIST_AS_PROJECT_OR_CANDIDATE_UNTIL_VALIDATED; NEVER_AS_CURRENT_KNOWLEDGE_BY_DEFAULT":
+        fail("R-K candidate persistence boundary drift")
+    if r_k.get("claim_boundary") != "MAY_PROPOSE_BOUNDED_REUSABLE_LEARNING_OR_EVOLUTION_CANDIDATE; DOES_NOT_PROMOTE_CURRENT_KNOWLEDGE_OR_MUTATE_RUNTIME_DIRECTLY":
+        fail("R-K claim boundary drift")
+    if set(r_k.get("feedback_targets", [])) != {"R-B"} or r_k.get("handoff_targets", []) != []:
+        fail("R-K to R-B must remain bounded feedback rather than dependency handoff")
+
+    research_standard = json.loads((ROOT / "oleander-skills/oleander-research/PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.json").read_text(encoding="utf-8"))
+    expected_current_gates = {
+        "AUTHORITY_IDENTITY_PASS", "APPLICABLE_R1_PASS", "APPLICABLE_R2_PASS", "K1_PASS", "K2_PASS",
+        "K3_PASS", "K4_PASS", "K5_PASS", "B1_PASS", "APPLICABLE_IR_PASS", "NO_UNRESOLVED_CRITICAL_CONTRADICTION",
+    }
+    if set(research_standard.get("promotion_rule", {}).get("canonical_current_requires", [])) != expected_current_gates:
+        fail("G9 reusable Knowledge promotion projection drift from research standard")
+    if not {"KNOWLEDGE_OBJECT_PASS_NE_CANONICAL_CURRENT", "CONTENT_PASS_NE_RESEARCH_PASS"}.issubset(set(research_standard.get("separation_rules", []))):
+        fail("Knowledge research separation rules incomplete for G9 projection")
+
+    knowledge_mount_text = (ROOT / "00-governance/knowledge-integrity-and-operational-mount-v1.0.md").read_text(encoding="utf-8")
+    if "G9 project outcomes return as lesson candidates and must pass existing knowledge validation before reusable promotion" not in knowledge_mount_text:
+        fail("Knowledge Operational Mount G9 validation boundary drift")
+    if "derive `OE*` only for a concrete task/claim scope" not in knowledge_mount_text:
+        fail("Knowledge Operational Mount task-scoped OE boundary drift")
+    content_review_text = (ROOT / "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md").read_text(encoding="utf-8")
+    if "CONTENT TERMINAL != KNOWLEDGE INTEGRITY VERIFIED != OPERATIONALLY ELIGIBLE" not in content_review_text:
+        fail("G9 projection requires Content/KI/OE separation")
+    naming_text = (ROOT / "00-governance/naming-status.md").read_text(encoding="utf-8")
+    if "WORKING / TEMP → CANDIDATE → CURRENT | SUPPORT | PROVENANCE | SUPERSEDED | REJECTED | DELETE_CANDIDATE" not in naming_text:
+        fail("G9 projection must reuse existing Knowledge lifecycle vocabulary")
+    evolution = json.loads(EVOLUTION_CANDIDATE.read_text(encoding="utf-8"))
+    evolution_invariants = set(evolution.get("invariants", []))
+    if not {"ONE_PROJECT_SUCCESS_DOES_NOT_UNIVERSALIZE_RULE", "TARGET_OWNER_RETAINS_SEMANTIC_AUTHORITY", "G9_IS_CANDIDATE_INTAKE_NOT_SUPER_AUTHORITY"}.issubset(evolution_invariants):
+        fail("G9 Evolution route boundary drift")
+
     trigger = graph.get("trigger_applicability_contract", {})
     if trigger.get("semantic_class") != "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY":
         fail("trigger/applicability results must not create a new state family")
@@ -1150,6 +1268,13 @@ def main() -> None:
         "PROMOTION_REQUIRES_AUTHORIZED_OWNER_NATIVE_TRANSITION_AND_READBACK",
         "POST_PROMOTION_SYNC_FAILURE_DOES_NOT_ERASE_CONFIRMED_CANONICAL_PROMOTION",
         "PROMOTION_SYNC_BOUNDARY_DOES_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
+        "G9_CANDIDATE_IS_NOT_CURRENT_KNOWLEDGE",
+        "G9_OBSERVATION_IS_NOT_CAUSAL_PROOF",
+        "G9_REUSABLE_ROUTE_REQUIRES_TRANSFER_BOUNDARY",
+        "G9_KNOWLEDGE_LIFECYCLE_DISPOSITION_REMAINS_WITH_KNOWLEDGE_OWNER",
+        "CURRENT_KNOWLEDGE_DOES_NOT_AUTO_GRANT_OE3",
+        "G9_EVOLUTION_CANDIDATE_CANNOT_MUTATE_LIVE_RUNTIME",
+        "PROJECT_REOPEN_AND_REUSABLE_KNOWLEDGE_PROMOTION_REMAIN_SEPARATE",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1166,6 +1291,7 @@ def main() -> None:
     print("controlled_evolution=PASS")
     print("compatibility_impact_projection=PASS")
     print("promotion_persistence_sync_boundary=PASS")
+    print("g9_knowledge_return_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
