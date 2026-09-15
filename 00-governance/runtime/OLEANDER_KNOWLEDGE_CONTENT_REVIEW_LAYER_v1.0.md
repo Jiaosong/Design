@@ -15,6 +15,10 @@ Every knowledge-graph object must have both:
 
 No object may be reported as globally complete until both are terminal.
 
+This layer owns body completion only. It does not by itself certify the separate Knowledge Integrity or task/claim-scoped Operational Eligibility states defined in `../knowledge-integrity-and-operational-mount-v1.0.md`.
+
+`CONTENT TERMINAL != KNOWLEDGE INTEGRITY VERIFIED != OPERATIONALLY ELIGIBLE`.
+
 ## Authority and evidence rules
 
 - Review the current canonical body, not the title, prefix, Canonical ID, page length, role, maturity, source count, or graph position alone.
@@ -97,6 +101,8 @@ For each object, the progress ledger must expose at minimum:
 
 No aggregate completion percentage may count an object as complete when only one side is terminal.
 
+For runtime handoff, a completed content review may additionally expose integrity findings such as wrong role, authority drift, provenance gap, graph pollution, duplicate ownership, project contamination or staleness. These findings are routed to their owning remediation surface and must not be silently collapsed into `contentDecision`.
+
 ## Review order
 
 Default production order:
@@ -141,3 +147,5 @@ Graph PASS != Content PASS.
 Content PASS != Design KEEP.
 
 Content review completeness must therefore remain independently visible in the Master Runtime knowledge-plane readback.
+
+After content/graph review, Design Intelligence and Professional Domain Execution consume the same canonical object only through the separate Operational Mount contract. A `CONTENT_ACTION_APPLIED_VERIFIED` object may still be `OE1 NOT_ELIGIBLE` or `OE2 CONDITIONAL` for a particular claim; conversely, bounded use of a clean SOURCE may be conditionally eligible without converting that SOURCE into a METHOD or a professional-stage owner.

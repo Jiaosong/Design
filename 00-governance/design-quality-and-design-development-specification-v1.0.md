@@ -65,6 +65,24 @@ This specification owns the **shared design-development contract** only. It does
 
 No new top-level taxonomy is created by this document.
 
+### 2.1｜Knowledge-input admission boundary
+
+Design development may consume only knowledge that has been resolved through the current Knowledge system at the level required by the task and claim. Existing knowledge pages are not automatically trusted merely because they are `CURRENT`, well written, linked from a project, or already used by another stage.
+
+Keep these states independent:
+
+`CONTENT COMPLETE ≠ KNOWLEDGE INTEGRITY VERIFIED`
+
+`KNOWLEDGE INTEGRITY VERIFIED ≠ OPERATIONALLY ELIGIBLE FOR EVERY CLAIM`
+
+`OPERATIONALLY ELIGIBLE KNOWLEDGE ≠ DQ MATURITY`
+
+`DQ MATURITY ≠ PROFESSIONAL-STAGE COMPLETION`.
+
+The runtime admission owner is `knowledge-integrity-and-operational-mount-v1.0.md`. It mounts the existing canonical corpus without copying knowledge into `DD-*` or professional-stage structures. Professional stages reference canonical knowledge objects through task/claim-scoped operational eligibility, applicability, claim ceiling, freshness and `does_not_prove` boundaries.
+
+Knowledge pollution discovered during design execution must be routed back to the appropriate Knowledge owner. A design team may record and respect the issue, but Design Quality review must not silently repair graph authority, duplicate canonical ownership, provenance, lifecycle or source identity by treating the design artifact as proof.
+
 ---
 
 ## 3｜Three independent design-result axes
@@ -1192,7 +1210,9 @@ Each Professional Domain Process must map its authentic stages to the shared Des
 
 Minimum stage binding should identify:
 
-`professional question / required design dimensions / knowledge inputs / native outputs / interfaces / design-language consequences / human-experience consequences / technical consequences / required readback / review owner / reopen triggers`.
+`professional question / required design dimensions / knowledge inputs + operational eligibility / native outputs / interfaces / design-language consequences / human-experience consequences / technical consequences / required readback / review owner / reopen triggers`.
+
+Knowledge inputs must remain canonical refs. A stage may discover many candidate objects, but consequential decision use should carry the applicable `OE1 / OE2 / OE3` state, claim ceiling, applicability/freshness condition and `does_not_prove` boundary from the Knowledge Operational Mount contract.
 
 Example Architecture mapping:
 

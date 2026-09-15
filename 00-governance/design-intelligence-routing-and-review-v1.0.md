@@ -50,7 +50,7 @@ Do not convert these roles into project stages. A METHOD may be called at severa
 
 Stores the current design problem, project state and decisions under P0–P4.
 
-The project does not copy the knowledge base into itself. It resolves and cites the minimum relevant current knowledge objects, then records project-specific decisions, evidence and outputs.
+The project does not copy the knowledge base into itself. It resolves and cites the minimum relevant current knowledge objects, then records project-specific decisions, evidence and outputs. Consequential knowledge inputs must pass the separate `Knowledge Integrity & Operational Mount Contract v1.0` at the task/claim scope; retrieval, body completeness, integrity, operational eligibility, DD maturity and professional-stage state remain independent.
 
 ### Plane C｜Review Plane
 
@@ -86,7 +86,7 @@ Minimum fields:
 - `locked_variables`;
 - `open_variables`;
 - `key_design_tensions` — important trade-offs rather than fake universal maxima;
-- `knowledge_routes` — current L4/L5 frameworks and methods actually used;
+- `knowledge_routes` — current L4/L5/L6/L7 canonical refs actually considered/used, with task-scoped operational eligibility, applicability, claim ceiling and `does_not_prove` when consequential;
 - `evidence_routes` — L6/source/evidence needed for factual or professional claims;
 - `precedent_routes` — relevant cases when comparison is useful;
 - `practice_routes` — relevant L7 practice examples, never treated as fact merely because they exist;
