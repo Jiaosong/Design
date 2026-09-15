@@ -1,0 +1,284 @@
+{
+  "schema": "OLEANDER_PROFESSIONAL_DESIGN_EXECUTION_PROCESS_REGISTRY_v0.1",
+  "status": "DRAFT_RESEARCH_REGISTRY_NOT_CURRENT",
+  "purpose": "Keep professional/domain execution processes distinct while binding all project execution to the same OLEANDER P0-P11 runtime control semantics.",
+  "hard_invariants": [
+    "DOMAIN_PROCESS_IS_NOT_RUNTIME_ONTOLOGY",
+    "P0_P11_IS_SHARED_CONTROL_KERNEL_NOT_PROFESSIONAL_DESIGN_METHOD",
+    "DO_NOT_RENAME_ALL_DOMAIN_STAGES_TO_ADD",
+    "DO_NOT_COPY_ARCHITECTURE_STAGE_STRUCTURE_INTO_OTHER_DISCIPLINES_WITHOUT_DOMAIN_EVIDENCE",
+    "EXTERNAL_PROFESSIONAL_FRAMEWORK_IS_REFERENCE_NOT_OLEANDER_PROJECT_AUTHORITY",
+    "EACH_DOMAIN_PROCESS_MUST_DECLARE_OUTPUTS_INTERFACES_EVIDENCE_AND_EXIT_CONDITIONS",
+    "EACH_DOMAIN_PROCESS_BINDS_TO_P0_P11_WITHOUT_DUPLICATING_P0_P11_SEMANTICS"
+  ],
+  "process_families": [
+    {
+      "process_id": "ARCH-DD-v1.0",
+      "domain": "ARCHITECTURE",
+      "title": "Architecture Design Development Process v1.0",
+      "state": "ACTIVE_LOCAL_PROCESS_AUTHORITY_RUNTIME_BINDING_DRAFT",
+      "authority_or_reference": "OLEANDER_LOCAL_AUTHORITY",
+      "authority_ref": "D:\\Desgin\\00-governance\\architecture-design-development-process-v1.0.md",
+      "runtime_binding": "OLEANDER_ARCHITECTURE_ADD_RUNTIME_BINDING_v0.1.json",
+      "research_alignment": [
+        "AIA_BASIC_SERVICES_PHASES",
+        "RIBA_PLAN_OF_WORK_2020"
+      ],
+      "notes": "KH_LY46 continues under this process. P0-P11 is attached as runtime control and does not replace ADD."
+    },
+    {
+      "process_id": "INT-DD-v0.1-CANDIDATE",
+      "domain": "INTERIOR_DESIGN",
+      "title": "Interior Design Development Process",
+      "state": "RESEARCH_CANDIDATE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.cidq.org/about-cidq/what-is-interior-design/",
+        "https://www.cidq.org/for-certificate-holders/jurisdictions-and-requirements/",
+        "https://www.cidq.org/wp-content/uploads/2026/01/NCIDQ-Candidate-Handbook-FINAL-1225.pdf"
+      ],
+      "domain_specific_execution_axes": [
+        "EXISTING_CONDITIONS",
+        "DISCOVERY_PROGRAMMING",
+        "SPACE_PLANNING",
+        "CONCEPT_DEVELOPMENT",
+        "SCHEMATIC_DESIGN",
+        "DESIGN_DEVELOPMENT_SELECTIONS",
+        "FINISHES_MATERIALS",
+        "FFE",
+        "CODE_LIFE_SAFETY_COORDINATION",
+        "DOCUMENTATION_SPECIFICATION",
+        "CONSULTANT_COORDINATION",
+        "BIDDING_NEGOTIATION",
+        "CONSTRUCTION_ADMINISTRATION",
+        "POST_OCCUPANCY_EVALUATION"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_architecture": true
+    },
+    {
+      "process_id": "LA-DD-v0.1-CANDIDATE",
+      "domain": "LANDSCAPE_ARCHITECTURE",
+      "title": "Landscape Architecture Design Development Process",
+      "state": "RESEARCH_CANDIDATE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.asla.org/focus-areas/climate-biodiversity-action/practice-and-operations-guides/decarbonizing-the-design-process",
+        "https://www.asla.org/resources/practitioners/professional-practice-networks-home/ppservice/guide-to-public-practice-landscape-architecture"
+      ],
+      "domain_specific_execution_axes": [
+        "PROJECT_KICKOFF",
+        "SITE_DATA_AND_ANALYSIS",
+        "STAKEHOLDER_ENGAGEMENT",
+        "CONCEPTUAL_DESIGN",
+        "SCHEMATIC_DESIGN",
+        "DESIGN_DEVELOPMENT",
+        "GRADING_DRAINAGE_CIRCULATION_COORDINATION",
+        "MATERIAL_PLANTING_AND_ECOLOGICAL_SYSTEMS",
+        "CONSTRUCTION_DOCUMENTS",
+        "PERMITTING_PROCUREMENT",
+        "CONSTRUCTION_ADMINISTRATION",
+        "OPERATIONS_MAINTENANCE_STEWARDSHIP"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_architecture": true
+    },
+    {
+      "process_id": "STR-DD-v0.1-CANDIDATE",
+      "domain": "STRUCTURAL_ENGINEERING",
+      "title": "Structural Engineering Design Development Process",
+      "state": "RESEARCH_CANDIDATE_HIGH_CONFIDENCE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.istructe.org/resources/guidance/the-structural-plan-of-work/",
+        "https://www.istructe.org/IStructE/media/Public/Resources/Structural-plan-of-work-20200701.pdf"
+      ],
+      "domain_specific_execution_axes": [
+        "STRATEGIC_DEFINITION",
+        "PREPARATION_AND_BRIEF",
+        "CONCEPT_DESIGN",
+        "SPATIAL_COORDINATION",
+        "TECHNICAL_DESIGN",
+        "PRODUCTION_INFORMATION",
+        "MANUFACTURING_AND_CONSTRUCTION",
+        "HANDOVER",
+        "USE_AND_EVALUATION",
+        "DESIGN_ASSURANCE",
+        "INTERFACE_AND_CONTINGENCY_ASSESSMENT"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_architecture": true
+    },
+    {
+      "process_id": "MEP-DD-v0.1-CANDIDATE",
+      "domain": "BUILDING_SERVICES_MEP",
+      "title": "Building Services / MEP Design Development Process",
+      "state": "RESEARCH_CANDIDATE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.cibse.org/knowledge-research/knowledge-resources/engineering-guidance/cibse-codes-of-practice/",
+        "RIBA_PLAN_OF_WORK_2020_REFERENCE_TO_BSRIA_BG6_DESIGN_FRAMEWORK_FOR_BUILDING_SERVICES"
+      ],
+      "domain_specific_execution_axes": [
+        "STAGE_GOALS",
+        "MEASURABLE_OBJECTIVES",
+        "MINIMUM_REQUIREMENTS",
+        "BEST_PRACTICE_OPTIONS",
+        "RESPONSIBILITY_ASSIGNMENT",
+        "LOAD_AND_DEMAND_BASIS",
+        "SYSTEM_CONCEPT_SELECTION",
+        "SPATIAL_COORDINATION",
+        "TECHNICAL_DESIGN",
+        "CONTROLS_AND_COMMISSIONING_INTENT",
+        "CONSTRUCTION_INFORMATION",
+        "COMMISSIONING_HANDOVER_OPERATION"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_architecture": true
+    },
+    {
+      "process_id": "LGT-DD-v0.1-CANDIDATE",
+      "domain": "LIGHTING_DESIGN",
+      "title": "Lighting Design Development Process",
+      "state": "RESEARCH_CANDIDATE_HIGH_CONFIDENCE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://store.ies.org/product/lighting-practice-designing-quality-lighting-for-people-and-buildings/"
+      ],
+      "domain_specific_execution_axes": [
+        "PROJECT_INFORMATION_COLLECTION",
+        "TEAM_RESPONSIBILITIES",
+        "LIGHTING_DESIGN_PHASES",
+        "VISION_COMFORT_MODELING_COLOR",
+        "ENERGY_ENVIRONMENT_COST_MAINTENANCE",
+        "ARCHITECTURAL_INTEGRATION",
+        "DAYLIGHT_AND_CONTROLS",
+        "SAFETY_AND_SPECIAL_CONSIDERATIONS",
+        "CONSTRUCTION_DOCUMENTATION",
+        "QUALITY_ASSURANCE"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_mep_or_architecture": true
+    },
+    {
+      "process_id": "HCD-DIG-v0.1-CANDIDATE",
+      "domain": "DIGITAL_PRODUCT_HUMAN_CENTRED_DESIGN",
+      "title": "Human-Centred Interactive System Design Process",
+      "state": "RESEARCH_CANDIDATE_HIGH_CONFIDENCE",
+      "authority_or_reference": "EXTERNAL_STANDARD_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.iso.org/standard/77520.html",
+        "https://www.iso.org/standard/63462.html",
+        "https://www.iso.org/standard/88373.html"
+      ],
+      "domain_specific_execution_axes": [
+        "HCD_PLANNING",
+        "CONTEXT_OF_USE",
+        "USER_AND_STAKEHOLDER_REQUIREMENTS",
+        "DESIGN_SOLUTIONS",
+        "HUMAN_CENTRED_EVALUATION",
+        "ITERATION",
+        "ORGANIZATIONAL_HCD_PROCESS_ENABLEMENT",
+        "PROCESS_OUTCOMES_AND_WORK_PRODUCTS",
+        "HCD_SELF_ASSESSMENT"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_generic_DOUBLE_DIAMOND": true
+    },
+    {
+      "process_id": "SE-v0.1-CANDIDATE",
+      "domain": "SYSTEMS_ENGINEERING",
+      "title": "Systems Engineering Lifecycle Execution Process",
+      "state": "RESEARCH_CANDIDATE_HIGH_CONFIDENCE",
+      "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.incose.org/resources-publications/technical-publications/se-handbook/",
+        "https://www.incose.org/about-systems-engineering/standards-policies/"
+      ],
+      "domain_specific_execution_axes": [
+        "STAKEHOLDER_NEEDS_AND_REQUIREMENTS",
+        "SYSTEM_REQUIREMENTS",
+        "ARCHITECTURE_DEFINITION",
+        "DESIGN_DEFINITION",
+        "SYSTEM_ANALYSIS",
+        "IMPLEMENTATION",
+        "INTEGRATION",
+        "VERIFICATION",
+        "VALIDATION",
+        "TRANSITION",
+        "OPERATION_MAINTENANCE",
+        "RETIREMENT",
+        "LIFECYCLE_TAILORING"
+      ],
+      "runtime_binding": "P0_P11_REQUIRED",
+      "do_not_collapse_into_project_management": true
+    },
+    {
+      "process_id": "GEN-DESIGN-v0.1-REFERENCE",
+      "domain": "GENERAL_DESIGN_INNOVATION",
+      "title": "Double Diamond / Framework for Innovation Reference",
+      "state": "REFERENCE_ONLY_NOT_DOMAIN_EXECUTION_PROCESS",
+      "authority_or_reference": "EXTERNAL_METHOD_REFERENCE_ONLY",
+      "source_refs": [
+        "https://www.designcouncil.org.uk/resources/the-double-diamond/",
+        "https://www.designcouncil.org.uk/resources/framework-for-innovation/"
+      ],
+      "domain_specific_execution_axes": ["DISCOVER", "DEFINE", "DEVELOP", "DELIVER"],
+      "runtime_binding": "MAY_INFORM_DOMAIN_METHODS_BUT_DOES_NOT_REPLACE_DOMAIN_PROCESS",
+      "do_not_promote_to_universal_professional_execution_process": true
+    }
+  ],
+  "research_queue": [
+    {
+      "priority": 1,
+      "domain": "ARCHITECTURE",
+      "task": "Direct-read local ADD v1.0 authority and emit exact ADD-stage x P0-P11 matrix without stage-name invention."
+    },
+    {
+      "priority": 2,
+      "domain": "INTERIOR_DESIGN",
+      "task": "Develop executable stage contract around programming, space planning, FF&E/finish, code/life-safety, documentation, CA and POE."
+    },
+    {
+      "priority": 3,
+      "domain": "LANDSCAPE_ARCHITECTURE",
+      "task": "Develop site/ecology/water/grading/planting/material/stewardship-specific execution gates."
+    },
+    {
+      "priority": 4,
+      "domain": "STRUCTURAL_ENGINEERING",
+      "task": "Map Structural Plan of Work outputs, design assurance and interface responsibilities to P0-P11."
+    },
+    {
+      "priority": 5,
+      "domain": "BUILDING_SERVICES_MEP",
+      "task": "Define load-basis, system concept, spatial coordination, controls, commissioning and handover execution gates."
+    },
+    {
+      "priority": 6,
+      "domain": "LIGHTING_DESIGN",
+      "task": "Define photometric/visual-comfort/daylight/control/documentation/QA execution gates without treating simulation as field proof."
+    },
+    {
+      "priority": 7,
+      "domain": "DIGITAL_PRODUCT_HUMAN_CENTRED_DESIGN",
+      "task": "Bind ISO 9241-210/220 human-centred activities and evaluation outputs to OLEANDER runtime."
+    },
+    {
+      "priority": 8,
+      "domain": "SYSTEMS_ENGINEERING",
+      "task": "Use as cross-domain technical lifecycle reference; preserve separation between systems engineering process and OLEANDER runtime control."
+    },
+    {
+      "priority": 9,
+      "domain": "WAYFINDING_EXPERIENTIAL_GRAPHICS",
+      "task": "Research SEGD and accessibility/navigation evidence before defining a standalone process."
+    },
+    {
+      "priority": 10,
+      "domain": "INDUSTRIAL_PRODUCT_DESIGN",
+      "task": "Research professional product-development references, manufacturing/DFM/prototyping/verification gates before defining process."
+    }
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_ONLY"
+}
