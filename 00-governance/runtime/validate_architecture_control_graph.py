@@ -818,6 +818,130 @@ def main() -> None:
     if not impact_scope_fields.issubset(recovery_scope):
         fail("compatibility impact projection drift from recovery blast-radius relation fields")
 
+    promotion = graph.get("promotion_persistence_sync_boundary", {})
+    if promotion.get("semantic_class") != "CONTROL_PROJECTION_NOT_PROMOTION_STATE_FAMILY_LEDGER_OR_AUTHORITY":
+        fail("promotion/persistence/sync boundary must remain a control projection")
+    if promotion.get("projection_only_not_replacement_promotion_schema") is not True or promotion.get("owner_native_project_design_authority_states_remain_authoritative") is not True:
+        fail("promotion projection may not replace owner-native Project/Design/Authority state owners")
+    expected_promotion_owner_refs = {
+        "00-governance/complex-project-master-runtime-v1.0.md",
+        "00-governance/oleander-project-flow-v0.3.md",
+        "00-governance/production-asset-persistence-gate-v1.0.md",
+        "00-governance/cross-platform-sync-contract-v1.1.md",
+    }
+    if set(promotion.get("owner_native_source_refs", [])) != expected_promotion_owner_refs:
+        fail("promotion/persistence/sync semantic owner refs drift")
+    expected_promotion_runtime_refs = {
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/control-plane/orchestration.schema.json",
+        "00-governance/control-plane/orchestrator.py",
+    }
+    if set(promotion.get("runtime_carrier_or_implementation_refs", [])) != expected_promotion_runtime_refs:
+        fail("promotion/persistence/sync runtime implementation refs drift")
+    for ref in promotion.get("owner_native_source_refs", []) + promotion.get("runtime_carrier_or_implementation_refs", []):
+        check_ref(ref)
+
+    if set(promotion.get("eligibility_required_resolvable_fields", [])) != {
+        "project_or_scope_id", "decision_object_id", "authority_fingerprint", "promotion_request_or_intent_ref",
+        "claim_boundary", "eligibility_result_ref", "eligibility_evidence_refs", "open_blockers",
+    }:
+        fail("promotion eligibility projection fields drift")
+    if set(promotion.get("triggered_pre_promotion_persistence_fields", [])) != {
+        "persistence_trigger_basis_ref_or_fields", "persistence_receipt_ref", "persistence_readback_ref",
+    }:
+        fail("pre-promotion persistence projection fields drift")
+    if set(promotion.get("promotion_transition_required_resolvable_fields", [])) != {
+        "human_decision_actor_or_authority_ref", "authorization_basis_ref_or_fields", "human_decision_ref",
+        "promotion_transition_owner_ref", "promotion_transition_ref", "authoritative_transition_readback_ref",
+    }:
+        fail("promotion transition projection fields drift")
+    if set(promotion.get("conditional_owner_native_transition_fields", [])) != {
+        "transition_kind", "from_authority_state", "target_authority_state", "target_design_state",
+    }:
+        fail("owner-native promotion transition field projection drift")
+    if set(promotion.get("post_promotion_sync_fields", [])) != {
+        "required_sync_target_refs", "sync_readback_refs", "cross_line_readback_ref", "drift_or_partial_sync_refs",
+    }:
+        fail("post-promotion sync projection fields drift")
+
+    expected_promotion_actions = [
+        "RESOLVE_PROMOTION_PREREQUISITES_AND_CLAIM_BOUNDARY",
+        "CLOSE_TRIGGERED_PRE_PROMOTION_PERSISTENCE",
+        "REPORT_ELIGIBILITY_ONLY",
+        "RESOLVE_HUMAN_DECISION_AUTHORIZATION",
+        "RECORD_AUTHORIZED_HUMAN_DECISION",
+        "APPLY_OWNER_NATIVE_PROMOTION_TRANSITION",
+        "READBACK_AUTHORITATIVE_PROMOTION_STATE",
+        "REGISTER_PROMOTED_ARTIFACT_OR_AUTHORITY_AS_APPLICABLE",
+        "PROPAGATE_REQUIRED_POST_PROMOTION_SYNC",
+        "READBACK_REQUIRED_SYNC_TARGETS_AND_DRIFT",
+    ]
+    if promotion.get("control_actions_are_not_state_family") is not True or promotion.get("control_action_sequence") != expected_promotion_actions:
+        fail("promotion/persistence/sync control action sequence drift")
+    if promotion.get("machine_terminal_before_human_transition") != "READY_FOR_HUMAN_DECISION" or promotion.get("machine_terminal_is_promotion") is not False:
+        fail("machine promotion boundary must stop at READY_FOR_HUMAN_DECISION")
+    for required_true in {
+        "owner_native_pre_promotion_persistence_gate_closes_before_promotion_when_triggered",
+        "persistence_pass_does_not_prove_promotion",
+        "human_decision_requires_current_decision_authorization",
+        "human_decision_record_alone_does_not_prove_transition_unless_same_owner_native_carrier_mutates_and_reads_back_target_state",
+        "authoritative_transition_readback_required_for_effective_promotion_claim",
+        "full_cross_platform_sync_is_not_universal_pre_promotion_gate",
+        "post_promotion_sync_may_follow_confirmed_promotion",
+        "post_promotion_mirror_failure_does_not_erase_confirmed_canonical_promotion",
+        "post_promotion_mirror_failure_blocks_affected_sync_or_cross_platform_current_claim_only",
+        "canonical_authority_transition_uncertainty_blocks_effective_promotion_claim",
+        "multi_surface_authority_transition_reuses_partial_commit_reconciliation",
+        "ordinary_post_promotion_mirrors_are_not_automatically_transaction_legs",
+        "pr_ci_merge_do_not_prove_promotion",
+        "sync_success_does_not_prove_promotion",
+        "promotion_does_not_prove_release_or_statutory_approval",
+        "one_current_per_authority_surface_preserved",
+        "resolvable_fields_do_not_require_duplicate_central_persistence",
+        "skill_lifecycle_promotion_record_not_project_promotion_schema",
+        "persistent_promotion_ledger_forbidden",
+    }:
+        if promotion.get(required_true) is not True:
+            fail(f"promotion/persistence/sync boundary missing {required_true}")
+    if set(promotion.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("unresolved promotion transition must reuse existing runtime outcomes")
+
+    master_text = (ROOT / "00-governance/complex-project-master-runtime-v1.0.md").read_text(encoding="utf-8")
+    if "READY_FOR_HUMAN_DECISION ≠ PROMOTED" not in master_text:
+        fail("Master Runtime promotion readiness/human transition boundary drift")
+    project_flow_text = (ROOT / "00-governance/oleander-project-flow-v0.3.md").read_text(encoding="utf-8")
+    if "durable persistence must occur **here, before promotion**" not in project_flow_text or "Cross-system registration/synchronization may continue after promotion" not in project_flow_text:
+        fail("Project Flow pre-promotion persistence vs post-promotion sync ordering drift")
+    pap_text = (ROOT / "00-governance/production-asset-persistence-gate-v1.0.md").read_text(encoding="utf-8")
+    if "Promotion / Archive may not begin until PAP-G0—PAP-G6 PASS" not in pap_text or "`PERSISTENCE PASS` concerns durable asset availability only" not in pap_text:
+        fail("PAP Promotion prerequisite / does-not-prove boundary drift")
+    sync_text = (ROOT / "00-governance/cross-platform-sync-contract-v1.1.md").read_text(encoding="utf-8")
+    if "Merge and Promotion remain separate transitions" not in sync_text or "No target-system readback, no sync claim" not in sync_text:
+        fail("cross-platform sync merge/promotion/readback boundary drift")
+
+    layer_contract = json.loads(LAYER_INTERFACE.read_text(encoding="utf-8"))
+    rj = layer_contract.get("layers", {}).get("R-J", {})
+    if set(rj.get("outputs", [])) != {"PERSISTENCE_RECEIPT", "PROMOTION_ELIGIBILITY", "HUMAN_PROMOTION_DECISION_RECORD", "SYNC_READBACK", "DRIFT_STATE"}:
+        fail("R-J output contract drift")
+    if not {"PERSISTENCE_CLOSED_WHEN_TRIGGERED", "MACHINE_REPORTS_ONLY_ELIGIBILITY_NOT_PROMOTION", "HUMAN_DECISION_RECORDED_WHEN_PROMOTION_OCCURS", "TARGET_PLATFORM_READBACK_CLOSES_SYNC_CLAIM"}.issubset(set(rj.get("exit_conditions", []))):
+        fail("R-J exit boundary drift")
+    if not {"PERSISTENCE_REQUIRED_BUT_MISSING", "PROMOTION_PREREQUISITE_OPEN", "HUMAN_PROMOTION_DECISION_REQUIRED", "TARGET_SYNC_READBACK_FAILED", "CROSS_PLATFORM_DRIFT", "PROMOTION_CLAIM_BOUNDARY_EXCEEDED"}.issubset(set(rj.get("failure_codes", []))):
+        fail("R-J failure boundary drift")
+
+    orchestration_schema = json.loads((ROOT / "00-governance/control-plane/orchestration.schema.json").read_text(encoding="utf-8"))
+    transition_props = orchestration_schema.get("$defs", {}).get("transition", {}).get("properties", {})
+    if "CANONICAL_PROMOTION" not in set(transition_props.get("kind", {}).get("enum", [])) or "PROMOTED" not in set(transition_props.get("target_design_state", {}).get("enum", [])):
+        fail("Control Plane owner-native canonical Promotion transition schema drift")
+    orchestrator_text = (ROOT / "00-governance/control-plane/orchestrator.py").read_text(encoding="utf-8")
+    if '("CANONICAL_PROMOTION", "CANDIDATE_AUTHORITY", "CANONICAL_AUTHORITY", "PROMOTED")' not in orchestrator_text:
+        fail("Control Plane canonical Promotion transition implementation drift")
+    if '"status": "READY_FOR_HUMAN_DECISION"' not in orchestrator_text or '"human_decision_required": True' not in orchestrator_text:
+        fail("Control Plane evaluator must stop at human decision readiness")
+
+    skill_capability = json.loads((ROOT / "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json").read_text(encoding="utf-8"))
+    if skill_capability.get("scope") != "github_execution_owners":
+        fail("Skill Capability promotion record scope drift")
+
     trigger = graph.get("trigger_applicability_contract", {})
     if trigger.get("semantic_class") != "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY":
         fail("trigger/applicability results must not create a new state family")
@@ -1021,6 +1145,11 @@ def main() -> None:
         "HISTORICAL_RECEIPTS_IMMUTABLE_ACROSS_MIGRATION",
         "BACKWARD_COMPATIBLE_EXTENSION_PROSPECTIVE_BY_DEFAULT",
         "MIGRATION_ACTIONS_DO_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
+        "READY_FOR_HUMAN_DECISION_IS_NOT_PROMOTION",
+        "TRIGGERED_PERSISTENCE_CLOSES_BEFORE_PROMOTION",
+        "PROMOTION_REQUIRES_AUTHORIZED_OWNER_NATIVE_TRANSITION_AND_READBACK",
+        "POST_PROMOTION_SYNC_FAILURE_DOES_NOT_ERASE_CONFIRMED_CANONICAL_PROMOTION",
+        "PROMOTION_SYNC_BOUNDARY_DOES_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1036,6 +1165,7 @@ def main() -> None:
     print("knowledge_reader_control=PASS")
     print("controlled_evolution=PASS")
     print("compatibility_impact_projection=PASS")
+    print("promotion_persistence_sync_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")

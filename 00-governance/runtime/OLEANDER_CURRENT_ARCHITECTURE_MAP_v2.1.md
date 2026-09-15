@@ -1183,6 +1183,12 @@ The system is considered **architecture-control runnable** only when all of the 
 42. breaking changes reopen/revalidate only the affected dependency/claim/authority scope and require actual readback where the migration contract declares it;
 43. migration actions are control actions rather than a new state family, authority owner or persistent migration ledger;
 44. no universal layer-progress state may collapse owner-specific state families.
+45. `READY_FOR_HUMAN_DECISION` remains machine eligibility only and never substitutes for an authorized Promotion transition;
+46. triggered PAP/durable-persistence prerequisites close before Promotion, while ordinary post-Promotion registry/cross-platform synchronization may continue after the owner-native Promotion transition;
+47. a human decision record proves Promotion only when it is itself the owner-native transition carrier and actual readback confirms the target Project/Authority state; otherwise decision and state transition remain distinct;
+48. PR / CI / merge / persistence / sync success do not independently grant Promotion, and Promotion does not independently prove statutory approval or release;
+49. a confirmed owner-native Promotion is not erased merely because a downstream mirror is `UNSYNCED / PARTIAL / DIVERGED`; that failure blocks only the affected sync/cross-platform-Current claim unless the canonical authority transition itself is uncertain;
+50. Promotion/persistence/sync sequencing is a control projection over existing owners and may not create a second Promotion state family, ledger or authority surface.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1683,3 +1689,96 @@ Recovery closure can restore continuation only within the claims and dependencie
 `oleander-execution-live-status/v1` remains the existing latest-only observability projection keyed by task/executor and guarded by checkpoint sequence. It is not a durable event/incident store, Project State or authority database.
 
 Durable material recovery evidence belongs in the prospective Execution Receipt recovery-incident extension. Telemetry-only events and no-material-delta observations do not create a new Execution Receipt. Historical receipts remain immutable.
+
+---
+
+## 32｜Promotion / Persistence / Synchronization Boundary
+
+`R-J` compiles three different kinds of truth that must remain separate:
+
+1. **Promotion eligibility** — whether the machine-visible prerequisites are closed enough to ask the authorized human/authority for a decision;
+2. **Promotion transition** — the owner-native Project / Design / Authority state transition actually authorized and applied;
+3. **Persistence / synchronization closure** — whether triggered durable assets and required authority/receipt mirrors are actually persisted and read back on their target surfaces.
+
+This boundary is an architecture-level projection over the existing Master Runtime, Project Flow, Production Asset Persistence Gate, Decision Authorization, Control Plane transition semantics, R-J Layer Interface and Cross-Platform Sync contract. It creates **no new Promotion state family, promotion ledger, authority database or universal promotion receipt**.
+
+### 32.1 Machine eligibility stops before Promotion
+
+The Master Runtime may reach:
+
+`BLOCKED / IN_PROGRESS / RECONCILIATION_REQUIRED / RUNNABLE / READY_FOR_HUMAN_DECISION`.
+
+Only the last of those is promotion-ready, and it still means:
+
+`READY_FOR_HUMAN_DECISION ≠ PROMOTED`.
+
+For a promotion-relevant decision, the projection resolves at least the current project/scope, decision object, authority fingerprint, intended claim boundary, promotion request/intent and the Master eligibility evidence actually consumed. Machine evaluation may report eligibility; it may not perform or infer the human transition.
+
+### 32.2 Pre-Promotion persistence boundary
+
+When PAP or another owner-native persistence gate is triggered as a Promotion prerequisite, it closes **before** the Promotion transition. For production binaries this retains the current PAP ordering:
+
+`inventory → hash/size → durable upload → independent retrieval → integrity/open verification → persistence manifest → cross-system receipt → PERSISTENCE PASS`.
+
+`UPLOAD ≠ PERSISTENCE PASS`.
+
+`PERSISTENCE PASS ≠ PROMOTED`.
+
+If PAP is not triggered for the promoted object/claim, this projection does not invent a persistence requirement. Applicability remains owner-native.
+
+### 32.3 Authorized human decision and owner-native transition
+
+An intended Promotion must resolve the §18.1 Decision Authorization basis for the exact actor/authority, decision object, scope and claim ceiling. The authorized decision then binds the **owner-native transition**, not a new architecture-level state machine.
+
+Where the existing Control Plane canonical transition applies, its native tuple remains:
+
+`CANONICAL_PROMOTION / CANDIDATE_AUTHORITY → CANONICAL_AUTHORITY / target_design_state=PROMOTED`.
+
+Other governed Project/Design transitions keep their own owner-native semantics; this projection does not force every domain/project through that tuple.
+
+A human decision record and an applied transition may be the same authoritative object **only when** that owner-native carrier actually mutates the governed state and actual readback confirms the expected target state. Otherwise:
+
+`AUTHORIZED DECISION RECORDED ≠ PROMOTION TRANSITION APPLIED`.
+
+An effective Promotion claim therefore requires owner-native transition evidence plus readback of the authoritative state carrier. PR open, CI PASS, merge, upload, persistence, mirror write or sync success cannot substitute for that readback.
+
+### 32.4 Canonical Promotion readback vs post-Promotion sync
+
+Project Flow intentionally allows required cross-system registration/synchronization to continue **after** Promotion. Therefore ordinary Notion / GitHub / Drive mirrors are not universally promoted into a new pre-Promotion gate.
+
+The boundary is:
+
+```text
+triggered pre-Promotion persistence closes
+→ machine reports READY_FOR_HUMAN_DECISION
+→ authorized human/authority decision
+→ owner-native Promotion transition applied
+→ authoritative Promotion state read back
+→ promoted artifact/authority registration as applicable
+→ required post-Promotion target synchronization
+→ target-platform readback + F cross-line readback / drift reconciliation
+```
+
+If the canonical authority carrier readback proves the Promotion transition but a downstream mirror remains `UNSYNCED / PARTIAL / DIVERGED`, preserve the valid Promotion evidence and block only the affected sync or cross-platform `CURRENT` claim. Do not silently claim the mirror is Current, and do not erase unrelated Design / Professional / Promotion evidence.
+
+If, instead, the **Promotion authority transition itself** is a multi-surface logical mutation and its required legs are only partially committed or uncertain, reuse §30.7 / P6 reconciliation: do not claim the Promotion effective until the authority transition is coherent or an owner-authorized reconciliation/rollback is read back. Ordinary post-Promotion mirrors are not automatically reclassified as transaction legs merely because they synchronize the promoted result.
+
+### 32.5 Failure and claim boundaries
+
+R-J retains its existing owner-native failure codes and sync vocabulary. In particular:
+
+- `PERSISTENCE_REQUIRED_BUT_MISSING` blocks the dependent Promotion when that persistence is actually triggered;
+- `PROMOTION_PREREQUISITE_OPEN` and `PROMOTION_CLAIM_BOUNDARY_EXCEEDED` keep eligibility closed;
+- `HUMAN_PROMOTION_DECISION_REQUIRED` means machine readiness has not crossed the human authority boundary;
+- `TARGET_SYNC_READBACK_FAILED / CROSS_PLATFORM_DRIFT / UNSYNCED / PARTIAL` block only the affected synchronization / cross-platform Current claim unless they also invalidate the canonical authority source;
+- unresolved authorization or uncertain authority-state mutation fails closed through the existing `BLOCKED / RECONCILIATION_REQUIRED / HOLD` behavior, not through a new Promotion state.
+
+`PR MERGED ≠ PROMOTED`.
+
+`PROMOTED ≠ SYNCED EVERYWHERE`.
+
+`SYNCED EVERYWHERE ≠ PROMOTED`.
+
+`PROMOTED ≠ RELEASED ≠ STATUTORY APPROVAL`.
+
+The Skill Capability contract's Skill-lifecycle `promotion_record_fields` remain scoped to GitHub execution-owner lifecycle. They are **not** the Project Promotion schema and must not be promoted into one by this architecture projection.
