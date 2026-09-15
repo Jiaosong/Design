@@ -3,6 +3,7 @@ import {
   validateReaderBeginContentReviewInput,
   validateReaderContentPatchInput,
   validateReaderSupportContentPatchInput,
+  verifyReaderSupportContentPatchReadback,
 } from "../src/reader-edit";
 
 describe("private Reader content patch contract", () => {
@@ -68,5 +69,31 @@ describe("private Reader content patch contract", () => {
       "before",
       "after",
     )).toMatchObject({ ok: false, status: 400 });
+  });
+
+  it("accepts SUPPORT insertion readback when the replacement deliberately preserves the anchor", () => {
+    const oldStr = "## Evidence / Validation";
+    const newStr = `${oldStr}\n\n### Validation target boundary\nAdded content.`;
+    expect(verifyReaderSupportContentPatchReadback(`prefix\n${newStr}\nsuffix`, oldStr, newStr)).toEqual({
+      ok: true,
+      newStrPresent: true,
+      oldStrPresent: true,
+      preserveAnchor: true,
+    });
+  });
+
+  it("still requires a full replacement to remove the old string", () => {
+    expect(verifyReaderSupportContentPatchReadback("before\nafter", "before", "after")).toEqual({
+      ok: false,
+      newStrPresent: true,
+      oldStrPresent: true,
+      preserveAnchor: false,
+    });
+    expect(verifyReaderSupportContentPatchReadback("after", "before", "after")).toEqual({
+      ok: true,
+      newStrPresent: true,
+      oldStrPresent: false,
+      preserveAnchor: false,
+    });
   });
 });
