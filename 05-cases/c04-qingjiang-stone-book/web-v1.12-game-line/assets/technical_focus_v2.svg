@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" role="img" aria-labelledby="title desc">
+  <title id="title">R06 技术证明关系</title>
+  <desc id="desc">可编辑概念图，说明技术层需要回答空间关系、人体尺度、构件顺序和维护接口；不声明未绑定的工程几何或现场尺寸。</desc>
+  <rect width="1400" height="800" fill="#f4f3ee"/>
+  <g fill="#173c37" font-family="Arial,'Noto Sans CJK SC','Microsoft YaHei',sans-serif">
+    <text x="86" y="88" font-size="20" letter-spacing="4">R06 / TECHNICAL PROOF</text>
+    <text x="86" y="154" font-size="48" font-weight="700">不是展示一张“技术图”，</text>
+    <text x="86" y="210" font-size="48" font-weight="700">而是回答四个成立条件。</text>
+  </g>
+  <g fill="none" stroke="#173c37" stroke-width="2">
+    <path d="M100 418 C260 316 430 304 590 394 S910 510 1300 338" opacity=".3"/>
+    <path d="M116 466 H1284" opacity=".22"/>
+  </g>
+  <g font-family="Arial,'Noto Sans CJK SC','Microsoft YaHei',sans-serif" fill="#173c37">
+    <g transform="translate(100 302)">
+      <circle cx="88" cy="88" r="72" fill="#f4f3ee" stroke="#173c37" stroke-width="2"/>
+      <path d="M38 108 C65 62 102 52 140 84" fill="none" stroke="#173c37" stroke-width="4"/>
+      <text x="0" y="205" font-size="17" letter-spacing="2">01 / RELATION</text>
+      <text x="0" y="242" font-size="28" font-weight="700">空间关系</text>
+      <text x="0" y="278" font-size="16" opacity=".7">路径、停留、视线是否互相冲突</text>
+    </g>
+    <g transform="translate(410 302)">
+      <circle cx="88" cy="88" r="72" fill="#f4f3ee" stroke="#173c37" stroke-width="2"/>
+      <circle cx="88" cy="56" r="13" fill="none" stroke="#173c37" stroke-width="4"/>
+      <path d="M88 70 V118 M58 92 H118 M88 118 L64 150 M88 118 L112 150" fill="none" stroke="#173c37" stroke-width="4"/>
+      <text x="0" y="205" font-size="17" letter-spacing="2">02 / BODY</text>
+      <text x="0" y="242" font-size="28" font-weight="700">人体尺度</text>
+      <text x="0" y="278" font-size="16" opacity=".7">倚靠、停留与通过是否自然成立</text>
+    </g>
+    <g transform="translate(720 302)">
+      <circle cx="88" cy="88" r="72" fill="#f4f3ee" stroke="#173c37" stroke-width="2"/>
+      <rect x="42" y="51" width="92" height="18" fill="none" stroke="#173c37" stroke-width="3"/>
+      <rect x="50" y="82" width="76" height="18" fill="none" stroke="#173c37" stroke-width="3"/>
+      <rect x="58" y="113" width="60" height="18" fill="none" stroke="#173c37" stroke-width="3"/>
+      <text x="0" y="205" font-size="17" letter-spacing="2">03 / ASSEMBLY</text>
+      <text x="0" y="242" font-size="28" font-weight="700">构件顺序</text>
+      <text x="0" y="278" font-size="16" opacity=".7">结构、表面与连接如何被逐层检查</text>
+    </g>
+    <g transform="translate(1030 302)">
+      <circle cx="88" cy="88" r="72" fill="#f4f3ee" stroke="#173c37" stroke-width="2"/>
+      <path d="M43 72 H132 M43 103 H108 M43 134 H122" fill="none" stroke="#173c37" stroke-width="4"/>
+      <circle cx="118" cy="103" r="10" fill="#f4f3ee" stroke="#173c37" stroke-width="3"/>
+      <text x="0" y="205" font-size="17" letter-spacing="2">04 / ACCESS</text>
+      <text x="0" y="242" font-size="28" font-weight="700">维护接口</text>
+      <text x="0" y="278" font-size="16" opacity=".7">连接、拆换与后续检查是否可到达</text>
+    </g>
+  </g>
+  <g font-family="Arial,'Noto Sans CJK SC','Microsoft YaHei',sans-serif" fill="#173c37">
+    <text x="86" y="700" font-size="18">当前公开层只保留可验证的技术问题，不把未绑定模型、尺寸、锚固或基础假装成已成立事实。</text>
+    <text x="86" y="738" font-size="15" opacity=".62">研究级设计表达｜NTS｜FIELD OBSERVED = 0｜FIELD MEASURED = 0｜工程结论待后续专业验证</text>
+  </g>
+</svg>

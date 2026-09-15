@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>清江石书｜我的石书</title>
+<style>
+:root{--paper:#f3efe5;--ink:#11211d;--qing:#3c766f;--qing-deep:#173b35;--red:#9f4b40;--muted:#68766f;--line:rgba(17,33,29,.12);--serif:"Noto Serif SC","Songti SC",serif;--sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+body{min-height:100vh}
+.app{min-height:100vh;display:grid;grid-template-rows:auto auto 1fr auto;background:linear-gradient(180deg,#f7f3e9 0%,var(--paper) 62%,#ece7db 100%)}
+.top{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);background:rgba(247,243,233,.92)}
+.brand{display:flex;align-items:center;gap:9px}.seal{width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--red);color:var(--red);font:700 17px var(--serif)}.brand b{display:block;font:700 13px var(--serif)}.brand small{display:block;margin-top:2px;font-size:6px;letter-spacing:.16em;color:var(--muted)}
+.return{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(23,59,53,.18);border-radius:999px;padding:7px 9px;color:var(--qing-deep);font-size:7px;font-weight:700;letter-spacing:.08em;background:rgba(255,255,255,.38)}.return:before{content:"←";font-size:10px}
+.route-state{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:7px;color:var(--muted)}.route-state strong{color:var(--qing-deep);font-weight:700}.route-line{height:1px;background:linear-gradient(90deg,var(--qing) 0 62%,rgba(60,118,111,.18) 62%)}
+.content{padding:23px 18px 17px}.ey{font-size:7px;letter-spacing:.15em;font-weight:800;color:var(--qing)}h1{margin:7px 0 7px;font:700 31px/1.08 var(--serif);letter-spacing:-.045em}.intro{margin:0;max-width:300px;font-size:8px;line-height:1.65;color:var(--muted)}
+.memory{margin-top:18px;border-top:1px solid var(--line)}.entry{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}.entry time{font-size:6px;letter-spacing:.1em;color:var(--qing);font-weight:800}.entry b{display:block;margin-bottom:5px;font:700 13px var(--serif)}.entry p{margin:0;font-size:7px;line-height:1.55;color:var(--muted)}
+.quote{margin:18px 0 0;padding:17px 15px 18px;background:var(--qing-deep);color:#f4efe2;position:relative;overflow:hidden}.quote:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-44px;top:-52px}.quote span{display:block;margin-bottom:10px;font-size:6px;letter-spacing:.13em;color:#a9c5bd}.quote blockquote{position:relative;z-index:1;margin:0;font:700 15px/1.55 var(--serif)}
+.bottom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);background:rgba(255,255,255,.28)}.bottom button{border:0;background:transparent;padding:12px 8px;color:var(--muted);font:700 7px var(--sans);letter-spacing:.08em}.bottom button:first-child{color:var(--qing-deep);border-right:1px solid var(--line)}
+@media(max-width:380px){h1{font-size:28px}.content{padding-inline:16px}.entry{grid-template-columns:48px 1fr}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="seal">清</div><div><b>清江石书</b><small>QINGJIANG · THIRTEEN IMPRINTS</small></div></div>
+    <span class="return">回程 / 服务</span>
+  </header>
+  <div class="route-state"><strong>今日清江</strong><span class="route-line" aria-hidden="true"></span><span>回程可见</span></div>
+  <main class="content">
+    <span class="ey">MY BOOK / 我的石书</span>
+    <h1>留下真正改变判断的那一页。</h1>
+    <p class="intro">没有自动集章，也没有完成率。只有你主动留下的观察、停留、再认与判断修订。</p>
+    <section class="memory" aria-label="我的清江记忆">
+      <article class="entry"><time>R06</time><div><b>河谷观察</b><p>因为停下来，才把江面、两岸与刚才经过的方向重新对应起来。</p></div></article>
+      <article class="entry"><time>RETURN</time><div><b>回程再认</b><p>离开前再看一次路线；数字界面退到服务之后，纸图与人工路径仍然成立。</p></div></article>
+    </section>
+    <aside class="quote"><span>QINGJIANG JOURNAL</span><blockquote>“回来时，我第一次能把江、两岸和刚才走过的方向重新对应起来。”</blockquote></aside>
+  </main>
+  <nav class="bottom" aria-label="数字界面主导航"><button type="button">我的石书</button><button type="button">探索地图</button></nav>
+</div>
+<!-- Current presentation derivative. Content lineage: authoritative C04 App v1.6 MY BOOK source carrier. This file is a new portfolio-facing view, not a claim of historical runtime recovery. -->
+</body>
+</html>
