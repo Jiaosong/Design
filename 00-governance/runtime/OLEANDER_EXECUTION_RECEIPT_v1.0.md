@@ -401,6 +401,8 @@ Record one bounded incident object in `recovery_incident` with:
 
 `failure_class` normalizes architecture-level recovery routing. `failure_code` is additionally required only when the canonical failure owner exposes an owner-native failure code. `trigger_event_ref` is required only when a durable observability-event record actually exists; `trigger_source_ref` always points back to the authoritative evidence that opened the incident. The normalized class may not erase or replace owner-native failure semantics.
 
+`failure_owner_ref` and `resume_decision_owner_ref` are references only. They do not grant authority or competence. Consequential recovery closure/resume still requires a current resolvable authorization basis under the architecture Decision Rights projection; unresolved authorization fails closed.
+
 The incident lifecycle is local only:
 
 `OPEN / CONTAINED / RECOVERING / READBACK_PENDING / REVIEW_PENDING / HOLD / CLOSED`.

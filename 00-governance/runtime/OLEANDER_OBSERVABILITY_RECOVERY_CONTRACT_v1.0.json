@@ -236,6 +236,13 @@
       "resume_decision_owner_ref",
       "closed_at"
     ],
+    "authorization_binding": {
+      "failure_owner_ref_is_reference_not_grant": true,
+      "resume_decision_owner_ref_is_reference_not_grant": true,
+      "consequential_resume_requires_current_decision_authorization_projection": true,
+      "unresolved_authorization_fails_closed": true,
+      "authorization_change_revalidates_affected_recovery_decision": true
+    },
     "incident_states": [
       "OPEN",
       "CONTAINED",
@@ -322,6 +329,7 @@
       "HOLD_DOES_NOT_AUTHORIZE_BLIND_RETRY",
       "RECOVERY_MAY_REACCEPT_AFFECTED_HANDOFFS_ONLY_AFTER_REQUIRED_READBACK",
       "UNRELATED_HANDOFFS_AND_REVIEWS_ARE_NOT_REOPENED_BY_DEFAULT",
+      "INCIDENT_OWNER_REFS_DO_NOT_GRANT_AUTHORITY",
       "REMOTE_UNCERTAINTY_USES_VERIFY_BEFORE_RETRY"
     ]
   },

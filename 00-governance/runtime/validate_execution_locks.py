@@ -680,6 +680,10 @@ def validate_receipt_contract() -> dict:
         fail("Receipt recovery-incident must preserve unaffected verified state")
     if recovery_ext.get("reaccept_only_affected_handoffs_after_readback") is not True:
         fail("Receipt recovery may only reaccept affected handoffs after readback")
+    if recovery_ext.get("owner_refs_do_not_grant_authority") is not True:
+        fail("Receipt recovery owner refs may not grant authority")
+    if recovery_ext.get("consequential_resume_requires_resolvable_authorization_basis") is not True:
+        fail("Receipt recovery consequential resume must require resolvable authorization basis")
     if recovery_ext.get("telemetry_only_event_no_new_receipt") is not True or recovery_ext.get("no_material_delta_no_new_receipt") is not True:
         fail("Receipt recovery extension must not persist telemetry-only/no-delta observations")
     recovery_contract = RUNTIME / "OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"

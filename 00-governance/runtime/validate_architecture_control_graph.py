@@ -381,6 +381,18 @@ def validate_observability_recovery_contract(graph: dict, layers_by_id: dict[str
         fail("recovery action/readback contract incomplete")
     if not {"recovery_readback_ref", "closure_evidence_refs", "resume_condition", "resume_decision_owner_ref"}.issubset(set(incident.get("closure_required_fields", []))):
         fail("recovery closure/resume contract incomplete")
+    authorization_binding = incident.get("authorization_binding", {})
+    for required_true in {
+        "failure_owner_ref_is_reference_not_grant",
+        "resume_decision_owner_ref_is_reference_not_grant",
+        "consequential_resume_requires_current_decision_authorization_projection",
+        "unresolved_authorization_fails_closed",
+        "authorization_change_revalidates_affected_recovery_decision",
+    }:
+        if authorization_binding.get(required_true) is not True:
+            fail(f"recovery authorization binding missing {required_true}")
+    if graph.get("decision_rights", {}).get("authorization_projection", {}).get("owner_native_authority_remains_authoritative") is not True:
+        fail("recovery incident owner refs require the current decision-authorization projection")
     if incident.get("allowed_transitions", {}).get("CLOSED") != []:
         fail("closed incident must be terminal until an explicit reopen condition creates a new material incident/reopen decision")
     if incident.get("closed_incident_reentry_rule") != "A_NEW_MATERIAL_FAILURE_OR_CONTRADICTION_AFTER_CLOSURE_CREATES_A_SUCCESSOR_INCIDENT_OR_AN_EXPLICIT_OWNER_REOPEN_RECORD_WITH_PROVENANCE; THE_CLOSED_RECORD_IS_NOT_SILENTLY_REWRITTEN":
@@ -393,6 +405,7 @@ def validate_observability_recovery_contract(graph: dict, layers_by_id: dict[str
         "CLOSED_REQUIRES_POST_RECOVERY_READBACK",
         "RECOVERY_MAY_REACCEPT_AFFECTED_HANDOFFS_ONLY_AFTER_REQUIRED_READBACK",
         "UNRELATED_HANDOFFS_AND_REVIEWS_ARE_NOT_REOPENED_BY_DEFAULT",
+        "INCIDENT_OWNER_REFS_DO_NOT_GRANT_AUTHORITY",
         "REMOTE_UNCERTAINTY_USES_VERIFY_BEFORE_RETRY",
     }:
         if required not in incident_rules:
@@ -540,6 +553,63 @@ def main() -> None:
         fail("human promotion authority missing")
     if "STATUTORY_OR_LICENSED_APPROVAL_WHERE_APPLICABLE" not in set(rights.get("external_authority", [])):
         fail("external statutory authority boundary missing")
+
+    authorization = rights.get("authorization_projection", {})
+    if authorization.get("semantic_class") != "CONTROL_PROJECTION_NOT_AUTHORITY_GRANT_OR_DELEGATION_REGISTRY":
+        fail("decision authorization must remain a projection rather than a new authority/delegation registry")
+    if authorization.get("owner_native_authority_remains_authoritative") is not True:
+        fail("decision authorization projection may not replace owner-native authority")
+    if authorization.get("central_authority_or_delegation_registry_forbidden") is not True:
+        fail("decision authorization projection may not create a central authority/delegation registry")
+    for ref in authorization.get("owner_refs", []):
+        check_ref(ref)
+    required_authorization_fields = {
+        "decision_object_id",
+        "project_or_scope_id",
+        "decision_class",
+        "actor_or_authority_ref",
+        "authorization_basis_ref_or_fields",
+        "authority_scope",
+        "claim_boundary",
+        "authority_fingerprint",
+    }
+    if set(authorization.get("required_resolvable_fields", [])) != required_authorization_fields:
+        fail("decision authorization required projection fields drift")
+    required_conditional_authorization_fields = {
+        "competence_basis_ref_or_fields",
+        "independence_basis_ref_or_fields",
+        "legal_authority_basis_ref_or_fields",
+        "validity_or_revalidate_on",
+        "decision_readback_ref",
+    }
+    if set(authorization.get("conditional_resolvable_fields", [])) != required_conditional_authorization_fields:
+        fail("decision authorization conditional projection fields drift")
+    for required_true in {
+        "projection_may_resolve_from_existing_fields_without_duplicate_record",
+        "assignment_or_delegation_may_narrow_not_widen_source_rights",
+        "identity_alone_does_not_prove_competence_independence_or_legal_authority",
+        "professional_judgment_requires_competence_within_scope",
+        "independent_review_requires_owner_native_independence_basis",
+        "project_authority_cannot_substitute_for_professional_or_statutory_authority",
+        "statutory_claim_requires_applicable_legal_authority_basis",
+        "recommendation_or_eligibility_report_is_not_decision_transition",
+        "material_authorization_change_requires_revalidation_before_consumption",
+        "unresolved_material_authorization_fails_closed",
+        "machine_may_validate_encoded_binding_not_invent_authority_or_competence",
+    }:
+        if authorization.get(required_true) is not True:
+            fail(f"decision authorization boundary missing {required_true}")
+    if set(authorization.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("unresolved material decision authorization must reuse existing runtime outcomes")
+    receipt_contract = json.loads(
+        (ROOT / "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json").read_text(encoding="utf-8")
+    )
+    if "project_or_scope_authority" not in set(receipt_contract.get("authority_required_fields", [])):
+        fail("decision authorization projection lost native project/scope authority evidence")
+    if not {"reviewer_id", "reviewer_independence_state", "promotion_authority"}.issubset(
+        set(receipt_contract.get("review_required_fields", []))
+    ):
+        fail("decision authorization projection lost native reviewer/promotion authority evidence")
 
     control_domains = graph.get("control_domains", {})
     file_domain = control_domains.get("FILE_ARTIFACT_MANAGEMENT", {})
@@ -790,6 +860,10 @@ def main() -> None:
         "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
         "MULTI_SURFACE_PARTIAL_COMMIT_BLOCKS_DEPENDENT_HANDOFF_AND_DAG_ADVANCE",
         "TRANSACTION_RECONCILIATION_DOES_NOT_CREATE_DISTRIBUTED_TRANSACTION_AUTHORITY",
+        "CONSEQUENTIAL_DECISION_REQUIRES_RESOLVABLE_AUTHORIZATION_BASIS",
+        "DELEGATION_OR_ASSIGNMENT_CANNOT_WIDEN_SOURCE_AUTHORITY",
+        "UNRESOLVED_MATERIAL_DECISION_AUTHORIZATION_FAILS_CLOSED",
+        "MACHINE_CANNOT_INVENT_DECISION_AUTHORITY_OR_COMPETENCE",
         "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
         "OBSERVABILITY_EVENT_NOT_AUTHORITY",
         "RECOVERY_INCIDENT_NOT_PROJECT_STATE",
@@ -816,6 +890,7 @@ def main() -> None:
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
     print("multi_surface_transaction_boundary=PASS")
+    print("decision_authorization_projection=PASS")
     print("current_drift_reconciliation_projection=PASS")
     print("runtime_layer_interfaces=PASS")
     print("observability_recovery_contract=PASS")

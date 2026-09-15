@@ -144,6 +144,8 @@
     "closed_requires_actual_recovery_readback": true,
     "unaffected_verified_state_preserved": true,
     "reaccept_only_affected_handoffs_after_readback": true,
+    "owner_refs_do_not_grant_authority": true,
+    "consequential_resume_requires_resolvable_authorization_basis": true,
     "telemetry_only_event_no_new_receipt": true,
     "no_material_delta_no_new_receipt": true
   },

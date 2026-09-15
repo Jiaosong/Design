@@ -781,7 +781,61 @@
     ],
     "external_authority": [
       "STATUTORY_OR_LICENSED_APPROVAL_WHERE_APPLICABLE"
-    ]
+    ],
+    "authorization_projection": {
+      "semantic_class": "CONTROL_PROJECTION_NOT_AUTHORITY_GRANT_OR_DELEGATION_REGISTRY",
+      "owner_native_authority_remains_authoritative": true,
+      "central_authority_or_delegation_registry_forbidden": true,
+      "owner_refs": [
+        "00-governance/complex-project-master-runtime-v1.0.md",
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ],
+      "required_resolvable_fields": [
+        "decision_object_id",
+        "project_or_scope_id",
+        "decision_class",
+        "actor_or_authority_ref",
+        "authorization_basis_ref_or_fields",
+        "authority_scope",
+        "claim_boundary",
+        "authority_fingerprint"
+      ],
+      "conditional_resolvable_fields": [
+        "competence_basis_ref_or_fields",
+        "independence_basis_ref_or_fields",
+        "legal_authority_basis_ref_or_fields",
+        "validity_or_revalidate_on",
+        "decision_readback_ref"
+      ],
+      "current_native_evidence_examples": [
+        "project_or_scope_authority",
+        "reviewer_id",
+        "reviewer_independence_state",
+        "promotion_authority",
+        "professional_review_owner_or_checker_identity_and_competence",
+        "integration_owner_and_controlling_authority",
+        "authority_fingerprint",
+        "owner_native_receipt"
+      ],
+      "projection_may_resolve_from_existing_fields_without_duplicate_record": true,
+      "assignment_or_delegation_may_narrow_not_widen_source_rights": true,
+      "identity_alone_does_not_prove_competence_independence_or_legal_authority": true,
+      "professional_judgment_requires_competence_within_scope": true,
+      "independent_review_requires_owner_native_independence_basis": true,
+      "project_authority_cannot_substitute_for_professional_or_statutory_authority": true,
+      "statutory_claim_requires_applicable_legal_authority_basis": true,
+      "recommendation_or_eligibility_report_is_not_decision_transition": true,
+      "material_authorization_change_requires_revalidation_before_consumption": true,
+      "unresolved_material_authorization_fails_closed": true,
+      "unresolved_runtime_outcomes": [
+        "BLOCKED",
+        "RECONCILIATION_REQUIRED"
+      ],
+      "machine_may_validate_encoded_binding_not_invent_authority_or_competence": true
+    }
   },
   "recovery": {
     "sequence": [
@@ -1045,6 +1099,10 @@
     "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
     "MULTI_SURFACE_PARTIAL_COMMIT_BLOCKS_DEPENDENT_HANDOFF_AND_DAG_ADVANCE",
     "TRANSACTION_RECONCILIATION_DOES_NOT_CREATE_DISTRIBUTED_TRANSACTION_AUTHORITY",
+    "CONSEQUENTIAL_DECISION_REQUIRES_RESOLVABLE_AUTHORIZATION_BASIS",
+    "DELEGATION_OR_ASSIGNMENT_CANNOT_WIDEN_SOURCE_AUTHORITY",
+    "UNRESOLVED_MATERIAL_DECISION_AUTHORIZATION_FAILS_CLOSED",
+    "MACHINE_CANNOT_INVENT_DECISION_AUTHORITY_OR_COMPETENCE",
     "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
     "OBSERVABILITY_EVENT_NOT_AUTHORITY",
     "RECOVERY_INCIDENT_NOT_PROJECT_STATE",
