@@ -104,5 +104,21 @@
     "SKILL_METHODS_CASES_NOTION_FOLDER_TREE",
     "ONE_NOTION_PAGE_OR_DATABASE_PER_GITHUB_SKILL",
     "ONE_GITHUB_SKILL_PER_NOTION_METHOD"
-  ]
+  ],
+  "system_architecture_current_carrier": {
+    "title": "OLEANDER Current System Architecture Control Map v2.1｜当前系统架构控制图",
+    "page_id": "3dcb86be-5c47-8157-bb15-e2ba605e2067",
+    "canonical_id": "MTH-OLEANDER-ARCHITECTURE-CONTROL-001",
+    "state": "CURRENT_DEFAULT_VERIFIED_ACTIVE_VALID",
+    "content_level": "L5｜Knowledge Object",
+    "knowledge_role": "METHOD",
+    "role": "NOTION_CURRENT_READER_CONTROL_MIRROR",
+    "architecture_version": "2.1",
+    "github_canonical_markdown_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "github_machine_carrier_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+    "architecture_implementation_baseline_sha": "f78fad3f16fe0b458360708b27c05efaa6172609",
+    "last_live_readback": "2026-09-15T14:23:10Z",
+    "parallel_master_forbidden": true
+  },
+  "current_sync_date": "2026-09-15"
 }
