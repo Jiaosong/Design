@@ -166,6 +166,8 @@ The stable `R-A ... R-K` layer names are now paired with a machine-readable inte
 
 A producer may emit a handoff as `READY`, but the consumer owns `ACCEPTED` after checking the required objects and readback. Handoff acceptance is not downstream PASS. Staleness propagates only to affected consumers. `R-K -> R-B` remains feedback, not a dependency handoff.
 
+When one logical material mutation spans multiple physical/control surfaces, the same interface contract also exposes the existing P6 partial-commit reconciliation boundary: each material mutation leg is read back as `CONFIRMED / ABSENT / UNCERTAIN`; uncertain outcomes use verify-before-retry; dependent handoff/DAG advance waits for coherent reconciliation. `COHERENT_COMMIT / PARTIAL_COMMIT / HOLD` are ephemeral runtime reconciliation results only, not a distributed transaction service or new Project State.
+
 This interface contract adds internal execution detail only; it does not create a new Runtime Layer, Project State, professional stage namespace, Review class or Knowledge Architecture.
 
 ## 2B | Observability Event & Recovery Incident Contract

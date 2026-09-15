@@ -391,6 +391,80 @@ def validate_receipts() -> None:
     if not contract_path.is_file():
         fail("runtime-layer handoff contract ref missing")
 
+    partial_commit = schema.get("partial_commit_reconciliation_extension", {})
+    require_fields(
+        partial_commit,
+        [
+            "required_when",
+            "prospective_only",
+            "historical_receipts_immutable",
+            "contract_ref",
+            "runtime_implementation_ref",
+            "fields",
+            "leg_fields",
+            "leg_observation_values",
+            "reconciliation_results",
+            "result_is_ephemeral_runtime_fact_not_project_state",
+            "uncertain_leg_action",
+            "absent_safe_leg_action",
+            "unsafe_missing_with_legal_compensation_action",
+            "unsafe_unreconciled_action",
+            "all_legs_confirmed_action",
+            "dependent_handoff_ready_requires_coherent_commit",
+            "dependent_handoff_acceptance_requires_coherent_commit",
+            "dag_advance_requires_coherent_commit",
+            "compensation_requires_existing_legal_authorized_path",
+            "distributed_transaction_manager_forbidden",
+            "persistent_transaction_ledger_forbidden",
+            "no_material_delta_no_new_receipt",
+        ],
+        "execution-receipt:partial-commit-reconciliation-extension",
+    )
+    expected_partial_fields = {
+        "project_or_scope_id", "task_id", "decision_object_id", "authority_fingerprint",
+        "mutation_scope", "legs", "reconciliation_result", "reconciliation_action", "advance_allowed",
+        "readback_refs", "observed_at", "does_not_prove",
+    }
+    if set(partial_commit.get("fields", [])) != expected_partial_fields:
+        fail("partial-commit reconciliation receipt fields drift")
+    expected_partial_leg_fields = {
+        "surface_id", "side_effect_class", "operation_fingerprint", "expected_postcondition",
+        "state", "retry_safe", "idempotent_or_provider_keyed", "compensation_legal", "readback_ref",
+    }
+    if set(partial_commit.get("leg_fields", [])) != expected_partial_leg_fields:
+        fail("partial-commit reconciliation leg fields drift")
+    if set(partial_commit.get("leg_observation_values", [])) != {"CONFIRMED", "ABSENT", "UNCERTAIN"}:
+        fail("partial-commit reconciliation leg observation vocabulary drift")
+    if set(partial_commit.get("reconciliation_results", [])) != {"COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"}:
+        fail("partial-commit reconciliation result vocabulary drift")
+    expected_partial_actions = {
+        "uncertain_leg_action": "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+        "absent_safe_leg_action": "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+        "unsafe_missing_with_legal_compensation_action": "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+        "unsafe_unreconciled_action": "HOLD_PARTIAL_COMMIT_UNRECONCILED",
+        "all_legs_confirmed_action": "ADVANCE_AFTER_COHERENT_COMMIT",
+    }
+    for key, expected in expected_partial_actions.items():
+        if partial_commit.get(key) != expected:
+            fail(f"partial-commit reconciliation action drift: {key}")
+    for required_true in {
+        "prospective_only",
+        "historical_receipts_immutable",
+        "result_is_ephemeral_runtime_fact_not_project_state",
+        "dependent_handoff_ready_requires_coherent_commit",
+        "dependent_handoff_acceptance_requires_coherent_commit",
+        "dag_advance_requires_coherent_commit",
+        "compensation_requires_existing_legal_authorized_path",
+        "distributed_transaction_manager_forbidden",
+        "persistent_transaction_ledger_forbidden",
+        "no_material_delta_no_new_receipt",
+    }:
+        if partial_commit.get(required_true) is not True:
+            fail(f"partial-commit reconciliation boundary missing {required_true}")
+    for pointer in ("contract_ref", "runtime_implementation_ref"):
+        if not (ROOT / partial_commit[pointer]).is_file():
+            fail(f"partial-commit reconciliation {pointer} missing")
+
     recovery_ext = schema.get("recovery_incident_extension", {})
     require_fields(
         recovery_ext,

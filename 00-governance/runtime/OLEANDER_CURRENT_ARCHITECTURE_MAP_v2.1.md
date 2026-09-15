@@ -1071,7 +1071,9 @@ The system is considered **architecture-control runnable** only when all of the 
 30. every dependency handoff has an explicit producer/consumer boundary and a consumer must accept after readback;
 31. producer `READY` never self-awards consumer `ACCEPTED`;
 32. a stale handoff invalidates only affected consumers and cannot support Promotion until refreshed;
-33. no universal layer-progress state may collapse owner-specific state families.
+33. a known partial multi-surface commit blocks dependent handoff readiness/acceptance and dependent DAG advance until coherently reconciled or explicitly held;
+34. transaction reconciliation remains an ephemeral runtime projection and may not create a distributed transaction authority, persistent transaction ledger or global lock service;
+35. no universal layer-progress state may collapse owner-specific state families.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1433,6 +1435,54 @@ Persistence is also layer-specific:
 - `R-K` persists unvalidated learning as Project/Candidate state until transfer validation closes.
 
 `PERSISTED ≠ CURRENT AUTHORITY` unless the correct authority owner separately performs that transition.
+
+### 30.7 Multi-surface mutation transaction boundary
+
+Typed handoff answers **what crosses a layer boundary**. A separate bounded reconciliation rule is required when one logical material action mutates more than one physical/control surface before that handoff can be trusted. OLEANDER already implements this behavior in `validate_runtime_resilience.py` P6 and the Tool Adapter verify-before-retry policy; the architecture compiles that existing behavior rather than creating a distributed transaction manager.
+
+This projection applies when one authorized logical mutation has two or more material side-effect legs, or when a downstream handoff depends on several side effects being mutually coherent. It does **not** mean every representation must always be synchronized in one transaction.
+
+Minimum reconciliation projection when applicable:
+
+```text
+project_or_scope_id / task_id / decision_object_id
+authority_fingerprint
+mutation_scope
+legs[]:
+  surface_id
+  side_effect_class
+  operation_fingerprint
+  expected_postcondition
+  state = CONFIRMED | ABSENT | UNCERTAIN
+  retry_safe
+  idempotent_or_provider_keyed
+  compensation_legal
+  readback_ref
+reconciliation_result
+reconciliation_action
+advance_allowed
+readback_refs[]
+observed_at
+does_not_prove[]
+```
+
+`COHERENT_COMMIT / PARTIAL_COMMIT / HOLD` are **ephemeral reconciliation results**, not a new Project State, handoff state family, authority state or persistent transaction ledger.
+
+Canonical rules:
+
+- every material leg is read back before dependent DAG advance or dependent handoff acceptance;
+- any `UNCERTAIN` leg is verified against its expected postcondition before retry;
+- an `ABSENT` leg may be retried only when retry is proven safe/idempotent/provider-keyed and remains within the bounded retry budget;
+- if unsafe missing legs coexist with confirmed legs, compensation is permitted only when the confirmed mutation has an existing legal/authorized compensation path;
+- if safe reconciliation or legal compensation is unavailable, return the existing `HOLD` boundary and preserve the last verified valid state;
+- a producer may not mark a dependent handoff `READY` on the basis of a known incoherent partial commit;
+- a consumer may not mark that handoff `ACCEPTED`, and the DAG may not advance through it, until the required mutation legs are coherently read back;
+- compensation, when legal, is a bounded recovery action; it is not a general rollback guarantee and does not erase provenance;
+- no two-phase-commit service, distributed transaction database, global lock service or parallel authority store is introduced.
+
+Current runtime implementation for reconciliation behavior: `00-governance/runtime/validate_runtime_resilience.py`. Semantic ownership remains with the existing Runtime Layer Interface / Execution Receipt / Tool Adapter contracts; the implementation file is not an authority surface. Idempotency/readback semantics remain owned by `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json`, and persistence of material evidence remains conditional through the existing Execution Receipt contract.
+
+`COHERENT MUTATION ≠ HANDOFF ACCEPTED ≠ DOWNSTREAM PASS ≠ PROMOTION`.
 
 ---
 
