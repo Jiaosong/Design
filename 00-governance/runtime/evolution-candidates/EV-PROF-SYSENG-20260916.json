@@ -1,0 +1,180 @@
+{
+  "candidate_id": "EV-PROF-SYSENG-20260916",
+  "state": "EV2_EVAL_READY",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "R-E Professional Domain Execution Process / domain-native Systems Engineering owner",
+  "target_ref": [
+    "00-governance/systems-engineering-process-v1.0.md",
+    "00-governance/schemas/systems-engineering-process.v1.json"
+  ],
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture Map v2.1 through PR #637; Systems Engineering = DOMAIN PROCESS OPEN",
+    "authority_fingerprint": "OLEANDER-CURRENT-ARCHITECTURE-CONTROL@2.1|main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T00:00:00+09:00"
+  },
+  "trigger_evidence": [
+    "User instruction: continue under OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1 and synchronize knowledge without pollution",
+    "Current Architecture Map v2.1 lists Systems Engineering as authentic domain-native process definition OPEN",
+    "Existing Notion knowledge already contains systems-thinking, NASA Systems Engineering decision-analysis, requirements/V&V and domain engineering evidence",
+    "ISO/IEC/IEEE 15288:2023 defines current system life-cycle process framework without prescribing one lifecycle model or method",
+    "INCOSE Systems Engineering Handbook Fifth Edition provides current practice guidance aligned to the modern lifecycle process framework",
+    "ISO/IEC/IEEE 29148:2018 remains the published requirements-engineering reference while a later DIS is still under development",
+    "Current PR #634 keeps operational/project observations separate from reusable Knowledge/Evolution promotion",
+    "Current PR #635 requires exact-input Independent Review and prevents self-review substitution",
+    "Current PR #636/#637 require owner-native Current/supersession and authority-snapshot/fingerprint resolution"
+  ],
+  "hypothesis": "Systems Engineering can become an authentic domain-native R-E process for system-of-interest needs, requirements, architecture/allocation, technical decisions, configuration, integration activity, verification, validation, transition and lifecycle readback without becoming Project Management, element-domain professional authority, R-F Integration authority, statutory/safety/security authority or a second Systems Engineering knowledge tree.",
+  "mutation_scope": [
+    "add candidate Systems Engineering professional process definition",
+    "add candidate machine definition using the existing Professional Domain Process schema",
+    "add isolated CI validation for the Systems Engineering candidate",
+    "reuse existing systems/requirements/decision/V&V knowledge objects as mounts rather than creating a second knowledge tree",
+    "keep Current Architecture Map Systems Engineering maturity unchanged until independent review and authorized adoption",
+    "do not write candidate routing to Notion before machine evaluation closes"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      ".github/workflows/ai-governance-evals.yml"
+    ],
+    "real_case_refs": [
+      "Notion SRC-NASA-DECISION-ANALYSIS-001 existing Systems Engineering decision-analysis SOURCE",
+      "Notion current systems-thinking / requirements / verification-validation knowledge objects",
+      "ISO/IEC/IEEE 15288:2023",
+      "INCOSE Systems Engineering Handbook Fifth Edition",
+      "ISO/IEC/IEEE 29148:2018"
+    ],
+    "counterexample_refs": [
+      "requirements list treated as Systems Engineering completion",
+      "MBSE model treated as system truth",
+      "element professional PASS treated as system PASS",
+      "verification collapsed into validation",
+      "SE integration activity treated as R-F Integration PASS",
+      "Project Management or configuration administration treated as Systems Engineering professional closure",
+      "simulation/model PASS treated as physical or operational validation",
+      "candidate process creating a second Systems Engineering knowledge tree",
+      "machine/schema/CI PASS treated as professional PASS, Design KEEP or Current adoption"
+    ],
+    "regression_refs": [
+      "OLEANDER Current Architecture Map v2.1",
+      "Professional Domain Process Contract v1.0",
+      "Knowledge Integrity / Operational Mount",
+      "Shared Design Quality & Design Development",
+      "Cross-Disciplinary Integration",
+      "PR #634 G9 Knowledge Return boundary",
+      "PR #635 Independent Review boundary",
+      "PR #636 Current/Supersession boundary",
+      "PR #637 Authority Snapshot/Fingerprint boundary"
+    ],
+    "metrics": [
+      "schema validity",
+      "unique Systems Engineering stage IDs",
+      "SoI/configuration identity coverage",
+      "need-to-requirement-to-architecture traceability",
+      "verification/validation separation",
+      "R-F Integration boundary preservation",
+      "element/domain authority preservation",
+      "knowledge-owner reuse without duplicate tree",
+      "no Current/Promotion pollution"
+    ],
+    "acceptance_thresholds": [
+      "Systems Engineering definition passes the existing Professional Domain Process validator",
+      "Current architecture-control/runtime validators remain PASS",
+      "AI Governance and Project Anti-Pollution CI remain PASS",
+      "SE remains a bounded R-E process and does not absorb Project Management, element-domain, R-F, safety/security or statutory authority",
+      "verification and validation remain separate exact-configuration claims",
+      "existing systems knowledge objects remain mounts rather than professional-process authority",
+      "Independent Review remains NOT RUN until an exact-revision eligible reviewer actually reviews the candidate",
+      "Current Architecture Map remains unchanged"
+    ],
+    "result": "PENDING_FRESH_MACHINE_REGRESSION"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Systems Engineering remains DOMAIN PROCESS OPEN; current Knowledge objects provide sources/methods/evidence but do not constitute an adopted R-E professional process.",
+    "candidate_result": "A domain-native Systems Engineering process and machine carrier are ready for isolated machine evaluation while Current authority remains unchanged.",
+    "regressions": [],
+    "quality_delta": "PENDING_MACHINE_EVALUATION",
+    "reliability_delta": "PENDING_MACHINE_EVALUATION",
+    "cost_latency_delta": "Bounded candidate/CI/review cost; no runtime layer, knowledge tree, review class or authority database added.",
+    "decision_basis": "Advance only through EV3 machine evaluation, exact-input Independent Review, and authorized human adoption."
+  },
+  "independent_review": {
+    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "NOT_YET_ESTABLISHED",
+    "review_input_revision": "PENDING_FRESH_EV3",
+    "verdict": "NOT_RUN",
+    "blocking_findings": [
+      "Fresh machine regression has not yet closed",
+      "Exact-revision independent Professional Domain review is required before EV4/EV5"
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING",
+    "decision_by": null,
+    "decision_at": null
+  },
+  "migration": {
+    "compatibility_class": "BACKWARD_COMPATIBLE_EXTENSION",
+    "affected_carriers": [
+      "R-E Systems Engineering professional-domain view after adoption",
+      "AI Governance professional-process validation",
+      "existing Systems Engineering-related Notion owners only as candidate-routing annotations after EV3",
+      "Current Architecture Map Systems Engineering maturity only after authorized adoption"
+    ],
+    "affected_scope": "Prospective Systems Engineering professional-process consumers only; existing systems knowledge objects, projects, receipts and unrelated runtime state remain unchanged unless explicitly bound.",
+    "migration_steps": [
+      "run isolated machine/regression/anti-pollution evaluation",
+      "if EV3 closes, issue exact-revision Independent Review packet",
+      "only after EV3, append clearly marked candidate-routing annotations to existing knowledge owners if useful",
+      "perform eligible Independent Review",
+      "obtain authorized owner-native adoption transition/readback",
+      "only then update Current maturity and required mirrors"
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "main@76dbd8d16d09b2d5e57401453e39967b5aa36202 with Systems Engineering DOMAIN PROCESS OPEN",
+    "rollback_action": "Reject/close the isolated candidate and remove only candidate-specific CI/routing artifacts; preserve Current systems knowledge and unrelated v2.1 state.",
+    "rollback_test": "Latest Current architecture-control, Professional Domain contract, Knowledge, Integration and anti-pollution validation remain unchanged.",
+    "provenance_ref": "agent/v21-systems-engineering-evolution-20260916"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After any future adoption, monitor first SE invocation, first system architecture/allocation, first integration/V&V cycle and first G9 return.",
+    "regression_signals": [
+      "requirements list presented as Systems Engineering PASS",
+      "MBSE model presented as system truth",
+      "verification substituted for validation",
+      "SE integration activity substituted for R-F Integration PASS",
+      "element-domain authority absorbed by SE",
+      "candidate routing presented as Current",
+      "machine PASS presented as Professional PASS",
+      "Current maturity exceeds owner-native adoption evidence"
+    ],
+    "reopen_rule": "Reopen only Systems Engineering consumers of the affected relation; preserve unrelated valid state.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "INTEGRATION_PASS",
+    "ELEMENT_PROFESSIONAL_PASS",
+    "SAFETY_SECURITY_STATUTORY_APPROVAL",
+    "RELEASE_AUTHORITY",
+    "CURRENT_PROCESS_ADOPTION",
+    "PROJECT_PROMOTION"
+  ]
+}
