@@ -357,14 +357,14 @@ When architecture descriptions conflict, resolve in this order:
 ```text
 1. Current root authority / namespace governance
 2. Complex Project Master Runtime
-3. this Current Architecture Map for architecture classification/counting
+3. this Current Architecture Map for architecture classification/counting + cross-cutting architecture-control invariants
 4. Integrated Runtime Structure for operational layer expansion
 5. owner-specific canonical contracts / professional processes
 6. project/runtime instances and receipts
 7. historical diagrams, summaries, handoffs and prose explanations
 ```
 
-This map does not override the substantive rules owned by a lower-level canonical contract. It only controls **classification, naming and counting of the architecture itself**.
+This map does not override the substantive rules owned by an owner-specific canonical contract. It controls **architecture classification / naming / counting plus cross-cutting architecture-control invariants** such as owner resolution, dependency/reopen boundaries, observability, recovery, compatibility and the explicit control projections compiled in §§14–29. Professional judgment, Knowledge semantics, Design Quality judgment, domain-stage semantics, statutory authority and other owner-specific substantive decisions remain with their canonical owners.
 
 Any older diagram that presents A-K / R-A-R-K as eleven independent OLEANDER architectures is superseded **for classification/counting purposes** by this map. The underlying module responsibilities remain valid where they agree with their current canonical owners.
 
@@ -435,8 +435,10 @@ These are **views across the one architecture**, not additional Runtime Layers:
 |---|---|---|---|
 | **Control Plane** | invocation, precedence, trigger resolution, state propagation, reopen, next-allowed action, promotion eligibility | Master Runtime, Control Plane, Resolver, architecture control graph | control decision ≠ design/professional judgment |
 | **State Plane** | Current identities, packets, receipts, registry objects, snapshots, dependency state, blockers | Knowledge/Project registries, Master Runtime State, domain receipts, Integration receipt | recorded state ≠ verified reality |
+| **Acquisition / Reader Plane** | source location, retrieval, search, read depth, live hydration, materialization and source readback | Canonical Knowledge Runtime, Knowledge Reader, source connectors, Reference Materialization Gate | readable/searchable result ≠ knowledge authority / KI / OE |
 | **Execution Plane** | required native output, capability/Skill/tool selection, actual mutation and artifact production | Skill Resolver, Tool Adapter, native artifact contracts, editable source | execution success ≠ validation |
 | **Observability Plane** | actual current node, active owner, last verified artifact, stale dependencies, blockers, next action, sync/readback state | execution receipts, continuation checkpoint, runtime_state projection, diagnostic readbacks | telemetry ≠ Project/Authority state |
+| **Evolution Plane** | bounded trace learning, candidate mutation, eval/regression, compatibility migration, rollback and post-adoption monitoring | G9 intake, Evolution Candidate Contract, eval sets, canonical target owner | learned candidate / eval PASS ≠ Current adoption / human promotion |
 
 Canonical control loop:
 
@@ -1055,8 +1057,223 @@ The system is considered **architecture-control runnable** only when all of the 
 17. Reader/AI file handling separates canonical source, derivative read model and materialized bytes;
 18. controlled evolution uses isolated candidates, frozen baselines, eval/regression gates, independent review, human promotion and rollback;
 19. an evolution candidate cannot mutate the Current runtime used to evaluate itself.
+20. every conditional runtime responsibility resolves an explicit applicability decision result under its owner-native contract; omission is never an implicit `NOT_REQUIRED`;
+21. every promotion-relevant `NOT_REQUIRED` decision is traceable to its owner-native non-trigger basis; the Master summary need not duplicate that basis into a second trigger schema;
+22. claim ceilings remain owner-scoped inputs; the Master compiles the applicable inputs and governing rule without inventing a universal numeric order or ranking opaque domain-specific claim text;
+23. an observed unresolved claim-ceiling conflict fails closed for the dependent claim instead of being averaged or silently widened;
+24. continuation resumes from the highest valid verified frontier, not from chat recency or summary text;
+25. material Remote / Authority / Release mutation is guarded by the Current checkpoint sequence and never by blind last-writer-wins;
+26. an uncertain remote mutation is read back against its expected postcondition before retry;
+27. architecture/runtime drift is typed and reconciled by canonical owner rather than silently merged across Git / Notion / file / platform surfaces;
+28. a static repository check cannot claim live cross-platform `CURRENT` without live authoritative readback.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
 
 The machine-readable JSON is a representation of this same logical architecture-control object, not a second Current architecture.
+
+---
+
+## 26｜Trigger / Applicability Resolution Contract
+
+The architecture already contains conditional responsibilities: professional domains, Integration, specialist reviews, PAP, sync, materialization, Design Quality dimensions and other gates run only when applicable. v2.1 therefore requires a common **trigger decision shape** so that absence cannot masquerade as `N/A`.
+
+This shape is an architecture-level **projection** over owner-native trigger fields, not a replacement receipt/schema and not a transfer of trigger authority. An owner may keep its existing native representation such as `triggered=false / result=N_A`; the control graph only requires that the equivalent decision can be resolved without semantic loss.
+
+Canonical trigger-decision results:
+
+```text
+NOT_EVALUATED
+→ TRIGGERED | NOT_REQUIRED | UNRESOLVED
+```
+
+These are normalized **control-decision results**, not a new OLEANDER state family. When `UNRESOLVED` blocks a material dependent claim, the Master Runtime reports the applicable existing runtime outcome (`BLOCKED` or `RECONCILIATION_REQUIRED`) and records `TRIGGER_APPLICABILITY_UNRESOLVED` as the blocker/reason code.
+
+For every promotion-relevant conditional responsibility, the architecture projection must be able to resolve at least:
+
+`decision_object_id / scope / trigger_owner / applicability_result / authority_fingerprint / owner_native_basis_ref_or_fields`.
+
+Optional audit detail may additionally project `trigger_rule_or_condition / observed_inputs / reason / claim_impact / reevaluate_on[] / evaluated_at` when the owner-native carrier provides it or when the decision is consequential enough to require explicit narrative readback. Those fields are not a second mandatory Master Runtime schema.
+
+Current Master Runtime compatibility is intentionally lossless and thin:
+
+```text
+owner-native triggered=true
+→ TRIGGERED
+
+owner-native triggered=false + explicit owner-native NOT_REQUIRED / N_A combination
+→ NOT_REQUIRED
+
+owner-native applicability evidence not yet resolved
+→ NOT_EVALUATED or UNRESOLVED projection + existing blocker/runtime outcome
+```
+
+Rules:
+
+- `NOT_REQUIRED` is a positive bounded decision, not an omitted field;
+- `NOT_REQUIRED` must be explicit in the owner-native contract and traceable to the non-trigger basis; a duplicated free-text `reason` field is not universally required in the Master summary when the canonical owner already carries that basis;
+- `UNRESOLVED` is required when material applicability cannot yet be decided and the dependent claim would be unsafe to advance; the runtime effect is expressed through the existing Master Runtime outcome rather than a new state namespace;
+- an owner may decide applicability only for the responsibility it actually owns or is delegated to resolve;
+- a trigger decision does not award the triggered review/process PASS; it only decides whether that owner must run;
+- trigger evaluation must be repeated when its observed inputs, authority fingerprint, controlled variables or claim scope materially change.
+
+The Master Runtime retains its existing cross-module **Invocation** responsibility. Owner-native contracts supply the applicability criteria and evidence for what they own: Design Intelligence for review/integration routing inputs, Professional Domain Process for domain-native dependencies, Integration for interface acceptance work, specialist gate owners for regulated/technical checks, PAP for persistence applicability, and Sync for target-platform closure. In the projection, `trigger_owner` means the owner of the trigger criterion/responsibility; it does not create a second universal invocation authority.
+
+Hard separation:
+
+`NOT TRIGGERED ≠ PASSED`
+
+`MISSING FIELD ≠ NOT_REQUIRED`
+
+`NOT_REQUIRED AT SCOPE A ≠ NOT_REQUIRED AT SCOPE B`.
+
+---
+
+## 27｜Claim Ceiling Compilation & Propagation Contract
+
+Claim ceiling is a Master Runtime responsibility, but the inputs remain owned by the modules that create the limitation. The architecture must therefore compile a **claim envelope**, not flatten heterogeneous professional/evidence states into one synthetic score.
+
+The record below is a compiled control projection. It does not replace Design Intelligence, Design Quality, professional-domain, Integration, evidence or external-authority claim fields, and it does not create a second claim ledger.
+
+Minimum architecture-level claim-ceiling input projection:
+
+```text
+owner
+claim_family_or_id
+scope
+ceiling_statement
+basis_refs[]
+blocking_or_limiting_condition[]
+valid_from / valid_until_or_revalidate_on[]
+authority_fingerprint
+```
+
+Owner-native carriers may be thinner than this projection. The Current `MASTER_RUNTIME_STATE` already carries owner-specific `claim_ceiling` values, and the orchestrator currently compiles:
+
+`claim_ceiling_inputs[] + LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS + MACHINE_DOES_NOT_RANK_DOMAIN_SPECIFIC_CLAIM_TEXT`.
+
+That current machine behavior is the implementation floor. A richer `effective claim envelope / permitted claims / prohibited claims / open validation conditions` view may be produced only when the relevant owner semantics are actually comparable or when an authorized human/professional judgment resolves the relation. The architecture validator must not claim that opaque claim text has already been machine-ranked merely because this projection is defined.
+
+Rules:
+
+- use the lowest **applicable valid boundary for the specific claim**, not a universal ordinal across unrelated domains;
+- preserve independent ceilings when claim families are incomparable, for example Design maturity, field truth, statutory approval and prototype validity;
+- a stronger ceiling from one owner cannot widen a weaker ceiling owned by another consumed relation;
+- new technical/evidence/review failure may lower only the dependent claim envelope and must mark affected promotion claims stale/reopen as required;
+- a resolved repair may raise a ceiling only after the responsible owner readback closes the limiting condition;
+- when a controlling owner/review actually identifies a contradiction between ceiling inputs, record blocker code `CLAIM_CEILING_CONFLICT` and return the applicable existing Master Runtime outcome, normally `RECONCILIATION_REQUIRED` (or `BLOCKED` when the state is internally contradictory); the machine does not infer semantic contradiction by ranking opaque claim strings, and the runtime does not average, guess or choose the more permissive statement;
+- Promotion must bind/cite the applicable claim-ceiling inputs and any resolved effective envelope actually consumed by the promoted claim.
+
+Example separation:
+
+```text
+DESIGN = DQ2 / REVISE
+GEOMETRY = NATIVE_READBACK_PRESENT
+FIRE = AUTHORITY_OPEN / NO_COMPLIANCE_CLAIM
+FIELD = UNMEASURED
+
+≠ one number called “overall 2/5”
+```
+
+---
+
+## 28｜Execution Frontier, Continuation, Concurrency & Idempotency
+
+These controls already exist in the Current Resolver v1.2.5 and Execution Receipt runtime. v2.1 places them explicitly in the architecture map because they protect `R-G → R-H → R-I → R-J` from stale or duplicate mutation during parallel Chat / Work / automation / agent execution.
+
+Current carriers:
+
+- `00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md/.json`;
+- `00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.md/.json`;
+- `00-governance/runtime/validate_execution_locks.py`.
+
+### 28.1 Verified frontier
+
+A resumable execution frontier is identified from stable project/task/object keys and Current Authority, not conversation packaging. Minimum continuation state where applicable remains:
+
+`checkpoint_state / current_node / last_verified_artifact / resume_from / next_allowed_action / authority_fingerprint / stale_reasons / checkpoint_sequence / expected_checkpoint_sequence / executor_id / execution_lease_state / lease_acquired_at / checkpoint_updated_at`.
+
+Canonical resume rule:
+
+```text
+DISCOVER CURRENT FRONTIER
+→ REQUIRE SAME TASK / OBJECT + MATCHING AUTHORITY
+→ USE HIGHEST VALID CHECKPOINT SEQUENCE
+→ SKIP VERIFIED COMPLETED NODES
+→ REVALIDATE STALE DEPENDENCIES
+→ EXECUTE NEXT ALLOWED ACTION
+→ ACTUAL READBACK
+→ ADVANCE EXISTING CHECKPOINT WHEN TRIGGERED
+```
+
+Chat history, summary, handoff prose or latest message timestamp is not checkpoint authority.
+
+### 28.2 Optimistic concurrency
+
+Before material `REMOTE_MUTATION / AUTHORITY_MUTATION / RELEASE_MUTATION`:
+
+`expected checkpoint sequence → re-read Current carrier → observed == expected ? proceed : REVALIDATE_CONCURRENT_ADVANCE`.
+
+The sequence is authoritative. Lease metadata is advisory only and grants no mutation authority. No architecture-wide global lock service is created.
+
+Hard rules:
+
+- blind last-writer-wins is forbidden;
+- a stale executor may not overwrite a newer verified frontier merely because its local lease still says `ACTIVE`;
+- independent parallel nodes may execute concurrently only when they do not consume/write the same protected relation or when their native owner provides a safe concurrency primitive;
+- convergence of parallel branches requires Current readback before a shared downstream mutation.
+
+### 28.3 Verify-before-retry
+
+For remote or external side effects:
+
+`UNCERTAIN OUTCOME → READ EXPECTED POSTCONDITION → NORMALIZE SUCCESS/ABSENCE/UNKNOWN → RETRY ONLY IF IDEMPOTENT OR PROVIDER-KEYED + BOUNDED`.
+
+A timeout is not proof of failure. Duplicate create-like side effects are forbidden. If postcondition cannot be determined and safe retry is not proven, return HOLD rather than replay.
+
+### 28.4 Continuous execution boundary
+
+Current-turn auto-advance may continue through ready nodes only while Authority, sticky constraints, checkpoint sequence, side-effect ceiling, prior readback and stop conditions remain valid. This is not background execution and does not relax independent review or Promotion boundaries.
+
+---
+
+## 29｜Current Drift Detection & Reconciliation
+
+OLEANDER uses several physical/control surfaces while retaining one logical Current. Drift must therefore be typed rather than treated as a generic sync error.
+
+Relevant surfaces include:
+
+`Current Authority / Notion canonical identity / Git implementation / native project artifact / file-library or durable provider copy / deployment or target-platform representation / local execution checkpoint`.
+
+Normalized drift vocabulary available from existing owner contracts where semantically applicable:
+
+```text
+CURRENT
+STALE
+MISSING
+DIVERGED
+ORPHANED_IMPLEMENTATION
+NOT_REQUIRED
+UNKNOWN
+```
+
+This is likewise a reconciliation projection over existing surface-specific drift/sync owners, not a universal replacement state machine. **Not every surface is required to support every value above**; for example, `ORPHANED_IMPLEMENTATION` is meaningful for an implementation mapping but not automatically for a native artifact. A surface with a narrower native vocabulary retains that owner-native representation; the architecture only normalizes semantically valid values needed to decide whether the logical Current relation is safe to consume.
+
+Canonical drift record where cross-surface consistency is material:
+
+`mapping_or_relation_id / logical_object_id / authoritative_surface / compared_surface / authority_revision_or_fingerprint / compared_revision_or_hash / drift_state / drift_reason / affected_claims_or_consumers / repair_owner / next_action / readback_mode / observed_at / does_not_prove`.
+
+Rules:
+
+- identify the semantic owner first; never resolve drift by whichever copy is newer by timestamp;
+- `DIVERGED` means semantic/owner/boundary conflict and requires explicit reconciliation, not auto-merge;
+- `STALE` invalidates only consumers that depend on the stale relation;
+- `MISSING` does not authorize creating a parallel Skill, Method, framework, knowledge object or Current artifact;
+- `UNKNOWN` fails closed for a claim that requires the missing cross-surface certainty;
+- repository-only checks may validate tracked implementation consistency, but cannot claim live Notion/platform `CURRENT` without live readback;
+- target-platform synchronization remains incomplete until write + target readback closes;
+- repair must preserve provenance and the last verified valid state.
+
+Current cross-platform carrier: `00-governance/runtime/OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md/.json` where applicable. Other surfaces retain their existing owner contracts; this section only compiles the shared architecture behavior.
+
+`DRIFT CHECK PASS ≠ DESIGN KEEP ≠ PROFESSIONAL PASS ≠ PROMOTION`.

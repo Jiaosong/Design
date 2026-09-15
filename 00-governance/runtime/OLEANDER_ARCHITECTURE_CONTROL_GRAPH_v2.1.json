@@ -823,6 +823,156 @@
       "BREAKING_CHANGE_REQUIRES_AFFECTED_SCOPE_REVALIDATION"
     ]
   },
+  "trigger_applicability_contract": {
+    "semantic_class": "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY",
+    "projection_only_not_replacement_schema": true,
+    "owner_native_trigger_fields_remain_authoritative": true,
+    "results": [
+      "NOT_EVALUATED",
+      "TRIGGERED",
+      "NOT_REQUIRED",
+      "UNRESOLVED"
+    ],
+    "required_fields": [
+      "decision_object_id",
+      "scope",
+      "trigger_owner",
+      "applicability_result",
+      "authority_fingerprint",
+      "owner_native_basis_ref_or_fields"
+    ],
+    "optional_audit_fields": [
+      "trigger_rule_or_condition",
+      "observed_inputs",
+      "reason",
+      "claim_impact",
+      "reevaluate_on",
+      "evaluated_at"
+    ],
+    "not_required_requires_explicit_owner_native_basis": true,
+    "free_text_reason_field_not_universally_required": true,
+    "omission_is_not_not_required": true,
+    "trigger_decision_does_not_award_pass": true,
+    "unresolved_material_trigger_fails_closed": true,
+    "unresolved_blocker_code": "TRIGGER_APPLICABILITY_UNRESOLVED",
+    "unresolved_runtime_outcomes": [
+      "BLOCKED",
+      "RECONCILIATION_REQUIRED"
+    ],
+    "current_master_runtime_mapping": {
+      "triggered_true": "TRIGGERED",
+      "triggered_false_plus_explicit_native_not_required_or_na": "NOT_REQUIRED",
+      "unresolved_applicability": "NOT_EVALUATED_OR_UNRESOLVED_WITH_EXISTING_BLOCKER_RUNTIME_OUTCOME"
+    }
+  },
+  "claim_ceiling_contract": {
+    "projection_only_not_second_claim_ledger": true,
+    "owner_native_claim_fields_remain_authoritative": true,
+    "input_required_fields": [
+      "owner",
+      "claim_family_or_id",
+      "scope",
+      "ceiling_statement",
+      "basis_refs",
+      "blocking_or_limiting_conditions",
+      "valid_from",
+      "valid_until_or_revalidate_on",
+      "authority_fingerprint"
+    ],
+    "current_machine_compilation": [
+      "claim_ceiling_inputs",
+      "claim_ceiling_rule"
+    ],
+    "current_machine_rule": "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN_SPECIFIC_CLAIM_TEXT",
+    "richer_effective_envelope_requires_comparable_owner_semantics_or_authorized_human_judgment": true,
+    "machine_may_not_infer_semantic_conflict_by_ranking_opaque_claim_text": true,
+    "universal_numeric_order_forbidden": true,
+    "stronger_unrelated_owner_cannot_widen_weaker_consumed_boundary": true,
+    "conflict_blocker_code": "CLAIM_CEILING_CONFLICT",
+    "conflict_runtime_outcomes": [
+      "BLOCKED",
+      "RECONCILIATION_REQUIRED"
+    ],
+    "repair_may_raise_only_after_owner_readback": true,
+    "promotion_must_bind_effective_envelope": true
+  },
+  "execution_frontier_concurrency": {
+    "owner_refs": [
+      "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+      "00-governance/runtime/validate_execution_locks.py"
+    ],
+    "frontier_identity_fields": [
+      "checkpoint_state",
+      "current_node",
+      "last_verified_artifact",
+      "resume_from",
+      "next_allowed_action",
+      "authority_fingerprint",
+      "stale_reasons",
+      "checkpoint_sequence",
+      "expected_checkpoint_sequence",
+      "executor_id",
+      "execution_lease_state",
+      "lease_acquired_at",
+      "checkpoint_updated_at"
+    ],
+    "mode": "OPTIMISTIC_CHECKPOINT_SEQUENCE",
+    "sequence_is_authoritative": true,
+    "lease_metadata_is_advisory_only": true,
+    "lease_does_not_grant_authority": true,
+    "global_lock_service_forbidden": true,
+    "blind_last_writer_wins_forbidden": true,
+    "chat_summary_is_not_checkpoint_authority": true,
+    "sequence_mismatch_state": "REVALIDATE_CONCURRENT_ADVANCE",
+    "uncertain_remote_mutation_rule": "VERIFY_EXPECTED_POSTCONDITION_BEFORE_RETRY",
+    "blind_duplicate_create_retry_forbidden": true,
+    "parallel_convergence_requires_current_readback": true,
+    "background_execution_implied": false
+  },
+  "current_drift_reconciliation": {
+    "projection_only_not_replacement_state_machine": true,
+    "surface_native_drift_or_sync_owner_remains_authoritative": true,
+    "reference_state_owner": "OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1",
+    "other_surface_states_not_forced": true,
+    "owner_refs": [
+      "00-governance/runtime/OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.json",
+      "00-governance/runtime/OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md",
+      "00-governance/cross-platform-sync-contract-v1.1.md"
+    ],
+    "notion_github_reference_states": [
+      "CURRENT",
+      "STALE",
+      "MISSING",
+      "DIVERGED",
+      "ORPHANED_IMPLEMENTATION",
+      "NOT_REQUIRED",
+      "UNKNOWN"
+    ],
+    "record_fields": [
+      "mapping_or_relation_id",
+      "logical_object_id",
+      "authoritative_surface",
+      "compared_surface",
+      "authority_revision_or_fingerprint",
+      "compared_revision_or_hash",
+      "drift_state",
+      "drift_reason",
+      "affected_claims_or_consumers",
+      "repair_owner",
+      "next_action",
+      "readback_mode",
+      "observed_at",
+      "does_not_prove"
+    ],
+    "newest_timestamp_is_not_authority": true,
+    "diverged_requires_explicit_reconciliation": true,
+    "missing_does_not_authorize_parallel_owner_creation": true,
+    "unknown_fails_closed_when_claim_depends_on_cross_surface_certainty": true,
+    "static_repo_check_cannot_claim_live_cross_platform_current": true,
+    "sync_requires_target_platform_readback": true,
+    "preserve_last_verified_state_and_provenance": true
+  },
   "feedback_edges": [
     {
       "from": "R-K",
@@ -846,7 +996,16 @@
     "ONE_LOGICAL_ARTIFACT_ONE_CURRENT_REVISION_N_REPRESENTATIONS",
     "EVOLUTION_CANDIDATE_NO_SELF_PROMOTION",
     "EVOLUTION_REQUIRES_FROZEN_BASELINE_EVAL_REVIEW_HUMAN_PROMOTION",
-    "EVOLUTION_REQUIRES_ROLLBACK_AND_PROVENANCE"
+    "EVOLUTION_REQUIRES_ROLLBACK_AND_PROVENANCE",
+    "CONDITIONAL_RESPONSIBILITY_REQUIRES_EXPLICIT_APPLICABILITY_RESULT",
+    "OMISSION_IS_NOT_NOT_REQUIRED",
+    "CLAIM_CEILING_NO_UNIVERSAL_NUMERIC_COLLAPSE",
+    "CLAIM_CEILING_CONFLICT_FAILS_CLOSED",
+    "CHECKPOINT_SEQUENCE_GUARDS_MATERIAL_MUTATION",
+    "BLIND_LAST_WRITER_WINS_FORBIDDEN",
+    "VERIFY_REMOTE_POSTCONDITION_BEFORE_RETRY",
+    "STATIC_REPO_CHECK_NOT_LIVE_CROSS_PLATFORM_CURRENT",
+    "DRIFT_RECONCILIATION_PRESERVES_CANONICAL_OWNER"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

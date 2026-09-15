@@ -55,6 +55,21 @@ REQUIRED_COMPAT_CLASSES = {
     "PROFESSIONAL_PROCESS_REVISION",
     "AUTHORITY_REPLACEMENT",
 }
+REQUIRED_TRIGGER_STATES = {
+    "NOT_EVALUATED",
+    "TRIGGERED",
+    "NOT_REQUIRED",
+    "UNRESOLVED",
+}
+REQUIRED_NOTION_GITHUB_REFERENCE_DRIFT_STATES = {
+    "CURRENT",
+    "STALE",
+    "MISSING",
+    "DIVERGED",
+    "ORPHANED_IMPLEMENTATION",
+    "NOT_REQUIRED",
+    "UNKNOWN",
+}
 
 
 def fail(message: str) -> None:
@@ -285,6 +300,131 @@ def main() -> None:
     if "OLD_RECEIPT_NOT_SILENTLY_REINTERPRETED" not in set(compatibility.get("invariants", [])):
         fail("receipt compatibility boundary missing")
 
+    trigger = graph.get("trigger_applicability_contract", {})
+    if trigger.get("semantic_class") != "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY":
+        fail("trigger/applicability results must not create a new state family")
+    if trigger.get("projection_only_not_replacement_schema") is not True or trigger.get("owner_native_trigger_fields_remain_authoritative") is not True:
+        fail("trigger/applicability control must remain a projection over owner-native fields")
+    if set(trigger.get("results", [])) != REQUIRED_TRIGGER_STATES:
+        fail("trigger/applicability result contract drift")
+    trigger_fields = set(trigger.get("required_fields", []))
+    for required in {
+        "decision_object_id",
+        "scope",
+        "trigger_owner",
+        "applicability_result",
+        "authority_fingerprint",
+        "owner_native_basis_ref_or_fields",
+    }:
+        if required not in trigger_fields:
+            fail(f"trigger/applicability required field missing: {required}")
+    if trigger.get("not_required_requires_explicit_owner_native_basis") is not True:
+        fail("NOT_REQUIRED trigger decision must remain traceable to owner-native non-trigger basis")
+    if trigger.get("free_text_reason_field_not_universally_required") is not True:
+        fail("architecture projection must not force a duplicate universal free-text reason field")
+    if trigger.get("omission_is_not_not_required") is not True:
+        fail("omission may not be treated as NOT_REQUIRED")
+    if trigger.get("trigger_decision_does_not_award_pass") is not True:
+        fail("trigger resolution may not award triggered owner PASS")
+    if trigger.get("unresolved_material_trigger_fails_closed") is not True:
+        fail("material unresolved trigger must fail closed")
+    if trigger.get("unresolved_blocker_code") != "TRIGGER_APPLICABILITY_UNRESOLVED":
+        fail("unresolved trigger must use a blocker code rather than a new runtime state")
+    if set(trigger.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("unresolved trigger must reuse existing Master Runtime outcomes")
+    trigger_mapping = trigger.get("current_master_runtime_mapping", {})
+    if trigger_mapping.get("triggered_true") != "TRIGGERED":
+        fail("trigger projection must preserve current Master Runtime triggered=true semantics")
+    if trigger_mapping.get("triggered_false_plus_explicit_native_not_required_or_na") != "NOT_REQUIRED":
+        fail("trigger projection must preserve current Master Runtime non-trigger semantics")
+
+    ceiling = graph.get("claim_ceiling_contract", {})
+    if ceiling.get("projection_only_not_second_claim_ledger") is not True or ceiling.get("owner_native_claim_fields_remain_authoritative") is not True:
+        fail("claim-ceiling compilation must not create a second claim ledger or steal owner authority")
+    ceiling_fields = set(ceiling.get("input_required_fields", []))
+    for required in {
+        "owner",
+        "claim_family_or_id",
+        "scope",
+        "ceiling_statement",
+        "basis_refs",
+        "blocking_or_limiting_conditions",
+        "valid_until_or_revalidate_on",
+        "authority_fingerprint",
+    }:
+        if required not in ceiling_fields:
+            fail(f"claim-ceiling input field missing: {required}")
+    if ceiling.get("universal_numeric_order_forbidden") is not True:
+        fail("claim ceilings may not collapse into a universal numeric order")
+    if set(ceiling.get("current_machine_compilation", [])) != {"claim_ceiling_inputs", "claim_ceiling_rule"}:
+        fail("claim-ceiling projection must match current Master Runtime machine compilation floor")
+    if ceiling.get("current_machine_rule") != "LOWEST_APPLICABLE_VALID_CLAIM_GOVERNS; MACHINE_DOES_NOT_RANK_DOMAIN_SPECIFIC_CLAIM_TEXT":
+        fail("claim-ceiling projection must preserve current Master Runtime opaque-text boundary")
+    if ceiling.get("richer_effective_envelope_requires_comparable_owner_semantics_or_authorized_human_judgment") is not True:
+        fail("richer claim envelope must require comparable owner semantics or authorized judgment")
+    if ceiling.get("machine_may_not_infer_semantic_conflict_by_ranking_opaque_claim_text") is not True:
+        fail("machine may not infer semantic claim conflicts by ranking opaque claim strings")
+    if ceiling.get("conflict_blocker_code") != "CLAIM_CEILING_CONFLICT":
+        fail("claim-ceiling conflict must be represented as a blocker code")
+    if set(ceiling.get("conflict_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("claim-ceiling conflict must reuse existing Master Runtime outcomes")
+    if ceiling.get("stronger_unrelated_owner_cannot_widen_weaker_consumed_boundary") is not True:
+        fail("unrelated stronger claim ceiling may not widen a weaker consumed boundary")
+    if ceiling.get("promotion_must_bind_effective_envelope") is not True:
+        fail("promotion must bind the effective claim envelope")
+
+    frontier = graph.get("execution_frontier_concurrency", {})
+    for ref in frontier.get("owner_refs", []):
+        check_ref(ref)
+    if frontier.get("mode") != "OPTIMISTIC_CHECKPOINT_SEQUENCE":
+        fail("execution frontier concurrency mode drift")
+    if frontier.get("sequence_is_authoritative") is not True:
+        fail("checkpoint sequence must remain concurrency truth")
+    if frontier.get("lease_metadata_is_advisory_only") is not True or frontier.get("lease_does_not_grant_authority") is not True:
+        fail("execution lease metadata must remain advisory and non-authoritative")
+    if frontier.get("global_lock_service_forbidden") is not True:
+        fail("architecture must not introduce a global lock service")
+    if frontier.get("blind_last_writer_wins_forbidden") is not True:
+        fail("blind last-writer-wins must remain forbidden")
+    if frontier.get("chat_summary_is_not_checkpoint_authority") is not True:
+        fail("chat summary may not become checkpoint authority")
+    if frontier.get("sequence_mismatch_state") != "REVALIDATE_CONCURRENT_ADVANCE":
+        fail("checkpoint sequence mismatch must force concurrent revalidation")
+    if frontier.get("uncertain_remote_mutation_rule") != "VERIFY_EXPECTED_POSTCONDITION_BEFORE_RETRY":
+        fail("uncertain remote mutation must use verify-before-retry")
+    if frontier.get("blind_duplicate_create_retry_forbidden") is not True:
+        fail("blind duplicate create retry must remain forbidden")
+    if frontier.get("parallel_convergence_requires_current_readback") is not True:
+        fail("parallel convergence must require Current readback")
+    if frontier.get("background_execution_implied") is not False:
+        fail("continuous/current-turn execution must not imply background execution")
+
+    drift = graph.get("current_drift_reconciliation", {})
+    if drift.get("projection_only_not_replacement_state_machine") is not True or drift.get("surface_native_drift_or_sync_owner_remains_authoritative") is not True:
+        fail("drift reconciliation must remain a projection over existing surface owners")
+    if drift.get("reference_state_owner") != "OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1":
+        fail("drift reference vocabulary owner must remain the current Notion↔GitHub drift contract")
+    if drift.get("other_surface_states_not_forced") is not True:
+        fail("Notion↔GitHub drift states may not be forced onto other surface-native state machines")
+    for ref in drift.get("owner_refs", []):
+        check_ref(ref)
+    if set(drift.get("notion_github_reference_states", [])) != REQUIRED_NOTION_GITHUB_REFERENCE_DRIFT_STATES:
+        fail("Notion↔GitHub reference drift-state vocabulary drift")
+    if drift.get("newest_timestamp_is_not_authority") is not True:
+        fail("drift reconciliation may not use newest timestamp as authority")
+    if drift.get("diverged_requires_explicit_reconciliation") is not True:
+        fail("DIVERGED state must require explicit reconciliation")
+    if drift.get("missing_does_not_authorize_parallel_owner_creation") is not True:
+        fail("MISSING drift may not authorize parallel owner creation")
+    if drift.get("unknown_fails_closed_when_claim_depends_on_cross_surface_certainty") is not True:
+        fail("UNKNOWN drift must fail closed for dependent cross-surface claims")
+    if drift.get("static_repo_check_cannot_claim_live_cross_platform_current") is not True:
+        fail("static repository check may not claim live cross-platform CURRENT")
+    if drift.get("sync_requires_target_platform_readback") is not True:
+        fail("sync must require target-platform readback")
+    if drift.get("preserve_last_verified_state_and_provenance") is not True:
+        fail("drift repair must preserve last verified state and provenance")
+
     invariants = set(graph.get("hard_invariants", []))
     for invariant in {
         "ONE_SYSTEM_ARCHITECTURE",
@@ -297,6 +437,15 @@ def main() -> None:
         "EVOLUTION_CANDIDATE_NO_SELF_PROMOTION",
         "EVOLUTION_REQUIRES_FROZEN_BASELINE_EVAL_REVIEW_HUMAN_PROMOTION",
         "EVOLUTION_REQUIRES_ROLLBACK_AND_PROVENANCE",
+        "CONDITIONAL_RESPONSIBILITY_REQUIRES_EXPLICIT_APPLICABILITY_RESULT",
+        "OMISSION_IS_NOT_NOT_REQUIRED",
+        "CLAIM_CEILING_NO_UNIVERSAL_NUMERIC_COLLAPSE",
+        "CLAIM_CEILING_CONFLICT_FAILS_CLOSED",
+        "CHECKPOINT_SEQUENCE_GUARDS_MATERIAL_MUTATION",
+        "BLIND_LAST_WRITER_WINS_FORBIDDEN",
+        "VERIFY_REMOTE_POSTCONDITION_BEFORE_RETRY",
+        "STATIC_REPO_CHECK_NOT_LIVE_CROSS_PLATFORM_CURRENT",
+        "DRIFT_RECONCILIATION_PRESERVES_CANONICAL_OWNER",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -311,6 +460,10 @@ def main() -> None:
     print("file_artifact_control=PASS")
     print("knowledge_reader_control=PASS")
     print("controlled_evolution=PASS")
+    print("trigger_applicability_projection_definition=PASS")
+    print("claim_ceiling_projection_definition=PASS")
+    print("execution_frontier_concurrency=PASS")
+    print("current_drift_reconciliation_projection=PASS")
 
 
 if __name__ == "__main__":
