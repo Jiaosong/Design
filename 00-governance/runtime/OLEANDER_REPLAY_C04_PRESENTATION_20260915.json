@@ -1,0 +1,35 @@
+{
+  "schema":"OLEANDER_PRESENTATION_REPLAY_v0.1",
+  "replay_id":"RP-C04-PRESENTATION-20260915",
+  "status":"DRAFT_REPLAY_NOT_CURRENT",
+  "project_id":"PRJ-C04-QINGJIANG-SHISHU",
+  "as_of":"2026-09-15",
+  "authority_effect":"NONE",
+  "source_boundary":{"FIELD_OBSERVED":0,"FIELD_MEASURED":0,"G1F":"HOLD","promotion":"NO_PROMOTION","construction":"NTS_NOT_FOR_CONSTRUCTION"},
+  "current_presentation_facts":{
+    "public_visual":"QJ-D v1.1 CURRENT PUBLIC VISUAL + 86s motion",
+    "primary_main":["FIG-C04-A00","FIG-C04-A01"],
+    "primary_section_allowed":["C04-MDL-SEC-A"],
+    "process_support":["C04-MDL-FIG-01"],
+    "support_only":["C04-MDL-FIG-02"],
+    "web_page_identity_count":52,
+    "older_spec_page_count":112,
+    "unique_image_sources":32,
+    "unique_pixel_hashes":32,
+    "live_browser":"WAIT",
+    "static_offline":"PASS_BOUNDED",
+    "pdf":"PASS_FULL_RENDER"
+  },
+  "replay_results":{"P10":"FIRST_PASS_COMPLETE_WITH_DELTAS"},
+  "replay_derived_rules":[
+    "P10/ROLE-RP01","P10/ASSET-RP01","P10/ROLE-RP02","P10/TRUTH-RP03","P10/SEQ-RP01","P10/MED-RP01","P10/DEPTH-RP01","P10/STYLE-RP01","P10/BOUND-RP01","P10/COPY-RP01"
+  ],
+  "required_new_machine_concepts":[
+    "SEMANTIC_VISUAL_SOURCE_IDENTITY",
+    "VISUAL_SEMANTIC_ROLE",
+    "SEMANTIC_POSITION",
+    "MEDIUM_READBACK_VECTOR",
+    "ROLE_SCOPED_STYLE_PROFILE_ASSIGNMENT_WITH_INVARIANT_AXES"
+  ],
+  "promotion_effect":"NONE_REPLAY_ONLY"
+}
