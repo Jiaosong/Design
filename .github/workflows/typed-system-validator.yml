@@ -4,10 +4,15 @@ on:
   pull_request:
     paths:
       - '00-governance/runtime/OLEANDER_TYPED_SYSTEM_*'
+      - '00-governance/runtime/OLEANDER_TYPED_ENUM_SCHEMA_REGISTRY_v0.1.json'
+      - '00-governance/runtime/OLEANDER_TYPED_COMPATIBILITY_MIGRATION_MAP_v0.1.json'
+      - '00-governance/runtime/OLEANDER_TYPED_SCHEMA_COMPILER_MANIFEST_v0.1.json'
       - '00-governance/runtime/OLEANDER_TYPED_SNAPSHOT_SCHEMA_v0.1.json'
       - '00-governance/runtime/OLEANDER_REPLAY_*'
       - '00-governance/runtime/validate_typed_system.py'
       - '00-governance/runtime/test_typed_system.py'
+      - '00-governance/runtime/compile_typed_schema.py'
+      - '00-governance/runtime/test_typed_schema_compiler.py'
       - '.github/workflows/typed-system-validator.yml'
   workflow_dispatch:
 
@@ -16,7 +21,7 @@ permissions:
 
 jobs:
   typed-system:
-    name: Validate typed runtime contracts and replay rules
+    name: Validate typed runtime contracts, schema ownership and replay rules
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -28,8 +33,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Compile typed-system validator
-        run: python -m py_compile 00-governance/runtime/validate_typed_system.py 00-governance/runtime/test_typed_system.py
+      - name: Compile validator and schema-compiler Python
+        run: >-
+          python -m py_compile
+          00-governance/runtime/validate_typed_system.py
+          00-governance/runtime/test_typed_system.py
+          00-governance/runtime/compile_typed_schema.py
+          00-governance/runtime/test_typed_schema_compiler.py
+
+      - name: Validate typed enum/schema ownership
+        run: python 00-governance/runtime/compile_typed_schema.py --check
+
+      - name: Run typed schema compiler self-test
+        run: python 00-governance/runtime/test_typed_schema_compiler.py
 
       - name: Validate rule registry and regression corpus
         run: python 00-governance/runtime/validate_typed_system.py --contracts-only
