@@ -145,6 +145,20 @@
       "json_pointer": "/controlled_variable_classes",
       "semantic_scope": "CONTROLLED_VARIABLE_TYPE"
     },
+    "CONTROLLED_IDENTITY_SCOPE": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/identity_scope",
+      "semantic_scope": "CONTROLLED_IDENTITY_SCOPE"
+    },
+    "CONTROLLED_IDENTITY_EQUIVALENCE_POLICY": {
+      "namespace": "P4",
+      "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
+      "source_file": "OLEANDER_P4_VARIABLE_INTERFACE_MATRICES_v1.1.json",
+      "json_pointer": "/equivalence_policy",
+      "semantic_scope": "CONTROLLED_IDENTITY_EQUIVALENCE_POLICY"
+    },
     "INTERFACE_N_WAY_MODEL": {
       "namespace": "P4",
       "owner": "OLEANDER_CONTROLLED_VARIABLE_INTERFACE_DEPENDENCY_CONTRACT_v1.0",
