@@ -464,13 +464,15 @@ async function patchReaderSupportAcademicContent(
       },
     };
   }
-  if (beforePage.retrievalSpace !== "SUPPORT") {
+  const beforeAuthority = resolveAuthority(beforePage);
+  if (!beforeAuthority.index || beforeAuthority.effectiveSpace !== "SUPPORT") {
     return {
       status: 409,
       body: {
         ok: false,
         error: "support_content_patch_requires_support_canonical_page",
         retrieval_space: beforePage.retrievalSpace,
+        effective_space: beforeAuthority.effectiveSpace,
       },
     };
   }
@@ -516,8 +518,10 @@ async function patchReaderSupportAcademicContent(
   }
 
   const afterPage = normalizePage(await fetchPage(env, pageId));
+  const afterAuthority = resolveAuthority(afterPage);
   const metadataStable = afterPage.canonicalId === expectedCanonicalId
-    && afterPage.retrievalSpace === "SUPPORT"
+    && afterAuthority.index === true
+    && afterAuthority.effectiveSpace === "SUPPORT"
     && afterPage.governanceState === beforeGovernanceState
     && afterPage.relationState === beforeRelationState;
   if (!metadataStable) {
