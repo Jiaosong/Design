@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "OLEANDER_TYPED_SNAPSHOT_SCHEMA_v0.1",
+  "title": "OLEANDER Typed Snapshot v0.1",
+  "type": "object",
+  "required": ["schema", "snapshot_id", "objects"],
+  "properties": {
+    "schema": {"const": "OLEANDER_TYPED_SNAPSHOT_v0.1"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "as_of": {"type": "string"},
+    "project_id": {"type": ["string", "null"]},
+    "objects": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/object"}
+    },
+    "corpus_census": {"$ref": "#/$defs/census"},
+    "support_packages": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/supportPackage"}
+    },
+    "presentation_assets": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/presentationAsset"}
+    },
+    "presentation_metrics": {
+      "type": "object",
+      "properties": {
+        "independent_source_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "presentation_release": {"$ref": "#/$defs/presentationRelease"}
+  },
+  "$defs": {
+    "object": {
+      "type": "object",
+      "required": ["id", "plane"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "plane": {"enum": ["KNOWLEDGE", "PROJECT", "RUNTIME_CONTROL"]},
+        "semantic_class": {"type": "string"},
+        "semantic_key": {"type": "string"},
+        "scope_key": {"type": "string"},
+        "is_current": {"type": "boolean"},
+        "status": {"type": "string"},
+        "retrieval_space": {"enum": ["CURRENT", "SUPPORT", "PROVENANCE", "EXCLUDED"]},
+        "professional_state": {"type": "string"},
+        "summary_badge": {"type": "string"},
+        "review_evidence_class": {"enum": ["FULL_BODY_REVIEW_EVIDENCE", "GRAPH_ONLY", "LINEAGE_ONLY"]},
+        "content_state": {"type": "string"},
+        "bilingual_state": {"type": "string"},
+        "independent_review_state": {"type": "string"},
+        "full_body_integrity": {"type": "string"},
+        "migration_state": {"type": "string"},
+        "migration_origin_state": {"type": "string"},
+        "classification_basis": {"type": ["string", "object", "array", "null"]},
+        "project_failure_reason": {"type": "string"},
+        "scope_kind": {"type": "string"},
+        "granted_ceilings": {"type": "object"},
+        "disposition": {"type": "string"},
+        "acceptance_dimensions": {"type": "object"},
+        "change_scope": {"type": "string"},
+        "upstream_source_changed": {"type": "boolean"},
+        "stale_effects": {"type": "array", "items": {"type": "string"}},
+        "target_results": {"type": "object"},
+        "summary_result": {"type": "string"},
+        "aggregation_policy": {"type": ["string", "object", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "census": {
+      "type": "object",
+      "required": ["as_of", "scope", "enumeration_basis", "counts"],
+      "properties": {
+        "as_of": {"type": "string"},
+        "scope": {"type": ["string", "object", "array"]},
+        "enumeration_basis": {"type": ["string", "object"]},
+        "counts": {"type": "object"},
+        "hard_ceiling": {"type": "boolean", "const": false}
+      },
+      "additionalProperties": true
+    },
+    "supportPackage": {
+      "type": "object",
+      "required": ["id", "artifacts"],
+      "properties": {
+        "id": {"type": "string"},
+        "artifacts": {"type": "array", "items": {"type": "object"}},
+        "semantic_object_count": {"type": "integer", "minimum": 0},
+        "shared_semantic_responsibility": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "presentationAsset": {
+      "type": "object",
+      "required": ["presentation_asset_id"],
+      "properties": {
+        "presentation_asset_id": {"type": "string"},
+        "semantic_source_id": {"type": "string"},
+        "is_derivative": {"type": "boolean"},
+        "source_role": {"type": "string"},
+        "semantic_role": {"type": "string"},
+        "truth_risk": {"enum": ["E0", "E1", "E2", "E3"]},
+        "authorized_role_change": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "presentationRelease": {
+      "type": "object",
+      "required": ["id", "medium_readback"],
+      "properties": {
+        "id": {"type": "string"},
+        "global_status": {"type": "string"},
+        "medium_readback": {
+          "type": "object",
+          "additionalProperties": {"enum": ["PASS", "REVISE", "WAIT", "FAIL", "NOT_EVALUATED", "NOT_APPLICABLE"]}
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
