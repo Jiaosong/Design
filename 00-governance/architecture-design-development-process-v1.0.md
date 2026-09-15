@@ -7,6 +7,8 @@
 
 **Shared design-development binding:** Architecture retains `ADD-00?ADD-17` as its authentic professional stage semantics. Applicable shared `DD-01?DD-12` responsibilities from `design-quality-and-design-development-specification-v1.0.md` bind into ADD stages as cross-domain design-quality obligations; they do not rename or replace ADD.
 
+**Knowledge mount binding:** Architecture reads the existing canonical Knowledge corpus through `knowledge-integrity-and-operational-mount-v1.0.md`. `CURRENT / SUPPORT / PROVENANCE` remain corpus/retrieval states; full-body content completion, Knowledge Integrity (`KI*`), task-scoped Operational Eligibility (`OE*`), Design Quality maturity (`DQ*`) and `ADD-*` stage state are independent. No ADD stage may copy a knowledge page into a parallel architectural knowledge corpus or treat `CURRENT` / strong prose as automatic decision authority.
+
 ## 1｜Why this process exists
 
 Architecture can appear complete while the actual design process is incomplete.
@@ -71,6 +73,8 @@ Before planning begins, record:
 - what this cycle may and may not prove.
 
 If capacity, survey, code basis or existing conditions are provisional, continue design with explicit `ASSUMPTION / OPEN` boundaries. Do not convert them into verified facts.
+
+Before an ADD stage relies on a consequential reusable knowledge input, resolve the canonical ref and its task/claim-scoped `OE1 / OE2 / OE3` state. `OE2 CONDITIONAL` inputs must carry their applicability, freshness, claim ceiling and `does_not_prove` boundary into the architectural decision. `KNOWLEDGE MOUNT PASS ≠ ADD PASS`, and `ADD PASS ≠ DQ4/DQ5`.
 
 ## 5｜ADD-01 Site, context and arrival systems
 

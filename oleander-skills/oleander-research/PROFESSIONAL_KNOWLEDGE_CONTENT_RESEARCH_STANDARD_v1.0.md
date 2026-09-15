@@ -648,6 +648,8 @@ Independent review states must remain separate:
 - `BILINGUAL STATE`
 - `LIFECYCLE / CURRENT ELIGIBILITY`
 
+For project/runtime consumption, these review results feed the separate `Knowledge Integrity & Operational Mount Contract v1.0`; they do not collapse into DD maturity or professional-stage state. A professionally complete body can still remain integrity-repair or operationally conditional/ineligible for a specific claim.
+
 Minimum review order:
 1. Canonical identity / collision preflight
 2. read current full body
@@ -664,6 +666,7 @@ Minimum review order:
 13. check bilingual parity
 14. independent review when required
 15. promotion decision
+16. record integrity findings and task/claim-scoped operational-eligibility boundary when the object is mounted into live project/professional execution
 
 Do not infer missing evidence, confidence, metadata or validation state merely to achieve schema completeness. `UNKNOWN / VALIDATION OPEN / HOLD` are legitimate states.
 

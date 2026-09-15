@@ -36,6 +36,17 @@ Owns:
 - provenance, freshness and claim boundaries;
 - minimum relevant knowledge routing.
 
+R-B is resolved through four separate runtime views over the existing corpus:
+
+1. **Corpus / Retrieval Resolution** — current `CURRENT / SUPPORT / PROVENANCE / EXCLUDED` placement and search eligibility;
+2. **Full-body Content Resolution** — whether the actual canonical body is adequate for its declared role/scope under the Knowledge Content Review Layer;
+3. **Knowledge Integrity Resolution** — identity, role, authority, claim/evidence, provenance, graph semantics, duplication, contamination, freshness and supersession, expressed through `KI0 UNKNOWN / KI1 SUSPECT / KI2 REPAIR / KI3 QUARANTINED / KI4 VERIFIED / KI5 SUPERSEDED-RETIRED` where this runtime view is used;
+4. **Task/Claim-scoped Operational Eligibility** — `OE0 NOT_EVALUATED / OE1 NOT_ELIGIBLE / OE2 CONDITIONAL / OE3 ELIGIBLE`, with explicit applicability, claim ceiling, freshness/revalidation trigger and `does_not_prove` boundary.
+
+Canonical owner for this admission/mount view: `../knowledge-integrity-and-operational-mount-v1.0.md`. Machine-readable existing-corpus mount: `OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json`.
+
+The existing live Knowledge Registry is mounted by reference. No `DD-*`, Architecture `ADD-*`, future professional process or project runtime may create a copied parallel knowledge corpus merely for execution convenience.
+
 Does not become a project stage sequence.
 
 ### R-C | Design Intelligence
@@ -152,7 +163,7 @@ Project practice does not automatically become reusable knowledge.
 For a design-quality Candidate:
 
 1. Resolve Current Authority and identity.
-2. Resolve the minimum relevant Knowledge / Evidence context.
+2. Resolve the minimum relevant Knowledge / Evidence context from the live corpus, including content/integrity state and task-scoped operational eligibility for consequential inputs.
 3. Compile the Design Intelligence Packet.
 4. Pass Candidate Gate.
 5. Compile the shared Design Quality & Development scope (`DD-*` responsibilities actually triggered).
@@ -206,9 +217,11 @@ A promotion claim must state which axes are in scope and must not use one axis a
 
 Every professional stage maps, where applicable, to:
 
-`Professional Question → Knowledge Inputs → Required DD Responsibilities → Required Native Outputs → Interfaces → Required Capability → Tool/Adapter → Actual Readback → Professional Review → Design Review → Reopen Triggers`.
+`Professional Question → Candidate Knowledge Resolution → Operational Knowledge Mount → Required DD Responsibilities → Required Native Outputs → Interfaces → Required Capability → Tool/Adapter → Actual Readback → Professional Review → Design Review → Reopen Triggers`.
 
 This is a binding view, not a replacement stage system.
+
+The stage-side knowledge mount preserves canonical refs and carries use role, `OE*` state, applicability, claim ceiling, freshness and `does_not_prove` where material. `KNOWLEDGE MOUNT PASS != PROFESSIONAL STAGE PASS`.
 
 ## 7 | Design communication binding
 
@@ -234,11 +247,23 @@ Keep these state families separate:
 - Job State: `CREATED / RESOLVED / QUEUED / RUNNING / SUCCEEDED / FAILED / CANCELLED / CACHED`;
 - Authority State: `NONE / WORKING_SOURCE / CANDIDATE_AUTHORITY / CANONICAL_AUTHORITY / FROZEN_AUTHORITY`;
 - Design Quality Maturity: `DQ0 ... DQ5`;
+- Knowledge Integrity: `KI0 ... KI5` when resolved by the Knowledge Operational Mount contract;
+- Operational Knowledge Eligibility: `OE0 ... OE3` at task/claim scope;
 - professional-process states owned by each domain;
 - interface maturity/disposition owned by Integration;
 - evidence / retrieval / lifecycle states owned by their existing governance systems.
 
 A state label in one family never upgrades another family.
+
+Additional hard separations:
+
+`CONTENT COMPLETE != KNOWLEDGE CLEAN`
+
+`KNOWLEDGE CLEAN != OPERATIONALLY ELIGIBLE FOR EVERY CLAIM`
+
+`OPERATIONALLY ELIGIBLE KNOWLEDGE != DQ MATURITY`
+
+`DQ MATURITY != ADD / OTHER PROFESSIONAL STAGE COMPLETION`.
 
 ## 9 | Machine / human boundary
 

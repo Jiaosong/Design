@@ -160,6 +160,15 @@ G9 经验只有在适用范围、证据状态、反例/失败条件与成熟度�
 Canonical runtime view: [`runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`](runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md)
 
 This document is the operator/integration view subordinate to `Complex Project Master Runtime v1.0`. It expands existing Authority, Knowledge, Design Intelligence, Shared Design Quality & Design Development, Professional Domain Process, Cross-Disciplinary Integration, Skill / Capability / Tool Runtime, Native Execution, Actual Readback, Review, Persistence / Promotion / Sync and G9 into one runtime view. It creates no second Master, taxonomy, Gate or Project Axis. Current relation: `Authority -> Master Runtime -> Knowledge Resolution -> Design Intelligence -> Shared DD Contract -> Professional Domain Process -> Integration when coupled -> Capability / Skill / Tool -> Native Artifact -> Actual Readback -> Independent Reviews -> Persistence / Promotion / Sync -> G9`.
+
+## Knowledge Integrity & Operational Mount Contract v1.0
+
+Canonical runtime admission contract: [`knowledge-integrity-and-operational-mount-v1.0.md`](knowledge-integrity-and-operational-mount-v1.0.md)
+Machine-readable existing-corpus mount: [`runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json`](runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json)
+
+The existing live Knowledge corpus is mounted by canonical reference rather than copied into `DD-*`, Architecture `ADD-*`, future professional processes or project folders. It keeps five state families independent: corpus/retrieval (`CURRENT / SUPPORT / PROVENANCE / EXCLUDED`), full-body Content Remediation, Knowledge Integrity (`KI0...KI5`), task/claim-scoped Operational Eligibility (`OE0...OE3`), and downstream Design/Professional states (`DQ0...DQ5`, `ADD-*`, etc.). `CURRENT != CLEAN`; `CONTENT COMPLETE != KNOWLEDGE CLEAN`; `OPERATIONALLY ELIGIBLE KNOWLEDGE != DQ MATURITY`; `DQ MATURITY != PROFESSIONAL STAGE COMPLETION`.
+
+This contract is the bridge from the existing 1215-object remediation lineage into live design/professional execution: `Live Corpus -> Full-body Content Review -> Integrity Resolution -> Operational Eligibility -> Design Intelligence Knowledge Inputs -> Shared DD Responsibilities -> Authentic Professional Domain Stage`. It does not batch-fill domain/stage fields, legitimize unresolved pollution, or create a second knowledge taxonomy.
 ## Design Quality & Design Development Specification v1.0
 
 Canonical execution specification: [`design-quality-and-design-development-specification-v1.0.md`](design-quality-and-design-development-specification-v1.0.md)
