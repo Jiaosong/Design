@@ -49,6 +49,9 @@ jobs:
       - name: Validate Building Services MEP professional process definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/building-services-mep-design-process.v1.json
 
+      - name: Validate Systems Engineering professional process candidate
+        run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/systems-engineering-process.v1.json
+
       - name: Validate Architecture professional source-stage map
         run: python 00-governance/schemas/validate_architecture_professional_source_stage_map.py
 
@@ -113,7 +116,7 @@ jobs:
           echo '- Validates AIG-02 failure/escalation cases, Recommendation Card and provenance manifest.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates AIG-03 runtime-event schema and reports only confirmed metric-eligible evidence.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates project/case/claim namespaces and rejects current-authority P0/P1/P2 AI-governance pollution.' >> "$GITHUB_STEP_SUMMARY"
-          echo '- Validates the subordinate Professional Domain Process definition/instance contract, the Structural Engineering + Building Services/MEP process definitions, and the Architecture source-stage companion map without creating universal stage IDs, a second runtime, or machine-awarded professional/design approval.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Validates the subordinate Professional Domain Process definition/instance contract, Structural Engineering + Building Services/MEP Current definitions, the Systems Engineering candidate definition, and the Architecture source-stage companion map without creating universal stage IDs, a second runtime, or machine-awarded professional/design approval.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates the six cross-cutting architecture-control planes, file/artifact identity, AI file/Reader authority boundaries, controlled evolution, dependency/reopen rules, recovery and human-promotion firewall.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Validates the six machine-readable execution contracts, current owner declarations, Image Ops binding, four-layer regression schema, and runtime README pointers.' >> "$GITHUB_STEP_SUMMARY"
           echo '- Enforces sticky negative user constraints before tool/creation routing and blocks full-flow closure while required phases remain incomplete.' >> "$GITHUB_STEP_SUMMARY"
