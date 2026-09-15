@@ -57,6 +57,8 @@ This is **iterative**, not a one-way waterfall. A later contradiction reopens ev
 
 The process sits before architectural Design KEEP / Promotion. It may run in parallel with Cross-Disciplinary Integration where structure, MEP, fire, accessibility, landscape, operations or other disciplines materially couple.
 
+The Current stage-level interface/dependency view is `architecture-professional-domain-interface-matrix-v1.0.md`. That matrix references this process for Architecture stage semantics and `cross-disciplinary-design-integration-v1.0.md` for interface semantics; it is not a second Architecture process and it does not invent numbered stages for other professions.
+
 ## 4｜ADD-00 Scope, authority and claim ceiling
 
 Before planning begins, record:

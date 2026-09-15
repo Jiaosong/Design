@@ -387,7 +387,9 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 | Canonical project execution flow | `oleander-project-flow-v0.3.md` |
 | Design intelligence / review routing | `design-intelligence-routing-and-review-v1.0.md` |
 | Shared design quality / design development | `design-quality-and-design-development-specification-v1.0.md` |
+| Professional domain process contract | `professional-domain-process-contract-v1.0.md` — shared envelope only; does not replace domain semantics |
 | Professional domain process | domain-specific process owner; Architecture = `architecture-design-development-process-v1.0.md` |
+| Architecture × professional-domain interface view | `architecture-professional-domain-interface-matrix-v1.0.md` — stage-level view over Architecture + Integration owners |
 | Integrated runtime operator view | `runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md` |
 | Cross-disciplinary integration | `cross-disciplinary-design-integration-v1.0.md` |
 | Control Card / machine orchestration | `00-governance/control-plane/` |

@@ -1208,6 +1208,8 @@ Design KEEP remains a professional judgment, not a machine state inferred from c
 
 Each Professional Domain Process must map its authentic stages to the shared Design Development Kernel rather than copy a universal stage sequence.
 
+The shared reusable envelope is `professional-domain-process-contract-v1.0.md`. It defines the minimum Definition / Trigger / Knowledge / Authentic Stage / Interface / Execution / Assurance / Change / Completion contract without prescribing one universal professional sequence. Project and stage execution instances remain runtime/project objects rather than new Knowledge levels.
+
 Minimum stage binding should identify:
 
 `professional question / required design dimensions / knowledge inputs + operational eligibility / native outputs / interfaces / design-language consequences / human-experience consequences / technical consequences / required readback / review owner / reopen triggers`.
@@ -1253,8 +1255,8 @@ No software product is a default design method.
 
 For mature multidisciplinary implementation, maintain or generate these views as needed:
 
-1. `Existing OLEANDER Architecture × Professional Domain Process Integration Matrix`;
-2. `Professional Stage × Cross-domain Interface Matrix`;
+1. `Existing OLEANDER Architecture × Professional Domain Process Integration Matrix` — Current built-environment implementation: `architecture-professional-domain-interface-matrix-v1.0.md`;
+2. `Professional Stage × Cross-domain Interface Matrix` — the same Current architecture matrix is the first domain-specific implementation; other domains must build equivalent views from their authentic process semantics rather than clone ADD stages;
 3. `Professional Process × Coverage / Completeness Matrix`;
 4. `Professional Stage × Presentation / Projection Matrix`;
 5. `Professional Stage × Capability × Skill Owner × Tool / Adapter × Native Output Matrix`;

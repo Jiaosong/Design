@@ -169,6 +169,21 @@ Machine-readable existing-corpus mount: [`runtime/OLEANDER_EXISTING_KNOWLEDGE_MO
 The existing live Knowledge corpus is mounted by canonical reference rather than copied into `DD-*`, Architecture `ADD-*`, future professional processes or project folders. It keeps five state families independent: corpus/retrieval (`CURRENT / SUPPORT / PROVENANCE / EXCLUDED`), full-body Content Remediation, Knowledge Integrity (`KI0...KI5`), task/claim-scoped Operational Eligibility (`OE0...OE3`), and downstream Design/Professional states (`DQ0...DQ5`, `ADD-*`, etc.). `CURRENT != CLEAN`; `CONTENT COMPLETE != KNOWLEDGE CLEAN`; `OPERATIONALLY ELIGIBLE KNOWLEDGE != DQ MATURITY`; `DQ MATURITY != PROFESSIONAL STAGE COMPLETION`.
 
 This contract is the bridge from the existing 1215-object remediation lineage into live design/professional execution: `Live Corpus -> Full-body Content Review -> Integrity Resolution -> Operational Eligibility -> Design Intelligence Knowledge Inputs -> Shared DD Responsibilities -> Authentic Professional Domain Stage`. It does not batch-fill domain/stage fields, legitimize unresolved pollution, or create a second knowledge taxonomy.
+
+## Professional Domain Process Contract v1.0
+
+Canonical shared envelope: [`professional-domain-process-contract-v1.0.md`](professional-domain-process-contract-v1.0.md)
+
+This contract formalizes the common Definition / Trigger / Knowledge Binding / Authentic Stage / Interface / Execution / Assurance / Change / Completion envelope without creating a universal professional stage sequence. A reusable process definition remains in the existing Knowledge Plane; a `DOMAIN_PROCESS_INSTANCE` is a project/runtime object; an embedded `DOMAIN_STAGE_INSTANCE` records cycle/baseline/readback/reopen state. The Master Runtime continues to carry only its compact `professional_processes[]` orchestration summary.
+
+Machine contract: [`schemas/professional-domain-process.v1.schema.json`](schemas/professional-domain-process.v1.schema.json). Domain stage IDs remain authentic to each profession. `DD-*` remains the shared design-development responsibility namespace and `ADD-*` remains Architecture-specific.
+
+## Architecture × Professional Domain Interface Matrix v1.0
+
+Current Architecture integration view: [`architecture-professional-domain-interface-matrix-v1.0.md`](architecture-professional-domain-interface-matrix-v1.0.md)
+
+The matrix binds Architecture `ADD-00..ADD-17` decisions to Structural / MEP / Interior / Landscape / Fire-Life-Safety / Accessibility / Lighting / Envelope / Acoustics / Cost-QS / FM-Operations interfaces using the existing Integration owner vocabulary: `IDENTIFIED / DEFINED / COORDINATED / EXERCISED / VERIFIED`, `OPEN / BLOCKED / CLOSED / OUTSIDE_CLAIM`, coupling, criticality, controlling authority and change propagation. It synchronizes by required interface maturity, not by matching stage numbers, and remains a view over the Architecture and Cross-Disciplinary Integration owners.
+
 ## Design Quality & Design Development Specification v1.0
 
 Canonical execution specification: [`design-quality-and-design-development-specification-v1.0.md`](design-quality-and-design-development-specification-v1.0.md)
