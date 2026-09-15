@@ -1,0 +1,121 @@
+{
+  "schema": "OLEANDER_STRUCTURAL_ENGINEERING_DESIGN_DEVELOPMENT_PROCESS_v0.1",
+  "status": "DRAFT_RESEARCH_PROCESS_NOT_CURRENT",
+  "process_id": "STR-DD-v0.1-CANDIDATE",
+  "title": "Structural Engineering Design Development Process",
+  "domain": "STRUCTURAL_ENGINEERING",
+  "semantic_owner": "PROFESSIONAL_DOMAIN_EXECUTION",
+  "contract_ref": "OLEANDER_DOMAIN_EXECUTION_PROCESS_CONTRACT_v0.1.json",
+  "authority_or_reference": "EXTERNAL_PROFESSIONAL_REFERENCE_ONLY",
+  "source_refs": [
+    "https://www.istructe.org/resources/guidance/the-structural-plan-of-work/",
+    "https://www.istructe.org/IStructE/media/Public/Resources/Structural-plan-of-work-20200701.pdf",
+    "https://www.architecture.com/-/media/GatherContent/Test-resources-page/Additional-Documents/2020RIBAPlanofWorkoverviewpdf.pdf"
+  ],
+  "source_boundary": "The IStructE Structural Plan of Work is used as a professional reference for stage structure, responsibilities, outputs, interfaces and assurance. OLEANDER does not reproduce or claim to replace the source standard and does not treat this draft as statutory or project authority.",
+  "stages": [
+    {
+      "stage_id": "STR-00",
+      "stage_name": "Strategic Definition",
+      "purpose": "Establish structural implications of project outcomes, constraints, risk appetite and strategic options before a scheme is selected.",
+      "required_inputs": ["project_intent", "site_and_existing_asset_context", "strategic_constraints", "known_hazards"],
+      "required_outputs": ["structural_strategic_issues", "initial_risk_and_unknown_register", "structural_scope_boundary"],
+      "critical_interfaces": ["ARCHITECTURE", "GEOTECHNICAL", "CLIENT_BRIEF", "EXISTING_ASSET"],
+      "exit_conditions": ["structural_scope_defined", "strategic_unknowns_owned", "no_unbounded_assumption_promoted_to_fact"]
+    },
+    {
+      "stage_id": "STR-01",
+      "stage_name": "Preparation and Brief",
+      "purpose": "Translate project brief and site evidence into structural design criteria, information requirements and investigation needs.",
+      "required_inputs": ["project_brief", "survey_and_site_information", "geotechnical_basis_if_available", "functional_requirements"],
+      "required_outputs": ["structural_design_basis_candidate", "investigation_requirements", "design_responsibility_map", "information_requirements"],
+      "critical_interfaces": ["ARCHITECTURE", "GEOTECHNICAL", "FIRE", "MEP", "FACADE"],
+      "exit_conditions": ["design_basis_declared", "investigation_gaps_explicit", "responsibilities_assigned"]
+    },
+    {
+      "stage_id": "STR-02",
+      "stage_name": "Concept Design",
+      "purpose": "Develop and compare structural systems that satisfy spatial, performance, constructability and material objectives at concept level.",
+      "required_inputs": ["structural_design_basis", "architectural_concept", "grid_and_span_intent", "site_constraints"],
+      "required_outputs": ["system_options", "selected_structural_concept_candidate", "preliminary_load_paths", "stability_concept", "key_member_zone_allowances"],
+      "critical_interfaces": ["ARCHITECTURAL_GRID", "CORES", "LONG_SPANS", "TRANSFER_ZONES", "FOUNDATION_STRATEGY", "MEP_ZONES"],
+      "exit_conditions": ["selected_concept_has_traceable_basis", "major_load_paths_explainable", "material_interface_unknowns_recorded"]
+    },
+    {
+      "stage_id": "STR-03",
+      "stage_name": "Spatial Coordination",
+      "purpose": "Coordinate structural zones, penetrations, grids, movement, build-ups and system geometry with other disciplines before detailed sizing is frozen.",
+      "required_inputs": ["selected_structural_concept", "coordinated_architecture", "building_services_zones", "facade_and_vertical_transport_interfaces"],
+      "required_outputs": ["coordinated_structural_layout", "interface_register", "controlled_structural_zones", "material_spatial_conflicts"],
+      "critical_interfaces": ["ARCHITECTURE", "MEP", "FACADE", "VERTICAL_TRANSPORT", "FIRE_PROTECTION", "GEOTECHNICAL"],
+      "exit_conditions": ["material_spatial_interfaces_resolved_or_explicitly_open", "shared_variables_have_owner", "coordination_readback_complete"]
+    },
+    {
+      "stage_id": "STR-04",
+      "stage_name": "Technical Design",
+      "purpose": "Develop member, connection, foundation, movement and robustness design to the level required for the declared procurement and design-responsibility model.",
+      "required_inputs": ["coordinated_structural_layout", "verified_design_basis", "applicable_codes_and_actions", "material_properties", "specialist_design_boundaries"],
+      "required_outputs": ["technical_calculations", "member_and_connection_design_intent", "foundation_design_intent", "movement_and_robustness_strategy", "technical_drawings_and_specs"],
+      "critical_interfaces": ["SPECIALIST_DESIGN", "FABRICATION", "TEMPORARY_WORKS", "FACADE", "MEP_PENETRATIONS"],
+      "exit_conditions": ["assurance_targets_complete_for_declared_scope", "specialist_boundaries_explicit", "open_technical_risks_owned"]
+    },
+    {
+      "stage_id": "STR-04.5",
+      "stage_name": "Production Information",
+      "purpose": "Translate technical design into coordinated information suitable for manufacturing, fabrication and construction according to assigned design responsibilities.",
+      "required_inputs": ["technical_design", "fabricator_or_specialist_inputs", "construction_sequence_constraints"],
+      "required_outputs": ["production_information", "reviewed_specialist_submissions", "construction_interface_information"],
+      "critical_interfaces": ["FABRICATION", "CONTRACTOR", "SPECIALIST_SUBCONTRACTORS", "TEMPORARY_WORKS"],
+      "exit_conditions": ["production_information_consistent_with_authority", "specialist_changes_reassured", "handoff_readback_complete"]
+    },
+    {
+      "stage_id": "STR-05",
+      "stage_name": "Manufacturing and Construction",
+      "purpose": "Support construction, respond to technical queries, control design changes and verify that design information is correctly interpreted within the engineer's scope.",
+      "required_inputs": ["issued_information", "site_queries", "fabrication_and_construction_feedback", "change_requests"],
+      "required_outputs": ["design_change_records", "technical_responses", "inspection_or_review_records_where_in_scope", "updated_as_built_information_inputs"],
+      "critical_interfaces": ["CONTRACTOR", "FABRICATOR", "SITE", "TEMPORARY_WORKS", "ARCHITECT"],
+      "exit_conditions": ["material_changes_traced", "unresolved_site_issues_visible", "no_field_observation_overclaim"]
+    },
+    {
+      "stage_id": "STR-06",
+      "stage_name": "Handover",
+      "purpose": "Consolidate structural records, residual risks, operating constraints and final information needed for handover and future use.",
+      "required_inputs": ["construction_records", "approved_changes", "commissioning_or_load_test_information_if_applicable"],
+      "required_outputs": ["handover_information", "residual_risk_information", "final_design_basis_record", "as_built_or_record_information_with_authority_boundary"],
+      "critical_interfaces": ["CLIENT", "FACILITIES_MANAGEMENT", "CONTRACTOR", "ARCHITECT"],
+      "exit_conditions": ["record_information_scope_clear", "residual_risks_transferred", "authority_of_as_built_information_declared"]
+    },
+    {
+      "stage_id": "STR-07",
+      "stage_name": "Use and Evaluation",
+      "purpose": "Evaluate structural performance in use where required, manage change implications and capture transferable lessons without rewriting original assurance history.",
+      "required_inputs": ["operational_feedback", "monitoring_or_inspection_data_if_available", "change_proposals"],
+      "required_outputs": ["in_use_findings", "change_implications", "maintenance_or_monitoring_actions", "G9_reuse_candidates_if_transferable"],
+      "critical_interfaces": ["FACILITIES_MANAGEMENT", "CLIENT", "ARCHITECT", "FUTURE_CHANGE_TEAM"],
+      "exit_conditions": ["in_use_evidence_scoped", "future_changes_bound_to_configuration", "knowledge_admission_separate_from_project_closeout"]
+    }
+  ],
+  "runtime_binding": {
+    "P0": "structural_system_member_interface_and_information_identity",
+    "P1": "design_responsibility_definition_owner_specialist_and_change_authority",
+    "P2": "option_selection_stage_decisions_and_implementation_state",
+    "P3": "design_criteria_load_actions_constraints_and_claims",
+    "P4": "grids_zones_penetrations_load_paths_interfaces_and_dependencies",
+    "P5": "design_basis_baselines_changes_and_reassurance",
+    "P6": "calculations_checks_independent_review_and_declared_assurance_targets",
+    "P7": "structural_risks_issues_assumptions_unknowns_and_residual_risk",
+    "P8": "models_drawings_calculations_specs_fabrication_and_handoff",
+    "P9": "cross_project_structural_method_admission_only_after_G9",
+    "P10": "presentation_only_for_communication_not_structural_truth_promotion",
+    "P11": "reader_preserves_mixed_target_results_and_open_risks"
+  },
+  "hard_boundaries": [
+    "CONCEPT_GEOMETRY_IS_NOT_STRUCTURAL_VERIFICATION",
+    "ANALYSIS_PASS_IS_CONFIGURATION_AND_TARGET_SPECIFIC",
+    "MODEL_COORDINATION_PASS_IS_NOT_CODE_OR_FIELD_PASS",
+    "SPECIALIST_DESIGN_SCOPE_MUST_NOT_DISAPPEAR_IN_GLOBAL_PASS",
+    "AS_BUILT_RECORD_AUTHORITY_MUST_BE_DECLARED_NOT_ASSUMED"
+  ],
+  "promotion_effect": "NONE_DRAFT_RESEARCH_PROCESS_ONLY"
+}
