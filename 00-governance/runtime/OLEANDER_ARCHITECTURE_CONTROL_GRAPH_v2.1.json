@@ -931,6 +931,37 @@
     "parallel_convergence_requires_current_readback": true,
     "background_execution_implied": false
   },
+  "multi_surface_mutation_transaction_boundary": {
+    "semantic_class": "EPHEMERAL_RECONCILIATION_PROJECTION_NOT_DISTRIBUTED_TRANSACTION_SERVICE",
+    "semantic_owner_refs": [
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+      "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json"
+    ],
+    "runtime_implementation_ref": "00-governance/runtime/validate_runtime_resilience.py",
+    "applies_when": "ONE_LOGICAL_MATERIAL_MUTATION_HAS_MULTIPLE_SIDE_EFFECT_LEGS_OR_DEPENDENT_HANDOFF_REQUIRES_MULTI_LEG_COHERENCE",
+    "leg_observation_values": ["CONFIRMED", "ABSENT", "UNCERTAIN"],
+    "reconciliation_results": ["COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"],
+    "current_runtime_actions": [
+      "ADVANCE_AFTER_COHERENT_COMMIT",
+      "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+      "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+      "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+      "HOLD_PARTIAL_COMMIT_UNRECONCILED"
+    ],
+    "result_is_ephemeral_runtime_fact_not_project_state": true,
+    "dependent_handoff_ready_requires_coherent_commit": true,
+    "dependent_handoff_acceptance_requires_coherent_commit": true,
+    "dag_advance_requires_coherent_commit": true,
+    "uncertain_leg_uses_verify_before_retry": true,
+    "retry_requires_idempotent_or_provider_keyed_or_explicit_retry_safe": true,
+    "compensation_requires_existing_legal_authorized_path": true,
+    "compensation_is_not_general_rollback_guarantee": true,
+    "preserve_last_verified_state_on_hold": true,
+    "distributed_transaction_manager_forbidden": true,
+    "persistent_transaction_ledger_forbidden": true,
+    "global_lock_service_forbidden": true
+  },
   "current_drift_reconciliation": {
     "projection_only_not_replacement_state_machine": true,
     "surface_native_drift_or_sync_owner_remains_authoritative": true,
@@ -1010,6 +1041,8 @@
     "RUNTIME_LAYER_INTERFACE_CONTRACT_REQUIRED",
     "PRODUCER_CANNOT_SELF_ACCEPT_HANDOFF",
     "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+    "MULTI_SURFACE_PARTIAL_COMMIT_BLOCKS_DEPENDENT_HANDOFF_AND_DAG_ADVANCE",
+    "TRANSACTION_RECONCILIATION_DOES_NOT_CREATE_DISTRIBUTED_TRANSACTION_AUTHORITY",
     "NO_UNIVERSAL_LAYER_PROGRESS_STATE"
   ],
   "control_domains": {

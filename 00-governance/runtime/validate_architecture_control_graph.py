@@ -165,6 +165,53 @@ def validate_layer_interface_contract(graph: dict, layers_by_id: dict[str, dict]
         if rule not in set(common.get("handoff_rules", [])):
             fail(f"handoff rule missing: {rule}")
 
+    transaction = common.get("multi_surface_transaction_projection", {})
+    if transaction.get("semantic_class") != "EPHEMERAL_RECONCILIATION_RESULT_NOT_STATE_FAMILY_OR_TRANSACTION_SERVICE":
+        fail("runtime layer transaction projection must remain an ephemeral reconciliation result")
+    for ref in transaction.get("semantic_owner_refs", []):
+        check_ref(ref)
+    check_ref(transaction.get("runtime_implementation_ref"))
+    expected_transaction_fields = {
+        "project_or_scope_id", "task_id", "decision_object_id", "authority_fingerprint",
+        "mutation_scope", "legs", "reconciliation_result", "reconciliation_action", "advance_allowed",
+        "readback_refs", "observed_at", "does_not_prove",
+    }
+    if set(transaction.get("projection_fields", [])) != expected_transaction_fields:
+        fail("runtime layer transaction projection field set drift")
+    expected_leg_fields = {
+        "surface_id", "side_effect_class", "operation_fingerprint", "expected_postcondition",
+        "state", "retry_safe", "idempotent_or_provider_keyed", "compensation_legal", "readback_ref",
+    }
+    if set(transaction.get("leg_fields", [])) != expected_leg_fields:
+        fail("runtime layer transaction leg field set drift")
+    if set(transaction.get("leg_observation_values", [])) != {"CONFIRMED", "ABSENT", "UNCERTAIN"}:
+        fail("runtime layer transaction leg observation vocabulary drift")
+    if set(transaction.get("reconciliation_results", [])) != {"COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"}:
+        fail("runtime layer transaction reconciliation result vocabulary drift")
+    for required_true in {
+        "result_is_ephemeral_runtime_fact_not_project_state",
+        "dependent_handoff_ready_requires_coherent_commit",
+        "dependent_handoff_acceptance_requires_coherent_commit",
+        "dag_advance_requires_coherent_commit",
+        "compensation_requires_existing_legal_authorized_path",
+        "compensation_is_not_general_rollback_guarantee",
+        "distributed_transaction_manager_forbidden",
+        "persistent_transaction_ledger_forbidden",
+        "global_lock_service_forbidden",
+    }:
+        if transaction.get(required_true) is not True:
+            fail(f"runtime layer transaction boundary missing {required_true}")
+    expected_transaction_actions = {
+        "uncertain_leg_action": "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+        "absent_safe_leg_action": "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+        "unsafe_missing_with_legal_compensation_action": "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+        "unsafe_unreconciled_action": "HOLD_PARTIAL_COMMIT_UNRECONCILED",
+        "all_legs_confirmed_action": "ADVANCE_AFTER_COHERENT_COMMIT",
+    }
+    for key, expected in expected_transaction_actions.items():
+        if transaction.get(key) != expected:
+            fail(f"runtime layer transaction action drift: {key}")
+
     intersections = contract.get("plane_intersections", [])
     expected_intersections = {"CONTROL_STATE", "CONTROL_OBSERVABILITY", "ACQUISITION_STATE", "ACQUISITION_EXECUTION", "EXECUTION_OBSERVABILITY", "EVOLUTION_CONTROL", "EVOLUTION_STATE"}
     if {row.get("id") for row in intersections} != expected_intersections:
@@ -527,6 +574,42 @@ def main() -> None:
     if frontier.get("background_execution_implied") is not False:
         fail("continuous/current-turn execution must not imply background execution")
 
+    transaction = graph.get("multi_surface_mutation_transaction_boundary", {})
+    if transaction.get("semantic_class") != "EPHEMERAL_RECONCILIATION_PROJECTION_NOT_DISTRIBUTED_TRANSACTION_SERVICE":
+        fail("multi-surface transaction boundary must remain an ephemeral projection")
+    for ref in transaction.get("semantic_owner_refs", []):
+        check_ref(ref)
+    check_ref(transaction.get("runtime_implementation_ref"))
+    if set(transaction.get("leg_observation_values", [])) != {"CONFIRMED", "ABSENT", "UNCERTAIN"}:
+        fail("multi-surface transaction leg observation vocabulary drift")
+    if set(transaction.get("reconciliation_results", [])) != {"COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"}:
+        fail("multi-surface transaction reconciliation result vocabulary drift")
+    expected_runtime_actions = {
+        "ADVANCE_AFTER_COHERENT_COMMIT",
+        "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+        "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+        "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+        "HOLD_PARTIAL_COMMIT_UNRECONCILED",
+    }
+    if set(transaction.get("current_runtime_actions", [])) != expected_runtime_actions:
+        fail("multi-surface transaction actions drift from current P6 runtime")
+    for required_true in {
+        "result_is_ephemeral_runtime_fact_not_project_state",
+        "dependent_handoff_ready_requires_coherent_commit",
+        "dependent_handoff_acceptance_requires_coherent_commit",
+        "dag_advance_requires_coherent_commit",
+        "uncertain_leg_uses_verify_before_retry",
+        "retry_requires_idempotent_or_provider_keyed_or_explicit_retry_safe",
+        "compensation_requires_existing_legal_authorized_path",
+        "compensation_is_not_general_rollback_guarantee",
+        "preserve_last_verified_state_on_hold",
+        "distributed_transaction_manager_forbidden",
+        "persistent_transaction_ledger_forbidden",
+        "global_lock_service_forbidden",
+    }:
+        if transaction.get(required_true) is not True:
+            fail(f"multi-surface transaction boundary missing {required_true}")
+
     drift = graph.get("current_drift_reconciliation", {})
     if drift.get("projection_only_not_replacement_state_machine") is not True or drift.get("surface_native_drift_or_sync_owner_remains_authoritative") is not True:
         fail("drift reconciliation must remain a projection over existing surface owners")
@@ -577,6 +660,8 @@ def main() -> None:
         "RUNTIME_LAYER_INTERFACE_CONTRACT_REQUIRED",
         "PRODUCER_CANNOT_SELF_ACCEPT_HANDOFF",
         "HANDOFF_ACCEPTED_DOES_NOT_PROVE_DOWNSTREAM_PASS",
+        "MULTI_SURFACE_PARTIAL_COMMIT_BLOCKS_DEPENDENT_HANDOFF_AND_DAG_ADVANCE",
+        "TRANSACTION_RECONCILIATION_DOES_NOT_CREATE_DISTRIBUTED_TRANSACTION_AUTHORITY",
         "NO_UNIVERSAL_LAYER_PROGRESS_STATE",
     }:
         if invariant not in invariants:
@@ -595,6 +680,7 @@ def main() -> None:
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
+    print("multi_surface_transaction_boundary=PASS")
     print("current_drift_reconciliation_projection=PASS")
     print("runtime_layer_interfaces=PASS")
 

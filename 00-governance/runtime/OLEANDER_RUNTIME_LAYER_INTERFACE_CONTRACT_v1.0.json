@@ -81,6 +81,56 @@
       "HANDOFF_MAY_NARROW_BUT_NOT_SILENTLY_WIDEN_UPSTREAM_CLAIM_BOUNDARY",
       "ONE_LAYER_PASS_MAY_NOT_SUBSTITUTE_FOR_ANOTHER_TRIGGERED_LAYER_OR_REVIEW"
     ],
+    "multi_surface_transaction_projection": {
+      "semantic_class": "EPHEMERAL_RECONCILIATION_RESULT_NOT_STATE_FAMILY_OR_TRANSACTION_SERVICE",
+      "required_when": "ONE_LOGICAL_MATERIAL_MUTATION_HAS_MULTIPLE_SIDE_EFFECT_LEGS_OR_A_DEPENDENT_HANDOFF_REQUIRES_MULTIPLE_MUTATIONS_TO_BE_COHERENT",
+      "semantic_owner_refs": [
+        "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ],
+      "runtime_implementation_ref": "00-governance/runtime/validate_runtime_resilience.py",
+      "projection_fields": [
+        "project_or_scope_id",
+        "task_id",
+        "decision_object_id",
+        "authority_fingerprint",
+        "mutation_scope",
+        "legs",
+        "reconciliation_result",
+        "reconciliation_action",
+        "advance_allowed",
+        "readback_refs",
+        "observed_at",
+        "does_not_prove"
+      ],
+      "leg_fields": [
+        "surface_id",
+        "side_effect_class",
+        "operation_fingerprint",
+        "expected_postcondition",
+        "state",
+        "retry_safe",
+        "idempotent_or_provider_keyed",
+        "compensation_legal",
+        "readback_ref"
+      ],
+      "leg_observation_values": ["CONFIRMED", "ABSENT", "UNCERTAIN"],
+      "reconciliation_results": ["COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"],
+      "result_is_ephemeral_runtime_fact_not_project_state": true,
+      "uncertain_leg_action": "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+      "absent_safe_leg_action": "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+      "unsafe_missing_with_legal_compensation_action": "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+      "unsafe_unreconciled_action": "HOLD_PARTIAL_COMMIT_UNRECONCILED",
+      "all_legs_confirmed_action": "ADVANCE_AFTER_COHERENT_COMMIT",
+      "dependent_handoff_ready_requires_coherent_commit": true,
+      "dependent_handoff_acceptance_requires_coherent_commit": true,
+      "dag_advance_requires_coherent_commit": true,
+      "compensation_requires_existing_legal_authorized_path": true,
+      "compensation_is_not_general_rollback_guarantee": true,
+      "distributed_transaction_manager_forbidden": true,
+      "persistent_transaction_ledger_forbidden": true,
+      "global_lock_service_forbidden": true
+    },
     "no_universal_layer_progress_state": true
   },
   "layers": {
