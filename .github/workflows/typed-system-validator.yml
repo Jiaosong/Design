@@ -10,11 +10,14 @@ on:
       - '00-governance/runtime/OLEANDER_TYPED_SNAPSHOT_SCHEMA_v0.1.json'
       - '00-governance/runtime/OLEANDER_TYPED_READER_FIXTURES_v0.1.json'
       - '00-governance/runtime/OLEANDER_P7_EXECUTABLE_*'
+      - '00-governance/runtime/OLEANDER_P8_EXECUTABLE_*'
       - '00-governance/runtime/OLEANDER_REPLAY_*'
       - '00-governance/runtime/validate_typed_system.py'
       - '00-governance/runtime/test_typed_system.py'
       - '00-governance/runtime/validate_p7_conversions.py'
       - '00-governance/runtime/test_p7_conversions.py'
+      - '00-governance/runtime/validate_p8_handoffs.py'
+      - '00-governance/runtime/test_p8_handoffs.py'
       - '00-governance/runtime/compile_typed_schema.py'
       - '00-governance/runtime/test_typed_schema_compiler.py'
       - '00-governance/runtime/render_typed_reader.py'
@@ -46,6 +49,8 @@ jobs:
           00-governance/runtime/test_typed_system.py
           00-governance/runtime/validate_p7_conversions.py
           00-governance/runtime/test_p7_conversions.py
+          00-governance/runtime/validate_p8_handoffs.py
+          00-governance/runtime/test_p8_handoffs.py
           00-governance/runtime/compile_typed_schema.py
           00-governance/runtime/test_typed_schema_compiler.py
           00-governance/runtime/render_typed_reader.py
@@ -65,6 +70,9 @@ jobs:
 
       - name: Run executable P7 conversion self-test
         run: python 00-governance/runtime/test_p7_conversions.py
+
+      - name: Run executable P8 handoff self-test
+        run: python 00-governance/runtime/test_p8_handoffs.py
 
       - name: Run plane-aware typed Reader self-test
         run: python 00-governance/runtime/test_typed_reader.py
