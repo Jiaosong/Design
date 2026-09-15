@@ -242,6 +242,33 @@ def validate_existing_contract_derivation() -> None:
         fail("P6/P7 require existing readback + sync/drift flow phases")
     if receipt.get("early_completion_forbidden_on") is None:
         fail("P6 must not replace the existing completion gate")
+    partial_commit = receipt.get("partial_commit_reconciliation_extension", {})
+    if partial_commit.get("result_is_ephemeral_runtime_fact_not_project_state") is not True:
+        fail("P6 receipt projection must remain ephemeral runtime fact, not Project State")
+    if set(partial_commit.get("leg_observation_values", [])) != {"CONFIRMED", "ABSENT", "UNCERTAIN"}:
+        fail("P6 receipt leg observation vocabulary must match reconcile_partial_commit")
+    if set(partial_commit.get("reconciliation_results", [])) != {"COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"}:
+        fail("P6 receipt reconciliation results must match reconcile_partial_commit")
+    expected_actions = {
+        "uncertain_leg_action": "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
+        "absent_safe_leg_action": "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
+        "unsafe_missing_with_legal_compensation_action": "COMPENSATE_CONFIRMED_LEGS_BEFORE_ADVANCE",
+        "unsafe_unreconciled_action": "HOLD_PARTIAL_COMMIT_UNRECONCILED",
+        "all_legs_confirmed_action": "ADVANCE_AFTER_COHERENT_COMMIT",
+    }
+    for key, expected in expected_actions.items():
+        if partial_commit.get(key) != expected:
+            fail(f"P6 receipt action drift: {key}")
+    if partial_commit.get("dependent_handoff_ready_requires_coherent_commit") is not True:
+        fail("P6 partial commit must block dependent handoff READY")
+    if partial_commit.get("dependent_handoff_acceptance_requires_coherent_commit") is not True:
+        fail("P6 partial commit must block dependent handoff ACCEPTED")
+    if partial_commit.get("dag_advance_requires_coherent_commit") is not True:
+        fail("P6 partial commit must block dependent DAG advance")
+    if partial_commit.get("distributed_transaction_manager_forbidden") is not True:
+        fail("P6 may not create a distributed transaction manager")
+    if partial_commit.get("persistent_transaction_ledger_forbidden") is not True:
+        fail("P6 may not create a persistent transaction ledger")
     expected_review_states = {"INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED"}
     if set(receipt.get("reviewer_independence_states", [])) != expected_review_states:
         fail("P8 must refine the existing reviewer independence enum, not create or drop states")

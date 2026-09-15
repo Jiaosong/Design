@@ -292,6 +292,31 @@ Rules:
 - historical receipts remain immutable and this extension is prospective only;
 - `NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD HANDOFF`.
 
+### 7.2 Partial-Commit Reconciliation｜when a logical mutation has multiple material side-effect legs
+
+Use this extension only when one logical material action mutates multiple surfaces, or when a dependent handoff requires several side effects to be coherent before it can safely continue. Record:
+
+`project_or_scope_id / task_id / decision_object_id / authority_fingerprint / mutation_scope / legs[] / reconciliation_result / reconciliation_action / advance_allowed / readback_refs[] / observed_at / does_not_prove[]`.
+
+Each material leg records:
+
+`surface_id / side_effect_class / operation_fingerprint / expected_postcondition / state / retry_safe / idempotent_or_provider_keyed / compensation_legal / readback_ref`.
+
+The leg observation vocabulary is exactly `CONFIRMED / ABSENT / UNCERTAIN`. Current reconciliation behavior is owned by `validate_runtime_resilience.py` P6 and derives retry semantics from `OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json`.
+
+Rules:
+
+- `UNCERTAIN` → verify the expected postcondition before retry;
+- `ABSENT` → retry only if safe/idempotent/provider-keyed and within the bounded retry budget;
+- unsafe missing leg + legally compensable confirmed legs → compensate only through an existing authorized compensation path;
+- unsafe unreconciled partial commit → `HOLD_PARTIAL_COMMIT_UNRECONCILED` and no dependent advance;
+- all required legs confirmed → `ADVANCE_AFTER_COHERENT_COMMIT`;
+- dependent `READY / ACCEPTED` handoff and dependent DAG advance require coherent mutation readback;
+- `COHERENT_COMMIT / PARTIAL_COMMIT / HOLD` are ephemeral reconciliation results, not a new Project State or transaction authority;
+- no distributed transaction manager, two-phase-commit service, transaction database or global lock service is introduced;
+- historical receipts remain immutable and this extension is prospective only;
+- `NO MATERIAL DELTA = NO NEW RECEIPT JUST TO RECORD RECONCILIATION`.
+
 ## 7A｜Image Consumption｜when applicable
 
 Required whenever a visual execution binds a semantic content image. Record:
