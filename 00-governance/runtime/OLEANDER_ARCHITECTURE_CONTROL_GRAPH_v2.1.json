@@ -1072,6 +1072,92 @@
     "resolvable_bindings_do_not_require_duplicate_central_authority_persistence": true,
     "central_authority_ledger_registry_or_history_database_forbidden": true
   },
+  "knowledge_mount_consumption_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_KNOWLEDGE_REGISTRY_MOUNT_DATABASE_KI_OE_STATE_FAMILY_OR_ELIGIBILITY_AUTHORITY",
+    "projection_only_not_replacement_knowledge_mount_contract": true,
+    "existing_knowledge_mount_owner_retains_ki_oe_and_admission_authority": true,
+    "knowledge_mount_owner_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "content_state_owner_ref": "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
+    "content_state_owner_does_not_own_ki_or_oe": true,
+    "runtime_carrier_refs": [
+      "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+    ],
+    "downstream_consumer_refs": [
+      "00-governance/design-intelligence-routing-and-review-v1.0.md",
+      "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "00-governance/professional-domain-process-contract-v1.0.md"
+    ],
+    "owner_minimum_eligibility_binding_fields": [
+      "knowledge_ref",
+      "eligibility_state",
+      "eligibility_scope",
+      "claim_ceiling",
+      "applicability",
+      "conditions",
+      "unresolved_items",
+      "freshness_or_revalidation_trigger",
+      "review_basis"
+    ],
+    "consequential_consumer_required_resolvable_semantics": [
+      "knowledge_ref",
+      "operational_eligibility",
+      "eligibility_scope_or_professional_question",
+      "claim_ceiling",
+      "applicability",
+      "conditions_or_unresolved_items",
+      "freshness_or_revalidation_trigger",
+      "does_not_prove",
+      "review_basis",
+      "owner_native_mount_ref"
+    ],
+    "state_family_separation": [
+      "CORPUS_OR_RETRIEVAL",
+      "CONTENT_REMEDIATION",
+      "KNOWLEDGE_INTEGRITY",
+      "OPERATIONAL_ELIGIBILITY",
+      "DOWNSTREAM_DESIGN_AND_PROFESSIONAL_STATE"
+    ],
+    "oe_states": [
+      "OE0_NOT_EVALUATED",
+      "OE1_NOT_ELIGIBLE",
+      "OE2_CONDITIONAL",
+      "OE3_ELIGIBLE"
+    ],
+    "conditional_mount_must_preserve": [
+      "CONDITIONS",
+      "APPLICABILITY",
+      "CLAIM_CEILING",
+      "FRESHNESS_OR_REVALIDATION_TRIGGER",
+      "UNRESOLVED_ITEMS_WHEN_MATERIAL",
+      "DOES_NOT_PROVE"
+    ],
+    "material_revalidation_triggers": [
+      "KNOWLEDGE_IDENTITY_OR_OWNER_RELATION_CHANGED",
+      "SOURCE_VERSION_OR_FRESHNESS_CHANGED",
+      "APPLICABILITY_OR_JURISDICTION_CHANGED",
+      "CLAIM_CEILING_CHANGED",
+      "CONDITIONS_OR_UNRESOLVED_ITEMS_MATERIALLY_CHANGED",
+      "ELIGIBILITY_REVIEW_BASIS_WITHDRAWN_OR_MATERIALLY_SUPERSEDED"
+    ],
+    "discovery_does_not_grant_decision_authority": true,
+    "bare_canonical_ref_does_not_grant_consequential_operational_eligibility": true,
+    "current_retrieval_state_does_not_imply_ki4_or_oe3": true,
+    "ki4_does_not_imply_oe3": true,
+    "oe3_is_task_claim_scope_bounded": true,
+    "oe3_does_not_imply_dq_or_professional_pass": true,
+    "professional_or_design_consumer_may_reference_mount_but_not_reissue_ki_oe": true,
+    "consumer_may_narrow_but_not_widen_mount_claim_without_owner_revalidation": true,
+    "stale_mount_reopens_only_actual_consumers": true,
+    "unrelated_knowledge_change_does_not_stale_consumer_by_chronology_or_folder_membership": true,
+    "historical_mount_use_remains_immutable_provenance": true,
+    "historical_mount_use_does_not_auto_grant_current_eligibility_after_revalidation_trigger": true,
+    "machine_may_validate_binding_not_self_award_semantic_ki4_or_consequential_oe3": true,
+    "valid_mount_does_not_prove_design_professional_technical_or_statutory_pass": true,
+    "parallel_knowledge_registry_corpus_or_mount_database_forbidden": true,
+    "duplicate_ki_oe_state_family_forbidden": true,
+    "resolvable_consumer_semantics_do_not_require_duplicate_mount_persistence": true
+  },
   "recovery": {
     "sequence": [
       "DETECT",
@@ -1675,7 +1761,14 @@
     "AUTHORITY_CHANGE_REOPENS_ONLY_ACTUAL_BOUND_CONSUMERS",
     "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
     "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
-    "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM"
+    "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM",
+    "KNOWLEDGE_DISCOVERY_OR_BARE_REF_IS_NOT_CONSEQUENTIAL_ELIGIBILITY",
+    "KNOWLEDGE_STATE_FAMILIES_REMAIN_SEPARATE_ACROSS_MOUNT",
+    "OE3_REMAINS_TASK_CLAIM_SCOPE_BOUNDED",
+    "OE2_CONDITIONS_CLAIM_CEILING_FRESHNESS_AND_DOES_NOT_PROVE_TRAVEL_WITH_CONSUMPTION",
+    "KNOWLEDGE_MOUNT_STALENESS_REOPENS_ONLY_ACTUAL_CONSUMERS",
+    "DOWNSTREAM_CONSUMER_CANNOT_REISSUE_KI_OR_OE",
+    "KNOWLEDGE_MOUNT_CONSUMPTION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_DATABASE_OR_STATE_FAMILY"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {
