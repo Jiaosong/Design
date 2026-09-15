@@ -150,6 +150,8 @@ Rules:
 - a hard failure in use, safety, truth or a triggered professional requirement cannot be averaged away by visual strength;
 - design judgment remains `KEEP / REVISE / REJECT / HOLD` with reasons.
 
+For material design-development work, these review questions compile into the shared execution contract in [`design-quality-and-design-development-specification-v1.0.md`](design-quality-and-design-development-specification-v1.0.md). That specification develops Intent, Concept, Experience, Form/Composition, Human Relation, Sensory Design, Design Language/Style, Detail/Craft, Prototype/Experiment, Adaptation/Variation, Meaning/Memory and Integration/Coherence into explicit runtime objects, readback requirements, reopen rules and a `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`. It does not create a second Design Intelligence layer and does not replace discipline-specific professional processes.
+
 ## 7｜Discipline Review Lenses
 
 OLEANDER does **not** create a new parallel knowledge taxonomy such as a second tree of `DKE-*` pages. The project resolver selects review lenses and retrieves the relevant existing L4/L5/L6/L7 knowledge through Domain / Topic / relation routing.

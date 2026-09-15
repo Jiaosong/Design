@@ -365,8 +365,8 @@ def scan_contradictions(manifest: dict[str, Any]) -> dict[str, Any]:
 def evaluate_master_runtime(state: dict[str, Any]) -> dict[str, Any]:
     """Evaluate the thin complex-project Master Runtime without self-promoting a project.
 
-    This function compiles existing Design Intelligence, integration, review,
-    dependency and change-propagation states. It owns no specialist truth and
+    This function compiles existing Design Intelligence, shared design-development,
+    professional-process, integration, review, dependency and change-propagation states. It owns no specialist truth and
     never converts machine completeness into Design KEEP or Promotion.
     """
     findings = _schema_findings(state)
@@ -390,6 +390,62 @@ def evaluate_master_runtime(state: dict[str, Any]) -> dict[str, Any]:
             "action": "RESOLVE_OR_REFRESH_DESIGN_INTELLIGENCE_PACKET",
             "reason": f"state={design_intelligence['state']}; packet_id={design_intelligence.get('packet_id')!r}",
         })
+
+    design_quality = state["design_quality_development"]
+    if design_quality["triggered"]:
+        if design_quality["state"] == "NOT_REQUIRED" or design_quality["verdict"] == "N_A" or design_quality["maturity"] == "N_A":
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_DESIGN_QUALITY_TRIGGER_STATE_CONTRADICTION",
+                "message": "triggered design quality/development cannot use NOT_REQUIRED/N_A state",
+            })
+        if not design_quality.get("receipt_id"):
+            required_actions.append({"scope": "DESIGN_QUALITY", "action": "EMIT_DESIGN_QUALITY_DEVELOPMENT_RECEIPT", "reason": "triggered design quality/development has no current receipt_id"})
+        if design_quality["state"] != "CURRENT" or design_quality["stale"]:
+            scope = "STALE:DESIGN_QUALITY" if design_quality["state"] == "STALE" or design_quality["stale"] else "DESIGN_QUALITY"
+            required_actions.append({"scope": scope, "action": "REFRESH_DESIGN_QUALITY_READBACK", "reason": f"state={design_quality['state']}; stale={design_quality['stale']}"})
+        if design_quality["verdict"] != "KEEP":
+            required_actions.append({"scope": "DESIGN_QUALITY", "action": "RESOLVE_DESIGN_QUALITY_VERDICT", "reason": f"design quality verdict={design_quality['verdict']}"})
+    else:
+        if design_quality["state"] != "NOT_REQUIRED" or design_quality["verdict"] != "N_A" or design_quality["maturity"] != "N_A" or design_quality["stale"]:
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_DESIGN_QUALITY_NOT_TRIGGERED_STATE_CONTRADICTION",
+                "message": "non-triggered design quality/development must use state=NOT_REQUIRED, verdict=N_A, maturity=N_A, stale=false",
+            })
+        if design_quality.get("receipt_id"):
+            semantic_findings.append({
+                "level": "ERROR", "code": "MASTER_DESIGN_QUALITY_NOT_TRIGGERED_RECEIPT_CONTRADICTION",
+                "message": "non-triggered design quality/development cannot claim a receipt",
+            })
+
+    professional_processes = state["professional_processes"]
+    process_keys = [(x["domain"], x["process_id"]) for x in professional_processes]
+    duplicates = sorted({x for x in process_keys if process_keys.count(x) > 1})
+    if duplicates:
+        semantic_findings.append({
+            "level": "ERROR", "code": "MASTER_PROFESSIONAL_PROCESS_DUPLICATE",
+            "message": f"professional_processes must be unique by domain/process_id; duplicates={duplicates}",
+        })
+    for process in professional_processes:
+        key = f"{process['domain']}:{process['process_id']}"
+        if process["triggered"]:
+            if process["state"] == "NOT_REQUIRED" or process["verdict"] == "N_A":
+                semantic_findings.append({
+                    "level": "ERROR", "code": "MASTER_PROFESSIONAL_PROCESS_TRIGGER_STATE_CONTRADICTION",
+                    "message": f"{key}: triggered professional process cannot use NOT_REQUIRED/N_A state",
+                })
+            if not process.get("receipt_id"):
+                required_actions.append({"scope": f"PROFESSIONAL_PROCESS:{key}", "action": "EMIT_OR_REFRESH_PROFESSIONAL_PROCESS_RECEIPT", "reason": "triggered professional process has no current receipt_id"})
+            if process["state"] != "CURRENT":
+                scope = f"STALE:PROFESSIONAL_PROCESS:{key}" if process["state"] == "STALE" else f"PROFESSIONAL_PROCESS:{key}"
+                required_actions.append({"scope": scope, "action": "RESOLVE_OR_REFRESH_PROFESSIONAL_PROCESS", "reason": f"state={process['state']}"})
+            if process["verdict"] != "PASS":
+                required_actions.append({"scope": f"PROFESSIONAL_PROCESS:{key}", "action": "RESOLVE_PROFESSIONAL_PROCESS_VERDICT", "reason": f"verdict={process['verdict']}"})
+        else:
+            if process["state"] != "NOT_REQUIRED" or process["verdict"] != "N_A" or process.get("receipt_id"):
+                semantic_findings.append({
+                    "level": "ERROR", "code": "MASTER_PROFESSIONAL_PROCESS_NOT_TRIGGERED_CONTRADICTION",
+                    "message": f"{key}: non-triggered process must be NOT_REQUIRED/N_A with no receipt",
+                })
 
     integration = state["integration"]
     if integration["triggered"]:
@@ -499,8 +555,14 @@ def evaluate_master_runtime(state: dict[str, Any]) -> dict[str, Any]:
 
     claim_ceiling_inputs = [
         {"owner": "DESIGN_INTELLIGENCE", "claim_ceiling": design_intelligence["claim_ceiling"]},
-        {"owner": "INTEGRATION", "claim_ceiling": integration["claim_ceiling"]},
     ]
+    if design_quality["triggered"]:
+        claim_ceiling_inputs.append({"owner": "DESIGN_QUALITY_DEVELOPMENT", "claim_ceiling": design_quality["claim_ceiling"]})
+    for process in professional_processes:
+        if process["triggered"]:
+            claim_ceiling_inputs.append({"owner": f"PROFESSIONAL_PROCESS:{process['domain']}:{process['process_id']}", "claim_ceiling": process["claim_ceiling"]})
+    if integration["triggered"]:
+        claim_ceiling_inputs.append({"owner": "INTEGRATION", "claim_ceiling": integration["claim_ceiling"]})
 
     if semantic_findings:
         return {
@@ -515,7 +577,7 @@ def evaluate_master_runtime(state: dict[str, Any]) -> dict[str, Any]:
 
     if required_actions:
         return {
-            "status": "RECONCILIATION_REQUIRED" if any(a["scope"].startswith(("DEPENDENCY:", "CHANGE:")) or a["scope"] in {"AUTHORITY", "INTEGRATION"} for a in required_actions) else "IN_PROGRESS",
+            "status": "RECONCILIATION_REQUIRED" if any(a["scope"].startswith(("DEPENDENCY:", "CHANGE:", "STALE:")) or a["scope"] in {"AUTHORITY", "INTEGRATION"} for a in required_actions) else "IN_PROGRESS",
             "code": "MASTER_RUNTIME_OPEN_WORK",
             "findings": [],
             "required_actions": required_actions,

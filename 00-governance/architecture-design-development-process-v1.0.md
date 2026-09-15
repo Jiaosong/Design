@@ -1,0 +1,582 @@
+# OLEANDER Architecture Design Development Process v1.0
+
+**Status:** ACTIVE
+**Date:** 2026-09-15
+**Scope:** architecture / school / civic / spatial / built-environment projects in which OLEANDER makes a material claim about functional planning, zoning, circulation, room usability, operational logic, life-safety-aware planning, accessibility-aware planning, or architectural design quality.
+**Position:** discipline-specific design-development process inside the canonical OLEANDER Project Flow. It is not a substitute for statutory approval, licensed professional judgment, engineering design, field verification or the High-Fidelity Built-Environment Model Gate.
+
+**Shared design-development binding:** Architecture retains `ADD-00?ADD-17` as its authentic professional stage semantics. Applicable shared `DD-01?DD-12` responsibilities from `design-quality-and-design-development-specification-v1.0.md` bind into ADD stages as cross-domain design-quality obligations; they do not rename or replace ADD.
+
+## 1｜Why this process exists
+
+Architecture can appear complete while the actual design process is incomplete.
+
+Typical false positives include:
+
+- program areas add up but adjacency is poor;
+- program pieces do not overlap but rooms are not operationally usable;
+- a circulation diagram exists but user groups conflict in time or access state;
+- stairs / cores / exit reserves exist but travel, capacity and compartment logic are unresolved;
+- a step-free route is drawn but door, turning, gradient, threshold and lift continuity are unverified;
+- a model is detailed but service, supervision, acoustic, hygiene or maintenance logic is absent;
+- a final plan looks resolved only because missing intermediate design decisions were never recorded;
+- render / model / clash PASS is used to stand in for architectural planning quality.
+
+Therefore OLEANDER treats **architectural design development** as a distinct design process and promotion gate.
+
+`PROGRAM FIT ≠ FUNCTIONAL PLANNING PASS`
+`NO OVERLAP ≠ ROOM USABILITY`
+`MODEL PASS ≠ CIRCULATION PASS`
+`EGRESS RESERVE ≠ FIRE COMPLIANCE`
+`STEP-FREE RESERVE ≠ ACCESSIBILITY COMPLIANCE`
+`ARCHITECTURAL DESIGN PASS ≠ CODE / ENGINEERING APPROVAL`
+
+## 2｜Trigger
+
+Trigger this process when any of the following is true:
+
+- the project is a building, school, civic facility, public interior, adaptive-reuse building, campus or comparable architectural work;
+- the design claims that functional zoning, room planning or circulation is resolved;
+- the design includes multiple user groups, controlled access states, public/private gradients or after-hours operation;
+- the design includes teaching, sports, food, assembly, laboratory, workshop, healthcare, sanitary, shelter or other functionally constrained spaces;
+- the project claims design readiness beyond massing / concept-only spatial exploration;
+- a candidate is being considered for architectural `KEEP`, MAIN use, canonical geometry authority or equivalent promotion;
+- a material geometry change can alter adjacency, circulation, fire/accessibility interfaces, servicing, supervision, acoustics, daylight, structure, MEP, envelope or landscape.
+
+Do not trigger it merely for a decorative background building, abstract massing study or visualization-only object whose scope explicitly excludes functional architectural design.
+
+## 3｜Position in the canonical OLEANDER flow
+
+For triggered architecture work, the design path becomes:
+
+`Read / Evidence → Brief → Users / Operations → Program → Adjacency → Zoning Alternatives → Flow Systems → Selected Zoning → Room Planning → Circulation / Vertical Movement → Fire + Accessibility-Aware Planning → Service / Hygiene / Security → Structure + MEP + Envelope Coordination → Climate / Acoustic / Landscape / Maintenance → Detail / FF&E / Cost-Efficiency → Code Matrix → Independent Plan Review → Architectural Design Decision`
+
+This is **iterative**, not a one-way waterfall. A later contradiction reopens every materially affected earlier step.
+
+The process sits before architectural Design KEEP / Promotion. It may run in parallel with Cross-Disciplinary Integration where structure, MEP, fire, accessibility, landscape, operations or other disciplines materially couple.
+
+## 4｜ADD-00 Scope, authority and claim ceiling
+
+Before planning begins, record:
+
+- project type and current stage;
+- jurisdiction / regulatory context;
+- occupancy / capacity authority state;
+- survey / site authority state;
+- existing-condition authority state;
+- program authority state;
+- geometry authority state;
+- design scenario vs verified fact;
+- which professional approvals remain `OPEN`;
+- what this cycle may and may not prove.
+
+If capacity, survey, code basis or existing conditions are provisional, continue design with explicit `ASSUMPTION / OPEN` boundaries. Do not convert them into verified facts.
+
+## 5｜ADD-01 Site, context and arrival systems
+
+Resolve the site as an operating system, not only a building footprint.
+
+Minimum review where applicable:
+
+- site boundary and evidence class;
+- surrounding streets / pedestrian approaches;
+- student / staff / visitor / community arrival;
+- parent drop-off / pickup where relevant;
+- bicycle / micromobility;
+- service / delivery / waste access;
+- emergency / fire-service access interface;
+- accessible site arrival;
+- outdoor learning / play / sports / quiet areas;
+- existing trees / landscape / heritage / demolition / retained fabric evidence state;
+- noise, privacy, solar, wind, snow, drainage and neighboring-use consequences.
+
+The required output is a **site access + external flow diagram** with evidence boundaries, not merely a site rendering.
+
+## 6｜ADD-02 Brief, users and operational states
+
+Translate the brief into actual user and time-state requirements.
+
+Identify, as applicable:
+
+- students / pupils by age or cohort;
+- teachers / staff / administration;
+- visitors / parents;
+- community / after-hours users;
+- sports users;
+- kitchen / catering / delivery;
+- cleaners / waste;
+- technicians / maintenance;
+- emergency responders;
+- shelter / emergency occupants.
+
+Define operational states rather than one static plan:
+
+- arrival;
+- teaching / normal operation;
+- class change / peak circulation;
+- meal period;
+- event / assembly;
+- dismissal;
+- after-hours community use;
+- weekend use;
+- cleaning / servicing;
+- emergency evacuation;
+- shelter / protected-state operation when applicable.
+
+Output: `USER_OPERATION_MATRIX`.
+
+## 7｜ADD-03 Program and room-level brief
+
+Program must advance from area rows to usable room requirements.
+
+For each material room / room type resolve, as applicable:
+
+- quantity;
+- target area and area authority;
+- expected occupancy;
+- minimum useful dimensions / proportions;
+- clear height;
+- furniture / equipment assumptions;
+- daylight / view requirement;
+- acoustic sensitivity;
+- water / drainage / exhaust / power / data needs;
+- storage;
+- hygiene / changing relation;
+- security / access state;
+- required adjacencies;
+- prohibited adjacencies;
+- servicing relation;
+- accessible use requirements;
+- fire / compartment / hazard implications;
+- evidence state and professional OPEN items.
+
+An area rectangle without room-level usability criteria is only **program fit evidence**, not architectural room planning PASS.
+
+Output: `ROOM_BRIEF_REGISTER`.
+
+## 8｜ADD-04 Adjacency and separation logic
+
+Create an explicit relationship model before treating zoning as resolved.
+
+Minimum relationship classes:
+
+- `MUST_ADJACENT`;
+- `PREFER_ADJACENT`;
+- `VISUAL_RELATION`;
+- `SHARED_SUPPORT`;
+- `CONTROLLED_CONNECTION`;
+- `SEPARATE_ACOUSTICALLY`;
+- `SEPARATE_SECURITY`;
+- `SEPARATE_HYGIENICALLY`;
+- `SERVICE_ADJACENCY`;
+- `AVOID_ADJACENCY`.
+
+The matrix must include rationale. It must not be a color-only bubble diagram.
+
+Output: `ADJACENCY_MATRIX` + relationship diagram.
+
+## 9｜ADD-05 Zoning alternatives and selection
+
+Do not jump directly from a program table to one plan.
+
+Generate and compare zoning alternatives against fixed criteria such as:
+
+- public → controlled → private gradient;
+- teaching cluster coherence;
+- noisy / quiet separation;
+- wet / dry and clean / dirty relations;
+- public / school-day / after-hours separation;
+- vertical distribution;
+- daylight / orientation;
+- structure / span logic;
+- service access;
+- fire/accessibility implications;
+- landscape/court relation;
+- phasing / retention constraints;
+- gross-to-net efficiency.
+
+Every retained scheme records `driver → move → consequence → technical cost → keep/reject reason`.
+
+Output: `ZONING_OPTION_SET` + `ZONING_SELECTION_RECEIPT`.
+
+## 10｜ADD-06 Flow systems
+
+Architecture must resolve multiple flow networks, not one generic arrow diagram.
+
+Review separately where applicable:
+
+1. student / primary user flow;
+2. staff flow;
+3. visitor flow;
+4. community / after-hours flow;
+5. accessible route;
+6. evacuation / emergency movement;
+7. food / catering delivery;
+8. waste / cleaning;
+9. laboratory / workshop material flow;
+10. sports changing / clean-dirty flow;
+11. equipment / replacement / maintenance flow;
+12. shelter / protected-state flow.
+
+For each flow record:
+
+- origin / destination;
+- time state;
+- controlled doors / checkpoints;
+- vertical transitions;
+- conflicts / crossings;
+- peak-load condition;
+- alternate / degraded route if relevant;
+- unresolved code or operational assumptions.
+
+Output: `FLOW_SYSTEM_MATRIX` + flow drawings.
+
+## 11｜ADD-07 Horizontal and vertical circulation
+
+Resolve circulation as real geometry and behavior:
+
+- corridor hierarchy;
+- clear widths and pinch points;
+- stairs / ramps / lifts;
+- landings;
+- door swings / queues;
+- atrium / void / gallery edges;
+- wayfinding legibility;
+- dead ends;
+- circulation-space occupation by furniture or informal learning;
+- floor-to-floor route continuity;
+- peak changeover / dismissal condition.
+
+Circulation area being present in GFA residuals is not evidence that circulation works.
+
+Output: `CIRCULATION_READBACK`.
+
+## 12｜ADD-08 Life-safety-aware and accessibility-aware planning
+
+Architecture must expose these interfaces early, while keeping statutory compliance claims bounded.
+
+### Life-safety-aware planning
+
+Track, as applicable:
+
+- occupancy assumptions;
+- travel paths;
+- exit / stair distribution;
+- compartment / opening graph;
+- high-occupancy spaces;
+- assembly / sports / auditorium interfaces;
+- smoke-sensitive voids / atria;
+- fire-service interface;
+- door / stair capacity inputs;
+- changed variables that reopen prior fire readbacks.
+
+### Accessibility-aware planning
+
+Track, as applicable:
+
+- continuous accessible site-to-building route;
+- entrance / vestibule / threshold;
+- door clearances;
+- turning / maneuvering;
+- ramps / level changes;
+- lift access;
+- accessible toilets / changing;
+- assembly / teaching / sports participation;
+- refuge / evacuation-assistance concepts where applicable;
+- movement-joint / floor-transition accessibility.
+
+Outputs are design evidence. Formal compliance remains at the applicable professional / authority Gate until verified.
+
+## 13｜ADD-09 Service, hygiene, supervision and security
+
+Explicitly resolve where applicable:
+
+- toilets and handwashing;
+- accessible toilets;
+- showers / changing;
+- sports clean / dirty sequence;
+- kitchen receiving / food production / serving / waste;
+- laboratory prep / hazardous or restricted material boundaries;
+- janitor / cleaner stores;
+- general storage;
+- deliveries and loading;
+- waste holding / removal;
+- administration / reception;
+- visitor control;
+- staff supervision / natural surveillance;
+- child / student safeguarding interfaces;
+- after-hours lockable boundaries;
+- public zones that can operate without opening the entire building.
+
+Output: `OPERATIONS_SECURITY_HYGIENE_MATRIX`.
+
+## 14｜ADD-10 Structure, MEP and envelope fit-back
+
+The architectural plan must be reread after system coordination begins.
+
+At minimum check relevant shared variables with:
+
+- structural grid / span / transfer logic;
+- major openings / voids / movement joints;
+- risers / plant / service distribution;
+- ceiling and service zones;
+- wet stacks / drainage logic;
+- kitchen / lab / sports ventilation;
+- electrical / data / fire-system reserves;
+- envelope depth / openings / shading / thermal continuity;
+- roof drainage / snow / maintenance;
+- equipment replacement access.
+
+Material changes to these shared variables reopen affected architecture decisions and the Cross-Disciplinary Integration receipt when triggered.
+
+Output: `ARCH_SYSTEM_FITBACK_RECEIPT`.
+
+## 15｜ADD-11 Climate, daylight, acoustics and environmental behavior
+
+Resolve architectural consequences, not only analysis graphics.
+
+Review where applicable:
+
+- room orientation / useful daylight;
+- glare risk;
+- solar gain / shading;
+- winter entry protection;
+- thermal zoning;
+- natural / mechanical ventilation implications;
+- noisy vs quiet zoning;
+- sports / music / maker / auditorium acoustic separation;
+- atrium / commons acoustic behavior;
+- external noise;
+- snow / ice / rain / drainage consequences;
+- outdoor comfort / shade / wind.
+
+Analysis that produces no design consequence must not be used as post-rationalization evidence.
+
+## 16｜ADD-12 Landscape and external-space integration
+
+Where site design is in scope, connect landscape to the architectural program:
+
+- arrival sequence;
+- outdoor learning;
+- active / quiet recreation;
+- sports spill-out;
+- community use;
+- accessible routes;
+- emergency access;
+- tree protection;
+- shade / seasonal use;
+- drainage / water management;
+- boundaries / supervision;
+- maintenance.
+
+Landscape cannot remain a decorative residual around a resolved building object.
+
+## 17｜ADD-13 FF&E, equipment and real room usability
+
+Before architectural planning is called resolved, representative critical rooms must be tested with real or bounded furniture/equipment footprints.
+
+Check, where applicable:
+
+- desks / tables / seating;
+- teaching wall / display;
+- laboratory benches;
+- workshop / maker equipment;
+- library shelving;
+- lockers / storage;
+- kitchen / serving equipment;
+- sports equipment / storage;
+- auditorium seating / stage support;
+- accessibility clearances;
+- door and maintenance clearances.
+
+An empty rectangle is not room usability evidence.
+
+Output: representative `ROOM_USE_READBACKS`.
+
+## 18｜ADD-14 Area efficiency, cost pressure and lifecycle
+
+Track at least:
+
+- net programmed area;
+- gross floor area;
+- circulation;
+- shared / commons;
+- service / plant;
+- structure / wall allowance where relevant;
+- gross-to-net ratio;
+- area drift between revisions;
+- major cost-driving design moves;
+- repeated/modular systems;
+- high-maintenance interfaces;
+- material durability / replacement logic.
+
+Area efficiency is a design input, not a reason to erase required spatial quality or technical proof.
+
+## 19｜ADD-15 Existing-building, phasing and construction-state logic
+
+For reconstruction / adaptive reuse / damaged buildings, resolve separately:
+
+- demolition;
+- verified retention;
+- retention candidate;
+- salvage / reuse candidate;
+- temporary works / access assumptions;
+- construction phasing;
+- partial operation if relevant;
+- hazardous / unknown existing conditions;
+- survey / structural verification required before promotion of reuse claims.
+
+Photographs or visual similarity cannot establish structural retention authority.
+
+## 20｜ADD-16 Jurisdictional code / standard matrix
+
+Every architecture project that makes a code-aware or professional-planning claim must maintain a current matrix:
+
+`Requirement / Source / Version-Date / Applicability / Design Response / Evidence / Status / Owner / Next Verification`
+
+At minimum route applicable requirements for:
+
+- building / educational or occupancy-specific planning;
+- fire / egress;
+- accessibility;
+- sanitary / hygiene;
+- shelter / protective spaces where required;
+- structural interfaces;
+- environmental / energy;
+- site / emergency access;
+- other jurisdiction-specific obligations.
+
+Statuses:
+
+- `NOT_APPLICABLE_WITH_REASON`;
+- `OPEN`;
+- `DESIGN_RESPONSE_PRESENT`;
+- `VERIFIED_AT_CURRENT_CLAIM_CEILING`;
+- `REVISE`;
+- `BLOCKED_BY_AUTHORITY`.
+
+Never use `DESIGN_RESPONSE_PRESENT` as a synonym for regulatory compliance.
+
+Output: `ARCHITECTURE_CODE_MATRIX`.
+
+## 21｜ADD-17 Independent plan / section review
+
+Before architectural Design KEEP, an independent reviewer must reread the current plan and sections without relying on producer intent.
+
+The review must ask whether the building works when:
+
+- program colors are removed;
+- explanatory labels are reduced;
+- render atmosphere is ignored;
+- model complexity is ignored;
+- previous KEEP / PASS labels are not trusted.
+
+Minimum review questions:
+
+- can each critical room actually function?
+- are required adjacencies and separations visible in geometry?
+- do user flows conflict?
+- do school-day / after-hours / service / emergency states remain coherent?
+- is circulation legible and continuous?
+- are supervision and access-control boundaries plausible?
+- are critical service / hygiene / sports-support relations credible?
+- do structure / MEP / envelope assumptions fit the architecture?
+- have fire/accessibility/code-dependent claims remained within evidence ceiling?
+- did any technical repair damage the architectural intent?
+
+Outcome: `PASS / REVISE / REJECT / HOLD` with exact failed relation and reopen scope.
+
+## 22｜Required Architecture Design Development Receipt
+
+When triggered, emit `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT` containing at minimum:
+
+- `trigger_reason`;
+- `project_stage`;
+- `jurisdiction_state`;
+- `program_authority_state`;
+- `occupancy_authority_state`;
+- `site_authority_state`;
+- `user_operation_matrix`;
+- `room_brief_register`;
+- `adjacency_matrix`;
+- `zoning_option_set` and selection rationale;
+- `flow_system_matrix`;
+- `circulation_readback`;
+- `life_safety_aware_planning_state`;
+- `accessibility_aware_planning_state`;
+- `operations_security_hygiene_state`;
+- `system_fitback_state`;
+- `climate_daylight_acoustic_state`;
+- `landscape_state` when applicable;
+- `room_use_readbacks`;
+- `area_efficiency_state`;
+- `existing_phasing_state` when applicable;
+- `architecture_code_matrix`;
+- `independent_plan_review`;
+- `open_items`;
+- `reopened_items`;
+- `does_not_prove`;
+- final `PASS / REVISE / REJECT / HOLD`.
+
+The machine-readable schema is `schemas/architecture-design-development-receipt.v1.schema.json`.
+
+## 23｜Reopen / change propagation rule
+
+A material change to any of the following reopens the affected downstream and upstream checks:
+
+- capacity / occupancy;
+- program quantity or area;
+- room location;
+- major opening / door / stair / lift;
+- circulation width or route;
+- public/private boundary;
+- operating-state boundary;
+- structure grid / span / movement joint;
+- MEP riser / plant / major service route;
+- fire compartment / exit strategy;
+- accessible route;
+- kitchen / sports / laboratory support logic;
+- envelope / roof / major daylight opening;
+- site arrival / service / emergency access;
+- retained/demolished existing fabric.
+
+The prior receipt becomes `STALE_AT_AFFECTED_SCOPE` until rerun.
+
+## 24｜Hard FAIL / mandatory REVISE conditions
+
+The following cannot be averaged away by visual quality, model detail or documentation volume:
+
+- program area fit used as the only proof of functional planning;
+- unresolved program-program physical overlap in promoted room planning;
+- critical room with no usable dimension / equipment test where required;
+- public / student / service / emergency flow conflict that materially invalidates operation;
+- inaccessible required route represented as resolved;
+- sports / food / lab / sanitary support treated as residual area with no operational relationship;
+- high-noise and high-sensitivity uses knowingly placed in unresolved direct conflict;
+- after-hours public access requiring uncontrolled access through protected teaching areas;
+- major technical system or movement joint contradicted by architectural geometry;
+- current code / authority requirement cited without source/version/applicability state;
+- old plan-review receipt reused after a material geometry or operational-state change;
+- render/model/QA PASS presented as architectural Design KEEP.
+
+## 25｜Promotion rule
+
+For triggered projects, architectural Design KEEP / MAIN / canonical architecture promotion requires:
+
+1. current `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT` is not stale;
+2. receipt outcome is `PASS` at the declared design claim ceiling;
+3. critical `REVISE` conditions are closed;
+4. applicable Cross-Disciplinary Integration interfaces are current;
+5. professional / statutory / engineering `OPEN` items remain explicit and are not widened by the architecture receipt;
+6. independent design review agrees that the current plan/section remains architecturally coherent.
+
+`ARCHITECTURE DEVELOPMENT PASS ≠ STATUTORY APPROVAL`
+`ARCHITECTURE DEVELOPMENT PASS ≠ FIRE PASS`
+`ARCHITECTURE DEVELOPMENT PASS ≠ ACCESSIBILITY CERTIFICATION`
+`ARCHITECTURE DEVELOPMENT PASS ≠ STRUCTURAL / MEP ENGINEERING PASS`
+
+## 26｜Canonical architecture design chain
+
+**Site → Brief → Users → Program → Room Brief → Adjacency → Zoning Alternatives → Selected Zoning → Multi-Flow Systems → Room Planning → Horizontal/Vertical Circulation → Life-Safety + Accessibility-Aware Planning → Service/Hygiene/Security → Structure/MEP/Envelope Fit-Back → Climate/Daylight/Acoustics → Landscape → FF&E/Room Use → Area/Cost/Maintenance → Existing/Phasing → Code Matrix → Independent Plan Review → Decide → Reopen when changed**
+
+This chain is now the default OLEANDER architectural design-development process. It must not be replaced by program overlay, clash checking, model completion, rendering or presentation evidence.

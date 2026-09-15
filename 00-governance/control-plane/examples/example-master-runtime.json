@@ -12,6 +12,16 @@
     "state": "CURRENT",
     "claim_ceiling": "DESIGN_CANDIDATE"
   },
+  "design_quality_development": {
+    "triggered": true,
+    "receipt_id": "DQDR-EXAMPLE-001",
+    "state": "CURRENT",
+    "verdict": "KEEP",
+    "maturity": "DQ3_DEVELOPED_SYSTEM",
+    "stale": false,
+    "claim_ceiling": "DESIGN_DEVELOPED"
+  },
+  "professional_processes": [],
   "integration": {
     "triggered": true,
     "packet_id": "CDIP-EXAMPLE-001",
@@ -23,22 +33,57 @@
     "claim_ceiling": "INTEGRATED_PROTOTYPE_VERIFIED"
   },
   "reviews": [
-    {"review_type": "ARTIFACT", "triggered": true, "result": "PASS", "receipt_ref": "receipt:artifact"},
-    {"review_type": "TECHNICAL", "triggered": true, "result": "PASS", "receipt_ref": "receipt:technical"},
-    {"review_type": "EVIDENCE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:evidence"},
-    {"review_type": "DISCIPLINE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:discipline"},
-    {"review_type": "DESIGN", "triggered": true, "result": "KEEP", "receipt_ref": "receipt:design"},
-    {"review_type": "PERSISTENCE", "triggered": true, "result": "PASS", "receipt_ref": "receipt:persistence"}
+    {
+      "review_type": "ARTIFACT",
+      "triggered": true,
+      "result": "PASS",
+      "receipt_ref": "receipt:artifact"
+    },
+    {
+      "review_type": "TECHNICAL",
+      "triggered": true,
+      "result": "PASS",
+      "receipt_ref": "receipt:technical"
+    },
+    {
+      "review_type": "EVIDENCE",
+      "triggered": true,
+      "result": "PASS",
+      "receipt_ref": "receipt:evidence"
+    },
+    {
+      "review_type": "DISCIPLINE",
+      "triggered": true,
+      "result": "PASS",
+      "receipt_ref": "receipt:discipline"
+    },
+    {
+      "review_type": "DESIGN",
+      "triggered": true,
+      "result": "KEEP",
+      "receipt_ref": "receipt:design"
+    },
+    {
+      "review_type": "PERSISTENCE",
+      "triggered": true,
+      "result": "PASS",
+      "receipt_ref": "receipt:persistence"
+    }
   ],
   "dependencies": [
-    {"object_id": "AUTH-R06", "state": "CURRENT"}
+    {
+      "object_id": "AUTH-R06",
+      "state": "CURRENT"
+    }
   ],
   "change_events": [
     {
       "change_id": "CH-EXAMPLE-001",
       "impact_class": "INTERFACE_MATERIAL",
       "propagation_state": "APPLIED",
-      "affected_refs": ["IF-R06-01"]
+      "affected_refs": [
+        "IF-R06-01"
+      ]
     }
   ],
   "open_blockers": [],

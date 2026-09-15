@@ -4,6 +4,8 @@ Status: `v0.2 REPLAY-COMPATIBLE CORE` + `v0.3 CURRENT EXECUTION CONTRACT / HARDE
 
 This directory is subordinate to `00-governance/README.md` and `OLEANDER Current Authority v1.1.0`. It compiles and orchestrates existing governance; it does not create a second authority and never makes the final human Candidate/Canonical/Release decision.
 
+The integrated runtime view is `00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`, subordinate to the Current `complex-project-master-runtime-v1.0.md`. The control plane may validate references to Design Intelligence, `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`, professional-process receipts, Integration receipts and other triggered governance objects, but it must not collapse them into one generic PASS or auto-award Design KEEP.
+
 ## v0.2 executable core / replay compatibility
 
 - Project Control Card validation;

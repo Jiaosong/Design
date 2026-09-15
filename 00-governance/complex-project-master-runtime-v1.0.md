@@ -16,6 +16,8 @@ It does **not** replace or duplicate:
 - the P0–P4 Project Axis;
 - Project / Source Authority;
 - `design-intelligence-routing-and-review-v1.0.md`;
+- `design-quality-and-design-development-specification-v1.0.md`;
+- authentic Professional Domain Processes such as `architecture-design-development-process-v1.0.md`;
 - `cross-disciplinary-design-integration-v1.0.md`;
 - `oleander-project-flow-v0.3.md`;
 - Artifact Review, specialist technical gates, Evidence / Truth Review or PAP;
@@ -64,6 +66,8 @@ CURRENT AUTHORITY / PROJECT AUTHORITY / SOURCE AUTHORITY
 ```
 
 The Master compiles this chain; it does not absorb the detailed contracts owned by each module.
+
+For material design work, the runtime order inside that chain is explicitly: `Design Intelligence -> Shared Design Quality & Design Development scope -> authentic Professional Domain Process -> Cross-Disciplinary Integration when coupled -> Capability / Skill / Tool -> Native Execution -> Actual Readback`. Shared `DD-*` responsibilities never replace a profession's real stage semantics.
 
 ## 3｜Master-owned responsibilities
 
@@ -160,6 +164,23 @@ Design Intelligence determines:
 - cross-disciplinary integration trigger;
 - current claim ceiling.
 
+## 7A | Shared Design Quality & Professional Domain Process trigger
+
+After Design Intelligence resolves the design question and claim ceiling, the Master resolves two distinct execution dependencies before promotion-relevant production:
+
+1. **Shared Design Quality & Design Development** - `design-quality-and-design-development-specification-v1.0.md` compiles the applicable `DD-01..DD-12` responsibilities, Project Design DNA / Design Language state, multi-scale or multi-state readback requirements, comparison / prototype obligations, design reopen conditions and the `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`.
+2. **Professional Domain Process** - each triggered profession runs its authentic process and owns its professional stage semantics, native outputs and receipt. Architecture currently uses `architecture-design-development-process-v1.0.md` with `ADD-00..ADD-17`; other professions must not be renamed to ADD or DD stages.
+
+These objects are runtime dependencies, not new Knowledge levels or Review scores.
+
+Promotion-relevant rules:
+
+- when shared Design Quality & Development is triggered, its state must be `CURRENT`, receipt non-stale, and verdict `KEEP` before the Master may report promotion readiness;
+- when a Professional Domain Process is triggered, its process state and receipt must be current and its own promotion-relevant verdict must close at that process's declared claim ceiling;
+- a current DQ receipt does not substitute for professional process closure;
+- a professional-process PASS does not substitute for Design KEEP;
+- material Design DNA, design-intent, professional-stage input, native artifact or cross-domain controlled-variable changes reopen only the affected dependency scope, then propagate by the existing change-impact rules.
+
 ## 8｜Cross-disciplinary integration trigger
 
 Use `cross-disciplinary-design-integration-v1.0.md` when at least one material decision has consequential dependency across discipline owners, system owners or shared variables.
@@ -186,10 +207,16 @@ Authority change
   → invalidate affected routing assumptions
   → refresh dependent packets / receipts
 
-Material design-intent change
-  → reopen affected discipline review
-  → reopen affected interfaces
-  → stale dependent integration conclusions
+Material design-intent / Project Design DNA change
+  -> stale affected Design Quality & Development receipt
+  -> reopen affected professional-process stages / discipline review
+  -> reopen affected interfaces
+  -> stale dependent integration conclusions
+
+Professional-process controlled-variable / native-artifact change
+  -> stale affected professional-process receipt
+  -> reopen affected Design Quality readback when design relation changes
+  -> propagate to consuming interfaces / technical gates / artifacts
 
 Shared-variable / interface change
   → propagate through dependency map
@@ -263,6 +290,8 @@ project_id / workstream_id / decision_object_id
 authority_snapshot_ref
 knowledge_snapshot_ref
 design_intelligence packet + state + claim ceiling
+design_quality_development trigger + receipt + state + verdict + maturity + stale + claim ceiling
+professional_processes[] with process identity + receipt + state + verdict + claim ceiling
 integration trigger + packet + receipt + state + verdict + open interface/authority counts + claim ceiling
 six review classes
 dependency states
@@ -286,6 +315,9 @@ Machine outcomes:
 Existing logical objects should converge on stable IDs and schema versions rather than spawning new namespaces:
 
 - `DESIGN_INTELLIGENCE_PACKET`
+- `PROJECT_DESIGN_DNA` when applicable
+- `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`
+- domain-specific Professional Process receipts such as `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`
 - `CROSS_DISCIPLINARY_INTEGRATION_PACKET`
 - `INTERFACE_REGISTER`
 - `INTERFACE_ACCEPTANCE_CONTRACT`
@@ -321,16 +353,18 @@ Promotion eligibility requires all applicable conditions below:
 
 1. Current Authority / Project / Source identity is resolved.
 2. Design Intelligence Packet is current.
-3. If integration is triggered, its packet and current receipt exist.
-4. No in-claim `MAJOR / CRITICAL` interface remains open or blocked below required maturity.
-5. No unresolved shared-variable / interface authority conflict remains.
-6. No dependency consumed by the promoted claim is stale or requires reopen.
-7. Every material change has propagated to affected downstream states.
-8. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
-9. Independent Design Review is `KEEP` for the intended claim.
-10. No open blocker contradicts the promotion claim.
-11. The intended promotion does not exceed the lowest applicable claim ceiling.
-12. The machine evaluator returns `READY_FOR_HUMAN_DECISION` and the actual authorized human/authority transition still occurs separately.
+3. If Shared Design Quality & Development is triggered, its current non-stale `DESIGN_QUALITY_DEVELOPMENT_RECEIPT` exists and verdict is `KEEP`.
+4. Every triggered Professional Domain Process has a current promotion-relevant receipt and closed process verdict at its declared claim ceiling.
+5. If integration is triggered, its packet and current receipt exist.
+6. No in-claim `MAJOR / CRITICAL` interface remains open or blocked below required maturity.
+7. No unresolved shared-variable / interface authority conflict remains.
+8. No dependency consumed by the promoted claim is stale or requires reopen.
+9. Every material change has propagated to affected downstream states.
+10. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
+11. Independent Design Review is `KEEP` for the intended claim.
+12. No open blocker contradicts the promotion claim.
+13. The intended promotion does not exceed the lowest applicable claim ceiling across Design Intelligence, Design Quality, professional processes, integration and other applicable owners.
+14. The machine evaluator returns `READY_FOR_HUMAN_DECISION` and the actual authorized human/authority transition still occurs separately.
 
 ## 15｜G9 re-entry
 
@@ -352,6 +386,9 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 | Master cross-module orchestration | **this file** |
 | Canonical project execution flow | `oleander-project-flow-v0.3.md` |
 | Design intelligence / review routing | `design-intelligence-routing-and-review-v1.0.md` |
+| Shared design quality / design development | `design-quality-and-design-development-specification-v1.0.md` |
+| Professional domain process | domain-specific process owner; Architecture = `architecture-design-development-process-v1.0.md` |
+| Integrated runtime operator view | `runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md` |
 | Cross-disciplinary integration | `cross-disciplinary-design-integration-v1.0.md` |
 | Control Card / machine orchestration | `00-governance/control-plane/` |
 | Artifact review | `artifact-review-system-v1.0.md` + current extensions |
@@ -364,6 +401,9 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 
 `KNOWLEDGE RETRIEVAL ≠ PROJECT AUTHORITY`  
 `ARTIFACT EXISTS ≠ DESIGN QUALITY`  
+`DESIGN QUALITY RECEIPT != PROFESSIONAL PROCESS PASS`
+`PROFESSIONAL PROCESS PASS != DESIGN KEEP`
+`DD RESPONSIBILITY != PROFESSIONAL STAGE`
 `DISCIPLINE PASS ≠ INTEGRATION PASS`  
 `MODEL FEDERATION ≠ DESIGN COHERENCE`  
 `CLASH-FREE ≠ EXPERIENCE-COHERENT`  
@@ -377,5 +417,5 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 
 ## 18｜Current execution formula
 
-**Resolve Authority → Route Current Knowledge → Compile Design Intelligence → Resolve Integration Trigger → Execute / Prototype → Close Triggered Reviews → Read Back Integration → Independent Whole-System Design Decision → Persist when required → Human Promotion Decision → Deliver / Observe → G9 bounded re-entry.**
+**Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Resolve Capability / Skill / Tool -> Execute / Prototype Native Artifacts -> Actual Readback -> Close Triggered Reviews / Receipts -> Read Back Integration when triggered -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> Deliver / Observe -> G9 bounded re-entry.**
 

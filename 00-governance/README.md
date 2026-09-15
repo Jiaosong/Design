@@ -119,9 +119,9 @@ Canonical system: [`artifact-review-system-v1.0.md`](artifact-review-system-v1.0
 
 ### Built-asset High-Fidelity Gate
 
-当空间 / 建筑 / built-environment 模型声明完整高写实、近距离构造完整、construction-aware、near-as-built 或 digital-twin-ready 时，AR-S02 之外还必须触发 `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`。该 Gate 使用 `BA0–BA4` 描述 built-asset representation maturity，并独立检查任务范围内 architecture / structure / MEP system coverage、连接/支撑、排水、检修、细节 carrier、缺陷真值和多距离 readback。
+For spatial / architecture / built-environment models that claim high-fidelity constructive completeness, construction-aware, near-as-built or digital-twin-ready representation, the canonical acceptance owner is `high-fidelity-built-environment-model-gate-v1.0.md`. The 3D execution / receipt binding is `oleander-skills/oleander-3d-pipeline/BUILT_ASSET_HIGH_FIDELITY_ACCEPTANCE_EXTENSION.md`.
 
-`BA0–BA4` 不等于本 Project Flow 的执行/render `FID0–FID3`，也不等于外部 BIM LOD。Beauty render、PBR、对象/面数、可打开、CI PASS 或 BIM/LOD 标签均不能单独升级 built-asset acceptance；FIELD / engineering / code / fabrication / commissioning authority 仍保持独立。
+`BA0-BA4` describes built-asset representation maturity and is independent from Project Flow execution/render `FID0-FID3`, external BIM LOD, FIELD state and engineering/code/fabrication authority. Render quality, object count, reopen PASS, CI PASS or a BIM/LOD label cannot independently grant built-asset acceptance.
 
 ## Complex Project Master Runtime v1.0
 
@@ -133,7 +133,7 @@ Canonical system: [`complex-project-master-runtime-v1.0.md`](complex-project-mas
 
 复杂项目主链统一为：
 
-`Resolve Authority → Route Current Knowledge → Compile Design Intelligence → Resolve Integration Trigger → Execute / Prototype → Close Triggered Reviews → Integration Readback → Independent Whole-System Design Decision → Persist when required → Human Promotion Decision → G9 bounded re-entry`。
+`Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Execute / Prototype -> Actual Readback -> Close Triggered Reviews -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> G9 bounded re-entry`.
 
 ## Knowledge Content Review Layer v1.0
 
@@ -151,9 +151,22 @@ OLEANDER 的设计知识层不建立第二套知识树。当前 `L0–L7`、Doma
 
 项目级闭环统一为：
 
-`Knowledge Route → Design Question / Intent → Explore / Compare → Candidate → Execute / Prototype → QA + Artifact Review + Triggered Design Review + Technical/Evidence Gates → Independent Design Decision → Promotion → Observe → G9 Knowledge Candidate`。
+`Knowledge Route -> Design Question / Intent -> Explore / Compare -> Candidate -> Shared Design Quality & Development Scope -> Triggered Professional Domain Process -> Cross-Disciplinary Integration when coupled -> Execute / Prototype -> Actual Readback -> Artifact + Professional + Design + Technical/Evidence Review -> Independent Design Decision -> Promotion -> Observe -> G9 Knowledge Candidate`.
 
 G9 经验只有在适用范围、证据状态、反例/失败条件与成熟度明确后，才允许进入或修订 L4/L5 知识对象；项目经验本身不自动成为通用设计规则。
+
+## Integrated Runtime Structure v1.0
+
+Canonical runtime view: [`runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md`](runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md)
+
+This document is the operator/integration view subordinate to `Complex Project Master Runtime v1.0`. It expands existing Authority, Knowledge, Design Intelligence, Shared Design Quality & Design Development, Professional Domain Process, Cross-Disciplinary Integration, Skill / Capability / Tool Runtime, Native Execution, Actual Readback, Review, Persistence / Promotion / Sync and G9 into one runtime view. It creates no second Master, taxonomy, Gate or Project Axis. Current relation: `Authority -> Master Runtime -> Knowledge Resolution -> Design Intelligence -> Shared DD Contract -> Professional Domain Process -> Integration when coupled -> Capability / Skill / Tool -> Native Artifact -> Actual Readback -> Independent Reviews -> Persistence / Promotion / Sync -> G9`.
+## Design Quality & Design Development Specification v1.0
+
+Canonical execution specification: [`design-quality-and-design-development-specification-v1.0.md`](design-quality-and-design-development-specification-v1.0.md)
+
+该规范位于 Design Intelligence 下游、各专业设计过程 / Skill / Tool / Artifact 上游，补足 OLEANDER 对“真正把设计发展到专业完成度”的共享执行合同。它把 **Truth / Performance / Design** 三条结果轴保持独立，并把设计开发拆为 `DD-01 Intent → DD-02 Concept → DD-03 Experience → DD-04 Form / Composition → DD-05 Human Relation → DD-06 Sensory → DD-07 Design Language / Style → DD-08 Detail / Craft → DD-09 Prototype / Experiment → DD-10 Adaptation / Variation → DD-11 Meaning / Memory → DD-12 Integration / Coherence`。这些是跨专业的设计责任维度，不是新的知识 taxonomy，也不替代 Architecture ADD、未来各专业真实阶段或 Cross-Disciplinary Integration。`DD-*` 仅属于该共享设计开发合同，不得替代专业 stage ID。
+
+规范同时正式定义 `PROJECT_DESIGN_DNA`、Design Direction / Aesthetic Position、Formal Grammar、Visual Ownership、Signature / System / Exception / Experiment、Variation Envelope、Style Intensity、Content Projection / No-loss、Design Resolution Scale、Design Maturity `DQ0–DQ5`、Genericity Attack、Root Cause / Convergence、Design reopen propagation 与 `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`。机器只能检查结构、引用、stale/receipt 合法性；`DQ3–DQ5`、审美质量、coherence、distinctiveness、craft 与 `DESIGN KEEP` 必须由真实成品 readback + 独立专业设计判断决定。
 
 ## Cross-Disciplinary Design Integration v1.0
 
@@ -165,6 +178,14 @@ Canonical system: [`cross-disciplinary-design-integration-v1.0.md`](cross-discip
 
 `Knowledge Route → Design Intelligence Packet → Discipline Lenses → Cross-Disciplinary Integration Packet → Prototype / Execute → Discipline + Technical Review → Integration Readback / Integration Receipt → Independent Whole-System Design Decision → Promotion / G9`。
 
+## Architecture Design Development Process v1.0
+
+Canonical architecture process: [`architecture-design-development-process-v1.0.md`](architecture-design-development-process-v1.0.md)
+
+建筑/学校/公共建筑/改造类项目一旦声明功能分区、空间组织、动线、房间可用性或建筑设计质量已经解决，就必须触发这一层。默认链为：`Site → Brief → Users → Program → Room Brief → Adjacency → Zoning Alternatives → Multi-Flow Systems → Room Planning → Circulation → Life-Safety + Accessibility-Aware Planning → Service/Hygiene/Security → Structure/MEP/Envelope Fit-Back → Climate/Daylight/Acoustics → Landscape → FF&E/Room Use → Area/Cost/Maintenance → Existing/Phasing → Code Matrix → Independent Plan Review`。
+
+该过程明确禁止以下替代关系：`Program Fit ≠ Functional Planning PASS`、`No Overlap ≠ Room Usability`、`Model PASS ≠ Circulation PASS`、`Egress Reserve ≠ Fire Compliance`、`Step-Free Reserve ≠ Accessibility Compliance`。触发后必须形成机器可读 `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`；关键功能、流线、容量或技术接口变更会使相关 receipt scope 变为 stale 并重开。
+
 ## Mandatory Post-Generation Review Gate
 
 Operational gate: [`post-generation-review-gate.md`](post-generation-review-gate.md)
@@ -172,6 +193,14 @@ Operational gate: [`post-generation-review-gate.md`](post-generation-review-gate
 所有设计与技术输出必须在生成/导出/自动 QA 后，再执行一次独立成品审查。未执行时状态为 `REVIEW PENDING`；发现问题为 `POST-REVIEW FAIL / NEEDS REVISION`；只有修正并重审达到 `POST-REVIEW PASS`，才允许升级。
 
 自动 QA、脚本 PASS、bbox=0、文件存在或可复现运行，都不能替代最终成品审查。Code PASS 也不能替代 Generated Artifact PASS。
+
+## High-Fidelity Built-Environment Model Acceptance Gate v1.0
+
+Canonical specialized gate: [`high-fidelity-built-environment-model-gate-v1.0.md`](high-fidelity-built-environment-model-gate-v1.0.md)
+
+当空间/建筑模型声明完整高写实、close constructive completeness、`BA3_HIGH_FIDELITY_CONSTRUCTIVE`、`BA4_NEAR_AS_BUILT_CANDIDATE` 或等价完整建筑系统能力时，除 AR-S02 外必须触发 Built-asset High-Fidelity Gate。它独立检查结构、围护、室内构造、紧固件/接口、给水、排水、电气、HVAC、消防、材料层、缺陷/老化、检修维护以及 clash/penetration/clearance，并要求 `BUILT_ASSET_FIDELITY_ACCEPTANCE_RECEIPT`。
+
+`BA0–BA4` 是 OLEANDER 的 built-environment representation maturity，不是外部 BIM LOD、不是 `FID0–FID3` 渲染/执行精度，也不自动证明 FIELD / engineering / code / fabrication。Beauty render、PBR、对象/面数、可打开、CI PASS 均不能单独升级 BA maturity。
 
 ## Production Asset Persistence Gate v1.0
 
