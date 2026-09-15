@@ -925,6 +925,70 @@
     "independent_review_is_not_statutory_approval": true,
     "resolvable_fields_do_not_require_duplicate_central_persistence": true
   },
+  "current_supersession_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_DUPLICATE_CURRENT_REGISTRY_VERSION_DATABASE_STATE_FAMILY_OR_PROMOTION_AUTHORITY",
+    "projection_only_not_replacement_owner_supersession_contract": true,
+    "owner_native_lifecycle_authority_and_current_pointers_remain_authoritative": true,
+    "duplicate_architecture_level_current_registry_or_version_database_forbidden": true,
+    "source_refs": [
+      "00-governance/complex-project-master-runtime-v1.0.md",
+      "00-governance/naming-status.md",
+      "00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md",
+      "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+      "00-governance/cross-platform-sync-contract-v1.1.md"
+    ],
+    "current_identity_required_resolvable_fields": [
+      "logical_object_id",
+      "project_or_scope_id",
+      "object_class_or_owner_domain",
+      "owner_or_authority_ref",
+      "current_ref_or_revision",
+      "current_authority_state",
+      "authority_fingerprint"
+    ],
+    "successor_transition_required_resolvable_fields_when_applicable": [
+      "predecessor_ref",
+      "successor_ref",
+      "adoption_authorization_or_owner_native_transition_ref",
+      "supersession_relation",
+      "affected_dependency_or_pointer_refs",
+      "transition_readback_ref",
+      "provenance_ref"
+    ],
+    "successor_adoption_sequence": [
+      "RESOLVE_LOGICAL_OBJECT_AND_OWNER",
+      "RESOLVE_EXISTING_CURRENT_AND_PREDECESSOR",
+      "VERIFY_OWNER_NATIVE_ADOPTION_AUTHORIZATION",
+      "COMPUTE_AFFECTED_RELATIONS",
+      "APPLY_CANONICAL_SUCCESSOR_CURRENT_TRANSITION",
+      "DEMOTE_OR_CLOSE_PREDECESSOR_AUTHORITY_IN_SAME_CLOSURE_TRANSACTION",
+      "PRESERVE_PREDECESSOR_PROVENANCE_AND_HISTORICAL_RECEIPTS",
+      "REFRESH_AFFECTED_POINTERS_INDEXES_AND_DEPENDENCIES",
+      "READ_BACK_CANONICAL_AUTHORITY_AND_AFFECTED_SURFACES",
+      "HOLD_DEPENDENT_CROSS_PLATFORM_CURRENT_CLAIM_WHERE_MIRROR_STILL_STALE"
+    ],
+    "one_logical_object_one_current_authority": true,
+    "successor_adoption_requires_predecessor_closure_same_control_transaction": true,
+    "owner_native_adoption_or_authority_transition_required_before_current_claim": true,
+    "recency_filename_branch_pr_merge_or_upload_does_not_select_current": true,
+    "candidate_or_new_revision_may_not_self_promote": true,
+    "supersession_relation_is_not_structural_related_dependency_or_derivation_relation": true,
+    "historical_receipts_immutable_under_original_revision_contract": true,
+    "predecessor_provenance_preserved": true,
+    "superseded_does_not_mean_false_or_delete_authority": true,
+    "deletion_or_ref_cleanup_requires_separate_owner_native_authority": true,
+    "unresolved_competing_current_claims_fail_closed": true,
+    "unresolved_runtime_outcomes": [
+      "BLOCKED",
+      "RECONCILIATION_REQUIRED"
+    ],
+    "canonical_transition_may_precede_ordinary_mirror_sync_when_owner_contract_allows": true,
+    "stale_mirror_is_not_coequal_current_authority": true,
+    "mirror_failure_does_not_resurrect_predecessor_canonical_authority": true,
+    "uncertain_canonical_transition_fails_closed": true,
+    "current_or_superseded_lifecycle_disposition_does_not_substitute_for_project_promotion_design_keep_or_statutory_approval": true,
+    "resolvable_fields_do_not_require_duplicate_central_persistence": true
+  },
   "recovery": {
     "sequence": [
       "DETECT",
@@ -1514,7 +1578,14 @@
     "REVIEW_CLASS_PASS_DOES_NOT_SUBSTITUTE_FOR_OTHER_TRIGGERED_REVIEW",
     "MATERIAL_REVIEW_CHANGE_STALES_ONLY_AFFECTED_REVIEW_SCOPE",
     "MACHINE_CANNOT_AWARD_HUMAN_REVIEW_VERDICT",
-    "INDEPENDENT_REVIEW_BOUNDARY_DOES_NOT_CREATE_REVIEWER_REGISTRY_OR_STATE_FAMILY"
+    "INDEPENDENT_REVIEW_BOUNDARY_DOES_NOT_CREATE_REVIEWER_REGISTRY_OR_STATE_FAMILY",
+    "ONE_LOGICAL_OBJECT_ONE_CURRENT_AUTHORITY",
+    "SUCCESSOR_ADOPTION_CLOSES_PREDECESSOR_AUTHORITY_IN_SAME_CONTROL_TRANSACTION",
+    "RECENCY_BRANCH_PR_MERGE_DO_NOT_SELECT_CURRENT",
+    "SUPERSESSION_PRESERVES_PROVENANCE_AND_HISTORICAL_RECEIPTS",
+    "SUPERSEDED_IS_NOT_DELETE_AUTHORITY_OR_FALSEHOOD",
+    "STALE_MIRROR_IS_NOT_COEQUAL_CURRENT_AUTHORITY",
+    "CURRENT_SUPERSESSION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_VERSION_DB_STATE_FAMILY_OR_PROMOTION_AUTHORITY"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

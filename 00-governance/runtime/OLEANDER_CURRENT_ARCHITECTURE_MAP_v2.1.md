@@ -1202,6 +1202,13 @@ The system is considered **architecture-control runnable** only when all of the 
 61. unrelated file/timestamp/branch activity does not stale a review merely by chronology, and review refresh must not become a whole-system reset when affected scope is known;
 62. machines may validate encoded review bindings, identity separation and staleness triggers but may not award the owner-native human/professional review verdict, Design KEEP, Professional PASS, Integration judgment, Human Promotion or statutory approval;
 63. the Independent Review boundary is a control projection over existing review owners/receipts and may not create a central reviewer registry, second review authority, universal review state family or replacement verdict schema.
+64. every logical object resolves at most one owner-native Current authority at a time; a newer filename/date/branch/PR/merge does not select Current by recency;
+65. when an authorized successor becomes Current, canonical successor adoption and predecessor authority closure are one bounded control transaction: the predecessor is demoted/closed from live Current authority while provenance is preserved;
+66. downstream mirror/index synchronization may remain partial after a canonical owner-native Current transition where existing contracts allow, but stale mirrors never become co-equal authority and dependent cross-platform-Current claims remain bounded until readback;
+67. Supersession is a distinct semantic relation and must not be encoded as structural parent/child, Related, dependency or derivation merely for convenience;
+68. historical receipts and prior-version evidence remain immutable under their original version/contract; `SUPERSEDED` does not mean false, invalid for provenance, or deletion-authorized;
+69. unresolved competing Current claims fail closed through existing authority/reconciliation semantics; machines may not auto-select the newest candidate or silently leave two Current authorities for cleanup later;
+70. the Version / Supersession boundary is a projection over existing Current/lifecycle owners and may not create a duplicate Current registry, global version database/counter, new lifecycle state family or Promotion authority.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1981,3 +1988,117 @@ Machines may not infer the human/professional verdict from those checks. In part
 `INDEPENDENT REVIEW PASS ≠ PROMOTED`.
 
 `INDEPENDENT REVIEW ≠ STATUTORY APPROVAL`.
+
+---
+
+## 35｜Current / Version / Supersession Boundary
+
+Master Runtime responsibility #8 asks a cross-module question: **which existing owner-native object is Current, and which prior object becomes provenance when a successor is adopted?** The substantive lifecycle, authority and storage semantics already belong to Current Authority, `naming-status.md`, Anti-Pollution, domain/object owners and cross-platform synchronization contracts.
+
+v2.1 therefore compiles a bounded **Current / Supersession projection**. It does not create a second Current registry, global version database, global version counter, replacement lifecycle family or new Promotion authority.
+
+### 35.1 One logical object has one owner-native Current authority
+
+The governing invariant is broader than file naming:
+
+`ONE LOGICAL OBJECT → MAX ONE OWNER-NATIVE CURRENT AUTHORITY`.
+
+The runtime must resolve the actual logical object, owner/domain, authority state and Current ref/revision from the existing owner. Current is never inferred from:
+
+- newest date;
+- filename suffix;
+- branch name;
+- PR number;
+- merge order;
+- upload time;
+- mirror freshness alone.
+
+`RECENCY ≠ CURRENT`.
+
+`BRANCH / PR / MERGE ≠ CURRENT AUTHORITY`.
+
+If two carriers both claim Current authority for the same logical object and the owner relation cannot resolve the conflict, the result is existing `BLOCKED / RECONCILIATION_REQUIRED`, not “pick the newest”.
+
+### 35.2 Successor adoption closes predecessor authority in the same bounded transaction
+
+When the relevant owner has actually authorized/adopted a successor, the canonical transition is:
+
+`resolve object + owner → resolve existing Current/predecessor → verify owner-native adoption authorization → compute affected relations → apply successor Current transition → demote/close predecessor Current authority → preserve predecessor provenance → refresh affected pointers/dependencies → actual readback`.
+
+The architecture must be able to resolve, when applicable:
+
+`predecessor_ref / successor_ref / adoption_authorization_or_owner_native_transition_ref / supersession_relation / affected_dependency_or_pointer_refs / transition_readback_ref / provenance_ref`.
+
+The successor relation does not self-authorize the transition. A Candidate, newer revision, merged PR, uploaded file or synchronized copy cannot promote itself merely because it can name a predecessor.
+
+`SUCCESSOR CANDIDATE ≠ AUTHORIZED CURRENT SUCCESSOR`.
+
+`MERGED ≠ ADOPTED CURRENT`.
+
+The logical closure rule remains:
+
+`SUCCESSOR ADOPTION → PREDECESSOR CURRENT AUTHORITY CLOSED/DEMOTED IN THE SAME CONTROL TRANSACTION`.
+
+“Create new Current now; clean old Current later” remains forbidden.
+
+### 35.3 Canonical authority transition and mirror synchronization remain distinct
+
+The canonical owner-native transition may complete before every ordinary mirror/index/registry copy is synchronized when the existing Promotion/Sync contract permits that ordering. That does **not** create multiple Current authorities.
+
+After canonical adoption:
+
+- stale GitHub/Notion/Drive/deployment/index mirrors are stale mirrors, not co-equal Current authority;
+- dependent cross-platform-Current claims remain `UNSYNCED / PARTIAL / DIVERGED` or otherwise bounded until required readback closes;
+- mirror failure does not resurrect the predecessor as canonical Current;
+- if the canonical transition itself is uncertain, the authority claim still fails closed.
+
+This preserves the §32 rule that ordinary post-Promotion mirror sync is not a universal pre-Promotion gate while still enforcing one Current authority.
+
+### 35.4 Supersession is a semantic relation, not a storage trick
+
+`SUPERSEDES / SUPERSEDED_BY` remains distinct from:
+
+- structural parent/child;
+- `RELATED` links;
+- dependency/handoff;
+- `DERIVED_FROM` / representation lineage;
+- copy/location relations.
+
+Renaming, moving or copying an object does not create a new logical object or a supersession event by itself. Conversely, a true owner-native successor may retain the same stable logical object identity while advancing revision/current authority.
+
+The architecture projection therefore preserves stable identity and owner semantics rather than encoding version truth in path depth, filenames or timestamps.
+
+### 35.5 Superseded evidence remains historical truth, not deletion authority
+
+A predecessor marked `SUPERSEDED / HISTORY / PROVENANCE` stops writing live Current state, but its valid historical evidence remains immutable and retrievable under the original revision/contract.
+
+`SUPERSEDED ≠ FALSE`.
+
+`SUPERSEDED ≠ DELETE AUTHORITY`.
+
+`NEW SCHEMA / NEW FIELD ≠ OLD RECEIPT UPGRADED OR REWRITTEN`.
+
+Deletion/ref cleanup is a separate bounded lifecycle action and still requires owner-native dependency/provenance/recoverability checks. Supersession cannot be used to erase unique evidence or manufacture a cleaner history.
+
+### 35.6 Machine boundary
+
+Machines may validate:
+
+- one-Current uniqueness under encoded owner-native identity;
+- predecessor/successor relation consistency;
+- required adoption/readback references;
+- absence of parallel Current claims after canonical closure;
+- stale mirror/index/pointer conditions;
+- preservation of predecessor provenance and immutable historical receipts.
+
+Machines may not:
+
+- select a successor by recency;
+- self-promote a Candidate/new revision;
+- rewrite old receipts to look Current;
+- infer Project Promotion, Design KEEP or statutory approval from a version/current transition;
+- delete a predecessor merely because it is superseded.
+
+`CURRENT RESOLVED ≠ PROJECT PROMOTED`.
+
+`SUPERSESSION CLOSED ≠ DESIGN KEEP`.
