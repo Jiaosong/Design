@@ -27,6 +27,18 @@ GitHub skill folders are execution handles. They are not Notion taxonomy nodes a
 
 This root must be read before historical `00–70` navigation pages or recovery manifests.
 
+### Current system architecture Current carrier
+
+- Page: `OLEANDER Current System Architecture Control Map v2.1｜当前系统架构控制图`
+- Page ID: `3dcb86be-5c47-8157-bb15-e2ba605e2067`
+- Canonical ID: `MTH-OLEANDER-ARCHITECTURE-CONTROL-001`
+- State: `CURRENT / DEFAULT / VERIFIED / ACTIVE / VALID / L5 / METHOD`
+- Role: Notion Current reader/control mirror for the one OLEANDER system architecture.
+- Executable canonical view: `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` + `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json` + validator on GitHub main.
+- Architecture implementation baseline: `f78fad3f16fe0b458360708b27c05efaa6172609` (PR #620 merge).
+
+This carrier is deliberately a **single readable Current mirror**, not a second Master Runtime or copied executable specification. It stores stable architecture semantics and exact implementation pointers; machine execution and validation read the GitHub canonical carriers. Any mismatch is cross-platform drift and must be repaired/read back before a new architecture Current claim.
+
 ### Current registry control surface
 
 - Page: `SYS-REGISTRY｜Current System Registries｜ACTIVE v1.0`
