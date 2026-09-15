@@ -1054,9 +1054,164 @@ The system is considered **architecture-control runnable** only when all of the 
 16. File/Artifact Management preserves one logical artifact ? one Current revision ? N representations;
 17. Reader/AI file handling separates canonical source, derivative read model and materialized bytes;
 18. controlled evolution uses isolated candidates, frozen baselines, eval/regression gates, independent review, human promotion and rollback;
-19. an evolution candidate cannot mutate the Current runtime used to evaluate itself.
+19. an evolution candidate cannot mutate the Current runtime used to evaluate itself;
+20. every R-A ... R-K layer resolves explicit inputs, outputs, entry conditions, exit conditions, write authority, readback, failure codes and claim boundary;
+21. every dependency handoff has an explicit producer/consumer boundary and a consumer must accept after readback;
+22. producer `READY` never self-awards consumer `ACCEPTED`;
+23. a stale handoff invalidates only affected consumers and cannot support Promotion until refreshed;
+24. no universal layer-progress state may collapse owner-specific state families.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
 
 The machine-readable JSON is a representation of this same logical architecture-control object, not a second Current architecture.
+
+---
+
+## 26｜Runtime Layer Interface Contract
+
+The architecture control map now binds every stable Runtime Layer to an explicit internal interface contract:
+
+`00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json`
+
+This contract adds **internal execution detail** without adding a twelfth Runtime Layer, second Master Runtime, second Project State, second Knowledge Architecture, universal professional stage system or new review class.
+
+### 26.1 Common layer interface
+
+Every `R-A ... R-K` definition now resolves:
+
+```text
+external_inputs[]
+inputs[]
+outputs[]
+entry_conditions[]
+exit_conditions[]
+write_authority[]
+required_readback[]
+failure_codes[]
+plane_bindings[]
+handoff_targets[]
+persistence_policy
+claim_boundary
+```
+
+A runtime instance additionally carries stable identity at the smallest material scope:
+
+```text
+layer_instance_id
+runtime_layer_id
+project_or_scope_id
+current_task_id
+decision_object_id
+authority_fingerprint
+source_revision
+owner
+created_at / updated_at
+```
+
+This is an interface envelope only. It does **not** invent a single universal progress state across Knowledge, DQ, professional stages, Integration, Job State or Promotion.
+
+### 26.2 Layer I/O and failure matrix
+
+| Layer | Core input | Core output | Exit boundary | Representative failure codes |
+|---|---|---|---|---|
+| `R-A` | root/project/source authority + active task constraints | authority snapshot + fingerprint + identity/supersession resolution | one Current identity or explicit authority HOLD | `AUTHORITY_UNRESOLVED / AUTHORITY_CONFLICT / IDENTITY_COLLISION / AUTHORITY_STALE` |
+| `R-B` | authority + task/claim knowledge candidates | knowledge snapshot/mount + Content/KI/OE states | canonical refs, scope, freshness and claim boundary explicit | `KNOWLEDGE_REF_UNRESOLVED / KNOWLEDGE_INTEGRITY_HOLD / OPERATIONAL_ELIGIBILITY_HOLD / FRESHNESS_EXPIRED` |
+| `R-C` | authority + mounted knowledge + current design task | Design Intelligence Packet + question/intent/variables/triggers/claim-ceiling input | design question, route, triggers and exit condition explicit | `DESIGN_QUESTION_UNRESOLVED / INTENT_CONFLICT / CLAIM_CEILING_UNRESOLVED / REVIEW_TRIGGER_UNRESOLVED` |
+| `R-D` | DI packet + knowledge mount + Project Design DNA state | DD scope + DNA + design-readback/reopen requirements + DQ receipt | pre-execution DD scope explicit; promotion closure requires current receipt | `PROJECT_DESIGN_DNA_UNRESOLVED / DD_SCOPE_UNRESOLVED / DQ_RECEIPT_STALE / DESIGN_REOPEN_REQUIRED` |
+| `R-E` | authority + KI/OE mount + DI + DD + authentic process definition | domain/stage instance + native-output requirement + controlled variables + domain receipt | authentic stage exit at bounded professional claim ceiling | `DOMAIN_PROCESS_DEFINITION_OPEN / PROFESSIONAL_STAGE_INPUT_MISSING / KNOWLEDGE_MOUNT_MISSING / PROFESSIONAL_REVIEW_OPEN` |
+| `R-F` | coupled professional variables/interfaces + DI/DD context | integration packet/register + shared-variable authority + acceptance + receipt | in-claim interface maturity/disposition and authority resolved | `INTERFACE_AUTHORITY_CONFLICT / SHARED_VARIABLE_DIVERGED / CRITICAL_INTERFACE_OPEN / CHANGE_PROPAGATION_INCOMPLETE` |
+| `R-G` | required native output + constraints + runtime availability | capability route + minimum owner set + adapter/fallback route | callable compliant route or explicit HOLD | `CAPABILITY_GAP / OWNER_SET_UNRESOLVED / TOOL_OR_ADAPTER_UNAVAILABLE / CONSTRAINT_DENY` |
+| `R-H` | authorized source + output spec + execution route + interface/design constraints | native artifact + delta + receipt + provenance/hash + readback target | actual native result or explicit execution failure; identity preserved | `SOURCE_AUTHORITY_MISSING / MUTATION_UNAUTHORIZED / ARTIFACT_WRITE_FAILED / EXECUTION_DEPENDENCY_STALE` |
+| `R-I` | actual result + triggered review set + reviewer identity | actual readback + review receipts/verdicts + defects + repair route | every triggered review resolved or explicit HOLD; failure routed to owner | `ACTUAL_READBACK_INCOMPLETE / TRIGGERED_REVIEW_MISSING / BLOCKING_DEFECT_PRESENT / REVIEW_CLASS_OPEN` |
+| `R-J` | current reviews + persistence/promotion/sync trigger + authorized human decision | persistence receipt + eligibility + promotion record + sync/drift readback | persistence/sync read back; machine stops at eligibility unless human authority acts | `PERSISTENCE_REQUIRED_BUT_MISSING / PROMOTION_PREREQUISITE_OPEN / TARGET_SYNC_READBACK_FAILED / PROMOTION_CLAIM_BOUNDARY_EXCEEDED` |
+| `R-K` | observed outcomes + review/failure/repair history + transfer criteria | lesson candidate + causal hypothesis + transfer boundary + evolution candidate ref | candidate routed to knowledge/evolution owner with no auto-promotion | `CAUSAL_STORY_UNSUPPORTED / TRANSFER_BOUNDARY_MISSING / COUNTEREVIDENCE_UNRESOLVED / AUTO_PROMOTION_ATTEMPT_BLOCKED` |
+
+The JSON contract is the machine-level exact field source; this table is the human-readable summary.
+
+### 26.3 Typed handoff envelope
+
+A material dependency transition uses a typed handoff object rather than conversational language such as “done” or “passed on”:
+
+```text
+handoff_id
+from_layer / to_layer
+project_or_scope_id
+decision_object_id
+authority_fingerprint
+source_revision
+object_refs[]
+claim_boundary
+open_blockers[]
+stale_if[]
+readback_refs[]
+handoff_state
+observed_at
+does_not_prove[]
+```
+
+Handoff state is a narrow transport state only:
+
+`UNRESOLVED → READY → ACCEPTED`, with `HOLD / STALE / SUPERSEDED` exits.
+
+Hard rules:
+
+- the producer may emit `READY` but **may not self-award `ACCEPTED`**;
+- the receiving layer accepts only after checking required objects, authority fingerprint and required readback;
+- `ACCEPTED` proves transport/interface acceptance only and does not prove the downstream layer PASS;
+- material authority/source revision change marks only affected handoffs `STALE`;
+- `HOLD` preserves the last verified valid upstream state;
+- `R-K → R-B` remains a bounded **feedback edge**, not a dependency handoff and never automatic knowledge promotion.
+
+### 26.4 Cross-plane binding
+
+A Runtime Layer may participate in several of the six Operational Planes without transferring semantic ownership. The machine contract also fixes seven high-risk plane intersections:
+
+- `Control → State`: may read state and write decision/reopen references; recorded state does not become authority.
+- `Observability → Control`: may report node/blocker/staleness; telemetry may not mutate authority and timestamp recency is not Current.
+- `Acquisition/Reader → State`: may hydrate canonical refs/readback/source revision; vector/derivative surfaces do not become canonical truth.
+- `Acquisition/Reader → Execution`: may materialize required bytes/read-only sources; read access never grants mutation permission.
+- `Execution → Observability`: may emit artifact/receipt/failure/readback-target refs; execution success is not validation.
+- `Evolution → Control`: may propose candidates/eval/rollback; candidate cannot rewrite its live baseline and eval PASS is not human Promotion.
+- `Evolution → State`: may store candidate/baseline/migration state; candidate state remains separate from Current state.
+
+Examples:
+
+- `R-B` binds `Control + State + Acquisition/Reader + Observability + Evolution` because it must retrieve real canonical knowledge, expose knowledge-state health and receive bounded G9/evolution candidates;
+- `R-G` binds `Control + State + Execution + Observability` because it resolves executable capability/tool routing but does not own professional meaning;
+- `R-H` binds `State + Acquisition/Reader + Execution + Observability` because file/materialized-source access and native mutation meet at the artifact boundary;
+- `R-K` binds `State + Acquisition/Reader + Observability + Evolution` because reusable learning requires readback and evaluation before adoption.
+
+`PLANE BINDING ≠ SEMANTIC OWNERSHIP ≠ PASS AUTHORITY`.
+
+### 26.5 Failure and recovery semantics
+
+A layer failure must resolve to a canonical owner and a bounded blast radius:
+
+```text
+FAILURE_CODE
+→ owning layer / contract
+→ affected handoff(s)
+→ affected consumer(s)
+→ preserve unrelated verified state
+→ repair / re-read source
+→ required readback
+→ consumer re-acceptance
+```
+
+The runtime must not translate an owner-specific failure into a global reset merely because it crossed a layer boundary. Conversely, a stale dependency or unresolved authority cannot be hidden by a downstream artifact or review PASS.
+
+### 26.6 Persistence boundary
+
+Persistence is also layer-specific:
+
+- `R-A` persists material authority/identity/supersession changes;
+- `R-B` persists knowledge mount/state **by canonical reference**, not copied corpora;
+- `R-C/R-D/R-E/R-F` persist promotion-relevant packets, scopes, controlled variables and receipts when materially triggered;
+- `R-G` is normally ephemeral unless route choice is necessary for reproducibility or a non-default fallback is used;
+- `R-H` preserves artifact identity/provenance and persists binary content when PAP is triggered;
+- `R-I` persists promotion-relevant readback/reviews/repair routes;
+- `R-J` is durable by definition for persistence/promotion/sync records;
+- `R-K` persists unvalidated learning as Project/Candidate state until transfer validation closes.
+
+`PERSISTED ≠ CURRENT AUTHORITY` unless the correct authority owner separately performs that transition.

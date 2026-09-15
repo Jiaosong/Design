@@ -350,6 +350,47 @@ def validate_receipts() -> None:
     artifact_fields = set(schema.get("artifact_required_fields", []))
     review_fields = set(schema.get("review_required_fields", []))
     closure_fields = set(schema.get("closure_required_fields", []))
+    handoff_ext = schema.get("runtime_layer_handoff_extension", {})
+    require_fields(
+        handoff_ext,
+        [
+            "required_when",
+            "prospective_only",
+            "historical_receipts_immutable",
+            "contract_ref",
+            "fields",
+            "handoff_state_values",
+            "producer_max_state",
+            "consumer_accepts_after_required_readback",
+            "accepted_does_not_prove_downstream_pass",
+            "authority_or_source_change_marks_affected_handoff_stale",
+            "hold_preserves_last_verified_upstream_state",
+            "feedback_edge_not_dependency_handoff",
+            "no_material_delta_no_new_receipt",
+        ],
+        "execution-receipt:runtime-layer-handoff-extension",
+    )
+    expected_handoff_fields = {
+        "handoff_id", "from_layer", "to_layer", "project_or_scope_id", "decision_object_id",
+        "authority_fingerprint", "source_revision", "object_refs", "claim_boundary", "open_blockers",
+        "stale_if", "readback_refs", "handoff_state", "observed_at", "does_not_prove",
+    }
+    if set(handoff_ext.get("fields", [])) != expected_handoff_fields:
+        fail("runtime-layer handoff extension fields drift")
+    if set(handoff_ext.get("handoff_state_values", [])) != {"UNRESOLVED", "READY", "ACCEPTED", "HOLD", "STALE", "SUPERSEDED"}:
+        fail("runtime-layer handoff state vocabulary drift")
+    if handoff_ext.get("producer_max_state") != "READY" or handoff_ext.get("consumer_accepts_after_required_readback") is not True:
+        fail("runtime-layer handoff producer/consumer acceptance boundary invalid")
+    if handoff_ext.get("accepted_does_not_prove_downstream_pass") is not True:
+        fail("runtime-layer handoff acceptance may not equal downstream PASS")
+    if handoff_ext.get("feedback_edge_not_dependency_handoff") != "R-K_TO_R-B":
+        fail("R-K to R-B must remain feedback, not dependency handoff")
+    if handoff_ext.get("prospective_only") is not True or handoff_ext.get("historical_receipts_immutable") is not True:
+        fail("runtime-layer handoff extension must be prospective and preserve historical receipts")
+    contract_path = ROOT / handoff_ext.get("contract_ref", "")
+    if not contract_path.is_file():
+        fail("runtime-layer handoff contract ref missing")
+
     branch_ref = schema.get("branch_ref_disposition_extension", {})
     require_fields(
         branch_ref,
