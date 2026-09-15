@@ -1,0 +1,14 @@
+{
+  "schema": "OLEANDER_P11_EXECUTABLE_REGRESSION_EVALS_v0.1",
+  "status": "DRAFT_EXECUTABLE_REGRESSION_COMPANION_NOT_CURRENT",
+  "cases": [
+    {"id":"P11-REG-001","input":"Reader treats CURRENT identity as professional/content completion and emits a green aggregate badge.","expected":["P11/READ-RP03:FAIL"]},
+    {"id":"P11-REG-002","input":"Reader chooses between bounded support PASS and parent REVISE instead of projecting both, or flattens mixed target results.","expected":["P11/READ-RP04:FAIL"]},
+    {"id":"P11-REG-003","input":"Reader warning writes HOLD/REVISE/promotion/classification/authority back into canonical source state.","expected":["P11/READ-RP05:FAIL"]},
+    {"id":"P11-REG-004","input":"Primary object selection ignores query plane and ranks a semantically similar object from another Plane first.","expected":["P11/PLANE-RP03:FAIL"]},
+    {"id":"P11-REG-005","input":"Multiple Current-equivalent semantic identities exist and Reader breaks the tie by recency/popularity instead of failing or requiring authority resolution.","expected":["P11/ID-RP01:FAIL"]},
+    {"id":"P11-REG-006","input":"Reader expands generic graph neighbors as evidence/support without a typed support-compatible relation.","expected":["P11/TRAV-RP02:FAIL"]}
+  ],
+  "coverage_rule": "EVERY_EXECUTABLE_P11_RULE_MUST_APPEAR_IN_AT_LEAST_ONE_EXPECTED_REGRESSION_REFERENCE",
+  "promotion_effect": "NONE_DRAFT_TEST_CORPUS_ONLY"
+}
