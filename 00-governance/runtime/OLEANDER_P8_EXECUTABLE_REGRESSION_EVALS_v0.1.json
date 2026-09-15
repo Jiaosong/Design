@@ -1,0 +1,21 @@
+{
+  "schema": "OLEANDER_P8_EXECUTABLE_REGRESSION_EVALS_v0.1",
+  "status": "DRAFT_EXECUTABLE_REGRESSION_COMPANION_NOT_CURRENT",
+  "semantic_owner": "OLEANDER_WORK_ARTIFACT_INFORMATION_CARRIER_CONTRACT_v1.0",
+  "cases": [
+    {"id":"P8-REG-001","input":"One support responsibility emits many files and file count is promoted to semantic object count.","expected":["P8/ART-RP01:FAIL"]},
+    {"id":"P8-REG-002","input":"A material handoff has no explicit preserved/lost/unknown dimensions and no purpose-scoped exchange requirement.","expected":["P8/HAND-RP02:FAIL","P8/HAND-RP03:FAIL"]},
+    {"id":"P8-REG-003","input":"A one-directional reference derivative is rejected only because native round-trip authoring semantics are absent even though round-trip is not required.","expected":["P8/HAND-RP04:FAIL","P8/RTRIP-RP02:FAIL"]},
+    {"id":"P8-REG-004","input":"Downstream import/edit capability is treated as source change authority and source-master ownership without an authority-transfer event.","expected":["P8/AUTH-RP02:FAIL","P8/AUTH-RP03:FAIL"]},
+    {"id":"P8-REG-005","input":"An exchange derivative reopens successfully and that PASS promotes native authoring and professional design state; runtime delivery success is also used to claim native parametric preservation.","expected":["P8/HAND-RP05:FAIL","P8/ROLE-RP02:FAIL"]},
+    {"id":"P8-REG-006","input":"Round-trip acceptance uses byte hash only even though byte identity is not a controlled property.","expected":["P8/RTRIP-RP01:FAIL"]},
+    {"id":"P8-REG-007","input":"A downstream deployment package is incomplete and the unchanged upstream source is globally invalidated; mixed per-role results are flattened without aggregation.","expected":["P8/HAND-RP06:FAIL","P8/HAND-RP07:FAIL"]},
+    {"id":"P8-REG-008","input":"Unknown loss intersects required information yet handoff is accepted; another unknown dimension outside claim causes global HOLD.","expected":["P8/LOSS-RP03:FAIL","P8/LOSS-RP05:FAIL"]},
+    {"id":"P8-REG-009","input":"File open/import success is treated as handoff PASS without required information readback; format/schema layer PASS auto-grants higher project/task/authority layers.","expected":["P8/HAND-RP08:FAIL","P8/HAND-RP09:FAIL","P8/HAND-RP10:FAIL"]},
+    {"id":"P8-REG-010","input":"The same material loss is accepted across derivative and source-master roles without role scope, and exchange derivative silently replaces Source/Edit Master responsibility.","expected":["P8/LOSS-RP02:FAIL","P8/LOSS-RP04:FAIL","P8/ROLE-RP03:FAIL"]},
+    {"id":"P8-REG-011","input":"Mixed per-object information results are flattened to one PASS, fidelity is judged against total native-model equivalence instead of declared exchange requirements, and producer export validation substitutes for consumer readback.","expected":["P8/HAND-RP11:FAIL","P8/HAND-RP12:FAIL","P8/HAND-RP13:FAIL"]},
+    {"id":"P8-REG-012","input":"An editable-master handoff requires round-trip but is accepted with unresolved round-trip, while an untested loss dimension is recorded as NONE.","expected":["P8/RTRIP-RP02:FAIL","P8/LOSS-RP06:FAIL"]}
+  ],
+  "coverage_rule": "EVERY_EXECUTABLE_P8_RULE_MUST_APPEAR_IN_AT_LEAST_ONE_EXPECTED_REGRESSION_REFERENCE",
+  "promotion_effect": "NONE_DRAFT_TEST_CORPUS_ONLY"
+}
