@@ -642,6 +642,43 @@ MACHINE VALID
 ≠ STATUTORY APPROVAL
 ```
 
+### 18.1 Decision authorization projection
+
+The matrix above defines **which owner class may decide**. A consequential decision also needs a resolvable authorization basis for the specific decision object and scope. This is an architecture-level projection over existing authority/review/process carriers; it is **not** a new authority registry, delegation database, reviewer registry or approval state machine.
+
+For a decision that changes a professional verdict, Design KEEP/DQ maturity, Integration acceptance, Project Promotion, Current authority or a statutory/licensed claim, the architecture must be able to resolve at least:
+
+`decision_object_id / project_or_scope_id / decision_class / actor_or_authority_ref / authorization_basis_ref_or_fields / authority_scope / claim_boundary / authority_fingerprint`.
+
+When applicable, resolve additionally from the existing owner-native carrier:
+
+- `competence_basis_ref_or_fields` for professional judgment;
+- `independence_basis_ref_or_fields` when an independent review is required;
+- `legal_authority_basis_ref_or_fields` for a statutory/licensed decision claim;
+- `validity_or_revalidate_on` when an assignment/delegation is bounded, expirable or change-sensitive;
+- `decision_readback_ref` when the consequential decision has actually been made and consumed downstream.
+
+Current native evidence already includes, depending on the decision: `project_or_scope_authority`, `reviewer_id`, `reviewer_independence_state`, `promotion_authority`, professional-domain review/checker identity and competence, Integration owners/controlling authority, Current authority fingerprints and owner-native receipts. These sources remain authoritative; the architecture projection does not require a duplicate central record when the same facts are already resolvable without loss.
+
+Rules:
+
+- an assignment or delegation may **narrow** an existing right but may not widen the source owner's authority, claim boundary, professional competence or statutory power;
+- identity alone does not prove competence, independence, legal authorization or project promotion authority;
+- professional judgment is valid only within the reviewer's resolved competence and assigned scope;
+- an independent-review requirement cannot be satisfied by producer identity, tool separation or a merely different execution surface;
+- Project / Current authority may accept or reject project progression within its scope, but cannot manufacture professional PASS or statutory approval;
+- statutory/licensed decisions require the applicable external/legal authority basis; project authority or a professional title alone is not a substitute;
+- a recommendation, eligibility report or machine PASS is not the consequential decision transition itself;
+- if authority fingerprint, decision scope, assignment basis, competence/independence basis or applicable legal authority materially changes, the affected authorization must be revalidated before the dependent decision is consumed;
+- unresolved authorization for a material dependent decision fails closed through the existing blocker/HOLD semantics; at Master Runtime level this resolves through existing `BLOCKED / RECONCILIATION_REQUIRED` outcomes rather than a new authorization state family;
+- machines may validate identity/binding/presence/expiry rules that are encoded, but may not invent delegation, infer competence from title, infer legal status or self-award human/professional authority.
+
+`AUTHORIZED TO REVIEW ≠ REVIEW PASS`
+
+`AUTHORIZED TO PROMOTE ≠ PROMOTED`
+
+`PROJECT AUTHORITY ≠ STATUTORY AUTHORITY`.
+
 ---
 
 ## 19｜Observability Contract
@@ -1073,7 +1110,11 @@ The system is considered **architecture-control runnable** only when all of the 
 32. a stale handoff invalidates only affected consumers and cannot support Promotion until refreshed;
 33. a known partial multi-surface commit blocks dependent handoff readiness/acceptance and dependent DAG advance until coherently reconciled or explicitly held;
 34. transaction reconciliation remains an ephemeral runtime projection and may not create a distributed transaction authority, persistent transaction ledger or global lock service;
-35. no universal layer-progress state may collapse owner-specific state families.
+35. consequential decisions resolve a current authorization basis for the exact actor/authority, decision object, scope and claim boundary before downstream consumption;
+36. assignment/delegation may narrow but never widen the source authority, professional competence, claim boundary or statutory power;
+37. unresolved material decision authorization fails closed using existing runtime outcomes rather than creating a new authorization state family;
+38. machine validation of authorization evidence may not invent delegation, competence, independence, legal authority, professional PASS or Promotion;
+39. no universal layer-progress state may collapse owner-specific state families.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
