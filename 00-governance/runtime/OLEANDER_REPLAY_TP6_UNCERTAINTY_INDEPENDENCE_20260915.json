@@ -1,0 +1,29 @@
+{
+  "schema":"OLEANDER_EVIDENCE_ASSURANCE_REPLAY_v0.1",
+  "replay_id":"RP-TP6-UNCERTAINTY-INDEPENDENCE-20260915",
+  "status":"DRAFT_EXTERNAL_REPLAY_NOT_CURRENT",
+  "external_cases":["NIST_ILAC_MEASUREMENT_UNCERTAINTY_DECISION_RULES","NASA_IVV_INDEPENDENCE"],
+  "source_boundary":"OFFICIAL_PUBLIC_GUIDANCE_AND_STANDARDS_SUMMARY_ONLY_OLEANDER_MAPPING_ANALYTICAL",
+  "quantitative_fixture":{
+    "specification_tolerance":"PLUS_MINUS_10_UNITS",
+    "test_uncertainty":"PLUS_MINUS_2_UNITS",
+    "illustrative_guarded_acceptance_limit":"PLUS_MINUS_8_UNITS",
+    "source_character":"NIST_PUBLISHED_GUARD_BANDING_ILLUSTRATION_NOT_UNIVERSAL_RULE"
+  },
+  "new_machine_concepts":{
+    "quantitative_assurance_fields":["measurand_or_metric","measured_value","unit","measurement_uncertainty","uncertainty_kind","coverage_factor_or_probability","specification_lower_limit","specification_upper_limit","decision_rule_id","decision_rule_basis","acceptance_zone","guard_band","false_accept_risk_basis","false_reject_risk_basis","conformity_statement"],
+    "decision_reason_codes":["WITHIN_ACCEPTANCE_ZONE","OUTSIDE_ACCEPTANCE_ZONE","UNCERTAINTY_OVERLAPS_DECISION_BOUNDARY","DECISION_RULE_UNDEFINED","UNCERTAINTY_NOT_ESTABLISHED","TARGET_CONFIGURATION_MISMATCH"],
+    "evidence_dependence_fields":["evidence_origin_id","measurement_campaign_id","shared_method_dependency","shared_instrument_dependency","shared_data_dependency","source_independence_group"],
+    "independence_profile_dimensions":["technical","managerial","financial"],
+    "independence_dimension_states":["SATISFIED","NOT_SATISFIED","NOT_REQUIRED","NOT_EVALUATED"],
+    "contradiction_states":["APPARENT_METHOD_DIFFERENCE","CONFIGURATION_MISMATCH","CONDITION_MISMATCH","UNCERTAINTY_COMPATIBLE","MATERIAL_CONTRADICTION","SUPERSEDED_EVIDENCE","UNRESOLVED"]
+  },
+  "replay_derived_rules":["P6/UNC-RP02","P6/UNC-RP03","P6/UNC-RP04","P6/DISP-RP02","P6/IND-RP02","P6/INDP-RP03","P6/INDP-RP04","P6/ASR-RP03","P6/CONTRA-RP03","P6/CEIL-RP06"],
+  "resolved_open_states":{
+    "measurement_uncertainty_replay_state":"CONFIRMED_EXTERNAL_REPLAY",
+    "multi_source_independence_replay_state":"CONFIRMED_DEPENDENCY_GROUPING_REQUIREMENT",
+    "independent_review_dimensionality":"CONFIRMED_EXTERNAL_REPLAY"
+  },
+  "tp6_status":"COMPLETE_WITH_DELTAS",
+  "promotion_effect":"NONE_REPLAY_ONLY"
+}
