@@ -1,0 +1,80 @@
+{
+  "candidate_id": "EV-PROF-ACCESSIBILITY-20260916",
+  "candidate_type": "PROFESSIONAL_DOMAIN_PROCESS_CONTROLLED_EVOLUTION",
+  "domain": "Built-Environment Accessibility / Inclusive Access",
+  "state": "EV2_EVAL_READY",
+  "created_date": "2026-09-16",
+  "baseline": {
+    "current_main_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "current_architecture_map": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "current_domain_state": "ARCHITECTURE_INTERFACE_DOMAIN / NO_CURRENT_BUILT_ENVIRONMENT_ACCESSIBILITY_PROCESS_DEFINITION",
+    "current_map_mutated": false
+  },
+  "candidate_artifacts": [
+    "00-governance/accessibility-built-environment-process-v1.0.md",
+    "00-governance/schemas/accessibility-built-environment-process.v1.json"
+  ],
+  "existing_owner_mounts": [
+    {
+      "notion_canonical_id": "IDX-ACCESSIBILITY-INCLUSIVE-001",
+      "role": "L4 canonical index separating Digital, Physical, Rights/Accommodation and Inclusive Design routes",
+      "does_not_become": "Built-Environment Accessibility Professional Process authority"
+    },
+    {
+      "notion_canonical_id": "IDX-ARCH-STRUCT-SAFETY-005",
+      "role": "Architecture life-safety/accessibility routing context",
+      "does_not_become": "Accessibility Professional Process authority"
+    }
+  ],
+  "professional_basis": [
+    {
+      "source": "ISO 21542:2021",
+      "status": "current published Edition 2; ISO stage 90.60 systematic review as of 2026-09",
+      "use": "international built-environment accessibility/usability technical context",
+      "boundary": "must not be described as 2026 reconfirmed; local law/code/rights/AHJ remain controlling"
+    },
+    {
+      "source_route": "applicable local accessibility law/code + rights/accommodation authority",
+      "status": "project/jurisdiction specific",
+      "use": "controlling compliance and rights basis",
+      "boundary": "must be resolved per project rather than copied into universal threshold tables"
+    }
+  ],
+  "hard_boundaries": [
+    "DIMENSION CHECKLIST != ACCESSIBILITY PROFESSIONAL PASS",
+    "ONE ACCESSIBLE SEGMENT != CONTINUOUS ACCESS",
+    "WHEELCHAIR FIT != ALL ACCESSIBILITY NEEDS",
+    "WCAG != PHYSICAL BUILT-ENVIRONMENT COMPLIANCE",
+    "UNIVERSAL/INCLUSIVE DESIGN METHOD != STATUTORY STANDARD",
+    "MINIMUM TECHNICAL COMPLIANCE != UNIVERSAL USABILITY",
+    "SIMULATION/DESIGNER TRY-OUT != REPRESENTATIVE DISABLED-PERSON VALIDATION",
+    "ACCESSIBILITY COORDINATION != R-F INTEGRATION PASS",
+    "PROFESSIONAL PROCESS STATE != KNOWLEDGE/KI/OE STATE",
+    "CI PASS != PROFESSIONAL PASS != DESIGN KEEP != PROMOTION"
+  ],
+  "review_state": "NOT_REVIEWED",
+  "professional_verdict": "NOT_RUN",
+  "promotion_state": "NOT_ELIGIBLE",
+  "notion_sync_state": "NOT_RUN",
+  "next_required_steps": [
+    "create draft PR against main",
+    "run candidate-specific Professional Domain Process validation plus full regression",
+    "if fresh machine regression passes, issue immutable EV3 successor receipt",
+    "then bind exact-input Independent Review packet under Current PR #635 rules",
+    "candidate routing sync may occur only after packet-head validation and must preserve existing Knowledge/Evidence/Governance states"
+  ],
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "UNIVERSAL_USABILITY",
+    "RIGHTS_OR_ACCOMMODATION_CLOSE",
+    "DIGITAL_ACCESSIBILITY_PASS",
+    "FLS_PASS",
+    "STATUTORY_APPROVAL",
+    "R_F_INTEGRATION_PASS",
+    "FIELD_TRUTH",
+    "DESIGN_KEEP",
+    "CURRENT_PROCESS_ADOPTION",
+    "CURRENT_KNOWLEDGE",
+    "PROMOTION"
+  ]
+}
