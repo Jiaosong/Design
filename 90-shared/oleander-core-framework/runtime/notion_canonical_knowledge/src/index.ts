@@ -79,7 +79,11 @@ import {
   FRAMEWORK_READBACK_BUDGET_MS,
   hydrateKnowledgeReaderFramework,
 } from "./reader";
-import { validateReaderBeginContentReviewInput, validateReaderContentPatchInput } from "./reader-edit";
+import {
+  validateReaderBeginContentReviewInput,
+  validateReaderContentPatchInput,
+  validateReaderSupportContentPatchInput,
+} from "./reader-edit";
 import { syncPage } from "./sync";
 import type { Env, IngestMessage, NotionWebhookEvent, SearchRequest } from "./types";
 
@@ -405,6 +409,146 @@ async function patchReaderAcademicContent(
       after_markdown_length: afterMarkdown.markdown.length,
       markdown_truncated: afterMarkdown.truncated,
       unknown_block_ids: afterMarkdown.unknown_block_ids,
+      sync,
+    },
+  };
+}
+
+async function patchReaderSupportAcademicContent(
+  env: Env,
+  pageIdInput: string,
+  expectedCanonicalIdInput: string,
+  expectedNotionLastEditedTimeInput: string,
+  oldStrInput: string,
+  newStrInput: string,
+): Promise<ReaderRpcResult> {
+  const validated = validateReaderSupportContentPatchInput(
+    pageIdInput,
+    expectedCanonicalIdInput,
+    expectedNotionLastEditedTimeInput,
+    oldStrInput,
+    newStrInput,
+  );
+  if (!validated.ok) return { status: validated.status, body: { ok: false, error: validated.error } };
+  const {
+    pageId,
+    expectedCanonicalId,
+    expectedNotionLastEditedTime,
+    oldStr,
+    newStr,
+  } = validated.input;
+
+  const beforePage = normalizePage(await fetchPage(env, pageId));
+  if (beforePage.parentDataSourceId !== env.NOTION_NOTES_DATA_SOURCE_ID) {
+    return { status: 409, body: { ok: false, error: "support_content_patch_page_not_in_notes_data_source" } };
+  }
+  if (beforePage.canonicalId !== expectedCanonicalId) {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "support_content_patch_canonical_identity_drift",
+        expected: expectedCanonicalId,
+        actual: beforePage.canonicalId,
+      },
+    };
+  }
+  if (beforePage.lastEditedTime !== expectedNotionLastEditedTime) {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "support_content_patch_revision_drift",
+        expected: expectedNotionLastEditedTime,
+        actual: beforePage.lastEditedTime,
+      },
+    };
+  }
+  if (beforePage.retrievalSpace !== "SUPPORT") {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "support_content_patch_requires_support_canonical_page",
+        retrieval_space: beforePage.retrievalSpace,
+      },
+    };
+  }
+  if (!["ACTIVE", "REVIEW", "HOLD"].includes(beforePage.governanceState ?? "")) {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "support_content_patch_governance_state_not_editable",
+        governance_state: beforePage.governanceState,
+      },
+    };
+  }
+  if (!["REVIEW", "VALID"].includes(beforePage.relationState ?? "")) {
+    return {
+      status: 409,
+      body: {
+        ok: false,
+        error: "support_content_patch_relation_state_not_editable",
+        relation_state: beforePage.relationState,
+      },
+    };
+  }
+
+  const beforeGovernanceState = beforePage.governanceState;
+  const beforeRelationState = beforePage.relationState;
+  const beforeMarkdown = await fetchCompleteMarkdown(env, pageId);
+  if (beforeMarkdown.truncated || beforeMarkdown.unknown_block_ids.length > 0) {
+    return { status: 409, body: { ok: false, error: "support_content_patch_requires_complete_readback" } };
+  }
+  const occurrences = beforeMarkdown.markdown.split(oldStr).length - 1;
+  if (occurrences !== 1) {
+    return { status: 409, body: { ok: false, error: "support_content_patch_old_str_must_match_once", occurrences } };
+  }
+
+  await updatePageMarkdownContent(env, pageId, oldStr, newStr);
+  const afterMarkdown = await fetchCompleteMarkdown(env, pageId);
+  if (afterMarkdown.truncated || afterMarkdown.unknown_block_ids.length > 0) {
+    return { status: 502, body: { ok: false, error: "support_content_patch_post_readback_incomplete" } };
+  }
+  if (!afterMarkdown.markdown.includes(newStr) || afterMarkdown.markdown.includes(oldStr)) {
+    return { status: 502, body: { ok: false, error: "support_content_patch_readback_failed" } };
+  }
+
+  const afterPage = normalizePage(await fetchPage(env, pageId));
+  const metadataStable = afterPage.canonicalId === expectedCanonicalId
+    && afterPage.retrievalSpace === "SUPPORT"
+    && afterPage.governanceState === beforeGovernanceState
+    && afterPage.relationState === beforeRelationState;
+  if (!metadataStable) {
+    return {
+      status: 502,
+      body: {
+        ok: false,
+        error: "support_content_patch_metadata_readback_mismatch",
+        notion_write_applied: true,
+        before: beforePage,
+        after: afterPage,
+      },
+    };
+  }
+
+  const sync = await syncPage(env, {
+    kind: "notion-page-sync",
+    page_id: pageId,
+    cause_id: `support-content:${crypto.randomUUID()}`,
+    cause_type: "manual",
+  });
+  return {
+    status: 200,
+    body: {
+      ok: true,
+      page: afterPage,
+      before_markdown_length: beforeMarkdown.markdown.length,
+      after_markdown_length: afterMarkdown.markdown.length,
+      markdown_truncated: afterMarkdown.truncated,
+      unknown_block_ids: afterMarkdown.unknown_block_ids,
+      metadata_stable: true,
       sync,
     },
   };
@@ -1742,6 +1886,26 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       new_str?: string;
     };
     const result = await patchReaderAcademicContent(env, body.page_id ?? "", body.old_str ?? "", body.new_str ?? "");
+    return json(result.body, result.status);
+  }
+
+  if (request.method === "POST" && url.pathname === "/v1/academic-page/support-content") {
+    if (!isAuthorized(request, env.OLEANDER_API_TOKEN)) return json({ ok: false, error: "unauthorized" }, 401);
+    const body = (await request.json().catch(() => ({}))) as {
+      page_id?: string;
+      expected_canonical_id?: string;
+      expected_notion_last_edited_time?: string;
+      old_str?: string;
+      new_str?: string;
+    };
+    const result = await patchReaderSupportAcademicContent(
+      env,
+      body.page_id ?? "",
+      body.expected_canonical_id ?? "",
+      body.expected_notion_last_edited_time ?? "",
+      body.old_str ?? "",
+      body.new_str ?? "",
+    );
     return json(result.body, result.status);
   }
 
