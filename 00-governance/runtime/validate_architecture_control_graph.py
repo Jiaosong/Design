@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 GRAPH = ROOT / "00-governance" / "runtime" / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
 LAYER_INTERFACE = ROOT / "00-governance" / "runtime" / "OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
 OBSERVABILITY_RECOVERY = ROOT / "00-governance" / "runtime" / "OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
+EVOLUTION_CANDIDATE = ROOT / "00-governance" / "runtime" / "OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json"
 EXPECTED_LAYERS = ["R-A", "R-B", "R-C", "R-D", "R-E", "R-F", "R-G", "R-H", "R-I", "R-J", "R-K"]
 EXPECTED_PLANES = {"CONTROL_PLANE", "STATE_PLANE", "ACQUISITION_READER_PLANE", "EXECUTION_PLANE", "OBSERVABILITY_PLANE", "EVOLUTION_PLANE"}
 EXPECTED_MATURITY = {
@@ -673,6 +674,150 @@ def main() -> None:
     if "OLD_RECEIPT_NOT_SILENTLY_REINTERPRETED" not in set(compatibility.get("invariants", [])):
         fail("receipt compatibility boundary missing")
 
+    impact = compatibility.get("impact_projection", {})
+    if impact.get("semantic_class") != "CONTROL_PROJECTION_NOT_MIGRATION_STATE_FAMILY_OR_LEDGER":
+        fail("compatibility impact must remain a control projection rather than a migration state family/ledger")
+    if impact.get("projection_only_not_replacement_migration_schema") is not True or impact.get("owner_native_migration_fields_remain_authoritative") is not True:
+        fail("compatibility impact projection may not replace owner-native migration semantics")
+    expected_compat_source_refs = {
+        "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+    }
+    if set(impact.get("projection_source_refs", [])) != expected_compat_source_refs:
+        fail("compatibility impact projection source refs drift")
+    for ref in impact.get("projection_source_refs", []):
+        check_ref(ref)
+
+    required_migration_projection_fields = {
+        "target_ref",
+        "target_owner",
+        "baseline_current_version_or_revision",
+        "compatibility_class",
+        "affected_carriers",
+        "affected_scope",
+        "migration_steps",
+        "readback_required",
+        "rollback_previous_pointer",
+        "rollback_provenance_ref",
+    }
+    if set(impact.get("migration_required_resolvable_fields", [])) != required_migration_projection_fields:
+        fail("compatibility migration projection required fields drift")
+    expected_field_map = {
+        "target_ref": "evolution_candidate.target_ref",
+        "target_owner": "evolution_candidate.target_owner",
+        "baseline_current_version_or_revision": "evolution_candidate.baseline.current_version_or_revision",
+        "compatibility_class": "evolution_candidate.migration.compatibility_class",
+        "affected_carriers": "evolution_candidate.migration.affected_carriers",
+        "affected_scope": "evolution_candidate.migration.affected_scope",
+        "migration_steps": "evolution_candidate.migration.migration_steps",
+        "readback_required": "evolution_candidate.migration.readback_required",
+        "rollback_previous_pointer": "evolution_candidate.rollback.previous_pointer",
+        "rollback_provenance_ref": "evolution_candidate.rollback.provenance_ref",
+    }
+    field_map = impact.get("owner_native_field_map", {})
+    if field_map != expected_field_map:
+        fail("compatibility migration owner-native field map drift")
+
+    impact_scope_fields = {
+        "affected_object_refs",
+        "affected_handoff_refs",
+        "affected_consumer_refs",
+        "affected_claim_refs",
+        "unaffected_verified_refs",
+    }
+    if set(impact.get("impact_scope_projection_fields", [])) != impact_scope_fields:
+        fail("compatibility impact-scope relation fields drift")
+    required_scope_sources = {
+        "EXPLICIT_MIGRATION_AFFECTED_CARRIERS_AND_SCOPE",
+        "CURRENT_DEPENDENCY_GRAPH",
+        "RUNTIME_LAYER_HANDOFF_RELATIONS",
+        "CLAIM_CONSUMPTION_RELATIONS",
+        "AUTHORITY_BINDINGS",
+        "RECOVERY_BLAST_RADIUS_WHEN_AN_ACTUAL_INCIDENT_EXISTS",
+    }
+    if set(impact.get("impact_scope_sources", [])) != required_scope_sources:
+        fail("compatibility impact-scope derivation sources drift")
+    if not {"CREATED_BEFORE_CHANGE_ALONE", "SAME_REPOSITORY_ALONE", "FILENAME_PATTERN_ALONE", "SAME_PROJECT_ALONE", "NEWER_TIMESTAMP_ALONE"}.issubset(set(impact.get("affectedness_exclusions", []))):
+        fail("compatibility affectedness exclusions are incomplete")
+
+    expected_compat_actions = {
+        "PRESERVE_UNAFFECTED_VERIFIED",
+        "APPLY_NEW_REQUIREMENT_PROSPECTIVELY",
+        "UPDATE_AFFECTED_VALIDATOR_ADAPTER",
+        "MARK_AFFECTED_STALE",
+        "REOPEN_AFFECTED_CONSUMERS",
+        "MIGRATE_AFFECTED_CARRIERS",
+        "REFRESH_AUTHORITY_BINDING",
+        "RERUN_AFFECTED_READBACK_OR_REVIEW",
+        "SUPERSEDE_OLD_POINTER_WHEN_APPLICABLE",
+    }
+    if impact.get("control_actions_are_not_state_family") is not True or set(impact.get("control_action_vocabulary", [])) != expected_compat_actions:
+        fail("compatibility control actions must remain a bounded non-state vocabulary")
+    expected_actions_by_class = {
+        "DOC_CLARIFICATION": {"PRESERVE_UNAFFECTED_VERIFIED"},
+        "BACKWARD_COMPATIBLE_EXTENSION": {"PRESERVE_UNAFFECTED_VERIFIED", "APPLY_NEW_REQUIREMENT_PROSPECTIVELY", "UPDATE_AFFECTED_VALIDATOR_ADAPTER"},
+        "SEMANTIC_OWNER_CHANGE": {"MARK_AFFECTED_STALE", "REFRESH_AUTHORITY_BINDING", "REOPEN_AFFECTED_CONSUMERS", "RERUN_AFFECTED_READBACK_OR_REVIEW"},
+        "STATE_CONTRACT_CHANGE": {"MARK_AFFECTED_STALE", "MIGRATE_AFFECTED_CARRIERS", "REOPEN_AFFECTED_CONSUMERS", "RERUN_AFFECTED_READBACK_OR_REVIEW"},
+        "SCHEMA_BREAKING_CHANGE": {"MARK_AFFECTED_STALE", "MIGRATE_AFFECTED_CARRIERS", "REOPEN_AFFECTED_CONSUMERS", "RERUN_AFFECTED_READBACK_OR_REVIEW"},
+        "PROFESSIONAL_PROCESS_REVISION": {"PRESERVE_UNAFFECTED_VERIFIED", "MARK_AFFECTED_STALE", "REOPEN_AFFECTED_CONSUMERS", "RERUN_AFFECTED_READBACK_OR_REVIEW"},
+        "AUTHORITY_REPLACEMENT": {"SUPERSEDE_OLD_POINTER_WHEN_APPLICABLE", "REFRESH_AUTHORITY_BINDING", "MARK_AFFECTED_STALE", "REOPEN_AFFECTED_CONSUMERS", "RERUN_AFFECTED_READBACK_OR_REVIEW"},
+    }
+    actions_by_class = impact.get("minimum_actions_by_change_class", {})
+    if set(actions_by_class) != REQUIRED_COMPAT_CLASSES:
+        fail("compatibility minimum-action map must cover every change class exactly once")
+    for change_class, actions in actions_by_class.items():
+        if not actions or not set(actions).issubset(expected_compat_actions):
+            fail(f"compatibility action map invalid for {change_class}")
+        if set(actions) != expected_actions_by_class[change_class]:
+            fail(f"compatibility minimum action boundary drift for {change_class}")
+
+    for required_true in {
+        "whole_system_invalidation_forbidden_when_affected_scope_known",
+        "relation_scoped_propagation_only",
+        "backward_compatible_extension_is_prospective_by_default",
+        "canonical_owner_may_explicitly_require_named_existing_carrier_migration",
+        "new_field_does_not_auto_upgrade_old_evidence",
+        "review_rerun_only_when_review_input_claim_authorization_or_acceptance_dependency_is_affected",
+        "change_classification_alone_does_not_open_recovery_incident",
+        "actual_failure_or_contradiction_may_use_recovery_incident_contract",
+        "post_migration_readback_required_when_declared",
+        "rollback_uses_evolution_candidate_pointer_and_provenance",
+        "persistent_migration_ledger_forbidden",
+    }:
+        if impact.get(required_true) is not True:
+            fail(f"compatibility impact boundary missing {required_true}")
+    if set(impact.get("unresolved_affected_scope_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
+        fail("unresolved compatibility impact must reuse existing runtime outcomes")
+    expected_history_rule = "PRESERVE_RAW_RECEIPT_UNDER_ORIGINAL_CONTRACT_AND_RECORD_SUCCESSOR_MIGRATION_OR_REVALIDATION_EVIDENCE; NEVER_REWRITE_HISTORY_TO_LOOK_CURRENT"
+    if impact.get("historical_receipt_rule") != expected_history_rule:
+        fail("historical receipt migration rule drift")
+
+    try:
+        evolution_candidate = json.loads(EVOLUTION_CANDIDATE.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"cannot load evolution candidate contract: {exc}")
+    if not {"target_ref", "target_owner", "baseline", "migration", "rollback"}.issubset(set(evolution_candidate.get("required_candidate_fields", []))):
+        fail("compatibility projection requires target/baseline/migration/rollback owner-native candidate fields")
+    if set(evolution_candidate.get("migration_required_fields", [])) != {"compatibility_class", "affected_carriers", "affected_scope", "migration_steps", "readback_required"}:
+        fail("compatibility projection no longer matches owner-native Evolution migration fields")
+    if "current_version_or_revision" not in set(evolution_candidate.get("baseline_required_fields", [])):
+        fail("compatibility projection requires Evolution baseline current_version_or_revision")
+    rollback_fields = set(evolution_candidate.get("rollback_required_fields", []))
+    if not {"previous_pointer", "provenance_ref"}.issubset(rollback_fields):
+        fail("compatibility rollback projection requires Evolution previous_pointer + provenance_ref")
+    if "ADOPTION_DOES_NOT_REINTERPRET_OLD_RECEIPTS" not in set(evolution_candidate.get("invariants", [])):
+        fail("Evolution contract must preserve old receipt interpretation boundary")
+
+    try:
+        recovery_contract = json.loads(OBSERVABILITY_RECOVERY.read_text(encoding="utf-8"))
+    except Exception as exc:
+        fail(f"cannot load observability/recovery contract for compatibility projection: {exc}")
+    recovery_scope = set(recovery_contract.get("recovery_incident", {}).get("blast_radius_required_fields", []))
+    if not impact_scope_fields.issubset(recovery_scope):
+        fail("compatibility impact projection drift from recovery blast-radius relation fields")
+
     trigger = graph.get("trigger_applicability_contract", {})
     if trigger.get("semantic_class") != "CONTROL_DECISION_RESULT_NOT_STATE_FAMILY":
         fail("trigger/applicability results must not create a new state family")
@@ -872,6 +1017,10 @@ def main() -> None:
         "INCIDENT_CLOSED_DOES_NOT_PROVE_DESIGN_PROFESSIONAL_OR_PROMOTION_PASS",
         "RECOVERY_REACCEPTS_ONLY_AFFECTED_HANDOFFS_AFTER_REQUIRED_READBACK",
         "LIVE_STATUS_REMAINS_OBSERVABILITY_ONLY",
+        "COMPATIBILITY_IMPACT_IS_RELATION_SCOPED_NOT_GLOBAL_RESET",
+        "HISTORICAL_RECEIPTS_IMMUTABLE_ACROSS_MIGRATION",
+        "BACKWARD_COMPATIBLE_EXTENSION_PROSPECTIVE_BY_DEFAULT",
+        "MIGRATION_ACTIONS_DO_NOT_CREATE_STATE_FAMILY_OR_LEDGER",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -886,6 +1035,7 @@ def main() -> None:
     print("file_artifact_control=PASS")
     print("knowledge_reader_control=PASS")
     print("controlled_evolution=PASS")
+    print("compatibility_impact_projection=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")

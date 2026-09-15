@@ -790,6 +790,69 @@ BREAKING CHANGE REQUIRES EXPLICIT AFFECTED-SCOPE REVALIDATION
 
 The architecture control graph records its own version and compatible predecessor so runtime code can reject an unsupported future control contract rather than guessing.
 
+### 21.1 Compatibility impact / migration blast-radius projection
+
+Change classification alone is not enough. Before an adopted architecture, schema, state-contract, professional-process or authority change is consumed by existing work, the runtime must resolve the **smallest affected scope** and preserve verified work outside that scope.
+
+This is an architecture-level projection over the existing Evolution Candidate migration fields, dependency / handoff / claim / authority relations, and — only when an actual failure or contradiction exists — the Observability / Recovery blast-radius contract. It is **not** a migration database, a new receipt family, a new state family or a second authority owner.
+
+The projection must be able to resolve, without forcing duplicate persistence when owner-native fields already exist:
+
+```text
+target_ref
+target_owner
+baseline.current_version_or_revision
+migration.compatibility_class
+migration.affected_carriers[]
+migration.affected_scope
+migration.migration_steps[]
+migration.readback_required
+rollback.previous_pointer
+rollback.provenance_ref
+
+plus the relation-scoped impact set:
+affected_object_refs[]
+affected_handoff_refs[]
+affected_consumer_refs[]
+affected_claim_refs[]
+unaffected_verified_refs[]
+```
+
+`affected_*` is derived from real consumption relations. A carrier is affected when it actually consumes the changed owner, authority pointer, state meaning, schema behavior, professional-stage semantics, claim boundary or machine contract. **Being older than the change, living in the same repository, sharing a filename pattern or merely referencing the same project is not sufficient.**
+
+Minimum compatibility effects:
+
+| Change class | Minimum affected-scope behavior |
+|---|---|
+| `DOC_CLARIFICATION` | preserve existing valid receipts and verified consumers; no semantic invalidation |
+| `BACKWARD_COMPATIBLE_EXTENSION` | apply the new requirement prospectively by default; update only affected validators/adapters; do not force old valid receipts to impersonate the new field set |
+| `SEMANTIC_OWNER_CHANGE` | mark only consumers bound to the changed ownership semantics stale; refresh owner/authority binding; reopen and read back those consumers |
+| `STATE_CONTRACT_CHANGE` | never reinterpret an old state value under the new meaning; migrate or stale affected state-bearing carriers, then revalidate their consumers |
+| `SCHEMA_BREAKING_CHANGE` | preserve historical raw receipts under their original contract; use a versioned parser or explicit successor migration; revalidate only consumers of the broken schema behavior |
+| `PROFESSIONAL_PROCESS_REVISION` | reopen only projects/stages/interfaces that consume the changed professional semantics; preserve unrelated professional evidence |
+| `AUTHORITY_REPLACEMENT` | supersede the old authority pointer, refresh dependent authority fingerprints/bindings, stale only dependent decisions/consumers, then actual readback |
+
+Compatibility control actions are **actions, not states**. The architecture may compile actions such as `PRESERVE_UNAFFECTED_VERIFIED / APPLY_NEW_REQUIREMENT_PROSPECTIVELY / UPDATE_AFFECTED_VALIDATOR_ADAPTER / MARK_AFFECTED_STALE / REOPEN_AFFECTED_CONSUMERS / MIGRATE_AFFECTED_CARRIERS / REFRESH_AUTHORITY_BINDING / RERUN_AFFECTED_READBACK_OR_REVIEW / SUPERSEDE_OLD_POINTER_WHEN_APPLICABLE`; these do not form a new migration-state namespace.
+
+Hard rules:
+
+- whole-system invalidation is forbidden when the affected relation graph is known and bounded;
+- historical receipts remain immutable execution truth for the contract/version under which they were emitted; migration creates successor/revalidation evidence rather than rewriting history;
+- a newly required field is prospective by default for a backward-compatible extension unless its canonical owner explicitly requires migration of named existing carriers;
+- a new field never auto-upgrades old evidence, and an old receipt never auto-proves a new claim;
+- propagation follows existing dependency / handoff / claim / authority-consumption edges and stops where the changed semantics are not consumed;
+- reviews are rerun only when their reviewed input, claim, authorization basis or acceptance dependency is affected;
+- an architecture change does **not** open a Recovery Incident merely because it has a migration plan; use the Recovery Incident contract only when a real failure/contradiction requires containment or recovery;
+- when affectedness is unresolved and a dependent claim would rely on the changed semantics, fail closed through existing `BLOCKED / RECONCILIATION_REQUIRED / HOLD` behavior rather than inventing a migration state;
+- when `migration.readback_required=true`, the migrated/revalidated result is not consumable as refreshed Current evidence until the required actual readback exists;
+- failed migration follows the existing Evolution rollback pointer/provenance; rollback does not erase the attempted migration record.
+
+`PRESERVED ≠ REVALIDATED`.
+
+`MIGRATED ≠ PROMOTED`.
+
+`NEW SCHEMA ≠ OLD EVIDENCE UPGRADED`.
+
 ---
 
 ## 22 ? File & Artifact Management Control Domain
@@ -1114,7 +1177,12 @@ The system is considered **architecture-control runnable** only when all of the 
 36. assignment/delegation may narrow but never widen the source authority, professional competence, claim boundary or statutory power;
 37. unresolved material decision authorization fails closed using existing runtime outcomes rather than creating a new authorization state family;
 38. machine validation of authorization evidence may not invent delegation, competence, independence, legal authority, professional PASS or Promotion;
-39. no universal layer-progress state may collapse owner-specific state families.
+39. compatibility/migration impact is relation-scoped and preserves unaffected verified work rather than resetting the whole system;
+40. historical receipts remain immutable under their original contract/version and are never rewritten to impersonate migrated evidence;
+41. backward-compatible extensions are prospective by default unless the canonical owner explicitly names existing carriers for migration;
+42. breaking changes reopen/revalidate only the affected dependency/claim/authority scope and require actual readback where the migration contract declares it;
+43. migration actions are control actions rather than a new state family, authority owner or persistent migration ledger;
+44. no universal layer-progress state may collapse owner-specific state families.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
