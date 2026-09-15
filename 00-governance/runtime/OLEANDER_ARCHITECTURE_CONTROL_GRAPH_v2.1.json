@@ -989,6 +989,89 @@
     "current_or_superseded_lifecycle_disposition_does_not_substitute_for_project_promotion_design_keep_or_statutory_approval": true,
     "resolvable_fields_do_not_require_duplicate_central_persistence": true
   },
+  "authority_snapshot_fingerprint_boundary": {
+    "semantic_class": "CONTROL_PROJECTION_NOT_AUTHORITY_REGISTRY_LEDGER_HISTORY_DATABASE_OR_GRANT_MECHANISM",
+    "projection_only_not_replacement_r_a_authority_contract": true,
+    "r_a_owner_native_authority_snapshot_remains_authoritative": true,
+    "fingerprint_is_derived_binding_guard_not_authority_source": true,
+    "semantic_owner_refs": [
+      "00-governance/README.md",
+      "00-governance/complex-project-master-runtime-v1.0.md"
+    ],
+    "runtime_contract_refs": [
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+      "00-governance/control-plane/orchestration.schema.json"
+    ],
+    "r_a_external_binding_inputs": [
+      "CURRENT_ROOT_AUTHORITY",
+      "PROJECT_OR_SCOPE_AUTHORITY_POINTER",
+      "SOURCE_AUTHORITY_POINTER",
+      "CURRENT_TASK_ID",
+      "ACTIVE_USER_CONSTRAINTS"
+    ],
+    "r_a_required_readback": [
+      "CURRENT_ROOT_READBACK",
+      "PROJECT_OR_SCOPE_AUTHORITY_READBACK",
+      "SOURCE_AUTHORITY_READBACK",
+      "SUPERSESSION_AND_IDENTITY_READBACK"
+    ],
+    "r_a_outputs": [
+      "AUTHORITY_SNAPSHOT",
+      "AUTHORITY_FINGERPRINT",
+      "IDENTITY_RESOLUTION",
+      "SUPERSESSION_RESOLUTION"
+    ],
+    "continuation_fingerprint_inputs": [
+      "CURRENT_ROOT_VERSION",
+      "PROJECT_OR_SCOPE_AUTHORITY",
+      "SOURCE_AUTHORITY",
+      "DESIGN_AUTHORITY",
+      "CURRENT_TASK_ID",
+      "CURRENT_NATIVE_MASTER_OR_REF",
+      "ACTIVE_CONSTRAINT_LOCK"
+    ],
+    "direct_resume_requires": [
+      "SAME_TASK_AND_OBJECT",
+      "AUTHORITY_FINGERPRINT_MATCH",
+      "LAST_VERIFIED_ARTIFACT_HAS_ACTUAL_READBACK",
+      "NO_STALE_DEPENDENCY_OR_HANDOFF",
+      "CHECKPOINT_STATE_RESUMABLE"
+    ],
+    "mismatch_revalidation_triggers": [
+      "PROJECT_OR_TASK_SWITCH",
+      "AUTHORITY_FINGERPRINT_MISMATCH",
+      "SOURCE_OR_DESIGN_AUTHORITY_CHANGED",
+      "CURRENT_NATIVE_MASTER_OR_WRITE_FRONTIER_CHANGED_EXTERNALLY",
+      "DEPENDENCY_STALE_OR_RETEST_REQUIRED",
+      "CHECKPOINT_MISSING_OR_LAST_ARTIFACT_NOT_READBACK_VERIFIED",
+      "CHECKPOINT_SEQUENCE_ADVANCED_BY_ANOTHER_EXECUTOR"
+    ],
+    "mismatch_action_sequence": [
+      "STOP_DIRECT_RESUME_OR_PROTECTED_MUTATION",
+      "RE_RESOLVE_CURRENT_OWNER_NATIVE_BINDINGS",
+      "IDENTIFY_CHANGED_FINGERPRINT_CONSTITUENTS",
+      "COMPUTE_ACTUAL_CONSUMERS_AND_AFFECTED_SCOPE",
+      "MARK_ONLY_AFFECTED_DEPENDENCIES_HANDOFFS_REVIEWS_OR_CHECKPOINTS_STALE",
+      "PRESERVE_UNAFFECTED_VERIFIED_STATE",
+      "REFRESH_REQUIRED_READBACK",
+      "RESUME_ONLY_WHEN_EXISTING_RELEASE_CONDITIONS_CLOSE"
+    ],
+    "fingerprint_match_is_necessary_not_sufficient_for_direct_resume": true,
+    "fingerprint_match_does_not_prove_artifact_review_design_professional_technical_or_statutory_validity": true,
+    "fingerprint_mismatch_requires_re_resolution_not_whole_project_invalidation": true,
+    "changed_constituent_propagates_only_to_actual_consumers": true,
+    "root_version_change_does_not_auto_stale_unaffected_verified_work_after_re_resolution": true,
+    "constraint_change_may_change_execution_permission_without_retroactively_falsifying_unrelated_evidence": true,
+    "context_switch_chat_compression_worker_or_session_change_is_not_authority_change": true,
+    "same_name_filename_or_summary_does_not_prove_same_authority_binding": true,
+    "historical_receipts_immutable_under_consumed_snapshot_fingerprint_and_source_revision": true,
+    "refreshed_snapshot_does_not_rewrite_or_auto_upgrade_historical_receipt": true,
+    "machine_may_validate_binding_not_invent_or_widen_authority": true,
+    "resolvable_bindings_do_not_require_duplicate_central_authority_persistence": true,
+    "central_authority_ledger_registry_or_history_database_forbidden": true
+  },
   "recovery": {
     "sequence": [
       "DETECT",
@@ -1585,7 +1668,14 @@
     "SUPERSESSION_PRESERVES_PROVENANCE_AND_HISTORICAL_RECEIPTS",
     "SUPERSEDED_IS_NOT_DELETE_AUTHORITY_OR_FALSEHOOD",
     "STALE_MIRROR_IS_NOT_COEQUAL_CURRENT_AUTHORITY",
-    "CURRENT_SUPERSESSION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_VERSION_DB_STATE_FAMILY_OR_PROMOTION_AUTHORITY"
+    "CURRENT_SUPERSESSION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_VERSION_DB_STATE_FAMILY_OR_PROMOTION_AUTHORITY",
+    "AUTHORITY_FINGERPRINT_IS_DERIVED_GUARD_NOT_AUTHORITY_SOURCE",
+    "AUTHORITY_FINGERPRINT_MATCH_IS_NOT_SUFFICIENT_FOR_DIRECT_RESUME",
+    "AUTHORITY_FINGERPRINT_MISMATCH_REQUIRES_RERESOLUTION_NOT_GLOBAL_INVALIDATION",
+    "AUTHORITY_CHANGE_REOPENS_ONLY_ACTUAL_BOUND_CONSUMERS",
+    "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
+    "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
+    "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {
