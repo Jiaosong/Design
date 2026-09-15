@@ -1,0 +1,121 @@
+{
+  "candidate_id": "EV-PROF-INTERIOR-LANDSCAPE-20260915",
+  "state": "EV3_EVAL_PASSED",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "R-E Professional Domain Execution Process / domain-native Interior Design and Landscape Architecture owners",
+  "target_ref": ["00-governance/interior-design-process-v1.0.md", "00-governance/landscape-architecture-design-process-v1.0.md", "00-governance/schemas/interior-design-process.v1.json", "00-governance/schemas/landscape-architecture-design-process.v1.json"],
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture Map v2.1 through PR #634; Interior Design and Landscape Architecture remain DOMAIN PROCESS OPEN",
+    "authority_fingerprint": "OLEANDER-CURRENT-ARCHITECTURE-CONTROL@2.1|main@db786e3af5a9ecca03c0b841c47521d1708f2dcd",
+    "source_hash_or_commit": "db786e3af5a9ecca03c0b841c47521d1708f2dcd",
+    "frozen_at": "2026-09-15T16:04:00+08:00"
+  },
+  "trigger_evidence": [
+    "User instruction: continue knowledge content and push/synchronize without pollution",
+    "Current Architecture Map v2.1 keeps Interior Design and Landscape Architecture DOMAIN PROCESS OPEN",
+    "Existing Interior SYS-10 remains the Interior/Furniture/Equipment knowledge-control context and is not promoted by the candidate",
+    "IDX-ARCH-SITE-003 remains the Current site/planning knowledge-routing owner and is mounted by Landscape rather than replaced",
+    "PR #631 requires relation-scoped compatibility impact and immutable historical receipts",
+    "PR #633 separates machine Promotion eligibility, owner-native Promotion transition and synchronization; PR/CI/merge/sync do not grant Promotion",
+    "PR #634 binds R-K/G9 to bounded candidate intake/routing only: observation is not causation, transfer boundary/counterevidence are required before reusable Knowledge routing, Current Knowledge still requires task-scoped OE, and G9 cannot create duplicate Knowledge authority or mutate live runtime"
+  ],
+  "hypothesis": "Interior Design and Landscape Architecture can become authentic domain-native R-E process definitions while mounting existing R-B knowledge owners and preserving R-F Integration, compatibility, Promotion/Sync and G9 Knowledge Return boundaries without duplicate knowledge trees or universalizing project observations.",
+  "mutation_scope": [
+    "retain candidate Interior and Landscape professional process definitions and machine carriers",
+    "validate both through the existing Professional Domain Process validator",
+    "reuse SYS-10 and IDX-ARCH-SITE-003 as existing knowledge/control routing surfaces rather than creating replacement knowledge trees",
+    "permit only clearly labelled CANDIDATE / NOT CURRENT routing annotations before adoption",
+    "do not convert project observations or candidate routing into reusable Current Knowledge without existing Knowledge validation",
+    "do not modify Current Architecture Map professional maturity before EV4 independent review and authorized adoption",
+    "preserve earlier EV3 results and review packets as provenance after Current drift"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      ".github/workflows/ai-governance-evals.yml",
+      "GitHub Actions run 34993122558 / AI Governance Evals / SUCCESS",
+      "GitHub Actions run 34993122537 / OLEANDER Project Anti-Pollution Gate / SUCCESS",
+      "GitHub Actions run 34993122620 / OLEANDER Blender Runtime Contract / SUCCESS"
+    ],
+    "real_case_refs": ["00-governance/architecture-design-development-process-v1.0.md", "Notion SYS-10 Interior/Furniture/Equipment specialty control item", "Notion IDX-ARCH-SITE-003 Current site/planning routing owner"],
+    "counterexample_refs": [
+      "Interior reduced to decoration/render/FF&E selection",
+      "Landscape reduced to planting after Architecture",
+      "same-number professional-stage synchronization",
+      "candidate routing annotation presented as adopted process or Current Knowledge",
+      "domain process creating a second Knowledge Architecture or Runtime",
+      "R-E self-awarding upstream handoff acceptance or R-F Integration truth",
+      "project observation or repeated pattern generalized without causal/transfer evidence",
+      "G9 used to award KI4/OE3 or mutate live Knowledge",
+      "historical receipt rewritten to impersonate new semantics",
+      "PR/CI/merge/persistence/sync treated as Promotion",
+      "machine/schema PASS treated as professional PASS or Design KEEP"
+    ],
+    "regression_refs": [
+      "OLEANDER Current Architecture Map v2.1",
+      "Professional Domain Process Contract v1.0",
+      "Knowledge Integrity / Operational Mount authority",
+      "Professional Knowledge Content & Research Standard R1/R2/K1-K5/B1/IR",
+      "Cross-Disciplinary Integration owner boundaries",
+      "PR #628 transaction reconciliation",
+      "PR #629 decision authorization",
+      "PR #630 observability/recovery",
+      "PR #631 compatibility impact",
+      "PR #633 Promotion/Persistence/Sync boundary",
+      "PR #634 G9 Knowledge Return boundary"
+    ],
+    "metrics": ["schema validity and stage-id uniqueness", "native stage/output/readback coverage", "existing knowledge-owner mounting without duplicate tree", "relation-scoped compatibility and historical-receipt immutability", "candidate sync cannot manufacture Current/Promotion/OE", "G9 observation/causation/transfer boundary preserved", "no duplicate R-F truth or runtime state family", "no architecture-control or namespace pollution"],
+    "acceptance_thresholds": [
+      "Interior and Landscape definitions pass the existing Professional Domain Process validator on main@db786e3a",
+      "Current Architecture Control including PR #634 remains PASS",
+      "AI Governance, Anti-Pollution and Blender Runtime Contract remain PASS",
+      "SYS-10 and IDX-ARCH-SITE-003 remain their existing knowledge/control owners and are not overwritten by R-E candidates",
+      "pre-adoption Notion writes are candidate-routing annotations only and do not claim Current Knowledge, OE, professional adoption or Promotion",
+      "independent review on the exact fresh EV3 revision has no blocking finding before adoption"
+    ],
+    "result": "MACHINE_EVAL_PASSED_ON_main_db786e3a; INTERIOR_AND_LANDSCAPE_DEFINITION_VALIDATION_SUCCESS; AI_GOVERNANCE_SUCCESS; ANTI_POLLUTION_SUCCESS; BLENDER_RUNTIME_CONTRACT_SUCCESS; G9_KNOWLEDGE_RETURN_BOUNDARY_PRESERVED; INDEPENDENT_REVIEW_NOT_RUN"
+  },
+  "constraints": {"semantic_purpose_preserved": true, "no_compression_no_loss": true, "authority_boundary_preserved": true, "user_constraints_preserved": true, "no_direct_current_mutation": true, "no_false_promotion": true},
+  "comparison": {
+    "baseline_result": "Interior and Landscape remain DOMAIN PROCESS OPEN on main@db786e3a; G9 restricts project learning to bounded candidate routing.",
+    "candidate_result": "Both domain-native professional-process candidates validate on the exact G9-bounded Current while consuming SYS-10 and IDX-ARCH-SITE-003 without replacing or promoting them.",
+    "regressions": [],
+    "quality_delta": "POSITIVE_MACHINE_CONTRACT_DELTA_WITH_G9_BOUNDARY: authentic domain stages, outputs, DD/readback and knowledge-mount semantics validate without duplicate knowledge authority.",
+    "reliability_delta": "POSITIVE_MACHINE_VALIDATION_DELTA: both process validators, Current architecture control through #634, Anti-Pollution and runtime contracts pass on the frozen baseline.",
+    "cost_latency_delta": "Bounded re-evaluation and candidate-routing annotation cost; no new knowledge tree/runtime/ledger.",
+    "decision_basis": "Machine evaluation supports exact-revision independent review and bounded candidate-routing synchronization only. EV4/EV5/adoption remain blocked."
+  },
+  "independent_review": {
+    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "NOT_YET_ESTABLISHED",
+    "review_input_revision": "SUCCESSOR_PACKET_REQUIRED_FOR_EXACT_POST_EV3_HEAD_ON_main_db786e3a",
+    "verdict": "NOT_RUN",
+    "blocking_findings": ["Existing v001/v002 packets target earlier Current baselines", "Fresh exact-revision independent review required before EV4/EV5"]
+  },
+  "promotion": {"eligible": false, "human_decision_required": true, "decision": "PENDING", "decision_by": null, "decision_at": null},
+  "migration": {
+    "compatibility_class": "BACKWARD_COMPATIBLE_EXTENSION",
+    "affected_carriers": ["AI Governance professional-process validation", "candidate-routing annotations on SYS-10 and IDX-ARCH-SITE-003 before adoption", "R-E professional-domain registry/view and Current Architecture maturity only after authorized adoption"],
+    "affected_scope": "Prospective Interior/Landscape professional-process consumers and explicit candidate-routing annotations only; unrelated Current Knowledge, historical receipts and professional processes remain unaffected.",
+    "migration_steps": ["fresh machine/regression/anti-pollution evaluation completed on main@db786e3a", "preserve prior EV3/packet evidence as provenance", "issue successor exact-revision independent-review packet", "append candidate-routing annotations to SYS-10 and IDX-ARCH-SITE-003 with CANDIDATE / NOT CURRENT / NO OE PROMOTION labels", "perform eligible independent review", "obtain authorized adoption transition/readback before any Current maturity sync"],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "main@db786e3af5a9ecca03c0b841c47521d1708f2dcd with Interior/Landscape DOMAIN PROCESS OPEN",
+    "rollback_action": "Reject/close isolated candidate and remove only candidate-routing annotations if necessary; preserve SYS-10, IDX-ARCH-SITE-003 and historical evidence.",
+    "rollback_test": "Current architecture control through G9 Knowledge Return and existing professional/knowledge owners remain unchanged and valid.",
+    "provenance_ref": "PR #627; earlier EV3 runs and v001/v002 packets retained as provenance"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After adoption, monitor first Interior/Landscape invocation, interface use and any proposed G9 lesson return.",
+    "regression_signals": ["candidate annotation presented as Current", "project observation generalized without transfer evidence", "G9 awards KI4/OE3", "knowledge routing promoted into professional authority", "sync treated as Promotion", "Current maturity exceeds evidence"],
+    "reopen_rule": "Reopen only affected professional consumers or knowledge candidates through their existing owners; preserve unrelated valid state.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": ["DESIGN_KEEP", "PROFESSIONAL_PASS", "INTEGRATION_PASS", "STATUTORY_APPROVAL", "FIELD_TRUTH", "CURRENT_KNOWLEDGE", "KI4", "OE3", "PROJECT_PROMOTION", "CURRENT_PROCESS_ADOPTION", "SYNC_EQUALS_PROMOTION", "UNIVERSAL_TRANSFERABILITY"]
+}
