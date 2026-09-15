@@ -1,6 +1,6 @@
 {
   "schema":"OLEANDER_TYPED_SYSTEM_REGRESSION_EVALS_v0.1",
-  "status":"DRAFT_EVAL_CORPUS_REPLAY_REFINED",
+  "status":"DRAFT_EVAL_CORPUS_MULTI_REPLAY_REFINED",
   "cases":[
     {"id":"REG-001","priority":"P0","input":"Same logical Requirement exists as two ACTIVE CURRENT records with different IDs and no supersession.","expected":["P0/ID-002:FAIL","INT/010:FAIL_CLOSED"]},
     {"id":"REG-002","priority":"P0","input":"A Runtime Interface Register row is used as the only identity for a Project Interface whose detailed object was deleted.","expected":["P0/ID-003:FAIL","P4/REG-M01:FAIL"]},
@@ -44,7 +44,6 @@
     {"id":"REG-040","priority":"INT","input":"Presentation receives KEEP_MAIN and system promotes Project Design to KEEP_MAIN with no independent design review.","expected":["P10/STYLE-M03:FAIL","INT/008:FAIL","INT/001:FAIL"]},
     {"id":"REG-041","priority":"INT","input":"Evidence is strong but bound to superseded configuration; retrieval uses it for Current Claim.","expected":["INT/002:FAIL","INT/009:FAIL"]},
     {"id":"REG-042","priority":"INT","input":"G9 candidate has polished bilingual body but source project evidence provenance is unresolved.","expected":["INT/007:FAIL","P9/GATE_OR_PROMOTION:HOLD"]},
-
     {"id":"REG-043","priority":"P1","input":"A support-only program overlay passes all overlap checks while selected design authority remains explicitly unchanged. System promotes design-quality/professional ceiling anyway.","expected":["P1/CLAIM-RP01:FAIL","INT/RP01:FAIL"]},
     {"id":"REG-044","priority":"P2","input":"Support overlay decision is closed successfully; parent architectural design-quality review still has four REVISE gates. System closes parent design decision.","expected":["P2/DECQ-RP01:FAIL"]},
     {"id":"REG-045","priority":"P3","input":"Legacy project has no migrated typed Requirement object for a program constraint. Validator marks entire project failed instead of NOT_EVALUATED/HOLD only for dependent promotion.","expected":["P3/MIG-RP01:FAIL","INT/RP02:FAIL"]},
@@ -56,6 +55,22 @@
     {"id":"REG-051","priority":"P7","input":"Project record says fire/accessibility/MEP are OPEN but does not establish risk/issue/assumption/unknown semantics. Migration forces each OPEN into RISK with invented severity.","expected":["P7/OPEN-RP01:FAIL"]},
     {"id":"REG-052","priority":"P8","input":"One bounded support evidence package emits generator, JSON, two CSVs, SVG and MD. System creates six independent semantic evidence objects because six files exist.","expected":["P8/ART-RP01:FAIL_OR_OVERMODELED"]},
     {"id":"REG-053","priority":"P11","input":"Project has one bounded support PASS and a mixed professional review with unresolved REVISE gates. Reader shows one green PROJECT PASS badge.","expected":["P11/READ-RP01:FAIL"]},
-    {"id":"REG-054","priority":"INT","input":"Support evidence improves from superseded hash to corrected current support hash; selected design remains unpromoted. System treats support refresh as design authority promotion.","expected":["P1/CLAIM-RP01:FAIL","P5/CHG-RP01:FAIL","INT/RP01:FAIL"]}
+    {"id":"REG-054","priority":"INT","input":"Support evidence improves from superseded hash to corrected current support hash; selected design remains unpromoted. System treats support refresh as design authority promotion.","expected":["P1/CLAIM-RP01:FAIL","P5/CHG-RP01:FAIL","INT/RP01:FAIL"]},
+    {"id":"REG-055","priority":"P9","input":"Corpus dashboard hard-codes TOTAL=1215 and declares migration complete even though new Current objects appeared after the census.","expected":["P9/CORPUS-RP01:FAIL"]},
+    {"id":"REG-056","priority":"P9","input":"Object has graph-clean terminal state but only GRAPH_ONLY review evidence. System grants Content PASS and IR PASS.","expected":["P9/TERM-RP01:FAIL","P9/REV-RP01:FAIL"]},
+    {"id":"REG-057","priority":"P9","input":"Old KEEP was valid under previous lightweight review. New professional standard arrives; migration rewrites historical KEEP as historical FAIL.","expected":["P9/KEEP-RP01:FAIL"]},
+    {"id":"REG-058","priority":"P9","input":"Full body is complete and revision/hash matches, but B1 is REVISE and IR is HOLD. System grants professional Content PASS because readback succeeded.","expected":["P9/BODY-RP01:FAIL"]},
+    {"id":"REG-059","priority":"P9","input":"Page clearly needs enrichment, but current body and evidence do not support an exact safe patch. Automation fabricates patch text anyway.","expected":["P9/PATCH-RP01:FAIL"]},
+    {"id":"REG-060","priority":"P11","input":"Knowledge object is CURRENT but NOT_PROVEN_PROFESSIONAL_PASS with B1 REVISE. Reader shows a single green CURRENT badge implying professional completion.","expected":["P11/BADGE-RP02:FAIL"]},
+    {"id":"REG-061","priority":"P11","input":"Fresh Support strongly contradicts stale Current. Reader silently replaces Current identity with Support instead of disclosing conflict/boundary.","expected":["P11/POOL-RP02:FAIL"]},
+    {"id":"REG-062","priority":"P11","input":"Dashboard displays '1215 objects' with no date, scope or enumeration basis.","expected":["P11/CENSUS-RP01:FAIL"]},
+    {"id":"REG-063","priority":"INT","input":"Migration field population is incomplete; system labels content professionally wrong solely because new metadata fields are blank.","expected":["INT/RP03:FAIL"]},
+    {"id":"REG-064","priority":"P10","input":"Same documentary image is cropped into desktop, mobile and transparent variants; system counts three independent visual sources/evidence items.","expected":["P10/ASSET-RP01:FAIL"]},
+    {"id":"REG-065","priority":"P10","input":"Large support model render occupies most of page; system promotes its semantic role from SUPPORT to PRIMARY_MAIN because of display size.","expected":["P10/ROLE-RP02:FAIL","P10/ROLE-RP01:FAIL"]},
+    {"id":"REG-066","priority":"P10","input":"Static PDF and offline export pass; live browser has no receipt. Release is marked globally PASS across all media.","expected":["P10/MED-RP01:FAIL"]},
+    {"id":"REG-067","priority":"P10","input":"Public web uses 52 screens while source spec has 112 pages. System treats omitted screens as deletion from source authority.","expected":["P10/SEQ-RP01:FAIL"]},
+    {"id":"REG-068","priority":"P10","input":"AI concept image appears visually consistent with project and is promoted from REFERENCE_ONLY to site evidence.","expected":["P10/TRUTH-RP03:FAIL"]},
+    {"id":"REG-069","priority":"P10","input":"Project uses Editorial base style, Technical proof pages and Mobile overrides, but invariant typography/source/evidence behavior remains coherent. Validator rejects all role-scoped variation as style inconsistency.","expected":["P10/STYLE-RP01:FALSE_POSITIVE"]},
+    {"id":"REG-070","priority":"P10","input":"Public copy removes internal gate jargon but also removes FIELD=0/NO_PROMOTION meaning needed to interpret image truth.","expected":["P10/COPY-RP01:FAIL","P10/BOUND-RP01:FAIL"]}
   ]
 }
