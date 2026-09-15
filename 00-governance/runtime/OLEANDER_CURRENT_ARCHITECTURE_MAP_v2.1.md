@@ -1209,6 +1209,13 @@ The system is considered **architecture-control runnable** only when all of the 
 68. historical receipts and prior-version evidence remain immutable under their original version/contract; `SUPERSEDED` does not mean false, invalid for provenance, or deletion-authorized;
 69. unresolved competing Current claims fail closed through existing authority/reconciliation semantics; machines may not auto-select the newest candidate or silently leave two Current authorities for cleanup later;
 70. the Version / Supersession boundary is a projection over existing Current/lifecycle owners and may not create a duplicate Current registry, global version database/counter, new lifecycle state family or Promotion authority.
+71. `AUTHORITY_SNAPSHOT` remains an R-A owner-native binding of the currently resolved root/project/source identity context; an execution `authority_fingerprint` is a derived equality/staleness guard and is not itself Current, Project, Source or Design Authority;
+72. the current continuation fingerprint remains derived from the existing seven inputs (`CURRENT_ROOT_VERSION / PROJECT_OR_SCOPE_AUTHORITY / SOURCE_AUTHORITY / DESIGN_AUTHORITY / CURRENT_TASK_ID / CURRENT_NATIVE_MASTER_OR_REF / ACTIVE_CONSTRAINT_LOCK`) and may not silently drop one input or add a new authority source;
+73. `AUTHORITY_FINGERPRINT_MATCH` is necessary but not sufficient for direct resume: existing last-artifact readback, dependency/handoff freshness and resumable checkpoint conditions still govern;
+74. fingerprint mismatch requires authority/context re-resolution before continued mutation but does not by itself prove every downstream receipt/artifact/review stale; only consumers bound to materially changed authority/context inputs reopen;
+75. context switch, chat compression, worker/session change or re-rendering the same bound inputs is not an authority change; conversely a changed Source/Design Authority or native write frontier cannot be hidden by matching prose or filenames;
+76. prior receipts remain immutable evidence under the authority fingerprint/snapshot that they actually consumed; a refreshed snapshot does not rewrite history or auto-upgrade old evidence;
+77. the Authority Snapshot / Fingerprint boundary is a projection over R-A and existing runtime carriers and may not create a central authority ledger, second authority registry, universal authority history database or authority-grant mechanism.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -2102,3 +2109,113 @@ Machines may not:
 `CURRENT RESOLVED ≠ PROJECT PROMOTED`.
 
 `SUPERSESSION CLOSED ≠ DESIGN KEEP`.
+
+---
+
+## 36｜Authority Snapshot / Fingerprint Binding & Freshness Boundary
+
+`R-A Authority & Identity` already owns Current / Project / Source authority resolution, identity, supersession and the owner-native `AUTHORITY_SNAPSHOT`. Existing execution runtime carriers also use an `authority_fingerprint` to decide whether a prior continuation checkpoint can be resumed safely.
+
+v2.1 compiles the boundary between those two concepts. It does **not** create a second Authority registry, central authority ledger, authority-history database or new authority-grant mechanism.
+
+### 36.1 Snapshot is owner-native authority binding; fingerprint is only a derived guard
+
+The R-A interface already receives:
+
+`CURRENT_ROOT_AUTHORITY / PROJECT_OR_SCOPE_AUTHORITY_POINTER / SOURCE_AUTHORITY_POINTER / CURRENT_TASK_ID / ACTIVE_USER_CONSTRAINTS`
+
+and must read back:
+
+`CURRENT_ROOT / PROJECT_OR_SCOPE_AUTHORITY / SOURCE_AUTHORITY / SUPERSESSION_AND_IDENTITY`.
+
+That owner-native resolution emits the `AUTHORITY_SNAPSHOT / AUTHORITY_FINGERPRINT / IDENTITY_RESOLUTION / SUPERSESSION_RESOLUTION` outputs used by downstream layers.
+
+The fingerprint is a compact comparison key over already-resolved runtime inputs. It does not become the authority source that it summarizes:
+
+`AUTHORITY FINGERPRINT ≠ CURRENT AUTHORITY`.
+
+`AUTHORITY FINGERPRINT ≠ PROJECT AUTHORITY`.
+
+`AUTHORITY FINGERPRINT ≠ SOURCE AUTHORITY`.
+
+`AUTHORITY FINGERPRINT ≠ DESIGN AUTHORITY`.
+
+`AUTHORITY FINGERPRINT ≠ EVIDENCE / VALIDITY / DESIGN KEEP`.
+
+The machine must be able to resolve the snapshot/fingerprint back to the owner-native refs/readbacks required to understand what changed. An opaque digest without resolvable constituent bindings cannot independently authorize a mutation.
+
+### 36.2 Current continuation fingerprint has one existing seven-input definition
+
+The Current Resolver v1.2 and Execution Receipt v1.0 already agree on the continuation fingerprint inputs:
+
+```text
+CURRENT_ROOT_VERSION
+PROJECT_OR_SCOPE_AUTHORITY
+SOURCE_AUTHORITY
+DESIGN_AUTHORITY
+CURRENT_TASK_ID
+CURRENT_NATIVE_MASTER_OR_REF
+ACTIVE_CONSTRAINT_LOCK
+```
+
+The architecture treats this as an implementation-level binding contract for continuation safety, not a new semantic authority hierarchy.
+
+No architecture projection may silently remove one of those inputs, append an unrelated runtime metric, or reinterpret a tool/session identity as authority.
+
+### 36.3 Match permits re-use checks; it does not prove safe continuation by itself
+
+Existing direct-resume conditions remain conjunctive:
+
+`SAME TASK/OBJECT + AUTHORITY_FINGERPRINT_MATCH + LAST VERIFIED ARTIFACT ACTUALLY READ BACK + NO STALE DEPENDENCY/HANDOFF + CHECKPOINT RESUMABLE`.
+
+Therefore:
+
+`FINGERPRINT MATCH ≠ DIRECT RESUME PASS`.
+
+`FINGERPRINT MATCH ≠ ARTIFACT STILL VALID`.
+
+`FINGERPRINT MATCH ≠ DESIGN / PROFESSIONAL / TECHNICAL PASS`.
+
+The fingerprint only proves equality of the encoded binding inputs at the resolution granularity used to create it. It cannot replace artifact readback, dependency freshness, review freshness or owner-native claim validation.
+
+### 36.4 Mismatch triggers re-resolution, not blanket invalidation
+
+An `AUTHORITY_FINGERPRINT_MISMATCH`, Project/Task switch, changed Source/Design Authority, externally changed native write frontier or materially changed active constraint lock blocks **direct resume** and requires re-resolution before further protected mutation.
+
+The re-resolution step must identify which constituent input changed and which downstream objects actually consumed that constituent.
+
+- changed Source Authority stales only decisions/artifacts/reviews that consumed the affected source relation/claim;
+- changed Design Authority stales only claims/outputs governed by that Design Authority relation;
+- changed native master/write frontier forces the protected write path to re-resolve the actual Current editable source before mutation;
+- changed active constraint may change next-allowed execution behavior without retroactively making unrelated verified design/evidence false;
+- a root governance/version change requires Current re-resolution, but unaffected verified work remains valid when the changed rule/authority is not in its consumed dependency set.
+
+`FINGERPRINT MISMATCH → RE-RESOLVE / COMPUTE AFFECTED SCOPE`.
+
+It does **not** mean:
+
+`FINGERPRINT MISMATCH → INVALIDATE WHOLE PROJECT`.
+
+This remains consistent with §21.1 compatibility blast radius, §29 drift reconciliation and the R-A reopen rule `REOPEN_ONLY_CONSUMERS_BOUND_TO_CHANGED_AUTHORITY`.
+
+### 36.5 Context packaging is not authority mutation
+
+Chat compression, conversation restart, different worker/session, tool restart or equivalent reread of the same owner-native authority bindings does not create an authority change.
+
+Conversely, a materially changed Source/Design Authority, native master or active constraint cannot be concealed by retaining the same title, filename, chat summary or textual description.
+
+`CONTEXT SWITCH ≠ AUTHORITY CHANGE`.
+
+`SAME NAME ≠ SAME AUTHORITY BINDING`.
+
+### 36.6 Historical receipts keep the authority binding they actually consumed
+
+Historical execution/review receipts remain immutable under their original authority snapshot/fingerprint and source revision.
+
+A refreshed Current snapshot may make a prior receipt stale for a **new consequential use**, but it does not rewrite the historical receipt, retroactively change what it observed, or auto-upgrade it under the new authority context.
+
+`NEW AUTHORITY SNAPSHOT ≠ OLD RECEIPT REWRITTEN`.
+
+`OLD RECEIPT STALE FOR NEW USE ≠ OLD RECEIPT FALSE AS HISTORY`.
+
+Machines may validate fingerprint-input consistency, snapshot/ref resolution, mismatch and affected-scope routing. They may not invent Source/Design Authority, widen authority scope, award a human/professional decision, or infer Project Promotion from a matching fingerprint.

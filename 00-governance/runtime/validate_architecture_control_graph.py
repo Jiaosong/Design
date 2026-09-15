@@ -820,6 +820,118 @@ def main() -> None:
     if "ONE LOGICAL OBJECT → MAX 1 ACTIVE PRODUCTION FRONTIER + MAX 1 ACTIVE INDEPENDENT REVIEW FRONTIER" not in naming_text:
         fail("naming/status owner lost per-logical-object active-frontier bound")
 
+    authority_binding = graph.get("authority_snapshot_fingerprint_boundary", {})
+    if authority_binding.get("semantic_class") != "CONTROL_PROJECTION_NOT_AUTHORITY_REGISTRY_LEDGER_HISTORY_DATABASE_OR_GRANT_MECHANISM":
+        fail("authority snapshot/fingerprint boundary must remain a projection rather than an authority registry/ledger/history DB/grant mechanism")
+    for required_true in {
+        "projection_only_not_replacement_r_a_authority_contract",
+        "r_a_owner_native_authority_snapshot_remains_authoritative",
+        "fingerprint_is_derived_binding_guard_not_authority_source",
+        "fingerprint_match_is_necessary_not_sufficient_for_direct_resume",
+        "fingerprint_match_does_not_prove_artifact_review_design_professional_technical_or_statutory_validity",
+        "fingerprint_mismatch_requires_re_resolution_not_whole_project_invalidation",
+        "changed_constituent_propagates_only_to_actual_consumers",
+        "root_version_change_does_not_auto_stale_unaffected_verified_work_after_re_resolution",
+        "constraint_change_may_change_execution_permission_without_retroactively_falsifying_unrelated_evidence",
+        "context_switch_chat_compression_worker_or_session_change_is_not_authority_change",
+        "same_name_filename_or_summary_does_not_prove_same_authority_binding",
+        "historical_receipts_immutable_under_consumed_snapshot_fingerprint_and_source_revision",
+        "refreshed_snapshot_does_not_rewrite_or_auto_upgrade_historical_receipt",
+        "machine_may_validate_binding_not_invent_or_widen_authority",
+        "resolvable_bindings_do_not_require_duplicate_central_authority_persistence",
+        "central_authority_ledger_registry_or_history_database_forbidden",
+    }:
+        if authority_binding.get(required_true) is not True:
+            fail(f"authority snapshot/fingerprint boundary missing {required_true}")
+    if set(authority_binding.get("semantic_owner_refs", [])) != {
+        "00-governance/README.md",
+        "00-governance/complex-project-master-runtime-v1.0.md",
+    }:
+        fail("authority snapshot/fingerprint semantic-owner refs drift")
+    if set(authority_binding.get("runtime_contract_refs", [])) != {
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+        "00-governance/control-plane/orchestration.schema.json",
+    }:
+        fail("authority snapshot/fingerprint runtime-carrier refs drift")
+    for ref in authority_binding.get("semantic_owner_refs", []) + authority_binding.get("runtime_contract_refs", []):
+        check_ref(ref)
+    layer_contract = json.loads(LAYER_INTERFACE.read_text(encoding="utf-8"))
+    r_a_interface = layer_contract.get("layers", {}).get("R-A", {})
+    if set(authority_binding.get("r_a_external_binding_inputs", [])) != set(r_a_interface.get("external_inputs", [])):
+        fail("authority snapshot projection drifted from R-A external binding inputs")
+    if set(authority_binding.get("r_a_required_readback", [])) != set(r_a_interface.get("required_readback", [])):
+        fail("authority snapshot projection drifted from R-A required readback")
+    if set(authority_binding.get("r_a_outputs", [])) != set(r_a_interface.get("outputs", [])):
+        fail("authority snapshot projection drifted from R-A outputs")
+    resolver = json.loads(
+        (ROOT / "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json").read_text(encoding="utf-8")
+    )
+    receipt = json.loads(
+        (ROOT / "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json").read_text(encoding="utf-8")
+    )
+    resolver_checkpoint = resolver.get("continuation_checkpoint_policy", {})
+    receipt_checkpoint = receipt.get("continuation_checkpoint_extension", {})
+    expected_fingerprint_inputs = [
+        "CURRENT_ROOT_VERSION",
+        "PROJECT_OR_SCOPE_AUTHORITY",
+        "SOURCE_AUTHORITY",
+        "DESIGN_AUTHORITY",
+        "CURRENT_TASK_ID",
+        "CURRENT_NATIVE_MASTER_OR_REF",
+        "ACTIVE_CONSTRAINT_LOCK",
+    ]
+    if authority_binding.get("continuation_fingerprint_inputs", []) != expected_fingerprint_inputs:
+        fail("authority snapshot projection continuation fingerprint input order/set drift")
+    if resolver_checkpoint.get("authority_fingerprint_inputs", []) != expected_fingerprint_inputs:
+        fail("Current Resolver continuation fingerprint inputs drift")
+    if receipt_checkpoint.get("authority_fingerprint_inputs", []) != expected_fingerprint_inputs:
+        fail("Execution Receipt continuation fingerprint inputs drift")
+    expected_direct_resume = {
+        "SAME_TASK_AND_OBJECT",
+        "AUTHORITY_FINGERPRINT_MATCH",
+        "LAST_VERIFIED_ARTIFACT_HAS_ACTUAL_READBACK",
+        "NO_STALE_DEPENDENCY_OR_HANDOFF",
+        "CHECKPOINT_STATE_RESUMABLE",
+    }
+    if set(authority_binding.get("direct_resume_requires", [])) != expected_direct_resume:
+        fail("authority snapshot projection direct-resume conditions drift")
+    if set(resolver_checkpoint.get("direct_resume_requires", [])) != expected_direct_resume:
+        fail("Current Resolver direct-resume conditions drift")
+    if set(receipt_checkpoint.get("direct_resume_requires", [])) != expected_direct_resume:
+        fail("Execution Receipt direct-resume conditions drift")
+    expected_revalidate = {
+        "PROJECT_OR_TASK_SWITCH",
+        "AUTHORITY_FINGERPRINT_MISMATCH",
+        "SOURCE_OR_DESIGN_AUTHORITY_CHANGED",
+        "CURRENT_NATIVE_MASTER_OR_WRITE_FRONTIER_CHANGED_EXTERNALLY",
+        "DEPENDENCY_STALE_OR_RETEST_REQUIRED",
+        "CHECKPOINT_MISSING_OR_LAST_ARTIFACT_NOT_READBACK_VERIFIED",
+        "CHECKPOINT_SEQUENCE_ADVANCED_BY_ANOTHER_EXECUTOR",
+    }
+    if set(authority_binding.get("mismatch_revalidation_triggers", [])) != expected_revalidate:
+        fail("authority snapshot projection revalidation-trigger set drift")
+    if set(resolver_checkpoint.get("revalidate_when", [])) != expected_revalidate:
+        fail("Current Resolver continuation revalidation triggers drift")
+    if set(receipt_checkpoint.get("revalidate_on", [])) != expected_revalidate:
+        fail("Execution Receipt continuation revalidation triggers drift")
+    if resolver_checkpoint.get("context_switch_or_compression_is_not_authority_change") is not True:
+        fail("Current Resolver lost context-switch/compression authority boundary")
+    if receipt_checkpoint.get("context_switch_or_compression_is_not_authority_change") is not True:
+        fail("Execution Receipt lost context-switch/compression authority boundary")
+    if authority_binding.get("mismatch_action_sequence", []) != [
+        "STOP_DIRECT_RESUME_OR_PROTECTED_MUTATION",
+        "RE_RESOLVE_CURRENT_OWNER_NATIVE_BINDINGS",
+        "IDENTIFY_CHANGED_FINGERPRINT_CONSTITUENTS",
+        "COMPUTE_ACTUAL_CONSUMERS_AND_AFFECTED_SCOPE",
+        "MARK_ONLY_AFFECTED_DEPENDENCIES_HANDOFFS_REVIEWS_OR_CHECKPOINTS_STALE",
+        "PRESERVE_UNAFFECTED_VERIFIED_STATE",
+        "REFRESH_REQUIRED_READBACK",
+        "RESUME_ONLY_WHEN_EXISTING_RELEASE_CONDITIONS_CLOSE",
+    ]:
+        fail("authority snapshot/fingerprint mismatch action sequence drift")
+
     control_domains = graph.get("control_domains", {})
     file_domain = control_domains.get("FILE_ARTIFACT_MANAGEMENT", {})
     reader_domain = control_domains.get("AI_FILE_AND_READER", {})
@@ -1497,6 +1609,13 @@ def main() -> None:
         "SUPERSEDED_IS_NOT_DELETE_AUTHORITY_OR_FALSEHOOD",
         "STALE_MIRROR_IS_NOT_COEQUAL_CURRENT_AUTHORITY",
         "CURRENT_SUPERSESSION_BOUNDARY_DOES_NOT_CREATE_REGISTRY_VERSION_DB_STATE_FAMILY_OR_PROMOTION_AUTHORITY",
+        "AUTHORITY_FINGERPRINT_IS_DERIVED_GUARD_NOT_AUTHORITY_SOURCE",
+        "AUTHORITY_FINGERPRINT_MATCH_IS_NOT_SUFFICIENT_FOR_DIRECT_RESUME",
+        "AUTHORITY_FINGERPRINT_MISMATCH_REQUIRES_RERESOLUTION_NOT_GLOBAL_INVALIDATION",
+        "AUTHORITY_CHANGE_REOPENS_ONLY_ACTUAL_BOUND_CONSUMERS",
+        "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
+        "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
+        "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")
@@ -1516,6 +1635,7 @@ def main() -> None:
     print("g9_knowledge_return_boundary=PASS")
     print("independent_review_boundary=PASS")
     print("current_supersession_boundary=PASS")
+    print("authority_snapshot_fingerprint_boundary=PASS")
     print("trigger_applicability_projection_definition=PASS")
     print("claim_ceiling_projection_definition=PASS")
     print("execution_frontier_concurrency=PASS")
