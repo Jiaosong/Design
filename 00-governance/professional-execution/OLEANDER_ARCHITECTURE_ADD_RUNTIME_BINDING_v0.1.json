@@ -1,0 +1,116 @@
+{
+  "schema": "OLEANDER_ARCHITECTURE_ADD_RUNTIME_BINDING_v0.1",
+  "status": "DRAFT_BINDING_NOT_CURRENT",
+  "professional_process": "Architecture Design Development Process v1.0",
+  "professional_domain": "ARCHITECTURE",
+  "process_authority": {
+    "local_authority_path": "D:\\Desgin\\00-governance\\architecture-design-development-process-v1.0.md",
+    "receipt_schema_path": "D:\\Desgin\\00-governance\\schemas\\architecture-design-development-receipt.v1.schema.json",
+    "stage_enumeration_policy": "ENUMERATE_FROM_PROCESS_AUTHORITY_ONLY_DO_NOT_RECONSTRUCT_FROM_MEMORY",
+    "runtime_binding_may_replace_process": false
+  },
+  "system_position": {
+    "knowledge_plane_role": "METHOD",
+    "project_plane_role": "PROJECT_EXECUTION_INSTANCE",
+    "runtime_control_role": "STAGE_STATE_GATE_RECEIPT_AND_READBACK",
+    "presentation_role": "ORTHOGONAL_PROJECTION_ONLY"
+  },
+  "core_rule": "ARCHITECTURE_ADD_DEFINES_DOMAIN_DESIGN_WORK; P0_P11_DEFINES_CROSS_PROJECT_RUNTIME_CONTROL; NEITHER_REPLACES_THE_OTHER",
+  "stage_binding_contract": {
+    "required_stage_identity_fields": [
+      "project_id",
+      "domain_process_id",
+      "stage_id",
+      "stage_source_revision",
+      "stage_status",
+      "owner",
+      "input_baseline_refs",
+      "output_artifact_refs",
+      "open_items",
+      "readback_refs"
+    ],
+    "runtime_bindings": {
+      "P0": {
+        "name": "Identity / Plane",
+        "required": ["stable_stage_identity", "project_object_identity", "artifact_identity", "exact_primary_plane"],
+        "failure_boundary": "DUPLICATE_OR_AMBIGUOUS_CURRENT_STAGE_OR_ARTIFACT_IDENTITY"
+      },
+      "P1": {
+        "name": "Authority",
+        "required": ["design_authority", "source_authority", "change_authority", "claim_ceiling"],
+        "failure_boundary": "NEWEST_OR_MOST_EDITABLE_FILE_CANNOT_SELF_PROMOTE_TO_AUTHORITY"
+      },
+      "P2": {
+        "name": "Project State / Decision",
+        "required": ["stage_decision_state", "selected_option_or_direction", "implementation_state", "readback_state"],
+        "failure_boundary": "DECISION_SELECTED_DOES_NOT_EQUAL_IMPLEMENTED_OR_CLOSED"
+      },
+      "P3": {
+        "name": "Need / Requirement / Constraint / Claim",
+        "required": ["stage_relevant_needs", "requirements", "constraints", "claims", "acceptance_basis"],
+        "failure_boundary": "DESIGN_PREFERENCE_CANNOT_BE_REWRITTEN_AS_REQUIREMENT_OR_COMPLIANCE_FACT"
+      },
+      "P4": {
+        "name": "Controlled Variable / Interface / Dependency",
+        "required": ["controlled_variables", "interfaces", "dependencies", "acceptance_dimensions"],
+        "failure_boundary": "LOCAL_GEOMETRY_PASS_CANNOT_CLOSE_UNRESOLVED_OPERATIONAL_OR_CROSS_DISCIPLINE_INTERFACE"
+      },
+      "P5": {
+        "name": "Baseline / Change / Staleness",
+        "required": ["stage_input_baseline", "stage_output_candidate", "change_records", "staleness_impact"],
+        "failure_boundary": "REVISION_OR_CONTEXT_CHANGE_REQUIRES_SCOPED_REASSURANCE_NOT_SILENT_CARRY_FORWARD"
+      },
+      "P6": {
+        "name": "Evidence / Assurance",
+        "required": ["evidence_records", "assurance_target", "target_results", "limitations", "independence_state_when_required"],
+        "failure_boundary": "MODEL_OVERLAY_NON_OVERLAP_OR_READBACK_CANNOT_SELF_GRANT_CODE_ENGINEERING_FIELD_OR_PROFESSIONAL_PASS"
+      },
+      "P7": {
+        "name": "Risk / Issue / Assumption / Unknown",
+        "required": ["risks", "issues", "assumptions", "unknowns", "causal_or_resolution_lineage"],
+        "failure_boundary": "OPEN_IS_NOT_AUTOMATICALLY_RISK_AND_REPAIR_IS_NOT_AUTOMATIC_CLOSURE"
+      },
+      "P8": {
+        "name": "Work / Artifact / Handoff",
+        "required": ["work_package", "tasks", "native_editable_artifacts", "derivatives", "handoff_role", "consumer_readback"],
+        "failure_boundary": "REPORT_RENDER_OR_FILE_OPEN_CANNOT_SUBSTITUTE_FOR_REQUIRED_NATIVE_EDITABLE_MASTER_OR_CONSUMER_TASK_READBACK"
+      },
+      "P9": {
+        "name": "Knowledge Admission",
+        "required": ["g9_candidate_only_when_cross_project_learning_exists", "existing_owner_search", "boundary_and_counterexample"],
+        "failure_boundary": "PROJECT_SUCCESS_OR_SINGLE_CASE_DOES_NOT_AUTO_CREATE_OR_PROMOTE_KNOWLEDGE_METHOD"
+      },
+      "P10": {
+        "name": "Presentation",
+        "required": ["presentation_role_if_needed", "semantic_source_identity", "target_condition_readback", "truth_boundary"],
+        "failure_boundary": "PRESENTATION_QUALITY_OR_BROWSER_PASS_CANNOT_PROMOTE_UPSTREAM_DESIGN_TRUTH"
+      },
+      "P11": {
+        "name": "Retrieval / Reader",
+        "required": ["stage_reader_projection", "independent_state_axes", "typed_support_relations", "warnings_without_mutation"],
+        "failure_boundary": "READER_MUST_NOT_FLATTEN_MIXED_STAGE_RESULTS_INTO_ONE_GREEN_PASS"
+      }
+    }
+  },
+  "stage_transition_policy": {
+    "default": "SEQUENTIAL_WITH_EXPLICIT_OVERLAP_ONLY_WHEN_PROCESS_AUTHORITY_ALLOWS",
+    "material_revise": "BLOCK_NEXT_STAGE_PROMOTION_WHEN_THE_OPEN_ITEM_IS_A_DECLARED_STAGE_EXIT_CONDITION",
+    "open_non_blocking": "MAY_CONTINUE_ONLY_WITH_EXPLICIT_SCOPE_BOUNDARY_DEPENDENCY_AND_REOPEN_TRIGGER",
+    "no_fake_pass": true,
+    "no_code_engineering_field_promotion": true
+  },
+  "architecture_execution_requirements": [
+    "REAL_EDITABLE_ARCHITECTURAL_ASSET_OVER_REPORT_ONLY_OUTPUT",
+    "NATIVE_GEOMETRY_WHEN_GEOMETRY_IS_THE_DESIGN_CLAIM",
+    "FULL_READBACK_AFTER_MUTATION",
+    "ARCHITECTURE_GATE_SEPARATE_FROM_CODE_ENGINEERING_AUTHORITY_GATE",
+    "EXISTING_MATURE_DESIGN_FIRST_NON_DESTRUCTIVE_DEEPENING",
+    "NO_LOSS_RESTRUCTURE_WITHOUT_INFORMATION_LOSS"
+  ],
+  "stage_matrix_generation": {
+    "state": "WAITING_FOR_DIRECT_READ_OF_LOCAL_PROCESS_AUTHORITY",
+    "reason": "The current connected GitHub/Library surfaces do not expose the authoritative local Architecture Design Development Process v1.0 body. Exact ADD stage names beyond confirmed current context must not be invented.",
+    "next_operation": "READ_LOCAL_AUTHORITY_THEN_EMIT_ONE_ROW_PER_ADD_STAGE_WITH_P0_P11_BINDINGS_AND_EXIT_CRITERIA"
+  },
+  "promotion_effect": "NONE_DRAFT_BINDING_ONLY"
+}
