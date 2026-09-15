@@ -1,0 +1,17 @@
+{
+  "schema": "OLEANDER_P10_EXECUTABLE_REGRESSION_EVALS_v0.1",
+  "status": "DRAFT_EXECUTABLE_REGRESSION_COMPANION_NOT_CURRENT",
+  "cases": [
+    {"id":"P10-REG-001","input":"A reusable desktop PASS is stored only as scalar PASS with no source revision or target-condition identity.","expected":["P10/MED-RP02:FAIL","P10/MED-RP03:FAIL"]},
+    {"id":"P10-REG-002","input":"Browser target PASS is used to close Design KEEP, professional acceptance or field validity.","expected":["P10/READ-RP02:FAIL"]},
+    {"id":"P10-REG-003","input":"Simulation is user-facing on desktop/mobile but the truth boundary exists only in repository metadata, not those rendered targets.","expected":["P10/BOUND-RP02:FAIL"]},
+    {"id":"P10-REG-004","input":"Two transport/runtime chunks from one semantic image are counted as two independent visual sources.","expected":["P10/ASSET-RP02:FAIL"]},
+    {"id":"P10-REG-005","input":"An older dependency manifest is claimed to completely cover a newer current source revision.","expected":["P10/ASSET-RP03:FAIL"]},
+    {"id":"P10-REG-006","input":"Runtime slot MAIN role is used to promote design review state and source authority.","expected":["P10/ROLE-RP03:FAIL"]},
+    {"id":"P10-REG-007","input":"Section/page count change without scope labels is used as proof of source mutation/content loss.","expected":["P10/SEQ-RP02:FAIL"]},
+    {"id":"P10-REG-008","input":"Reduced-motion behavior is treated as a separate Style identity even though information architecture and semantic role are unchanged.","expected":["P10/MOTION-RP02:FAIL"]},
+    {"id":"P10-REG-009","input":"Vercel deployment status passes, external content readback is NOT_EVALUATED, but external content PASS is inferred from deployment.","expected":["P10/MED-RP04:FAIL"]}
+  ],
+  "coverage_rule": "EVERY_EXECUTABLE_P10_RULE_MUST_APPEAR_IN_AT_LEAST_ONE_EXPECTED_REGRESSION_REFERENCE",
+  "promotion_effect": "NONE_DRAFT_TEST_CORPUS_ONLY"
+}
