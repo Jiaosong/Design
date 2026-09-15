@@ -3,6 +3,7 @@
   "status": "DRAFT_EXECUTABLE_COMPANION_NOT_CURRENT",
   "semantic_owner": "OLEANDER_RISK_ISSUE_ASSUMPTION_UNKNOWN_CONTRACT_v1.0",
   "semantic_companion": "OLEANDER_P7_UNCERTAINTY_PROBLEM_MATRICES_v1.1.json",
+  "snapshot_extension": "OLEANDER_P7_EXECUTABLE_SNAPSHOT_EXTENSION_v0.1.json",
   "implementation": "validate_p7_conversions.py",
   "deterministic_self_test": "test_p7_conversions.py",
   "regression_corpus": "OLEANDER_P7_EXECUTABLE_REGRESSION_EVALS_v0.1.json",
