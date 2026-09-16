@@ -6,6 +6,7 @@ import sys
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 from control_plane import locate_asset, revision_breaker, run_check, select_gate_profile, validate_card
+from scan_control_cards import is_excluded
 
 
 def base_card():
@@ -67,6 +68,28 @@ class ControlPlaneTests(unittest.TestCase):
     def test_v02_legacy_card_remains_valid_for_replay_compatibility(self):
         c = legacy_v02_card()
         self.assertFalse([f for f in validate_card(c) if f.level == "ERROR"])
+
+    def test_v02_architecture_replay_does_not_retroactively_require_preservation_review(self):
+        c = legacy_v02_card()
+        c["problem_layer"] = "Architecture"
+        self.assertNotIn(
+            "NO_LOSS_PRESERVATION_REVIEW_REQUIRED",
+            {f.code for f in validate_card(c)},
+        )
+        self.assertEqual(run_check(c)["status"], "PASS")
+
+    def test_control_card_scanner_excludes_local_runtime_worktrees_and_legacy_v02_replays(self):
+        for rel in (
+            ".worktrees/example/V013_REENTRY_CONTROL_CARD.json",
+            ".mcp-runtime/diagnostics/example.json",
+            ".oleander-presentation-c04/00-governance/control-plane/replays/pr85-control-card.json",
+            "$out/example.json",
+            "90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json",
+            "90-shared/toolchains/modeling-worker/v0.13/V013_REENTRY_CONTROL_CARD.json",
+        ):
+            with self.subTest(rel=rel):
+                self.assertTrue(is_excluded(rel))
+        self.assertFalse(is_excluded("projects/example/CURRENT_CONTROL_CARD.json"))
 
     def test_schema_rejects_additional_property(self):
         c=base_card(); c["unexpected"]="x"; self.assertIn("SCHEMA_VALIDATION", {f.code for f in validate_card(c)})
