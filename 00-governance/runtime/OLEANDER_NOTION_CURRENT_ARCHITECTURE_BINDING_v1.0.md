@@ -1,6 +1,6 @@
 # OLEANDER Notion Current Architecture Binding v1.0
 
-Status: **ACTIVE CURRENT MIRROR**  
+Status: **STALE MIRROR / REVALIDATION REQUIRED FOR NEW CROSS-PLATFORM CURRENT CLAIM**
 Source authority version: **OLEANDER Current Authority v1.1.1**  
 Decision date: **2026-08-18**  
 Scope: **GitHub execution routing into the current Notion knowledge architecture**
@@ -32,12 +32,17 @@ This root must be read before historical `00–70` navigation pages or recovery 
 - Page: `OLEANDER Current System Architecture Control Map v2.1｜当前系统架构控制图`
 - Page ID: `3dcb86be-5c47-8157-bb15-e2ba605e2067`
 - Canonical ID: `MTH-OLEANDER-ARCHITECTURE-CONTROL-001`
-- State: `CURRENT / DEFAULT / VERIFIED / ACTIVE / VALID / L5 / METHOD`
+- Current consumability: `STALE` for a new cross-platform Current claim until live Notion + GitHub revalidation.
+- Historical verified state at the last live readback: `CURRENT / DEFAULT / VERIFIED / ACTIVE / VALID / L5 / METHOD`.
 - Role: Notion Current reader/control mirror for the one OLEANDER system architecture.
 - Executable canonical view: `OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md` + `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json` + validator on GitHub main.
 - Architecture implementation baseline: `f78fad3f16fe0b458360708b27c05efaa6172609` (PR #620 merge).
+- Last live readback: `2026-09-15T14:23:10Z`.
+- Stale detection baseline: `origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202`; the GitHub v2.1 carriers materially advanced after the last live-verified `f78fad3f...` baseline.
 
 This carrier is deliberately a **single readable Current mirror**, not a second Master Runtime or copied executable specification. It stores stable architecture semantics and exact implementation pointers; machine execution and validation read the GitHub canonical carriers. Any mismatch is cross-platform drift and must be repaired/read back before a new architecture Current claim.
+
+The prior live readback is not rewritten or declared false. It remains historical evidence for the exact `f78fad3f...` implementation baseline that was read back. What is stale is **eligibility to reuse that readback for the newer GitHub architecture implementation**. Until a fresh live Notion + GitHub readback closes the drift, the GitHub canonical architecture may continue to evolve under its own owner controls, but this mirror is not co-equal Current evidence for cross-platform synchronization.
 
 ### Current registry control surface
 

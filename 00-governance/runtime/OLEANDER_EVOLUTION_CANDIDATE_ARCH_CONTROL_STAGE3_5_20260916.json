@@ -1,0 +1,219 @@
+{
+  "candidate_id": "OLEANDER-EV-ARCH-CONTROL-STAGE3-5-20260916",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "ARCHITECTURE_CONTROL_GRAPH",
+  "target_owner": "OLEANDER runtime / architecture-control owner",
+  "target_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+  "baseline": {
+    "current_version_or_revision": "OLEANDER architecture control v2.1 / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "authority_fingerprint": "sha256:24b3e985c664b7ebf4a239cfa7e41331d82e4fb4da3f96e893c0fa8ae27c9f92",
+    "authority_fingerprint_inputs": {
+      "CURRENT_ROOT_VERSION": "OLEANDER Current Authority v1.1.1",
+      "PROJECT_OR_SCOPE_AUTHORITY": "OLEANDER system architecture control / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "SOURCE_AUTHORITY": "GitHub Jiaosong/Design origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "DESIGN_AUTHORITY": "NOT_APPLICABLE_SYSTEM_GOVERNANCE_NO_DESIGN_KEEP_AUTHORITY",
+      "CURRENT_TASK_ID": "USER_STAGE5_REPOSITORY_CONTROL_INTEGRITY_PASS_20260916",
+      "CURRENT_NATIVE_MASTER_OR_REF": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md + 00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "ACTIVE_CONSTRAINT_LOCK": "PRESERVE_V2_1_OWNER_STATE_BOUNDARIES|NO_PARALLEL_FRAMEWORK|NO_HISTORICAL_RECEIPT_REWRITE|NO_FALSE_CURRENT_OR_SYNC|PRESERVE_UNRELATED_USER_WORK"
+    },
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-15T18:04:46.086875+00:00"
+  },
+  "trigger_evidence": [
+    "User-authorized Stage 3 executability/validator pass required actual schema/runtime enforcement rather than descriptive prose.",
+    "User-authorized Stage 4 professional-content pass required substantive DD / Architecture / Structural / MEP operating criteria, evidence thresholds, handoffs and reopen semantics.",
+    "Stage 3/4 regression exposed and repaired stdlib fallback/version compatibility defects without rewriting historical v1.0 evidence.",
+    "Stage 5 repository/control audit detected that the Notion architecture mirror's last live-verified GitHub baseline f78fad3f16fe0b458360708b27c05efaa6172609 no longer matches the materially advanced v2.1 GitHub carriers."
+  ],
+  "hypothesis": "The bounded Stage 3/4/5 implementation can strengthen executable architecture-control, professional-domain content, legacy-read compatibility and stale-mirror detection without creating a parallel runtime/state family, rewriting historical receipts, weakening owner boundaries or self-promoting the candidate to Current.",
+  "mutation_scope": {
+    "summary": "Coupled v2.1 architecture-control implementation candidate covering R-D/R-E/R-I body/readback bindings, Current/supersession application, DQ and Professional v1.1 machine contracts with v1.0 historical read branches, Architecture/Structural/MEP operating substance, CI/tests, and truthful Notion/GitHub architecture-mirror drift handling.",
+    "candidate_file_count_excluding_this_record": 30,
+    "candidate_manifest_sha256": "223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae",
+    "candidate_manifest_algorithm": "SHA256 of UTF-8 lines sorted by path, each line = <relative_path>\\0<file_sha256>\\n",
+    "explicit_exclusions": [
+      "No project-native geometry/model/artifact is changed by this candidate.",
+      "No historical DQ / Architecture / Professional / Execution receipt is rewritten.",
+      "No Notion live object is mutated or claimed freshly read back.",
+      "Root-worktree files outside the bounded candidate set remain unrelated user/concurrent work and are not part of this candidate."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae",
+    "files": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "214eba96059e066ef3b00ab36da21882b5e82405032f169f031f47a3d236846b",
+      "00-governance/architecture-design-development-process-v1.0.md": "9aac95b7d5905690077ef0c8242474f0d912b82340cae212f1776d798f8fb2a0",
+      "00-governance/building-services-mep-design-process-v1.0.md": "29afb8a0a41d45e5b538d823391068bd73bfb58e002ba1555c17085c1474e8b5",
+      "00-governance/control-plane/tests/test_architecture_v21_body_and_g9_bindings.py": "8a1c468dd59f78ee2251ac94cb2ca51c4f21a3927889738381528372954fcd78",
+      "00-governance/control-plane/tests/test_design_development_receipt_contracts.py": "fa713cec7d27c4c01318d5db27ee72ad4c571cc1e8612e9782aa731956126219",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "6729da9a360a99e8aa34036d6387ba1f1d72cf1ab4dabf92ab33073c909fee15",
+      "00-governance/design-quality-and-design-development-specification-v1.0.md": "1b4238ca8bc0e10f162d20ec721340fec2ee6325b4c44f9565111b28204bdcf2",
+      "00-governance/professional-domain-process-contract-v1.0.md": "699b26a4ce932151ef9ec3d94b5d9850ee514ff4b6a79a19052a0dec579f0162",
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json": "5652bb91fd4a05ae376ceb20a91bc0c513c19d724bcfbb3d5cca3a5f141baf6c",
+      "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md": "baf28aabe4b2df71eac31e43a6354a7e36857233ca14756784d5e922c1bca58b",
+      "00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md": "0871b477df280c146fec587a5f91bdd743b01817d0b39b45253d0f36b0d1997c",
+      "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json": "58612e2c9f09a510123b430376569025b054dfd6c9326a6db0c3c0fc62740ada",
+      "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.md": "d998e64ee6b88942c9ae78a2a1c75353b2853fbfa6b8815eeca0cdc3dc1b8243",
+      "00-governance/runtime/OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.json": "cc7c78b64e3c06bfd7aedc43cb253b248f53bc2e64267d906f427c5674aee6b5",
+      "00-governance/runtime/OLEANDER_NOTION_GITHUB_DRIFT_CHECK_v0.1.md": "41ea16726a78ff4e57cba20b3267ec9562b78fe72052814ba4340d24cac2c119",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json": "25375b20cfdaa8f3ae7df5e0d58b4d4f5523235b6edfeef6a26851c63a75433d",
+      "00-governance/runtime/validate_architecture_control_graph.py": "2050c64faa8eb570f28cfcc69b7a5aab783d28eaf85bd1378749e3f3e2d78cf9",
+      "00-governance/runtime/validate_execution_contracts.py": "e6751c6e2cf323ed522da3526238edff8a33c7f1687959ac319be916bfef10cf",
+      "00-governance/schemas/README.md": "89c3d170b06ae200169605535bbf68d44b5bf83f4a2250e8274beef3f11d17b4",
+      "00-governance/schemas/architecture-design-development-receipt.v1.schema.json": "5e7d41bc3c8b30d95ae1ccb717f34124e32b537bba330bd70c938f1f7e3e9e44",
+      "00-governance/schemas/architecture-design-development-receipt.v1.template.json": "433e4f3d3f8c0664b3ae3c27392a7923e4ac0fd52237dff6f52608088968941c",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "8013f78c501e3f79d0f9b3c69227be88944d6bdd89afce57fd64c2dcbd812287",
+      "00-governance/schemas/design-quality-development-receipt.v1.schema.json": "b5f0981e539ddb18ec335019c883bf1c12e4d796c284d6a6a149316af78ec6c9",
+      "00-governance/schemas/design-quality-development-receipt.v1.template.json": "fbfd9c08411721c8431efd4924737612326c8e2c091383307753b1857edbb841",
+      "00-governance/schemas/professional-domain-process.example.json": "b6efb7936df0e06abcb9b51d2d89cf29b82c5fcdf5e3d1c6a47a70b90cffe857",
+      "00-governance/schemas/professional-domain-process.v1.schema.json": "5db6287e3a1d672b913521e2ec4872bf901aa8f3053e4731e7fae280c7c13fe3",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "87d1ca04bc8b1c5e3281de1da1b68542bfd9eaa176462df3d54faa52b0f388ed",
+      "00-governance/schemas/validate_design_development_receipts.py": "1a4c33c9be30b3688e4ad37c0a266bb6cdf1500e392ee6fd6f8d889206c38410",
+      "00-governance/schemas/validate_professional_domain_process.py": "a91438841581c0c0a213278d26612dfecfb6ea098b0d5c033f5e5c42b09d54b2",
+      "00-governance/structural-engineering-design-process-v1.0.md": "b695ff5c4cb6c62bae08ac27c53f0d5de34593b36821c61155b7b32c6efd5fde"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/control-plane/tests/test_architecture_v21_body_and_g9_bindings.py",
+      "00-governance/control-plane/tests/test_design_development_receipt_contracts.py",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py"
+    ],
+    "real_case_refs": [
+      "KH-LY46 historical Design Quality receipts v001/v002/v003, fresh-read in the live workspace without mutation",
+      "origin/main legacy Professional Domain v1.0 instance and Structural v1.0 definition, materialized/read back without mutation",
+      "Current Structural Engineering and Building Services / MEP v1.1 definition carriers"
+    ],
+    "counterexample_refs": [
+      "pre-body Design Quality v1.0 receipts lacking body_structure",
+      "legacy candidate_comparison with one aggregate comparison artifact",
+      "stdlib-only Professional validator fallback path without jsonschema",
+      "stale Notion architecture mirror whose last live-verified GitHub baseline predates Current carrier content"
+    ],
+    "regression_refs": [
+      "full 00-governance/control-plane/tests discovery: 124 tests OK after repairs",
+      "Architecture Control validation PASS",
+      "Execution Locks validation PASS",
+      "Execution Contracts validation PASS including architecture mirror drift guard",
+      "Runtime Resilience validation PASS",
+      "Architecture Namespace validation PASS",
+      "Complex Project Master Runtime validation PASS",
+      "Design Development receipt templates PASS",
+      "Professional Domain self-test + Structural + MEP validation PASS",
+      "git diff --check PASS after Stage-5 repair"
+    ],
+    "metrics": {
+      "control_plane_tests_passed": 124,
+      "control_plane_tests_failed": 0,
+      "kh_ly46_legacy_dq_receipts_read_compatible": "3/3",
+      "professional_legacy_current_definition_readbacks": "PASS",
+      "architecture_current_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "unrelated_root_worktree_paths_mutated_by_candidate": 0
+    },
+    "acceptance_thresholds": [
+      "Zero architecture-control validator failures.",
+      "Zero control-plane regression failures in the bounded suite.",
+      "Historical v1.0 receipts/instances used in regression remain read-compatible without in-place rewrite.",
+      "No new top-level architecture, Master Runtime, Knowledge authority, universal professional stage or state family is introduced.",
+      "No stale cross-platform mirror is consumed as a fresh CURRENT claim.",
+      "Unrelated live root-worktree changes remain byte-preserved and outside candidate scope."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "origin/main@76dbd8d1 is the frozen Current GitHub baseline. It validates, but its last live Notion architecture mirror still points to older baseline f78fad3f and the baseline lacks the present Stage3/4 professional-content, legacy-read and body/readback enforcement deltas.",
+    "candidate_result": "The bounded 30-file implementation manifest passes the applicable validators/regression and explicitly marks the stale architecture mirror instead of widening Current/sync claims.",
+    "regressions": [],
+    "quality_delta": "Adds decision criteria, evidence thresholds, spatial/technical/material/interface consequences and handoff/reopen semantics to DD/Architecture/Structural/MEP operating specifications while retaining owner boundaries.",
+    "reliability_delta": "Adds fail-closed v1.1 machine contracts with explicit v1.0 historical-read compatibility, exact body/review bindings, regression coverage and a Git-content-aware architecture mirror drift guard.",
+    "cost_latency_delta": "Adds bounded schema/test surface and one repository-local Git content comparison during execution-contract validation; no persistent service, database or new runtime is introduced.",
+    "decision_basis": "Retain as an evaluated candidate and route to independent review. Do not adopt Current or claim cross-platform synchronization until the remaining owner/human/readback gates close."
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_5_STAGE5_INDEPENDENT_REVIEW_20260916",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-15T18:10:56.3321776Z",
+    "review_notes": [
+      "Exact 30-file target manifest was independently recomputed and matched sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae with no omissions or extras.",
+      "Architecture mirror stale handling preserves the f78fad3f live-readback as historical truth and blocks false cross-platform CURRENT reuse.",
+      "Negative probes fail closed for false CURRENT, mismatch plus NO_ACTION, unavailable implementation commit, and resolver-current mismatch cases.",
+      "This independent verdict authorizes EV4 only. Live Notion/GitHub mirror revalidation and authorized human Promotion/adoption remain separate later gates."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_WITH_EXPLICIT_LEGACY_READ_COMPATIBILITY_AND_STALE_MIRROR_HOLD",
+    "affected_carriers": [
+      "v2.1 architecture map / control graph / layer-interface and integrated-runtime carriers",
+      "Design Quality and Architecture DD receipt schemas/validators/templates",
+      "Professional Domain process schema/validator/example plus Structural and MEP machine definitions",
+      "Design Quality / Professional / Architecture / Structural / MEP operating specifications",
+      "control-plane CI and bounded regression tests",
+      "Notion/GitHub drift control and architecture-mirror consumability state"
+    ],
+    "affected_scope": "OLEANDER architecture-control and R-D/R-E professional-definition governance only; no project-native design artifact or project receipt is migrated by this candidate.",
+    "migration_steps": [
+      "Preserve origin/main@76dbd8d1 as frozen rollback/provenance baseline.",
+      "Keep historical v1.0 receipts/instances immutable and readable through legacy branches.",
+      "Keep the Notion architecture mirror STALE for new cross-platform Current use until fresh live readback closes the mismatch.",
+      "Run exact-candidate validators, compatibility fixtures and full governance regression.",
+      "Obtain independent review bound to the exact candidate implementation manifest.",
+      "Require authorized human Promotion/adoption before moving the candidate to EV6_CURRENT_ADOPTED.",
+      "After adoption, read back the exact GitHub Current state and separately refresh/read back the Notion mirror before restoring cross-platform CURRENT."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "rollback_action": "Restore only the candidate-affected governance carriers to origin/main@76dbd8d1; preserve this candidate record, evaluation evidence and any later independent review as provenance. Do not touch unrelated root-worktree/user files.",
+    "rollback_test": "Rerun architecture/execution/runtime/schema validators plus full control-plane regression and confirm the Current architecture count remains 1 / Master Runtime 1 / runtime layers 11.",
+    "provenance_ref": "candidate-manifest-sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae against origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "After any authorized adoption, until exact-main governance regression passes and the architecture Current/supersession pointers plus required cross-platform mirror readbacks are reconciled.",
+    "regression_signals": [
+      "architecture-control validator failure",
+      "control-plane regression failure",
+      "v1.0 historical receipt/instance read incompatibility",
+      "duplicate Current architecture or professional/interface authority",
+      "Notion/GitHub architecture mirror reported CURRENT while mapped GitHub content differs from its live-verified implementation commit",
+      "unexpected mutation of unrelated root-worktree/user files"
+    ],
+    "reopen_rule": "Any signal reopens only the affected candidate/migration/readback scope; preserve the frozen baseline and unrelated verified state.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "HUMAN_PROMOTION",
+    "LIVE_NOTION_EQUIVALENCE",
+    "CROSS_PLATFORM_SYNC",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PROJECT_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_OR_FIELD_VALIDITY",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}

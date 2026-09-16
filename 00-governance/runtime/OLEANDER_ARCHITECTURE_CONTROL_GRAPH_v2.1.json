@@ -345,12 +345,14 @@
       "state_objects": [
         "PROJECT_DESIGN_DNA",
         "DD_SCOPE",
+        "DESIGN_DEVELOPMENT_BODY_RECORD",
         "DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
         "DQ_MATURITY"
       ],
       "control_actions": [
         "COMPILE_DD_SCOPE",
         "BIND_PROJECT_DESIGN_DNA",
+        "BIND_DESIGN_DEVELOPMENT_BODY_RECORD",
         "REQUIRE_DESIGN_READBACK",
         "PROPAGATE_DESIGN_REOPEN"
       ],
@@ -398,11 +400,13 @@
         "PROFESSIONAL_DOMAIN_PROCESS",
         "DOMAIN_PROCESS_INSTANCE",
         "DOMAIN_STAGE_INSTANCE",
+        "PROFESSIONAL_STAGE_BODY_RECORD",
         "DOMAIN_RECEIPT"
       ],
       "control_actions": [
         "TRIGGER_DOMAIN_PROCESS",
         "RUN_AUTHENTIC_STAGES",
+        "BIND_PROFESSIONAL_STAGE_BODY_RECORD",
         "REQUIRE_NATIVE_OUTPUT",
         "EMIT_PROFESSIONAL_READBACK"
       ],
@@ -598,6 +602,7 @@
       ],
       "control_actions": [
         "REOPEN_ACTUAL_RESULT",
+        "VERIFY_BODY_RECORD_BINDINGS",
         "RUN_TRIGGERED_REVIEWS",
         "ROUTE_FAILURE_TO_OWNER",
         "RECORD_INDEPENDENCE"
@@ -987,7 +992,50 @@
     "mirror_failure_does_not_resurrect_predecessor_canonical_authority": true,
     "uncertain_canonical_transition_fails_closed": true,
     "current_or_superseded_lifecycle_disposition_does_not_substitute_for_project_promotion_design_keep_or_statutory_approval": true,
-    "resolvable_fields_do_not_require_duplicate_central_persistence": true
+    "resolvable_fields_do_not_require_duplicate_central_persistence": true,
+    "body_receipt_native_application": {
+      "semantic_class": "APPLICATION_OF_EXISTING_SUPERSESSION_BOUNDARY_NOT_NEW_STATE_REGISTRY_VERSION_DB_OR_RECEIPT_REWRITE",
+      "owner_refs": [
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+      ],
+      "object_classes": [
+        "DESIGN_DEVELOPMENT_BODY_RECORD",
+        "DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
+        "PROFESSIONAL_STAGE_BODY_RECORD",
+        "DOMAIN_RECEIPT",
+        "NATIVE_ARTIFACT",
+        "REVIEW_RECEIPT"
+      ],
+      "successor_rebind_sequence": [
+        "RESOLVE_CURRENT_SUCCESSOR_AND_AFFECTED_CONSUMERS",
+        "PRESERVE_PREDECESSOR_BODY_RECEIPT_AND_REVIEW_AS_HISTORICAL_PROVENANCE",
+        "MARK_ONLY_CONSUMING_BODY_RECEIPT_REVIEW_OR_PROMOTION_DEPENDENCY_STALE",
+        "BIND_SUCCESSOR_BODY_OR_STAGE_RECORD_TO_CURRENT_NATIVE_AND_READBACK",
+        "R_I_VERIFY_SUCCESSOR_BINDINGS_AND_RERUN_AFFECTED_REVIEW",
+        "EMIT_SUCCESSOR_OR_REVALIDATION_RECEIPT_WITHOUT_REWRITING_PREDECESSOR",
+        "R_J_CONSUME_ONLY_CURRENT_NON_STALE_RECEIPT_FOR_PROMOTION"
+      ],
+      "reuse_existing_failure_or_hold_boundaries": [
+        "R-D:DESIGN_REOPEN_REQUIRED",
+        "R-D:DQ_RECEIPT_STALE",
+        "R-E:PROFESSIONAL_STAGE_REOPEN_REQUIRED",
+        "R-I:BODY_RECORD_BINDING_STALE_OR_INCOMPLETE",
+        "R-J:PROMOTION_PREREQUISITE_OPEN"
+      ],
+      "historical_body_records_receipts_and_reviews_remain_immutable_provenance": true,
+      "historical_receipt_stale_flag_is_not_rewritten_to_describe_later_supersession": true,
+      "new_schema_field_does_not_require_in_place_historical_receipt_upgrade": true,
+      "successor_native_artifact_does_not_auto_upgrade_body_receipt_or_review": true,
+      "successor_body_record_does_not_auto_promote_receipt_or_design_professional_verdict": true,
+      "only_consumers_of_materially_changed_relation_become_stale": true,
+      "authority_binding_may_resolve_via_r_a_snapshot_layer_instance_or_handoff_without_retrofitting_historical_receipt_schema": true,
+      "authority_fingerprint_mismatch_blocks_direct_current_consumption_then_routes_only_affected_scope": true,
+      "r_i_rebind_and_actual_readback_required_before_current_review_claim": true,
+      "r_j_promotion_consumes_current_non_stale_receipts_only": true,
+      "duplicate_body_or_receipt_current_registry_forbidden": true
+    }
   },
   "authority_snapshot_fingerprint_boundary": {
     "semantic_class": "CONTROL_PROJECTION_NOT_AUTHORITY_REGISTRY_LEDGER_HISTORY_DATABASE_OR_GRANT_MECHANISM",
@@ -1675,7 +1723,12 @@
     "AUTHORITY_CHANGE_REOPENS_ONLY_ACTUAL_BOUND_CONSUMERS",
     "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
     "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
-    "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM"
+    "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM",
+    "R_E_DOMAIN_STATE_REMAINS_OWNER_NATIVE",
+    "R_E_CURRENT_USE_EXIT_AND_VERDICT_REMAIN_ORTHOGONAL",
+    "R_E_INTERFACE_REQUIREMENT_DOES_NOT_OWN_R_F_INTERFACE_STATE",
+    "DQ_MOUNT_SNAPSHOT_DOES_NOT_REISSUE_KI_OR_OE",
+    "DQ_DIMENSION_DISPOSITION_DOES_NOT_CREATE_PROGRESS_STATE"
   ],
   "control_domains": {
     "FILE_ARTIFACT_MANAGEMENT": {

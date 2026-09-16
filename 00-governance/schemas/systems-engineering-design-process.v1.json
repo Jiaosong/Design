@@ -1,0 +1,1635 @@
+{
+  "schema_version": "1.1",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS",
+  "domain": "Systems Engineering",
+  "version": "1.0",
+  "title": "OLEANDER Systems Engineering Design Development Process v1.0 — Candidate",
+  "purpose": "Define an authentic Systems Engineering process for system boundary, requirements, functional/logical architecture, architecture/allocation trade decisions, interface/configuration control, integration/V&V planning, verification, validation/transition and in-use change without importing a universal V-model or taking authority from subsystem professions, R-F Integration, Knowledge, human Promotion or external approval.",
+  "scope_in": [
+    "system purpose/context/boundary",
+    "stakeholder needs and testable requirements/constraints",
+    "functional/logical architecture and operational behavior",
+    "system architecture alternatives/allocation",
+    "interface/coupling/configuration architecture",
+    "integration and V&V planning/readiness",
+    "system integration and verification",
+    "validation/transition/operational readiness",
+    "in-use change/reverification and bounded learning"
+  ],
+  "scope_out": [
+    "automatic subsystem professional ownership",
+    "automatic R-F interface maturity/disposition",
+    "mandatory V-model/ISO 15288 lifecycle or aerospace review sequence",
+    "tool-specific MBSE/requirements authority",
+    "statutory/certification/release authority",
+    "automatic Design KEEP or Project Promotion",
+    "automatic reusable Knowledge promotion"
+  ],
+  "authority_position": "CANDIDATE R-E professional-domain process under the existing Professional Domain Process Contract. It is not Current until the existing Evolution, independent review, authorized human adoption and Current readback chain closes; Current architecture must continue to report Systems Engineering PROCESS_OPEN meanwhile.",
+  "current_definition_ref": "00-governance/systems-engineering-design-development-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim depends on behavior across multiple components/domains/interfaces/configurations/states or requires systems-level requirement traceability, integration, verification or validation judgment.",
+    "design_question_types": [
+      "system purpose/boundary",
+      "requirements and acceptance architecture",
+      "functional/logical behavior",
+      "architecture/allocation trade decision",
+      "interface/coupling/configuration",
+      "integration/V&V readiness",
+      "system verification",
+      "stakeholder/context validation",
+      "in-use system change"
+    ],
+    "responsibility_triggers": [
+      "multi-subsystem outcome cannot be owned by one component/domain alone",
+      "emergent/cross-interface behavior is in claim",
+      "configuration identity changes evidence validity",
+      "requirement-to-evidence trace is consequential",
+      "system-level V&V or transition decision is required"
+    ],
+    "claim_ceiling_rule": "The lowest applicable Current ceiling across stakeholder/source authority, requirements, subsystem professional evidence, R-F interface state, configuration identity, V&V evidence, operational context, review independence and external approval governs.",
+    "not_triggered_when": [
+      "the active decision is fully owned by one professional domain with no material system/interface relation",
+      "a diagram/report is requested without a systems-engineering claim"
+    ],
+    "mandatory_reopen_triggers": [
+      "stakeholder/need/requirement change",
+      "system boundary or operating-state change",
+      "architecture/allocation change",
+      "material interface/coupling change",
+      "configuration change",
+      "V&V method or acceptance-criterion change",
+      "material anomaly/failure/repair",
+      "operational context/use change"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential systems methods, requirement sources, standards, subsystem evidence, interface specifications, configuration records and V&V sources must pass the existing task/claim Operational Mount; candidate support extensions do not self-promote to Current Knowledge.",
+    "required_methods": [
+      "Current OLEANDER Design Goal / Trade Study / FMEA / Simulation owners when triggered",
+      "candidate requirement-traceability/interface-coupling/physical-V&V extensions as bounded support only"
+    ],
+    "theory_routes": [
+      "functional/logical decomposition",
+      "interface/coupling and emergent behavior",
+      "verification versus validation",
+      "configuration/change impact"
+    ],
+    "source_routes": [
+      "NASA Systems Engineering Handbook mechanisms as bounded reference without lifecycle/tool adoption",
+      "Current stakeholder/contract/project authority",
+      "Current domain professional sources and applicable standards"
+    ],
+    "evidence_routes": [
+      "requirement/source traces",
+      "subsystem professional evidence",
+      "interface/configuration records",
+      "simulation/prototype/test/runtime evidence",
+      "operational observations"
+    ],
+    "standard_code_routes": [
+      "project/jurisdiction/domain-specific standards only when applicable and Current; Systems Engineering creates no generic compliance authority"
+    ],
+    "precedent_case_routes": [
+      "bounded comparable systems/integration/V&V cases only with explicit transfer conditions"
+    ],
+    "practice_routes": [
+      "Current OLEANDER project/system practice evidence and failure/anomaly records"
+    ],
+    "tool_knowledge_routes": [
+      "Current Resolver-selected requirements/modeling/testing/runtime capability guidance; no fixed MBSE toolchain"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "SYS-00",
+      "stage_name": "System Purpose, Context and Boundary",
+      "professional_question": "What system is actually being designed, for whom, in which operating contexts/states, and where do its professional and technical boundaries begin and end?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-00 System Purpose, Context and Boundary | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "System Purpose, Context and Boundary question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "Current project authority and brief",
+        "stakeholder/user/operator/maintainer sources",
+        "known external systems/environments",
+        "current responsibility boundaries"
+      ],
+      "knowledge_inputs": [
+        "stakeholder/need framing",
+        "system context/boundary reasoning",
+        "operational scenario/state identification"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder/source/context/authority evidence before treating a need or boundary as authoritative.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "system context/boundary model",
+        "stakeholder/need register",
+        "responsibility/authority boundary map",
+        "operating-state/scenario set",
+        "initial system unknown/risk register"
+      ],
+      "interface_requirements": [
+        "Project/Design Authority",
+        "Operations / Users",
+        "materially coupled professional domains"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-00-AUTH",
+          "source_domain": "Project / Design Authority",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "system purpose",
+            "stakeholder outcomes",
+            "scope",
+            "claim ceiling",
+            "project constraints"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "user/operator/maintainer roles and operating contexts"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "system boundary, external dependency and operating-state definition",
+        "operational concept, actor/system mode, degraded/recovery and support-dependency consequence",
+        "external-service/common-cause dependency and bounded cyber-trust interface consequence with R-F maturity preserved"
+      ],
+      "content_projection_requirements": [
+        "show inside/outside boundary, exchanged relation, operating state, owner/source and uncertainty"
+      ],
+      "required_readback": [
+        "read the boundary/context against current project/stakeholder sources and responsibility map",
+        "exercise decision-critical ConOps across actor/goal/precondition/system mode/external-service/human-automation/handoff/degraded/recovery states",
+        "model every outcome-critical external service as an owned dependency/failure contract with startup/reconnect, data/time/identity/configuration assumptions, degradation/fallback, recovery/reconciliation and downstream invalidation",
+        "trace system-of-systems common dependencies and consume Cybersecurity/IT trust-boundary requirements as interface inputs without claiming cybersecurity control design or security PASS"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "requirements/architecture/V&V remain later work outside the boundary-definition claim"
+      ],
+      "exit_conditions": [
+        "system-of-interest, external context, operating states and controlling sources are explicit enough for downstream use"
+      ],
+      "reopen_triggers": [
+        "stakeholder/scope/environment/external-system/operating-state/authority change"
+      ],
+      "claim_ceiling": "SYSTEMS_BOUNDARY_DEFINITION",
+      "does_not_prove": [
+        "requirement completeness",
+        "architecture feasibility",
+        "integration success",
+        "verification or validation",
+        "Project Promotion"
+      ]
+    },
+    {
+      "stage_id": "SYS-01",
+      "stage_name": "Needs, Requirements, Constraints and Acceptance Architecture",
+      "professional_question": "Which obligations are authoritative and testable enough to govern design, and how will each material obligation be proven without collapsing verification into validation?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-01 Needs, Requirements, Constraints and Acceptance Architecture | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Needs, Requirements, Constraints and Acceptance Architecture question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "SYS-00 current boundary/context",
+        "Current stakeholder/need sources",
+        "professional/statutory/contractual constraints",
+        "known waivers/deviations"
+      ],
+      "knowledge_inputs": [
+        "requirements traceability",
+        "verification versus validation",
+        "acceptance/failure criteria",
+        "change impact and waiver governance"
+      ],
+      "knowledge_mount_requirement": "Mount consequential requirement sources, standards/constraints and acceptance authority before a requirement closes a systems decision.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-02",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "requirement/constraint set",
+        "requirement-source-rationale trace",
+        "acceptance/failure criteria register",
+        "V&V planning matrix",
+        "waiver/deviation register",
+        "requirement change-impact trace"
+      ],
+      "interface_requirements": [
+        "Project/Design Authority",
+        "Professional / Specialist Owners",
+        "Operations / HCD"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-01-AUTH",
+          "source_domain": "Project / Design Authority",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "needs",
+            "requirements",
+            "priorities",
+            "acceptance criteria",
+            "waivers/deviations"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-01-DOMAIN",
+          "source_domain": "Professional / Specialist Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "domain requirements",
+            "technical constraints",
+            "verification obligations",
+            "claim ceilings"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "stakeholder task/outcome and operational acceptance consequences"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "requirement authority, allocation and evidence obligations",
+        "well-formed requirement and acceptance architecture with observable failure conditions"
+      ],
+      "content_projection_requirements": [
+        "co-locate source/rationale, acceptance condition, allocation, proof class, configuration and OPEN/waiver state"
+      ],
+      "required_readback": [
+        "read requirements bidirectionally from source/need to object/interface and planned evidence",
+        "attack requirement atomicity, source/rationale, state/applicability, acceptance boundary, proof fitness, conflicts and waiver/deviation consequence"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "architecture/allocation and executed proof remain later work"
+      ],
+      "exit_conditions": [
+        "in-claim requirements needed next are atomic enough to disposition, source-bound and have observable acceptance/failure conditions"
+      ],
+      "reopen_triggers": [
+        "need/source/brief change",
+        "waiver/deviation",
+        "new failure mode",
+        "evidence showing ambiguity/unverifiability"
+      ],
+      "claim_ceiling": "SYSTEMS_REQUIREMENTS_ACCEPTANCE_ARCHITECTURE",
+      "does_not_prove": [
+        "requirement satisfaction",
+        "stakeholder validation",
+        "subsystem technical adequacy",
+        "statutory approval"
+      ]
+    },
+    {
+      "stage_id": "SYS-02",
+      "stage_name": "Functional / Logical Architecture and Behavior",
+      "professional_question": "What functions, state transitions and interactions must exist to satisfy current needs/requirements without assuming a preferred physical solution too early?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-02 Functional / Logical Architecture and Behavior | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Functional / Logical Architecture and Behavior question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "Current SYS-01 requirements",
+        "SYS-00 operating scenarios/states",
+        "human/operator and external-system roles"
+      ],
+      "knowledge_inputs": [
+        "functional decomposition",
+        "state/sequence behavior",
+        "human-automation allocation",
+        "failure/recovery behavior",
+        "emergent behavior"
+      ],
+      "knowledge_mount_requirement": "Mount consequential operational/human/system-behavior knowledge only within its Current applicability and claim ceiling.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "functional/logical architecture",
+        "scenario/state/sequence models",
+        "function-to-requirement trace",
+        "preliminary function-to-owner allocation",
+        "emergent-behavior V&V questions"
+      ],
+      "interface_requirements": [
+        "Operations / HCD",
+        "Architecture / spatial owners",
+        "Software / Controls",
+        "subsystem professional owners"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-02-HCD",
+          "source_domain": "Digital Product / HCD / Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "user/operator tasks",
+            "human/automation boundary",
+            "state visibility",
+            "recovery behavior",
+            "operating scenarios"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-02-SUB",
+          "source_domain": "Subsystem Professional Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "functions",
+            "inputs/outputs",
+            "state behavior",
+            "failure/recovery obligations"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "human/operator function, task, recovery and automation-boundary consequences"
+      ],
+      "design_language_consequences": [
+        "interaction/spatial communication consequences only where system behavior controls them"
+      ],
+      "technical_consequences": [
+        "functional dependency, state transition, failure/recovery and emergent-behavior structure",
+        "behavior/timing/resource-contention architecture and human/automation fallback",
+        "human/automation authority, observability, takeover workload/latency and recovery allocation"
+      ],
+      "content_projection_requirements": [
+        "show material function/state/sequence dependency and unresolved allocation choices, not decorative boxes"
+      ],
+      "required_readback": [
+        "exercise representative normal, transition, degraded, failure and recovery scenarios through the logical architecture",
+        "exercise concurrency, timing/latency, queue/resource contention, interruption, restart and degraded/recovery states in addition to nominal sequence",
+        "read human ↔ automation allocation across detect → interpret/decide → command/act → confirm/prove → recover including takeover, acknowledgement failure, mode awareness and return-to-auto"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "physical implementation and detailed subsystem design may remain OPEN"
+      ],
+      "exit_conditions": [
+        "material functions/states/dependencies are explicit enough to compare allocation and expose system-level failure relations"
+      ],
+      "reopen_triggers": [
+        "requirement/scenario/human-automation/failure-state/external-interface change"
+      ],
+      "claim_ceiling": "SYSTEMS_FUNCTIONAL_LOGICAL_ARCHITECTURE",
+      "does_not_prove": [
+        "physical feasibility",
+        "component sizing",
+        "software correctness",
+        "human-factors validation",
+        "integrated performance"
+      ]
+    },
+    {
+      "stage_id": "SYS-03",
+      "stage_name": "Alternatives, Trade Studies and Physical Allocation",
+      "professional_question": "Which system architecture/allocation should be retained, under what criteria/assumptions, and which choice-sensitive uncertainties could reverse it?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-03 Alternatives, Trade Studies and Physical Allocation | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Alternatives, Trade Studies and Physical Allocation question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "SYS-02 logical architecture",
+        "Current requirements/criteria",
+        "domain constraints/interface hypotheses",
+        "cost/lifecycle/operational constraints where in claim"
+      ],
+      "knowledge_inputs": [
+        "trade study and option comparison",
+        "uncertainty/sensitivity",
+        "configuration/responsibility allocation",
+        "lifecycle/maintenance consequences"
+      ],
+      "knowledge_mount_requirement": "Mount consequential trade criteria, domain capability constraints and lifecycle evidence before retaining an architecture on those grounds.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-04",
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "materially distinct system option set",
+        "trade/selection record",
+        "selected system architecture/allocation model",
+        "allocation trace",
+        "decision-critical assumption/sensitivity register",
+        "preliminary configuration-item set"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Structural",
+        "MEP / Controls",
+        "Digital / Software / HCD",
+        "Operations / FM",
+        "Cost / Procurement"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-03-PHYS",
+          "source_domain": "Architecture / Physical Professional Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "space/envelope",
+            "physical allocation",
+            "access/maintenance",
+            "geometry/location",
+            "environmental constraints"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-03-DIG",
+          "source_domain": "Digital / Software / Controls Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "function allocation",
+            "data/state/control boundaries",
+            "latency/timing",
+            "human/automation boundary"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "human/task/maintenance consequence of allocation choices"
+      ],
+      "design_language_consequences": [
+        "physical/digital expression consequences only where system allocation controls them"
+      ],
+      "technical_consequences": [
+        "system architecture selection, allocation, sensitivity and configuration consequences",
+        "conditional selection, sensitivity/reversal boundary and non-compensatory constraints"
+      ],
+      "content_projection_requirements": [
+        "show fixed criteria, option differences, trade-offs, rejected routes and reversal conditions"
+      ],
+      "required_readback": [
+        "read retained option against current criteria, domain constraints and selection-critical assumptions",
+        "read raw option consequences before scoring; distinguish hard constraints from trade criteria and test selection reversal under credible uncertainty/priority changes"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "subsystem engineering",
+        "interface acceptance",
+        "manufacturing/installation readiness"
+      ],
+      "exit_conditions": [
+        "retained route is supported by materially distinct comparison and selection-critical assumptions/uncertainties are explicit"
+      ],
+      "reopen_triggers": [
+        "requirement/criterion/demand/interface/cost/lifecycle or selection-critical assumption change"
+      ],
+      "claim_ceiling": "SYSTEMS_ARCHITECTURE_ALLOCATION_SELECTION",
+      "does_not_prove": [
+        "subsystem technical adequacy",
+        "interface acceptance",
+        "validation",
+        "Project Promotion"
+      ]
+    },
+    {
+      "stage_id": "SYS-04",
+      "stage_name": "Interface, Coupling and Configuration Architecture",
+      "professional_question": "Are boundaries between allocated elements explicit enough for integration without hidden unit/state/timing/geometry/configuration/ownership mismatches?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-04 Interface, Coupling and Configuration Architecture | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Interface, Coupling and Configuration Architecture question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "selected SYS-03 architecture/allocation",
+        "current subsystem/domain native sources",
+        "configuration-item set",
+        "R-F authority rules"
+      ],
+      "knowledge_inputs": [
+        "interface/coupling analysis",
+        "configuration management",
+        "integration dependency/iteration",
+        "interface verification planning"
+      ],
+      "knowledge_mount_requirement": "Mount consequential interface specifications, configuration evidence and subsystem constraints before interface requirements support a professional decision.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "material interface ledger/interface-control carriers",
+        "coupling/dependency map",
+        "integration sequence/iteration plan",
+        "configuration baseline/item-revision map",
+        "interface verification objects",
+        "R-F interface requirement set"
+      ],
+      "interface_requirements": [
+        "Cross-Disciplinary Integration R-F",
+        "Architecture",
+        "Structural",
+        "Building Services / MEP / Controls",
+        "Digital Product / HCD / Software"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-04-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "geometry/location",
+            "space/access",
+            "operating zones",
+            "physical thresholds"
+          ],
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-04-STR",
+          "source_domain": "Structural Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "loads/supports",
+            "movement/tolerance",
+            "openings",
+            "physical configuration"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-04-MEP",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "demand/capacity",
+            "services",
+            "controls/state",
+            "failure/recovery",
+            "commissioning boundary"
+          ],
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-04-DIG",
+          "source_domain": "Digital Product / HCD / Software",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "data/state",
+            "protocol/format",
+            "timing/latency",
+            "user/operator state",
+            "recovery"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "cross-boundary human/service interaction where material"
+      ],
+      "design_language_consequences": [
+        "interface manifestation/detail consequences where visible or interaction-critical"
+      ],
+      "technical_consequences": [
+        "units/state/timing/geometry/protocol/responsibility/configuration coupling",
+        "end-to-end compatibility, tolerance stack-up, coupling convergence and initialization/recovery conditions",
+        "configuration item identity, parameters/settings, interface versions, deviations/waivers and evidence supersession trace"
+      ],
+      "content_projection_requirements": [
+        "show exchanged variable/state/service, direction, source, configuration, requested maturity and reopen relation"
+      ],
+      "required_readback": [
+        "read each material interface against both-side native sources/configurations; consume maturity/disposition from R-F only",
+        "read producer and consumer in common units/frame/timing/tolerance/state/configuration and attack stack-up, stale state, conversion, restart and coupled-loop mismatch",
+        "read configuration baseline as reproducible behavior/evidence set across proposed/approved/implemented/as-integrated/as-tested/as-operated states; do not reuse evidence across baselines without equivalence"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "later integrated exercise/verification may remain OPEN when current maturity need is met"
+      ],
+      "exit_conditions": [
+        "each in-claim interface capable of invalidating system behavior has two-sided identity/authority, exchanged relation, configuration and proof route"
+      ],
+      "reopen_triggers": [
+        "either-side configuration/shared-variable/tolerance/timing/state/interface-owner/coupling change"
+      ],
+      "claim_ceiling": "SYSTEMS_INTERFACE_CONFIGURATION_ARCHITECTURE",
+      "does_not_prove": [
+        "actual R-F interface maturity",
+        "subsystem PASS",
+        "integrated-system PASS",
+        "external certification"
+      ]
+    },
+    {
+      "stage_id": "SYS-05",
+      "stage_name": "Integration and V&V Planning / Readiness",
+      "professional_question": "Is there a credible configuration-bound plan to integrate the system and obtain evidence for each in-claim verification and validation question?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-05 Integration and V&V Planning / Readiness | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Integration and V&V Planning / Readiness question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "SYS-04 interface/configuration architecture",
+        "Current requirements/acceptance criteria",
+        "domain V&V constraints",
+        "available prototype/test/simulation/runtime evidence routes"
+      ],
+      "knowledge_inputs": [
+        "integration sequencing",
+        "verification/validation planning",
+        "prototype/test fidelity",
+        "measurement/uncertainty",
+        "setup/environment/support-equipment control"
+      ],
+      "knowledge_mount_requirement": "Mount consequential V&V methods, measurement/test criteria and specialist sources before they are used as closure authority; candidate extensions remain support-only.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "integration plan/sequence",
+        "V&V matrix",
+        "test/prototype configuration and fidelity plan",
+        "procedure/readback plan",
+        "evidence ownership map",
+        "anomaly/change/retest plan"
+      ],
+      "interface_requirements": [
+        "Specialist Verification / Test Owners",
+        "Research / Measurement owners",
+        "R-H Native Execution",
+        "R-I Actual Readback / Review",
+        "subsystem professional owners"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-05-TEST",
+          "source_domain": "Specialist Verification / Test Owner",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "proof purpose",
+            "article/configuration",
+            "method/setup/environment",
+            "measurement",
+            "acceptance/failure/stop condition",
+            "evidence identity"
+          ],
+          "coupling_hypothesis": "DEPENDENT",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-05-SUB",
+          "source_domain": "Subsystem Professional Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "verification obligations",
+            "subsystem configuration",
+            "interface prerequisites",
+            "professional claim ceiling"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "representative user/operator/task/environment requirements when validation is in claim"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "integration prerequisites, evidence vehicle, configuration fidelity, acceptance/failure/stop and retest logic",
+        "experiment design, evidence-vehicle fitness and simulation/model credibility at claim ceiling",
+        "coverage/equivalence-class, excluded-state and multi-proof closure consequence without universal coverage percentage"
+      ],
+      "content_projection_requirements": [
+        "co-locate proof purpose, object/configuration, method, fidelity/environment, criterion, owner and OPEN dependency"
+      ],
+      "required_readback": [
+        "read V&V rows against exact current requirements/configuration and owner competence boundaries",
+        "read each evidence vehicle for configuration fidelity, observable failure mode, boundary/adverse coverage, measurement uncertainty and predeclared acceptance/stop condition",
+        "for analytical/simulation evidence, read assumptions/boundaries/omitted mechanisms/model credibility and sensitivity without reusing calibration data as independent validation",
+        "read verification coverage as requirement/interface/emergent behavior → configuration → state/environment → failure mechanism → proof/observable/evidence relation; expose orphan and proxy-only coverage"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "actual test/verification/validation results remain OPEN until execution/readback"
+      ],
+      "exit_conditions": [
+        "each in-claim proof obligation has a credible route against the correct configuration and system-level failure mode"
+      ],
+      "reopen_triggers": [
+        "configuration/requirement/interface/method/environment/support-equipment/criterion change"
+      ],
+      "claim_ceiling": "SYSTEMS_INTEGRATION_VV_READINESS",
+      "does_not_prove": [
+        "requirement verification",
+        "need validation",
+        "test competence",
+        "safe specialist test execution",
+        "statutory approval"
+      ]
+    },
+    {
+      "stage_id": "SYS-06",
+      "stage_name": "Integration, Verification and Anomaly Resolution",
+      "professional_question": "Does the integrated configuration satisfy the current requirement set at the declared evidence ceiling, and are anomalies understood enough for a bounded disposition?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-06 Integration, Verification and Anomaly Resolution | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Integration, Verification and Anomaly Resolution question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "approved SYS-05 readiness basis",
+        "current integrated/as-run configuration",
+        "subsystem/interface evidence",
+        "current requirements/acceptance criteria"
+      ],
+      "knowledge_inputs": [
+        "integration execution/readback",
+        "requirement verification",
+        "system-level verification",
+        "anomaly/failure diagnosis",
+        "change impact/reverification"
+      ],
+      "knowledge_mount_requirement": "Mount consequential verification/test evidence only within its exact configuration/method/applicability; domain professional evidence remains domain-owned.",
+      "required_dd_dimensions": [
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "integrated configuration record",
+        "verification evidence/requirement status",
+        "interface/system-level test evidence",
+        "anomaly/failure records",
+        "corrective-action/change-impact records",
+        "reverification/retest evidence",
+        "verification HOLD set"
+      ],
+      "interface_requirements": [
+        "Subsystem Professional Owners",
+        "Cross-Disciplinary Integration R-F",
+        "Specialist Verification/Test Owners",
+        "R-I Actual Readback / Review"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-06-RF",
+          "source_domain": "Cross-Disciplinary Integration R-F",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "interface disposition/maturity",
+            "integrated configuration",
+            "system-level interface evidence",
+            "open interface blockers"
+          ],
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-06-SUB",
+          "source_domain": "Subsystem Professional Owners",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "subsystem PASS/limits",
+            "configuration",
+            "verification evidence",
+            "anomalies",
+            "repairs"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "human/operator consequence of integrated failures where material"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "configuration-bound integrated behavior, requirement conformance, interface/system evidence and anomaly resolution",
+        "bounded anomaly diagnosis, controlled repair mechanism and coupling-derived regression scope",
+        "change-impact dependency, stale evidence and justified not-rerun regression boundary"
+      ],
+      "content_projection_requirements": [
+        "show exact as-run configuration, criterion/result, anomaly/rival cause, repair, impact and reverification"
+      ],
+      "required_readback": [
+        "read the current integrated configuration against requirement evidence and actual interface/system observations; preserve failure state before repair",
+        "preserve first-failure evidence, competing hypotheses, expected/contradicting signatures and discriminating fault-isolation checks before broad repair",
+        "derive reverification scope from changed item → dependent functions/requirements → coupled interfaces/resources → emergent behavior → stale evidence → regression/revalidation set"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "validation and operational transition remain outside this verification claim"
+      ],
+      "exit_conditions": [
+        "current integrated configuration and in-claim requirements/interfaces meet predeclared criteria with no blocking anomaly and repairs have impact/reverification evidence"
+      ],
+      "reopen_triggers": [
+        "configuration/requirement/interface/repair/evidence-method/accepted-anomaly change"
+      ],
+      "claim_ceiling": "SYSTEMS_INTEGRATION_VERIFICATION",
+      "does_not_prove": [
+        "stakeholder/context validation",
+        "operational acceptance",
+        "population reliability",
+        "statutory approval",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "SYS-07",
+      "stage_name": "Validation, Transition and Operational Readiness",
+      "professional_question": "Does the verified system satisfy the actual stakeholder need and intended operational context sufficiently to transition at the current claim ceiling?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-07 Validation, Transition and Operational Readiness | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "Validation, Transition and Operational Readiness question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "SYS-06 verified configuration/limits",
+        "Current stakeholder needs/context",
+        "representative user/operator/task/environment evidence",
+        "operations/training/support constraints"
+      ],
+      "knowledge_inputs": [
+        "validation planning/execution",
+        "human/operator/context representativeness",
+        "operational readiness/transition",
+        "deferred validation/monitoring"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder/context/human/operations evidence before validation claims; verification evidence alone is not a validation mount.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "validation evidence/need disposition",
+        "operational-readiness/transition constraints",
+        "training/procedure/support dependencies",
+        "deferred-validation/operating-limit register",
+        "validated-configuration reference",
+        "new/reopened requirement records"
+      ],
+      "interface_requirements": [
+        "Operations / FM / Service",
+        "Digital Product / HCD / Human Factors",
+        "Project / Design Authority",
+        "professional subsystem owners"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-07-OPS",
+          "source_domain": "Operations / FM / Service",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "operating modes",
+            "procedures",
+            "training",
+            "maintenance/support",
+            "monitoring",
+            "degraded/recovery behavior"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-07-HCD",
+          "source_domain": "Digital Product / HCD / Human Factors",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "stakeholder tasks",
+            "context representativeness",
+            "human/automation behavior",
+            "errors/recovery",
+            "accessibility/human constraints"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "representative stakeholder/user/operator task and context performance"
+      ],
+      "design_language_consequences": [
+        "system/interaction/spatial experience consequence where validation includes it"
+      ],
+      "technical_consequences": [
+        "validation context, operating behavior, transition constraint and residual limit",
+        "representative operational-context validation and transition limits"
+      ],
+      "content_projection_requirements": [
+        "show validated configuration, represented stakeholder/task/environment, observed need outcome, limits and operational dependencies"
+      ],
+      "required_readback": [
+        "read actual validation evidence against stakeholder need/context; do not substitute prior verification conformance",
+        "read represented stakeholder/task/environment/workload/training/external-service conditions and distinguish can-perform/tested/sustainable/real-outcome validation ceilings"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "future seasons/populations/context states outside represented validation remain OPEN/outside claim"
+      ],
+      "exit_conditions": [
+        "actual evidence supports the declared need in a sufficiently representative task/context/configuration and limits/deferred validation are explicit"
+      ],
+      "reopen_triggers": [
+        "user/task/context/operational-state/configuration/training/procedure/support or contradictory evidence change"
+      ],
+      "claim_ceiling": "SYSTEMS_VALIDATION_TRANSITION_READINESS",
+      "does_not_prove": [
+        "universal user acceptance",
+        "future field performance",
+        "release/statutory approval",
+        "Project Promotion",
+        "all lifecycle conditions"
+      ]
+    },
+    {
+      "stage_id": "SYS-08",
+      "stage_name": "In-use Change, Reverification and Learning",
+      "professional_question": "What does actual operation/change reveal, which prior claims must reopen, and what, if anything, is reusable beyond this project?",
+      "stage_body_contract": {
+        "title_rule": "<project> | SYS-08 In-use Change, Reverification and Learning | <decision / cycle / configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to the authoritative requirement/system/interface/configuration/V&V carriers and domain-owned native evidence; diagrams/reports do not replace underlying native sources.",
+        "readback_rule": "Distinguish intended need/requirement, implemented current configuration, observed readback and professional interpretation.",
+        "open_failure_rule": "Keep OPEN/failure/does-not-prove boundaries explicit; unresolved in-claim blockers prevent PASS.",
+        "verdict_reopen_rule": "Bound the verdict to the stage claim ceiling and reopen after material requirement, configuration, interface, evidence or context change."
+      },
+      "entry_conditions": [
+        "In-use Change, Reverification and Learning question is materially triggered under the Current project/system scope"
+      ],
+      "required_inputs": [
+        "actual in-use observations/configuration history",
+        "current requirements/interfaces/validation assumptions",
+        "operations/maintenance/anomaly evidence",
+        "current project authority"
+      ],
+      "knowledge_inputs": [
+        "in-use systems assessment",
+        "change impact",
+        "reverification/revalidation",
+        "causal-hypothesis discipline",
+        "G9 transfer/counterevidence boundary"
+      ],
+      "knowledge_mount_requirement": "Mount consequential in-use evidence at the project claim ceiling; reusable knowledge still requires R-B lifecycle validation and task-scoped OE for later use.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "in-use system assessment",
+        "change-impact/reverification record",
+        "designed-vs-observed behavior record",
+        "configuration/change history",
+        "project reopen decision",
+        "bounded G9/evolution candidate refs when justified"
+      ],
+      "interface_requirements": [
+        "Operations / FM / Service",
+        "affected subsystem owners",
+        "R-K G9 / Knowledge Return",
+        "R-B Knowledge or Evolution owner when routed"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "SYS-08-OPS",
+          "source_domain": "Operations / FM / Service",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "actual use/state",
+            "configuration changes",
+            "maintenance/anomalies",
+            "operator feedback",
+            "monitoring"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        },
+        {
+          "requirement_id": "SYS-08-G9",
+          "source_domain": "R-K G9 / Knowledge Return",
+          "source_stage_ref": null,
+          "direction": "OUT",
+          "shared_variables": [
+            "observed outcome",
+            "difference/pattern",
+            "causal hypothesis/uncertainty",
+            "counterexamples",
+            "transfer boundary",
+            "candidate route"
+          ],
+          "coupling_hypothesis": "INFORMATIVE",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided native source/configuration plus the Systems Engineering stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen the affected requirement when any listed shared variable, source authority, configuration or owner changes materially."
+        }
+      ],
+      "human_experience_consequences": [
+        "observed user/operator/maintainer consequences where material"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "bounded in-use behavior/change consequence and affected V&V scope",
+        "operational change detection, reliability-evidence boundary and targeted reverification/revalidation scope",
+        "bounded operational reliability evidence as change/reverification input, not self-issued statistical or causal proof"
+      ],
+      "content_projection_requirements": [
+        "separate observation, difference, causal hypothesis/uncertainty, project repair, reverification and reusable-candidate route"
+      ],
+      "required_readback": [
+        "read actual operation/change evidence against prior requirement/interface/configuration/validation assumptions",
+        "classify operational evidence as one-off/recurring/drift/maintenance/external-demand/configuration change and bind time window, exposure denominator, duty state and data completeness",
+        "compare reliability/change evidence using equivalent exposure/opportunity, configuration age, repair and maintenance regime; verify recurrence after change before claiming improvement"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
+      "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
+      "open_items_allowed": [
+        "unobserved future behavior and transferable lessons remain outside each bounded assessment"
+      ],
+      "exit_conditions": [
+        "declared question is assessed, affected Current claims reopen/reverify as needed, and any reusable lesson remains candidate-only with transfer/counterevidence boundary"
+      ],
+      "reopen_triggers": [
+        "new observation/change/failure/context/configuration or contradictory evidence"
+      ],
+      "claim_ceiling": "SYSTEMS_IN_USE_CHANGE_REVERIFICATION",
+      "does_not_prove": [
+        "future performance",
+        "causality from one observation",
+        "transferable knowledge",
+        "Current Knowledge",
+        "Current Runtime revision",
+        "universal validity"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Project/Design Authority",
+      "Architecture/Interior/Landscape",
+      "Structural Engineering",
+      "Building Services / MEP / Controls",
+      "Digital Product / HCD / Software",
+      "Fire/Accessibility/Safety/Specialists",
+      "Manufacturing/Construction/Installation",
+      "Operations/FM/Service"
+    ],
+    "outputs_to_domains": [
+      "Project/Design Authority",
+      "allocated subsystem/domain owners",
+      "Cross-Disciplinary Integration R-F",
+      "Verification/Test owners",
+      "Operations/FM/Service",
+      "R-K candidate intake when justified"
+    ],
+    "shared_variables": [
+      "requirements/acceptance conditions",
+      "functions/states",
+      "allocation/configuration",
+      "geometry/load/demand/service/data/control",
+      "units/tolerances/coordinates/protocols",
+      "timing/sequence/latency",
+      "failure/degraded/recovery states",
+      "test/validation configuration and evidence limits"
+    ],
+    "controlling_authority_requirements": [
+      "each material requirement/controlled variable retains its actual source/owner",
+      "R-F remains owner of interface maturity/disposition",
+      "subsystem professional owners retain technical/statutory authority",
+      "Systems Engineering coordination does not imply ownership"
+    ],
+    "interface_maturity_policy": "Systems stages issue stage-side interface requirements; actual maturity/disposition is resolved per interface / Acceptance Contract by R-F and is never inferred from SYS stage number.",
+    "allowed_open_interface_conditions": [
+      "remaining interface work is explicitly later/outside current claim",
+      "required maturity for current systems claim is met",
+      "no controlling-authority conflict/hidden in-claim blocker remains",
+      "OPEN owner/reopen condition is explicit"
+    ],
+    "integration_readback_requirements": [
+      "two-sided native-source/configuration readback for material interfaces",
+      "actual system-level evidence where emergent behavior is in claim",
+      "change propagation for controlled-variable/configuration changes"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "system context/boundary and stakeholder/need carriers",
+      "requirement/acceptance/traceability carrier",
+      "functional/logical/state architecture",
+      "system architecture/allocation/trade record",
+      "interface/coupling/configuration carriers",
+      "integration/V&V matrix and procedures",
+      "verification/validation/anomaly/change evidence when triggered",
+      "in-use/reverification record when triggered"
+    ],
+    "native_source_of_truth_rules": [
+      "native authority is claim-specific and requirement/configuration/model/interface/test/runtime/domain evidence remain separate carriers where appropriate",
+      "SysML diagram/dashboard/report/screenshot does not replace underlying authority",
+      "subsystem native sources remain domain-owned"
+    ],
+    "execution_owner_requirements": [
+      "responsible Systems Engineering decision owner identified",
+      "subsystem/domain/test/validation owners identified for evidence they own",
+      "independent reviewer identity/authority resolved when required"
+    ],
+    "required_capabilities": [
+      "requirements/traceability reasoning",
+      "functional/logical/system architecture reasoning",
+      "trade/allocation analysis",
+      "interface/coupling/configuration control",
+      "integration/V&V planning",
+      "actual readback/anomaly/change impact",
+      "professional systems review"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects suitable tools; no MBSE or requirements product is hardcoded as authority"
+    ],
+    "typed_handoff_contracts": [
+      "Systems↔Project Authority",
+      "Systems↔R-F Integration",
+      "Systems↔subsystem professional owners",
+      "Systems↔HCD/Operations",
+      "Systems↔Verification/Test owners",
+      "Systems↔R-I Review",
+      "Systems→R-K candidate return"
+    ],
+    "actual_readback_requirements": [
+      "Current requirement/traceability/configuration carriers read back",
+      "material interface/configuration state read back from actual owner sources",
+      "integration/verification/validation evidence read back against exact configuration",
+      "anomaly/change/retest state read back when used"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Systems Engineering review judges requirement/architecture/interface/configuration/V&V reasoning at the declared systems claim ceiling without taking subsystem professional authority.",
+    "evidence_review": "Verify source, configuration, method, acceptance criterion, as-run/readback and claim limits; verification and validation remain distinct.",
+    "technical_gates": [
+      "subsystem professional gates remain with their owners",
+      "R-F interface acceptance/maturity when material",
+      "specialist test/measurement/human-factor/reliability/statutory gates when triggered"
+    ],
+    "independent_review": "Attack requirement ambiguity, hidden interfaces/coupling, wrong-configuration evidence, untested degraded/failure behavior, option-selection bias, verification-to-validation overclaim and stale evidence after change.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + current Master professional_processes[] summary; project receipt exists only for real project execution.",
+    "does_not_prove": [
+      "Current adoption of this candidate",
+      "subsystem professional PASS",
+      "R-F Integration PASS",
+      "requirement verification without evidence",
+      "stakeholder validation",
+      "Design KEEP",
+      "Project Promotion",
+      "statutory/certification/release approval",
+      "Current Knowledge"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "stakeholder/need/requirement/acceptance change",
+      "functional/architecture/allocation change",
+      "material interface/coupling/owner change",
+      "configuration revision",
+      "V&V method/setup/environment/criterion change",
+      "anomaly/failure/repair",
+      "operational context/use change"
+    ],
+    "stale_scope_rules": [
+      "mark only affected requirements/functions/allocations/interfaces/configurations/evidence stale unless dependency/coupling analysis demonstrates wider impact"
+    ],
+    "upstream_impact_rules": [
+      "evidence exposing a wrong/ambiguous requirement or stakeholder assumption reopens the exact upstream chain rather than silently changing acceptance"
+    ],
+    "downstream_impact_rules": [
+      "changed requirement/allocation/configuration/interface propagates to consuming subsystem decisions, integration plans and V&V evidence"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable/configuration/timing/state/ownership changes reopen affected R-F interfaces at owner-native scope"
+    ],
+    "receipt_stale_rules": [
+      "a project Systems Engineering receipt becomes stale only for materially affected claims; historical receipt remains immutable provenance"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable systems stages have bounded exit decisions",
+      "Current requirement/function/interface/configuration carriers exist for in-claim scope",
+      "required R-F interfaces meet claim-required maturity",
+      "required V&V/readback exists",
+      "blocking anomalies/retest/change obligations are closed or outside claim",
+      "required review is bound to exact inputs",
+      "professional receipt is Current for an actual project instance"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim items with owner, evidence ceiling and reopen trigger that do not contradict the bounded verdict"
+    ],
+    "professional_receipt": "SYSTEMS_ENGINEERING_DESIGN_PROCESS_RECEIPT for real project execution only; candidate-definition validation emits no project receipt.",
+    "promotion_effect": "If later adopted Current and actually executed, a bounded PASS may satisfy only the triggered Systems Engineering dependency; it grants neither Design KEEP, R-F Integration PASS, Project Promotion, statutory approval nor Current Knowledge.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_SYSTEMS_ENGINEERING_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "Current adoption of this candidate definition",
+      "project exercise",
+      "Design KEEP",
+      "R-F Integration PASS",
+      "Project Promotion",
+      "statutory/certification approval",
+      "future field performance",
+      "Current Knowledge or universal transferability"
+    ]
+  }
+}

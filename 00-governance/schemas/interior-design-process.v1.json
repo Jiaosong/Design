@@ -1,0 +1,1798 @@
+{
+  "schema_version": "1.1",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "domain": "Interior Design",
+  "version": "1.0",
+  "title": "OLEANDER Interior Design Development Process v1.0 - Candidate",
+  "purpose": "Develop interior environments as real occupied, furnished, material, serviced and maintainable systems rather than decorative fit-out layers.",
+  "scope_in": [
+    "interior brief, activity and room-use translation",
+    "space planning, thresholds, circulation and privacy",
+    "FF&E, equipment, storage and ergonomic fit",
+    "material/finish/CMF selection with performance and failure reasoning",
+    "floor/wall/ceiling/joinery/detail assemblies",
+    "lighting/acoustic/thermal/MEP and controls integration",
+    "wet/hygienic/high-wear/special-use interior conditions",
+    "samples, mockups, specifications, procurement and substitutions",
+    "installation/site review, defects, handover and in-use learning"
+  ],
+  "scope_out": [
+    "architectural base-building authority",
+    "structural or MEP engineering approval",
+    "fire-life-safety or accessibility certification",
+    "lighting-engineering or acoustic-engineering approval",
+    "manufacturer marketing claims as automatic material proof",
+    "cost certainty, statutory approval or construction completion"
+  ],
+  "authority_position": "CANDIDATE R-E professional-domain process under the existing Professional Domain Process Contract. It is not Current until the existing Evolution, independent review, authorized human adoption and Current readback chain closes; Current architecture must continue to report Interior Design PROCESS_OPEN meanwhile.",
+  "current_definition_ref": "00-governance/interior-design-development-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim depends on Interior Design professional judgment across one or more of: Interior Brief, Activity and Room-use Basis, Space Planning, Circulation, Thresholds and Privacy, FF&E, Equipment, Storage and Ergonomic Fit, Material, Finish and CMF Performance Development, Interior Assemblies, Ceilings, Partitions, Joinery and Details, Sensory, Lighting, Acoustic and Environmental Integration, Wet, Hygienic, High-wear and Specialist Interior Conditions, Samples, Mockups, Specification and Procurement Control, Installation, Site Review, Defect and Substitution Readback, Handover, Maintenance, Post-occupancy and Change.",
+    "design_question_types": [
+      "Interior Brief, Activity and Room-use Basis",
+      "Space Planning, Circulation, Thresholds and Privacy",
+      "FF&E, Equipment, Storage and Ergonomic Fit",
+      "Material, Finish and CMF Performance Development",
+      "Interior Assemblies, Ceilings, Partitions, Joinery and Details",
+      "Sensory, Lighting, Acoustic and Environmental Integration",
+      "Wet, Hygienic, High-wear and Specialist Interior Conditions",
+      "Samples, Mockups, Specification and Procurement Control",
+      "Installation, Site Review, Defect and Substitution Readback",
+      "Handover, Maintenance, Post-occupancy and Change"
+    ],
+    "responsibility_triggers": [
+      "interior brief, activity and room-use translation",
+      "space planning, thresholds, circulation and privacy",
+      "FF&E, equipment, storage and ergonomic fit",
+      "material/finish/CMF selection with performance and failure reasoning",
+      "floor/wall/ceiling/joinery/detail assemblies",
+      "lighting/acoustic/thermal/MEP and controls integration",
+      "wet/hygienic/high-wear/special-use interior conditions",
+      "samples, mockups, specifications, procurement and substitutions",
+      "installation/site review, defects, handover and in-use learning"
+    ],
+    "claim_ceiling_rule": "The lowest applicable Current ceiling across project/source authority, native geometry/material/environment/configuration, specialist interfaces, actual readback and external approval governs the Interior Design claim.",
+    "not_triggered_when": [
+      "the artifact merely depicts Interior Design content but makes no material professional Interior Design claim"
+    ],
+    "mandatory_reopen_triggers": [
+      "accessibility/fire route change",
+      "cleaning/exposure change",
+      "cleaning/hygiene criterion change",
+      "concealed-work uncertainty",
+      "contradictory user/field evidence",
+      "equipment/occupancy change",
+      "equipment/process change",
+      "lighting/acoustic/MEP strategy change",
+      "lighting/reflectance change",
+      "maintenance regime change",
+      "material wear/failure",
+      "material/module change",
+      "material/product/substrate change",
+      "mockup failure",
+      "new RFI/substitution",
+      "occupancy/use change",
+      "partition/door/furniture change",
+      "procurement constraint change",
+      "product family/substitution",
+      "program/use change",
+      "repair changes adjacent relation",
+      "service connection change",
+      "service/device relocation",
+      "site deviation",
+      "space/use change",
+      "substrate/partition change",
+      "supplier/product/substitution change",
+      "surface/ceiling/furniture change",
+      "task/posture/user change",
+      "task/use change",
+      "user cohort change",
+      "wet/drainage/waterproofing change"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential Interior Design methods, material/environment/site/product evidence and specialist facts must pass existing task/claim Operational Mount rules; candidate support extensions and project observations do not self-promote to Current Knowledge.",
+    "required_methods": [
+      "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+      "Current Human Factors / accessibility evidence where triggered",
+      "Current material/failure, durability, cleaning and manufacturer technical evidence",
+      "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+      "project-specific mockup/sample/site evidence"
+    ],
+    "theory_routes": [
+      "Interior Design",
+      "shared OLEANDER Design Quality/DD",
+      "domain-specific professional analysis and review"
+    ],
+    "source_routes": [
+      "Current project/site/space authority",
+      "Current applicable professional/specialist standards and evidence",
+      "Current supplier/manufacturer/project field evidence where material"
+    ],
+    "evidence_routes": [
+      "native drawings/models/schedules",
+      "calculation/analysis where in claim",
+      "samples/mockups/tests",
+      "actual site/runtime/in-use readback"
+    ],
+    "standard_code_routes": [
+      "Current applicable standards/codes/guides via proper authority; no fixed number copied into this process becomes universal OLEANDER truth"
+    ],
+    "precedent_case_routes": [
+      "bounded professional precedents only where project/context applicability is established"
+    ],
+    "practice_routes": [
+      "Current OLEANDER Interior Design related project/failure evidence where provenance exists"
+    ],
+    "tool_knowledge_routes": [
+      "Current Skill Resolver and native execution capabilities; software/tool output is not professional authority"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "INT-00",
+      "stage_name": "Interior Brief, Activity and Room-use Basis",
+      "professional_question": "What activities, actors, furniture/equipment, privacy, storage, sensory and operational conditions must each interior space support?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-00 Interior Brief, Activity and Room-use Basis | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Interior Brief, Activity and Room-use Basis question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "Current Architecture room/program brief",
+        "user/activity/operational evidence",
+        "existing conditions where applicable"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "interior activity/room brief",
+        "room archetype register",
+        "operating-state/use matrix",
+        "interior assumptions/open-items register"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "HCD / Operations",
+        "Accessibility",
+        "MEP"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-00-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "room use",
+            "occupancy/task",
+            "privacy",
+            "furniture/equipment basis"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "What activities, actors, furniture/equipment, privacy, storage, sensory and operational conditions must each interior space support?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "room use",
+        "occupancy/task",
+        "privacy",
+        "furniture/equipment basis"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read room/activity brief against Current architecture and user/operations evidence",
+        "attack peak/degraded/service states and missing furniture/equipment assumptions"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Interior room/use basis sufficient to drive real furnished planning"
+      ],
+      "reopen_triggers": [
+        "program/use change",
+        "user cohort change",
+        "equipment/occupancy change"
+      ],
+      "claim_ceiling": "INTERIOR_BRIEF_DEFINED",
+      "does_not_prove": [
+        "room usability",
+        "accessibility compliance",
+        "final FF&E selection"
+      ]
+    },
+    {
+      "stage_id": "INT-01",
+      "stage_name": "Space Planning, Circulation, Thresholds and Privacy",
+      "professional_question": "Does the actual furnished spatial arrangement support movement, task, supervision/privacy and threshold behavior across required states?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-01 Space Planning, Circulation, Thresholds and Privacy | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Space Planning, Circulation, Thresholds and Privacy question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "interior room/use basis",
+        "architectural shell/core/door geometry",
+        "accessibility and operational constraints"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "furnished interior plans",
+        "circulation/threshold readbacks",
+        "privacy/sightline diagrams",
+        "partition/door intent"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Accessibility",
+        "Fire/Life Safety",
+        "Acoustics"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-01-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "clear zones",
+            "door/threshold geometry",
+            "privacy boundary",
+            "circulation conflicts"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the actual furnished spatial arrangement support movement, task, supervision/privacy and threshold behavior across required states?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "clear zones",
+        "door/threshold geometry",
+        "privacy boundary",
+        "circulation conflicts"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "measure furnished clear zones and threshold conditions",
+        "review privacy/sightline/queue/service conflicts in plan and view/section"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Critical spaces and transitions work as occupied geometry rather than empty plan"
+      ],
+      "reopen_triggers": [
+        "partition/door/furniture change",
+        "accessibility/fire route change",
+        "occupancy/use change"
+      ],
+      "claim_ceiling": "INTERIOR_SPACE_PLAN_RESOLVED",
+      "does_not_prove": [
+        "statutory compliance",
+        "acoustic performance",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "INT-02",
+      "stage_name": "FF&E, Equipment, Storage and Ergonomic Fit",
+      "professional_question": "Are furniture, equipment, storage and controls dimensioned and arranged around real tasks, access, service and replacement rather than illustrative occupancy?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-02 FF&E, Equipment, Storage and Ergonomic Fit | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "FF&E, Equipment, Storage and Ergonomic Fit question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "space plan",
+        "product/equipment data",
+        "human factors/accessibility basis",
+        "storage/use requirements"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "FF&E/equipment plan and schedule",
+        "clearance/movement envelopes",
+        "storage capacity/access logic",
+        "service/replacement route evidence"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "MEP",
+        "Structure",
+        "Accessibility",
+        "Procurement"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-02-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "item geometry",
+            "movement envelope",
+            "service connection",
+            "storage capacity",
+            "replacement route"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Are furniture, equipment, storage and controls dimensioned and arranged around real tasks, access, service and replacement rather than illustrative occupancy?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "item geometry",
+        "movement envelope",
+        "service connection",
+        "storage capacity",
+        "replacement route",
+        "task-cycle ergonomic envelope",
+        "usable storage capacity and replenishment/parking state",
+        "FF&E site-fit tolerance, logistics and installed-fit consequence distinct from catalog/procurement acceptance",
+        "inclusive spatial/product fit and simultaneous-use clearance consequence with Accessibility/clinical/ergonomic criteria owner-native"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read chairs/drawers/doors/equipment in open/use states",
+        "test reach/posture/transfer/service access using bounded human evidence",
+        "test full task cycle and body+object operating envelope; derive usable storage from actual object classes/internal fittings/access/replenishment rather than external cabinet volume",
+        "read procurement-critical FF&E against operating/assembled envelope, actual site irregularity, delivery/assembly path, adjustment mechanism and sample-unit/site-measure hold point",
+        "test task-specific anthropometric variability and simultaneous-use fit across body/reach/vision/mobility-device/carried-object/companion conditions rather than one mannequin profile"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Critical FF&E/equipment/storage relations are usable and serviceable at declared claim ceiling"
+      ],
+      "reopen_triggers": [
+        "product family/substitution",
+        "task/posture/user change",
+        "service connection change"
+      ],
+      "claim_ceiling": "INTERIOR_FFE_FIT_RESOLVED",
+      "does_not_prove": [
+        "product certification",
+        "structural anchorage approval",
+        "procurement availability"
+      ]
+    },
+    {
+      "stage_id": "INT-03",
+      "stage_name": "Material, Finish and CMF Performance Development",
+      "professional_question": "Do material/finish choices satisfy use, exposure, aging, cleaning, failure and design-language requirements in the actual assembly?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-03 Material, Finish and CMF Performance Development | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Material, Finish and CMF Performance Development question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "interior design language",
+        "exposure/use conditions",
+        "material technical evidence",
+        "maintenance/cleaning basis"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-06",
+        "DD-07",
+        "DD-08",
+        "DD-10"
+      ],
+      "required_native_outputs": [
+        "finish/material schedule",
+        "material decision matrix",
+        "sample register",
+        "failure/exposure notes",
+        "approved design benchmark set"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Lighting",
+        "Acoustics",
+        "FM / Operations",
+        "Fire / Accessibility"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-03-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "material identity",
+            "reflectance/texture",
+            "exposure",
+            "cleaning",
+            "joint/edge",
+            "specialist criteria"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Do material/finish choices satisfy use, exposure, aging, cleaning, failure and design-language requirements in the actual assembly?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "material identity",
+        "reflectance/texture",
+        "exposure",
+        "cleaning",
+        "joint/edge",
+        "specialist criteria"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "inspect samples at relevant scale/light",
+        "reconcile datasheet claims with substrate/joint/finish/application",
+        "attack wear/moisture/cleaning/failure modes"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Material decisions are tied to real exposure/failure mechanisms and physical evidence where material"
+      ],
+      "reopen_triggers": [
+        "material/product/substrate change",
+        "cleaning/exposure change",
+        "lighting/reflectance change"
+      ],
+      "claim_ceiling": "INTERIOR_MATERIAL_SYSTEM_RESOLVED",
+      "does_not_prove": [
+        "fire classification",
+        "slip/accessibility certification",
+        "installed workmanship"
+      ]
+    },
+    {
+      "stage_id": "INT-04",
+      "stage_name": "Interior Assemblies, Ceilings, Partitions, Joinery and Details",
+      "professional_question": "Are floor/wall/ceiling/joinery systems resolved as buildable, maintainable assemblies with intentional joints, tolerances and interfaces?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-04 Interior Assemblies, Ceilings, Partitions, Joinery and Details | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Interior Assemblies, Ceilings, Partitions, Joinery and Details question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "coordinated base-building geometry",
+        "material decisions",
+        "MEP/lighting/acoustic requirements",
+        "joinery/FF&E requirements"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "interior detail set",
+        "reflected ceiling coordination",
+        "partition/lining schedule",
+        "joinery details",
+        "critical junction register"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "MEP",
+        "Lighting",
+        "Acoustics",
+        "Structure"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-04-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "assembly thickness",
+            "ceiling zone",
+            "device positions",
+            "fixing/backing",
+            "joint/tolerance",
+            "access panel"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Are floor/wall/ceiling/joinery systems resolved as buildable, maintainable assemblies with intentional joints, tolerances and interfaces?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "assembly thickness",
+        "ceiling zone",
+        "device positions",
+        "fixing/backing",
+        "joint/tolerance",
+        "access panel",
+        "datum control and fabrication/site-fit tolerance absorption",
+        "Interior-owned finish/backing/seal/hatch/fixing/void/removable-element consequence while specialist performance remains owner-native",
+        "edge/seal transition movement, capillary wetting, repairability and adjacent-finish/waterproofing consequence"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read enlarged junctions and service penetrations",
+        "check ceiling device hierarchy/access",
+        "check tolerance/movement/termination logic",
+        "read datum hierarchy, fabrication/site tolerance allocation, residual adjustment zone and site-measure hold point at critical joinery runs",
+        "read specialist-controlled detail continuity at doors/glazing/ceilings/access panels/joinery/penetrations/movement joints against actual fire/acoustic/waterproofing/MEP access interfaces",
+        "read joinery/edge/seal/wet-transition durability under repeated touch, impact, cleaning, moisture and differential movement; expose edge protection, sacrificial/reseal/replace and repair propagation logic"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Critical assemblies and junctions have explicit geometry/material/support/access/tolerance logic"
+      ],
+      "reopen_triggers": [
+        "service/device relocation",
+        "substrate/partition change",
+        "material/module change"
+      ],
+      "claim_ceiling": "INTERIOR_DETAIL_SYSTEM_RESOLVED",
+      "does_not_prove": [
+        "fabrication approval",
+        "MEP commissioning",
+        "structural fixing approval"
+      ]
+    },
+    {
+      "stage_id": "INT-05",
+      "stage_name": "Sensory, Lighting, Acoustic and Environmental Integration",
+      "professional_question": "Does the interior spatial/material design support intended visual, acoustic, thermal and tactile experience without stealing specialist authority?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-05 Sensory, Lighting, Acoustic and Environmental Integration | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Sensory, Lighting, Acoustic and Environmental Integration question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "visual/task/sensory intent",
+        "lighting/acoustic/MEP criteria",
+        "surface/material properties",
+        "furniture/occupancy state"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-06",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "sensory integration diagrams",
+        "surface/lighting/acoustic coordination",
+        "ceiling/wall treatment intent",
+        "controls/user-interface requirements"
+      ],
+      "interface_requirements": [
+        "Lighting Design",
+        "Acoustics",
+        "MEP",
+        "Architecture"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-05-IF-01",
+          "source_domain": "Lighting Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "visual task",
+            "surface reflectance",
+            "acoustic treatment",
+            "control scene",
+            "use zone",
+            "environmental condition"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the interior spatial/material design support intended visual, acoustic, thermal and tactile experience without stealing specialist authority?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "visual task",
+        "surface reflectance",
+        "acoustic treatment",
+        "control scene",
+        "use zone",
+        "environmental condition",
+        "room-acoustic versus isolation/privacy boundary and flanking-path detail"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "review actual/mockup lighting/material relation where material",
+        "trace acoustic/privacy source-path-receiver consequences",
+        "inspect thermal/air-movement implications for use zones",
+        "separate room-acoustic treatment from isolation/privacy and read direct/flanking paths through doors, glazing, plenum, ducts, penetrations and access panels"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Interior decisions and specialist criteria are mutually coherent at current evidence ceiling"
+      ],
+      "reopen_triggers": [
+        "lighting/acoustic/MEP strategy change",
+        "surface/ceiling/furniture change",
+        "task/use change"
+      ],
+      "claim_ceiling": "INTERIOR_SENSORY_INTEGRATION_RESOLVED",
+      "does_not_prove": [
+        "lighting-engineering PASS",
+        "acoustic compliance",
+        "thermal-comfort certification"
+      ]
+    },
+    {
+      "stage_id": "INT-06",
+      "stage_name": "Wet, Hygienic, High-wear and Specialist Interior Conditions",
+      "professional_question": "Are high-risk/special-use areas resolved for real exposure, cleaning, access, workflow and specialist interfaces rather than generic finish continuity?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-06 Wet, Hygienic, High-wear and Specialist Interior Conditions | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Wet, Hygienic, High-wear and Specialist Interior Conditions question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "specialist room/process brief",
+        "wet/hygiene/service criteria",
+        "equipment layouts",
+        "material/maintenance basis"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-06",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "wet/special-use detail plans",
+        "finish/upstand/threshold/drain interface details",
+        "clean/dirty/service flow diagrams",
+        "specialist interface register"
+      ],
+      "interface_requirements": [
+        "MEP",
+        "Architecture",
+        "Fire/Life Safety",
+        "Accessibility",
+        "Specialist Process Owner"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-06-IF-01",
+          "source_domain": "MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "wet point",
+            "floor level/fall",
+            "clean/dirty boundary",
+            "equipment clearance",
+            "specialist performance interface"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Are high-risk/special-use areas resolved for real exposure, cleaning, access, workflow and specialist interfaces rather than generic finish continuity?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "wet point",
+        "floor level/fall",
+        "clean/dirty boundary",
+        "equipment clearance",
+        "specialist performance interface",
+        "wet-detail continuity and finish geometry compatible with owner-native hydraulic/waterproofing design",
+        "cleanable geometry and clean/dirty maintenance-route consequence while infection-control/food-safety/decontamination criteria remain specialist-owned"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read falls/threshold/drain/penetration geometry",
+        "attack cleanability and service access",
+        "verify special-room assumptions remain explicit",
+        "read wet-area continuity in plan/section through finish/fall/drain/threshold/membrane/penetration/joint/access and attack local ponding/cleanability interruptions",
+        "execute the actual cleaning/contamination-control operation through body/tool reach, equipment parking, chemical/water exposure, waste route, drying/reset and inspectability of ledges/gaps/undersides/penetrations/panels"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Special-use interiors have explicit geometry/material/workflow interfaces and bounded specialist claim"
+      ],
+      "reopen_triggers": [
+        "equipment/process change",
+        "wet/drainage/waterproofing change",
+        "cleaning/hygiene criterion change"
+      ],
+      "claim_ceiling": "INTERIOR_SPECIAL_CONDITIONS_RESOLVED",
+      "does_not_prove": [
+        "waterproofing certification",
+        "food/clinical compliance",
+        "MEP system PASS"
+      ]
+    },
+    {
+      "stage_id": "INT-07",
+      "stage_name": "Samples, Mockups, Specification and Procurement Control",
+      "professional_question": "Can the intended material/detail quality survive specification, supplier variation, fabrication, submittals and legitimate substitutions?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-07 Samples, Mockups, Specification and Procurement Control | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Samples, Mockups, Specification and Procurement Control question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "resolved material/detail intent",
+        "supplier/manufacturer data",
+        "procurement constraints",
+        "sample/mockup requirements"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "sample/mockup schedule",
+        "approved benchmark register",
+        "interior specification/schedules",
+        "substitution comparison template",
+        "long-lead/risk register"
+      ],
+      "interface_requirements": [
+        "Procurement / Cost",
+        "Fabrication / Contractor",
+        "Architecture",
+        "Lighting",
+        "FM"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-07-IF-01",
+          "source_domain": "Procurement / Cost",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "approved benchmark",
+            "product identity",
+            "acceptable variation",
+            "lead time",
+            "substitution attributes"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Can the intended material/detail quality survive specification, supplier variation, fabrication, submittals and legitimate substitutions?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "approved benchmark",
+        "product identity",
+        "acceptable variation",
+        "lead time",
+        "substitution attributes",
+        "application-specific substitution equivalence and downstream interface reopen",
+        "material appearance/junction decision under controlled lighting scene without photometric or Lighting PASS inference"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "compare proposed/approved samples to design criteria under relevant conditions",
+        "test mockups against explicit failure questions",
+        "read substitution deltas across all controlling attributes",
+        "classify substitution attributes as invariant/bounded-variable/secondary and keep unverified attributes OPEN pending sample/mockup/technical owner evidence",
+        "read material/lighting-critical mockup as controlled scene with exact product/batch/substrate/orientation/adjacency/view/daylight/electric-light/source/control state"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Specification and benchmark evidence preserve the attributes that materially carry performance and design intent"
+      ],
+      "reopen_triggers": [
+        "supplier/product/substitution change",
+        "mockup failure",
+        "procurement constraint change"
+      ],
+      "claim_ceiling": "INTERIOR_SPECIFICATION_BENCHMARK_RESOLVED",
+      "does_not_prove": [
+        "purchase order correctness",
+        "installed quality",
+        "cost certainty"
+      ]
+    },
+    {
+      "stage_id": "INT-08",
+      "stage_name": "Installation, Site Review, Defect and Substitution Readback",
+      "professional_question": "Does the observed installed work match current drawings/specification/benchmarks at the reviewed locations and are material deviations repaired or re-designed?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-08 Installation, Site Review, Defect and Substitution Readback | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Installation, Site Review, Defect and Substitution Readback question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "current issued interior information",
+        "approved samples/submittals",
+        "observed site condition",
+        "RFI/substitution/defect records"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site observation records",
+        "benchmark comparison",
+        "defect/punch register",
+        "accepted deviation/substitution decisions",
+        "repair/retest evidence"
+      ],
+      "interface_requirements": [
+        "Contractor / Fabricator",
+        "Architecture",
+        "MEP",
+        "Lighting",
+        "Procurement"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-08-IF-01",
+          "source_domain": "Contractor / Fabricator",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "installed condition",
+            "revision",
+            "sample benchmark",
+            "defect",
+            "RFI/substitution",
+            "repair state"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the observed installed work match current drawings/specification/benchmarks at the reviewed locations and are material deviations repaired or re-designed?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "installed condition",
+        "revision",
+        "sample benchmark",
+        "defect",
+        "RFI/substitution",
+        "repair state",
+        "site-fit readiness, defect mechanism, rework extent and accepted residual deviation"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "bind observations to exact location/revision",
+        "compare visible and hidden-access interfaces before closure where inspectable",
+        "read repaired material defects when design intent was affected",
+        "read pre-install site readiness/measure hold points; classify defects by failed relation and verify rework against same benchmark including secondary-interface damage risk"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Observed in-claim installed conditions either conform to bounded design intent or have explicit disposition/rework/review"
+      ],
+      "reopen_triggers": [
+        "site deviation",
+        "new RFI/substitution",
+        "repair changes adjacent relation",
+        "concealed-work uncertainty"
+      ],
+      "claim_ceiling": "INTERIOR_INSTALLATION_READBACK",
+      "does_not_prove": [
+        "unobserved work compliance",
+        "contractor workmanship globally",
+        "project completion"
+      ]
+    },
+    {
+      "stage_id": "INT-09",
+      "stage_name": "Handover, Maintenance, Post-occupancy and Change",
+      "professional_question": "Does the interior remain usable, cleanable, maintainable, replaceable and coherent in actual operation, and what observed issues require project reopen versus bounded learning?",
+      "stage_body_contract": {
+        "title_rule": "<project> | INT-09 Handover, Maintenance, Post-occupancy and Change | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Handover, Maintenance, Post-occupancy and Change question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "as-installed/approved interior state",
+        "O&M/cleaning/replacement information",
+        "occupant/FM feedback",
+        "wear/defect/change evidence"
+      ],
+      "knowledge_inputs": [
+        "Current OLEANDER Design Quality/DD and Architecture room-use evidence",
+        "Current Human Factors / accessibility evidence where triggered",
+        "Current material/failure, durability, cleaning and manufacturer technical evidence",
+        "Current acoustic, lighting, MEP, fire and specialist criteria through their proper owners",
+        "project-specific mockup/sample/site evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "interior handover register",
+        "maintenance/replacement map",
+        "post-occupancy observation record",
+        "change/revalidation register",
+        "bounded learning candidates"
+      ],
+      "interface_requirements": [
+        "FM / Operations",
+        "Architecture",
+        "HCD",
+        "Procurement",
+        "G9 Knowledge Return"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "INT-09-IF-01",
+          "source_domain": "FM / Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "as-installed identity",
+            "maintenance regime",
+            "wear/failure",
+            "user adaptation",
+            "replacement/change"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the interior remain usable, cleanable, maintainable, replaceable and coherent in actual operation, and what observed issues require project reopen versus bounded learning?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "as-installed identity",
+        "maintenance regime",
+        "wear/failure",
+        "user adaptation",
+        "replacement/change",
+        "maintenance task access/removal sequence, sacrificial component and replacement continuity",
+        "finish aging, repair visibility, adaptation classification and FM/Operations evidence boundary"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "inspect wear/clutter/furniture migration/blocked access and maintenance behavior",
+        "separate observation from causal explanation",
+        "reopen exact affected design relations before generalizing",
+        "read maintainability by task class including body/tool access, isolation, removal/replacement route, adjacent-finish protection and reinstatement consequence",
+        "map in-use aging and user adaptation by location/exposure/use/maintenance/product identity; distinguish patina/material failure from task/operations adaptation and reopen only affected relation"
+      ],
+      "professional_review_owner": "Interior Design professional owner",
+      "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Handover and in-use evidence are bounded to observed conditions and feed explicit project change/revalidation"
+      ],
+      "reopen_triggers": [
+        "material wear/failure",
+        "space/use change",
+        "maintenance regime change",
+        "contradictory user/field evidence"
+      ],
+      "claim_ceiling": "INTERIOR_IN_USE_BOUNDED",
+      "does_not_prove": [
+        "causal root cause without analysis",
+        "universal material/detail rule",
+        "Current Knowledge"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Accessibility",
+      "Acoustics",
+      "Architecture",
+      "Contractor / Fabricator",
+      "FM",
+      "FM / Operations",
+      "Fabrication / Contractor",
+      "Fire / Accessibility",
+      "Fire/Life Safety",
+      "G9 Knowledge Return",
+      "HCD",
+      "HCD / Operations",
+      "Lighting",
+      "Lighting Design",
+      "MEP",
+      "Procurement",
+      "Procurement / Cost",
+      "Specialist Process Owner",
+      "Structure"
+    ],
+    "outputs_to_domains": [
+      "Accessibility",
+      "Acoustics",
+      "Architecture",
+      "Contractor / Fabricator",
+      "Design Review",
+      "FM",
+      "FM / Operations",
+      "Fabrication / Contractor",
+      "Fire / Accessibility",
+      "Fire/Life Safety",
+      "G9 Knowledge Return",
+      "HCD",
+      "HCD / Operations",
+      "Lighting",
+      "Lighting Design",
+      "MEP",
+      "Procurement",
+      "Procurement / Cost",
+      "Project / Master",
+      "Specialist Process Owner",
+      "Structure"
+    ],
+    "shared_variables": [
+      "RFI/substitution",
+      "acceptable variation",
+      "access panel",
+      "acoustic treatment",
+      "approved benchmark",
+      "as-installed identity",
+      "assembly thickness",
+      "ceiling zone",
+      "circulation conflicts",
+      "clean/dirty boundary",
+      "cleaning",
+      "clear zones",
+      "control scene",
+      "defect",
+      "device positions",
+      "door/threshold geometry",
+      "environmental condition",
+      "equipment clearance",
+      "exposure",
+      "fixing/backing",
+      "floor level/fall",
+      "furniture/equipment basis",
+      "installed condition",
+      "item geometry",
+      "joint/edge",
+      "joint/tolerance",
+      "lead time",
+      "maintenance regime",
+      "material identity",
+      "movement envelope",
+      "occupancy/task",
+      "privacy",
+      "privacy boundary",
+      "product identity",
+      "reflectance/texture",
+      "repair state",
+      "replacement route",
+      "replacement/change",
+      "revision",
+      "room use",
+      "sample benchmark",
+      "service connection",
+      "specialist criteria",
+      "specialist performance interface",
+      "storage capacity",
+      "substitution attributes",
+      "surface reflectance",
+      "use zone",
+      "user adaptation",
+      "visual task",
+      "wear/failure",
+      "wet point"
+    ],
+    "controlling_authority_requirements": [
+      "each shared variable resolves to the owner that controls its truth/performance",
+      "R-F remains owner of interface maturity/disposition",
+      "Interior Design may issue stage-side requirements and design consequences but cannot self-award another domain's PASS",
+      "statutory/certification/external approval remains with applicable authority"
+    ],
+    "interface_maturity_policy": "INT stages issue stage-side interface requirements; actual maturity/disposition is resolved per interface / Acceptance Contract by R-F and is never inferred from INT stage number or professional verdict.",
+    "allowed_open_interface_conditions": [
+      "remaining work is later/outside current Interior Design claim",
+      "required maturity for current claim is met",
+      "no controlling-authority conflict remains",
+      "open item and later owner are explicit"
+    ],
+    "integration_readback_requirements": [
+      "critical geometry/material/environment/use/interface readback",
+      "Interior Design cross-domain interface readback",
+      "change propagation for material shared-variable changes"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "FF&E/equipment plan and schedule",
+      "accepted deviation/substitution decisions",
+      "approved benchmark register",
+      "approved design benchmark set",
+      "benchmark comparison",
+      "bounded learning candidates",
+      "ceiling/wall treatment intent",
+      "change/revalidation register",
+      "circulation/threshold readbacks",
+      "clean/dirty/service flow diagrams",
+      "clearance/movement envelopes",
+      "controls/user-interface requirements",
+      "critical junction register",
+      "defect/punch register",
+      "failure/exposure notes",
+      "finish/material schedule",
+      "finish/upstand/threshold/drain interface details",
+      "furnished interior plans",
+      "interior activity/room brief",
+      "interior assumptions/open-items register",
+      "interior detail set",
+      "interior handover register",
+      "interior specification/schedules",
+      "joinery details",
+      "long-lead/risk register",
+      "maintenance/replacement map",
+      "material decision matrix",
+      "operating-state/use matrix",
+      "partition/door intent",
+      "partition/lining schedule",
+      "post-occupancy observation record",
+      "privacy/sightline diagrams",
+      "reflected ceiling coordination",
+      "repair/retest evidence",
+      "room archetype register",
+      "sample register",
+      "sample/mockup schedule",
+      "sensory integration diagrams",
+      "service/replacement route evidence",
+      "site observation records",
+      "specialist interface register",
+      "storage capacity/access logic",
+      "substitution comparison template",
+      "surface/lighting/acoustic coordination",
+      "wet/special-use detail plans"
+    ],
+    "native_source_of_truth_rules": [
+      "one Current editable/native source per bounded Interior Design object where applicable",
+      "render/screenshot/report cannot replace geometry, material, calculation, sample/mockup or field evidence required by the claim",
+      "product/vendor data must retain exact identity/revision/application where material",
+      "site/in-use observations bind location/date/configuration and do not prove unobserved conditions"
+    ],
+    "execution_owner_requirements": [
+      "Interior Design professional decision owner identified",
+      "specialist technical/statutory owners identified for claims they control",
+      "native production/execution owner identified",
+      "independent review owner identified where required"
+    ],
+    "required_capabilities": [
+      "Interior Brief, Activity and Room-use Basis",
+      "Space Planning, Circulation, Thresholds and Privacy",
+      "FF&E, Equipment, Storage and Ergonomic Fit",
+      "Material, Finish and CMF Performance Development",
+      "Interior Assemblies, Ceilings, Partitions, Joinery and Details",
+      "Sensory, Lighting, Acoustic and Environmental Integration",
+      "Wet, Hygienic, High-wear and Specialist Interior Conditions",
+      "Samples, Mockups, Specification and Procurement Control",
+      "Installation, Site Review, Defect and Substitution Readback",
+      "Handover, Maintenance, Post-occupancy and Change"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects minimum sufficient native tools; CAD/BIM/render/simulation/modeling software is a carrier, not professional authority"
+    ],
+    "typed_handoff_contracts": [
+      "Interior Design↔Accessibility",
+      "Interior Design↔Acoustics",
+      "Interior Design↔Architecture",
+      "Interior Design↔Contractor / Fabricator",
+      "Interior Design↔FM",
+      "Interior Design↔FM / Operations",
+      "Interior Design↔Fabrication / Contractor",
+      "Interior Design↔Fire / Accessibility",
+      "Interior Design↔Fire/Life Safety",
+      "Interior Design↔G9 Knowledge Return",
+      "Interior Design↔HCD",
+      "Interior Design↔HCD / Operations",
+      "Interior Design↔Lighting",
+      "Interior Design↔Lighting Design",
+      "Interior Design↔MEP",
+      "Interior Design↔Procurement",
+      "Interior Design↔Procurement / Cost",
+      "Interior Design↔Specialist Process Owner",
+      "Interior Design↔Structure"
+    ],
+    "actual_readback_requirements": [
+      "attack cleanability and service access",
+      "attack peak/degraded/service states and missing furniture/equipment assumptions",
+      "attack wear/moisture/cleaning/failure modes",
+      "bind observations to exact location/revision",
+      "check ceiling device hierarchy/access",
+      "check tolerance/movement/termination logic",
+      "compare proposed/approved samples to design criteria under relevant conditions",
+      "compare visible and hidden-access interfaces before closure where inspectable",
+      "inspect samples at relevant scale/light",
+      "inspect thermal/air-movement implications for use zones",
+      "inspect wear/clutter/furniture migration/blocked access and maintenance behavior",
+      "measure furnished clear zones and threshold conditions",
+      "read chairs/drawers/doors/equipment in open/use states",
+      "read enlarged junctions and service penetrations",
+      "read falls/threshold/drain/penetration geometry",
+      "read repaired material defects when design intent was affected",
+      "read room/activity brief against Current architecture and user/operations evidence",
+      "read substitution deltas across all controlling attributes",
+      "reconcile datasheet claims with substrate/joint/finish/application",
+      "reopen exact affected design relations before generalizing",
+      "review actual/mockup lighting/material relation where material",
+      "review privacy/sightline/queue/service conflicts in plan and view/section",
+      "separate observation from causal explanation",
+      "test mockups against explicit failure questions",
+      "test reach/posture/transfer/service access using bounded human evidence",
+      "trace acoustic/privacy source-path-receiver consequences",
+      "verify special-room assumptions remain explicit"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Interior Design stage review at the declared project/source/geometry/material/environment/configuration ceiling, keeping design, specialist performance, statutory, integration and evidence claims separate.",
+    "evidence_review": "Verify source/revision, applicability, actual native/readback, observed-vs-interpreted separation, exact location/configuration and open assumptions.",
+    "technical_gates": [
+      "specialist engineering/statutory gate when claimed",
+      "R-F interface gate when material",
+      "native/site/mockup/readback gate appropriate to the claim"
+    ],
+    "independent_review": "Attack generic checklist completion, presentation-only proof, source/revision mismatch, unresolved adverse states, hidden maintenance/construction conditions, owner leakage and project-evidence overgeneralization in Interior Design.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + current Master professional_processes[] summary; project receipt exists only for real project execution, never candidate-definition validation.",
+    "does_not_prove": [
+      "Current adoption of this candidate",
+      "project exercise",
+      "Professional PASS",
+      "Design KEEP",
+      "R-F Integration PASS",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "accessibility/fire route change",
+      "cleaning/exposure change",
+      "cleaning/hygiene criterion change",
+      "concealed-work uncertainty",
+      "contradictory user/field evidence",
+      "equipment/occupancy change",
+      "equipment/process change",
+      "lighting/acoustic/MEP strategy change",
+      "lighting/reflectance change",
+      "maintenance regime change",
+      "material wear/failure",
+      "material/module change",
+      "material/product/substrate change",
+      "mockup failure",
+      "new RFI/substitution",
+      "occupancy/use change",
+      "partition/door/furniture change",
+      "procurement constraint change",
+      "product family/substitution",
+      "program/use change",
+      "repair changes adjacent relation",
+      "service connection change",
+      "service/device relocation",
+      "site deviation",
+      "space/use change",
+      "substrate/partition change",
+      "supplier/product/substitution change",
+      "surface/ceiling/furniture change",
+      "task/posture/user change",
+      "task/use change",
+      "user cohort change",
+      "wet/drainage/waterproofing change"
+    ],
+    "stale_scope_rules": [
+      "only affected stages/interfaces/evidence become stale unless dependency graph shows wider consequence",
+      "historical evidence remains truthful for its original source/revision/location/configuration and is not rewritten to impersonate a successor"
+    ],
+    "upstream_impact_rules": [
+      "new field/source/specialist evidence may reopen upstream basis/option decisions",
+      "specialist impossibility may reopen design rather than being patched locally"
+    ],
+    "downstream_impact_rules": [
+      "changed Interior Design controlled variables propagate to consuming domains through R-F",
+      "changed tested/installed configuration reopens only evidence that consumed the changed relation unless coupling proves wider consequence"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable changes reopen affected R-F interfaces at owner-native scope"
+    ],
+    "receipt_stale_rules": [
+      "a project Interior Design receipt becomes stale at affected claim scope when governing evidence/native state/configuration/required owner evidence changes; historical receipts are not rewritten"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable Interior Design stages complete at declared claim ceiling",
+      "required native outputs and actual readback exist",
+      "required specialist/external owner evidence exists at its own boundary",
+      "critical interfaces meet required R-F maturity",
+      "no unresolved in-claim blocker",
+      "professional/independent review binds exact reviewed configuration",
+      "professional receipt is Current for an actual project instance"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim Interior Design work that does not contradict the current bounded professional verdict"
+    ],
+    "professional_receipt": "INT_PROFESSIONAL_PROCESS_RECEIPT for real project execution only; candidate-definition validation emits no project receipt.",
+    "promotion_effect": "If later adopted Current and actually executed, a bounded PASS may satisfy only the triggered Interior Design professional-process dependency; it grants neither Design KEEP, specialist/statutory approval, R-F Integration PASS, Project Promotion nor Current Knowledge.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_INT_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "Current adoption",
+      "project exercise",
+      "specialist/statutory approval",
+      "future field/in-use performance",
+      "Design KEEP",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  }
+}

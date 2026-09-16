@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
   "process_id": "OLEANDER-BUILDING-SERVICES-MEP-DESIGN-PROCESS",
   "domain": "Building Services / MEP Engineering",
@@ -101,418 +101,1318 @@
       "stage_id": "BSP-STRATEGIC",
       "stage_name": "Strategic Services / Performance Definition",
       "professional_question": "What servicing, utility, resilience, environmental and operational-performance consequences materially affect the strategic project decision?",
-      "entry_conditions": ["strategic project need and high-level use exist"],
-      "required_inputs": ["client/business case", "high-level use/operation", "site/utilities/climate context"],
-      "knowledge_inputs": ["strategic utility/service constraints", "existing-system evidence where relevant"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-STRATEGIC Strategic Services / Performance Definition | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "strategic project need and high-level use exist"
+      ],
+      "required_inputs": [
+        "client/business case",
+        "high-level use/operation",
+        "site/utilities/climate context"
+      ],
+      "knowledge_inputs": [
+        "strategic utility/service constraints",
+        "existing-system evidence where relevant"
+      ],
       "knowledge_mount_requirement": "Mount consequential utility, climate, existing-system and strategic services sources before making feasibility claims.",
-      "required_dd_dimensions": ["DD-01", "DD-02", "DD-11", "DD-12"],
-      "required_native_outputs": ["strategic services constraints note", "survey/metering need list", "initial performance and utility risk register"],
-      "interface_requirements": ["Architecture", "Envelope", "Structure", "Fire", "FM", "Cost"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-02",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "strategic services constraints note",
+        "survey/metering need list",
+        "initial performance and utility risk register"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Envelope",
+        "Structure",
+        "Fire",
+        "FM",
+        "Cost"
+      ],
+      "human_experience_consequences": [
+        "strategic comfort, resilience and service continuity implications where in claim"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "strategic servicing and performance feasibility constraints"
+      ],
+      "content_projection_requirements": [
+        "show utility/performance constraints, assumptions and evidence state"
+      ],
+      "required_readback": [
+        "read strategic decision against actual utility/climate/existing-system evidence state"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner",
+      "independent_review_requirement": "Independent or distinct peer review where consequence, novelty, system complexity or authority requires it.",
+      "open_items_allowed": [
+        "later load, topology, equipment and commissioning design"
+      ],
+      "exit_conditions": [
+        "material strategic services constraints and unknowns are explicit"
+      ],
+      "reopen_triggers": [
+        "use/site/utility/energy-strategy change"
+      ],
+      "claim_ceiling": "MEP_STRATEGIC_DEFINITION",
+      "does_not_prove": [
+        "system sizing",
+        "equipment selection",
+        "commissioned performance",
+        "measured energy performance"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-STRATEGIC-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["use/occupancy", "site/utility entry", "passive-active strategy", "plant scale"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MATERIAL",
+          "shared_variables": [
+            "use/occupancy",
+            "site/utility entry",
+            "passive-active strategy",
+            "plant scale"
+          ],
           "required_maturity_to_enter": "IDENTIFIED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "strategic project brief and services constraints record",
-          "change_reopen_rule": "Reopen when project use, site, utility or strategic environmental strategy materially changes."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-STRATEGIC-ARCH",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_native_source_role": "strategic project brief and services constraints record",
+          "requested_change_reopen_rule": "Reopen when project use, site, utility or strategic environmental strategy materially changes."
         }
-      ],
-      "human_experience_consequences": ["strategic comfort, resilience and service continuity implications where in claim"],
-      "design_language_consequences": [],
-      "technical_consequences": ["strategic servicing and performance feasibility constraints"],
-      "content_projection_requirements": ["show utility/performance constraints, assumptions and evidence state"],
-      "required_readback": ["read strategic decision against actual utility/climate/existing-system evidence state"],
-      "professional_review_owner": "Building Services / MEP professional owner",
-      "independent_review_requirement": "Independent or distinct peer review where consequence, novelty, system complexity or authority requires it.",
-      "open_items_allowed": ["later load, topology, equipment and commissioning design"],
-      "exit_conditions": ["material strategic services constraints and unknowns are explicit"],
-      "reopen_triggers": ["use/site/utility/energy-strategy change"],
-      "claim_ceiling": "MEP_STRATEGIC_DEFINITION",
-      "does_not_prove": ["system sizing", "equipment selection", "commissioned performance", "measured energy performance"]
+      ]
     },
     {
       "stage_id": "BSP-BRIEF",
       "stage_name": "Services Brief / Basis of Building Services Design",
       "professional_question": "Is there an authoritative enough demand, performance, responsibility and commissioning basis to begin system concept design?",
-      "entry_conditions": ["project brief development active"],
-      "required_inputs": ["room/use schedules", "occupancy/process assumptions", "utility/climate data", "performance goals"],
-      "knowledge_inputs": ["current MEP routing", "applicable standards", "commissioning and operational-energy methods"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-BRIEF Services Brief / Basis of Building Services Design | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "project brief development active"
+      ],
+      "required_inputs": [
+        "room/use schedules",
+        "occupancy/process assumptions",
+        "utility/climate data",
+        "performance goals"
+      ],
+      "knowledge_inputs": [
+        "current MEP routing",
+        "applicable standards",
+        "commissioning and operational-energy methods"
+      ],
       "knowledge_mount_requirement": "Mount consequential standards, climatic/utility evidence, client operational requirements and existing-system evidence at the current claim ceiling.",
-      "required_dd_dimensions": ["DD-01", "DD-05", "DD-11", "DD-12"],
-      "required_native_outputs": ["Basis of Building Services Design", "MEP Responsibility / Deliverables Matrix", "Commissioning Plan basis", "initial controls and operational-performance criteria"],
-      "interface_requirements": ["Architecture", "Fire", "Envelope", "FM", "Cost", "Structure"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-05",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "Basis of Building Services Design",
+        "MEP Responsibility / Deliverables Matrix",
+        "Commissioning Plan basis",
+        "initial controls and operational-performance criteria"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Fire",
+        "Envelope",
+        "FM",
+        "Cost",
+        "Structure"
+      ],
+      "human_experience_consequences": [
+        "comfort, IAQ, water, lighting-power and service continuity requirements where applicable"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "authoritative demand/performance/responsibility/commissioning basis",
+        "existing-system reuse evidence ceiling and available-versus-nameplate capacity"
+      ],
+      "content_projection_requirements": [
+        "show assumptions, design conditions, system boundaries, responsibility and commissioning success criteria"
+      ],
+      "required_readback": [
+        "read basis against current project brief and mounted authority",
+        "for retained/existing systems, read as-found configuration, actual operating/load/control state, condition/fault history and evidence of demonstrably available capacity"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner",
+      "independent_review_requirement": "Distinct review of demand/performance assumptions and commissioning basis for material systems.",
+      "open_items_allowed": [
+        "later system concept and technical design"
+      ],
+      "exit_conditions": [
+        "material demand, performance, responsibility and commissioning inputs are explicit"
+      ],
+      "reopen_triggers": [
+        "brief/standard/utility/occupancy/performance target change"
+      ],
+      "claim_ceiling": "MEP_SERVICES_BRIEF",
+      "does_not_prove": [
+        "selected system concept",
+        "final capacity",
+        "commissioned operation"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-BRIEF-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["room/use schedule", "occupancy", "operating hours", "environmental conditions", "space/access assumptions"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "room/use schedule",
+            "occupancy",
+            "operating hours",
+            "environmental conditions",
+            "space/access assumptions"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
-          "native_source_of_truth": "current architectural brief plus Basis of Building Services Design",
-          "change_reopen_rule": "Reopen when use, occupancy, schedule, room condition or performance criteria materially changes."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
+          "requirement_id": "BSP-BRIEF-ARCH",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "current architectural brief plus Basis of Building Services Design",
+          "requested_change_reopen_rule": "Reopen when use, occupancy, schedule, room condition or performance criteria materially changes."
         }
-      ],
-      "human_experience_consequences": ["comfort, IAQ, water, lighting-power and service continuity requirements where applicable"],
-      "design_language_consequences": [],
-      "technical_consequences": ["authoritative demand/performance/responsibility/commissioning basis"],
-      "content_projection_requirements": ["show assumptions, design conditions, system boundaries, responsibility and commissioning success criteria"],
-      "required_readback": ["read basis against current project brief and mounted authority"],
-      "professional_review_owner": "Building Services / MEP professional owner",
-      "independent_review_requirement": "Distinct review of demand/performance assumptions and commissioning basis for material systems.",
-      "open_items_allowed": ["later system concept and technical design"],
-      "exit_conditions": ["material demand, performance, responsibility and commissioning inputs are explicit"],
-      "reopen_triggers": ["brief/standard/utility/occupancy/performance target change"],
-      "claim_ceiling": "MEP_SERVICES_BRIEF",
-      "does_not_prove": ["selected system concept", "final capacity", "commissioned operation"]
+      ]
     },
     {
       "stage_id": "BSP-CONCEPT",
       "stage_name": "System Concept / Topology Selection",
       "professional_question": "Which building-services system concepts are credible and why should the selected topology continue?",
-      "entry_conditions": ["current services brief and design basis"],
-      "required_inputs": ["Basis of Building Services Design", "architectural concept", "envelope/passive strategy", "utility constraints"],
-      "knowledge_inputs": ["system options", "load methods", "controls concepts", "operational-energy methods"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-CONCEPT System Concept / Topology Selection | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "current services brief and design basis"
+      ],
+      "required_inputs": [
+        "Basis of Building Services Design",
+        "architectural concept",
+        "envelope/passive strategy",
+        "utility constraints"
+      ],
+      "knowledge_inputs": [
+        "system options",
+        "load methods",
+        "controls concepts",
+        "operational-energy methods"
+      ],
       "knowledge_mount_requirement": "Mount consequential system, load, utility, standard and performance-method knowledge before retaining a concept.",
-      "required_dd_dimensions": ["DD-02", "DD-04", "DD-05", "DD-11", "DD-12"],
-      "required_native_outputs": ["system option comparison", "concept schematics", "initial load/capacity basis", "plant/riser/service-zone strategy", "concept controls strategy", "commissionability review"],
-      "interface_requirements": ["Architecture", "Envelope", "Structure", "Fire", "Acoustics", "FM", "Cost"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-04",
+        "DD-05",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "system option comparison",
+        "concept schematics",
+        "initial load/capacity basis",
+        "plant/riser/service-zone strategy",
+        "concept controls strategy",
+        "commissionability review"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Envelope",
+        "Structure",
+        "Fire",
+        "Acoustics",
+        "FM",
+        "Cost"
+      ],
+      "human_experience_consequences": [
+        "comfort/IAQ/noise/controls consequences of retained systems"
+      ],
+      "design_language_consequences": [
+        "visible terminals, plant/enclosure, grille/louvre or service-expression consequences where material"
+      ],
+      "technical_consequences": [
+        "system boundary/topology and concept capacity basis",
+        "demand diversity, uncertainty and part-load/resilience consequences of system concept",
+        "black-start/service-restoration order, intentional load shedding and common-dependency consequence beyond standby capacity"
+      ],
+      "content_projection_requirements": [
+        "compare system options with assumptions, performance consequences, space and commissioning implications"
+      ],
+      "required_readback": [
+        "schematic-to-space readback",
+        "load/capacity assumption readback",
+        "commissionability readback",
+        "read demand/load composition, occupancy/schedule/diversity basis and plausible peak/part-load/degraded scenarios capable of reversing topology selection",
+        "read resilience as service-restoration dependency sequence from initiating loss through transfer, auxiliaries, permissives, restart/load pickup, failed-start branch and return-to-normal; expose common dependencies"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner",
+      "independent_review_requirement": "Concept-stage review appropriate to system complexity, risk and performance claim.",
+      "open_items_allowed": [
+        "final equipment/network/control design"
+      ],
+      "exit_conditions": [
+        "credible system concept retained with bounded assumptions and interface consequences"
+      ],
+      "reopen_triggers": [
+        "use/load/system/topology/plant/passive-strategy change"
+      ],
+      "claim_ceiling": "MEP_CONCEPT_DESIGN",
+      "does_not_prove": [
+        "final equipment duty",
+        "detailed network performance",
+        "commissioned performance"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-CONCEPT-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["zoning", "plant/riser reserves", "ceiling/service zones", "intake/exhaust locations", "wet/service clustering"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "zoning",
+            "plant/riser reserves",
+            "ceiling/service zones",
+            "intake/exhaust locations",
+            "wet/service clustering"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
-          "native_source_of_truth": "concept MEP schematics and coordinated architectural option geometry",
-          "change_reopen_rule": "Reopen when massing, zoning, plant reserve, system topology or environmental strategy changes."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
+          "requirement_id": "BSP-CONCEPT-ARCH",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "concept MEP schematics and coordinated architectural option geometry",
+          "requested_change_reopen_rule": "Reopen when massing, zoning, plant reserve, system topology or environmental strategy changes."
         }
-      ],
-      "human_experience_consequences": ["comfort/IAQ/noise/controls consequences of retained systems"],
-      "design_language_consequences": ["visible terminals, plant/enclosure, grille/louvre or service-expression consequences where material"],
-      "technical_consequences": ["system boundary/topology and concept capacity basis"],
-      "content_projection_requirements": ["compare system options with assumptions, performance consequences, space and commissioning implications"],
-      "required_readback": ["schematic-to-space readback", "load/capacity assumption readback", "commissionability readback"],
-      "professional_review_owner": "Building Services / MEP professional owner",
-      "independent_review_requirement": "Concept-stage review appropriate to system complexity, risk and performance claim.",
-      "open_items_allowed": ["final equipment/network/control design"],
-      "exit_conditions": ["credible system concept retained with bounded assumptions and interface consequences"],
-      "reopen_triggers": ["use/load/system/topology/plant/passive-strategy change"],
-      "claim_ceiling": "MEP_CONCEPT_DESIGN",
-      "does_not_prove": ["final equipment duty", "detailed network performance", "commissioned performance"]
+      ]
     },
     {
       "stage_id": "BSP-SPATIAL",
       "stage_name": "Spatial Coordination / Distribution Development",
       "professional_question": "Are plant, risers, routes, terminals, access, replacement paths and builder's-work interfaces coordinated enough for other disciplines to rely on them?",
-      "entry_conditions": ["selected system concepts", "current architectural/structural geometry"],
-      "required_inputs": ["concept schematics", "current plant/riser/ceiling geometry", "current load/capacity basis"],
-      "knowledge_inputs": ["distribution methods", "access/maintenance", "acoustic/vibration", "fire/waterproofing interfaces"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-SPATIAL Spatial Coordination / Distribution Development | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "selected system concepts",
+        "current architectural/structural geometry"
+      ],
+      "required_inputs": [
+        "concept schematics",
+        "current plant/riser/ceiling geometry",
+        "current load/capacity basis"
+      ],
+      "knowledge_inputs": [
+        "distribution methods",
+        "access/maintenance",
+        "acoustic/vibration",
+        "fire/waterproofing interfaces"
+      ],
       "knowledge_mount_requirement": "Mount changed consequential standards, product/system data and source conditions before spatial geometry is treated as current.",
-      "required_dd_dimensions": ["DD-04", "DD-05", "DD-08", "DD-11", "DD-12"],
-      "required_native_outputs": ["coordinated plant/riser/distribution model and drawings", "builder's-work/opening requirements", "access/replacement routes", "updated schematics and load basis", "commissionability review"],
-      "interface_requirements": ["Architecture", "Structure", "Fire", "Interior", "Envelope", "Acoustics", "FM"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-05",
+        "DD-08",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "coordinated plant/riser/distribution model and drawings",
+        "builder's-work/opening requirements",
+        "access/replacement routes",
+        "updated schematics and load basis",
+        "commissionability review"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Structure",
+        "Fire",
+        "Interior",
+        "Envelope",
+        "Acoustics",
+        "FM"
+      ],
+      "human_experience_consequences": [
+        "clear height, acoustic, access and terminal-placement consequences"
+      ],
+      "design_language_consequences": [
+        "visible services/terminals/louvres where material"
+      ],
+      "technical_consequences": [
+        "coordinated plant/distribution/access geometry"
+      ],
+      "content_projection_requirements": [
+        "critical sections through risers/ceilings/plant/access and builder's-work interfaces"
+      ],
+      "required_readback": [
+        "actual coordinated model/drawings",
+        "critical section and replacement-path readback"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner",
+      "independent_review_requirement": "Spatial/interface review distinct from clash detection alone.",
+      "open_items_allowed": [
+        "later detailed equipment/network/control design outside current spatial claim"
+      ],
+      "exit_conditions": [
+        "in-claim critical MEP space/access/interface geometry meets required Integration maturity"
+      ],
+      "reopen_triggers": [
+        "route/plant/riser/ceiling/opening/access/equipment-load change"
+      ],
+      "claim_ceiling": "MEP_SPATIAL_COORDINATION",
+      "does_not_prove": [
+        "final technical design",
+        "installation readiness",
+        "commissioned performance"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-SPATIAL-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["plant rooms", "risers", "ceiling zones", "shafts", "access doors", "replacement routes", "roof/facade service interfaces"],
-          "coupling": "TIGHTLY_COUPLED",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "plant rooms",
+            "risers",
+            "ceiling zones",
+            "shafts",
+            "access doors",
+            "replacement routes",
+            "roof/facade service interfaces"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
-          "native_source_of_truth": "coordinated MEP model/drawings plus current architectural model/drawings",
-          "change_reopen_rule": "Reopen when coordinated room/ceiling/riser/plant/access geometry materially changes."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
+          "requirement_id": "BSP-SPATIAL-ARCH",
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "coordinated MEP model/drawings plus current architectural model/drawings",
+          "requested_change_reopen_rule": "Reopen when coordinated room/ceiling/riser/plant/access geometry materially changes."
         },
         {
-          "interface_binding_id": "BSP-SPATIAL-STR",
           "source_domain": "Structural Engineering",
           "source_stage_ref": "SE-SPW3",
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["openings", "builder's work", "equipment loads", "supports", "structural zones"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "openings",
+            "builder's work",
+            "equipment loads",
+            "supports",
+            "structural zones"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
-          "native_source_of_truth": "current coordinated structural and MEP model/drawings",
-          "change_reopen_rule": "Reopen when openings, support loads, structural zones or service routes change."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
+          "requirement_id": "BSP-SPATIAL-STR",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "current coordinated structural and MEP model/drawings",
+          "requested_change_reopen_rule": "Reopen when openings, support loads, structural zones or service routes change."
         }
-      ],
-      "human_experience_consequences": ["clear height, acoustic, access and terminal-placement consequences"],
-      "design_language_consequences": ["visible services/terminals/louvres where material"],
-      "technical_consequences": ["coordinated plant/distribution/access geometry"],
-      "content_projection_requirements": ["critical sections through risers/ceilings/plant/access and builder's-work interfaces"],
-      "required_readback": ["actual coordinated model/drawings", "critical section and replacement-path readback"],
-      "professional_review_owner": "Building Services / MEP professional owner",
-      "independent_review_requirement": "Spatial/interface review distinct from clash detection alone.",
-      "open_items_allowed": ["later detailed equipment/network/control design outside current spatial claim"],
-      "exit_conditions": ["in-claim critical MEP space/access/interface geometry meets required Integration maturity"],
-      "reopen_triggers": ["route/plant/riser/ceiling/opening/access/equipment-load change"],
-      "claim_ceiling": "MEP_SPATIAL_COORDINATION",
-      "does_not_prove": ["final technical design", "installation readiness", "commissioned performance"]
+      ]
     },
     {
       "stage_id": "BSP-TECHNICAL",
       "stage_name": "Technical System Design / Controls / Commissioning Specification",
       "professional_question": "Are system duties, equipment, networks, protection, controls and commissioning requirements technically complete at the declared responsibility boundary?",
-      "entry_conditions": ["spatially coordinated services basis", "current loads, utilities and interfaces"],
-      "required_inputs": ["coordinated geometry", "current design basis", "specialist requirements"],
-      "knowledge_inputs": ["equipment/network/control design", "protection and safety", "commissioning test methods", "operational energy"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-TECHNICAL Technical System Design / Controls / Commissioning Specification | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "spatially coordinated services basis",
+        "current loads, utilities and interfaces"
+      ],
+      "required_inputs": [
+        "coordinated geometry",
+        "current design basis",
+        "specialist requirements"
+      ],
+      "knowledge_inputs": [
+        "equipment/network/control design",
+        "protection and safety",
+        "commissioning test methods",
+        "operational energy"
+      ],
       "knowledge_mount_requirement": "Mount current governing standards, project conditions, manufacturer/product evidence and commissioning criteria before technical closure.",
-      "required_dd_dimensions": ["DD-07", "DD-08", "DD-10", "DD-11", "DD-12"],
-      "required_native_outputs": ["technical MEP drawings/model", "system schematics", "calculations", "equipment schedules", "specification", "controls sequences/points", "Commissioning Specification", "energy/performance model where in scope"],
-      "interface_requirements": ["Architecture", "Structure", "Fire", "Envelope", "Interior", "Acoustics", "Controls specialists"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-07",
+        "DD-08",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "technical MEP drawings/model",
+        "system schematics",
+        "calculations",
+        "equipment schedules",
+        "specification",
+        "controls sequences/points",
+        "Commissioning Specification",
+        "energy/performance model where in scope"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Structure",
+        "Fire",
+        "Envelope",
+        "Interior",
+        "Acoustics",
+        "Controls specialists"
+      ],
+      "human_experience_consequences": [
+        "verified design intent for comfort/IAQ/noise/water/power/controls where within modelled claim"
+      ],
+      "design_language_consequences": [
+        "final visible-service and terminal consequences where material"
+      ],
+      "technical_consequences": [
+        "complete technical system design within assigned responsibility",
+        "network-physics integrity across peak and part-load states",
+        "controls priority, proof, fail/fallback and recovery behavior",
+        "plant staging/lead-lag/hysteresis/minimum-flow/control-authority and part-load stable-operation consequence",
+        "water residence/stagnation/treatment and condensation-vapour continuity consequence; multi-source electrical protection/selectivity state consequence",
+        "sensor/actuator diagnostic discrimination, bounded fault injection/readback and unresolved-ambiguity consequence",
+        "service-system acoustic/vibration source-path-receiver and specialist-interface consequence",
+        "drainage air-pressure/vent/transient and pressurized water-hammer interface consequence without process-authored thresholds"
+      ],
+      "content_projection_requirements": [
+        "calculation-schematic-model-schedule consistency",
+        "controls and commissioning acceptance criteria"
+      ],
+      "required_readback": [
+        "technical drawings/model",
+        "calculations",
+        "controls sequences",
+        "commissioning specification",
+        "critical interface readback",
+        "read technical network calculations against exact schematic/configuration, physical boundary conditions, equipment curves/data, critical paths and part-load/minimum-load behavior",
+        "exercise controls as trigger/prerequisite/arbitration/input/logic/command/proof/fallback/override/recovery sequences rather than points lists",
+        "read staged/variable-capacity plant across part-load/degraded/restart operating envelope, control-loop authority and interacting-reset behavior",
+        "read potable/process-water hygiene and condensation chains separately from hydraulic/thermal capacity; read electrical protection/selectivity across materially different source/topology states",
+        "diagnose performance-critical controls by separating process fault, bad measurement, failed command path and failed final element using plausibility/cross-check, command-versus-proof, override/comms state and recovery evidence",
+        "trace consequential acoustic/vibration behavior as source → transmission path → receiver across material operating states, including structure-borne/duct-pipe paths, isolation bridges and abnormal service states",
+        "read gravity drainage pressure/air/transient behavior through simultaneous discharge, stack/branch geometry, trap protection, vent path, surcharge/backwater and receiving outfall; expose pressurized-service transient initiation where material"
+      ],
+      "professional_review_owner": "Responsible Building Services / MEP professional owner",
+      "independent_review_requirement": "Required engineering/peer/discipline checking according to system risk, complexity, jurisdiction and appointment.",
+      "open_items_allowed": [
+        "specialist installation/fabrication detail explicitly assigned outside current technical responsibility"
+      ],
+      "exit_conditions": [
+        "technical system design and required review close at declared responsibility boundary"
+      ],
+      "reopen_triggers": [
+        "load/equipment/network/control/interface/fire/utility change"
+      ],
+      "claim_ceiling": "MEP_TECHNICAL_DESIGN",
+      "does_not_prove": [
+        "installation conformity",
+        "commissioned performance",
+        "measured energy performance"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-TECHNICAL-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["final plant/riser/service zones", "terminal positions", "access", "intake/exhaust", "drainage/waterproofing interfaces"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "final plant/riser/service zones",
+            "terminal positions",
+            "access",
+            "intake/exhaust",
+            "drainage/waterproofing interfaces"
+          ],
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "EXERCISED",
-          "allowed_dispositions_on_exit": ["CLOSED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "technical MEP and architectural drawings/models",
-          "change_reopen_rule": "Reopen on material equipment, route, access, terminal or architectural-interface change."
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-TECHNICAL-ARCH",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "technical MEP and architectural drawings/models",
+          "requested_change_reopen_rule": "Reopen on material equipment, route, access, terminal or architectural-interface change."
         }
-      ],
-      "human_experience_consequences": ["verified design intent for comfort/IAQ/noise/water/power/controls where within modelled claim"],
-      "design_language_consequences": ["final visible-service and terminal consequences where material"],
-      "technical_consequences": ["complete technical system design within assigned responsibility"],
-      "content_projection_requirements": ["calculation-schematic-model-schedule consistency", "controls and commissioning acceptance criteria"],
-      "required_readback": ["technical drawings/model", "calculations", "controls sequences", "commissioning specification", "critical interface readback"],
-      "professional_review_owner": "Responsible Building Services / MEP professional owner",
-      "independent_review_requirement": "Required engineering/peer/discipline checking according to system risk, complexity, jurisdiction and appointment.",
-      "open_items_allowed": ["specialist installation/fabrication detail explicitly assigned outside current technical responsibility"],
-      "exit_conditions": ["technical system design and required review close at declared responsibility boundary"],
-      "reopen_triggers": ["load/equipment/network/control/interface/fire/utility change"],
-      "claim_ceiling": "MEP_TECHNICAL_DESIGN",
-      "does_not_prove": ["installation conformity", "commissioned performance", "measured energy performance"]
+      ]
     },
     {
       "stage_id": "BSP-PRODUCTION",
       "stage_name": "Specialist / Installation Production Information",
       "professional_question": "Is technical services design translated into coordinated installation and specialist information without losing engineering intent or commissioning access?",
-      "entry_conditions": ["current technical design", "responsibility matrix assigns production/specialist scope"],
-      "required_inputs": ["technical design", "specialist/vendor/subcontractor information", "installation sequence constraints"],
-      "knowledge_inputs": ["fabrication/installation methods", "supports/restraints", "manufacturer requirements", "test access"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-PRODUCTION Specialist / Installation Production Information | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "current technical design",
+        "responsibility matrix assigns production/specialist scope"
+      ],
+      "required_inputs": [
+        "technical design",
+        "specialist/vendor/subcontractor information",
+        "installation sequence constraints"
+      ],
+      "knowledge_inputs": [
+        "fabrication/installation methods",
+        "supports/restraints",
+        "manufacturer requirements",
+        "test access"
+      ],
       "knowledge_mount_requirement": "Mount consequential specialist/product/installation evidence and changed design basis before production release.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["installation/fabrication drawings/model", "specialist design integration record", "builder's-work/support details", "commissioning access confirmation", "production-stage review/change record"],
-      "interface_requirements": ["Architecture", "Structure", "Fire", "specialists/installers", "Commissioning"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "installation/fabrication drawings/model",
+        "specialist design integration record",
+        "builder's-work/support details",
+        "commissioning access confirmation",
+        "production-stage review/change record"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Structure",
+        "Fire",
+        "specialists/installers",
+        "Commissioning"
+      ],
+      "human_experience_consequences": [
+        "maintainable access and retained usable clearances"
+      ],
+      "design_language_consequences": [
+        "fabricated visible-service/detail consequences where material"
+      ],
+      "technical_consequences": [
+        "installation-ready information within assigned responsibility",
+        "installation readiness, concealment hold points and pre-functional inspection/test access",
+        "replacement logistics, temporary loss of service, isolation/safe state and post-replacement rebalance/recommission consequence"
+      ],
+      "content_projection_requirements": [
+        "show specialist responsibility, access/testing provisions and unresolved interfaces"
+      ],
+      "required_readback": [
+        "production model/drawings",
+        "support/builder's-work details",
+        "test/commissioning access",
+        "read installation as inspectable/testable assembly including access, supports, falls/inverts, insulation/condensation, penetration/fire/water interfaces and pre-functional hold points",
+        "prove equipment replacement/removal path, isolation/handling/recommissioning dependency and restoration of accepted configuration rather than clearance-only maintainability"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner with assigned specialist reviewers",
+      "independent_review_requirement": "Review specialist/installer information against engineering design intent and assigned checking requirements.",
+      "open_items_allowed": [
+        "construction-stage field verification and commissioning"
+      ],
+      "exit_conditions": [
+        "assigned specialist/installation information integrated and reviewable"
+      ],
+      "reopen_triggers": [
+        "specialist/equipment/support/route/installation-method change"
+      ],
+      "claim_ceiling": "MEP_PRODUCTION_INFORMATION",
+      "does_not_prove": [
+        "installed conformity",
+        "functional performance",
+        "integrated systems performance"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-PRODUCTION-STR",
           "source_domain": "Structural Engineering",
           "source_stage_ref": "SE-SPW4.5",
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["supports", "restraints", "openings", "equipment bases", "installation loads"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "supports",
+            "restraints",
+            "openings",
+            "equipment bases",
+            "installation loads"
+          ],
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "EXERCISED",
-          "allowed_dispositions_on_exit": ["CLOSED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "coordinated MEP production information and structural production information",
-          "change_reopen_rule": "Reopen when support/restraint/opening/base/load or installation route materially changes."
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-PRODUCTION-STR",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "coordinated MEP production information and structural production information",
+          "requested_change_reopen_rule": "Reopen when support/restraint/opening/base/load or installation route materially changes."
         }
-      ],
-      "human_experience_consequences": ["maintainable access and retained usable clearances"],
-      "design_language_consequences": ["fabricated visible-service/detail consequences where material"],
-      "technical_consequences": ["installation-ready information within assigned responsibility"],
-      "content_projection_requirements": ["show specialist responsibility, access/testing provisions and unresolved interfaces"],
-      "required_readback": ["production model/drawings", "support/builder's-work details", "test/commissioning access"],
-      "professional_review_owner": "Building Services / MEP professional owner with assigned specialist reviewers",
-      "independent_review_requirement": "Review specialist/installer information against engineering design intent and assigned checking requirements.",
-      "open_items_allowed": ["construction-stage field verification and commissioning"],
-      "exit_conditions": ["assigned specialist/installation information integrated and reviewable"],
-      "reopen_triggers": ["specialist/equipment/support/route/installation-method change"],
-      "claim_ceiling": "MEP_PRODUCTION_INFORMATION",
-      "does_not_prove": ["installed conformity", "functional performance", "integrated systems performance"]
+      ]
     },
     {
       "stage_id": "BSP-CONSTRUCTION-CX",
       "stage_name": "Construction / Testing / Commissioning",
       "professional_question": "Does the installed system conform to current design intent and demonstrate required functional and integrated performance at the commissioned claim ceiling?",
-      "entry_conditions": ["installation/construction underway", "current commissioning requirements and approved changes available"],
-      "required_inputs": ["current design/production information", "installation records", "pre-functional evidence", "test methods"],
-      "knowledge_inputs": ["commissioning management", "test and balancing methods", "integrated systems testing", "nonconformity/change control"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-CONSTRUCTION-CX Construction / Testing / Commissioning | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "installation/construction underway",
+        "current commissioning requirements and approved changes available"
+      ],
+      "required_inputs": [
+        "current design/production information",
+        "installation records",
+        "pre-functional evidence",
+        "test methods"
+      ],
+      "knowledge_inputs": [
+        "commissioning management",
+        "test and balancing methods",
+        "integrated systems testing",
+        "nonconformity/change control"
+      ],
       "knowledge_mount_requirement": "Mount current commissioning/test criteria and changed product/system evidence before accepting test results.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-11", "DD-12"],
-      "required_native_outputs": ["site/installation review records", "pre-functional check records", "TAB/balancing records", "functional performance tests", "Integrated Systems Tests where applicable", "nonconformity/change records", "commissioning results"],
-      "interface_requirements": ["Architecture", "Structure", "Fire", "Controls", "FM", "Commissioning team"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site/installation review records",
+        "pre-functional check records",
+        "TAB/balancing records",
+        "functional performance tests",
+        "Integrated Systems Tests where applicable",
+        "nonconformity/change records",
+        "commissioning results"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Structure",
+        "Fire",
+        "Controls",
+        "FM",
+        "Commissioning team"
+      ],
+      "human_experience_consequences": [
+        "demonstrated system function for occupied/operational conditions within test scope"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "installation conformity and functional/integrated test evidence",
+        "design-to-measured network reconciliation and field-setting impact on model/control basis",
+        "field reroute/substitution impact on network resistance, protection, sensing, drainage, access, acoustic/vibration, condensation and controls",
+        "maintainability isolation and safe-work information boundary; accessible isolator does not prove safe isolation"
+      ],
+      "content_projection_requirements": [
+        "distinguish design intent, installed state, test result, limitation and unresolved defect"
+      ],
+      "required_readback": [
+        "installed configuration",
+        "commissioning/test evidence",
+        "open defects/nonconformities",
+        "actual control response",
+        "reconcile TAB/balancing measurements with the Current design network at the same operating state including plant duty, valve/damper positions, critical path and residual imbalance",
+        "treat accepted field deviation as configuration change and read affected calculations/schematics/models/interfaces plus exact retest/recommission scope",
+        "read physical maintenance isolation boundary including cross-connection/backfeed, stored energy, drain/vent/bleed, proof-of-isolation, essential-service/bypass need and reinstatement/recommissioning state"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner and assigned commissioning authority",
+      "independent_review_requirement": "Witnessing/independent verification according to specification, risk, statutory requirement and commissioning plan.",
+      "open_items_allowed": [
+        "explicit later seasonal/fine-tuning items outside handover acceptance"
+      ],
+      "exit_conditions": [
+        "required installation/test/commissioning evidence closes at the declared system claim ceiling"
+      ],
+      "reopen_triggers": [
+        "installation/configuration/control change",
+        "failed test",
+        "material defect or nonconformity"
+      ],
+      "claim_ceiling": "MEP_COMMISSIONED_SYSTEM_PERFORMANCE",
+      "does_not_prove": [
+        "statutory approval outside assigned evidence",
+        "future seasonal performance",
+        "long-term measured operational energy"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-CX-FIRE",
           "source_domain": "Fire / Life Safety",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["fire-system interfaces", "emergency power", "smoke control", "alarm/interlocks", "fail states"],
-          "coupling": "TIGHTLY_COUPLED",
-          "criticality": "CRITICAL",
+          "shared_variables": [
+            "fire-system interfaces",
+            "emergency power",
+            "smoke control",
+            "alarm/interlocks",
+            "fail states"
+          ],
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "current commissioning and integrated systems test records plus controlling fire authority evidence",
-          "change_reopen_rule": "Reopen when fire strategy, life-safety control logic or tested configuration changes."
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-CX-FIRE",
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "CRITICAL",
+          "required_native_source_role": "current commissioning and integrated systems test records plus controlling fire authority evidence",
+          "requested_change_reopen_rule": "Reopen when fire strategy, life-safety control logic or tested configuration changes."
         }
-      ],
-      "human_experience_consequences": ["demonstrated system function for occupied/operational conditions within test scope"],
-      "design_language_consequences": [],
-      "technical_consequences": ["installation conformity and functional/integrated test evidence"],
-      "content_projection_requirements": ["distinguish design intent, installed state, test result, limitation and unresolved defect"],
-      "required_readback": ["installed configuration", "commissioning/test evidence", "open defects/nonconformities", "actual control response"],
-      "professional_review_owner": "Building Services / MEP professional owner and assigned commissioning authority",
-      "independent_review_requirement": "Witnessing/independent verification according to specification, risk, statutory requirement and commissioning plan.",
-      "open_items_allowed": ["explicit later seasonal/fine-tuning items outside handover acceptance"],
-      "exit_conditions": ["required installation/test/commissioning evidence closes at the declared system claim ceiling"],
-      "reopen_triggers": ["installation/configuration/control change", "failed test", "material defect or nonconformity"],
-      "claim_ceiling": "MEP_COMMISSIONED_SYSTEM_PERFORMANCE",
-      "does_not_prove": ["statutory approval outside assigned evidence", "future seasonal performance", "long-term measured operational energy"]
+      ]
     },
     {
       "stage_id": "BSP-HANDOVER",
       "stage_name": "Handover / Operational Readiness",
       "professional_question": "Can the systems be safely and competently operated, maintained and monitored at handover with unresolved items explicit?",
-      "entry_conditions": ["required construction/commissioning scope sufficiently complete for handover decision"],
-      "required_inputs": ["commissioning results", "asset/O&M information", "training plan/records", "open-defect register"],
-      "knowledge_inputs": ["handover/aftercare", "operator training", "asset information", "fine-tuning requirements"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-HANDOVER Handover / Operational Readiness | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "required construction/commissioning scope sufficiently complete for handover decision"
+      ],
+      "required_inputs": [
+        "commissioning results",
+        "asset/O&M information",
+        "training plan/records",
+        "open-defect register"
+      ],
+      "knowledge_inputs": [
+        "handover/aftercare",
+        "operator training",
+        "asset information",
+        "fine-tuning requirements"
+      ],
       "knowledge_mount_requirement": "Mount current handover/commissioning criteria and final system configuration evidence before closure.",
-      "required_dd_dimensions": ["DD-05", "DD-10", "DD-12"],
-      "required_native_outputs": ["commissioning completion/status record", "O&M/asset information", "controls/sequence information", "training records", "open-items/seasonal-testing plan", "handover receipt"],
-      "interface_requirements": ["FM", "Client/operator", "Architecture", "Fire", "Controls"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "commissioning completion/status record",
+        "O&M/asset information",
+        "controls/sequence information",
+        "training records",
+        "open-items/seasonal-testing plan",
+        "handover receipt"
+      ],
+      "interface_requirements": [
+        "FM",
+        "Client/operator",
+        "Architecture",
+        "Fire",
+        "Controls"
+      ],
+      "human_experience_consequences": [
+        "operational readiness and safe user/operator interaction where in claim"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "bounded operational-readiness evidence"
+      ],
+      "content_projection_requirements": [
+        "co-locate handover status, unresolved defects, seasonal tasks and responsible owner"
+      ],
+      "required_readback": [
+        "final configuration",
+        "O&M/asset information",
+        "training and open-item status"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner with client/FM/commissioning participation",
+      "independent_review_requirement": "Handover verification must be distinct from installer self-declaration where required by specification/risk/authority.",
+      "open_items_allowed": [
+        "explicit seasonal testing/fine tuning with owner/date/claim boundary"
+      ],
+      "exit_conditions": [
+        "handover claim supported by commissioning, information, training and open-item evidence"
+      ],
+      "reopen_triggers": [
+        "final configuration/commissioning/O&M/training/open-defect change"
+      ],
+      "claim_ceiling": "MEP_HANDOVER_OPERATIONAL_READINESS",
+      "does_not_prove": [
+        "long-term seasonal performance",
+        "post-occupancy energy target achievement"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-HANDOVER-FM",
           "source_domain": "Facilities Management / Operations",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["asset information", "maintenance access", "training", "controls", "open items", "aftercare"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "asset information",
+            "maintenance access",
+            "training",
+            "controls",
+            "open items",
+            "aftercare"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "current O&M/asset/training/handover records",
-          "change_reopen_rule": "Reopen when final system configuration, operator requirements or material handover evidence changes."
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-HANDOVER-FM",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "current O&M/asset/training/handover records",
+          "requested_change_reopen_rule": "Reopen when final system configuration, operator requirements or material handover evidence changes."
         }
-      ],
-      "human_experience_consequences": ["operational readiness and safe user/operator interaction where in claim"],
-      "design_language_consequences": [],
-      "technical_consequences": ["bounded operational-readiness evidence"],
-      "content_projection_requirements": ["co-locate handover status, unresolved defects, seasonal tasks and responsible owner"],
-      "required_readback": ["final configuration", "O&M/asset information", "training and open-item status"],
-      "professional_review_owner": "Building Services / MEP professional owner with client/FM/commissioning participation",
-      "independent_review_requirement": "Handover verification must be distinct from installer self-declaration where required by specification/risk/authority.",
-      "open_items_allowed": ["explicit seasonal testing/fine tuning with owner/date/claim boundary"],
-      "exit_conditions": ["handover claim supported by commissioning, information, training and open-item evidence"],
-      "reopen_triggers": ["final configuration/commissioning/O&M/training/open-defect change"],
-      "claim_ceiling": "MEP_HANDOVER_OPERATIONAL_READINESS",
-      "does_not_prove": ["long-term seasonal performance", "post-occupancy energy target achievement"]
+      ]
     },
     {
       "stage_id": "BSP-INUSE",
       "stage_name": "In-use Review / Fine Tuning / Measured Performance",
       "professional_question": "How do actual operation, trends, faults, energy and user outcomes compare with the design/commissioning basis, and what must be corrected or learned?",
-      "entry_conditions": ["building/systems in operation", "sufficient measured/operational data for the intended review"],
-      "required_inputs": ["design basis and models", "commissioning baseline", "meter/trend/fault/maintenance data", "user/operator feedback"],
-      "knowledge_inputs": ["TM54 design-to-measured boundary", "seasonal commissioning", "fault detection/fine tuning", "post-occupancy evaluation"],
+      "stage_body_contract": {
+        "title_rule": "<project> | BSP-INUSE In-use Review / Fine Tuning / Measured Performance | <decision / cycle / baseline>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use this stage's knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; keep OE conditions and does_not_prove visible and do not copy canonical knowledge bodies.",
+        "native_source_rule": "Bind the professional body to this stage's required_native_outputs[] and authoritative native engineering source; prose, screenshots and renders do not replace the native source.",
+        "readback_rule": "Bind findings to this stage's required_readback[] and distinguish intended, implemented-in-native-source, observed/read-back and interpreted professional states.",
+        "open_failure_rule": "Use this stage's open_items_allowed[] and does_not_prove[] as explicit OPEN / failure / claim boundaries.",
+        "verdict_reopen_rule": "Bound the verdict to this stage's claim_ceiling and apply this stage's reopen_triggers[] after material change."
+      },
+      "entry_conditions": [
+        "building/systems in operation",
+        "sufficient measured/operational data for the intended review"
+      ],
+      "required_inputs": [
+        "design basis and models",
+        "commissioning baseline",
+        "meter/trend/fault/maintenance data",
+        "user/operator feedback"
+      ],
+      "knowledge_inputs": [
+        "TM54 design-to-measured boundary",
+        "seasonal commissioning",
+        "fault detection/fine tuning",
+        "post-occupancy evaluation"
+      ],
       "knowledge_mount_requirement": "Mount current measurement/method/benchmark context before claiming measured performance or causal diagnosis.",
-      "required_dd_dimensions": ["DD-05", "DD-11", "DD-12"],
-      "required_native_outputs": ["measured performance comparison", "seasonal/fine-tuning records", "fault/corrective-action register", "updated controls/operations record", "G9 transferable findings"],
-      "interface_requirements": ["FM", "Client/users", "Architecture", "Envelope", "Controls/Energy", "Fire where relevant"],
-      "interface_bindings": [
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "measured performance comparison",
+        "seasonal/fine-tuning records",
+        "fault/corrective-action register",
+        "updated controls/operations record",
+        "G9 transferable findings"
+      ],
+      "interface_requirements": [
+        "FM",
+        "Client/users",
+        "Architecture",
+        "Envelope",
+        "Controls/Energy",
+        "Fire where relevant"
+      ],
+      "human_experience_consequences": [
+        "actual comfort/IAQ/service/reliability outcomes where measured"
+      ],
+      "design_language_consequences": [],
+      "technical_consequences": [
+        "measured design-versus-operation comparison and corrective actions",
+        "bounded performance-gap diagnosis, tuning evidence and affected model/control/interface reopen"
+      ],
+      "content_projection_requirements": [
+        "separate design prediction, commissioned baseline, measured result, uncertainty and causal inference"
+      ],
+      "required_readback": [
+        "actual trend/meter/fault/maintenance data",
+        "controls state",
+        "user/operator evidence where applicable",
+        "diagnose performance gaps across occupancy/weather/configuration/controls/balancing/maintenance/data-quality/model/defect hypotheses before causal attribution"
+      ],
+      "professional_review_owner": "Building Services / MEP professional owner with FM/controls/energy participation as applicable",
+      "independent_review_requirement": "Independent measurement/analysis review when consequential performance claims or contractual/statutory outcomes depend on it.",
+      "open_items_allowed": [
+        "future-season data or long-term optimization outside current measurement window"
+      ],
+      "exit_conditions": [
+        "bounded measured-performance claim and corrective/learning actions are evidence-backed"
+      ],
+      "reopen_triggers": [
+        "operating mode/controls/occupancy/maintenance/data-quality change"
+      ],
+      "claim_ceiling": "MEP_IN_USE_MEASURED_PERFORMANCE",
+      "does_not_prove": [
+        "causality without adequate analysis",
+        "future performance",
+        "statutory approval",
+        "Design KEEP"
+      ],
+      "interface_binding_requirements": [
         {
-          "interface_binding_id": "BSP-INUSE-FM",
           "source_domain": "Facilities Management / Operations",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["operating hours", "setpoints", "maintenance state", "faults", "meter/trend data", "user feedback"],
-          "coupling": "RECIPROCAL",
-          "criticality": "MAJOR",
+          "shared_variables": [
+            "operating hours",
+            "setpoints",
+            "maintenance state",
+            "faults",
+            "meter/trend data",
+            "user feedback"
+          ],
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
-          "native_source_of_truth": "measured operating data plus current FM/controls records",
-          "change_reopen_rule": "Reopen when operating mode, controls, occupancy, maintenance state or measured dataset materially changes."
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "requirement_id": "BSP-INUSE-FM",
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_native_source_role": "measured operating data plus current FM/controls records",
+          "requested_change_reopen_rule": "Reopen when operating mode, controls, occupancy, maintenance state or measured dataset materially changes."
         }
-      ],
-      "human_experience_consequences": ["actual comfort/IAQ/service/reliability outcomes where measured"],
-      "design_language_consequences": [],
-      "technical_consequences": ["measured design-versus-operation comparison and corrective actions"],
-      "content_projection_requirements": ["separate design prediction, commissioned baseline, measured result, uncertainty and causal inference"],
-      "required_readback": ["actual trend/meter/fault/maintenance data", "controls state", "user/operator evidence where applicable"],
-      "professional_review_owner": "Building Services / MEP professional owner with FM/controls/energy participation as applicable",
-      "independent_review_requirement": "Independent measurement/analysis review when consequential performance claims or contractual/statutory outcomes depend on it.",
-      "open_items_allowed": ["future-season data or long-term optimization outside current measurement window"],
-      "exit_conditions": ["bounded measured-performance claim and corrective/learning actions are evidence-backed"],
-      "reopen_triggers": ["operating mode/controls/occupancy/maintenance/data-quality change"],
-      "claim_ceiling": "MEP_IN_USE_MEASURED_PERFORMANCE",
-      "does_not_prove": ["causality without adequate analysis", "future performance", "statutory approval", "Design KEEP"]
+      ]
     }
   ],
   "interface_contract": {
     "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
-    "inputs_from_domains": ["Architecture", "Structural Engineering", "Fire / Life Safety", "Envelope", "Interior Design", "Acoustics", "Landscape/Civil", "FM / Operations", "Cost", "specialist systems"],
-    "outputs_to_domains": ["Architecture", "Structural Engineering", "Fire / Life Safety", "Envelope", "Interior Design", "Acoustics", "FM / Operations", "Cost", "Construction / Commissioning"],
-    "shared_variables": ["occupancy/use schedules", "environmental conditions", "loads/capacities", "plant/riser/service zones", "equipment loads", "openings/builder's work", "access/replacement paths", "controls", "fire/life-safety interfaces", "commissioning acceptance criteria", "measured performance"],
-    "controlling_authority_requirements": ["current project brief and design basis", "current applicable jurisdiction/standards", "current utility and manufacturer evidence", "current commissioning/test authority where relevant"],
+    "inputs_from_domains": [
+      "Architecture",
+      "Structural Engineering",
+      "Fire / Life Safety",
+      "Envelope",
+      "Interior Design",
+      "Acoustics",
+      "Landscape/Civil",
+      "FM / Operations",
+      "Cost",
+      "specialist systems"
+    ],
+    "outputs_to_domains": [
+      "Architecture",
+      "Structural Engineering",
+      "Fire / Life Safety",
+      "Envelope",
+      "Interior Design",
+      "Acoustics",
+      "FM / Operations",
+      "Cost",
+      "Construction / Commissioning"
+    ],
+    "shared_variables": [
+      "occupancy/use schedules",
+      "environmental conditions",
+      "loads/capacities",
+      "plant/riser/service zones",
+      "equipment loads",
+      "openings/builder's work",
+      "access/replacement paths",
+      "controls",
+      "fire/life-safety interfaces",
+      "commissioning acceptance criteria",
+      "measured performance"
+    ],
+    "controlling_authority_requirements": [
+      "current project brief and design basis",
+      "current applicable jurisdiction/standards",
+      "current utility and manufacturer evidence",
+      "current commissioning/test authority where relevant"
+    ],
     "interface_maturity_policy": "Resolve actual enter/close maturity per interface binding and Acceptance Contract; do not compile a profession-wide scalar maturity truth.",
-    "allowed_open_interface_conditions": ["remaining work is explicitly later/outside claim", "required current maturity is already met", "no unresolved controlling-authority conflict", "open item/owner/reopen trigger are explicit"],
-    "integration_readback_requirements": ["actual coordinated model/drawings", "critical plant/riser/ceiling/access sections", "builder's-work/support interfaces", "controls/commissioning interface readback", "measured in-use evidence when claimed"]
+    "allowed_open_interface_conditions": [
+      "remaining work is explicitly later/outside claim",
+      "required current maturity is already met",
+      "no unresolved controlling-authority conflict",
+      "open item/owner/reopen trigger are explicit"
+    ],
+    "integration_readback_requirements": [
+      "actual coordinated model/drawings",
+      "critical plant/riser/ceiling/access sections",
+      "builder's-work/support interfaces",
+      "controls/commissioning interface readback",
+      "measured in-use evidence when claimed"
+    ]
   },
   "execution_binding": {
-    "required_native_outputs": ["engineering calculations/models", "system schematics", "coordinated MEP drawings/model", "equipment schedules/specifications", "controls sequences/points", "commissioning plan/specification/test records", "O&M/asset/handover information", "measured performance records where in scope"],
-    "native_source_of_truth_rules": ["authoritative engineering source precedes screenshots/renders", "equipment datasheets do not replace system calculations or installation evidence", "design calculation does not replace measured performance", "commissioning evidence must correspond to the tested configuration"],
-    "execution_owner_requirements": ["responsible building-services discipline owner", "specialist/installer/commissioning responsibilities explicit", "distinct reviewer/witness where required"],
-    "required_capabilities": ["building-services engineering", "system calculation/simulation", "MEP CAD/BIM coordination", "controls/commissioning analysis", "evidence/readback review"],
-    "tool_adapter_requirements": ["use Current Skill Resolver and live registry; no hardcoded global tool inventory"],
-    "typed_handoff_contracts": ["Architecture↔MEP", "Structure↔MEP", "Fire↔MEP", "MEP↔Controls/Commissioning", "MEP↔FM"],
-    "actual_readback_requirements": ["read actual engineering source and coordinated geometry", "read actual control/commissioning evidence when claimed", "read actual measured operation for in-use claims"]
+    "required_native_outputs": [
+      "engineering calculations/models",
+      "system schematics",
+      "coordinated MEP drawings/model",
+      "equipment schedules/specifications",
+      "controls sequences/points",
+      "commissioning plan/specification/test records",
+      "O&M/asset/handover information",
+      "measured performance records where in scope"
+    ],
+    "native_source_of_truth_rules": [
+      "authoritative engineering source precedes screenshots/renders",
+      "equipment datasheets do not replace system calculations or installation evidence",
+      "design calculation does not replace measured performance",
+      "commissioning evidence must correspond to the tested configuration"
+    ],
+    "execution_owner_requirements": [
+      "responsible building-services discipline owner",
+      "specialist/installer/commissioning responsibilities explicit",
+      "distinct reviewer/witness where required"
+    ],
+    "required_capabilities": [
+      "building-services engineering",
+      "system calculation/simulation",
+      "MEP CAD/BIM coordination",
+      "controls/commissioning analysis",
+      "evidence/readback review"
+    ],
+    "tool_adapter_requirements": [
+      "use Current Skill Resolver and live registry; no hardcoded global tool inventory"
+    ],
+    "typed_handoff_contracts": [
+      "Architecture↔MEP",
+      "Structure↔MEP",
+      "Fire↔MEP",
+      "MEP↔Controls/Commissioning",
+      "MEP↔FM"
+    ],
+    "actual_readback_requirements": [
+      "read actual engineering source and coordinated geometry",
+      "read actual control/commissioning evidence when claimed",
+      "read actual measured operation for in-use claims"
+    ]
   },
   "assurance": {
     "professional_review": "Building-services professional review at the current system/stage claim ceiling.",
     "evidence_review": "Check source authority, calculation/model assumptions, manufacturer evidence, installed/test configuration and measured-data provenance as applicable.",
-    "technical_gates": ["load/capacity basis", "system topology", "network/equipment/protection", "access/maintainability", "controls", "commissionability", "installation/test/commissioning evidence"],
+    "technical_gates": [
+      "load/capacity basis",
+      "system topology",
+      "network/equipment/protection",
+      "access/maintainability",
+      "controls",
+      "commissionability",
+      "installation/test/commissioning evidence"
+    ],
     "independent_review": "Required where risk, novelty, statutory/contractual condition or process stage demands a distinct reviewer/witness; producer self-check alone does not satisfy independence.",
     "receipt_contract": "Professional receipt records stage/process verdict, claim ceiling, current configuration/baseline, open items, readback refs, commissioning/measured evidence where applicable and does-not-prove boundary.",
-    "does_not_prove": ["fire/statutory approval outside assigned authority", "electrical certification outside assigned authority", "field truth without field evidence", "Design KEEP", "Promotion"]
+    "does_not_prove": [
+      "fire/statutory approval outside assigned authority",
+      "electrical certification outside assigned authority",
+      "field truth without field evidence",
+      "Design KEEP",
+      "Promotion"
+    ]
   },
   "change_contract": {
-    "reopen_triggers": ["material brief/load/design-condition change", "system/equipment/control change", "spatial/interface change", "commissioning failure/nonconformity", "measured in-use contradiction"],
-    "stale_scope_rules": ["invalidate only affected calculations, networks, models, controls, interfaces, commissioning records and receipts unless dependency analysis shows wider consequence"],
-    "upstream_impact_rules": ["changed brief, architecture, structure, fire, envelope, utility, product or standard input propagates to consuming MEP stages"],
-    "downstream_impact_rules": ["changed MEP loads, plant, routes, openings, controls or test status propagates to consuming professions and commissioning/handover"],
-    "interface_reopen_rules": ["reopen affected Integration interfaces when shared variables or acceptance criteria change"],
-    "receipt_stale_rules": ["professional receipts become stale at affected scope when the tested/designed configuration or governing evidence changes"]
+    "reopen_triggers": [
+      "material brief/load/design-condition change",
+      "system/equipment/control change",
+      "spatial/interface change",
+      "commissioning failure/nonconformity",
+      "measured in-use contradiction"
+    ],
+    "stale_scope_rules": [
+      "invalidate only affected calculations, networks, models, controls, interfaces, commissioning records and receipts unless dependency analysis shows wider consequence"
+    ],
+    "upstream_impact_rules": [
+      "changed brief, architecture, structure, fire, envelope, utility, product or standard input propagates to consuming MEP stages"
+    ],
+    "downstream_impact_rules": [
+      "changed MEP loads, plant, routes, openings, controls or test status propagates to consuming professions and commissioning/handover"
+    ],
+    "interface_reopen_rules": [
+      "reopen affected Integration interfaces when shared variables or acceptance criteria change"
+    ],
+    "receipt_stale_rules": [
+      "professional receipts become stale at affected scope when the tested/designed configuration or governing evidence changes"
+    ]
   },
   "completion_contract": {
-    "process_exit_conditions": ["all triggered MEP tracks close at their declared current claim ceiling", "required actual readback and professional/commissioning evidence exist", "open items are explicitly later/outside claim and non-contradictory", "G9/in-use status is explicit when applicable"],
-    "open_items_allowed": ["explicit later seasonal/fine-tuning or future measurement scope outside the current promoted claim"],
+    "process_exit_conditions": [
+      "all triggered MEP tracks close at their declared current claim ceiling",
+      "required actual readback and professional/commissioning evidence exist",
+      "open items are explicitly later/outside claim and non-contradictory",
+      "G9/in-use status is explicit when applicable"
+    ],
+    "open_items_allowed": [
+      "explicit later seasonal/fine-tuning or future measurement scope outside the current promoted claim"
+    ],
     "professional_receipt": "MEP professional process receipt compiled from current stage instances and commissioning/in-use evidence.",
     "promotion_effect": "Professional PASS may satisfy a bounded Master professional-process prerequisite only; it does not award Design KEEP, statutory approval or Promotion.",
     "claim_ceiling": "MEP_PROFESSIONAL_PROCESS_CURRENT_DECLARED_CEILING",
-    "does_not_prove": ["statutory approval outside assigned authority", "future operation", "field truth beyond tested/observed evidence", "Design KEEP", "Promotion"]
+    "does_not_prove": [
+      "statutory approval outside assigned authority",
+      "future operation",
+      "field truth beyond tested/observed evidence",
+      "Design KEEP",
+      "Promotion"
+    ]
   }
 }

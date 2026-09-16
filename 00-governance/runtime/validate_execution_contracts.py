@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -321,7 +322,7 @@ def validate_regression(data: dict) -> None:
         fail("Regression must preserve Design Review boundary")
 
 
-def validate_drift(data: dict) -> None:
+def validate_drift(data: dict, resolver: dict) -> None:
     required = set(data.get("required_fields", []))
     states = set(data.get("drift_states", []))
     expected_states = {"CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"}
@@ -337,6 +338,87 @@ def validate_drift(data: dict) -> None:
         require_fields(seed, required, f"drift:{seed.get('mapping_id')}")
         if seed.get("drift_state") == "CURRENT" and seed.get("notion_last_verified") in (None, ""):
             fail(f"drift:{seed.get('mapping_id')} CURRENT requires live Notion verification")
+
+    resolver_seed = next(
+        (seed for seed in seeds if seed.get("mapping_id") == "resolver-current"),
+        None,
+    )
+    if resolver_seed is None:
+        fail("Drift Check missing resolver-current seed mapping")
+    implementation_revision = resolver.get("implementation_revision")
+    resolver_version = resolver.get("version")
+    if not implementation_revision or not resolver_version:
+        fail("Current resolver must expose version + implementation_revision for drift comparison")
+    expected_revision_token = (
+        f"resolver-v{resolver_version}-impl-{implementation_revision}"
+    )
+    mapped_revision = resolver_seed.get("implemented_revision", "")
+    mapped_state = resolver_seed.get("drift_state")
+    if expected_revision_token not in mapped_revision:
+        if mapped_state == "CURRENT":
+            fail(
+                "drift:resolver-current cannot remain CURRENT when its verified "
+                "implemented_revision does not match the Current resolver implementation_revision"
+            )
+        if mapped_state not in {"STALE", "DIVERGED", "UNKNOWN"}:
+            fail(
+                "drift:resolver-current revision mismatch must be represented as "
+                "STALE, DIVERGED, or UNKNOWN"
+            )
+        if resolver_seed.get("next_action") == "NO_ACTION":
+            fail("drift:resolver-current revision mismatch requires a non-NO_ACTION next_action")
+
+    architecture_seed = next(
+        (seed for seed in seeds if seed.get("mapping_id") == "architecture-control-current"),
+        None,
+    )
+    if architecture_seed is None:
+        fail("Drift Check missing architecture-control-current seed mapping")
+    architecture_paths = architecture_seed.get("github_paths", [])
+    if not architecture_paths:
+        fail("drift:architecture-control-current requires mapped GitHub paths")
+    for mapped_path in architecture_paths:
+        if not isinstance(mapped_path, str) or not (ROOT / mapped_path).is_file():
+            fail(f"drift:architecture-control-current mapped path missing: {mapped_path!r}")
+    architecture_commit = architecture_seed.get("implementation_commit")
+    if not isinstance(architecture_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", architecture_commit):
+        fail("drift:architecture-control-current implementation_commit must be a full Git commit SHA")
+    try:
+        commit_check = subprocess.run(
+            ["git", "cat-file", "-e", f"{architecture_commit}^{{commit}}"],
+            cwd=ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        if commit_check.returncode != 0:
+            fail("drift:architecture-control-current implementation_commit is not available in repository history")
+        content_check = subprocess.run(
+            ["git", "diff", "--quiet", architecture_commit, "--", *architecture_paths],
+            cwd=ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except OSError as exc:
+        fail(f"drift:architecture-control-current cannot inspect Git history: {exc}")
+    if content_check.returncode not in {0, 1}:
+        fail("drift:architecture-control-current Git content comparison failed")
+    architecture_changed_since_live_readback = content_check.returncode == 1
+    architecture_state = architecture_seed.get("drift_state")
+    if architecture_changed_since_live_readback:
+        if architecture_state == "CURRENT":
+            fail(
+                "drift:architecture-control-current cannot remain CURRENT when mapped GitHub carriers "
+                "differ from the last live-verified implementation_commit"
+            )
+        if architecture_state not in {"STALE", "DIVERGED", "UNKNOWN"}:
+            fail(
+                "drift:architecture-control-current changed carriers must be represented as "
+                "STALE, DIVERGED, or UNKNOWN"
+            )
+        if architecture_seed.get("next_action") == "NO_ACTION":
+            fail("drift:architecture-control-current changed carriers require a non-NO_ACTION next_action")
 
 
 def validate_receipts() -> None:
@@ -649,7 +731,7 @@ def main() -> None:
     validate_tool(contracts["tool"])
     validate_artifact(contracts["artifact"])
     validate_regression(contracts["regression"])
-    validate_drift(contracts["drift"])
+    validate_drift(contracts["drift"], resolver)
     validate_receipts()
     validate_lifecycle_baseline(contracts["capability"])
 

@@ -38,6 +38,12 @@ Canonical comparison key:
 
 ## 4｜Current seed mappings
 
+### System Architecture Control mirror
+- Notion: `MTH-OLEANDER-ARCHITECTURE-CONTROL-001` / page `3dcb86be-5c47-8157-bb15-e2ba605e2067`.
+- Last live-verified GitHub architecture baseline: `f78fad3f16fe0b458360708b27c05efaa6172609`.
+- Current repository-side state: `STALE` for a new cross-platform Current claim because the mapped v2.1 map / control graph / layer-interface contract / validator have materially changed since the last live readback.
+- Required action: fresh live Notion + GitHub readback before this mapping may return to `CURRENT`. The prior live verification remains historical evidence for `f78fad3f...` and is not rewritten.
+
 ### Resolver
 - Notion: `KN-METHOD-OLEANDER-SKILL-RESOLVER-001`.
 - GitHub: `00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json`.

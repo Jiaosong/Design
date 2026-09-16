@@ -1,0 +1,205 @@
+{
+  "candidate_id": "OLEANDER-EV-SYSTEMS-ENGINEERING-STAGE6-20260916",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "Systems Engineering professional-definition owner under R-E",
+  "target_ref": "00-governance/systems-engineering-design-development-process-v1.0.md",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_ARCH_CONTROL_STAGE3_5_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae",
+  "baseline": {
+    "current_version_or_revision": "Current architecture remains origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202; predecessor governance candidate is EV4_INDEPENDENT_REVIEWED and not Current-adopted",
+    "authority_fingerprint": "sha256:def2aa40eb1fdd2c0e84fc2202c93196419d5d5e0ca06141833874816a6a5f60",
+    "authority_fingerprint_inputs": {
+      "CURRENT_ROOT_VERSION": "OLEANDER Current Authority v1.1.1",
+      "PROJECT_OR_SCOPE_AUTHORITY": "OLEANDER professional-domain definition evolution / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "SOURCE_AUTHORITY": "Predecessor EV4 candidate manifest sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae + bounded existing OLEANDER Systems Engineering support extensions",
+      "DESIGN_AUTHORITY": "NOT_APPLICABLE_PROFESSIONAL_PROCESS_DEFINITION_NO_PROJECT_DESIGN_KEEP_AUTHORITY",
+      "CURRENT_TASK_ID": "USER_CONTINUE_STAGE6_SYSTEMS_ENGINEERING_DOMAIN_PROCESS_20260916",
+      "CURRENT_NATIVE_MASTER_OR_REF": "00-governance/professional-domain-process-contract-v1.0.md + 00-governance/systems-engineering-design-development-process-v1.0.md",
+      "ACTIVE_CONSTRAINT_LOCK": "PRESERVE_V2_1_CURRENT_OPEN_UNTIL_ADOPTION|NO_PARALLEL_SCHEMA|NO_UNIVERSAL_V_MODEL|R_F_OWNS_INTERFACE_TRUTH|NO_PROJECT_EXERCISE_OR_PROMOTION_CLAIM|PRESERVE_EV4_PREDECESSOR"
+    },
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T00:16:04.472182+00:00"
+  },
+  "trigger_evidence": [
+    "User instructed continuation after Stage 6 identified remaining professional-domain process-definition gaps as the next substantive frontier.",
+    "Current v2.1 architecture explicitly keeps Systems Engineering at CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN.",
+    "Existing OLEANDER Design Process support extensions already contain bounded requirement traceability, system interface/coupling and physical prototype/V&V mechanisms plus explicit anti-universalization boundaries.",
+    "No existing Systems Engineering professional-domain process file or machine definition existed on the frozen Current baseline."
+  ],
+  "hypothesis": "A domain-native Systems Engineering process can be formalized and machine-validated inside the existing R-E Professional Domain Process Contract without copying Architecture stages, importing a universal V-model, taking R-F interface authority, promoting candidate support knowledge, or changing the Current Systems Engineering state before authorized adoption.",
+  "mutation_scope": {
+    "summary": "Four-file successor delta: candidate Systems Engineering professional process正文, its existing-schema v1.1 machine definition, candidate-specific Professional Domain regression tests, and existing Control Plane CI coverage.",
+    "candidate_file_count_excluding_this_record": 4,
+    "candidate_manifest_sha256": "264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9",
+    "candidate_manifest_algorithm": "SHA256 of UTF-8 lines sorted by path, each line = <relative_path>\\0<file_sha256>\\n",
+    "explicit_exclusions": [
+      "No Current architecture map/control-graph professional-domain state is changed by this candidate.",
+      "No project instance or project-native artifact is changed or claimed exercised.",
+      "No Professional/DQ/Architecture/Execution receipt is created or rewritten.",
+      "No canonical Knowledge object or candidate support extension is promoted by this candidate.",
+      "No fixed V-model, ISO 15288 lifecycle, SRR/PDR/CDR sequence or MBSE/requirements tool is installed as OLEANDER authority.",
+      "No root-worktree unrelated/concurrent files are part of this candidate."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9",
+    "files": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "b6389bce8a5c134bbda152dd6674637e8c9512c6ffb9f9fb7c8ff0bd7ac42bbb",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "6993a035beceb3399798d8fcffc7f697417572d35841eb81625a0351a32c17a6",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "c60e34c75d07dacf975185d1a8a4adb1dd3ced5df62b0c36569887f21170652c",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "3a7b830317005c47f6eb19f4037c774a5bb24c60f2d951bfd330a462e0f75693"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py"
+    ],
+    "real_case_refs": [
+      "Current Structural Engineering and Building Services / MEP machine-bound process definitions as existing R-E compatibility references",
+      "Existing OLEANDER requirement traceability, system-interface coupling and physical prototype/V&V support extensions as bounded source material",
+      "Current v2.1 Systems Engineering PROCESS_OPEN state as the non-promotion baseline"
+    ],
+    "counterexample_refs": [
+      "Universal V-model / ISO 15288 lifecycle transplant rejected",
+      "SRR/PDR/CDR or fixed T/A/I/D gate transplant rejected",
+      "SysML/DOORS/Jama/Polarion/Cameo treated as tools rather than authority",
+      "component PASS used as system/integration PASS rejected",
+      "verification used as validation rejected",
+      "candidate process validation used as Current adoption rejected",
+      "one-project outcome used as reusable systems rule rejected"
+    ],
+    "regression_refs": [
+      "Systems Engineering professional definition validation PASS under professional-domain-process.v1 schema and semantic validator",
+      "Professional Domain self-test PASS",
+      "Systems candidate validates under both jsonschema/full and stdlib fallback semantic paths",
+      "Professional Domain targeted suite: 24 tests OK including three Systems-candidate boundary tests",
+      "Full 00-governance/control-plane/tests discovery: 127 tests OK",
+      "Architecture Control validation PASS with Systems Engineering still PROCESS_OPEN",
+      "Execution Contracts / Execution Locks / Runtime Resilience validation PASS",
+      "Architecture Namespace and Complex Project Master Runtime validation PASS",
+      "Structural and MEP Current machine definitions remain PASS",
+      "git diff --check PASS apart from line-ending warnings"
+    ],
+    "metrics": {
+      "systems_stage_count": 9,
+      "systems_stage_body_semantic_roles_each": 10,
+      "professional_targeted_tests_passed": 24,
+      "control_plane_tests_passed": 127,
+      "control_plane_tests_failed": 0,
+      "architecture_current_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "systems_current_state_after_candidate": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+      "project_exercise_claim": false
+    },
+    "acceptance_thresholds": [
+      "Candidate process validates against the existing v1.1 Professional Domain schema without schema extension.",
+      "Systems Engineering uses a domain-native SYS-00...SYS-08 chain rather than Architecture ADD or Structural/MEP stage aliases.",
+      "R-F remains the only actual interface maturity/disposition owner; Systems stores stage-side requirements only.",
+      "Verification, validation, operational observation and reusable Knowledge remain separate claims.",
+      "Current architecture continues to report Systems Engineering PROCESS_OPEN until an authorized adoption transaction updates the owner-native Current carriers.",
+      "No project-exercise, Design KEEP, Integration PASS, Knowledge promotion, statutory approval or universal transfer claim is emitted."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Current v2.1 provides the shared Professional Domain contract and bounded systems-related support extensions but intentionally leaves Systems Engineering PROCESS_OPEN with no current process ref or project-exercised claim.",
+    "candidate_result": "Adds a real Systems Engineering operating specification and v1.1 machine definition with nine domain-native stages, requirements/configuration/V&V/interface/change evidence semantics, while Current map/graph remain unchanged and OPEN.",
+    "regressions": [],
+    "quality_delta": "Replaces an empty professional-domain slot with substantive candidate正文 covering system boundary, requirements, functional/logical behavior, alternative/allocation choice, configuration/interfaces, integration/V&V readiness, verification/anomaly handling, validation/transition and in-use reverification/learning.",
+    "reliability_delta": "Adds schema validation, full/fallback semantic validation, CI invocation and tests that fail if the candidate self-currentizes, loses its native SYS stage chain, or takes R-F/Knowledge transfer authority.",
+    "cost_latency_delta": "Adds one machine definition, one professional process正文 and three bounded regression assertions plus one CI validator invocation; no new runtime, service, database, schema family or tool dependency.",
+    "decision_basis": "Retain as a bounded evaluated successor candidate and route to independent review. Do not change Current Systems Engineering state until the later owner/human adoption transaction and readback are complete."
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_5_SYSTEMS_ENGINEERING_STAGE6_INDEPENDENT_REVIEW_20260916",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-16T00:20:40.306982+00:00",
+    "review_notes": [
+      "Exact four-file successor manifest independently recomputed to sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9 with all file hashes matching.",
+      "Predecessor EV4 record and its 30-file manifest remain frozen provenance; Stage-6 changes exactly two predecessor target files and adds exactly two Systems Engineering files.",
+      "Current v2.1 map/graph remain Systems Engineering PROCESS_OPEN with current_process_ref=null; no Current adoption or project-exercise claim is inferred.",
+      "SYS-00...SYS-08 is domain-native and preserves R-F ownership, verification/validation separation, observation/causation separation and G9/Knowledge transfer/counterevidence boundaries.",
+      "This verdict authorizes EV4 only. Authorized adoption/readback remains a separate later gate and promotion.eligible remains false."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_NEW_DOMAIN_DEFINITION_CANDIDATE_WITH_CURRENT_STATE_HELD_OPEN",
+    "affected_carriers": [
+      "candidate Systems Engineering professional process正文",
+      "candidate Systems Engineering v1.1 machine definition",
+      "existing Professional Domain regression tests",
+      "existing Control Plane CI workflow"
+    ],
+    "affected_scope": "Professional-definition candidate only. Current professional_domain_process_state, R-E maturity summary and Integrated Runtime Current list remain unchanged until later adoption.",
+    "migration_steps": [
+      "Preserve predecessor EV4 candidate and exact manifest as immutable evaluation provenance.",
+      "Keep current v2.1 Systems Engineering state CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN during candidate evaluation/review.",
+      "Run existing Professional Domain schema/semantic validators, full/fallback path tests and governance regression.",
+      "Obtain independent review bound to the exact four-file successor manifest.",
+      "Before any EV6 Current adoption, perform a separate authorized adoption transaction that updates the Current architecture map/control graph/architecture validator/Integrated Runtime professional list to Systems Engineering FORMALIZED_MACHINE_BOUND with project_exercised_claim=false and exact process/schema refs.",
+      "Rerun full architecture/professional regression after that adoption transaction and read back the exact Current carriers.",
+      "Do not create a project professional receipt until a real project instance actually exercises the Systems Engineering process."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "predecessor-evolution:OLEANDER-EV-ARCH-CONTROL-STAGE3-5-20260916@EV4 / target-manifest-sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae",
+    "rollback_action": "Remove only the Stage-6 Systems Engineering candidate process/machine definition and restore the two changed predecessor files (.github workflow and professional-domain regression test) to their EV4 manifest bytes; preserve both Evolution records as provenance and do not touch unrelated root work.",
+    "rollback_test": "Rerun the predecessor EV4 bounded validators/regression and confirm Systems Engineering remains PROCESS_OPEN with no current_process_ref.",
+    "provenance_ref": "successor-manifest-sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9 over predecessor target-manifest-sha256:223ca363f57d6ff0d412a142ee4a8be8b428fdabb97d27d206272cc6a584e6ae"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent review and any later authorized adoption/readback transaction.",
+    "regression_signals": [
+      "Systems Engineering candidate fails Professional Domain full or fallback validation",
+      "Current architecture reports Systems Engineering formalized before authorized adoption/readback",
+      "Systems process takes R-F interface maturity/disposition authority",
+      "verification and validation are collapsed",
+      "candidate support knowledge is reported Current without Knowledge lifecycle validation",
+      "project-exercised or project professional PASS is inferred from definition/schema existence",
+      "predecessor EV4 candidate provenance or unrelated root work is mutated"
+    ],
+    "reopen_rule": "Any signal reopens only the affected Systems Engineering successor-candidate/adoption scope while preserving predecessor and unrelated verified state.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "CURRENT_SYSTEMS_ENGINEERING_PROCESS_ADOPTION",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION",
+    "STATUTORY_OR_CERTIFICATION_APPROVAL",
+    "CURRENT_KNOWLEDGE",
+    "UNIVERSAL_V_MODEL_OR_SYSTEMS_METHOD",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}

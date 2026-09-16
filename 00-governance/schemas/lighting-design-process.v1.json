@@ -1,0 +1,1843 @@
+{
+  "schema_version": "1.1",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-LIGHTING-DESIGN-PROCESS",
+  "domain": "Lighting Design",
+  "version": "1.0",
+  "title": "OLEANDER Lighting Design Development Process v1.0 - Candidate",
+  "purpose": "Develop daylight and electric-light environments as task, spatial, visual, control and maintenance systems tied to measurable/observable conditions rather than fixture styling or rendered brightness.",
+  "scope_in": [
+    "visual-task and user/context lighting brief",
+    "daylight/electric-light concept and spatial hierarchy",
+    "photometric/brightness/glare/color-quality design basis",
+    "luminaire/source/optics/surface interaction",
+    "architectural/interior/landscape integration and detailing",
+    "controls, scenes, daylight response and user interaction",
+    "exterior/night/ecology/wayfinding interfaces",
+    "calculation, mockup, sample, aiming and commissioning readback",
+    "maintenance, replacement, post-occupancy tuning and change"
+  ],
+  "scope_out": [
+    "electrical system engineering approval or circuit protection design",
+    "emergency-lighting/fire/statutory approval",
+    "energy-code certification",
+    "accessibility or health/wellness certification",
+    "universal illuminance/CCT/CRI/UGR or spectral thresholds detached from Current source",
+    "render brightness as photometric proof"
+  ],
+  "authority_position": "CANDIDATE R-E professional-domain process under the existing Professional Domain Process Contract. It is not Current until the existing Evolution, independent review, authorized human adoption and Current readback chain closes; Current architecture must continue to report Lighting Design PROCESS_OPEN meanwhile.",
+  "current_definition_ref": "00-governance/lighting-design-development-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim depends on Lighting Design professional judgment across one or more of: Lighting Brief, Visual Tasks and Operating States, Daylight and Luminous Concept / Spatial Hierarchy, Photometric, Brightness, Glare and Color-quality Development, Luminaire, Optics, Source and Architectural Integration, Controls, Scenes, Daylight Response and User Interaction, Exterior, Landscape, Façade and Night Environment, Mockup, Sample, Calculation and Design Verification, Specification, Procurement, Substitution and Construction Coordination, Commissioning, Aiming, Measurement and Actual Night Readback, Maintenance, Replacement, Post-occupancy Tuning and Learning.",
+    "design_question_types": [
+      "Lighting Brief, Visual Tasks and Operating States",
+      "Daylight and Luminous Concept / Spatial Hierarchy",
+      "Photometric, Brightness, Glare and Color-quality Development",
+      "Luminaire, Optics, Source and Architectural Integration",
+      "Controls, Scenes, Daylight Response and User Interaction",
+      "Exterior, Landscape, Façade and Night Environment",
+      "Mockup, Sample, Calculation and Design Verification",
+      "Specification, Procurement, Substitution and Construction Coordination",
+      "Commissioning, Aiming, Measurement and Actual Night Readback",
+      "Maintenance, Replacement, Post-occupancy Tuning and Learning"
+    ],
+    "responsibility_triggers": [
+      "visual-task and user/context lighting brief",
+      "daylight/electric-light concept and spatial hierarchy",
+      "photometric/brightness/glare/color-quality design basis",
+      "luminaire/source/optics/surface interaction",
+      "architectural/interior/landscape integration and detailing",
+      "controls, scenes, daylight response and user interaction",
+      "exterior/night/ecology/wayfinding interfaces",
+      "calculation, mockup, sample, aiming and commissioning readback",
+      "maintenance, replacement, post-occupancy tuning and change"
+    ],
+    "claim_ceiling_rule": "The lowest applicable Current ceiling across project/source authority, native geometry/material/environment/configuration, specialist interfaces, actual readback and external approval governs the Lighting Design claim.",
+    "not_triggered_when": [
+      "the artifact merely depicts Lighting Design content but makes no material professional Lighting Design claim"
+    ],
+    "mandatory_reopen_triggers": [
+      "aim/output/control change",
+      "architecture/opening/material change",
+      "ceiling/material/geometry change",
+      "ceiling/site RFI",
+      "contradictory in-use evidence",
+      "controls topology/sequence change",
+      "criterion/source change",
+      "criterion/standard change",
+      "daylight/control strategy change",
+      "driver/control/electrical change",
+      "electrical/access change",
+      "fixture/aim/control change",
+      "fixture/material/detail/control change",
+      "fixture/optic/substitution",
+      "geometry/material/photometric/control change",
+      "landscape/canopy change",
+      "material/space change",
+      "measurement contradiction",
+      "mockup/model contradiction",
+      "neighbor/ecology/security criterion change",
+      "new risk condition",
+      "occupancy/daylight strategy change",
+      "replacement/control change",
+      "site measurement contradiction",
+      "site/material/furniture/planting change",
+      "space/material/display change",
+      "substitution",
+      "task/scene change",
+      "task/use/occupancy change",
+      "user interface change",
+      "user/task change"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential Lighting Design methods, material/environment/site/product evidence and specialist facts must pass existing task/claim Operational Mount rules; candidate support extensions and project observations do not self-promote to Current Knowledge.",
+    "required_methods": [
+      "Current visual task/project/space authority",
+      "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+      "Current luminaire/photometric/control/manufacturer technical data with provenance",
+      "material reflectance/transmittance and architectural geometry at correct revision",
+      "calculation/mockup/site measurement and night-readback evidence"
+    ],
+    "theory_routes": [
+      "Lighting Design",
+      "shared OLEANDER Design Quality/DD",
+      "domain-specific professional analysis and review"
+    ],
+    "source_routes": [
+      "Current project/site/space authority",
+      "Current applicable professional/specialist standards and evidence",
+      "Current supplier/manufacturer/project field evidence where material"
+    ],
+    "evidence_routes": [
+      "native drawings/models/schedules",
+      "calculation/analysis where in claim",
+      "samples/mockups/tests",
+      "actual site/runtime/in-use readback"
+    ],
+    "standard_code_routes": [
+      "Current applicable standards/codes/guides via proper authority; no fixed number copied into this process becomes universal OLEANDER truth"
+    ],
+    "precedent_case_routes": [
+      "bounded professional precedents only where project/context applicability is established"
+    ],
+    "practice_routes": [
+      "Current OLEANDER Lighting Design related project/failure evidence where provenance exists"
+    ],
+    "tool_knowledge_routes": [
+      "Current Skill Resolver and native execution capabilities; software/tool output is not professional authority"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "LGT-00",
+      "stage_name": "Lighting Brief, Visual Tasks and Operating States",
+      "professional_question": "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-00 Lighting Brief, Visual Tasks and Operating States | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Lighting Brief, Visual Tasks and Operating States question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "Current architecture/interior/landscape program",
+        "user/visual-task evidence",
+        "operating schedules",
+        "applicable current criteria"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "lighting brief",
+        "visual-task/scene matrix",
+        "adjacency/adaptation map",
+        "criteria/source register",
+        "open assumptions"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Interior Design",
+        "Landscape Architecture",
+        "HCD / Operations",
+        "MEP"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-00-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "visual task",
+            "scene",
+            "schedule",
+            "adaptation context",
+            "criterion/source"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "visual task",
+        "scene",
+        "schedule",
+        "adaptation context",
+        "criterion/source"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read tasks, viewing geometry and scenes against real use",
+        "attack degraded/night/cleaning/AV/screen states",
+        "check each quantitative criterion has source/condition"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Lighting brief is specific enough to compare luminous strategies without hidden criteria"
+      ],
+      "reopen_triggers": [
+        "task/use/occupancy change",
+        "space/material/display change",
+        "criterion/standard change"
+      ],
+      "claim_ceiling": "LIGHTING_BRIEF_DEFINED",
+      "does_not_prove": [
+        "lighting compliance",
+        "fixture selection",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "LGT-01",
+      "stage_name": "Daylight and Luminous Concept / Spatial Hierarchy",
+      "professional_question": "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-01 Daylight and Luminous Concept / Spatial Hierarchy | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Daylight and Luminous Concept / Spatial Hierarchy question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "lighting brief",
+        "architecture/envelope geometry",
+        "daylight/site context",
+        "material/design-language intent"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-04",
+        "DD-06",
+        "DD-07"
+      ],
+      "required_native_outputs": [
+        "daylight/electric-light concept",
+        "luminous hierarchy diagrams",
+        "source/surface/viewer relations",
+        "scene concept",
+        "option comparison"
+      ],
+      "interface_requirements": [
+        "Architecture / Envelope",
+        "Interior Design",
+        "Landscape Architecture",
+        "MEP / Controls"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-01-IF-01",
+          "source_domain": "Architecture / Envelope",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "aperture/shading",
+            "luminous surface",
+            "focal hierarchy",
+            "daylight dependency",
+            "scene intent"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "aperture/shading",
+        "luminous surface",
+        "focal hierarchy",
+        "daylight dependency",
+        "scene intent",
+        "daylight model configuration, temporal risk and assumption sensitivity"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "compare materially different concepts",
+        "review time/season/daylight risk",
+        "read brightness hierarchy in representative views/sections",
+        "freeze daylight-model location/time/weather-sky/orientation/geometry/glazing/material/shade/sensor-view/engine assumptions and sensitivity-test reversal-critical inputs"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Selected concept has explicit luminous/spatial consequences and rejects weaker alternatives for stated reasons"
+      ],
+      "reopen_triggers": [
+        "architecture/opening/material change",
+        "task/scene change",
+        "daylight/control strategy change"
+      ],
+      "claim_ceiling": "LIGHTING_CONCEPT_SELECTED",
+      "does_not_prove": [
+        "photometric compliance",
+        "energy compliance",
+        "final luminaire selection"
+      ]
+    },
+    {
+      "stage_id": "LGT-02",
+      "stage_name": "Photometric, Brightness, Glare and Color-quality Development",
+      "professional_question": "Do quantitative and perceptual lighting criteria describe the actual visual problem, and does the current design satisfy them under declared assumptions?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-02 Photometric, Brightness, Glare and Color-quality Development | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Photometric, Brightness, Glare and Color-quality Development question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "selected concept",
+        "current geometry/material properties",
+        "luminaire photometry/source data",
+        "current project/standard criteria"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-06",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "photometric model/calculations",
+        "luminance/contrast/glare analyses where required",
+        "color-quality/spectral basis",
+        "assumption/uncertainty register"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Interior",
+        "MEP / Electrical",
+        "Accessibility / Specialist Authority"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-02-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "geometry",
+            "reflectance/transmittance",
+            "photometric file",
+            "metric/plane",
+            "glare view",
+            "color-quality criterion"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Do quantitative and perceptual lighting criteria describe the actual visual problem, and does the current design satisfy them under declared assumptions?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "geometry",
+        "reflectance/transmittance",
+        "photometric file",
+        "metric/plane",
+        "glare view",
+        "color-quality criterion",
+        "directional luminance/illuminance interpretation and glare/reflection path",
+        "chromatic/spectral/color-rendering equivalence at Current source ceiling",
+        "vertical/facial modeling and luminous recognition/task consequence with Security/AV/Accessibility acceptance owner-native"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "inspect model inputs and extrema",
+        "compare metrics to actual task/view geometry",
+        "attack critical glare/reflection/adaptation positions",
+        "bind illuminance to receiving plane/task/state and luminance to source/surface/viewpoint/state; diagnose glare/reflection by direct/window/reflected/veiling/specular/adaptation mechanism",
+        "read color/spectral behavior across material, daylight mix, dimming, batch and substitution states without treating CCT as color-rendering proxy",
+        "read vertical/facial lighting as observer–subject task geometry across approach, seated/standing state, face orientation, background brightness, occlusion and scene; attack directional facial shadow/flattening/silhouette/source glare"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Quantitative/perceptual evidence is valid for exact model/configuration and supports the bounded lighting decision"
+      ],
+      "reopen_triggers": [
+        "geometry/material/photometric/control change",
+        "criterion/source change",
+        "site measurement contradiction"
+      ],
+      "claim_ceiling": "LIGHTING_ANALYSIS_RESOLVED",
+      "does_not_prove": [
+        "universal comfort",
+        "health/wellness certification",
+        "electrical compliance"
+      ]
+    },
+    {
+      "stage_id": "LGT-03",
+      "stage_name": "Luminaire, Optics, Source and Architectural Integration",
+      "professional_question": "Can selected luminaires/optics produce the intended light while fitting architectural/material/maintenance constraints without hidden glare or service conflicts?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-03 Luminaire, Optics, Source and Architectural Integration | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Luminaire, Optics, Source and Architectural Integration question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "photometric design",
+        "ceiling/wall/floor/landscape geometry",
+        "MEP/electrical constraints",
+        "manufacturer technical data"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-06",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "luminaire/optic schedule",
+        "mounting/aiming layouts",
+        "integration details",
+        "driver/access strategy",
+        "substitution-critical attributes"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Interior Design",
+        "Landscape Architecture",
+        "MEP / Electrical",
+        "Fire / Acoustics"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-03-IF-01",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "luminaire dimensions",
+            "optic/distribution",
+            "mounting/aiming",
+            "ceiling/detail",
+            "driver/access",
+            "surface distance"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Can selected luminaires/optics produce the intended light while fitting architectural/material/maintenance constraints without hidden glare or service conflicts?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "luminaire dimensions",
+        "optic/distribution",
+        "mounting/aiming",
+        "ceiling/detail",
+        "driver/access",
+        "surface distance",
+        "optic distribution orientation, aiming geometry and source-visibility tolerance"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "read source visibility and beam/surface geometry",
+        "check trimless/cove/wallwash/graze details",
+        "check access/driver/thermal/maintenance interfaces",
+        "read photometric coordinate/orientation, full distribution/shielding/accessories and actual aiming datum/target/pan-tilt-rotation relation; nominal beam angle/lumens cannot prove equivalence"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Luminaire/source/detail integration is spatially, photometrically and maintainably resolved at current ceiling"
+      ],
+      "reopen_triggers": [
+        "fixture/optic/substitution",
+        "ceiling/material/geometry change",
+        "electrical/access change"
+      ],
+      "claim_ceiling": "LIGHTING_INTEGRATION_RESOLVED",
+      "does_not_prove": [
+        "electrical installation approval",
+        "fire/acoustic compliance",
+        "installed aiming"
+      ]
+    },
+    {
+      "stage_id": "LGT-04",
+      "stage_name": "Controls, Scenes, Daylight Response and User Interaction",
+      "professional_question": "Do controls express actual operating states with understandable user authority, stable luminous behavior and testable technical handoff?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-04 Controls, Scenes, Daylight Response and User Interaction | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Controls, Scenes, Daylight Response and User Interaction question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "lighting scenes/brief",
+        "controls/BMS/electrical architecture",
+        "daylight strategy",
+        "user/operations needs"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "lighting control narrative",
+        "scene/group schedule",
+        "sensor/trigger requirements",
+        "user interface/override logic",
+        "acceptance-test intent"
+      ],
+      "interface_requirements": [
+        "MEP / Controls",
+        "HCD / Operations",
+        "Architecture",
+        "Interior Design"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-04-IF-01",
+          "source_domain": "MEP / Controls",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "control group",
+            "scene",
+            "trigger",
+            "sensor",
+            "override",
+            "transition",
+            "feedback"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Do controls express actual operating states with understandable user authority, stable luminous behavior and testable technical handoff?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "control group",
+        "scene",
+        "trigger",
+        "sensor",
+        "override",
+        "transition",
+        "feedback",
+        "state-transition controls, daylight sensor-zone behavior and owner-bounded emergency override interface",
+        "temporal light quality and camera/display consequence while driver/control/AV owners retain implementation acceptance",
+        "daylight shade ↔ electric-light shared-control luminous consequence within Envelope/MEP/Controls/Fire owner boundaries"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "simulate/read scene transitions",
+        "attack manual override/daylight/degraded/after-hours states",
+        "check every scene has groups/triggers/feedback/recovery",
+        "exercise scenes as initiating input/condition → prerequisites → priority/arbitration → affected groups → target luminous relation/output → transition/ramp → hold/delay/timeout → feedback/proof → manual override → fail/degraded state → reset/recovery, including simultaneous-input and power/network-restart behavior; map emergency override interface without taking Fire/Electrical approval",
+        "read low-end dimming/temporal output for dropout/pop-on/stepping/hunting/color shift/recovery and camera/display banding/exposure/contrast where material",
+        "read blind/shade and electric-lighting as coupled control state including arbitration/override/hysteresis/restart/conflicting commands and emergency/shared-state non-interference"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Luminous behavior and user control are defined enough for implementation/test without Lighting taking controls-engineering authority"
+      ],
+      "reopen_triggers": [
+        "controls topology/sequence change",
+        "occupancy/daylight strategy change",
+        "user interface change"
+      ],
+      "claim_ceiling": "LIGHTING_CONTROLS_DEFINED",
+      "does_not_prove": [
+        "BMS/software correctness",
+        "energy-code compliance",
+        "user satisfaction"
+      ]
+    },
+    {
+      "stage_id": "LGT-05",
+      "stage_name": "Exterior, Landscape, Façade and Night Environment",
+      "professional_question": "Does the night design provide necessary orientation/task/spatial hierarchy while controlling glare/spill/context/ecology interfaces?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-05 Exterior, Landscape, Façade and Night Environment | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Exterior, Landscape, Façade and Night Environment question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "site/landscape/architecture night-use plan",
+        "ecology/context/security criteria",
+        "exterior luminaire data",
+        "control/curfew states"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-06",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "exterior/night lighting plan",
+        "night hierarchy/wayfinding diagrams",
+        "spill/glare/ecology interface review",
+        "mounting/planting coordination",
+        "night scenes"
+      ],
+      "interface_requirements": [
+        "Landscape Architecture",
+        "Architecture / Envelope",
+        "Ecology",
+        "Security / Operations",
+        "MEP / Electrical"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-05-IF-01",
+          "source_domain": "Landscape Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "night route",
+            "sensitive receptor",
+            "planting",
+            "mounting",
+            "spill/glare",
+            "curfew/control"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the night design provide necessary orientation/task/spatial hierarchy while controlling glare/spill/context/ecology interfaces?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "night route",
+        "sensitive receptor",
+        "planting",
+        "mounting",
+        "spill/glare",
+        "curfew/control",
+        "off-site light-trespass/sensitive-receptor geometry and scene consequence with planning/ecology/statutory acceptance owner-native"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "night-read routes, steps, faces, signs and sensitive receptors",
+        "review mature planting/seasonal conflicts",
+        "inspect source visibility/spill/aim",
+        "read facade/landscape spill as source → surface/path → sensitive receptor including direct view, reflected contribution, cumulative luminaires, wet/seasonal/event states and governing curfew/control scene"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Night luminous intent is coherent and specialist/context requirements remain explicit at proper authority"
+      ],
+      "reopen_triggers": [
+        "landscape/canopy change",
+        "neighbor/ecology/security criterion change",
+        "fixture/aim/control change"
+      ],
+      "claim_ceiling": "LIGHTING_NIGHT_ENVIRONMENT_RESOLVED",
+      "does_not_prove": [
+        "security outcome",
+        "ecological outcome",
+        "exterior electrical approval"
+      ]
+    },
+    {
+      "stage_id": "LGT-06",
+      "stage_name": "Mockup, Sample, Calculation and Design Verification",
+      "professional_question": "What evidence is needed to falsify or retain critical lighting relations before procurement/installation?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-06 Mockup, Sample, Calculation and Design Verification | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Mockup, Sample, Calculation and Design Verification question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "developed lighting design",
+        "risk/uncertainty register",
+        "material samples",
+        "candidate fixtures/controls"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-06",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "mockup/test plan",
+        "physical/sample mockups",
+        "calculation/model verification",
+        "observed-vs-predicted comparison",
+        "retained/rejected option record"
+      ],
+      "interface_requirements": [
+        "Interior / Architecture / Landscape",
+        "MEP / Electrical",
+        "Procurement",
+        "Design Review"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-06-IF-01",
+          "source_domain": "Interior / Architecture / Landscape",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "tested configuration",
+            "material/sample",
+            "view position",
+            "output/scene",
+            "observed issue",
+            "model delta"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "What evidence is needed to falsify or retain critical lighting relations before procurement/installation?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "tested configuration",
+        "material/sample",
+        "view position",
+        "output/scene",
+        "observed issue",
+        "model delta",
+        "mockup-model correlation, discrepancy diagnosis and bounded calibration"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "bind mockup to exact source/optic/mounting/material/control state",
+        "compare observation to model",
+        "retain failed conditions and strongest contradiction",
+        "correlate mockup and calculation only on matched geometry/source/optic/aim/material/scene/view/measurement states; classify discrepancy cause before calibration and preserve pre-calibration baseline"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Critical visual/detail/glare/material/control risks have evidence appropriate to the question and exact tested configuration"
+      ],
+      "reopen_triggers": [
+        "fixture/material/detail/control change",
+        "mockup/model contradiction",
+        "new risk condition"
+      ],
+      "claim_ceiling": "LIGHTING_DESIGN_VERIFIED_BOUNDED",
+      "does_not_prove": [
+        "final site condition",
+        "future maintained performance",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "LGT-07",
+      "stage_name": "Specification, Procurement, Substitution and Construction Coordination",
+      "professional_question": "Can the lighting design survive product specification, electrical/architectural coordination, supplier substitutions and installation tolerances?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-07 Specification, Procurement, Substitution and Construction Coordination | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Specification, Procurement, Substitution and Construction Coordination question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "verified developed design",
+        "manufacturer data",
+        "procurement/cost programme",
+        "electrical/ceiling/site coordination"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "lighting specification/schedule",
+        "critical attributes/substitution matrix",
+        "coordinated reflected ceiling/site layouts",
+        "shop-drawing/submittal review criteria",
+        "commissioning requirements"
+      ],
+      "interface_requirements": [
+        "Procurement",
+        "MEP / Electrical",
+        "Architecture",
+        "Interior",
+        "Contractor"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-07-IF-01",
+          "source_domain": "Procurement",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "fixture identity",
+            "photometry",
+            "control compatibility",
+            "dimensions",
+            "mounting",
+            "lead time",
+            "substitution"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Can the lighting design survive product specification, electrical/architectural coordination, supplier substitutions and installation tolerances?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "fixture identity",
+        "photometry",
+        "control compatibility",
+        "dimensions",
+        "mounting",
+        "lead time",
+        "substitution"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "compare substitutions across distribution/output/color/control/dimensions/detail",
+        "read coordinated locations/access",
+        "review site RFIs against exact design relation"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Specification/coordination preserve controlling luminous, spatial, control and maintenance attributes through delivery"
+      ],
+      "reopen_triggers": [
+        "substitution",
+        "ceiling/site RFI",
+        "driver/control/electrical change"
+      ],
+      "claim_ceiling": "LIGHTING_DELIVERY_CONTROLLED",
+      "does_not_prove": [
+        "purchase order accuracy",
+        "installed quality",
+        "electrical commissioning"
+      ]
+    },
+    {
+      "stage_id": "LGT-08",
+      "stage_name": "Commissioning, Aiming, Measurement and Actual Night Readback",
+      "professional_question": "Does the installed/configured system produce the intended luminous behavior in real scenes, and are deviations reconciled rather than hidden?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-08 Commissioning, Aiming, Measurement and Actual Night Readback | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Commissioning, Aiming, Measurement and Actual Night Readback question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "as-installed luminaire/control identity",
+        "commissioning scene/control data",
+        "current criteria/calculation",
+        "site conditions"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-06",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "aiming/focus record",
+        "scene/control commissioning record",
+        "measurement/readback evidence",
+        "defect/reprogram/re-aim register",
+        "final lighting configuration identity"
+      ],
+      "interface_requirements": [
+        "MEP / Electrical / Controls",
+        "Architecture",
+        "Interior",
+        "Landscape",
+        "Operations"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-08-IF-01",
+          "source_domain": "MEP / Electrical / Controls",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "installed fixture",
+            "aim",
+            "scene",
+            "sensor/control",
+            "measured/observed condition",
+            "final configuration"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "Does the installed/configured system produce the intended luminous behavior in real scenes, and are deviations reconciled rather than hidden?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "installed fixture",
+        "aim",
+        "scene",
+        "sensor/control",
+        "measured/observed condition",
+        "final configuration",
+        "whole-scene commissioning/night tuning and configuration-bound qualitative/quantitative evidence",
+        "exterior/facade aiming, measurement uncertainty and maintenance/re-aim recovery consequence without taking fixing/isolation/access approval"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "run actual scenes and transitions",
+        "measure/observe critical task/glare/brightness/night conditions",
+        "reconcile calculated/installed differences",
+        "re-read repairs",
+        "read night tuning as whole luminous system across adaptation zones, route/task/focal hierarchy, sensitive views, scenes and final aiming; bind each tuning change to exact final configuration",
+        "bind exterior/façade final aim to target/datum/optic/output/shielding/receptor/wet-reflective/planting-season state; carry measurement calibration/repeatability/method limits and prove maintainable restoration of aim/scene"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "Installed lighting is read back at exact configuration and in-claim defects are closed or explicitly held"
+      ],
+      "reopen_triggers": [
+        "aim/output/control change",
+        "site/material/furniture/planting change",
+        "measurement contradiction"
+      ],
+      "claim_ceiling": "LIGHTING_INSTALLED_READBACK",
+      "does_not_prove": [
+        "emergency/electrical compliance",
+        "future maintained performance",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "LGT-09",
+      "stage_name": "Maintenance, Replacement, Post-occupancy Tuning and Learning",
+      "professional_question": "How does the lighting perform through maintenance, replacement, user overrides and actual use, and which findings require project reopen versus bounded learning?",
+      "stage_body_contract": {
+        "title_rule": "<project> | LGT-09 Maintenance, Replacement, Post-occupancy Tuning and Learning | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to required_native_outputs[] and actual editable/native professional source; renders, screenshots, schedules or prose cannot replace geometry, calculation, sample, mockup, field or runtime evidence required by the claim.",
+        "readback_rule": "Separate intended design relation, implemented/native state, observed readback and professional interpretation. Preserve exact revision/configuration, strongest contradiction and claim ceiling.",
+        "open_failure_rule": "Keep unresolved specialist approvals, unknown existing/field conditions, untested performance, sample/site variance and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen affected consumers when a controlling use/geometry/material/environment/interface/source/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Maintenance, Replacement, Post-occupancy Tuning and Learning question is materially triggered under the Current project scope"
+      ],
+      "required_inputs": [
+        "commissioned configuration",
+        "maintenance/replacement information",
+        "user/FM feedback",
+        "in-use observations/data"
+      ],
+      "knowledge_inputs": [
+        "Current visual task/project/space authority",
+        "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+        "Current luminaire/photometric/control/manufacturer technical data with provenance",
+        "material reflectance/transmittance and architectural geometry at correct revision",
+        "calculation/mockup/site measurement and night-readback evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "maintenance/access register",
+        "replacement-equivalence criteria",
+        "post-occupancy lighting review",
+        "tuning/change record",
+        "bounded G9 candidates"
+      ],
+      "interface_requirements": [
+        "FM / Operations",
+        "MEP / Controls",
+        "Interior / Architecture / Landscape",
+        "G9 Knowledge Return"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "LGT-09-IF-01",
+          "source_domain": "FM / Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "maintenance",
+            "replacement",
+            "override",
+            "complaint/observation",
+            "tuned configuration",
+            "wear/dirt"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or implemented/tested configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "How does the lighting perform through maintenance, replacement, user overrides and actual use, and which findings require project reopen versus bounded learning?",
+        "real user/observer/operator consequence where material"
+      ],
+      "design_language_consequences": [
+        "preserve Current project Design DNA where material while allowing performance/use evidence to control necessary exceptions"
+      ],
+      "technical_consequences": [
+        "maintenance",
+        "replacement",
+        "override",
+        "complaint/observation",
+        "tuned configuration",
+        "wear/dirt",
+        "maintained-light depreciation assumptions and replacement/substitution equivalence",
+        "post-commissioning control/configuration-drift and bounded recommissioning consequence with Controls/BMS implementation truth owner-native"
+      ],
+      "content_projection_requirements": [
+        "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
+      ],
+      "required_readback": [
+        "inspect failed/replaced/overridden states",
+        "separate observation from cause",
+        "verify tuning/repair and changed configuration",
+        "retain counterevidence",
+        "read maintained-performance basis including lumen maintenance, dirt/cleaning, hours/drive/thermal state, surface aging and replacement policy; verify substitutions on distribution/shielding/color/control/detail/access",
+        "preserve commissioned luminous-control baseline and compare post-occupancy behavior against group/address, sensor state, scene/output, transition/timing, schedule/override, daylight/shade dependency and controls revision before diagnosing drift"
+      ],
+      "professional_review_owner": "Lighting Design professional owner",
+      "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
+      "open_items_allowed": [
+        "later/outside-claim specialist verification may remain OPEN only when it does not contradict the current bounded stage verdict"
+      ],
+      "exit_conditions": [
+        "In-use lighting findings remain configuration/context bounded and drive explicit retest/reopen before reuse"
+      ],
+      "reopen_triggers": [
+        "replacement/control change",
+        "user/task change",
+        "material/space change",
+        "contradictory in-use evidence"
+      ],
+      "claim_ceiling": "LIGHTING_IN_USE_BOUNDED",
+      "does_not_prove": [
+        "causal explanation without analysis",
+        "universal metric/scene rule",
+        "Current Knowledge"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Accessibility / Specialist Authority",
+      "Architecture",
+      "Architecture / Envelope",
+      "Contractor",
+      "Design Review",
+      "Ecology",
+      "FM / Operations",
+      "Fire / Acoustics",
+      "G9 Knowledge Return",
+      "HCD / Operations",
+      "Interior",
+      "Interior / Architecture / Landscape",
+      "Interior Design",
+      "Landscape",
+      "Landscape Architecture",
+      "MEP",
+      "MEP / Controls",
+      "MEP / Electrical",
+      "MEP / Electrical / Controls",
+      "Operations",
+      "Procurement",
+      "Security / Operations"
+    ],
+    "outputs_to_domains": [
+      "Accessibility / Specialist Authority",
+      "Architecture",
+      "Architecture / Envelope",
+      "Contractor",
+      "Design Review",
+      "Ecology",
+      "FM / Operations",
+      "Fire / Acoustics",
+      "G9 Knowledge Return",
+      "HCD / Operations",
+      "Interior",
+      "Interior / Architecture / Landscape",
+      "Interior Design",
+      "Landscape",
+      "Landscape Architecture",
+      "MEP",
+      "MEP / Controls",
+      "MEP / Electrical",
+      "MEP / Electrical / Controls",
+      "Operations",
+      "Procurement",
+      "Project / Master",
+      "Security / Operations"
+    ],
+    "shared_variables": [
+      "adaptation context",
+      "aim",
+      "aperture/shading",
+      "ceiling/detail",
+      "color-quality criterion",
+      "complaint/observation",
+      "control compatibility",
+      "control group",
+      "criterion/source",
+      "curfew/control",
+      "daylight dependency",
+      "dimensions",
+      "driver/access",
+      "feedback",
+      "final configuration",
+      "fixture identity",
+      "focal hierarchy",
+      "geometry",
+      "glare view",
+      "installed fixture",
+      "lead time",
+      "luminaire dimensions",
+      "luminous surface",
+      "maintenance",
+      "material/sample",
+      "measured/observed condition",
+      "metric/plane",
+      "model delta",
+      "mounting",
+      "mounting/aiming",
+      "night route",
+      "observed issue",
+      "optic/distribution",
+      "output/scene",
+      "override",
+      "photometric file",
+      "photometry",
+      "planting",
+      "reflectance/transmittance",
+      "replacement",
+      "scene",
+      "scene intent",
+      "schedule",
+      "sensitive receptor",
+      "sensor",
+      "sensor/control",
+      "spill/glare",
+      "substitution",
+      "surface distance",
+      "tested configuration",
+      "transition",
+      "trigger",
+      "tuned configuration",
+      "view position",
+      "visual task",
+      "wear/dirt"
+    ],
+    "controlling_authority_requirements": [
+      "each shared variable resolves to the owner that controls its truth/performance",
+      "R-F remains owner of interface maturity/disposition",
+      "Lighting Design may issue stage-side requirements and design consequences but cannot self-award another domain's PASS",
+      "statutory/certification/external approval remains with applicable authority"
+    ],
+    "interface_maturity_policy": "LGT stages issue stage-side interface requirements; actual maturity/disposition is resolved per interface / Acceptance Contract by R-F and is never inferred from LGT stage number or professional verdict.",
+    "allowed_open_interface_conditions": [
+      "remaining work is later/outside current Lighting Design claim",
+      "required maturity for current claim is met",
+      "no controlling-authority conflict remains",
+      "open item and later owner are explicit"
+    ],
+    "integration_readback_requirements": [
+      "critical geometry/material/environment/use/interface readback",
+      "Lighting Design cross-domain interface readback",
+      "change propagation for material shared-variable changes"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "acceptance-test intent",
+      "adjacency/adaptation map",
+      "aiming/focus record",
+      "assumption/uncertainty register",
+      "bounded G9 candidates",
+      "calculation/model verification",
+      "color-quality/spectral basis",
+      "commissioning requirements",
+      "coordinated reflected ceiling/site layouts",
+      "criteria/source register",
+      "critical attributes/substitution matrix",
+      "daylight/electric-light concept",
+      "defect/reprogram/re-aim register",
+      "driver/access strategy",
+      "exterior/night lighting plan",
+      "final lighting configuration identity",
+      "integration details",
+      "lighting brief",
+      "lighting control narrative",
+      "lighting specification/schedule",
+      "luminaire/optic schedule",
+      "luminance/contrast/glare analyses where required",
+      "luminous hierarchy diagrams",
+      "maintenance/access register",
+      "measurement/readback evidence",
+      "mockup/test plan",
+      "mounting/aiming layouts",
+      "mounting/planting coordination",
+      "night hierarchy/wayfinding diagrams",
+      "night scenes",
+      "observed-vs-predicted comparison",
+      "open assumptions",
+      "option comparison",
+      "photometric model/calculations",
+      "physical/sample mockups",
+      "post-occupancy lighting review",
+      "replacement-equivalence criteria",
+      "retained/rejected option record",
+      "scene concept",
+      "scene/control commissioning record",
+      "scene/group schedule",
+      "sensor/trigger requirements",
+      "shop-drawing/submittal review criteria",
+      "source/surface/viewer relations",
+      "spill/glare/ecology interface review",
+      "substitution-critical attributes",
+      "tuning/change record",
+      "user interface/override logic",
+      "visual-task/scene matrix"
+    ],
+    "native_source_of_truth_rules": [
+      "one Current editable/native source per bounded Lighting Design object where applicable",
+      "render/screenshot/report cannot replace geometry, material, calculation, sample/mockup or field evidence required by the claim",
+      "product/vendor data must retain exact identity/revision/application where material",
+      "site/in-use observations bind location/date/configuration and do not prove unobserved conditions"
+    ],
+    "execution_owner_requirements": [
+      "Lighting Design professional decision owner identified",
+      "specialist technical/statutory owners identified for claims they control",
+      "native production/execution owner identified",
+      "independent review owner identified where required"
+    ],
+    "required_capabilities": [
+      "Lighting Brief, Visual Tasks and Operating States",
+      "Daylight and Luminous Concept / Spatial Hierarchy",
+      "Photometric, Brightness, Glare and Color-quality Development",
+      "Luminaire, Optics, Source and Architectural Integration",
+      "Controls, Scenes, Daylight Response and User Interaction",
+      "Exterior, Landscape, Façade and Night Environment",
+      "Mockup, Sample, Calculation and Design Verification",
+      "Specification, Procurement, Substitution and Construction Coordination",
+      "Commissioning, Aiming, Measurement and Actual Night Readback",
+      "Maintenance, Replacement, Post-occupancy Tuning and Learning"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects minimum sufficient native tools; CAD/BIM/render/simulation/modeling software is a carrier, not professional authority"
+    ],
+    "typed_handoff_contracts": [
+      "Lighting Design↔Accessibility / Specialist Authority",
+      "Lighting Design↔Architecture",
+      "Lighting Design↔Architecture / Envelope",
+      "Lighting Design↔Contractor",
+      "Lighting Design↔Design Review",
+      "Lighting Design↔Ecology",
+      "Lighting Design↔FM / Operations",
+      "Lighting Design↔Fire / Acoustics",
+      "Lighting Design↔G9 Knowledge Return",
+      "Lighting Design↔HCD / Operations",
+      "Lighting Design↔Interior",
+      "Lighting Design↔Interior / Architecture / Landscape",
+      "Lighting Design↔Interior Design",
+      "Lighting Design↔Landscape",
+      "Lighting Design↔Landscape Architecture",
+      "Lighting Design↔MEP",
+      "Lighting Design↔MEP / Controls",
+      "Lighting Design↔MEP / Electrical",
+      "Lighting Design↔MEP / Electrical / Controls",
+      "Lighting Design↔Operations",
+      "Lighting Design↔Procurement",
+      "Lighting Design↔Security / Operations"
+    ],
+    "actual_readback_requirements": [
+      "attack critical glare/reflection/adaptation positions",
+      "attack degraded/night/cleaning/AV/screen states",
+      "attack manual override/daylight/degraded/after-hours states",
+      "bind mockup to exact source/optic/mounting/material/control state",
+      "check access/driver/thermal/maintenance interfaces",
+      "check each quantitative criterion has source/condition",
+      "check every scene has groups/triggers/feedback/recovery",
+      "check trimless/cove/wallwash/graze details",
+      "compare materially different concepts",
+      "compare metrics to actual task/view geometry",
+      "compare observation to model",
+      "compare substitutions across distribution/output/color/control/dimensions/detail",
+      "inspect failed/replaced/overridden states",
+      "inspect model inputs and extrema",
+      "inspect source visibility/spill/aim",
+      "measure/observe critical task/glare/brightness/night conditions",
+      "night-read routes, steps, faces, signs and sensitive receptors",
+      "re-read repairs",
+      "read brightness hierarchy in representative views/sections",
+      "read coordinated locations/access",
+      "read source visibility and beam/surface geometry",
+      "read tasks, viewing geometry and scenes against real use",
+      "reconcile calculated/installed differences",
+      "retain counterevidence",
+      "retain failed conditions and strongest contradiction",
+      "review mature planting/seasonal conflicts",
+      "review site RFIs against exact design relation",
+      "review time/season/daylight risk",
+      "run actual scenes and transitions",
+      "separate observation from cause",
+      "simulate/read scene transitions",
+      "verify tuning/repair and changed configuration"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Lighting Design stage review at the declared project/source/geometry/material/environment/configuration ceiling, keeping design, specialist performance, statutory, integration and evidence claims separate.",
+    "evidence_review": "Verify source/revision, applicability, actual native/readback, observed-vs-interpreted separation, exact location/configuration and open assumptions.",
+    "technical_gates": [
+      "specialist engineering/statutory gate when claimed",
+      "R-F interface gate when material",
+      "native/site/mockup/readback gate appropriate to the claim"
+    ],
+    "independent_review": "Attack generic checklist completion, presentation-only proof, source/revision mismatch, unresolved adverse states, hidden maintenance/construction conditions, owner leakage and project-evidence overgeneralization in Lighting Design.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + current Master professional_processes[] summary; project receipt exists only for real project execution, never candidate-definition validation.",
+    "does_not_prove": [
+      "Current adoption of this candidate",
+      "project exercise",
+      "Professional PASS",
+      "Design KEEP",
+      "R-F Integration PASS",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "aim/output/control change",
+      "architecture/opening/material change",
+      "ceiling/material/geometry change",
+      "ceiling/site RFI",
+      "contradictory in-use evidence",
+      "controls topology/sequence change",
+      "criterion/source change",
+      "criterion/standard change",
+      "daylight/control strategy change",
+      "driver/control/electrical change",
+      "electrical/access change",
+      "fixture/aim/control change",
+      "fixture/material/detail/control change",
+      "fixture/optic/substitution",
+      "geometry/material/photometric/control change",
+      "landscape/canopy change",
+      "material/space change",
+      "measurement contradiction",
+      "mockup/model contradiction",
+      "neighbor/ecology/security criterion change",
+      "new risk condition",
+      "occupancy/daylight strategy change",
+      "replacement/control change",
+      "site measurement contradiction",
+      "site/material/furniture/planting change",
+      "space/material/display change",
+      "substitution",
+      "task/scene change",
+      "task/use/occupancy change",
+      "user interface change",
+      "user/task change"
+    ],
+    "stale_scope_rules": [
+      "only affected stages/interfaces/evidence become stale unless dependency graph shows wider consequence",
+      "historical evidence remains truthful for its original source/revision/location/configuration and is not rewritten to impersonate a successor"
+    ],
+    "upstream_impact_rules": [
+      "new field/source/specialist evidence may reopen upstream basis/option decisions",
+      "specialist impossibility may reopen design rather than being patched locally"
+    ],
+    "downstream_impact_rules": [
+      "changed Lighting Design controlled variables propagate to consuming domains through R-F",
+      "changed tested/installed configuration reopens only evidence that consumed the changed relation unless coupling proves wider consequence"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable changes reopen affected R-F interfaces at owner-native scope"
+    ],
+    "receipt_stale_rules": [
+      "a project Lighting Design receipt becomes stale at affected claim scope when governing evidence/native state/configuration/required owner evidence changes; historical receipts are not rewritten"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable Lighting Design stages complete at declared claim ceiling",
+      "required native outputs and actual readback exist",
+      "required specialist/external owner evidence exists at its own boundary",
+      "critical interfaces meet required R-F maturity",
+      "no unresolved in-claim blocker",
+      "professional/independent review binds exact reviewed configuration",
+      "professional receipt is Current for an actual project instance"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim Lighting Design work that does not contradict the current bounded professional verdict"
+    ],
+    "professional_receipt": "LGT_PROFESSIONAL_PROCESS_RECEIPT for real project execution only; candidate-definition validation emits no project receipt.",
+    "promotion_effect": "If later adopted Current and actually executed, a bounded PASS may satisfy only the triggered Lighting Design professional-process dependency; it grants neither Design KEEP, specialist/statutory approval, R-F Integration PASS, Project Promotion nor Current Knowledge.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_LGT_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "Current adoption",
+      "project exercise",
+      "specialist/statutory approval",
+      "future field/in-use performance",
+      "Design KEEP",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  }
+}

@@ -4,6 +4,7 @@
   "title": "OLEANDER Design Quality & Development Receipt v1",
   "type": "object",
   "required": [
+    "schema_version",
     "receipt_type",
     "project_id",
     "design_question",
@@ -13,6 +14,10 @@
     "artifact_refs",
     "design_maturity",
     "resolution_scales_reviewed",
+    "design_language_state",
+    "experience_state",
+    "detail_craft_state",
+    "adaptation_state",
     "coherence_state",
     "genericity_attack",
     "readback_conditions",
@@ -26,11 +31,301 @@
     "stale"
   ],
   "properties": {
-    "receipt_type": {"const": "DESIGN_QUALITY_DEVELOPMENT_RECEIPT"},
-    "project_id": {"type": "string", "minLength": 1},
-    "design_question": {"type": "string", "minLength": 1},
-    "design_intent": {"type": "string", "minLength": 1},
-    "claim_ceiling": {"type": "string", "minLength": 1},
+    "receipt_type": {
+      "const": "DESIGN_QUALITY_DEVELOPMENT_RECEIPT"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body_structure": {
+      "type": "object",
+      "required": [
+        "body_id",
+        "title",
+        "section_coverage"
+      ],
+      "properties": {
+        "body_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "not": {
+            "enum": [
+              "Analysis",
+              "Concept",
+              "Final",
+              "Design Development",
+              "Planning",
+              "Review",
+              "analysis",
+              "concept",
+              "final",
+              "design development",
+              "planning",
+              "review"
+            ]
+          }
+        },
+        "knowledge_mount_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "R-B owner-issued task/claim Operational Mount record refs consumed by this body. These refs, not the DQ snapshot, remain the OE authority."
+        },
+        "section_coverage": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "TITLE_IDENTITY"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "DEFINITION_SCOPE"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "CURRENT_CONDITION_PROBLEM"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "CANONICAL_KNOWLEDGE_EVIDENCE_INPUTS"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "DESIGN_INTENT_CRITERIA"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "DEVELOPMENT_MECHANISM_WORKFLOW"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "NATIVE_ARTIFACT_READBACK"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "FAILURE_COUNTEREXAMPLE_OPEN_ITEM"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "DECISION_MATURITY_CLAIM_CEILING"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "REOPEN_TRIGGER_NEXT_ACTION"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            }
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "semantic_role",
+              "status"
+            ],
+            "properties": {
+              "semantic_role": {
+                "enum": [
+                  "TITLE_IDENTITY",
+                  "DEFINITION_SCOPE",
+                  "CURRENT_CONDITION_PROBLEM",
+                  "CANONICAL_KNOWLEDGE_EVIDENCE_INPUTS",
+                  "DESIGN_INTENT_CRITERIA",
+                  "DEVELOPMENT_MECHANISM_WORKFLOW",
+                  "NATIVE_ARTIFACT_READBACK",
+                  "FAILURE_COUNTEREXAMPLE_OPEN_ITEM",
+                  "DECISION_MATURITY_CLAIM_CEILING",
+                  "REOPEN_TRIGGER_NEXT_ACTION"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "PRESENT",
+                  "COMBINED",
+                  "NOT_APPLICABLE_WITH_REASON",
+                  "MISSING"
+                ]
+              },
+              "visible_heading_or_locator": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "PRESENT",
+                        "COMBINED"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "visible_heading_or_locator": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "visible_heading_or_locator"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "NOT_APPLICABLE_WITH_REASON"
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "reason"
+                  ]
+                }
+              }
+            ],
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "design_question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "design_intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
     "triggered_design_dimensions": {
       "type": "array",
       "minItems": 1,
@@ -52,9 +347,134 @@
         ]
       }
     },
-    "project_design_dna_ref": {"type": ["string", "null"]},
-    "professional_process_refs": {"type": "array", "items": {"type": "string"}},
-    "artifact_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "knowledge_mounts": {
+      "type": "array",
+      "description": "Non-authoritative reproducibility snapshots of R-B Operational Mount boundaries consumed by this DQ decision. They do not reissue KI/OE authority.",
+      "items": {
+        "type": "object",
+        "required": [
+          "knowledge_ref",
+          "use_role",
+          "claim_ceiling",
+          "applicability",
+          "does_not_prove",
+          "review_basis"
+        ],
+        "properties": {
+          "source_mount_record_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mount_record_revision_or_hash": {
+            "type": "string",
+            "minLength": 1
+          },
+          "knowledge_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "use_role": {
+            "enum": [
+              "PRIMARY",
+              "SUPPORTING",
+              "CONDITIONAL",
+              "CONTEXT",
+              "COUNTEREVIDENCE"
+            ]
+          },
+          "eligibility_snapshot": {
+            "enum": [
+              "OE1",
+              "OE2",
+              "OE3"
+            ],
+            "description": "Snapshot of the R-B Operational Mount result consumed by this receipt; not an R-D-owned OE state."
+          },
+          "operational_eligibility": {
+            "enum": [
+              "OE1",
+              "OE2",
+              "OE3"
+            ],
+            "deprecated": true,
+            "description": "Legacy historical snapshot field. Read for backward compatibility only; it is not an R-D-owned OE state. New receipts use eligibility_snapshot."
+          },
+          "claim_ceiling": {
+            "type": "string",
+            "minLength": 1
+          },
+          "applicability": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "does_not_prove": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "freshness_or_revalidation_trigger": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "review_basis": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "eligibility_snapshot"
+            ],
+            "not": {
+              "required": [
+                "operational_eligibility"
+              ]
+            }
+          },
+          {
+            "required": [
+              "operational_eligibility"
+            ],
+            "not": {
+              "required": [
+                "eligibility_snapshot"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": true
+      }
+    },
+    "project_design_dna_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "professional_process_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "design_maturity": {
       "enum": [
         "DQ0_UNDEFINED",
@@ -65,106 +485,870 @@
         "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
       ]
     },
+    "cross_context_validation": {
+      "type": "object",
+      "required": [
+        "context_refs",
+        "material_difference_between_contexts",
+        "identity_relation_preserved",
+        "counterevidence_or_none_reason",
+        "transfer_boundary",
+        "does_not_prove"
+      ],
+      "properties": {
+        "context_refs": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "material_difference_between_contexts": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_relation_preserved": {
+          "type": "string",
+          "minLength": 1
+        },
+        "counterevidence_or_none_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transfer_boundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "does_not_prove": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
     "resolution_scales_reviewed": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": {"enum": ["R0_SYSTEM", "R1_WHOLE", "R2_ZONE_SUBSYSTEM", "R3_ELEMENT", "R4_COMPONENT", "R5_DETAIL", "R6_MICRO_FINISH"]}
+      "items": {
+        "enum": [
+          "R0_SYSTEM",
+          "R1_WHOLE",
+          "R2_ZONE_SUBSYSTEM",
+          "R3_ELEMENT",
+          "R4_COMPONENT",
+          "R5_DETAIL",
+          "R6_MICRO_FINISH"
+        ]
+      }
     },
     "candidate_comparison": {
       "type": "object",
       "properties": {
-        "applicable": {"type": "boolean"},
-        "candidate_refs": {"type": "array", "items": {"type": "string"}},
-        "fixed_comparison_conditions": {"type": "array", "items": {"type": "string"}},
-        "decision": {"type": "string"}
+        "applicable": {
+          "type": "boolean"
+        },
+        "candidate_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fixed_comparison_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "decision": {
+          "type": "string"
+        }
       },
       "additionalProperties": true
     },
-    "design_language_state": {"$ref": "#/$defs/reviewState"},
-    "experience_state": {"$ref": "#/$defs/reviewState"},
-    "human_relation_state": {"$ref": "#/$defs/reviewState"},
-    "sensory_state": {"$ref": "#/$defs/reviewState"},
-    "detail_craft_state": {"$ref": "#/$defs/reviewState"},
-    "adaptation_state": {"$ref": "#/$defs/reviewState"},
-    "meaning_memory_state": {"$ref": "#/$defs/reviewState"},
-    "coherence_state": {"$ref": "#/$defs/reviewState"},
+    "design_language_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "experience_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "human_relation_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "human_relation_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sensory_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "sensory_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "detail_craft_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "adaptation_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "meaning_memory_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "meaning_memory_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "coherence_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
     "genericity_attack": {
       "type": "object",
-      "required": ["status", "findings"],
+      "required": [
+        "status",
+        "findings"
+      ],
       "properties": {
-        "status": {"enum": ["NOT_APPLICABLE_WITH_REASON", "PASS", "REVISE", "REJECT", "HOLD"]},
-        "findings": {"type": "array", "items": {"type": "string"}}
+        "status": {
+          "enum": [
+            "NOT_APPLICABLE_WITH_REASON",
+            "PASS",
+            "REVISE",
+            "REJECT",
+            "HOLD"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
       },
       "additionalProperties": true
     },
-    "content_projection_state": {"$ref": "#/$defs/reviewState"},
+    "content_projection_state": {
+      "$ref": "#/$defs/designDimensionStateV1Family"
+    },
+    "content_projection_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "readback_conditions": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["artifact_ref", "condition", "status"],
+        "required": [
+          "artifact_ref",
+          "condition",
+          "status"
+        ],
         "properties": {
-          "artifact_ref": {"type": "string", "minLength": 1},
-          "condition": {"type": "string", "minLength": 1},
-          "status": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]}
+          "artifact_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "REVISE",
+              "REJECT",
+              "HOLD"
+            ]
+          }
         },
         "additionalProperties": true
       }
     },
-    "strongest_design_decision": {"type": "string", "minLength": 1},
-    "weakest_or_open_design_decision": {"type": "string", "minLength": 1},
-    "root_cause": {"type": ["string", "null"]},
-    "open_items": {"type": "array", "items": {"type": "string"}},
-    "reopened_items": {"type": "array", "items": {"type": "string"}},
-    "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "strongest_design_decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "weakest_or_open_design_decision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_cause": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "open_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reopened_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "independent_design_review": {
       "type": "object",
-      "required": ["status", "reviewer_independent_from_producer", "reason"],
+      "required": [
+        "status",
+        "reviewer_independent_from_producer",
+        "reason"
+      ],
       "properties": {
-        "status": {"enum": ["PENDING", "KEEP", "REVISE", "REJECT", "HOLD"]},
-        "reviewer_independent_from_producer": {"type": "boolean"},
-        "reason": {"type": "string", "minLength": 1}
+        "status": {
+          "enum": [
+            "PENDING",
+            "KEEP",
+            "REVISE",
+            "REJECT",
+            "HOLD"
+          ]
+        },
+        "reviewer_independent_from_producer": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_input_bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_ref",
+              "revision_or_hash"
+            ],
+            "properties": {
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision_or_hash": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
       },
       "additionalProperties": true
     },
-    "result": {"enum": ["KEEP", "REVISE", "REJECT", "HOLD"]},
-    "stale": {"type": "boolean"}
+    "result": {
+      "enum": [
+        "KEEP",
+        "REVISE",
+        "REJECT",
+        "HOLD"
+      ]
+    },
+    "stale": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "enum": [
+        "1.0",
+        "1.1"
+      ],
+      "description": "v1.0 remains read-compatible historical evidence. v1.1 is the Current emission contract for strict Design-dimension dispositions and owner-binding fields."
+    },
+    "in_claim_blocking_design_fail_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Owner/reviewer-declared count of unresolved in-claim blocking Design failures for machine closure. It is a receipt projection, not a new Design state family."
+    }
   },
   "$defs": {
-    "reviewState": {
-      "enum": ["NOT_APPLICABLE_WITH_REASON", "OPEN", "IN_PROGRESS", "KEEP", "REVISE", "REJECT", "HOLD"]
+    "designDimensionDisposition": {
+      "description": "Current v1.1 bounded Design-review disposition only; OPEN/IN_PROGRESS workflow state belongs elsewhere.",
+      "enum": [
+        "NOT_APPLICABLE_WITH_REASON",
+        "KEEP",
+        "REVISE",
+        "REJECT",
+        "HOLD"
+      ]
+    },
+    "designDimensionStateV1Family": {
+      "description": "v1-family read vocabulary. OPEN/IN_PROGRESS are legacy v1.0 progress values; v1.1 emissions are narrowed by the top-level version condition.",
+      "enum": [
+        "NOT_APPLICABLE_WITH_REASON",
+        "OPEN",
+        "IN_PROGRESS",
+        "KEEP",
+        "REVISE",
+        "REJECT",
+        "HOLD"
+      ]
     }
   },
   "allOf": [
     {
-      "if": {"properties": {"result": {"const": "KEEP"}}},
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "body_structure"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "const": "KEEP"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "independent_design_review": {
+          "body_structure": {
             "properties": {
-              "status": {"const": "KEEP"},
-              "reviewer_independent_from_producer": {"const": true}
+              "section_coverage": {
+                "not": {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "const": "MISSING"
+                      }
+                    },
+                    "required": [
+                      "status"
+                    ]
+                  }
+                }
+              }
             }
           },
-          "stale": {"const": false}
+          "independent_design_review": {
+            "properties": {
+              "status": {
+                "const": "KEEP"
+              },
+              "reviewer_independent_from_producer": {
+                "const": true
+              },
+              "reviewer_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_input_bindings": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          },
+          "design_language_state": {
+            "const": "KEEP"
+          },
+          "experience_state": {
+            "const": "KEEP"
+          },
+          "human_relation_state": {
+            "enum": [
+              "KEEP",
+              "NOT_APPLICABLE_WITH_REASON"
+            ]
+          },
+          "sensory_state": {
+            "enum": [
+              "KEEP",
+              "NOT_APPLICABLE_WITH_REASON"
+            ]
+          },
+          "detail_craft_state": {
+            "const": "KEEP"
+          },
+          "adaptation_state": {
+            "const": "KEEP"
+          },
+          "meaning_memory_state": {
+            "enum": [
+              "KEEP",
+              "NOT_APPLICABLE_WITH_REASON"
+            ]
+          },
+          "coherence_state": {
+            "const": "KEEP"
+          },
+          "content_projection_state": {
+            "enum": [
+              "KEEP",
+              "NOT_APPLICABLE_WITH_REASON"
+            ]
+          },
+          "stale": {
+            "const": false
+          },
+          "design_maturity": {
+            "enum": [
+              "DQ1_DIRECTION",
+              "DQ2_COHERENT_CANDIDATE",
+              "DQ3_DEVELOPED_SYSTEM",
+              "DQ4_DISTINCTIVE_RESOLVED_SYSTEM",
+              "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
+            ]
+          },
+          "in_claim_blocking_design_fail_count": {
+            "const": 0
+          }
         }
       }
     },
     {
-      "if": {"properties": {"result": {"const": "REVISE"}}},
+      "if": {
+        "properties": {
+          "result": {
+            "const": "REVISE"
+          }
+        }
+      },
       "then": {
-        "required": ["root_cause"],
-        "properties": {"root_cause": {"type": "string", "minLength": 1}}
+        "required": [
+          "root_cause"
+        ],
+        "properties": {
+          "root_cause": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     },
     {
-      "if": {"properties": {"design_maturity": {"enum": ["DQ4_DISTINCTIVE_RESOLVED_SYSTEM", "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"]}}},
+      "if": {
+        "properties": {
+          "design_maturity": {
+            "enum": [
+              "DQ4_DISTINCTIVE_RESOLVED_SYSTEM",
+              "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
+            ]
+          }
+        }
+      },
       "then": {
         "properties": {
           "independent_design_review": {
-            "properties": {"reviewer_independent_from_producer": {"const": true}}
+            "properties": {
+              "reviewer_independent_from_producer": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "design_maturity": {
+            "const": "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
+          }
+        },
+        "required": [
+          "design_maturity"
+        ]
+      },
+      "then": {
+        "required": [
+          "cross_context_validation"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "human_relation_state": {
+            "const": "NOT_APPLICABLE_WITH_REASON"
+          },
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "human_relation_state",
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "human_relation_reason"
+        ],
+        "properties": {
+          "human_relation_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sensory_state": {
+            "const": "NOT_APPLICABLE_WITH_REASON"
+          },
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "sensory_state",
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "sensory_reason"
+        ],
+        "properties": {
+          "sensory_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "meaning_memory_state": {
+            "const": "NOT_APPLICABLE_WITH_REASON"
+          },
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "meaning_memory_state",
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "meaning_memory_reason"
+        ],
+        "properties": {
+          "meaning_memory_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "content_projection_state": {
+            "const": "NOT_APPLICABLE_WITH_REASON"
+          },
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "content_projection_state",
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "content_projection_reason"
+        ],
+        "properties": {
+          "content_projection_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          }
+        },
+        "required": [
+          "schema_version"
+        ]
+      },
+      "then": {
+        "required": [
+          "in_claim_blocking_design_fail_count"
+        ],
+        "properties": {
+          "design_language_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "experience_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "human_relation_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "sensory_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "detail_craft_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "adaptation_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "meaning_memory_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "coherence_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "content_projection_state": {
+            "$ref": "#/$defs/designDimensionDisposition"
+          },
+          "knowledge_mounts": {
+            "items": {
+              "required": [
+                "source_mount_record_ref",
+                "mount_record_revision_or_hash",
+                "eligibility_snapshot"
+              ],
+              "not": {
+                "required": [
+                  "operational_eligibility"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "triggered_design_dimensions": {
+            "contains": {
+              "const": "DD-05_HUMAN_RELATION"
+            }
+          }
+        },
+        "required": [
+          "schema_version",
+          "triggered_design_dimensions"
+        ]
+      },
+      "then": {
+        "required": [
+          "human_relation_state"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "triggered_design_dimensions": {
+            "contains": {
+              "const": "DD-06_SENSORY"
+            }
+          }
+        },
+        "required": [
+          "schema_version",
+          "triggered_design_dimensions"
+        ]
+      },
+      "then": {
+        "required": [
+          "sensory_state"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "triggered_design_dimensions": {
+            "contains": {
+              "const": "DD-11_MEANING_MEMORY"
+            }
+          }
+        },
+        "required": [
+          "schema_version",
+          "triggered_design_dimensions"
+        ]
+      },
+      "then": {
+        "required": [
+          "meaning_memory_state"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "design_maturity": {
+            "enum": [
+              "DQ4_DISTINCTIVE_RESOLVED_SYSTEM",
+              "DQ5_PROVEN_CROSS_CONTEXT_LANGUAGE"
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "design_maturity"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_design_review": {
+            "required": [
+              "reviewer_id",
+              "review_input_bindings"
+            ],
+            "properties": {
+              "reviewer_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_input_bindings": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "genericity_attack": {
+            "properties": {
+              "status": {
+                "const": "NOT_APPLICABLE_WITH_REASON"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        },
+        "required": [
+          "schema_version",
+          "genericity_attack"
+        ]
+      },
+      "then": {
+        "properties": {
+          "genericity_attack": {
+            "required": [
+              "reason"
+            ],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "1.1"
+          },
+          "result": {
+            "const": "KEEP"
+          }
+        },
+        "required": [
+          "schema_version",
+          "result"
+        ]
+      },
+      "then": {
+        "properties": {
+          "independent_design_review": {
+            "required": [
+              "reviewer_id",
+              "review_input_bindings"
+            ],
+            "properties": {
+              "reviewer_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "review_input_bindings": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
           }
         }
       }

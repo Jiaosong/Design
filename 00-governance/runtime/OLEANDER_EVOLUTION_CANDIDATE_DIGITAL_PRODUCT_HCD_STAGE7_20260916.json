@@ -1,0 +1,220 @@
+{
+  "candidate_id": "OLEANDER-EV-DIGITAL-PRODUCT-HCD-STAGE7-20260916",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "Digital Product / HCD professional-definition owner under R-E",
+  "target_ref": "00-governance/digital-product-hcd-design-development-process-v1.0.md",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_SYSTEMS_ENGINEERING_STAGE6_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9",
+  "baseline": {
+    "current_version_or_revision": "Current architecture remains origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202; Stage-6 Systems Engineering candidate is EV4_INDEPENDENT_REVIEWED and not Current-adopted",
+    "authority_fingerprint": "sha256:a826257e87148918fbf8d45701f79bb8538ebd0f5cc324517f47f474e2b93fe2",
+    "authority_fingerprint_inputs": {
+      "CURRENT_ROOT_VERSION": "OLEANDER Current Authority v1.1.1",
+      "PROJECT_OR_SCOPE_AUTHORITY": "OLEANDER professional-domain definition evolution / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "SOURCE_AUTHORITY": "Predecessor Stage-6 EV4 candidate manifest sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9 + bounded existing OLEANDER HCD/UX/Human Factors support extensions",
+      "DESIGN_AUTHORITY": "NOT_APPLICABLE_PROFESSIONAL_PROCESS_DEFINITION_NO_PROJECT_DESIGN_KEEP_AUTHORITY",
+      "CURRENT_TASK_ID": "USER_CONTINUE_STAGE7_DIGITAL_PRODUCT_HCD_DOMAIN_PROCESS_20260916",
+      "CURRENT_NATIVE_MASTER_OR_REF": "00-governance/professional-domain-process-contract-v1.0.md + 00-governance/digital-product-hcd-design-development-process-v1.0.md",
+      "ACTIVE_CONSTRAINT_LOCK": "PRESERVE_V2_1_CURRENT_OPEN_UNTIL_ADOPTION|NO_PARALLEL_SCHEMA|NO_UNIVERSAL_HCD_LIFECYCLE|R_F_OWNS_INTERFACE_TRUTH|ACCESSIBILITY_TECHNICAL_AND_VISUAL_AUTHORITIES_SEPARATE|NO_PROJECT_EXERCISE_OR_PROMOTION_CLAIM|PRESERVE_STAGE6_EV4_PREDECESSOR"
+    },
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T10:19:48.689466+00:00"
+  },
+  "trigger_evidence": [
+    "User instructed sustained continuation after Stage-6 closed the Systems Engineering candidate and identified Digital Product / HCD as the next strongest process-definition gap.",
+    "Current v2.1 architecture explicitly keeps Digital Product / HCD at CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN with current_process_ref=null.",
+    "Existing OLEANDER Design Quality/DD, Design Intelligence, Human Factors, Web/UI, interaction, IA/wayfinding, content-design and accessibility material already contains bounded HCD mechanisms and explicit anti-overclaim boundaries.",
+    "No existing Digital Product / HCD professional-domain process file or machine definition existed on the frozen Current baseline."
+  ],
+  "hypothesis": "A domain-native Digital Product / HCD professional process can be formalized and machine-validated inside the existing R-E Professional Domain Process Contract without turning UI-production skills into professional authority, collapsing human evidence into design opinion, taking R-F/accessibility/software/visual authority, importing a universal HCD lifecycle, or changing the Current HCD state before authorized adoption.",
+  "mutation_scope": {
+    "summary": "Four-file successor delta over Stage-6 EV4: candidate Digital Product / HCD professional process正文, its existing-schema v1.1 machine definition, candidate-specific Professional Domain regression tests, and existing Control Plane CI coverage.",
+    "candidate_file_count_excluding_this_record": 4,
+    "candidate_manifest_sha256": "c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10",
+    "candidate_manifest_algorithm": "SHA256 of UTF-8 lines sorted by path, each line = <relative_path>\\0<file_sha256>\\n",
+    "explicit_exclusions": [
+      "No Current architecture map/control-graph professional-domain state is changed by this candidate.",
+      "Stage-6 Systems Engineering EV4 candidate and its exact manifest remain frozen predecessor provenance and are not promoted by this candidate.",
+      "No project instance or project-native artifact is changed or claimed exercised.",
+      "No Professional/DQ/Architecture/Execution receipt is created or rewritten.",
+      "No canonical Knowledge object, HCD skill or candidate support extension is promoted by this candidate.",
+      "No Design Thinking, Double Diamond, Lean UX, fixed research sample count, Figma workflow or other universal HCD method/tool lifecycle is installed as OLEANDER authority.",
+      "No R-F interface, accessibility/legal/statutory, software/backend/data or visual Design Quality authority is reassigned to HCD.",
+      "No root-worktree unrelated/concurrent files are part of this candidate."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10",
+    "files": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "e7b80f403c7d0cd691c233fa3bf50449001e0211605770a7d5e0b111ed728ea1",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "bed99218083be1890b3e04af039386cfa8256c4286ac384fbcbed0067b84321e",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "989a8689931b192ae849846e013a001df817ca7f29113af9ac6d0fb2fab826d4",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "680ce8a1265ba66fd69c34754fb20c8e7a2418e3d8d23846e1ce9975a25cdd31"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py"
+    ],
+    "real_case_refs": [
+      "Current Structural Engineering and Building Services / MEP machine-bound definitions as R-E schema/owner compatibility references",
+      "Stage-6 Systems Engineering candidate as immediate reviewed predecessor for successor discipline without Current adoption inference",
+      "Existing OLEANDER Human Factors, HCD/interaction, Web/UI, IA/wayfinding, content-design, accessibility and Design Quality material as bounded source/support carriers",
+      "Current v2.1 Digital Product / HCD PROCESS_OPEN state as the non-promotion baseline"
+    ],
+    "counterexample_refs": [
+      "attractive UI or browser PASS used as HCD/user PASS rejected",
+      "persona/journey/heuristic review used as representative user evidence rejected",
+      "automated accessibility zero-violation output used as accessibility conformity rejected",
+      "front-end prototype used as backend/service truth rejected",
+      "one aggregate usability score used to hide task error/workaround rejected",
+      "HCD professional verdict used as R-F interface maturity, visual Design KEEP or accessibility certification rejected",
+      "analytics/telemetry observation used as causal explanation rejected",
+      "one-project outcome used as reusable HCD Knowledge rejected",
+      "candidate process validation used as Current adoption rejected"
+    ],
+    "regression_refs": [
+      "Digital Product / HCD definition validation PASS under professional-domain-process.v1 schema and semantic validator",
+      "Professional Domain self-test PASS",
+      "HCD candidate validates under both jsonschema/full and stdlib fallback semantic paths",
+      "Professional Domain targeted suite: 27 tests OK including three HCD-candidate boundary tests",
+      "Full 00-governance/control-plane/tests discovery: 130 tests OK",
+      "Architecture Control validation PASS with Digital Product / HCD still PROCESS_OPEN",
+      "Execution Contracts / Execution Locks / Runtime Resilience validation PASS",
+      "Architecture Namespace and Complex Project Master Runtime validation PASS",
+      "Structural, MEP and Systems candidate machine definitions remain PASS",
+      "HCD negative probes fail closed for missing R-F maturity policy, maturity regression, legacy parallel binding shape and missing required prototype readback",
+      "git diff --check PASS apart from line-ending warnings"
+    ],
+    "metrics": {
+      "hcd_stage_count": 9,
+      "hcd_stage_body_semantic_roles_each": 10,
+      "professional_targeted_tests_passed": 27,
+      "control_plane_tests_passed": 130,
+      "control_plane_tests_failed": 0,
+      "hcd_negative_cases_fail_closed": 4,
+      "architecture_current_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "hcd_current_state_after_candidate": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+      "project_exercise_claim": false
+    },
+    "acceptance_thresholds": [
+      "Candidate process validates against the existing v1.1 Professional Domain schema without schema extension.",
+      "Digital Product / HCD uses a domain-native HCD-00...HCD-08 chain rather than Architecture/Structural/MEP/Systems stage aliases.",
+      "Human evidence preserves population/task/context/configuration and observation/interpretation/assumption/decision separation.",
+      "R-F remains the only actual interface maturity/disposition owner; HCD stores stage-side requirements only.",
+      "Accessibility-aware interaction, accessibility conformity, software/backend truth, visual Design Quality and HCD professional judgment remain separate owner claims.",
+      "Heuristic/automated/prototype evidence is not allowed to impersonate representative human task validation.",
+      "Observation, causal explanation and reusable Knowledge remain separate claims with transfer/counterevidence boundary.",
+      "Current architecture continues to report Digital Product / HCD PROCESS_OPEN until authorized adoption/readback.",
+      "No project-exercise, Design KEEP, accessibility certification, software/backend PASS, Integration PASS, Knowledge promotion or Project Promotion claim is emitted."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Current v2.1 and reviewed Stage-6 predecessor provide the shared Professional Domain contract plus bounded HCD-related support material, but Current intentionally leaves Digital Product / HCD PROCESS_OPEN with no current process ref or project-exercised claim.",
+    "candidate_result": "Adds a real Digital Product / HCD operating specification and v1.1 machine definition with nine domain-native stages from human/service framing through in-use change/learning, while Current map/graph remain unchanged and OPEN.",
+    "regressions": [],
+    "quality_delta": "Replaces an empty HCD professional-domain slot with substantive candidate正文 covering research evidence, tasks/service states, experience concepts, IA/content, interaction/recovery/accessibility-aware behavior, prototype/runtime truth, representative evaluation and change/revalidation.",
+    "reliability_delta": "Adds schema validation, full/fallback semantic validation, CI invocation and tests that fail if HCD self-currentizes, loses its domain-native stage chain, collapses R-F/accessibility/backend/visual authority or promotes causal/transfer claims beyond evidence.",
+    "cost_latency_delta": "Adds one machine definition, one professional process正文, three bounded regression assertions and one CI validator invocation; no new runtime, service, database, state family, schema family or mandatory tool dependency.",
+    "decision_basis": "Retain as a bounded evaluated successor candidate and route to independent review. Do not change Current HCD state until the later owner/human adoption transaction and readback are complete."
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_11_HCD_STAGE7_INDEPENDENT_REVIEW_20260916",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-16T10:27:52.122888+00:00",
+    "review_notes": [
+      "Exact four-file Stage-7 implementation manifest independently recomputed to sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10 with all file hashes matching.",
+      "Stage-6 EV4 predecessor manifest independently recomputed to sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9; live Systems files remain byte-identical and in-memory removal of only HCD additions reconstructs the exact Stage-6 workflow/test hashes.",
+      "Current v2.1 graph remains Digital Product / HCD PROCESS_OPEN with current_process_ref=null; no Current adoption, project-exercise or Professional PASS claim is inferred.",
+      "HCD-00...HCD-08 is domain-native and preserves human-evidence applicability, R-F interface ownership, accessibility/backend/visual owner boundaries, representative-evaluation limits and observation/causation/Knowledge-transfer separation.",
+      "Professional self-test, full/fallback HCD validation, 27 targeted tests, 130 full control-plane tests and architecture/execution/locks/resilience validators passed. This verdict authorizes EV4 only; promotion.eligible remains false."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_NEW_DOMAIN_DEFINITION_CANDIDATE_WITH_CURRENT_STATE_HELD_OPEN",
+    "affected_carriers": [
+      "candidate Digital Product / HCD professional process正文",
+      "candidate Digital Product / HCD v1.1 machine definition",
+      "existing Professional Domain regression tests",
+      "existing Control Plane CI workflow"
+    ],
+    "affected_scope": "Professional-definition candidate only. Current professional_domain_process_state, R-E maturity summary and Integrated Runtime Current list remain unchanged until later adoption.",
+    "migration_steps": [
+      "Preserve Stage-6 EV4 candidate and exact manifest as immutable predecessor provenance.",
+      "Keep Current v2.1 Digital Product / HCD state CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN during candidate evaluation/review.",
+      "Run existing Professional Domain schema/semantic validators, full/fallback tests, HCD negative cases and governance regression.",
+      "Obtain independent review bound to the exact four-file Stage-7 successor manifest.",
+      "Before any EV6 Current adoption, perform a separate authorized adoption transaction that updates Current architecture map/control graph/architecture validator/Integrated Runtime professional list to Digital Product / HCD FORMALIZED_MACHINE_BOUND with project_exercised_claim=false and exact process/schema refs.",
+      "Keep Systems Engineering adoption independent; this HCD candidate does not auto-adopt its Stage-6 predecessor professional domain.",
+      "Rerun full architecture/professional regression after any adoption transaction and read back the exact Current carriers.",
+      "Do not create a project professional receipt until a real project instance actually exercises the HCD process."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "predecessor-evolution:OLEANDER-EV-SYSTEMS-ENGINEERING-STAGE6-20260916@EV4 / successor-manifest-sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9",
+    "rollback_action": "Remove only the Stage-7 HCD candidate process/machine definition and restore the two changed predecessor files (.github workflow and professional-domain regression test) to their Stage-6 EV4 bytes; preserve both Evolution records and do not touch unrelated root work.",
+    "rollback_test": "Rerun Stage-6 bounded validators/regression and confirm Digital Product / HCD remains PROCESS_OPEN with no current_process_ref.",
+    "provenance_ref": "stage7-manifest-sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10 over stage6-successor-manifest-sha256:264ad0f83369df354d1cc55a53d0333f8ef1844fe7c8c061331772d8cf32fdf9"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent review and any later authorized adoption/readback transaction.",
+    "regression_signals": [
+      "HCD candidate fails Professional Domain full or fallback validation",
+      "Current architecture reports Digital Product / HCD formalized before authorized adoption/readback",
+      "HCD takes R-F interface maturity/disposition authority",
+      "HCD takes accessibility/legal/statutory, software/backend/data or visual Design Quality authority",
+      "heuristic/automated/prototype evidence is promoted to representative human validation",
+      "human evidence loses population/task/context/configuration applicability",
+      "in-use observation is promoted to causal or transferable Knowledge without required evidence",
+      "project-exercised or professional PASS is inferred from definition/schema existence",
+      "Stage-6 predecessor provenance or unrelated root work is mutated"
+    ],
+    "reopen_rule": "Any signal reopens only the affected HCD successor-candidate/adoption scope while preserving predecessor and unrelated verified state.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "CURRENT_DIGITAL_PRODUCT_HCD_PROCESS_ADOPTION",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "REPRESENTATIVE_USER_VALIDATION_WITHOUT_PROJECT_EVIDENCE",
+    "ACCESSIBILITY_CERTIFICATION",
+    "SOFTWARE_BACKEND_DATA_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION",
+    "CURRENT_KNOWLEDGE",
+    "UNIVERSAL_HCD_LIFECYCLE_OR_METHOD",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}

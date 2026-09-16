@@ -10,18 +10,1639 @@
     },
     "stringArray": {
       "type": "array",
-      "items": {"$ref": "#/$defs/nonEmptyString"}
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
     },
     "nonEmptyStringArray": {
       "type": "array",
       "minItems": 1,
-      "items": {"$ref": "#/$defs/nonEmptyString"}
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "stageBodySemanticRole": {
+      "enum": [
+        "PROFESSIONAL_QUESTION_SCOPE",
+        "CURRENT_CONDITION_PROBLEM",
+        "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+        "PROFESSIONAL_CRITERIA_INTENT",
+        "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+        "CROSS_DOMAIN_INTERFACES",
+        "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+        "ACTUAL_READBACK_FINDING",
+        "FAILURE_OPEN_DOES_NOT_PROVE",
+        "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+      ]
+    },
+    "stageBodySection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_role",
+        "status"
+      ],
+      "properties": {
+        "semantic_role": {
+          "$ref": "#/$defs/stageBodySemanticRole"
+        },
+        "status": {
+          "enum": [
+            "PRESENT",
+            "COMBINED",
+            "NOT_APPLICABLE_WITH_REASON",
+            "MISSING"
+          ]
+        },
+        "visible_heading_or_locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "PRESENT",
+                  "COMBINED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "visible_heading_or_locator"
+            ],
+            "properties": {
+              "visible_heading_or_locator": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_APPLICABLE_WITH_REASON"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "required": [
+              "reason"
+            ],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "stageBodyContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title_rule",
+        "required_semantic_sections",
+        "knowledge_mount_rule",
+        "native_source_rule",
+        "readback_rule",
+        "open_failure_rule",
+        "verdict_reopen_rule"
+      ],
+      "properties": {
+        "title_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "required_semantic_sections": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stageBodySemanticRole"
+          }
+        },
+        "knowledge_mount_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "native_source_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "readback_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "open_failure_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "verdict_reopen_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "stageBodyRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "body_ref",
+        "title",
+        "section_coverage",
+        "knowledge_mount_refs",
+        "native_artifact_refs",
+        "readback_refs"
+      ],
+      "properties": {
+        "body_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 8,
+          "not": {
+            "enum": [
+              "Analysis",
+              "Concept",
+              "Design Development",
+              "Final",
+              "Planning",
+              "Review",
+              "analysis",
+              "concept",
+              "design development",
+              "final",
+              "planning",
+              "review"
+            ]
+          }
+        },
+        "section_coverage": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "PROFESSIONAL_QUESTION_SCOPE"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "CURRENT_CONDITION_PROBLEM"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "PROFESSIONAL_CRITERIA_INTENT"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "CROSS_DOMAIN_INTERFACES"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "NATIVE_OUTPUT_SOURCE_OF_TRUTH"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "ACTUAL_READBACK_FINDING"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "FAILURE_OPEN_DOES_NOT_PROVE"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "semantic_role": {
+                    "const": "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+                  }
+                },
+                "required": [
+                  "semantic_role"
+                ]
+              }
+            }
+          ],
+          "items": {
+            "$ref": "#/$defs/stageBodySection"
+          }
+        },
+        "knowledge_mount_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "native_artifact_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "readback_refs": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
     },
     "professionalVerdict": {
-      "enum": ["NOT_RUN", "N_A", "PASS", "REVISE", "REJECT", "HOLD"]
+      "enum": [
+        "NOT_RUN",
+        "N_A",
+        "PASS",
+        "REVISE",
+        "REJECT",
+        "HOLD"
+      ]
+    },
+    "currentUseState": {
+      "description": "Projection of the existing Current/Supersession boundary for this R-E instance only; not a professional-progress, Project, Job, Knowledge or Authority state family.",
+      "enum": [
+        "CURRENT",
+        "STALE",
+        "SUPERSEDED"
+      ]
+    },
+    "exitConditionState": {
+      "description": "Whether the domain-owned bounded exit contract is evaluated/satisfied/blocked; it does not encode professional quality or Current authority.",
+      "enum": [
+        "NOT_EVALUATED",
+        "OPEN",
+        "SATISFIED",
+        "BLOCKED"
+      ]
+    },
+    "interfaceBindingRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "source_domain",
+        "source_stage_ref",
+        "direction",
+        "shared_variables",
+        "coupling_hypothesis",
+        "criticality_hypothesis",
+        "required_maturity_to_enter",
+        "required_maturity_to_close",
+        "allowed_dispositions_on_exit",
+        "required_native_source_role",
+        "requested_change_reopen_rule"
+      ],
+      "properties": {
+        "requirement_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_stage_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "IN",
+            "OUT",
+            "BIDIRECTIONAL"
+          ]
+        },
+        "shared_variables": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "coupling_hypothesis": {
+          "enum": [
+            "INFORMATIVE",
+            "DEPENDENT",
+            "RECIPROCAL",
+            "TIGHTLY_COUPLED"
+          ]
+        },
+        "criticality_hypothesis": {
+          "enum": [
+            "ROUTINE",
+            "MATERIAL",
+            "MAJOR",
+            "CRITICAL"
+          ]
+        },
+        "required_maturity_to_enter": {
+          "enum": [
+            "IDENTIFIED",
+            "DEFINED",
+            "COORDINATED",
+            "EXERCISED",
+            "VERIFIED"
+          ]
+        },
+        "required_maturity_to_close": {
+          "enum": [
+            "IDENTIFIED",
+            "DEFINED",
+            "COORDINATED",
+            "EXERCISED",
+            "VERIFIED"
+          ]
+        },
+        "allowed_dispositions_on_exit": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "OPEN",
+              "BLOCKED",
+              "CLOSED",
+              "OUTSIDE_CLAIM"
+            ]
+          }
+        },
+        "integration_binding_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "acceptance_contract_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "required_native_source_role": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "requested_change_reopen_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "stageDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_id",
+        "stage_name",
+        "professional_question",
+        "stage_body_contract",
+        "entry_conditions",
+        "required_inputs",
+        "knowledge_inputs",
+        "knowledge_mount_requirement",
+        "required_dd_dimensions",
+        "required_native_outputs",
+        "interface_requirements",
+        "interface_binding_requirements",
+        "human_experience_consequences",
+        "design_language_consequences",
+        "technical_consequences",
+        "content_projection_requirements",
+        "required_readback",
+        "professional_review_owner",
+        "independent_review_requirement",
+        "open_items_allowed",
+        "exit_conditions",
+        "reopen_triggers",
+        "claim_ceiling",
+        "does_not_prove"
+      ],
+      "properties": {
+        "stage_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "professional_question": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_body_contract": {
+          "$ref": "#/$defs/stageBodyContract"
+        },
+        "entry_conditions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "required_inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knowledge_inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knowledge_mount_requirement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "required_dd_dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "DD-01",
+              "DD-02",
+              "DD-03",
+              "DD-04",
+              "DD-05",
+              "DD-06",
+              "DD-07",
+              "DD-08",
+              "DD-09",
+              "DD-10",
+              "DD-11",
+              "DD-12"
+            ]
+          }
+        },
+        "required_native_outputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interface_requirements": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interface_binding_requirements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/interfaceBindingRequirement"
+          }
+        },
+        "human_experience_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "design_language_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "technical_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "content_projection_requirements": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "required_readback": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "professional_review_owner": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "independent_review_requirement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "open_items_allowed": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "exit_conditions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_triggers": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "does_not_prove": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
+      }
+    },
+    "processDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "kind",
+        "process_id",
+        "domain",
+        "version",
+        "title",
+        "purpose",
+        "scope_in",
+        "scope_out",
+        "authority_position",
+        "current_definition_ref",
+        "trigger",
+        "knowledge_binding",
+        "stages",
+        "interface_contract",
+        "execution_binding",
+        "assurance",
+        "change_contract",
+        "completion_contract"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.1"
+        },
+        "kind": {
+          "const": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION"
+        },
+        "process_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "purpose": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scope_in": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "scope_out": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "authority_position": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "trigger": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "project_flow_trigger",
+            "design_question_types",
+            "responsibility_triggers",
+            "claim_ceiling_rule",
+            "not_triggered_when",
+            "mandatory_reopen_triggers"
+          ],
+          "properties": {
+            "project_flow_trigger": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "design_question_types": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "responsibility_triggers": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "claim_ceiling_rule": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "not_triggered_when": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "mandatory_reopen_triggers": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        },
+        "knowledge_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "operational_mount_contract_ref",
+            "consequential_knowledge_rule",
+            "required_methods",
+            "theory_routes",
+            "source_routes",
+            "evidence_routes",
+            "precedent_case_routes",
+            "practice_routes"
+          ],
+          "properties": {
+            "operational_mount_contract_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "consequential_knowledge_rule": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "required_methods": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "theory_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "source_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "evidence_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "standard_code_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "precedent_case_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "practice_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "tool_knowledge_routes": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        },
+        "stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/stageDefinition"
+          }
+        },
+        "interface_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "integration_owner_ref",
+            "inputs_from_domains",
+            "outputs_to_domains",
+            "shared_variables",
+            "controlling_authority_requirements",
+            "interface_maturity_policy",
+            "allowed_open_interface_conditions",
+            "integration_readback_requirements"
+          ],
+          "properties": {
+            "integration_owner_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "inputs_from_domains": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "outputs_to_domains": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "shared_variables": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "controlling_authority_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "interface_maturity_policy": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "allowed_open_interface_conditions": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "integration_readback_requirements": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        },
+        "execution_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "required_native_outputs",
+            "native_source_of_truth_rules",
+            "execution_owner_requirements",
+            "required_capabilities",
+            "tool_adapter_requirements",
+            "typed_handoff_contracts",
+            "actual_readback_requirements"
+          ],
+          "properties": {
+            "required_native_outputs": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "native_source_of_truth_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "execution_owner_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "required_capabilities": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "tool_adapter_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "typed_handoff_contracts": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "actual_readback_requirements": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        },
+        "assurance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "professional_review",
+            "evidence_review",
+            "technical_gates",
+            "independent_review",
+            "receipt_contract",
+            "does_not_prove"
+          ],
+          "properties": {
+            "professional_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "evidence_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "technical_gates": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "independent_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "receipt_contract": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "does_not_prove": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        },
+        "change_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reopen_triggers",
+            "stale_scope_rules",
+            "upstream_impact_rules",
+            "downstream_impact_rules",
+            "interface_reopen_rules",
+            "receipt_stale_rules"
+          ],
+          "properties": {
+            "reopen_triggers": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "stale_scope_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "upstream_impact_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "downstream_impact_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "interface_reopen_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "receipt_stale_rules": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        },
+        "completion_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "process_exit_conditions",
+            "open_items_allowed",
+            "professional_receipt",
+            "promotion_effect",
+            "claim_ceiling",
+            "does_not_prove"
+          ],
+          "properties": {
+            "process_exit_conditions": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "open_items_allowed": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "professional_receipt": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "promotion_effect": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "claim_ceiling": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "does_not_prove": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
+          }
+        }
+      }
+    },
+    "stageInstance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_instance_id",
+        "stage_definition_ref",
+        "stage_id",
+        "cycle",
+        "baseline_ref",
+        "domain_state",
+        "current_use_state",
+        "review_verdict",
+        "claim_ceiling",
+        "inputs",
+        "outputs",
+        "consequential_knowledge_mount_required",
+        "knowledge_mount_refs",
+        "interface_refs",
+        "evidence_refs",
+        "review_refs",
+        "open_items",
+        "stale_scope",
+        "reopen_events",
+        "exit_condition_state",
+        "actual_readback_refs",
+        "last_updated"
+      ],
+      "properties": {
+        "stage_instance_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "cycle": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "baseline_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain_state": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_use_state": {
+          "$ref": "#/$defs/currentUseState"
+        },
+        "review_verdict": {
+          "$ref": "#/$defs/professionalVerdict"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "outputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "consequential_knowledge_mount_required": {
+          "type": "boolean"
+        },
+        "knowledge_mount_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interface_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "review_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "open_items": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "stale_scope": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_events": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "exit_condition_state": {
+          "$ref": "#/$defs/exitConditionState"
+        },
+        "actual_readback_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "stage_body_record": {
+          "$ref": "#/$defs/stageBodyRecord"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewBinding"
+          }
+        },
+        "in_claim_blocking_open_item_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Stage-local projection of unresolved in-claim blocking open items. It does not replace owner-native issue records or create a new state family."
+        }
+      },
+      "allOf": [
+        {
+          "required": [
+            "stage_body_record"
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "review_verdict": {
+                "const": "PASS"
+              }
+            },
+            "required": [
+              "review_verdict"
+            ]
+          },
+          "then": {
+            "required": [
+              "stage_body_record"
+            ],
+            "properties": {
+              "actual_readback_refs": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/nonEmptyString"
+                }
+              },
+              "stage_body_record": {
+                "allOf": [
+                  {
+                    "properties": {
+                      "native_artifact_refs": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "$ref": "#/$defs/nonEmptyString"
+                        }
+                      },
+                      "readback_refs": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "$ref": "#/$defs/nonEmptyString"
+                        }
+                      },
+                      "section_coverage": {
+                        "not": {
+                          "contains": {
+                            "properties": {
+                              "status": {
+                                "const": "MISSING"
+                              }
+                            },
+                            "required": [
+                              "status"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "exit_condition_state": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "exit_condition_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "open_items": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "current_use_state": {
+                "const": "STALE"
+              }
+            },
+            "required": [
+              "current_use_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stale_scope": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "exit_condition_state": {
+                "const": "SATISFIED"
+              },
+              "review_verdict": {
+                "enum": [
+                  "PASS",
+                  "REVISE",
+                  "REJECT"
+                ]
+              }
+            },
+            "required": [
+              "exit_condition_state",
+              "review_verdict"
+            ]
+          },
+          "then": {
+            "properties": {
+              "outputs": {
+                "minItems": 1
+              },
+              "review_refs": {
+                "minItems": 1
+              },
+              "actual_readback_refs": {
+                "minItems": 1
+              },
+              "exit_condition_state": {
+                "const": "SATISFIED"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "exit_condition_state": {
+                "const": "SATISFIED"
+              },
+              "consequential_knowledge_mount_required": {
+                "const": true
+              }
+            },
+            "required": [
+              "exit_condition_state",
+              "consequential_knowledge_mount_required"
+            ]
+          },
+          "then": {
+            "properties": {
+              "knowledge_mount_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "exit_condition_state": {
+                "const": "SATISFIED"
+              }
+            },
+            "required": [
+              "exit_condition_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "review_verdict": {
+                "enum": [
+                  "PASS",
+                  "REVISE",
+                  "REJECT"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "processInstance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "kind",
+        "instance_id",
+        "project_id",
+        "decision_object_refs",
+        "process_definition_ref",
+        "process_id",
+        "process_version",
+        "domain",
+        "owner",
+        "current_baseline",
+        "domain_state",
+        "current_use_state",
+        "process_exit_condition_state",
+        "professional_verdict",
+        "claim_ceiling",
+        "stage_instances",
+        "active_interface_refs",
+        "open_items",
+        "professional_receipt_refs",
+        "integration_receipt_refs",
+        "stale_scope",
+        "reopen_events",
+        "last_updated"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.1"
+        },
+        "kind": {
+          "const": "DOMAIN_PROCESS_INSTANCE"
+        },
+        "instance_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "project_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "workstream_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decision_object_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "process_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "process_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "process_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "owner": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_baseline": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain_state": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_use_state": {
+          "$ref": "#/$defs/currentUseState"
+        },
+        "process_exit_condition_state": {
+          "$ref": "#/$defs/exitConditionState"
+        },
+        "professional_verdict": {
+          "$ref": "#/$defs/professionalVerdict"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_instances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stageInstance"
+          }
+        },
+        "active_interface_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "open_items": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "professional_receipt_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "integration_receipt_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "stale_scope": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_events": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "in_claim_blocking_open_item_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Process-local projection of unresolved in-claim blocking open items; not a new professional state family."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "process_exit_condition_state": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "process_exit_condition_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "open_items": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "current_use_state": {
+                "const": "STALE"
+              }
+            },
+            "required": [
+              "current_use_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stale_scope": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "process_exit_condition_state": {
+                "const": "SATISFIED"
+              }
+            },
+            "required": [
+              "process_exit_condition_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stage_instances": {
+                "minItems": 1
+              },
+              "professional_receipt_refs": {
+                "minItems": 1
+              },
+              "professional_verdict": {
+                "enum": [
+                  "PASS",
+                  "REVISE",
+                  "REJECT"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "current_use_state": {
+                "const": "CURRENT"
+              },
+              "process_exit_condition_state": {
+                "const": "SATISFIED"
+              },
+              "professional_verdict": {
+                "const": "PASS"
+              }
+            },
+            "required": [
+              "current_use_state",
+              "process_exit_condition_state",
+              "professional_verdict"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stage_instances": {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "current_use_state": {
+                      "const": "CURRENT"
+                    },
+                    "exit_condition_state": {
+                      "const": "SATISFIED"
+                    },
+                    "review_verdict": {
+                      "const": "PASS"
+                    }
+                  },
+                  "required": [
+                    "current_use_state",
+                    "exit_condition_state",
+                    "review_verdict"
+                  ]
+                },
+                "minContains": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "schema_version": {
+                "const": "1.1"
+              }
+            },
+            "required": [
+              "schema_version"
+            ]
+          },
+          "then": {
+            "required": [
+              "in_claim_blocking_open_item_count"
+            ],
+            "properties": {
+              "stage_instances": {
+                "items": {
+                  "allOf": [
+                    {
+                      "required": [
+                        "in_claim_blocking_open_item_count"
+                      ]
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "exit_condition_state": {
+                            "const": "SATISFIED"
+                          }
+                        },
+                        "required": [
+                          "exit_condition_state"
+                        ]
+                      },
+                      "then": {
+                        "properties": {
+                          "in_claim_blocking_open_item_count": {
+                            "const": 0
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "review_verdict": {
+                            "const": "PASS"
+                          }
+                        },
+                        "required": [
+                          "review_verdict"
+                        ]
+                      },
+                      "then": {
+                        "required": [
+                          "review_bindings"
+                        ],
+                        "properties": {
+                          "review_bindings": {
+                            "type": "array",
+                            "minItems": 1
+                          },
+                          "stage_body_record": {
+                            "properties": {
+                              "section_coverage": {
+                                "allOf": [
+                                  {
+                                    "contains": {
+                                      "type": "object",
+                                      "properties": {
+                                        "semantic_role": {
+                                          "const": "NATIVE_OUTPUT_SOURCE_OF_TRUTH"
+                                        },
+                                        "status": {
+                                          "enum": [
+                                            "PRESENT",
+                                            "COMBINED"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "semantic_role",
+                                        "status"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "contains": {
+                                      "type": "object",
+                                      "properties": {
+                                        "semantic_role": {
+                                          "const": "ACTUAL_READBACK_FINDING"
+                                        },
+                                        "status": {
+                                          "enum": [
+                                            "PRESENT",
+                                            "COMBINED"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "semantic_role",
+                                        "status"
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "schema_version": {
+                "const": "1.1"
+              },
+              "process_exit_condition_state": {
+                "const": "SATISFIED"
+              }
+            },
+            "required": [
+              "schema_version",
+              "process_exit_condition_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "in_claim_blocking_open_item_count": {
+                "const": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "reviewBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_ref",
+        "reviewer_id",
+        "review_input_artifact_ref",
+        "review_input_revision_or_hash"
+      ],
+      "properties": {
+        "review_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reviewer_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_input_artifact_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_input_revision_or_hash": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "independence_basis_ref_or_state": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
     },
     "executionState": {
-      "enum": ["NOT_STARTED", "READY", "IN_PROGRESS", "BLOCKED", "CURRENT", "STALE", "CLOSED", "SUPERSEDED"]
+      "enum": [
+        "NOT_STARTED",
+        "READY",
+        "IN_PROGRESS",
+        "BLOCKED",
+        "CURRENT",
+        "STALE",
+        "CLOSED",
+        "SUPERSEDED"
+      ]
     },
     "interfaceBinding": {
       "type": "object",
@@ -41,27 +1662,92 @@
         "change_reopen_rule"
       ],
       "properties": {
-        "interface_binding_id": {"$ref": "#/$defs/nonEmptyString"},
-        "source_domain": {"$ref": "#/$defs/nonEmptyString"},
-        "source_stage_ref": {"type": ["string", "null"], "minLength": 1},
-        "direction": {"enum": ["IN", "OUT", "BIDIRECTIONAL"]},
-        "shared_variables": {"$ref": "#/$defs/stringArray"},
-        "coupling": {"enum": ["INFORMATIVE", "DEPENDENT", "RECIPROCAL", "TIGHTLY_COUPLED"]},
-        "criticality": {"enum": ["ROUTINE", "MATERIAL", "MAJOR", "CRITICAL"]},
-        "required_maturity_to_enter": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
-        "required_maturity_to_close": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+        "interface_binding_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_stage_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "IN",
+            "OUT",
+            "BIDIRECTIONAL"
+          ]
+        },
+        "shared_variables": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "coupling": {
+          "enum": [
+            "INFORMATIVE",
+            "DEPENDENT",
+            "RECIPROCAL",
+            "TIGHTLY_COUPLED"
+          ]
+        },
+        "criticality": {
+          "enum": [
+            "ROUTINE",
+            "MATERIAL",
+            "MAJOR",
+            "CRITICAL"
+          ]
+        },
+        "required_maturity_to_enter": {
+          "enum": [
+            "IDENTIFIED",
+            "DEFINED",
+            "COORDINATED",
+            "EXERCISED",
+            "VERIFIED"
+          ]
+        },
+        "required_maturity_to_close": {
+          "enum": [
+            "IDENTIFIED",
+            "DEFINED",
+            "COORDINATED",
+            "EXERCISED",
+            "VERIFIED"
+          ]
+        },
         "allowed_dispositions_on_exit": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": {"enum": ["OPEN", "BLOCKED", "CLOSED", "OUTSIDE_CLAIM"]}
+          "items": {
+            "enum": [
+              "OPEN",
+              "BLOCKED",
+              "CLOSED",
+              "OUTSIDE_CLAIM"
+            ]
+          }
         },
-        "acceptance_contract_ref": {"type": ["string", "null"], "minLength": 1},
-        "native_source_of_truth": {"$ref": "#/$defs/nonEmptyString"},
-        "change_reopen_rule": {"$ref": "#/$defs/nonEmptyString"}
+        "acceptance_contract_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "native_source_of_truth": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "change_reopen_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
       }
     },
-    "stageDefinition": {
+    "legacyStageDefinition": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -90,41 +1776,98 @@
         "does_not_prove"
       ],
       "properties": {
-        "stage_id": {"$ref": "#/$defs/nonEmptyString"},
-        "stage_name": {"$ref": "#/$defs/nonEmptyString"},
-        "professional_question": {"$ref": "#/$defs/nonEmptyString"},
-        "entry_conditions": {"$ref": "#/$defs/stringArray"},
-        "required_inputs": {"$ref": "#/$defs/stringArray"},
-        "knowledge_inputs": {"$ref": "#/$defs/stringArray"},
-        "knowledge_mount_requirement": {"$ref": "#/$defs/nonEmptyString"},
+        "stage_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "professional_question": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "entry_conditions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "required_inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knowledge_inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knowledge_mount_requirement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
         "required_dd_dimensions": {
           "type": "array",
           "uniqueItems": true,
           "items": {
-            "enum": ["DD-01", "DD-02", "DD-03", "DD-04", "DD-05", "DD-06", "DD-07", "DD-08", "DD-09", "DD-10", "DD-11", "DD-12"]
+            "enum": [
+              "DD-01",
+              "DD-02",
+              "DD-03",
+              "DD-04",
+              "DD-05",
+              "DD-06",
+              "DD-07",
+              "DD-08",
+              "DD-09",
+              "DD-10",
+              "DD-11",
+              "DD-12"
+            ]
           }
         },
-        "required_native_outputs": {"$ref": "#/$defs/stringArray"},
-        "interface_requirements": {"$ref": "#/$defs/stringArray"},
+        "required_native_outputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interface_requirements": {
+          "$ref": "#/$defs/stringArray"
+        },
         "interface_bindings": {
           "type": "array",
-          "items": {"$ref": "#/$defs/interfaceBinding"}
+          "items": {
+            "$ref": "#/$defs/interfaceBinding"
+          }
         },
-        "human_experience_consequences": {"$ref": "#/$defs/stringArray"},
-        "design_language_consequences": {"$ref": "#/$defs/stringArray"},
-        "technical_consequences": {"$ref": "#/$defs/stringArray"},
-        "content_projection_requirements": {"$ref": "#/$defs/stringArray"},
-        "required_readback": {"$ref": "#/$defs/stringArray"},
-        "professional_review_owner": {"$ref": "#/$defs/nonEmptyString"},
-        "independent_review_requirement": {"$ref": "#/$defs/nonEmptyString"},
-        "open_items_allowed": {"$ref": "#/$defs/stringArray"},
-        "exit_conditions": {"$ref": "#/$defs/stringArray"},
-        "reopen_triggers": {"$ref": "#/$defs/stringArray"},
-        "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
-        "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
+        "human_experience_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "design_language_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "technical_consequences": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "content_projection_requirements": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "required_readback": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "professional_review_owner": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "independent_review_requirement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "open_items_allowed": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "exit_conditions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_triggers": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "does_not_prove": {
+          "$ref": "#/$defs/nonEmptyStringArray"
+        }
       }
     },
-    "processDefinition": {
+    "legacyProcessDefinition": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -149,123 +1892,299 @@
         "completion_contract"
       ],
       "properties": {
-        "schema_version": {"const": "1.0"},
-        "kind": {"const": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION"},
-        "process_id": {"$ref": "#/$defs/nonEmptyString"},
-        "domain": {"$ref": "#/$defs/nonEmptyString"},
-        "version": {"$ref": "#/$defs/nonEmptyString"},
-        "title": {"$ref": "#/$defs/nonEmptyString"},
-        "purpose": {"$ref": "#/$defs/nonEmptyString"},
-        "scope_in": {"$ref": "#/$defs/stringArray"},
-        "scope_out": {"$ref": "#/$defs/stringArray"},
-        "authority_position": {"$ref": "#/$defs/nonEmptyString"},
-        "current_definition_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "schema_version": {
+          "const": "1.0"
+        },
+        "kind": {
+          "const": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION"
+        },
+        "process_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "purpose": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scope_in": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "scope_out": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "authority_position": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
         "trigger": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["project_flow_trigger", "design_question_types", "responsibility_triggers", "claim_ceiling_rule", "not_triggered_when", "mandatory_reopen_triggers"],
+          "required": [
+            "project_flow_trigger",
+            "design_question_types",
+            "responsibility_triggers",
+            "claim_ceiling_rule",
+            "not_triggered_when",
+            "mandatory_reopen_triggers"
+          ],
           "properties": {
-            "project_flow_trigger": {"$ref": "#/$defs/nonEmptyString"},
-            "design_question_types": {"$ref": "#/$defs/stringArray"},
-            "responsibility_triggers": {"$ref": "#/$defs/stringArray"},
-            "claim_ceiling_rule": {"$ref": "#/$defs/nonEmptyString"},
-            "not_triggered_when": {"$ref": "#/$defs/stringArray"},
-            "mandatory_reopen_triggers": {"$ref": "#/$defs/stringArray"}
+            "project_flow_trigger": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "design_question_types": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "responsibility_triggers": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "claim_ceiling_rule": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "not_triggered_when": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "mandatory_reopen_triggers": {
+              "$ref": "#/$defs/stringArray"
+            }
           }
         },
         "knowledge_binding": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["operational_mount_contract_ref", "consequential_knowledge_rule", "required_methods", "theory_routes", "source_routes", "evidence_routes", "precedent_case_routes", "practice_routes"],
+          "required": [
+            "operational_mount_contract_ref",
+            "consequential_knowledge_rule",
+            "required_methods",
+            "theory_routes",
+            "source_routes",
+            "evidence_routes",
+            "precedent_case_routes",
+            "practice_routes"
+          ],
           "properties": {
-            "operational_mount_contract_ref": {"$ref": "#/$defs/nonEmptyString"},
-            "consequential_knowledge_rule": {"$ref": "#/$defs/nonEmptyString"},
-            "required_methods": {"$ref": "#/$defs/stringArray"},
-            "theory_routes": {"$ref": "#/$defs/stringArray"},
-            "source_routes": {"$ref": "#/$defs/stringArray"},
-            "evidence_routes": {"$ref": "#/$defs/stringArray"},
-            "standard_code_routes": {"$ref": "#/$defs/stringArray"},
-            "precedent_case_routes": {"$ref": "#/$defs/stringArray"},
-            "practice_routes": {"$ref": "#/$defs/stringArray"},
-            "tool_knowledge_routes": {"$ref": "#/$defs/stringArray"}
+            "operational_mount_contract_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "consequential_knowledge_rule": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "required_methods": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "theory_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "source_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "evidence_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "standard_code_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "precedent_case_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "practice_routes": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "tool_knowledge_routes": {
+              "$ref": "#/$defs/stringArray"
+            }
           }
         },
         "stages": {
           "type": "array",
           "minItems": 1,
-          "items": {"$ref": "#/$defs/stageDefinition"}
+          "items": {
+            "$ref": "#/$defs/legacyStageDefinition"
+          }
         },
         "interface_contract": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["integration_owner_ref", "inputs_from_domains", "outputs_to_domains", "shared_variables", "controlling_authority_requirements", "interface_maturity_policy", "allowed_open_interface_conditions", "integration_readback_requirements"],
+          "required": [
+            "integration_owner_ref",
+            "inputs_from_domains",
+            "outputs_to_domains",
+            "shared_variables",
+            "controlling_authority_requirements",
+            "interface_maturity_policy",
+            "allowed_open_interface_conditions",
+            "integration_readback_requirements"
+          ],
           "properties": {
-            "integration_owner_ref": {"$ref": "#/$defs/nonEmptyString"},
-            "inputs_from_domains": {"$ref": "#/$defs/stringArray"},
-            "outputs_to_domains": {"$ref": "#/$defs/stringArray"},
-            "shared_variables": {"$ref": "#/$defs/stringArray"},
-            "controlling_authority_requirements": {"$ref": "#/$defs/stringArray"},
-            "interface_maturity_policy": {"$ref": "#/$defs/nonEmptyString"},
-            "allowed_open_interface_conditions": {"$ref": "#/$defs/stringArray"},
-            "integration_readback_requirements": {"$ref": "#/$defs/stringArray"}
+            "integration_owner_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "inputs_from_domains": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "outputs_to_domains": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "shared_variables": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "controlling_authority_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "interface_maturity_policy": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "allowed_open_interface_conditions": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "integration_readback_requirements": {
+              "$ref": "#/$defs/stringArray"
+            }
           }
         },
         "execution_binding": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["required_native_outputs", "native_source_of_truth_rules", "execution_owner_requirements", "required_capabilities", "tool_adapter_requirements", "typed_handoff_contracts", "actual_readback_requirements"],
+          "required": [
+            "required_native_outputs",
+            "native_source_of_truth_rules",
+            "execution_owner_requirements",
+            "required_capabilities",
+            "tool_adapter_requirements",
+            "typed_handoff_contracts",
+            "actual_readback_requirements"
+          ],
           "properties": {
-            "required_native_outputs": {"$ref": "#/$defs/stringArray"},
-            "native_source_of_truth_rules": {"$ref": "#/$defs/stringArray"},
-            "execution_owner_requirements": {"$ref": "#/$defs/stringArray"},
-            "required_capabilities": {"$ref": "#/$defs/stringArray"},
-            "tool_adapter_requirements": {"$ref": "#/$defs/stringArray"},
-            "typed_handoff_contracts": {"$ref": "#/$defs/stringArray"},
-            "actual_readback_requirements": {"$ref": "#/$defs/stringArray"}
+            "required_native_outputs": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "native_source_of_truth_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "execution_owner_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "required_capabilities": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "tool_adapter_requirements": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "typed_handoff_contracts": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "actual_readback_requirements": {
+              "$ref": "#/$defs/stringArray"
+            }
           }
         },
         "assurance": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["professional_review", "evidence_review", "technical_gates", "independent_review", "receipt_contract", "does_not_prove"],
+          "required": [
+            "professional_review",
+            "evidence_review",
+            "technical_gates",
+            "independent_review",
+            "receipt_contract",
+            "does_not_prove"
+          ],
           "properties": {
-            "professional_review": {"$ref": "#/$defs/nonEmptyString"},
-            "evidence_review": {"$ref": "#/$defs/nonEmptyString"},
-            "technical_gates": {"$ref": "#/$defs/stringArray"},
-            "independent_review": {"$ref": "#/$defs/nonEmptyString"},
-            "receipt_contract": {"$ref": "#/$defs/nonEmptyString"},
-            "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
+            "professional_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "evidence_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "technical_gates": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "independent_review": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "receipt_contract": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "does_not_prove": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
           }
         },
         "change_contract": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["reopen_triggers", "stale_scope_rules", "upstream_impact_rules", "downstream_impact_rules", "interface_reopen_rules", "receipt_stale_rules"],
+          "required": [
+            "reopen_triggers",
+            "stale_scope_rules",
+            "upstream_impact_rules",
+            "downstream_impact_rules",
+            "interface_reopen_rules",
+            "receipt_stale_rules"
+          ],
           "properties": {
-            "reopen_triggers": {"$ref": "#/$defs/stringArray"},
-            "stale_scope_rules": {"$ref": "#/$defs/stringArray"},
-            "upstream_impact_rules": {"$ref": "#/$defs/stringArray"},
-            "downstream_impact_rules": {"$ref": "#/$defs/stringArray"},
-            "interface_reopen_rules": {"$ref": "#/$defs/stringArray"},
-            "receipt_stale_rules": {"$ref": "#/$defs/stringArray"}
+            "reopen_triggers": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "stale_scope_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "upstream_impact_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "downstream_impact_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "interface_reopen_rules": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "receipt_stale_rules": {
+              "$ref": "#/$defs/stringArray"
+            }
           }
         },
         "completion_contract": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["process_exit_conditions", "open_items_allowed", "professional_receipt", "promotion_effect", "claim_ceiling", "does_not_prove"],
+          "required": [
+            "process_exit_conditions",
+            "open_items_allowed",
+            "professional_receipt",
+            "promotion_effect",
+            "claim_ceiling",
+            "does_not_prove"
+          ],
           "properties": {
-            "process_exit_conditions": {"$ref": "#/$defs/stringArray"},
-            "open_items_allowed": {"$ref": "#/$defs/stringArray"},
-            "professional_receipt": {"$ref": "#/$defs/nonEmptyString"},
-            "promotion_effect": {"$ref": "#/$defs/nonEmptyString"},
-            "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
-            "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
+            "process_exit_conditions": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "open_items_allowed": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "professional_receipt": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "promotion_effect": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "claim_ceiling": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "does_not_prove": {
+              "$ref": "#/$defs/nonEmptyStringArray"
+            }
           }
         }
       }
     },
-    "stageInstance": {
+    "legacyStageInstance": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -292,67 +2211,178 @@
         "last_updated"
       ],
       "properties": {
-        "stage_instance_id": {"$ref": "#/$defs/nonEmptyString"},
-        "stage_definition_ref": {"$ref": "#/$defs/nonEmptyString"},
-        "stage_id": {"$ref": "#/$defs/nonEmptyString"},
-        "cycle": {"type": "integer", "minimum": 1},
-        "baseline_ref": {"$ref": "#/$defs/nonEmptyString"},
-        "execution_state": {"$ref": "#/$defs/executionState"},
-        "review_verdict": {"$ref": "#/$defs/professionalVerdict"},
-        "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
-        "inputs": {"$ref": "#/$defs/stringArray"},
-        "outputs": {"$ref": "#/$defs/stringArray"},
-        "consequential_knowledge_mount_required": {"type": "boolean"},
-        "knowledge_mount_refs": {"$ref": "#/$defs/stringArray"},
-        "interface_refs": {"$ref": "#/$defs/stringArray"},
-        "evidence_refs": {"$ref": "#/$defs/stringArray"},
-        "review_refs": {"$ref": "#/$defs/stringArray"},
-        "open_items": {"$ref": "#/$defs/stringArray"},
-        "stale_scope": {"$ref": "#/$defs/stringArray"},
-        "reopen_events": {"$ref": "#/$defs/stringArray"},
-        "exit_condition_state": {"enum": ["NOT_EVALUATED", "OPEN", "SATISFIED", "BLOCKED", "STALE"]},
-        "actual_readback_refs": {"$ref": "#/$defs/stringArray"},
-        "last_updated": {"$ref": "#/$defs/nonEmptyString"}
+        "stage_instance_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "cycle": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "baseline_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "execution_state": {
+          "$ref": "#/$defs/executionState"
+        },
+        "review_verdict": {
+          "$ref": "#/$defs/professionalVerdict"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "inputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "outputs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "consequential_knowledge_mount_required": {
+          "type": "boolean"
+        },
+        "knowledge_mount_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "interface_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "review_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "open_items": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "stale_scope": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_events": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "exit_condition_state": {
+          "enum": [
+            "NOT_EVALUATED",
+            "OPEN",
+            "SATISFIED",
+            "BLOCKED",
+            "STALE"
+          ]
+        },
+        "actual_readback_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
       },
       "allOf": [
         {
-          "if": {"properties": {"execution_state": {"const": "BLOCKED"}}, "required": ["execution_state"]},
-          "then": {"properties": {"open_items": {"minItems": 1}}}
-        },
-        {
-          "if": {"properties": {"execution_state": {"const": "STALE"}}, "required": ["execution_state"]},
-          "then": {"properties": {"stale_scope": {"minItems": 1}}}
-        },
-        {
           "if": {
             "properties": {
-              "execution_state": {"const": "CLOSED"},
-              "review_verdict": {"enum": ["PASS", "REVISE", "REJECT"]}
+              "execution_state": {
+                "const": "BLOCKED"
+              }
             },
-            "required": ["execution_state", "review_verdict"]
+            "required": [
+              "execution_state"
+            ]
           },
           "then": {
             "properties": {
-              "outputs": {"minItems": 1},
-              "review_refs": {"minItems": 1},
-              "actual_readback_refs": {"minItems": 1},
-              "exit_condition_state": {"const": "SATISFIED"}
+              "open_items": {
+                "minItems": 1
+              }
             }
           }
         },
         {
           "if": {
             "properties": {
-              "execution_state": {"const": "CLOSED"},
-              "consequential_knowledge_mount_required": {"const": true}
+              "execution_state": {
+                "const": "STALE"
+              }
             },
-            "required": ["execution_state", "consequential_knowledge_mount_required"]
+            "required": [
+              "execution_state"
+            ]
           },
-          "then": {"properties": {"knowledge_mount_refs": {"minItems": 1}}}
+          "then": {
+            "properties": {
+              "stale_scope": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {
+                "const": "CLOSED"
+              },
+              "review_verdict": {
+                "enum": [
+                  "PASS",
+                  "REVISE",
+                  "REJECT"
+                ]
+              }
+            },
+            "required": [
+              "execution_state",
+              "review_verdict"
+            ]
+          },
+          "then": {
+            "properties": {
+              "outputs": {
+                "minItems": 1
+              },
+              "review_refs": {
+                "minItems": 1
+              },
+              "actual_readback_refs": {
+                "minItems": 1
+              },
+              "exit_condition_state": {
+                "const": "SATISFIED"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {
+                "const": "CLOSED"
+              },
+              "consequential_knowledge_mount_required": {
+                "const": true
+              }
+            },
+            "required": [
+              "execution_state",
+              "consequential_knowledge_mount_required"
+            ]
+          },
+          "then": {
+            "properties": {
+              "knowledge_mount_refs": {
+                "minItems": 1
+              }
+            }
+          }
         }
       ]
     },
-    "processInstance": {
+    "legacyProcessInstance": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -380,48 +2410,140 @@
         "last_updated"
       ],
       "properties": {
-        "schema_version": {"const": "1.0"},
-        "kind": {"const": "DOMAIN_PROCESS_INSTANCE"},
-        "instance_id": {"$ref": "#/$defs/nonEmptyString"},
-        "project_id": {"$ref": "#/$defs/nonEmptyString"},
-        "workstream_id": {"type": ["string", "null"]},
-        "decision_object_refs": {"$ref": "#/$defs/stringArray"},
-        "process_definition_ref": {"$ref": "#/$defs/nonEmptyString"},
-        "process_id": {"$ref": "#/$defs/nonEmptyString"},
-        "process_version": {"$ref": "#/$defs/nonEmptyString"},
-        "domain": {"$ref": "#/$defs/nonEmptyString"},
-        "owner": {"$ref": "#/$defs/nonEmptyString"},
-        "current_baseline": {"$ref": "#/$defs/nonEmptyString"},
-        "execution_state": {"$ref": "#/$defs/executionState"},
-        "professional_verdict": {"$ref": "#/$defs/professionalVerdict"},
-        "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
+        "schema_version": {
+          "const": "1.0"
+        },
+        "kind": {
+          "const": "DOMAIN_PROCESS_INSTANCE"
+        },
+        "instance_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "project_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "workstream_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decision_object_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "process_definition_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "process_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "process_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "domain": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "owner": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "current_baseline": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "execution_state": {
+          "$ref": "#/$defs/executionState"
+        },
+        "professional_verdict": {
+          "$ref": "#/$defs/professionalVerdict"
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
         "stage_instances": {
           "type": "array",
-          "items": {"$ref": "#/$defs/stageInstance"}
+          "items": {
+            "$ref": "#/$defs/legacyStageInstance"
+          }
         },
-        "active_interface_refs": {"$ref": "#/$defs/stringArray"},
-        "open_items": {"$ref": "#/$defs/stringArray"},
-        "professional_receipt_refs": {"$ref": "#/$defs/stringArray"},
-        "integration_receipt_refs": {"$ref": "#/$defs/stringArray"},
-        "stale_scope": {"$ref": "#/$defs/stringArray"},
-        "reopen_events": {"$ref": "#/$defs/stringArray"},
-        "last_updated": {"$ref": "#/$defs/nonEmptyString"}
+        "active_interface_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "open_items": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "professional_receipt_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "integration_receipt_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "stale_scope": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "reopen_events": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "last_updated": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
       },
       "allOf": [
         {
-          "if": {"properties": {"execution_state": {"const": "BLOCKED"}}, "required": ["execution_state"]},
-          "then": {"properties": {"open_items": {"minItems": 1}}}
-        },
-        {
-          "if": {"properties": {"execution_state": {"const": "STALE"}}, "required": ["execution_state"]},
-          "then": {"properties": {"stale_scope": {"minItems": 1}}}
-        },
-        {
-          "if": {"properties": {"execution_state": {"const": "CLOSED"}}, "required": ["execution_state"]},
+          "if": {
+            "properties": {
+              "execution_state": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "execution_state"
+            ]
+          },
           "then": {
             "properties": {
-              "stage_instances": {"minItems": 1},
-              "professional_receipt_refs": {"minItems": 1}
+              "open_items": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {
+                "const": "STALE"
+              }
+            },
+            "required": [
+              "execution_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stale_scope": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_state": {
+                "const": "CLOSED"
+              }
+            },
+            "required": [
+              "execution_state"
+            ]
+          },
+          "then": {
+            "properties": {
+              "stage_instances": {
+                "minItems": 1
+              },
+              "professional_receipt_refs": {
+                "minItems": 1
+              }
             }
           }
         }
@@ -429,7 +2551,17 @@
     }
   },
   "oneOf": [
-    {"$ref": "#/$defs/processDefinition"},
-    {"$ref": "#/$defs/processInstance"}
+    {
+      "$ref": "#/$defs/processDefinition"
+    },
+    {
+      "$ref": "#/$defs/processInstance"
+    },
+    {
+      "$ref": "#/$defs/legacyProcessDefinition"
+    },
+    {
+      "$ref": "#/$defs/legacyProcessInstance"
+    }
   ]
 }

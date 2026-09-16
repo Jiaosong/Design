@@ -1,0 +1,1690 @@
+{
+  "schema_version": "1.1",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS",
+  "domain": "Digital Product / HCD",
+  "version": "1.0",
+  "title": "OLEANDER Digital Product / Human-Centered Design Process v1.0 — Candidate",
+  "purpose": "Define an authentic Digital Product / HCD professional process from human/service problem framing through research evidence, task/service modeling, experience concepts, information/content architecture, interaction state/recovery, prototype/integration, representative evaluation and in-use change without turning UI production skills, heuristic checks, accessibility tooling or one design-method lifecycle into universal authority.",
+  "scope_in": [
+    "human/service problem framing",
+    "human research/evidence basis",
+    "needs/tasks/journey/service-state modeling",
+    "experience and product/service concept development",
+    "information architecture/content/wayfinding",
+    "interaction state/feedback/recovery/re-entry",
+    "prototype and visual/technical integration for HCD evidence",
+    "representative usability/human-factor/accessibility interaction evaluation",
+    "transition/in-use change/revalidation and bounded learning"
+  ],
+  "scope_out": [
+    "automatic visual Design KEEP",
+    "software/backend/data correctness authority",
+    "R-F interface maturity/disposition authority",
+    "accessibility/legal/statutory certification",
+    "mandatory Design Thinking/Double Diamond/Lean UX lifecycle",
+    "Figma or another tool as process authority",
+    "automatic project Promotion or Current Knowledge"
+  ],
+  "authority_position": "CANDIDATE R-E professional-domain process under the existing Professional Domain Process Contract. It is not Current until the existing Evolution, independent review, authorized human adoption and Current readback chain closes; Current architecture must continue to report Digital Product / HCD PROCESS_OPEN meanwhile.",
+  "current_definition_ref": "00-governance/digital-product-hcd-design-development-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim depends on people understanding, deciding, acting, recovering, returning, completing tasks or moving through product/service states and therefore requires HCD/UX professional judgment or human evidence.",
+    "design_question_types": [
+      "human/service problem framing",
+      "research/evidence",
+      "needs/tasks/journey",
+      "experience concept",
+      "information/content architecture",
+      "interaction/state/recovery",
+      "prototype/evaluation readiness",
+      "representative evaluation",
+      "in-use change/revalidation"
+    ],
+    "responsibility_triggers": [
+      "user/task/service outcome claim",
+      "human factors/usability claim",
+      "information/wayfinding claim",
+      "interaction behavior/recovery claim",
+      "accessibility-aware interaction claim",
+      "cross-channel/service handoff claim"
+    ],
+    "claim_ceiling_rule": "The lowest applicable Current ceiling across project/source authority, human-evidence quality, population/task/context applicability, product-state truth, content authority, technical implementation truth, accessibility authority, R-F interface state, prototype fidelity, representative evaluation, actual readback and external approval governs.",
+    "not_triggered_when": [
+      "artifact contains screens/typography/icons but makes no material human/task/service/interaction claim beyond static visual communication"
+    ],
+    "mandatory_reopen_triggers": [
+      "target population/task/context change",
+      "content/IA/navigation change",
+      "interaction/action consequence/state change",
+      "backend/service/data dependency change",
+      "platform/input/responsive change",
+      "accessibility requirement change",
+      "tested/released configuration change",
+      "contradictory in-use evidence"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential HCD methods, human evidence, accessibility sources, product/service facts and technical behavior must pass existing task/claim Operational Mount rules; candidate skills/extensions do not self-promote to Current Knowledge.",
+    "required_methods": [
+      "Current OLEANDER Design Quality/DD and Design Intelligence interaction/service lens",
+      "professional research protocol when consequential human evidence is collected",
+      "representative task evaluation appropriate to claim"
+    ],
+    "theory_routes": [
+      "human-centered design",
+      "interaction design",
+      "information architecture",
+      "human factors/usability",
+      "service/journey design",
+      "accessibility/inclusion"
+    ],
+    "source_routes": [
+      "Current project/product/service authority",
+      "Current human/user evidence",
+      "Current applicable accessibility/platform/jurisdiction sources",
+      "Current technical/service behavior sources"
+    ],
+    "evidence_routes": [
+      "research records",
+      "prototype/runtime readback",
+      "task/evaluation evidence",
+      "accessibility interaction evidence",
+      "support/in-use evidence"
+    ],
+    "standard_code_routes": [
+      "Current applicable accessibility standards/legal/platform requirements when triggered; no copied fixed values become process defaults"
+    ],
+    "precedent_case_routes": [
+      "bounded HCD/product/service precedents only where task/context applicability is established"
+    ],
+    "practice_routes": [
+      "Current OLEANDER HCD/interaction/project usage/failure evidence"
+    ],
+    "tool_knowledge_routes": [
+      "Current Skill Resolver and UI/runtime capabilities when execution is required; no tool is HCD authority"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "HCD-00",
+      "stage_name": "Human / Service Problem Framing",
+      "professional_question": "What human, service or product-use problem is actually in scope, for whom and in which context, before solution assumptions become design authority?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-00 Human / Service Problem Framing | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Human / Service Problem Framing question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "Current project/product/service authority",
+        "known users/actors and task context",
+        "existing evidence and constraints"
+      ],
+      "knowledge_inputs": [
+        "HCD framing",
+        "human factors",
+        "research routing",
+        "accessibility/inclusion interfaces"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "HCD framing brief",
+        "actor/population/task/context map",
+        "assumption/unknown register",
+        "initial evidence/source map",
+        "responsibility/interface map"
+      ],
+      "interface_requirements": [
+        "Project / Product Authority",
+        "Research",
+        "Operations",
+        "Accessibility",
+        "Systems Engineering"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-00-AUTH",
+          "source_domain": "Project / Product Authority",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "product purpose",
+            "project goals",
+            "target users",
+            "service boundary",
+            "decision authority"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "target actor/population/task/context boundary",
+        "attention/cognitive/physical context where material"
+      ],
+      "design_language_consequences": [
+        "no visual language is implied by framing alone"
+      ],
+      "technical_consequences": [
+        "product/service scope and responsibility boundary"
+      ],
+      "content_projection_requirements": [
+        "show evidence-backed problem boundary separately from assumed solution and unknowns"
+      ],
+      "required_readback": [
+        "read framing against Current authority and evidence; verify unknowns/exclusions remain visible"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "later research, concept and validation remain OPEN"
+      ],
+      "exit_conditions": [
+        "problem/actor/task/context boundary is specific enough to drive evidence and option work without hiding material unknowns"
+      ],
+      "reopen_triggers": [
+        "project goal",
+        "target population",
+        "task/context",
+        "service boundary",
+        "risk/accessibility requirement"
+      ],
+      "claim_ceiling": "HCD_PROBLEM_FRAMING",
+      "does_not_prove": [
+        "user need validity",
+        "problem prevalence",
+        "solution direction",
+        "accessibility conformity",
+        "desirability",
+        "product-market fit"
+      ]
+    },
+    {
+      "stage_id": "HCD-01",
+      "stage_name": "Human Research and Evidence Basis",
+      "professional_question": "What human evidence is required for the design decision, and is the resulting evidence strong enough for the decisions it is asked to support?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-01 Human Research and Evidence Basis | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Human Research and Evidence Basis question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "HCD framing brief",
+        "research questions",
+        "known evidence/source state",
+        "risk/decision consequence"
+      ],
+      "knowledge_inputs": [
+        "professional research gate",
+        "qualitative/quantitative human research methods",
+        "sampling/coverage",
+        "bias/uncertainty"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "research/evidence plan or protocol ref",
+        "participant/coverage rationale",
+        "human evidence register",
+        "observation/insight/uncertainty synthesis",
+        "contradiction/limitation register"
+      ],
+      "interface_requirements": [
+        "Research",
+        "Privacy / Ethics / Legal",
+        "Domain Experts",
+        "Project Authority"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-01-RES",
+          "source_domain": "Research",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "research question",
+            "protocol",
+            "population/sample coverage",
+            "evidence provenance",
+            "uncertainty"
+          ],
+          "coupling_hypothesis": "DEPENDENT",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "population/task/environment coverage and exclusions"
+      ],
+      "design_language_consequences": [
+        "research artifacts do not establish visual design direction by themselves"
+      ],
+      "technical_consequences": [
+        "evidence quality/applicability boundary for downstream design decisions",
+        "research design, synthesis trace and evidence-strength boundary for the actual decision",
+        "mixed-method synthesis and contradiction resolution without averaging unlike evidence into one confidence score"
+      ],
+      "content_projection_requirements": [
+        "separate observation, interpretation, assumption, decision, contradiction and uncertainty"
+      ],
+      "required_readback": [
+        "read actual protocol/evidence records and source applicability rather than only synthesis slides",
+        "read raw evidence through unit-of-observation/coding-or-measure/denominator/negative-case/uncertainty chain before synthesis; repeated mention is not prevalence",
+        "triangulate qualitative/quantitative/telemetry/support/expert evidence with each method's population, denominator, timing/configuration and inferential ceiling; expose convergence/divergence/missing evidence"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "representative validation may remain later; unsupported assumptions remain explicit"
+      ],
+      "exit_conditions": [
+        "downstream decisions are traceable to human evidence at a declared applicability/confidence boundary"
+      ],
+      "reopen_triggers": [
+        "population",
+        "task/environment",
+        "research question",
+        "method",
+        "source quality",
+        "contradictory evidence"
+      ],
+      "claim_ceiling": "HCD_RESEARCH_EVIDENCE_BASIS",
+      "does_not_prove": [
+        "representative validation",
+        "causality",
+        "universal behavior",
+        "future adoption",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "HCD-02",
+      "stage_name": "Needs, Tasks and Service / Journey Model",
+      "professional_question": "What do the in-claim actors need to accomplish, how does the task/service context unfold, and where do handoffs, errors, attention and recovery shape the design?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-02 Needs, Tasks and Service / Journey Model | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Needs, Tasks and Service / Journey Model question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "Current human evidence",
+        "product/service purpose",
+        "operational states",
+        "known technical/service constraints"
+      ],
+      "knowledge_inputs": [
+        "task analysis",
+        "journey/service modeling",
+        "human factors demand decomposition",
+        "failure/recovery modeling"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "need/outcome ledger",
+        "critical-task model",
+        "journey/service-state model",
+        "demand/attention map",
+        "failure/recovery opportunity map",
+        "HCD requirements"
+      ],
+      "interface_requirements": [
+        "Operations / Service",
+        "Systems Engineering",
+        "Software / Data",
+        "Content",
+        "Physical/Spatial domains when coupled"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-02-OPS",
+          "source_domain": "Operations / Service",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "task sequence",
+            "service state",
+            "staff/handoff",
+            "availability",
+            "recovery"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-02-SYS",
+          "source_domain": "Systems Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "system function/state",
+            "human-system boundary",
+            "degraded states",
+            "operational constraints"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "task sequence",
+        "information/cognitive/physical demand",
+        "error/recovery",
+        "handoff and re-entry"
+      ],
+      "design_language_consequences": [
+        "experience hierarchy consequences only; visual styling remains separate"
+      ],
+      "technical_consequences": [
+        "task/service state requirements and degraded/offline/permission dependencies",
+        "task workload/error/recovery and service-handoff consequences",
+        "visible-state/resumption-cue and cognitive-load consequence while persistence/transaction truth remains technical-owner native"
+      ],
+      "content_projection_requirements": [
+        "show nominal and adverse paths, not only a happy journey"
+      ],
+      "required_readback": [
+        "read task/service model against source evidence and actual known operating states",
+        "exercise task preconditions, decision information, cognitive/physical demand, interruption, workaround, error/recovery and cross-role/channel handoffs",
+        "read cognitive demand at decision points and interrupted-task recovery: what must be perceived/remembered/compared/decided, what state remains visible, what persisted and whether users can diagnose/resume without reconstructing hidden state"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "unobserved behavior and later concept/evaluation remain OPEN"
+      ],
+      "exit_conditions": [
+        "critical tasks and states are evidence-traceable or explicitly assumed, with decision/recovery/handoff conditions visible"
+      ],
+      "reopen_triggers": [
+        "new evidence",
+        "actor/task/service/channel",
+        "operating state",
+        "handoff owner",
+        "attention/demand basis"
+      ],
+      "claim_ceiling": "HCD_NEEDS_TASK_SERVICE_MODEL",
+      "does_not_prove": [
+        "chosen concept quality",
+        "task success",
+        "service feasibility",
+        "backend capability",
+        "observed user performance"
+      ]
+    },
+    {
+      "stage_id": "HCD-03",
+      "stage_name": "Experience Concept and Product / Service Architecture",
+      "professional_question": "Which materially distinct experience/product/service concept best answers the evidence-backed needs and constraints, and what principle must survive detailed development?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-03 Experience Concept and Product / Service Architecture | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Experience Concept and Product / Service Architecture question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "needs/task/service model",
+        "evidence-backed constraints",
+        "technical/operational feasibility inputs",
+        "Design intent"
+      ],
+      "knowledge_inputs": [
+        "concept generation/comparison",
+        "trade study",
+        "experience architecture",
+        "service/product allocation"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-02",
+        "DD-03",
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "concept set",
+        "concept comparison/trade study",
+        "selected experience/product-service concept",
+        "generative principle/invariants",
+        "rejected-option lessons"
+      ],
+      "interface_requirements": [
+        "Project Authority",
+        "Systems Engineering",
+        "Operations",
+        "Software/Data",
+        "Visual Design",
+        "Content"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-03-SYS",
+          "source_domain": "Systems Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "system capability",
+            "channel/automation allocation",
+            "human-system boundary",
+            "degraded states"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-03-VIS",
+          "source_domain": "Visual Communication / UI Visual Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "experience hierarchy",
+            "primary/secondary actions",
+            "content roles",
+            "design intent"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "intended task/experience consequence and required recovery behavior"
+      ],
+      "design_language_consequences": [
+        "experience hierarchy/invariants for later visual design without prescribing styling"
+      ],
+      "technical_consequences": [
+        "channel/automation/human split and implementation dependencies",
+        "concept trade/falsification boundary and evidence needed to attack reversal assumptions"
+      ],
+      "content_projection_requirements": [
+        "show materially different concepts, fixed criteria, trade-offs and rejected routes"
+      ],
+      "required_readback": [
+        "read retained concept against evidence-backed needs/tasks and current feasibility constraints",
+        "compare materially distinct concepts on critical tasks/failure-recovery, information burden, human-automation split, inclusion, operations, technical dependencies and selection-critical assumptions"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "detailed IA/interaction/visual/technical implementation remains OPEN"
+      ],
+      "exit_conditions": [
+        "one concept retained for explicit fixed-criterion reasons with testable experience consequences"
+      ],
+      "reopen_triggers": [
+        "needs/task risk",
+        "service assumption",
+        "technical feasibility",
+        "evidence",
+        "controlling criterion"
+      ],
+      "claim_ceiling": "HCD_EXPERIENCE_CONCEPT",
+      "does_not_prove": [
+        "final usability",
+        "implementation feasibility",
+        "visual quality",
+        "accessibility compliance",
+        "backend correctness",
+        "market success"
+      ]
+    },
+    {
+      "stage_id": "HCD-04",
+      "stage_name": "Information Architecture, Content Structure and Wayfinding",
+      "professional_question": "Can people find, understand and recover within the information/product structure using stable task-oriented relations and truthful content?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-04 Information Architecture, Content Structure and Wayfinding | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Information Architecture, Content Structure and Wayfinding question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "critical tasks/entry points",
+        "selected experience concept",
+        "content/source authority",
+        "localization/accessibility constraints"
+      ],
+      "knowledge_inputs": [
+        "information architecture",
+        "wayfinding",
+        "content design",
+        "label/action-consequence semantics"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-07",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "task-entry / IA model",
+        "canonical-home/content-object map",
+        "navigation/wayfinding/recovery model",
+        "content-role/action-consequence model",
+        "representative high-risk state content"
+      ],
+      "interface_requirements": [
+        "Content / Editorial",
+        "Search/Data",
+        "Legal/Compliance",
+        "Visual Design",
+        "Software"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-04-CONTENT",
+          "source_domain": "Content / Editorial",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "canonical content object",
+            "labels",
+            "action consequence",
+            "error/recovery content",
+            "localization"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-04-TECH",
+          "source_domain": "Software / Data",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "route identity",
+            "search/filter behavior",
+            "content state",
+            "permissions",
+            "deep links"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "orientation",
+        "route decision/monitoring",
+        "destination recognition",
+        "wrong-turn recovery",
+        "comprehension"
+      ],
+      "design_language_consequences": [
+        "information hierarchy requirements that visual design must preserve"
+      ],
+      "technical_consequences": [
+        "content/source truth, route/state and search/service dependencies",
+        "IA/content edge-state, canonical-home and route-recovery dependencies",
+        "wayfinding/legibility and sensitive-context conceal/reveal consequence with Privacy/legal requirements owner-native"
+      ],
+      "content_projection_requirements": [
+        "stable labels and canonical homes; distinguish source truth from interface copy"
+      ],
+      "required_readback": [
+        "deep-entry, task-find, wrong-branch recovery and label/destination consistency readback in prototype/native carrier",
+        "attack deep entry, object lifecycle, no/partial results, permissions, localization, cross-channel continuation, history/Back and taxonomy migration states",
+        "test orientation/route choice under deep entry, interruption, localization, text scaling, constrained viewport, dense results and low-attention conditions; preserve location, consequential choices and Back/Return/recovery without memory dependence"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "observed findability/comprehension requires evaluation later"
+      ],
+      "exit_conditions": [
+        "critical tasks have coherent entry/orientation/destination/recovery paths and stable truthful content semantics"
+      ],
+      "reopen_triggers": [
+        "task",
+        "object taxonomy",
+        "content authority",
+        "navigation",
+        "localization",
+        "permission/service state"
+      ],
+      "claim_ceiling": "HCD_INFORMATION_ARCHITECTURE_CONTENT",
+      "does_not_prove": [
+        "observed findability",
+        "user comprehension",
+        "visual hierarchy quality",
+        "search quality",
+        "localization quality",
+        "physical wayfinding performance"
+      ]
+    },
+    {
+      "stage_id": "HCD-05",
+      "stage_name": "Interaction Model, State, Feedback and Recovery",
+      "professional_question": "Does each material user intent have a coherent, interruptible, recoverable and semantically accessible state model that matches the promised product/service consequence?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-05 Interaction Model, State, Feedback and Recovery | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Interaction Model, State, Feedback and Recovery question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "current IA/content",
+        "task/intents",
+        "product/service consequences",
+        "technical/backend state constraints",
+        "accessibility requirements"
+      ],
+      "knowledge_inputs": [
+        "interaction state modeling",
+        "focus/input semantics",
+        "error/recovery",
+        "accessible interaction",
+        "motion-state coordination"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "interaction object/intents register",
+        "state/transition model",
+        "input/focus/selection model",
+        "interruption/return/re-entry contract",
+        "accessible-interaction requirements",
+        "error/loading/empty/success behavior"
+      ],
+      "interface_requirements": [
+        "Software / Backend",
+        "Accessibility",
+        "Content",
+        "Motion",
+        "Visual Design",
+        "Operations"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-05-SW",
+          "source_domain": "Software / Backend",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "state truth",
+            "action consequence",
+            "persistence",
+            "latency/availability",
+            "error/permission",
+            "undo/cancel"
+          ],
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-05-A11Y",
+          "source_domain": "Accessibility",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "semantic primitive",
+            "keyboard/focus",
+            "name/role/state",
+            "announcement",
+            "preference mode"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "action/feedback/recovery",
+        "focus continuity",
+        "input equivalence",
+        "cognitive load"
+      ],
+      "design_language_consequences": [
+        "state/action hierarchy and affordance requirements; styling remains visual-owner work"
+      ],
+      "technical_consequences": [
+        "state guards, persistence, service/backend dependencies and unavailable/degraded behavior",
+        "asynchronous/concurrent commit, reconciliation and high-stakes consequence state model",
+        "service-recovery repetition/persistence/escalation plus trust/consent interaction consequence within Legal/Privacy owner boundaries",
+        "human-visible shared-work conflict/recovery consequence while identity/authorization/locking/merge consistency stays with technical owners"
+      ],
+      "content_projection_requirements": [
+        "show every critical state, user-visible consequence and recovery/re-entry path"
+      ],
+      "required_readback": [
+        "run state-sequence/interrupt/Return/keyboard/touch/focus/unavailable attacks in executable prototype/runtime when available",
+        "exercise delayed/duplicate/optimistic/concurrent/partial/offline/session-expiry/background completion and distinguish intent/request/completion/persistence/user-informed states",
+        "exercise consequential service recovery from failure detection → truthful status/ownership → fallback or human handoff → repair/redress → restored-state proof → re-entry; include consent withdrawal/resulting state where material",
+        "read multi-user/shared-object coordination state across owner/actor, editable/read-only, pending approval, stale/conflicting change, handoff/escalation/resolution and visibility of another actor's action"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "production implementation and user success remain later evidence"
+      ],
+      "exit_conditions": [
+        "critical actions trace intent→state change→feedback→recovery without decorative locks or invented technical behavior"
+      ],
+      "reopen_triggers": [
+        "state/action consequence",
+        "data/service availability",
+        "permission",
+        "navigation",
+        "input/focus",
+        "accessibility requirement"
+      ],
+      "claim_ceiling": "HCD_INTERACTION_STATE_MODEL",
+      "does_not_prove": [
+        "production implementation",
+        "accessibility conformity",
+        "task success",
+        "backend/service correctness",
+        "interaction Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "HCD-06",
+      "stage_name": "Prototype, Visual / Technical Integration and Evaluation Readiness",
+      "professional_question": "Is there a minimum faithful prototype or current implementation capable of exposing the task, content, state, interaction and accessibility relations the next HCD question depends on?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-06 Prototype, Visual / Technical Integration and Evaluation Readiness | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Prototype, Visual / Technical Integration and Evaluation Readiness question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "current task/IA/content/state models",
+        "visual design authority",
+        "technical/service behavior",
+        "target platforms/viewports",
+        "evaluation question"
+      ],
+      "knowledge_inputs": [
+        "prototype fidelity",
+        "runtime/browser readback",
+        "responsive/adaptive integration",
+        "visual-interaction coordination",
+        "evaluation readiness"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-07",
+        "DD-08",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "editable prototype/native runtime source",
+        "prototype fidelity/claim matrix",
+        "task/state coverage map",
+        "cross-owner integration register",
+        "runtime/browser/device readback",
+        "evaluation-readiness record"
+      ],
+      "interface_requirements": [
+        "UI/Visual Design",
+        "Software / Backend",
+        "Accessibility",
+        "Motion",
+        "Content",
+        "R-F Integration"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-06-RF",
+          "source_domain": "Cross-Disciplinary Integration R-F",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "HCD requirements",
+            "visual implementation",
+            "software/service behavior",
+            "accessibility requirements",
+            "tested configuration"
+          ],
+          "coupling_hypothesis": "TIGHTLY_COUPLED",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-06-VIS",
+          "source_domain": "Visual Communication / UI Visual Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "hierarchy",
+            "affordance",
+            "responsive composition",
+            "design language",
+            "high-risk state appearance"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual end-to-end task experience at prototype fidelity"
+      ],
+      "design_language_consequences": [
+        "rendered hierarchy/design-language relation without using polish to hide broken behavior"
+      ],
+      "technical_consequences": [
+        "real versus simulated service/data behavior, responsive/runtime configuration and technical dependencies",
+        "prototype simplification and failure-mode exposure ceiling"
+      ],
+      "content_projection_requirements": [
+        "show which behaviors/content/data are real, simulated, bounded or held"
+      ],
+      "required_readback": [
+        "actual target runtime/browser/device, high-risk states and relevant responsive/accessibility behavior",
+        "attack prototype fidelity distortions such as perfect data, oversized hotspots, instant simulated backend, absent auth/latency, simplified content and evaluator compensation"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "usability/accessibility conformity/production readiness remain later or separate"
+      ],
+      "exit_conditions": [
+        "prototype/runtime faithfully exposes in-claim tasks and failure/recovery states with simplifications and technical truth boundaries visible"
+      ],
+      "reopen_triggers": [
+        "content",
+        "IA",
+        "visual hierarchy",
+        "state/interaction",
+        "responsive behavior",
+        "data/service dependency",
+        "prototype fidelity"
+      ],
+      "claim_ceiling": "HCD_PROTOTYPE_EVALUATION_READY",
+      "does_not_prove": [
+        "usability",
+        "accessibility conformity",
+        "production readiness",
+        "backend/security correctness",
+        "visual Design KEEP",
+        "representative validation"
+      ]
+    },
+    {
+      "stage_id": "HCD-07",
+      "stage_name": "Representative Evaluation, Human Factors and Accessibility Evidence",
+      "professional_question": "What does representative task evidence show about the current design, where do people fail or compensate, and which HCD claims can close at the tested population/task/context/configuration?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-07 Representative Evaluation, Human Factors and Accessibility Evidence | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Representative Evaluation, Human Factors and Accessibility Evidence question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "evaluation-ready prototype/configuration",
+        "decision questions",
+        "target population/task/context",
+        "applicable accessibility/human-factor criteria"
+      ],
+      "knowledge_inputs": [
+        "representative task evaluation",
+        "human factors validation",
+        "accessibility interaction testing",
+        "qualitative/quantitative evidence interpretation"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "evaluation plan/questions",
+        "participant/task/context coverage",
+        "as-run configuration/method record",
+        "task/evidence logs",
+        "error/workaround/comprehension/recovery findings",
+        "accessibility interaction evidence",
+        "repair/re-evaluation set"
+      ],
+      "interface_requirements": [
+        "Research",
+        "Accessibility",
+        "Software / Backend",
+        "Operations",
+        "Design Review"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-07-RES",
+          "source_domain": "Research / Human Factors",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "evaluation question",
+            "participant/task coverage",
+            "method",
+            "observed evidence",
+            "uncertainty"
+          ],
+          "coupling_hypothesis": "DEPENDENT",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-07-A11Y",
+          "source_domain": "Accessibility",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "current criteria",
+            "keyboard/focus/semantic behavior",
+            "assistive-technology evidence",
+            "conformance scope"
+          ],
+          "coupling_hypothesis": "DEPENDENT",
+          "criticality_hypothesis": "CRITICAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "observed task success/failure",
+        "error/workaround",
+        "comprehension/orientation/recovery",
+        "physical/cognitive demand"
+      ],
+      "design_language_consequences": [
+        "visual hierarchy defects may be identified but Design KEEP remains R-D/professional design review"
+      ],
+      "technical_consequences": [
+        "tested configuration, method, instrumentation, service/backend and accessibility-owner dependencies",
+        "evaluation protocol, intervention effects, severity/uncertainty and bounded retest interpretation",
+        "accessibility variability and design-system component-to-composed-flow invariant consequence without self-awarding conformity"
+      ],
+      "content_projection_requirements": [
+        "report actual task-level evidence, anomalies and claim limits instead of one vanity score"
+      ],
+      "required_readback": [
+        "read raw/as-run task evidence, exact tested build/configuration and repair/retest evidence",
+        "read task start/end, allowed assistance, critical errors, prompting, order/learning effects, actual device/input/assistive-tech configuration and task-level failures alongside aggregates",
+        "read accessibility variability across fatigue/situational impairment, scaling, input switching, AT personalization, language/literacy and component-composition overrides where material"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "future populations/tasks/context and separate standards/certification evidence remain outside claim"
+      ],
+      "exit_conditions": [
+        "in-claim conclusions have representative evidence at declared scope; blockers repaired/retested or explicit HOLD"
+      ],
+      "reopen_triggers": [
+        "population/user group",
+        "task/content/IA",
+        "state/interaction",
+        "visual hierarchy",
+        "implementation/platform",
+        "accessibility requirement",
+        "operational context"
+      ],
+      "claim_ceiling": "HCD_REPRESENTATIVE_EVALUATION",
+      "does_not_prove": [
+        "universal usability",
+        "accessibility certification",
+        "conversion/business performance",
+        "future field behavior",
+        "production reliability",
+        "Design KEEP",
+        "Project Promotion"
+      ]
+    },
+    {
+      "stage_id": "HCD-08",
+      "stage_name": "Transition, Operation, In-use Learning and Change",
+      "professional_question": "After handoff/release/operation, what actual use evidence changes the product/service design, which prior HCD claims become stale, and what may return only as a bounded learning candidate?",
+      "stage_body_contract": {
+        "title_rule": "<project> | HCD-08 Transition, Operation, In-use Learning and Change | <decision / cycle / tested configuration>; generic-only titles are invalid.",
+        "required_semantic_sections": [
+          "PROFESSIONAL_QUESTION_SCOPE",
+          "CURRENT_CONDITION_PROBLEM",
+          "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+          "PROFESSIONAL_CRITERIA_INTENT",
+          "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+          "CROSS_DOMAIN_INTERFACES",
+          "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "ACTUAL_READBACK_FINDING",
+          "FAILURE_OPEN_DOES_NOT_PROVE",
+          "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+        ],
+        "knowledge_mount_rule": "Use the stage knowledge_mount_requirement plus the Current task/claim-scoped Operational Mount; candidate support extensions remain bounded support and canonical knowledge bodies are not copied.",
+        "native_source_rule": "Bind the stage body to its required_native_outputs[] and actual editable/runtime HCD source; screenshots, presentations and summaries do not replace behavior/evidence that requires execution.",
+        "readback_rule": "Distinguish intended human/task relation, implemented native state, observed runtime/task evidence and professional interpretation; do not infer user performance from static design artifacts.",
+        "open_failure_rule": "Keep unresolved evidence, population/task/context limits, simulated behavior, accessibility/technical owner gaps and does_not_prove boundaries explicit.",
+        "verdict_reopen_rule": "Bound the verdict to this stage claim_ceiling and reopen only affected consumers when a material human/task/content/state/interface/configuration basis changes."
+      },
+      "entry_conditions": [
+        "Transition, Operation, In-use Learning and Change question is materially triggered under the Current project/product/service scope"
+      ],
+      "required_inputs": [
+        "released/operated configuration",
+        "prior HCD evidence/limits",
+        "support/analytics/observation inputs",
+        "change requests"
+      ],
+      "knowledge_inputs": [
+        "in-use observation",
+        "change impact/revalidation",
+        "causal-hypothesis discipline",
+        "G9 transfer/counterevidence boundary"
+      ],
+      "knowledge_mount_requirement": "Mount consequential human evidence, project/source authority, applicable standards and technical/service facts at the exact population/task/context/configuration needed for the current claim; support candidates do not self-promote to Current Knowledge.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-09",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "transition/handoff HCD constraints",
+        "release/operation configuration record",
+        "in-use observation/support evidence",
+        "designed-vs-observed comparison",
+        "change-impact/revalidation record",
+        "bounded project lesson",
+        "G9/Knowledge/Evolution candidate refs when justified"
+      ],
+      "interface_requirements": [
+        "Operations / Support",
+        "Product Authority",
+        "Software / Data",
+        "Accessibility",
+        "R-K G9 / Knowledge Return"
+      ],
+      "interface_binding_requirements": [
+        {
+          "requirement_id": "HCD-08-OPS",
+          "source_domain": "Operations / Support",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "actual use state",
+            "support incidents",
+            "operating procedure",
+            "observed workaround/error",
+            "change request"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        },
+        {
+          "requirement_id": "HCD-08-G9",
+          "source_domain": "R-K G9 / Knowledge Return",
+          "source_stage_ref": null,
+          "direction": "OUT",
+          "shared_variables": [
+            "bounded observation",
+            "causal hypothesis/uncertainty",
+            "counterevidence",
+            "transfer boundary",
+            "project repair status"
+          ],
+          "coupling_hypothesis": "RECIPROCAL",
+          "criticality_hypothesis": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
+          "required_native_source_role": "Current two-sided source/configuration plus HCD stage-side requirement; actual interface maturity/disposition remains R-F-owned.",
+          "requested_change_reopen_rule": "Reopen when any shared variable, controlling owner, source authority or tested/implemented configuration materially changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual in-use task/error/recovery/support consequence within observed scope"
+      ],
+      "design_language_consequences": [
+        "in-use design-language/experience degradation where observed"
+      ],
+      "technical_consequences": [
+        "configuration/change/service/telemetry dependencies and revalidation scope",
+        "operational evidence quality, causal hygiene and targeted research/revalidation consequence",
+        "longitudinal adoption/practice integration versus episode-level usability consequence"
+      ],
+      "content_projection_requirements": [
+        "separate observation, interpretation, causal hypothesis, project repair and reusable-candidate route"
+      ],
+      "required_readback": [
+        "actual in-use evidence against prior task/journey/state/accessibility/validation assumptions",
+        "bind telemetry event semantics/denominator/exposure/missingness/version/cohort/confounders to task-state model before association or causal inference",
+        "separate one-session task performance from longitudinal adoption using recurring opportunity, eligible cohort, repeat/return/abandonment/workaround/support and task-cadence observation window"
+      ],
+      "professional_review_owner": "Digital Product / HCD professional owner",
+      "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
+      "open_items_allowed": [
+        "unobserved future behavior and reusable transfer remain outside each bounded assessment"
+      ],
+      "exit_conditions": [
+        "declared in-use question assessed, affected Current claims reopened/revalidated, reusable lesson candidate-only with transfer/counterevidence boundary"
+      ],
+      "reopen_triggers": [
+        "new contradictory evidence",
+        "product/service configuration",
+        "population/task/context",
+        "operating procedure",
+        "accessibility/support issue"
+      ],
+      "claim_ceiling": "HCD_IN_USE_CHANGE_LEARNING",
+      "does_not_prove": [
+        "causality from correlation",
+        "universal user behavior",
+        "transferable knowledge",
+        "Current Knowledge",
+        "product-market fit",
+        "future performance",
+        "runtime self-mutation"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Project/Product Authority",
+      "Research",
+      "Systems Engineering",
+      "Software/Backend/Data",
+      "Content/Editorial",
+      "Visual Communication",
+      "Accessibility",
+      "Operations/Support",
+      "Physical/Spatial domains when coupled"
+    ],
+    "outputs_to_domains": [
+      "Project/Product Authority",
+      "Systems Engineering",
+      "Software/Backend/Data",
+      "Content/Editorial",
+      "Visual Communication",
+      "Accessibility",
+      "Operations/Support",
+      "Design Review"
+    ],
+    "shared_variables": [
+      "target population/task/context",
+      "user-visible consequence",
+      "content/label authority",
+      "IA/navigation/route identity",
+      "interaction state/transition",
+      "error/recovery/return",
+      "service/backend availability and permission",
+      "responsive/platform/input behavior",
+      "accessibility interaction requirements",
+      "tested/released configuration"
+    ],
+    "controlling_authority_requirements": [
+      "each user-visible consequence resolves to a truthful product/service/technical owner",
+      "human evidence retains source/population/task/context/configuration",
+      "R-F remains owner of interface maturity/disposition",
+      "accessibility/legal/statutory approval remains with applicable external/specialist authority"
+    ],
+    "interface_maturity_policy": "HCD stages issue stage-side interface requirements; actual maturity/disposition is resolved per interface / Acceptance Contract by R-F and is never inferred from HCD stage number or HCD professional verdict.",
+    "allowed_open_interface_conditions": [
+      "remaining work is later/outside current HCD claim",
+      "required maturity for current HCD claim is met",
+      "no controlling-authority conflict remains",
+      "open item and later owner are explicit"
+    ],
+    "integration_readback_requirements": [
+      "critical task/state/content/technical consequence readback",
+      "HCD↔software/service/accessibility/visual interface readback",
+      "change propagation for material shared-variable changes"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "structured HCD research/evidence carriers",
+      "editable task/journey/service models",
+      "editable IA/content model",
+      "interaction state/transition model",
+      "editable prototype/runtime source",
+      "actual browser/app/device/runtime evidence",
+      "evaluation/as-run evidence",
+      "change/revalidation records"
+    ],
+    "native_source_of_truth_rules": [
+      "one Current editable/native source per bounded HCD object where applicable",
+      "screenshot/slide/render cannot replace behavior/evidence requiring execution",
+      "prototype visual fidelity does not expand behavioral/human evidence ceiling",
+      "product UI cannot invent backend/service truth"
+    ],
+    "execution_owner_requirements": [
+      "HCD professional decision owner identified",
+      "research/evaluation owner identified",
+      "software/backend/data owner identified for behavior it owns",
+      "accessibility/legal/specialist owner identified when their approval is claimed",
+      "visual owner remains separate for visual Design Quality"
+    ],
+    "required_capabilities": [
+      "human research/evidence synthesis",
+      "task/service modeling",
+      "information/content architecture",
+      "interaction/state modeling",
+      "prototype/runtime execution",
+      "representative evaluation",
+      "accessibility-aware interaction review"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects minimum sufficient tools/candidate specialists; Figma/browser/UI skills are carriers/capabilities, not HCD authority"
+    ],
+    "typed_handoff_contracts": [
+      "HCD↔Research",
+      "HCD↔Systems/R-F",
+      "HCD↔Software/Backend/Data",
+      "HCD↔Content",
+      "HCD↔Visual Design",
+      "HCD↔Accessibility",
+      "HCD↔Operations/Support"
+    ],
+    "actual_readback_requirements": [
+      "Current research/evidence carrier readback where claims rely on it",
+      "actual IA/state/prototype source readback",
+      "runtime/browser/device interaction readback when behavior is claimed",
+      "representative task/evaluation evidence readback when user performance is claimed",
+      "exact tested/released configuration binding"
+    ]
+  },
+  "assurance": {
+    "professional_review": "HCD stage review at the declared population/task/context/configuration ceiling, keeping evidence, interaction, accessibility, technical and Design Quality claims separate.",
+    "evidence_review": "Verify human evidence provenance/coverage, observed-vs-interpreted separation, exact tested configuration, task/runtime evidence and applicability limits.",
+    "technical_gates": [
+      "accessibility/legal/regulated-domain gate when claimed",
+      "software/backend/security/data gate when claimed",
+      "R-F interface gate when material",
+      "real runtime/browser/device gate when interaction behavior is claimed"
+    ],
+    "independent_review": "Attack solution-led framing, convenience-sample overclaim, happy-path-only modeling, IA/content truth drift, impossible/unrecoverable states, wrong-configuration evidence, heuristic-to-user-validation overclaim, automated accessibility overclaim, stale user evidence and causal/transfer overreach.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + current Master professional_processes[] summary; project receipt exists only for real project execution, never candidate-definition validation.",
+    "does_not_prove": [
+      "Current adoption of this candidate",
+      "project exercise",
+      "Professional PASS",
+      "Design KEEP",
+      "accessibility certification",
+      "software/backend correctness",
+      "R-F Integration PASS",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "population/task/context",
+      "content/IA/navigation",
+      "interaction/action consequence/state",
+      "backend/service/data",
+      "visual hierarchy/responsive/platform/input",
+      "accessibility requirement",
+      "tested/released configuration",
+      "contradictory in-use evidence"
+    ],
+    "stale_scope_rules": [
+      "only affected stages/tasks/interfaces/prototype/evaluation evidence become stale unless dependency graph shows wider consequence",
+      "historical evidence remains truthful for its original population/task/context/configuration and is not rewritten to impersonate a successor"
+    ],
+    "upstream_impact_rules": [
+      "new human evidence or changed authority may reopen framing, need/task models and any consuming concept/IA/interaction decision",
+      "technical/accessibility impossibility may reopen an upstream experience concept instead of being patched locally"
+    ],
+    "downstream_impact_rules": [
+      "changed HCD controlled variables propagate to consuming visual/content/software/service/accessibility/system owners",
+      "changed tested configuration reopens only evidence that consumed the changed relation unless coupling proves wider consequence"
+    ],
+    "interface_reopen_rules": [
+      "material task/content/state/user-visible consequence/service/platform/accessibility changes reopen affected R-F interfaces at owner-native scope"
+    ],
+    "receipt_stale_rules": [
+      "a project HCD receipt becomes stale at affected claim scope when governing human evidence, task/context, native state, tested configuration or required owner evidence changes; historical receipts are not rewritten"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable HCD stages complete at declared claim ceiling",
+      "required native outputs and actual readback exist",
+      "representative human/task evidence exists where claimed",
+      "required accessibility/technical/external owner evidence exists at its own boundary",
+      "critical interfaces meet required R-F maturity",
+      "no unresolved in-claim blocker",
+      "professional/independent review binds exact reviewed configuration",
+      "professional receipt is Current for an actual project instance"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim populations/tasks/states/features/evaluations that do not contradict the current bounded HCD verdict"
+    ],
+    "professional_receipt": "DIGITAL_PRODUCT_HCD_DESIGN_PROCESS_RECEIPT for real project execution only; candidate-definition validation emits no project receipt.",
+    "promotion_effect": "If later adopted Current and actually executed, a bounded PASS may satisfy only the triggered Digital Product / HCD professional-process dependency; it grants neither Design KEEP, accessibility certification, software/backend PASS, R-F Integration PASS, Project Promotion nor Current Knowledge.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_HCD_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "Current adoption",
+      "project exercise",
+      "universal usability",
+      "accessibility certification",
+      "production backend correctness",
+      "future field behavior",
+      "Design KEEP",
+      "Project Promotion",
+      "Current Knowledge"
+    ]
+  }
+}

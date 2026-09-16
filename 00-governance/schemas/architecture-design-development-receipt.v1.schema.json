@@ -9,6 +9,7 @@
     "trigger_reason",
     "project_stage",
     "claim_ceiling",
+    "stage_body_records",
     "phase_status",
     "open_items",
     "reopened_items",
@@ -23,6 +24,72 @@
     "trigger_reason": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "project_stage": {"type": "string", "minLength": 1},
     "claim_ceiling": {"type": "string", "minLength": 1},
+    "stage_body_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage_id",
+          "body_ref",
+          "title",
+          "section_coverage",
+          "knowledge_mount_refs",
+          "native_artifact_refs",
+          "readback_refs",
+          "claim_ceiling",
+          "open_items",
+          "reopen_triggers",
+          "stage_verdict"
+        ],
+        "properties": {
+          "stage_id": {
+            "enum": [
+              "ADD-00", "ADD-01", "ADD-02", "ADD-03", "ADD-04", "ADD-05",
+              "ADD-06", "ADD-07", "ADD-08", "ADD-09", "ADD-10", "ADD-11",
+              "ADD-12", "ADD-13", "ADD-14", "ADD-15", "ADD-16", "ADD-17"
+            ]
+          },
+          "body_ref": {"type": "string", "minLength": 1},
+          "title": {
+            "type": "string",
+            "minLength": 8,
+            "not": {
+              "enum": [
+                "Analysis", "Concept", "Design Development", "Final", "Planning", "Review",
+                "analysis", "concept", "design development", "final", "planning", "review"
+              ]
+            }
+          },
+          "section_coverage": {
+            "type": "array",
+            "minItems": 10,
+            "maxItems": 10,
+            "allOf": [
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "STAGE_QUESTION_SCOPE"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "CURRENT_CONDITION_PROBLEM"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "AUTHORITY_KNOWLEDGE_INPUTS"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "ARCHITECTURAL_CRITERIA_INTENT"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "DEVELOPMENT_COMPARISON_MECHANISM"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "PROFESSIONAL_INTERFACES"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "NATIVE_OUTPUT_SOURCE_OF_TRUTH"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "ACTUAL_READBACK_FINDING"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "FAILURE_OPEN_DOES_NOT_PROVE"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "VERDICT_CLAIM_REOPEN_NEXT_ACTION"}}, "required": ["semantic_role"]}}
+            ],
+            "items": {"$ref": "#/$defs/stageBodySection"}
+          },
+          "knowledge_mount_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "native_artifact_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "claim_ceiling": {"type": "string", "minLength": 1},
+          "open_items": {"type": "array", "items": {"type": "string"}},
+          "reopen_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "stage_verdict": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "REJECT", "HOLD"]}
+        },
+        "additionalProperties": true
+      }
+    },
     "jurisdiction_state": {"type": "string"},
     "program_authority_state": {"type": "string"},
     "occupancy_authority_state": {"type": "string"},
@@ -72,6 +139,21 @@
       "if": {"properties": {"result": {"const": "PASS"}}},
       "then": {
         "properties": {
+          "stage_body_records": {
+            "items": {
+              "properties": {
+                "section_coverage": {
+                  "not": {
+                    "contains": {
+                      "properties": {"status": {"const": "MISSING"}},
+                      "required": ["status"]
+                    }
+                  }
+                },
+                "stage_verdict": {"const": "PASS_AT_CLAIM_CEILING"}
+              }
+            }
+          },
           "independent_plan_review": {
             "properties": {
               "status": {"const": "PASS"},
@@ -83,5 +165,41 @@
       }
     }
   ],
+  "$defs": {
+    "stageBodySection": {
+      "type": "object",
+      "required": ["semantic_role", "status"],
+      "properties": {
+        "semantic_role": {
+          "enum": [
+            "STAGE_QUESTION_SCOPE",
+            "CURRENT_CONDITION_PROBLEM",
+            "AUTHORITY_KNOWLEDGE_INPUTS",
+            "ARCHITECTURAL_CRITERIA_INTENT",
+            "DEVELOPMENT_COMPARISON_MECHANISM",
+            "PROFESSIONAL_INTERFACES",
+            "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+            "ACTUAL_READBACK_FINDING",
+            "FAILURE_OPEN_DOES_NOT_PROVE",
+            "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+          ]
+        },
+        "status": {"enum": ["PRESENT", "COMBINED", "NOT_APPLICABLE_WITH_REASON", "MISSING"]},
+        "visible_heading_or_locator": {"type": ["string", "null"]},
+        "reason": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["PRESENT", "COMBINED"]}}, "required": ["status"]},
+          "then": {"required": ["visible_heading_or_locator"], "properties": {"visible_heading_or_locator": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["status"]},
+          "then": {"required": ["reason"], "properties": {"reason": {"type": "string", "minLength": 1}}}
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
   "additionalProperties": true
 }
