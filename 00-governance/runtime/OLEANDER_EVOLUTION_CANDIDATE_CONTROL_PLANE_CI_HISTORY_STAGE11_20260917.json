@@ -1,0 +1,112 @@
+{
+  "candidate_id": "OLEANDER-EV-CONTROL-PLANE-CI-HISTORY-STAGE11-20260917",
+  "state": "EV2_EVAL_READY",
+  "target_class": "ARCHITECTURE_CONTROL_CI_PORTABILITY",
+  "target_owner": "OLEANDER Control Plane / GitHub Actions execution surface",
+  "target_ref": ".github/workflows/oleander-control-plane-v0-3.yml checkout history availability for validate_execution_contracts.py",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE11_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406",
+  "baseline": {
+    "current_version_or_revision": "origin/main@985bacb3a7641d837a6df70a88015765a6f5e684; PR #646 head before CI-history fix b194d522ac9dd78d0edcc149e7b15d02efa7b2b9",
+    "source_hash_or_commit": "b194d522ac9dd78d0edcc149e7b15d02efa7b2b9",
+    "frozen_at": "2026-09-16T23:57:27+00:00"
+  },
+  "trigger_evidence": [
+    "GitHub Actions run 35164504054 failed in the control-plane job while local full-history validation passed.",
+    "The failing command was validate_execution_contracts.py and the exact error was: drift:architecture-control-current implementation_commit is not available in repository history.",
+    "The workflow checkout used actions/checkout without fetch-depth override, so the CI repository was shallow and did not contain the historical implementation commit required by the drift validator."
+  ],
+  "hypothesis": "Providing full Git history to the existing control-plane CI checkout will let the unchanged drift validator verify the historical implementation commit instead of failing because the commit object is absent from a shallow clone.",
+  "mutation_scope": {
+    "summary": "One-file CI execution-surface change only: configure the existing checkout step with fetch-depth: 0.",
+    "candidate_file_count_excluding_this_record": 1,
+    "candidate_manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "candidate_manifest_algorithm": "SHA256 stream over paths sorted by UTF-8 path; for each path append UTF-8 path bytes + REAL NUL byte + lowercase file SHA256 ASCII + REAL LF byte.",
+    "immediate_predecessor_file_sha256": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa"
+    },
+    "explicit_exclusions": [
+      "No validator logic is weakened or bypassed.",
+      "No architecture/runtime/state/professional-domain semantics are changed.",
+      "No Stage-11 professional implementation file or exact manifest is changed.",
+      "No Current adoption, EV5/EV6, Notion sync or project Promotion is claimed."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "files": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "6a40f51bf009d47ea5142221314b40e04f78bc62fe56766732f9e2efeae69f8b"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "GitHub Actions PR #646 control-plane job",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py",
+      "00-governance/control-plane/tests"
+    ],
+    "regression_refs": [
+      "Local full-history control-plane discovery remains 145/145 PASS before the CI-history mutation.",
+      "Architecture Control / Execution Contracts / Execution Locks / Runtime Resilience / Master Runtime remain PASS locally.",
+      "PR #646 pre-fix control-plane CI failure is preserved as the negative case proving shallow-history incompatibility."
+    ],
+    "acceptance_thresholds": [
+      "A fresh PR #646 control-plane run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
+      "Subsequent Professional Domain, unit/regression, replay and compile steps in the control-plane workflow pass.",
+      "AIG governance checks remain green.",
+      "No Stage-11 professional implementation hash changes."
+    ],
+    "result": "PENDING_FRESH_CI_RETRY"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "no_validator_weakening": true,
+    "no_false_promotion": true
+  },
+  "independent_review": {
+    "reviewer_id": "UNRESOLVED_PENDING_POST_CI_REVIEW",
+    "independence_state": "PENDING",
+    "review_input_revision": "candidate-manifest-sha256:cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "verdict": "PENDING",
+    "blocking_findings": [],
+    "review_observed_at": "UNRESOLVED",
+    "review_notes": []
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "rollback": {
+    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / workflow-sha256:a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa",
+    "rollback_action": "Restore only .github/workflows/oleander-control-plane-v0-3.yml to the predecessor SHA256 bytes; preserve Stage-11 EV4 and all unrelated work.",
+    "rollback_test": "Reproduce the shallow-history failure only as historical negative evidence; do not treat rollback as acceptable CI state."
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through fresh PR #646 CI execution and independent review.",
+    "regression_signals": [
+      "control-plane CI still cannot resolve the historical implementation commit",
+      "validator logic is weakened instead of execution history being supplied",
+      "Stage-11 implementation manifest changes",
+      "unrelated workflow behavior changes"
+    ],
+    "reopen_rule": "Any signal reopens this one-file CI portability candidate only.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "EV3_EVAL_PASSED",
+    "EV4_INDEPENDENT_REVIEWED",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "CURRENT_ARCHITECTURE_ADOPTION",
+    "LIVE_NOTION_EQUIVALENCE",
+    "PROJECT_PROMOTION"
+  ]
+}
