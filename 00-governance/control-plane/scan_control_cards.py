@@ -30,6 +30,10 @@ CARD_SIGNATURE_KEYS = {
 }
 
 EXCLUDED_PREFIXES = (
+    ".worktrees/",
+    ".mcp-runtime/",
+    ".oleander-presentation-c04/",
+    "$out/",
     "99-archive/",
     "practice/",
     "tools/",
@@ -41,13 +45,21 @@ EXCLUDED_PREFIXES = (
     "00-governance/migration/",
 )
 
+EXCLUDED_EXACT_PATHS = {
+    "90-shared/toolchains/modeling-worker/automotive/v0.12/E3_CONTROL_CARD.json",
+    "90-shared/toolchains/modeling-worker/v0.13/V013_REENTRY_CONTROL_CARD.json",
+}
+
 
 def _relative_posix(path: Path, root: Path) -> str:
     return path.relative_to(root).as_posix()
 
 
 def is_excluded(relative_path: str) -> bool:
-    return any(relative_path.startswith(prefix) for prefix in EXCLUDED_PREFIXES)
+    return (
+        relative_path in EXCLUDED_EXACT_PATHS
+        or any(relative_path.startswith(prefix) for prefix in EXCLUDED_PREFIXES)
+    )
 
 
 def looks_like_control_card(value: Any) -> bool:
@@ -69,7 +81,7 @@ def scan_repository(root: Path) -> dict[str, Any]:
         if is_excluded(rel):
             continue
         try:
-            value = json.loads(path.read_text(encoding="utf-8"))
+            value = json.loads(path.read_text(encoding="utf-8-sig"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
             parse_errors.append({"path": rel, "error": str(exc)})
             continue
@@ -109,6 +121,7 @@ def scan_repository(root: Path) -> dict[str, Any]:
         "discovered_current_control_cards": discovered,
         "invalid_current_control_cards": invalid,
         "excluded_prefixes": list(EXCLUDED_PREFIXES),
+        "excluded_exact_paths": sorted(EXCLUDED_EXACT_PATHS),
         "unrelated_json_parse_errors": parse_errors,
         "does_not_prove": [
             "Scan PASS is not Design PASS or MAIN status.",

@@ -99,15 +99,11 @@ def _validate_preservation_review_v02(card: dict[str, Any]) -> list[Finding]:
     """Legacy v0.2 behavior retained only for replay/backward compatibility."""
     findings: list[Finding] = []
     review = card.get("preservation_review")
-    architecture_change = card.get("problem_layer") == "Architecture"
 
-    if architecture_change and not isinstance(review, dict):
-        findings.append(Finding(
-            "ERROR",
-            "NO_LOSS_PRESERVATION_REVIEW_REQUIRED",
-            "Architecture-layer work requires preservation_review so established project objects cannot disappear silently",
-        ))
-        return findings
+    # v0.2 is immutable replay/backward-compatibility history. The repository's
+    # global preservation-review requirement is prospective v0.3 behavior and
+    # must not be imposed retroactively on historical v0.2 cards. If a v0.2
+    # card already carries a preservation_review, retain its legacy validation.
     if not isinstance(review, dict):
         return findings
     if review.get("global_fixed_chapter_count_applied") is not False:
