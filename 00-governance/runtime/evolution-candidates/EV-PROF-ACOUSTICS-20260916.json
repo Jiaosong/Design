@@ -1,0 +1,108 @@
+{
+  "evolution_id": "EV-PROF-ACOUSTICS-20260916",
+  "candidate_domain": "Building Acoustics / Acoustic Design",
+  "candidate_state": "EV2_EVAL_READY",
+  "status": "CONTROLLED_EVOLUTION_CANDIDATE_NOT_CURRENT",
+  "authority_baseline": {
+    "ref": "main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "architecture": "OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1",
+    "professional_contract": "00-governance/professional-domain-process-contract-v1.0.md",
+    "integration_owner": "00-governance/cross-disciplinary-design-integration-v1.0.md"
+  },
+  "candidate_branch": "agent/v21-building-acoustics-evolution-20260916",
+  "ev2_input_head": "9e2ac5a6c28f09a40c6889d3a12579cebba2ed30",
+  "immutable_inputs": {
+    "professional_body": {
+      "path": "00-governance/building-acoustics-design-process-v1.0.md",
+      "blob_sha": "5bbe1e39c3cfed2ec7cbca49684e926244d0751a"
+    },
+    "machine_definition": {
+      "path": "00-governance/schemas/building-acoustics-design-process.v1.json",
+      "blob_sha": "93661f3dccf3eb3e61acca3da9e2fb8fee4fbeed"
+    },
+    "workflow_binding": {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "blob_sha": "e30e2b7a2acf1e376867b610259386b3975ba30c"
+    }
+  },
+  "domain_carriers": [
+    "ACO-BASIS",
+    "ACO-ROOM",
+    "ACO-SEPARATION",
+    "ACO-NOISEVIB",
+    "ACO-DETAIL",
+    "ACO-TEST",
+    "ACO-DELIVERY",
+    "ACO-INUSE"
+  ],
+  "knowledge_reuse": {
+    "notion_owner_id": "3acb86be-5c47-8142-8595-e61a613b7a1c",
+    "canonical_id": "IDX-ARCH-SPECIALTY-008",
+    "role": "INDEX",
+    "level": "L4 Integrating Framework / Cluster",
+    "maturity": "M4 TRANSLATED",
+    "evidence_state": "E1",
+    "governance_state": "ACTIVE",
+    "relation_state": "VALID",
+    "ev2_mutation": "NONE",
+    "boundary": "The existing Specialty Systems index retains separate Acoustics, Smart Building, Corrosion/Durability and Roof/Ancillary routes. This candidate consumes the Acoustics route and child acoustic system objects without turning the L4 INDEX into Professional Process authority."
+  },
+  "professional_source_basis": [
+    {
+      "source": "ISO 3382-2:2008",
+      "status": "PUBLISHED_CONFIRMED_2022",
+      "use": "reverberation-time measurement context for ordinary rooms where applicable",
+      "boundary": "measurement method context only; no universal room target inferred"
+    },
+    {
+      "source": "ISO 16283-1:2014 + applicable amendment",
+      "status": "PUBLISHED_CONFIRMED_2025",
+      "use": "field measurement of airborne sound insulation between rooms where applicable",
+      "boundary": "field method and stated room/frequency applicability remain controlling"
+    },
+    {
+      "source": "ISO 717-1:2020",
+      "status": "PUBLISHED_CONFIRMED_2026",
+      "use": "rating of airborne sound insulation from frequency-dependent measurement results",
+      "boundary": "rating method is not itself a project target or field measurement"
+    },
+    {
+      "source": "Institute of Acoustics Building Acoustics Group",
+      "status": "CURRENT_PROFESSIONAL_CONTEXT",
+      "use": "professional context spanning room acoustics, sound insulation, HVAC acoustic design and vibration isolation",
+      "boundary": "not treated as a universal stage or project-value authority"
+    }
+  ],
+  "machine_evaluation": {
+    "state": "PENDING_PR_CI",
+    "required_checks": [
+      "AI Governance Evals",
+      "OLEANDER Project Anti-Pollution Gate",
+      "OLEANDER Blender Runtime Contract"
+    ],
+    "meaning": "Schema/regression evaluation only; success does not award acoustic professional quality, field acceptance, Design KEEP or Promotion."
+  },
+  "hard_boundaries": [
+    "ABSORPTION_COEFFICIENT != ROOM_ACOUSTIC_PASS",
+    "LAB_RATING != FIELD_ISOLATION",
+    "PARTITION_RATING != ROOM_TO_ROOM_PRIVACY",
+    "MODEL_PASS != FIELD_MEASUREMENT_PASS",
+    "ONE_ROOM_PASS != WHOLE_BUILDING_PASS",
+    "MEASURED_SYMPTOM != CAUSE_CONFIRMED",
+    "ACOUSTIC_COORDINATION != R_F_INTEGRATION_PASS",
+    "ACOUSTIC_PROCESS_PASS != ARCHITECTURE_DESIGN_KEEP",
+    "ACOUSTIC_PROCESS_PASS != MEP_STRUCTURAL_FLS_PASS",
+    "CI_PASS != PROFESSIONAL_PASS",
+    "CANDIDATE != CURRENT",
+    "PR_OR_SYNC != PROMOTION"
+  ],
+  "blocked_until_further_evidence": [
+    "EV3 machine-evaluation receipt",
+    "Independent Review packet on exact fresh EV3 input",
+    "eligible independent reviewer verdict",
+    "bounded Notion candidate-routing sync after packet-head freshness",
+    "authorized Current owner-native adoption",
+    "EV4/EV5 and Promotion"
+  ],
+  "created_on": "2026-09-16"
+}
