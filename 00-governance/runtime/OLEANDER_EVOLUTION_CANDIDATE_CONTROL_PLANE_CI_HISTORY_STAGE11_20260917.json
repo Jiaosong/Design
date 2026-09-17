@@ -1,6 +1,6 @@
 {
   "candidate_id": "OLEANDER-EV-CONTROL-PLANE-CI-HISTORY-STAGE11-20260917",
-  "state": "EV2_EVAL_READY",
+  "state": "EV3_EVAL_PASSED",
   "target_class": "ARCHITECTURE_CONTROL_CI_PORTABILITY",
   "target_owner": "OLEANDER Control Plane / GitHub Actions execution surface",
   "target_ref": "GitHub Actions workflow checkout history availability for validate_execution_contracts.py in both control-plane and AI Governance Evals",
@@ -58,8 +58,24 @@
       "Local full-history control-plane discovery remains 145/145 PASS before the CI-history mutation.",
       "Architecture Control / Execution Contracts / Execution Locks / Runtime Resilience / Master Runtime remain PASS locally.",
       "PR #646 pre-fix control-plane CI failure is preserved as a negative case proving shallow-history incompatibility.",
-      "PR #646 one-workflow-repair AIG failure is preserved as a second negative case proving that every workflow invoking the history-aware validator needs the same checkout contract."
+      "PR #646 one-workflow-repair AIG failure is preserved as a second negative case proving that every workflow invoking the history-aware validator needs the same checkout contract.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: AI Governance Evals run 35164834011 PASS.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: control-plane run 35164834027 PASS through history-aware execution-contract validation, Professional Domain checks, unit/regression tests, replays and compile check.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: anti-pollution run 35164834006 PASS and runtime-contract run 35164834004 PASS; Vercel statuses PASS."
     ],
+    "fresh_ci_evidence": {
+      "pr": 646,
+      "head_commit": "c60f8e02a1c5040db53ce4250284d8e531866e8b",
+      "aig_run_id": 35164834011,
+      "aig_result": "PASS",
+      "control_plane_run_id": 35164834027,
+      "control_plane_result": "PASS",
+      "anti_pollution_run_id": 35164834006,
+      "anti_pollution_result": "PASS",
+      "runtime_contract_run_id": 35164834004,
+      "runtime_contract_result": "PASS",
+      "vercel_result": "PASS"
+    },
     "acceptance_thresholds": [
       "A fresh PR #646 control-plane run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
       "A fresh PR #646 AI Governance Evals run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
@@ -67,7 +83,7 @@
       "Subsequent AIG governance/runtime checks complete without a history-availability failure.",
       "No Stage-11 professional implementation hash changes."
     ],
-    "result": "PENDING_FRESH_CI_RETRY"
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
   },
   "constraints": {
     "semantic_purpose_preserved": true,
@@ -109,7 +125,6 @@
     "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
   },
   "does_not_prove": [
-    "EV3_EVAL_PASSED",
     "EV4_INDEPENDENT_REVIEWED",
     "EV5_PROMOTION_READY",
     "EV6_CURRENT_ADOPTED",
