@@ -602,6 +602,177 @@ class ProfessionalDomainProcessContractTests(unittest.TestCase):
                     self.assertIn(phrase, text)
                 self.assertNotIn("\ufffd", text)
 
+    def test_stage12_residual_professional_mechanisms_are_machine_projected(self):
+        expected = (
+            (self.structural, {
+                "SE-SPW4": (
+                    "soil-structure interaction uncertainty",
+                    "connection force-deformation/ductility/local-stability",
+                    "Geotechnical↔Structural iteration consequence",
+                ),
+                "SE-SPW7": (
+                    "monitoring trigger interpretation",
+                    "baseline-reset consequence",
+                ),
+            }),
+            (self.mep, {
+                "BSP-TECHNICAL": (
+                    "water pressure-zone",
+                    "cross-connection/backflow",
+                    "working-fluid containment",
+                    "post-leak restart",
+                ),
+                "BSP-INUSE": (
+                    "performance-observability chain",
+                    "sensor/meter boundary",
+                ),
+            }),
+            (self.systems, {
+                "SYS-01": (
+                    "hazard/safety claim",
+                    "residual/waiver owner",
+                ),
+                "SYS-04": (
+                    "interface version negotiation",
+                    "mixed-version semantic compatibility",
+                    "migration/rollback",
+                ),
+                "SYS-05": (
+                    "test-environment representativeness",
+                    "omitted/missing-stressor",
+                    "combined-stressor transfer boundary",
+                ),
+            }),
+            (self.hcd, {
+                "HCD-03": (
+                    "automated-decision human-reliance/explanation consequence",
+                    "review/challenge/fallback",
+                ),
+                "HCD-04": (
+                    "localized task/consequence semantic equivalence",
+                    "ordering/reading-direction",
+                ),
+                "HCD-05": (
+                    "notification/attention arbitration consequence",
+                    "pre-emption versus wait/bundle",
+                ),
+            }),
+            (self.interior, {
+                "INT-01": (
+                    "movable/operable partition open/closed/partial/parked/changeover",
+                    "setup/reset sequence",
+                ),
+                "INT-02": (
+                    "inventory replenishment loop",
+                    "staging/parking and overflow",
+                ),
+                "INT-05": (
+                    "perimeter thermal/contact-material use-position consequence",
+                    "seasonal thermal/airflow/radiant conditions",
+                ),
+            }),
+            (self.landscape, {
+                "LAN-03": (
+                    "irrigation source-water-quality/reuse variability",
+                    "plant-zone compatibility",
+                ),
+                "LAN-04": (
+                    "habitat patch/edge/connectivity",
+                    "seasonal resource-continuity",
+                ),
+                "LAN-07": (
+                    "tree root-plate/rootable-zone/trunk/mature-canopy interface",
+                    "eventual removal/replacement access",
+                ),
+            }),
+            (self.lighting, {
+                "LGT-02": (
+                    "cumulative light-sensitive display/art exposure consequence",
+                    "combined daylight/electric distribution/aim/output",
+                ),
+                "LGT-08": (
+                    "daylight-design-to-installed electric-light commissioning correlation",
+                    "unverified sky/solar/shade states",
+                ),
+            }),
+        )
+        for definition, stages in expected:
+            stage_map = {stage["stage_id"]: stage for stage in definition["stages"]}
+            for stage_id, phrases in stages.items():
+                with self.subTest(process_id=definition["process_id"], stage_id=stage_id):
+                    projection = " ".join(
+                        stage_map[stage_id]["required_readback"]
+                        + stage_map[stage_id]["technical_consequences"]
+                    )
+                    for phrase in phrases:
+                        self.assertIn(phrase.lower(), projection.lower())
+                    self.assertNotIn("?", projection)
+                    self.assertNotIn("\ufffd", projection)
+
+    def test_stage12_bodies_retain_specific_residual_design_depth(self):
+        body_requirements = {
+            ARCH_BODY: (
+                "continuous three-dimensional construction",
+                "bracket/anchor/fixing zone",
+                "direct + flanking paths",
+            ),
+            STRUCT_BODY: (
+                "uncertainty-bearing coupled model",
+                "deformation, ductility and local-stability behavior",
+                "decision signal",
+            ),
+            MEP_BODY: (
+                "Performance observability and diagnostic evidence depth",
+                "multiple pressure zones",
+                "consequential working-fluid systems",
+            ),
+            SYSTEMS_BODY: (
+                "Hazard / assurance-case linkage boundary",
+                "operate across revisions or versions",
+                "Test-environment representativeness / missing-stressor boundary",
+            ),
+            HCD_BODY: (
+                "human reliance contract",
+                "Localization must preserve **task and consequence semantics**",
+                "claims on limited attention",
+            ),
+            ROOT / "00-governance/interior-design-development-process-v1.0.md": (
+                "change states",
+                "model the replenishment loop",
+                "thermal mass/conductivity",
+            ),
+            ROOT / "00-governance/landscape-architecture-design-development-process-v1.0.md": (
+                "controlling-owner water-quality evidence",
+                "habitat connectivity or pollinator/foraging continuity",
+                "consequential tree–structure conditions",
+            ),
+            ROOT / "00-governance/lighting-design-development-process-v1.0.md": (
+                "cumulative exposure relation",
+                "daylight-responsive electric lighting is in claim",
+            ),
+        }
+        for path, phrases in body_requirements.items():
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(path=str(path)):
+                for phrase in phrases:
+                    self.assertIn(phrase, text)
+                self.assertNotIn("\ufffd", text)
+
+    def test_stage12_architecture_facade_support_preserves_r_e_r_d_boundary(self):
+        text = ARCH_BODY.read_text(encoding="utf-8")
+        self.assertIn(
+            "emits any resulting Design Quality consequence / OPEN item to R-D",
+            text,
+        )
+        self.assertIn(
+            "the ADD stage does not close the mapped DD/DQ relation",
+            text,
+        )
+        self.assertNotIn(
+            "Architecture closes the geometric, spatial, buildability and Design Quality consequence only",
+            text,
+        )
+
     def test_current_structural_and_mep_definitions_validate(self):
         for definition in self.current_definitions():
             with self.subTest(process_id=definition["process_id"]):

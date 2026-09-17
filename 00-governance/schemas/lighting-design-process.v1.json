@@ -496,7 +496,8 @@
         "color-quality criterion",
         "directional luminance/illuminance interpretation and glare/reflection path",
         "chromatic/spectral/color-rendering equivalence at Current source ceiling",
-        "vertical/facial modeling and luminous recognition/task consequence with Security/AV/Accessibility acceptance owner-native"
+        "vertical/facial modeling and luminous recognition/task consequence with Security/AV/Accessibility acceptance owner-native",
+        "cumulative light-sensitive display/art exposure consequence across daylight/electric source-time-control states while Conservation/curatorial sensitivity and exposure acceptance remain owner-native"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -507,7 +508,8 @@
         "attack critical glare/reflection/adaptation positions",
         "bind illuminance to receiving plane/task/state and luminance to source/surface/viewpoint/state; diagnose glare/reflection by direct/window/reflected/veiling/specular/adaptation mechanism",
         "read color/spectral behavior across material, daylight mix, dimming, batch and substitution states without treating CCT as color-rendering proxy",
-        "read vertical/facial lighting as observer–subject task geometry across approach, seated/standing state, face orientation, background brightness, occlusion and scene; attack directional facial shadow/flattening/silhouette/source glare"
+        "read vertical/facial lighting as observer–subject task geometry across approach, seated/standing state, face orientation, background brightness, occlusion and scene; attack directional facial shadow/flattening/silhouette/source glare",
+        "bind Conservation/curatorial object/material sensitivity and exposure basis to combined daylight/electric distribution/aim/output, duration/schedule, scene/control and temporary/changeover states; do not use one instantaneous lighting state as cumulative-exposure proof"
       ],
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -1305,7 +1307,8 @@
         "measured/observed condition",
         "final configuration",
         "whole-scene commissioning/night tuning and configuration-bound qualitative/quantitative evidence",
-        "exterior/facade aiming, measurement uncertainty and maintenance/re-aim recovery consequence without taking fixing/isolation/access approval"
+        "exterior/facade aiming, measurement uncertainty and maintenance/re-aim recovery consequence without taking fixing/isolation/access approval",
+        "daylight-design-to-installed electric-light commissioning correlation across aperture/glazing/shading, sensor/zone/group and transition/override/recovery state with Envelope/MEP/Controls implementation truth owner-native"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -1316,7 +1319,8 @@
         "reconcile calculated/installed differences",
         "re-read repairs",
         "read night tuning as whole luminous system across adaptation zones, route/task/focal hierarchy, sensitive views, scenes and final aiming; bind each tuning change to exact final configuration",
-        "bind exterior/façade final aim to target/datum/optic/output/shielding/receptor/wet-reflective/planting-season state; carry measurement calibration/repeatability/method limits and prove maintainable restoration of aim/scene"
+        "bind exterior/façade final aim to target/datum/optic/output/shielding/receptor/wet-reflective/planting-season state; carry measurement calibration/repeatability/method limits and prove maintainable restoration of aim/scene",
+        "commission daylight-responsive electric lighting by correlating actual aperture/glazing/shading and relevant obstruction/season condition with sensor location/FOV/calibration, controlled zones/groups, scene/output and transition/override/recovery; use representative or explicitly bounded staged conditions and retain unverified sky/solar/shade states"
       ],
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",

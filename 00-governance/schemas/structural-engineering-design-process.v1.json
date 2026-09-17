@@ -721,7 +721,9 @@
         "analysis-model credibility, ground-structure coupling and connection/local-force-transfer behavior",
         "nonlinear/contact/cracking/yielding/staged-history assumptions and locked-in response where material",
         "fatigue/cyclic-detail sensitivity plus durability deterioration/inspection/repair consequence",
-        "robustness strategy, damaged-configuration redistribution and common-mode dependency consequence"
+        "robustness strategy, damaged-configuration redistribution and common-mode dependency consequence",
+        "soil-structure interaction uncertainty, support/foundation sensitivity and Geotechnical↔Structural iteration consequence",
+        "connection force-deformation/ductility/local-stability behavior reconciled with global stiffness, redistribution and robustness assumptions"
       ],
       "content_projection_requirements": [
         "calculation-model-drawing consistency",
@@ -735,7 +737,9 @@
         "read model basis, boundary conditions, stability/serviceability mechanisms, foundation-ground coupling and local connection force transfer against exact issued geometry",
         "read nonlinear/path-dependent/staged-analysis basis, equilibrium/convergence sensitivity and global → local model reconciliation where the governing mechanism requires it",
         "read fatigue/cyclic demand and deterioration mechanism against actual detail/exposure/protection/inspectability evidence where triggered",
-        "read local-damage robustness as initiating loss → removed function/load → alternate transfer path → required deformation/connection behavior → redistributed global demand, including common-mode fragility"
+        "read local-damage robustness as initiating loss → removed function/load → alternate transfer path → required deformation/connection behavior → redistributed global demand, including common-mode fragility",
+        "read Current Geotechnical evidence range/ground-model alternatives through structural support idealization → reactions/contact/movement → updated ground response → structural redistribution and identify any decision-reversing uncertainty or OPEN investigation",
+        "read connection component force path, required deformation/rotation/slip/ductility and local weak-link/stability mechanisms against the exact joint geometry, then reconcile specialist detail behavior back to global-model assumptions"
       ],
       "professional_review_owner": "Responsible Structural Engineering professional owner",
       "independent_review_requirement": "Required structural design checking / third-party checking according to risk, jurisdiction and appointment.",
@@ -1236,14 +1240,16 @@
       "design_language_consequences": [],
       "technical_consequences": [
         "alteration/change-of-use/monitoring structural consequences",
-        "hypothesis-led monitoring, change-of-use diagnostics and affected-model/interface reopen scope"
+        "hypothesis-led monitoring, change-of-use diagnostics and affected-model/interface reopen scope",
+        "monitoring trigger interpretation, data-validity/corroboration action and baseline-reset consequence without treating threshold crossing as root-cause proof"
       ],
       "content_projection_requirements": [
         "observation period/location/context and uncertainty"
       ],
       "required_readback": [
         "actual monitoring/inspection/use evidence for the declared question",
-        "bind in-use symptom to location/time/load/environment/configuration, preserve competing hypotheses and read monitoring trend against bounded structural model"
+        "bind in-use symptom to location/time/load/environment/configuration, preserve competing hypotheses and read monitoring trend against bounded structural model",
+        "read each material monitoring trigger against baseline/configuration, sensor or inspection validity, load/environment context, trend/persistence and spatial corroboration; bind exceedance to the Current responsible-engineer action route and preserve any post-intervention baseline reset rationale"
       ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Appropriate independent appraisal/checking when in-use issue consequence requires it.",

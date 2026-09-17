@@ -645,14 +645,16 @@
       ],
       "technical_consequences": [
         "channel/automation/human split and implementation dependencies",
-        "concept trade/falsification boundary and evidence needed to attack reversal assumptions"
+        "concept trade/falsification boundary and evidence needed to attack reversal assumptions",
+        "automated-decision human-reliance/explanation consequence while model performance/provenance/confidence and legal disclosure remain owner-native"
       ],
       "content_projection_requirements": [
         "show materially different concepts, fixed criteria, trade-offs and rejected routes"
       ],
       "required_readback": [
         "read retained concept against evidence-backed needs/tasks and current feasibility constraints",
-        "compare materially distinct concepts on critical tasks/failure-recovery, information burden, human-automation split, inclusion, operations, technical dependencies and selection-critical assumptions"
+        "compare materially distinct concepts on critical tasks/failure-recovery, information burden, human-automation split, inclusion, operations, technical dependencies and selection-critical assumptions",
+        "read automated recommendation/classification/prediction/decision reliance contract: user consequence, owner-supplied limitation/uncertainty, explanation needed for the decision, review/challenge/fallback and corrected-result recovery without inventing model truth"
       ],
       "professional_review_owner": "Digital Product / HCD professional owner",
       "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
@@ -806,7 +808,8 @@
       "technical_consequences": [
         "content/source truth, route/state and search/service dependencies",
         "IA/content edge-state, canonical-home and route-recovery dependencies",
-        "wayfinding/legibility and sensitive-context conceal/reveal consequence with Privacy/legal requirements owner-native"
+        "wayfinding/legibility and sensitive-context conceal/reveal consequence with Privacy/legal requirements owner-native",
+        "localized task/consequence semantic equivalence across terminology, conventions and hierarchy while translation/editorial/legal/runtime truth remains owner-native"
       ],
       "content_projection_requirements": [
         "stable labels and canonical homes; distinguish source truth from interface copy"
@@ -814,7 +817,8 @@
       "required_readback": [
         "deep-entry, task-find, wrong-branch recovery and label/destination consistency readback in prototype/native carrier",
         "attack deep entry, object lifecycle, no/partial results, permissions, localization, cross-channel continuation, history/Back and taxonomy migration states",
-        "test orientation/route choice under deep entry, interruption, localization, text scaling, constrained viewport, dense results and low-attention conditions; preserve location, consequential choices and Back/Return/recovery without memory dependence"
+        "test orientation/route choice under deep entry, interruption, localization, text scaling, constrained viewport, dense results and low-attention conditions; preserve location, consequential choices and Back/Return/recovery without memory dependence",
+        "read representative localized content for canonical-object/action/warning/recovery semantics, locale conventions, ordering/reading-direction and expansion/hierarchy effects; verify task meaning survives rather than only string translation"
       ],
       "professional_review_owner": "Digital Product / HCD professional owner",
       "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",
@@ -973,7 +977,8 @@
         "state guards, persistence, service/backend dependencies and unavailable/degraded behavior",
         "asynchronous/concurrent commit, reconciliation and high-stakes consequence state model",
         "service-recovery repetition/persistence/escalation plus trust/consent interaction consequence within Legal/Privacy owner boundaries",
-        "human-visible shared-work conflict/recovery consequence while identity/authorization/locking/merge consistency stays with technical owners"
+        "human-visible shared-work conflict/recovery consequence while identity/authorization/locking/merge consistency stays with technical owners",
+        "notification/attention arbitration consequence across foreground task, owner-supplied urgency, pre-emption/bundling/persistence and return without inventing priority or delivery guarantees"
       ],
       "content_projection_requirements": [
         "show every critical state, user-visible consequence and recovery/re-entry path"
@@ -982,7 +987,8 @@
         "run state-sequence/interrupt/Return/keyboard/touch/focus/unavailable attacks in executable prototype/runtime when available",
         "exercise delayed/duplicate/optimistic/concurrent/partial/offline/session-expiry/background completion and distinguish intent/request/completion/persistence/user-informed states",
         "exercise consequential service recovery from failure detection → truthful status/ownership → fallback or human handoff → repair/redress → restored-state proof → re-entry; include consent withdrawal/resulting state where material",
-        "read multi-user/shared-object coordination state across owner/actor, editable/read-only, pending approval, stale/conflicting change, handoff/escalation/resolution and visibility of another actor's action"
+        "read multi-user/shared-object coordination state across owner/actor, editable/read-only, pending approval, stale/conflicting change, handoff/escalation/resolution and visibility of another actor's action",
+        "exercise competing notification/alert/prompt conditions against foreground work: source/owner, legitimate urgency, pre-emption versus wait/bundle, deduplication/persistence, acknowledgement and return to preserved task state"
       ],
       "professional_review_owner": "Digital Product / HCD professional owner",
       "independent_review_requirement": "Independent HCD/design/evidence review proportionate to the claim must attack producer assumptions, configuration mismatch, unsupported user inference and owner leakage; accessibility/legal/technical approvals remain with their proper owners.",

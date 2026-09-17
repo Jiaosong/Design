@@ -276,6 +276,16 @@ Attack requirement defects explicitly:
 
 Where acceptance requires multiple proofs, define the relation among them: all required, alternative/equivalent, conditional, staged or representative-only. A requirement cannot be closed by a convenient evidence type that ignores a controlling failure mode.
 
+#### Hazard / assurance-case linkage boundary
+
+When a Safety, Fire or other competent specialist owner identifies a hazard, hazardous state, safety function or risk-control obligation that affects system architecture, preserve the trace:
+
+`owner-native hazard / safety claim → controlling requirement / constraint → allocated control / barrier / function / interface → failure / degraded-state assumption → verification evidence → residual / waiver owner`.
+
+Systems Engineering may expose missing allocation, common-cause dependency, interface dependency, contradictory assumptions or stale evidence, but it does not originate hazard classification, risk acceptance, statutory safety targets or specialist PASS.
+
+Where several controls jointly support one safety claim, make their independence / common-cause / dependency assumptions and degraded-state consequence visible. An assurance-case argument is a trace and reasoning carrier, not proof by prose: each claim node must resolve to the responsible owner's Current requirement, technical decision or evidence. Safety / Fire / specialist owners retain acceptance authority and R-F retains actual interface maturity / disposition.
+
 `TRACE LINK EXISTS ≠ REQUIREMENT IS WELL FORMED`.
 
 `VERIFIABLE REQUIREMENT ≠ VALID STAKEHOLDER NEED`.
@@ -455,6 +465,10 @@ Where several interfaces form a coupled loop, identify what must be solved itera
 
 Attack end-to-end mismatches that can survive component-level checks: tolerance stack-up, unit conversion, rounding/quantization, datum drift, clock/timebase mismatch, stale state, duplicated message/command, different startup assumptions or incompatible fallback states.
 
+Where an interface can operate across revisions or versions, define compatibility as behavior rather than a version label. Preserve supported producer / consumer version combinations; negotiation or capability-discovery mechanism; backward / forward compatibility claim; mandatory / optional / deprecated fields, states or services; default / reject behavior for unknown values; migration sequence; mixed-version operating period; rollback relation; and the verification evidence for each in-claim pair.
+
+A successful transport handshake or schema parse does not prove semantic compatibility. Check whether changed units, defaults, state meaning, enum expansion, ordering, timing, error handling or optional-feature assumptions can produce a locally valid but systemically wrong result. Unsupported version pairs remain OPEN / rejected at the responsible owner boundary rather than silently downgraded. Systems Engineering owns compatibility requirements and change trace; domain owners retain implementation truth and R-F retains actual interface maturity / disposition.
+
 Preserve the integrated evidence capable of exposing the mismatch. Systems Engineering defines compatibility requirements and coupling logic; R-F retains actual interface maturity/disposition and domain owners retain technical truth.
 
 `BOTH SIDES LOCALLY VALID ≠ INTERFACE COMPATIBLE`.
@@ -544,6 +558,14 @@ For test / simulation / demonstration / inspection / analysis evidence, define a
 - equivalence rationale when evidence from one article/model/configuration is reused for another.
 
 Simulation evidence must state model validation / calibration basis and where extrapolation exceeds observed or benchmarked behavior. Demonstration evidence may show a function once without proving margin, reliability or boundary behavior. Inspection may confirm attributes without proving performance. Select the evidence vehicle by failure mechanism, not convenience.
+
+#### Test-environment representativeness / missing-stressor boundary
+
+Before evidence from a laboratory, simulator, staging environment, rig, prototype or controlled field setup supports an operational claim, compare the test environment with the claimed environment across the factors capable of changing the failure mechanism: load / demand profile; disturbances and transients; external services; physical environment; timing / latency / concurrency; data quality / network behavior; human / operator workload and information; support / maintenance state; and coupled subsystem availability where material.
+
+Identify stressors, couplings or consequences that the test environment omits, suppresses or replaces. State whether each omission is irrelevant at the claim ceiling, separately bounded by another owner-native proof, conservatively represented with a justified mechanism, or remains OPEN. Absence of a stressor is not automatically conservative, and individually bounded stresses do not prove a combined-stressor interaction that has a distinct failure mode.
+
+When an operational factor is simulated or substituted, preserve the mapping, fidelity limit and transfer rationale; when safe execution constrains adverse-state testing, retain that limit and consume specialist Safety / Test authority rather than weakening the acceptance claim. Systems Engineering records the representativeness gap and evidence consequence; competent test / domain owners retain test-method and safety authority.
 
 `TEST ARTICLE SIMILAR ≠ CONFIGURATION EQUIVALENT`.
 

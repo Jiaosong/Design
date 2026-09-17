@@ -690,6 +690,14 @@ Record as applicable:
 
 Return reactions, contact pressures and movement requirements to Geotechnical/Civil and consume their updated response; iterate when either side changes. Carry differential movement into frame, envelope, MEP, drainage and brittle-finish interfaces rather than stopping the analysis at the foundation reaction table.
 
+Treat soil-structure interaction as an **uncertainty-bearing coupled model**, not a one-way table of soil parameters. Where the structural decision is sensitive to foundation/support stiffness, contact, uplift, settlement, lateral restraint or retaining behavior, carry the Current Geotechnical evidence range/ground-model alternatives into structural sensitivity or bounding cases and identify which variation can reverse foundation type, force distribution, stability, movement or a downstream interface decision.
+
+Preserve the iteration chain where material:
+
+`Geotechnical ground model / evidence ceiling → structural foundation/support idealization → reactions + contact/movement demand → Geotechnical response / revised assumption → structural redistribution + movement → interface consequence / reopen`.
+
+Do not tune spring stiffness, fixity, contact or settlement assumptions merely to obtain a favorable frame result. Where an assumed support distribution or stiffness is not directly supported by the Current Geotechnical basis, mark it as a structural sensitivity/OPEN item and state what investigation, geotechnical response or bounded envelope is required before the affected claim can close. Structural Engineering owns the structural idealization, sensitivity and consequence; Geotechnical/Civil retain ground model, parameter validity, ground-improvement, earthworks/excavation and geotechnical acceptance authority.
+
 Structure does not self-award geotechnical parameter validity, ground-improvement acceptance or excavation/retaining approval outside its owner boundary.
 
 ### Connection and local-force transfer depth
@@ -708,6 +716,12 @@ Resolve as applicable:
 - erection / temporary restraint sequence when continuity develops progressively.
 
 Specialist-designed connections must receive explicit design actions, movement/tolerance, required behavior and interface geometry. `CONNECTION BY SPECIALIST` is not closure when connection behavior controls the primary model or downstream interface.
+
+Connection adequacy must distinguish **strength present** from the deformation, ductility and local-stability behavior needed by the structural system. Where redistribution, robustness, cyclic/dynamic response, staged continuity or a global stiffness assumption depends on connection behavior, state the required force-deformation/rotation/slip role and the intended sequence of component response rather than checking only peak nominal resistance.
+
+Attack local weak-link mechanisms across the actual joint geometry: plate/member slenderness or local buckling, bearing/crushing, prying, block/tear-out/splitting-type paths, anchor/reinforcement development, weld/bolt group eccentricity, panel/support-zone deformation and loss of restraint as applicable to the material/system. The retained detail must not depend on a nominally ductile global mechanism if a brittle or unstable local component can terminate that mechanism first.
+
+Where the global model assumes connection stiffness, continuity or redistribution, reconcile the detailed joint response back to that model and to adjacent member/local stability checks. Where the specialist owns detailed connection design, the Structural owner must still issue the required actions, deformation/stiffness/ductility role, geometry/tolerance and governing system consequence; the specialist retains detailed component design and product/process responsibility within appointment.
 
 ### Exit / claim ceiling
 
@@ -915,6 +929,12 @@ State competing structural and non-structural explanations, then choose monitori
 Compare observed response with the original design prediction or a bounded updated model representing the Current configuration, including uncertainty. A local observation closes only its sampled question; unexplained change, accelerating trend or configuration mismatch reopens the affected structural model/check and interface owners.
 
 Where monitoring is used for decision-making, define the action threshold from the Current professional/source basis and the consequence of exceedance. A dashboard trace without a decision rule is observation, not structural control.
+
+Interpret a monitoring trigger as a **decision signal**, not automatic proof of structural damage or adequacy. Bind each material trigger to its baseline/configuration, sensor or inspection validity, environmental/load context, persistence or rate/trend condition where relevant, spatial correlation with other observations and the structural mechanism it is intended to discriminate. A single excursion can be instrumentation, operational or environmental noise; a value below a nominal trigger cannot clear an unexplained adverse trend or configuration mismatch.
+
+When a trigger is approached or crossed, use the Current responsible-engineer/source basis to define the next bounded action: verify data quality/instrument state, inspect, obtain corroborating measurement/test evidence, restrict or change use where professionally required, update the structural model, or reopen the affected design/interface. Do not infer root cause from the trigger alone, and do not silently revise the threshold after an adverse observation to preserve a prior PASS.
+
+After repair, strengthening, sensor replacement, load/use change or other intervention, record whether the original baseline and trigger remain comparable. If a new baseline is established, preserve the pre-intervention record and the rationale/authority for the reset so trend discontinuity is not mistaken for structural recovery. Numerical trigger values remain bound to Current professional/source/project evidence; this process introduces none.
 
 `OBSERVED CRACK / VIBRATION / MOVEMENT ≠ ROOT CAUSE`.
 

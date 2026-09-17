@@ -337,14 +337,16 @@
       "design_language_consequences": [],
       "technical_consequences": [
         "requirement authority, allocation and evidence obligations",
-        "well-formed requirement and acceptance architecture with observable failure conditions"
+        "well-formed requirement and acceptance architecture with observable failure conditions",
+        "owner-native hazard/safety claim to requirement/control/interface/evidence trace with residual/waiver ownership and Safety/Fire/specialist acceptance authority preserved"
       ],
       "content_projection_requirements": [
         "co-locate source/rationale, acceptance condition, allocation, proof class, configuration and OPEN/waiver state"
       ],
       "required_readback": [
         "read requirements bidirectionally from source/need to object/interface and planned evidence",
-        "attack requirement atomicity, source/rationale, state/applicability, acceptance boundary, proof fitness, conflicts and waiver/deviation consequence"
+        "attack requirement atomicity, source/rationale, state/applicability, acceptance boundary, proof fitness, conflicts and waiver/deviation consequence",
+        "trace specialist-owned hazard/safety claims through allocated controls/barriers/functions/interfaces, degraded-state assumptions, verification evidence and residual/waiver owner; expose common-cause/dependency gaps without self-awarding safety PASS"
       ],
       "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
       "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
@@ -832,7 +834,8 @@
       "technical_consequences": [
         "units/state/timing/geometry/protocol/responsibility/configuration coupling",
         "end-to-end compatibility, tolerance stack-up, coupling convergence and initialization/recovery conditions",
-        "configuration item identity, parameters/settings, interface versions, deviations/waivers and evidence supersession trace"
+        "configuration item identity, parameters/settings, interface versions, deviations/waivers and evidence supersession trace",
+        "interface version negotiation, mixed-version semantic compatibility, migration/rollback and unsupported-pair consequence with domain implementation truth and R-F maturity preserved"
       ],
       "content_projection_requirements": [
         "show exchanged variable/state/service, direction, source, configuration, requested maturity and reopen relation"
@@ -840,7 +843,8 @@
       "required_readback": [
         "read each material interface against both-side native sources/configurations; consume maturity/disposition from R-F only",
         "read producer and consumer in common units/frame/timing/tolerance/state/configuration and attack stack-up, stale state, conversion, restart and coupled-loop mismatch",
-        "read configuration baseline as reproducible behavior/evidence set across proposed/approved/implemented/as-integrated/as-tested/as-operated states; do not reuse evidence across baselines without equivalence"
+        "read configuration baseline as reproducible behavior/evidence set across proposed/approved/implemented/as-integrated/as-tested/as-operated states; do not reuse evidence across baselines without equivalence",
+        "read supported producer/consumer interface-version pairs, capability negotiation, changed semantic/default/error behavior, mixed-version migration/rollback and exact pairwise evidence; transport/schema success alone does not prove semantic compatibility"
       ],
       "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
       "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",
@@ -981,7 +985,8 @@
       "technical_consequences": [
         "integration prerequisites, evidence vehicle, configuration fidelity, acceptance/failure/stop and retest logic",
         "experiment design, evidence-vehicle fitness and simulation/model credibility at claim ceiling",
-        "coverage/equivalence-class, excluded-state and multi-proof closure consequence without universal coverage percentage"
+        "coverage/equivalence-class, excluded-state and multi-proof closure consequence without universal coverage percentage",
+        "test-environment representativeness, omitted/missing-stressor and combined-stressor transfer boundary with specialist Test/Safety authority preserved"
       ],
       "content_projection_requirements": [
         "co-locate proof purpose, object/configuration, method, fidelity/environment, criterion, owner and OPEN dependency"
@@ -990,7 +995,8 @@
         "read V&V rows against exact current requirements/configuration and owner competence boundaries",
         "read each evidence vehicle for configuration fidelity, observable failure mode, boundary/adverse coverage, measurement uncertainty and predeclared acceptance/stop condition",
         "for analytical/simulation evidence, read assumptions/boundaries/omitted mechanisms/model credibility and sensitivity without reusing calibration data as independent validation",
-        "read verification coverage as requirement/interface/emergent behavior → configuration → state/environment → failure mechanism → proof/observable/evidence relation; expose orphan and proxy-only coverage"
+        "read verification coverage as requirement/interface/emergent behavior → configuration → state/environment → failure mechanism → proof/observable/evidence relation; expose orphan and proxy-only coverage",
+        "compare laboratory/simulator/staging/rig/prototype/controlled-field environment with claimed operation across failure-mechanism-relevant load, disturbance, external-service, physical, timing/concurrency, data/network, human/support and subsystem conditions; classify omitted/substituted stressors and transfer limits rather than assuming conservatism"
       ],
       "professional_review_owner": "Systems Engineering professional owner at the declared responsibility boundary",
       "independent_review_requirement": "Independent or appropriately separated systems review is required when consequence, novelty, integration criticality, V&V closure or project authority requires it; producer self-assertion is not independent evidence.",

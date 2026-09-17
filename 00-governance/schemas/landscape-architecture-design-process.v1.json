@@ -624,7 +624,8 @@
         "soil/media",
         "irrigation",
         "hydrological source/path/storage/overflow/failure routing while capacity remains Civil/Hydrology-owned",
-        "Landscape irrigation demand/coverage and root-zone consequence distinct from hydraulic/backflow/control/water-quality authority"
+        "Landscape irrigation demand/coverage and root-zone consequence distinct from hydraulic/backflow/control/water-quality authority",
+        "irrigation source-water-quality/reuse variability translated into plant/soil/emitter/drainage/material consequence while source/treatment/backflow/hygiene authority remains owner-native"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -634,7 +635,8 @@
         "attack exceedance/overflow/erosion/maintenance conditions",
         "verify planting/media geometry matches water intent",
         "trace normal/exceedance/blocked/saturated/unavailable-outfall water states through actual grading to downstream receptor; do not infer hydraulic capacity",
-        "read irrigation hydrozones/plant demand from establishment → mature states, sensor/weather/manual/failure conditions and commissioned dry/overwatered/runoff/leak/controller mismatch"
+        "read irrigation hydrozones/plant demand from establishment → mature states, sensor/weather/manual/failure conditions and commissioned dry/overwatered/runoff/leak/controller mismatch",
+        "read reclaimed/recycled/non-potable/saline/treated or variable irrigation-water evidence through plant-zone compatibility, soil chemistry/salinity accumulation, emitter/filter/clogging, applicable contact constraint, leaching/drainage and material consequence; reopen when source-quality basis changes without taking Water/MEP/hygiene approval"
       ],
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent Landscape Architecture professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -761,7 +763,8 @@
         "effective rootable volume/condition and planting assemblage succession/establishment behavior",
         "soil investigation/installed-root-zone design consequence with specialist test authority preserved",
         "tree stock/planting/establishment trajectory and replacement/reopen consequence",
-        "succession/competitive-recruitment, spatial-hierarchy and escape-management consequence with invasive/biosecurity authority specialist-owned"
+        "succession/competitive-recruitment, spatial-hierarchy and escape-management consequence with invasive/biosecurity authority specialist-owned",
+        "habitat patch/edge/connectivity and seasonal resource-continuity consequence with Ecology organism/outcome authority preserved"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -773,7 +776,8 @@
         "read effective 3D rootable soil continuity and installation → establishment → mature assemblage roles, competition, failure/substitution resilience and management trajectory",
         "bind soil investigation/sampling to the actual rooting/compaction/drainage/chemistry/contamination design question and read installed soil after trafficking/placement/decompaction",
         "read material trees by delivered/rootball/trunk-flare/planting-level/root-zone/drainage/support/watering/protection state and establishment trajectory beyond survival",
-        "map naturalization/self-seeding/vegetative spread as source population → dispersal/spread path → receiving habitat/maintenance boundary → acceptable recruitment zone → escape/invasiveness trigger → containment/removal response"
+        "map naturalization/self-seeding/vegetative spread as source population → dispersal/spread path → receiving habitat/maintenance boundary → acceptable recruitment zone → escape/invasiveness trigger → containment/removal response",
+        "map applicable organism/group habitat source/refuge → movement/stepping/edge → foraging/nesting resource → seasonal gap/disturbance → receiving habitat; attack edge pressure and phenology/resource gaps without claiming ecological outcome"
       ],
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent Landscape Architecture professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -1161,7 +1165,8 @@
         "root zone",
         "foundation/base",
         "maintenance route",
-        "construction sequence"
+        "construction sequence",
+        "tree root-plate/rootable-zone/trunk/mature-canopy interface with structures and occupied/service targets while Arboriculture risk and Structure capacity authority remain owner-native"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -1169,7 +1174,8 @@
       "required_readback": [
         "overlay root/utility/foundation/drainage zones",
         "walk maintenance/removal routes",
-        "review sequence before concealment/backfill"
+        "review sequence before concealment/backfill",
+        "read consequential tree–structure conditions across rootable/root-plate, trunk/canopy, foundation/retaining/roof/deck/façade/overhead target, construction root loss, future growth/wind, inspection/pruning and eventual removal/replacement access without inferring Arboriculture failure risk or structural capacity"
       ],
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent Landscape Architecture professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",

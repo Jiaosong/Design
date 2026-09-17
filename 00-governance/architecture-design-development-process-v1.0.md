@@ -425,6 +425,12 @@ For each path record, as applicable:
 
 Attack evacuation versus incoming-responder flow, accessible route versus service/furniture occupation, and after-hours access versus protected-zone conflicts where applicable. Architecture may reserve/cohere geometry and expose contradictions; Fire / Accessibility retain compliance authority.
 
+For compartmentation and fire/smoke-separation interfaces, read the architectural boundary as a **continuous three-dimensional construction**, not only a plan polygon. Trace the intended barrier across floor/soffit/roof and facade junctions, doors and glazing, shafts/risers, ceiling or raised-floor voids, movement joints and service penetrations that materially interrupt or terminate the boundary.
+
+At each selection-critical opening or junction, expose the architectural geometry needed by the Fire / specialist solution: wall/lining build-up and support, frame/reveal depth, door or shutter swing/hold-open state, glazing/support zone, head/soffit closure, facade-edge or cavity relation, access for installation/inspection and any movement/tolerance that can break continuity. A nominal compartment line is not architecturally consumable when the actual ceiling, facade, door, shaft or penetration detail leaves the boundary unresolved.
+
+Architecture owns spatial continuity, opening/door/shaft geometry, buildability and coordination consequences. Fire/Life-Safety and relevant product/specialist owners retain fire strategy, rating, tested-system applicability, penetration/firestop specification, smoke-control criteria, inspection and statutory compliance authority.
+
 `COMPLIANT-LOOKING FRAGMENTS ≠ CONTINUOUS ROUTE`.
 
 ## 13｜ADD-09 Service, hygiene, supervision and security
@@ -523,6 +529,8 @@ For every materially occupied or technically congested zone, check as applicable
 - preserve the buildable architectural geometry required by specialist performance: cavity/build-up depth, support zone, falls, upstands/returns, access, tolerances and junction geometry; Envelope/Building Physics/Fire owners retain their criteria, calculations, tests and approvals;
 - test installation and repair sequence before closing critical envelope details: substrate availability, membrane/insulation continuity, frame/anchor access, flashing/sealant installation, temporary weather protection, inspection before concealment and later replacement must be physically possible;
 - where a mockup/test is required by the controlling owner, bind the tested configuration to the exact detail/material/revision; visual similarity does not validate a changed joint, substrate, fixing, sealant path or movement condition;
+- where facade/window-wall support is material, trace the physical support relation through the actual edge/detail: primary structure/substrate → secondary support or frame → bracket/anchor/fixing zone → facade/window component, including adjustment, movement, installation and replacement access. Architecture must reserve the spatial build-up and expose how the support zone interacts with insulation, fire/smoke barriers, waterproofing/drainage paths, internal finishes, ceiling/soffit edges and usable room geometry;
+- do not treat a generic slab-edge or mullion line as a resolved support interface. Read selection-critical sill/head/jamb, slab-edge/spandrel, parapet/canopy and heavy-panel/window conditions where load introduction, eccentricity, movement or anchor access can force a thicker edge, changed opening, visible bracket/reveal, interrupted insulation/fire barrier or maintenance conflict. Structural and Envelope/facade specialists retain load, anchor, member, product and performance design authority; Architecture resolves only the geometric, spatial and buildability consequence within its professional claim ceiling, and emits any resulting Design Quality consequence / OPEN item to R-D for its own readback and disposition; the ADD stage does not close the mapped DD/DQ relation;
 - movement / deflection / construction tolerance where flush, brittle, continuous, waterproof or tightly aligned architectural details cross structural or envelope movement;
 - acoustic/privacy consequences of transfer grilles, ducts, return-air paths, penetrations, access panels and lightweight closures;
 - future isolation / commissioning / inspection access where the system cannot be accepted or maintained without opening finished architecture.
@@ -590,6 +598,12 @@ For solar / thermal behavior, distinguish at least:
 For natural / mixed-mode ventilation claims, Architecture must expose opening location/area logic, flow path, inlet/outlet relation, user/control assumption, noise/security/weather constraints and the mechanical fallback interface. Engineering airflow/performance remains with the relevant environmental/MEP owner.
 
 For acoustics, use **source → path → receiver** reasoning. Identify material airborne/impact/equipment/external sources, sensitive receivers, flanking paths, door/glazing/ceiling/duct interfaces and the spatial separation / buffer / enclosure move that follows. Adding absorptive finishes cannot substitute for missing isolation or zoning logic.
+
+Where acoustic separation is material, resolve the architectural detail as a network of **direct + flanking paths**, not a wall rating in isolation. Trace plausible transmission around or through the separating construction via continuous slabs/structure, facade or mullion zones, ceiling/raised-floor voids, doors/glazing, junctions, back-to-back boxes, transfer-air/service openings and lightweight return paths that can bypass the nominal partition.
+
+For each controlling junction, show the architectural consequence needed to preserve the specialist strategy: partition termination and support, slab/soffit relation, ceiling/plenum discontinuity or closure, facade perimeter relation, door/frame/seal geometry, service-zone routing and access for installation/inspection. A high-performing separating element does not close the room-to-room claim if an untreated flank dominates the actual assembled path.
+
+Architecture coordinates room boundaries, junction geometry and buildability and must reopen zoning/detail decisions when the specialist acoustic route requires a spatial change. Acoustics specialists retain source data, performance criteria, calculation/test method, product/assembly rating and compliance verdict.
 
 For rain, snow, ice, wind and outdoor comfort, test the actual entrance, threshold, canopy, court, roof, external route and occupied edge states that influence architectural use. A generic climate diagram is insufficient if it does not alter geometry, material, shelter, drainage, access or operations.
 

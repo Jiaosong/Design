@@ -350,14 +350,16 @@
         "clear zones",
         "door/threshold geometry",
         "privacy boundary",
-        "circulation conflicts"
+        "circulation conflicts",
+        "movable/operable partition open/closed/partial/parked/changeover spatial consequence with specialist performance criteria owner-native"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
       ],
       "required_readback": [
         "measure furnished clear zones and threshold conditions",
-        "review privacy/sightline/queue/service conflicts in plan and view/section"
+        "review privacy/sightline/queue/service conflicts in plan and view/section",
+        "read movable/operable partition open/closed/partial/parked/changeover states against furniture, circulation, accessible/egress geometry, tracks, services/AV, parking and setup/reset sequence"
       ],
       "professional_review_owner": "Interior Design professional owner",
       "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -481,7 +483,8 @@
         "task-cycle ergonomic envelope",
         "usable storage capacity and replenishment/parking state",
         "FF&E site-fit tolerance, logistics and installed-fit consequence distinct from catalog/procurement acceptance",
-        "inclusive spatial/product fit and simultaneous-use clearance consequence with Accessibility/clinical/ergonomic criteria owner-native"
+        "inclusive spatial/product fit and simultaneous-use clearance consequence with Accessibility/clinical/ergonomic criteria owner-native",
+        "inventory replenishment loop, point-of-use/bulk storage, staging/parking and overflow spatial consequence while stock policy/quantity/rotation remains Operations/specialist-owned"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -491,7 +494,8 @@
         "test reach/posture/transfer/service access using bounded human evidence",
         "test full task cycle and body+object operating envelope; derive usable storage from actual object classes/internal fittings/access/replenishment rather than external cabinet volume",
         "read procurement-critical FF&E against operating/assembled envelope, actual site irregularity, delivery/assembly path, adjustment mechanism and sample-unit/site-measure hold point",
-        "test task-specific anthropometric variability and simultaneous-use fit across body/reach/vision/mobility-device/carried-object/companion conditions rather than one mannequin profile"
+        "test task-specific anthropometric variability and simultaneous-use fit across body/reach/vision/mobility-device/carried-object/companion conditions rather than one mannequin profile",
+        "read operational inventory replenishment from receiving/bulk hold through issue/point-of-use/return-waste, including carts/staging/open storage/full-stock states and protected clear zones"
       ],
       "professional_review_owner": "Interior Design professional owner",
       "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -882,7 +886,8 @@
         "control scene",
         "use zone",
         "environmental condition",
-        "room-acoustic versus isolation/privacy boundary and flanking-path detail"
+        "room-acoustic versus isolation/privacy boundary and flanking-path detail",
+        "perimeter thermal/contact-material use-position consequence while MEP/Envelope retain thermal/airflow/condensation performance authority"
       ],
       "content_projection_requirements": [
         "project/report representation must show evidence, uncertainty, open specialist authority and actual design consequence without converting support graphics into proof"
@@ -891,7 +896,8 @@
         "review actual/mockup lighting/material relation where material",
         "trace acoustic/privacy source-path-receiver consequences",
         "inspect thermal/air-movement implications for use zones",
-        "separate room-acoustic treatment from isolation/privacy and read direct/flanking paths through doors, glazing, plenum, ducts, penetrations and access panels"
+        "separate room-acoustic treatment from isolation/privacy and read direct/flanking paths through doors, glazing, plenum, ducts, penetrations and access panels",
+        "read perimeter/high-contact use positions against owner-supplied seasonal thermal/airflow/radiant conditions, furniture/screens/curtains/emitters and material-touch consequence without inferring MEP/Envelope performance"
       ],
       "professional_review_owner": "Interior Design professional owner",
       "independent_review_requirement": "Independent Interior Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",

@@ -682,7 +682,9 @@
         "water residence/stagnation/treatment and condensation-vapour continuity consequence; multi-source electrical protection/selectivity state consequence",
         "sensor/actuator diagnostic discrimination, bounded fault injection/readback and unresolved-ambiguity consequence",
         "service-system acoustic/vibration source-path-receiver and specialist-interface consequence",
-        "drainage air-pressure/vent/transient and pressurized water-hammer interface consequence without process-authored thresholds"
+        "drainage air-pressure/vent/transient and pressurized water-hammer interface consequence without process-authored thresholds",
+        "water pressure-zone, cross-connection/backflow and service-continuity topology consequence across source/booster/regulator/isolation states with competent water-owner acceptance preserved",
+        "refrigerant/fuel-gas/consequential working-fluid containment, leak/relief response and Fire/Safety/Environmental/Refrigeration specialist-interface consequence"
       ],
       "content_projection_requirements": [
         "calculation-schematic-model-schedule consistency",
@@ -700,7 +702,9 @@
         "read potable/process-water hygiene and condensation chains separately from hydraulic/thermal capacity; read electrical protection/selectivity across materially different source/topology states",
         "diagnose performance-critical controls by separating process fault, bad measurement, failed command path and failed final element using plausibility/cross-check, command-versus-proof, override/comms state and recovery evidence",
         "trace consequential acoustic/vibration behavior as source → transmission path → receiver across material operating states, including structure-borne/duct-pipe paths, isolation bridges and abnormal service states",
-        "read gravity drainage pressure/air/transient behavior through simultaneous discharge, stack/branch geometry, trap protection, vent path, surcharge/backwater and receiving outfall; expose pressurized-service transient initiation where material"
+        "read gravity drainage pressure/air/transient behavior through simultaneous discharge, stack/branch geometry, trap protection, vent path, surcharge/backwater and receiving outfall; expose pressurized-service transient initiation where material",
+        "read each material water pressure zone across source/elevation/regulation/booster/cross-connection/backflow/isolation states and degraded service conditions without self-awarding water-safety acceptance",
+        "read consequential refrigerant/fuel-gas/working-fluid containment from inventory/circuit boundary through relief/leak detection/ventilation/interlock/isolation/recovery and post-leak restart while preserving specialist hazard/statutory ownership"
       ],
       "professional_review_owner": "Responsible Building Services / MEP professional owner",
       "independent_review_requirement": "Required engineering/peer/discipline checking according to system risk, complexity, jurisdiction and appointment.",
@@ -1186,7 +1190,8 @@
       "design_language_consequences": [],
       "technical_consequences": [
         "measured design-versus-operation comparison and corrective actions",
-        "bounded performance-gap diagnosis, tuning evidence and affected model/control/interface reopen"
+        "bounded performance-gap diagnosis, tuning evidence and affected model/control/interface reopen",
+        "performance-observability chain from physical variable through sensor/meter boundary, timebase/data quality and diagnostic use with Measurement/Calibration and controls-owner boundaries preserved"
       ],
       "content_projection_requirements": [
         "separate design prediction, commissioned baseline, measured result, uncertainty and causal inference"
@@ -1195,7 +1200,8 @@
         "actual trend/meter/fault/maintenance data",
         "controls state",
         "user/operator evidence where applicable",
-        "diagnose performance gaps across occupancy/weather/configuration/controls/balancing/maintenance/data-quality/model/defect hypotheses before causal attribution"
+        "diagnose performance gaps across occupancy/weather/configuration/controls/balancing/maintenance/data-quality/model/defect hypotheses before causal attribution",
+        "read decision-critical performance evidence as question → physical variable → sensor/meter boundary/location → sampling/event/timebase → aggregation/derived value → quality/validity → retained record → diagnostic use; preserve KPI boundary, synchronization and missing-data treatment"
       ],
       "professional_review_owner": "Building Services / MEP professional owner with FM/controls/energy participation as applicable",
       "independent_review_requirement": "Independent measurement/analysis review when consequential performance claims or contractual/statutory outcomes depend on it.",
