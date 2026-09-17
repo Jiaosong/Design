@@ -1,0 +1,172 @@
+{
+  "candidate_id": "OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE11-GIT-SYNC-20260917",
+  "state": "EV3_EVAL_PASSED",
+  "target_class": "CROSS_DOMAIN_PROFESSIONAL_CONTENT_GIT_CANONICAL_SYNC",
+  "target_owner": "Existing professional-domain owners plus GitHub repository persistence/readback surface",
+  "target_ref": "Git-canonical persisted bytes for the exact Stage-11 16-file professional-content candidate",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE11_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406",
+  "baseline": {
+    "current_version_or_revision": "PR #646 candidate branch based on origin/main@985bacb3a7641d837a6df70a88015765a6f5e684; Stage-11 local worktree candidate is EV4 on manifest 49cd41a8...",
+    "source_hash_or_commit": "473b27871edb452efbe6e003c6d4e2a5ab9aabdc",
+    "frozen_at": "2026-09-17T00:08:00+00:00"
+  },
+  "trigger_evidence": [
+    "GitHub synchronization exposed platform line-ending normalization between reviewed Windows worktree bytes and committed Git blob bytes.",
+    "Direct Git-blob recomputation of the Stage-11 16-file target produced manifest sha256:0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f rather than local-worktree manifest sha256:49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406.",
+    "Exactly three tracked Markdown carriers differ; each predecessor worktree byte sequence becomes the committed Git blob exactly by CRLF-to-LF normalization and no semantic text change."
+  ],
+  "hypothesis": "The Git-persisted Stage-11 candidate is semantically identical to the independently reviewed local Stage-11 candidate and differs only by repository line-ending normalization in three tracked Markdown files.",
+  "mutation_scope": {
+    "summary": "No design/process content mutation. Record the 16-file Git-canonical byte identity used by GitHub/fresh clones while preserving the local Stage-11 EV4 manifest as immutable predecessor provenance.",
+    "candidate_file_count_excluding_this_record": 16,
+    "candidate_manifest_sha256": "0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f",
+    "candidate_manifest_algorithm": "SHA256 over committed Git blob bytes; aggregate stream over sorted UTF-8 paths using path + REAL NUL + lowercase content SHA256 ASCII + REAL LF.",
+    "immediate_predecessor_file_sha256": {
+      "00-governance/architecture-design-development-process-v1.0.md": "034d70f8d8852a868af27e29e18f0e8a290277b7431d49449730bd24980d9233",
+      "00-governance/building-services-mep-design-process-v1.0.md": "294e07f6983bbf9fd1b178da01efcc6df496d6f7abdef121c591b6c599dbc4c5",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "49db82a9e9f1e40736c79ded94032724569d4d23044c2b4116e95af1d27a7fb7",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "f862fab28514d13d84b6135b755a4289025f9e77de4aefbf923b2e8680eed75c",
+      "00-governance/interior-design-development-process-v1.0.md": "30d09cce5e7d35b874131a72d28750c6d3cd5ff3a2ac8c1214294df69b6e98a1",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "89afe4adf172916d09c34af3ab3896549663fd410d9c8f35166b87da80ef83c4",
+      "00-governance/lighting-design-development-process-v1.0.md": "85702db314d637c0bfba85993ef236202624b9a608069727751dd55326626d48",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "bde6eb9f122253be81b944835b6f3c0e4e621f85fa118f160a919ff80538839f",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "87fa36a74c64b0fcf9e5c00c537232c452852e25bcbfaac83c50c14b7aa5abb2",
+      "00-governance/schemas/interior-design-process.v1.json": "dd2d7237c1dc8171d0daffa14f19a9f2fcd917f93fa6e54077e1be30f92547d1",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "ff582be91077de0cbcebad63b903710cac5ce4a740658b6088923e9b240e0fa8",
+      "00-governance/schemas/lighting-design-process.v1.json": "dd27ac69ea7826b182a6be81fcc663289f7aab2e0659fb53c161335e3c0a9755",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "dfd1ac99dfbf430817966c4a25514a43f69243791a896ba1f5e26f981c85615f",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "6e62b0a3a3c32d7b7ffc8375d65721a8f722e4b4143b41ef6afcda56785dea16",
+      "00-governance/structural-engineering-design-process-v1.0.md": "6b4c4cb4ec636dceb49630ede9b76dc87befa1d07e7de654350af0b003d607ff",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "8fa3b9ee295ce9ede845d04cef743d218d44ce59da0b7a83a9717735c8c17a74"
+    },
+    "normalization_delta": [
+      {
+        "path": "00-governance/architecture-design-development-process-v1.0.md",
+        "predecessor_worktree_sha256": "034d70f8d8852a868af27e29e18f0e8a290277b7431d49449730bd24980d9233",
+        "git_blob_sha256": "2a18923bab0841d1a870e709ed3a3f05c6e61bec5d5283d34695bf598cb72d1d",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      },
+      {
+        "path": "00-governance/building-services-mep-design-process-v1.0.md",
+        "predecessor_worktree_sha256": "294e07f6983bbf9fd1b178da01efcc6df496d6f7abdef121c591b6c599dbc4c5",
+        "git_blob_sha256": "eee534fd4c3d8ccd95ecffeef5311d250f3eceb76c99a3fa52cc37400edeb3d9",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      },
+      {
+        "path": "00-governance/structural-engineering-design-process-v1.0.md",
+        "predecessor_worktree_sha256": "6b4c4cb4ec636dceb49630ede9b76dc87befa1d07e7de654350af0b003d607ff",
+        "git_blob_sha256": "d88a3a4c06a0ed6818685d58de10ba7de1e3da4fdb565f8095327a0fe62c082f",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      }
+    ],
+    "explicit_exclusions": [
+      "No professional prose, machine stage semantics, validator logic, runtime layer, state family or owner boundary is changed.",
+      "No Stage-11 local EV4 record or manifest is rewritten.",
+      "No Current adoption, project exercise, Design KEEP, Integration PASS, Knowledge promotion or Notion sync is claimed."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f",
+    "files": {
+      "00-governance/architecture-design-development-process-v1.0.md": "2a18923bab0841d1a870e709ed3a3f05c6e61bec5d5283d34695bf598cb72d1d",
+      "00-governance/building-services-mep-design-process-v1.0.md": "eee534fd4c3d8ccd95ecffeef5311d250f3eceb76c99a3fa52cc37400edeb3d9",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "49db82a9e9f1e40736c79ded94032724569d4d23044c2b4116e95af1d27a7fb7",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "f862fab28514d13d84b6135b755a4289025f9e77de4aefbf923b2e8680eed75c",
+      "00-governance/interior-design-development-process-v1.0.md": "30d09cce5e7d35b874131a72d28750c6d3cd5ff3a2ac8c1214294df69b6e98a1",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "89afe4adf172916d09c34af3ab3896549663fd410d9c8f35166b87da80ef83c4",
+      "00-governance/lighting-design-development-process-v1.0.md": "85702db314d637c0bfba85993ef236202624b9a608069727751dd55326626d48",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "bde6eb9f122253be81b944835b6f3c0e4e621f85fa118f160a919ff80538839f",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "87fa36a74c64b0fcf9e5c00c537232c452852e25bcbfaac83c50c14b7aa5abb2",
+      "00-governance/schemas/interior-design-process.v1.json": "dd2d7237c1dc8171d0daffa14f19a9f2fcd917f93fa6e54077e1be30f92547d1",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "ff582be91077de0cbcebad63b903710cac5ce4a740658b6088923e9b240e0fa8",
+      "00-governance/schemas/lighting-design-process.v1.json": "dd27ac69ea7826b182a6be81fcc663289f7aab2e0659fb53c161335e3c0a9755",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "dfd1ac99dfbf430817966c4a25514a43f69243791a896ba1f5e26f981c85615f",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "6e62b0a3a3c32d7b7ffc8375d65721a8f722e4b4143b41ef6afcda56785dea16",
+      "00-governance/structural-engineering-design-process-v1.0.md": "d88a3a4c06a0ed6818685d58de10ba7de1e3da4fdb565f8095327a0fe62c082f",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "8fa3b9ee295ce9ede845d04cef743d218d44ce59da0b7a83a9717735c8c17a74"
+    }
+  },
+  "evaluation": {
+    "regression_refs": [
+      "All 16 Git blob hashes were recomputed from the PR branch and aggregate to the declared manifest.",
+      "Only Architecture, Building Services/MEP and Structural body carriers differ from the local Stage-11 bytes; for each, CRLF-to-LF normalization reproduces the Git blob exactly.",
+      "The other 13 target files are byte-identical to the Stage-11 reviewed hashes.",
+      "PR #646 head b263eb42167d29b9ca0b80708cccff9f04a5b3b6 passed AIG, control-plane, anti-pollution, runtime-contract and Vercel; implementation blobs are unchanged by later record-only commits.",
+      "Stage-11 semantic regressions remain 145/145 full control-plane and 40/40 targeted Professional Domain PASS on the same content."
+    ],
+    "acceptance_thresholds": [
+      "Git-canonical 16-file manifest recomputes exactly in a repository/fresh-clone representation.",
+      "Every line-ending-different file is proven byte-equivalent after CRLF-to-LF normalization and has no semantic text change.",
+      "No Stage-11 machine/professional content requirement is removed or reordered.",
+      "Current architecture/professional-domain adoption states remain unchanged."
+    ],
+    "metrics": {
+      "target_files": 16,
+      "git_blob_hash_changes_vs_local_worktree_manifest": 3,
+      "semantic_content_changes": 0,
+      "stage_count_delta": 0,
+      "runtime_layer_delta": 0,
+      "schema_family_delta": 0
+    },
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "no_false_promotion": true
+  },
+  "independent_review": {
+    "reviewer_id": "UNRESOLVED_PENDING_INDEPENDENT_REVIEW",
+    "independence_state": "PENDING",
+    "review_input_revision": "candidate-manifest-sha256:0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f",
+    "verdict": "PENDING",
+    "blocking_findings": [],
+    "review_observed_at": "UNRESOLVED",
+    "review_notes": []
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "rollback": {
+    "previous_pointer": "predecessor Stage-11 local-worktree EV4 manifest sha256:49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406",
+    "rollback_action": "Preserve the historical Stage-11 local EV4 record; this sync record can be discarded without changing any implementation file.",
+    "rollback_test": "Recompute the predecessor manifest against its original Windows worktree bytes and retain the Git canonical record as separate persistence provenance."
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent Git-canonical readback and any later separately authorized adoption.",
+    "regression_signals": [
+      "any Git blob content differs beyond line-ending normalization from Stage-11 reviewed semantics",
+      "any of the 13 unchanged targets changes unexpectedly",
+      "Current/professional-domain adoption state changes without authorization",
+      "fresh-clone manifest does not reproduce the declared Git-canonical hash"
+    ],
+    "reopen_rule": "Any signal reopens only the Git-canonical synchronization candidate; the historical Stage-11 local EV4 record remains immutable.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "EV4_INDEPENDENT_REVIEWED",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "CURRENT_PROFESSIONAL_PROCESS_ADOPTION",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "LIVE_NOTION_EQUIVALENCE",
+    "CURRENT_KNOWLEDGE",
+    "PROJECT_PROMOTION"
+  ]
+}
