@@ -1,7 +1,7 @@
 {
   "schema": "oleander.notion-current-architecture-binding.v1",
   "version": "1.0",
-  "status": "ACTIVE_CURRENT_MIRROR",
+  "status": "STALE_MIRROR_REVALIDATION_REQUIRED",
   "source_authority_version": "v1.1.1",
   "decision_date": "2026-08-18",
   "current_root_authority": {
@@ -109,7 +109,8 @@
     "title": "OLEANDER Current System Architecture Control Map v2.1｜当前系统架构控制图",
     "page_id": "3dcb86be-5c47-8157-bb15-e2ba605e2067",
     "canonical_id": "MTH-OLEANDER-ARCHITECTURE-CONTROL-001",
-    "state": "CURRENT_DEFAULT_VERIFIED_ACTIVE_VALID",
+    "state": "STALE_FOR_NEW_CROSS_PLATFORM_CURRENT_CLAIM",
+    "historical_verified_state": "CURRENT_DEFAULT_VERIFIED_ACTIVE_VALID_AT_LAST_LIVE_READBACK",
     "content_level": "L5｜Knowledge Object",
     "knowledge_role": "METHOD",
     "role": "NOTION_CURRENT_READER_CONTROL_MIRROR",
@@ -118,6 +119,9 @@
     "github_machine_carrier_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
     "architecture_implementation_baseline_sha": "f78fad3f16fe0b458360708b27c05efaa6172609",
     "last_live_readback": "2026-09-15T14:23:10Z",
+    "stale_detected_against_github_baseline": "origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "stale_reason": "The last live cross-platform architecture readback verified GitHub baseline f78fad3f16fe0b458360708b27c05efaa6172609. The Current GitHub v2.1 architecture carriers have materially advanced since that baseline, so this mirror cannot support a new cross-platform CURRENT claim until live Notion + GitHub readback is refreshed. The 2026-09-15 readback remains valid historical evidence of what was verified then.",
+    "next_action": "LIVE_NOTION_AND_GITHUB_ARCHITECTURE_MIRROR_REVALIDATION_REQUIRED",
     "parallel_master_forbidden": true
   },
   "current_sync_date": "2026-09-15"

@@ -143,6 +143,61 @@ Manufacturer data proves the stated manufacturer/equipment conditions only. It d
 
 ---
 
+## 4.5｜Building Services / MEP Professional Stage Body / Title Contract
+
+Every material `BSP-*` stage instance must remain recoverable as a professional building-services engineering body before it is compressed into a board, deck, coordination view, schedule extract or other presentation. The existing stage-specific sections below remain the professional authority; this cross-stage contract normalizes what the body must make findable without replacing BSRIA/CIBSE-aligned responsibilities, individual system-track semantics or commissioning continuity.
+
+The stage-body title must identify the real system/stage decision, not merely the document type. Use a form such as:
+
+`<project> | <BSP stage id + stage name> | <system / performance decision / cycle / baseline>`.
+
+Titles such as `Analysis`, `Concept`, `Design Development`, `Planning`, `Review` or `Final` are incomplete by themselves because they do not identify the bounded services decision being made.
+
+For each material stage, the body must expose these semantic responsibilities under building-services-appropriate headings:
+
+| Shared semantic responsibility | Building Services / MEP body meaning |
+|---|---|
+| Professional Question / Scope | the servicing, performance, system, track, package, commissioning or in-use question and responsibility boundary being addressed |
+| Current Condition / Problem | current demand, use/occupancy, environmental condition, utility, existing-system, load, capacity, operation, control, installation or performance problem/uncertainty |
+| Authority / Knowledge / Evidence Inputs | current Basis of Building Services Design inputs, task/claim-scoped knowledge mounts, standards, climate/utility data, manufacturer evidence, surveys, measurements, assumptions and evidence authority state |
+| Professional Criteria / Intent | required internal/external conditions, load/capacity basis, IAQ/thermal/water/power performance, resilience, maintainability, acoustic/vibration, energy, controls, commissioning and acceptance criteria as applicable |
+| Development / Analysis / Comparison / Mechanism | actual load/demand development, system option/topology, plant/distribution sizing, hydraulic/electrical/air-side reasoning, controls sequence, commissioning method, measured-performance comparison or other stage-appropriate engineering mechanism |
+| Cross-domain Interfaces | material Architecture, Structure, Fire, Envelope, Interior, Civil, utilities, specialist, contractor, FM/operations and commissioning dependencies and their current maturity/responsibility boundary |
+| Native Output / Source of Truth | authoritative calculations, schematics, models, schedules, specifications, controls logic, commissioning/test records, trend/meter data or other required native source for the claim |
+| Actual Readback / Finding | what the current native design, coordination, test, commissioning or measured operational evidence actually shows, distinguished from producer intent and interpreted as a bounded MEP finding |
+| Failure / OPEN / does_not_prove | unresolved loads/conditions, coordination defects, missing access, failed tests, control/commissioning issues, unmeasured outcomes, excluded scope and explicit limits on what current evidence does not prove |
+| Verdict / Claim Ceiling / Reopen / Next Action | bounded MEP disposition, current claim ceiling, reopen triggers and the next engineering, coordination, testing, commissioning or in-use action |
+
+The visible body may combine responsibilities where the system/stage naturally does so, but none may disappear silently when material to the claim. `NOT_APPLICABLE` requires a reason; omission is not evidence of non-applicability.
+
+Knowledge remains mounted by reference. The MEP body may state how a mounted standard, manufacturer source, measured dataset or method affects the present load, topology, control, commissioning criterion or decision, but it must not copy reusable canonical Knowledge bodies or re-award KI/OE state.
+
+The body must distinguish the evidence chain:
+
+```text
+INTENDED SERVICES / PERFORMANCE POSITION
+→ IMPLEMENTED IN NATIVE ENGINEERING / CONTROL / COMMISSIONING SOURCE
+→ OBSERVED / TESTED / COMMISSIONED / MEASURED READBACK
+→ INTERPRETED MEP FINDING
+→ BOUNDED PROFESSIONAL VERDICT
+```
+
+Hard boundaries:
+
+```text
+PROFESSIONAL BODY STRUCTURE ≠ CANONICAL KNOWLEDGE BODY
+PROFESSIONAL PROSE ≠ NATIVE MEP SOURCE
+NATIVE MEP SOURCE EXISTS ≠ MEP PROFESSIONAL PASS
+DESIGN CALCULATION ≠ MEASURED OPERATIONAL PERFORMANCE
+COMMISSIONING RECORD EXISTS ≠ WHOLE-SYSTEM / WHOLE-BUILDING PASS
+MACHINE BODY-COMPLETENESS PASS ≠ ENGINEERING JUDGMENT
+MEP PROCESS PASS ≠ DESIGN KEEP
+```
+
+Machine validation may detect missing title/semantic coverage, missing native/readback references and contradictory `PASS + MISSING` states. It may not infer system adequacy, commissioned performance, statutory/certification acceptance, measured building performance or Design KEEP.
+
+---
+
 ## 5｜Parallel MEP responsibility tracks
 
 The process contains multiple professional tracks that may have different responsible engineers / specialists and different evidence closure.
@@ -195,6 +250,28 @@ SENSOR
 Laboratory gases, commercial kitchen services, pool systems, medical systems, data-centre systems, industrial utilities and other specialist systems trigger their own applicable sources, responsible specialists and acceptance boundaries.
 
 One track's PASS does not imply another track's PASS.
+
+### 5.8｜Track-level engineering decision floor
+
+Each triggered MEP track must convert its core chain into an explicit engineering decision record before a promotion-relevant `PASS`. A one-line schematic, equipment schedule or discipline label is not enough. At the current claim ceiling record, as applicable:
+
+- **HVAC / Environmental Systems** — internal/external design conditions; occupancy/operation basis; sensible/latent/load and diversity basis; outdoor-air / IAQ / pressure relationships; zoning; plant/distribution/terminal duty; part-load and failure behavior; condensation, acoustic/vibration and access consequences; controls, measurement and commissioning points;
+- **Plumbing / Public Health / Drainage** — demand/diversity and source condition; pressure/temperature/water-quality basis; storage/recovery/isolation; distribution-loss/recirculation implications where relevant; drainage/vent/pumping/invert constraints; hygiene/backflow/leak/access boundaries; waterproofing/Structure/Architecture interfaces; test/commissioning method;
+- **Electrical Power** — connected/diversified demand; source/capacity/resilience; distribution topology; protection/coordination/earthing basis; voltage-quality/drop and fault assumptions as applicable; emergency/life-safety dependencies; containment/heat/access; metering; test/commissioning state;
+- **Fire / Life-Safety MEP** — assigned system duty, cause/effect and dependency inputs trace to the Current Fire owner/authority; Building Services resolves its system/interface package but does not self-award Fire approval;
+- **Vertical Transportation** — traffic/use duty; accessibility/rescue/fire interface; shaft/pit/headroom and structural loads; power/control/heat/replacement/maintenance implications; acceptance and commissioning evidence;
+- **Controls / BMS / Metering** — every consequential mode defines trigger/input, logic/setpoint, command, proof/feedback, alarm, manual override, fail/fallback state, trend/meter evidence and acceptance test;
+- **Specialist Services** — process duty, utilities/media quality, containment/segregation, hazard/failure mode, specialist equipment envelope, maintenance/replacement path, control/monitoring and acceptance boundary appropriate to the specialist system.
+
+For every track, show at least one governing **peak / worst-case** and one relevant **part-load / degraded / failure state** when those states could change sizing, safety, comfort, resilience or commissioning. A system that works only at a nominal design point is not demonstrated as an operational system.
+
+Where a quantitative criterion is material, preserve `criterion / value or range / unit / source / applicability / tolerance or acceptance method`. This process does not invent universal MEP values; they come from the Current brief, applicable engineering sources, manufacturer evidence, utility conditions and responsible professional decision.
+
+Track-level closure should answer:
+
+`demand / condition → calculation or sizing basis → topology → spatial/installation consequence → control/failure behavior → test/commissioning method → actual readback → bounded verdict`.
+
+One track cannot borrow another track's closure. A coordinated model cannot substitute for missing engineering logic inside a triggered track.
 
 ---
 
@@ -290,6 +367,37 @@ Every material control sequence identifies:
 - trending / metering;
 - acceptance test.
 
+#### Controls sequence engineering depth
+
+A points list is not a controls design. For each consequential sequence, preserve the executable relation:
+
+`operating state / trigger → prerequisites → priority / arbitration → sensed input → validity / plausibility → setpoint / reset logic → command → actuator / equipment response → proof / feedback → alarm / fallback → manual override → recovery / reset`.
+
+Review as applicable:
+
+- competing commands and priority when fire, emergency, frost, occupancy, demand-limit, local override, schedule and operator actions overlap;
+- sensor location, range, accuracy/calibration or plausibility needs where the control decision depends on the measurement;
+- deadband, delay, hysteresis, minimum-on/off time, ramp/rate limit or sequencing needed to avoid hunting, short cycling or unstable handoff;
+- lead/lag and duty/standby rotation with clear failure detection and switchover behavior;
+- safe/fallback state for communication loss, sensor failure, actuator failure, power restart or unavailable subsystem;
+- proof-of-operation logic that distinguishes command sent from physical response achieved;
+- reset / recovery after alarm, emergency override, network restart or maintenance isolation;
+- manual override visibility, authority, persistence/timeout and return-to-auto behavior;
+- trend points / sampling / retention sufficient to diagnose the sequence being claimed;
+- commissioning script coverage for normal, transition, degraded, override and recovery states actually relied upon by design.
+
+#### Sensor / actuator fault-diagnosis depth
+
+When a control loop is relied upon for performance or protection, define how the system distinguishes a bad process condition from bad measurement, failed command path or failed final element. Preserve, as applicable: sensor plausibility/range/rate-of-change and cross-check source; command versus position/proof feedback; actuator travel/stiction/saturation/deadband; disagreement between redundant/related sensors; frozen/stale value behavior; local/manual override state; communication/power loss; alarm persistence; diagnostic reset/recovery condition; and the trend points needed to separate these hypotheses.
+
+Do not treat “sensor fault” or “actuator fault” as a single fallback label when different failure modes drive different safe states. Commissioning should inject or simulate the bounded failure where competent/safe, confirm the expected diagnostic signature, fallback and recovery, and retain unresolved ambiguity as OPEN. Calibration and specialist safety limits remain with their responsible owners.
+
+When Lighting, HCD, Fire, Security or other domains consume the user-visible consequence of a sequence, MEP/controls retains technical execution authority while R-F owns actual interface maturity/disposition.
+
+`POINT EXISTS ≠ CONTROL FUNCTION EXISTS`.
+
+`COMMAND ISSUED ≠ EQUIPMENT RESPONSE PROVED`.
+
 ### 6.5 Design-to-Operational Performance Register
 
 When operational energy / performance is claimed, preserve:
@@ -305,6 +413,18 @@ When operational energy / performance is claimed, preserve:
 - post-occupancy / G9 readback.
 
 A design estimate remains a modelled estimate until measured evidence exists.
+
+#### Performance observability and diagnostic evidence depth
+
+When measured performance, fault diagnosis or tuning is in claim, design the observability chain before relying on BMS / meter data:
+
+`performance question → physical variable → sensor / meter boundary and location → sampling / event / timebase → aggregation or derived value → quality / calibration / validity state → retained trend / event → comparison or diagnostic use`.
+
+Distinguish command / setpoint, equipment proof, local sensor value, supervisory trend and independently measured process outcome; they are not interchangeable evidence.
+
+For each decision-critical derived KPI or energy / performance comparison, preserve numerator / denominator, meter boundary, excluded loads / flows, timestamp / time-zone and synchronization basis, missing-data treatment, resets / rollovers / substitution, and whether the available points can discriminate the rival causes being investigated. A dense point list can still be unobservable if several failure mechanisms produce the same recorded signature.
+
+Metering / controls owners retain device and data-platform technical truth; Measurement / Calibration owners retain measurement competence where triggered. Building Services defines the system variables and diagnostic evidence it needs; this process installs no universal accuracy, sampling or retention threshold.
 
 ---
 
@@ -392,6 +512,25 @@ BSRIA BG 6 preparation / brief responsibilities; CIBSE Code M preparation-and-br
 - establish MEP Responsibility / Deliverables Matrix;
 - establish post-occupancy / performance review targets where applicable.
 
+### Existing-system reuse / capacity evidence depth
+
+Where an existing service/system is proposed for retention, extension or reuse, establish an **as-found engineering baseline** before treating nameplate data, old drawings or previous schedules as available capacity.
+
+Bind as applicable:
+
+- observed configuration/revision and equipment identity/condition;
+- actual operating schedule/load and known peak/degraded conditions;
+- current control/setpoint state and isolation topology;
+- distribution sizes/routes and accessible valve/damper/protection settings where material;
+- utility/source condition and known constraints;
+- recent maintenance, alarm, fault and repair history;
+- trend / meter / spot measurement / functional-test evidence used to answer the reuse question;
+- instrument / data quality and inaccessible / unsampled scope.
+
+Separate **installed / nameplate capacity** from demonstrably available capacity under the Current design condition. Degradation, fouling, leakage, imbalance, failed controls, restricted heat rejection, changed source conditions or deteriorated equipment may reduce usable duty long before nameplate capacity is reached.
+
+Reuse remains conditional or `HOLD` where evidence needed to establish duty, safety, hygiene, resilience or remaining serviceability is unavailable. Existing-system observation does not self-award equipment certification, electrical/fire approval or concealed-condition truth.
+
 ### Native outputs
 
 - Basis of Building Services Design v1;
@@ -437,11 +576,36 @@ BSRIA BG 6 Concept responsibilities plus early commissioning planning. BG 6 incl
 - test maintenance / replacement / isolation implications;
 - compare resilience and failure-state behavior.
 
+When resilience depends on standby generation, UPS/storage, multiple utilities, duty/standby plant or staged restoration, define the **service-restoration dependency chain**, not only surviving capacity. Record initiating loss, detection/transfer condition, source availability, essential auxiliaries, controls/network power, permissives/interlocks, restart order, load pickup/staging, minimum-off/recovery constraints, proof of restored duty, failed-start branch, manual intervention and return-to-normal sequence. Identify services that must recover before others can start and loads intentionally shed/deferred.
+
+Test whether a nominally redundant system has hidden common dependencies such as one controls network, fuel/water source, cooling/ventilation service, battery/starting system, transfer path, shared sensor or operator action. Electrical/Fire/Safety owners retain statutory/protection/emergency authority; MEP records the service sequence and requests the necessary R-F maturity. A standby capacity schedule alone does not prove recoverable service.
+
 ### Option comparison record
 
 Each retained option states:
 
 `demand/load basis → system concept → spatial consequence → energy/performance consequence → control consequence → resilience consequence → commissioning consequence → maintenance consequence → cost/carbon consequence → keep/reject reason`.
+
+### Demand, load and diversity decision depth
+
+Concept selection must expose the **basis behind the demand number**. For every selection-critical load/demand, record as applicable:
+
+- contributing spaces/processes/equipment and whether values are measured, scheduled, manufacturer-derived, code/standard-derived, benchmarked, inferred or assumed;
+- occupancy / operating hours / usage profile / simultaneity basis;
+- diversity or coincidence assumption and the physical/operational reason it applies;
+- sensible/latent, heating/cooling, domestic/process, connected/demand, normal/emergency or other relevant decomposition rather than one opaque total;
+- weather / source / utility / groundwater / supply-state basis where external conditions govern;
+- future allowance, standby/redundancy or resilience reserve and the scenario that justifies it;
+- known uncertainty / range and whether a plausible value change can reverse the selected topology or plant strategy;
+- current stage resolution: bounding estimate, concept calculation, technical design calculation or measured/in-use evidence.
+
+Do not stack unrelated conservative assumptions without reading the combined consequence. Oversizing can create spatial, cost, control, cycling, part-load, acoustic, electrical and commissioning problems; undersizing can create capacity/failure risk. Compare at least one realistic operating scenario and the relevant peak / degraded or growth case where the system choice depends on them.
+
+If diversity or schedule assumptions are copied from another project, they remain assumptions until applicability is established. A familiar factor is not a Current project fact.
+
+`CONNECTED LOAD ≠ COINCIDENT DEMAND`.
+
+`DESIGN PEAK ≠ NORMAL OPERATING POINT`.
 
 ### Native outputs
 
@@ -566,6 +730,49 @@ COORDINATED-SPECIFIC
 
 These are **technical-design resolution states**, not separate universal OLEANDER stages. Responsibility and substitution boundaries must remain explicit.
 
+### Technical calculation / network-model integrity
+
+Detailed engineering calculations must expose the model boundary and governing failure mode. As applicable, preserve:
+
+- system configuration / schematic revision and exact equipment / terminal / fixture set represented;
+- load / demand / flow source and Current design conditions;
+- pipe/duct/cable/network lengths, elevations, fittings, roughness/resistance or equivalent physical parameters where they control result;
+- pump/fan/valve/damper/equipment curve or manufacturer data revision where selection depends on it;
+- control position / diversity / simultaneous-use state represented by the calculation;
+- boundary pressure/temperature/voltage/source conditions and utility assumptions;
+- balance point / index run / critical path / worst case used for sizing;
+- partial-load / minimum-load / minimum-flow / low-demand condition where system behavior can fail away from design peak;
+- sensor/actuator authority and control range when the network requires active regulation;
+- for staged / variable-capacity plant, map the operating envelope by active plant count, speed/capacity state, bypass or minimum-flow path, terminal demand, ambient/source condition and storage state where applicable; identify which controller owns each manipulated variable and where supervisory / local loops can fight;
+- measurement / data uncertainty or tolerance when a narrow margin is being claimed;
+- comparison between calculation, schematic, spatial model/drawing and specified equipment.
+
+For staged or variable-capacity plant, do not stop at one design point and one minimum-load point. Check stage-up / stage-down trigger, persistence / hysteresis, minimum run/off constraints, lead-lag rotation, degraded unit availability, restart after outage and whether the remaining plant/network retains **controllable authority**, not merely nominal capacity. Where reset loops interact—such as plant reset versus terminal authority, pump-pressure reset versus valve authority, or supply-temperature reset versus latent/process constraints—make the priority and failure behavior explicit. A part-load energy result is not accepted when it depends on an unproven sequence or an operating region outside stable equipment/network control.
+
+System-specific review should attack the relevant physics rather than applying one generic “calculation complete” gate. Examples include:
+
+- air systems: pressure path, fan/system interaction, terminal/control authority, leakage, noise and low-flow behavior;
+- where noise/vibration can control system acceptance, trace `source → transmission path → receiver` for each material operating state rather than attaching one equipment sound datum to the room. Preserve equipment speed/stage and duty point; airborne, duct/pipe-borne and structure-borne paths; breakout/regenerated noise where relevant; support/base/flexible-connection/isolation build-up; penetrations/bridges that can short-circuit isolation; terminal/valve/damper flow-noise state; and the receiving room/use/structure condition. Check startup, shutdown, low-load, standby/changeover and abnormal imbalance/misalignment states when they can be more disturbing than design peak. Coordinate acceptance with Acoustics/Structure/Architecture; MEP owns the service-system source/path data it controls, not specialist acoustic PASS;
+- hydronic systems: pressure loss, pump/system curve, valve authority/balance, minimum flow, expansion/pressurization and part-load behavior;
+- refrigerant / fuel-gas / consequential working-fluid systems where in scope: fluid identity and inventory basis; circuit / pressure-zone boundary; occupied / plant / enclosed-space relation; joints/components and relief/discharge route; isolation/recovery provision; leak detection/monitoring where required; ventilation or purge dependency; alarm/shutdown/interlock state; maintenance/recovery access; and post-leak inspection/restart condition. Model the credible design consequence of a leak or relief event without inventing universal concentration, charge or ventilation limits. Fire / Safety / Environmental / Refrigeration specialist owners retain hazard classification, statutory limits and approval; Building Services owns its equipment/network/interface consequences and requests required R-F maturity. Equipment capacity or leak-test PASS alone does not prove the occupied-space, relief-path or recovery claim;
+- domestic/public-health water: demand basis, pressure/temperature, storage/turnover, dead-leg/stagnation, circulation and drainage/vent interfaces where in scope;
+- where water distribution uses multiple pressure zones, boosters, break tanks, pressure-reducing/control valves or alternate sources, map the hydraulic/service boundary by zone: source condition; static/dynamic pressure basis; elevation; regulating/boosting device; cross-connection and backflow-protection boundary; isolation; lowest/highest or otherwise critical outlet; and service state during source/booster/regulator loss or maintenance. Check whether pressure-control or isolation arrangements can create unintended reverse flow, over/under-pressure, loss of downstream service, trapped section or cross-zone dependency when valves/pumps/sources change state. Backflow device selection/acceptance and water-safety criteria remain with the competent plumbing / water authority; Building Services preserves the topology, source state, test/access consequence and reopen condition. Hydraulic adequacy in one normal source state does not prove service continuity or backflow control across all claimed configurations;
+- potable / process-water hygiene where in scope: source condition → storage/turnover → residence/stagnation risk → temperature/treatment regime → circulation/balancing/isolation → low-use/dead-leg state → flushing/commissioning/maintenance evidence; hydraulic capacity and hygienic operation are separate claims;
+- gravity drainage: fixture/load basis, gradients/inverts, venting, backflow/flood/exceedance interfaces and access for cleaning, with civil/site outfall authority preserved;
+- where drainage performance depends on air-pressure or transient behavior, preserve the hydraulic/air path rather than checking gradient alone: simultaneous-discharge scenario; branch/stack geometry and offsets; trap-seal protection dependency; vent/air-admittance route and failure state; positive/negative pressure or surcharge source; pumped-discharge start/stop interaction; downstream restriction/backwater condition; cleanout/relief path; and the receiving sewer/site-outfall boundary supplied by its owner. Where rapid valve/pump changes can create water-hammer or pressure transients in pressurized services, identify the initiating event, wave/pressure consequence, restraint/support/equipment sensitivity and mitigation/test basis under the proper hydraulic/specialist authority; no process-authored pressure or vent threshold is implied;
+- electrical distribution: demand/diversity, voltage drop, fault/protection/selectivity or equivalent safety basis, power quality/harmonic/source implications and emergency/backup states according to responsible scope;
+- controls/communications: data/state ownership, latency/failure/restart behavior, sensor validity and proof rather than command-only logic.
+
+Where water-hygiene temperature, treatment, turnover or flushing criteria are authoritative, bind them to the Current specialist/source rather than process-authored values. Oversized storage/branches, seldom-used outlets, failed circulation or commissioning residue can defeat a hydraulically adequate system.
+
+For condensation-sensitive services, preserve the air/dew-point condition, fluid/surface-temperature basis, insulation/vapour-control continuity, thermal bridges, penetrations/supports/valves, startup/shutdown/intermittent-use states and the consequence/drainage route if condensation occurs. `INSULATED ≠ CONDENSATION CONTROLLED`; reopen on humidity, source temperature, insulation build-up/continuity or operating-state change.
+
+Where protection coordination / selectivity is within Building Services scope, bind the study to the **exact source topology and operating state**: normal source, alternate/emergency source, tie/open-bus state, generator/UPS contribution, transformer/feeder impedance basis and protective-device revision/settings. Check fault clearing and coordination across materially different source states; a setting that coordinates on a strong normal source may not behave equivalently on a weaker alternate source. Identify the protective function relied upon, the upstream/downstream pair, the region where coordination is claimed and any intentional loss of selectivity accepted by the proper Electrical/Safety owner. Device, trip-unit/firmware, cable, transformer, source or setting changes reopen the affected study.
+
+A software calculation that returns a value is not enough. If a result is unexpectedly favorable or sensitive, attack units, defaults, omitted fittings/lengths, simultaneous states, curve selection, boundary conditions and equipment data before accepting it.
+
+`CALCULATION PASSES ≠ NETWORK OPERATES ACROSS REQUIRED STATES`.
+
 ### Native outputs
 
 - technical design calculations / models;
@@ -619,6 +826,31 @@ Technical design closes only within the responsible Building Services scope and 
 - update Commissioning Plan / methodologies and test scripts as design evolves;
 - maintain technical-design change / approval register.
 
+### Installation-readiness and pre-functional quality depth
+
+Before production information is treated as ready for installation / commissioning, read the detailed system as an **installable and inspectable assembly**.
+
+Check as applicable:
+
+- valve / damper / strainer / test-point / sensor orientation and maintenance access;
+- pipe / duct / cable support and restraint responsibility;
+- required fall / invert / air-release / drainage / condensate behavior;
+- insulation / vapour / condensation continuity;
+- firestopping / waterproofing / penetration build-up;
+- equipment base, alignment, flexible connection and vibration interfaces;
+- cable / containment termination and access;
+- identification and isolation boundaries;
+- for maintainable systems, show the isolation boundary needed to inspect, clean, replace or test the item without creating an uncontrolled adjacent-service condition: relevant valves/dampers/disconnects/breakers or other isolation points; upstream/downstream and cross-connection/backfeed paths; stored pressure/thermal/electrical/mechanical energy; drain/vent/bleed or depressurization route; proof-of-isolation point; essential-service consequence; temporary bypass/alternate-service need; and reinstatement/rebalancing/recommissioning step. Where lockout/tagout or permit-to-work is required, Building Services coordinates physical isolability and information needed by the competent safety/operations owner; it does not author universal LOTO procedure or workplace-safety approval. `ACCESSIBLE ISOLATOR ≠ SAFE ISOLATION PROVED`. Reopen when topology, shared service, backfeed path, isolation device or maintenance method changes;
+- flushing / cleaning / pressure / leakage / electrical-test prerequisites;
+- access for balancing, commissioning, inspection and future replacement;
+- which conditions become concealed before required inspection or test.
+
+Replacement readiness must identify the physical removal path, isolation / drain-down / safe-deenergization dependency, lifting/handling assumption, removable panels/doors/coils/modules, adjacent-service conflicts, temporary loss-of-service consequence and whether replacement requires rebalancing, recommissioning, readdressing or restoration of control/setpoint state. `MAINTENANCE CLEARANCE SHOWN ≠ EQUIPMENT REPLACEABLE` when the component cannot actually be extracted or returned to its accepted operating configuration.
+
+Bind each critical item to the Current schematic, calculation, equipment data, control requirement and test / commissioning need it serves. A production model that fits geometrically but prevents inspection, cleaning, balancing, isolation, sensing, maintenance or required pre-functional verification remains `REVISE`.
+
+Where installation sequencing would close a ceiling, riser, shaft, trench or enclosure before a critical test / inspection, define the hold point and evidence required before concealment.
+
 ### Native outputs
 
 - installation / production model and drawings;
@@ -655,8 +887,11 @@ Construction/delivery plus CIBSE Code M on-site commissioning management.
 - review quality / inspection records;
 - assess nonconformities and design impact;
 - update affected design calculations / drawings / controls when field change is accepted;
+- treat each accepted field deviation as a configuration change: bind original design object/revision, observed site constraint, proposed change, affected duty/pressure/flow/voltage/control/fire/acoustic/condensation/access variables, impacted calculations/schematics/models/interfaces, required owner dispositions and exact retest/recommissioning scope;
 - preserve system cleanliness / protection / access prerequisites for commissioning;
 - verify current as-installed configuration basis for testing.
+
+A local reroute or equipment substitution that preserves geometric fit but changes network resistance, protection behavior, sensor location, drainage fall, access, acoustic/vibration condition, condensation risk or controls response must reopen those dependent claims. If work proceeds under a bounded temporary state before full closure, that temporary configuration and operating restriction must be explicit rather than hidden in an RFI narrative.
 
 ### Commissioning execution
 
@@ -689,6 +924,54 @@ DESIGN CALCULATION
 ```
 
 Each closes a different claim.
+
+### Commissioning acceptance evidence threshold
+
+Every test / commissioning result used to close a professional claim must bind, as applicable:
+
+- system / equipment / zone identity;
+- exact as-installed configuration and controls-sequence revision;
+- test preconditions and operating mode;
+- test method / script;
+- instrument / sensor source and calibration or verification state where material;
+- commanded condition / setpoint / simulated input;
+- expected response, acceptance criterion and tolerance from the Current owner source;
+- measured / observed result with units and time/context;
+- witness / responsible party;
+- deviation or failure;
+- corrective action;
+- retest ref / result;
+- remaining OPEN limitation;
+- claim ceiling / `does_not_prove`.
+
+For controls, functional performance and Integrated Systems Test claims, test the material **normal, transition, degraded/fail-safe, alarm/override and recovery** behaviors that the design actually relies on. A single steady-state point, trend screenshot or “command received” observation is insufficient when sequence behavior is in claim.
+
+Deferred / seasonal tests remain `OPEN` and cap the accepted state rather than being inferred from design intent or a previous design-stage calculation. A retest closes only the failed scope actually retested; it does not erase unrelated open deficiencies or make untested operating states pass automatically.
+
+`TEST COMPLETED ≠ ACCEPTANCE CRITERION MET`.
+
+`ONE MODE PASS ≠ SEQUENCE / IST PASS`.
+
+### Design-to-TAB / measured-network reconciliation
+
+Where balancing / regulation closes an air, water or analogous distribution claim, compare measured terminal / branch / system results with the Current design duty and network model at the **same operating/configuration state**.
+
+Record as applicable:
+
+- pump / fan speed or operating point;
+- valve / damper / regulator positions;
+- control mode and active overrides;
+- relevant temperatures / pressures / electrical state;
+- measured flow / pressure / air quantity / terminal result and instrument uncertainty;
+- design target / tolerance source;
+- index / critical path and residual imbalance;
+- system effect of throttling / balancing changes.
+
+A terminal can meet a local target while the network remains unstable, over-throttled, short of control authority or dependent on excessive plant duty. Review the distribution pattern and critical path rather than accepting isolated passing points.
+
+If field balancing requires materially different settings, duty or topology from design, reopen the network calculation / control model and affected interfaces instead of treating the balance report as a silent design change.
+
+`LOCAL TAB PASS ≠ NETWORK DESIGN RECONCILED`.
 
 ### Native outputs
 
@@ -801,6 +1084,31 @@ DESIGN ESTIMATE
 → TUNING / REPAIR / DESIGN LESSON
 ```
 
+### In-use performance-gap diagnosis
+
+Do not jump from measured difference to a design cause. Diagnose the gap across plausible classes:
+
+- changed occupancy / hours / process / plug or specialist loads;
+- weather / utility / source condition different from design assumption;
+- installed equipment or configuration differing from design basis;
+- controls setpoint, schedule, override, sensor, sequence or tuning behavior;
+- balancing / commissioning / valve-damper-setting or distribution issue;
+- envelope / architecture / room-use change affecting the MEP load or control response;
+- maintenance condition such as dirty filters/coils, fouling, failed sensors, leaks, degraded insulation or disabled plant;
+- metering boundary, missing end use, timestamp, calibration, aggregation or data-quality problem;
+- model simplification / wrong diversity / part-load or standby assumption;
+- actual system defect or under/over-capacity.
+
+Use targeted discriminating evidence before changing the model or system: trend correlations, temporary measurement, functional test, recalculation, inspection, occupancy/schedule evidence or controlled setpoint/sequence change as appropriate. Preserve pre-change evidence and compare after tuning/repair.
+
+Normalization must state what was normalized and why. Adjusting measured data or the design baseline until the curves align is not diagnosis.
+
+When tuning changes a setpoint, schedule, reset, sequence, balance or equipment state, bind the change to the exact configuration and check downstream comfort, energy, resilience, noise, IAQ, safety and user-control consequences before declaring improvement.
+
+`PERFORMANCE GAP ≠ DESIGN ERROR BY DEFAULT`.
+
+`TREND CORRELATION ≠ CAUSE`.
+
 ### Native outputs
 
 - seasonal / fine-tuning records;
@@ -816,6 +1124,41 @@ DESIGN ESTIMATE
 In-use assessment closes by defined observation period / question, not permanently for the life of the building.
 
 **Does not prove:** future performance, universal energy target achievement, unmeasured conditions or causal claims without supporting evidence.
+
+## 15.5｜MEP stage acceptance thresholds and handoff content
+
+The MEP stages above may use different calculations, schematics, models, schedules and tests, but the decision threshold follows one professional rule: a downstream consumer must be able to tell **what condition the system is designed for, how the system is expected to behave, where that behavior is implemented, how it will be verified, and what change invalidates the result**.
+
+Before a promotion-relevant MEP stage supports `PASS`, verify where applicable:
+
+1. **Demand and design-condition traceability** — occupancy, schedules, climate, process duty, diversity, utility/source conditions and existing-system facts match the Current project state; a stale demand basis cannot support a current equipment or capacity claim.
+2. **Capacity and network basis** — plant/equipment/network duties are connected to the governing load/flow/pressure/electrical/thermal calculation and appropriate peak/part-load/degraded states; spare/redundancy assumptions are explicit rather than hidden inside oversizing.
+3. **System boundary and topology** — what belongs to the system, where it starts/ends, how branches/zones/isolation operate and which adjacent systems it depends on are explicit enough for another discipline and commissioning team to consume.
+4. **Spatial installability and maintainability** — plant, risers, routes, valves/dampers/panels, access zones, lifting/replacement routes, drainage falls, test points and maintenance clearances exist in the current geometry; geometric fit alone is insufficient when service access is impossible.
+5. **Control and failure behavior** — normal, start-up/shutdown, standby, emergency/degraded, alarm, manual override and fail/fallback behavior are resolved for performance-critical systems; a point list without sequence/feedback/proof does not close controls.
+6. **Cross-system safety/interface behavior** — Fire, Structure, Envelope, Accessibility, Acoustics, Architecture, utilities and specialist dependencies use Current controlled variables and do not contain unresolved in-claim contradictions.
+7. **Material / installation consequence** — pipe/duct/cable/containment material, insulation, corrosion/water-quality/condensation/firestopping/waterproofing/seismic-support or equivalent installation consequences are resolved at the claim ceiling where they can affect performance or life safety.
+8. **Commissionability** — required isolation, instrumentation, measurement points, balancing devices, access, test modes, trend points and acceptance criteria are designed before the stage claims readiness for commissioning.
+9. **Energy / operational-performance boundary** — design estimates retain their model assumptions/sensitivities; measured performance claims use actual data, observation period/context and normalization where needed. Modelled and measured evidence remain distinct.
+10. **Readback consistency** — calculations, schematics, model/drawings, equipment schedules, controls logic and commissioning requirements describe the same Current system state at the variables material to the claim.
+
+Use `REVISE` when the system route remains viable but design, coordination, control, access, commissionability or evidence is materially inadequate. Use `HOLD` when required load/source/utility/fire/authority/manufacturer/field evidence or responsible specialist input is unavailable. Use `REJECT` when the current system option should not proceed because it cannot credibly satisfy the performance, spatial, resilience, operational, lifecycle or commissioning criteria within the declared constraints.
+
+### MEP handoff payload
+
+For each material issue to another domain or downstream package, provide as applicable:
+
+`system/controlled-variable ID → design condition + duty/value/range + unit → source/calculation/schematic revision → geometry/location → load/opening/support/access/replacement requirement → control/fail-state dependency → commissioning/acceptance condition → recipient/owner → R-F interface ref + requested maturity → OPEN boundary → reopen trigger`.
+
+Examples include plant loads/openings/supports to Structure; room/environmental conditions, risers, plant/ceiling/service zones and replacement routes to Architecture; intake/exhaust/penetration/condensation assumptions to Envelope; cause/effect/emergency-power/system status to Fire; access/control/fixture/lift interfaces to Accessibility; and trends/setpoints/alarm/maintenance/spares requirements to FM/Operations.
+
+The recipient may reject an issue that lacks a governing condition, uses stale calculation/model information, omits units or access/replacement constraints, or falls below the maturity required for the receiving claim. Handoff acceptance does not certify MEP performance; it confirms only that the bounded input can be consumed.
+
+`EQUIPMENT SELECTED ≠ SYSTEM ACCEPTED`.
+
+`NO CLASH ≠ INSTALLABLE / MAINTAINABLE / COMMISSIONABLE`.
+
+`TEST SCRIPT EXISTS ≠ ACCEPTANCE CRITERIA SATISFIED`.
 
 ---
 

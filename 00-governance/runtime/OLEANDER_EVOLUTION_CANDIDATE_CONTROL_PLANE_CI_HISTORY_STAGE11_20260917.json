@@ -1,0 +1,145 @@
+{
+  "candidate_id": "OLEANDER-EV-CONTROL-PLANE-CI-HISTORY-STAGE11-20260917",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "ARCHITECTURE_CONTROL_CI_PORTABILITY",
+  "target_owner": "OLEANDER Control Plane / GitHub Actions execution surface",
+  "target_ref": "GitHub Actions workflow checkout history availability for validate_execution_contracts.py in both control-plane and AI Governance Evals",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE11_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406",
+  "baseline": {
+    "current_version_or_revision": "origin/main@985bacb3a7641d837a6df70a88015765a6f5e684; PR #646 head before CI-history fix b194d522ac9dd78d0edcc149e7b15d02efa7b2b9",
+    "source_hash_or_commit": "b194d522ac9dd78d0edcc149e7b15d02efa7b2b9",
+    "frozen_at": "2026-09-16T23:57:27+00:00"
+  },
+  "trigger_evidence": [
+    "GitHub Actions run 35164504054 failed in the control-plane job while local full-history validation passed.",
+    "The failing command was validate_execution_contracts.py and the exact error was: drift:architecture-control-current implementation_commit is not available in repository history.",
+    "The control-plane workflow checkout used actions/checkout without fetch-depth override, so the CI repository was shallow and did not contain the historical implementation commit required by the drift validator.",
+    "After the first one-workflow EV2 repair was pushed, GitHub Actions run 35164665169 failed in AI Governance Evals with the same validate_execution_contracts.py historical-commit error, proving the first one-file scope incomplete before EV3.",
+    "Both workflows that directly invoke validate_execution_contracts.py therefore require the same full-history checkout contract.",
+    "Pre-EV4 review found that the Windows worktree representation of the control-plane workflow had mixed line endings while Git stores the workflow canonically with LF; the EV3 record is therefore repaired to bind committed Git blob bytes so the exact reviewed manifest is portable to GitHub/fresh-clone readback."
+  ],
+  "hypothesis": "Providing full Git history to both existing CI workflows that invoke the unchanged drift validator will let each workflow verify the historical implementation commit instead of failing because the commit object is absent from a shallow clone.",
+  "mutation_scope": {
+    "summary": "Two-file CI execution-surface change only: configure the existing checkout steps in both validator-calling workflows with fetch-depth: 0.",
+    "candidate_file_count_excluding_this_record": 2,
+    "candidate_manifest_sha256": "1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
+    "revoked_pre_eval_candidate_manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "revoked_pre_ev4_worktree_manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "candidate_manifest_algorithm": "SHA256 over committed Git blob bytes for each target path; aggregate stream uses paths sorted by UTF-8 path and appends UTF-8 path bytes + REAL NUL byte + lowercase blob-content SHA256 ASCII + REAL LF byte.",
+    "immediate_predecessor_file_sha256": {
+      ".github/workflows/ai-governance-evals.yml": "1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
+      ".github/workflows/oleander-control-plane-v0-3.yml": "d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a"
+    },
+    "explicit_exclusions": [
+      "No validator logic is weakened or bypassed.",
+      "No architecture/runtime/state/professional-domain semantics are changed.",
+      "No Stage-11 professional implementation file or exact manifest is changed.",
+      "No Current adoption, EV5/EV6, Notion sync or project Promotion is claimed."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
+    "files": {
+      ".github/workflows/ai-governance-evals.yml": "defc8c80128b4dcb5a82f58f9ff3522eb81b89374466fe5b0c9845b61efc2e60",
+      ".github/workflows/oleander-control-plane-v0-3.yml": "059b7c1f3280345dbde28ed7ee768a479bb35b84dfe263eee66ecd86f18acbf4"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "GitHub Actions PR #646 control-plane job",
+      "GitHub Actions PR #646 AIG-01 + AIG-02 + AIG-03 governance job",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py",
+      "00-governance/control-plane/tests"
+    ],
+    "regression_refs": [
+      "Local full-history control-plane discovery remains 145/145 PASS before the CI-history mutation.",
+      "Architecture Control / Execution Contracts / Execution Locks / Runtime Resilience / Master Runtime remain PASS locally.",
+      "PR #646 pre-fix control-plane CI failure is preserved as a negative case proving shallow-history incompatibility.",
+      "PR #646 one-workflow-repair AIG failure is preserved as a second negative case proving that every workflow invoking the history-aware validator needs the same checkout contract.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: AI Governance Evals run 35164834011 PASS.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: control-plane run 35164834027 PASS through history-aware execution-contract validation, Professional Domain checks, unit/regression tests, replays and compile check.",
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: anti-pollution run 35164834006 PASS and runtime-contract run 35164834004 PASS; Vercel statuses PASS.",
+      "Committed Git blob manifest for the exact two workflow files at the CI-tested head is sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42; the prior Windows worktree-byte manifest 83061ccf... is revoked before EV4."
+    ],
+    "fresh_ci_evidence": {
+      "pr": 646,
+      "head_commit": "c60f8e02a1c5040db53ce4250284d8e531866e8b",
+      "aig_run_id": 35164834011,
+      "aig_result": "PASS",
+      "control_plane_run_id": 35164834027,
+      "control_plane_result": "PASS",
+      "anti_pollution_run_id": 35164834006,
+      "anti_pollution_result": "PASS",
+      "runtime_contract_run_id": 35164834004,
+      "runtime_contract_result": "PASS",
+      "vercel_result": "PASS"
+    },
+    "acceptance_thresholds": [
+      "A fresh PR #646 control-plane run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
+      "A fresh PR #646 AI Governance Evals run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
+      "Subsequent Professional Domain, unit/regression, replay and compile steps in the control-plane workflow pass.",
+      "Subsequent AIG governance/runtime checks complete without a history-availability failure.",
+      "No Stage-11 professional implementation hash changes."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "no_validator_weakening": true,
+    "no_false_promotion": true
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_17_CI_HISTORY_FINAL_INDEPENDENT_REVIEW_20260917",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-17T00:08:00+00:00",
+    "review_notes": [
+      "Fresh review recomputed committed Git-blob SHA256 exactly: AI Governance workflow defc8c80128b4dcb5a82f58f9ff3522eb81b89374466fe5b0c9845b61efc2e60 and Control Plane workflow 059b7c1f3280345dbde28ed7ee768a479bb35b84dfe263eee66ecd86f18acbf4; canonical aggregate is sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42.",
+      "Pre-fix b194 Git-blob hashes independently recompute to AI Governance 1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e and Control Plane d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a.",
+      "The revoked pre-E3 one-file manifest cc7b10d1... and pre-EV4 Windows-worktree manifest 83061ccf... are correctly retained as rejected provenance and are not covered by this verdict.",
+      "Both workflow diffs from b194 contain only checkout with fetch-depth: 0; validate_execution_contracts.py and all validator semantics remain unchanged.",
+      "Fresh PR #646 CI evidence is valid: AI Governance run 35164834011, Control Plane run 35164834027, anti-pollution run 35164834006 and runtime-contract run 35164834004 all PASS at the tested workflow blobs.",
+      "Stage-11 professional 16-file local EV4 manifest 49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406 remains unchanged; no Current/runtime-state/currentization, EV5/EV6, validator weakening or owner leakage was found.",
+      "This verdict authorizes EV4 independent-review state for the two-file CI portability candidate only; it does not authorize Current adoption or Promotion."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "rollback": {
+    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / control-plane-workflow-git-blob-sha256:d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a / aig-workflow-git-blob-sha256:1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
+    "rollback_action": "Restore only the two CI workflow files to their predecessor SHA256 bytes; preserve Stage-11 EV4 and all unrelated work.",
+    "rollback_test": "Reproduce the shallow-history failure only as historical negative evidence; do not treat rollback as acceptable CI state."
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through fresh PR #646 CI execution and independent review.",
+    "regression_signals": [
+      "either validator-calling CI workflow still cannot resolve the historical implementation commit",
+      "validator logic is weakened instead of execution history being supplied",
+      "Stage-11 implementation manifest changes",
+      "unrelated workflow behavior changes"
+    ],
+    "reopen_rule": "Any signal reopens this two-file CI portability candidate only.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "CURRENT_ARCHITECTURE_ADOPTION",
+    "LIVE_NOTION_EQUIVALENCE",
+    "PROJECT_PROMOTION"
+  ]
+}

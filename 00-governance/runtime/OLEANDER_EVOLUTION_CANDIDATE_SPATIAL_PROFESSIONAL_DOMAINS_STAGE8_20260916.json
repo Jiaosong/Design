@@ -1,0 +1,221 @@
+{
+  "candidate_id": "OLEANDER-EV-SPATIAL-PROFESSIONAL-DOMAINS-STAGE8-20260916",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "Interior Design + Landscape Architecture + Lighting Design professional-definition owners under R-E",
+  "target_ref": "00-governance/interior-design-development-process-v1.0.md + 00-governance/landscape-architecture-design-development-process-v1.0.md + 00-governance/lighting-design-development-process-v1.0.md",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_DIGITAL_PRODUCT_HCD_STAGE7_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10",
+  "baseline": {
+    "current_version_or_revision": "Current architecture remains origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202; predecessor HCD candidate is EV4_INDEPENDENT_REVIEWED and not Current-adopted",
+    "authority_fingerprint": "sha256:41e29a11af2bd8de2a694874ebff7b90f0e37794267bdc821269a21f50b0b646",
+    "authority_fingerprint_inputs": {
+      "CURRENT_ROOT_VERSION": "OLEANDER Current Authority v1.1.1",
+      "PROJECT_OR_SCOPE_AUTHORITY": "OLEANDER professional-domain definition evolution / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "SOURCE_AUTHORITY": "Predecessor Stage-7 EV4 candidate manifest sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10 + bounded existing OLEANDER Interior/Landscape/Lighting-related support and project evidence",
+      "DESIGN_AUTHORITY": "NOT_APPLICABLE_PROFESSIONAL_PROCESS_DEFINITION_NO_PROJECT_DESIGN_KEEP_AUTHORITY",
+      "CURRENT_TASK_ID": "USER_CONTINUE_DEEP_PROFESSIONAL_CONTENT_SPATIAL_DOMAINS_STAGE8_20260916",
+      "CURRENT_NATIVE_MASTER_OR_REF": "00-governance/professional-domain-process-contract-v1.0.md + three Stage-8 candidate process bodies",
+      "ACTIVE_CONSTRAINT_LOCK": "PRESERVE_V2_1_CURRENT_OPEN_UNTIL_ADOPTION|NO_PARALLEL_SCHEMA|R_F_OWNS_INTERFACE_TRUTH|R_B_OWNS_KNOWLEDGE|NO_UNIVERSAL_NUMERIC_THRESHOLDS|NO_PROJECT_EXERCISE_OR_PROMOTION_CLAIM|PRESERVE_STAGE7_EV4"
+    },
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T11:40:00.290689+00:00"
+  },
+  "trigger_evidence": [
+    "User explicitly rejected continued high-level framework expansion and requested deeper substantive professional content.",
+    "Current v2.1 architecture keeps Interior Design, Landscape Architecture and Lighting Design at CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN with current_process_ref=null.",
+    "Existing Architecture/MEP/Structural/DD/interface carriers expose real Interior/Landscape/Lighting interfaces, while domain-specific project/support evidence provides bounded material/site/human/lighting readback patterns.",
+    "The repository still lacks Current professional-domain process definitions for these three domains; no Current adoption is implied by filling this candidate gap."
+  ],
+  "hypothesis": "Three domain-native professional processes can be developed deeply enough to guide real multidisciplinary decisions?Interior as occupied/material/FF&E/assembly/site system, Landscape as living/graded/water/soil/planting/seasonal system, and Lighting as visual/daylight/photometric/control/mockup/commissioned system?while preserving R-F/R-B/R-D/specialist authorities and leaving Current state OPEN until later adoption.",
+  "mutation_scope": {
+    "summary": "Eight-file successor delta: three deep professional process bodies, three existing-schema v1.1 machine definitions, shared Professional Domain regression tests and existing Control Plane CI coverage.",
+    "candidate_file_count_excluding_this_record": 8,
+    "candidate_manifest_sha256": "6b14c5c71bf971d396e4928e07bf53d5bdf45b0ebf7b72e3e003592d8dafb4f9",
+    "candidate_manifest_algorithm": "SHA256 of UTF-8 lines sorted by path, each line = <relative_path>\\0<file_sha256>\\n",
+    "explicit_exclusions": [
+      "No Current architecture map/control-graph professional-domain state is changed by this candidate.",
+      "No project instance, project-native design artifact or field result is modified or claimed exercised.",
+      "No Professional/DQ/Architecture/Execution receipt is created or rewritten.",
+      "No Interior/Landscape/Lighting support/project evidence is promoted to Current Knowledge.",
+      "No universal room clearance, planting/ecology/drainage, lux/UGR/CCT/CRI/TM-30 or other numeric threshold is installed without Current source/applicability.",
+      "No R-F interface maturity/disposition, specialist engineering, statutory/accessibility/fire/electrical/civil/ecology authority is transferred to these processes.",
+      "No root-worktree unrelated/concurrent files are part of this candidate."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "6b14c5c71bf971d396e4928e07bf53d5bdf45b0ebf7b72e3e003592d8dafb4f9",
+    "files": {
+      ".github/workflows/oleander-control-plane-v0-3.yml": "a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "3f889512b79bac43299f381fff2d014c2e56298e89e0f6f6c3397630c82e5440",
+      "00-governance/interior-design-development-process-v1.0.md": "bfad9ded0724447470fc961cca5a1ee46c3e60cbdd839be2f03a63dcd503c668",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "ac94305c2d34747c56f7c659471b5e4672dfefb2bbc0c3465f4b1c449301e684",
+      "00-governance/lighting-design-development-process-v1.0.md": "0c5fa0c3c8a7d4e71c17db5c999305594b0f87b60ab2c6f33d41a0950f37691d",
+      "00-governance/schemas/interior-design-process.v1.json": "c203d353ccbd5c3bfb5ef59fbd76cb58f7d5d03e3bf7f3cda2772a21a7479417",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "106441eb28b1be0b18a2065c7cb6c6bc9ee37adf053f971633e3499f32effbad",
+      "00-governance/schemas/lighting-design-process.v1.json": "1caed2d8978f25cc232c62ba09cc940431922e55e36777765d976c71b834edce"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py"
+    ],
+    "real_case_refs": [
+      "Current Architecture room-use/FF&E/environmental/interface content and material/failure/Human Factors support evidence for Interior decision semantics",
+      "Current Architecture site/Landscape interface matrix plus bounded C04 GIS/environment/field evidence patterns for Landscape truth/readback semantics",
+      "Current Architecture/MEP lighting/daylight/controls/commissioning interfaces plus bounded mockup/night-readback evidence patterns for Lighting semantics",
+      "Current v2.1 three-domain PROCESS_OPEN states as non-promotion baseline"
+    ],
+    "counterexample_refs": [
+      "Interior reduced to palette/furniture styling without use/material/assembly/maintenance evidence rejected",
+      "Landscape reduced to decorative planting without grading/water/soil/rooting/establishment evidence rejected",
+      "Remote terrain convergence or plan arrows used as hydraulic/drainage capacity proof rejected",
+      "Lighting render brightness used as photometric proof rejected",
+      "Generic lux/UGR/CCT/CRI/TM-30 values installed without Current source/applicability rejected",
+      "One sample/mockup/site observation used as whole-project or future-performance proof rejected",
+      "Candidate definition/schema validation used as Current adoption or project exercise rejected",
+      "One-project field/in-use observation used as causal/universal Knowledge rejected"
+    ],
+    "regression_refs": [
+      "Interior/Landscape/Lighting machine definitions PASS existing professional-domain-process.v1 full validation",
+      "Direct stdlib fallback semantic validation PASS for all three candidates",
+      "Professional Domain targeted suite: 32 tests OK including body-depth and domain-native boundary checks",
+      "Full 00-governance/control-plane/tests discovery: 135 tests OK",
+      "Architecture Control validation PASS with Interior/Landscape/Lighting still PROCESS_OPEN",
+      "Execution Contracts / Execution Locks / Runtime Resilience / Namespace / Master Runtime validation PASS",
+      "Twelve mutation negative cases fail closed: missing R-F policy, maturity regression, legacy parallel binding shape, and missing actual readback for each of three candidates",
+      "git diff --check PASS apart from line-ending warnings"
+    ],
+    "metrics": {
+      "interior_process_body_lines": 639,
+      "landscape_process_body_lines": 655,
+      "lighting_process_body_lines": 650,
+      "interior_stage_count": 10,
+      "landscape_stage_count": 10,
+      "lighting_stage_count": 10,
+      "professional_targeted_tests_passed": 32,
+      "control_plane_tests_passed": 135,
+      "control_plane_tests_failed": 0,
+      "architecture_current_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "interior_current_state_after_candidate": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+      "landscape_current_state_after_candidate": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+      "lighting_current_state_after_candidate": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+      "project_exercise_claim": false
+    },
+    "acceptance_thresholds": [
+      "Each candidate validates against the existing v1.1 Professional Domain schema without schema extension.",
+      "Each process contains a substantive deep professional decision body of at least 500 lines, not only a stage shell.",
+      "Interior explicitly develops room/activity, FF&E/storage, material/failure, assemblies/joinery, wet/special areas, sensory coordination, samples/procurement/site/maintenance.",
+      "Landscape explicitly develops site evidence, program/movement, grading, water, soil/rooting, planting/ecology, hardscape, microclimate/night, utilities, field establishment and adaptive maintenance.",
+      "Lighting explicitly develops visual tasks, daylight, luminous hierarchy, photometric assumptions, glare/color quality, optics/mounting, integration, controls, exterior/night, mockup, commissioning/aiming and maintenance.",
+      "R-F remains the only actual interface maturity/disposition owner; each domain stores stage-side requirements only.",
+      "Current architecture continues to report all three domains PROCESS_OPEN until authorized adoption/readback.",
+      "No project exercise, specialist/statutory approval, Design KEEP, Integration PASS, Knowledge promotion or universal transfer claim is emitted."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Current v2.1 provided shared Professional Domain envelope and cross-domain interfaces but intentionally left Interior, Landscape and Lighting PROCESS_OPEN without domain-native process definitions.",
+    "candidate_result": "Adds three deep domain-native operating specifications plus v1.1 machine definitions. Each body goes materially beyond process mechanics into real professional decision content, while Current map/graph remain unchanged and OPEN.",
+    "regressions": [],
+    "quality_delta": "Adds 1,944 lines of new professional?? across Interior/Landscape/Lighting plus 5,378 lines of machine definitions. Professional content includes actual room/FF&E/material/joinery/wet-area reasoning; site/grading/water/soil/planting/microclimate/establishment reasoning; and visual-task/daylight/photometric/glare/controls/mockup/commissioning/night-readback reasoning.",
+    "reliability_delta": "Adds full/fallback schema validation, CI invocation, substantive-body regression guard, Current-open checks and fail-closed mutation cases without a new schema family/runtime.",
+    "cost_latency_delta": "Adds three candidate process bodies and machine definitions plus shared tests/CI only; no new service, database, runtime plane, state family or tool dependency.",
+    "decision_basis": "Retain as a bounded evaluated successor candidate and route to independent review. Do not change Current three-domain state until later owner/human adoption and readback."
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_11_STAGE8_INDEPENDENT_REVIEW_20260916",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:6b14c5c71bf971d396e4928e07bf53d5bdf45b0ebf7b72e3e003592d8dafb4f9",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-16T11:46:38.812789+00:00",
+    "review_notes": [
+      "Exact corrected eight-file manifest independently recomputed with sorted UTF-8 path + REAL NUL + file SHA ASCII + REAL LF to sha256:6b14c5c71bf971d396e4928e07bf53d5bdf45b0ebf7b72e3e003592d8dafb4f9; all per-file hashes match. The revoked literal-backslash aggregate 66d3294d... is invalid and must not be used.",
+      "Stage-7 HCD predecessor EV4 provenance remains truthful/frozen: live HCD body/schema match and removing only Stage-8 shared-carrier additions reconstructs Stage-7 workflow/test bytes and c2413bb6... aggregate.",
+      "Interior professional body is materially occupied-room / FF&E / storage / material-failure / joinery / wet-special / sensory / mockup / procurement / site / maintenance native.",
+      "Landscape professional body is materially site-evidence / grading / water / soil-rooting / planting-ecology / hardscape / microclimate-night / utilities / establishment / seasonality native.",
+      "Lighting professional body is materially visual-task / daylight / luminous-hierarchy / photometric / glare-color / optics / integration / controls / night / mockup / aiming / commissioning / maintenance native.",
+      "No universal numeric threshold, render/remote/sample overclaim, R-F/R-B/R-D/specialist authority leakage, observation-to-causation leap or one-project-to-transferable-Knowledge leap was found.",
+      "Current graph still keeps Interior Design, Landscape Architecture and Lighting Design PROCESS_OPEN with current_process_ref=null. Full/fallback validations PASS; targeted 32/32 and full 135/135 tests PASS; twelve mutation probes fail closed.",
+      "This verdict authorizes EV4 only. Authorized human adoption/readback remains separate and promotion.eligible remains false."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_THREE_DOMAIN_DEFINITION_CANDIDATE_WITH_CURRENT_STATES_HELD_OPEN",
+    "affected_carriers": [
+      "three candidate professional process bodies",
+      "three candidate v1.1 machine definitions",
+      "existing Professional Domain regression tests",
+      "existing Control Plane CI workflow"
+    ],
+    "affected_scope": "Professional-definition candidates only. Current professional_domain_process_state, R-E maturity summary and Integrated Runtime Current list remain unchanged until later adoption.",
+    "migration_steps": [
+      "Preserve Stage-7 HCD EV4 candidate and exact manifest as immutable predecessor provenance.",
+      "Keep Current Interior/Landscape/Lighting state CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN during candidate evaluation/review.",
+      "Run existing Professional Domain schema/semantic validators, body-depth/domain-specific tests and governance regression.",
+      "Obtain independent review bound to the exact eight-file Stage-8 manifest.",
+      "Before any EV6 Current adoption, perform a separate authorized adoption transaction that updates Current owner-native carriers and reruns full architecture/professional regression/readback.",
+      "Do not create project professional receipts until real project instances actually exercise the adopted processes."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "predecessor-evolution:OLEANDER-EV-DIGITAL-PRODUCT-HCD-STAGE7-20260916@EV4 / target-manifest-sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10",
+    "rollback_action": "Remove only the Stage-8 three-domain candidate process/machine-definition files and restore shared workflow/test to their Stage-7 manifest bytes; preserve Evolution records and unrelated root work.",
+    "rollback_test": "Rerun Stage-7 bounded validators/regression and confirm Interior/Landscape/Lighting remain PROCESS_OPEN with no current_process_ref.",
+    "provenance_ref": "successor-manifest-sha256:6b14c5c71bf971d396e4928e07bf53d5bdf45b0ebf7b72e3e003592d8dafb4f9 over predecessor target-manifest-sha256:c2413bb602dc5e4ed628b60b84a90a907d4d11440b9470480cf3943b1f067d10"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent review and any later authorized adoption/readback transaction.",
+    "regression_signals": [
+      "any of the three candidate definitions fails Professional Domain full/fallback validation",
+      "Current architecture reports any of the three domains formalized before authorized adoption/readback",
+      "candidate process takes R-F or another specialist/statutory owner authority",
+      "presentation/render/remote/project-only evidence is reported as professional performance proof beyond its ceiling",
+      "project field/in-use observations are converted to causality or reusable knowledge without G9/R-B transfer validation",
+      "Stage-7 EV4 provenance or unrelated root work is mutated"
+    ],
+    "reopen_rule": "Any signal reopens only the affected Stage-8 candidate/adoption scope while preserving predecessor and unrelated verified state.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "CURRENT_INTERIOR_PROCESS_ADOPTION",
+    "CURRENT_LANDSCAPE_PROCESS_ADOPTION",
+    "CURRENT_LIGHTING_PROCESS_ADOPTION",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION",
+    "FIRE_ACCESSIBILITY_CIVIL_ECOLOGY_ELECTRICAL_OR_OTHER_SPECIALIST_APPROVAL",
+    "CURRENT_KNOWLEDGE",
+    "UNIVERSAL_NUMERIC_CRITERIA",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}

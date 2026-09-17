@@ -75,6 +75,8 @@ Owns the shared cross-domain design-development responsibilities:
 
 Also owns the shared contracts for Project Design DNA, design language, content projection, genericity attack, multi-scale readback, design maturity and design-quality reopen propagation.
 
+For material design-development bodies, R-D also owns the shared **body-structure execution contract**: specific title / identity, recoverable semantic section coverage, task-scoped canonical knowledge mounts, native artifact/readback refs, bounded claim ceiling, failure/open state and reopen/next-action trace. It does not own or copy the underlying canonical knowledge body.
+
 It does **not** replace authentic professional stage semantics.
 
 Canonical owner: `design-quality-and-design-development-specification-v1.0.md`.
@@ -83,12 +85,16 @@ Canonical owner: `design-quality-and-design-development-specification-v1.0.md`.
 
 Each profession owns its real professional design-development process.
 
-Current reference implementation:
-- Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17`.
+Current formalized process definitions:
+- Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17`; this is the project-exercised reference process.
+- Structural Engineering → Current formalized + machine-bound professional process definition; project exercise is not inferred merely from document/schema status.
+- Building Services / MEP → Current formalized + machine-bound professional process definition; project exercise is not inferred merely from document/schema status.
 
-Future domains retain their own stage semantics, including Interior, Landscape, Structural, MEP, Lighting, HCD, Systems Engineering and other professional domains.
+Other domains retain their own stage semantics and remain process-definition OPEN until their Current owner is actually formalized and read back, including Interior, Landscape, Lighting, HCD, Systems Engineering and other professional domains.
 
 Professional stages bind to DD responsibilities; they are not renamed as DD stages.
+
+Every materially executed/in-claim professional stage must define and, at runtime, record a domain-native stage-body contract before professional closure: specific title, recoverable semantic sections, canonical knowledge-mount refs, native source, actual readback, OPEN/failure boundary, bounded verdict and reopen/next action. The visible heading vocabulary remains profession-specific; the shared runtime normalizes semantic coverage only.
 
 ### R-F | Cross-Disciplinary Integration
 
@@ -201,7 +207,7 @@ For a design-quality Candidate:
 17. Register and synchronize promoted authority with target-platform readback.
 18. Capture G9 observations and bounded knowledge candidates.
 
-The sequence is logically ordered but iterative. Any material change propagates to affected upstream/downstream contracts and marks prior receipts stale at affected scope.
+The sequence is logically ordered but iterative. Any material change propagates to affected upstream/downstream contracts and marks **Current consumption of affected prior receipts** stale/reopened at the affected scope. Historical receipts remain immutable evidence against the baseline/authority they actually reviewed; successor/revalidation evidence carries the new Current relation.
 
 ## 4 | Runtime objects and their owners
 

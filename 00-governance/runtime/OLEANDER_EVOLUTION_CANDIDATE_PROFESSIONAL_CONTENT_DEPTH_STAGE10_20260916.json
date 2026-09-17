@@ -1,0 +1,244 @@
+{
+  "candidate_id": "OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE10-20260916",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "CROSS_DOMAIN_PROFESSIONAL_CONTENT_DEPTH",
+  "target_owner": "Existing Architecture / Structural / Building Services MEP / Systems / Digital Product HCD / Interior / Landscape / Lighting owners under existing R-E and R-D/R-F boundaries",
+  "target_ref": "Eight existing professional process bodies and seven existing machine definitions; no new process/stage/schema family",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE9_20260916.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "83ae2c21fcd5f3f57590130edfdad085f702e11b57502ff9fd60975562b592cf",
+  "baseline": {
+    "current_version_or_revision": "Current architecture remains origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202; Stage-9 content-depth successor is EV4_INDEPENDENT_REVIEWED and not Current adoption",
+    "authority_fingerprint": "sha256:10686f0a5ab7562dbfa8d1042d463e9cdaa6306cf2f42e03d4260cafe98d4261",
+    "authority_fingerprint_inputs": {
+      "CURRENT_ROOT_VERSION": "OLEANDER Current Authority v1.1.1",
+      "PROJECT_OR_SCOPE_AUTHORITY": "OLEANDER professional-content depth evolution / origin/main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+      "SOURCE_AUTHORITY": "Predecessor Stage-9 EV4 exact manifest sha256:83ae2c21fcd5f3f57590130edfdad085f702e11b57502ff9fd60975562b592cf plus Current/project-bound professional sources already mounted by each domain",
+      "DESIGN_AUTHORITY": "NOT_APPLICABLE_PROFESSIONAL_OPERATING_SPEC_DEPTH_NO_PROJECT_DESIGN_KEEP_AUTHORITY",
+      "CURRENT_TASK_ID": "USER_CONTINUE_DEEP_PROFESSIONAL_CONTENT_STAGE10_20260916",
+      "CURRENT_NATIVE_MASTER_OR_REF": "Eight existing professional process bodies + seven existing v1.1 professional machine definitions",
+      "ACTIVE_CONSTRAINT_LOCK": "NO_NEW_STAGE|NO_NEW_RUNTIME|NO_PARALLEL_SCHEMA|R_F_OWNS_INTERFACE_TRUTH|R_B_OWNS_KNOWLEDGE|R_D_OWNS_DESIGN_QUALITY|NO_UNIVERSAL_NUMERIC_THRESHOLDS|NO_CURRENTIZATION|PRESERVE_STAGE9_EV4"
+    },
+    "source_hash_or_commit": "76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "frozen_at": "2026-09-16T14:43:56.786067+00:00"
+  },
+  "trigger_evidence": [
+    "User explicitly requested continued supplementation after Stage-9 and had already rejected framework-only expansion in favor of deeper professional substance.",
+    "Fresh independent audits found a bounded set of remaining thin decision areas inside the existing eight professional domains; no additional stages or runtime layers were needed.",
+    "Stage-9 Current/candidate authority boundaries and professional stage identities remain valid and are preserved as predecessor truth."
+  ],
+  "hypothesis": "The existing eight professional operating specifications can be materially deepened in remaining buildability, nonlinear/field, part-load/control, configuration/V&V, longitudinal human-use, specialist-detail, landscape field-process and temporal-lighting topics without adding stages, state families, universal numeric thresholds or owner leakage.",
+  "mutation_scope": {
+    "summary": "Sixteen-file append-focused successor: eight professional bodies, seven existing-schema machine definitions, and the existing Professional Domain regression test carrier.",
+    "candidate_file_count_excluding_this_record": 16,
+    "candidate_manifest_sha256": "aadebff712b58d6566519d6b2cf45e19fbef4bba47ddb50ef4a1ec1c2277ab20",
+    "candidate_manifest_algorithm": "SHA256 stream over paths sorted by UTF-8 path; for each path append UTF-8 path bytes + REAL NUL byte + lowercase file SHA256 ASCII + REAL LF byte.",
+    "immediate_predecessor_file_sha256": {
+      "00-governance/architecture-design-development-process-v1.0.md": "caab9aa8ce567c54915d9ad6e1dd69eac3979341bb2a1f08e41b70a4c1178c04",
+      "00-governance/building-services-mep-design-process-v1.0.md": "372232a370264c2ad2cb3a2a20cc49c8e5d8829bbf1a58a9ad5aac759b27c764",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "d3dff7c61f32b6f70151e3e839259627a99a29a4547fdd82f2193ff33bc4f4d6",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "87a4d11ca6e8bb15c30a661b2e193a7249684a1048e695baffac43475ec0b982",
+      "00-governance/interior-design-development-process-v1.0.md": "d1df7f50ebd2a1c878f043da224012ce0f8836abe3a8bbc6cef933ad86f2c4a4",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "db7dfd98a4388a575a2e65636d30895dbbbfc807324510a28b606bd21a05e694",
+      "00-governance/lighting-design-development-process-v1.0.md": "7d04926c653e7bff869c3b1518c4fcdbb76382dc986a5046b7a828248092dfe4",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "813999d7a7ae50d4ef711df4c9f519b037188d7a4a6e2a65e87c3c6c87e8f6f8",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "0abca7c99e8f97aa89f5b73c79c8385a50081616f34b14ce72cfbe1bdb111a5f",
+      "00-governance/schemas/interior-design-process.v1.json": "295c3fde8af01bf05b7fd43300979d35977c314acd15224b59ccb6a00de23e44",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "861fb7ff17f85cad23f7e9057893aa03a3f3155b681b6fed1dcbb9f52873c0af",
+      "00-governance/schemas/lighting-design-process.v1.json": "660d22d3ac5b6f53e952858815f70110c3a6a3b3623e03ad16f44a5cef2917b5",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "eedde65265899937e1c67d80614757a1a4b4c2b3aa500ef789dc36207d8549ec",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "48d576002197fda4fb6ae5da7fb9e509749fe21b2896ededb45ba75a68c0ccd8",
+      "00-governance/structural-engineering-design-process-v1.0.md": "6adccaab41a0f73df9ee2b6535b891e763b869a6a2ac1eec475f29d4b9afd1ed",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "a3d5224afaf4772d3f89e8da6a1a49401fee92f862296245d741ccaeaab43770"
+    },
+    "explicit_exclusions": [
+      "No new professional stage, process family, runtime layer, state family or schema is created.",
+      "No Current architecture map/control-graph professional-domain state is changed.",
+      "No R-F interface maturity/disposition, R-B Knowledge/OE/KI, R-D Design Quality, statutory or specialist authority is transferred.",
+      "No universal structural, MEP, HCD, interior, landscape, lighting or other numerical criterion is installed without Current source/applicability.",
+      "No project instance/native artifact/field result is changed or claimed exercised.",
+      "No predecessor Evolution record is rewritten and no unrelated live-root dirty work is included."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "aadebff712b58d6566519d6b2cf45e19fbef4bba47ddb50ef4a1ec1c2277ab20",
+    "files": {
+      "00-governance/architecture-design-development-process-v1.0.md": "cee3d54b5c4055be745b6fa40a3b914e375e761b9237877c039bb3802f40156d",
+      "00-governance/building-services-mep-design-process-v1.0.md": "499fb0fc45f3b0bb2b5d04098732f771b32b60a61702690485772ae97f41b28d",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "c1e369ca585a44e012eb1288c0a8b83bc088a7c3ee99a122854991df50739c1c",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "3d0f178345074a7294285f0defdfa49217e44b53d3303ec3f6b73e20ed41da70",
+      "00-governance/interior-design-development-process-v1.0.md": "41efa0435612e8e6774d64130cb4386cb9438154801fccafe18f0b427c95aa60",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "5c15e1eaa9173219ef806402a3ed9997dbd15761d4d1d8beb62733482e5bb1ad",
+      "00-governance/lighting-design-development-process-v1.0.md": "6d2e4ee9c5a2d7230c123ad2eac40c90499edae431a32bb351dbddbeb8ff9e2a",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "79c4606a7a52b0a5d407acba971d374bd6c17547ad6ff72cfc7e86ccc13c098c",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "71e933eed8b832cbd79fa4b83af60d7e9a8ee70360ce0bb1f3c12cbad5fe0701",
+      "00-governance/schemas/interior-design-process.v1.json": "ae298363b868dea5966f342b92295fce6423aaf63f737b619ea35d0829ecca70",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "8e703b9bdd6e8464d148be03d17eb81b270c8102ec94a33834430086a1574f5a",
+      "00-governance/schemas/lighting-design-process.v1.json": "b03191314d6b74e6208f2aec5ec8cee13eb3ff18bf2ad5de742f980b1261783c",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "ce7af0dbefb2321ef9160f4898f7e32067ee0043bbad0190e49dfb7f62d45a63",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "d678d5a4020a882fcc9f49e3dd7b1a8f26730c65725dae0bb8c6a2e35dfedbcc",
+      "00-governance/structural-engineering-design-process-v1.0.md": "b88c6c5a8060c214636230f11794e5eff1480762c459c97be24c7ecf6bb09737",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "4a1a52cce360df859ffe513887fe720704a71f7eaa16a631c7d8870d6c5f4cdf"
+    }
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_execution_locks.py",
+      "00-governance/runtime/validate_runtime_resilience.py",
+      "00-governance/schemas/validate_architecture_namespaces.py",
+      "00-governance/control-plane/validate_master_runtime.py"
+    ],
+    "real_case_refs": [
+      "Architecture envelope/buildability, inhabited-section, existing-fabric/open-up and room-transition decisions.",
+      "Structural nonlinear/staged, fatigue/deterioration, reuse appraisal and field nonconformance disposition.",
+      "MEP variable-capacity plant/control, water-hygiene/condensation, multi-source electrical protection, replacement and field-change configuration.",
+      "Systems configuration baseline/ConOps/V&V coverage/change-impact and reliability evidence.",
+      "HCD mixed-method synthesis, service recovery/consent-trust, accessibility variability/design-system composition and longitudinal adoption.",
+      "Interior specialist-detail continuity, FF&E site fit, controlled material-light mockup and in-use aging/adaptation.",
+      "Landscape retaining/erosion/water-edge, soil investigation, irrigation operating logic, tree establishment and seasonal public-space operation.",
+      "Lighting temporal/low-end/camera behavior, blind-shade coupling and exterior aiming/measurement/maintenance recovery."
+    ],
+    "counterexample_refs": [
+      "Geometry fit or visual appearance used as envelope/specialist performance proof rejected.",
+      "Linear/final-state structural analysis used without addressing material path-dependent mechanism rejected.",
+      "Nominal MEP plant capacity used as proof of stable part-load controllability rejected.",
+      "Configuration revision list used as reproducible systems baseline without settings/interfaces/evidence identity rejected.",
+      "One-session task success promoted to longitudinal adoption rejected.",
+      "Catalog FF&E dimensions or one sample used as installed-fit/site-performance proof rejected.",
+      "Planted slope or imported-soil certificate used as stabilization/installed-root-zone proof rejected.",
+      "Visually acceptable dimmed lighting used as temporal/camera/shared-control proof rejected."
+    ],
+    "regression_refs": [
+      "Seven Professional Domain full validators PASS after Stage-10 mirror update.",
+      "Seven direct stdlib fallback semantic validations PASS.",
+      "Professional Domain targeted suite: 38 tests OK, including Stage-9 ordered-semantics guard and three Stage-10 deep-content/machine-projection/ordered-semantics guards.",
+      "Full control-plane discovery: 141 tests OK.",
+      "Architecture Control / Execution Contracts / Execution Locks / Runtime Resilience / Namespace / Master Runtime PASS.",
+      "Recursive machine semantic no-loss: 52 append groups, zero predecessor entries/fields/stages removed or reordered outside allowed readback/consequence arrays; Stage-10 added mirrors contain no literal `?` or U+FFFD after repair.",
+      "Professional-body no-loss vs live Stage-9: +143/-0 lines across eight bodies.",
+      "UTF-8/U+FFFD scan and Python compile PASS; git diff --check has only line-ending warnings."
+    ],
+    "metrics": {
+      "stage10_added_lines_vs_live_stage9_predecessor": 379,
+      "stage10_deleted_lines_vs_live_stage9_predecessor": 52,
+      "stage10_net_lines_vs_live_stage9_predecessor": 327,
+      "stage10_professional_body_added_lines": 143,
+      "stage10_professional_body_deleted_lines": 0,
+      "eight_domain_body_total_lines": 7301,
+      "machine_append_groups": 52,
+      "professional_targeted_tests_passed": 38,
+      "control_plane_tests_passed": 141,
+      "control_plane_tests_failed": 0,
+      "stage_count_delta": 0,
+      "schema_family_delta": 0,
+      "runtime_layer_delta": 0,
+      "project_exercise_claim": false
+    },
+    "acceptance_thresholds": [
+      "All eight body additions materially guide real professional decisions rather than adding stage/process ceremony.",
+      "Seven machine definitions project the new depth only through existing readback/consequence carriers and retain predecessor stage/state/authority/interface semantics.",
+      "No valid predecessor professional requirement is removed.",
+      "No generic/universal numerical threshold is introduced without Current source/applicability.",
+      "R-F/R-B/R-D and specialist/statutory owner boundaries remain intact.",
+      "Current professional-domain states remain unchanged until separate authorized adoption/readback.",
+      "Full professional/control-plane regression remains clean."
+    ],
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Stage-9 established strong professional analysis/model/failure/readback depth across all eight domains and exact machine mirrors.",
+    "candidate_result": "Stage-10 selectively deepens the remaining high-value professional gaps without adding stages/framework/runtime/state/schema families.",
+    "regressions": [],
+    "quality_delta": "Adds 143 lines of professional body text plus append-only machine projections focused on real buildability, physical/operational mechanisms, field/configuration change, longitudinal evidence and maintainability rather than reporting mechanics.",
+    "reliability_delta": "Adds three Stage-10 regression guards covering deep body content, machine projection, and ordered/orthographic mirror semantics while preserving the Stage-9 ordered-semantics guard.",
+    "cost_latency_delta": "No new service, database, runtime plane, state family, process stage or validator dependency.",
+    "decision_basis": "Retain as bounded EV3 successor and route to independent review; do not alter Current/adoption state."
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_11_STAGE10_FINAL_INDEPENDENT_REVIEW_20260916",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:aadebff712b58d6566519d6b2cf45e19fbef4bba47ddb50ef4a1ec1c2277ab20",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-16T15:15:51.635924+00:00",
+    "review_notes": [
+      "Final repaired 16-file Stage-10 manifest independently recomputed with sorted UTF-8 path + REAL NUL + lowercase SHA ASCII + REAL LF to sha256:aadebff712b58d6566519d6b2cf45e19fbef4bba47ddb50ef4a1ec1c2277ab20; all 16 target hashes and all 16 live-root Stage-9 immediate-predecessor hashes match.",
+      "The revoked Stage-10 manifest 5a209b64ff738c9185feb81d99df799f860f6a3b4e1c0eac3ac60e74fb6e2f27 is not covered by this verdict; its nine machine-mirror semantic/orthographic defects were repaired before this review.",
+      "Nine repaired mirror relations are clean and regression-guarded: Structural global ? local; Systems human ? automation and ordered V&V/change chains; HCD method's and service-recovery chain; Landscape establishment ? mature; Lighting shade ? electric-light and fa?ade.",
+      "All Stage-10 added machine mirror entries scan clean for literal ? and U+FFFD; seven machine definitions preserve predecessor stage IDs/counts/top-level contracts and strict append-only required_readback/technical_consequences semantics with zero predecessor loss.",
+      "Eight professional bodies add +143/-0 substantive lines without new stages/runtime/state/schema families, universal numeric thresholds, Current adoption, project exercise, or R-F/R-B/R-D/specialist authority leakage.",
+      "Current graph remains unchanged: Interior/Landscape/Lighting/HCD/Systems are PROCESS_OPEN with current_process_ref=null; Structural/MEP and Architecture retain prior states.",
+      "Validation: seven full + seven fallback professional validators PASS; Professional targeted 38/38; full Control Plane 141/141; Architecture Control, Execution Contracts, Locks, Runtime Resilience, Namespace and Master Runtime PASS; git diff --check has line-ending warnings only.",
+      "This verdict authorizes EV4 independent-review state only. It does not authorize EV5/EV6, Current adoption, Professional project PASS, R-F Integration PASS, Design KEEP, specialist/statutory approval, Current Knowledge, or project Promotion."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_PROFESSIONAL_DEPTH_SUCCESSOR_WITH_CURRENT_STATES_UNCHANGED",
+    "affected_carriers": [
+      "eight existing professional process bodies",
+      "seven existing v1.1 machine definitions",
+      "existing Professional Domain regression tests"
+    ],
+    "affected_scope": "Professional operating-specification depth and its existing machine projections only.",
+    "migration_steps": [
+      "Preserve Stage-9 EV4 and exact manifest as predecessor provenance.",
+      "Run exact-manifest independent review.",
+      "Keep all Current professional-domain states unchanged.",
+      "Before any later adoption, use a separate authorized adoption/readback transaction."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "predecessor-evolution:OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE9-20260916@EV4 / target-manifest-sha256:83ae2c21fcd5f3f57590130edfdad085f702e11b57502ff9fd60975562b592cf",
+    "rollback_action": "Restore exactly the 16 Stage-10 target files to mutation_scope.immediate_predecessor_file_sha256 bytes; preserve both Evolution records and unrelated work.",
+    "rollback_test": "Rerun Stage-9 bounded professional/control regressions and verify Current graph/state remains unchanged.",
+    "provenance_ref": "successor-manifest-sha256:aadebff712b58d6566519d6b2cf45e19fbef4bba47ddb50ef4a1ec1c2277ab20 over predecessor target-manifest-sha256:83ae2c21fcd5f3f57590130edfdad085f702e11b57502ff9fd60975562b592cf"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent review and any later separately authorized adoption/readback.",
+    "regression_signals": [
+      "any predecessor professional requirement disappears",
+      "any stage/state/schema/runtime layer is added or mutated outside declared scope",
+      "machine projection loses body-text meaning",
+      "R-F/R-B/R-D/specialist authority leaks",
+      "Current candidate domains become formalized without adoption",
+      "universal numeric criteria appear without Current source/applicability",
+      "unrelated live-root work is overwritten"
+    ],
+    "reopen_rule": "Any signal reopens only affected Stage-10 candidate scope while preserving Stage-9 EV4 and unrelated verified state.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "CURRENT_PROFESSIONAL_PROCESS_ADOPTION",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION",
+    "SPECIALIST_OR_STATUTORY_APPROVAL",
+    "CURRENT_KNOWLEDGE",
+    "UNIVERSAL_NUMERIC_CRITERIA",
+    "UNIVERSAL_TRANSFERABILITY"
+  ]
+}

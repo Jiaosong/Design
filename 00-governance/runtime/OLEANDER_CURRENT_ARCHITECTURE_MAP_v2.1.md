@@ -468,12 +468,12 @@ Every stable Runtime Layer must have a resolvable owner, machine carrier where a
 | `R-A` | Current Authority / Governance | `README.md`, naming/identity governance, Master Runtime | identity, Current, supersession, authority snapshot | design quality, professional compliance |
 | `R-B` | Knowledge Governance | Knowledge Registry, Content Review, Knowledge Integrity & Operational Mount | corpus role, content state, integrity, OE eligibility | DQ maturity, professional stage completion |
 | `R-C` | Design Intelligence | `design-intelligence-routing-and-review-v1.0.md` | design question, intent, routes, review lenses, claim ceiling | Design KEEP, professional PASS |
-| `R-D` | Design Quality & DD | `design-quality-and-design-development-specification-v1.0.md` | DD scope, Project Design DNA, design readback requirements, DQ receipt | statutory/engineering approval, professional stage PASS |
-| `R-E` | Professional Domain owner | Professional Domain Process Contract + domain-native process | professional questions/stages, required native outputs, professional receipt | Design KEEP, Integration PASS |
+| `R-D` | Design Quality & DD | `design-quality-and-design-development-specification-v1.0.md` | DD scope, Project Design DNA, design-development body locator record, Design dispositions, design readback requirements, DQ receipt; consumed R-B mount values are non-authoritative snapshots only | KI/OE authority, statutory/engineering approval, professional stage PASS |
+| `R-E` | Professional Domain owner | Professional Domain Process Contract + domain-native process | professional questions/stages, owner-native domain state, Current-use/exit-condition projections, professional stage-body locator record, required native outputs, stage-side interface requirements, professional receipt | actual R-F interface state, Design KEEP, Integration PASS |
 | `R-F` | Cross-Disciplinary Integration | `cross-disciplinary-design-integration-v1.0.md` | interface register, shared variables, maturity/disposition, joint acceptance | isolated discipline PASS, Design KEEP |
 | `R-G` | Capability / Skill Runtime | Default Skill Resolver, Skill Capability Contract, Tool Adapter Contract | minimum sufficient owner set, executable capability/tool route | METHOD authority, professional PASS |
 | `R-H` | Native Execution owner | Native Artifact Contract, domain execution source | actual editable/native artifact mutation | validation or Promotion |
-| `R-I` | Review owners | Artifact Review, Design Review, professional review, technical/evidence gates | bounded review/readback verdicts | another review class's verdict |
+| `R-I` | Review owners | Artifact Review, Design Review, professional review, technical/evidence gates | applicable body-locator binding verification + bounded review/readback verdicts | rewriting upstream Design/Professional/Knowledge authority; another review class's verdict |
 | `R-J` | Persistence / Promotion / Sync authority | PAP, Promotion authority, Cross-platform Sync | durable persistence, human promotion transition, target-platform readback | statutory approval, untriggered review closure |
 | `R-K` | G9 / Knowledge validation | Knowledge return / Practice validation owners | bounded lesson candidate, transfer boundary | automatic Current knowledge promotion |
 
@@ -589,7 +589,7 @@ They are cumulative implementation evidence, not design-quality grades. A machin
 | `R-B` | `M4_PROJECT_EXERCISED` | current corpus remediation, content/integrity/OE contracts are actively exercised |
 | `R-C` | `M2_FORMALIZED` | canonical Design Intelligence contract exists; no architecture-control claim of universal project exercise |
 | `R-D` | `M4_PROJECT_EXERCISED` | Shared DD contract is active and being bound into current Architecture work |
-| `R-E` | `M4_PROJECT_EXERCISED` **for Architecture scope only** | Architecture `ADD-00...ADD-17` is formalized and project-exercised; other domains remain process-definition OPEN |
+| `R-E` | `M4_PROJECT_EXERCISED` **for Architecture scope only** | Architecture `ADD-00...ADD-17` is formalized and project-exercised; Structural Engineering and Building Services / MEP retain their separate `M3_MACHINE_BOUND` domain-definition evidence without a project-exercise claim; other listed domains remain process-definition OPEN |
 | `R-F` | `M4_PROJECT_EXERCISED` | current architecture work uses material interface/readback logic; does not imply all domain combinations tested |
 | `R-G` | `M3_MACHINE_BOUND` | Resolver/capability/tool contracts and validators exist |
 | `R-H` | `M3_MACHINE_BOUND` | native artifact/execution contracts and concrete execution routes exist |
@@ -1216,6 +1216,11 @@ The system is considered **architecture-control runnable** only when all of the 
 75. context switch, chat compression, worker/session change or re-rendering the same bound inputs is not an authority change; conversely a changed Source/Design Authority or native write frontier cannot be hidden by matching prose or filenames;
 76. prior receipts remain immutable evidence under the authority fingerprint/snapshot that they actually consumed; a refreshed snapshot does not rewrite history or auto-upgrade old evidence;
 77. the Authority Snapshot / Fingerprint boundary is a projection over R-A and existing runtime carriers and may not create a central authority ledger, second authority registry, universal authority history database or authority-grant mechanism.
+78. R-E professional `domain_state` remains owner-native; the shared carrier may project Current-use/supersession and exit-condition facts but may not replace authentic domain state with a universal professional progress sequence;
+79. R-E Current-use/supersession, domain exit-condition closure and professional verdict remain orthogonal facts; `CURRENT`, `SATISFIED` and `PASS` may coexist but none implies either of the others;
+80. R-E interface requirements are stage-side requests/hypotheses routed to R-F; actual interface maturity, disposition, coupling, criticality, Acceptance Contract and current interface source-of-truth remain R-F-owned;
+81. R-D may preserve the R-B Operational Mount boundary it consumed as a reproducibility snapshot, but that snapshot may not reissue `KI*` or `OE*`; consequential Current reuse dereferences the owner-issued R-B mount record;
+82. R-D per-dimension review fields are Design dispositions, not workflow-progress states; `OPEN / IN_PROGRESS` work is carried by open/reopen/readback or owner-native workflow records rather than mixed into the Design verdict vocabulary.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -1480,16 +1485,18 @@ This is an interface envelope only. It does **not** invent a single universal pr
 | `R-A` | root/project/source authority + active task constraints | authority snapshot + fingerprint + identity/supersession resolution | one Current identity or explicit authority HOLD | `AUTHORITY_UNRESOLVED / AUTHORITY_CONFLICT / IDENTITY_COLLISION / AUTHORITY_STALE` |
 | `R-B` | authority + task/claim knowledge candidates | knowledge snapshot/mount + Content/KI/OE states | canonical refs, scope, freshness and claim boundary explicit | `KNOWLEDGE_REF_UNRESOLVED / KNOWLEDGE_INTEGRITY_HOLD / OPERATIONAL_ELIGIBILITY_HOLD / FRESHNESS_EXPIRED` |
 | `R-C` | authority + mounted knowledge + current design task | Design Intelligence Packet + question/intent/variables/triggers/claim-ceiling input | design question, route, triggers and exit condition explicit | `DESIGN_QUESTION_UNRESOLVED / INTENT_CONFLICT / CLAIM_CEILING_UNRESOLVED / REVIEW_TRIGGER_UNRESOLVED` |
-| `R-D` | DI packet + knowledge mount + Project Design DNA state | DD scope + DNA + design-readback/reopen requirements + DQ receipt | pre-execution DD scope explicit; promotion closure requires current receipt | `PROJECT_DESIGN_DNA_UNRESOLVED / DD_SCOPE_UNRESOLVED / DQ_RECEIPT_STALE / DESIGN_REOPEN_REQUIRED` |
-| `R-E` | authority + KI/OE mount + DI + DD + authentic process definition | domain/stage instance + native-output requirement + controlled variables + domain receipt | authentic stage exit at bounded professional claim ceiling | `DOMAIN_PROCESS_DEFINITION_OPEN / PROFESSIONAL_STAGE_INPUT_MISSING / KNOWLEDGE_MOUNT_MISSING / PROFESSIONAL_REVIEW_OPEN` |
+| `R-D` | DI packet + R-B owner-issued knowledge mount + Project Design DNA state | DD scope + DNA + design-development body locator record + non-authoritative consumed-mount snapshot where needed + design-readback/reopen requirements + DQ receipt | pre-execution DD scope explicit; material body record current or explicit HOLD; any consequential mount snapshot resolves back to the Current R-B mount; promotion closure requires current receipt | `PROJECT_DESIGN_DNA_UNRESOLVED / DD_SCOPE_UNRESOLVED / DESIGN_DEVELOPMENT_BODY_RECORD_MISSING / DQ_RECEIPT_STALE / DESIGN_REOPEN_REQUIRED` |
+| `R-E` | authority + R-B KI/OE mount + DI + DD + authentic process definition | domain/stage instance with owner-native domain state + Current-use/exit-condition projection + professional stage-body locator record + native-output requirement + controlled variables + stage-side interface requirements + domain receipt | authentic domain exit condition resolved at bounded professional claim ceiling; Current-use and verdict independently explicit; material in-claim body record current or explicit HOLD; actual interface state dereferenced from R-F | `DOMAIN_PROCESS_DEFINITION_OPEN / PROFESSIONAL_STAGE_INPUT_MISSING / PROFESSIONAL_STAGE_BODY_RECORD_MISSING / KNOWLEDGE_MOUNT_MISSING / PROFESSIONAL_REVIEW_OPEN` |
 | `R-F` | coupled professional variables/interfaces + DI/DD context | integration packet/register + shared-variable authority + acceptance + receipt | in-claim interface maturity/disposition and authority resolved | `INTERFACE_AUTHORITY_CONFLICT / SHARED_VARIABLE_DIVERGED / CRITICAL_INTERFACE_OPEN / CHANGE_PROPAGATION_INCOMPLETE` |
 | `R-G` | required native output + constraints + runtime availability | capability route + minimum owner set + adapter/fallback route | callable compliant route or explicit HOLD | `CAPABILITY_GAP / OWNER_SET_UNRESOLVED / TOOL_OR_ADAPTER_UNAVAILABLE / CONSTRAINT_DENY` |
 | `R-H` | authorized source + output spec + execution route + interface/design constraints | native artifact + delta + receipt + provenance/hash + readback target | actual native result or explicit execution failure; identity preserved | `SOURCE_AUTHORITY_MISSING / MUTATION_UNAUTHORIZED / ARTIFACT_WRITE_FAILED / EXECUTION_DEPENDENCY_STALE` |
-| `R-I` | actual result + triggered review set + reviewer identity | actual readback + review receipts/verdicts + defects + repair route | every triggered review resolved or explicit HOLD; failure routed to owner | `ACTUAL_READBACK_INCOMPLETE / TRIGGERED_REVIEW_MISSING / BLOCKING_DEFECT_PRESENT / REVIEW_CLASS_OPEN` |
+| `R-I` | actual result + applicable R-D/R-E body locator records + triggered review set + reviewer identity | actual readback + verified body-to-native/readback binding + review receipts/verdicts + defects + repair route | applicable body locators match Current native/readback refs; every triggered review resolved or explicit HOLD; failure routed to owner | `ACTUAL_READBACK_INCOMPLETE / BODY_RECORD_BINDING_STALE_OR_INCOMPLETE / TRIGGERED_REVIEW_MISSING / BLOCKING_DEFECT_PRESENT / REVIEW_CLASS_OPEN` |
 | `R-J` | current reviews + persistence/promotion/sync trigger + authorized human decision | persistence receipt + eligibility + promotion record + sync/drift readback | persistence/sync read back; machine stops at eligibility unless human authority acts | `PERSISTENCE_REQUIRED_BUT_MISSING / PROMOTION_PREREQUISITE_OPEN / TARGET_SYNC_READBACK_FAILED / PROMOTION_CLAIM_BOUNDARY_EXCEEDED` |
 | `R-K` | observed outcomes + review/failure/repair history + transfer criteria | lesson candidate + causal hypothesis + transfer boundary + evolution candidate ref | candidate routed to knowledge/evolution owner with no auto-promotion | `CAUSAL_STORY_UNSUPPORTED / TRANSFER_BOUNDARY_MISSING / COUNTEREVIDENCE_UNRESOLVED / AUTO_PROMOTION_ATTEMPT_BLOCKED` |
 
 The JSON contract is the machine-level exact field source; this table is the human-readable summary.
+
+Body records are **review inputs and locators**, not review authority. Where an R-D or R-E body record is applicable, R-I must dereference the body record's current native/readback refs and confirm that the review is looking at the same material result claimed by the body. A missing or stale binding is a review-evidence gap; R-I does not repair that gap by rewriting the upstream body, canonical Knowledge object or professional verdict.
 
 ### 30.3 Typed handoff envelope
 
@@ -1569,7 +1576,7 @@ Persistence is also layer-specific:
 
 - `R-A` persists material authority/identity/supersession changes;
 - `R-B` persists knowledge mount/state **by canonical reference**, not copied corpora;
-- `R-C/R-D/R-E/R-F` persist promotion-relevant packets, scopes, controlled variables and receipts when materially triggered;
+- `R-C/R-D/R-E/R-F` persist promotion-relevant packets, scopes, locator records, controlled variables and receipts when materially triggered; body records preserve canonical knowledge/native/readback refs rather than copied bodies;
 - `R-G` is normally ephemeral unless route choice is necessary for reproducibility or a non-default fallback is used;
 - `R-H` preserves artifact identity/provenance and persists binary content when PAP is triggered;
 - `R-I` persists promotion-relevant readback/reviews/repair routes;
@@ -2109,6 +2116,38 @@ Machines may not:
 `CURRENT RESOLVED ≠ PROJECT PROMOTED`.
 
 `SUPERSESSION CLOSED ≠ DESIGN KEEP`.
+
+### 35.7 Body / receipt / native-artifact application
+
+The same supersession boundary applies to the R-D / R-E body locator records, their owner-native receipts, the native artifacts they reference and the R-I review evidence that consumed them. This is an **application of the existing Current / Supersession boundary**, not a second body registry, receipt registry, version database or lifecycle state family.
+
+When a material successor is adopted, the bounded relation is:
+
+```text
+resolve Current successor + affected consumers
+→ preserve predecessor body / receipt / review as historical provenance
+→ mark only consuming body / receipt / review / Promotion dependency stale
+→ bind successor body or stage record to Current native + readback refs
+→ R-I verify the successor binding and rerun only affected review
+→ emit successor / revalidation receipt without rewriting predecessor evidence
+→ R-J consume only the Current non-stale receipt for Promotion
+```
+
+This reuses existing owner boundaries such as `DESIGN_REOPEN_REQUIRED`, `DQ_RECEIPT_STALE`, `PROFESSIONAL_STAGE_REOPEN_REQUIRED`, `BODY_RECORD_BINDING_STALE_OR_INCOMPLETE` and `PROMOTION_PREREQUISITE_OPEN`. It does not create a new supersession-result vocabulary.
+
+Historical truth is preserved exactly. If an old DQ or professional receipt was emitted as `stale=false` against the then-Current body/native/readback, later supersession does **not** rewrite that historical field to `true`. Instead the current runtime stops treating that receipt as Current evidence for the changed claim, preserves it as provenance, and emits successor/revalidation evidence when the new relation is reviewed.
+
+A successor native artifact likewise does not auto-upgrade its body locator, receipt or review. A successor body locator does not auto-promote a DQ or professional verdict. Current review requires R-I to reopen and verify the successor native/readback binding; Promotion requires R-J to consume the applicable Current non-stale receipts.
+
+Authority freshness follows §36 without retrofitting historical receipt schemas. The Current authority binding may be resolved through the owner-native R-A snapshot plus the runtime-layer instance / typed handoff / source revision that consumed it. A missing duplicate `authority_fingerprint` field inside an older receipt does not authorize inventing one or rewriting that receipt. When the resolved fingerprint/binding changes, direct Current consumption stops, the runtime computes the affected consumer scope, and only that scope is revalidated.
+
+If the change is only a location/representation move and the owner-native logical identity plus material relation are unchanged, dependency analysis may preserve the still-valid design/professional evidence. Supersession does not justify whole-system invalidation when the actual consumer graph is bounded.
+
+`NEW NATIVE REVISION ≠ OLD RECEIPT UPDATED`.
+
+`CURRENT BODY RECORD ≠ CURRENT REVIEW PASS`.
+
+`HISTORICAL RECEIPT IMMUTABLE ≠ CURRENT CLAIM ELIGIBLE`.
 
 ---
 

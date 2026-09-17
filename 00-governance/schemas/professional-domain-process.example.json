@@ -1,17 +1,18 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "kind": "DOMAIN_PROCESS_INSTANCE",
   "instance_id": "DPI-EXAMPLE-ARCH-001",
   "project_id": "PRJ-EXAMPLE-001",
   "workstream_id": null,
-  "decision_object_refs": ["ARCH-PLAN-EXAMPLE-001"],
+  "decision_object_refs": [
+    "ARCH-PLAN-EXAMPLE-001"
+  ],
   "process_definition_ref": "00-governance/architecture-design-development-process-v1.0.md",
   "process_id": "EXAMPLE_ARCHITECTURE_PROCESS_ID",
   "process_version": "1.0",
   "domain": "Architecture",
   "owner": "Architecture professional process owner",
   "current_baseline": "BASELINE-EXAMPLE-001",
-  "execution_state": "IN_PROGRESS",
   "professional_verdict": "NOT_RUN",
   "claim_ceiling": "ARCHITECTURAL_DESIGN_DEVELOPMENT",
   "stage_instances": [
@@ -21,29 +22,126 @@
       "stage_id": "ADD-07",
       "cycle": 1,
       "baseline_ref": "BASELINE-EXAMPLE-001",
-      "execution_state": "IN_PROGRESS",
       "review_verdict": "NOT_RUN",
       "claim_ceiling": "ARCHITECTURAL_CIRCULATION_DESIGN",
-      "inputs": ["current plan geometry", "current circulation requirements"],
-      "outputs": ["CIRCULATION_READBACK"],
+      "stage_body_record": {
+        "body_ref": "EXAMPLE-ARCH-ADD07-BODY-001",
+        "title": "Example project | ADD-07 Horizontal and vertical circulation | baseline 001",
+        "section_coverage": [
+          {
+            "semantic_role": "PROFESSIONAL_QUESTION_SCOPE",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Stage Question / Scope",
+            "reason": null
+          },
+          {
+            "semantic_role": "CURRENT_CONDITION_PROBLEM",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Current Condition / Problem",
+            "reason": null
+          },
+          {
+            "semantic_role": "AUTHORITY_KNOWLEDGE_EVIDENCE_INPUTS",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Authority / Knowledge / Evidence Inputs",
+            "reason": null
+          },
+          {
+            "semantic_role": "PROFESSIONAL_CRITERIA_INTENT",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Architectural Criteria",
+            "reason": null
+          },
+          {
+            "semantic_role": "DEVELOPMENT_ANALYSIS_COMPARISON_MECHANISM",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Circulation Development",
+            "reason": null
+          },
+          {
+            "semantic_role": "CROSS_DOMAIN_INTERFACES",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Professional Interfaces",
+            "reason": null
+          },
+          {
+            "semantic_role": "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Native Plan / Section",
+            "reason": null
+          },
+          {
+            "semantic_role": "ACTUAL_READBACK_FINDING",
+            "status": "MISSING",
+            "visible_heading_or_locator": null,
+            "reason": "Actual readback has not been completed."
+          },
+          {
+            "semantic_role": "FAILURE_OPEN_DOES_NOT_PROVE",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "OPEN / Does Not Prove",
+            "reason": null
+          },
+          {
+            "semantic_role": "VERDICT_CLAIM_REOPEN_NEXT_ACTION",
+            "status": "PRESENT",
+            "visible_heading_or_locator": "Verdict / Reopen / Next Action",
+            "reason": null
+          }
+        ],
+        "knowledge_mount_refs": [
+          "KM-EXAMPLE-OE2-001"
+        ],
+        "native_artifact_refs": [
+          "ARCH-PLAN-EXAMPLE-001"
+        ],
+        "readback_refs": []
+      },
+      "inputs": [
+        "current plan geometry",
+        "current circulation requirements"
+      ],
+      "outputs": [
+        "CIRCULATION_READBACK"
+      ],
       "consequential_knowledge_mount_required": true,
-      "knowledge_mount_refs": ["KM-EXAMPLE-OE2-001"],
-      "interface_refs": ["IF-EXAMPLE-ARCH-FLS-001", "IF-EXAMPLE-ARCH-ACC-001"],
+      "knowledge_mount_refs": [
+        "KM-EXAMPLE-OE2-001"
+      ],
+      "interface_refs": [
+        "IF-EXAMPLE-ARCH-FLS-001",
+        "IF-EXAMPLE-ARCH-ACC-001"
+      ],
       "evidence_refs": [],
       "review_refs": [],
-      "open_items": ["formal fire/accessibility compliance remains outside this architecture-stage claim"],
+      "open_items": [
+        "formal fire/accessibility compliance remains outside this architecture-stage claim"
+      ],
       "stale_scope": [],
       "reopen_events": [],
       "exit_condition_state": "OPEN",
       "actual_readback_refs": [],
-      "last_updated": "2026-09-15T00:00:00Z"
+      "last_updated": "2026-09-15T00:00:00Z",
+      "domain_state": "IN_PROGRESS",
+      "current_use_state": "CURRENT",
+      "review_bindings": [],
+      "in_claim_blocking_open_item_count": 0
     }
   ],
-  "active_interface_refs": ["IF-EXAMPLE-ARCH-FLS-001", "IF-EXAMPLE-ARCH-ACC-001"],
-  "open_items": ["formal statutory/professional approvals remain outside the current architecture claim"],
+  "active_interface_refs": [
+    "IF-EXAMPLE-ARCH-FLS-001",
+    "IF-EXAMPLE-ARCH-ACC-001"
+  ],
+  "open_items": [
+    "formal statutory/professional approvals remain outside the current architecture claim"
+  ],
   "professional_receipt_refs": [],
   "integration_receipt_refs": [],
   "stale_scope": [],
   "reopen_events": [],
-  "last_updated": "2026-09-15T00:00:00Z"
+  "last_updated": "2026-09-15T00:00:00Z",
+  "domain_state": "IN_PROGRESS",
+  "current_use_state": "CURRENT",
+  "process_exit_condition_state": "OPEN",
+  "in_claim_blocking_open_item_count": 0
 }

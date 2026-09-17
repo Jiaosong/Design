@@ -1,0 +1,193 @@
+{
+  "candidate_id": "OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE12-GIT-SYNC-20260917",
+  "state": "EV4_INDEPENDENT_REVIEWED",
+  "target_class": "CROSS_DOMAIN_PROFESSIONAL_CONTENT_GIT_CANONICAL_SYNC",
+  "target_owner": "Existing professional-domain owners plus GitHub repository persistence/readback surface",
+  "target_ref": "Git-canonical persisted bytes for the exact repaired Stage-12 16-file professional-content candidate",
+  "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE12_CAUSAL_REPAIR_20260917.json",
+  "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
+  "predecessor_candidate_manifest_sha256": "4a8f7b3813a8d3d404a9cff9ea417eaed19d329fab72ce8117411561d6463909",
+  "baseline": {
+    "current_version_or_revision": "PR #646 candidate branch based on origin/main@985bacb3a7641d837a6df70a88015765a6f5e684; repaired Stage-12 local-worktree candidate is EV4 on manifest 4a8f7b38...; bridge BOM repair is a separate runtime delta outside this 16-file envelope.",
+    "source_hash_or_commit": "82e31f818e7c5bf6f45eca5f15a7046dc4fc02b2",
+    "validated_branch_head": "6f76750596241f243aca84feaf1687671bee696b",
+    "frozen_at": "2026-09-17T11:54:16.704600+00:00"
+  },
+  "trigger_evidence": [
+    "Git synchronization of the repaired Stage-12 candidate exposed the same repository line-ending normalization class previously observed at Stage-11.",
+    "Direct committed-blob recomputation of the repaired Stage-12 16-file target produced manifest sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c rather than local-worktree manifest sha256:4a8f7b3813a8d3d404a9cff9ea417eaed19d329fab72ce8117411561d6463909.",
+    "Exactly three tracked Markdown carriers differ, and each local reviewed byte sequence becomes the committed Git blob exactly by CRLF-to-LF normalization with no semantic text change."
+  ],
+  "hypothesis": "The Git-persisted repaired Stage-12 candidate is semantically identical to the independently reviewed local repaired Stage-12 candidate and differs only by repository line-ending normalization in three tracked Markdown files.",
+  "mutation_scope": {
+    "summary": "No professional-content mutation. Record the 16-file Git-canonical byte identity used by GitHub/fresh clones while preserving both the original Stage-12 EV4 and repaired local Stage-12 EV4 records as immutable provenance.",
+    "candidate_file_count_excluding_this_record": 16,
+    "candidate_manifest_sha256": "dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c",
+    "candidate_manifest_algorithm": "SHA256 over committed Git blob bytes; aggregate stream over sorted UTF-8 paths using path + REAL NUL + lowercase content SHA256 ASCII + REAL LF.",
+    "immediate_predecessor_file_sha256": {
+      "00-governance/architecture-design-development-process-v1.0.md": "a4a5e996ce97ad19bec17fe0a5b61ca54a1b6d646e23dc56ac7b1017b5d310eb",
+      "00-governance/building-services-mep-design-process-v1.0.md": "09b2ab313c70e7c4aff71eb5de1a84979388bd869e431604bd91844e4addc225",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "0a64f73c29e6d2f2ff21a9deb5f01c695d1574310fca0a661c543fc9a6c22714",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "cb0aff4e2703efd2a3b11452ba21842eac29e55e3d147b6aeac85aad70f36814",
+      "00-governance/interior-design-development-process-v1.0.md": "e48caaa215e12982d9347d075f71582f3b3fec84e7d3399646163eb489f7b8e0",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "0a909f474069cf1d137ede80621ea0664b35e5a918a8c5047875a91f58fc8add",
+      "00-governance/lighting-design-development-process-v1.0.md": "165081838452557e7c71ebbd9c926928f094eff4101caf85bcb223a7d6f1eeb7",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "4bdeca858546a991c54fd24297f53cbcbfd51e2c22fbead802fccc1dda6aaea5",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "89c5524671fea7f34b18eae66500e5e13c793f7749083d3facd103f9a20d9aa9",
+      "00-governance/schemas/interior-design-process.v1.json": "5ae9ec30964e93851a5ec82c28fc63125b8c35d18383bfd00a6ccc4c3dc904be",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "88ef1a6aee6a9a32165393a5a4cac20892daf697fa564a75fc859f534bc86d04",
+      "00-governance/schemas/lighting-design-process.v1.json": "3da6f56d5e032b6b7063cd7e75d4487fb71b6a970e1b52e59418e4b5c451ba0e",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "014906f43305493c23968975dacf07b03a76ac7bee96d5d89705d04c0bee068e",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "167a11192ff51f33af41379bcb185c5c69c0080ec8f18142816732812c725cde",
+      "00-governance/structural-engineering-design-process-v1.0.md": "1e164044dc8a03a9d173b709c48cd08ddee681d7420cf4d63bb628276cad1c6a",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "533981eb1160f08210e7f8becd8a5b8a62d79cd8973ba06c624f376c6169be6f"
+    },
+    "normalization_delta": [
+      {
+        "path": "00-governance/architecture-design-development-process-v1.0.md",
+        "predecessor_worktree_sha256": "a4a5e996ce97ad19bec17fe0a5b61ca54a1b6d646e23dc56ac7b1017b5d310eb",
+        "git_blob_sha256": "3122f067b55b7c375cd6470f199db14240448c394d190c9dddf268e76b9801a1",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      },
+      {
+        "path": "00-governance/building-services-mep-design-process-v1.0.md",
+        "predecessor_worktree_sha256": "09b2ab313c70e7c4aff71eb5de1a84979388bd869e431604bd91844e4addc225",
+        "git_blob_sha256": "3b3d1f50fa61d35c7f7549a1664b5e109242adfad3db0ce3b1061eb15f57251e",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      },
+      {
+        "path": "00-governance/structural-engineering-design-process-v1.0.md",
+        "predecessor_worktree_sha256": "1e164044dc8a03a9d173b709c48cd08ddee681d7420cf4d63bb628276cad1c6a",
+        "git_blob_sha256": "7e7eabcf4364393d7f557b3cd972a6daf4c8649406ba41e22ecc7d9cbf1e0ee9",
+        "transformation": "CRLF_TO_LF_ONLY",
+        "lf_normalized_bytes_equal": true,
+        "semantic_text_change": false
+      }
+    ],
+    "explicit_exclusions": [
+      "No professional prose, machine-stage semantics, validator logic, runtime layer, state family, schema family or owner boundary is changed by this Git-sync record.",
+      "No repaired Stage-12 local EV4 record or manifest is rewritten.",
+      "The separately validated oleander_chat_runtime_bridge.py UTF-8 BOM compatibility repair at commit 6f767505... is outside this sixteen-file professional-content manifest and is not reclassified as Stage-12 professional content.",
+      "No Current adoption, project exercise, Design KEEP, Integration PASS, Knowledge promotion, EV5/EV6 or Notion sync is claimed."
+    ]
+  },
+  "candidate_implementation_manifest": {
+    "manifest_sha256": "dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c",
+    "files": {
+      "00-governance/architecture-design-development-process-v1.0.md": "3122f067b55b7c375cd6470f199db14240448c394d190c9dddf268e76b9801a1",
+      "00-governance/building-services-mep-design-process-v1.0.md": "3b3d1f50fa61d35c7f7549a1664b5e109242adfad3db0ce3b1061eb15f57251e",
+      "00-governance/control-plane/tests/test_professional_domain_process_contracts.py": "0a64f73c29e6d2f2ff21a9deb5f01c695d1574310fca0a661c543fc9a6c22714",
+      "00-governance/digital-product-hcd-design-development-process-v1.0.md": "cb0aff4e2703efd2a3b11452ba21842eac29e55e3d147b6aeac85aad70f36814",
+      "00-governance/interior-design-development-process-v1.0.md": "e48caaa215e12982d9347d075f71582f3b3fec84e7d3399646163eb489f7b8e0",
+      "00-governance/landscape-architecture-design-development-process-v1.0.md": "0a909f474069cf1d137ede80621ea0664b35e5a918a8c5047875a91f58fc8add",
+      "00-governance/lighting-design-development-process-v1.0.md": "165081838452557e7c71ebbd9c926928f094eff4101caf85bcb223a7d6f1eeb7",
+      "00-governance/schemas/building-services-mep-design-process.v1.json": "4bdeca858546a991c54fd24297f53cbcbfd51e2c22fbead802fccc1dda6aaea5",
+      "00-governance/schemas/digital-product-hcd-design-process.v1.json": "89c5524671fea7f34b18eae66500e5e13c793f7749083d3facd103f9a20d9aa9",
+      "00-governance/schemas/interior-design-process.v1.json": "5ae9ec30964e93851a5ec82c28fc63125b8c35d18383bfd00a6ccc4c3dc904be",
+      "00-governance/schemas/landscape-architecture-design-process.v1.json": "88ef1a6aee6a9a32165393a5a4cac20892daf697fa564a75fc859f534bc86d04",
+      "00-governance/schemas/lighting-design-process.v1.json": "3da6f56d5e032b6b7063cd7e75d4487fb71b6a970e1b52e59418e4b5c451ba0e",
+      "00-governance/schemas/structural-engineering-design-process.v1.json": "014906f43305493c23968975dacf07b03a76ac7bee96d5d89705d04c0bee068e",
+      "00-governance/schemas/systems-engineering-design-process.v1.json": "167a11192ff51f33af41379bcb185c5c69c0080ec8f18142816732812c725cde",
+      "00-governance/structural-engineering-design-process-v1.0.md": "7e7eabcf4364393d7f557b3cd972a6daf4c8649406ba41e22ecc7d9cbf1e0ee9",
+      "00-governance/systems-engineering-design-development-process-v1.0.md": "533981eb1160f08210e7f8becd8a5b8a62d79cd8973ba06c624f376c6169be6f"
+    }
+  },
+  "evaluation": {
+    "regression_refs": [
+      "All 16 committed Git blob hashes were recomputed from implementation commit 82e31f81... and aggregate exactly to the declared Git-canonical manifest.",
+      "Only Architecture, Building Services/MEP and Structural body carriers differ from the repaired local Stage-12 bytes; CRLF-to-LF normalization reproduces each committed blob exactly.",
+      "The remaining 13 target files are byte-identical to the repaired local Stage-12 EV4 hashes.",
+      "Git-synced Professional Domain targeted suite: 43/43 PASS at branch head 6f767505....",
+      "Git-synced full Control Plane discovery: 148/148 PASS at branch head 6f767505....",
+      "Professional validator self-test and seven current professional definitions PASS.",
+      "Architecture Control, Execution Contracts, Execution Locks, Runtime Resilience, Runtime Decisions, Master Runtime and Control Card scanner PASS.",
+      "Separate bridge BOM compatibility self-test and py_compile PASS; real UTF-8 BOM file and raw-stdin inputs exit 0; BOM+array and malformed JSON remain rejected with exit 2; bridge observability readback preserves changes_resolver_decision=false, changes_project_state=false and changes_completion_authority=false."
+    ],
+    "acceptance_thresholds": [
+      "Git-canonical 16-file manifest recomputes exactly from committed blobs.",
+      "Every line-ending-different file is proven byte-equivalent after CRLF-to-LF normalization and has no semantic text change.",
+      "No repaired Stage-12 machine/professional requirement is removed, reordered or owner-shifted.",
+      "Current architecture/professional-domain adoption states remain unchanged.",
+      "Bridge runtime compatibility repair remains outside this professional-content manifest and does not widen authority/state."
+    ],
+    "metrics": {
+      "target_files": 16,
+      "git_blob_hash_changes_vs_local_worktree_manifest": 3,
+      "semantic_content_changes": 0,
+      "professional_targeted_tests_passed": 43,
+      "control_plane_tests_passed": 148,
+      "control_plane_tests_failed": 0,
+      "stage_count_delta": 0,
+      "runtime_layer_delta": 0,
+      "schema_family_delta": 0,
+      "project_exercise_claim": false
+    },
+    "result": "PASS_AT_EV3_BOUNDED_SCOPE"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "no_false_promotion": true
+  },
+  "independent_review": {
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_18_STAGE12_GIT_SYNC_INDEPENDENT_REVIEW_20260917",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
+    "review_input_revision": "candidate-manifest-sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c",
+    "verdict": "PASS_EV4_ALLOWED",
+    "blocking_findings": [],
+    "review_observed_at": "2026-09-17T11:57:41.079842+00:00",
+    "review_notes": [
+      "Independent reviewer fresh-read HEAD 6d031b940143b8b39ffbd398a054b5417c5ad784 and recomputed all 16 committed Git-blob SHA256 values from implementation commit 82e31f818e7c5bf6f45eca5f15a7046dc4fc02b2; every file matched and reproduced exact aggregate sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c.",
+      "The repaired local predecessor remains EV4 on manifest sha256:4a8f7b3813a8d3d404a9cff9ea417eaed19d329fab72ce8117411561d6463909; all sixteen local predecessor hashes match that immutable record.",
+      "Exactly three local-vs-Git byte deltas were confirmed: Architecture, Building Services/MEP and Structural Markdown. For each, CRLF-to-LF normalization alone reproduces the Git blob exactly; the remaining thirteen target files are byte-identical.",
+      "Architecture repaired R-E/R-D wording and its regression guard are both present in committed bytes; no Current control carrier, owner boundary, stage family, runtime layer, schema family or project-exercise state changed.",
+      "Post-implementation commits touch only the separate runtime bridge repair and this Git-sync record; neither changes the sixteen-file professional-content envelope.",
+      "Fresh independent targeted Professional Domain 43/43 and full Control Plane 148/148 PASS; validator self-test and all seven current Professional Domain definitions PASS.",
+      "Independent runtime reviewer separately returned PASS_RUNTIME_BOM_REPAIR_GIT_SYNC: real BOM file and raw-stdin inputs pass, invalid BOM array/malformed JSON remain rejected, bridge self-test/py_compile and runtime/control regressions pass, and observability authority flags remain false.",
+      "This verdict authorizes EV4 independent-review state only. It does not authorize EV5/EV6, Current adoption, Notion Current sync, project Professional PASS, Design KEEP, R-F Integration PASS, specialist/statutory approval or Current Knowledge."
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "PENDING_NOT_REQUESTED",
+    "decision_by": "UNRESOLVED",
+    "decision_at": "UNRESOLVED"
+  },
+  "rollback": {
+    "previous_pointer": "predecessor repaired Stage-12 local-worktree EV4 manifest sha256:4a8f7b3813a8d3d404a9cff9ea417eaed19d329fab72ce8117411561d6463909",
+    "rollback_action": "Preserve the historical original and repaired Stage-12 local EV4 records; this Git-sync record can be discarded without changing implementation semantics.",
+    "rollback_test": "Recompute the repaired predecessor manifest against its original Windows worktree bytes and retain the Git-canonical record only as separate persistence provenance."
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "Through independent Git-canonical readback and any later separately authorized adoption.",
+    "regression_signals": [
+      "any Git blob content differs beyond line-ending normalization from repaired Stage-12 reviewed semantics",
+      "any of the 13 unchanged targets changes unexpectedly",
+      "Architecture R-E text regains authority to close R-D Design Quality/DD relation",
+      "Current/professional-domain adoption state changes without authorization",
+      "fresh-clone manifest does not reproduce the declared Git-canonical hash",
+      "bridge runtime repair is incorrectly folded into the Stage-12 16-file professional-content manifest"
+    ],
+    "reopen_rule": "Any signal reopens only the Git-canonical synchronization candidate; the historical original and repaired Stage-12 local EV4 records remain immutable.",
+    "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
+  },
+  "does_not_prove": [
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "CURRENT_PROFESSIONAL_PROCESS_ADOPTION",
+    "PROJECT_EXERCISE",
+    "PROFESSIONAL_PROJECT_PASS",
+    "R_F_INTEGRATION_PASS",
+    "DESIGN_KEEP",
+    "LIVE_NOTION_EQUIVALENCE",
+    "CURRENT_KNOWLEDGE",
+    "PROJECT_PROMOTION",
+    "SPECIALIST_OR_STATUTORY_APPROVAL"
+  ]
+}

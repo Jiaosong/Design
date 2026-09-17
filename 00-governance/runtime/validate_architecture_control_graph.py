@@ -277,6 +277,50 @@ def validate_layer_interface_contract(graph: dict, layers_by_id: dict[str, dict]
         if not isinstance(interface.get("claim_boundary"), str) or not interface["claim_boundary"].strip():
             fail(f"{layer_id} claim boundary missing")
 
+    rd = interfaces["R-D"]
+    if "DESIGN_DEVELOPMENT_BODY_RECORD" not in set(rd.get("outputs", [])):
+        fail("R-D must expose the design-development body locator record")
+    if "MATERIAL_DESIGN_DEVELOPMENT_BODY_RECORD_CURRENT_OR_EXPLICIT_HOLD" not in set(rd.get("exit_conditions", [])):
+        fail("R-D material design-development body record closure boundary missing")
+    if "DESIGN_DEVELOPMENT_BODY_LOCATOR_RECORD" not in set(rd.get("write_authority", [])):
+        fail("R-D body-record write authority must remain locator-only")
+    if "DESIGN_DEVELOPMENT_BODY_RECORD_AND_LOCATORS" not in set(rd.get("required_readback", [])):
+        fail("R-D body record must be included in required readback")
+    if "DESIGN_DEVELOPMENT_BODY_RECORD_MISSING" not in set(rd.get("failure_codes", [])):
+        fail("R-D body-record missing failure code absent")
+    if "WITHOUT_COPYING" not in rd.get("persistence_policy", ""):
+        fail("R-D body record must reference canonical knowledge/native/readback without copying bodies")
+
+    re_layer = interfaces["R-E"]
+    if "PROFESSIONAL_STAGE_BODY_RECORD" not in set(re_layer.get("outputs", [])):
+        fail("R-E must expose the professional stage-body locator record")
+    if "MATERIAL_IN_CLAIM_STAGE_BODY_RECORD_CURRENT_OR_EXPLICIT_HOLD" not in set(re_layer.get("exit_conditions", [])):
+        fail("R-E material in-claim stage-body closure boundary missing")
+    if "PROFESSIONAL_STAGE_BODY_LOCATOR_RECORD" not in set(re_layer.get("write_authority", [])):
+        fail("R-E stage-body write authority must remain locator-only")
+    if "PROFESSIONAL_STAGE_BODY_RECORD_AND_LOCATORS" not in set(re_layer.get("required_readback", [])):
+        fail("R-E stage-body record must be included in required readback")
+    if "PROFESSIONAL_STAGE_BODY_RECORD_MISSING" not in set(re_layer.get("failure_codes", [])):
+        fail("R-E stage-body missing failure code absent")
+    if "WITHOUT_COPYING" not in re_layer.get("persistence_policy", ""):
+        fail("R-E stage-body record must reference canonical knowledge/native/readback without copying bodies")
+
+    ri = interfaces["R-I"]
+    required_body_inputs = {
+        "R-D:DESIGN_DEVELOPMENT_BODY_RECORD",
+        "R-E:PROFESSIONAL_STAGE_BODY_RECORD",
+    }
+    if not required_body_inputs.issubset(set(ri.get("inputs", []))):
+        fail("R-I must consume applicable R-D/R-E body locator records")
+    if "APPLICABLE_BODY_RECORD_BINDINGS_MATCH_CURRENT_NATIVE_AND_READBACK_REFS" not in set(ri.get("exit_conditions", [])):
+        fail("R-I body-record binding exit boundary missing")
+    if "APPLICABLE_DESIGN_AND_PROFESSIONAL_BODY_RECORD_BINDINGS" not in set(ri.get("required_readback", [])):
+        fail("R-I must read back applicable design/professional body bindings")
+    if "BODY_RECORD_BINDING_STALE_OR_INCOMPLETE" not in set(ri.get("failure_codes", [])):
+        fail("R-I body-record binding failure code missing")
+    if "MAY_NOT_REWRITE_UPSTREAM_BODY_KNOWLEDGE_OR_PROFESSIONAL_AUTHORITY" not in ri.get("claim_boundary", ""):
+        fail("R-I body-record verification may not gain upstream body/Knowledge/professional authority")
+
     rk = interfaces["R-K"]
     if rk.get("feedback_targets") != ["R-B"]:
         fail("R-K feedback target must remain bounded to R-B")
@@ -504,6 +548,22 @@ def main() -> None:
                     fail(f"{layer_id} {key} references unknown layer {target}")
                 if key in {"dependencies", "conditional_dependencies"} and target == layer_id:
                     fail(f"{layer_id} may not depend on itself")
+
+    rd_layer = layers_by_id["R-D"]
+    if "DESIGN_DEVELOPMENT_BODY_RECORD" not in set(rd_layer.get("state_objects", [])):
+        fail("R-D control graph must expose DESIGN_DEVELOPMENT_BODY_RECORD")
+    if "BIND_DESIGN_DEVELOPMENT_BODY_RECORD" not in set(rd_layer.get("control_actions", [])):
+        fail("R-D control graph must bind the design-development body locator record")
+
+    re_layer = layers_by_id["R-E"]
+    if "PROFESSIONAL_STAGE_BODY_RECORD" not in set(re_layer.get("state_objects", [])):
+        fail("R-E control graph must expose PROFESSIONAL_STAGE_BODY_RECORD")
+    if "BIND_PROFESSIONAL_STAGE_BODY_RECORD" not in set(re_layer.get("control_actions", [])):
+        fail("R-E control graph must bind the professional stage-body locator record")
+
+    ri_layer = layers_by_id["R-I"]
+    if "VERIFY_BODY_RECORD_BINDINGS" not in set(ri_layer.get("control_actions", [])):
+        fail("R-I control graph must verify applicable R-D/R-E body-record bindings")
 
     validate_dag(layers_by_id)
     validate_layer_interface_contract(graph, layers_by_id, plane_ids)
@@ -802,6 +862,79 @@ def main() -> None:
             fail(f"Current/supersession boundary missing {required_true}")
     if set(supersession.get("unresolved_runtime_outcomes", [])) != {"BLOCKED", "RECONCILIATION_REQUIRED"}:
         fail("competing/unresolved Current claims must reuse existing blocker/reconciliation outcomes")
+
+    body_application = supersession.get("body_receipt_native_application", {})
+    if body_application.get("semantic_class") != "APPLICATION_OF_EXISTING_SUPERSESSION_BOUNDARY_NOT_NEW_STATE_REGISTRY_VERSION_DB_OR_RECEIPT_REWRITE":
+        fail("body/receipt/native supersession application must remain an application of the existing boundary")
+    expected_body_application_refs = {
+        "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+    }
+    if set(body_application.get("owner_refs", [])) != expected_body_application_refs:
+        fail("body/receipt/native supersession owner refs drift")
+    for ref in body_application.get("owner_refs", []):
+        check_ref(ref)
+    if set(body_application.get("object_classes", [])) != {
+        "DESIGN_DEVELOPMENT_BODY_RECORD",
+        "DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
+        "PROFESSIONAL_STAGE_BODY_RECORD",
+        "DOMAIN_RECEIPT",
+        "NATIVE_ARTIFACT",
+        "REVIEW_RECEIPT",
+    }:
+        fail("body/receipt/native supersession object-class coverage drift")
+    if body_application.get("successor_rebind_sequence", []) != [
+        "RESOLVE_CURRENT_SUCCESSOR_AND_AFFECTED_CONSUMERS",
+        "PRESERVE_PREDECESSOR_BODY_RECEIPT_AND_REVIEW_AS_HISTORICAL_PROVENANCE",
+        "MARK_ONLY_CONSUMING_BODY_RECEIPT_REVIEW_OR_PROMOTION_DEPENDENCY_STALE",
+        "BIND_SUCCESSOR_BODY_OR_STAGE_RECORD_TO_CURRENT_NATIVE_AND_READBACK",
+        "R_I_VERIFY_SUCCESSOR_BINDINGS_AND_RERUN_AFFECTED_REVIEW",
+        "EMIT_SUCCESSOR_OR_REVALIDATION_RECEIPT_WITHOUT_REWRITING_PREDECESSOR",
+        "R_J_CONSUME_ONLY_CURRENT_NON_STALE_RECEIPT_FOR_PROMOTION",
+    ]:
+        fail("body/receipt/native successor rebind sequence drift")
+    if set(body_application.get("reuse_existing_failure_or_hold_boundaries", [])) != {
+        "R-D:DESIGN_REOPEN_REQUIRED",
+        "R-D:DQ_RECEIPT_STALE",
+        "R-E:PROFESSIONAL_STAGE_REOPEN_REQUIRED",
+        "R-I:BODY_RECORD_BINDING_STALE_OR_INCOMPLETE",
+        "R-J:PROMOTION_PREREQUISITE_OPEN",
+    }:
+        fail("body/receipt/native supersession must reuse existing owner failure/HOLD boundaries")
+    for required_true in {
+        "historical_body_records_receipts_and_reviews_remain_immutable_provenance",
+        "historical_receipt_stale_flag_is_not_rewritten_to_describe_later_supersession",
+        "new_schema_field_does_not_require_in_place_historical_receipt_upgrade",
+        "successor_native_artifact_does_not_auto_upgrade_body_receipt_or_review",
+        "successor_body_record_does_not_auto_promote_receipt_or_design_professional_verdict",
+        "only_consumers_of_materially_changed_relation_become_stale",
+        "authority_binding_may_resolve_via_r_a_snapshot_layer_instance_or_handoff_without_retrofitting_historical_receipt_schema",
+        "authority_fingerprint_mismatch_blocks_direct_current_consumption_then_routes_only_affected_scope",
+        "r_i_rebind_and_actual_readback_required_before_current_review_claim",
+        "r_j_promotion_consumes_current_non_stale_receipts_only",
+        "duplicate_body_or_receipt_current_registry_forbidden",
+    }:
+        if body_application.get(required_true) is not True:
+            fail(f"body/receipt/native supersession application missing {required_true}")
+
+    dq_supersession_text = (ROOT / "00-governance/design-quality-and-design-development-specification-v1.0.md").read_text(encoding="utf-8")
+    for required in {
+        "NEW NATIVE REVISION ≠ OLD DQ RECEIPT UPDATED",
+        "SUPERSEDED DQ RECEIPT ≠ FALSE HISTORICAL EVIDENCE",
+        "HISTORICAL RECEIPT IMMUTABLE ≠ CURRENT CLAIM ELIGIBLE",
+    }:
+        if required not in dq_supersession_text:
+            fail(f"Design Quality supersession boundary missing: {required}")
+    professional_supersession_text = (ROOT / "00-governance/professional-domain-process-contract-v1.0.md").read_text(encoding="utf-8")
+    for required in {
+        "NEW STAGE CYCLE / NATIVE REVISION ≠ OLD PROFESSIONAL RECEIPT REWRITTEN",
+        "SUPERSEDED PROFESSIONAL EVIDENCE ≠ FALSE EVIDENCE",
+        "HISTORICAL PROFESSIONAL RECEIPT ≠ CURRENT PROFESSIONAL CLAIM BY DEFAULT",
+    }:
+        if required not in professional_supersession_text:
+            fail(f"Professional Domain supersession boundary missing: {required}")
+
     anti_pollution = json.loads(
         (ROOT / "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json").read_text(encoding="utf-8")
     )
@@ -1375,6 +1508,22 @@ def main() -> None:
     naming_text = (ROOT / "00-governance/naming-status.md").read_text(encoding="utf-8")
     if "WORKING / TEMP → CANDIDATE → CURRENT | SUPPORT | PROVENANCE | SUPERSEDED | REJECTED | DELETE_CANDIDATE" not in naming_text:
         fail("G9 projection must reuse existing Knowledge lifecycle vocabulary")
+    design_quality_text = (ROOT / "00-governance/design-quality-and-design-development-specification-v1.0.md").read_text(encoding="utf-8")
+    for required in {
+        "OBSERVED OUTCOME ≠ CAUSAL EXPLANATION",
+        "R-K → R-B` is feedback, not a dependency handoff",
+        "G9 CANDIDATE ≠ KI4 ≠ OE3",
+    }:
+        if required not in design_quality_text:
+            fail(f"Design Quality G9 boundary missing: {required}")
+    professional_contract_text = (ROOT / "00-governance/professional-domain-process-contract-v1.0.md").read_text(encoding="utf-8")
+    for required in {
+        "PROFESSIONAL STAGE PASS ≠ REUSABLE KNOWLEDGE",
+        "PROJECT REOPEN ≠ KNOWLEDGE PROMOTION",
+        "G9 CANDIDATE ≠ KI4 ≠ OE3",
+    }:
+        if required not in professional_contract_text:
+            fail(f"Professional Domain G9 boundary missing: {required}")
     evolution = json.loads(EVOLUTION_CANDIDATE.read_text(encoding="utf-8"))
     evolution_invariants = set(evolution.get("invariants", []))
     if not {"ONE_PROJECT_SUCCESS_DOES_NOT_UNIVERSALIZE_RULE", "TARGET_OWNER_RETAINS_SEMANTIC_AUTHORITY", "G9_IS_CANDIDATE_INTAKE_NOT_SUPER_AUTHORITY"}.issubset(evolution_invariants):
@@ -1616,6 +1765,11 @@ def main() -> None:
         "CONTEXT_PACKAGING_CHANGE_IS_NOT_AUTHORITY_CHANGE",
         "HISTORICAL_RECEIPT_RETAINS_CONSUMED_AUTHORITY_BINDING",
         "AUTHORITY_SNAPSHOT_BOUNDARY_DOES_NOT_CREATE_LEDGER_REGISTRY_HISTORY_DB_OR_GRANT_MECHANISM",
+        "R_E_DOMAIN_STATE_REMAINS_OWNER_NATIVE",
+        "R_E_CURRENT_USE_EXIT_AND_VERDICT_REMAIN_ORTHOGONAL",
+        "R_E_INTERFACE_REQUIREMENT_DOES_NOT_OWN_R_F_INTERFACE_STATE",
+        "DQ_MOUNT_SNAPSHOT_DOES_NOT_REISSUE_KI_OR_OE",
+        "DQ_DIMENSION_DISPOSITION_DOES_NOT_CREATE_PROGRESS_STATE",
     }:
         if invariant not in invariants:
             fail(f"missing hard invariant {invariant}")

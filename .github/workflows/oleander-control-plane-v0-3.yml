@@ -4,13 +4,37 @@ on:
   pull_request:
     paths:
       - '00-governance/control-plane/**'
+      - '00-governance/runtime/**'
+      - '00-governance/schemas/**'
       - '00-governance/README.md'
       - '00-governance/oleander-project-flow-v0.3.md'
+      - '00-governance/design-quality-and-design-development-specification-v1.0.md'
+      - '00-governance/professional-domain-process-contract-v1.0.md'
+      - '00-governance/architecture-design-development-process-v1.0.md'
+      - '00-governance/structural-engineering-design-process-v1.0.md'
+      - '00-governance/building-services-mep-design-process-v1.0.md'
+      - '00-governance/systems-engineering-design-development-process-v1.0.md'
+      - '00-governance/digital-product-hcd-design-development-process-v1.0.md'
+      - '00-governance/interior-design-development-process-v1.0.md'
+      - '00-governance/landscape-architecture-design-development-process-v1.0.md'
+      - '00-governance/lighting-design-development-process-v1.0.md'
       - '.github/workflows/oleander-control-plane-v0-3.yml'
   push:
     branches: [main]
     paths:
       - '00-governance/control-plane/**'
+      - '00-governance/runtime/**'
+      - '00-governance/schemas/**'
+      - '00-governance/design-quality-and-design-development-specification-v1.0.md'
+      - '00-governance/professional-domain-process-contract-v1.0.md'
+      - '00-governance/architecture-design-development-process-v1.0.md'
+      - '00-governance/structural-engineering-design-process-v1.0.md'
+      - '00-governance/building-services-mep-design-process-v1.0.md'
+      - '00-governance/systems-engineering-design-development-process-v1.0.md'
+      - '00-governance/digital-product-hcd-design-development-process-v1.0.md'
+      - '00-governance/interior-design-development-process-v1.0.md'
+      - '00-governance/landscape-architecture-design-development-process-v1.0.md'
+      - '00-governance/lighting-design-development-process-v1.0.md'
       - '.github/workflows/oleander-control-plane-v0-3.yml'
   workflow_dispatch:
 
@@ -23,10 +47,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
+      - name: Install schema validator
+        run: python -m pip install 'jsonschema==4.23.0'
+      - name: Validate architecture and execution contracts
+        run: |
+          python 00-governance/runtime/validate_architecture_control_graph.py
+          python 00-governance/runtime/validate_execution_locks.py
+          python 00-governance/runtime/validate_execution_contracts.py
+          python 00-governance/runtime/validate_runtime_resilience.py
+          python 00-governance/schemas/validate_architecture_namespaces.py
+          python 00-governance/control-plane/validate_master_runtime.py
+      - name: Validate Design Development and Professional Domain contracts
+        run: |
+          python 00-governance/schemas/validate_design_development_receipts.py 00-governance/schemas/design-quality-development-receipt.v1.template.json
+          python 00-governance/schemas/validate_design_development_receipts.py 00-governance/schemas/architecture-design-development-receipt.v1.template.json
+          python 00-governance/schemas/validate_professional_domain_process.py --self-test
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/structural-engineering-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/building-services-mep-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/systems-engineering-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/digital-product-hcd-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/interior-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/landscape-architecture-design-process.v1.json
+          python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/lighting-design-process.v1.json
       - name: Unit and regression tests
         run: python -m unittest discover -s 00-governance/control-plane/tests -p 'test_*.py' -v
       - name: v0.2 control-card schema fail-closed check
