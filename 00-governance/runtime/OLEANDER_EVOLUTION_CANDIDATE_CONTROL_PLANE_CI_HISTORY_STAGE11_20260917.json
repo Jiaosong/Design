@@ -17,18 +17,20 @@
     "The failing command was validate_execution_contracts.py and the exact error was: drift:architecture-control-current implementation_commit is not available in repository history.",
     "The control-plane workflow checkout used actions/checkout without fetch-depth override, so the CI repository was shallow and did not contain the historical implementation commit required by the drift validator.",
     "After the first one-workflow EV2 repair was pushed, GitHub Actions run 35164665169 failed in AI Governance Evals with the same validate_execution_contracts.py historical-commit error, proving the first one-file scope incomplete before EV3.",
-    "Both workflows that directly invoke validate_execution_contracts.py therefore require the same full-history checkout contract."
+    "Both workflows that directly invoke validate_execution_contracts.py therefore require the same full-history checkout contract.",
+    "Pre-EV4 review found that the Windows worktree representation of the control-plane workflow had mixed line endings while Git stores the workflow canonically with LF; the EV3 record is therefore repaired to bind committed Git blob bytes so the exact reviewed manifest is portable to GitHub/fresh-clone readback."
   ],
   "hypothesis": "Providing full Git history to both existing CI workflows that invoke the unchanged drift validator will let each workflow verify the historical implementation commit instead of failing because the commit object is absent from a shallow clone.",
   "mutation_scope": {
     "summary": "Two-file CI execution-surface change only: configure the existing checkout steps in both validator-calling workflows with fetch-depth: 0.",
     "candidate_file_count_excluding_this_record": 2,
-    "candidate_manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "candidate_manifest_sha256": "1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
     "revoked_pre_eval_candidate_manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
-    "candidate_manifest_algorithm": "SHA256 stream over paths sorted by UTF-8 path; for each path append UTF-8 path bytes + REAL NUL byte + lowercase file SHA256 ASCII + REAL LF byte.",
+    "revoked_pre_ev4_worktree_manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "candidate_manifest_algorithm": "SHA256 over committed Git blob bytes for each target path; aggregate stream uses paths sorted by UTF-8 path and appends UTF-8 path bytes + REAL NUL byte + lowercase blob-content SHA256 ASCII + REAL LF byte.",
     "immediate_predecessor_file_sha256": {
       ".github/workflows/ai-governance-evals.yml": "1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
-      ".github/workflows/oleander-control-plane-v0-3.yml": "a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa"
+      ".github/workflows/oleander-control-plane-v0-3.yml": "d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a"
     },
     "explicit_exclusions": [
       "No validator logic is weakened or bypassed.",
@@ -38,10 +40,10 @@
     ]
   },
   "candidate_implementation_manifest": {
-    "manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "manifest_sha256": "1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
     "files": {
       ".github/workflows/ai-governance-evals.yml": "defc8c80128b4dcb5a82f58f9ff3522eb81b89374466fe5b0c9845b61efc2e60",
-      ".github/workflows/oleander-control-plane-v0-3.yml": "6a40f51bf009d47ea5142221314b40e04f78bc62fe56766732f9e2efeae69f8b"
+      ".github/workflows/oleander-control-plane-v0-3.yml": "059b7c1f3280345dbde28ed7ee768a479bb35b84dfe263eee66ecd86f18acbf4"
     }
   },
   "evaluation": {
@@ -61,7 +63,8 @@
       "PR #646 one-workflow-repair AIG failure is preserved as a second negative case proving that every workflow invoking the history-aware validator needs the same checkout contract.",
       "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: AI Governance Evals run 35164834011 PASS.",
       "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: control-plane run 35164834027 PASS through history-aware execution-contract validation, Professional Domain checks, unit/regression tests, replays and compile check.",
-      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: anti-pollution run 35164834006 PASS and runtime-contract run 35164834004 PASS; Vercel statuses PASS."
+      "Fresh PR #646 head c60f8e02a1c5040db53ce4250284d8e531866e8b: anti-pollution run 35164834006 PASS and runtime-contract run 35164834004 PASS; Vercel statuses PASS.",
+      "Committed Git blob manifest for the exact two workflow files at the CI-tested head is sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42; the prior Windows worktree-byte manifest 83061ccf... is revoked before EV4."
     ],
     "fresh_ci_evidence": {
       "pr": 646,
@@ -95,7 +98,7 @@
   "independent_review": {
     "reviewer_id": "UNRESOLVED_PENDING_POST_CI_REVIEW",
     "independence_state": "PENDING",
-    "review_input_revision": "candidate-manifest-sha256:83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "review_input_revision": "candidate-manifest-sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
     "verdict": "PENDING",
     "blocking_findings": [],
     "review_observed_at": "UNRESOLVED",
@@ -109,7 +112,7 @@
     "decision_at": "UNRESOLVED"
   },
   "rollback": {
-    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / control-plane-workflow-sha256:a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa / aig-workflow-sha256:1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
+    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / control-plane-workflow-git-blob-sha256:d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a / aig-workflow-git-blob-sha256:1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
     "rollback_action": "Restore only the two CI workflow files to their predecessor SHA256 bytes; preserve Stage-11 EV4 and all unrelated work.",
     "rollback_test": "Reproduce the shallow-history failure only as historical negative evidence; do not treat rollback as acceptable CI state."
   },
@@ -121,7 +124,7 @@
       "Stage-11 implementation manifest changes",
       "unrelated workflow behavior changes"
     ],
-    "reopen_rule": "Any signal reopens this one-file CI portability candidate only.",
+    "reopen_rule": "Any signal reopens this two-file CI portability candidate only.",
     "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
   },
   "does_not_prove": [
