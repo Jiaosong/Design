@@ -1,6 +1,6 @@
 {
   "candidate_id": "OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE11-GIT-SYNC-20260917",
-  "state": "EV3_EVAL_PASSED",
+  "state": "EV4_INDEPENDENT_REVIEWED",
   "target_class": "CROSS_DOMAIN_PROFESSIONAL_CONTENT_GIT_CANONICAL_SYNC",
   "target_owner": "Existing professional-domain owners plus GitHub repository persistence/readback surface",
   "target_ref": "Git-canonical persisted bytes for the exact Stage-11 16-file professional-content candidate",
@@ -125,13 +125,21 @@
     "no_false_promotion": true
   },
   "independent_review": {
-    "reviewer_id": "UNRESOLVED_PENDING_INDEPENDENT_REVIEW",
-    "independence_state": "PENDING",
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_18_STAGE11_GIT_SYNC_INDEPENDENT_REVIEW_20260917",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
     "review_input_revision": "candidate-manifest-sha256:0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f",
-    "verdict": "PENDING",
+    "verdict": "PASS_EV4_ALLOWED",
     "blocking_findings": [],
-    "review_observed_at": "UNRESOLVED",
-    "review_notes": []
+    "review_observed_at": "2026-09-17T10:56:15.6312594Z",
+    "review_notes": [
+      "Independent reviewer returned PASS_EV4_ALLOWED for the exact Git-canonical Stage-11 successor manifest sha256:0ee8ec96dd45c3ee6b8f2419b2b261ac1e1f4bd0ae901e9250dcc8648dafac1f.",
+      "Fresh committed-blob recomputation at PR #646 head 80118223b994e6f40fc7535e6e2921c3e3269ef9 matched all 16 declared file SHA256 values and reproduced the aggregate manifest exactly.",
+      "Comparison against the independently reviewed Stage-11 source worktree found exactly three byte-different carriers: Architecture, Building Services/MEP and Structural process Markdown; for each, CRLF-to-LF normalization reproduces the committed Git blob exactly.",
+      "The remaining 13 implementation files are byte-identical to the Stage-11 local EV4 candidate, and the historical sha256:49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406 record remains immutable predecessor provenance.",
+      "Current professional-domain adoption state remains unchanged: Systems Engineering, Digital Product/HCD, Interior Design, Landscape Architecture and Lighting Design remain CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN with current_process_ref=null.",
+      "PR #646 remained OPEN and CLEAN at review readback; latest AIG, control-plane, anti-pollution, runtime-contract and Vercel checks at head 80118223b994e6f40fc7535e6e2921c3e3269ef9 were green.",
+      "This verdict authorizes EV4 independent-review state only. It does not authorize EV5/EV6, Current adoption, Notion Current sync, professional project PASS, Design KEEP, R-F Integration PASS or Knowledge promotion."
+    ]
   },
   "promotion": {
     "eligible": false,
@@ -157,7 +165,6 @@
     "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
   },
   "does_not_prove": [
-    "EV4_INDEPENDENT_REVIEWED",
     "EV5_PROMOTION_READY",
     "EV6_CURRENT_ADOPTED",
     "CURRENT_PROFESSIONAL_PROCESS_ADOPTION",
