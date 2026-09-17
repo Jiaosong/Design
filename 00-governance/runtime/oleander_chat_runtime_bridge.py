@@ -148,6 +148,10 @@ def run_bridge(
 
 
 def run_self_test() -> dict:
+    bom_payload = _decode_input_bytes(b'\xef\xbb\xbf{"intent":"CONTINUE"}')
+    if bom_payload.get("intent") != "CONTINUE":
+        raise RuntimeError("bridge self-test: UTF-8 BOM input compatibility failed")
+
     payload = {
         "intent": "CONTINUE",
         "task_id": "bridge-self-test",
@@ -261,18 +265,31 @@ def run_self_test() -> dict:
             "PUBLISH_FAILURE_OBSERVABILITY_ONLY",
             "EXECUTION_RECEIPT_OWNER_CONTEXT_ONLY",
             "DIRECT_TELEMETRY_CANNOT_INJECT_OWNER_CONTEXT",
+            "UTF8_BOM_INPUT_COMPATIBILITY",
         ],
     }
 
 
-def _load_input(path: str | None) -> dict:
-    if not path or path == "-":
-        data = json.load(sys.stdin)
-    else:
-        data = json.loads(Path(path).read_text(encoding="utf-8"))
+def _decode_input_text(raw: str) -> dict:
+    data = json.loads(raw.removeprefix("\ufeff"))
     if not isinstance(data, dict):
         raise ValueError("input must be one JSON object")
     return data
+
+
+def _decode_input_bytes(raw: bytes) -> dict:
+    return _decode_input_text(raw.decode("utf-8-sig"))
+
+
+def _load_input(path: str | None) -> dict:
+    if not path or path == "-":
+        binary_stdin = getattr(sys.stdin, "buffer", None)
+        if binary_stdin is not None:
+            return _decode_input_bytes(binary_stdin.read())
+        raw = sys.stdin.read()
+    else:
+        raw = Path(path).read_text(encoding="utf-8-sig")
+    return _decode_input_text(raw)
 
 
 def main() -> None:
