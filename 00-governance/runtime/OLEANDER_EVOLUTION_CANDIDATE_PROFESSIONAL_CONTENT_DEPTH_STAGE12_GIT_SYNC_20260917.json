@@ -1,6 +1,6 @@
 {
   "candidate_id": "OLEANDER-EV-PROFESSIONAL-CONTENT-DEPTH-STAGE12-GIT-SYNC-20260917",
-  "state": "EV3_EVAL_PASSED",
+  "state": "EV4_INDEPENDENT_REVIEWED",
   "target_class": "CROSS_DOMAIN_PROFESSIONAL_CONTENT_GIT_CANONICAL_SYNC",
   "target_owner": "Existing professional-domain owners plus GitHub repository persistence/readback surface",
   "target_ref": "Git-canonical persisted bytes for the exact repaired Stage-12 16-file professional-content candidate",
@@ -135,14 +135,21 @@
     "no_false_promotion": true
   },
   "independent_review": {
-    "reviewer_id": "PENDING_INDEPENDENT_REVIEW",
-    "independence_state": "PENDING",
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_18_STAGE12_GIT_SYNC_INDEPENDENT_REVIEW_20260917",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
     "review_input_revision": "candidate-manifest-sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c",
-    "verdict": "PENDING",
+    "verdict": "PASS_EV4_ALLOWED",
     "blocking_findings": [],
-    "review_observed_at": "UNRESOLVED",
+    "review_observed_at": "2026-09-17T11:57:41.079842+00:00",
     "review_notes": [
-      "Fresh independent read-only review must bind exact committed manifest sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c before this Git-sync successor can move to EV4."
+      "Independent reviewer fresh-read HEAD 6d031b940143b8b39ffbd398a054b5417c5ad784 and recomputed all 16 committed Git-blob SHA256 values from implementation commit 82e31f818e7c5bf6f45eca5f15a7046dc4fc02b2; every file matched and reproduced exact aggregate sha256:dcaeb425b5e05105579e9c38911d268abe238c0425ec77108e7edb8450044a2c.",
+      "The repaired local predecessor remains EV4 on manifest sha256:4a8f7b3813a8d3d404a9cff9ea417eaed19d329fab72ce8117411561d6463909; all sixteen local predecessor hashes match that immutable record.",
+      "Exactly three local-vs-Git byte deltas were confirmed: Architecture, Building Services/MEP and Structural Markdown. For each, CRLF-to-LF normalization alone reproduces the Git blob exactly; the remaining thirteen target files are byte-identical.",
+      "Architecture repaired R-E/R-D wording and its regression guard are both present in committed bytes; no Current control carrier, owner boundary, stage family, runtime layer, schema family or project-exercise state changed.",
+      "Post-implementation commits touch only the separate runtime bridge repair and this Git-sync record; neither changes the sixteen-file professional-content envelope.",
+      "Fresh independent targeted Professional Domain 43/43 and full Control Plane 148/148 PASS; validator self-test and all seven current Professional Domain definitions PASS.",
+      "Independent runtime reviewer separately returned PASS_RUNTIME_BOM_REPAIR_GIT_SYNC: real BOM file and raw-stdin inputs pass, invalid BOM array/malformed JSON remain rejected, bridge self-test/py_compile and runtime/control regressions pass, and observability authority flags remain false.",
+      "This verdict authorizes EV4 independent-review state only. It does not authorize EV5/EV6, Current adoption, Notion Current sync, project Professional PASS, Design KEEP, R-F Integration PASS, specialist/statutory approval or Current Knowledge."
     ]
   },
   "promotion": {
