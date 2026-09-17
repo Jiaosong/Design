@@ -1,6 +1,6 @@
 {
   "candidate_id": "OLEANDER-EV-CONTROL-PLANE-CI-HISTORY-STAGE11-20260917",
-  "state": "EV3_EVAL_PASSED",
+  "state": "EV4_INDEPENDENT_REVIEWED",
   "target_class": "ARCHITECTURE_CONTROL_CI_PORTABILITY",
   "target_owner": "OLEANDER Control Plane / GitHub Actions execution surface",
   "target_ref": "GitHub Actions workflow checkout history availability for validate_execution_contracts.py in both control-plane and AI Governance Evals",
@@ -96,13 +96,21 @@
     "no_false_promotion": true
   },
   "independent_review": {
-    "reviewer_id": "UNRESOLVED_PENDING_POST_CI_REVIEW",
-    "independence_state": "PENDING",
+    "reviewer_id": "CHAT_ON_STEROIDS_WORKER_17_CI_HISTORY_FINAL_INDEPENDENT_REVIEW_20260917",
+    "independence_state": "INDEPENDENT_FROM_PRODUCER",
     "review_input_revision": "candidate-manifest-sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42",
-    "verdict": "PENDING",
+    "verdict": "PASS_EV4_ALLOWED",
     "blocking_findings": [],
-    "review_observed_at": "UNRESOLVED",
-    "review_notes": []
+    "review_observed_at": "2026-09-17T00:08:00+00:00",
+    "review_notes": [
+      "Fresh review recomputed committed Git-blob SHA256 exactly: AI Governance workflow defc8c80128b4dcb5a82f58f9ff3522eb81b89374466fe5b0c9845b61efc2e60 and Control Plane workflow 059b7c1f3280345dbde28ed7ee768a479bb35b84dfe263eee66ecd86f18acbf4; canonical aggregate is sha256:1ea804b68803141f61e556d62d31d400a61f679060022a0292cce455e737cb42.",
+      "Pre-fix b194 Git-blob hashes independently recompute to AI Governance 1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e and Control Plane d87bf52a6c1a0bd221beb82807589ddbead174778ff6e5a828421d5eda4c523a.",
+      "The revoked pre-E3 one-file manifest cc7b10d1... and pre-EV4 Windows-worktree manifest 83061ccf... are correctly retained as rejected provenance and are not covered by this verdict.",
+      "Both workflow diffs from b194 contain only checkout with fetch-depth: 0; validate_execution_contracts.py and all validator semantics remain unchanged.",
+      "Fresh PR #646 CI evidence is valid: AI Governance run 35164834011, Control Plane run 35164834027, anti-pollution run 35164834006 and runtime-contract run 35164834004 all PASS at the tested workflow blobs.",
+      "Stage-11 professional 16-file local EV4 manifest 49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406 remains unchanged; no Current/runtime-state/currentization, EV5/EV6, validator weakening or owner leakage was found.",
+      "This verdict authorizes EV4 independent-review state for the two-file CI portability candidate only; it does not authorize Current adoption or Promotion."
+    ]
   },
   "promotion": {
     "eligible": false,
@@ -128,7 +136,6 @@
     "post_adoption_readback_ref": "PENDING_NOT_ADOPTED"
   },
   "does_not_prove": [
-    "EV4_INDEPENDENT_REVIEWED",
     "EV5_PROMOTION_READY",
     "EV6_CURRENT_ADOPTED",
     "CURRENT_ARCHITECTURE_ADOPTION",
