@@ -3,7 +3,7 @@
   "state": "EV2_EVAL_READY",
   "target_class": "ARCHITECTURE_CONTROL_CI_PORTABILITY",
   "target_owner": "OLEANDER Control Plane / GitHub Actions execution surface",
-  "target_ref": ".github/workflows/oleander-control-plane-v0-3.yml checkout history availability for validate_execution_contracts.py",
+  "target_ref": "GitHub Actions workflow checkout history availability for validate_execution_contracts.py in both control-plane and AI Governance Evals",
   "predecessor_evolution_ref": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_CONTENT_DEPTH_STAGE11_20260916.json",
   "predecessor_evolution_state": "EV4_INDEPENDENT_REVIEWED",
   "predecessor_candidate_manifest_sha256": "49cd41a839295c6dab1d7ffd59a281c6e3ee9aaf897239965fef56bc6733f406",
@@ -15,15 +15,19 @@
   "trigger_evidence": [
     "GitHub Actions run 35164504054 failed in the control-plane job while local full-history validation passed.",
     "The failing command was validate_execution_contracts.py and the exact error was: drift:architecture-control-current implementation_commit is not available in repository history.",
-    "The workflow checkout used actions/checkout without fetch-depth override, so the CI repository was shallow and did not contain the historical implementation commit required by the drift validator."
+    "The control-plane workflow checkout used actions/checkout without fetch-depth override, so the CI repository was shallow and did not contain the historical implementation commit required by the drift validator.",
+    "After the first one-workflow EV2 repair was pushed, GitHub Actions run 35164665169 failed in AI Governance Evals with the same validate_execution_contracts.py historical-commit error, proving the first one-file scope incomplete before EV3.",
+    "Both workflows that directly invoke validate_execution_contracts.py therefore require the same full-history checkout contract."
   ],
-  "hypothesis": "Providing full Git history to the existing control-plane CI checkout will let the unchanged drift validator verify the historical implementation commit instead of failing because the commit object is absent from a shallow clone.",
+  "hypothesis": "Providing full Git history to both existing CI workflows that invoke the unchanged drift validator will let each workflow verify the historical implementation commit instead of failing because the commit object is absent from a shallow clone.",
   "mutation_scope": {
-    "summary": "One-file CI execution-surface change only: configure the existing checkout step with fetch-depth: 0.",
-    "candidate_file_count_excluding_this_record": 1,
-    "candidate_manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "summary": "Two-file CI execution-surface change only: configure the existing checkout steps in both validator-calling workflows with fetch-depth: 0.",
+    "candidate_file_count_excluding_this_record": 2,
+    "candidate_manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
+    "revoked_pre_eval_candidate_manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
     "candidate_manifest_algorithm": "SHA256 stream over paths sorted by UTF-8 path; for each path append UTF-8 path bytes + REAL NUL byte + lowercase file SHA256 ASCII + REAL LF byte.",
     "immediate_predecessor_file_sha256": {
+      ".github/workflows/ai-governance-evals.yml": "1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
       ".github/workflows/oleander-control-plane-v0-3.yml": "a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa"
     },
     "explicit_exclusions": [
@@ -34,14 +38,16 @@
     ]
   },
   "candidate_implementation_manifest": {
-    "manifest_sha256": "cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "manifest_sha256": "83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
     "files": {
+      ".github/workflows/ai-governance-evals.yml": "defc8c80128b4dcb5a82f58f9ff3522eb81b89374466fe5b0c9845b61efc2e60",
       ".github/workflows/oleander-control-plane-v0-3.yml": "6a40f51bf009d47ea5142221314b40e04f78bc62fe56766732f9e2efeae69f8b"
     }
   },
   "evaluation": {
     "eval_set_refs": [
       "GitHub Actions PR #646 control-plane job",
+      "GitHub Actions PR #646 AIG-01 + AIG-02 + AIG-03 governance job",
       "00-governance/runtime/validate_execution_contracts.py",
       "00-governance/runtime/validate_architecture_control_graph.py",
       "00-governance/runtime/validate_execution_locks.py",
@@ -51,12 +57,14 @@
     "regression_refs": [
       "Local full-history control-plane discovery remains 145/145 PASS before the CI-history mutation.",
       "Architecture Control / Execution Contracts / Execution Locks / Runtime Resilience / Master Runtime remain PASS locally.",
-      "PR #646 pre-fix control-plane CI failure is preserved as the negative case proving shallow-history incompatibility."
+      "PR #646 pre-fix control-plane CI failure is preserved as a negative case proving shallow-history incompatibility.",
+      "PR #646 one-workflow-repair AIG failure is preserved as a second negative case proving that every workflow invoking the history-aware validator needs the same checkout contract."
     ],
     "acceptance_thresholds": [
       "A fresh PR #646 control-plane run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
+      "A fresh PR #646 AI Governance Evals run reaches validate_execution_contracts.py with the historical implementation commit available and passes.",
       "Subsequent Professional Domain, unit/regression, replay and compile steps in the control-plane workflow pass.",
-      "AIG governance checks remain green.",
+      "Subsequent AIG governance/runtime checks complete without a history-availability failure.",
       "No Stage-11 professional implementation hash changes."
     ],
     "result": "PENDING_FRESH_CI_RETRY"
@@ -71,7 +79,7 @@
   "independent_review": {
     "reviewer_id": "UNRESOLVED_PENDING_POST_CI_REVIEW",
     "independence_state": "PENDING",
-    "review_input_revision": "candidate-manifest-sha256:cc7b10d121027c70a3ba79e2ef7e6e5ff750916f15fe4b3f4fe80fed90cb9b3a",
+    "review_input_revision": "candidate-manifest-sha256:83061ccfc0daae3ff6e9de077c8a6e060f186b3223805445cbf4b2be17f9bd3f",
     "verdict": "PENDING",
     "blocking_findings": [],
     "review_observed_at": "UNRESOLVED",
@@ -85,14 +93,14 @@
     "decision_at": "UNRESOLVED"
   },
   "rollback": {
-    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / workflow-sha256:a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa",
-    "rollback_action": "Restore only .github/workflows/oleander-control-plane-v0-3.yml to the predecessor SHA256 bytes; preserve Stage-11 EV4 and all unrelated work.",
+    "previous_pointer": "PR646-head:b194d522ac9dd78d0edcc149e7b15d02efa7b2b9 / control-plane-workflow-sha256:a00cf9f8f07bcb3fce7314b748318b3e7e02d2da6cefd05e93dd17640530f5aa / aig-workflow-sha256:1262201b494ffee4971c388154ee82e91d24e38089291e54427ef1db00be3f6e",
+    "rollback_action": "Restore only the two CI workflow files to their predecessor SHA256 bytes; preserve Stage-11 EV4 and all unrelated work.",
     "rollback_test": "Reproduce the shallow-history failure only as historical negative evidence; do not treat rollback as acceptable CI state."
   },
   "monitoring": {
     "monitor_window_or_condition": "Through fresh PR #646 CI execution and independent review.",
     "regression_signals": [
-      "control-plane CI still cannot resolve the historical implementation commit",
+      "either validator-calling CI workflow still cannot resolve the historical implementation commit",
       "validator logic is weakened instead of execution history being supplied",
       "Stage-11 implementation manifest changes",
       "unrelated workflow behavior changes"
