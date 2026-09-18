@@ -1,0 +1,147 @@
+{
+  "schema_version": "c04-hcd-professional-thread-readback/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "state": "BOUNDED_CANDIDATE_PROCESS_EXERCISE / BLOCKED / HOLD",
+  "core_finding": "C04 E already contains substantial digital design/system logic; missing HCD evidence must be added as evidence/review work, not by redesigning the existing product.",
+  "threads": [
+    {
+      "id": "HD-01",
+      "name": "Research authority / ethics / data",
+      "state": "NOT_RUN",
+      "evidence": "No participant/session/consent/research-data register in reviewed C04 digital Current.",
+      "does_not_prove": "professional user-research finding or ethical/data-handling closure"
+    },
+    {
+      "id": "HD-02",
+      "name": "Context of use / user / goal / task",
+      "state": "PARTIAL_DESIGN_INFERENCE",
+      "evidence": "Audience/use-state, route/body/Return/offline reasoning exists in CH11 and E contracts.",
+      "does_not_prove": "observed/researched context of use for representative users"
+    },
+    {
+      "id": "HD-03",
+      "name": "User needs / use-related requirements",
+      "state": "HOLD",
+      "evidence": "Strong design principles and experience requirements exist, but no participant-backed user-needs ledger/evaluation criteria.",
+      "does_not_prove": "researched user need or professional use-requirement closure"
+    },
+    {
+      "id": "HD-04",
+      "name": "Conceptual model / IA / navigation",
+      "state": "STRONG_DESIGN_EVIDENCE",
+      "evidence": "TODAY / ROUTE / READ / MY BOOK / SERVICE; Return parallel; route/content separation.",
+      "does_not_prove": "usability or learned user mental model"
+    },
+    {
+      "id": "HD-05",
+      "name": "Interaction / state / error / recovery",
+      "state": "STRONG_DESIGN_EVIDENCE",
+      "evidence": "NORMAL/DEGRADED/CLOSED/UNKNOWN; FULL/LIGHT/OFF; digital-off; fallback; UNKNOWN fail-closed.",
+      "does_not_prove": "user success/recovery under actual test or live conditions"
+    },
+    {
+      "id": "HD-06",
+      "name": "Content / language / localization",
+      "state": "PARTIAL",
+      "evidence": "Layered content hierarchy and Chinese UI/content are authored; factual source boundaries exist elsewhere.",
+      "does_not_prove": "plain-language comprehension, localization/i18n, multilingual/cultural performance"
+    },
+    {
+      "id": "HD-07",
+      "name": "Accessibility / inclusive use",
+      "state": "NOT_RUN",
+      "evidence": "Return-first, low-stamina and no-phone intentions exist as design logic; no professional digital accessibility test/audit found.",
+      "does_not_prove": "WCAG 2.2 conformance, assistive-technology usability or disabled-user inclusion"
+    },
+    {
+      "id": "HD-08",
+      "name": "Design system / component behaviour",
+      "state": "PARTIAL_TO_STRONG_SOURCE",
+      "evidence": "UI detail system, editable HTML/SVG, state/data/source contracts and Cocos source exist.",
+      "does_not_prove": "complete implementation parity or accessibility behaviour of components"
+    },
+    {
+      "id": "HD-09",
+      "name": "Privacy / security / trust handoff",
+      "state": "PARTIAL_BOUNDARY_ONLY",
+      "evidence": "v1.2 uses localStorage and explicitly makes no login/cloud/GPS claim.",
+      "does_not_prove": "privacy/legal/security approval, retention/consent/abuse review"
+    },
+    {
+      "id": "HD-10",
+      "name": "Instrumentation / analytics / outcome evidence",
+      "state": "NOT_RUN",
+      "evidence": "No governed event/metric/outcome instrumentation evidence found in reviewed C04 Current.",
+      "does_not_prove": "user outcome, causal effect or live product performance"
+    },
+    {
+      "id": "HD-11",
+      "name": "Reliability / performance / offline / channel fallback",
+      "state": "DESIGN_LOGIC_STRONG / RUNTIME_HOLD",
+      "evidence": "Offline-first and no-phone fallback are explicit; APP v1.2 actual live browser = HOLD; Cocos VisualPrototype mount pending.",
+      "does_not_prove": "actual offline/network/device/browser reliability"
+    },
+    {
+      "id": "HD-12",
+      "name": "Cross-functional interfaces",
+      "state": "PARTIAL / PROFESSIONAL OWNERSHIP_OPEN",
+      "evidence": "Digital-off contract and source/runtime relations exist.",
+      "does_not_prove": "closed Engineering/Content/Accessibility/Security-Privacy/Data/Operations acceptance interfaces"
+    },
+    {
+      "id": "EVAL",
+      "name": "Representative-user usability evaluation",
+      "state": "NOT_RUN",
+      "evidence": "Static checks and producer design crit only.",
+      "does_not_prove": "effectiveness, efficiency, satisfaction, task success/error/recovery"
+    },
+    {
+      "id": "A11Y",
+      "name": "WCAG / assistive-technology evaluation",
+      "state": "NOT_RUN",
+      "evidence": "No current audit/conformance evidence in reviewed C04 digital sources.",
+      "does_not_prove": "WCAG conformance or accessible production behaviour"
+    },
+    {
+      "id": "BROWSER",
+      "name": "Actual current browser interaction readback",
+      "state": "HOLD",
+      "evidence": "APP v1.2 QC: actual_live_browser = HOLD_ENVIRONMENT_ADMIN_BLOCK.",
+      "does_not_prove": "current interactive browser PASS"
+    },
+    {
+      "id": "LIVE",
+      "name": "Live user / analytics / service evidence",
+      "state": "NOT_RUN",
+      "evidence": "No live operation/user outcome evidence is claimed.",
+      "does_not_prove": "real-world usability, service status, analytics outcomes or adoption"
+    }
+  ],
+  "disposition": {
+    "keep": [
+      "Existing C04 E digital work as completed design/system evidence; do not restart E.",
+      "TODAY/ROUTE/READ/MY BOOK/SERVICE information architecture.",
+      "NORMAL/DEGRADED/CLOSED/UNKNOWN × FULL/LIGHT/OFF state logic.",
+      "Return priority, no-phone fallback, offline-first and UNKNOWN fail-closed design rules.",
+      "Editable HTML/SVG/Cocos source evidence at its declared technical ceiling."
+    ],
+    "do_not_upgrade": [
+      "Do not call audience/use-state design assumptions professional user research.",
+      "Do not call static checks or design crit usability testing.",
+      "Do not call low-stamina/no-phone intentions WCAG or disabled-user evidence.",
+      "Do not call localStorage/no-login design privacy/security approval.",
+      "Do not call offline/fallback design logic actual runtime reliability.",
+      "Do not call source-build PASS interactive runtime or live HCD PASS."
+    ],
+    "next_valid_actions": [
+      "Resolve HCD professional/research/evaluation ownership if HCD professional claims are required.",
+      "Create research/evaluation questions and evidence plan before adding UI for its own sake.",
+      "Run representative-user usability testing against current prototype rather than redesigning it first.",
+      "Run accessibility audit/assistive-technology evaluation appropriate to the claimed platform.",
+      "Close privacy/security/legal and analytics/instrumentation handoffs only to the next required claim.",
+      "Obtain actual implementation/browser readback before HCD release PASS."
+    ]
+  },
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "STRONG DIGITAL DESIGN/SYSTEM LOGIC SUPPORT / PROFESSIONAL USER-RESEARCH + USABILITY + ACCESSIBILITY + IMPLEMENTATION/LIVE HCD EVIDENCE OPEN / NO HCD PASS / NO PROMOTION"
+}

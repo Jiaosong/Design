@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1260" viewBox="0 0 1900 1260">
+<style>
+.bg{fill:#f2efe7}.panel{fill:#fffdf8;stroke:#c9c5ba;stroke-width:1.2}.ink{fill:#202825}.muted{fill:#68716c}.ok{fill:#3f7160}.part{fill:#61718c}.hold{fill:#a05b43}.nr{fill:#7b6c59}.line{stroke:#d6d1c6;stroke-width:1}.h1{font:700 34px Arial,sans-serif}.h2{font:700 16px Arial,sans-serif}.txt{font:400 14px Arial,sans-serif}.sm{font:400 12px Arial,sans-serif}.xs{font:700 11px Arial,sans-serif;letter-spacing:.8px}
+</style>
+<rect width="1900" height="1260" class="bg"/>
+<text x="56" y="58" class="h1 ink">C04 · DIGITAL PRODUCT / HCD CANDIDATE · PROFESSIONAL EVIDENCE THREAD READBACK</text>
+<text x="56" y="90" class="txt muted">Existing E design work preserved · process BLOCKED / HOLD · no user-research, usability, accessibility or live HCD PASS inferred</text>
+<g transform="translate(56,126)">
+<rect width="1788" height="80" rx="12" class="panel"/>
+<text x="20" y="27" class="xs ok">KEEP AS DESIGN EVIDENCE</text>
+<text x="20" y="53" class="txt ink">IA · state model · fail-closed UNKNOWN · digital-off/no-phone · offline intent · editable HTML/SVG/Cocos source</text>
+<text x="1160" y="27" class="xs hold">PROFESSIONAL CEILING</text>
+<text x="1160" y="53" class="txt ink">Research / usability / accessibility / privacy-security / live outcome remain open.</text>
+</g>
+<g transform="translate(56,230)">
+<rect width="1788" height="966" rx="14" class="panel"/>
+<text x="22" y="34" class="xs muted">THREAD</text>
+<text x="430" y="34" class="xs muted">STATE</text>
+<text x="620" y="34" class="xs muted">CURRENT EVIDENCE</text>
+<text x="1320" y="34" class="xs muted">DOES NOT PROVE</text>
+<line x1="20" y1="102" x2="1760" y2="102" class="line"/>
+ <text x="22" y="84" class="h2 ink">HD-01</text>
+ <text x="95" y="84" class="txt ink">Research authority / ethics / data</text>
+ <text x="430" y="84" class="xs nr">NOT_RUN</text>
+ <text x="620" y="84" class="sm muted">No participant/session/consent research record</text>
+ <text x="1320" y="84" class="sm muted">User-research finding</text>
+<line x1="20" y1="157" x2="1760" y2="157" class="line"/>
+ <text x="22" y="139" class="h2 ink">HD-02</text>
+ <text x="95" y="139" class="txt ink">Context of use / user / goal / task</text>
+ <text x="430" y="139" class="xs part">PARTIAL</text>
+ <text x="620" y="139" class="sm muted">Audience/use-state reasoning exists</text>
+ <text x="1320" y="139" class="sm muted">Observed context of use</text>
+<line x1="20" y1="212" x2="1760" y2="212" class="line"/>
+ <text x="22" y="194" class="h2 ink">HD-03</text>
+ <text x="95" y="194" class="txt ink">User needs / use requirements</text>
+ <text x="430" y="194" class="xs hold">HOLD</text>
+ <text x="620" y="194" class="sm muted">Design requirements exist without participant trace</text>
+ <text x="1320" y="194" class="sm muted">Researched user needs</text>
+<line x1="20" y1="267" x2="1760" y2="267" class="line"/>
+ <text x="22" y="249" class="h2 ink">HD-04</text>
+ <text x="95" y="249" class="txt ink">Conceptual model / IA / navigation</text>
+ <text x="430" y="249" class="xs ok">STRONG</text>
+ <text x="620" y="249" class="sm muted">TODAY / ROUTE / READ / MY BOOK / SERVICE</text>
+ <text x="1320" y="249" class="sm muted">Usability</text>
+<line x1="20" y1="322" x2="1760" y2="322" class="line"/>
+ <text x="22" y="304" class="h2 ink">HD-05</text>
+ <text x="95" y="304" class="txt ink">Interaction / state / error / recovery</text>
+ <text x="430" y="304" class="xs ok">STRONG</text>
+ <text x="620" y="304" class="sm muted">UNKNOWN fail-closed; FULL/LIGHT/OFF; fallback</text>
+ <text x="1320" y="304" class="sm muted">Tested user recovery</text>
+<line x1="20" y1="377" x2="1760" y2="377" class="line"/>
+ <text x="22" y="359" class="h2 ink">HD-06</text>
+ <text x="95" y="359" class="txt ink">Content / localization</text>
+ <text x="430" y="359" class="xs part">PARTIAL</text>
+ <text x="620" y="359" class="sm muted">Layered authored Chinese content</text>
+ <text x="1320" y="359" class="sm muted">Comprehension/localization</text>
+<line x1="20" y1="432" x2="1760" y2="432" class="line"/>
+ <text x="22" y="414" class="h2 ink">HD-07</text>
+ <text x="95" y="414" class="txt ink">Accessibility / inclusive use</text>
+ <text x="430" y="414" class="xs nr">NOT_RUN</text>
+ <text x="620" y="414" class="sm muted">Inclusive intentions only</text>
+ <text x="1320" y="414" class="sm muted">WCAG / AT / disabled-user evidence</text>
+<line x1="20" y1="487" x2="1760" y2="487" class="line"/>
+ <text x="22" y="469" class="h2 ink">HD-08</text>
+ <text x="95" y="469" class="txt ink">Design system / component behaviour</text>
+ <text x="430" y="469" class="xs part">PARTIAL+</text>
+ <text x="620" y="469" class="sm muted">HTML/SVG + UI/state/source contracts</text>
+ <text x="1320" y="469" class="sm muted">Implementation parity</text>
+<line x1="20" y1="542" x2="1760" y2="542" class="line"/>
+ <text x="22" y="524" class="h2 ink">HD-09</text>
+ <text x="95" y="524" class="txt ink">Privacy / security / trust</text>
+ <text x="430" y="524" class="xs part">PARTIAL</text>
+ <text x="620" y="524" class="sm muted">localStorage; no login/cloud/GPS claim</text>
+ <text x="1320" y="524" class="sm muted">Privacy/security/legal approval</text>
+<line x1="20" y1="597" x2="1760" y2="597" class="line"/>
+ <text x="22" y="579" class="h2 ink">HD-10</text>
+ <text x="95" y="579" class="txt ink">Instrumentation / analytics</text>
+ <text x="430" y="579" class="xs nr">NOT_RUN</text>
+ <text x="620" y="579" class="sm muted">No governed event/outcome evidence</text>
+ <text x="1320" y="579" class="sm muted">User outcome / causality</text>
+<line x1="20" y1="652" x2="1760" y2="652" class="line"/>
+ <text x="22" y="634" class="h2 ink">HD-11</text>
+ <text x="95" y="634" class="txt ink">Reliability / offline / fallback</text>
+ <text x="430" y="634" class="xs hold">DESIGN+HOLD</text>
+ <text x="620" y="634" class="sm muted">Offline/no-phone strong; live browser HOLD</text>
+ <text x="1320" y="634" class="sm muted">Runtime reliability</text>
+<line x1="20" y1="707" x2="1760" y2="707" class="line"/>
+ <text x="22" y="689" class="h2 ink">HD-12</text>
+ <text x="95" y="689" class="txt ink">Cross-functional interfaces</text>
+ <text x="430" y="689" class="xs part">PARTIAL</text>
+ <text x="620" y="689" class="sm muted">Digital-off/runtime relations exist</text>
+ <text x="1320" y="689" class="sm muted">Closed professional interfaces</text>
+<line x1="20" y1="762" x2="1760" y2="762" class="line"/>
+ <text x="22" y="744" class="h2 ink">EVAL</text>
+ <text x="95" y="744" class="txt ink">Representative-user usability</text>
+ <text x="430" y="744" class="xs nr">NOT_RUN</text>
+ <text x="620" y="744" class="sm muted">Static checks + producer design crit</text>
+ <text x="1320" y="744" class="sm muted">Effectiveness / efficiency / satisfaction</text>
+<line x1="20" y1="817" x2="1760" y2="817" class="line"/>
+ <text x="22" y="799" class="h2 ink">A11Y</text>
+ <text x="95" y="799" class="txt ink">WCAG / assistive technology</text>
+ <text x="430" y="799" class="xs nr">NOT_RUN</text>
+ <text x="620" y="799" class="sm muted">No current audit/conformance evidence</text>
+ <text x="1320" y="799" class="sm muted">Accessibility conformance</text>
+<line x1="20" y1="872" x2="1760" y2="872" class="line"/>
+ <text x="22" y="854" class="h2 ink">BROWSER</text>
+ <text x="95" y="854" class="txt ink">Actual browser interaction readback</text>
+ <text x="430" y="854" class="xs hold">HOLD</text>
+ <text x="620" y="854" class="sm muted">v1.2 QC = HOLD_ENVIRONMENT_ADMIN_BLOCK</text>
+ <text x="1320" y="854" class="sm muted">Interactive browser PASS</text>
+<line x1="20" y1="927" x2="1760" y2="927" class="line"/>
+ <text x="22" y="909" class="h2 ink">LIVE</text>
+ <text x="95" y="909" class="txt ink">Live user / analytics / service</text>
+ <text x="430" y="909" class="xs nr">NOT_RUN</text>
+ <text x="620" y="909" class="sm muted">No live user outcome evidence</text>
+ <text x="1320" y="909" class="sm muted">Real-world HCD outcome</text>
+</g>
+<text x="56" y="1230" class="sm muted">Disposition: do not restart E. Add missing professional evidence/review to the current design; STATIC CHECK ≠ USABILITY · INCLUSIVE INTENT ≠ WCAG · SOURCE BUILD ≠ LIVE HCD PASS.</text>
+</svg>
