@@ -9,6 +9,8 @@ export const FIELDS = {
   contentLevel: "内容层级",
   knowledgeRole: "知识角色",
   frameworkType: "Framework Type｜框架类型",
+  evidenceGrade: "证据等级",
+  designScale: "对象尺度",
   primaryDomain: "主领域",
   relatedDomains: "关联领域",
   canonicalParent: "Canonical Parent｜层级上位",
@@ -23,6 +25,17 @@ export const FIELDS = {
   replacedDocuments: "被替代文档",
 } as const;
 
+export const PRIMARY_KNOWLEDGE_ROLES = [
+  "INDEX",
+  "THEORY",
+  "METHOD",
+  "TOOL",
+  "SOURCE",
+  "EVIDENCE",
+  "CASE",
+  "PRACTICE",
+] as const;
+
 export const FRAMEWORK_TYPES = [
   "NAVIGATION_MAP",
   "CONCEPTUAL_MODEL",
@@ -36,6 +49,17 @@ export const FRAMEWORK_TYPES = [
   "EVALUATION_FRAMEWORK",
   "HISTORICAL_COMPARATIVE_SYNTHESIS",
 ] as const;
+
+export const RELATION_FAMILIES = [
+  "STRUCTURAL_HIERARCHY",
+  "DOMAIN_PLACEMENT",
+  "KNOWLEDGE_DEPENDENCY",
+  "EVIDENCE_SUPPORT",
+  "APPLICATION_USE",
+  "LIFECYCLE_LINEAGE",
+] as const;
+
+export const RETRIEVAL_PIPELINE_VERSION = "oleander-knowledge-pack/v2" as const;
 
 // Existing Current Project Registry identity fields. Reader hydration treats
 // these as live readback only; Project identity remains Project ID + level and

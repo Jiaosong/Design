@@ -94,6 +94,27 @@ export interface NormalizedPage {
   contentLevel: string | null;
   knowledgeRole: string | null;
   frameworkType: string | null;
+  objectPlane?: "KNOWLEDGE";
+  evidenceGrade?: string | null;
+  freshnessState?: string | null;
+  authorityClass?: string | null;
+  informationRole?: string | null;
+  secondarySemantics?: string[];
+  topicIds?: string[];
+  claimIds?: string[];
+  evidenceIds?: string[];
+  capabilityLinks?: string[];
+  functionLinks?: string[];
+  informationEntityLinks?: string[];
+  interfaceLinks?: string[];
+  workMedium?: string[];
+  designScale?: string[];
+  artifactType?: string | null;
+  symptomTags?: string[];
+  affectedRelationTags?: string[];
+  toolCapability?: string[];
+  readbackMethod?: string[];
+  aliases?: string[];
   canonicalParentIds: string[];
   canonicalChildrenIds: string[];
   semanticRelatedIds: string[];
@@ -145,6 +166,10 @@ export interface SearchRequest {
   include_provenance?: boolean;
   include_scoped?: boolean;
   canonical_id?: string;
+  domain_ids?: string[];
+  topic_ids?: string[];
+  knowledge_roles?: string[];
+  secondary_semantics?: string[];
 }
 
 export interface KnowledgeHit {
@@ -161,6 +186,20 @@ export interface KnowledgeHit {
   content_level: string | null;
   framework_type: string | null;
   trust_state: string | null;
+  governance_state?: string | null;
+  relation_state?: string | null;
+  search_eligibility?: string | null;
+  evidence_grade?: string | null;
+  freshness_state?: string | null;
+  authority_class?: string | null;
+  primary_domain_ids?: string[];
+  topic_ids?: string[];
+  secondary_semantics?: string[];
+  claim_ids?: string[];
+  evidence_ids?: string[];
+  candidate_sources?: Array<"EXACT" | "VECTOR" | "LEXICAL">;
+  lexical_score?: number;
+  authority_reason?: string | null;
 }
 
 export interface KnowledgeReaderSnapshot {
