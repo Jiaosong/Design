@@ -607,8 +607,7 @@
         "reopen_events",
         "exit_condition_state",
         "actual_readback_refs",
-        "last_updated",
-        "granularity_binding_state"
+        "last_updated"
       ],
       "properties": {
         "stage_instance_id": {
