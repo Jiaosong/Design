@@ -1,0 +1,1367 @@
+{
+  "schema_version": "1.0",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-LANDSCAPE-ARCHITECTURE-DESIGN-PROCESS",
+  "domain": "Landscape Architecture",
+  "version": "0.1-CANDIDATE",
+  "title": "OLEANDER Landscape Architecture Design Process v0.1 — Candidate",
+  "purpose": "Develop Landscape Architecture work from scope/site authority through inventory/analysis, planning/concept, developed site systems, technical documentation, construction/establishment, handover/maintenance and in-use stewardship while preserving specialist and field authority boundaries.",
+  "scope_in": [
+    "landscape/site planning and external-space design",
+    "landform, grading and earthwork within appointed landscape scope",
+    "surface/subsurface drainage and landscape stormwater/SuDS within appointed scope",
+    "soil, planting and landscape ecological design",
+    "irrigation/water-use strategy within appointed scope",
+    "hardscape, external circulation, site furnishings and landscape structures within appointed scope",
+    "landscape construction documentation and specifications",
+    "landscape construction administration, establishment, handover and stewardship"
+  ],
+  "scope_out": [
+    "survey authority not assigned to Landscape Architecture",
+    "geotechnical engineering",
+    "civil/hydraulic engineering outside appointed landscape scope",
+    "structural engineering",
+    "statutory ecology/arboriculture outside appointed landscape scope",
+    "electrical/lighting engineering",
+    "road/highway engineering",
+    "accessibility/statutory certification",
+    "automatic field/as-built truth",
+    "automatic Design KEEP or Promotion"
+  ],
+  "authority_position": "Candidate R-E professional-domain process subordinate to OLEANDER Master Runtime, Current Knowledge Authority, Professional Domain Process Contract, Cross-Disciplinary Integration, project/jurisdiction authority and responsible landscape professional. Current Architecture Map remains OPEN for Landscape Architecture until explicit promotion.",
+  "current_definition_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim requires professional landscape analysis, planning/design, grading/drainage/planting/hardscape development, construction documentation/administration, establishment, handover or in-use landscape judgment.",
+    "design_question_types": [
+      "site and landscape-system diagnosis",
+      "landscape planning and concept design",
+      "developed landscape systems and spatial coordination",
+      "grading/drainage/stormwater landscape design",
+      "planting/soil/irrigation/hardscape technical design",
+      "landscape construction documentation and administration",
+      "landscape establishment/handover/stewardship"
+    ],
+    "responsibility_triggers": [
+      "professional landscape site/design claim",
+      "landscape shared variable consumed by another profession",
+      "grading/drainage/planting/hardscape/site-access decision within landscape scope",
+      "construction/establishment or maintenance responsibility within landscape scope"
+    ],
+    "claim_ceiling_rule": "The lowest valid ceiling across site/survey authority, mounted knowledge/evidence, landscape stage evidence, active technical threads, interfaces, professional review, specialist/statutory authority and field readback governs.",
+    "not_triggered_when": [
+      "non-authoritative planting/render dressing",
+      "pure geographic/context diagram with explicit exclusion of landscape professional claim",
+      "architecture merely identifies a future landscape interface",
+      "graphic planting-composition exercise explicitly excluding horticultural/site truth"
+    ],
+    "mandatory_reopen_triggers": [
+      "survey/topography/site-boundary change",
+      "building threshold/footprint/level change",
+      "civil road/drainage/stormwater change",
+      "soil/geotechnical/groundwater change",
+      "tree/vegetation/ecology authority change",
+      "program/circulation/accessibility/emergency-access change",
+      "planting/irrigation/hardscape/material-system change",
+      "maintenance/operations capability change",
+      "field substitution/nonconformity or observed in-use failure"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential landscape knowledge, site/survey data, soils/hydrology/vegetation evidence, regulatory requirements, product/system evidence and professional guidance must be admitted through task/claim Operational Mount before supporting a professional landscape decision.",
+    "required_methods": [
+      "current Landscape Architecture professional process methods appropriate to project scope",
+      "site inventory/analysis",
+      "landscape option development and professional design review",
+      "stage-appropriate grading/drainage/planting/hardscape/site-engineering methods"
+    ],
+    "theory_routes": [
+      "landscape planning and site design",
+      "grading/earthwork and drainage/stormwater",
+      "soil/planting/horticulture/ecology",
+      "landscape materials/details/construction",
+      "maintenance/establishment/stewardship"
+    ],
+    "source_routes": [
+      "current project survey/site/existing-condition sources",
+      "current jurisdiction landscape/site/drainage/accessibility requirements",
+      "current CLARB/ASLA/LI or equivalent professional-practice sources as applicable",
+      "current civil/geotechnical/ecology/arboriculture/specialist inputs where controlling"
+    ],
+    "evidence_routes": [
+      "survey/GIS/site records",
+      "field observations and photos with scope/time boundary",
+      "soil/geotechnical/hydrology/ecology/tree evidence",
+      "product/material/planting/irrigation evidence",
+      "construction/submittal/mockup/site-observation evidence",
+      "in-use/seasonal/maintenance evidence"
+    ],
+    "standard_code_routes": [
+      "jurisdiction-specific grading/drainage/stormwater requirements",
+      "site accessibility requirements",
+      "erosion/sediment-control requirements",
+      "water/irrigation requirements",
+      "landscape/planting/tree/ecology requirements where applicable"
+    ],
+    "precedent_case_routes": [
+      "bounded landscape precedents only where climate, soil, use, maintenance and technical applicability are established"
+    ],
+    "practice_routes": [
+      "current OLEANDER landscape/site practice and failure evidence"
+    ],
+    "tool_knowledge_routes": [
+      "current GIS/CAD/BIM/analysis execution knowledge when tools are used"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "LA-DP0",
+      "stage_name": "Scope, Authority & Landscape Brief",
+      "professional_question": "Is landscape scope, site authority, appointment responsibility and information need sufficient to begin professional work without fabricating site truth?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "client/project need",
+        "landscape scope/appointment",
+        "site boundary/evidence state",
+        "survey/existing-condition state",
+        "jurisdiction/permit route",
+        "operations/maintenance context"
+      ],
+      "knowledge_inputs": [
+        "professional responsibility",
+        "site information requirements",
+        "jurisdiction route"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "LANDSCAPE_SCOPE_AUTHORITY_REGISTER",
+        "SITE_INFORMATION_REQUIREMENT_REGISTER",
+        "landscape brief",
+        "initial interface owner map"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Civil",
+        "Geotechnical",
+        "Ecology/Arboriculture",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP0-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "project use",
+            "site extent",
+            "building footprint/threshold intent",
+            "external-space program"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current project brief plus landscape scope/authority register",
+          "change_reopen_rule": "Reopen when project/site extent, use, footprint or external-space brief changes."
+        },
+        {
+          "interface_binding_id": "LA-DP0-SURVEY",
+          "source_domain": "Survey/Site Authority",
+          "source_stage_ref": null,
+          "direction": "IN",
+          "shared_variables": [
+            "site boundary",
+            "datum",
+            "topography",
+            "existing features"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current survey/site authority source",
+          "change_reopen_rule": "Reopen when survey/site authority changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "user/stakeholder landscape needs and access context identified where material"
+      ],
+      "design_language_consequences": [
+        "initial landscape character/intent may be stated only within evidence ceiling"
+      ],
+      "technical_consequences": [
+        "information and responsibility basis for later landscape design"
+      ],
+      "content_projection_requirements": [
+        "show authority/evidence gaps, not fabricated base information"
+      ],
+      "required_readback": [
+        "read actual site/source set against declared claim",
+        "verify FIELD_OBSERVED/FIELD_MEASURED state"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "later detailed site/design/technical work"
+      ],
+      "exit_conditions": [
+        "scope/authority/data needs explicit enough for bounded analysis"
+      ],
+      "reopen_triggers": [
+        "scope, site, survey, jurisdiction or responsibility change"
+      ],
+      "claim_ceiling": "LANDSCAPE_SCOPE_AND_AUTHORITY",
+      "does_not_prove": [
+        "survey accuracy",
+        "field condition",
+        "soil/hydrology truth",
+        "professional design PASS",
+        "statutory approval"
+      ]
+    },
+    {
+      "stage_id": "LA-DP1",
+      "stage_name": "Inventory, Analysis & Site-System Diagnosis",
+      "professional_question": "What existing site/context systems, opportunities, constraints and uncertainties materially govern landscape decisions?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "landscape brief",
+        "site/survey evidence",
+        "available topography/utilities/vegetation/hydrology/soil/context data",
+        "user/operation inputs"
+      ],
+      "knowledge_inputs": [
+        "site analysis",
+        "landform/hydrology/soil/vegetation/ecology",
+        "access/circulation",
+        "climate/visual/cultural landscape",
+        "maintenance/operations"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site/base authority map",
+        "site systems inventory",
+        "constraints/opportunities map",
+        "existing vegetation/tree/soil evidence register",
+        "LANDSCAPE_SITE_ANALYSIS_RECEIPT"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Civil",
+        "Geotechnical",
+        "Ecology/Arboriculture",
+        "MEP",
+        "Accessibility",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP1-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "existing levels",
+            "drainage/catchments",
+            "roads",
+            "utilities",
+            "earthwork constraints"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current civil/site/survey information plus landscape analysis",
+          "change_reopen_rule": "Reopen when existing levels, drainage, road or utility authority changes."
+        },
+        {
+          "interface_binding_id": "LA-DP1-ECO",
+          "source_domain": "Ecology/Arboriculture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "habitats",
+            "trees",
+            "vegetation constraints",
+            "protected/retained elements"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current ecology/arboriculture evidence where appointed",
+          "change_reopen_rule": "Reopen when vegetation/ecology authority changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "movement/use/comfort/inclusion consequences identified where evidence allows"
+      ],
+      "design_language_consequences": [
+        "landscape character, spatial sequence and visual/context consequences separated from technical truth"
+      ],
+      "technical_consequences": [
+        "site-system constraints and opportunities for concept design"
+      ],
+      "content_projection_requirements": [
+        "show source→condition→interpretation→design consequence→unknown"
+      ],
+      "required_readback": [
+        "cross-layer contradiction check",
+        "CRS/datum/scale check where spatial data used",
+        "source-vs-inference audit",
+        "field-evidence gap audit"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "later surveys/tests and design development"
+      ],
+      "exit_conditions": [
+        "material site-system relations explicit enough for concept generation at current ceiling"
+      ],
+      "reopen_triggers": [
+        "new survey/field/soil/hydrology/ecology/use/maintenance evidence"
+      ],
+      "claim_ceiling": "LANDSCAPE_SITE_ANALYSIS",
+      "does_not_prove": [
+        "unseen field condition",
+        "detailed hydrologic performance",
+        "soil laboratory properties",
+        "ecological survey completeness",
+        "tree condition without specialist evidence",
+        "statutory acceptance"
+      ]
+    },
+    {
+      "stage_id": "LA-DP2",
+      "stage_name": "Planning & Concept Landscape Design",
+      "professional_question": "Which landscape concept coherently organizes movement, use, landform, water, vegetation, hardscape, identity and stewardship while respecting current site authority?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current site analysis",
+        "project brief/program",
+        "active interfaces",
+        "current technical-thread evidence"
+      ],
+      "knowledge_inputs": [
+        "landscape planning",
+        "concept design",
+        "landform/water/planting systems",
+        "circulation/access",
+        "maintenance concept"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-06",
+        "DD-07",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "LANDSCAPE_CONCEPT_OPTION_SET",
+        "concept site plan",
+        "key sections",
+        "circulation/use diagrams",
+        "landform/water/planting-system diagrams",
+        "concept material/planting roles",
+        "concept selection record"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Civil",
+        "Structural",
+        "Geotechnical",
+        "MEP",
+        "Ecology/Arboriculture",
+        "Accessibility",
+        "Cost",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP2-ARCH",
+          "source_domain": "Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "thresholds",
+            "levels",
+            "external-space program",
+            "courtyards/roof landscape",
+            "public/private relation"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current architecture and landscape concept drawings/models",
+          "change_reopen_rule": "Reopen when architecture footprint/threshold/level/program materially changes."
+        },
+        {
+          "interface_binding_id": "LA-DP2-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "landform intent",
+            "grading/drainage/stormwater strategy",
+            "roads/utilities"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current landscape concept plus civil/drainage concept",
+          "change_reopen_rule": "Reopen when grading/drainage/road/utility strategy changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "sequence, use, comfort, body, accessibility and social-operation consequences"
+      ],
+      "design_language_consequences": [
+        "landscape spatial/planting/material character and seasonal identity"
+      ],
+      "technical_consequences": [
+        "concept landform/water/planting/hardscape/site-system basis"
+      ],
+      "content_projection_requirements": [
+        "show genuine option-system differences and unresolved technical dependencies"
+      ],
+      "required_readback": [
+        "compare options at matched evidence/fidelity",
+        "read landform-water-planting-hardscape-maintenance coherence"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "technical detail and specialist verification later/outside current claim"
+      ],
+      "exit_conditions": [
+        "credible landscape concept retained with material technical assumptions/interfaces explicit"
+      ],
+      "reopen_triggers": [
+        "site evidence, program, architecture/civil strategy, maintenance model or concept-system change"
+      ],
+      "claim_ceiling": "LANDSCAPE_CONCEPT_DESIGN",
+      "does_not_prove": [
+        "detailed grading",
+        "stormwater capacity",
+        "species establishment",
+        "final material build-up",
+        "construction readiness",
+        "statutory approval"
+      ]
+    },
+    {
+      "stage_id": "LA-DP3",
+      "stage_name": "Developed Landscape Systems & Spatial Coordination",
+      "professional_question": "Are landform, water, circulation, planting, hardscape, structures, utilities and maintenance access spatially coordinated enough for technical development?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "selected landscape concept",
+        "current survey/site authority",
+        "current architecture/civil/MEP/structural/ecology inputs"
+      ],
+      "knowledge_inputs": [
+        "developed grading/drainage",
+        "planting/soil/root space",
+        "hardscape/material systems",
+        "irrigation strategy",
+        "access/maintenance coordination"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-06",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "developed site plan",
+        "grading/level strategy",
+        "drainage/stormwater coordination plan",
+        "planting/soil strategy",
+        "materials plan",
+        "key sections",
+        "hardscape/detail strategy",
+        "coordination receipt"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Civil",
+        "Structural",
+        "Geotechnical",
+        "MEP",
+        "Ecology/Arboriculture",
+        "Accessibility",
+        "Lighting",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP3-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "proposed levels",
+            "catchments",
+            "drainage/outfall",
+            "earthwork",
+            "utilities",
+            "roads"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "coordinated landscape/civil plans, sections and drainage information",
+          "change_reopen_rule": "Reopen when proposed levels, catchment/outfall, earthwork, road or utility geometry changes."
+        },
+        {
+          "interface_binding_id": "LA-DP3-ACCESS",
+          "source_domain": "Accessibility",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "external route",
+            "slopes",
+            "ramps/steps",
+            "surface transitions",
+            "thresholds"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current landscape route geometry plus accessibility input",
+          "change_reopen_rule": "Reopen when route/level/surface/threshold geometry changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "external-route usability, comfort, shade/rest, inclusion and maintenance access"
+      ],
+      "design_language_consequences": [
+        "developed landform/planting/material/seasonal language"
+      ],
+      "technical_consequences": [
+        "coordinated landscape levels, water, soils, planting, materials and access"
+      ],
+      "content_projection_requirements": [
+        "plan↔section↔grading; planting/soil/material/drainage relations visible"
+      ],
+      "required_readback": [
+        "positive-drainage/low-point attack",
+        "accessible-route continuity",
+        "soil/root-volume fit",
+        "material/joint/drainage coordination",
+        "maintenance-access readback"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "later calculations, product selection and construction detail"
+      ],
+      "exit_conditions": [
+        "landscape systems spatially coordinated to declared development ceiling"
+      ],
+      "reopen_triggers": [
+        "survey/level/drainage/soil/planting/material/utility/access/maintenance change"
+      ],
+      "claim_ceiling": "LANDSCAPE_DEVELOPED_COORDINATION",
+      "does_not_prove": [
+        "final drainage calculations",
+        "final earthwork quantities",
+        "final plant availability",
+        "final structural details",
+        "construction-document completeness"
+      ]
+    },
+    {
+      "stage_id": "LA-DP4",
+      "stage_name": "Technical Design, Site Engineering & Construction Documentation",
+      "professional_question": "Is the landscape design translated into technically coordinated information sufficient for its appointed construction/procurement claim?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "spatially coordinated landscape basis",
+        "current survey/site authority",
+        "current consultant inputs",
+        "current jurisdiction requirements"
+      ],
+      "knowledge_inputs": [
+        "grading/drainage/stormwater technical design",
+        "hardscape construction",
+        "planting/soil",
+        "irrigation",
+        "specifications",
+        "document coordination"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-05",
+        "DD-06",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site reference/demolition/protection plan",
+        "layout/setout plan",
+        "grading/drainage plan",
+        "materials plan",
+        "planting/soil plan",
+        "irrigation plan or performance requirements",
+        "details/sections",
+        "schedules",
+        "technical specifications",
+        "technical review receipt"
+      ],
+      "interface_requirements": [
+        "Civil",
+        "Structural",
+        "Geotechnical",
+        "MEP",
+        "Ecology/Arboriculture",
+        "Accessibility",
+        "Lighting",
+        "Cost/Procurement"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP4-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "final levels",
+            "drainage/stormwater components",
+            "outfalls",
+            "utilities",
+            "earthwork",
+            "road/site interfaces"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current technical landscape/civil drawings, calculations and specifications",
+          "change_reopen_rule": "Reopen on level/drainage/outfall/utility/road/earthwork technical change."
+        },
+        {
+          "interface_binding_id": "LA-DP4-STRUCT",
+          "source_domain": "Structural",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "retaining/support geometry",
+            "landscape structures",
+            "foundations",
+            "furniture anchors",
+            "roof-landscape loads"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current landscape details plus structural design where triggered",
+          "change_reopen_rule": "Reopen when structure/support/load/detail geometry changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "route/surface/detail decisions preserve intended use and inclusion"
+      ],
+      "design_language_consequences": [
+        "technical details/material/planting construction preserve landscape design language"
+      ],
+      "technical_consequences": [
+        "construction-level landscape information within appointed responsibility"
+      ],
+      "content_projection_requirements": [
+        "cross-sheet and plan/detail/spec/schedule coordination visible"
+      ],
+      "required_readback": [
+        "dimension/level consistency",
+        "drainage continuity",
+        "plant schedule↔plan",
+        "soil/planting/irrigation relation",
+        "hardscape joint/edge/drainage relation",
+        "consultant coordination"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "contractor means/methods and later field verification unless appointed"
+      ],
+      "exit_conditions": [
+        "technical landscape information coordinated at declared claim ceiling"
+      ],
+      "reopen_triggers": [
+        "technical source, level, drainage, material, planting, irrigation, interface or authority change"
+      ],
+      "claim_ceiling": "LANDSCAPE_TECHNICAL_DOCUMENTATION",
+      "does_not_prove": [
+        "contractor workmanship",
+        "as-built condition",
+        "specialist approval outside scope",
+        "plant quality at delivery",
+        "establishment success",
+        "statutory approval unless separately evidenced"
+      ]
+    },
+    {
+      "stage_id": "LA-DP5",
+      "stage_name": "Procurement, Construction Administration & Field Change",
+      "professional_question": "Is landscape design intent and technical information being correctly interpreted, substituted, installed and changed during procurement/construction within appointed responsibility?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "issued landscape information",
+        "procurement/submittal/RFI/site records",
+        "current field observations",
+        "current substitutions/changes"
+      ],
+      "knowledge_inputs": [
+        "contract administration",
+        "submittal/sample/mockup review",
+        "site observation",
+        "change/nonconformity disposition"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "submittal/sample/mockup review records",
+        "site observation records",
+        "RFI/change records",
+        "nonconformity/design disposition",
+        "updated technical information when required",
+        "construction-stage landscape receipt"
+      ],
+      "interface_requirements": [
+        "Construction/Contractor",
+        "Civil",
+        "Structural",
+        "MEP",
+        "Ecology/Arboriculture",
+        "Cost/Procurement",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP5-CONST",
+          "source_domain": "Construction/Contractor",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "submittals",
+            "materials/plants",
+            "levels",
+            "installation",
+            "mockups",
+            "substitutions",
+            "nonconformities"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "issued landscape contract information plus current reviewed field/submittal records",
+          "change_reopen_rule": "Reopen when substitution/nonconformity/site condition changes design intent/performance."
+        },
+        {
+          "interface_binding_id": "LA-DP5-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "field levels",
+            "drainage components",
+            "earthwork",
+            "utilities",
+            "road/tie-in conditions"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current field/civil/landscape records",
+          "change_reopen_rule": "Reopen on civil field deviation or revised drainage/level condition."
+        }
+      ],
+      "human_experience_consequences": [
+        "construction change does not degrade route/use/access without disposition"
+      ],
+      "design_language_consequences": [
+        "substitutions preserve or intentionally revise material/planting/seasonal design role"
+      ],
+      "technical_consequences": [
+        "field/change/substitution consequences resolved within landscape scope"
+      ],
+      "content_projection_requirements": [
+        "show observed scope/time/location and difference from issued design"
+      ],
+      "required_readback": [
+        "site-observation scope boundary",
+        "substitution equivalence review",
+        "affected-interface/change propagation readback"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "unobserved/concealed construction and later establishment"
+      ],
+      "exit_conditions": [
+        "appointed construction-administration actions resolved or explicitly transferred"
+      ],
+      "reopen_triggers": [
+        "field nonconformity, substitution, RFI or changed-condition event"
+      ],
+      "claim_ceiling": "LANDSCAPE_CONSTRUCTION_ADMINISTRATION",
+      "does_not_prove": [
+        "full inspection coverage",
+        "concealed work",
+        "universal contractor conformity",
+        "final establishment",
+        "as-built survey authority"
+      ]
+    },
+    {
+      "stage_id": "LA-DP6",
+      "stage_name": "Establishment, Handover & Maintenance Activation",
+      "professional_question": "Are landscape systems, planting, soils, drainage, irrigation, documentation and operational responsibilities sufficiently established and transferred for the current handover claim?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "construction/field records",
+        "defects/punch information",
+        "plant/soil/irrigation status",
+        "record information",
+        "maintenance responsibility"
+      ],
+      "knowledge_inputs": [
+        "landscape establishment",
+        "handover",
+        "maintenance planning",
+        "record information",
+        "defects/replacement"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-06",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "defects/punch record",
+        "landscape handover register",
+        "establishment/maintenance plan",
+        "record/as-built refs",
+        "residual open-item register",
+        "handover receipt"
+      ],
+      "interface_requirements": [
+        "Construction/Contractor",
+        "Operations/FM",
+        "Civil",
+        "Irrigation",
+        "Ecology/Arboriculture",
+        "Client"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP6-FM",
+          "source_domain": "Operations/FM",
+          "source_stage_ref": null,
+          "direction": "OUT",
+          "shared_variables": [
+            "maintenance plan",
+            "watering/irrigation",
+            "pruning/mowing",
+            "drainage/SuDS maintenance",
+            "hardscape repair",
+            "seasonal tasks"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current handover/maintenance information and owner acceptance",
+          "change_reopen_rule": "Reopen when operations capability/responsibility or maintenance requirements change."
+        },
+        {
+          "interface_binding_id": "LA-DP6-CONST",
+          "source_domain": "Construction/Contractor",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "defects",
+            "replacements",
+            "record information",
+            "warranties",
+            "establishment obligations"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "EXERCISED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current defects/record/warranty/establishment records",
+          "change_reopen_rule": "Reopen when defects/replacement/as-built information changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "handover preserves safe usable landscape while seasonal/open items remain explicit"
+      ],
+      "design_language_consequences": [
+        "initial installed character distinguished from mature/seasonal landscape intent"
+      ],
+      "technical_consequences": [
+        "establishment and maintenance obligations activated"
+      ],
+      "content_projection_requirements": [
+        "show installed/establishment/defect/seasonal state separately"
+      ],
+      "required_readback": [
+        "defects/open-items readback",
+        "plant/soil/irrigation/drainage establishment readback",
+        "maintenance responsibility readback"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "long-term seasonal/in-use performance"
+      ],
+      "exit_conditions": [
+        "handover information and establishment responsibilities transferred with explicit open items"
+      ],
+      "reopen_triggers": [
+        "defect, replacement, failed establishment, maintenance ownership or record-information change"
+      ],
+      "claim_ceiling": "LANDSCAPE_HANDOVER_ESTABLISHMENT",
+      "does_not_prove": [
+        "long-term survival",
+        "mature landscape character",
+        "future maintenance quality",
+        "biodiversity outcome",
+        "permanent drainage performance"
+      ]
+    },
+    {
+      "stage_id": "LA-DP7",
+      "stage_name": "In-Use, Seasonal & Stewardship Readback",
+      "professional_question": "What does actual use, seasonality, vegetation development, drainage behavior and maintenance reveal, and what must reopen?",
+      "entry_conditions": [
+        "project Landscape Architecture process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "actual in-use observations",
+        "maintenance records",
+        "seasonal/plant/drainage/material evidence",
+        "incident/feedback records"
+      ],
+      "knowledge_inputs": [
+        "post-use evaluation",
+        "seasonal landscape observation",
+        "maintenance/stewardship",
+        "design/management reopen"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "post-use landscape readback",
+        "seasonal comparison",
+        "maintenance performance review",
+        "observed-failure register",
+        "reopen record",
+        "bounded G9 candidates"
+      ],
+      "interface_requirements": [
+        "Operations/FM",
+        "Client",
+        "Civil",
+        "Ecology/Arboriculture",
+        "Accessibility",
+        "Community/Users"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "LA-DP7-FM",
+          "source_domain": "Operations/FM",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "maintenance burden",
+            "failures",
+            "seasonal operation",
+            "replacement",
+            "water use"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "EXERCISED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "actual maintenance/in-use evidence",
+          "change_reopen_rule": "Reopen when observed operation materially differs from design assumptions."
+        },
+        {
+          "interface_binding_id": "LA-DP7-CIVIL",
+          "source_domain": "Civil",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "ponding",
+            "erosion",
+            "drainage performance",
+            "stormwater maintenance"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "EXERCISED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "actual observed drainage/site performance plus civil evidence when required",
+          "change_reopen_rule": "Reopen when observed water/erosion performance contradicts design basis."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual user movement, comfort, access and stewardship consequences"
+      ],
+      "design_language_consequences": [
+        "seasonal/mature landscape reading compared to intended design"
+      ],
+      "technical_consequences": [
+        "observed landscape-system performance and management consequences"
+      ],
+      "content_projection_requirements": [
+        "compare predicted/designed condition against bounded observed evidence"
+      ],
+      "required_readback": [
+        "observed-vs-designed comparison",
+        "cause-hypothesis boundary",
+        "affected-stage/interface reopen analysis"
+      ],
+      "professional_review_owner": "Landscape Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
+      "open_items_allowed": [
+        "future/long-term conditions not yet observed"
+      ],
+      "exit_conditions": [
+        "observations dispositioned into management change, design reopen, HOLD or bounded learning candidate"
+      ],
+      "reopen_triggers": [
+        "new post-use observation, failure, seasonal variance or maintenance evidence"
+      ],
+      "claim_ceiling": "LANDSCAPE_IN_USE_READBACK",
+      "does_not_prove": [
+        "causal ecological outcome from one observation",
+        "universal species performance",
+        "long-term future state",
+        "transferable knowledge without validation"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Architecture",
+      "Civil",
+      "Survey/Site Authority",
+      "Geotechnical",
+      "Structural",
+      "MEP",
+      "Ecology/Arboriculture",
+      "Accessibility",
+      "Fire/Life Safety",
+      "Lighting",
+      "Cost/Procurement",
+      "Operations/FM",
+      "Construction/Contractor"
+    ],
+    "outputs_to_domains": [
+      "Architecture",
+      "Civil",
+      "Structural",
+      "MEP",
+      "Ecology/Arboriculture",
+      "Accessibility",
+      "Lighting",
+      "Cost/Procurement",
+      "Operations/FM",
+      "Construction/Contractor"
+    ],
+    "shared_variables": [
+      "site boundary/datum/topography",
+      "levels/thresholds",
+      "catchments/drainage/outfalls",
+      "earthwork",
+      "soil/root volume",
+      "planting zones",
+      "irrigation source/zones",
+      "external routes/slopes/surfaces",
+      "hardscape/material build-ups",
+      "landscape structures/supports",
+      "utilities/services",
+      "maintenance access",
+      "seasonal/closure states"
+    ],
+    "controlling_authority_requirements": [
+      "survey/site/base-map authority is explicit",
+      "civil/drainage/geotechnical/structural/ecology/accessibility responsibilities are not inferred from landscape authorship",
+      "one current authority is resolved for each high-impact shared variable"
+    ],
+    "interface_maturity_policy": "Actual enter/close maturity is resolved per interface / Acceptance Contract by Cross-Disciplinary Integration; LA-DP stage number does not imply interface maturity or synchronize another discipline stage.",
+    "allowed_open_interface_conditions": [
+      "required maturity for current landscape claim is met",
+      "remaining item is later/outside current claim",
+      "owner and reopen trigger are explicit",
+      "no controlling-authority conflict contradicts the claim"
+    ],
+    "integration_readback_requirements": [
+      "plan/section/level/drainage shared-variable readback",
+      "critical accessibility/civil/structural/site-system interface readback",
+      "change propagation after material shared-variable change"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "site analysis/GIS as applicable",
+      "landscape plans/sections",
+      "grading/drainage plans",
+      "planting/soil plans",
+      "hardscape/details",
+      "specifications/schedules",
+      "construction/field records",
+      "maintenance/establishment/in-use records when triggered"
+    ],
+    "native_source_of_truth_rules": [
+      "editable/source landscape drawing/model/data remains authoritative within declared scope",
+      "render/screenshot/board does not replace site/technical source",
+      "field observation record cannot exceed observed scope/time/location"
+    ],
+    "execution_owner_requirements": [
+      "responsible Landscape Architecture professional decision owner identified",
+      "specialist/civil/structural/ecology/irrigation/contractor responsibilities explicit where triggered"
+    ],
+    "required_capabilities": [
+      "site/GIS analysis",
+      "landscape planning/design",
+      "CAD/BIM/technical drawing as applicable",
+      "grading/drainage/site-engineering coordination",
+      "planting/soil/hardscape documentation",
+      "professional review"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects tools/capabilities; process does not hardcode Vectorworks/AutoCAD/Rhino/GIS/BIM/render software"
+    ],
+    "typed_handoff_contracts": [
+      "Landscape↔Architecture",
+      "Landscape↔Civil",
+      "Landscape↔Geotechnical",
+      "Landscape↔Structural",
+      "Landscape↔MEP",
+      "Landscape↔Ecology/Arboriculture",
+      "Landscape↔Accessibility",
+      "Landscape↔Operations/FM",
+      "Landscape↔Construction"
+    ],
+    "actual_readback_requirements": [
+      "current native landscape drawings/data read back",
+      "critical plan/section/level/drainage/planting/detail interfaces read back",
+      "field/establishment/in-use evidence read back only when claimed"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Landscape professional review at declared stage/claim ceiling, including the active technical threads and current site authority.",
+    "evidence_review": "Verify site/survey, soil/hydrology/vegetation, regulatory, product/material/planting and field evidence against the claimed landscape use.",
+    "technical_gates": [
+      "civil/hydraulic gate when drainage/stormwater performance is outside Landscape scope",
+      "structural/geotechnical/ecology/arboriculture/accessibility/statutory gates when triggered",
+      "field/establishment evidence gate when claimed"
+    ],
+    "independent_review": "Distinct Landscape Architecture professional review for promotion-relevant stage closure, risk/complexity proportionate; producer self-check cannot substitute for independent professional judgment.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + future LANDSCAPE_ARCHITECTURE_DESIGN_PROCESS_RECEIPT",
+    "does_not_prove": [
+      "civil/drainage approval outside appointed scope",
+      "structural/geotechnical/ecology/accessibility/statutory approval",
+      "field/as-built truth",
+      "Design KEEP",
+      "Promotion"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "survey/site/topography",
+      "building threshold/level/footprint",
+      "road/civil/drainage/stormwater",
+      "soil/geotechnical",
+      "tree/vegetation/ecology",
+      "program/circulation/accessibility/emergency access",
+      "utility/service",
+      "planting/irrigation/hardscape/material",
+      "maintenance/operations",
+      "field substitution/nonconformity",
+      "post-use failure"
+    ],
+    "stale_scope_rules": [
+      "only affected Landscape stages/technical threads/interfaces/artifacts/reviews become stale unless dependency analysis shows wider consequence"
+    ],
+    "upstream_impact_rules": [
+      "changed site/survey/regulatory/technical authority reopens all consuming landscape decisions"
+    ],
+    "downstream_impact_rules": [
+      "changed landscape controlled variables propagate to consuming Architecture/Civil/Structural/MEP/Ecology/Accessibility/Operations/Construction interfaces"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable changes reopen affected Cross-Disciplinary Integration interfaces"
+    ],
+    "receipt_stale_rules": [
+      "Landscape receipt becomes stale at affected scope when governing site authority, stage output, professional review basis or shared variable changes"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable Landscape stage work complete at declared claim ceiling",
+      "required native outputs and actual readback exist",
+      "required Landscape professional review complete",
+      "critical interfaces satisfy their required maturity",
+      "professional receipt current"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim professional or specialist items that do not contradict current landscape verdict"
+    ],
+    "professional_receipt": "LANDSCAPE_ARCHITECTURE_DESIGN_PROCESS_RECEIPT",
+    "promotion_effect": "Candidate only: no promotion effect. If later promoted Current, a bounded PASS may satisfy only the Landscape Architecture professional-process dependency and cannot grant Design KEEP or Promotion.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_LANDSCAPE_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "civil/drainage/structural/geotechnical/ecology/accessibility/statutory approval outside declared scope",
+      "field/as-built truth",
+      "future landscape performance",
+      "Design KEEP",
+      "Promotion"
+    ]
+  }
+}
