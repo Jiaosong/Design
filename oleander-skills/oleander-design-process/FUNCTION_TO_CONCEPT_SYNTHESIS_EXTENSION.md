@@ -819,18 +819,55 @@ No external code or prose is required to execute this extension.
 
 ---
 
-## 32｜Maturity
+## 32｜Project replay evidence｜C04 P02｜2026-09-18
 
-On creation:
+A bounded retrospective replay was run against the existing Current P02 railing lean-rest object.
 
-`CANDIDATE EXTENSION / EXISTING DESIGN OWNER / EXTERNAL MECHANISMS DIGESTED / GOLDEN REGRESSION REQUIRED / PROJECT REPLAY REQUIRED / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`.
+Sources:
+- P02 Current summary;
+- P02 Current QC/truth boundary;
+- P02 editable SVG master.
 
-Promotion requires:
-- real or bounded project use;
-- at least one incompatible/unknown combination exposed;
-- at least two genuine concept families when alternatives exist;
-- matched embodiment comparison;
-- one technical/professional handoff where feasibility is outside DESIGN authority;
-- evidence that the extension prevents premature form lock without creating combinatorial/process theatre.
+Replay rules:
+- Current authority was not reopened;
+- the exercise was explicitly not blind;
+- locked relations were reduced to short half-lean / feet-on-ground / passage-priority / reversible-serviceable / field-open conditions;
+- Current's detailed rendering was not used as a fidelity advantage.
+
+The replay produced:
+- 8 local design-function records, later namespaced as `P02-DFN-01..08`;
+- an explicit function dependency graph;
+- 8 solution-principle records;
+- pairwise `COMPATIBLE / CONDITIONAL / INCOMPATIBLE / UNKNOWN` relations;
+- coupled bundles for attachment↔load-transfer↔service and passage↔affordance↔edge behavior;
+- 3 causal concept families:
+  - host-dependent rigid clamp;
+  - independent narrow lean element;
+  - host-dependent compliant tension;
+- a matched-fidelity editable SVG comparison;
+- structural / human-factor / passage / edge / field handoffs retained as `NOT_RUN / HOLD`.
+
+Actual readback found an additional governance defect in the first replay form: local functions were named `F01..F08`, which could collide semantically with the Current OLEANDER system-level Functional Architecture `F*` namespace. The replay and extension were repaired to use object-scoped `DFN` identifiers and the SVG was re-rendered successfully.
+
+This project replay demonstrates that the extension can:
+- prevent naive Cartesian-product counting;
+- expose incompatible and unknown combinations;
+- retain genuine causal alternatives;
+- avoid presentation-fidelity bias;
+- preserve system Functional Architecture authority and technical claim ceilings.
+
+It does not independently prove that the Current P02 concept is superior because the replay is retrospective and non-blind.
+
+## 33｜Maturity
+
+Current maturity:
+
+`CANDIDATE EXTENSION / EXISTING DESIGN OWNER / CURRENT FUNCTIONAL-ARCHITECTURE ALIGNED / EXTERNAL MECHANISMS DIGESTED / C04 PROJECT_REPLAY_EVIDENCE / THREE CAUSAL CONCEPT FAMILIES / MATCHED EDITABLE EMBODIMENT / NAMESPACE REPAIR READBACK / TECHNICAL TESTS NOT_RUN / GOLDEN REGRESSION REQUIRED / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`.
+
+Further promotion requires:
+- cross-context use outside the P02 object family;
+- evidence that the mechanism improves real concept generation before a mature Current exists;
+- at least one independently reviewed use where the method changes or sharpens a consequential design decision without replacing human judgment;
+- continued separation from formal Systems Engineering Functional Architecture and professional-domain processes.
 
 `MORPHOLOGICAL COVERAGE ≠ CONCEPT QUALITY`.
