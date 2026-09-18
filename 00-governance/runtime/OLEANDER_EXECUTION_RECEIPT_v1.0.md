@@ -3,7 +3,7 @@
 Status: **ACTIVE CURRENT**  
 Policy revision: **1.1**  
 Decision date: **2026-08-18**  
-Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry; 2026-09-15 — Runtime Layer Interface Handoff; 2026-09-15 — Multi-Surface Partial-Commit Reconciliation; 2026-09-15 — Observability Event + Recovery Incident**
+Current extensions: **2026-08-19 — Existing Visual Authority + Image Consumption; 2026-09-09 — Continuation Resume Checkpoint; 2026-09-09 — Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance; 2026-09-09 — Optimistic Concurrency + Verify-Before-Retry; 2026-09-15 — Runtime Layer Interface Handoff; 2026-09-15 — Multi-Surface Partial-Commit Reconciliation; 2026-09-15 — Observability Event + Recovery Incident; 2026-09-18 — Required Check Exception Boundary**
 Scope: **one material execution unit**
 
 ## 0｜Purpose
@@ -282,6 +282,36 @@ Material checks use six explicit results:
 Only `PASS` satisfies a required check. Missing evidence or a missing source-integrity comparison cannot default to PASS. A required result left `FAIL / HOLD / NOT_RUN / UNVERIFIED` blocks completion. Technical validation, design review and promotion remain separate authorities.
 
 This rule is prospective; historical receipts remain immutable.
+
+## 6B｜Required-check exception boundary｜prospective
+
+OLEANDER does not use a generic waiver to turn a required failed or unexecuted check into `PASS`.
+
+If a material execution requests or consumes an exception to a declared criterion or claim boundary, resolve it through the existing Decision Rights authorization projection and record:
+
+`decision_object_id / criterion_ref / decision_class / actor_or_authority_ref / authorization_basis_ref_or_fields / authority_scope / claim_boundary / authority_fingerprint / exception_effect / revalidation_ref`.
+
+Allowed `exception_effect` values are:
+
+- `CRITERION_CHANGED` — an authorized owner has changed the governing criterion for the current scope;
+- `CLAIM_BOUNDARY_NARROWED` — the claim is deliberately reduced so the unresolved criterion is outside the retained claim;
+- `CHECK_DECLARED_NOT_APPLICABLE_BY_AUTHORITY` — the controlling authority establishes that the check does not apply to this decision object/scope, with reason.
+
+Rules:
+
+1. There is no `WAIVED_PASS`, `PASS_WITH_WAIVER` or equivalent validation state.
+2. A prior `FAIL / HOLD / NOT_RUN / UNVERIFIED` result remains historical truth; an exception does not mutate it.
+3. Project authority cannot waive professional/statutory/technical authority it does not possess.
+4. The authorization basis must resolve under the Current Decision Rights projection for the exact decision object, scope and claim boundary.
+5. A changed criterion or narrowed claim requires a **fresh validation result** against the changed Current condition before dependent completion.
+6. `NOT_APPLICABLE` still requires both a reason and the applicable authority basis when material.
+7. An exception record does not grant Design KEEP, professional PASS, statutory approval or Promotion.
+
+External tools that expose a command-line “waive this check” mechanism may be used only inside this boundary. Their waiver flag is not an OLEANDER validation authority.
+
+This rule is prospective; historical receipts are not rewritten.
+
+---
 
 ## 7｜Native artifacts and handoffs
 
