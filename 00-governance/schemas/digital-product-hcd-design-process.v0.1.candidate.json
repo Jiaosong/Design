@@ -281,7 +281,9 @@
         "research plan",
         "participant/session evidence refs",
         "research findings/confidence register",
-        "unresolved research questions"
+        "unresolved research questions",
+        "Study Repository / Research Freeze Register",
+        "Consent / Data Eligibility Register"
       ],
       "interface_requirements": [
         "Research",
@@ -679,7 +681,8 @@
         "usability findings/severity",
         "accessibility findings",
         "repair/retest record",
-        "HCD_EVALUATION_RECEIPT"
+        "HCD_EVALUATION_RECEIPT",
+        "Finding → Fix → Build → Retest Chain"
       ],
       "interface_requirements": [
         "Research",
@@ -814,7 +817,10 @@
         "accessibility behaviour",
         "analytics/instrumentation intent",
         "engineering handoff",
-        "implementation parity checklist"
+        "implementation parity checklist",
+        "Content / Localization Release Register",
+        "Privacy / Security Interaction Handoff Register",
+        "Instrumentation / Outcome Definition Register"
       ],
       "interface_requirements": [
         "Engineering",
@@ -950,7 +956,8 @@
         "instrumentation verification",
         "privacy/security handoff refs",
         "release-blocker register",
-        "HCD_RELEASE_READINESS_RECEIPT"
+        "HCD_RELEASE_READINESS_RECEIPT",
+        "Release Support Matrix"
       ],
       "interface_requirements": [
         "Engineering",
@@ -1084,7 +1091,8 @@
         "support/accessibility/performance issue register",
         "reopen/change records",
         "experiment records",
-        "bounded G9 candidates"
+        "bounded G9 candidates",
+        "Experiment / Rollout Object"
       ],
       "interface_requirements": [
         "Product/Design",
@@ -1250,7 +1258,15 @@
       "evaluation/usability/accessibility evidence",
       "detailed UI/component/state specifications",
       "implementation parity readback",
-      "live analytics/research evidence when triggered"
+      "live analytics/research evidence when triggered",
+      "Study Repository / Research Freeze Register",
+      "Consent / Data Eligibility Register",
+      "Finding → Fix → Build → Retest Chain",
+      "Release Support Matrix",
+      "Content / Localization Release Register",
+      "Privacy / Security Interaction Handoff Register",
+      "Instrumentation / Outcome Definition Register",
+      "Experiment / Rollout Object"
     ],
     "native_source_of_truth_rules": [
       "editable/source research/design/prototype/specification artifacts remain authoritative within declared scope",
@@ -1288,7 +1304,12 @@
     "actual_readback_requirements": [
       "actual research/evaluation evidence read back before HCD research/usability claims",
       "actual prototype/build interaction read back at claimed stage",
-      "actual live analytics/research/support evidence read back only when live outcomes are claimed"
+      "actual live analytics/research/support evidence read back only when live outcomes are claimed",
+      "research finding readback binds study/prototype/build identity and consent/data eligibility",
+      "material findings close only through finding→fix→build→retest evidence",
+      "release support matrix readback covers the claimed browser/OS/device/input/assistive-technology envelope",
+      "content/localization and privacy/security handoff registers are read back at release scope",
+      "instrumentation and experiment/rollout readback preserves metric validity, guardrails and causal claim ceiling"
     ]
   },
   "assurance": {
