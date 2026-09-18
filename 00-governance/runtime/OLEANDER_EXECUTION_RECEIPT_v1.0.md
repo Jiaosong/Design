@@ -266,6 +266,23 @@ Optional phases may be `NOT_APPLICABLE` only with a real reason.
 
 A plan, method explanation, generated/exported file, PR, CI green, self-check, render pass or regression pass is not enough to close a full-flow task.
 
+## 6A｜Typed validation results｜prospective
+
+Material checks use six explicit results:
+
+`PASS / FAIL / HOLD / NOT_RUN / UNVERIFIED / NOT_APPLICABLE`.
+
+- `PASS`: the declared check ran and its criteria were satisfied.
+- `FAIL`: the check ran and at least one criterion failed.
+- `HOLD`: a required unresolved condition blocks advancement.
+- `NOT_RUN`: the check applies but was not executed.
+- `UNVERIFIED`: available evidence cannot establish the claim.
+- `NOT_APPLICABLE`: the check domain does not apply; a reason is required.
+
+Only `PASS` satisfies a required check. Missing evidence or a missing source-integrity comparison cannot default to PASS. A required result left `FAIL / HOLD / NOT_RUN / UNVERIFIED` blocks completion. Technical validation, design review and promotion remain separate authorities.
+
+This rule is prospective; historical receipts remain immutable.
+
 ## 7｜Native artifacts and handoffs
 
 Every material handoff records the Native Artifact Contract fields, including:

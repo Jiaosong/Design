@@ -313,6 +313,66 @@ def validate_artifact(data: dict) -> None:
     if data.get("default_permission") != "READ_ONLY":
         fail("Native Artifact default permission must be READ_ONLY")
 
+    source_integrity = data.get("source_integrity_extension", {})
+    require_fields(
+        source_integrity,
+        [
+            "prospective_only",
+            "historical_artifacts_immutable",
+            "required_when",
+            "fields",
+            "modes",
+            "mode_semantics",
+            "path_is_not_identity",
+            "source_identity_requires",
+            "declared_transform_boundary_required",
+            "missing_or_unperformed_verification_must_not_equal_pass",
+            "verification_result_carrier",
+            "does_not_prove",
+        ],
+        "native-artifact:source-integrity-extension",
+    )
+    expected_modes = {"EVIDENCE_ONLY", "DETERMINISTIC_TRANSFORM", "NORMALIZED_RASTER_EXACT", "BYTE_EXACT"}
+    if set(source_integrity.get("modes", [])) != expected_modes:
+        fail("Native Artifact source integrity mode vocabulary drift")
+    if set(source_integrity.get("mode_semantics", {})) != expected_modes:
+        fail("Native Artifact source integrity semantics incomplete")
+    if source_integrity.get("prospective_only") is not True or source_integrity.get("historical_artifacts_immutable") is not True:
+        fail("Native Artifact source integrity extension must be prospective")
+    if source_integrity.get("path_is_not_identity") is not True:
+        fail("Native Artifact source integrity must reject path-only identity")
+    if source_integrity.get("missing_or_unperformed_verification_must_not_equal_pass") is not True:
+        fail("Native Artifact missing integrity verification may not equal PASS")
+
+    delivery = data.get("delivery_eligibility_extension", {})
+    require_fields(
+        delivery,
+        [
+            "prospective_only",
+            "historical_artifacts_immutable",
+            "required_when",
+            "fields",
+            "states",
+            "generative_output_default",
+            "deterministic_or_native_output_may_still_require_gates",
+            "intermediate_cannot_satisfy_final_native_output",
+            "flattened_derivative_cannot_replace_editable_master_when_editability_is_required",
+            "current_or_superseded_is_independent_from_delivery_eligibility",
+            "delivery_eligibility_does_not_grant_promotion",
+            "gate_rule",
+        ],
+        "native-artifact:delivery-eligibility-extension",
+    )
+    expected_delivery_states = {"INTERMEDIATE_ONLY", "CANDIDATE_ONLY", "ELIGIBLE_AFTER_REQUIRED_GATES", "DELIVERY_DERIVATIVE"}
+    if set(delivery.get("states", [])) != expected_delivery_states:
+        fail("Native Artifact delivery eligibility vocabulary drift")
+    if delivery.get("generative_output_default") != "INTERMEDIATE_ONLY":
+        fail("Generative artifact default must remain INTERMEDIATE_ONLY")
+    if delivery.get("intermediate_cannot_satisfy_final_native_output") is not True:
+        fail("Intermediate artifact may not satisfy final native output")
+    if delivery.get("delivery_eligibility_does_not_grant_promotion") is not True:
+        fail("Delivery eligibility may not grant promotion")
+
 
 def validate_regression(data: dict) -> None:
     if data.get("layers") != ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"]:
@@ -343,6 +403,49 @@ def validate_receipts() -> None:
     schema = load_json(RECEIPT_CONTRACT)
     if schema.get("status") != "ACTIVE_CURRENT" or schema.get("version") != "1.0":
         fail("Execution Receipt v1.0 must be ACTIVE_CURRENT")
+
+    typed_validation = schema.get("typed_validation_extension", {})
+    require_fields(
+        typed_validation,
+        [
+            "prospective_only",
+            "historical_receipts_immutable",
+            "required_when",
+            "fields",
+            "result_values",
+            "result_semantics",
+            "only_pass_satisfies_required_check",
+            "not_applicable_requires_reason",
+            "not_run_or_unverified_cannot_be_normalized_to_pass",
+            "missing_evidence_cannot_default_to_pass",
+            "missing_source_integrity_comparison_result",
+            "producer_self_check_does_not_equal_independent_review",
+            "technical_pass_does_not_equal_design_keep",
+            "process_pass_does_not_equal_promotion",
+        ],
+        "execution-receipt:typed-validation-extension",
+    )
+    expected_validation_results = {"PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"}
+    if set(schema.get("validation_result_values", [])) != expected_validation_results:
+        fail("Execution Receipt validation result vocabulary drift")
+    if set(typed_validation.get("result_values", [])) != expected_validation_results:
+        fail("Execution Receipt typed validation result vocabulary drift")
+    if set(typed_validation.get("result_semantics", {})) != expected_validation_results:
+        fail("Execution Receipt typed validation semantics incomplete")
+    if set(schema.get("phase_result_values", [])) != expected_validation_results:
+        fail("Execution Receipt phase result vocabulary must preserve typed validation states")
+    if set(schema.get("regression_layer_result_values", [])) != expected_validation_results:
+        fail("Execution Receipt regression result vocabulary must preserve typed validation states")
+    if typed_validation.get("only_pass_satisfies_required_check") is not True:
+        fail("Execution Receipt required validation checks must require PASS")
+    if typed_validation.get("not_run_or_unverified_cannot_be_normalized_to_pass") is not True:
+        fail("NOT_RUN/UNVERIFIED may not normalize to PASS")
+    if typed_validation.get("missing_evidence_cannot_default_to_pass") is not True:
+        fail("Missing evidence may not default to PASS")
+    if typed_validation.get("missing_source_integrity_comparison_result") != "UNVERIFIED":
+        fail("Missing source-integrity comparison must be UNVERIFIED")
+    if typed_validation.get("prospective_only") is not True or typed_validation.get("historical_receipts_immutable") is not True:
+        fail("Typed validation extension must be prospective")
     receipts = sorted(RECEIPT_DIR.glob("*.json"))
     if len(receipts) < 2:
         fail("at least two real execution receipts are required")

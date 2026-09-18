@@ -608,8 +608,20 @@ def validate_receipt_contract() -> dict:
     }
     if legacy != expected_legacy:
         fail("legacy Receipt allowlist must be explicit and exact")
-    if data.get("closed_state_rule") != "IF_STATUS_IS_CLOSED_COMPLETION_GATE_MUST_BE_PASS_AND_INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY":
-        fail("Receipt CLOSED state rule missing")
+    closed_rule = str(data.get("closed_state_rule") or "")
+    for token in [
+        "COMPLETION_GATE_MUST_BE_PASS",
+        "INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY",
+        "NO_REQUIRED_CHECK_MAY_REMAIN_FAIL_HOLD_NOT_RUN_OR_UNVERIFIED",
+    ]:
+        if token not in closed_rule:
+            fail(f"Receipt CLOSED state rule missing semantic token {token}")
+
+    expected_validation_results = {"PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"}
+    if set(data.get("phase_result_values", [])) != expected_validation_results:
+        fail("Receipt phase result vocabulary must include typed non-success states")
+    if set(data.get("regression_layer_result_values", [])) != expected_validation_results:
+        fail("Receipt regression result vocabulary must include typed non-success states")
 
     image_ext = data.get("image_consumption_extension", {})
     if image_ext.get("required_when") != "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE":
@@ -850,6 +862,8 @@ def validate_cases() -> None:
         "CHAT-PREFLIGHT-006-FLOW-PASS-STOPS-AUTO-ADVANCE",
         "CHAT-PREFLIGHT-007-SIDE-EFFECT-ESCALATION-STOPS",
         "CHAT-PREFLIGHT-008-MISSING-FLOW-PHASES-FAIL-CLOSED",
+        "CHAT-PREFLIGHT-009-NOT-RUN-BLOCKS-COMPLETE",
+        "CHAT-PREFLIGHT-010-UNVERIFIED-BLOCKS-COMPLETE",
     }
     if not required.issubset(ids):
         fail(f"missing runtime cases {sorted(required - ids)}")
@@ -955,6 +969,8 @@ def validate_cases() -> None:
         "CHAT-PREFLIGHT-003-INCOMPLETE-FLOW-BLOCKS-COMPLETE",
         "CHAT-PREFLIGHT-004-PASSED-FLOW-ALLOWS-COMPLETE",
         "CHAT-PREFLIGHT-008-MISSING-FLOW-PHASES-FAIL-CLOSED",
+        "CHAT-PREFLIGHT-009-NOT-RUN-BLOCKS-COMPLETE",
+        "CHAT-PREFLIGHT-010-UNVERIFIED-BLOCKS-COMPLETE",
     ]:
         c = by_id[case_id]
         result = evaluate_flow_completion(c["flow_completion"])
