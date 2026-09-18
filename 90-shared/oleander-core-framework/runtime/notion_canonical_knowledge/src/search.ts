@@ -31,7 +31,7 @@ function rowToHit(
   score: number,
   sources: Array<"EXACT" | "VECTOR" | "LEXICAL">,
 ): KnowledgeHit {
-  return {
+  const hit: KnowledgeHit = {
     vector_id: String(row.vector_id ?? ""),
     score,
     namespace,
@@ -57,9 +57,10 @@ function rowToHit(
     claim_ids: stringArray(row.claim_ids_json),
     evidence_ids: stringArray(row.evidence_ids_json),
     candidate_sources: sources,
-    lexical_score: typeof row.lexical_score === "number" ? row.lexical_score : undefined,
     authority_reason: row.authority_reason ? String(row.authority_reason) : null,
   };
+  if (typeof row.lexical_score === "number") hit.lexical_score = row.lexical_score;
+  return hit;
 }
 
 async function queryVectorNamespace(
@@ -150,7 +151,8 @@ export function mergeAndDedupeCandidates(hits: KnowledgeHit[], request: SearchRe
       });
     } else {
       existing.candidate_sources = [...existingSources];
-      existing.lexical_score = Math.max(existing.lexical_score ?? 0, hit.lexical_score ?? 0) || undefined;
+      const mergedLexicalScore = Math.max(existing.lexical_score ?? 0, hit.lexical_score ?? 0);
+      if (mergedLexicalScore > 0) existing.lexical_score = mergedLexicalScore;
     }
   }
   return [...byCanonical.values()]
