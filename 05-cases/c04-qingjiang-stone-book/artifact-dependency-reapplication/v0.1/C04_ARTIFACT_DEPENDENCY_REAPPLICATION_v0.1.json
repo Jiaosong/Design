@@ -1,0 +1,173 @@
+{
+  "schema_version": "c04-artifact-dependency-reapplication/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "reapplication_id": "C04-DEPENDENCY-IDENTITY-REAPPLICATION-001",
+  "state": "PROSPECTIVE_DIAGNOSTIC / HISTORICAL_VERDICTS_IMMUTABLE / NO_PROMOTION",
+  "governing_contract": {
+    "path": "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json",
+    "blob_sha": "c8876746ee5c5725fc6c474fef0251cc544ac0dd",
+    "extension": "dependency_identity_extension"
+  },
+  "purpose": "Exercise the 2026-09-18 dependency-identity/fallback rule against existing C04 editable artifacts without rewriting their historical QC or inventing an exact-font/runtime claim.",
+  "artifacts": [
+    {
+      "artifact_id": "C04-APP-GAME-MAP-V1.2-PORTABLE",
+      "source": {
+        "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+        "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3"
+      },
+      "current_qc": {
+        "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+        "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593",
+        "historical_results": {
+          "node_syntax": "PASS",
+          "five_views": "PASS",
+          "four_main_tabs": "PASS",
+          "thirteen_imprints": "PASS",
+          "standalone_svg_parse": "PASS",
+          "local_memory_logic_present": "PASS",
+          "standalone_map_vector_render": "PASS_AFTER_FIX_VIEWBOX_CASE",
+          "actual_live_browser": "HOLD_ENVIRONMENT_ADMIN_BLOCK"
+        }
+      },
+      "dependency_records": [
+        {
+          "dependency_id": "C04-APP-FONT-SERIF-CJK",
+          "dependency_role": "CJK_SERIF_DISPLAY_ROLE",
+          "requiredness": "REQUIRED_FOR_SEMANTIC_FIDELITY",
+          "identity_or_authority_ref": "CSS --serif stack: Noto Serif SC → Songti SC → generic serif",
+          "version_or_revision": "UNRESOLVED_AT_CURRENT_HISTORICAL_QC",
+          "hash_when_material": null,
+          "resolution_method": "browser font resolution from declared CSS stack",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": null,
+          "verification_result": "UNVERIFIED",
+          "rationale": "The design claim depends on serif/sans hierarchy and readable CJK typography, not on Noto Serif SC as an exclusive brand-authority font. An explicit fallback may be acceptable, but future final/reproducible render must record which face actually resolved and visually read it back."
+        },
+        {
+          "dependency_id": "C04-APP-FONT-SANS-CJK",
+          "dependency_role": "CJK_SANS_UI_ROLE",
+          "requiredness": "REQUIRED_FOR_SEMANTIC_FIDELITY",
+          "identity_or_authority_ref": "CSS --sans stack: Noto Sans SC → PingFang SC → Microsoft YaHei → generic sans",
+          "version_or_revision": "UNRESOLVED_AT_CURRENT_HISTORICAL_QC",
+          "hash_when_material": null,
+          "resolution_method": "browser font resolution from declared CSS stack",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": null,
+          "verification_result": "UNVERIFIED",
+          "rationale": "Exact Noto identity is not a locked Current requirement, but resolved font metrics can change hierarchy, wrapping and control density."
+        },
+        {
+          "dependency_id": "C04-APP-BROWSER-RUNTIME",
+          "dependency_role": "INTERACTIVE_HTML_SVG_RUNTIME",
+          "requiredness": "REQUIRED_FOR_REPRODUCTION",
+          "identity_or_authority_ref": "standards-capable browser runtime supporting dialog/localStorage/print/SVG/DOM interaction",
+          "version_or_revision": "UNRESOLVED_FOR_ACTUAL_LIVE_BROWSER_READBACK",
+          "hash_when_material": null,
+          "resolution_method": "actual browser/runtime execution",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": "QC_READBACK_v1_2.actual_live_browser",
+          "verification_result": "HOLD",
+          "rationale": "Source/static checks exist, but the current QC already holds actual live browser readback. The dependency extension preserves rather than upgrades that HOLD."
+        }
+      ],
+      "historical_disposition": "UNCHANGED",
+      "prospective_delivery_condition": [
+        "Do not require Noto as exclusive identity unless a future Design/Brand authority explicitly locks it.",
+        "For a future final/reproducible browser claim, record actual browser/runtime identity and resolved material font identities or equivalent evidence.",
+        "Run actual visual/interaction readback after any declared equivalent fallback.",
+        "Until actual browser readback exists, do not upgrade the historical HOLD."
+      ]
+    },
+    {
+      "artifact_id": "C04-M01-QINGJIANG-JOURNAL-V1.2",
+      "source": {
+        "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg",
+        "blob_sha": "f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5"
+      },
+      "current_qc": {
+        "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+        "blob_sha": "3019027c806eef4571be7d97b313d300499d1e1a",
+        "historical_results": {
+          "concept": "KEEP",
+          "presentation": "MAIN_CANDIDATE",
+          "all_svg_parse": "PASS",
+          "viewbox": "PASS",
+          "vector_text": "PASS",
+          "no_ai_image": "PASS"
+        }
+      },
+      "dependency_records": [
+        {
+          "dependency_id": "C04-M01-FONT-SERIF-CJK",
+          "dependency_role": "CJK_SERIF_DISPLAY_ROLE",
+          "requiredness": "REQUIRED_FOR_SEMANTIC_FIDELITY",
+          "identity_or_authority_ref": "SVG font stack: Noto Serif SC → Songti SC → generic serif",
+          "version_or_revision": "UNRESOLVED_AT_CURRENT_HISTORICAL_QC",
+          "hash_when_material": null,
+          "resolution_method": "SVG renderer font resolution from declared stack",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": null,
+          "verification_result": "UNVERIFIED",
+          "rationale": "M01 is an A5 physical prototype whose page hierarchy and live vector text depend on font metrics, but Current does not lock Noto as a unique brand font."
+        },
+        {
+          "dependency_id": "C04-M01-FONT-SANS-CJK",
+          "dependency_role": "CJK_SANS_TEXT_ROLE",
+          "requiredness": "REQUIRED_FOR_SEMANTIC_FIDELITY",
+          "identity_or_authority_ref": "SVG font stack: Noto Sans SC → Microsoft YaHei → generic sans",
+          "version_or_revision": "UNRESOLVED_AT_CURRENT_HISTORICAL_QC",
+          "hash_when_material": null,
+          "resolution_method": "SVG renderer font resolution from declared stack",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": null,
+          "verification_result": "UNVERIFIED",
+          "rationale": "Fallback is not prohibited by Current design authority, but a final print/export must read back actual text fit, hierarchy and clipping."
+        },
+        {
+          "dependency_id": "C04-M01-SVG-RENDERER",
+          "dependency_role": "SVG_TO_DISPLAY_OR_PRINT_RENDERER",
+          "requiredness": "REQUIRED_FOR_REPRODUCTION",
+          "identity_or_authority_ref": "SVG renderer capable of live text/CSS/font resolution",
+          "version_or_revision": "UNRESOLVED_AT_CURRENT_HISTORICAL_QC",
+          "hash_when_material": null,
+          "resolution_method": "render/export environment identity + reopened final artifact",
+          "fallback_policy": "ALLOW_DECLARED_EQUIVALENT",
+          "verification_ref": null,
+          "verification_result": "UNVERIFIED",
+          "rationale": "Native SVG validity is distinct from pixel/print reproducibility. A renderer-equivalent path is allowed only with actual readback."
+        }
+      ],
+      "historical_disposition": "UNCHANGED",
+      "prospective_delivery_condition": [
+        "Keep existing M01 concept KEEP / presentation MAIN_CANDIDATE historical result unchanged.",
+        "Do not call current SVG parse/vector-text checks exact typography or print reproduction.",
+        "Before a future final print/export claim, bind renderer + resolved material font identity and reopen the rendered/exported artifact.",
+        "If fallback materially changes wrapping, fit, hierarchy or clipping, repair before delivery rather than normalize the fallback to PASS."
+      ]
+    }
+  ],
+  "synthesis_findings": [
+    {
+      "id": "D01",
+      "finding": "A font stack does not automatically require one exact primary font.",
+      "consequence": "Use REQUIRED_FOR_SEMANTIC_FIDELITY + ALLOW_DECLARED_EQUIVALENT when the role/hierarchy is required but the exact family is not Current-locked."
+    },
+    {
+      "id": "D02",
+      "finding": "Declared fallback names are not the same as observed resolved dependency identity.",
+      "consequence": "A future final/reproducible claim needs actual resolved identity/readback when the dependency materially affects output."
+    },
+    {
+      "id": "D03",
+      "finding": "The new rule does not retroactively invalidate historical QC.",
+      "consequence": "APP v1.2 remains browser HOLD; M01 remains MAIN_CANDIDATE under its historical review. New dependency evidence is prospective."
+    },
+    {
+      "id": "D04",
+      "finding": "Static/source validity and rendered/runtime reproducibility remain separate.",
+      "consequence": "SVG/HTML parse PASS cannot substitute for browser/renderer/font-resolution readback."
+    }
+  ],
+  "claim_ceiling": "PROSPECTIVE DEPENDENCY-POLICY REAPPLICATION ONLY / NO HISTORICAL QC MUTATION / NO NEW FONT AUTHORITY / NO BROWSER OR PRINT PASS / NO PROMOTION"
+}
