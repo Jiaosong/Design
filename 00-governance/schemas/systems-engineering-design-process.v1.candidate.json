@@ -1,0 +1,1472 @@
+{
+  "schema_version": "1.0",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS",
+  "domain": "Systems Engineering",
+  "version": "1.0-CANDIDATE",
+  "title": "OLEANDER Systems Engineering Design Process v1.0 — Candidate",
+  "purpose": "Compile OLEANDER's existing zero-base system-definition work into a reusable Systems Engineering professional process covering needs/context, capabilities/functions, information/allocation/interfaces, requirements, logical and physical architecture, integration/V&V, transition and operations/change without making Systems Engineering a super-authority over domain professions.",
+  "scope_in": [
+    "system of interest and context",
+    "stakeholder needs/operational scenarios",
+    "capability/function/behavior/state architecture",
+    "information and human/system allocation",
+    "interface architecture",
+    "system requirements and normalization",
+    "logical/physical architecture and alternatives",
+    "configuration/change control",
+    "integration",
+    "verification",
+    "validation",
+    "transition",
+    "operations/support/retirement"
+  ],
+  "scope_out": [
+    "domain-professional design approval",
+    "statutory approval",
+    "specialist calculations",
+    "software code quality unless separately assigned",
+    "HCD/user research authority unless assigned",
+    "commercial/project-management authority",
+    "field/as-built truth without evidence",
+    "automatic Design KEEP or Promotion"
+  ],
+  "authority_position": "Candidate R-E professional-domain process subordinate to OLEANDER Master Runtime, Current zero-base System Definition/Knowledge Architecture, Professional Domain Process Contract, Cross-Disciplinary Integration, project/organizational authority and responsible Systems Engineering owner. Current Architecture Map remains OPEN for Systems Engineering until explicit promotion.",
+  "current_definition_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+  "trigger": {
+    "project_flow_trigger": "A material project claim requires system boundary/architecture/requirements/interface/allocation/integration/V&V/configuration/change professional Systems Engineering work.",
+    "design_question_types": [
+      "system of interest/context",
+      "stakeholder needs/operational concept",
+      "capability/function/behavior",
+      "information/human-system allocation/interfaces",
+      "requirements and V&V planning",
+      "logical/physical architecture",
+      "integration/verification/validation/transition",
+      "operations/change/retirement"
+    ],
+    "responsibility_triggers": [
+      "system architecture or requirements are relied upon across domains",
+      "shared interfaces/allocations require controlled ownership",
+      "verification/validation/configuration evidence is claimed",
+      "system-level change requires cross-domain impact propagation"
+    ],
+    "claim_ceiling_rule": "The lowest valid ceiling across stakeholder/operational evidence, architecture/requirements baseline, domain-professional interfaces, exact configuration, verification, validation, transition and operational evidence governs.",
+    "not_triggered_when": [
+      "single-domain problem has no material system-level interface/allocation/V&V claim",
+      "diagram is presentation-only with no system architecture/requirement authority"
+    ],
+    "mandatory_reopen_triggers": [
+      "system boundary/stakeholder need",
+      "capability/function/state",
+      "information/allocation/interface",
+      "requirement/baseline",
+      "logical/physical architecture",
+      "configuration",
+      "domain controlled variable",
+      "integration anomaly",
+      "verification/validation result",
+      "operational/incident/support/retirement evidence"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential stakeholder, system, professional-domain, interface, requirement, V&V, standards and operational knowledge must be admitted through task/claim Operational Mount before supporting SE closure.",
+    "required_methods": [
+      "stakeholder need/context analysis",
+      "capability/functional architecture",
+      "requirements engineering",
+      "information/human-system/interface architecture",
+      "architecture alternatives/allocation",
+      "configuration/change control",
+      "integration planning",
+      "verification",
+      "validation",
+      "technical decision/risk management"
+    ],
+    "theory_routes": [
+      "systems engineering lifecycle processes",
+      "architecture/framework methods",
+      "requirements/traceability",
+      "V&V",
+      "integration/configuration/change",
+      "human-system allocation"
+    ],
+    "source_routes": [
+      "current project/stakeholder/operational evidence",
+      "current domain-professional inputs",
+      "current system architecture/requirements/baselines",
+      "current professional SE standards/guidance",
+      "current verification/validation/operational evidence"
+    ],
+    "evidence_routes": [
+      "needs/use-case/mission-thread evidence",
+      "requirements and architecture baselines",
+      "interface/configuration records",
+      "verification procedures/results",
+      "validation scenarios/results",
+      "integration/anomaly/retest evidence",
+      "operational/support evidence"
+    ],
+    "standard_code_routes": [
+      "ISO/IEC/IEEE 15288:2023 or applicable organizational SE process sources",
+      "current domain/statutory standards through their responsible owners"
+    ],
+    "precedent_case_routes": [
+      "bounded system architecture/V&V precedents with explicit context and transfer conditions"
+    ],
+    "practice_routes": [
+      "OLEANDER zero-base system-definition corpus and project-level Systems Engineering evidence"
+    ],
+    "tool_knowledge_routes": [
+      "current modelling/requirements/simulation/test/configuration tools when used; tools do not own professional authority"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "SYSENG-DP0",
+      "stage_name": "Scope, System of Interest & Authority",
+      "professional_question": "What is the system of interest, where is its boundary, who owns consequential decisions, and what claim is this Systems Engineering process allowed to make?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "project/system need",
+        "organizational/project authority",
+        "known system context",
+        "domain owner map",
+        "lifecycle/transition scope"
+      ],
+      "knowledge_inputs": [
+        "system-of-interest definition",
+        "SE responsibility/authority",
+        "lifecycle framing",
+        "technical management authority"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "Systems Engineering Responsibility / Authority Matrix",
+        "System-of-Interest / Context / Boundary Register",
+        "initial lifecycle/use/transition scope",
+        "initial risk/assumption register",
+        "claim-ceiling record"
+      ],
+      "interface_requirements": [
+        "Project/Organizational Authority",
+        "Domain Professionals",
+        "Operations"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP0-AUTH",
+          "source_domain": "Project/Organizational Authority",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "system scope",
+            "decision authority",
+            "acceptance authority",
+            "lifecycle scope"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current project/organizational authority plus SE responsibility matrix",
+          "change_reopen_rule": "Reopen when system scope, authority or lifecycle responsibility changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP0-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "professional responsibility",
+            "domain claims",
+            "controlled variables"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current professional owner map and domain-process authority",
+          "change_reopen_rule": "Reopen when professional responsibility/allocation changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "affected users/operators and human authority remain visible in system-boundary decisions"
+      ],
+      "design_language_consequences": [
+        "system boundary diagrams remain decision artifacts rather than software diagrams"
+      ],
+      "technical_consequences": [
+        "authority and external-system boundaries constrain downstream requirements/architecture"
+      ],
+      "content_projection_requirements": [
+        "show boundary, owner, assumptions and excluded authority explicitly"
+      ],
+      "required_readback": [
+        "system boundary/external actor readback",
+        "decision/professional authority readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "later needs/architecture/V&V work"
+      ],
+      "exit_conditions": [
+        "system of interest and responsibility/authority boundary explicit enough for bounded SE work"
+      ],
+      "reopen_triggers": [
+        "system boundary, actor, authority, lifecycle or project scope change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_SCOPE_AUTHORITY",
+      "does_not_prove": [
+        "stakeholder needs correctness",
+        "requirements completeness",
+        "architecture feasibility",
+        "V&V PASS",
+        "domain professional approval"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP1",
+      "stage_name": "Stakeholder Needs, Operational Context & Concept",
+      "professional_question": "What outcomes, actors, operational scenarios, constraints and degraded conditions must the system address before functions or solutions are committed?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "system boundary",
+        "stakeholder/project evidence",
+        "operational context",
+        "external-system constraints"
+      ],
+      "knowledge_inputs": [
+        "stakeholder needs",
+        "operational concepts",
+        "mission/use scenarios",
+        "normal/degraded/failure context"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-05",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "stakeholder need set",
+        "operational concept / mission threads",
+        "context diagrams",
+        "Stakeholder Need / Use-Case / Requirement Trace Matrix seed",
+        "unresolved need/assumption register"
+      ],
+      "interface_requirements": [
+        "Users/Stakeholders",
+        "Operations",
+        "HCD",
+        "Domain Professionals"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP1-USERS",
+          "source_domain": "Users/Stakeholders",
+          "source_stage_ref": null,
+          "direction": "IN",
+          "shared_variables": [
+            "needs",
+            "outcomes",
+            "constraints",
+            "acceptance context"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current stakeholder/user/operational evidence",
+          "change_reopen_rule": "Reopen when stakeholder need or operational context changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP1-OPS",
+          "source_domain": "Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "operating modes",
+            "support",
+            "degraded/failure states",
+            "environment"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current operational concept and operations evidence",
+          "change_reopen_rule": "Reopen when operational modes/support/environment changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual stakeholder outcome and operating-context consequences precede solution commitment"
+      ],
+      "design_language_consequences": [
+        "operational concept diagrams communicate system behavior, not presentation styling"
+      ],
+      "technical_consequences": [
+        "operating/degraded conditions become inputs to capabilities/functions/requirements"
+      ],
+      "content_projection_requirements": [
+        "trace need/source/context/limitation; keep features separate from needs"
+      ],
+      "required_readback": [
+        "need-to-source trace",
+        "mission-thread coverage",
+        "normal/degraded/failure scenario readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "future detailed requirements/architecture"
+      ],
+      "exit_conditions": [
+        "stakeholder/operational evidence sufficient for bounded capability/function work"
+      ],
+      "reopen_triggers": [
+        "stakeholder, environment, mission/use, operating mode or external-system change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_NEEDS_OPERATIONAL_CONTEXT",
+      "does_not_prove": [
+        "system requirements completeness",
+        "solution feasibility",
+        "validation PASS",
+        "domain professional design"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP2",
+      "stage_name": "Capabilities, Functions, Behavior & States",
+      "professional_question": "What must the system be capable of doing, which functions/behaviors realize those capabilities, and how do states/degraded modes interact?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "stakeholder needs",
+        "operational concept",
+        "system boundary",
+        "external interfaces"
+      ],
+      "knowledge_inputs": [
+        "capability architecture",
+        "functional architecture",
+        "behavior/state modelling",
+        "reverse trace"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "capability architecture",
+        "function catalogue",
+        "behavior/state models",
+        "Capability / Function / Behavior / State Register",
+        "reverse-trace report"
+      ],
+      "interface_requirements": [
+        "HCD",
+        "Domain Professionals",
+        "Operations",
+        "External Systems"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP2-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "capabilities",
+            "functions",
+            "failure/degraded behavior",
+            "professional constraints"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current functional/capability architecture plus professional inputs",
+          "change_reopen_rule": "Reopen when capability/function/professional constraint changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "human/system responsibility and degraded behavior remain visible"
+      ],
+      "design_language_consequences": [
+        "behavior diagrams preserve semantic relations rather than implementation styling"
+      ],
+      "technical_consequences": [
+        "solution-neutral function/behavior structure supports later requirements/allocation"
+      ],
+      "content_projection_requirements": [
+        "show capability→function→behavior/state→source trace"
+      ],
+      "required_readback": [
+        "reverse-trace coverage",
+        "feature/component leakage attack",
+        "degraded/failure behavior readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "requirements and physical allocation later"
+      ],
+      "exit_conditions": [
+        "capabilities/functions/behaviors coherent enough for information/allocation/interface work"
+      ],
+      "reopen_triggers": [
+        "need, operational scenario, capability, function, state or professional constraint change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_CAPABILITY_FUNCTION",
+      "does_not_prove": [
+        "requirements baseline",
+        "physical implementation",
+        "domain professional feasibility",
+        "verification PASS"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP3",
+      "stage_name": "Information, Human/System Allocation & Interfaces",
+      "professional_question": "What information must exist/exchange, who or what performs each responsibility, and where are system/interface boundaries?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "capability/function architecture",
+        "behavior/state models",
+        "human authority constraints",
+        "external system context"
+      ],
+      "knowledge_inputs": [
+        "information architecture",
+        "human/system allocation",
+        "interface architecture",
+        "failure behavior"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "information architecture",
+        "human/system allocation",
+        "interface architecture",
+        "Information / Human-System Allocation / Interface Register",
+        "interface-control / exchange set"
+      ],
+      "interface_requirements": [
+        "HCD",
+        "Domain Professionals",
+        "External Systems",
+        "Operations"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP3-HCD",
+          "source_domain": "HCD",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "human tasks",
+            "authority",
+            "interaction",
+            "failure/recovery"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current human-system allocation plus HCD evidence where triggered",
+          "change_reopen_rule": "Reopen when human role/interaction/authority changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP3-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "allocated responsibility",
+            "shared variables",
+            "interfaces",
+            "failure behavior"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current interface architecture plus domain-professional controlled variables",
+          "change_reopen_rule": "Reopen when allocation/interface/professional controlled variable changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "human-only authority and user/operator workload cannot be silently automated"
+      ],
+      "design_language_consequences": [
+        "interface representations prioritize exchange/authority/failure semantics"
+      ],
+      "technical_consequences": [
+        "interface contracts and allocation become explicit inputs to requirements/architecture"
+      ],
+      "content_projection_requirements": [
+        "show producer/consumer/authority/condition/failure and acknowledgement-vs-acceptance"
+      ],
+      "required_readback": [
+        "information-entity authority readback",
+        "human/system allocation challenge",
+        "interface owner/failure-mode readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "implementation protocol and detailed domain design later"
+      ],
+      "exit_conditions": [
+        "information/allocation/interface architecture coherent at current ceiling"
+      ],
+      "reopen_triggers": [
+        "information, allocation, interface, human authority or external-system change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_INFORMATION_ALLOCATION_INTERFACE",
+      "does_not_prove": [
+        "interface implementation",
+        "domain professional approval",
+        "human-factors validation",
+        "integration PASS"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP4",
+      "stage_name": "System Requirements, Normalization & V&V Planning",
+      "professional_question": "Are requirements necessary, traceable, solution-neutral enough, testable, non-contradictory and paired with credible verification and validation routes?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "needs/context",
+        "capabilities/functions",
+        "information/allocation/interfaces",
+        "authority constraints"
+      ],
+      "knowledge_inputs": [
+        "requirements engineering",
+        "normalization",
+        "verification planning",
+        "validation planning",
+        "traceability"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "system requirements baseline",
+        "normalized requirements set",
+        "Requirements Baseline / Normalization / Change Register",
+        "Verification Cross-Reference Matrix plan",
+        "Validation Scenario / Evidence Matrix plan",
+        "coverage/orphan/conflict report"
+      ],
+      "interface_requirements": [
+        "Domain Professionals",
+        "Verification/Test",
+        "Validation/Users",
+        "Project Authority"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP4-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "allocated requirements",
+            "acceptance criteria",
+            "professional constraints"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current normalized requirements plus domain-professional allocation",
+          "change_reopen_rule": "Reopen when requirement/allocation/professional criterion changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP4-VV",
+          "source_domain": "Verification/Test",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "verification method",
+            "level",
+            "criterion",
+            "test article/configuration"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current requirements baseline plus V&V plan",
+          "change_reopen_rule": "Reopen when requirement/verification method/test level changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "stakeholder outcomes remain traceable through requirements rather than disappearing into technical language"
+      ],
+      "design_language_consequences": [
+        "requirement artifacts remain technical evidence, not presentation prose"
+      ],
+      "technical_consequences": [
+        "requirements become testable controlled inputs to architecture/integration/V&V"
+      ],
+      "content_projection_requirements": [
+        "Requirement ID/statement/rationale/source/owner/verification/validation/failure/authority"
+      ],
+      "required_readback": [
+        "duplicate/conflict/orphan/solution-bias/unverifiable wording checks",
+        "need→requirement→V&V reverse coverage"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "implementation conformity or validation outcomes"
+      ],
+      "exit_conditions": [
+        "requirements normalized/baselined with credible V&V planning at current ceiling"
+      ],
+      "reopen_triggers": [
+        "need/function/interface/authority/requirement/criterion/V&V method change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_REQUIREMENTS_BASELINE",
+      "does_not_prove": [
+        "implemented conformance",
+        "validation success",
+        "domain feasibility",
+        "statutory approval"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP5",
+      "stage_name": "Logical Architecture, Alternatives & Allocation",
+      "professional_question": "Which logical architecture and allocation best satisfy requirements while preserving interfaces, human authority, risk and V&V feasibility?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "baselined requirements",
+        "capability/function/interface architecture",
+        "V&V plan",
+        "technical/professional constraints"
+      ],
+      "knowledge_inputs": [
+        "logical architecture",
+        "architecture alternatives",
+        "allocation",
+        "trade study",
+        "technical risk/opportunity"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-04",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "logical architecture",
+        "architecture alternative set",
+        "allocation matrix",
+        "Assumption / Decision / Trade Study Register",
+        "selected/rejected architecture rationale"
+      ],
+      "interface_requirements": [
+        "Domain Professionals",
+        "HCD",
+        "Verification/Test",
+        "Project Authority"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP5-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "allocated functions/requirements",
+            "performance budgets",
+            "interfaces",
+            "professional feasibility"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current logical alternatives/allocation plus domain-professional evidence",
+          "change_reopen_rule": "Reopen when architecture/allocation/professional feasibility changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "human authority, support and failure consequences remain explicit in alternatives"
+      ],
+      "design_language_consequences": [
+        "alternatives are compared by causal/functional architecture, not diagram styling"
+      ],
+      "technical_consequences": [
+        "allocation/interface/V&V implications are decision-visible"
+      ],
+      "content_projection_requirements": [
+        "alternative→allocation→criteria→uncertainty→trade→decision authority"
+      ],
+      "required_readback": [
+        "matched architecture alternative comparison",
+        "requirement/interface/V&V allocation readback",
+        "trade-study sensitivity/counterevidence"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "physical implementation readiness"
+      ],
+      "exit_conditions": [
+        "logical architecture selected through human-authorized decision with rejected rationale retained"
+      ],
+      "reopen_triggers": [
+        "requirements, allocation, interface, risk, professional constraint or V&V feasibility change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_LOGICAL_ARCHITECTURE",
+      "does_not_prove": [
+        "physical architecture completion",
+        "implementation verification",
+        "validation PASS",
+        "domain approval"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP6",
+      "stage_name": "Physical Architecture / PBS, Integration Strategy & PDR Baseline",
+      "professional_question": "Is the system decomposed into realization elements with controlled interfaces, configuration and integration strategy sufficient for the current design baseline?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "selected logical architecture",
+        "allocated requirements/functions",
+        "domain constraints",
+        "V&V strategy"
+      ],
+      "knowledge_inputs": [
+        "physical architecture/PBS",
+        "configuration items",
+        "integration strategy",
+        "interface control",
+        "PDR evidence"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "PBS / physical architecture",
+        "controlled interface set",
+        "integration strategy",
+        "configuration-item baseline",
+        "Configuration / Baseline / Change Control Register",
+        "PDR evidence package / disposition where applicable"
+      ],
+      "interface_requirements": [
+        "Domain Professionals",
+        "Implementation/Execution",
+        "Verification/Test",
+        "Operations/Support"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP6-DOM",
+          "source_domain": "Domain Professionals",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "physical envelopes",
+            "allocated requirements",
+            "interfaces",
+            "professional release states"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current PBS/physical architecture plus professional-domain sources",
+          "change_reopen_rule": "Reopen when physical allocation/professional controlled variable changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP6-EXEC",
+          "source_domain": "Implementation/Execution",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "configuration items",
+            "realization boundaries",
+            "integration sequence",
+            "build/deploy constraints"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current physical baseline plus realization plan",
+          "change_reopen_rule": "Reopen when realization/configuration/integration strategy changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "operability/support/human interaction implications remain attached to physical allocation"
+      ],
+      "design_language_consequences": [
+        "physical architecture diagrams expose interfaces/configuration rather than implementation polish"
+      ],
+      "technical_consequences": [
+        "configuration, integration and V&V levels become controlled"
+      ],
+      "content_projection_requirements": [
+        "show configuration-item/PBS/interface/version/review disposition"
+      ],
+      "required_readback": [
+        "logical→physical allocation readback",
+        "interface/configuration baseline consistency",
+        "PDR open-item readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "implementation completion",
+        "integrated-system V&V",
+        "operational acceptance"
+      ],
+      "exit_conditions": [
+        "physical baseline/integration strategy coherent at current design-review ceiling"
+      ],
+      "reopen_triggers": [
+        "logical/physical allocation, interface, configuration, implementation or V&V strategy change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_PHYSICAL_ARCHITECTURE_PDR",
+      "does_not_prove": [
+        "production completion",
+        "component/system verification",
+        "validation",
+        "domain professional PASS"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP7",
+      "stage_name": "Integration, Verification, Validation & Transition",
+      "professional_question": "Does the implemented configuration satisfy requirements, work across interfaces and meet intended stakeholder use in the declared context?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "implemented/configured system",
+        "requirements baseline",
+        "integration strategy",
+        "verification procedures",
+        "validation scenarios",
+        "domain evidence"
+      ],
+      "knowledge_inputs": [
+        "integration",
+        "verification",
+        "validation",
+        "anomaly/problem resolution",
+        "transition/acceptance"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "Verification Cross-Reference Matrix results",
+        "Validation Scenario / Evidence Matrix results",
+        "Integration / Interface Verification Register",
+        "anomaly/problem/deviation register",
+        "transition/acceptance evidence",
+        "residual open-item register"
+      ],
+      "interface_requirements": [
+        "Verification/Test",
+        "Validation/Users",
+        "Domain Professionals",
+        "Operations",
+        "Project/Acceptance Authority"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP7-VER",
+          "source_domain": "Verification/Test",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "requirement",
+            "test article/configuration",
+            "procedure",
+            "criterion",
+            "result",
+            "anomaly/retest"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "VERIFIED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "exact configuration + verification evidence",
+          "change_reopen_rule": "Reopen when configuration/requirement/procedure/result changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP7-VAL",
+          "source_domain": "Validation/Users",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "intended use",
+            "operational context",
+            "scenario",
+            "observed outcome",
+            "limitation"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "exact representative system/configuration + validation scenario/evidence",
+          "change_reopen_rule": "Reopen when user/context/configuration/scenario changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual stakeholder/use outcomes remain separate from requirement conformity"
+      ],
+      "design_language_consequences": [
+        "V&V evidence presentation preserves configuration/scenario limitations"
+      ],
+      "technical_consequences": [
+        "integration anomalies and requirement/validation failures create exact reopen scope"
+      ],
+      "content_projection_requirements": [
+        "bind each result to requirement/scenario/configuration/procedure and owner"
+      ],
+      "required_readback": [
+        "component→interface→system integration readback",
+        "verification result/configuration readback",
+        "validation scenario/outcome readback",
+        "anomaly→repair→retest regression readback"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "future operational performance"
+      ],
+      "exit_conditions": [
+        "required integration/V&V/transition evidence is dispositioned at declared ceiling with verification and validation separate"
+      ],
+      "reopen_triggers": [
+        "configuration, requirement, interface, anomaly, repair, procedure, validation context or acceptance authority change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_INTEGRATION_VV_TRANSITION",
+      "does_not_prove": [
+        "future operation",
+        "domain/statutory approval",
+        "causal reusable knowledge",
+        "Promotion"
+      ]
+    },
+    {
+      "stage_id": "SYSENG-DP8",
+      "stage_name": "Operations, Support, Change, Retirement & Learning",
+      "professional_question": "What does actual operation reveal, what must change/reverify/revalidate, and how are support, retirement and learning bounded?",
+      "entry_conditions": [
+        "project Systems Engineering process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "operational system",
+        "support/maintenance evidence",
+        "incidents/anomalies",
+        "configuration baseline",
+        "user/operator feedback"
+      ],
+      "knowledge_inputs": [
+        "operations/support",
+        "configuration change",
+        "post-change V&V",
+        "obsolescence/retirement",
+        "knowledge return"
+      ],
+      "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "Transition / Operations / Support / Retirement Register",
+        "operational discrepancy register",
+        "post-change V&V record",
+        "retirement/decommissioning plan where triggered",
+        "bounded G9 learning candidates"
+      ],
+      "interface_requirements": [
+        "Operations/Support",
+        "Domain Professionals",
+        "Verification/Test",
+        "Validation/Users",
+        "Knowledge/G9"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "SYSENG-DP8-OPS",
+          "source_domain": "Operations/Support",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "configuration",
+            "incident",
+            "maintenance",
+            "degraded operation",
+            "support constraint"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "EXERCISED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "actual operational/support evidence",
+          "change_reopen_rule": "Reopen when operational configuration/incident/support evidence changes."
+        },
+        {
+          "interface_binding_id": "SYSENG-DP8-G9",
+          "source_domain": "Knowledge/G9",
+          "source_stage_ref": null,
+          "direction": "OUT",
+          "shared_variables": [
+            "observation",
+            "candidate lesson",
+            "transfer condition",
+            "counterevidence"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "bounded project observation + G9 validation route",
+          "change_reopen_rule": "Reopen reusable-knowledge candidate when transfer evidence/counterevidence changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual operator/user burden and degraded operation are observed rather than inferred"
+      ],
+      "design_language_consequences": [
+        "operational evidence may reopen system architecture and domain design"
+      ],
+      "technical_consequences": [
+        "post-change V&V and retirement/support constraints remain controlled"
+      ],
+      "content_projection_requirements": [
+        "compare predicted/designed operation to bounded observed evidence"
+      ],
+      "required_readback": [
+        "operational discrepancy→change→impact→reverification/revalidation readback",
+        "retirement/support readiness",
+        "observation vs reusable-knowledge boundary"
+      ],
+      "professional_review_owner": "Systems Engineering professional owner",
+      "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
+      "open_items_allowed": [
+        "future contexts/configurations not observed"
+      ],
+      "exit_conditions": [
+        "operational changes and retirement/support implications are dispositioned with post-change V&V where required"
+      ],
+      "reopen_triggers": [
+        "incident, maintenance, support, configuration, environment, user need, obsolescence or retirement change"
+      ],
+      "claim_ceiling": "SYSTEMS_ENGINEERING_OPERATIONS_CHANGE",
+      "does_not_prove": [
+        "future performance",
+        "causal lesson",
+        "universal transferability",
+        "domain professional approval"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Project/Organizational Authority",
+      "Users/Stakeholders",
+      "HCD",
+      "Architecture",
+      "Structural Engineering",
+      "Building Services / MEP",
+      "Interior Design",
+      "Landscape Architecture",
+      "Lighting Design",
+      "Implementation/Execution",
+      "Operations/Support",
+      "Verification/Test",
+      "Validation/Users"
+    ],
+    "outputs_to_domains": [
+      "Project/Organizational Authority",
+      "HCD",
+      "Architecture",
+      "Structural Engineering",
+      "Building Services / MEP",
+      "Interior Design",
+      "Landscape Architecture",
+      "Lighting Design",
+      "Implementation/Execution",
+      "Operations/Support",
+      "Verification/Test",
+      "Validation/Users"
+    ],
+    "shared_variables": [
+      "system boundary",
+      "stakeholder need/use case",
+      "capability/function/state",
+      "information entity",
+      "human/system allocation",
+      "interface",
+      "requirement",
+      "performance budget",
+      "logical/physical allocation",
+      "configuration item",
+      "verification criterion/result",
+      "validation scenario/outcome",
+      "change/reopen scope"
+    ],
+    "controlling_authority_requirements": [
+      "Systems Engineering may allocate/trace but cannot infer domain-professional approval",
+      "one Current baseline/authority is resolved for consequential system/requirement/interface/configuration objects",
+      "verification and validation authorities/evidence remain distinct"
+    ],
+    "interface_maturity_policy": "Actual interface maturity is resolved by Cross-Disciplinary Integration; SYSENG-DP stage number does not synchronize domain stages or overrule their professional process.",
+    "allowed_open_interface_conditions": [
+      "required maturity for current SE claim is met",
+      "remaining item is later/outside claim",
+      "owner/reopen trigger explicit",
+      "no domain-authority conflict contradicts current system claim"
+    ],
+    "integration_readback_requirements": [
+      "requirement/allocation/interface reverse trace",
+      "domain controlled-variable/interface readback",
+      "exact configuration/V&V binding",
+      "material change propagation"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "system context/operational concept",
+      "capability/function/behavior/state models",
+      "information/human-system/interface architecture",
+      "system requirements baseline",
+      "logical and physical architecture/PBS",
+      "Systems Engineering Responsibility / Authority Matrix",
+      "System-of-Interest / Context / Boundary Register",
+      "Stakeholder Need / Use-Case / Requirement Trace Matrix",
+      "Capability / Function / Behavior / State Register",
+      "Information / Human-System Allocation / Interface Register",
+      "Assumption / Decision / Trade Study Register",
+      "Requirements Baseline / Normalization / Change Register",
+      "Configuration / Baseline / Change Control Register",
+      "Verification Cross-Reference Matrix",
+      "Validation Scenario / Evidence Matrix",
+      "Integration / Interface Verification Register",
+      "Anomaly / Problem / Deviation / Waiver Decision Register",
+      "Transition / Operations / Support / Retirement Register"
+    ],
+    "native_source_of_truth_rules": [
+      "controlled system/requirements/interface/configuration sources remain authoritative over presentation exports",
+      "verification evidence binds exact requirement/configuration/procedure",
+      "validation evidence binds intended-use context/scenario/configuration",
+      "Systems Engineering allocation does not replace domain professional source"
+    ],
+    "execution_owner_requirements": [
+      "responsible Systems Engineering owner",
+      "domain professional/interface owners",
+      "verification owner",
+      "validation/user owner",
+      "configuration/change authority",
+      "independent review owner where required"
+    ],
+    "required_capabilities": [
+      "systems analysis/architecture",
+      "requirements engineering/traceability",
+      "interface/allocation modelling",
+      "trade study",
+      "configuration/change control",
+      "integration planning",
+      "verification planning/execution review",
+      "validation planning/evidence review"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects modelling/requirements/test tools; process does not hardcode a universal software inventory"
+    ],
+    "typed_handoff_contracts": [
+      "Systems Engineering↔Project Authority",
+      "Systems Engineering↔HCD",
+      "Systems Engineering↔Domain Professionals",
+      "Systems Engineering↔Implementation",
+      "Systems Engineering↔Verification/Test",
+      "Systems Engineering↔Validation/Users",
+      "Systems Engineering↔Operations/Support"
+    ],
+    "actual_readback_requirements": [
+      "stakeholder need→requirement→architecture→V&V trace readback",
+      "logical/physical/interface/allocation baseline readback",
+      "configuration identity readback for integration/V&V",
+      "verification requirement/result/anomaly/retest readback",
+      "validation context/scenario/outcome readback",
+      "post-change impact/reverification/revalidation readback"
+    ]
+  },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Systems Engineering execution depth is demonstrated through controlled needs/requirements/architecture/interface/configuration/V&V/change objects, not by generic systems diagrams or process-stage labels.",
+    "professional_problem_and_judgment_objects": [
+      "Systems Engineering Responsibility / Authority Matrix",
+      "System-of-Interest / Context / Boundary Register",
+      "Stakeholder Need / Use-Case / Requirement Trace Matrix",
+      "Assumption / Decision / Trade Study Register"
+    ],
+    "assumption_uncertainty_objects": [
+      "System-of-Interest / Context / Boundary Register",
+      "Assumption / Decision / Trade Study Register",
+      "Requirements Baseline / Normalization / Change Register",
+      "anomaly/open-item records"
+    ],
+    "option_comparison_objects": [
+      "logical architecture alternative set",
+      "Assumption / Decision / Trade Study Register",
+      "physical/allocation alternatives where applicable"
+    ],
+    "native_work_objects": [
+      "capability/function/behavior/state models",
+      "information/human-system/interface architecture",
+      "requirements baseline",
+      "logical architecture",
+      "PBS/physical architecture",
+      "configuration baseline"
+    ],
+    "release_control_objects": [
+      "Requirements Baseline / Normalization / Change Register",
+      "Configuration / Baseline / Change Control Register",
+      "controlled interface set",
+      "PDR evidence/disposition where applicable"
+    ],
+    "implementation_field_objects": [
+      "Integration / Interface Verification Register",
+      "Verification Cross-Reference Matrix results",
+      "anomaly/problem/retest evidence",
+      "transition/acceptance evidence"
+    ],
+    "handover_inuse_objects": [
+      "Validation Scenario / Evidence Matrix results",
+      "Transition / Operations / Support / Retirement Register",
+      "post-change V&V record",
+      "bounded G9 candidates"
+    ],
+    "independent_review_objects": [
+      "independent Systems Engineering architecture/requirements/V&V review at the declared claim ceiling",
+      "distinct domain-professional, verification and validation review where triggered"
+    ],
+    "change_propagation_objects": [
+      "Requirements Baseline / Normalization / Change Register",
+      "Configuration / Baseline / Change Control Register",
+      "Anomaly / Problem / Deviation / Waiver Decision Register",
+      "post-change impact/reverification/revalidation route"
+    ],
+    "does_not_require": [
+      "one universal lifecycle model",
+      "same stages/artifacts as building professions",
+      "Systems Engineering authority over domain professionals",
+      "verification and validation to share one verdict"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Systems Engineering professional review at the declared system/baseline/V&V claim ceiling, preserving system boundary, requirement trace, configuration identity and domain-authority boundaries.",
+    "evidence_review": "Verify stakeholder/source trace, requirement/architecture/interface/configuration evidence and exact V&V evidence against the claimed system state.",
+    "technical_gates": [
+      "system-boundary/authority gate",
+      "requirements/traceability gate",
+      "architecture/allocation/interface gate",
+      "configuration-control gate",
+      "integration gate",
+      "verification gate",
+      "validation gate",
+      "transition/operations/change gate"
+    ],
+    "independent_review": "Distinct review is required when risk, system criticality, architecture baseline, V&V claim or organizational process requires it; producer self-review cannot replace domain-professional or V&V authority.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + future SYSTEMS_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+    "does_not_prove": [
+      "domain professional approval",
+      "statutory approval",
+      "field/as-built truth",
+      "verification from design intent",
+      "validation from verification",
+      "Design KEEP",
+      "Promotion"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "system boundary/stakeholder need",
+      "capability/function/state",
+      "information/allocation/interface",
+      "requirement",
+      "logical/physical architecture",
+      "configuration",
+      "domain controlled variable",
+      "integration anomaly",
+      "verification/validation result",
+      "operational/support/incident/retirement evidence"
+    ],
+    "stale_scope_rules": [
+      "only affected system/requirements/architecture/interface/configuration/V&V objects/reviews become stale unless dependency analysis shows wider consequence"
+    ],
+    "upstream_impact_rules": [
+      "changed stakeholder/context/domain authority reopens consuming system requirements/architecture/V&V"
+    ],
+    "downstream_impact_rules": [
+      "changed requirements/architecture/interface/configuration propagates to consuming domain/implementation/integration/V&V/operations objects"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable/interface changes reopen affected Cross-Disciplinary Integration interfaces"
+    ],
+    "receipt_stale_rules": [
+      "Systems Engineering receipt becomes stale at affected scope when governing requirement/architecture/configuration/V&V evidence changes"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable SE stage work complete at declared claim ceiling",
+      "required controlled/native outputs and readback exist",
+      "domain-professional interfaces satisfy required maturity",
+      "verification and validation evidence remain separately current where claimed",
+      "professional receipt current"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim domain, implementation, V&V, operational or retirement items that do not contradict current SE verdict"
+    ],
+    "professional_receipt": "SYSTEMS_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+    "promotion_effect": "Candidate only: no promotion effect. If later adopted Current, a bounded PASS may satisfy only the Systems Engineering professional-process dependency and cannot grant domain-professional PASS, Design KEEP or Project Promotion.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_SYSTEMS_ENGINEERING_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "domain professional approval",
+      "statutory approval",
+      "future operational performance",
+      "causal reusable knowledge",
+      "Design KEEP",
+      "Promotion"
+    ]
+  }
+}
