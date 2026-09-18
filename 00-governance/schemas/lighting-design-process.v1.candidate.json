@@ -2463,6 +2463,64 @@
       "post-replacement/post-tuning readback"
     ]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Lighting Design execution depth is demonstrated through visual-task criteria, model configuration, luminaire/control release, mockup/substitution, commissioning/aiming measurement and replacement equivalence objects.",
+    "professional_problem_and_judgment_objects": [
+      "Lighting Basis / Responsibility Matrix",
+      "Visual Task / Experience / Time-State Matrix",
+      "daylight/photometric/brightness/glare/color-quality judgments"
+    ],
+    "assumption_uncertainty_objects": [
+      "criteria/source register",
+      "Daylight Model Configuration Record",
+      "Photometric Model Configuration Record",
+      "assumption/uncertainty register"
+    ],
+    "option_comparison_objects": [
+      "materially different lighting concept options",
+      "retained/rejected option record",
+      "scene/control concept alternatives"
+    ],
+    "native_work_objects": [
+      "lighting plans/layouts",
+      "photometric/daylight models/calculations",
+      "luminaire/optic schedule",
+      "control narrative/scene schedules",
+      "integration details"
+    ],
+    "release_control_objects": [
+      "Luminaire / Optical / Product Register",
+      "Luminaire Submittal / Substitution Release Register",
+      "luminaire tag → electrical/control mapping",
+      "mockup/sample/calculation verification"
+    ],
+    "implementation_field_objects": [
+      "Aiming / Focusing Record",
+      "Commissioning Criterion / Result / Compliance Matrix",
+      "installed tag/driver/control/address/aim readback"
+    ],
+    "handover_inuse_objects": [
+      "Maintenance / Replacement Equivalence Register",
+      "post-occupancy lighting review",
+      "tuning/change records",
+      "actual night readback"
+    ],
+    "independent_review_objects": [
+      "independent Lighting Design review attacking source/revision, adverse states, integration and field evidence",
+      "specialist/statutory owner review where triggered"
+    ],
+    "change_propagation_objects": [
+      "model/configuration identity reopen",
+      "submittal/substitution impact propagation",
+      "post-replacement/post-tuning readback"
+    ],
+    "does_not_require": [
+      "same metrics or stage sequence as another domain",
+      "render as photometric proof",
+      "Lighting Design as electrical/fire/statutory approval",
+      "same document length/template as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "Lighting Design stage review at the declared project/source/geometry/material/environment/configuration ceiling, keeping design, specialist performance, statutory, integration and evidence claims separate.",
     "evidence_review": "Verify source/revision, applicability, actual native/readback, observed-vs-interpreted separation, exact location/configuration and open assumptions.",
