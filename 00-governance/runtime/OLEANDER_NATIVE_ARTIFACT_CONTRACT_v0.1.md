@@ -62,6 +62,42 @@ Record required external sources, fonts, linked objects, runtime/library version
 
 A hash proves byte identity only. It does not prove authority, visual correctness, semantic correctness or design quality.
 
+## 5A｜Source integrity｜prospective when source preservation is claimed
+
+When an artifact or dependency claims to preserve a source, declare the integrity mode rather than using ambiguous phrases such as “untouched” or “same as source”.
+
+Modes:
+
+- `EVIDENCE_ONLY` — the source constrains or informs the artifact but does not have to appear in the output.
+- `DETERMINISTIC_TRANSFORM` — the source may change only through declared reproducible transforms such as a named crop, resize, coordinate transform or normalization.
+- `NORMALIZED_RASTER_EXACT` — after declared normalization such as EXIF orientation / colorspace conversion, the bound raster region must match exactly.
+- `BYTE_EXACT` — the source file bytes must match the bound hash exactly.
+
+When applicable, record:
+
+`source_ref / mode / allowed_transforms / forbidden_transforms / verification_ref`.
+
+A path is not source identity. Use an authority reference and/or hash. If the required comparison was not actually executed, the result is `NOT_RUN` or `UNVERIFIED` under the Execution Receipt typed-validation vocabulary; absence of a comparison never defaults to PASS.
+
+This extension is prospective. Historical artifact records remain immutable.
+
+## 5B｜Intermediate versus delivery eligibility｜prospective
+
+Artifact role, Current/superseded state and delivery eligibility are separate dimensions.
+
+Optional `delivery_eligibility` states:
+
+- `INTERMEDIATE_ONLY`
+- `CANDIDATE_ONLY`
+- `ELIGIBLE_AFTER_REQUIRED_GATES`
+- `DELIVERY_DERIVATIVE`
+
+Generative output defaults to `INTERMEDIATE_ONLY` unless the task itself explicitly requires a generated-image final and the existing applicable gates allow it. A generated panel, render, texture, atmosphere image, preview or other support output cannot silently become the editable/native final artifact.
+
+A deterministic/native artifact is not automatically delivery-ready either: the existing applicable validation, readback, independent review and Flow Completion gates still govern delivery and promotion.
+
+`CURRENT` does not mean `delivery eligible`, and delivery eligibility does not grant promotion.
+
 ## 6｜Handoff permissions
 
 Each handoff declares:
