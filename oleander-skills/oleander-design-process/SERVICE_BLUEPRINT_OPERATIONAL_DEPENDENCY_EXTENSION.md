@@ -1,6 +1,6 @@
 # OLEANDER Service Blueprint / Operational Dependency Extension
 
-Status: `CANDIDATE EXTENSION / EXISTING OWNER / EXTERNAL-MECHANISM DIGESTED / NO PROJECT USAGE / NO PROMOTION`
+Status: `CANDIDATE EXTENSION / EXISTING OWNER / EXTERNAL-MECHANISM DIGESTED / C04 BOUNDED PROJECT USAGE / OPERATIONAL READBACK NOT_RUN / NO PROMOTION`
 
 Owner: `oleander-design-process`
 
@@ -989,11 +989,37 @@ No external code is required by this extension.
 
 ---
 
-## 34｜Maturity
+## 34｜Project usage evidence｜C04｜2026-09-18
 
-On creation:
+Bounded reapplication was run against existing C04 Current journey/service and state contracts without adding field facts.
 
-`CANDIDATE EXTENSION / EXISTING OWNER / EXTERNAL MECHANISMS DIGESTED / GOLDEN REGRESSION REQUIRED / NO REAL PROJECT USAGE / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`
+Sources:
+- `CH09_ROUTE-MOBILITY-SERVICE.md`;
+- `CH05_JOURNEY-BEHAVIOR-ANALYSIS.md`;
+- `C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json`;
+- `C04-D_STATE-EVIDENCE-CONTRACT_v0.1.json`.
+
+Produced:
+- machine model `C04_SERVICE_BLUEPRINT_MODEL_v0.1.json`;
+- editable derived support view `C04_SERVICE_BLUEPRINT_SUPPORT_v0.1.svg`;
+- reapplication receipt `C04_SERVICE_BLUEPRINT_REAPPLICATION_RECEIPT_v0.1.json`.
+
+The first rendered readback was `REVISE` because the Line of Visibility crossed Frontstage cells and made the semantic boundary ambiguous. The SVG source was repaired and re-rendered to `PASS_SUPPORT`.
+
+The reapplication exposed three material service dependencies that were previously distributed across several project contracts:
+1. HUMAN SERVICE is a designed Return fallback class but concrete staffing / availability / acknowledgement remains unverified.
+2. SIGNAGE + PAPER are designed Return redundancies but field existence / placement / availability / update process remain unverified.
+3. Positive NORMAL/OPEN semantics require a current operation source, and live digital service requires an official interface; the exact status-authority handoff/acknowledgement remains unresolved.
+
+The extension therefore changed the project readback without changing field truth: it retained the existing Return redundancy design while converting hidden dependencies into explicit HOLDs and future validation handoffs.
+
+Actual service/field execution remains `NOT_RUN` because C04 retains `FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD`.
+
+## 35｜Maturity
+
+Current maturity:
+
+`CANDIDATE EXTENSION / EXISTING OWNER / EXTERNAL MECHANISMS DIGESTED / GOLDEN REGRESSION REQUIRED / C04 PROJECT_USAGE_EVIDENCE / EDITABLE SUPPORT ARTIFACT / ONE REAL REVISE→REPAIR→READBACK LOOP / ACTUAL SERVICE READBACK NOT_RUN / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`
 
 Promotion requires at least one real service/hybrid project that:
 - binds a real journey source;
