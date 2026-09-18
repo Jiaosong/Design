@@ -64,6 +64,9 @@ jobs:
       - name: Validate Interior Design professional process candidate definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/interior-design-process.v1.candidate.json
 
+      - name: Validate Lighting Design professional process candidate definition
+        run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/lighting-design-process.v1.candidate.json
+
       - name: Validate Architecture professional source-stage map
         run: python 00-governance/schemas/validate_architecture_professional_source_stage_map.py
 

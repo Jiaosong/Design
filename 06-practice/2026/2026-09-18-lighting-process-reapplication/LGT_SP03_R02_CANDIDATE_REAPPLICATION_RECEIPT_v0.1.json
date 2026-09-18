@@ -1,0 +1,55 @@
+{
+  "schema_version": "lighting-candidate-practice-reapplication-receipt/0.1",
+  "practice_id": "SP03-R02-LIGHT-PERFORMANCE-INTERFACE",
+  "candidate_process_id": "OLEANDER-LIGHTING-DESIGN-PROCESS",
+  "candidate_process_version": "1.0-CANDIDATE",
+  "state": "BOUNDED PRACTICE REAPPLICATION / SYNTHETIC / PROJECT REALITY OPEN / NO CURRENT PROMOTION",
+  "artifact": {
+    "path": "06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_v0.1.json",
+    "blob_sha": "fc80fddb0cc61a6e0d3de237b83220c6e27f720a",
+    "role": "MACHINE_READABLE_CANDIDATE_METHOD_REAPPLICATION"
+  },
+  "source_branch": {
+    "name": "practice/2026-08-11-sp03-r02-light-performance-interface",
+    "head_sha": "95c4543db17dc0e98459c967a4e36a5bb4cd92e3"
+  },
+  "coverage": {
+    "LGT_00": "PARTIAL_PRACTICE_SUPPORT",
+    "LGT_01": "PRACTICE_SUPPORT",
+    "LGT_02": "PRACTICE_SUPPORT",
+    "LGT_03": "NOT_EXERCISED",
+    "LGT_04": "NOT_EXERCISED",
+    "LGT_05": "NOT_EXERCISED",
+    "LGT_06": "PRACTICE_SUPPORT",
+    "LGT_07": "NOT_EXERCISED",
+    "LGT_08": "NOT_EXERCISED",
+    "LGT_09": "NOT_EXERCISED"
+  },
+  "verified_practice_mechanisms": [
+    "exact synthetic model/control variables recorded",
+    "same-total-area A/B comparison contract",
+    "diffuse plus opposed directional sky attacks",
+    "real Radiance/evalglare runtime with versions",
+    "runtime PASS separated from artifact review",
+    "parser/schema defect caused reopening and correction",
+    "numerical stability distinguished from byte identity",
+    "no universal winner or project threshold claimed"
+  ],
+  "missing_project_evidence": [
+    "real geometry/orientation",
+    "verified project material/glazing optical properties",
+    "real location/weather/date/time",
+    "project criteria/standards",
+    "real luminaire/optic/driver product system",
+    "real control groups/addresses/sequences",
+    "specification/procurement/substitution",
+    "installation/aiming/commissioning/measurement",
+    "maintenance/replacement/post-occupancy",
+    "independent Lighting professional project review"
+  ],
+  "project_exercise_counted": false,
+  "professional_process_pass": false,
+  "promotion_effect": "NONE",
+  "maturity": "PRACTICE-METHOD REAPPLICATION / LGT-01+02+06 SUPPORT / PROJECT REALITY OPEN / NO PRODUCTION OR FIELD CX EVIDENCE",
+  "claim_ceiling": "SYNTHETIC PERFORMANCE-INTERFACE PRACTICE ONLY / DOES NOT PROVE PROJECT LIGHTING QUALITY, COMPLIANCE, COMFORT, INSTALLED PERFORMANCE OR PROMOTION"
+}
