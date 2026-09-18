@@ -491,6 +491,64 @@
     "typed_handoff_contracts": ["Architecture↔MEP", "Structure↔MEP", "Fire↔MEP", "MEP↔Controls/Commissioning", "MEP↔FM"],
     "actual_readback_requirements": ["read actual engineering source and coordinated geometry", "read actual control/commissioning evidence when claimed", "read actual measured operation for in-use claims", "equipment/system submittal and substitution critical-attribute release readback", "builder's-work/access/replacement geometry readback", "inspection/test/TAB/commissioning witness matrix readback against the exact tested configuration", "field RFI/change/defect propagation and O&M/asset/training/seasonal closeout readback"]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent MEP execution depth is demonstrated through system duties/topologies, coordinated installation objects, submittal release, executed test/commissioning evidence and operable handover.",
+    "professional_problem_and_judgment_objects": [
+      "Basis of Building Services Design",
+      "parallel MEP responsibility tracks",
+      "system option/topology comparisons",
+      "Controls / Sequence Register",
+      "Design-to-Operational Performance Register"
+    ],
+    "assumption_uncertainty_objects": [
+      "Basis of Building Services Design assumptions",
+      "utility/existing-system authority",
+      "modelled-vs-measured performance boundary",
+      "open commissioning criteria"
+    ],
+    "option_comparison_objects": [
+      "BSP-CONCEPT option comparison record",
+      "system topology/equipment/resilience/control alternatives"
+    ],
+    "native_work_objects": [
+      "engineering calculations/models",
+      "system schematics",
+      "coordinated MEP drawings/model",
+      "equipment schedules/specifications",
+      "controls sequences/points"
+    ],
+    "release_control_objects": [
+      "Equipment / System Submittal & Substitution Release Register",
+      "Builder's Work / Installation / Access Coordination Register",
+      "Commissioning Plan",
+      "MEP Responsibility / Deliverables Matrix"
+    ],
+    "implementation_field_objects": [
+      "Inspection / Test / TAB / Commissioning Witness Matrix",
+      "MEP RFI / Field Change / Defect Register",
+      "installed-configuration and commissioning/test evidence"
+    ],
+    "handover_inuse_objects": [
+      "O&M / Asset / Training / Seasonal Closeout Register",
+      "BSP-HANDOVER records",
+      "BSP-INUSE seasonal commissioning/fine tuning/measured performance"
+    ],
+    "independent_review_objects": [
+      "distinct reviewer/witness where risk, statutory, contractual or commissioning stage requires it",
+      "professional/commissioning review of exact tested configuration"
+    ],
+    "change_propagation_objects": [
+      "field/system/equipment/control change register semantics",
+      "test failure/nonconformity reopen",
+      "commissioning record staleness after configuration change"
+    ],
+    "does_not_require": [
+      "same artifacts as Structural/Interior",
+      "commissioning PASS as statutory approval",
+      "measured performance from design calculations",
+      "same stage count as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "Building-services professional review at the current system/stage claim ceiling.",
     "evidence_review": "Check source authority, calculation/model assumptions, manufacturer evidence, installed/test configuration and measured-data provenance as applicable.",
