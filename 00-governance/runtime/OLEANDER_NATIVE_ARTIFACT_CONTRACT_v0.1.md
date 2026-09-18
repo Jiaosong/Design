@@ -98,6 +98,51 @@ A deterministic/native artifact is not automatically delivery-ready either: the 
 
 `CURRENT` does not mean `delivery eligible`, and delivery eligibility does not grant promotion.
 
+## 5C｜Dependency identity and fallback｜prospective
+
+When an external dependency materially affects reproduction, semantic fidelity or a required validation result, record it as a typed dependency instead of relying on ambient machine state.
+
+Applicable dependencies include, where material:
+- fonts / font files;
+- runtime / interpreter / browser;
+- library / plugin / renderer;
+- linked native assets;
+- external binaries;
+- color/profile or other environment resources whose identity changes the output.
+
+Record:
+
+`dependency_id / dependency_role / requiredness / identity_or_authority_ref / version_or_revision / hash_when_material / resolution_method / fallback_policy / verification_ref`.
+
+`requiredness` is one of:
+
+- `REQUIRED_FOR_REPRODUCTION`;
+- `REQUIRED_FOR_SEMANTIC_FIDELITY`;
+- `OPTIONAL`.
+
+`fallback_policy` is one of:
+
+- `FORBID` — another dependency may not silently replace it;
+- `ALLOW_DECLARED_EQUIVALENT` — an explicitly identified equivalent may be used only with actual readback;
+- `ALLOW_NONFINAL_PREVIEW` — fallback may support a bounded preview but cannot satisfy the required final/native artifact.
+
+Rules:
+
+1. **Silent fallback is forbidden.** A missing required font/runtime/library may not be replaced implicitly while retaining the same fidelity/reproduction claim.
+2. Missing `REQUIRED_FOR_REPRODUCTION` or `REQUIRED_FOR_SEMANTIC_FIDELITY` dependency blocks delivery eligibility until the declared policy is satisfied.
+3. A declared equivalent must have explicit identity and an actual readback; “system default”, “similar font”, “compatible browser” or equivalent prose is not dependency identity.
+4. `ALLOW_NONFINAL_PREVIEW` cannot satisfy a final native-output requirement and cannot grant Promotion.
+5. Dependency verification uses the Execution Receipt typed-validation vocabulary; missing evidence never defaults to PASS.
+6. Historical artifact records are not retroactively rewritten merely because this prospective dependency extension exists.
+
+Example:
+
+`FONT-PRIMARY → REQUIRED_FOR_SEMANTIC_FIDELITY → font-file SHA/version → FORBID`.
+
+This rule is about reproducibility and semantic fidelity. It does not establish licensing/rights, design quality or professional validity.
+
+---
+
 ## 6｜Handoff permissions
 
 Each handoff declares:

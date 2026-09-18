@@ -76,5 +76,19 @@
     "delivery_eligibility_does_not_grant_promotion": true,
     "gate_rule": "FINAL_OR_DELIVERY_USE_REQUIRES_THE_EXISTING_APPLICABLE_VALIDATION_REVIEW_AND_FLOW_COMPLETION_GATES"
   },
+  "dependency_identity_extension": {
+    "prospective_only": true,
+    "historical_artifacts_immutable": true,
+    "required_when": "AN_EXTERNAL_DEPENDENCY_MATERIALLY_AFFECTS_REPRODUCTION_SEMANTIC_FIDELITY_OR_A_REQUIRED_VALIDATION_RESULT",
+    "fields": ["dependency_id", "dependency_role", "requiredness", "identity_or_authority_ref", "version_or_revision", "hash_when_material", "resolution_method", "fallback_policy", "verification_ref"],
+    "requiredness_values": ["REQUIRED_FOR_REPRODUCTION", "REQUIRED_FOR_SEMANTIC_FIDELITY", "OPTIONAL"],
+    "fallback_policy_values": ["FORBID", "ALLOW_DECLARED_EQUIVALENT", "ALLOW_NONFINAL_PREVIEW"],
+    "silent_fallback_forbidden": true,
+    "missing_required_dependency_blocks_delivery_eligibility": true,
+    "declared_equivalent_requires_explicit_identity_and_readback": true,
+    "nonfinal_preview_fallback_cannot_satisfy_final_native_output": true,
+    "required_dependency_verification_result_carrier": "OLEANDER_EXECUTION_RECEIPT_v1.0 typed validation semantics",
+    "does_not_prove": ["dependency_quality", "license_or_rights_clearance", "design_quality", "field_truth", "promotion"]
+  },
   "does_not_prove": ["design_quality", "source_truth", "field_validity", "engineering_validity", "rights_clearance", "promotion"]
 }
