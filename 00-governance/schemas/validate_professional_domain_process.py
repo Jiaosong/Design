@@ -534,6 +534,14 @@ def validate_semantics(payload: dict[str, Any]) -> list[str]:
                     errors.append(
                         f"{stage_instance_id}: CLOSED consequential-knowledge stage requires knowledge_mount_refs"
                     )
+                if granularity_state == "DECISION_OBJECT_BOUND":
+                    for binding in stage.get("output_execution_bindings", []):
+                        if not isinstance(binding, dict):
+                            continue
+                        if binding.get("resolution_state") != "READBACK_COMPLETE":
+                            errors.append(
+                                f"{stage_instance_id}/{binding.get('binding_id', '<unknown>')}: CLOSED decision-bound stage requires READBACK_COMPLETE output binding"
+                            )
             if stage_state == "BLOCKED" and not stage.get("open_items"):
                 errors.append(
                     f"{stage_instance_id}: BLOCKED requires at least one open_items entry"
@@ -580,6 +588,14 @@ def make_closed_instance(
     stage["actual_readback_refs"] = [f"READBACK-{verdict}"]
     stage["consequential_knowledge_mount_required"] = True
     stage["knowledge_mount_refs"] = ["KM-EXAMPLE-OE2-001"]
+    if stage.get("granularity_binding_state") == "DECISION_OBJECT_BOUND":
+        for binding in stage.get("output_execution_bindings", []):
+            binding["owner_set_ref"] = "OWNER-SET-EXAMPLE-001"
+            if binding.get("tool_adapter_required") is True:
+                binding["adapter_route_ref"] = "ADAPTER-ROUTE-EXAMPLE-001"
+            binding["artifact_refs"] = ["ARTIFACT-EXAMPLE-CIRC-001"]
+            binding["readback_refs"] = [f"READBACK-{verdict}"]
+            binding["resolution_state"] = "READBACK_COMPLETE"
     return payload
 
 
