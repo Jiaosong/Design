@@ -1,0 +1,77 @@
+{
+  "schema_version": "c04-artifact-dependency-reapplication-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "reapplication_id": "C04-DEPENDENCY-IDENTITY-REAPPLICATION-001",
+  "state": "BOUNDED PROJECT USAGE / PROSPECTIVE ONLY / NO HISTORICAL MUTATION / NO PROMOTION",
+  "governing_current": {
+    "main_commit": "4fc122301f3d307151e6a253b6e8bb37934d3c7e",
+    "native_artifact_contract": {
+      "path": "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json",
+      "blob_sha": "c8876746ee5c5725fc6c474fef0251cc544ac0dd"
+    }
+  },
+  "artifact": {
+    "path": "05-cases/c04-qingjiang-stone-book/artifact-dependency-reapplication/v0.1/C04_ARTIFACT_DEPENDENCY_REAPPLICATION_v0.1.json",
+    "blob_sha": "9c657a0fe75d62ad056a18276863489a2bfaf3cf",
+    "role": "MACHINE_READABLE_PROSPECTIVE_DEPENDENCY_DIAGNOSTIC"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+      "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+      "blob_sha": "c918d18c6e0b63ca06cae482c5f7a0cd314dc9d8"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/M01_qingjiang_journal_v1_2.svg",
+      "blob_sha": "f1988ff7bb535b57a9a82eae78f0d9f55ca01ad5"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "3019027c806eef4571be7d97b313d300499d1e1a"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+      "blob_sha": "dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe"
+    }
+  ],
+  "verification": {
+    "source_css_svg_dependency_declarations": "READ",
+    "historical_qc_readback": "READ",
+    "actual_browser_resolved_font_identity": "NOT_RUN",
+    "actual_svg_renderer_resolved_font_identity": "NOT_RUN",
+    "new_browser_render": "NOT_RUN",
+    "new_svg_or_print_render": "NOT_RUN",
+    "overall_result": "PASS_FOR_POLICY_CLASSIFICATION_ONLY"
+  },
+  "findings": [
+    "APP and M01 both use explicit CJK serif/sans fallback stacks.",
+    "No Current authority reviewed here requires Noto as the unique approved family.",
+    "The role/hierarchy is material, so future final/reproducible use should classify the font role as REQUIRED_FOR_SEMANTIC_FIDELITY with ALLOW_DECLARED_EQUIVALENT rather than silently accepting any system default.",
+    "APP browser runtime remains historically HOLD; the new rule does not change that verdict.",
+    "M01 remains historical MAIN_CANDIDATE; SVG parse/vector-text PASS is not exact typography/print reproduction.",
+    "Prospective final use requires actual resolved dependency identity and readback when fallback materially affects output."
+  ],
+  "historical_state_preservation": {
+    "app_v1_2_qc_mutated": false,
+    "m01_v1_2_qc_mutated": false,
+    "current_authority_mutated": false,
+    "new_font_authority_created": false
+  },
+  "next_valid_action_if_final_delivery_is_requested": [
+    "resolve target runtime/renderer",
+    "observe actual resolved material font identities",
+    "record declared equivalent identity when fallback occurs",
+    "perform actual browser/render/print readback",
+    "repair wrapping/fit/hierarchy/clipping if materially changed",
+    "only then record the applicable fresh validation result"
+  ],
+  "maturity": "ONE REAL PROJECT REAPPLICATION / POLICY CLASSIFICATION PROVEN / RESOLVED DEPENDENCY RUNTIME TEST NOT_RUN / NO HISTORICAL MUTATION / NO PROMOTION",
+  "claim_ceiling": "PROJECT USAGE EVIDENCE FOR DEPENDENCY POLICY ONLY / DOES NOT PROVE FONT QUALITY, BROWSER PASS, PRINT REPRODUCTION, DESIGN KEEP OR PROMOTION"
+}
