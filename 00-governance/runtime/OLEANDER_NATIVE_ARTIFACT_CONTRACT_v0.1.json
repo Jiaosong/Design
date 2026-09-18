@@ -24,21 +24,8 @@
     "last_verified",
     "does_not_prove"
   ],
-  "artifact_roles": [
-    "NATIVE_SOURCE",
-    "DERIVED_ASSET",
-    "DIAGNOSTIC_ASSET",
-    "PREVIEW_RENDER",
-    "DELIVERY_DERIVATIVE",
-    "REFERENCE_DERIVED_GEOMETRY"
-  ],
-  "editable_states": [
-    "FULLY_EDITABLE",
-    "PARTIALLY_EDITABLE",
-    "LINKED_EXTERNAL_SOURCE",
-    "FLATTENED_DERIVATIVE",
-    "RUNTIME_ONLY"
-  ],
+  "artifact_roles": ["NATIVE_SOURCE", "DERIVED_ASSET", "DIAGNOSTIC_ASSET", "PREVIEW_RENDER", "DELIVERY_DERIVATIVE", "REFERENCE_DERIVED_GEOMETRY"],
+  "editable_states": ["FULLY_EDITABLE", "PARTIALLY_EDITABLE", "LINKED_EXTERNAL_SOURCE", "FLATTENED_DERIVATIVE", "RUNTIME_ONLY"],
   "provenance_vocabulary": [
     "SOURCE_VISIBLE",
     "SOURCE_EXPLICIT",
@@ -50,47 +37,18 @@
     "UNKNOWN",
     "FIELD_OPEN"
   ],
-  "permissions": [
-    "READ_ONLY",
-    "DERIVE",
-    "MUTATE_PRESENTATION_ONLY",
-    "MUTATE_AUTHORIZED_SOURCE"
-  ],
+  "permissions": ["READ_ONLY", "DERIVE", "MUTATE_PRESENTATION_ONLY", "MUTATE_AUTHORIZED_SOURCE"],
   "default_permission": "READ_ONLY",
   "identity_rule": "material_derivative_requires_new_artifact_id",
-  "artifact_states": [
-    "CURRENT",
-    "SUPERSEDED",
-    "HISTORY",
-    "HOLD"
-  ],
+  "artifact_states": ["CURRENT", "SUPERSEDED", "HISTORY", "HOLD"],
   "one_current_rule": true,
   "hash_boundary": "hash_proves_byte_identity_only",
-  "does_not_prove": [
-    "design_quality",
-    "source_truth",
-    "field_validity",
-    "engineering_validity",
-    "rights_clearance",
-    "promotion"
-  ],
   "source_integrity_extension": {
     "prospective_only": true,
     "historical_artifacts_immutable": true,
     "required_when": "AN_ARTIFACT_OR_DEPENDENCY_CLAIMS_SOURCE_PRESERVATION_OR_WHEN_DELIVERY_ELIGIBILITY_DEPENDS_ON_SOURCE_IDENTITY",
-    "fields": [
-      "source_ref",
-      "mode",
-      "allowed_transforms",
-      "forbidden_transforms",
-      "verification_ref"
-    ],
-    "modes": [
-      "EVIDENCE_ONLY",
-      "DETERMINISTIC_TRANSFORM",
-      "NORMALIZED_RASTER_EXACT",
-      "BYTE_EXACT"
-    ],
+    "fields": ["source_ref", "mode", "allowed_transforms", "forbidden_transforms", "verification_ref"],
+    "modes": ["EVIDENCE_ONLY", "DETERMINISTIC_TRANSFORM", "NORMALIZED_RASTER_EXACT", "BYTE_EXACT"],
     "mode_semantics": {
       "EVIDENCE_ONLY": "SOURCE_INFORMS_THE_ARTIFACT_BUT_NEED_NOT_APPEAR_IN_THE_OUTPUT",
       "DETERMINISTIC_TRANSFORM": "SOURCE_MAY_CHANGE_ONLY_THROUGH_DECLARED_REPRODUCIBLE_TRANSFORMS",
@@ -98,32 +56,18 @@
       "BYTE_EXACT": "SOURCE_BYTES_MUST_MATCH_THE_BOUND_HASH_EXACTLY"
     },
     "path_is_not_identity": true,
-    "source_identity_requires": [
-      "authority_ref_or_hash"
-    ],
+    "source_identity_requires": ["authority_ref_or_hash"],
     "declared_transform_boundary_required": true,
     "missing_or_unperformed_verification_must_not_equal_pass": true,
     "verification_result_carrier": "OLEANDER_EXECUTION_RECEIPT_v1.0 typed validation semantics",
-    "does_not_prove": [
-      "source_truth",
-      "design_quality",
-      "field_truth",
-      "rights_clearance"
-    ]
+    "does_not_prove": ["source_truth", "design_quality", "field_truth", "rights_clearance"]
   },
   "delivery_eligibility_extension": {
     "prospective_only": true,
     "historical_artifacts_immutable": true,
     "required_when": "A_MATERIAL_ARTIFACT_IS_USED_AS_AN_INTERMEDIATE_CANDIDATE_OR_DELIVERY_OUTPUT",
-    "fields": [
-      "delivery_eligibility"
-    ],
-    "states": [
-      "INTERMEDIATE_ONLY",
-      "CANDIDATE_ONLY",
-      "ELIGIBLE_AFTER_REQUIRED_GATES",
-      "DELIVERY_DERIVATIVE"
-    ],
+    "fields": ["delivery_eligibility"],
+    "states": ["INTERMEDIATE_ONLY", "CANDIDATE_ONLY", "ELIGIBLE_AFTER_REQUIRED_GATES", "DELIVERY_DERIVATIVE"],
     "generative_output_default": "INTERMEDIATE_ONLY",
     "deterministic_or_native_output_may_still_require_gates": true,
     "intermediate_cannot_satisfy_final_native_output": true,
@@ -131,5 +75,6 @@
     "current_or_superseded_is_independent_from_delivery_eligibility": true,
     "delivery_eligibility_does_not_grant_promotion": true,
     "gate_rule": "FINAL_OR_DELIVERY_USE_REQUIRES_THE_EXISTING_APPLICABLE_VALIDATION_REVIEW_AND_FLOW_COMPLETION_GATES"
-  }
+  },
+  "does_not_prove": ["design_quality", "source_truth", "field_validity", "engineering_validity", "rights_clearance", "promotion"]
 }
