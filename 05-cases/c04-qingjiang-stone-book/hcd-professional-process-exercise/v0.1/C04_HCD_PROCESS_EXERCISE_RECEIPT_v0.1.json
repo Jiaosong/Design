@@ -150,7 +150,22 @@
     "candidate_definition_target": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
     "c04_instance_target": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json",
     "ci_workflow": ".github/workflows/ai-governance-evals.yml",
-    "state": "PENDING_REAL_PR_CI"
+    "pull_request": 653,
+    "validated_head_sha": "eab21e957d48c6f2beb09215eecfaf98b1fbc92f",
+    "ai_governance_run": {
+      "run_number": 4850,
+      "run_id": 35351299743,
+      "result": "PASS"
+    },
+    "definition_step": "PASS",
+    "c04_hold_instance_step": "PASS",
+    "eval_corpus_with_FAIL_013_to_FAIL_019": "PASS",
+    "anti_pollution_run": {
+      "run_number": 781,
+      "run_id": 35351299361,
+      "result": "PASS"
+    },
+    "state": "REAL_PR_CI_PASS / RECEIPT_UPDATE_REQUIRES_FINAL_HEAD_RECHECK"
   },
   "current_architecture_disposition": {
     "digital_product_hcd_domain_process": "OPEN",
@@ -158,6 +173,6 @@
     "architecture_map_modified": false,
     "reason": "Candidate definition + C04 BLOCKED/HOLD exercise do not provide real user research/usability/accessibility/implementation/live evidence or independent HCD professional review."
   },
-  "maturity": "CANDIDATE R-E PROCESS / MACHINE CONTRACT DRAFT + C04 BLOCKED-HOLD EXERCISE / STRONG DESIGN EVIDENCE PRESERVED / PROFESSIONAL HCD EVIDENCE OPEN / NOT CURRENT / NO PROMOTION",
+  "maturity": "CANDIDATE R-E PROCESS / EXISTING SCHEMA VALIDATED / C04 BLOCKED-HOLD EXERCISE VALIDATED / STRONG DIGITAL DESIGN EVIDENCE PRESERVED / AIG HCD FAILURE REGRESSION PASS / ANTI-POLLUTION PASS / NO REAL USER-RESEARCH OR USABILITY/ACCESSIBILITY EVIDENCE / NO INDEPENDENT HCD PROFESSIONAL REVIEW / NOT CURRENT / NO PROMOTION",
   "claim_ceiling": "CANDIDATE PROFESSIONAL PROCESS STRUCTURE + BOUNDED C04 HCD HOLD EXERCISE ONLY / NO USER-RESEARCH PASS / NO USABILITY PASS / NO ACCESSIBILITY CONFORMANCE / NO IMPLEMENTED RELEASE HCD PASS / NO LIVE HCD PASS / NO PROMOTION"
 }
