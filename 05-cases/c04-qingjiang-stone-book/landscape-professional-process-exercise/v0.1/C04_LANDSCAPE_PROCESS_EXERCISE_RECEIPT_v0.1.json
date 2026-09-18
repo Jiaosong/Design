@@ -40,6 +40,11 @@
       "path": ".github/workflows/ai-governance-evals.yml",
       "blob_sha": "37758a45d8fea20b50484c8f6838143510a06cc8",
       "role": "CI_VALIDATION_BINDING"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LA_DP1_THREAD_READBACK_v0.1.svg",
+      "blob_sha": "092c59943d495b4a1367616d5a8ea2c19dd5c32f",
+      "role": "EDITABLE_TECHNICAL_THREAD_STATUS_VIEW"
     }
   ],
   "source_scope": {
@@ -103,5 +108,10 @@
     "architecture_map_modified": false,
     "reason": "Candidate definition + bounded BLOCKED/HOLD exercise are insufficient for Current promotion; independent Landscape professional review and project-exercised professional closure are absent."
   },
-  "claim_ceiling": "CANDIDATE PROFESSIONAL PROCESS STRUCTURE + BOUNDED C04 HOLD EXERCISE ONLY / NO LANDSCAPE PROFESSIONAL PASS / NO FIELD CLAIM / NO CURRENT PROMOTION"
+  "claim_ceiling": "CANDIDATE PROFESSIONAL PROCESS STRUCTURE + BOUNDED C04 HOLD EXERCISE ONLY / NO LANDSCAPE PROFESSIONAL PASS / NO FIELD CLAIM / NO CURRENT PROMOTION",
+  "visual_readback": {
+    "state": "EDITABLE_SVG_CREATED / ACTUAL_BROWSER_RENDER_NOT_CLAIMED",
+    "purpose": "Human-readable projection of the machine thread readback only.",
+    "authority": "JSON thread readback remains the machine source; SVG is a projection and does not add professional evidence."
+  }
 }
