@@ -1,0 +1,341 @@
+{
+  "schema_version": "c04-service-blueprint/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact_id": "C04-SERVICE-BLUEPRINT-REAPPLICATION-001",
+  "status": "SUPPORT_CANDIDATE",
+  "purpose": "Bounded reapplication of SERVICE_BLUEPRINT_OPERATIONAL_DEPENDENCY_EXTENSION against existing C04 Current journey/service and state contracts; expose hidden dependencies without inventing field operations.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH09_ROUTE-MOBILITY-SERVICE.md",
+      "role": "JOURNEY_SERVICE_DESIGN_SOURCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH05_JOURNEY-BEHAVIOR-ANALYSIS.md",
+      "role": "ACTOR_BEHAVIOR_SOURCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "role": "DIGITAL_STATE_AND_FALLBACK_CONTRACT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-D_STATE-EVIDENCE-CONTRACT_v0.1.json",
+      "role": "VISUAL_STATE_AND_EVIDENCE_CONTRACT"
+    }
+  ],
+  "field_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO",
+    "actual_service_readback": "NOT_RUN"
+  },
+  "scenario": {
+    "scenario_id": "C04-JOURNEY-RETURN-NORMAL-DEGRADED-UNKNOWN",
+    "actor": "visitor",
+    "start": "ARRIVAL_ORIENT",
+    "end": "RETURN_OR_SAFE_EXIT",
+    "contexts": [
+      "BOAT",
+      "CABLE",
+      "WALK",
+      "RECOVER",
+      "RETURN"
+    ],
+    "truth_state": "FUTURE_PROPOSED_WITH_FIELD_HOLDS"
+  },
+  "phases": [
+    {
+      "phase_id": "ARRIVE_ORIENT",
+      "actor_actions": [
+        "ORIENT",
+        "CHOOSE"
+      ],
+      "frontstage": [
+        "Decision-map relationship: location / choices / cost / return",
+        "Return + Service visible from arrival"
+      ],
+      "backstage": [
+        "Current operational reality state must be sourced before positive OPEN semantics"
+      ],
+      "support": [
+        "Physical route/signage",
+        "Paper map",
+        "Human service",
+        "Digital assistance"
+      ],
+      "unverified": [
+        "actual field signage existence/placement",
+        "paper-map availability/distribution",
+        "human-service staffing/availability",
+        "current official operation source"
+      ],
+      "failures": [
+        "UNKNOWN status",
+        "conflicting channel status"
+      ],
+      "recovery": [
+        "fail-closed no OPEN claim",
+        "confirm via reliable/official source or human service"
+      ]
+    },
+    {
+      "phase_id": "BOAT_MOVE",
+      "actor_actions": [
+        "LOOK",
+        "COMPARE",
+        "LISTEN",
+        "FRAME"
+      ],
+      "frontstage": [
+        "Landscape first",
+        "direction only when needed",
+        "PHONE DOWN / LIGHT-low-attention digital"
+      ],
+      "backstage": [
+        "No verified live-service dependency should be invented"
+      ],
+      "support": [
+        "Physical reality",
+        "optional paper/human support"
+      ],
+      "unverified": [
+        "live field route/service sufficiency"
+      ],
+      "failures": [
+        "digital unavailable"
+      ],
+      "recovery": [
+        "core observation remains outside digital"
+      ]
+    },
+    {
+      "phase_id": "CABLE_TRANSFORM",
+      "actor_actions": [
+        "ORIENT",
+        "OBSERVE",
+        "RECOGNIZE"
+      ],
+      "frontstage": [
+        "Before LIGHT orientation",
+        "During OFF/optional light",
+        "After optional relation reveal"
+      ],
+      "backstage": [
+        "Current route/closure state must remain authoritative if movement access changes"
+      ],
+      "support": [
+        "physical operation",
+        "human service",
+        "current official state source"
+      ],
+      "unverified": [
+        "actual operational status interface",
+        "field safety/accessibility"
+      ],
+      "failures": [
+        "CLOSED or UNKNOWN state"
+      ],
+      "recovery": [
+        "bypass/reroute/exit; no positive OPEN semantics"
+      ]
+    },
+    {
+      "phase_id": "WALK_EXPLORE",
+      "actor_actions": [
+        "EXPLORE",
+        "STOP",
+        "CONTINUE",
+        "RETURN"
+      ],
+      "frontstage": [
+        "MAIN / EXPLORE / RETURN network",
+        "Return/recovery prioritized as stamina falls"
+      ],
+      "backstage": [
+        "Route state/closure and service sufficiency must be current",
+        "No game-progress lock"
+      ],
+      "support": [
+        "physical route",
+        "signage",
+        "paper",
+        "human",
+        "digital optional"
+      ],
+      "unverified": [
+        "actual route condition",
+        "signage continuity",
+        "human help availability",
+        "field safety"
+      ],
+      "failures": [
+        "route uncertainty",
+        "fatigue/body issue",
+        "weather/change",
+        "digital offline"
+      ],
+      "recovery": [
+        "RETURN/RECOVERY path",
+        "human service",
+        "paper/physical fallback",
+        "optional digital return priority"
+      ]
+    },
+    {
+      "phase_id": "RECOVER",
+      "actor_actions": [
+        "WAIT",
+        "RECOVER"
+      ],
+      "frontstage": [
+        "BODY / RECOVERY / SERVICE outrank content"
+      ],
+      "backstage": [
+        "A service/help channel must actually exist before availability can be claimed"
+      ],
+      "support": [
+        "human service",
+        "physical rest/recovery relation",
+        "route information"
+      ],
+      "unverified": [
+        "actual staff/service channel",
+        "operating hours",
+        "field recovery facility"
+      ],
+      "failures": [
+        "body discomfort",
+        "service unavailable"
+      ],
+      "recovery": [
+        "reduce optional content",
+        "prioritize safe return / exit / help"
+      ]
+    },
+    {
+      "phase_id": "RETURN",
+      "actor_actions": [
+        "RETURN"
+      ],
+      "frontstage": [
+        "Landscape + signage + paper + human + digital redundancy",
+        "RETURN-PRIORITY closes optional depth"
+      ],
+      "backstage": [
+        "Reality state authority must feed every channel consistently"
+      ],
+      "support": [
+        "physical",
+        "paper",
+        "human",
+        "digital"
+      ],
+      "unverified": [
+        "cross-channel status synchronization",
+        "field signage/paper/human sufficiency",
+        "official live-service interface"
+      ],
+      "failures": [
+        "NORMAL/DEGRADED/CLOSED/UNKNOWN mismatch",
+        "offline"
+      ],
+      "recovery": [
+        "UNKNOWN fail-closed",
+        "CLOSED bypass/reroute/exit",
+        "OFFLINE keeps physical/paper/human fallback"
+      ]
+    }
+  ],
+  "handoff_spine": [
+    {
+      "handoff_id": "H01-REALITY-STATE",
+      "sender": "OFFICIAL_OPERATION_SOURCE_UNRESOLVED",
+      "receiver": [
+        "DIGITAL",
+        "VISUAL_STATE",
+        "HUMAN_SERVICE",
+        "PHYSICAL_SIGNAGE_WHEN_DYNAMIC"
+      ],
+      "object": "reality_state NORMAL|DEGRADED|CLOSED|UNKNOWN",
+      "trigger": "operation/status change",
+      "acknowledgement": "UNVERIFIED",
+      "failure": "stale/conflicting channel state",
+      "user_visible_consequence": "false OPEN or unclear return condition",
+      "disposition": "HOLD until official interface/source and synchronization are defined"
+    },
+    {
+      "handoff_id": "H02-HELP-REQUEST",
+      "sender": "VISITOR",
+      "receiver": "HUMAN_SERVICE_ROLE_UNRESOLVED",
+      "object": "help / uncertainty / body discomfort / weather-change request",
+      "trigger": "visitor seeks help",
+      "acknowledgement": "UNVERIFIED",
+      "failure": "no staffed/available service owner",
+      "user_visible_consequence": "fallback promised but unavailable",
+      "disposition": "HOLD; do not claim sufficiency"
+    },
+    {
+      "handoff_id": "H03-ROUTE-CONDITION",
+      "sender": "FIELD_REALITY",
+      "receiver": [
+        "VISITOR",
+        "SIGNAGE",
+        "PAPER_UPDATE_PROCESS",
+        "DIGITAL_IF_OFFICIAL_INTERFACE_EXISTS"
+      ],
+      "object": "route/closure/service condition",
+      "trigger": "condition change",
+      "acknowledgement": "NOT_RUN",
+      "failure": "field reality not reflected in guidance",
+      "user_visible_consequence": "unsafe/incorrect continuation choice",
+      "disposition": "G1F HOLD / field validation required"
+    }
+  ],
+  "primary_findings": [
+    {
+      "finding_id": "F01",
+      "type": "DESIGN_STRENGTH",
+      "statement": "C04 already separates reality states and fails UNKNOWN closed rather than rendering it as NORMAL.",
+      "consequence": "retain as frontstage truth rule"
+    },
+    {
+      "finding_id": "F02",
+      "type": "OPERATIONAL_GAP",
+      "statement": "HUMAN SERVICE is a declared fallback owner class, but actual role/staffing/availability/acknowledgement evidence is not present in the reviewed Current sources.",
+      "consequence": "service sufficiency remains HOLD"
+    },
+    {
+      "finding_id": "F03",
+      "type": "OPERATIONAL_GAP",
+      "statement": "SIGNAGE and PAPER are declared Return redundancies, but reviewed sources do not prove current field existence, placement, availability or update process.",
+      "consequence": "treat as proposed support, not observed operational proof"
+    },
+    {
+      "finding_id": "F04",
+      "type": "INTERFACE_GAP",
+      "statement": "Positive NORMAL/OPEN semantics require a current operation source; digital live service additionally requires an official interface, while the exact authority/handoff/acknowledgement is unresolved.",
+      "consequence": "pseudo-live status remains prohibited; H01 stays HOLD"
+    },
+    {
+      "finding_id": "F05",
+      "type": "VALIDATION_BOUNDARY",
+      "statement": "C04 has FIELD_OBSERVED=0 and FIELD_MEASURED=0; therefore actual service readback is NOT_RUN.",
+      "consequence": "blueprint can improve dependency clarity but cannot promote field/service readiness"
+    }
+  ],
+  "design_disposition": "KEEP_CURRENT_DESIGN_LOGIC_WITH_SERVICE_DEPENDENCY_HOLDS",
+  "change_required_now": [
+    "Do not add new field claims.",
+    "When presenting HUMAN/SIGNAGE/PAPER redundancy, label it as design architecture/proposed fallback unless field evidence exists.",
+    "Any live status surface must bind to an official current operation source; otherwise UNKNOWN/fail-closed.",
+    "Future field/service validation should test the handoff spine, not only visual route assets."
+  ],
+  "validation_handoffs": [
+    "Resolve official operation/status authority and update path.",
+    "Verify field signage/route Return continuity.",
+    "Verify paper-map production/distribution/update owner if retained as redundancy.",
+    "Verify human-service role, availability, escalation and help acknowledgement if retained as redundancy.",
+    "Run actual service/journey readback under NORMAL/DEGRADED/CLOSED/UNKNOWN and OFFLINE/RETURN-PRIORITY scenarios."
+  ],
+  "claim_ceiling": "BOUNDED PROJECT REAPPLICATION / DEPENDENCY CLARIFICATION ONLY / ACTUAL SERVICE READBACK NOT_RUN / FIELD HOLD / NO PROMOTION"
+}

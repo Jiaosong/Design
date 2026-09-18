@@ -1,0 +1,88 @@
+{
+  "schema_version": "c04-service-blueprint-reapplication-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "extension": "oleander-design-process/SERVICE_BLUEPRINT_OPERATIONAL_DEPENDENCY_EXTENSION.md",
+  "purpose": "Bounded project reapplication of the candidate service-blueprint extension against existing C04 journey/service and state authority without adding field claims.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH09_ROUTE-MOBILITY-SERVICE.md",
+      "blob_sha": "a62ea6ca81c1265042c4be22155089a1d461c902"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH05_JOURNEY-BEHAVIOR-ANALYSIS.md",
+      "blob_sha": "a2b59611fc8f13780ba927ef1db2aacf03735b17"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob_sha": "6bb847ac3b8826f96f6709432e3157ce5b318a86"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-D_STATE-EVIDENCE-CONTRACT_v0.1.json",
+      "blob_sha": "466751ad1606a3612c8e9cb64251b24ff3377b88"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/service-blueprint-reapplication/v0.1/C04_SERVICE_BLUEPRINT_MODEL_v0.1.json",
+      "blob_sha": "e38220681ff8abc4c49b381609602d811e1c282b",
+      "role": "EDITABLE_MACHINE_MODEL"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/service-blueprint-reapplication/v0.1/C04_SERVICE_BLUEPRINT_SUPPORT_v0.1.svg",
+      "blob_sha": "39ecbfdc131a82550911649bae0c8c3ebafcb2a8",
+      "role": "EDITABLE_DERIVED_SUPPORT_VIEW"
+    }
+  ],
+  "visual_readback": {
+    "method": "SVG rendered to 1600x1080 PNG with ImageMagick/inkscape path for inspection",
+    "first_readback": "REVISE",
+    "first_failure": "Line of visibility crossed the Frontstage cards and made the semantic boundary ambiguous.",
+    "repair_commit": "7c4dba52e891548ad7f808877bab82bf985f3f37",
+    "repaired_readback": "PASS_SUPPORT",
+    "rendered_png_dimensions": [
+      1600,
+      1080
+    ],
+    "rendered_png_bytes": 246625,
+    "rendered_png_sha256": "85596812cd64378c4cc7d216305b69f1735318e2f248754b45c927ecd6310fcf",
+    "boundary": "Visual/readability support pass only; raster snapshot is a regenerable review derivative and is not the project authority."
+  },
+  "operational_readback": {
+    "result": "NOT_RUN",
+    "reason": "Current source contracts explicitly retain FIELD_OBSERVED=0, FIELD_MEASURED=0 and G1F HOLD; no actual service run, staffing verification, signage field survey or official live-service interface was introduced by this reapplication."
+  },
+  "material_findings": [
+    {
+      "id": "C04-SB-F01",
+      "result": "KEEP",
+      "finding": "UNKNOWN is already fail-closed and may not render as NORMAL/OPEN.",
+      "owner": "Existing C04 state contracts"
+    },
+    {
+      "id": "C04-SB-F02",
+      "result": "HOLD",
+      "finding": "HUMAN SERVICE is a declared fallback class, but the reviewed Current sources do not establish concrete staffing/availability/acknowledgement.",
+      "owner": "Operational/service authority unresolved"
+    },
+    {
+      "id": "C04-SB-F03",
+      "result": "HOLD",
+      "finding": "SIGNAGE and PAPER are declared Return redundancies, but reviewed Current sources do not prove field existence/placement/availability/update process.",
+      "owner": "Field/service validation"
+    },
+    {
+      "id": "C04-SB-F04",
+      "result": "HOLD",
+      "finding": "Positive NORMAL/OPEN semantics require a current operation source and digital live service requires an official interface; the exact authority handoff/acknowledgement remains unresolved.",
+      "owner": "Official operation/status authority + system interface"
+    }
+  ],
+  "design_consequence": [
+    "Retain the existing Return redundancy architecture.",
+    "Do not present HUMAN/SIGNAGE/PAPER fallback classes as verified field sufficiency.",
+    "Keep pseudo-live status prohibited until an official current operation interface exists.",
+    "Future field/service validation should test the H01/H02/H03 handoff spine, not only the visible route assets."
+  ],
+  "maturity": "PROJECT_USAGE_EVIDENCE / ONE PROJECT FAMILY / EDITABLE SUPPORT ARTIFACT + MACHINE MODEL / ACTUAL SERVICE READBACK NOT_RUN / CROSS-CONTEXT TEST NEEDED / NO PROMOTION",
+  "claim_ceiling": "Dependency clarification and project-design consequence only; no operations-ready, field-safe, service-sufficient or live-status claim."
+}
