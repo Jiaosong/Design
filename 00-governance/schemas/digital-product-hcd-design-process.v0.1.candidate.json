@@ -1312,6 +1312,68 @@
       "instrumentation and experiment/rollout readback preserves metric validity, guardrails and causal claim ceiling"
     ]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent HCD execution depth is demonstrated through research eligibility, version-bound findings, fix/build/retest evidence, release support, cross-functional handoffs and live outcome objects rather than screen completeness.",
+    "professional_problem_and_judgment_objects": [
+      "context-of-use model",
+      "USER_NEEDS_LEDGER",
+      "USE_RELATED_REQUIREMENTS",
+      "conceptual model/IA/navigation",
+      "interaction/state/error/recovery decisions"
+    ],
+    "assumption_uncertainty_objects": [
+      "user/context assumption register",
+      "Study Repository / Research Freeze Register",
+      "Consent / Data Eligibility Register",
+      "research confidence/limitations"
+    ],
+    "option_comparison_objects": [
+      "interaction concept set",
+      "prototype alternatives tied to user tasks/requirements",
+      "Experiment / Rollout Object when experimental release is used"
+    ],
+    "native_work_objects": [
+      "research/context evidence",
+      "experience architecture/IA/task flows",
+      "interactive prototypes",
+      "detailed UI/component/state specifications",
+      "implementation parity readback"
+    ],
+    "release_control_objects": [
+      "Finding → Fix → Build → Retest Chain",
+      "Release Support Matrix",
+      "Content / Localization Release Register",
+      "Privacy / Security Interaction Handoff Register",
+      "Instrumentation / Outcome Definition Register"
+    ],
+    "implementation_field_objects": [
+      "actual prototype/build interaction readback",
+      "browser/OS/device/input/assistive-technology release support evidence",
+      "engineering implementation parity"
+    ],
+    "handover_inuse_objects": [
+      "release-readiness HCD receipt",
+      "live research/analytics/support evidence",
+      "Experiment / Rollout Object",
+      "bounded G9 candidates"
+    ],
+    "independent_review_objects": [
+      "distinct HCD/product review",
+      "accessibility/privacy-security/engineering specialist evidence where triggered",
+      "producer self-check cannot replace user evaluation"
+    ],
+    "change_propagation_objects": [
+      "study/prototype/build identity staleness",
+      "finding→fix→build→retest reopen chain",
+      "live evidence → affected design/engineering/service reopen"
+    ],
+    "does_not_require": [
+      "same artifacts as physical construction domains",
+      "analytics as causal proof",
+      "prototype polish as usability evidence",
+      "same stage count as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "HCD professional review at declared stage/claim ceiling, preserving research evidence, context/user requirement trace, interaction rationale and evaluation boundaries.",
     "evidence_review": "Verify research, accessibility, content, privacy/security, implementation and live evidence against the claimed HCD use.",
