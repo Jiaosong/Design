@@ -1,0 +1,107 @@
+{
+  "schema_version": "c04-landscape-process-exercise-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "process_id": "OLEANDER-LANDSCAPE-ARCHITECTURE-DESIGN-PROCESS",
+  "process_version": "0.1-CANDIDATE",
+  "state": "CANDIDATE_PROCESS_EXERCISE / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "purpose": "Exercise the candidate Landscape Architecture professional process against existing C04 CH02 + environmental-analysis evidence without upgrading existing design-intelligence or remote-analysis claims.",
+  "bindings": [
+    {
+      "path": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+      "blob_sha": "7872f956cdea904222619411b072b2dca0fc43fb",
+      "role": "CANDIDATE_PROFESSIONAL_PROCESS_PROSE"
+    },
+    {
+      "path": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+      "blob_sha": "675266544661863d37feee4ee28dd4df469b599d",
+      "role": "MACHINE_READABLE_PROCESS_DEFINITION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "b3630c5339188cc488e222bfd7d6c99d90b3c7f3",
+      "role": "C04_DOMAIN_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LA_DP1_THREAD_READBACK_v0.1.json",
+      "blob_sha": "781ae33bbbab4f01a9bc1d6aeca92024c02887d2",
+      "role": "C04_TECHNICAL_THREAD_READBACK"
+    },
+    {
+      "path": "oleander-skills/training/2026-09-18_landscape-professional-process-digestion.md",
+      "blob_sha": "c2e94336cf6225f4690fe76a55e96e80a96136a7",
+      "role": "SOURCE_AND_TRANSFER_PROVENANCE"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "b1227251bd2788fe9d22c00c1b178bee84b57896",
+      "role": "AIG02_LANDSCAPE_FAILURE_REGRESSION"
+    },
+    {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "blob_sha": "37758a45d8fea20b50484c8f6838143510a06cc8",
+      "role": "CI_VALIDATION_BINDING"
+    }
+  ],
+  "source_scope": {
+    "current_professional_sources_verified": [
+      "CLARB current L.A.R.E. blueprint / section structure",
+      "ASLA current public-practice and HSW scope material",
+      "ASLA Body of Knowledge task evidence",
+      "Landscape Institute legacy DPoW page with explicit update-in-progress/freshness limitation"
+    ],
+    "stage_authority_rule": "Professional task evidence is used to define scope breadth; no external exam or legacy plan-of-work sequence is claimed as universal current OLEANDER stage authority.",
+    "github_skill_search_disposition": "Visualization/generic landscape Skills were not accepted as professional stage authority."
+  },
+  "c04_findings": {
+    "supported": [
+      "river/shore/peak/valley spatial relations",
+      "boat/cable/walk viewpoint relations",
+      "route-network relation",
+      "open/compressed spatial sequence",
+      "regional generalized terrain/slope/aspect support",
+      "D8 potential terrain-convergence support",
+      "relative solar scenarios"
+    ],
+    "blocked_or_not_run": [
+      "surveyed site boundary / exact topography / measured levels",
+      "professional grading / earthwork",
+      "hydraulic drainage / stormwater performance",
+      "soil / infiltration / contamination / root-volume truth",
+      "professional vegetation / tree inventory and condition",
+      "site ecology / habitat evidence",
+      "planting suitability / establishment",
+      "irrigation source / quality / demand / zoning",
+      "landscape maintenance / establishment capability",
+      "independent Landscape professional review"
+    ],
+    "field_state": "FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD"
+  },
+  "regression": {
+    "cases": [
+      "FAIL-009",
+      "FAIL-010",
+      "FAIL-011",
+      "FAIL-012"
+    ],
+    "attacks": [
+      "remote context promoted to survey authority",
+      "terrain convergence promoted to drainage/hydraulic design",
+      "planting graphics promoted to horticultural/professional planting PASS",
+      "installation promoted to establishment completion"
+    ]
+  },
+  "validation_plan": {
+    "existing_validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "candidate_definition_target": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+    "c04_instance_target": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_INSTANCE_v0.1.json",
+    "ci_workflow": ".github/workflows/ai-governance-evals.yml",
+    "state": "PENDING_REAL_PR_CI"
+  },
+  "current_architecture_disposition": {
+    "landscape_domain_process": "OPEN",
+    "changed_to_current": false,
+    "architecture_map_modified": false,
+    "reason": "Candidate definition + bounded BLOCKED/HOLD exercise are insufficient for Current promotion; independent Landscape professional review and project-exercised professional closure are absent."
+  },
+  "claim_ceiling": "CANDIDATE PROFESSIONAL PROCESS STRUCTURE + BOUNDED C04 HOLD EXERCISE ONLY / NO LANDSCAPE PROFESSIONAL PASS / NO FIELD CLAIM / NO CURRENT PROMOTION"
+}
