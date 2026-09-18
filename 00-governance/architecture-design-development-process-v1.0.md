@@ -59,6 +59,122 @@ The process sits before architectural Design KEEP / Promotion. It may run in par
 
 The Current stage-level interface/dependency view is `architecture-professional-domain-interface-matrix-v1.0.md`. That matrix references this process for Architecture stage semantics and `cross-disciplinary-design-integration-v1.0.md` for interface semantics; it is not a second Architecture process and it does not invent numbered stages for other professions.
 
+## 3A｜Cross-cutting Architecture practitioner control objects
+
+These are continuous professional work objects across ADD-00…17. They do not create another architecture lifecycle.
+
+### 3A.1 Architecture Basis / Responsibility Matrix
+
+Record:
+- project/claim scope;
+- architect-owned decisions;
+- consultant/specialist/contractor-owned decisions;
+- controlling authority;
+- required interface maturity;
+- current/open/outside-claim state;
+- reopen trigger.
+
+### 3A.2 Survey / Existing-Condition Authority & Change Register
+
+Track:
+- survey/site/existing-building source and revision;
+- datum / level / grid authority where applicable;
+- verified vs inferred existing conditions;
+- consuming plans/sections/details;
+- field/open items;
+- changed-condition impact and reopen scope.
+
+`DRAWN EXISTING CONDITION ≠ VERIFIED EXISTING CONDITION`.
+
+### 3A.3 Program / Room Brief Change Register
+
+For consequential program changes record:
+- room/function affected;
+- source/authority;
+- area/occupancy/equipment change;
+- adjacency/flow/service consequence;
+- code/accessibility/fire consequence;
+- plan/section impact;
+- owner;
+- accepted/rejected/deferred disposition.
+
+### 3A.4 Plan / Section / Level Coordination Register
+
+Track critical:
+- grids/axes;
+- floor/ceiling/roof levels;
+- stairs/ramps/lifts;
+- floor-to-floor heights;
+- atria/voids;
+- envelope/thresholds;
+- structure/MEP zones;
+- roof/drainage/plant access;
+- plan↔section consistency;
+- unresolved interface.
+
+A plan can be geometrically plausible while its section is impossible.
+
+### 3A.5 Opening / Envelope / Door Interface Register
+
+Where Architecture controls or coordinates the opening:
+- opening ID;
+- host wall/envelope/partition;
+- size/level/threshold;
+- door/window/louvre/access panel type;
+- fire/acoustic/weather/accessibility/security role;
+- hardware/specialist owner;
+- structure/MEP penetration relation;
+- detail/schedule refs;
+- current interface state.
+
+### 3A.6 Code / Life-Safety / Accessibility Interface Register
+
+Track each consequential requirement through:
+`REQUIREMENT → SOURCE/REVISION → APPLICABILITY → ARCHITECTURAL RESPONSE → SPECIALIST/AUTHORITY OWNER → EVIDENCE → CURRENT STATUS → REOPEN TRIGGER`.
+
+This supplements, and does not replace, `ARCHITECTURE_CODE_MATRIX`.
+
+### 3A.7 Architecture Submittal / Mockup / RFI / Field-Change Register
+
+When Architecture is appointed through procurement/construction, record:
+- object/location;
+- issued-design source;
+- submittal/mockup/RFI/field condition;
+- design-critical attributes;
+- affected interfaces;
+- disposition;
+- changed drawing/model/spec refs;
+- readback / open-item state.
+
+This register does not expand Architecture's appointment by itself.
+
+### 3A.8 Room / Equipment / FF&E Interface Register
+
+Track representative critical rooms:
+- room ID;
+- furniture/equipment identity or bounded envelope;
+- user/body/access clearance;
+- maintenance/replacement route;
+- utility/service interface;
+- structure/support;
+- door/opening conflict;
+- current evidence/owner.
+
+### 3A.9 Architecture Closeout / Record / Open-Item Register
+
+When later-stage Architecture scope is triggered:
+- record/as-built reference;
+- outstanding defects/design items;
+- substitution/change history affecting intent;
+- O&M/maintenance interface;
+- unresolved statutory/specialist items;
+- owner;
+- handover/readback status.
+
+`ISSUED DRAWING ≠ AS-BUILT TRUTH`.
+
+---
+
 ## 4｜ADD-00 Scope, authority and claim ceiling
 
 Before planning begins, record:
