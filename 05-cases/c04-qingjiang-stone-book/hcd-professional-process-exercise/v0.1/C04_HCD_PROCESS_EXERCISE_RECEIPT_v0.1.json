@@ -1,0 +1,163 @@
+{
+  "schema_version": "c04-hcd-process-exercise-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "process_id": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS",
+  "process_version": "0.1-CANDIDATE",
+  "state": "CANDIDATE_PROCESS_EXERCISE / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "purpose": "Exercise the candidate Digital Product / HCD professional process against existing C04 E design and implementation-source evidence without restarting E or upgrading static/design evidence into user research, usability, accessibility, implementation-release or live HCD claims.",
+  "bindings": [
+    {
+      "path": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+      "blob_sha": "6bf30d3c4593bc38631530e9e2aa7bf6fb2e2b9c",
+      "role": "CANDIDATE_PROFESSIONAL_PROCESS_PROSE"
+    },
+    {
+      "path": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+      "blob_sha": "69182f07ed863490f0b44676e20ae4fcb5dccbb5",
+      "role": "MACHINE_READABLE_PROCESS_DEFINITION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "6318c3a1c2a39abd8a4329e6ee780a2e1ac18811",
+      "role": "C04_DOMAIN_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_THREAD_READBACK_v0.1.json",
+      "blob_sha": "49c50460cecc0109ce9f454987744a88fde4964d",
+      "role": "C04_PROFESSIONAL_EVIDENCE_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_THREAD_READBACK_v0.1.svg",
+      "blob_sha": "f147d2ac1321d18e9ada2d68b9c5cbb799550acb",
+      "role": "EDITABLE_HUMAN_READABLE_THREAD_PROJECTION"
+    },
+    {
+      "path": "oleander-skills/training/2026-09-18_hcd-professional-process-digestion.md",
+      "blob_sha": "e5d420bd7478d9e30645334ec0fb4c34cea53cd6",
+      "role": "SOURCE_AND_TRANSFER_PROVENANCE"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "9dadbef7979977459cf0c4f5d7fd7d1a3aaee5c2",
+      "role": "AIG02_HCD_FAILURE_REGRESSION"
+    },
+    {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "blob_sha": "79e6cd6fd432e1cdade3491324dcff73b8f24ed5",
+      "role": "CI_VALIDATION_BINDING"
+    }
+  ],
+  "c04_source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-WS-02_DIGITAL-UI-DETAIL-SYSTEM_v0.6.md",
+      "blob_sha": "095f5294e9e741206f65a90baa38cc197110d314"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-WS-02_REMOTE-DIGITAL-PRODUCT-MIGRATION_v0.5.md",
+      "blob_sha": "a4017ba7006ef78a7c17cde49e3231b9baa7b810"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+      "blob_sha": "4b1d982701d0230f2594cb70914d399bf862030c"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob_sha": "6bb847ac3b8826f96f6709432e3157ce5b318a86"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+      "blob_sha": "c918d18c6e0b63ca06cae482c5f7a0cd314dc9d8"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+      "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/README.md",
+      "blob_sha": "0ea518b616d732aa1fc3b96595ad7649cf9a23a1"
+    }
+  ],
+  "source_scope": {
+    "current_professional_sources_verified": [
+      "ISO 9241-210:2019 — current, confirmed 2025",
+      "ISO 9241-11:2018 — current, confirmed 2023",
+      "ISO 9241-115:2024 — current interaction-design guidance",
+      "W3C WCAG 2.2 — current W3C Recommendation",
+      "GOV.UK Service Manual — user research, consent/privacy, accessibility, security and analytics practice evidence"
+    ],
+    "stage_authority_rule": "Professional standards/practice sources define HCD responsibilities and evidence expectations; OLEANDER candidate stages are not claimed as ISO/W3C/GOV.UK official stages."
+  },
+  "c04_findings": {
+    "strong_existing_design_evidence": [
+      "TODAY / ROUTE / READ / MY BOOK / SERVICE information architecture",
+      "Return priority and route/content separation",
+      "NORMAL / DEGRADED / CLOSED / UNKNOWN",
+      "FULL / LIGHT / OFF digital-intensity relation",
+      "UNKNOWN fail-closed",
+      "digital-off / no-phone fallback",
+      "offline-first intent",
+      "GPS / AR / live-service claim ceilings",
+      "editable HTML/SVG and Cocos source",
+      "localStorage without login/cloud claim"
+    ],
+    "blocked_or_not_run": [
+      "representative user research participants/sessions",
+      "participant consent/research-data handling evidence",
+      "participant-backed user-needs/use-requirement ledger",
+      "representative-user usability task evaluation",
+      "disabled-user / assistive-technology evaluation",
+      "WCAG 2.2 audit/conformance evidence",
+      "content/localization comprehension testing",
+      "privacy/security/legal specialist disposition",
+      "governed analytics/instrumentation outcome evidence",
+      "actual current v1.2 live-browser interaction PASS",
+      "live user outcome / service reliability evidence",
+      "independent HCD professional review"
+    ],
+    "actual_current_browser_state": "HOLD_ENVIRONMENT_ADMIN_BLOCK",
+    "field_state": "FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD / NO_PROMOTION"
+  },
+  "regression": {
+    "cases": [
+      "FAIL-013",
+      "FAIL-014",
+      "FAIL-015",
+      "FAIL-016",
+      "FAIL-017",
+      "FAIL-018",
+      "FAIL-019"
+    ],
+    "attacks": [
+      "design assumption/persona promoted to researched user need",
+      "static/prototype checks promoted to usability PASS",
+      "inclusive intent promoted to WCAG/accessibility conformance",
+      "low-data/no-login design promoted to privacy/security/legal approval",
+      "analytics event promoted to user outcome/causal proof",
+      "source/build/static checks promoted to implemented interactive HCD PASS",
+      "user-research data collected/used without authorized consent/privacy handling"
+    ]
+  },
+  "visual_projection": {
+    "state": "EDITABLE_SVG_CREATED / ACTUAL_BROWSER_RENDER_NOT_CLAIMED",
+    "authority": "JSON thread readback is machine truth; SVG is a human-readable projection and adds no professional evidence."
+  },
+  "validation_plan": {
+    "existing_validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "candidate_definition_target": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+    "c04_instance_target": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json",
+    "ci_workflow": ".github/workflows/ai-governance-evals.yml",
+    "state": "PENDING_REAL_PR_CI"
+  },
+  "current_architecture_disposition": {
+    "digital_product_hcd_domain_process": "OPEN",
+    "changed_to_current": false,
+    "architecture_map_modified": false,
+    "reason": "Candidate definition + C04 BLOCKED/HOLD exercise do not provide real user research/usability/accessibility/implementation/live evidence or independent HCD professional review."
+  },
+  "maturity": "CANDIDATE R-E PROCESS / MACHINE CONTRACT DRAFT + C04 BLOCKED-HOLD EXERCISE / STRONG DESIGN EVIDENCE PRESERVED / PROFESSIONAL HCD EVIDENCE OPEN / NOT CURRENT / NO PROMOTION",
+  "claim_ceiling": "CANDIDATE PROFESSIONAL PROCESS STRUCTURE + BOUNDED C04 HCD HOLD EXERCISE ONLY / NO USER-RESEARCH PASS / NO USABILITY PASS / NO ACCESSIBILITY CONFORMANCE / NO IMPLEMENTED RELEASE HCD PASS / NO LIVE HCD PASS / NO PROMOTION"
+}
