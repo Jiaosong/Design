@@ -1,0 +1,545 @@
+{
+  "schema_version": "c04-function-concept-replay/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "P02-RAILING-LEAN-REST",
+  "replay_id": "C04-P02-FCS-REPLAY-001",
+  "state": "BOUNDED_RETROSPECTIVE_REPLAY / SUPPORT_ONLY / CURRENT_NOT_REOPENED",
+  "purpose": "Test FUNCTION_TO_CONCEPT_SYNTHESIS_EXTENSION against an existing mature P02 object without changing Current authority.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+      "blob_sha": "dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe",
+      "role": "CURRENT_DESIGN_RELATION_SUMMARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "3019027c806eef4571be7d97b313d300499d1e1a",
+      "role": "CURRENT_TRUTH_AND_PROMOTION_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+      "blob_sha": "158f1c2e3fb51b2508674d131d80f670dcbf55b3",
+      "role": "CURRENT_EDITABLE_MASTER_REFERENCE"
+    }
+  ],
+  "method_boundary": {
+    "retrospective_not_blind": true,
+    "current_authority_preserved": true,
+    "exact_current_means_not_used_as_required_functions": true,
+    "replay_can_explain_but_not_independently_validate_current": true,
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "structural_adequacy": "UNVERIFIED",
+    "promotion": "NO"
+  },
+  "need_intent_authority": {
+    "need": "Provide a short standing/half-lean recovery relation during walking without turning the route edge into a long-stay bench condition.",
+    "locked_relations": [
+      "feet remain on ground",
+      "short lean/rest rather than seated bench reading",
+      "passage priority over facility",
+      "field/structural/safety truth remains open"
+    ],
+    "bounded_design_envelope": {
+      "length": "C23 concept envelope only; current summary records 1200 rec [800–1400]",
+      "height": "C23 concept envelope only; current summary records 975 rec [900–1050]",
+      "contact_depth": "C23 concept envelope only; current summary records 160 rec [120–180]",
+      "posture": "~10° prototype posture test only"
+    }
+  },
+  "functions": [
+    {
+      "id": "P02-DFN-01",
+      "class": "PRIMARY",
+      "status": "ESSENTIAL",
+      "statement": "support short-duration standing/half-lean body recovery while both feet remain on the walking surface",
+      "source": "P02 Current relation",
+      "failure": "reads/behaves as full sitting or cannot support lean relation"
+    },
+    {
+      "id": "P02-DFN-02",
+      "class": "PROTECTIVE",
+      "status": "ESSENTIAL",
+      "statement": "preserve required clear passage and avoid converting the route edge into an obstructing furniture zone",
+      "source": "P02 Current passage priority + field-open boundary",
+      "failure": "encroaches on required passage or creates protrusion conflict"
+    },
+    {
+      "id": "P02-DFN-03",
+      "class": "EXPERIENCE_SEMANTIC",
+      "status": "ESSENTIAL",
+      "statement": "make the first-use relation legible as short lean/rest rather than a long-stay bench",
+      "source": "P02 BODY READ",
+      "failure": "first read becomes seated bench"
+    },
+    {
+      "id": "P02-DFN-04",
+      "class": "ENABLING_SERVICE",
+      "status": "ESSENTIAL",
+      "statement": "allow installation/removal or replacement without silently assuming irreversible modification of an unverified host condition",
+      "source": "P02 reversible-clamp logic + permission HOLD",
+      "failure": "requires unverified destructive attachment"
+    },
+    {
+      "id": "P02-DFN-05",
+      "class": "PROTECTIVE_TECHNICAL",
+      "status": "UNVERIFIED",
+      "statement": "provide a valid load path from user contact into a support system whose adequacy is actually verified",
+      "source": "P02 structure UNVERIFIED",
+      "failure": "design implies structural adequacy before verification"
+    },
+    {
+      "id": "P02-DFN-06",
+      "class": "SERVICE",
+      "status": "SUPPORTING",
+      "statement": "allow drainage and cleaning at the body-contact / support interface",
+      "source": "P02 v1.2 drainage/cleaning delta",
+      "failure": "water/debris trapped or maintenance inaccessible"
+    },
+    {
+      "id": "P02-DFN-07",
+      "class": "SERVICE",
+      "status": "SUPPORTING",
+      "statement": "allow inspection and replacement of contact, buffer and fastening elements",
+      "source": "P02 replaceability/service logic",
+      "failure": "wear item cannot be inspected/replaced without destructive work"
+    },
+    {
+      "id": "P02-DFN-08",
+      "class": "PROTECTIVE",
+      "status": "ESSENTIAL",
+      "statement": "avoid introducing an unsupported edge-safety or climbing/fall implication",
+      "source": "P02 edge-safety HOLD",
+      "failure": "new geometry materially worsens edge/safety relation"
+    }
+  ],
+  "dependency_relations": [
+    {
+      "from": "P02-DFN-01",
+      "to": "P02-DFN-05",
+      "type": "ENABLES",
+      "reason": "body-recovery relation requires a real support/load path"
+    },
+    {
+      "from": "P02-DFN-02",
+      "to": "P02-DFN-01",
+      "type": "CONSTRAINS",
+      "reason": "recovery element cannot consume required passage"
+    },
+    {
+      "from": "P02-DFN-03",
+      "to": "P02-DFN-01",
+      "type": "CONSTRAINS",
+      "reason": "geometry/height/depth must preserve standing half-lean semantics"
+    },
+    {
+      "from": "P02-DFN-04",
+      "to": "P02-DFN-05",
+      "type": "COUPLED",
+      "reason": "attachment strategy determines where body load is transferred"
+    },
+    {
+      "from": "P02-DFN-06",
+      "to": "P02-DFN-07",
+      "type": "SHARES_MEANS",
+      "reason": "open/reachable joint can improve both drainage and service"
+    },
+    {
+      "from": "P02-DFN-08",
+      "to": "P02-DFN-01",
+      "type": "CONFLICTS",
+      "reason": "larger/more climbable support may improve comfort while worsening edge-safety implications"
+    }
+  ],
+  "solution_principles": [
+    {
+      "id": "M01",
+      "function_refs": [
+        "P02-DFN-01",
+        "P02-DFN-03"
+      ],
+      "principle": "rigid shallow contact surface",
+      "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
+      "unknowns": [
+        "actual ergonomic suitability"
+      ],
+      "owner": "DESIGN + HUMAN_FACTORS"
+    },
+    {
+      "id": "M02",
+      "function_refs": [
+        "P02-DFN-01",
+        "P02-DFN-03"
+      ],
+      "principle": "compliant tensioned contact band / sling",
+      "maturity": "PLAUSIBLE_UNVERIFIED",
+      "unknowns": [
+        "deflection",
+        "pinch/entrapment",
+        "wet behavior"
+      ],
+      "owner": "DESIGN + STRUCTURAL/HUMAN_FACTORS"
+    },
+    {
+      "id": "M03",
+      "function_refs": [
+        "P02-DFN-01",
+        "P02-DFN-03"
+      ],
+      "principle": "local broadened cap/sleeve over host rail member",
+      "maturity": "PLAUSIBLE_UNVERIFIED",
+      "unknowns": [
+        "host geometry",
+        "grip/lean comfort",
+        "climbability"
+      ],
+      "owner": "DESIGN + HUMAN_FACTORS"
+    },
+    {
+      "id": "M04",
+      "function_refs": [
+        "P02-DFN-04",
+        "P02-DFN-05",
+        "P02-DFN-07"
+      ],
+      "principle": "reversible clamp to existing rail members",
+      "maturity": "PLAUSIBLE_UNVERIFIED_IN_FIELD",
+      "unknowns": [
+        "host member capacity",
+        "clamp slip",
+        "local damage",
+        "permission"
+      ],
+      "owner": "STRUCTURAL/FIELD"
+    },
+    {
+      "id": "M05",
+      "function_refs": [
+        "P02-DFN-04",
+        "P02-DFN-05"
+      ],
+      "principle": "independent floor-supported narrow lean element",
+      "maturity": "PLAUSIBLE_UNVERIFIED",
+      "unknowns": [
+        "base/foundation",
+        "route width",
+        "drainage",
+        "permission"
+      ],
+      "owner": "STRUCTURAL/FIELD"
+    },
+    {
+      "id": "M06",
+      "function_refs": [
+        "P02-DFN-04",
+        "P02-DFN-05"
+      ],
+      "principle": "suspended/tension transfer between verified host points",
+      "maturity": "EXPERIMENTAL_AT_THIS_PROJECT",
+      "unknowns": [
+        "host capacity",
+        "dynamic deflection",
+        "edge interaction"
+      ],
+      "owner": "STRUCTURAL/FIELD"
+    },
+    {
+      "id": "M07",
+      "function_refs": [
+        "P02-DFN-06",
+        "P02-DFN-07"
+      ],
+      "principle": "open standoff + accessible fasteners",
+      "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
+      "unknowns": [
+        "actual dirt/water behavior"
+      ],
+      "owner": "DESIGN/MAINTENANCE"
+    },
+    {
+      "id": "M08",
+      "function_refs": [
+        "P02-DFN-06"
+      ],
+      "principle": "sloped/perforated contact surface",
+      "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
+      "unknowns": [
+        "comfort",
+        "water/debris behavior"
+      ],
+      "owner": "DESIGN/MAINTENANCE"
+    }
+  ],
+  "compatibility": [
+    {
+      "a": "M01",
+      "b": "M04",
+      "state": "CONDITIONAL",
+      "condition": "existing rail/load path and clamp behavior verified"
+    },
+    {
+      "a": "M01",
+      "b": "M05",
+      "state": "CONDITIONAL",
+      "condition": "independent support does not violate passage/edge relation"
+    },
+    {
+      "a": "M01",
+      "b": "M06",
+      "state": "CONDITIONAL",
+      "condition": "suspended support controls movement and edge interaction"
+    },
+    {
+      "a": "M02",
+      "b": "M04",
+      "state": "UNKNOWN",
+      "condition": "requires prototype for deflection/contact + structural clamp verification"
+    },
+    {
+      "a": "M02",
+      "b": "M05",
+      "state": "INCOMPATIBLE_AT_CURRENT_RELATION",
+      "condition": "independent frame plus compliant sling trends toward a larger furniture object and weakens short-lean/non-bench reading"
+    },
+    {
+      "a": "M02",
+      "b": "M06",
+      "state": "CONDITIONAL",
+      "condition": "tension system remains shallow, stable and non-entrapment"
+    },
+    {
+      "a": "M03",
+      "b": "M04",
+      "state": "CONDITIONAL",
+      "condition": "host rail geometry allows sleeve and verified load transfer"
+    },
+    {
+      "a": "M03",
+      "b": "M05",
+      "state": "INCOMPATIBLE",
+      "condition": "host-rail sleeve principle and structurally independent floor support are mutually exclusive support architectures"
+    },
+    {
+      "a": "M03",
+      "b": "M06",
+      "state": "INCOMPATIBLE",
+      "condition": "local cap/sleeve and suspended tension architecture are different mutually exclusive load-transfer families"
+    },
+    {
+      "a": "M04",
+      "b": "M07",
+      "state": "COMPATIBLE",
+      "condition": "service access preserved"
+    },
+    {
+      "a": "M05",
+      "b": "M07",
+      "state": "CONDITIONAL",
+      "condition": "base and passage remain maintainable"
+    },
+    {
+      "a": "M06",
+      "b": "M07",
+      "state": "CONDITIONAL",
+      "condition": "tension hardware remains inspectable"
+    }
+  ],
+  "coupled_bundles": [
+    {
+      "id": "B01",
+      "functions": [
+        "P02-DFN-04",
+        "P02-DFN-05",
+        "P02-DFN-07"
+      ],
+      "name": "HOST_CLAMP_LOAD_SERVICE",
+      "reason": "attachment, load transfer and inspection cannot be chosen independently when relying on existing rail"
+    },
+    {
+      "id": "B02",
+      "functions": [
+        "P02-DFN-02",
+        "P02-DFN-03",
+        "P02-DFN-08"
+      ],
+      "name": "PASSAGE_AFFORDANCE_EDGE",
+      "reason": "depth/position that improves comfort can simultaneously change bench reading, clearance and edge/climb behavior"
+    }
+  ],
+  "contradictions": [
+    {
+      "id": "K01",
+      "relation": "more contact depth/comfort → greater obstruction + stronger bench affordance",
+      "priority": "passage + short-lean relation are locked",
+      "moves": [
+        "keep shallow",
+        "localize contact",
+        "avoid floor footprint"
+      ],
+      "evidence_needed": "human-fit + field clearance"
+    },
+    {
+      "id": "K02",
+      "relation": "rely on existing rail → minimal footprint/reversibility but host structural adequacy becomes critical",
+      "priority": "no structural claim without verification",
+      "moves": [
+        "host-dependent candidate with HOLD",
+        "independent support family for comparison"
+      ],
+      "evidence_needed": "existing rail/base structural verification"
+    },
+    {
+      "id": "K03",
+      "relation": "independent support → independent load path but adds ground occupation/foundation/permission burden",
+      "priority": "passage priority + field-open",
+      "moves": [
+        "narrow independent concept only as bounded alternative",
+        "reject if route clearance/foundation authority fails"
+      ],
+      "evidence_needed": "field geometry + structural/site authority"
+    }
+  ],
+  "concept_families": [
+    {
+      "id": "C-A",
+      "family": "HOST_DEPENDENT_RIGID_CLAMP",
+      "selected_means": [
+        "M01",
+        "M04",
+        "M07"
+      ],
+      "architecture": "shallow rigid contact surface → reversible clamp → existing rail members; open serviceable standoff",
+      "function_coverage": [
+        "P02-DFN-01",
+        "P02-DFN-02",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
+      ],
+      "unresolved": [
+        "P02-DFN-05 existing rail/load-path adequacy",
+        "P02-DFN-08 edge-safety/field relation"
+      ],
+      "completeness": "HOLD",
+      "material_delta": "host-dependent / no ground support / rigid contact",
+      "falsifier": "host rail/base cannot accept required load or clamp cannot preserve clearance/edge conditions",
+      "relation_to_current": "MATCHES CURRENT CAUSAL FAMILY; replay does not independently validate it"
+    },
+    {
+      "id": "C-B",
+      "family": "INDEPENDENT_NARROW_LEAN_ELEMENT",
+      "selected_means": [
+        "M01",
+        "M05",
+        "M07"
+      ],
+      "architecture": "shallow rigid contact surface → narrow independent supports/base → walking surface/foundation",
+      "function_coverage": [
+        "P02-DFN-01",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
+      ],
+      "unresolved": [
+        "P02-DFN-02 passage",
+        "P02-DFN-05 independent base adequacy",
+        "P02-DFN-08 edge-safety",
+        "permission/ground intervention"
+      ],
+      "completeness": "HOLD",
+      "material_delta": "structurally independent from existing rail / adds ground footprint",
+      "falsifier": "required passage or foundation/permission conditions cannot be met",
+      "relation_to_current": "GENUINE ALTERNATIVE FAMILY; not selected by replay"
+    },
+    {
+      "id": "C-C",
+      "family": "HOST_DEPENDENT_COMPLIANT_TENSION",
+      "selected_means": [
+        "M02",
+        "M06",
+        "M07"
+      ],
+      "architecture": "shallow compliant contact band → tension transfer between verified host points → inspectable tension hardware",
+      "function_coverage": [
+        "P02-DFN-01",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
+      ],
+      "unresolved": [
+        "P02-DFN-02 dynamic envelope",
+        "P02-DFN-05 host/tension adequacy",
+        "P02-DFN-08 pinch/edge/climb behavior"
+      ],
+      "completeness": "HOLD",
+      "material_delta": "compliant/tensioned contact + distributed host transfer rather than rigid clamp plate",
+      "falsifier": "deflection/pinch/dynamic envelope or host load transfer invalidates short-lean/edge relation",
+      "relation_to_current": "GENUINE ALTERNATIVE FAMILY; higher human/structural uncertainty"
+    }
+  ],
+  "deduplication": {
+    "raw_combinations_considered": 9,
+    "explicit_incompatible_examples": 3,
+    "unknown_or_conditional_examples": 7,
+    "coherent_families_retained": 3,
+    "cosmetic_variants_not_counted": [
+      "material-only change",
+      "fastener-brand/type change",
+      "small length/depth tuning inside same load-transfer family"
+    ]
+  },
+  "matched_embodiment_requirement": {
+    "status": "CREATED_AS_SCHEMATIC_SVG_IN_THIS_REPLAY",
+    "rule": "All three families shown at the same schematic fidelity; no polished Current rendering is used as the comparison advantage."
+  },
+  "design_review_disposition": {
+    "result": "KEEP_CURRENT_AUTHORITY / REPLAY_SUPPORT_ONLY",
+    "rationale": [
+      "C-A aligns with the Current causal family and the existing Current already contains reversible clamp, drainage/cleaning, replaceability and passage-first logic.",
+      "C-B demonstrates that an independent-load-path concept is materially different, but introduces route-footprint/foundation/permission burdens that remain unverified.",
+      "C-C demonstrates a distinct compliant/tension mechanism but introduces additional dynamic/contact/structural uncertainty.",
+      "Retrospective replay is not independent evidence and therefore cannot reselect or promote P02."
+    ]
+  },
+  "technical_handoffs": [
+    {
+      "concepts": [
+        "C-A",
+        "C-C"
+      ],
+      "question": "existing rail/base load capacity and local attachment/tension effects",
+      "owner": "STRUCTURAL / FIELD AUTHORITY",
+      "status": "NOT_RUN"
+    },
+    {
+      "concepts": [
+        "C-B"
+      ],
+      "question": "independent support/base/foundation and route-clearance consequences",
+      "owner": "STRUCTURAL / SITE / ACCESSIBILITY",
+      "status": "NOT_RUN"
+    },
+    {
+      "concepts": [
+        "C-A",
+        "C-B",
+        "C-C"
+      ],
+      "question": "standing half-lean human fit, protrusion/contact/climb/edge behavior",
+      "owner": "HUMAN FACTORS + FIELD/SAFETY",
+      "status": "NOT_RUN"
+    }
+  ],
+  "method_findings": [
+    "Function decomposition exposed that attachment and load transfer cannot be independent matrix rows.",
+    "Compatibility filtering prevented a naive Cartesian product from being described as viable concepts.",
+    "Three causal concept families remained after bundling/deduplication.",
+    "The replay explains Current P02 as one host-dependent rigid-clamp architecture while preserving alternatives and field HOLDs.",
+    "The extension did not create structural, accessibility or field PASS."
+  ],
+  "claim_ceiling": "RETROSPECTIVE METHOD REPLAY / CONCEPT-SPACE CLARIFICATION ONLY / CURRENT NOT REOPENED / TECHNICAL TESTS NOT_RUN / FIELD HOLD / NO PROMOTION"
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "c04-function-concept-replay-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "P02-RAILING-LEAN-REST",
+  "extension": "oleander-design-process/FUNCTION_TO_CONCEPT_SYNTHESIS_EXTENSION.md",
+  "purpose": "Bounded retrospective replay of function-to-concept synthesis against the existing P02 Current object without reopening Current authority.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+      "blob_sha": "dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "3019027c806eef4571be7d97b313d300499d1e1a"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+      "blob_sha": "158f1c2e3fb51b2508674d131d80f670dcbf55b3"
+    }
+  ],
+  "replay_artifacts": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/function-concept-replay/v0.1/C04_P02_FUNCTION_CONCEPT_REPLAY_v0.1.json",
+      "blob_sha": "2f00c5c9ade7b3b54e80e385c2323fea4212ff5d",
+      "role": "MACHINE_READABLE_FUNCTION_MEANS_CONCEPT_MODEL"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/function-concept-replay/v0.1/C04_P02_CONCEPT_FAMILIES_MATCHED_v0.1.svg",
+      "blob_sha": "112d4828bc1b157fb4f105a650d07f04599f295d",
+      "role": "EDITABLE_MATCHED_FIDELITY_CONCEPT_VIEW"
+    }
+  ],
+  "rendered_readback": {
+    "result": "PASS_SUPPORT",
+    "method": "Inkscape SVG→PNG render followed by direct visual readback",
+    "png_dimensions": [
+      1800,
+      1120
+    ],
+    "png_bytes": 314240,
+    "png_sha256": "b728e34d83ed9d78f0d3c300b459484b96ec58ace0185dc6bd6b797dcbb010dd",
+    "findings": [
+      "All three concept families are shown at comparable schematic fidelity.",
+      "C-A, C-B and C-C remain visually distinguishable by load-transfer/contact architecture rather than color/material styling.",
+      "Compatibility/dedup notes remain readable at the intended review scale.",
+      "After Functional Architecture alignment, local design-function IDs were changed from F01–F08 to P02-DFN-01–08 and the artifact was re-rendered successfully."
+    ],
+    "boundary": "Visual readability/support pass only; this does not validate ergonomics, structure, edge safety, passage, permission or field conditions."
+  },
+  "synthesis_results": {
+    "raw_combinations_considered": 9,
+    "explicit_incompatible_examples": 3,
+    "unknown_or_conditional_examples": 7,
+    "coherent_concept_families": 3,
+    "families": [
+      {
+        "id": "C-A",
+        "name": "HOST_DEPENDENT_RIGID_CLAMP",
+        "relation_to_current": "MATCHES CURRENT CAUSAL FAMILY",
+        "technical_state": "HOLD"
+      },
+      {
+        "id": "C-B",
+        "name": "INDEPENDENT_NARROW_LEAN_ELEMENT",
+        "relation_to_current": "GENUINE ALTERNATIVE FAMILY",
+        "technical_state": "HOLD"
+      },
+      {
+        "id": "C-C",
+        "name": "HOST_DEPENDENT_COMPLIANT_TENSION",
+        "relation_to_current": "GENUINE ALTERNATIVE FAMILY",
+        "technical_state": "HOLD"
+      }
+    ],
+    "method_delta": [
+      "Attachment and load transfer were treated as coupled rather than independent rows.",
+      "Known incompatible and unresolved combinations were removed/held before counting concepts.",
+      "Material/fastener/small-dimension variants were not counted as separate concept families.",
+      "A matched embodiment view was created before comparing concept families."
+    ]
+  },
+  "current_disposition": {
+    "result": "KEEP_CURRENT_AUTHORITY",
+    "reason": "Retrospective replay is not blind or independent and therefore cannot reselect the already-Current P02; it only demonstrates that the function→principle→compatibility→concept mechanism can reconstruct a broader causal option space while preserving Current truth boundaries."
+  },
+  "technical_and_field_readback": {
+    "structural": "NOT_RUN",
+    "human_factors": "NOT_RUN",
+    "passage_accessibility": "NOT_RUN",
+    "edge_safety": "NOT_RUN",
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO"
+  },
+  "maturity": "PROJECT_REPLAY_EVIDENCE / CURRENT FUNCTIONAL-ARCHITECTURE ALIGNED / ONE PROJECT OBJECT / FUNCTION_DEPENDENCY + COMPATIBILITY + THREE CAUSAL FAMILIES + MATCHED EDITABLE EMBODIMENT / TECHNICAL TESTS NOT_RUN / CROSS_CONTEXT EVIDENCE REQUIRED / NO PROMOTION",
+  "claim_ceiling": "Method replay and concept-space clarification only; no technical feasibility, human-factor, field, construction or promotion claim.",
+  "namespace_alignment": {
+    "system_owner": "OLEANDER system-level Functional Architecture uses F* IDs for OLEANDER system functions.",
+    "local_rule": "Project/design-object function records use object-scoped DFN IDs and do not enter the system Function Catalogue.",
+    "repair": "F01–F08 → P02-DFN-01–08",
+    "result": "PASS_NO_NAMESPACE_COLLISION"
+  }
+}
