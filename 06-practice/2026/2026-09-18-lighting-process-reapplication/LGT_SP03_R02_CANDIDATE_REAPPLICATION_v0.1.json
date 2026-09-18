@@ -1,0 +1,174 @@
+{
+  "schema_version": "lighting-candidate-practice-reapplication/0.1",
+  "practice_id": "SP03-R02-LIGHT-PERFORMANCE-INTERFACE",
+  "candidate_process_id": "OLEANDER-LIGHTING-DESIGN-PROCESS",
+  "candidate_process_version": "1.0-CANDIDATE",
+  "state": "SYNTHETIC_PRACTICE_EVIDENCE / PROJECT_REALITY_OPEN / NO PROFESSIONAL_LIGHTING_PASS / NO_PROMOTION",
+  "source_branch": {
+    "name": "practice/2026-08-11-sp03-r02-light-performance-interface",
+    "head_sha": "95c4543db17dc0e98459c967a4e36a5bb4cd92e3"
+  },
+  "source_bindings": [
+    {
+      "path": "practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/README.md",
+      "blob_sha": "747c7fc65d03987d3656ad0aed92bbbc82bd60d4",
+      "role": "PRACTICE_SUMMARY_AND_TRUTH_BOUNDARY"
+    },
+    {
+      "path": "practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/input_contract.json",
+      "blob_sha": "d77b6fc0d6052e2e8fc3b0da184b0a9e0ef8aec7",
+      "role": "MODEL_CONFIGURATION_AND_CONTROLLED_COMPARISON"
+    },
+    {
+      "path": "practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/evidence_snapshot.json",
+      "blob_sha": "199960372c6aaab0cc575185b74f4a0a92eb6dec",
+      "role": "RUNTIME_AND_RESULT_EVIDENCE"
+    },
+    {
+      "path": "practice/2026/2026-08-11_SP03-R02_Light-Performance-Interface/FINAL_ARTIFACT_REVIEW.md",
+      "blob_sha": "a425aa3661a4e5c81abedbde2024da70835e974b",
+      "role": "INDEPENDENT_ARTIFACT_REVIEW_WITH_PROJECT_GATE_OPEN"
+    }
+  ],
+  "exercise_boundary": {
+    "synthetic_room_m": [
+      12,
+      6,
+      3.6
+    ],
+    "real_project_geometry": false,
+    "real_project_orientation": false,
+    "real_project_materials": false,
+    "real_project_weather_time": false,
+    "project_specific_thresholds": false,
+    "user_task_outcome_validation": false,
+    "project_reality_gate": "OPEN",
+    "field_observed": 0,
+    "project_promotion": false
+  },
+  "runtime_evidence": {
+    "radiance": "6.0a",
+    "evalglare": "3.06 release 01.10.2025",
+    "pyradiance": "1.2.4",
+    "simulations_rtrace": 8,
+    "hdr_fisheye_renders": 16,
+    "evalglare_runs": 16,
+    "sensors_per_case": 288,
+    "final_practice_run_number": 6,
+    "final_practice_run_id": 31457344868,
+    "artifact_digest": "sha256:abe1512e849c17054fd8b92d89c8044f70b891a40da0dd04267a052328b02436",
+    "reproduction_class": "NUMERICALLY_STABLE_NOT_BYTE_IDENTICAL"
+  },
+  "candidate_stage_reapplication": [
+    {
+      "stage_id": "LGT-00",
+      "status": "PARTIAL_PRACTICE_SUPPORT",
+      "supported": [
+        "explicit light-role target",
+        "explicit comparison question",
+        "custom heuristic clearly labelled non-standard",
+        "project-specific absolute criteria intentionally absent"
+      ],
+      "open": [
+        "real users/tasks/context",
+        "current project criteria/standards",
+        "actual Lighting appointment/responsibility"
+      ],
+      "does_not_prove": "real project lighting brief"
+    },
+    {
+      "stage_id": "LGT-01",
+      "status": "PRACTICE_SUPPORT",
+      "supported": [
+        "two materially different aperture/light-role concepts",
+        "same-room/same-area/same-material/same-sky controlled comparison",
+        "diffuse and directional sky conditions",
+        "no universal winner claimed"
+      ],
+      "open": [
+        "actual location/orientation/weather",
+        "actual project geometry/material/daylight controls"
+      ],
+      "does_not_prove": "project daylight concept robustness"
+    },
+    {
+      "stage_id": "LGT-02",
+      "status": "PRACTICE_SUPPORT",
+      "supported": [
+        "explicit sensor workplane and viewpoints",
+        "real Radiance illuminance simulation",
+        "real evalglare DGP evaluations",
+        "model/runtime versions recorded",
+        "uniformity and role-order tradeoff retained",
+        "metric result not promoted to comfort/compliance threshold"
+      ],
+      "open": [
+        "real project criterion source",
+        "real material optical properties",
+        "project-specific glare/task geometry"
+      ],
+      "does_not_prove": "project compliance or comfort"
+    },
+    {
+      "stage_id": "LGT-06",
+      "status": "PRACTICE_SUPPORT",
+      "supported": [
+        "failure-seeking revision chain",
+        "runtime PASS separated from artifact review",
+        "A/B visualization scale defect repaired",
+        "evalglare schema parsing defect repaired",
+        "observed numerical stability bounded as not byte-identical"
+      ],
+      "open": [
+        "physical mockup",
+        "actual product/optic/material configuration",
+        "field correlation"
+      ],
+      "does_not_prove": "installed or physical lighting verification"
+    },
+    {
+      "stage_id": "LGT-03",
+      "status": "NOT_EXERCISED",
+      "reason": "No real luminaire/product/optic/driver selection or architectural integration object."
+    },
+    {
+      "stage_id": "LGT-04",
+      "status": "NOT_EXERCISED",
+      "reason": "No real lighting-control system/group/address/sequence implementation."
+    },
+    {
+      "stage_id": "LGT-05",
+      "status": "NOT_EXERCISED",
+      "reason": "No real exterior/landscape/façade/night receptor problem."
+    },
+    {
+      "stage_id": "LGT-07",
+      "status": "NOT_EXERCISED",
+      "reason": "No specification/procurement/submittal/substitution/construction package."
+    },
+    {
+      "stage_id": "LGT-08",
+      "status": "NOT_EXERCISED",
+      "reason": "No installed lighting, aiming, control commissioning or field measurement."
+    },
+    {
+      "stage_id": "LGT-09",
+      "status": "NOT_EXERCISED",
+      "reason": "No real maintenance/replacement/post-occupancy system."
+    }
+  ],
+  "method_findings": [
+    "Photometric evidence must bind the exact model/runtime configuration and may still remain project-inapplicable.",
+    "A controlled simulation can expose tradeoffs and inversion conditions without selecting a universal winner.",
+    "A green runtime workflow is not equivalent to reviewed lighting evidence.",
+    "Parser/schema mistakes can invalidate downstream interpretations even when the simulation engine ran correctly.",
+    "Synthetic practice evidence can exercise method mechanics while the professional Project Reality gate remains OPEN."
+  ],
+  "professional_disposition": {
+    "result": "KEEP_AS_BOUNDED_PRACTICE_EVIDENCE",
+    "project_exercise_counted": false,
+    "professional_lighting_pass": false,
+    "current_process_promotion": false
+  },
+  "claim_ceiling": "LGT-01/LGT-02/LGT-06 METHOD PRACTICE SUPPORT ONLY / SYNTHETIC CELL / PROJECT REALITY OPEN / NO PRODUCTION / NO COMMISSIONING / NO PROFESSIONAL PASS / NO PROMOTION"
+}
