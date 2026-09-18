@@ -306,8 +306,8 @@ def decide_continuous_execution(
 
 def validate_resolver() -> dict:
     data = load_json(RESOLVER)
-    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.5":
-        fail("Current resolver must be v1.2 implementation revision 1.2.5")
+    if data.get("version") != "1.2" or data.get("implementation_revision") != "1.2.6":
+        fail("Current resolver must be v1.2 implementation revision 1.2.6")
     if data.get("status") != "ACTIVE_CURRENT":
         fail("Current resolver must remain ACTIVE_CURRENT")
 
