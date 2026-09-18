@@ -1,0 +1,2079 @@
+{
+  "schema_version": "1.0",
+  "kind": "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION",
+  "process_id": "OLEANDER-ARCHITECTURE-DESIGN-DEVELOPMENT-PROCESS",
+  "domain": "Architecture",
+  "version": "1.0",
+  "title": "OLEANDER Architecture Design Development Process v1.0",
+  "purpose": "Machine-readable carrier of the Current Architecture ADD-00…17 professional reference process, preserving its native planning/development semantics while exposing the same R-E interface, readback, assurance and claim-ceiling contract used by other professional domains.",
+  "scope_in": [
+    "architecture scope/authority",
+    "site/context/arrival",
+    "brief/users/operational states",
+    "program/room briefs",
+    "adjacency/zoning/flows/circulation",
+    "life-safety/accessibility-aware planning",
+    "service/hygiene/security",
+    "structure/MEP/envelope fit-back",
+    "environmental/landscape integration",
+    "room/FF&E usability",
+    "area/cost/lifecycle",
+    "existing/phasing",
+    "code-response matrix",
+    "independent plan/section review"
+  ],
+  "scope_out": [
+    "formal statutory approvals owned elsewhere",
+    "structural/MEP/landscape/interior/lighting specialist PASS",
+    "contractor means/methods unless appointed",
+    "field/as-built truth without evidence",
+    "automatic construction/handover services outside appointment",
+    "automatic Design KEEP or Promotion"
+  ],
+  "authority_position": "Current Architecture reference process subordinate to OLEANDER Master Runtime, Current Knowledge Authority, Professional Domain Process Contract, Cross-Disciplinary Integration, project/jurisdiction authority and responsible architect. This JSON is a machine-readable carrier of the existing Current prose process, not a second Architecture process.",
+  "current_definition_ref": "00-governance/architecture-design-development-process-v1.0.md",
+  "trigger": {
+    "project_flow_trigger": "A project makes a material architectural planning/design-development claim requiring room, flow, zoning, plan/section, code-aware, system-fit or architectural independent-review evidence.",
+    "design_question_types": [
+      "architectural brief/program",
+      "site/arrival",
+      "adjacency/zoning/options",
+      "flow/circulation",
+      "room usability",
+      "plan/section/system coordination",
+      "code-aware planning",
+      "existing/phasing",
+      "independent architectural review"
+    ],
+    "responsibility_triggers": [
+      "Architecture owns or coordinates a consequential spatial/shared variable",
+      "another domain consumes architectural geometry/use/level/opening/room variables",
+      "architectural Design KEEP is being considered"
+    ],
+    "claim_ceiling_rule": "The lowest valid ceiling across project/program/site authority, current architecture stage evidence, specialist interfaces, actual readback and independent review governs.",
+    "not_triggered_when": [
+      "artifact is presentation-only with no architectural claim",
+      "task is wholly owned by another profession without architectural shared variable"
+    ],
+    "mandatory_reopen_triggers": [
+      "program/occupancy",
+      "site/survey/existing condition",
+      "plan/section/level",
+      "zoning/flow/circulation",
+      "structure/MEP/envelope",
+      "fire/accessibility/code",
+      "landscape/threshold",
+      "FF&E/equipment",
+      "area/cost/lifecycle",
+      "field/retention/phasing",
+      "independent review baseline"
+    ]
+  },
+  "knowledge_binding": {
+    "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "consequential_knowledge_rule": "Consequential architectural brief, regulatory, precedent, technical, site/user/operation and existing-condition knowledge must be admitted through the task/claim Operational Mount before supporting closure.",
+    "required_methods": [
+      "architecture planning/design-development",
+      "plan/section spatial reasoning",
+      "option comparison",
+      "room/use/flow readback",
+      "cross-disciplinary fit-back",
+      "independent architectural review"
+    ],
+    "theory_routes": [
+      "architectural planning",
+      "spatial organization",
+      "building typology/program",
+      "environmental design",
+      "existing/adaptive reuse",
+      "design quality"
+    ],
+    "source_routes": [
+      "project brief/program",
+      "survey/site/existing-condition sources",
+      "current jurisdiction requirements",
+      "consultant/specialist inputs",
+      "operations/user evidence"
+    ],
+    "evidence_routes": [
+      "plans/sections/models",
+      "room/area/flow matrices",
+      "technical coordination evidence",
+      "field/existing evidence where claimed",
+      "review/readback records"
+    ],
+    "standard_code_routes": [
+      "current jurisdiction building/fire/accessibility/environmental/site requirements as applicable"
+    ],
+    "precedent_case_routes": [
+      "bounded architectural precedents with applicable program/site/technical relation"
+    ],
+    "practice_routes": [
+      "Current OLEANDER architecture projects and failure/readback evidence"
+    ],
+    "tool_knowledge_routes": [
+      "current CAD/BIM/GIS/model/render/data tools when used; tool does not own professional judgment"
+    ]
+  },
+  "stages": [
+    {
+      "stage_id": "ADD-00",
+      "stage_name": "Scope, authority and claim ceiling",
+      "professional_question": "Is the architectural scope and authority sufficient to begin bounded development without inventing program, survey, occupancy, code or existing-condition truth?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "project brief",
+        "stage/scope",
+        "jurisdiction state",
+        "site/survey/existing-condition authority",
+        "program/occupancy authority"
+      ],
+      "knowledge_inputs": [
+        "architecture responsibility",
+        "claim ceiling",
+        "knowledge/evidence authority"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ARCHITECTURE_SCOPE_AUTHORITY_REGISTER",
+        "Architecture Basis / Responsibility Matrix",
+        "Survey / Existing-Condition Authority & Change Register",
+        "initial open-item/claim-ceiling record"
+      ],
+      "interface_requirements": [
+        "Client/Project Authority",
+        "Survey/Site Authority",
+        "Cross-Disciplinary Integration"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD00-SURVEY",
+          "source_domain": "Survey/Site Authority",
+          "source_stage_ref": null,
+          "direction": "IN",
+          "shared_variables": [
+            "site boundary",
+            "datum",
+            "levels",
+            "existing geometry"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current survey/existing-condition authority",
+          "change_reopen_rule": "Reopen when survey/base/existing-condition authority changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "user/program consequences remain assumptions until authority is established"
+      ],
+      "design_language_consequences": [
+        "architectural intent is bounded by current authority"
+      ],
+      "technical_consequences": [
+        "later geometry/code/system claims inherit the authority ceiling"
+      ],
+      "content_projection_requirements": [
+        "show verified/inferred/open states"
+      ],
+      "required_readback": [
+        "source/authority readback",
+        "FIELD_OBSERVED/FIELD_MEASURED state where relevant"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "later design work outside current ceiling"
+      ],
+      "exit_conditions": [
+        "scope/authority/claim boundary explicit"
+      ],
+      "reopen_triggers": [
+        "brief, survey, occupancy, jurisdiction or existing-condition authority change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_SCOPE_AUTHORITY",
+      "does_not_prove": [
+        "survey accuracy",
+        "code compliance",
+        "program correctness",
+        "field truth",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "ADD-01",
+      "stage_name": "Site, context and arrival systems",
+      "professional_question": "Does the site/arrival system support the project use, service, emergency and accessible approach within current evidence?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "scope authority",
+        "site/context evidence",
+        "arrival/service/emergency inputs"
+      ],
+      "knowledge_inputs": [
+        "site planning",
+        "external flows",
+        "climate/noise/heritage/landscape context"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site access + external flow diagram",
+        "Survey / Existing-Condition Authority & Change Register",
+        "site/context consequence record"
+      ],
+      "interface_requirements": [
+        "Landscape Architecture",
+        "Civil",
+        "Fire/Life Safety",
+        "Accessibility"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD01-LA",
+          "source_domain": "Landscape Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "arrival",
+            "external routes",
+            "outdoor program",
+            "trees/landscape"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current site/landscape/architecture evidence",
+          "change_reopen_rule": "Reopen when site/external-space strategy changes."
+        },
+        {
+          "interface_binding_id": "ADD01-FIRE",
+          "source_domain": "Fire/Life Safety",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "emergency access",
+            "fire-service approach"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current fire/emergency access input",
+          "change_reopen_rule": "Reopen when access/occupancy/fire strategy changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "arrival, accessibility and service conflicts are explicit"
+      ],
+      "design_language_consequences": [
+        "building placement/approach follows site logic rather than render composition"
+      ],
+      "technical_consequences": [
+        "site flows constrain later plan/section decisions"
+      ],
+      "content_projection_requirements": [
+        "show source and evidence boundaries"
+      ],
+      "required_readback": [
+        "external-flow conflict readback",
+        "site-to-building accessible/emergency continuity"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "detailed landscape/civil/statutory work"
+      ],
+      "exit_conditions": [
+        "site/arrival relations coherent at current ceiling"
+      ],
+      "reopen_triggers": [
+        "site boundary, access, landscape, emergency or climate evidence change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_SITE_CONTEXT",
+      "does_not_prove": [
+        "surveyed field condition",
+        "landscape professional PASS",
+        "civil/fire/accessibility approval",
+        "final grading/drainage"
+      ]
+    },
+    {
+      "stage_id": "ADD-02",
+      "stage_name": "Brief, users and operational states",
+      "professional_question": "Are users, operating states and temporal conditions explicit enough to govern planning?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "project brief",
+        "stakeholder/use information",
+        "operational constraints"
+      ],
+      "knowledge_inputs": [
+        "user groups",
+        "time states",
+        "service/cleaning/emergency operation"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-03",
+        "DD-11"
+      ],
+      "required_native_outputs": [
+        "USER_OPERATION_MATRIX",
+        "Program / Room Brief Change Register"
+      ],
+      "interface_requirements": [
+        "Client/Operator",
+        "HCD/Service",
+        "Fire/Life Safety"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD02-OPS",
+          "source_domain": "Client/Operator",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "users",
+            "hours",
+            "events",
+            "cleaning/service states"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current brief/operations authority",
+          "change_reopen_rule": "Reopen when user/operation states change."
+        }
+      ],
+      "human_experience_consequences": [
+        "peak/degraded/after-hours/emergency user conditions become explicit"
+      ],
+      "design_language_consequences": [
+        "one static plan cannot substitute for operating-state design"
+      ],
+      "technical_consequences": [
+        "operating states drive zoning/flow/service requirements"
+      ],
+      "content_projection_requirements": [
+        "show state-specific use rather than generic persona labels"
+      ],
+      "required_readback": [
+        "user/state coverage readback",
+        "conflicting-state audit"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "future detailed user research where not in architecture scope"
+      ],
+      "exit_conditions": [
+        "material operating states explicit"
+      ],
+      "reopen_triggers": [
+        "program/user/operation change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_USER_OPERATION",
+      "does_not_prove": [
+        "professional HCD research",
+        "final occupancy approval",
+        "operational performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-03",
+      "stage_name": "Program and room-level brief",
+      "professional_question": "Are room requirements resolved beyond area labels into usable spatial/technical conditions?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "USER_OPERATION_MATRIX",
+        "program authority",
+        "equipment/FF&E/service assumptions"
+      ],
+      "knowledge_inputs": [
+        "room planning",
+        "occupancy",
+        "equipment/service/access"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-04",
+        "DD-05",
+        "DD-06"
+      ],
+      "required_native_outputs": [
+        "ROOM_BRIEF_REGISTER",
+        "Program / Room Brief Change Register",
+        "Room / Equipment / FF&E Interface Register"
+      ],
+      "interface_requirements": [
+        "Interior Design",
+        "MEP",
+        "Accessibility",
+        "Fire/Life Safety"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD03-ID",
+          "source_domain": "Interior Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "room function",
+            "FF&E/equipment",
+            "clearances",
+            "finishes where material"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current room brief plus interior inputs",
+          "change_reopen_rule": "Reopen when room/FF&E requirements change."
+        },
+        {
+          "interface_binding_id": "ADD03-MEP",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "water",
+            "drainage",
+            "exhaust",
+            "power",
+            "data",
+            "equipment"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current room brief plus MEP requirements",
+          "change_reopen_rule": "Reopen when room service/equipment loads change."
+        }
+      ],
+      "human_experience_consequences": [
+        "rooms support actual body/use/equipment relations"
+      ],
+      "design_language_consequences": [
+        "room proportions follow use rather than area-only packing"
+      ],
+      "technical_consequences": [
+        "technical service/access constraints enter the brief"
+      ],
+      "content_projection_requirements": [
+        "project room criteria with authority state"
+      ],
+      "required_readback": [
+        "representative room-brief completeness readback",
+        "area/equipment/access contradiction attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "later detailed interiors/MEP/code verification"
+      ],
+      "exit_conditions": [
+        "critical room requirements explicit"
+      ],
+      "reopen_triggers": [
+        "program, occupancy, equipment, accessibility or service change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_ROOM_BRIEF",
+      "does_not_prove": [
+        "room usability in final geometry",
+        "interior professional PASS",
+        "MEP/fire/accessibility approval"
+      ]
+    },
+    {
+      "stage_id": "ADD-04",
+      "stage_name": "Adjacency and separation logic",
+      "professional_question": "Are required relationships and separations explicit before zoning geometry locks?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "ROOM_BRIEF_REGISTER",
+        "user/operation states"
+      ],
+      "knowledge_inputs": [
+        "adjacency",
+        "security/acoustic/hygiene/service separation"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05"
+      ],
+      "required_native_outputs": [
+        "ADJACENCY_MATRIX",
+        "relationship diagram"
+      ],
+      "interface_requirements": [
+        "Operations",
+        "Interior Design",
+        "MEP"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD04-OPS",
+          "source_domain": "Operations",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "controlled connections",
+            "service separation",
+            "security/hygiene"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current operations plus adjacency model",
+          "change_reopen_rule": "Reopen when operational separation changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "user/service conflict is exposed before plan commitment"
+      ],
+      "design_language_consequences": [
+        "spatial relationships precede graphic zoning"
+      ],
+      "technical_consequences": [
+        "separation requirements drive later plan/door/service decisions"
+      ],
+      "content_projection_requirements": [
+        "matrix includes rationale, not color only"
+      ],
+      "required_readback": [
+        "adjacency contradiction readback",
+        "must-adjacent/avoid-adjacent trace"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "final geometry"
+      ],
+      "exit_conditions": [
+        "relationship model coherent enough for options"
+      ],
+      "reopen_triggers": [
+        "room/program/operation relation change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_RELATIONSHIP_MODEL",
+      "does_not_prove": [
+        "working plan",
+        "acoustic/fire/security compliance"
+      ]
+    },
+    {
+      "stage_id": "ADD-05",
+      "stage_name": "Zoning alternatives and selection",
+      "professional_question": "Are materially different zoning strategies compared against fixed architectural and technical criteria?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "ADJACENCY_MATRIX",
+        "site/context",
+        "program/operation",
+        "current technical constraints"
+      ],
+      "knowledge_inputs": [
+        "option generation",
+        "trade-offs",
+        "selection rationale"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-04",
+        "DD-10"
+      ],
+      "required_native_outputs": [
+        "ZONING_OPTION_SET",
+        "ZONING_SELECTION_RECEIPT"
+      ],
+      "interface_requirements": [
+        "Structural Engineering",
+        "MEP",
+        "Landscape Architecture",
+        "Fire/Life Safety"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD05-STRUCT",
+          "source_domain": "Structural Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "span/grid/transfer implications"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current structural concept input plus zoning options",
+          "change_reopen_rule": "Reopen when zoning or structural strategy changes."
+        },
+        {
+          "interface_binding_id": "ADD05-MEP",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "plant/risers/system zoning/service access"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current MEP concept input plus zoning options",
+          "change_reopen_rule": "Reopen when zoning/system topology changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "alternatives preserve user/operational differences"
+      ],
+      "design_language_consequences": [
+        "distinct architectural strategies, not cosmetic plan variants"
+      ],
+      "technical_consequences": [
+        "technical cost and interfaces are visible in selection"
+      ],
+      "content_projection_requirements": [
+        "driver→move→consequence→technical cost→keep/reject"
+      ],
+      "required_readback": [
+        "matched-fidelity option comparison",
+        "selection rationale/counterevidence readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "detailed plan/section"
+      ],
+      "exit_conditions": [
+        "retained zoning strategy selected with rejected rationale"
+      ],
+      "reopen_triggers": [
+        "program/site/system/code strategy change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_ZONING_SELECTION",
+      "does_not_prove": [
+        "detailed feasibility",
+        "specialist approvals",
+        "Design KEEP"
+      ]
+    },
+    {
+      "stage_id": "ADD-06",
+      "stage_name": "Flow systems",
+      "professional_question": "Do all material user, service, accessible, emergency and maintenance flows work by time state?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "selected zoning",
+        "USER_OPERATION_MATRIX",
+        "service/emergency inputs"
+      ],
+      "knowledge_inputs": [
+        "flow networks",
+        "conflict/crossing",
+        "alternate/degraded routes"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06"
+      ],
+      "required_native_outputs": [
+        "FLOW_SYSTEM_MATRIX",
+        "flow drawings"
+      ],
+      "interface_requirements": [
+        "Operations",
+        "Accessibility",
+        "Fire/Life Safety",
+        "MEP"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD06-FIRE",
+          "source_domain": "Fire/Life Safety",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "evacuation/emergency movement",
+            "controlled doors"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current architecture flow plus fire input",
+          "change_reopen_rule": "Reopen when flow/occupancy/exit strategy changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "peak, service and emergency conflicts become visible"
+      ],
+      "design_language_consequences": [
+        "movement hierarchy informs spatial sequence"
+      ],
+      "technical_consequences": [
+        "flow states constrain doors/circulation/service geometry"
+      ],
+      "content_projection_requirements": [
+        "separate flow classes and time states"
+      ],
+      "required_readback": [
+        "conflict/crossing/pinch-point readback",
+        "alternate/degraded route readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "formal egress/accessibility approval"
+      ],
+      "exit_conditions": [
+        "material flow networks coherent"
+      ],
+      "reopen_triggers": [
+        "zoning, occupancy, access-control, service or emergency change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_FLOW_SYSTEMS",
+      "does_not_prove": [
+        "code compliance",
+        "capacity verification",
+        "field operation"
+      ]
+    },
+    {
+      "stage_id": "ADD-07",
+      "stage_name": "Horizontal and vertical circulation",
+      "professional_question": "Does circulation geometry remain legible, continuous and usable under peak and accessible conditions?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "flow systems",
+        "plan/section geometry",
+        "vertical transport inputs"
+      ],
+      "knowledge_inputs": [
+        "corridors",
+        "stairs/ramps/lifts",
+        "landings",
+        "doors/queues",
+        "void edges"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05"
+      ],
+      "required_native_outputs": [
+        "CIRCULATION_READBACK",
+        "Plan / Section / Level Coordination Register"
+      ],
+      "interface_requirements": [
+        "Accessibility",
+        "Fire/Life Safety",
+        "Vertical Transportation",
+        "Structural Engineering"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD07-VT",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "lift/core/vertical-transport geometry"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current circulation/core plus vertical transport input",
+          "change_reopen_rule": "Reopen when vertical circulation/core changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "actual body/queue/peak conditions are tested"
+      ],
+      "design_language_consequences": [
+        "circulation is spatial structure, not residual area"
+      ],
+      "technical_consequences": [
+        "plan/section continuity and clearances are explicit"
+      ],
+      "content_projection_requirements": [
+        "show stairs/ramps/lifts/doors/queues in real geometry"
+      ],
+      "required_readback": [
+        "plan-section vertical route readback",
+        "pinch/door/queue attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "formal code/accessibility approval"
+      ],
+      "exit_conditions": [
+        "critical circulation geometry credible"
+      ],
+      "reopen_triggers": [
+        "flow, level, core, door or accessibility change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_CIRCULATION",
+      "does_not_prove": [
+        "egress/accessibility compliance",
+        "final capacity"
+      ]
+    },
+    {
+      "stage_id": "ADD-08",
+      "stage_name": "Life-safety-aware and accessibility-aware planning",
+      "professional_question": "Has architecture integrated material life-safety/accessibility constraints without claiming external approvals?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current plan/section",
+        "occupancy assumptions",
+        "specialist/code inputs"
+      ],
+      "knowledge_inputs": [
+        "egress awareness",
+        "compartments/openings",
+        "accessible route/use"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "life_safety_aware_planning_state",
+        "accessibility_aware_planning_state",
+        "Code / Life-Safety / Accessibility Interface Register"
+      ],
+      "interface_requirements": [
+        "Fire/Life Safety",
+        "Accessibility",
+        "Structural Engineering",
+        "MEP"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD08-FIRE",
+          "source_domain": "Fire/Life Safety",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "occupancy",
+            "travel",
+            "exits/stairs",
+            "compartments/openings"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current fire strategy + architecture geometry",
+          "change_reopen_rule": "Reopen when occupancy/plan/section/fire strategy changes."
+        },
+        {
+          "interface_binding_id": "ADD08-ACC",
+          "source_domain": "Accessibility",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "routes",
+            "doors",
+            "turning",
+            "ramps/lifts",
+            "toilets/assembly"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current accessibility criteria + architecture geometry",
+          "change_reopen_rule": "Reopen when route/level/door/room use changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "inclusive and emergency use is designed into geometry"
+      ],
+      "design_language_consequences": [
+        "safety/accessibility constraints are integrated, not overlaid late"
+      ],
+      "technical_consequences": [
+        "code-dependent interfaces remain explicit"
+      ],
+      "content_projection_requirements": [
+        "show requirement/response/owner/evidence/status"
+      ],
+      "required_readback": [
+        "route/exit/opening graph readback",
+        "specialist interface status readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "formal statutory/specialist approval"
+      ],
+      "exit_conditions": [
+        "architectural response present within evidence ceiling"
+      ],
+      "reopen_triggers": [
+        "occupancy/code/fire/accessibility geometry change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_SAFETY_ACCESS_RESPONSE",
+      "does_not_prove": [
+        "regulatory compliance",
+        "fire/accessibility professional PASS"
+      ]
+    },
+    {
+      "stage_id": "ADD-09",
+      "stage_name": "Service, hygiene, supervision and security",
+      "professional_question": "Are service/hygiene/safeguarding/security operations spatially resolved?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "plan/zoning",
+        "operations states",
+        "service/security inputs"
+      ],
+      "knowledge_inputs": [
+        "wet/dry clean/dirty",
+        "loading/waste",
+        "supervision/access control"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06"
+      ],
+      "required_native_outputs": [
+        "OPERATIONS_SECURITY_HYGIENE_MATRIX"
+      ],
+      "interface_requirements": [
+        "Operations",
+        "MEP",
+        "Security",
+        "Food/Kitchen specialist"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD09-MEP",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "wet services",
+            "kitchen/lab exhaust",
+            "waste/service"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current architectural support spaces + MEP input",
+          "change_reopen_rule": "Reopen when service/hygiene systems change."
+        }
+      ],
+      "human_experience_consequences": [
+        "staff/user/service/safeguarding conflicts are explicit"
+      ],
+      "design_language_consequences": [
+        "back-of-house relations support overall spatial clarity"
+      ],
+      "technical_consequences": [
+        "support-space/service needs are geometrically credible"
+      ],
+      "content_projection_requirements": [
+        "show service/hygiene/security states and boundaries"
+      ],
+      "required_readback": [
+        "clean/dirty/service/supervision readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "specialist security/food/hygiene approval"
+      ],
+      "exit_conditions": [
+        "operational support relations credible"
+      ],
+      "reopen_triggers": [
+        "operation/service/security/hygiene change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_OPERATIONS_SUPPORT",
+      "does_not_prove": [
+        "specialist approval",
+        "operational performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-10",
+      "stage_name": "Structure, MEP and envelope fit-back",
+      "professional_question": "Does current architecture still work after real structure/MEP/envelope constraints are applied?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current plan/section",
+        "structural design",
+        "MEP design",
+        "envelope inputs"
+      ],
+      "knowledge_inputs": [
+        "grid/spans",
+        "risers/plant/ceilings",
+        "openings/shading/roof/drainage",
+        "replacement access"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ARCH_SYSTEM_FITBACK_RECEIPT",
+        "Plan / Section / Level Coordination Register",
+        "Opening / Envelope / Door Interface Register"
+      ],
+      "interface_requirements": [
+        "Structural Engineering",
+        "Building Services / MEP",
+        "Envelope",
+        "Interior Design"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD10-STRUCT",
+          "source_domain": "Structural Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "grid",
+            "spans",
+            "transfers",
+            "openings",
+            "movement joints"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current structural + architectural geometry",
+          "change_reopen_rule": "Reopen when structure or architecture geometry changes."
+        },
+        {
+          "interface_binding_id": "ADD10-MEP",
+          "source_domain": "Building Services / MEP",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "risers",
+            "plant",
+            "service zones",
+            "wet stacks",
+            "replacement access"
+          ],
+          "coupling": "TIGHTLY_COUPLED",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current MEP + architectural geometry",
+          "change_reopen_rule": "Reopen when MEP topology/equipment/space changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "technical fit-back must not destroy user/spatial intent silently"
+      ],
+      "design_language_consequences": [
+        "structure/services/envelope are integrated into architectural expression"
+      ],
+      "technical_consequences": [
+        "critical shared variables are coordinated"
+      ],
+      "content_projection_requirements": [
+        "show actual sections/zones/openings, not coordination prose only"
+      ],
+      "required_readback": [
+        "plan-section-system fitback readback",
+        "replacement/maintenance route readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "specialist engineering PASS"
+      ],
+      "exit_conditions": [
+        "architecture remains coherent after system fit-back"
+      ],
+      "reopen_triggers": [
+        "structure/MEP/envelope/opening change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_SYSTEM_FITBACK",
+      "does_not_prove": [
+        "structural/MEP/envelope professional PASS",
+        "field installability"
+      ]
+    },
+    {
+      "stage_id": "ADD-11",
+      "stage_name": "Climate, daylight, acoustics and environmental behavior",
+      "professional_question": "Do environmental analyses create explicit architectural consequences?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current geometry",
+        "climate/daylight/acoustic/environmental evidence"
+      ],
+      "knowledge_inputs": [
+        "daylight/glare",
+        "solar/shading",
+        "ventilation implication",
+        "acoustic zoning",
+        "weather/outdoor comfort"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-10"
+      ],
+      "required_native_outputs": [
+        "environmental_behavior_design_consequence_map"
+      ],
+      "interface_requirements": [
+        "Lighting Design",
+        "MEP",
+        "Acoustics",
+        "Envelope"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD11-LGT",
+          "source_domain": "Lighting Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "daylight",
+            "glare",
+            "luminous relation"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current daylight/lighting evidence + architecture",
+          "change_reopen_rule": "Reopen when openings/material/lighting intent changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "comfort/daylight/acoustic consequences are user-relevant"
+      ],
+      "design_language_consequences": [
+        "environmental behavior shapes openings/section/material relations"
+      ],
+      "technical_consequences": [
+        "analysis maps to design moves and assumptions"
+      ],
+      "content_projection_requirements": [
+        "analysis→design consequence visible"
+      ],
+      "required_readback": [
+        "analysis-source/applicability readback",
+        "post-rationalization attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "specialist simulation/compliance PASS"
+      ],
+      "exit_conditions": [
+        "material environmental consequences integrated"
+      ],
+      "reopen_triggers": [
+        "geometry/material/climate/system evidence change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_ENVIRONMENTAL_RESPONSE",
+      "does_not_prove": [
+        "energy/daylight/acoustic professional compliance",
+        "measured performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-12",
+      "stage_name": "Landscape and external-space integration",
+      "professional_question": "Are external spaces programmatically and operationally integrated with the building?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "architecture site/arrival",
+        "landscape inputs",
+        "outdoor program"
+      ],
+      "knowledge_inputs": [
+        "arrival",
+        "outdoor use",
+        "access/emergency",
+        "shade/season",
+        "drainage/boundaries/maintenance"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "architecture_landscape_integration_state"
+      ],
+      "interface_requirements": [
+        "Landscape Architecture",
+        "Civil",
+        "Accessibility",
+        "Fire/Life Safety"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD12-LA",
+          "source_domain": "Landscape Architecture",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "arrival",
+            "outdoor use",
+            "routes",
+            "thresholds",
+            "trees/shade/drainage"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current architecture + landscape sources",
+          "change_reopen_rule": "Reopen when external-space/building-threshold strategy changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "outdoor use and accessible/emergency movement are continuous"
+      ],
+      "design_language_consequences": [
+        "building/landscape form one spatial sequence"
+      ],
+      "technical_consequences": [
+        "thresholds/routes/drainage/maintenance interfaces explicit"
+      ],
+      "content_projection_requirements": [
+        "show site-building relations"
+      ],
+      "required_readback": [
+        "threshold/route/external-use readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "Landscape/Civil professional PASS"
+      ],
+      "exit_conditions": [
+        "external-space integration credible"
+      ],
+      "reopen_triggers": [
+        "landscape/site/threshold/program change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_LANDSCAPE_INTEGRATION",
+      "does_not_prove": [
+        "landscape grading/planting/drainage approval",
+        "field performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-13",
+      "stage_name": "FF&E, equipment and real room usability",
+      "professional_question": "Do representative critical rooms work with real/bounded furniture, equipment, user and maintenance clearances?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "room briefs",
+        "current room geometry",
+        "FF&E/equipment assumptions"
+      ],
+      "knowledge_inputs": [
+        "furniture/equipment layout",
+        "access/maintenance/replacement clearances"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-06"
+      ],
+      "required_native_outputs": [
+        "ROOM_USE_READBACKS",
+        "Room / Equipment / FF&E Interface Register"
+      ],
+      "interface_requirements": [
+        "Interior Design",
+        "MEP",
+        "Accessibility",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD13-ID",
+          "source_domain": "Interior Design",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "FF&E",
+            "equipment",
+            "clearances",
+            "room use"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MAJOR",
+          "required_maturity_to_enter": "DEFINED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current room geometry + interior/FF&E inputs",
+          "change_reopen_rule": "Reopen when room/FF&E/equipment changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "body/use/access/maintenance fit is visible"
+      ],
+      "design_language_consequences": [
+        "room form supports actual occupation"
+      ],
+      "technical_consequences": [
+        "equipment/service/door conflicts exposed"
+      ],
+      "content_projection_requirements": [
+        "show real or bounded footprints"
+      ],
+      "required_readback": [
+        "representative critical-room readback",
+        "door/equipment/maintenance conflict attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "full interior/FF&E procurement PASS"
+      ],
+      "exit_conditions": [
+        "critical room-use relation credible"
+      ],
+      "reopen_triggers": [
+        "room/equipment/FF&E/service/access change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_ROOM_USE",
+      "does_not_prove": [
+        "all-room usability",
+        "interior/procurement approval",
+        "field fit"
+      ]
+    },
+    {
+      "stage_id": "ADD-14",
+      "stage_name": "Area efficiency, cost pressure and lifecycle",
+      "professional_question": "Are area/cost/lifecycle pressures explicit without erasing required architectural quality?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current area model",
+        "cost/lifecycle assumptions",
+        "program"
+      ],
+      "knowledge_inputs": [
+        "net/gross/circulation/service ratios",
+        "area drift",
+        "cost drivers",
+        "durability/replacement"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-10"
+      ],
+      "required_native_outputs": [
+        "architecture_area_efficiency_state",
+        "area_drift_register",
+        "major_cost_lifecycle_driver_register"
+      ],
+      "interface_requirements": [
+        "Cost/Commercial",
+        "Operations/FM"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD14-COST",
+          "source_domain": "Cost/Commercial",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "area",
+            "major cost drivers",
+            "repetition",
+            "lifecycle"
+          ],
+          "coupling": "RECIPROCAL",
+          "criticality": "MATERIAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current area model + cost input",
+          "change_reopen_rule": "Reopen when geometry/program/cost basis changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "efficiency trade-offs preserve user requirements"
+      ],
+      "design_language_consequences": [
+        "cost pressure does not silently erase spatial intent"
+      ],
+      "technical_consequences": [
+        "major lifecycle/maintenance consequences visible"
+      ],
+      "content_projection_requirements": [
+        "show area drift and design consequence"
+      ],
+      "required_readback": [
+        "net/gross/area-drift readback",
+        "cost-cut design-damage attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "final cost plan/procurement price"
+      ],
+      "exit_conditions": [
+        "area/cost/lifecycle pressure understood"
+      ],
+      "reopen_triggers": [
+        "program/geometry/cost/lifecycle assumption change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_AREA_LIFECYCLE",
+      "does_not_prove": [
+        "cost certainty",
+        "future lifecycle performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-15",
+      "stage_name": "Existing-building, phasing and construction-state logic",
+      "professional_question": "Are demolition, retention, verification, temporary access and phased operation separated from assumed existing truth?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "existing-condition authority",
+        "phasing brief",
+        "survey/structural evidence"
+      ],
+      "knowledge_inputs": [
+        "demolition/retention",
+        "temporary works/access assumptions",
+        "partial operation",
+        "hazard/unknowns"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "existing_phasing_state",
+        "Survey / Existing-Condition Authority & Change Register",
+        "Architecture Submittal / Mockup / RFI / Field-Change Register"
+      ],
+      "interface_requirements": [
+        "Structural Engineering",
+        "Construction/Contractor",
+        "Operations",
+        "Survey"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD15-STRUCT",
+          "source_domain": "Structural Engineering",
+          "source_stage_ref": null,
+          "direction": "BIDIRECTIONAL",
+          "shared_variables": [
+            "retention",
+            "demolition",
+            "temporary works",
+            "verification"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "COORDINATED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current existing-condition + structural evidence",
+          "change_reopen_rule": "Reopen when verified existing condition/retention changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "phasing/partial use consequences are explicit"
+      ],
+      "design_language_consequences": [
+        "retained/new fabric distinction remains legible"
+      ],
+      "technical_consequences": [
+        "unknown existing conditions remain open"
+      ],
+      "content_projection_requirements": [
+        "show verified retention vs candidate/inference"
+      ],
+      "required_readback": [
+        "retention/source readback",
+        "phasing/partial-operation readback"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "structural retention authority",
+        "hazard clearance",
+        "contractor means/methods"
+      ],
+      "exit_conditions": [
+        "phasing/retention logic bounded by evidence"
+      ],
+      "reopen_triggers": [
+        "field survey/structural/phasing discovery change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_EXISTING_PHASING",
+      "does_not_prove": [
+        "existing structural adequacy",
+        "construction safety",
+        "field truth beyond evidence"
+      ]
+    },
+    {
+      "stage_id": "ADD-16",
+      "stage_name": "Jurisdictional code / standard matrix",
+      "professional_question": "Are applicable requirements current, sourced, assigned and traced to architectural responses without conflating response with compliance?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "jurisdiction authority",
+        "current sources/versions",
+        "architecture decisions"
+      ],
+      "knowledge_inputs": [
+        "code applicability",
+        "response/evidence/status/owner"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ARCHITECTURE_CODE_MATRIX",
+        "Code / Life-Safety / Accessibility Interface Register"
+      ],
+      "interface_requirements": [
+        "Authorities",
+        "Fire/Life Safety",
+        "Accessibility",
+        "Structural Engineering",
+        "MEP"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD16-AUTH",
+          "source_domain": "Authorities",
+          "source_stage_ref": null,
+          "direction": "IN",
+          "shared_variables": [
+            "requirements",
+            "versions",
+            "applicability",
+            "approval status"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "IDENTIFIED",
+          "required_maturity_to_close": "DEFINED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "current jurisdiction/code authority",
+          "change_reopen_rule": "Reopen when applicable requirement/source changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "regulated user/safety conditions are explicit"
+      ],
+      "design_language_consequences": [
+        "code response is integrated into design rather than hidden"
+      ],
+      "technical_consequences": [
+        "requirement-response trace maintained"
+      ],
+      "content_projection_requirements": [
+        "Requirement/Source/Version/Applicability/Response/Evidence/Status/Owner/Next Verification"
+      ],
+      "required_readback": [
+        "source/version/applicability readback",
+        "DESIGN_RESPONSE_PRESENT vs VERIFIED attack"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "formal approval/certification"
+      ],
+      "exit_conditions": [
+        "code-aware architecture trace complete at current ceiling"
+      ],
+      "reopen_triggers": [
+        "jurisdiction/source/requirement/design response change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_CODE_RESPONSE",
+      "does_not_prove": [
+        "regulatory approval",
+        "specialist compliance outside architecture authority"
+      ]
+    },
+    {
+      "stage_id": "ADD-17",
+      "stage_name": "Independent plan / section review",
+      "professional_question": "Does the current architecture work when presentation, producer intent and prior PASS/KEEP labels are ignored?",
+      "entry_conditions": [
+        "Architecture Design Development process is triggered at this stage/claim"
+      ],
+      "required_inputs": [
+        "current plans/sections",
+        "room/use/flow/system/code evidence",
+        "independent reviewer"
+      ],
+      "knowledge_inputs": [
+        "independent architectural review",
+        "counterevidence",
+        "repair/reopen"
+      ],
+      "knowledge_mount_requirement": "Mount consequential site, brief, regulatory, technical, user/operation and professional knowledge through the Current task/claim Operational Mount before it supports an Architecture decision or stage closure.",
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "INDEPENDENT_PLAN_SECTION_REVIEW",
+        "ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT",
+        "Architecture Closeout / Record / Open-Item Register when later-stage scope is triggered"
+      ],
+      "interface_requirements": [
+        "Independent Design Review",
+        "Cross-Disciplinary Integration"
+      ],
+      "interface_bindings": [
+        {
+          "interface_binding_id": "ADD17-REVIEW",
+          "source_domain": "Independent Design Review",
+          "source_stage_ref": null,
+          "direction": "OUT",
+          "shared_variables": [
+            "reviewed baseline",
+            "failed relation",
+            "verdict",
+            "reopen scope"
+          ],
+          "coupling": "DEPENDENT",
+          "criticality": "CRITICAL",
+          "required_maturity_to_enter": "COORDINATED",
+          "required_maturity_to_close": "EXERCISED",
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
+          "native_source_of_truth": "exact reviewed architecture baseline + independent review record",
+          "change_reopen_rule": "Reopen when material reviewed geometry/evidence changes."
+        }
+      ],
+      "human_experience_consequences": [
+        "critical rooms/flows/operations are judged from geometry, not labels"
+      ],
+      "design_language_consequences": [
+        "presentation atmosphere is excluded from proof"
+      ],
+      "technical_consequences": [
+        "technical repair damage to architecture is explicitly checked"
+      ],
+      "content_projection_requirements": [
+        "PASS/REVISE/REJECT/HOLD with exact failed relation"
+      ],
+      "required_readback": [
+        "independent plan/section actual readback",
+        "re-read repairs against same failed relation"
+      ],
+      "professional_review_owner": "Architecture professional owner",
+      "independent_review_requirement": "Independent or distinct architectural review at the declared claim ceiling when promotion-relevant; statutory and specialist approvals remain separate.",
+      "open_items_allowed": [
+        "later construction/handover work outside triggered architecture scope"
+      ],
+      "exit_conditions": [
+        "independent architectural verdict bound to exact baseline"
+      ],
+      "reopen_triggers": [
+        "material plan/section/program/system/code change"
+      ],
+      "claim_ceiling": "ARCHITECTURE_INDEPENDENT_REVIEW",
+      "does_not_prove": [
+        "specialist/statutory PASS",
+        "field/as-built truth",
+        "Promotion"
+      ]
+    }
+  ],
+  "interface_contract": {
+    "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+    "inputs_from_domains": [
+      "Client/Project Authority",
+      "Survey/Site Authority",
+      "Structural Engineering",
+      "Building Services / MEP",
+      "Interior Design",
+      "Landscape Architecture",
+      "Lighting Design",
+      "Fire/Life Safety",
+      "Accessibility",
+      "Civil",
+      "Envelope",
+      "Operations/FM",
+      "Cost/Commercial"
+    ],
+    "outputs_to_domains": [
+      "Structural Engineering",
+      "Building Services / MEP",
+      "Interior Design",
+      "Landscape Architecture",
+      "Lighting Design",
+      "Fire/Life Safety",
+      "Accessibility",
+      "Civil",
+      "Operations/FM",
+      "Cost/Commercial"
+    ],
+    "shared_variables": [
+      "site/arrival",
+      "program/occupancy",
+      "room geometry",
+      "adjacency/zoning",
+      "flows/circulation",
+      "grids/levels/openings",
+      "service/plant zones",
+      "thresholds",
+      "envelope/openings",
+      "FF&E/equipment envelopes",
+      "life-safety/accessibility responses",
+      "area/phasing"
+    ],
+    "controlling_authority_requirements": [
+      "one Current authority for each high-impact shared variable",
+      "Architecture does not infer specialist/statutory approval from its own design response",
+      "survey/program/occupancy authority remains explicit"
+    ],
+    "interface_maturity_policy": "Actual interface maturity is resolved by Cross-Disciplinary Integration; ADD stage number does not synchronize other domains.",
+    "allowed_open_interface_conditions": [
+      "required maturity for current architectural claim is met",
+      "remaining item is later/outside claim",
+      "owner/reopen trigger explicit",
+      "no controlling-authority contradiction"
+    ],
+    "integration_readback_requirements": [
+      "plan/section/level/shared-variable readback",
+      "critical Architecture↔Structure/MEP/Fire/Accessibility/Interior/Landscape readback",
+      "material change propagation"
+    ]
+  },
+  "execution_binding": {
+    "required_native_outputs": [
+      "architectural plans/sections/models",
+      "site/flow/adjacency/zoning artifacts",
+      "USER_OPERATION_MATRIX",
+      "ROOM_BRIEF_REGISTER",
+      "ARCHITECTURE_CODE_MATRIX",
+      "room-use/system-fitback/independent-review records",
+      "Architecture Basis / Responsibility Matrix",
+      "Survey / Existing-Condition Authority & Change Register",
+      "Program / Room Brief Change Register",
+      "Plan / Section / Level Coordination Register",
+      "Opening / Envelope / Door Interface Register",
+      "Code / Life-Safety / Accessibility Interface Register",
+      "Architecture Submittal / Mockup / RFI / Field-Change Register when triggered",
+      "Room / Equipment / FF&E Interface Register",
+      "Architecture Closeout / Record / Open-Item Register when triggered"
+    ],
+    "native_source_of_truth_rules": [
+      "editable/current architecture source remains authoritative over render/screenshot",
+      "plan/section/model consistency is required where claimed",
+      "existing/field condition is not inferred from drawing alone",
+      "architectural design response does not replace specialist/statutory evidence"
+    ],
+    "execution_owner_requirements": [
+      "responsible Architecture professional owner identified",
+      "specialist/consultant/contractor owners explicit where triggered",
+      "independent architectural review owner identified when required"
+    ],
+    "required_capabilities": [
+      "architectural planning/design",
+      "plan/section/model development",
+      "CAD/BIM as applicable",
+      "code-aware planning",
+      "cross-disciplinary coordination/readback",
+      "independent design review"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects tools/capabilities; process does not hardcode a software inventory"
+    ],
+    "typed_handoff_contracts": [
+      "Architecture↔Structure",
+      "Architecture↔MEP",
+      "Architecture↔Interior",
+      "Architecture↔Landscape",
+      "Architecture↔Lighting",
+      "Architecture↔Fire/Accessibility",
+      "Architecture↔Civil",
+      "Architecture↔Operations/FM"
+    ],
+    "actual_readback_requirements": [
+      "current plan/section/model readback",
+      "critical room/flow/circulation readback",
+      "structure/MEP/envelope fitback readback",
+      "code/life-safety/accessibility response boundary readback",
+      "independent plan/section review binds exact Current baseline",
+      "field/submittal/closeout evidence read back only when those later services are claimed"
+    ]
+  },
+  "assurance": {
+    "professional_review": "Architecture professional review at the current stage/claim ceiling, separate from presentation quality and specialist approvals.",
+    "evidence_review": "Verify program/site/existing/code/user/technical evidence against the architectural claim and exact Current geometry.",
+    "technical_gates": [
+      "site/program/occupancy authority",
+      "plan/section/level consistency",
+      "room/flow/circulation usability",
+      "Structure/MEP/envelope fitback",
+      "fire/accessibility/code interface",
+      "independent plan/section review"
+    ],
+    "independent_review": "ADD-17 requires a distinct architectural reread of the exact Current plan/sections without relying on producer intent, renders or prior KEEP/PASS labels.",
+    "receipt_contract": "professional-domain-process.v1.schema.json + ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT",
+    "does_not_prove": [
+      "statutory approval",
+      "specialist professional PASS",
+      "field/as-built truth",
+      "Design KEEP beyond architecture review scope",
+      "Promotion"
+    ]
+  },
+  "change_contract": {
+    "reopen_triggers": [
+      "program/occupancy/site/survey",
+      "plan/section/level",
+      "zoning/flow/circulation",
+      "structure/MEP/envelope",
+      "fire/accessibility/code",
+      "landscape/threshold",
+      "FF&E/equipment",
+      "existing/phasing",
+      "area/cost/lifecycle",
+      "field/submittal change when in scope"
+    ],
+    "stale_scope_rules": [
+      "only affected ADD decisions/interfaces/artifacts/reviews become stale unless dependency analysis shows wider consequence"
+    ],
+    "upstream_impact_rules": [
+      "changed brief/site/survey/code/specialist authority reopens consuming architectural decisions"
+    ],
+    "downstream_impact_rules": [
+      "changed architectural controlled variables propagate to consuming Structure/MEP/Interior/Landscape/Lighting/Fire/Accessibility/Civil/Operations interfaces"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable changes reopen affected Cross-Disciplinary Integration interfaces"
+    ],
+    "receipt_stale_rules": [
+      "Architecture receipt becomes stale at affected scope when governing geometry/evidence/review baseline changes"
+    ]
+  },
+  "completion_contract": {
+    "process_exit_conditions": [
+      "applicable ADD stage work complete at declared claim ceiling",
+      "required native outputs/readback exist",
+      "critical specialist interfaces meet required maturity",
+      "ADD-17 independent plan/section review complete when Design KEEP is considered",
+      "Architecture receipt current"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim specialist, statutory, construction or handover items that do not contradict the current architectural verdict"
+    ],
+    "professional_receipt": "ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT",
+    "promotion_effect": "A bounded Architecture PASS may satisfy only the Architecture professional-process prerequisite at its declared claim ceiling; it does not grant specialist/statutory PASS or Project Promotion.",
+    "claim_ceiling": "LOWEST_APPLICABLE_VALID_ARCHITECTURE_CLAIM_GOVERNS",
+    "does_not_prove": [
+      "statutory approval",
+      "specialist professional PASS",
+      "field/as-built truth",
+      "future building performance",
+      "Project Promotion"
+    ]
+  }
+}
