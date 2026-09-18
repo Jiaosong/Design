@@ -100,7 +100,22 @@
     "candidate_definition_target": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
     "c04_instance_target": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_INSTANCE_v0.1.json",
     "ci_workflow": ".github/workflows/ai-governance-evals.yml",
-    "state": "PENDING_REAL_PR_CI"
+    "pull_request": 652,
+    "validated_head_sha": "7f76e517f03aa0319febc9438b52e1595331ca8a",
+    "ai_governance_run": {
+      "run_number": 4845,
+      "run_id": 35349691874,
+      "result": "PASS"
+    },
+    "definition_step": "PASS",
+    "c04_hold_instance_step": "PASS",
+    "eval_corpus_with_FAIL_009_to_FAIL_012": "PASS",
+    "anti_pollution_run": {
+      "run_number": 776,
+      "run_id": 35349691979,
+      "result": "PASS"
+    },
+    "state": "REAL_PR_CI_PASS / RECEIPT_UPDATE_REQUIRES_FINAL_HEAD_RECHECK"
   },
   "current_architecture_disposition": {
     "landscape_domain_process": "OPEN",
@@ -113,5 +128,6 @@
     "state": "EDITABLE_SVG_CREATED / ACTUAL_BROWSER_RENDER_NOT_CLAIMED",
     "purpose": "Human-readable projection of the machine thread readback only.",
     "authority": "JSON thread readback remains the machine source; SVG is a projection and does not add professional evidence."
-  }
+  },
+  "maturity": "CANDIDATE R-E PROCESS / EXISTING SCHEMA VALIDATED / C04 BLOCKED-HOLD EXERCISE VALIDATED / AIG FAILURE REGRESSION PASS / ANTI-POLLUTION PASS / NO INDEPENDENT LANDSCAPE PROFESSIONAL REVIEW / NOT CURRENT / NO PROMOTION"
 }
