@@ -77,6 +77,10 @@ describe("full graph derivative manifest", () => {
     });
     const insert = db.batchStatements.find((statement) => statement.sql.includes("INSERT INTO documents"));
     expect(insert?.bindings).toContain("NAVIGATION_MAP");
+    const v2Manifest = db.batchStatements.find((statement) => statement.sql.includes("object_plane=?"));
+    expect(v2Manifest?.bindings).toContain("KNOWLEDGE");
+    expect(v2Manifest?.bindings).toContain("[]");
+
     const edgeStatements = db.batchStatements.filter((statement) => statement.sql.includes("INSERT OR REPLACE INTO lineage_edges"));
     const relationTypes = edgeStatements.map((statement) => String(statement.bindings[1])).sort();
     expect(relationTypes).toEqual([
@@ -91,5 +95,15 @@ describe("full graph derivative manifest", () => {
       "REPLACEMENT",
       "SOURCE",
     ].sort());
+
+    const familiesByType = Object.fromEntries(
+      edgeStatements.map((statement) => [String(statement.bindings[1]), statement.bindings[3]]),
+    );
+    expect(familiesByType.CANONICAL_CHILD).toBe("STRUCTURAL_HIERARCHY");
+    expect(familiesByType.PRIMARY_DOMAIN).toBe("DOMAIN_PLACEMENT");
+    expect(familiesByType.SOURCE).toBe("EVIDENCE_SUPPORT");
+    expect(familiesByType.PRIMARY_PROJECT).toBe("APPLICATION_USE");
+    expect(familiesByType.REPLACEMENT).toBe("LIFECYCLE_LINEAGE");
+    expect(familiesByType.RELATED).toBeNull();
   });
 });

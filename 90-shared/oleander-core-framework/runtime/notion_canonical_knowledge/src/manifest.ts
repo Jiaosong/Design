@@ -167,19 +167,21 @@ export async function inventoryMissingPageIds(db: D1Database, scanStartedAt: str
   return rows.results.map((row) => row.page_id);
 }
 
-function relations(page: NormalizedPage): Array<{ type: string; target: string }> {
+function relations(page: NormalizedPage): Array<{ type: string; target: string; family: string | null }> {
   return [
-    ...page.primaryDomainIds.map((target) => ({ type: "PRIMARY_DOMAIN", target })),
-    ...page.relatedDomainIds.map((target) => ({ type: "RELATED_DOMAIN", target })),
-    ...page.canonicalParentIds.map((target) => ({ type: "CANONICAL_PARENT", target })),
-    ...page.canonicalChildrenIds.map((target) => ({ type: "CANONICAL_CHILD", target })),
-    ...page.semanticRelatedIds.map((target) => ({ type: "RELATED", target })),
-    ...page.primaryProjectIds.map((target) => ({ type: "PRIMARY_PROJECT", target })),
-    ...page.relatedProjectIds.map((target) => ({ type: "RELATED_PROJECT", target })),
-    ...page.sourceRelationIds.map((target) => ({ type: "SOURCE", target })),
-    ...page.methodRelationIds.map((target) => ({ type: "METHOD", target })),
-    ...page.replacementIds.map((target) => ({ type: "REPLACEMENT", target })),
-    ...page.replacedDocumentIds.map((target) => ({ type: "REPLACED_DOCUMENT", target })),
+    ...page.primaryDomainIds.map((target) => ({ type: "PRIMARY_DOMAIN", target, family: "DOMAIN_PLACEMENT" })),
+    ...page.relatedDomainIds.map((target) => ({ type: "RELATED_DOMAIN", target, family: "DOMAIN_PLACEMENT" })),
+    ...page.canonicalParentIds.map((target) => ({ type: "CANONICAL_PARENT", target, family: "STRUCTURAL_HIERARCHY" })),
+    ...page.canonicalChildrenIds.map((target) => ({ type: "CANONICAL_CHILD", target, family: "STRUCTURAL_HIERARCHY" })),
+    // "相关笔记" is a generic semantic relation. Do not manufacture
+    // KNOWLEDGE_DEPENDENCY without an explicit dependency claim.
+    ...page.semanticRelatedIds.map((target) => ({ type: "RELATED", target, family: null })),
+    ...page.primaryProjectIds.map((target) => ({ type: "PRIMARY_PROJECT", target, family: "APPLICATION_USE" })),
+    ...page.relatedProjectIds.map((target) => ({ type: "RELATED_PROJECT", target, family: "APPLICATION_USE" })),
+    ...page.sourceRelationIds.map((target) => ({ type: "SOURCE", target, family: "EVIDENCE_SUPPORT" })),
+    ...page.methodRelationIds.map((target) => ({ type: "METHOD", target, family: "APPLICATION_USE" })),
+    ...page.replacementIds.map((target) => ({ type: "REPLACEMENT", target, family: "LIFECYCLE_LINEAGE" })),
+    ...page.replacedDocumentIds.map((target) => ({ type: "REPLACED_DOCUMENT", target, family: "LIFECYCLE_LINEAGE" })),
   ];
 }
 
@@ -274,6 +276,49 @@ export async function saveDocumentAndChunks(
         observedAt,
         input.indexRevision,
       ),
+    db
+      .prepare(
+        `UPDATE documents SET
+          object_plane=?, information_role=?, secondary_semantics_json=?, topic_ids_json=?,
+          claim_ids_json=?, evidence_ids_json=?, capability_links_json=?, function_links_json=?,
+          information_entity_links_json=?, interface_links_json=?, work_medium_json=?,
+          design_scale_json=?, artifact_type=?, symptom_tags_json=?, affected_relation_tags_json=?,
+          tool_capability_json=?, readback_method_json=?, evidence_grade=?, freshness_state=?,
+          authority_class=?, aliases_json=?, source_json=?, lifecycle_json=?
+         WHERE page_id=?`,
+      )
+      .bind(
+        p.objectPlane ?? "KNOWLEDGE",
+        p.informationRole ?? null,
+        JSON.stringify(p.secondarySemantics ?? []),
+        JSON.stringify(p.topicIds ?? []),
+        JSON.stringify(p.claimIds ?? []),
+        JSON.stringify(p.evidenceIds ?? []),
+        JSON.stringify(p.capabilityLinks ?? []),
+        JSON.stringify(p.functionLinks ?? []),
+        JSON.stringify(p.informationEntityLinks ?? []),
+        JSON.stringify(p.interfaceLinks ?? []),
+        JSON.stringify(p.workMedium ?? []),
+        JSON.stringify(p.designScale ?? []),
+        p.artifactType ?? null,
+        JSON.stringify(p.symptomTags ?? []),
+        JSON.stringify(p.affectedRelationTags ?? []),
+        JSON.stringify(p.toolCapability ?? []),
+        JSON.stringify(p.readbackMethod ?? []),
+        p.evidenceGrade ?? null,
+        p.freshnessState ?? null,
+        p.authorityClass ?? null,
+        JSON.stringify(p.aliases ?? []),
+        JSON.stringify([{ kind: "NOTION_PAGE", page_id: p.pageId, url: p.url }]),
+        JSON.stringify({
+          retrieval_space: p.retrievalSpace,
+          search_eligibility: p.searchEligibility,
+          governance_state: p.governanceState,
+          trust_state: p.trustState,
+          relation_state: p.relationState,
+        }),
+        p.pageId,
+      ),
     db.prepare("UPDATE chunks SET active=0, updated_at=? WHERE page_id=?").bind(observedAt, p.pageId),
     db.prepare("DELETE FROM lineage_edges WHERE source_page_id=?").bind(p.pageId),
   ];
@@ -313,8 +358,8 @@ export async function saveDocumentAndChunks(
   for (const edge of relations(p)) {
     statements.push(
       db
-        .prepare("INSERT OR REPLACE INTO lineage_edges (source_page_id, relation_type, target_page_id, observed_at) VALUES (?, ?, ?, ?)")
-        .bind(p.pageId, edge.type, edge.target, observedAt),
+        .prepare("INSERT OR REPLACE INTO lineage_edges (source_page_id, relation_type, target_page_id, relation_family, observed_at) VALUES (?, ?, ?, ?, ?)")
+        .bind(p.pageId, edge.type, edge.target, edge.family, observedAt),
     );
   }
   await db.batch(statements);
@@ -330,7 +375,11 @@ export async function fetchManifestHits(
   if (vectorIds.length === 0) return new Map();
   const placeholders = vectorIds.map(() => "?").join(",");
   let sql = `SELECT c.*, d.canonical_id, d.title, d.knowledge_role, d.content_level, d.framework_type,
-                    d.trust_state, d.effective_space, d.index_state, d.active AS document_active
+                    d.trust_state, d.governance_state, d.relation_state, d.search_eligibility,
+                    d.evidence_grade, d.freshness_state, d.authority_class,
+                    d.primary_domain_ids_json, d.topic_ids_json, d.secondary_semantics_json,
+                    d.claim_ids_json, d.evidence_ids_json, d.authority_reason,
+                    d.effective_space, d.index_state, d.active AS document_active
              FROM chunks c JOIN documents d ON d.page_id=c.page_id
              WHERE c.vector_id IN (${placeholders})
                AND c.active=1 AND d.active=1 AND d.index_state='INDEXED'
@@ -358,9 +407,89 @@ export async function getDocumentByCanonicalId(db: D1Database, canonicalId: stri
 
 export async function lineageForPage(db: D1Database, pageId: string): Promise<Array<Record<string, unknown>>> {
   const result = await db
-    .prepare("SELECT relation_type, target_page_id, observed_at FROM lineage_edges WHERE source_page_id=? ORDER BY relation_type, target_page_id")
+    .prepare("SELECT relation_family, relation_type, target_page_id, observed_at FROM lineage_edges WHERE source_page_id=? ORDER BY relation_family, relation_type, target_page_id")
     .bind(pageId)
     .all<Record<string, unknown>>();
+  return result.results;
+}
+
+export async function relationsForPages(
+  db: D1Database,
+  pageIds: string[],
+): Promise<Record<string, Array<Record<string, unknown>>>> {
+  const unique = [...new Set(pageIds)].filter(Boolean);
+  if (!unique.length) return {};
+  const output: Record<string, Array<Record<string, unknown>>> = {};
+  for (let i = 0; i < unique.length; i += D1_SAFE_BIND_BATCH) {
+    const batch = unique.slice(i, i + D1_SAFE_BIND_BATCH);
+    const placeholders = batch.map(() => "?").join(",");
+    const result = await db
+      .prepare(
+        `SELECT source_page_id, relation_family, relation_type, target_page_id, observed_at
+         FROM lineage_edges
+         WHERE source_page_id IN (${placeholders})
+         ORDER BY source_page_id, relation_family, relation_type, target_page_id`,
+      )
+      .bind(...batch)
+      .all<Record<string, unknown>>();
+    for (const row of result.results) {
+      const source = String(row.source_page_id ?? "");
+      if (!source) continue;
+      (output[source] ??= []).push(row);
+    }
+  }
+  return output;
+}
+
+export async function fetchLexicalManifestHits(
+  db: D1Database,
+  query: string,
+  namespace: RetrievalSpace,
+  topK: number,
+  canonicalId?: string,
+  allowScoped = false,
+): Promise<Array<ManifestChunkRow & Record<string, unknown>>> {
+  const q = query.trim();
+  if (!q) return [];
+  const limit = Math.max(1, Math.min(150, Math.floor(topK) * 3));
+  let sql = `SELECT c.*, d.canonical_id, d.title, d.knowledge_role, d.content_level, d.framework_type,
+                    d.trust_state, d.governance_state, d.relation_state, d.search_eligibility,
+                    d.evidence_grade, d.freshness_state, d.authority_class,
+                    d.primary_domain_ids_json, d.topic_ids_json, d.secondary_semantics_json,
+                    d.claim_ids_json, d.evidence_ids_json, d.authority_reason,
+                    d.effective_space, d.index_state, d.active AS document_active,
+                    CASE
+                      WHEN lower(COALESCE(d.canonical_id,'')) = lower(?) THEN 1.0
+                      WHEN lower(d.title) = lower(?) THEN 0.95
+                      WHEN instr(lower(d.title), lower(?)) > 0 THEN 0.80
+                      ELSE 0.55
+                    END AS lexical_score
+             FROM chunks c JOIN documents d ON d.page_id=c.page_id
+             WHERE c.active=1 AND d.active=1 AND d.index_state='INDEXED'
+               AND c.namespace=? AND d.effective_space=?
+               AND (
+                 d.search_eligibility IS NULL OR d.search_eligibility='DEFAULT'
+                 OR (d.search_eligibility='HISTORY_ONLY' AND ?='PROVENANCE')
+                 OR (d.search_eligibility='SCOPED' AND ?=1)
+               )
+               AND (
+                 lower(COALESCE(d.canonical_id,'')) = lower(?)
+                 OR lower(d.title) = lower(?)
+                 OR instr(lower(d.title), lower(?)) > 0
+                 OR instr(lower(c.chunk_text), lower(?)) > 0
+               )`;
+  const binds: unknown[] = [
+    q, q, q,
+    namespace, namespace, namespace, allowScoped ? 1 : 0,
+    q, q, q, q,
+  ];
+  if (canonicalId) {
+    sql += " AND d.canonical_id=?";
+    binds.push(canonicalId);
+  }
+  sql += " ORDER BY lexical_score DESC, d.indexed_at DESC, c.ordinal ASC LIMIT ?";
+  binds.push(limit);
+  const result = await db.prepare(sql).bind(...binds).all<ManifestChunkRow & Record<string, unknown>>();
   return result.results;
 }
 
