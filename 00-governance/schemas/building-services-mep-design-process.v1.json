@@ -320,7 +320,7 @@
       "knowledge_inputs": ["fabrication/installation methods", "supports/restraints", "manufacturer requirements", "test access"],
       "knowledge_mount_requirement": "Mount consequential specialist/product/installation evidence and changed design basis before production release.",
       "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["installation/fabrication drawings/model", "specialist design integration record", "builder's-work/support details", "commissioning access confirmation", "production-stage review/change record"],
+      "required_native_outputs": ["installation/fabrication drawings/model", "specialist design integration record", "builder's-work/support details", "commissioning access confirmation", "production-stage review/change record", "Equipment / System Submittal & Substitution Release Register", "Builder's Work / Installation / Access Coordination Register"],
       "interface_requirements": ["Architecture", "Structure", "Fire", "specialists/installers", "Commissioning"],
       "interface_bindings": [
         {
@@ -360,7 +360,7 @@
       "knowledge_inputs": ["commissioning management", "test and balancing methods", "integrated systems testing", "nonconformity/change control"],
       "knowledge_mount_requirement": "Mount current commissioning/test criteria and changed product/system evidence before accepting test results.",
       "required_dd_dimensions": ["DD-08", "DD-10", "DD-11", "DD-12"],
-      "required_native_outputs": ["site/installation review records", "pre-functional check records", "TAB/balancing records", "functional performance tests", "Integrated Systems Tests where applicable", "nonconformity/change records", "commissioning results"],
+      "required_native_outputs": ["site/installation review records", "pre-functional check records", "TAB/balancing records", "functional performance tests", "Integrated Systems Tests where applicable", "nonconformity/change records", "commissioning results", "Inspection / Test / TAB / Commissioning Witness Matrix", "MEP RFI / Field Change / Defect Register"],
       "interface_requirements": ["Architecture", "Structure", "Fire", "Controls", "FM", "Commissioning team"],
       "interface_bindings": [
         {
@@ -400,7 +400,7 @@
       "knowledge_inputs": ["handover/aftercare", "operator training", "asset information", "fine-tuning requirements"],
       "knowledge_mount_requirement": "Mount current handover/commissioning criteria and final system configuration evidence before closure.",
       "required_dd_dimensions": ["DD-05", "DD-10", "DD-12"],
-      "required_native_outputs": ["commissioning completion/status record", "O&M/asset information", "controls/sequence information", "training records", "open-items/seasonal-testing plan", "handover receipt"],
+      "required_native_outputs": ["commissioning completion/status record", "O&M/asset information", "controls/sequence information", "training records", "open-items/seasonal-testing plan", "handover receipt", "O&M / Asset / Training / Seasonal Closeout Register"],
       "interface_requirements": ["FM", "Client/operator", "Architecture", "Fire", "Controls"],
       "interface_bindings": [
         {
@@ -483,13 +483,13 @@
     "integration_readback_requirements": ["actual coordinated model/drawings", "critical plant/riser/ceiling/access sections", "builder's-work/support interfaces", "controls/commissioning interface readback", "measured in-use evidence when claimed"]
   },
   "execution_binding": {
-    "required_native_outputs": ["engineering calculations/models", "system schematics", "coordinated MEP drawings/model", "equipment schedules/specifications", "controls sequences/points", "commissioning plan/specification/test records", "O&M/asset/handover information", "measured performance records where in scope"],
+    "required_native_outputs": ["engineering calculations/models", "system schematics", "coordinated MEP drawings/model", "equipment schedules/specifications", "controls sequences/points", "commissioning plan/specification/test records", "O&M/asset/handover information", "measured performance records where in scope", "Equipment / System Submittal & Substitution Release Register", "Builder's Work / Installation / Access Coordination Register", "Inspection / Test / TAB / Commissioning Witness Matrix", "MEP RFI / Field Change / Defect Register", "O&M / Asset / Training / Seasonal Closeout Register"],
     "native_source_of_truth_rules": ["authoritative engineering source precedes screenshots/renders", "equipment datasheets do not replace system calculations or installation evidence", "design calculation does not replace measured performance", "commissioning evidence must correspond to the tested configuration"],
     "execution_owner_requirements": ["responsible building-services discipline owner", "specialist/installer/commissioning responsibilities explicit", "distinct reviewer/witness where required"],
     "required_capabilities": ["building-services engineering", "system calculation/simulation", "MEP CAD/BIM coordination", "controls/commissioning analysis", "evidence/readback review"],
     "tool_adapter_requirements": ["use Current Skill Resolver and live registry; no hardcoded global tool inventory"],
     "typed_handoff_contracts": ["Architecture↔MEP", "Structure↔MEP", "Fire↔MEP", "MEP↔Controls/Commissioning", "MEP↔FM"],
-    "actual_readback_requirements": ["read actual engineering source and coordinated geometry", "read actual control/commissioning evidence when claimed", "read actual measured operation for in-use claims"]
+    "actual_readback_requirements": ["read actual engineering source and coordinated geometry", "read actual control/commissioning evidence when claimed", "read actual measured operation for in-use claims", "equipment/system submittal and substitution critical-attribute release readback", "builder's-work/access/replacement geometry readback", "inspection/test/TAB/commissioning witness matrix readback against the exact tested configuration", "field RFI/change/defect propagation and O&M/asset/training/seasonal closeout readback"]
   },
   "assurance": {
     "professional_review": "Building-services professional review at the current system/stage claim ceiling.",
