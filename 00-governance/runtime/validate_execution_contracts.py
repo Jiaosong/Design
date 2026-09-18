@@ -373,6 +373,42 @@ def validate_artifact(data: dict) -> None:
     if delivery.get("delivery_eligibility_does_not_grant_promotion") is not True:
         fail("Delivery eligibility may not grant promotion")
 
+    dependency_identity = data.get("dependency_identity_extension", {})
+    require_fields(
+        dependency_identity,
+        [
+            "prospective_only",
+            "historical_artifacts_immutable",
+            "required_when",
+            "fields",
+            "requiredness_values",
+            "fallback_policy_values",
+            "silent_fallback_forbidden",
+            "missing_required_dependency_blocks_delivery_eligibility",
+            "declared_equivalent_requires_explicit_identity_and_readback",
+            "nonfinal_preview_fallback_cannot_satisfy_final_native_output",
+            "required_dependency_verification_result_carrier",
+            "does_not_prove",
+        ],
+        "native-artifact:dependency-identity-extension",
+    )
+    expected_requiredness = {"REQUIRED_FOR_REPRODUCTION", "REQUIRED_FOR_SEMANTIC_FIDELITY", "OPTIONAL"}
+    expected_fallback = {"FORBID", "ALLOW_DECLARED_EQUIVALENT", "ALLOW_NONFINAL_PREVIEW"}
+    if set(dependency_identity.get("requiredness_values", [])) != expected_requiredness:
+        fail("Native Artifact dependency requiredness vocabulary drift")
+    if set(dependency_identity.get("fallback_policy_values", [])) != expected_fallback:
+        fail("Native Artifact dependency fallback vocabulary drift")
+    if dependency_identity.get("prospective_only") is not True or dependency_identity.get("historical_artifacts_immutable") is not True:
+        fail("Native Artifact dependency identity extension must be prospective")
+    if dependency_identity.get("silent_fallback_forbidden") is not True:
+        fail("Native Artifact must forbid silent dependency fallback")
+    if dependency_identity.get("missing_required_dependency_blocks_delivery_eligibility") is not True:
+        fail("Missing required dependency must block delivery eligibility")
+    if dependency_identity.get("declared_equivalent_requires_explicit_identity_and_readback") is not True:
+        fail("Declared dependency equivalent must require identity + readback")
+    if dependency_identity.get("nonfinal_preview_fallback_cannot_satisfy_final_native_output") is not True:
+        fail("Nonfinal preview dependency fallback may not satisfy final native output")
+
 
 def validate_regression(data: dict) -> None:
     if data.get("layers") != ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"]:
@@ -446,6 +482,47 @@ def validate_receipts() -> None:
         fail("Missing source-integrity comparison must be UNVERIFIED")
     if typed_validation.get("prospective_only") is not True or typed_validation.get("historical_receipts_immutable") is not True:
         fail("Typed validation extension must be prospective")
+
+    exception_boundary = schema.get("required_check_exception_boundary_extension", {})
+    require_fields(
+        exception_boundary,
+        [
+            "prospective_only",
+            "historical_receipts_immutable",
+            "required_when",
+            "fields",
+            "exception_effect_values",
+            "generic_waiver_state_forbidden",
+            "exception_does_not_mutate_prior_validation_result",
+            "fail_hold_not_run_unverified_cannot_be_waived_to_pass",
+            "authorized_exception_requires_decision_rights_basis",
+            "changed_criterion_or_claim_requires_fresh_validation",
+            "not_applicable_requires_reason_and_authority_basis",
+            "exception_cannot_grant_design_keep_professional_pass_or_promotion",
+            "does_not_prove",
+        ],
+        "execution-receipt:required-check-exception-boundary",
+    )
+    expected_exception_effects = {"CRITERION_CHANGED", "CLAIM_BOUNDARY_NARROWED", "CHECK_DECLARED_NOT_APPLICABLE_BY_AUTHORITY"}
+    if set(exception_boundary.get("exception_effect_values", [])) != expected_exception_effects:
+        fail("Execution Receipt exception-effect vocabulary drift")
+    for required_true in (
+        "prospective_only",
+        "historical_receipts_immutable",
+        "generic_waiver_state_forbidden",
+        "exception_does_not_mutate_prior_validation_result",
+        "fail_hold_not_run_unverified_cannot_be_waived_to_pass",
+        "authorized_exception_requires_decision_rights_basis",
+        "changed_criterion_or_claim_requires_fresh_validation",
+        "not_applicable_requires_reason_and_authority_basis",
+        "exception_cannot_grant_design_keep_professional_pass_or_promotion",
+    ):
+        if exception_boundary.get(required_true) is not True:
+            fail(f"Execution Receipt exception boundary missing {required_true}")
+    forbidden_validation_tokens = {"WAIVED_PASS", "PASS_WITH_WAIVER", "PASS_BY_EXCEPTION"}
+    if forbidden_validation_tokens & set(schema.get("validation_result_values", [])):
+        fail("Execution Receipt may not add waiver-derived PASS states")
+
     receipts = sorted(RECEIPT_DIR.glob("*.json"))
     if len(receipts) < 2:
         fail("at least two real execution receipts are required")
