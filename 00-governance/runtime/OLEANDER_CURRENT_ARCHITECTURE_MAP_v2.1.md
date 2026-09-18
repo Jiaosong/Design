@@ -217,7 +217,7 @@ PROFESSIONAL DOMAIN PROCESS CONTRACT
    ?? authentic domain-native process definition as required
 ```
 
-As of the latest Current main baseline on 2026-09-15, **Architecture, Structural Engineering and Building Services / MEP have Current formalized professional process definitions**. Architecture remains the current project-exercised reference process. Structural and MEP have machine-readable definitions and CI validation, but this architecture map does **not** infer project-exercised closure merely from their Current document/schema status.
+As of the current professional-process baseline, **Architecture, Structural Engineering and Building Services / MEP have Current formalized professional process definitions**. Architecture remains the current project-exercised reference process. Architecture, Structural and MEP now have machine-readable definitions and CI validation, but this architecture map does **not** infer project-exercised closure merely from document/schema status.
 
 Professional synchronization is by **interface requirement and required maturity**, never by matching stage numbers.
 
@@ -621,6 +621,7 @@ Current process-definition state:
 
 ```text
 Architecture            = FORMALIZED + MACHINE_BOUND + PROJECT_EXERCISED
+Architecture             = FORMALIZED + MACHINE_BOUND + PROJECT-EXERCISED REFERENCE
 Structural Engineering  = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
 Building Services / MEP = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
 Interior Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
