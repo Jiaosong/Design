@@ -620,7 +620,6 @@ They are cumulative implementation evidence, not design-quality grades. A machin
 Current process-definition state:
 
 ```text
-Architecture            = FORMALIZED + MACHINE_BOUND + PROJECT_EXERCISED
 Architecture             = FORMALIZED + MACHINE_BOUND + PROJECT-EXERCISED REFERENCE
 Structural Engineering  = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
 Building Services / MEP = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
