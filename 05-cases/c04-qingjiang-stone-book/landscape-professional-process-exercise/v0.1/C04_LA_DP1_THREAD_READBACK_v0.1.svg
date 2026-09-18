@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1240" viewBox="0 0 1800 1240">
+<style>
+.bg{fill:#f2efe7}.panel{fill:#fffdf8;stroke:#c8c4b8;stroke-width:1.2}.ink{fill:#1f2825}.muted{fill:#68716c}.ok{fill:#426f61}.hold{fill:#a05a43}.nr{fill:#7a6b57}.part{fill:#6a788f}.line{stroke:#d4d0c4;stroke-width:1}.h1{font:700 34px Arial,sans-serif}.h2{font:700 18px Arial,sans-serif}.txt{font:400 14px Arial,sans-serif}.sm{font:400 12px Arial,sans-serif}.xs{font:700 11px Arial,sans-serif;letter-spacing:1px}
+</style>
+<rect width="1800" height="1240" class="bg"/>
+<text x="56" y="58" class="h1 ink">C04 · LANDSCAPE PROFESSIONAL PROCESS CANDIDATE · LA-DP1 THREAD READBACK</text>
+<text x="56" y="90" class="txt muted">Bounded exercise only · Current Landscape Architecture process remains OPEN · FIELD_OBSERVED=0 · FIELD_MEASURED=0 · G1F HOLD</text>
+
+<g transform="translate(56,130)">
+<rect width="1688" height="82" rx="12" class="panel"/>
+<text x="20" y="27" class="xs ok">SUPPORTED BOUNDARY</text>
+<text x="20" y="52" class="txt ink">C04 already supports strong spatial / experiential landscape relations and bounded regional environmental context.</text>
+<text x="1040" y="27" class="xs hold">PROFESSIONAL CEILING</text>
+<text x="1040" y="52" class="txt ink">No survey / grading / drainage / soil / ecology / planting / irrigation / maintenance / professional PASS.</text>
+</g>
+
+<g transform="translate(56,236)">
+<rect width="1688" height="852" rx="14" class="panel"/>
+<text x="22" y="34" class="xs muted">THREAD</text>
+<text x="330" y="34" class="xs muted">STATE</text>
+<text x="560" y="34" class="xs muted">CURRENT EVIDENCE / READBACK</text>
+<text x="1260" y="34" class="xs muted">DOES NOT PROVE</text>
+
+<line x1="20" y1="94" x2="1668" y2="94" class="line"/>
+ <text x="22" y="77" class="h2 ink">LT-10</text>
+ <text x="82" y="77" class="txt ink">Spatial / experiential relation</text>
+ <text x="330" y="77" class="xs ok">SUPPORTED</text>
+ <text x="560" y="77" class="sm muted">CH02 river / shore / peak / valley; movement/viewpoint; open/compressed sequence</text>
+ <text x="1260" y="77" class="sm muted">professional site authority or technical landscape resolution</text>
+<line x1="20" y1="146" x2="1668" y2="146" class="line"/>
+ <text x="22" y="129" class="h2 ink">LT-01</text>
+ <text x="82" y="129" class="txt ink">Survey / existing-condition authority</text>
+ <text x="330" y="129" class="xs hold">HOLD</text>
+ <text x="560" y="129" class="sm muted">regional remote context + route relational authority only</text>
+ <text x="1260" y="129" class="sm muted">survey geometry, exact coordinates, measured levels</text>
+<line x1="20" y1="198" x2="1668" y2="198" class="line"/>
+ <text x="22" y="181" class="h2 ink">LT-02</text>
+ <text x="82" y="181" class="txt ink">Landform / grading / earthwork</text>
+ <text x="330" y="181" class="xs hold">HOLD</text>
+ <text x="560" y="181" class="sm muted">regional sampled DEM slope/aspect</text>
+ <text x="1260" y="181" class="sm muted">site grading, cut/fill, tie-ins, accessible slopes</text>
+<line x1="20" y1="250" x2="1668" y2="250" class="line"/>
+ <text x="22" y="233" class="h2 ink">LT-03</text>
+ <text x="82" y="233" class="txt ink">Hydrology / drainage / stormwater</text>
+ <text x="330" y="233" class="xs hold">HOLD</text>
+ <text x="560" y="233" class="sm muted">D8 sampled-cell convergence only</text>
+ <text x="1260" y="233" class="sm muted">hydraulic drainage network, outfall, capacity</text>
+<line x1="20" y1="302" x2="1668" y2="302" class="line"/>
+ <text x="22" y="285" class="h2 ink">LT-04A</text>
+ <text x="82" y="285" class="txt ink">Land cover / vegetation context</text>
+ <text x="330" y="285" class="xs hold">HOLD</text>
+ <text x="560" y="285" class="sm muted">ESA WorldCover intended; AOI pixels not read back</text>
+ <text x="1260" y="285" class="sm muted">professional vegetation inventory/site condition</text>
+<line x1="20" y1="354" x2="1668" y2="354" class="line"/>
+ <text x="22" y="337" class="h2 ink">LT-04B</text>
+ <text x="82" y="337" class="txt ink">Soil / rooting / planting suitability</text>
+ <text x="330" y="337" class="xs nr">NOT_RUN</text>
+ <text x="560" y="337" class="sm muted">no qualifying evidence in reviewed Current sources</text>
+ <text x="1260" y="337" class="sm muted">soil profile, infiltration, compaction, root volume</text>
+<line x1="20" y1="406" x2="1668" y2="406" class="line"/>
+ <text x="22" y="389" class="h2 ink">LT-04C</text>
+ <text x="82" y="389" class="txt ink">Ecology / habitat / tree condition</text>
+ <text x="330" y="389" class="xs nr">NOT_RUN</text>
+ <text x="560" y="389" class="sm muted">no qualifying evidence in reviewed Current sources</text>
+ <text x="1260" y="389" class="sm muted">habitat, protected species, arboricultural condition</text>
+<line x1="20" y1="458" x2="1668" y2="458" class="line"/>
+ <text x="22" y="441" class="h2 ink">LT-03B</text>
+ <text x="82" y="441" class="txt ink">Surface-water history</text>
+ <text x="330" y="441" class="xs hold">HOLD</text>
+ <text x="560" y="441" class="sm muted">JRC Global Surface Water intended; AOI pixels not read back</text>
+ <text x="1260" y="441" class="sm muted">site water occurrence/seasonality or field hydrology</text>
+<line x1="20" y1="510" x2="1668" y2="510" class="line"/>
+ <text x="22" y="493" class="h2 ink">LT-05</text>
+ <text x="82" y="493" class="txt ink">Irrigation / water use</text>
+ <text x="330" y="493" class="xs nr">NOT_RUN</text>
+ <text x="560" y="493" class="sm muted">no landscape irrigation scope/basis in reviewed sources</text>
+ <text x="1260" y="493" class="sm muted">source, quality, zones, demand, controls</text>
+<line x1="20" y1="562" x2="1668" y2="562" class="line"/>
+ <text x="22" y="545" class="h2 ink">LT-06</text>
+ <text x="82" y="545" class="txt ink">Hardscape / construction</text>
+ <text x="330" y="545" class="xs nr">NOT_RUN</text>
+ <text x="560" y="545" class="sm muted">outside current LA-DP1 analysis exercise</text>
+ <text x="1260" y="545" class="sm muted">materials, build-ups, joints, details</text>
+<line x1="20" y1="614" x2="1668" y2="614" class="line"/>
+ <text x="22" y="597" class="h2 ink">LT-07</text>
+ <text x="82" y="597" class="txt ink">Access / safety / inclusion</text>
+ <text x="330" y="597" class="xs part">PARTIAL</text>
+ <text x="560" y="597" class="sm muted">route/return/body-attention logic exists elsewhere in C04</text>
+ <text x="1260" y="597" class="sm muted">surveyed accessible route or statutory compliance</text>
+<line x1="20" y1="666" x2="1668" y2="666" class="line"/>
+ <text x="22" y="649" class="h2 ink">LT-08</text>
+ <text x="82" y="649" class="txt ink">Establishment / maintenance / operations</text>
+ <text x="330" y="649" class="xs nr">NOT_RUN</text>
+ <text x="560" y="649" class="sm muted">no professional landscape maintenance capability model</text>
+ <text x="1260" y="649" class="sm muted">maintainability, establishment, seasonal operation</text>
+<line x1="20" y1="718" x2="1668" y2="718" class="line"/>
+ <text x="22" y="701" class="h2 ink">LT-09</text>
+ <text x="82" y="701" class="txt ink">Carbon / resource / circularity</text>
+ <text x="330" y="701" class="xs nr">NOT_RUN</text>
+ <text x="560" y="701" class="sm muted">outside reviewed CH02/environment evidence</text>
+ <text x="1260" y="701" class="sm muted">carbon/resource performance</text>
+<line x1="20" y1="770" x2="1668" y2="770" class="line"/>
+ <text x="22" y="753" class="h2 ink">LT-11</text>
+ <text x="82" y="753" class="txt ink">Professional interfaces</text>
+ <text x="330" y="753" class="xs part">UNRESOLVED</text>
+ <text x="560" y="753" class="sm muted">no Landscape project process/interface instance</text>
+ <text x="1260" y="753" class="sm muted">cross-domain interface maturity</text>
+<line x1="20" y1="822" x2="1668" y2="822" class="line"/>
+ <text x="22" y="805" class="h2 ink">REVIEW</text>
+ <text x="82" y="805" class="txt ink">Independent Landscape professional review</text>
+ <text x="330" y="805" class="xs nr">NOT_RUN</text>
+ <text x="560" y="805" class="sm muted">ENV design review pending; no Landscape process review</text>
+ <text x="1260" y="805" class="sm muted">professional stage PASS</text>
+</g>
+
+<g transform="translate(56,1110)">
+<rect width="1688" height="80" rx="12" fill="#fff4ec" stroke="#b97d68" stroke-width="1.2"/>
+<text x="20" y="27" class="xs hold">DISPOSITION</text>
+<text x="20" y="52" class="txt ink">KEEP existing CH02 + ENV evidence at their declared ceilings. Do not upgrade to Landscape professional PASS. Next valid action is source/owner resolution, not invented completion.</text>
+</g>
+</svg>

@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C04-LA-PROCESS-INSTANCE-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_object_refs": [
+    "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+    "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2.1/README.md"
+  ],
+  "process_definition_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+  "process_id": "OLEANDER-LANDSCAPE-ARCHITECTURE-DESIGN-PROCESS",
+  "process_version": "0.1-CANDIDATE",
+  "domain": "Landscape Architecture",
+  "owner": "CANDIDATE PROCESS EXERCISE / NO APPOINTED LANDSCAPE PROFESSIONAL AUTHORITY CLAIMED",
+  "current_baseline": "main@27168a5045e7118802f4c67a8b28a104bd1fe5c8 + candidate branch landscape process definition",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "SPATIAL_EXPERIENCE_SITE_ANALYSIS_SUPPORT_ONLY / REMOTE_ENVIRONMENTAL_CONTEXT / NO PROFESSIONAL LANDSCAPE PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C04-LA-DP0-001",
+      "stage_definition_ref": "OLEANDER-LANDSCAPE-ARCHITECTURE-DESIGN-PROCESS@0.1-CANDIDATE#LA-DP0",
+      "stage_id": "LA-DP0",
+      "cycle": 1,
+      "baseline_ref": "C04_CH02+ENV_v0.2.1",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "LANDSCAPE_SCOPE_AUTHORITY_UNRESOLVED",
+      "inputs": [
+        "CH02 site/landscape design-intelligence content",
+        "C04 environmental-analysis evidence-boundary package",
+        "existing C04 route/spatial authority"
+      ],
+      "outputs": [
+        "existing source/evidence boundary readback only",
+        "candidate landscape-process scope-gap classification"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md@6a3bfa45bf6938359b0d3440f31969292fd01d60",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/EVIDENCE_BOUNDARY.md@2426c067620ad25a9fe43e979d7724b92beaa0c8"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No project-specific Landscape Architecture appointment/scope authority is established in the reviewed sources.",
+        "No authoritative site survey/topographic base is established for professional landscape development.",
+        "FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD remains controlling.",
+        "Task/claim professional knowledge mounts for Landscape Architecture have not been created."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "C04 environment-analysis EVIDENCE_BOUNDARY",
+        "C04 environment-analysis GEOMETRY_AUTHORITY_NOTE"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-LA-DP1-001",
+      "stage_definition_ref": "OLEANDER-LANDSCAPE-ARCHITECTURE-DESIGN-PROCESS@0.1-CANDIDATE#LA-DP1",
+      "stage_id": "LA-DP1",
+      "cycle": 1,
+      "baseline_ref": "C04_CH02+ENV_v0.2.1",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "SPATIAL_EXPERIENCE_ANALYSIS + REGIONAL_REMOTE_ENVIRONMENTAL_CONTEXT",
+      "inputs": [
+        "CH02 river/shore/peak/valley spatial relations",
+        "CH02 boat/cable/walk viewpoint and movement relations",
+        "CH02 route-network and open/compressed spatial sequence",
+        "ENV v0.2.1 regional terrain/drainage/solar analysis with explicit evidence limits"
+      ],
+      "outputs": [
+        "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2.1/README.md",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/DATA_DICTIONARY.csv",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/FIGURE_STATUS_REGISTER.csv"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "CH02@6a3bfa45bf6938359b0d3440f31969292fd01d60",
+        "ENV-README@5c366df1459b712be2d49ccb7213761338ea1b73",
+        "ENV-EVIDENCE-BOUNDARY@2426c067620ad25a9fe43e979d7724b92beaa0c8",
+        "ENV-GEOMETRY-AUTHORITY@110153b7398ea2c7208346b8ee4d71c229f7210e",
+        "ENV-DATA-DICTIONARY@49536cb3474df2bf2206b1cd2890563aa34c3974",
+        "ENV-FIGURE-STATUS@08a974cb2a575d5b30e8b47da3e65a013abec8cb"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Topography is regional remote terrain sampling, not site survey.",
+        "Slope/aspect are generalized derived values, not field-measured site grading data.",
+        "D8 flow accumulation is potential terrain convergence only; it is not hydraulic drainage design.",
+        "No authoritative catchment/outfall/stormwater design basis is established.",
+        "No field soil profile, infiltration/permeability, compaction or contamination evidence is established.",
+        "No professional vegetation/tree inventory or condition assessment is established.",
+        "ESA WorldCover AOI pixels remain HOLD / not locally materialized and read back.",
+        "JRC Global Surface Water AOI occurrence/seasonality pixels remain HOLD / not locally materialized and read back.",
+        "No project landscape maintenance/operations capability model is established.",
+        "No Landscape Architecture professional independent review has been run.",
+        "Task/claim professional knowledge mount is absent."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "ENV v0.2.1 producer actual-preview readback complete",
+        "ENV independent professional design review pending",
+        "CH02 content actual text readback"
+      ],
+      "last_updated": "2026-09-18"
+    }
+  ],
+  "active_interface_refs": [],
+  "open_items": [
+    "Landscape Architecture professional process remains Candidate and Current Architecture Map remains DOMAIN PROCESS OPEN.",
+    "Landscape professional owner/appointment and project claim scope are unresolved.",
+    "Site survey/topography, soil, hydrology/drainage, vegetation/tree/ecology and maintenance evidence are insufficient for professional landscape closure.",
+    "Independent Landscape professional review NOT_RUN."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-18"
+}
