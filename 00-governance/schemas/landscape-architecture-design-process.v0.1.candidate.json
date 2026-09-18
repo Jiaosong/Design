@@ -543,7 +543,11 @@
         "materials plan",
         "key sections",
         "hardscape/detail strategy",
-        "coordination receipt"
+        "coordination receipt",
+        "Grading / Drainage Interface Schedule",
+        "Earthwork / Soil Movement Schedule",
+        "Retained Tree / Vegetation Protection Execution Register",
+        "Maintenance / Operations Access Schedule"
       ],
       "interface_requirements": [
         "Architecture",
@@ -686,7 +690,10 @@
         "details/sections",
         "schedules",
         "technical specifications",
-        "technical review receipt"
+        "technical review receipt",
+        "Material / Submittal / Sample / Mockup / Substitution Release Register",
+        "Irrigation / Water / Control Interface Register",
+        "Planting / Soil Establishment & Replacement Register"
       ],
       "interface_requirements": [
         "Civil",
@@ -821,7 +828,9 @@
         "RFI/change records",
         "nonconformity/design disposition",
         "updated technical information when required",
-        "construction-stage landscape receipt"
+        "construction-stage landscape receipt",
+        "Field Change / RFI / Nonconformity Register",
+        "Material / Submittal / Sample / Mockup / Substitution Release Register"
       ],
       "interface_requirements": [
         "Construction/Contractor",
@@ -956,7 +965,9 @@
         "establishment/maintenance plan",
         "record/as-built refs",
         "residual open-item register",
-        "handover receipt"
+        "handover receipt",
+        "Planting / Soil Establishment & Replacement Register",
+        "Maintenance / Operations Access Schedule"
       ],
       "interface_requirements": [
         "Construction/Contractor",
@@ -1255,7 +1266,16 @@
       "hardscape/details",
       "specifications/schedules",
       "construction/field records",
-      "maintenance/establishment/in-use records when triggered"
+      "maintenance/establishment/in-use records when triggered",
+      "Site / Base Authority & Survey Change Register",
+      "Grading / Drainage Interface Schedule",
+      "Earthwork / Soil Movement Schedule",
+      "Retained Tree / Vegetation Protection Execution Register",
+      "Planting / Soil Establishment & Replacement Register",
+      "Irrigation / Water / Control Interface Register",
+      "Material / Submittal / Sample / Mockup / Substitution Release Register",
+      "Field Change / RFI / Nonconformity Register",
+      "Maintenance / Operations Access Schedule"
     ],
     "native_source_of_truth_rules": [
       "editable/source landscape drawing/model/data remains authoritative within declared scope",
@@ -1291,7 +1311,12 @@
     "actual_readback_requirements": [
       "current native landscape drawings/data read back",
       "critical plan/section/level/drainage/planting/detail interfaces read back",
-      "field/establishment/in-use evidence read back only when claimed"
+      "field/establishment/in-use evidence read back only when claimed",
+      "survey/base revision and consuming-artifact change readback",
+      "grading/drainage interface schedule readback across levels, outfall/overflow and accessible routes",
+      "earthwork/soil movement and retained-tree protection execution readback when triggered",
+      "submittal/sample/mockup/substitution release state and affected-artifact propagation readback",
+      "field RFI/nonconformity disposition and maintenance-access schedule readback"
     ]
   },
   "assurance": {
