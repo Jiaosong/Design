@@ -43,6 +43,9 @@ jobs:
       - name: Validate Current architecture control graph
         run: python 00-governance/runtime/validate_architecture_control_graph.py
 
+      - name: Validate Architecture professional process definition
+        run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/architecture-design-development-process.v1.json
+
       - name: Validate Structural Engineering professional process definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/structural-engineering-design-process.v1.json
 
