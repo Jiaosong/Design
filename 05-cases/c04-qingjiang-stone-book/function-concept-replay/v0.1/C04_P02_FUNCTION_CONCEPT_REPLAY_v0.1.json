@@ -50,7 +50,7 @@
   },
   "functions": [
     {
-      "id": "F01",
+      "id": "P02-DFN-01",
       "class": "PRIMARY",
       "status": "ESSENTIAL",
       "statement": "support short-duration standing/half-lean body recovery while both feet remain on the walking surface",
@@ -58,7 +58,7 @@
       "failure": "reads/behaves as full sitting or cannot support lean relation"
     },
     {
-      "id": "F02",
+      "id": "P02-DFN-02",
       "class": "PROTECTIVE",
       "status": "ESSENTIAL",
       "statement": "preserve required clear passage and avoid converting the route edge into an obstructing furniture zone",
@@ -66,7 +66,7 @@
       "failure": "encroaches on required passage or creates protrusion conflict"
     },
     {
-      "id": "F03",
+      "id": "P02-DFN-03",
       "class": "EXPERIENCE_SEMANTIC",
       "status": "ESSENTIAL",
       "statement": "make the first-use relation legible as short lean/rest rather than a long-stay bench",
@@ -74,7 +74,7 @@
       "failure": "first read becomes seated bench"
     },
     {
-      "id": "F04",
+      "id": "P02-DFN-04",
       "class": "ENABLING_SERVICE",
       "status": "ESSENTIAL",
       "statement": "allow installation/removal or replacement without silently assuming irreversible modification of an unverified host condition",
@@ -82,7 +82,7 @@
       "failure": "requires unverified destructive attachment"
     },
     {
-      "id": "F05",
+      "id": "P02-DFN-05",
       "class": "PROTECTIVE_TECHNICAL",
       "status": "UNVERIFIED",
       "statement": "provide a valid load path from user contact into a support system whose adequacy is actually verified",
@@ -90,7 +90,7 @@
       "failure": "design implies structural adequacy before verification"
     },
     {
-      "id": "F06",
+      "id": "P02-DFN-06",
       "class": "SERVICE",
       "status": "SUPPORTING",
       "statement": "allow drainage and cleaning at the body-contact / support interface",
@@ -98,7 +98,7 @@
       "failure": "water/debris trapped or maintenance inaccessible"
     },
     {
-      "id": "F07",
+      "id": "P02-DFN-07",
       "class": "SERVICE",
       "status": "SUPPORTING",
       "statement": "allow inspection and replacement of contact, buffer and fastening elements",
@@ -106,7 +106,7 @@
       "failure": "wear item cannot be inspected/replaced without destructive work"
     },
     {
-      "id": "F08",
+      "id": "P02-DFN-08",
       "class": "PROTECTIVE",
       "status": "ESSENTIAL",
       "statement": "avoid introducing an unsupported edge-safety or climbing/fall implication",
@@ -116,38 +116,38 @@
   ],
   "dependency_relations": [
     {
-      "from": "F01",
-      "to": "F05",
+      "from": "P02-DFN-01",
+      "to": "P02-DFN-05",
       "type": "ENABLES",
       "reason": "body-recovery relation requires a real support/load path"
     },
     {
-      "from": "F02",
-      "to": "F01",
+      "from": "P02-DFN-02",
+      "to": "P02-DFN-01",
       "type": "CONSTRAINS",
       "reason": "recovery element cannot consume required passage"
     },
     {
-      "from": "F03",
-      "to": "F01",
+      "from": "P02-DFN-03",
+      "to": "P02-DFN-01",
       "type": "CONSTRAINS",
       "reason": "geometry/height/depth must preserve standing half-lean semantics"
     },
     {
-      "from": "F04",
-      "to": "F05",
+      "from": "P02-DFN-04",
+      "to": "P02-DFN-05",
       "type": "COUPLED",
       "reason": "attachment strategy determines where body load is transferred"
     },
     {
-      "from": "F06",
-      "to": "F07",
+      "from": "P02-DFN-06",
+      "to": "P02-DFN-07",
       "type": "SHARES_MEANS",
       "reason": "open/reachable joint can improve both drainage and service"
     },
     {
-      "from": "F08",
-      "to": "F01",
+      "from": "P02-DFN-08",
+      "to": "P02-DFN-01",
       "type": "CONFLICTS",
       "reason": "larger/more climbable support may improve comfort while worsening edge-safety implications"
     }
@@ -156,8 +156,8 @@
     {
       "id": "M01",
       "function_refs": [
-        "F01",
-        "F03"
+        "P02-DFN-01",
+        "P02-DFN-03"
       ],
       "principle": "rigid shallow contact surface",
       "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
@@ -169,8 +169,8 @@
     {
       "id": "M02",
       "function_refs": [
-        "F01",
-        "F03"
+        "P02-DFN-01",
+        "P02-DFN-03"
       ],
       "principle": "compliant tensioned contact band / sling",
       "maturity": "PLAUSIBLE_UNVERIFIED",
@@ -184,8 +184,8 @@
     {
       "id": "M03",
       "function_refs": [
-        "F01",
-        "F03"
+        "P02-DFN-01",
+        "P02-DFN-03"
       ],
       "principle": "local broadened cap/sleeve over host rail member",
       "maturity": "PLAUSIBLE_UNVERIFIED",
@@ -199,9 +199,9 @@
     {
       "id": "M04",
       "function_refs": [
-        "F04",
-        "F05",
-        "F07"
+        "P02-DFN-04",
+        "P02-DFN-05",
+        "P02-DFN-07"
       ],
       "principle": "reversible clamp to existing rail members",
       "maturity": "PLAUSIBLE_UNVERIFIED_IN_FIELD",
@@ -216,8 +216,8 @@
     {
       "id": "M05",
       "function_refs": [
-        "F04",
-        "F05"
+        "P02-DFN-04",
+        "P02-DFN-05"
       ],
       "principle": "independent floor-supported narrow lean element",
       "maturity": "PLAUSIBLE_UNVERIFIED",
@@ -232,8 +232,8 @@
     {
       "id": "M06",
       "function_refs": [
-        "F04",
-        "F05"
+        "P02-DFN-04",
+        "P02-DFN-05"
       ],
       "principle": "suspended/tension transfer between verified host points",
       "maturity": "EXPERIMENTAL_AT_THIS_PROJECT",
@@ -247,8 +247,8 @@
     {
       "id": "M07",
       "function_refs": [
-        "F06",
-        "F07"
+        "P02-DFN-06",
+        "P02-DFN-07"
       ],
       "principle": "open standoff + accessible fasteners",
       "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
@@ -260,7 +260,7 @@
     {
       "id": "M08",
       "function_refs": [
-        "F06"
+        "P02-DFN-06"
       ],
       "principle": "sloped/perforated contact surface",
       "maturity": "KNOWN_PRECEDENTED_AS_GENERAL_PRINCIPLE",
@@ -349,9 +349,9 @@
     {
       "id": "B01",
       "functions": [
-        "F04",
-        "F05",
-        "F07"
+        "P02-DFN-04",
+        "P02-DFN-05",
+        "P02-DFN-07"
       ],
       "name": "HOST_CLAMP_LOAD_SERVICE",
       "reason": "attachment, load transfer and inspection cannot be chosen independently when relying on existing rail"
@@ -359,9 +359,9 @@
     {
       "id": "B02",
       "functions": [
-        "F02",
-        "F03",
-        "F08"
+        "P02-DFN-02",
+        "P02-DFN-03",
+        "P02-DFN-08"
       ],
       "name": "PASSAGE_AFFORDANCE_EDGE",
       "reason": "depth/position that improves comfort can simultaneously change bench reading, clearance and edge/climb behavior"
@@ -411,16 +411,16 @@
       ],
       "architecture": "shallow rigid contact surface → reversible clamp → existing rail members; open serviceable standoff",
       "function_coverage": [
-        "F01",
-        "F02",
-        "F03",
-        "F04",
-        "F06",
-        "F07"
+        "P02-DFN-01",
+        "P02-DFN-02",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
       ],
       "unresolved": [
-        "F05 existing rail/load-path adequacy",
-        "F08 edge-safety/field relation"
+        "P02-DFN-05 existing rail/load-path adequacy",
+        "P02-DFN-08 edge-safety/field relation"
       ],
       "completeness": "HOLD",
       "material_delta": "host-dependent / no ground support / rigid contact",
@@ -437,16 +437,16 @@
       ],
       "architecture": "shallow rigid contact surface → narrow independent supports/base → walking surface/foundation",
       "function_coverage": [
-        "F01",
-        "F03",
-        "F04",
-        "F06",
-        "F07"
+        "P02-DFN-01",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
       ],
       "unresolved": [
-        "F02 passage",
-        "F05 independent base adequacy",
-        "F08 edge-safety",
+        "P02-DFN-02 passage",
+        "P02-DFN-05 independent base adequacy",
+        "P02-DFN-08 edge-safety",
         "permission/ground intervention"
       ],
       "completeness": "HOLD",
@@ -464,16 +464,16 @@
       ],
       "architecture": "shallow compliant contact band → tension transfer between verified host points → inspectable tension hardware",
       "function_coverage": [
-        "F01",
-        "F03",
-        "F04",
-        "F06",
-        "F07"
+        "P02-DFN-01",
+        "P02-DFN-03",
+        "P02-DFN-04",
+        "P02-DFN-06",
+        "P02-DFN-07"
       ],
       "unresolved": [
-        "F02 dynamic envelope",
-        "F05 host/tension adequacy",
-        "F08 pinch/edge/climb behavior"
+        "P02-DFN-02 dynamic envelope",
+        "P02-DFN-05 host/tension adequacy",
+        "P02-DFN-08 pinch/edge/climb behavior"
       ],
       "completeness": "HOLD",
       "material_delta": "compliant/tensioned contact + distributed host transfer rather than rigid clamp plate",
