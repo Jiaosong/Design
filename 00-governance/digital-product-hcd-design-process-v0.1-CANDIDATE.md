@@ -348,6 +348,126 @@ Track:
 
 ---
 
+## 7A｜Cross-cutting practitioner control objects
+
+These are live HCD/product work objects across HCD-DP0…7. They do not add a second lifecycle.
+
+### 7A.1 Study Repository / Research Freeze Register
+
+For every consequential study/evaluation:
+- study ID and decision question;
+- prototype/build/version tested;
+- research method;
+- participant/recruitment boundary;
+- session/evidence refs;
+- analysis owner;
+- finding set;
+- freeze/baseline timestamp;
+- superseded/reopened state.
+
+A finding without the tested version and evidence set cannot safely survive later design changes.
+
+### 7A.2 Consent / Data Eligibility Register
+
+For research data used in a decision record:
+- participant/data class;
+- consent/purpose basis;
+- collection scope;
+- minimisation;
+- permitted use;
+- access;
+- retention/deletion state;
+- privacy/legal owner where required;
+- evidence eligibility state.
+
+`DATA EXISTS ≠ DATA ELIGIBLE FOR THIS DECISION`.
+
+### 7A.3 Finding → Fix → Build → Retest Chain
+
+Each material usability/accessibility/content finding must trace:
+
+`FINDING → SEVERITY / USER CONSEQUENCE → DESIGN FIX → SOURCE CHANGE → BUILD/PROTOTYPE ID → RETEST METHOD → RETEST RESULT → RESIDUAL RISK / CLOSE-REOPEN`.
+
+Do not close a finding from a design annotation or ticket status alone.
+
+### 7A.4 Release Support Matrix
+
+For the claimed release record:
+- browser / version family;
+- OS / device class;
+- viewport/input mode;
+- keyboard;
+- screen reader / assistive technology where required;
+- touch / pointer;
+- zoom/reflow;
+- network/offline/degraded condition;
+- tested build identity;
+- result / known issue / support ceiling.
+
+`ONE BROWSER PASS ≠ SUPPORTED PRODUCT MATRIX`.
+
+### 7A.5 Content / Localization Release Register
+
+Track:
+- content object/owner/source;
+- terminology;
+- language/locale;
+- translation/localization state;
+- date/number/unit conventions;
+- layout expansion/truncation risk;
+- accessibility/readability check;
+- factual/currentness owner;
+- release status.
+
+### 7A.6 Privacy / Security Interaction Handoff Register
+
+Track:
+- interaction/data surface;
+- personal/sensitive data;
+- permission/identity/authentication;
+- consent/notice;
+- abuse/error consequence;
+- minimisation/retention implication;
+- HCD design consequence;
+- specialist owner;
+- disposition;
+- affected flow/build.
+
+### 7A.7 Instrumentation / Outcome Definition Register
+
+For each governed metric/event:
+- intended user outcome;
+- metric/event definition;
+- trigger/location;
+- data owner;
+- quality caveat;
+- segment/cohort;
+- privacy boundary;
+- baseline;
+- decision threshold;
+- causal limitation;
+- consuming experiment/release.
+
+### 7A.8 Experiment / Rollout Object
+
+When a design is released experimentally:
+- hypothesis;
+- target user/context;
+- candidate/control identity;
+- rollout unit and allocation;
+- guardrails;
+- primary/secondary measures;
+- exposure window;
+- stop/rollback rule;
+- data-quality check;
+- result;
+- causal claim ceiling;
+- design/product disposition.
+
+`ROLLOUT COMPLETED ≠ OUTCOME PROVEN`.
+
+---
+
 # 8｜HCD-DP0 — Scope, Authority & HCD Plan
 
 **Professional question:** What user/product claim is being made, what HCD evidence is required, and who owns research/design/evaluation/security/accessibility decisions?
