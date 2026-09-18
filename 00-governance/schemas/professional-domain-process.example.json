@@ -4,7 +4,9 @@
   "instance_id": "DPI-EXAMPLE-ARCH-001",
   "project_id": "PRJ-EXAMPLE-001",
   "workstream_id": null,
-  "decision_object_refs": ["ARCH-PLAN-EXAMPLE-001"],
+  "decision_object_refs": [
+    "ARCH-PLAN-EXAMPLE-001"
+  ],
   "process_definition_ref": "00-governance/architecture-design-development-process-v1.0.md",
   "process_id": "EXAMPLE_ARCHITECTURE_PROCESS_ID",
   "process_version": "1.0",
@@ -24,23 +26,83 @@
       "execution_state": "IN_PROGRESS",
       "review_verdict": "NOT_RUN",
       "claim_ceiling": "ARCHITECTURAL_CIRCULATION_DESIGN",
-      "inputs": ["current plan geometry", "current circulation requirements"],
-      "outputs": ["CIRCULATION_READBACK"],
+      "inputs": [
+        "current plan geometry",
+        "current circulation requirements"
+      ],
+      "outputs": [
+        "CIRCULATION_READBACK"
+      ],
       "consequential_knowledge_mount_required": true,
-      "knowledge_mount_refs": ["KM-EXAMPLE-OE2-001"],
-      "interface_refs": ["IF-EXAMPLE-ARCH-FLS-001", "IF-EXAMPLE-ARCH-ACC-001"],
+      "knowledge_mount_refs": [
+        "KM-EXAMPLE-OE2-001"
+      ],
+      "interface_refs": [
+        "IF-EXAMPLE-ARCH-FLS-001",
+        "IF-EXAMPLE-ARCH-ACC-001"
+      ],
       "evidence_refs": [],
       "review_refs": [],
-      "open_items": ["formal fire/accessibility compliance remains outside this architecture-stage claim"],
+      "open_items": [
+        "formal fire/accessibility compliance remains outside this architecture-stage claim"
+      ],
       "stale_scope": [],
       "reopen_events": [],
       "exit_condition_state": "OPEN",
       "actual_readback_refs": [],
-      "last_updated": "2026-09-15T00:00:00Z"
+      "last_updated": "2026-09-15T00:00:00Z",
+      "granularity_binding_state": "DECISION_OBJECT_BOUND",
+      "decision_object_refs": [
+        "ARCH-PLAN-EXAMPLE-001"
+      ],
+      "claim_refs": [
+        "CLM-EXAMPLE-ARCH-CIRC-001"
+      ],
+      "output_execution_bindings": [
+        {
+          "binding_id": "OEB-EXAMPLE-ADD07-CIRC-001",
+          "decision_object_ref": "ARCH-PLAN-EXAMPLE-001",
+          "claim_refs": [
+            "CLM-EXAMPLE-ARCH-CIRC-001"
+          ],
+          "knowledge_mount_refs": [
+            "KM-EXAMPLE-OE2-001"
+          ],
+          "output_requirement_ref": "ADD-07:CIRCULATION_READBACK",
+          "required_native_output": "CIRCULATION_READBACK",
+          "required_capability_roles": [
+            "architectural circulation reasoning",
+            "editable plan/section production",
+            "actual geometry readback"
+          ],
+          "tool_adapter_required": true,
+          "owner_set_ref": null,
+          "adapter_route_ref": null,
+          "artifact_refs": [],
+          "readback_refs": [],
+          "resolution_state": "UNRESOLVED",
+          "stale_if": [
+            "current plan geometry changes",
+            "circulation requirements change",
+            "controlling fire/accessibility interface changes"
+          ],
+          "does_not_prove": [
+            "formal fire compliance",
+            "accessibility certification",
+            "Design KEEP",
+            "Promotion"
+          ]
+        }
+      ]
     }
   ],
-  "active_interface_refs": ["IF-EXAMPLE-ARCH-FLS-001", "IF-EXAMPLE-ARCH-ACC-001"],
-  "open_items": ["formal statutory/professional approvals remain outside the current architecture claim"],
+  "active_interface_refs": [
+    "IF-EXAMPLE-ARCH-FLS-001",
+    "IF-EXAMPLE-ARCH-ACC-001"
+  ],
+  "open_items": [
+    "formal statutory/professional approvals remain outside the current architecture claim"
+  ],
   "professional_receipt_refs": [],
   "integration_receipt_refs": [],
   "stale_scope": [],
