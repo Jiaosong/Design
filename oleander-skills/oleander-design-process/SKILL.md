@@ -46,6 +46,7 @@ Use only the minimum relevant extension:
 - `PACKAGING_STRUCTURE_DIELINE_EXTENSION.md` — packaging where panel logic, cut/crease/glue/lock, opening, assembly, face hierarchy or production geometry materially govern the design;
 - `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences;
 - `EXISTING_PROJECT_REPAIR_EXTENSION.md` — already-active projects where a Current/mature artifact must be repaired without reopening unrelated design variables; preserves same-object identity, Best Existing First, minimum repair delta, Artifact Delta Gate, controlled owner handoff and independent KNOWLEDGE progress.
+- `COMPUTATIONAL_OPTION_SPACE_EXTENSION.md` — design questions with explicit variables/domains, graph or allocation relations, hard/soft constraints, conserved budgets or conflicting objectives where CSP/parametric/DOE/multi-objective exploration can expand the option space; preserves candidate identity, invalid/repair telemetry, diversity, Pareto trade-offs and human Design Review without turning an optimizer score into Design KEEP.
 
 Extensions refine the current object. They do not create a second project process and do not replace manufacturing, ergonomics, code, engineering or human-test authority.
 
@@ -143,6 +144,9 @@ When one input contains multiple relation types, split it before form:
 ### 4 — Diverge into a real option space
 
 Generate materially different alternatives before polishing one direction.
+
+When the option space is materially combinatorial or performance-driven and variables/domains/constraints can be stated explicitly, route to `COMPUTATIONAL_OPTION_SPACE_EXTENSION.md` rather than manually sampling a few parameter combinations. The extension deepens this phase; it does not replace the Decision Question, Variable Budget, source authority or independent Design Review.
+
 
 A valid option difference should change at least one important:
 - functional allocation;
