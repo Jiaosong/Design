@@ -9,11 +9,11 @@
 <g transform="translate(60,140)">
 <rect width="1680" height="118" rx="14" class="paper"/>
 <text x="24" y="30" class="xs green">FUNCTION SET</text>
-<text x="24" y="60" class="txt ink">F01 short standing half-lean recovery · F02 preserve passage · F03 avoid bench reading · F04 reversible/non-destructive install</text>
-<text x="24" y="84" class="txt ink">F05 valid verified load path [UNVERIFIED] · F06 drain/clean · F07 inspect/replace · F08 avoid unsupported edge/climb implication</text>
+<text x="24" y="60" class="txt ink">P02-DFN-01 short standing half-lean recovery · P02-DFN-02 preserve passage · P02-DFN-03 avoid bench reading · P02-DFN-04 reversible/non-destructive install</text>
+<text x="24" y="84" class="txt ink">P02-DFN-05 valid verified load path [UNVERIFIED] · P02-DFN-06 drain/clean · P02-DFN-07 inspect/replace · P02-DFN-08 avoid unsupported edge/climb implication</text>
 <text x="1120" y="30" class="xs accent">DEPENDENCY BEFORE COMBINATION</text>
-<text x="1120" y="60" class="sm muted">F04 attachment ↔ F05 load transfer are COUPLED.</text>
-<text x="1120" y="82" class="sm muted">F02 passage ↔ F03 affordance ↔ F08 edge are a shared geometry bundle.</text>
+<text x="1120" y="60" class="sm muted">P02-DFN-04 attachment ↔ P02-DFN-05 load transfer are COUPLED.</text>
+<text x="1120" y="82" class="sm muted">P02-DFN-02 passage ↔ P02-DFN-03 affordance ↔ P02-DFN-08 edge are a shared geometry bundle.</text>
 </g>
 
 <g transform="translate(60,300)">
@@ -38,7 +38,7 @@
     <text x="24" y="488" class="sm muted">Minimal floor footprint; reversible/serviceable relation can remain explicit.</text>
     <text x="24" y="521" class="h3 accent">HOLD / falsifier</text>
     <text x="24" y="546" class="sm muted">Host rail/base load capacity, clamp slip/local damage, edge and clearance.</text>
-    <text x="24" y="572" class="xs accent">F05 + F08 NOT VERIFIED</text>
+    <text x="24" y="572" class="xs accent">P02-DFN-05 + P02-DFN-08 NOT VERIFIED</text>
   </g>
 
   <g transform="translate(580,0)">
@@ -60,7 +60,7 @@
     <text x="24" y="488" class="sm muted">Potentially separates recovery load path from unverified existing rail.</text>
     <text x="24" y="521" class="h3 accent">HOLD / falsifier</text>
     <text x="24" y="546" class="sm muted">Passage width, base/foundation, drainage, permission or edge relation fail.</text>
-    <text x="24" y="572" class="xs accent">F02 + F05 + F08 NOT VERIFIED</text>
+    <text x="24" y="572" class="xs accent">P02-DFN-02 + P02-DFN-05 + P02-DFN-08 NOT VERIFIED</text>
   </g>
 
   <g transform="translate(1160,0)">
@@ -83,7 +83,7 @@
     <text x="24" y="488" class="sm muted">Low floor footprint; distinctly different contact/deflection behavior.</text>
     <text x="24" y="521" class="h3 accent">HOLD / falsifier</text>
     <text x="24" y="546" class="sm muted">Deflection, pinch/entrapment, dynamic envelope or host load transfer fails.</text>
-    <text x="24" y="572" class="xs accent">F02 + F05 + F08 UNKNOWN / CONDITIONAL</text>
+    <text x="24" y="572" class="xs accent">P02-DFN-02 + P02-DFN-05 + P02-DFN-08 UNKNOWN / CONDITIONAL</text>
   </g>
 </g>
 
