@@ -1,6 +1,6 @@
 # OLEANDER Function → Concept Synthesis Extension
 
-Status: `CANDIDATE EXTENSION / EXISTING OWNER / EXTERNAL-MECHANISM DIGESTED / GOLDEN REGRESSION REQUIRED / PROJECT REPLAY REQUIRED / NO PROMOTION`
+Status: `CANDIDATE EXTENSION / EXISTING OWNER / CURRENT FUNCTIONAL-ARCHITECTURE ALIGNED / EXTERNAL-MECHANISM DIGESTED / PROJECT REPLAY EVIDENCE / GOLDEN REGRESSION REQUIRED / NO PROMOTION`
 
 Owner: `oleander-design-process`
 
@@ -86,6 +86,26 @@ Better:
 `FUNCTION = ALLOW CONTROLLED ROTATION BETWEEN A AND B`
 
 Possible means may include hinge, flexure, compliant joint, pivot bearing or another principle if allowed by project authority and physics.
+
+---
+
+## 3｜System Functional Architecture alignment / namespace firewall
+
+At review time, the Current OLEANDER system-level Functional Architecture uses the `F*` namespace for OLEANDER's own system functions, including C3 Exploration functions such as candidate-direction generation, strategy-difference exposure and superficial-option detection.
+
+This extension is an **execution mechanism under that design-exploration capability**, not another Functional Architecture.
+
+Therefore:
+
+- never mint project/design-object records as `F1.1 / F3.1 / F01` when they can be confused with OLEANDER system-function IDs;
+- use a local namespace such as `<OBJECT>-DFN-01` or another project-authorized design-function ID;
+- local design-function records do not enter or modify the OLEANDER system Function Catalogue;
+- this extension may help execute system C3 Exploration but may not redefine its authority, actor allocation, traceability or lifecycle;
+- if formal Systems Engineering Functional Architecture is triggered for the project/product/system itself, that professional owner remains separate.
+
+`OLEANDER SYSTEM FUNCTION ≠ PROJECT DESIGN-OBJECT FUNCTION`.
+
+`C3 EXPLORATION CAPABILITY → THIS EXTENSION MAY EXECUTE A BOUNDED SYNTHESIS METHOD`.
 
 ---
 
