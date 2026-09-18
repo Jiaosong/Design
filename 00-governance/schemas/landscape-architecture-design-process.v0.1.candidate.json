@@ -1319,6 +1319,64 @@
       "field RFI/nonconformity disposition and maintenance-access schedule readback"
     ]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Landscape Architecture execution depth is demonstrated through site-authority, grading/water/soil/planting/material release, field-change, establishment and maintenance objects rather than decorative landscape representation.",
+    "professional_problem_and_judgment_objects": [
+      "LANDSCAPE_SCOPE_AUTHORITY_REGISTER",
+      "site-system diagnosis",
+      "LANDSCAPE_CONCEPT_OPTION_SET",
+      "developed grading/water/planting/hardscape decisions"
+    ],
+    "assumption_uncertainty_objects": [
+      "Site / Base Authority & Survey Change Register",
+      "FIELD_OBSERVED/FIELD_MEASURED boundary",
+      "soil/hydrology/vegetation/ecology uncertainty",
+      "open specialist interfaces"
+    ],
+    "option_comparison_objects": [
+      "LANDSCAPE_CONCEPT_OPTION_SET",
+      "concept landform/water/planting/material system comparison"
+    ],
+    "native_work_objects": [
+      "site/GIS analysis",
+      "landscape plans/sections",
+      "grading/drainage plans",
+      "planting/soil plans",
+      "hardscape/details",
+      "specifications/schedules"
+    ],
+    "release_control_objects": [
+      "Grading / Drainage Interface Schedule",
+      "Material / Submittal / Sample / Mockup / Substitution Release Register",
+      "Irrigation / Water / Control Interface Register"
+    ],
+    "implementation_field_objects": [
+      "Earthwork / Soil Movement Schedule",
+      "Retained Tree / Vegetation Protection Execution Register",
+      "Field Change / RFI / Nonconformity Register",
+      "site observation records"
+    ],
+    "handover_inuse_objects": [
+      "Planting / Soil Establishment & Replacement Register",
+      "Maintenance / Operations Access Schedule",
+      "landscape handover/establishment/seasonal stewardship records"
+    ],
+    "independent_review_objects": [
+      "distinct Landscape Architecture professional review at declared claim ceiling",
+      "specialist civil/hydraulic/geotechnical/ecology/accessibility review where triggered"
+    ],
+    "change_propagation_objects": [
+      "Site / Base Authority & Survey Change Register",
+      "Field Change / RFI / Nonconformity Register",
+      "technical-thread/interface reopen rules"
+    ],
+    "does_not_require": [
+      "same stages/artifacts as Architecture",
+      "field evidence where claim excludes field truth",
+      "civil/hydraulic/statutory approval from Landscape",
+      "same page count/template as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "Landscape professional review at declared stage/claim ceiling, including the active technical threads and current site authority.",
     "evidence_review": "Verify site/survey, soil/hydrology/vegetation, regulatory, product/material/planting and field evidence against the claimed landscape use.",
