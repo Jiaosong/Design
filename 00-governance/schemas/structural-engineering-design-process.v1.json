@@ -335,7 +335,7 @@
       "knowledge_inputs": ["fabrication/production methods", "temporary-works interfaces", "material/product data"],
       "knowledge_mount_requirement": "Mount consequential specialist/product/production evidence and changed design basis before production release decisions.",
       "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["production/fabrication information", "specialist design integration record", "temporary-works interface record", "production-stage change/check record"],
+      "required_native_outputs": ["production/fabrication information", "specialist design integration record", "temporary-works interface record", "production-stage change/check record", "Member / Connection / Foundation Release Schedule", "Fabrication / Shop Drawing / Specialist Submittal Release Register"],
       "interface_requirements": ["specialist/fabricator", "Architecture", "MEP", "temporary works", "contractor"],
       "interface_bindings": [
         {
@@ -389,7 +389,7 @@
       "knowledge_inputs": ["construction conformity", "inspection/testing", "nonconformity/change control", "temporary works"],
       "knowledge_mount_requirement": "Mount current inspection/test/quality criteria and changed product/material evidence before accepting construction evidence.",
       "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["site/manufacture review records", "quality/inspection/test records", "nonconformity/change records", "as-constructed information where assigned"],
+      "required_native_outputs": ["site/manufacture review records", "quality/inspection/test records", "nonconformity/change records", "as-constructed information where assigned", "Inspection / Test / Material / ITP Evidence Register", "Structural RFI / Field Change / Nonconformity Register"],
       "interface_requirements": ["Contractor", "Temporary Works", "Architecture", "MEP", "Envelope", "specialists"],
       "interface_bindings": [
         {
@@ -429,7 +429,7 @@
       "knowledge_inputs": ["handover/as-constructed requirements", "maintenance/monitoring", "future alteration information"],
       "knowledge_mount_requirement": "Mount current handover/record requirements and final construction evidence before closure.",
       "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["structural handover record", "as-constructed information where assigned", "defect/status record", "maintenance/monitoring/future-change information"],
+      "required_native_outputs": ["structural handover record", "as-constructed information where assigned", "defect/status record", "maintenance/monitoring/future-change information", "Structural Closeout / Residual Risk / Monitoring Register"],
       "interface_requirements": ["Client/FM", "Architecture", "Contractor", "future alterations"],
       "interface_bindings": [
         {
@@ -512,13 +512,13 @@
     "integration_readback_requirements": ["critical geometry/interface readback", "specialist-design integration readback", "change propagation for material shared-variable changes"]
   },
   "execution_binding": {
-    "required_native_outputs": ["structural drawings/models", "analytical/calculation models", "Basis of Structural Design", "responsibility matrix", "specifications/details", "checking/review records", "construction/handover records when triggered"],
+    "required_native_outputs": ["structural drawings/models", "analytical/calculation models", "Basis of Structural Design", "responsibility matrix", "specifications/details", "checking/review records", "construction/handover records when triggered", "Analysis / Calculation Baseline & Check Register", "Member / Connection / Foundation Release Schedule", "Fabrication / Shop Drawing / Specialist Submittal Release Register", "Inspection / Test / Material / ITP Evidence Register", "Structural RFI / Field Change / Nonconformity Register", "Structural Closeout / Residual Risk / Monitoring Register"],
     "native_source_of_truth_rules": ["native engineering calculation/model/drawing remains authoritative within its declared scope", "render/screenshot does not replace structural source"],
     "execution_owner_requirements": ["responsible structural-engineering decision owner identified", "specialist/contractor design owners explicit"],
     "required_capabilities": ["structural analysis/design", "CAD/BIM/technical drawing as applicable", "coordination/readback", "professional checking"],
     "tool_adapter_requirements": ["Current Skill Resolver selects tools/capabilities; process does not hardcode software inventory"],
     "typed_handoff_contracts": ["Architecture↔Structure", "Structure↔MEP", "Structure↔Geotechnical", "Structure↔Envelope/Fire", "Structure↔Specialist/Contractor"],
-    "actual_readback_requirements": ["current native drawings/model/calculation state read back", "critical interfaces/sections/details read back", "site/manufacture evidence read back when claimed"]
+    "actual_readback_requirements": ["current native drawings/model/calculation state read back", "critical interfaces/sections/details read back", "site/manufacture evidence read back when claimed", "calculation/check baseline and released member/connection/foundation package readback", "fabrication/shop-drawing/specialist-submittal responsibility and release readback", "inspection/test/ITP evidence plus field RFI/nonconformity closure readback", "as-constructed/residual-risk/monitoring closeout readback when handover is claimed"]
   },
   "assurance": {
     "professional_review": "Structural stage review at declared claim ceiling, preserving structural responsibility and source assumptions.",
