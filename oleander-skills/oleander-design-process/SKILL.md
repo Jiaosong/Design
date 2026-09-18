@@ -47,6 +47,7 @@ Use only the minimum relevant extension:
 - `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences;
 - `EXISTING_PROJECT_REPAIR_EXTENSION.md` — already-active projects where a Current/mature artifact must be repaired without reopening unrelated design variables; preserves same-object identity, Best Existing First, minimum repair delta, Artifact Delta Gate, controlled owner handoff and independent KNOWLEDGE progress.
 - `COMPUTATIONAL_OPTION_SPACE_EXTENSION.md` — design questions with explicit variables/domains, graph or allocation relations, hard/soft constraints, conserved budgets or conflicting objectives where CSP/parametric/DOE/multi-objective exploration can expand the option space; preserves candidate identity, invalid/repair telemetry, diversity, Pareto trade-offs and human Design Review without turning an optimizer score into Design KEEP.
+- `SERVICE_BLUEPRINT_OPERATIONAL_DEPENDENCY_EXTENSION.md` — service/hybrid experiences where a visible journey or touchpoint depends on hidden people, systems, data, handoffs, physical evidence, failure recovery or operational capacity; separates journey/interaction from frontstage/backstage/support dependencies and keeps blueprint views derived from canonical sources rather than becoming a second truth source.
 
 Extensions refine the current object. They do not create a second project process and do not replace manufacturing, ergonomics, code, engineering or human-test authority.
 
@@ -138,6 +139,8 @@ Examples:
 
 When one input contains multiple relation types, split it before form:
 `DISCRETE / CONTINUOUS / DIRECTIONAL / RELATIONAL / HIERARCHICAL / TEMPORAL`.
+
+When a journey or touchpoint materially depends on hidden operational work, route to `SERVICE_BLUEPRINT_OPERATIONAL_DEPENDENCY_EXTENSION.md` to expose frontstage promise, backstage/support dependency, handoff, failure/recovery and actual operational evidence without turning the blueprint into a second source of truth.
 
 **Phase exit:** at least one relation can be seen or attacked without relying on explanatory prose.
 
