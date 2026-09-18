@@ -6,225 +6,48 @@
   "decision_date": "2026-08-18",
   "current_extension_date": "2026-09-18",
   "current_extensions": [
-    {
-      "date": "2026-08-19",
-      "name": "Existing Visual Authority + Image Consumption"
-    },
-    {
-      "date": "2026-09-09",
-      "name": "Continuation Resume Checkpoint"
-    },
-    {
-      "date": "2026-09-09",
-      "name": "Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance"
-    },
-    {
-      "date": "2026-09-09",
-      "name": "Optimistic Concurrency + Verify-Before-Retry"
-    },
-    {
-      "date": "2026-09-12",
-      "name": "Git Branch Ref Disposition at Closure"
-    },
-    {
-      "date": "2026-09-15",
-      "name": "Runtime Layer Interface Handoff"
-    },
-    {
-      "date": "2026-09-15",
-      "name": "Multi-Surface Partial-Commit Reconciliation"
-    },
-    {
-      "date": "2026-09-15",
-      "name": "Observability Event + Recovery Incident"
-    },
-    {
-      "date": "2026-09-18",
-      "name": "Required Check Exception Boundary"
-    },
-    {
-      "date": "2026-09-18",
-      "name": "Professional Execution Granularity Binding"
-    }
+    {"date": "2026-08-19", "name": "Existing Visual Authority + Image Consumption"},
+    {"date": "2026-09-09", "name": "Continuation Resume Checkpoint"},
+    {"date": "2026-09-09", "name": "Cross-Context Frontier Discovery + Adapter Route + Continuous Auto-Advance"},
+    {"date": "2026-09-09", "name": "Optimistic Concurrency + Verify-Before-Retry"},
+    {"date": "2026-09-12", "name": "Git Branch Ref Disposition at Closure"},
+    {"date": "2026-09-15", "name": "Runtime Layer Interface Handoff"},
+    {"date": "2026-09-15", "name": "Multi-Surface Partial-Commit Reconciliation"},
+    {"date": "2026-09-15", "name": "Observability Event + Recovery Incident"},
+    {"date": "2026-09-18", "name": "Required Check Exception Boundary"},
+    {"date": "2026-09-18", "name": "Professional Execution Granularity Binding"}
   ],
   "purpose": "Instance carrier for one material OLEANDER execution unit across authority, sticky constraints, continuation/frontier state when applicable, concurrency/idempotency evidence when material, adapter route evidence when material, existing visual authority/image consumption when applicable, runtime-layer handoff, multi-surface partial-commit reconciliation when material, bounded recovery incident when material, owner selection, DAG, artifacts, execution, regression, readback, review, flow completion and drift.",
-  "required_core_fields": [
-    "receipt_id",
-    "status",
-    "execution_type",
-    "task_id",
-    "authority",
-    "required_native_output",
-    "owner_set",
-    "artifacts",
-    "execution",
-    "readback",
-    "regression",
-    "review",
-    "closure",
-    "does_not_prove"
-  ],
-  "policy_1_1_additional_required_core_fields": [
-    "constraint_lock",
-    "flow_completion"
-  ],
-  "legacy_receipts_without_policy_1_1_fields": [
-    "EXR-20260818-PR246-IMAGE-OPS-ADAPTER",
-    "EXR-20260818-PR248-CONTRACT-LAYER",
-    "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"
-  ],
+  "required_core_fields": ["receipt_id", "status", "execution_type", "task_id", "authority", "required_native_output", "owner_set", "artifacts", "execution", "readback", "regression", "review", "closure", "does_not_prove"],
+  "policy_1_1_additional_required_core_fields": ["constraint_lock", "flow_completion"],
+  "legacy_receipts_without_policy_1_1_fields": ["EXR-20260818-PR246-IMAGE-OPS-ADAPTER", "EXR-20260818-PR248-CONTRACT-LAYER", "EXR-20260818-SKILL-RUNTIME-CLOSURE-v1.2"],
   "new_receipt_rule": "EVERY_RECEIPT_NOT_IN_LEGACY_ALLOWLIST_MUST_INCLUDE_CONSTRAINT_LOCK_AND_FLOW_COMPLETION; VISUAL_EXECUTIONS_BINDING_SEMANTIC_CONTENT_IMAGES MUST ADD IMAGE_CONSUMPTION; CONTINUING_TASKS MUST ADD CONTINUATION_CHECKPOINT WHEN APPLICABLE; MATERIAL_CROSS_LAYER_HANDOFFS MUST ADD RUNTIME_LAYER_HANDOFF WHEN THE HANDOFF SUPPORTS CONTINUATION_REVIEW_OR_PROMOTION; MULTI_SURFACE_MATERIAL_MUTATIONS MUST ADD PARTIAL_COMMIT_RECONCILIATION WHEN DEPENDENT_ADVANCE_OR_HANDOFF_REQUIRES_COHERENT_SIDE_EFFECTS; MATERIAL_FAILURE_OR_CONTRADICTION_REQUIRING_CONTAINMENT_RECOVERY_OR_RECOVERY_CLOSURE_TO_SUPPORT_CONTINUATION_REVIEW_OR_PROMOTION MUST ADD RECOVERY_INCIDENT; CONCURRENCY_GUARD_AND_REMOTE_MUTATION_IDEMPOTENCY ARE RECORDED ONLY WHEN MATERIAL EXECUTION USES THEM; CROSS_CONTEXT_DISCOVERY_ADAPTER_ROUTE_AND_MULTI_NODE_AUTO_ADVANCE ARE RECORDED ONLY WHEN MATERIAL_EXECUTION_USES_THEM_AND_AN_EXISTING_PERSISTENCE_TRIGGER_APPLIES; PROFESSIONAL_EXECUTION_GRANULARITY MUST BE RECORDED WHEN A MATERIAL PROFESSIONAL-DOMAIN EXECUTION REQUIRES DECISION_OBJECT_CLAIM_OUTPUT PRECISION FOR CONTINUATION REVIEW REOPEN OR PROMOTION",
-  "status_values": [
-    "WORKING",
-    "REVIEW_PENDING",
-    "HOLD",
-    "CLOSED"
-  ],
-  "execution_type_values": [
-    "PROJECT",
-    "TRAINING",
-    "SKILL_VALIDATION",
-    "GOVERNANCE_RUNTIME"
-  ],
-  "authority_required_fields": [
-    "notion_root_page_id",
-    "notion_root_version",
-    "project_or_scope_authority",
-    "source_authority",
-    "design_authority",
-    "canonical_ids",
-    "github_resolver",
-    "github_commit_or_ref"
-  ],
-  "constraint_lock_required_fields": [
-    "resolved_from",
-    "inheritance_state",
-    "active_constraints",
-    "revocations",
-    "tool_deny",
-    "output_deny",
-    "creation_deny",
-    "required_behaviors"
-  ],
-  "constraint_record_required_fields": [
-    "constraint_id",
-    "constraint_type",
-    "normalized_rule",
-    "source",
-    "scope",
-    "status",
-    "revocation_rule"
-  ],
-  "constraint_status_values": [
-    "ACTIVE",
-    "REVOKED",
-    "SUPERSEDED"
-  ],
-  "constraint_types": [
-    "TOOL_DENY",
-    "OUTPUT_DENY",
-    "CREATION_DENY",
-    "OWNER_REQUIRE",
-    "PROCESS_REQUIRE",
-    "REVIEW_REQUIRE"
-  ],
-  "normalized_constraint_rules": [
-    "NO_IMAGE_GENERATION",
-    "NO_NEW_SKILL",
-    "NO_NEW_METHOD",
-    "NO_NEW_FRAMEWORK",
-    "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS",
-    "FULL_OLEANDER_FLOW_REQUIRED",
-    "NO_PRODUCER_SELF_PROMOTION"
-  ],
-  "constraint_invariants": [
-    "generic_continue_does_not_revoke_active_constraints",
-    "only_later_explicit_user_instruction_can_revoke_or_change_named_constraint",
-    "tool_deny_is_checked_before_tool_selection",
-    "creation_deny_is_checked_before_gap_driven_creation"
-  ],
+  "status_values": ["WORKING", "REVIEW_PENDING", "HOLD", "CLOSED"],
+  "execution_type_values": ["PROJECT", "TRAINING", "SKILL_VALIDATION", "GOVERNANCE_RUNTIME"],
+  "authority_required_fields": ["notion_root_page_id", "notion_root_version", "project_or_scope_authority", "source_authority", "design_authority", "canonical_ids", "github_resolver", "github_commit_or_ref"],
+  "constraint_lock_required_fields": ["resolved_from", "inheritance_state", "active_constraints", "revocations", "tool_deny", "output_deny", "creation_deny", "required_behaviors"],
+  "constraint_record_required_fields": ["constraint_id", "constraint_type", "normalized_rule", "source", "scope", "status", "revocation_rule"],
+  "constraint_status_values": ["ACTIVE", "REVOKED", "SUPERSEDED"],
+  "constraint_types": ["TOOL_DENY", "OUTPUT_DENY", "CREATION_DENY", "OWNER_REQUIRE", "PROCESS_REQUIRE", "REVIEW_REQUIRE"],
+  "normalized_constraint_rules": ["NO_IMAGE_GENERATION", "NO_NEW_SKILL", "NO_NEW_METHOD", "NO_NEW_FRAMEWORK", "USE_EXISTING_OLEANDER_METHODS_AND_SKILLS", "FULL_OLEANDER_FLOW_REQUIRED", "NO_PRODUCER_SELF_PROMOTION"],
+  "constraint_invariants": ["generic_continue_does_not_revoke_active_constraints", "only_later_explicit_user_instruction_can_revoke_or_change_named_constraint", "tool_deny_is_checked_before_tool_selection", "creation_deny_is_checked_before_gap_driven_creation"],
   "continuation_checkpoint_extension": {
     "required_when": "SAME_TASK_EXECUTION_EXPECTED_TO_CONTINUE_ACROSS_TURNS_OR_HANDOFFS_AND_STATUS_IS_WORKING_OR_HOLD",
     "prospective_only": true,
     "historical_receipts_immutable": true,
-    "fields": [
-      "checkpoint_state",
-      "current_node",
-      "last_verified_artifact",
-      "resume_from",
-      "next_allowed_action",
-      "authority_fingerprint",
-      "stale_reasons",
-      "checkpoint_sequence",
-      "checkpoint_updated_at",
-      "expected_checkpoint_sequence",
-      "executor_id",
-      "execution_lease_state",
-      "lease_acquired_at"
-    ],
-    "checkpoint_states": [
-      "RESUMABLE",
-      "REVALIDATE",
-      "BLOCKED",
-      "CLOSED"
-    ],
-    "last_verified_artifact_fields": [
-      "artifact_id",
-      "hash_or_commit",
-      "readback_verdict"
-    ],
-    "authority_fingerprint_inputs": [
-      "CURRENT_ROOT_VERSION",
-      "PROJECT_OR_SCOPE_AUTHORITY",
-      "SOURCE_AUTHORITY",
-      "DESIGN_AUTHORITY",
-      "CURRENT_TASK_ID",
-      "CURRENT_NATIVE_MASTER_OR_REF",
-      "ACTIVE_CONSTRAINT_LOCK"
-    ],
-    "direct_resume_requires": [
-      "SAME_TASK_AND_OBJECT",
-      "AUTHORITY_FINGERPRINT_MATCH",
-      "LAST_VERIFIED_ARTIFACT_HAS_ACTUAL_READBACK",
-      "NO_STALE_DEPENDENCY_OR_HANDOFF",
-      "CHECKPOINT_STATE_RESUMABLE"
-    ],
+    "fields": ["checkpoint_state", "current_node", "last_verified_artifact", "resume_from", "next_allowed_action", "authority_fingerprint", "stale_reasons", "checkpoint_sequence", "checkpoint_updated_at", "expected_checkpoint_sequence", "executor_id", "execution_lease_state", "lease_acquired_at"],
+    "checkpoint_states": ["RESUMABLE", "REVALIDATE", "BLOCKED", "CLOSED"],
+    "last_verified_artifact_fields": ["artifact_id", "hash_or_commit", "readback_verdict"],
+    "authority_fingerprint_inputs": ["CURRENT_ROOT_VERSION", "PROJECT_OR_SCOPE_AUTHORITY", "SOURCE_AUTHORITY", "DESIGN_AUTHORITY", "CURRENT_TASK_ID", "CURRENT_NATIVE_MASTER_OR_REF", "ACTIVE_CONSTRAINT_LOCK"],
+    "direct_resume_requires": ["SAME_TASK_AND_OBJECT", "AUTHORITY_FINGERPRINT_MATCH", "LAST_VERIFIED_ARTIFACT_HAS_ACTUAL_READBACK", "NO_STALE_DEPENDENCY_OR_HANDOFF", "CHECKPOINT_STATE_RESUMABLE"],
     "frontier_discovery_required_when": "FOLLOWUP_OR_CONTINUATION_INTENT_WITHOUT_RELIABLE_LOCAL_TASK_POINTER",
-    "frontier_discovery_sources_in_order": [
-      "EXPLICIT_CURRENT_REQUEST_PROJECT_TASK_OBJECT_KEYS",
-      "CURRENT_PROJECT_STATE_OR_CURRENT_TASK_POINTER",
-      "CURRENT_PROJECT_CONTROL_CARD",
-      "ACTIVE_WORKING_OR_HOLD_EXECUTION_RECEIPTS"
-    ],
-    "frontier_match_keys": [
-      "PROJECT_ID_OR_SCOPE_ID",
-      "TASK_ID_WHEN_KNOWN",
-      "LOGICAL_OBJECT_OR_CANONICAL_IDS",
-      "CURRENT_NATIVE_MASTER_OR_REF",
-      "AUTHORITY_FINGERPRINT"
-    ],
-    "frontier_discovery_record_fields": [
-      "discovery_trigger",
-      "project_or_scope_key",
-      "task_key",
-      "object_or_canonical_ids",
-      "candidate_frontiers",
-      "selected_frontier",
-      "selection_basis",
-      "ambiguity_state"
-    ],
+    "frontier_discovery_sources_in_order": ["EXPLICIT_CURRENT_REQUEST_PROJECT_TASK_OBJECT_KEYS", "CURRENT_PROJECT_STATE_OR_CURRENT_TASK_POINTER", "CURRENT_PROJECT_CONTROL_CARD", "ACTIVE_WORKING_OR_HOLD_EXECUTION_RECEIPTS"],
+    "frontier_match_keys": ["PROJECT_ID_OR_SCOPE_ID", "TASK_ID_WHEN_KNOWN", "LOGICAL_OBJECT_OR_CANONICAL_IDS", "CURRENT_NATIVE_MASTER_OR_REF", "AUTHORITY_FINGERPRINT"],
+    "frontier_discovery_record_fields": ["discovery_trigger", "project_or_scope_key", "task_key", "object_or_canonical_ids", "candidate_frontiers", "selected_frontier", "selection_basis", "ambiguity_state"],
     "same_task_multiple_checkpoint_rule": "HIGHEST_CHECKPOINT_SEQUENCE_THEN_LATEST_CHECKPOINT_UPDATED_AT_WITH_MATCHING_AUTHORITY",
     "distinct_task_ambiguity_rule": "HOLD_AMBIGUOUS_FRONTIER_IF_CURRENT_AUTHORITY_CANNOT_IDENTIFY_ONE_ACTIVE_TASK",
     "chat_history_or_summary_is_not_checkpoint_authority": true,
-    "revalidate_on": [
-      "PROJECT_OR_TASK_SWITCH",
-      "AUTHORITY_FINGERPRINT_MISMATCH",
-      "SOURCE_OR_DESIGN_AUTHORITY_CHANGED",
-      "CURRENT_NATIVE_MASTER_OR_WRITE_FRONTIER_CHANGED_EXTERNALLY",
-      "DEPENDENCY_STALE_OR_RETEST_REQUIRED",
-      "CHECKPOINT_MISSING_OR_LAST_ARTIFACT_NOT_READBACK_VERIFIED",
-      "CHECKPOINT_SEQUENCE_ADVANCED_BY_ANOTHER_EXECUTOR"
-    ],
+    "revalidate_on": ["PROJECT_OR_TASK_SWITCH", "AUTHORITY_FINGERPRINT_MISMATCH", "SOURCE_OR_DESIGN_AUTHORITY_CHANGED", "CURRENT_NATIVE_MASTER_OR_WRITE_FRONTIER_CHANGED_EXTERNALLY", "DEPENDENCY_STALE_OR_RETEST_REQUIRED", "CHECKPOINT_MISSING_OR_LAST_ARTIFACT_NOT_READBACK_VERIFIED", "CHECKPOINT_SEQUENCE_ADVANCED_BY_ANOTHER_EXECUTOR"],
     "generic_continue_action": "RESUME_NEXT_ALLOWED_ACTION_NOT_REPLAN_FROM_ZERO",
     "blocked_action": "RECHECK_RELEASE_CONDITION_NO_BLIND_RETRY",
     "closed_action": "DO_NOT_REOPEN_WITH_GENERIC_CONTINUE",
@@ -236,24 +59,9 @@
   "concurrency_guard_extension": {
     "required_when": "REMOTE_OR_AUTHORITY_MUTATION_USES_A_RESUMABLE_CHECKPOINT",
     "prospective_only": true,
-    "fields": [
-      "expected_checkpoint_sequence",
-      "observed_checkpoint_sequence",
-      "executor_id",
-      "execution_lease_state",
-      "lease_acquired_at",
-      "guard_verdict"
-    ],
-    "lease_states": [
-      "NONE",
-      "ACTIVE",
-      "STALE",
-      "CONFLICTED"
-    ],
-    "guard_verdict_values": [
-      "PASS_SEQUENCE_MATCH",
-      "REVALIDATE_CONCURRENT_ADVANCE"
-    ],
+    "fields": ["expected_checkpoint_sequence", "observed_checkpoint_sequence", "executor_id", "execution_lease_state", "lease_acquired_at", "guard_verdict"],
+    "lease_states": ["NONE", "ACTIVE", "STALE", "CONFLICTED"],
+    "guard_verdict_values": ["PASS_SEQUENCE_MATCH", "REVALIDATE_CONCURRENT_ADVANCE"],
     "sequence_is_authoritative": true,
     "lease_metadata_is_advisory_only": true,
     "sequence_mismatch_verdict": "REVALIDATE_CONCURRENT_ADVANCE",
@@ -263,117 +71,28 @@
   },
   "continuous_execution_extension": {
     "required_when": "MORE_THAN_ONE_READY_NODE_IS_EXECUTED_IN_ONE_MATERIAL_RUN_OR_AUTO_ADVANCE_STOPS_BEFORE_FLOW_COMPLETION",
-    "fields": [
-      "auto_advance_enabled",
-      "nodes_executed_in_order",
-      "node_readback_verdicts",
-      "stop_reason",
-      "final_current_node",
-      "next_allowed_action"
-    ],
+    "fields": ["auto_advance_enabled", "nodes_executed_in_order", "node_readback_verdicts", "stop_reason", "final_current_node", "next_allowed_action"],
     "auto_advance_requires_readback_between_dependent_mutations": true,
     "no_artificial_one_node_stop": true,
     "background_execution_forbidden": true,
-    "stop_reason_values": [
-      "FLOW_COMPLETION_GATE_PASS",
-      "GENUINE_BLOCKER",
-      "AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER",
-      "CONCURRENT_CHECKPOINT_ADVANCE",
-      "USER_DESIGN_OR_SCOPE_DECISION_REQUIRED",
-      "SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED",
-      "MISSING_UNRECOVERABLE_SOURCE",
-      "FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED",
-      "REQUIRED_INDEPENDENT_REVIEW_UNAVAILABLE",
-      "TOOL_OR_RUNTIME_HARD_LIMIT"
-    ],
+    "stop_reason_values": ["FLOW_COMPLETION_GATE_PASS", "GENUINE_BLOCKER", "AUTHORITY_CONFLICT_OR_AMBIGUOUS_FRONTIER", "CONCURRENT_CHECKPOINT_ADVANCE", "USER_DESIGN_OR_SCOPE_DECISION_REQUIRED", "SIDE_EFFECT_ESCALATION_NOT_AUTHORIZED", "MISSING_UNRECOVERABLE_SOURCE", "FUTURE_CONDITION_OR_EXTERNAL_WAIT_REQUIRED", "REQUIRED_INDEPENDENT_REVIEW_UNAVAILABLE", "TOOL_OR_RUNTIME_HARD_LIMIT"],
     "no_material_delta_no_new_receipt": true
   },
-  "required_native_output_fields": [
-    "artifact_class",
-    "native_format",
-    "editable_required",
-    "target_runtime",
-    "derived_formats"
-  ],
-  "owner_set_required_fields": [
-    "minimum_sufficient_owner_set",
-    "primary_owner",
-    "nodes",
-    "omitted_owner_reasoning"
-  ],
-  "node_roles": [
-    "PRIMARY_OWNER",
-    "SUPPORTING_OWNER",
-    "READ_ONLY_CONSUMER",
-    "VALIDATOR",
-    "INDEPENDENT_REVIEWER"
-  ],
-  "flow_completion_required_fields": [
-    "mode",
-    "required_phases",
-    "phase_results",
-    "incomplete_required_phases",
-    "completion_gate",
-    "completion_claim_allowed"
-  ],
-  "flow_modes": [
-    "READ_ONLY_QUERY",
-    "MINIMUM_EXECUTION",
-    "FULL_OLEANDER_FLOW"
-  ],
-  "canonical_flow_phases": [
-    "AUTHORITY_PREFLIGHT",
-    "STICKY_CONSTRAINT_RESOLUTION",
-    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
-    "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK",
-    "REQUIRED_NATIVE_OUTPUT_DEFINITION",
-    "CAPABILITY_AND_MINIMUM_OWNER_SET",
-    "REAL_EXECUTION",
-    "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD",
-    "ACTUAL_READBACK",
-    "REGRESSION_AS_APPLICABLE",
-    "INDEPENDENT_REVIEW_AS_APPLICABLE",
-    "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"
-  ],
-  "conditional_flow_phases": {
-    "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "REQUIRED_WHEN_VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE"
-  },
-  "full_flow_core_phases": [
-    "AUTHORITY_PREFLIGHT",
-    "STICKY_CONSTRAINT_RESOLUTION",
-    "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION",
-    "REQUIRED_NATIVE_OUTPUT_DEFINITION",
-    "CAPABILITY_AND_MINIMUM_OWNER_SET",
-    "REAL_EXECUTION",
-    "ACTUAL_READBACK"
-  ],
-  "validation_result_values": [
-    "PASS",
-    "FAIL",
-    "HOLD",
-    "NOT_RUN",
-    "UNVERIFIED",
-    "NOT_APPLICABLE"
-  ],
+  "required_native_output_fields": ["artifact_class", "native_format", "editable_required", "target_runtime", "derived_formats"],
+  "owner_set_required_fields": ["minimum_sufficient_owner_set", "primary_owner", "nodes", "omitted_owner_reasoning"],
+  "node_roles": ["PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"],
+  "flow_completion_required_fields": ["mode", "required_phases", "phase_results", "incomplete_required_phases", "completion_gate", "completion_claim_allowed"],
+  "flow_modes": ["READ_ONLY_QUERY", "MINIMUM_EXECUTION", "FULL_OLEANDER_FLOW"],
+  "canonical_flow_phases": ["AUTHORITY_PREFLIGHT", "STICKY_CONSTRAINT_RESOLUTION", "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION", "EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK", "REQUIRED_NATIVE_OUTPUT_DEFINITION", "CAPABILITY_AND_MINIMUM_OWNER_SET", "REAL_EXECUTION", "NATIVE_ARTIFACT_AND_TYPED_HANDOFF_RECORD", "ACTUAL_READBACK", "REGRESSION_AS_APPLICABLE", "INDEPENDENT_REVIEW_AS_APPLICABLE", "SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE"],
+  "conditional_flow_phases": {"EXISTING_VISUAL_AUTHORITY_AND_IMAGE_CONSUMPTION_CHECK": "REQUIRED_WHEN_VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE"},
+  "full_flow_core_phases": ["AUTHORITY_PREFLIGHT", "STICKY_CONSTRAINT_RESOLUTION", "EXISTING_KNOWLEDGE_METHOD_SKILL_RESOLUTION", "REQUIRED_NATIVE_OUTPUT_DEFINITION", "CAPABILITY_AND_MINIMUM_OWNER_SET", "REAL_EXECUTION", "ACTUAL_READBACK"],
+  "validation_result_values": ["PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"],
   "typed_validation_extension": {
     "prospective_only": true,
     "historical_receipts_immutable": true,
     "required_when": "A_MACHINE_OR_HUMAN_CHECK_IS_RECORDED_AS_EXECUTION_EVIDENCE",
-    "fields": [
-      "domain",
-      "result",
-      "criterion_ref",
-      "evidence_ref",
-      "does_not_prove"
-    ],
-    "result_values": [
-      "PASS",
-      "FAIL",
-      "HOLD",
-      "NOT_RUN",
-      "UNVERIFIED",
-      "NOT_APPLICABLE"
-    ],
+    "fields": ["domain", "result", "criterion_ref", "evidence_ref", "does_not_prove"],
+    "result_values": ["PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"],
     "result_semantics": {
       "PASS": "CHECK_WAS_ACTUALLY_EXECUTED_AND_THE_DECLARED_CRITERIA_WERE_SATISFIED",
       "FAIL": "CHECK_WAS_ACTUALLY_EXECUTED_AND_ONE_OR_MORE_DECLARED_CRITERIA_FAILED",
@@ -395,23 +114,8 @@
     "prospective_only": true,
     "historical_receipts_immutable": true,
     "required_when": "A_MATERIAL_EXECUTION_REQUESTS_OR_CONSUMES_AN_EXCEPTION_TO_A_DECLARED_REQUIRED_CHECK_CRITERION_OR_CLAIM_BOUNDARY",
-    "fields": [
-      "decision_object_id",
-      "criterion_ref",
-      "decision_class",
-      "actor_or_authority_ref",
-      "authorization_basis_ref_or_fields",
-      "authority_scope",
-      "claim_boundary",
-      "authority_fingerprint",
-      "exception_effect",
-      "revalidation_ref"
-    ],
-    "exception_effect_values": [
-      "CRITERION_CHANGED",
-      "CLAIM_BOUNDARY_NARROWED",
-      "CHECK_DECLARED_NOT_APPLICABLE_BY_AUTHORITY"
-    ],
+    "fields": ["decision_object_id", "criterion_ref", "decision_class", "actor_or_authority_ref", "authorization_basis_ref_or_fields", "authority_scope", "claim_boundary", "authority_fingerprint", "exception_effect", "revalidation_ref"],
+    "exception_effect_values": ["CRITERION_CHANGED", "CLAIM_BOUNDARY_NARROWED", "CHECK_DECLARED_NOT_APPLICABLE_BY_AUTHORITY"],
     "generic_waiver_state_forbidden": true,
     "exception_does_not_mutate_prior_validation_result": true,
     "fail_hold_not_run_unverified_cannot_be_waived_to_pass": true,
@@ -419,93 +123,37 @@
     "changed_criterion_or_claim_requires_fresh_validation": true,
     "not_applicable_requires_reason_and_authority_basis": true,
     "exception_cannot_grant_design_keep_professional_pass_or_promotion": true,
-    "does_not_prove": [
-      "validation_pass",
-      "design_keep",
-      "professional_pass",
-      "statutory_approval",
-      "promotion"
-    ]
+    "does_not_prove": ["validation_pass", "design_keep", "professional_pass", "statutory_approval", "promotion"]
   },
-  "phase_result_values": [
-    "PASS",
-    "FAIL",
-    "HOLD",
-    "NOT_RUN",
-    "UNVERIFIED",
-    "NOT_APPLICABLE"
-  ],
-  "completion_gate_values": [
-    "PASS",
-    "FAIL",
-    "HOLD"
-  ],
+  "professional_execution_granularity_extension": {
+    "required_when": "MATERIAL_EXECUTION_IS_TRIGGERED_BY_A_PROFESSIONAL_DOMAIN_STAGE_AND_DECISION_OBJECT_CLAIM_PRECISION_IS_REQUIRED_FOR_CONTINUATION_REVIEW_REOPEN_OR_PROMOTION",
+    "prospective_only": true,
+    "historical_receipts_immutable": true,
+    "contract_ref": "00-governance/professional-domain-process-contract-v1.0.md#9a-decision-object--claim--output-execution-granularity",
+    "fields": ["professional_process_instance_ref", "professional_stage_instance_ref", "decision_object_ref", "claim_refs", "knowledge_mount_refs", "output_execution_binding_ref", "required_native_output_ref", "required_capability_roles"],
+    "join_rule": "PROFESSIONAL_STAGE_CONTEXT_TO_DECISION_OBJECT_TO_CLAIM_TO_KNOWLEDGE_MOUNT_TO_REQUIRED_OUTPUT_TO_CAPABILITY_ROUTE_TO_OWNER_SET_TO_ADAPTER_WHEN_REQUIRED_TO_NATIVE_ARTIFACT_TO_ACTUAL_READBACK",
+    "stage_is_not_execution_unit": true,
+    "knowledge_mount_does_not_route_directly_to_skill": true,
+    "required_output_precedes_capability_resolution": true,
+    "capability_is_not_skill": true,
+    "skill_is_not_tool": true,
+    "no_new_capability_taxonomy_created": true,
+    "no_material_delta_no_new_receipt": true,
+    "does_not_prove": ["PROFESSIONAL_PASS", "INTEGRATION_PASS", "DESIGN_KEEP", "STATUTORY_OR_ENGINEERING_APPROVAL", "PROMOTION"]
+  },
+  "phase_result_values": ["PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"],
+  "completion_gate_values": ["PASS", "FAIL", "HOLD"],
   "closed_state_rule": "IF_STATUS_IS_CLOSED_COMPLETION_GATE_MUST_BE_PASS_INCOMPLETE_REQUIRED_PHASES_MUST_BE_EMPTY_AND_NO_REQUIRED_CHECK_MAY_REMAIN_FAIL_HOLD_NOT_RUN_OR_UNVERIFIED",
-  "early_completion_forbidden_on": [
-    "PLAN_WRITTEN",
-    "METHOD_EXPLAINED",
-    "ARTIFACT_CREATED",
-    "FILE_EXPORTED",
-    "PR_OPENED",
-    "CI_GREEN",
-    "SELF_CHECK_PASS",
-    "RENDER_PASS",
-    "REGRESSION_PASS"
-  ],
-  "artifact_permissions": [
-    "READ_ONLY",
-    "DERIVE",
-    "MUTATE_PRESENTATION_ONLY",
-    "MUTATE_AUTHORIZED_SOURCE"
-  ],
-  "artifact_required_fields": [
-    "artifact_id",
-    "artifact_role",
-    "producer_owner",
-    "authority_source",
-    "authority_state",
-    "native_format",
-    "editable_state",
-    "semantic_layers",
-    "provenance_state",
-    "dependencies",
-    "hashes_or_commit",
-    "runtime",
-    "renderer",
-    "permission",
-    "current_state",
-    "does_not_prove"
-  ],
+  "early_completion_forbidden_on": ["PLAN_WRITTEN", "METHOD_EXPLAINED", "ARTIFACT_CREATED", "FILE_EXPORTED", "PR_OPENED", "CI_GREEN", "SELF_CHECK_PASS", "RENDER_PASS", "REGRESSION_PASS"],
+  "artifact_permissions": ["READ_ONLY", "DERIVE", "MUTATE_PRESENTATION_ONLY", "MUTATE_AUTHORIZED_SOURCE"],
+  "artifact_required_fields": ["artifact_id", "artifact_role", "producer_owner", "authority_source", "authority_state", "native_format", "editable_state", "semantic_layers", "provenance_state", "dependencies", "hashes_or_commit", "runtime", "renderer", "permission", "current_state", "does_not_prove"],
   "runtime_layer_handoff_extension": {
     "required_when": "MATERIAL_EXECUTION_CROSSES_AN_R_A_TO_R_K_DEPENDENCY_BOUNDARY_AND_THE_HANDOFF_SUPPORTS_CONTINUATION_REVIEW_OR_PROMOTION",
     "prospective_only": true,
     "historical_receipts_immutable": true,
     "contract_ref": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
-    "fields": [
-      "handoff_id",
-      "from_layer",
-      "to_layer",
-      "project_or_scope_id",
-      "decision_object_id",
-      "authority_fingerprint",
-      "source_revision",
-      "object_refs",
-      "claim_boundary",
-      "open_blockers",
-      "stale_if",
-      "readback_refs",
-      "handoff_state",
-      "observed_at",
-      "does_not_prove"
-    ],
-    "handoff_state_values": [
-      "UNRESOLVED",
-      "READY",
-      "ACCEPTED",
-      "HOLD",
-      "STALE",
-      "SUPERSEDED"
-    ],
+    "fields": ["handoff_id", "from_layer", "to_layer", "project_or_scope_id", "decision_object_id", "authority_fingerprint", "source_revision", "object_refs", "claim_boundary", "open_blockers", "stale_if", "readback_refs", "handoff_state", "observed_at", "does_not_prove"],
+    "handoff_state_values": ["UNRESOLVED", "READY", "ACCEPTED", "HOLD", "STALE", "SUPERSEDED"],
     "producer_max_state": "READY",
     "consumer_accepts_after_required_readback": true,
     "accepted_does_not_prove_downstream_pass": true,
@@ -520,41 +168,10 @@
     "historical_receipts_immutable": true,
     "contract_ref": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
     "runtime_implementation_ref": "00-governance/runtime/validate_runtime_resilience.py",
-    "fields": [
-      "project_or_scope_id",
-      "task_id",
-      "decision_object_id",
-      "authority_fingerprint",
-      "mutation_scope",
-      "legs",
-      "reconciliation_result",
-      "reconciliation_action",
-      "advance_allowed",
-      "readback_refs",
-      "observed_at",
-      "does_not_prove"
-    ],
-    "leg_fields": [
-      "surface_id",
-      "side_effect_class",
-      "operation_fingerprint",
-      "expected_postcondition",
-      "state",
-      "retry_safe",
-      "idempotent_or_provider_keyed",
-      "compensation_legal",
-      "readback_ref"
-    ],
-    "leg_observation_values": [
-      "CONFIRMED",
-      "ABSENT",
-      "UNCERTAIN"
-    ],
-    "reconciliation_results": [
-      "COHERENT_COMMIT",
-      "PARTIAL_COMMIT",
-      "HOLD"
-    ],
+    "fields": ["project_or_scope_id", "task_id", "decision_object_id", "authority_fingerprint", "mutation_scope", "legs", "reconciliation_result", "reconciliation_action", "advance_allowed", "readback_refs", "observed_at", "does_not_prove"],
+    "leg_fields": ["surface_id", "side_effect_class", "operation_fingerprint", "expected_postcondition", "state", "retry_safe", "idempotent_or_provider_keyed", "compensation_legal", "readback_ref"],
+    "leg_observation_values": ["CONFIRMED", "ABSENT", "UNCERTAIN"],
+    "reconciliation_results": ["COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"],
     "result_is_ephemeral_runtime_fact_not_project_state": true,
     "uncertain_leg_action": "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",
     "absent_safe_leg_action": "RECONCILE_MISSING_LEGS_BEFORE_ADVANCE",
@@ -574,54 +191,8 @@
     "prospective_only": true,
     "historical_receipts_immutable": true,
     "contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
-    "fields": [
-      "incident_id",
-      "failure_class",
-      "failure_code",
-      "failure_owner_ref",
-      "detected_at",
-      "owning_layer",
-      "project_or_scope_id",
-      "current_task_id",
-      "decision_object_id",
-      "authority_fingerprint",
-      "source_revision",
-      "trigger_source_ref",
-      "trigger_event_ref",
-      "blast_radius",
-      "preserved_state",
-      "containment",
-      "recovery",
-      "closure",
-      "incident_state",
-      "remaining_blockers",
-      "next_allowed_action",
-      "observed_at",
-      "does_not_prove"
-    ],
-    "required_fields": [
-      "incident_id",
-      "failure_class",
-      "failure_owner_ref",
-      "detected_at",
-      "owning_layer",
-      "project_or_scope_id",
-      "current_task_id",
-      "decision_object_id",
-      "authority_fingerprint",
-      "source_revision",
-      "trigger_source_ref",
-      "blast_radius",
-      "preserved_state",
-      "containment",
-      "recovery",
-      "closure",
-      "incident_state",
-      "remaining_blockers",
-      "next_allowed_action",
-      "observed_at",
-      "does_not_prove"
-    ],
+    "fields": ["incident_id", "failure_class", "failure_code", "failure_owner_ref", "detected_at", "owning_layer", "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision", "trigger_source_ref", "trigger_event_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure", "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove"],
+    "required_fields": ["incident_id", "failure_class", "failure_owner_ref", "detected_at", "owning_layer", "project_or_scope_id", "current_task_id", "decision_object_id", "authority_fingerprint", "source_revision", "trigger_source_ref", "blast_radius", "preserved_state", "containment", "recovery", "closure", "incident_state", "remaining_blockers", "next_allowed_action", "observed_at", "does_not_prove"],
     "conditional_fields": {
       "failure_code": "REQUIRED_WHEN_THE_CANONICAL_FAILURE_OWNER_EXPOSES_AN_OWNER_NATIVE_FAILURE_CODE",
       "trigger_event_ref": "REQUIRED_WHEN_A_DURABLE_OBSERVABILITY_EVENT_RECORD_EXISTS_FOR_THE_INCIDENT_TRIGGER"
@@ -638,46 +209,15 @@
   "image_consumption_extension": {
     "required_when": "VISUAL_EXECUTION_BINDS_SEMANTIC_CONTENT_IMAGE",
     "register_contract": "00-governance/runtime/OLEANDER_IMAGE_CONSUMPTION_REGISTER_v1.0.json",
-    "fields": [
-      "register_path_or_authority",
-      "lookup_performed",
-      "reservations_or_consumptions",
-      "conflicts",
-      "blocked_assets",
-      "release_actions",
-      "verdict"
-    ],
-    "not_applicable_allowed_for": [
-      "NO_CONTENT_IMAGES",
-      "SYSTEM_REUSABLE_ONLY"
-    ],
+    "fields": ["register_path_or_authority", "lookup_performed", "reservations_or_consumptions", "conflicts", "blocked_assets", "release_actions", "verdict"],
+    "not_applicable_allowed_for": ["NO_CONTENT_IMAGES", "SYSTEM_REUSABLE_ONLY"],
     "conflict_verdict": "BLOCK_SELECT_ANOTHER_IMAGE",
     "derivative_identity_must_be_inherited": true
   },
-  "adapter_required_when_used": [
-    "adapter_id",
-    "canonical_tool_id",
-    "implemented_revision",
-    "implementation_commit",
-    "operator_role",
-    "minimum_sufficient_operator_set",
-    "effect_budget",
-    "fallback",
-    "regression_baseline"
-  ],
+  "adapter_required_when_used": ["adapter_id", "canonical_tool_id", "implemented_revision", "implementation_commit", "operator_role", "minimum_sufficient_operator_set", "effect_budget", "fallback", "regression_baseline"],
   "adapter_route_decision_extension": {
     "required_when": "MATERIAL_EXECUTION_EVALUATES_MULTIPLE_SURFACES_OR_USES_A_CURRENTLY_EXPOSED_EPHEMERAL_CONNECTED_SURFACE",
-    "fields": [
-      "required_capability_roles",
-      "candidate_surfaces",
-      "selected_surface",
-      "selection_reasons",
-      "availability_state",
-      "authority_ceiling",
-      "side_effect_class",
-      "readback_surface",
-      "fallback_surface"
-    ],
+    "fields": ["required_capability_roles", "candidate_surfaces", "selected_surface", "selection_reasons", "availability_state", "authority_ceiling", "side_effect_class", "readback_surface", "fallback_surface"],
     "vendor_name_is_not_selection_reason": true,
     "unused_candidates_and_liveness_probes_remain_ephemeral": true,
     "selected_surface_does_not_gain_authority": true,
@@ -687,18 +227,8 @@
   "remote_mutation_idempotency_extension": {
     "required_when": "REMOTE_AUTHORITY_OR_RELEASE_MUTATION_OUTCOME_IS_UNCERTAIN_OR_RETRY_IS_CONSIDERED",
     "prospective_only": true,
-    "fields": [
-      "operation_fingerprint",
-      "expected_postcondition",
-      "outcome_state",
-      "verification_surface",
-      "retry_decision"
-    ],
-    "outcome_states": [
-      "CONFIRMED_SUCCESS",
-      "CONFIRMED_FAILURE",
-      "UNCERTAIN"
-    ],
+    "fields": ["operation_fingerprint", "expected_postcondition", "outcome_state", "verification_surface", "retry_decision"],
+    "outcome_states": ["CONFIRMED_SUCCESS", "CONFIRMED_FAILURE", "UNCERTAIN"],
     "uncertain_outcome_action": "VERIFY_POSTCONDITION_BEFORE_RETRY",
     "postcondition_found_action": "NO_RETRY_NORMALIZE_CONFIRMED_SUCCESS",
     "postcondition_absent_retry_rule": "BOUNDED_RETRY_ONLY_IF_IDEMPOTENT_OR_PROVIDER_KEYED",
@@ -710,179 +240,26 @@
     "required_when": "MATERIAL_EXECUTION_USES_A_GIT_WORK_BRANCH_OR_PULL_REQUEST_AND_REACHES_CLOSURE",
     "prospective_only": true,
     "historical_receipts_immutable": true,
-    "fields": [
-      "branch",
-      "disposition",
-      "reason",
-      "dependency_checks",
-      "audit_receipt",
-      "readback"
-    ],
-    "disposition_values": [
-      "DELETE_AFTER_MERGE",
-      "DELETED",
-      "KEEP_OPEN_PR_HEAD",
-      "KEEP_OPEN_PR_BASE",
-      "KEEP_ACTIVE_WORKTREE",
-      "KEEP_EXPLICIT_PROVENANCE",
-      "NOT_APPLICABLE"
-    ],
-    "dependency_checks": [
-      "OPEN_PR_HEAD",
-      "OPEN_PR_BASE",
-      "ACTIVE_WORKTREE",
-      "EXPLICIT_KEEP"
-    ],
+    "fields": ["branch", "disposition", "reason", "dependency_checks", "audit_receipt", "readback"],
+    "disposition_values": ["DELETE_AFTER_MERGE", "DELETED", "KEEP_OPEN_PR_HEAD", "KEEP_OPEN_PR_BASE", "KEEP_ACTIVE_WORKTREE", "KEEP_EXPLICIT_PROVENANCE", "NOT_APPLICABLE"],
+    "dependency_checks": ["OPEN_PR_HEAD", "OPEN_PR_BASE", "ACTIVE_WORKTREE", "EXPLICIT_KEEP"],
     "merged_default": "DELETE_AFTER_PROVENANCE_CAPTURE_WHEN_NO_DEPENDENCY_CHECK_BLOCKS",
     "unmerged_age_only_delete_forbidden": true,
     "bulk_cleanup_requires_ref_sha_audit": true,
     "branch_ref_is_not_current_authority": true
   },
-  "execution_required_fields": [
-    "runtime",
-    "entrypoint_or_action",
-    "result",
-    "failures",
-    "repairs"
-  ],
-  "readback_required_fields": [
-    "target",
-    "runtime",
-    "observed_result",
-    "blocking_defects",
-    "nonblocking_defects",
-    "verdict"
-  ],
-  "regression_layers": [
-    "STRUCTURAL",
-    "SEMANTIC",
-    "VISUAL_ROI",
-    "RUNTIME"
-  ],
-  "regression_layer_result_values": [
-    "PASS",
-    "FAIL",
-    "HOLD",
-    "NOT_RUN",
-    "UNVERIFIED",
-    "NOT_APPLICABLE"
-  ],
-  "review_required_fields": [
-    "producer_id",
-    "reviewer_id",
-    "review_input_artifact_id",
-    "review_input_hash_or_commit",
-    "reviewer_independence_state",
-    "evidence_gate",
-    "design_quality_gate",
-    "promotion_authority"
-  ],
-  "reviewer_independence_states": [
-    "INDEPENDENT",
-    "PARTIALLY_INDEPENDENT",
-    "NOT_INDEPENDENT",
-    "NOT_REQUIRED"
-  ],
+  "execution_required_fields": ["runtime", "entrypoint_or_action", "result", "failures", "repairs"],
+  "readback_required_fields": ["target", "runtime", "observed_result", "blocking_defects", "nonblocking_defects", "verdict"],
+  "regression_layers": ["STRUCTURAL", "SEMANTIC", "VISUAL_ROI", "RUNTIME"],
+  "regression_layer_result_values": ["PASS", "FAIL", "HOLD", "NOT_RUN", "UNVERIFIED", "NOT_APPLICABLE"],
+  "review_required_fields": ["producer_id", "reviewer_id", "review_input_artifact_id", "review_input_hash_or_commit", "reviewer_independence_state", "evidence_gate", "design_quality_gate", "promotion_authority"],
+  "reviewer_independence_states": ["INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED"],
   "drift_section": {
     "required_when": "cross_platform_current_pointer_or_implementation_changes",
-    "modes": [
-      "GITHUB_STATIC_CHECK",
-      "LIVE_CROSS_PLATFORM_CHECK"
-    ],
-    "states": [
-      "CURRENT",
-      "STALE",
-      "MISSING",
-      "DIVERGED",
-      "ORPHANED_IMPLEMENTATION",
-      "NOT_REQUIRED",
-      "UNKNOWN"
-    ]
+    "modes": ["GITHUB_STATIC_CHECK", "LIVE_CROSS_PLATFORM_CHECK"],
+    "states": ["CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"]
   },
-  "closure_required_fields": [
-    "material_delta",
-    "branch",
-    "commits",
-    "pull_request",
-    "ci_state",
-    "merge_commit",
-    "main_readback",
-    "notion_writeback",
-    "remaining_blockers",
-    "final_state"
-  ],
-  "hard_guards": [
-    "only_applicable_sections_are_required",
-    "not_applicable_requires_reason_for_full_flow_optional_phases",
-    "sticky_user_constraints_precede_tool_and_creation_routing",
-    "generic_continue_does_not_revoke_constraint_lock",
-    "same_task_generic_continue_resumes_from_last_verified_checkpoint",
-    "cross_context_frontier_discovery_uses_existing_state_not_chat_memory",
-    "multiple_distinct_active_frontiers_require_current_authority_disambiguation_or_hold",
-    "authority_fingerprint_mismatch_forces_revalidation_before_mutation",
-    "checkpoint_sequence_mismatch_blocks_stale_executor_before_mutation",
-    "newer_checkpoint_sequence_wins_over_stale_lease_metadata",
-    "lease_metadata_does_not_grant_authority",
-    "uncertain_remote_mutation_verifies_postcondition_before_retry",
-    "duplicate_remote_side_effects_are_forbidden",
-    "context_switch_or_compression_alone_does_not_reset_verified_checkpoint",
-    "blind_repeat_of_completed_or_blocked_mutation_is_forbidden",
-    "checkpoint_is_runtime_state_not_project_state",
-    "ready_nodes_auto_advance_without_artificial_one_node_stop",
-    "auto_advance_requires_readback_between_dependent_mutations",
-    "auto_advance_does_not_mean_background_execution",
-    "adapter_route_uses_capability_role_not_vendor_ontology",
-    "selected_adapter_surface_does_not_gain_project_authority",
-    "full_flow_means_all_applicable_phases_not_all_skills",
-    "visual_content_image_binding_requires_image_consumption_lookup_and_record",
-    "duplicate_semantic_content_image_across_independent_consumers_is_blocked",
-    "presentation_derivative_does_not_reset_semantic_image_identity",
-    "closed_or_complete_claim_requires_completion_gate_pass",
-    "plan_artifact_pr_ci_self_check_render_or_regression_alone_do_not_equal_complete",
-    "producer_self_check_is_not_independent_review",
-    "artifact_existence_does_not_equal_design_quality",
-    "regression_pass_does_not_equal_design_keep",
-    "github_static_check_cannot_claim_live_notion_current",
-    "receipt_does_not_replace_project_state"
-  ],
-  "does_not_prove": [
-    "project_state",
-    "design_quality",
-    "field_truth",
-    "engineering_validity",
-    "user_validation",
-    "rights_clearance",
-    "promotion"
-  ],
-  "professional_execution_granularity_extension": {
-    "required_when": "MATERIAL_EXECUTION_IS_TRIGGERED_BY_A_PROFESSIONAL_DOMAIN_STAGE_AND_DECISION_OBJECT_CLAIM_PRECISION_IS_REQUIRED_FOR_CONTINUATION_REVIEW_REOPEN_OR_PROMOTION",
-    "prospective_only": true,
-    "historical_receipts_immutable": true,
-    "contract_ref": "00-governance/professional-domain-process-contract-v1.0.md#9a-decision-object--claim--output-execution-granularity",
-    "fields": [
-      "professional_process_instance_ref",
-      "professional_stage_instance_ref",
-      "decision_object_ref",
-      "claim_refs",
-      "knowledge_mount_refs",
-      "output_execution_binding_ref",
-      "required_native_output_ref",
-      "required_capability_roles"
-    ],
-    "join_rule": "PROFESSIONAL_STAGE_CONTEXT_TO_DECISION_OBJECT_TO_CLAIM_TO_KNOWLEDGE_MOUNT_TO_REQUIRED_OUTPUT_TO_CAPABILITY_ROUTE_TO_OWNER_SET_TO_ADAPTER_WHEN_REQUIRED_TO_NATIVE_ARTIFACT_TO_ACTUAL_READBACK",
-    "stage_is_not_execution_unit": true,
-    "knowledge_mount_does_not_route_directly_to_skill": true,
-    "required_output_precedes_capability_resolution": true,
-    "capability_is_not_skill": true,
-    "skill_is_not_tool": true,
-    "no_new_capability_taxonomy_created": true,
-    "no_material_delta_no_new_receipt": true,
-    "does_not_prove": [
-      "PROFESSIONAL_PASS",
-      "INTEGRATION_PASS",
-      "DESIGN_KEEP",
-      "STATUTORY_OR_ENGINEERING_APPROVAL",
-      "PROMOTION"
-    ]
-  }
+  "closure_required_fields": ["material_delta", "branch", "commits", "pull_request", "ci_state", "merge_commit", "main_readback", "notion_writeback", "remaining_blockers", "final_state"],
+  "hard_guards": ["only_applicable_sections_are_required", "not_applicable_requires_reason_for_full_flow_optional_phases", "sticky_user_constraints_precede_tool_and_creation_routing", "generic_continue_does_not_revoke_constraint_lock", "same_task_generic_continue_resumes_from_last_verified_checkpoint", "cross_context_frontier_discovery_uses_existing_state_not_chat_memory", "multiple_distinct_active_frontiers_require_current_authority_disambiguation_or_hold", "authority_fingerprint_mismatch_forces_revalidation_before_mutation", "checkpoint_sequence_mismatch_blocks_stale_executor_before_mutation", "newer_checkpoint_sequence_wins_over_stale_lease_metadata", "lease_metadata_does_not_grant_authority", "uncertain_remote_mutation_verifies_postcondition_before_retry", "duplicate_remote_side_effects_are_forbidden", "context_switch_or_compression_alone_does_not_reset_verified_checkpoint", "blind_repeat_of_completed_or_blocked_mutation_is_forbidden", "checkpoint_is_runtime_state_not_project_state", "ready_nodes_auto_advance_without_artificial_one_node_stop", "auto_advance_requires_readback_between_dependent_mutations", "auto_advance_does_not_mean_background_execution", "adapter_route_uses_capability_role_not_vendor_ontology", "selected_adapter_surface_does_not_gain_project_authority", "full_flow_means_all_applicable_phases_not_all_skills", "visual_content_image_binding_requires_image_consumption_lookup_and_record", "duplicate_semantic_content_image_across_independent_consumers_is_blocked", "presentation_derivative_does_not_reset_semantic_image_identity", "closed_or_complete_claim_requires_completion_gate_pass", "plan_artifact_pr_ci_self_check_render_or_regression_alone_do_not_equal_complete", "producer_self_check_is_not_independent_review", "artifact_existence_does_not_equal_design_quality", "regression_pass_does_not_equal_design_keep", "github_static_check_cannot_claim_live_notion_current", "receipt_does_not_replace_project_state"],
+  "does_not_prove": ["project_state", "design_quality", "field_truth", "engineering_validity", "user_validation", "rights_clearance", "promotion"]
 }
