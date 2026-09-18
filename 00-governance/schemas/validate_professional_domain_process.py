@@ -290,6 +290,56 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                     errors.append(f"stage_instances[{index}]: expected object")
                     continue
                 require_keys(stage, stage_required, f"stage_instances[{index}]", errors)
+                granularity_state = stage.get(
+                    "granularity_binding_state", "LEGACY_STAGE_ONLY"
+                )
+                if granularity_state == "DECISION_OBJECT_BOUND":
+                    label = f"stage_instances[{index}]"
+                    for key in (
+                        "decision_object_refs",
+                        "claim_refs",
+                        "output_execution_bindings",
+                    ):
+                        require_nonempty_list(stage, key, label, errors)
+                    output_bindings = stage.get("output_execution_bindings", [])
+                    binding_required = {
+                        "binding_id",
+                        "decision_object_ref",
+                        "claim_refs",
+                        "knowledge_mount_refs",
+                        "output_requirement_ref",
+                        "required_native_output",
+                        "required_capability_roles",
+                        "tool_adapter_required",
+                        "owner_set_ref",
+                        "adapter_route_ref",
+                        "artifact_refs",
+                        "readback_refs",
+                        "resolution_state",
+                        "stale_if",
+                        "does_not_prove",
+                    }
+                    if isinstance(output_bindings, list):
+                        for binding_index, binding in enumerate(output_bindings):
+                            if not isinstance(binding, dict):
+                                errors.append(
+                                    f"{label}.output_execution_bindings[{binding_index}]: expected object"
+                                )
+                                continue
+                            binding_label = (
+                                f"{label}.output_execution_bindings[{binding_index}]"
+                            )
+                            require_keys(
+                                binding, binding_required, binding_label, errors
+                            )
+                            for key in (
+                                "claim_refs",
+                                "required_capability_roles",
+                                "does_not_prove",
+                            ):
+                                require_nonempty_list(
+                                    binding, key, binding_label, errors
+                                )
     else:
         errors.append("kind is not a supported professional-domain-process object")
 
@@ -372,6 +422,88 @@ def validate_semantics(payload: dict[str, Any]) -> list[str]:
             stage_state = stage.get("execution_state")
             exit_state = stage.get("exit_condition_state")
             verdict = stage.get("review_verdict")
+
+            granularity_state = stage.get(
+                "granularity_binding_state", "LEGACY_STAGE_ONLY"
+            )
+            if granularity_state == "DECISION_OBJECT_BOUND":
+                stage_decision_refs = set(stage.get("decision_object_refs", []))
+                stage_claim_refs = set(stage.get("claim_refs", []))
+                process_decision_refs = set(payload.get("decision_object_refs", []))
+                if not stage_decision_refs:
+                    errors.append(
+                        f"{stage_instance_id}: DECISION_OBJECT_BOUND requires decision_object_refs"
+                    )
+                if not stage_claim_refs:
+                    errors.append(
+                        f"{stage_instance_id}: DECISION_OBJECT_BOUND requires claim_refs"
+                    )
+                if not stage_decision_refs.issubset(process_decision_refs):
+                    errors.append(
+                        f"{stage_instance_id}: stage decision_object_refs must be included in process decision_object_refs"
+                    )
+                output_bindings = stage.get("output_execution_bindings", [])
+                if not output_bindings:
+                    errors.append(
+                        f"{stage_instance_id}: DECISION_OBJECT_BOUND requires output_execution_bindings"
+                    )
+                duplicate_output_binding_ids = duplicate_values(
+                    [
+                        binding.get("binding_id", "")
+                        for binding in output_bindings
+                        if isinstance(binding, dict) and binding.get("binding_id")
+                    ]
+                )
+                if duplicate_output_binding_ids:
+                    errors.append(
+                        f"{stage_instance_id}: duplicate output binding IDs: "
+                        + ", ".join(duplicate_output_binding_ids)
+                    )
+                for binding in output_bindings:
+                    if not isinstance(binding, dict):
+                        continue
+                    binding_id = binding.get("binding_id", "<unknown>")
+                    decision_ref = binding.get("decision_object_ref")
+                    if decision_ref not in stage_decision_refs:
+                        errors.append(
+                            f"{stage_instance_id}/{binding_id}: decision_object_ref must resolve within stage decision_object_refs"
+                        )
+                    binding_claims = set(binding.get("claim_refs", []))
+                    if not binding_claims or not binding_claims.issubset(stage_claim_refs):
+                        errors.append(
+                            f"{stage_instance_id}/{binding_id}: claim_refs must be a non-empty subset of stage claim_refs"
+                        )
+                    binding_mounts = set(binding.get("knowledge_mount_refs", []))
+                    stage_mounts = set(stage.get("knowledge_mount_refs", []))
+                    if not binding_mounts.issubset(stage_mounts):
+                        errors.append(
+                            f"{stage_instance_id}/{binding_id}: knowledge_mount_refs must resolve within stage knowledge_mount_refs"
+                        )
+                    resolution_state = binding.get("resolution_state")
+                    if resolution_state in {"ROUTED", "EXECUTED", "READBACK_COMPLETE"}:
+                        if not binding.get("owner_set_ref"):
+                            errors.append(
+                                f"{stage_instance_id}/{binding_id}: {resolution_state} requires owner_set_ref"
+                            )
+                        if (
+                            binding.get("tool_adapter_required") is True
+                            and not binding.get("adapter_route_ref")
+                        ):
+                            errors.append(
+                                f"{stage_instance_id}/{binding_id}: tool-backed {resolution_state} requires adapter_route_ref"
+                            )
+                    if resolution_state in {"EXECUTED", "READBACK_COMPLETE"} and not binding.get(
+                        "artifact_refs"
+                    ):
+                        errors.append(
+                            f"{stage_instance_id}/{binding_id}: {resolution_state} requires artifact_refs"
+                        )
+                    if resolution_state == "READBACK_COMPLETE" and not binding.get(
+                        "readback_refs"
+                    ):
+                        errors.append(
+                            f"{stage_instance_id}/{binding_id}: READBACK_COMPLETE requires readback_refs"
+                        )
 
             if stage_state == "CLOSED":
                 if exit_state != "SATISFIED":
@@ -496,7 +628,22 @@ def run_self_tests() -> list[str]:
                 f"schema interface_contract retains duplicate maturity truth source: {forbidden}"
             )
 
+    stage_instance_props = schema["$defs"]["stageInstance"]["properties"]
+    for field in {
+        "granularity_binding_state",
+        "decision_object_refs",
+        "claim_refs",
+        "output_execution_bindings",
+    }:
+        if field not in stage_instance_props:
+            failures.append(f"schema stageInstance missing granularity field: {field}")
+    if "outputExecutionBinding" not in schema["$defs"]:
+        failures.append("schema missing outputExecutionBinding definition")
+
     example = load_json(EXAMPLE_PATH)
+    example_stage = example["stage_instances"][0]
+    if example_stage.get("granularity_binding_state") != "DECISION_OBJECT_BOUND":
+        failures.append("example must exercise DECISION_OBJECT_BOUND granularity")
     positive_errors = validate_payload(example)
     if positive_errors:
         failures.append("example must validate: " + " | ".join(positive_errors))
@@ -526,6 +673,24 @@ def run_self_tests() -> list[str]:
     evidence_errors = validate_payload(missing_stage_evidence)
     if not evidence_errors:
         failures.append("CLOSED PASS with empty stage evidence was false-accepted")
+
+    missing_granularity = copy.deepcopy(example)
+    missing_granularity["stage_instances"][0]["output_execution_bindings"] = []
+    granularity_errors = validate_payload(missing_granularity)
+    if not granularity_errors:
+        failures.append(
+            "DECISION_OBJECT_BOUND stage with no output execution bindings was false-accepted"
+        )
+
+    mismatched_decision = copy.deepcopy(example)
+    mismatched_decision["stage_instances"][0]["output_execution_bindings"][0][
+        "decision_object_ref"
+    ] = "ARCH-PLAN-NOT-IN-STAGE"
+    mismatch_errors = validate_payload(mismatched_decision)
+    if not mismatch_errors:
+        failures.append(
+            "output execution binding with unresolved decision object was false-accepted"
+        )
 
     missing_process_receipt = make_closed_instance(example, "PASS")
     missing_process_receipt["professional_receipt_refs"] = []
