@@ -144,6 +144,7 @@
         "stages",
         "interface_contract",
         "execution_binding",
+        "execution_depth_contract",
         "assurance",
         "change_contract",
         "completion_contract"
@@ -222,6 +223,36 @@
             "tool_adapter_requirements": {"$ref": "#/$defs/stringArray"},
             "typed_handoff_contracts": {"$ref": "#/$defs/stringArray"},
             "actual_readback_requirements": {"$ref": "#/$defs/stringArray"}
+          }
+        },
+        "execution_depth_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parity_rule",
+            "professional_problem_and_judgment_objects",
+            "assumption_uncertainty_objects",
+            "option_comparison_objects",
+            "native_work_objects",
+            "release_control_objects",
+            "implementation_field_objects",
+            "handover_inuse_objects",
+            "independent_review_objects",
+            "change_propagation_objects",
+            "does_not_require"
+          ],
+          "properties": {
+            "parity_rule": {"$ref": "#/$defs/nonEmptyString"},
+            "professional_problem_and_judgment_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "assumption_uncertainty_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "option_comparison_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "native_work_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "release_control_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "implementation_field_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "handover_inuse_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "independent_review_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "change_propagation_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "does_not_require": {"$ref": "#/$defs/nonEmptyStringArray"}
           }
         },
         "assurance": {
