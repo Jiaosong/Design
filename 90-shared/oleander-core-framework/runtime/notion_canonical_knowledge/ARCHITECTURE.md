@@ -46,9 +46,15 @@ Authority gate + structure-aware chunk
                            CURRENT / SUPPORT / PROVENANCE
                               isolated by namespace
                                             ↓
-                                   Authority-aware API
+                         Vector candidate + D1 lexical candidate
                                             ↓
-                               Knowledge Pack → OLEANDER
+                       canonical dedupe + explicit semantic rerank
+                                            ↓
+                    typed relation / claim / evidence expansion
+                                            ↓
+                                conflict gate + readback
+                                            ↓
+                           Knowledge Pack v2 → OLEANDER
 ```
 
 ## Authority rules
@@ -73,7 +79,11 @@ Authority gate + structure-aware chunk
 - reconcile run receipts.
 - durable bulk/fallback sync task state (`PENDING / PROCESSING / RETRY / PROCESSED / BLOCKED`).
 - delta watermark / cursor state and daily inventory receipts in `runtime_state`.
-- last Notion inventory observation (`notion_seen_at`) and index-pipeline revision per document.
+- last Notion inventory observation (`notion_seen_at`) and index-pipeline revision per document;
+- Index v2 derivative facets such as object plane, secondary semantics, claim/evidence IDs, capability/function/information/interface links, design scale and readback method when they are explicitly bound;
+- one optional relation-family label over existing typed edges, without converting generic `RELATED` into `KNOWLEDGE_DEPENDENCY` by inference.
+
+D1 remains a **derivative read model**. Empty v2 fields mean unresolved / not bound; they are not permission to infer classifications from titles, vector proximity or legacy Knowledge Type. Project-runtime dependency state (`depends_on / stale_if / shared variables`) remains outside the Knowledge Dependency graph.
 
 D1 does **not** decide Canonical ID, L0–L7 identity, hierarchy, role, domain or promotion.
 
@@ -117,12 +127,28 @@ Bearer-protected.
 }
 ```
 
-Response is an `oleander-knowledge-pack/v1` object with physically separate `current`, `support`, and `provenance` arrays.
+Response is an `oleander-knowledge-pack/v2` object with physically separate `current`, `support`, and `provenance` arrays. The v2 pipeline is:
+
+```text
+Intent / Current Context
+→ Exact Canonical / explicit Alias
+→ Namespace + hard authority filter
+→ explicit Domain / Topic narrowing
+→ Vector + D1 lexical candidates
+→ Canonical dedupe
+→ explicit Primary Role / Secondary Semantic rerank
+→ typed Knowledge relation expansion
+→ manifest Claim / Evidence expansion
+→ Conflict gate
+→ Knowledge Pack v2
+```
+
+Vector similarity is candidate generation only. Hard authority remains verified against active D1 manifest rows before a hit is admitted. Role, semantic, domain and topic intent are applied only when supplied explicitly; the runtime does not invent those facets from the query.
 
 `Search Eligibility｜检索资格 = SCOPED` is excluded from general search unless `include_scoped=true` or a specific `canonical_id` is supplied. `HISTORY_ONLY` can only surface through the explicitly requested PROVENANCE namespace.
 
 ### `GET /v1/knowledge-pack/:canonicalId`
-Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new knowledge object.
+Returns D1 manifest + typed relation-family lineage and any explicitly bound claim/evidence IDs for one Canonical ID. It does not synthesize a new knowledge object.
 
 ## Failure semantics
 
@@ -145,4 +171,6 @@ Returns D1 manifest + lineage for one Canonical ID. It does not synthesize a new
 - a METHOD is validated;
 - evidence is sufficient;
 - a candidate is promoted;
+- an empty secondary-semantic / claim / evidence field may be filled by inference;
+- project-runtime dependencies are reusable Knowledge Dependencies;
 - Design PASS, field truth, engineering/manufacturing approval or rights clearance.

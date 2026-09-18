@@ -1,0 +1,45 @@
+name: OLEANDER Knowledge Runtime Check
+
+on:
+  pull_request:
+    paths:
+      - "90-shared/oleander-core-framework/runtime/notion_canonical_knowledge/**"
+      - ".github/workflows/oleander-knowledge-runtime-check.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "90-shared/oleander-core-framework/runtime/notion_canonical_knowledge/**"
+      - ".github/workflows/oleander-knowledge-runtime-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oleander-knowledge-runtime-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: 90-shared/oleander-core-framework/runtime/notion_canonical_knowledge
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: 90-shared/oleander-core-framework/runtime/notion_canonical_knowledge/package-lock.json
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Typecheck and regression tests
+        run: npm run check
