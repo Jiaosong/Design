@@ -1452,6 +1452,62 @@
       "closeout installed-identity/O&M/open-item readback"
     ]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Interior Design execution depth is demonstrated through coordinated room/RCP/finish/joinery/door/FF&E work products, procurement release, field administration and closeout records.",
+    "professional_problem_and_judgment_objects": [
+      "Interior Design Brief / User–Activity–Experience Matrix",
+      "Room / FF&E / Product Interface Register",
+      "material/finish/joinery/door/FF&E judgments"
+    ],
+    "assumption_uncertainty_objects": [
+      "Interior Responsibility / Schedule of Services",
+      "Material / Finish / Sample Register",
+      "procurement/commercial role register",
+      "open specialist/code/product evidence"
+    ],
+    "option_comparison_objects": [
+      "ID-PW2 concept option sets",
+      "material/FF&E/room strategy alternatives at matched decision relevance"
+    ],
+    "native_work_objects": [
+      "interior drawings/models",
+      "room/finish/joinery/FF&E schedules",
+      "RCP/elevations/details",
+      "specifications"
+    ],
+    "release_control_objects": [
+      "Reflected Ceiling / Service Coordination Register",
+      "Door / Opening / Hardware Coordination Register",
+      "Finish / Substrate / Transition Register",
+      "Joinery / Millwork Production Register",
+      "Submittal / Sample / Mockup / Substitution Release Register"
+    ],
+    "implementation_field_objects": [
+      "site observation/change records",
+      "submittal/shop drawing/sample/mockup review",
+      "procurement/logistics records"
+    ],
+    "handover_inuse_objects": [
+      "Closeout / Asset / O&M Register",
+      "handover/POE records",
+      "warranty/defect/open-item records"
+    ],
+    "independent_review_objects": [
+      "Interior QA/QC Matrix",
+      "distinct professional review where safety/interface/procurement consequence requires it"
+    ],
+    "change_propagation_objects": [
+      "room/RCP/detail/schedule/spec consistency reopen",
+      "submittal/field-change propagation",
+      "closeout installed-identity reopen"
+    ],
+    "does_not_require": [
+      "same structural/MEP engineering artifacts",
+      "visual preference as professional approval",
+      "same stage count as other domains",
+      "field truth without site evidence"
+    ]
+  },
   "assurance": {
     "professional_review": "Interior professional review at the current stage/claim ceiling, separate from pure visual preference.",
     "evidence_review": "Check user/room, product/material, specialist, procurement, sample/mockup, site and POE evidence against claimed use.",

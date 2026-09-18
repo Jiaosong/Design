@@ -388,6 +388,139 @@ Interface maturity remains owned by Cross-Disciplinary Integration.
 
 ---
 
+## 7A｜Cross-cutting practitioner control objects
+
+These are not extra lifecycle stages. They are live professional work objects that carry landscape decisions, release conditions and change propagation across LA-DP0…7.
+
+### 7A.1 Site / Base Authority & Survey Change Register
+
+Record:
+- base/survey source, revision, CRS/datum where relevant;
+- site boundary and level authority;
+- received date / superseded date;
+- known gaps;
+- consuming drawings/models;
+- affected landscape decisions when the base changes;
+- reopen scope.
+
+A new topographic survey may invalidate grading, drainage, accessible-route and planting/root-zone decisions simultaneously.
+
+### 7A.2 Grading / Drainage Interface Schedule
+
+For each material zone/edge/threshold record:
+- existing/proposed level authority;
+- high/low points;
+- slope direction;
+- drain/inlet/outfall/overflow relation;
+- building/road/utility threshold;
+- accessible-route consequence;
+- Civil/Hydraulic owner where applicable;
+- current disposition;
+- verification/readback ref.
+
+`SPOT LEVELS PRESENT ≠ DRAINAGE CLOSED`.
+
+### 7A.3 Earthwork / Soil Movement Schedule
+
+Track:
+- cut/fill or import/export basis;
+- topsoil/growing-media strip/store/reuse;
+- soil protection zones;
+- compaction/contamination constraints;
+- stockpile/haul/temporary-access assumptions;
+- target soil profile/volume;
+- owner and evidence source;
+- field verification / change state.
+
+Do not separate planting success from the soil/earthwork sequence that enables it.
+
+### 7A.4 Retained Tree / Vegetation Protection Execution Register
+
+Track:
+- retained/protected element ID;
+- authority/source;
+- root/protection zone;
+- access/excavation/service conflicts;
+- protection method;
+- temporary works/site logistics interface;
+- inspection/hold point;
+- changed-condition disposition;
+- specialist owner where required.
+
+A tree symbol on a plan is not a protection execution record.
+
+### 7A.5 Planting / Soil Establishment & Replacement Register
+
+Track by planting system/zone:
+- species/community or role authority;
+- nursery/provenance/availability issue;
+- planting density/size/mature relation;
+- soil/root-volume dependency;
+- establishment irrigation;
+- defects/replacement criteria;
+- seasonal verification;
+- maintenance owner;
+- current establishment state.
+
+### 7A.6 Irrigation / Water / Control Interface Register
+
+Track:
+- water source/quality authority;
+- hydro-zone;
+- establishment vs long-term demand;
+- control/sensor strategy;
+- point of connection;
+- MEP/irrigation-specialist interface;
+- backflow/water-safety boundary;
+- access/winterisation/maintenance;
+- test/commissioning or field-readback requirement.
+
+### 7A.7 Material / Submittal / Sample / Mockup / Substitution Release Register
+
+For consequential paving, edging, walls, soil/media, furniture, planting or system products record:
+- design role / critical attributes;
+- specified/reference identity;
+- submitted identity/revision;
+- sample/mockup requirement;
+- visual + technical acceptance criteria;
+- interfaces/tolerances;
+- substitution impact;
+- professional disposition;
+- release state;
+- affected drawing/spec/schedule refs.
+
+`SIMILAR APPEARANCE ≠ EQUIVALENT LANDSCAPE PERFORMANCE`.
+
+### 7A.8 Field Change / RFI / Nonconformity Register
+
+Record:
+- exact location/object;
+- observed/current condition;
+- issued-design relation;
+- RFI/change/nonconformity;
+- affected grading/drainage/planting/material/access/maintenance threads;
+- owner;
+- disposition;
+- revised artifact refs;
+- field readback / closure state.
+
+### 7A.9 Maintenance / Operations Access Schedule
+
+For each maintained landscape system record:
+- task;
+- frequency/season;
+- access route/clearance;
+- plant/equipment/tool requirement;
+- water/power/shutdown need;
+- safety/closure/degraded-state consequence;
+- replacement strategy;
+- owner/capability;
+- design implication.
+
+`MAINTENANCE PLAN TEXT ≠ MAINTAINABLE GEOMETRY`.
+
+---
+
 # 8｜LA-DP0 — Scope, Authority & Landscape Brief
 
 **Professional question:** Is the landscape scope, site authority, appointment boundary and information need sufficient to begin professional analysis/design without fabricating site truth?

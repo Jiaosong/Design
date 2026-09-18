@@ -207,6 +207,34 @@ review basis
 
 `KNOWLEDGE MOUNT PASS ≠ PROFESSIONAL STAGE PASS`.
 
+### C2. Equivalent Professional Execution Depth｜横向颗粒度下限
+
+All triggered professional domains must meet the same **execution-depth floor**, but not the same length, stage count, vocabulary or work-product type.
+
+Each process definition must identify domain-native objects for:
+
+1. `professional_problem_and_judgment_objects[]` — what the profession actually judges and what makes the judgment acceptable;
+2. `assumption_uncertainty_objects[]` — how assumptions, unknowns, evidence limits and unresolved authority remain visible;
+3. `option_comparison_objects[]` — how materially different alternatives are generated/compared where alternatives exist;
+4. `native_work_objects[]` — editable/authoritative professional work products, not presentation substitutes;
+5. `release_control_objects[]` — what is checked/released/submitted/accepted before downstream reliance;
+6. `implementation_field_objects[]` — construction, implementation, runtime, field, fabrication, commissioning or equivalent realisation evidence appropriate to the profession;
+7. `handover_inuse_objects[]` — closeout, establishment, operations, maintenance, monitoring, live-use or equivalent post-release evidence where the profession has such scope;
+8. `independent_review_objects[]` — professional checking/review that cannot be replaced by producer self-check;
+9. `change_propagation_objects[]` — how material change stales/reopens exact professional objects and interfaces.
+
+This is an **equivalence rule**, not a template rule.
+
+`SAME GRANULARITY ≠ SAME STAGES ≠ SAME PAGE COUNT ≠ SAME ARTIFACTS`.
+
+Examples:
+- Structural release objects may be checked calculations, member/connection packages, fabrication submittals, ITP/test evidence and residual-risk records.
+- Interior release objects may be RCP coordination, finish/joinery/door/FF&E schedules, sample/mockup/submittal releases and closeout asset records.
+- HCD release objects may be study freezes, finding→fix→build→retest chains, release support matrices, accessibility evidence and live experiment/rollout records.
+- Landscape release objects may be grading/drainage interfaces, soil/earthwork schedules, tree protection, planting establishment, submittal/mockup and maintenance records.
+
+A process that only names stages, principles or review questions but cannot identify these domain-native execution objects is below the OLEANDER professional execution-depth floor.
+
 ### D. Authentic Professional Stages
 
 Each stage definition records at minimum:

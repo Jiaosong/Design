@@ -222,6 +222,95 @@ Change propagation follows existing Master / Integration impact classes, not a s
 
 ---
 
+### 5.5 Analysis / Calculation Baseline & Check Register
+
+For each consequential structural analysis/calculation package record:
+- model/calculation ID and revision;
+- geometry/material/load/support assumptions;
+- source inputs and Basis-of-Structural-Design refs;
+- governing load cases/combinations;
+- checker and independence state;
+- check comments;
+- disposition;
+- affected drawings/details;
+- stale/reopen state.
+
+`MODEL RUN COMPLETED ≠ CHECKED DESIGN BASIS`.
+
+### 5.6 Member / Connection / Foundation Release Schedule
+
+Track release by structural object/package:
+- object/system;
+- design basis;
+- governing action/response;
+- member/foundation/connection state;
+- calculation/check ref;
+- detail/drawing ref;
+- specialist dependency;
+- issue purpose;
+- release state;
+- reopen trigger.
+
+### 5.7 Fabrication / Shop Drawing / Specialist Submittal Release Register
+
+For delegated/specialist/fabricated structural items record:
+- design responsibility;
+- submitted identity/revision;
+- design criteria/interfaces;
+- calculation/model refs;
+- tolerances/connections/supports;
+- material/product evidence;
+- reviewer/checker;
+- disposition;
+- affected permanent works;
+- release state.
+
+A reviewed shop drawing does not transfer design responsibility silently.
+
+### 5.8 Inspection / Test / Material / ITP Evidence Register
+
+Track:
+- inspection/test/hold point;
+- specification/acceptance criterion;
+- sample/batch/location;
+- witness/owner;
+- result;
+- nonconformity;
+- retest/repair;
+- closure;
+- exact as-constructed configuration.
+
+`TEST PASS ≠ UNOBSERVED CONSTRUCTION CONFORMITY`.
+
+### 5.9 Structural RFI / Field Change / Nonconformity Register
+
+Bind each field issue to:
+- exact location/member/connection;
+- issued source;
+- actual condition;
+- structural consequence;
+- temporary/permanent state;
+- responsible designer;
+- revised calculation/model/drawing;
+- site disposition;
+- reinspection/retest need;
+- closure state.
+
+### 5.10 Structural Closeout / Residual Risk / Monitoring Register
+
+At handover, track:
+- as-constructed information authority;
+- unresolved defects/nonconformities;
+- load/use restrictions;
+- inspection/maintenance/monitoring need;
+- future alteration constraints;
+- proprietary/specialist records;
+- owner/FM handoff;
+- residual risk;
+- reopen condition.
+
+---
+
 ## 6｜SE-SPW0 — Strategic Definition
 
 **Source-aligned stage:** IStructE / RIBA Stage 0 Strategic Definition.

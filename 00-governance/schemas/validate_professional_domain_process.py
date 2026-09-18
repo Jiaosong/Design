@@ -82,6 +82,7 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
             "stages",
             "interface_contract",
             "execution_binding",
+            "execution_depth_contract",
             "assurance",
             "change_contract",
             "completion_contract",
@@ -126,6 +127,19 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "typed_handoff_contracts",
                 "actual_readback_requirements",
             },
+            "execution_depth_contract": {
+                "parity_rule",
+                "professional_problem_and_judgment_objects",
+                "assumption_uncertainty_objects",
+                "option_comparison_objects",
+                "native_work_objects",
+                "release_control_objects",
+                "implementation_field_objects",
+                "handover_inuse_objects",
+                "independent_review_objects",
+                "change_propagation_objects",
+                "does_not_require",
+            },
             "assurance": {
                 "professional_review",
                 "evidence_review",
@@ -162,6 +176,24 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
             value = payload.get(field)
             if isinstance(value, dict):
                 require_nonempty_list(value, "does_not_prove", field, errors)
+
+        execution_depth = payload.get("execution_depth_contract")
+        if isinstance(execution_depth, dict):
+            for key in (
+                "professional_problem_and_judgment_objects",
+                "assumption_uncertainty_objects",
+                "option_comparison_objects",
+                "native_work_objects",
+                "release_control_objects",
+                "implementation_field_objects",
+                "handover_inuse_objects",
+                "independent_review_objects",
+                "change_propagation_objects",
+                "does_not_require",
+            ):
+                require_nonempty_list(
+                    execution_depth, key, "execution_depth_contract", errors
+                )
 
         stages = payload.get("stages")
         if not isinstance(stages, list) or not stages:

@@ -308,6 +308,83 @@ A design estimate remains a modelled estimate until measured evidence exists.
 
 ---
 
+### 6.6 Equipment / System Submittal & Substitution Release Register
+
+For consequential equipment/system selections record:
+- system/tag;
+- design duty and critical attributes;
+- specified/reference basis;
+- submitted identity/revision;
+- manufacturer evidence;
+- capacity/efficiency/acoustic/electrical/control/interface checks;
+- access/replacement consequence;
+- deviation/substitution impact;
+- reviewer;
+- release state;
+- affected calculations/schedules/drawings/sequences.
+
+`DATASHEET ACCEPTED ≠ SYSTEM PERFORMANCE VERIFIED`.
+
+### 6.7 Builder's Work / Installation / Access Coordination Register
+
+Track:
+- opening/penetration/support/base;
+- route/clearance;
+- equipment access and replacement path;
+- maintenance working space;
+- structural/fire/acoustic/waterproofing interface;
+- coordinated drawing/model ref;
+- owner;
+- site verification requirement;
+- change state.
+
+### 6.8 Inspection / Test / TAB / Commissioning Witness Matrix
+
+For each system/acceptance criterion record:
+- prerequisite;
+- inspection/test/TAB/Cx step;
+- method/procedure;
+- configuration tested;
+- witness/owner;
+- acceptance criterion;
+- result;
+- defect/nonconformity;
+- retest;
+- closure evidence.
+
+This matrix links the Commissioning Plan to executed evidence.
+
+### 6.9 MEP RFI / Field Change / Defect Register
+
+Track:
+- exact system/tag/location;
+- issued design relation;
+- field/RFI condition;
+- capacity/control/fire/access/commissioning consequence;
+- responsible owner;
+- revised source;
+- retest/recommission requirement;
+- closure state.
+
+### 6.10 O&M / Asset / Training / Seasonal Closeout Register
+
+Track:
+- installed asset identity;
+- O&M source;
+- setpoints/sequences;
+- warranties/spares;
+- operator training;
+- unresolved defects;
+- seasonal/deferred tests;
+- trend/monitoring requirement;
+- replacement/access information;
+- FM owner acceptance;
+- reopen condition.
+
+`O&M FILE RECEIVED ≠ OPERABLE SYSTEM HANDOVER`.
+
+---
+
 ## 7｜BSP-STRATEGIC — Strategic Services / Performance Definition
 
 ### Professional alignment
