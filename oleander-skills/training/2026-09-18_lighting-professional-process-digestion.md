@@ -276,11 +276,65 @@ This batch does not:
 
 ---
 
+# Bounded practice reapplication｜SP03-R02
+
+Historical practice branch:
+
+`practice/2026-08-11-sp03-r02-light-performance-interface@95c4543db17dc0e98459c967a4e36a5bb4cd92e3`
+
+was reapplied to the Candidate without copying its synthetic result into project truth.
+
+Source evidence includes:
+- exact synthetic test-cell input contract;
+- real Radiance 6.0a runs;
+- evalglare 3.06;
+- pyradiance 1.2.4;
+- 8 workplane simulations;
+- 16 HDR glare views;
+- 16 evalglare evaluations;
+- failure/reopen history;
+- numerically-stable-not-byte-identical reproduction evidence.
+
+Candidate coverage:
+
+- `LGT-00` — PARTIAL practice support;
+- `LGT-01` — practice support;
+- `LGT-02` — practice support;
+- `LGT-06` — practice support;
+- `LGT-03/04/05/07/08/09` — explicitly NOT_EXERCISED.
+
+The exercise proves:
+- model configuration must be bound to a result;
+- one preferred render/sky cannot prove robustness;
+- runtime PASS is not artifact/professional PASS;
+- schema/parser defects can invalidate evidence interpretation;
+- simulation can expose tradeoffs without selecting a universal winner.
+
+It does **not** prove:
+- real project geometry/material/weather/time;
+- project lighting criteria;
+- real product/optic/driver selection;
+- controls implementation;
+- production/submittal;
+- installed aiming/commissioning;
+- maintenance/post-occupancy;
+- project Lighting professional PASS.
+
+Machine reapplication:
+`06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_v0.1.json`
+
+Receipt:
+`06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_RECEIPT_v0.1.json`
+
+This raises method-use evidence without closing the Project Reality gate.
+
+---
+
 # Maturity
 
 Current ceiling:
 
-`CANDIDATE PROCESS / STAGE11 PROFESSIONAL-DEPTH MOTHER / UNIQUE v21 EXECUTION OBJECTS ABSORBED / CURRENT CONTRACT MACHINE DEFINITION / 2025–2026 IES SOURCE REFRESH / 27 INTERFACE BINDINGS / PRACTITIONER RELEASE OBJECTS / AIG FAILURE REGRESSION / PROJECT EXERCISE NOT CLAIMED / INDEPENDENT LIGHTING PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
+`CANDIDATE PROCESS / STAGE11 PROFESSIONAL-DEPTH MOTHER / UNIQUE v21 EXECUTION OBJECTS ABSORBED / CURRENT CONTRACT MACHINE DEFINITION / 2025–2026 IES SOURCE REFRESH / 27 INTERFACE BINDINGS / PRACTITIONER RELEASE OBJECTS / AIG FAILURE REGRESSION / SP03-R02 SYNTHETIC PRACTICE REAPPLICATION / PROJECT EXERCISE NOT CLAIMED / INDEPENDENT LIGHTING PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
 
 The remaining Lighting gap is now:
 **real project exercise + independent Lighting professional review**.
