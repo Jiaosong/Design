@@ -21,12 +21,12 @@
   "replay_artifacts": [
     {
       "path": "05-cases/c04-qingjiang-stone-book/function-concept-replay/v0.1/C04_P02_FUNCTION_CONCEPT_REPLAY_v0.1.json",
-      "blob_sha": "5a0922d7189d8a1bd1463bcd6fd6933352f442b3",
+      "blob_sha": "2f00c5c9ade7b3b54e80e385c2323fea4212ff5d",
       "role": "MACHINE_READABLE_FUNCTION_MEANS_CONCEPT_MODEL"
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/function-concept-replay/v0.1/C04_P02_CONCEPT_FAMILIES_MATCHED_v0.1.svg",
-      "blob_sha": "b05b7b7e599951c93e320dd22dd31ae81e660223",
+      "blob_sha": "112d4828bc1b157fb4f105a650d07f04599f295d",
       "role": "EDITABLE_MATCHED_FIDELITY_CONCEPT_VIEW"
     }
   ],
@@ -37,13 +37,13 @@
       1800,
       1120
     ],
-    "png_bytes": 300885,
-    "png_sha256": "1b5c876f608247aebb08fe8545a5a5b6e22e238cda12ab83469147bb899ef74d",
+    "png_bytes": 314240,
+    "png_sha256": "b728e34d83ed9d78f0d3c300b459484b96ec58ace0185dc6bd6b797dcbb010dd",
     "findings": [
       "All three concept families are shown at comparable schematic fidelity.",
       "C-A, C-B and C-C remain visually distinguishable by load-transfer/contact architecture rather than color/material styling.",
       "Compatibility/dedup notes remain readable at the intended review scale.",
-      "No layout repair was required after actual render."
+      "After Functional Architecture alignment, local design-function IDs were changed from F01–F08 to P02-DFN-01–08 and the artifact was re-rendered successfully."
     ],
     "boundary": "Visual readability/support pass only; this does not validate ergonomics, structure, edge safety, passage, permission or field conditions."
   },
@@ -93,6 +93,12 @@
     "g1f": "HOLD",
     "promotion": "NO"
   },
-  "maturity": "PROJECT_REPLAY_EVIDENCE / ONE PROJECT OBJECT / FUNCTION_DEPENDENCY + COMPATIBILITY + THREE CAUSAL FAMILIES + MATCHED EDITABLE EMBODIMENT / TECHNICAL TESTS NOT_RUN / CROSS_CONTEXT EVIDENCE REQUIRED / NO PROMOTION",
-  "claim_ceiling": "Method replay and concept-space clarification only; no technical feasibility, human-factor, field, construction or promotion claim."
+  "maturity": "PROJECT_REPLAY_EVIDENCE / CURRENT FUNCTIONAL-ARCHITECTURE ALIGNED / ONE PROJECT OBJECT / FUNCTION_DEPENDENCY + COMPATIBILITY + THREE CAUSAL FAMILIES + MATCHED EDITABLE EMBODIMENT / TECHNICAL TESTS NOT_RUN / CROSS_CONTEXT EVIDENCE REQUIRED / NO PROMOTION",
+  "claim_ceiling": "Method replay and concept-space clarification only; no technical feasibility, human-factor, field, construction or promotion claim.",
+  "namespace_alignment": {
+    "system_owner": "OLEANDER system-level Functional Architecture uses F* IDs for OLEANDER system functions.",
+    "local_rule": "Project/design-object function records use object-scoped DFN IDs and do not enter the system Function Catalogue.",
+    "repair": "F01–F08 → P02-DFN-01–08",
+    "result": "PASS_NO_NAMESPACE_COLLISION"
+  }
 }
