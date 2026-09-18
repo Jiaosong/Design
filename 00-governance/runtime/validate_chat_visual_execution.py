@@ -201,8 +201,8 @@ def decide_chat_visual_execution(case: dict) -> dict:
 
 def validate_existing_runtime_binding() -> None:
     resolver = load_json(RESOLVER)
-    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.5":
-        fail("repair must reuse Current Resolver v1.2 implementation revision 1.2.5")
+    if resolver.get("version") != "1.2" or resolver.get("implementation_revision") != "1.2.6":
+        fail("repair must reuse Current Resolver v1.2 implementation revision 1.2.6")
     if resolver.get("status") != "ACTIVE_CURRENT":
         fail("Current Resolver must remain ACTIVE_CURRENT")
 
