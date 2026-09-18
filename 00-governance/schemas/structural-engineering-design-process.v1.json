@@ -520,6 +520,62 @@
     "typed_handoff_contracts": ["Architecture↔Structure", "Structure↔MEP", "Structure↔Geotechnical", "Structure↔Envelope/Fire", "Structure↔Specialist/Contractor"],
     "actual_readback_requirements": ["current native drawings/model/calculation state read back", "critical interfaces/sections/details read back", "site/manufacture evidence read back when claimed", "calculation/check baseline and released member/connection/foundation package readback", "fabrication/shop-drawing/specialist-submittal responsibility and release readback", "inspection/test/ITP evidence plus field RFI/nonconformity closure readback", "as-constructed/residual-risk/monitoring closeout readback when handover is claimed"]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent structural execution depth is demonstrated through checked engineering baselines, released structural packages, fabrication/site evidence and residual-risk handover objects.",
+    "professional_problem_and_judgment_objects": [
+      "Basis of Structural Design",
+      "Structural Responsibility Matrix",
+      "Structural Design Assurance / Checking Plan",
+      "system/load-path/member/connection/foundation judgments"
+    ],
+    "assumption_uncertainty_objects": [
+      "Basis of Structural Design assumptions/open inputs",
+      "Analysis / Calculation Baseline & Check Register",
+      "Structural Change Register"
+    ],
+    "option_comparison_objects": [
+      "SE-SPW2 structural option set",
+      "stability/load-path/foundation/material comparison record"
+    ],
+    "native_work_objects": [
+      "structural drawings/models",
+      "analytical/calculation models",
+      "member/connection/foundation design packages",
+      "specifications/details"
+    ],
+    "release_control_objects": [
+      "Member / Connection / Foundation Release Schedule",
+      "Fabrication / Shop Drawing / Specialist Submittal Release Register",
+      "checking/review records"
+    ],
+    "implementation_field_objects": [
+      "Inspection / Test / Material / ITP Evidence Register",
+      "Structural RFI / Field Change / Nonconformity Register",
+      "site/manufacture review evidence",
+      "temporary-works interface record"
+    ],
+    "handover_inuse_objects": [
+      "Structural Closeout / Residual Risk / Monitoring Register",
+      "as-constructed information",
+      "maintenance/monitoring/future-change information",
+      "SE-SPW7 use/performance evaluation"
+    ],
+    "independent_review_objects": [
+      "Structural Design Assurance / Checking Plan",
+      "risk-proportionate independent structural checking"
+    ],
+    "change_propagation_objects": [
+      "Structural Change Register",
+      "calculation/model/drawing stale propagation",
+      "interface reopen after load/grid/member/connection/foundation/site change"
+    ],
+    "does_not_require": [
+      "same release objects as Architecture/MEP",
+      "universal checking category independent of jurisdiction/risk",
+      "field conformity beyond observed/tested evidence",
+      "same stage count as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "Structural stage review at declared claim ceiling, preserving structural responsibility and source assumptions.",
     "evidence_review": "Verify source/geotechnical/existing/material/product/construction evidence against claimed structural use.",
