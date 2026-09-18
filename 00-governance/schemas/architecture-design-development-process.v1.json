@@ -2004,6 +2004,63 @@
       "field/submittal/closeout evidence read back only when those later services are claimed"
     ]
   },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent professional execution depth in Architecture means real spatial/technical decision objects, readback and controlled release; it does not require the same stage count or artifacts as another profession.",
+    "professional_problem_and_judgment_objects": [
+      "ROOM_BRIEF_REGISTER",
+      "ADJACENCY_MATRIX",
+      "ZONING_SELECTION_RECEIPT",
+      "CIRCULATION_READBACK",
+      "ARCH_SYSTEM_FITBACK_RECEIPT",
+      "ARCHITECTURE_CODE_MATRIX",
+      "INDEPENDENT_PLAN_SECTION_REVIEW"
+    ],
+    "assumption_uncertainty_objects": [
+      "ARCHITECTURE_SCOPE_AUTHORITY_REGISTER",
+      "Survey / Existing-Condition Authority & Change Register",
+      "Program / Room Brief Change Register",
+      "open items / claim ceiling"
+    ],
+    "option_comparison_objects": [
+      "ZONING_OPTION_SET",
+      "driver→move→consequence→technical cost→keep/reject record"
+    ],
+    "native_work_objects": [
+      "architectural plans/sections/models",
+      "site/flow/adjacency/zoning artifacts",
+      "Plan / Section / Level Coordination Register",
+      "Room / Equipment / FF&E Interface Register"
+    ],
+    "release_control_objects": [
+      "Opening / Envelope / Door Interface Register",
+      "Code / Life-Safety / Accessibility Interface Register",
+      "Architecture Submittal / Mockup / RFI / Field-Change Register when triggered"
+    ],
+    "implementation_field_objects": [
+      "existing/phasing/construction-state evidence",
+      "Architecture Submittal / Mockup / RFI / Field-Change Register when later services are appointed",
+      "actual system fit-back readback"
+    ],
+    "handover_inuse_objects": [
+      "Architecture Closeout / Record / Open-Item Register when later-stage Architecture scope is triggered",
+      "room-use/lifecycle readback that remains within the current Architecture claim"
+    ],
+    "independent_review_objects": [
+      "ADD-17 Independent plan / section review bound to exact Current baseline"
+    ],
+    "change_propagation_objects": [
+      "Survey / Existing-Condition Authority & Change Register",
+      "Program / Room Brief Change Register",
+      "Cross-Disciplinary Integration reopen on changed shared variables",
+      "Architecture receipt stale/reopen rules"
+    ],
+    "does_not_require": [
+      "same stage count as other professions",
+      "automatic construction/handover appointment",
+      "specialist/statutory approval from Architecture",
+      "same document length/template as other domains"
+    ]
+  },
   "assurance": {
     "professional_review": "Architecture professional review at the current stage/claim ceiling, separate from presentation quality and specialist approvals.",
     "evidence_review": "Verify program/site/existing/code/user/technical evidence against the architectural claim and exact Current geometry.",
