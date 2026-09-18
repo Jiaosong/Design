@@ -485,6 +485,94 @@ One process stage may have multiple cycles. A new cycle does not erase prior val
 
 ---
 
+## 9A｜Decision-object / claim / output execution granularity
+
+A professional **stage is a responsibility and professional-context container, not the smallest execution unit**. Material execution must be resolvable below stage level without inventing a second professional taxonomy.
+
+Canonical runtime join:
+
+```text
+DOMAIN PROCESS INSTANCE
+→ DOMAIN STAGE INSTANCE
+→ DECISION OBJECT
+→ CLAIM
+→ TASK/CLAIM KNOWLEDGE MOUNT
+→ REQUIRED NATIVE OUTPUT
+→ REQUIRED CAPABILITY ROLES
+→ MINIMUM SUFFICIENT SKILL / EXECUTION OWNER SET
+→ TOOL / ADAPTER ROUTE WHEN REQUIRED
+→ NATIVE ARTIFACT
+→ ACTUAL READBACK
+→ PROFESSIONAL / INTEGRATION / DESIGN / EVIDENCE FINDING
+```
+
+The join uses existing OLEANDER objects and owners:
+
+- **Decision Object** is the smallest materially independent design/system object being decided or changed. It is the primary horizontal join key across R-C / R-D / R-E / R-F / R-G / R-H / R-I when that precision is required.
+- **Claim** states what the current decision/output is allowed to prove. Claims may be narrower than the stage claim ceiling.
+- **Knowledge Mount** remains owned by R-B and is bound to the task/claim, not to a Skill name or tool.
+- **Required Native Output** is the bridge from professional semantics into execution. Knowledge does not route directly to a Skill.
+- **Required Capability Roles** describe what executable ability the output needs. They are runtime requirements, not a new knowledge taxonomy and not a fixed one-capability/one-Skill mapping.
+- **Skill / Execution Owner Set** is resolved dynamically by the Current Skill Resolver as the minimum sufficient owner set.
+- **Tool / Adapter** is selected only after capability resolution and runtime availability. A professional stage must not hardcode vendor/software inventory.
+- **Artifact + Actual Readback** prove what was actually produced/observed; execution success does not prove professional validity.
+
+For prospective material stage instances, use `granularity_binding_state = DECISION_OBJECT_BOUND` and record:
+
+```text
+decision_object_refs[]
+claim_refs[]
+output_execution_bindings[]:
+  binding_id
+  decision_object_ref
+  claim_refs[]
+  knowledge_mount_refs[]
+  output_requirement_ref
+  required_native_output
+  required_capability_roles[]
+  tool_adapter_required
+  owner_set_ref
+  adapter_route_ref
+  artifact_refs[]
+  readback_refs[]
+  resolution_state
+  stale_if[]
+  does_not_prove[]
+```
+
+`LEGACY_STAGE_ONLY` remains valid for historical/provenance instances and bounded stage-level records. It must not be silently treated as decision-object/claim-level execution evidence when a new claim requires the finer binding.
+
+### Granularity invariants
+
+```text
+STAGE ≠ EXECUTION UNIT
+KNOWLEDGE ROLE ≠ EXECUTION GRANULARITY
+KNOWLEDGE MOUNT ≠ SKILL ROUTE
+REQUIRED OUTPUT PRECEDES CAPABILITY RESOLUTION
+CAPABILITY ≠ SKILL
+SKILL ≠ TOOL
+TOOL ROUTE ≠ PROFESSIONAL PASS
+ARTIFACT EXISTS ≠ ACTUAL READBACK
+ACTUAL READBACK ≠ DESIGN KEEP
+```
+
+Shared DD responsibilities and Cross-Disciplinary Interfaces remain **overlays bound to the same decision object / claim**; they are not inserted as extra universal stages.
+
+Change propagation follows the smallest materially affected scope:
+
+```text
+changed authority / shared variable / artifact
+→ affected decision object(s)
+→ affected claim(s)
+→ affected knowledge/output/interface bindings
+→ affected readback/review
+→ widen reopen only when dependency analysis requires it
+```
+
+This section refines execution granularity only. It creates no new Runtime Layer, Knowledge level, Primary Role, professional stage namespace, Capability taxonomy, Skill family or Tool family.
+
+---
+
 ## 10｜State and verdict separation
 
 Runtime state and professional judgment remain separate.

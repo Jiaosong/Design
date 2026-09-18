@@ -265,6 +265,62 @@
         }
       }
     },
+    "outputExecutionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding_id",
+        "decision_object_ref",
+        "claim_refs",
+        "knowledge_mount_refs",
+        "output_requirement_ref",
+        "required_native_output",
+        "required_capability_roles",
+        "tool_adapter_required",
+        "owner_set_ref",
+        "adapter_route_ref",
+        "artifact_refs",
+        "readback_refs",
+        "resolution_state",
+        "stale_if",
+        "does_not_prove"
+      ],
+      "properties": {
+        "binding_id": {"$ref": "#/$defs/nonEmptyString"},
+        "decision_object_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "claim_refs": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "knowledge_mount_refs": {"$ref": "#/$defs/stringArray"},
+        "output_requirement_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "required_native_output": {"$ref": "#/$defs/nonEmptyString"},
+        "required_capability_roles": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "tool_adapter_required": {"type": "boolean"},
+        "owner_set_ref": {"type": ["string", "null"], "minLength": 1},
+        "adapter_route_ref": {"type": ["string", "null"], "minLength": 1},
+        "artifact_refs": {"$ref": "#/$defs/stringArray"},
+        "readback_refs": {"$ref": "#/$defs/stringArray"},
+        "resolution_state": {"enum": ["UNRESOLVED", "ROUTED", "EXECUTED", "READBACK_COMPLETE", "HOLD", "STALE"]},
+        "stale_if": {"$ref": "#/$defs/stringArray"},
+        "does_not_prove": {"$ref": "#/$defs/nonEmptyStringArray"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"resolution_state": {"enum": ["ROUTED", "EXECUTED", "READBACK_COMPLETE"]}}, "required": ["resolution_state"]},
+          "then": {"properties": {"owner_set_ref": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"tool_adapter_required": {"const": true}, "resolution_state": {"enum": ["ROUTED", "EXECUTED", "READBACK_COMPLETE"]}}, "required": ["tool_adapter_required", "resolution_state"]},
+          "then": {"properties": {"adapter_route_ref": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"resolution_state": {"enum": ["EXECUTED", "READBACK_COMPLETE"]}}, "required": ["resolution_state"]},
+          "then": {"properties": {"artifact_refs": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"resolution_state": {"const": "READBACK_COMPLETE"}}, "required": ["resolution_state"]},
+          "then": {"properties": {"readback_refs": {"minItems": 1}}}
+        }
+      ]
+    },
     "stageInstance": {
       "type": "object",
       "additionalProperties": false,
@@ -312,6 +368,13 @@
         "reopen_events": {"$ref": "#/$defs/stringArray"},
         "exit_condition_state": {"enum": ["NOT_EVALUATED", "OPEN", "SATISFIED", "BLOCKED", "STALE"]},
         "actual_readback_refs": {"$ref": "#/$defs/stringArray"},
+        "granularity_binding_state": {"enum": ["LEGACY_STAGE_ONLY", "DECISION_OBJECT_BOUND"]},
+        "decision_object_refs": {"$ref": "#/$defs/stringArray"},
+        "claim_refs": {"$ref": "#/$defs/stringArray"},
+        "output_execution_bindings": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/outputExecutionBinding"}
+        },
         "last_updated": {"$ref": "#/$defs/nonEmptyString"}
       },
       "allOf": [
@@ -349,6 +412,17 @@
             "required": ["execution_state", "consequential_knowledge_mount_required"]
           },
           "then": {"properties": {"knowledge_mount_refs": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"granularity_binding_state": {"const": "DECISION_OBJECT_BOUND"}}, "required": ["granularity_binding_state"]},
+          "then": {
+            "required": ["decision_object_refs", "claim_refs", "output_execution_bindings"],
+            "properties": {
+              "decision_object_refs": {"minItems": 1},
+              "claim_refs": {"minItems": 1},
+              "output_execution_bindings": {"minItems": 1}
+            }
+          }
         }
       ]
     },

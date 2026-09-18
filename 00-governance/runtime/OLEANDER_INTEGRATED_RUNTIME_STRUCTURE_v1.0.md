@@ -83,12 +83,18 @@ Canonical owner: `design-quality-and-design-development-specification-v1.0.md`.
 
 Each profession owns its real professional design-development process.
 
-Current reference implementation:
-- Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17`.
+Current formalized professional processes:
+- Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17` → project-exercised reference process;
+- Structural Engineering → `Structural Engineering Design Process v1.0` → `SE-SPW0 / 1 / 2 / 3 / 4 / 4.5 / 5 / 6 / 7` → machine-bound Current definition;
+- Building Services / MEP → `Building Services / MEP Design Process v1.0` → `BSP-STRATEGIC / BRIEF / CONCEPT / SPATIAL / TECHNICAL / PRODUCTION / CONSTRUCTION-CX / HANDOVER / INUSE` → machine-bound Current definition.
 
-Future domains retain their own stage semantics, including Interior, Landscape, Structural, MEP, Lighting, HCD, Systems Engineering and other professional domains.
+Other domains retain their own authentic stage semantics. Candidate process definitions do not become Current merely because a candidate file exists; domains without a Current process remain OPEN under the shared Professional Domain Process Contract.
 
-Professional stages bind to DD responsibilities; they are not renamed as DD stages.
+Professional stages bind to DD responsibilities; they are not renamed as DD stages. A stage is also **not the default smallest execution unit**. When material precision is required, the stage instance resolves:
+
+`Decision Object → Claim → Knowledge Mount → Required Native Output → Capability Roles → Minimum Sufficient Skill/Execution Owner Set → Tool/Adapter when required → Native Artifact → Actual Readback`.
+
+This decision/claim/output join is runtime binding, not a new professional stage namespace or Capability taxonomy.
 
 ### R-F | Cross-Disciplinary Integration
 
@@ -111,7 +117,9 @@ Canonical owner: `cross-disciplinary-design-integration-v1.0.md`.
 
 Resolution order:
 
-`Required Native Output → Required Capability → Minimum Sufficient Owner Set → Skill / Execution Owner → Tool / Adapter → Runtime Availability → Execute`.
+`Decision Object / Claim → Required Native Output → Required Capability Roles → Minimum Sufficient Owner Set → Skill / Execution Owner → Tool / Adapter when required → Runtime Availability → Execute`.
+
+Knowledge is mounted to the task/claim before Skill routing; it does not route directly by Skill or Tool identity. The required native output is the bridge from professional semantics into executable capability resolution.
 
 Hard distinctions:
 - Professional Process != Skill;
