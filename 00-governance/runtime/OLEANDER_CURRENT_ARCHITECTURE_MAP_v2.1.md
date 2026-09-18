@@ -221,6 +221,24 @@ As of the latest Current main baseline on 2026-09-15, **Architecture, Structural
 
 Professional synchronization is by **interface requirement and required maturity**, never by matching stage numbers.
 
+Professional execution granularity is subordinate to the stage, not a replacement stage system. When material precision is required, use the existing runtime objects in this order:
+
+```text
+Professional Stage context
+→ Decision Object
+→ Claim
+→ task/claim Knowledge Mount
+→ Required Native Output
+→ Required Capability Roles
+→ minimum sufficient Skill / Execution Owner Set
+→ Tool / Adapter when required
+→ Native Artifact
+→ Actual Readback
+```
+
+The **Decision Object** is the preferred horizontal join key across R-C / R-D / R-E / R-F / R-G / R-H / R-I at fine-grained scope. DD responsibilities and Integration interfaces remain overlays on that decision/claim; Knowledge Role, Capability, Skill and Tool identity do not become professional stages.
+
+
 ---
 
 ## 7｜Shared DD is a contract, not another process architecture
