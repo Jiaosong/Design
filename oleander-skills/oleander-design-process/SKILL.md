@@ -47,6 +47,7 @@ Use only the minimum relevant extension:
 - `SYSTEM_INTERFACE_COUPLING_EXTENSION.md` — systems where service state, permission, interface coupling, dependency or cross-object change control must become visible design consequences;
 - `EXISTING_PROJECT_REPAIR_EXTENSION.md` — already-active projects where a Current/mature artifact must be repaired without reopening unrelated design variables; preserves same-object identity, Best Existing First, minimum repair delta, Artifact Delta Gate, controlled owner handoff and independent KNOWLEDGE progress.
 - `COMPUTATIONAL_OPTION_SPACE_EXTENSION.md` — design questions with explicit variables/domains, graph or allocation relations, hard/soft constraints, conserved budgets or conflicting objectives where CSP/parametric/DOE/multi-objective exploration can expand the option space; preserves candidate identity, invalid/repair telemetry, diversity, Pareto trade-offs and human Design Review without turning an optimizer score into Design KEEP.
+- `FUNCTION_TO_CONCEPT_SYNTHESIS_EXTENSION.md` — open design questions where several functions can be satisfied by materially different causal principles/architectures; decomposes solution-neutral functions, exposes dependency and compatibility before combining means, deduplicates concept families, and bridges to matched embodiments without replacing formal Systems Engineering Functional Architecture or professional-domain design processes.
 - `SERVICE_BLUEPRINT_OPERATIONAL_DEPENDENCY_EXTENSION.md` — service/hybrid experiences where a visible journey or touchpoint depends on hidden people, systems, data, handoffs, physical evidence, failure recovery or operational capacity; separates journey/interaction from frontstage/backstage/support dependencies and keeps blueprint views derived from canonical sources rather than becoming a second truth source.
 
 Extensions refine the current object. They do not create a second project process and do not replace manufacturing, ergonomics, code, engineering or human-test authority.
@@ -147,6 +148,8 @@ When a journey or touchpoint materially depends on hidden operational work, rout
 ### 4 — Diverge into a real option space
 
 Generate materially different alternatives before polishing one direction.
+
+When the option question is still at the level of `what functions must occur → what causal principles could realize them → which principle combinations form coherent architectures`, route first to `FUNCTION_TO_CONCEPT_SYNTHESIS_EXTENSION.md`. Do not count a Cartesian product of means as concepts; resolve function dependency, compatibility, coupled bundles and concept-family identity before embodiment.
 
 When the option space is materially combinatorial or performance-driven and variables/domains/constraints can be stated explicitly, route to `COMPUTATIONAL_OPTION_SPACE_EXTENSION.md` rather than manually sampling a few parameter combinations. The extension deepens this phase; it does not replace the Decision Question, Variable Budget, source authority or independent Design Review.
 
