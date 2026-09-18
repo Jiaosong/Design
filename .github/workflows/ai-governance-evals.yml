@@ -61,6 +61,9 @@ jobs:
       - name: Validate C04 HCD candidate process HOLD instance
         run: python 00-governance/schemas/validate_professional_domain_process.py 05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json
 
+      - name: Validate Interior Design professional process candidate definition
+        run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/interior-design-process.v1.candidate.json
+
       - name: Validate Architecture professional source-stage map
         run: python 00-governance/schemas/validate_architecture_professional_source_stage_map.py
 
