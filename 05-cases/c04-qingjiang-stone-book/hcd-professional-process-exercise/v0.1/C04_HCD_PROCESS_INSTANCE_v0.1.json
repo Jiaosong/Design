@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C04-HCD-PROCESS-INSTANCE-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "C04-E-DIGITAL-INTERACTION",
+  "decision_object_refs": [
+    "05-cases/c04-qingjiang-stone-book/C04-WS-02_DIGITAL-UI-DETAIL-SYSTEM_v0.6.md",
+    "05-cases/c04-qingjiang-stone-book/C04-WS-02_REMOTE-DIGITAL-PRODUCT-MIGRATION_v0.5.md",
+    "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+    "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+    "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json"
+  ],
+  "process_definition_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+  "process_id": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS",
+  "process_version": "0.1-CANDIDATE",
+  "domain": "Digital Product / Human-Centred Design",
+  "owner": "CANDIDATE PROCESS EXERCISE / EXISTING C04 E DESIGN OWNER PRESERVED / NO APPOINTED HCD PROFESSIONAL PASS AUTHORITY CLAIMED",
+  "current_baseline": "main@4b081a2c6d253ce33c53e9b309d56afe79a963ea + candidate HCD process definition",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "DIGITAL DESIGN/SYSTEM LOGIC SUPPORT + EDITABLE PROTOTYPE / USER RESEARCH + USABILITY + ACCESSIBILITY + LIVE HCD EVIDENCE OPEN / NO PROFESSIONAL HCD PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C04-HCD-DP0-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP0",
+      "stage_id": "HCD-DP0",
+      "cycle": 1,
+      "baseline_ref": "C04_E_CURRENT_DIGITAL_ASSETS_2026-09-18",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "HCD_SCOPE_EVIDENCE_AUTHORITY_OPEN",
+      "inputs": [
+        "existing C04 E digital interaction/design assets",
+        "C04 Digital-Off Contract",
+        "C04 field/promotion truth boundary"
+      ],
+      "outputs": [
+        "candidate HCD scope-gap classification",
+        "existing product/design authority inventory"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C04-UI-v0.6@095f5294e9e741206f65a90baa38cc197110d314",
+        "C04-E-DIGITAL-OFF@6bb847ac3b8826f96f6709432e3157ce5b318a86"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No project HCD professional-process appointment/scope authority is established in reviewed sources.",
+        "No formal HCD research/evaluation plan is present.",
+        "No task/claim professional HCD knowledge mount is present.",
+        "Accessibility, privacy/security/legal, research and analytics ownership are not closed as professional interfaces."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "C04-E digital-off contract readback",
+        "C04 v1.2 QC truth boundary"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP1-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP1",
+      "stage_id": "HCD-DP1",
+      "cycle": 1,
+      "baseline_ref": "C04_E_CURRENT_DIGITAL_ASSETS_2026-09-18",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "CONTEXT_OF_USE_DESIGN_INFERENCE_ONLY / NO USER_RESEARCH_PASS",
+      "inputs": [
+        "CH11 audience/use-state design reasoning",
+        "Digital Product Migration v0.5",
+        "Digital-Off Contract"
+      ],
+      "outputs": [
+        "existing inferred user/context relations only"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "CH11@4b1d982701d0230f2594cb70914d399bf862030c",
+        "C04-MIGRATION-v0.5@a4017ba7006ef78a7c17cde49e3231b9baa7b810"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No participant/recruitment register is present.",
+        "No user interview/contextual inquiry/observation session evidence is present.",
+        "No research consent/data-handling record is present.",
+        "No disabled-user or assistive-technology participant evidence is present.",
+        "Current audience/use-state assumptions are design inference, not professional user-research findings."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "CH11 content readback",
+        "Digital Migration v0.5 content readback"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP2-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP2",
+      "stage_id": "HCD-DP2",
+      "cycle": 1,
+      "baseline_ref": "C04_E_CURRENT_DIGITAL_ASSETS_2026-09-18",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "EXPERIENCE_ARCHITECTURE_DESIGN_LOGIC / USER-NEED AUTHORITY OPEN",
+      "inputs": [
+        "TODAY/ROUTE/READ/MY BOOK/SERVICE concept",
+        "Return priority",
+        "no-phone/offline fallback",
+        "audience-depth design logic"
+      ],
+      "outputs": [
+        "coherent public IA",
+        "experience-state architecture",
+        "route/content separation",
+        "digital-companion role",
+        "Return/no-phone relation"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "CH11@4b1d982701d0230f2594cb70914d399bf862030c",
+        "C04-MIGRATION-v0.5@a4017ba7006ef78a7c17cde49e3231b9baa7b810",
+        "C04-E-DIGITAL-OFF@6bb847ac3b8826f96f6709432e3157ce5b318a86"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No evidence-backed user-needs ledger traces design needs to participant/user research.",
+        "No use-related requirement set with professional evaluation criteria is present.",
+        "Feature/experience decisions are strong Design Intelligence but cannot be upgraded to researched user needs.",
+        "No formal conflict/trade-off readback across user groups is evidenced by user research."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "CH11 structure actual text readback",
+        "Digital-Off state model readback"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP3-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP3",
+      "stage_id": "HCD-DP3",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2 + C04_E_STATE",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "STRONG DIGITAL CONCEPT / INTERACTION / STATE DESIGN EVIDENCE / UPSTREAM USER-EVIDENCE OPEN",
+      "inputs": [
+        "Digital UI Detail System v0.6",
+        "Digital Product Migration v0.5",
+        "CH11 Digital Companion",
+        "Digital-Off Contract"
+      ],
+      "outputs": [
+        "TODAY/ROUTE/MY BOOK/SERVICE public IA",
+        "NORMAL/DEGRADED/CLOSED/UNKNOWN reality states",
+        "FULL/LIGHT/OFF digital intensity relation",
+        "Return priority and no-phone fallback",
+        "S0/S1/S2 content intervention logic",
+        "editable HTML/SVG SPA prototype"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C04-UI-v0.6@095f5294e9e741206f65a90baa38cc197110d314",
+        "C04-MIGRATION-v0.5@a4017ba7006ef78a7c17cde49e3231b9baa7b810",
+        "CH11@4b1d982701d0230f2594cb70914d399bf862030c",
+        "C04-E-DIGITAL-OFF@6bb847ac3b8826f96f6709432e3157ce5b318a86",
+        "APP-v1.2-HTML@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3"
+      ],
+      "review_refs": [
+        "APP-v1.2 design crit = KEEP_AFTER_REVISION in QC_READBACK_v1_2"
+      ],
+      "open_items": [
+        "Interaction design is not backed by representative-user usability evidence.",
+        "Accessibility behaviour has not been professionally evaluated.",
+        "Content/localization and privacy/security handoffs remain incomplete.",
+        "Task/claim HCD knowledge mount is absent."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "APP-v1.2 static checks PASS",
+        "APP-v1.2 design crit KEEP_AFTER_REVISION",
+        "actual live browser HOLD_ENVIRONMENT_ADMIN_BLOCK"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP4-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP4",
+      "stage_id": "HCD-DP4",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "PROTOTYPE STATIC/DESIGN READBACK ONLY / USABILITY + ACCESSIBILITY NOT_RUN",
+      "inputs": [
+        "APP_GAME_MAP_v1.2 prototype",
+        "current interaction/state design"
+      ],
+      "outputs": [
+        "static syntax/view checks",
+        "producer design crit"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "APP-v1.2-QC@636cc9024a545d792fc0a5f13f24af1be47a4593"
+      ],
+      "review_refs": [
+        "APP-v1.2 design crit only; not user evaluation"
+      ],
+      "open_items": [
+        "No representative-user usability sessions are evidenced.",
+        "No task-success/error/recovery dataset is evidenced.",
+        "No disabled-user/assistive-technology test is evidenced.",
+        "No WCAG 2.2 audit/conformance evaluation is evidenced.",
+        "Static checks and producer design crit cannot substitute for prototype evaluation."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "APP-v1.2 QC static checks PASS",
+        "actual live browser HOLD_ENVIRONMENT_ADMIN_BLOCK"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP5-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP5",
+      "stage_id": "HCD-DP5",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2 + cocos4-source",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "PARTIAL DESIGN-TO-IMPLEMENTATION SOURCE / PROFESSIONAL HANDOFF INCOMPLETE",
+      "inputs": [
+        "editable HTML/SVG SPA",
+        "Cocos authored source pack",
+        "runtime/state source"
+      ],
+      "outputs": [
+        "editable implementation source",
+        "Cocos source pack",
+        "UI/state/data structures"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "APP-v1.2-HTML@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+        "COCOS4-README@0ea518b616d732aa1fc3b96595ad7649cf9a23a1"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No complete HCD design-system/component behaviour acceptance contract is evidenced.",
+        "No localization/content-language test contract is evidenced.",
+        "No professional accessibility behaviour handoff is evidenced.",
+        "No analytics/instrumentation outcome contract is evidenced.",
+        "No privacy/security/legal specialist handoff is evidenced."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "Cocos source status SOURCE_READY / runtime source build PASS / VisualPrototype scene mount pending",
+        "APP v1.2 source present"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP6-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP6",
+      "stage_id": "HCD-DP6",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2 + cocos4-source",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "IMPLEMENTATION SOURCE/STATIC CHECK SUPPORT / ACTUAL RELEASE HCD READBACK OPEN",
+      "inputs": [
+        "APP v1.2 source/QC",
+        "Cocos source/build evidence"
+      ],
+      "outputs": [
+        "static implementation checks",
+        "source/build-status evidence"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "APP-v1.2-QC@636cc9024a545d792fc0a5f13f24af1be47a4593",
+        "COCOS4-README@0ea518b616d732aa1fc3b96595ad7649cf9a23a1"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "APP v1.2 current QC explicitly records actual_live_browser=HOLD_ENVIRONMENT_ADMIN_BLOCK.",
+        "Cocos VisualPrototype scene mount remains pending; source-build PASS is not interactive runtime PASS.",
+        "No keyboard/focus/screen-reader/assistive-technology release readback is evidenced.",
+        "No privacy/security/legal release disposition is evidenced.",
+        "No verified analytics instrumentation or live service-status integration is evidenced."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "APP v1.2 QC",
+        "Cocos shared-toolchain/source-build evidence only"
+      ],
+      "last_updated": "2026-09-18"
+    },
+    {
+      "stage_instance_id": "C04-HCD-DP7-001",
+      "stage_definition_ref": "OLEANDER-DIGITAL-PRODUCT-HCD-DESIGN-PROCESS@0.1-CANDIDATE#HCD-DP7",
+      "stage_id": "HCD-DP7",
+      "cycle": 1,
+      "baseline_ref": "NO_LIVE_PRODUCT_EVIDENCE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO LIVE HCD CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No live user analytics/outcome evidence is present.",
+        "No live support/accessibility/incident research is present.",
+        "No live product/service reliability evidence is present."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-18"
+    }
+  ],
+  "active_interface_refs": [],
+  "open_items": [
+    "Digital Product / HCD professional process remains Candidate and Current Architecture Map remains DOMAIN PROCESS OPEN.",
+    "Representative-user/context research evidence is absent.",
+    "Usability and accessibility evaluation are NOT_RUN.",
+    "Professional privacy/security/legal and analytics/instrumentation handoffs are open.",
+    "Actual current v1.2 browser HCD readback is HOLD.",
+    "Live user outcome evidence is absent.",
+    "Independent HCD professional review NOT_RUN."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-18"
+}
