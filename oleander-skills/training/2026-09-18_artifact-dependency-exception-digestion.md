@@ -331,11 +331,87 @@ Atomic/staging behavior remains tool/adapter specific; the governance invariant 
 
 ---
 
+# C04 bounded project reapplication
+
+The Current dependency policy was reapplied prospectively to two real C04 editable artifacts without rewriting their historical QC:
+
+1. `APP_GAME_MAP v1.2 portable HTML`
+2. `M01_qingjiang_journal_v1_2.svg`
+
+Produced:
+- `C04_ARTIFACT_DEPENDENCY_REAPPLICATION_v0.1.json`
+- `C04_ARTIFACT_DEPENDENCY_REAPPLICATION_RECEIPT_v0.1.json`
+
+## App v1.2
+
+Observed declared dependencies:
+- serif CJK role: `Noto Serif SC → Songti SC → serif`;
+- sans CJK role: `Noto Sans SC → PingFang SC → Microsoft YaHei → sans`;
+- interactive browser runtime.
+
+Existing QC remains unchanged:
+- static/source checks remain their historical PASSes;
+- actual live browser remains `HOLD_ENVIRONMENT_ADMIN_BLOCK`.
+
+Reapplication result:
+- the exact Noto family is **not** invented as Current font authority;
+- the CJK serif/sans roles are treated as `REQUIRED_FOR_SEMANTIC_FIDELITY`;
+- fallback policy is `ALLOW_DECLARED_EQUIVALENT`;
+- a future final/reproducible browser claim must observe the actual resolved material font/runtime identity and perform readback.
+
+## M01 journal SVG
+
+Observed declared dependencies:
+- serif CJK role: `Noto Serif SC → Songti SC → serif`;
+- sans CJK role: `Noto Sans SC → Microsoft YaHei → sans`;
+- SVG display/export renderer.
+
+Historical QC remains:
+- concept `KEEP`;
+- presentation `MAIN_CANDIDATE`;
+- SVG parse/vector-text checks unchanged.
+
+Reapplication result:
+- exact Noto identity is not promoted without Design/Brand authority;
+- typography role/metrics remain material to semantic fidelity;
+- future final print/export requires renderer + actual resolved font identity/readback if the fallback affects fit/hierarchy/clipping;
+- SVG parse PASS is not exact typography or print reproduction.
+
+## New anti-overconstraint finding
+
+The real project use revealed a symmetrical failure mode:
+
+`PREFERRED DEPENDENCY ORDER ≠ EXACT CURRENT AUTHORITY`.
+
+A CSS/SVG stack whose first entry is Noto does not by itself authorize OLEANDER to declare Noto mandatory.
+
+Added `FAIL-022`:
+
+> do not invent an exclusive dependency authority from a preference/fallback order; resolve whether Current requires an exact identity or only a semantic/performance role.
+
+This matters because a dependency policy must prevent both:
+- under-control: silent fallback;
+- over-control: fabricated exact authority.
+
+## Usage maturity
+
+The dependency extension now has one real C04 project reapplication showing:
+- a material font/runtime dependency;
+- a historical HOLD preserved;
+- a candidate artifact preserved without retroactive invalidation;
+- an allowed-equivalent path;
+- an unresolved actual runtime/font-resolution readback;
+- an anti-overconstraint correction.
+
+It still does not claim a resolved font/runtime production validation because that execution was intentionally `NOT_RUN / UNVERIFIED`.
+
+---
+
 # Maturity
 
 Current batch target:
 
-`EXTERNAL PRODUCTION MECHANISMS → EXISTING OWNER MAP → TWO MATERIAL GAPS → CURRENT CONTRACT EXTENSION → MACHINE VALIDATION → AIG FAILURE REGRESSION → PR/CI/READBACK`.
+`EXTERNAL PRODUCTION MECHANISMS → EXISTING OWNER MAP → TWO MATERIAL GAPS → CURRENT CONTRACT EXTENSION → MACHINE VALIDATION → AIG FAILURE REGRESSION → C04 REAL PROJECT REAPPLICATION → ANTI-OVERCONSTRAINT REGRESSION → PR/CI/READBACK`.
 
 No project artifact is retroactively rewritten.
 
