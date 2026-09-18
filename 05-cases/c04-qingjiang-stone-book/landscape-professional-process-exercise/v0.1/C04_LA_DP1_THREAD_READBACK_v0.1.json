@@ -1,0 +1,141 @@
+{
+  "schema_version": "c04-landscape-professional-thread-readback/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "stage": "LA-DP1",
+  "state": "BOUNDED_CANDIDATE_PROCESS_EXERCISE / BLOCKED / HOLD",
+  "threads": [
+    {
+      "id": "LT-10",
+      "name": "Spatial / experiential landscape relation",
+      "state": "SUPPORTED_AT_DESIGN_INTELLIGENCE_LEVEL",
+      "evidence": "CH02 river/shore/peak/valley + movement/viewpoint + open/compressed sequence",
+      "does_not_prove": "professional site authority or technical landscape resolution"
+    },
+    {
+      "id": "LT-01",
+      "name": "Survey / existing-condition authority",
+      "state": "HOLD",
+      "evidence": "regional remote context + route relational authority only",
+      "does_not_prove": "survey geometry, exact coordinates, site boundary, measured levels"
+    },
+    {
+      "id": "LT-02",
+      "name": "Landform / grading / earthwork",
+      "state": "HOLD",
+      "evidence": "regional sampled DEM slope/aspect only",
+      "does_not_prove": "site grading design, cut/fill, accessible slopes, tie-ins"
+    },
+    {
+      "id": "LT-03",
+      "name": "Hydrology / drainage / stormwater",
+      "state": "HOLD",
+      "evidence": "D8 sampled-cell flow accumulation = potential terrain convergence",
+      "does_not_prove": "hydraulic drainage network, catchment/outfall, capacity, stormwater performance"
+    },
+    {
+      "id": "LT-04A",
+      "name": "Land cover / vegetation context",
+      "state": "HOLD",
+      "evidence": "ESA WorldCover source intended; AOI categorical pixels not locally materialized/read back",
+      "does_not_prove": "professional vegetation inventory, species/community/site condition"
+    },
+    {
+      "id": "LT-04B",
+      "name": "Soil / rooting / planting suitability",
+      "state": "NOT_RUN",
+      "evidence": "none in reviewed Current sources",
+      "does_not_prove": "soil profile, compaction, infiltration, contamination, root volume, species suitability"
+    },
+    {
+      "id": "LT-04C",
+      "name": "Ecology / habitat / tree condition",
+      "state": "NOT_RUN",
+      "evidence": "none sufficient in reviewed Current sources",
+      "does_not_prove": "habitat connectivity, protected species, arboricultural condition, biodiversity outcome"
+    },
+    {
+      "id": "LT-03B",
+      "name": "Surface-water history",
+      "state": "HOLD",
+      "evidence": "JRC Global Surface Water source intended; AOI pixels not locally materialized/read back",
+      "does_not_prove": "site water occurrence/seasonality or field hydrology"
+    },
+    {
+      "id": "LT-05",
+      "name": "Irrigation / water use",
+      "state": "NOT_RUN",
+      "evidence": "no landscape irrigation scope/basis in reviewed sources",
+      "does_not_prove": "source, water quality, zones, demand, controls"
+    },
+    {
+      "id": "LT-06",
+      "name": "Hardscape / material / construction",
+      "state": "NOT_RUN_FOR_LA_DP1",
+      "evidence": "outside current analysis exercise",
+      "does_not_prove": "materials, build-ups, joints, details, constructability"
+    },
+    {
+      "id": "LT-07",
+      "name": "Access / safety / inclusion",
+      "state": "PARTIAL_DESIGN_INTELLIGENCE_ONLY",
+      "evidence": "route/return/body-attention relationships exist elsewhere in C04",
+      "does_not_prove": "surveyed accessible route, statutory accessibility, edge/fire/emergency conditions"
+    },
+    {
+      "id": "LT-08",
+      "name": "Establishment / maintenance / operations",
+      "state": "NOT_RUN",
+      "evidence": "no professional landscape maintenance capability model in reviewed sources",
+      "does_not_prove": "maintainability, establishment, seasonal operations"
+    },
+    {
+      "id": "LT-09",
+      "name": "Carbon / resource / circularity",
+      "state": "NOT_RUN",
+      "evidence": "outside reviewed CH02/environment evidence",
+      "does_not_prove": "carbon/resource performance"
+    },
+    {
+      "id": "LT-11",
+      "name": "Professional interfaces",
+      "state": "UNRESOLVED",
+      "evidence": "no Landscape Architecture project process/interface instance currently established",
+      "does_not_prove": "Architecture↔Landscape↔Civil/Geotech/Ecology coordination maturity"
+    },
+    {
+      "id": "REVIEW",
+      "name": "Independent Landscape professional review",
+      "state": "NOT_RUN",
+      "evidence": "ENV independent design review pending; no Landscape process review",
+      "does_not_prove": "professional stage PASS"
+    },
+    {
+      "id": "FIELD",
+      "name": "Field observation / measurement",
+      "state": "HOLD",
+      "evidence": "FIELD_OBSERVED=0 / FIELD_MEASURED=0 / G1F HOLD",
+      "does_not_prove": "field truth"
+    }
+  ],
+  "disposition": {
+    "keep": [
+      "CH02 spatial/movement/viewpoint analysis as Design Intelligence evidence.",
+      "ENV regional terrain/solar/context analyses within their declared remote/derived ceilings.",
+      "ROUTE-03 as relational route authority only."
+    ],
+    "do_not_upgrade": [
+      "Do not call CH02 a complete Landscape Architecture site analysis.",
+      "Do not project remote slope/drainage values onto route nodes.",
+      "Do not call D8 terrain accumulation a drainage design.",
+      "Do not infer soils, planting suitability, ecology or maintenance from visual/context analysis."
+    ],
+    "next_valid_actions": [
+      "Resolve whether Landscape Architecture is materially in project scope and identify professional owner.",
+      "Acquire/resolve survey/topographic/site-boundary authority if professional landscape design is pursued.",
+      "Resolve soil/hydrology/vegetation/ecology/maintenance evidence only to the level required by the next claim.",
+      "Run independent Landscape professional review before any Landscape process PASS."
+    ]
+  },
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "DESIGN_INTELLIGENCE + REMOTE ENVIRONMENTAL SUPPORT ONLY / NO LANDSCAPE PROFESSIONAL PASS / NO FIELD PROMOTION"
+}
