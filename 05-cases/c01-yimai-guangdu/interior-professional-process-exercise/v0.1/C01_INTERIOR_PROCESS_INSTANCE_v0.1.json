@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C01-INTERIOR-PROCESS-INSTANCE-001",
+  "project_id": "C01-YIMAI-GUANGDU",
+  "decision_object_refs": [
+    "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md#04-八股厅-书香研学室",
+    "05-cases/c01-yimai-guangdu/C01_NODE-PROTOTYPE_v0.1-B-C.md#N04-八股厅"
+  ],
+  "process_definition_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "domain": "Interior Design",
+  "owner": "CANDIDATE PROCESS EXERCISE / EXISTING C01 DESIGN OWNER PRESERVED / NO APPOINTED INTERIOR PROFESSIONAL PASS AUTHORITY CLAIMED",
+  "current_baseline": "main@984d7ce9d45947482db8b47f45bd21d0a526b393 + Interior Candidate 1.0",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "INTERIOR PROGRAMMATIC / REVERSIBLE-USE DESIGN INTENT ONLY / NO VERIFIED ROOM GEOMETRY, CAPACITY, LIFE-SAFETY, ACCESSIBILITY, RCP, FF&E, TECHNICAL OR FIELD PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C01-ID-PW0-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW0",
+      "stage_id": "ID-PW0",
+      "cycle": 1,
+      "baseline_ref": "C01_NODE_DESIGN_v0.1 + NODE_PROTOTYPE_v0.1-B-C",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERIOR STRATEGIC INTENT / SCOPE AUTHORITY OPEN",
+      "inputs": [
+        "八股厅 / 书香研学室 design intent",
+        "community-use-priority rule",
+        "indoor / unavailable-or-closed / unknown simulated availability branches",
+        "reversible-first project intervention hierarchy"
+      ],
+      "outputs": [
+        "bounded interior-use intent",
+        "rejection/downgrade logic",
+        "initial missing-authority register"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_NODE-DESIGN_v0.1@43da954cd24f200baa07bcd5db65ab6e9774c0de",
+        "C01_NODE-PROTOTYPE_v0.1-B-C@f0d5f481530429aee515c048df54933bf628712c",
+        "C01_README@d1536e25a7dbcb6a5197aacad03d33c9da8448f4"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No appointed Interior Design professional scope/owner is established in the reviewed project sources.",
+        "No authoritative existing-condition room survey, measured geometry or base-building interior record is established.",
+        "Indoor use permission / heritage / property / operation authority is unresolved.",
+        "Life-safety, accessibility, occupancy/capacity, opening-hours and fixed-installation authority are unresolved.",
+        "The current 20–30 people statement is explicitly a planning hypothesis, not a verified capacity."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "C01 NODE DESIGN explicit no-capacity / no-fire-safety / no-installation-approval boundary",
+        "N04 simulated indoor-availability branch and community-priority downgrade"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW1-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW1",
+      "stage_id": "ID-PW1",
+      "cycle": 1,
+      "baseline_ref": "C01_NODE_DESIGN_v0.1 + NODE_PROTOTYPE_v0.1-B-C",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "PARTIAL INTERIOR BRIEF / USER-ACTIVITY DESIGN INTENT / UNVERIFIED CAPACITY + BASE BUILDING",
+      "inputs": [
+        "education tradition → observation/question/discussion/writing/revision behaviour",
+        "small-group course intent",
+        "movable/non-invasive furniture/media requirement",
+        "community-use priority",
+        "indoor-to-nearby-public-space/digital fallback"
+      ],
+      "outputs": [
+        "partial user-activity-experience intent",
+        "dual-mode operating concept",
+        "community-priority occupancy rule",
+        "bounded movable/non-invasive furnishing principle"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_NODE-DESIGN_v0.1@43da954cd24f200baa07bcd5db65ab6e9774c0de",
+        "C01_NODE-PROTOTYPE_v0.1-B-C@f0d5f481530429aee515c048df54933bf628712c"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No verified user number, activity duration, furniture count, storage need, turnover pattern or operational schedule is established.",
+        "No authoritative room dimensions, door/opening geometry, ceiling height, floor level or environmental condition is established.",
+        "No room data sheet / FF&E interface register / responsibility matrix exists for this object.",
+        "No accessibility, fire/life-safety, lighting, acoustic or MEP criteria are mounted for the room."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "course behaviour chain readback",
+        "indoor unavailable/closed/unknown downgrade readback"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW2-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW2",
+      "stage_id": "ID-PW2",
+      "cycle": 1,
+      "baseline_ref": "C01_NODE_DESIGN_v0.1",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERIOR CONCEPT PRINCIPLE ONLY / NO PROFESSIONAL ROOM CONCEPT ARTIFACT",
+      "inputs": [
+        "movable/non-invasive interior-media principle",
+        "dual-mode learning use",
+        "community-priority rejection condition"
+      ],
+      "outputs": [
+        "concept principle: reversible movable learning environment",
+        "fallback principle: course migrates outside/digital when indoor use fails"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_NODE-DESIGN_v0.1@43da954cd24f200baa07bcd5db65ab6e9774c0de"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No measured concept plan/section exists.",
+        "No actual room circulation/clearance study exists.",
+        "No preliminary RCP/service/lighting/acoustic intent exists at room geometry.",
+        "No finish/material role matrix, FF&E schedule, door/opening implication or sample/mockup evidence exists.",
+        "No concept option comparison at actual room geometry exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "NODE DESIGN concept/rejection logic only"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW3-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW3",
+      "stage_id": "ID-PW3",
+      "cycle": 1,
+      "baseline_ref": "NO PROFESSIONAL INTERIOR NATIVE ARTIFACT AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "Spatial coordination cannot start before authoritative room geometry/base-building conditions exist."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW4-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW4",
+      "stage_id": "ID-PW4",
+      "cycle": 1,
+      "baseline_ref": "NO PROFESSIONAL INTERIOR NATIVE ARTIFACT AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "Technical design cannot start from an unmeasured/uncoordinated room state."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW5-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW5",
+      "stage_id": "ID-PW5",
+      "cycle": 1,
+      "baseline_ref": "NO PROFESSIONAL INTERIOR NATIVE ARTIFACT AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No procurement/submittal/mockup/site-observation scope exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW6-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW6",
+      "stage_id": "ID-PW6",
+      "cycle": 1,
+      "baseline_ref": "NO PROFESSIONAL INTERIOR NATIVE ARTIFACT AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No installed interior/handover scope exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW7-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW7",
+      "stage_id": "ID-PW7",
+      "cycle": 1,
+      "baseline_ref": "NO PROFESSIONAL INTERIOR NATIVE ARTIFACT AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No occupied interior professional state exists for POE."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    }
+  ],
+  "active_interface_refs": [],
+  "open_items": [
+    "Interior Design Candidate remains not Current.",
+    "C01 八股厅 currently supports only a reversible program/use hypothesis, not an Interior professional room design.",
+    "Existing conditions / measured room geometry are missing.",
+    "Capacity, life safety, accessibility, heritage/property permission and operating authority are unresolved.",
+    "RCP/MEP/lighting/acoustic/door/finish/joinery/FF&E technical objects are not started.",
+    "Independent Interior professional review is NOT_RUN."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-19"
+}
