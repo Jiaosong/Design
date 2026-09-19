@@ -1,0 +1,162 @@
+{
+  "schema_version": "c04-app-browser-runtime-readback/1.0",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact_id": "APP_GAME_MAP_v1.3",
+  "source": {
+    "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html",
+    "blob_sha": "99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2"
+  },
+  "predecessor": {
+    "artifact_id": "APP_GAME_MAP_v1.2",
+    "source_blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+    "historical_actual_live_browser": "HOLD_ENVIRONMENT_ADMIN_BLOCK"
+  },
+  "runtime_configuration": {
+    "engine": "Chromium / Chrome for Testing",
+    "browser_version": "151.0.7922.34",
+    "playwright_browser_revision": "chromium v1234",
+    "projects": [
+      {
+        "id": "chromium-desktop-c04",
+        "viewport": [
+          1440,
+          1000
+        ]
+      },
+      {
+        "id": "chromium-mobile-c04",
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    ],
+    "not_tested": [
+      "Firefox",
+      "WebKit",
+      "other device/browser/runtime configurations"
+    ]
+  },
+  "test_binding": {
+    "spec_path": "tests/c04-app-v13-browser.spec.js",
+    "spec_blob_sha": "c935b674cdb9ad526d1a7817d9a0edf24b076d18",
+    "config_path": "tests/c04-app-v13.playwright.config.js",
+    "config_blob_sha": "655d41e2ef5b7aaa0cd8ce4f0037877c8eab8e88",
+    "workflow_path": ".github/workflows/c04-app-v13-browser.yml",
+    "workflow_blob_sha": "79db84a6fb1ebf8369708b62673ca9f8c9686028"
+  },
+  "github_actions": {
+    "pull_request": 665,
+    "run_id": 35419536754,
+    "run_number": 4,
+    "job_id": 105834458437,
+    "tested_head_sha": "4d767315c435eb62e05647a6da9d3ab899440e71",
+    "conclusion": "PASS"
+  },
+  "checks": [
+    {
+      "id": "BR-01",
+      "name": "five views and SERVICE/RETURN state",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-02",
+      "name": "UNKNOWN / FAIL-CLOSED rendering",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-03",
+      "name": "route mode + travel focus state",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-04",
+      "name": "imprint dialog → My Book save",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-05",
+      "name": "My Book localStorage write / clear / default reset",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-06",
+      "name": "print fallback switches to ROUTE then invokes print",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-07",
+      "name": "page-level horizontal overflow <= 1px",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    },
+    {
+      "id": "BR-08",
+      "name": "page JavaScript runtime errors during tested paths",
+      "desktop": "PASS",
+      "mobile": "PASS"
+    }
+  ],
+  "test_count": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "defect_repair_provenance": [
+    {
+      "source_version": "v1.2",
+      "defect": "My Book save mutated the shared in-memory DEF default array.",
+      "discovery": "real Chromium run #3",
+      "repair": "v1.3 copies G() result before unshift",
+      "result": "PASS in run #4"
+    },
+    {
+      "source_version": "v1.2",
+      "defect": "print.onclick relied on a global name colliding with window.print, so the intended print-button handler did not execute.",
+      "discovery": "real Chromium run #3",
+      "repair": "v1.3 binds document.getElementById('print').onclick explicitly",
+      "result": "PASS in run #4"
+    }
+  ],
+  "harness_provenance": [
+    {
+      "run": 1,
+      "result": "HARNESS_FAIL",
+      "reason": "incorrect tests/tests/serve-static-root.mjs path; product not executed"
+    },
+    {
+      "run": 2,
+      "result": "HARNESS_FAIL",
+      "reason": "readiness URL pointed at repository root without index.html; product not executed"
+    },
+    {
+      "run": 3,
+      "result": "PRODUCT_EXECUTED_6_PASS_6_FAIL",
+      "reason": "one test selector defect + two real product defects exposed"
+    },
+    {
+      "run": 4,
+      "result": "PASS_12_OF_12",
+      "reason": "test selector repaired; v1.3 product defects repaired"
+    }
+  ],
+  "verification_result": "PASS_FOR_CONFIGURED_CHROMIUM_DESKTOP_AND_MOBILE",
+  "does_not_prove": [
+    "representative-user task success",
+    "usability",
+    "accessibility conformance",
+    "Firefox/WebKit parity",
+    "official live-service integration",
+    "physical/paper/human fallback",
+    "field truth",
+    "HCD validation",
+    "Systems Engineering professional PASS",
+    "promotion"
+  ]
+}
