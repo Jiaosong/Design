@@ -1,0 +1,414 @@
+{
+  "schema_version": "oleander-open-domain-adoption-frontier/0.1",
+  "snapshot_date": "2026-09-19",
+  "baseline_commit": "d803b2e9a78c9894439bd78b287b37ce9b864866",
+  "authority_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+  "professional_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+  "state": "DIAGNOSTIC READBACK / NOT AN AUTHORITY STATE FAMILY / NO PROMOTION",
+  "purpose": "Separate professional-process definition depth from actual adoption/project evidence across the five R-E domains that remain OPEN, so process prose/schema maturity cannot be mistaken for project-exercised professional maturity.",
+  "common_current_status": "CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
+  "dimensions": [
+    "candidate_definition",
+    "machine_definition",
+    "main_ci_definition_validation",
+    "practitioner_execution_objects",
+    "aig_failure_regressions",
+    "bounded_practice_reapplication",
+    "real_project_process_instance",
+    "requirement_or_domain_native_readback",
+    "material_interface_or_failure_path_exercised",
+    "change_reopen_exercised",
+    "independent_professional_review",
+    "professional_pass",
+    "current_promotion"
+  ],
+  "domains": [
+    {
+      "domain": "Interior Design",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/interior-design-process.v1.candidate.json",
+        "machine_blob_sha": "181225c5da91f6eb49ce0e635d76624da372e953",
+        "stage_ids": [
+          "ID-PW0",
+          "ID-PW1",
+          "ID-PW2",
+          "ID-PW3",
+          "ID-PW4",
+          "ID-PW5",
+          "ID-PW6",
+          "ID-PW7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION",
+        "practitioner_objects": [
+          "Interior Design Brief / User–Activity–Experience Matrix",
+          "Room / FF&E / Product Interface Register",
+          "RCP / Service Coordination Register",
+          "Door / Opening / Hardware Coordination Register",
+          "Finish / Substrate / Transition Register",
+          "Joinery / Millwork Production Register",
+          "FF&E / Equipment Procurement and Logistics Register",
+          "Submittal / Sample / Mockup / Substitution release",
+          "bounded Site Observation object",
+          "Closeout / O&M / Warranty / Asset chain"
+        ]
+      },
+      "ci_evidence": {
+        "run": "AI Governance #4880",
+        "definition_step": "PASS"
+      },
+      "regression_ids": [
+        "FAIL-023",
+        "FAIL-024",
+        "FAIL-025",
+        "FAIL-026",
+        "FAIL-027",
+        "FAIL-028",
+        "FAIL-029",
+        "FAIL-030"
+      ],
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": false,
+        "search_finding": "No authentic Interior project/practice instance was found in Current main. C01/C02 contain spatial/prototype ideas but not the required RCP/finish/joinery/FF&E/technical/field native-object chain.",
+        "project_exercise_counted": false
+      },
+      "interface_exercise": {
+        "exists": false
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL PROJECT OR AUTHENTIC PRACTICE EXECUTION OF NATIVE INTERIOR OBJECTS",
+      "next_valid_evidence": [
+        "actual room/base-building authority",
+        "coordinated plan/RCP/elevation/section or equivalent interior native package",
+        "at least one real finish/joinery/door/FF&E release chain",
+        "at least one interface contradiction or non-success path",
+        "actual readback and independent Interior professional review"
+      ],
+      "do_not_fake": [
+        "Do not use C01 movable/non-invasive program concepts as RCP/technical Interior evidence.",
+        "Do not create a synthetic full Interior project only to increase maturity count.",
+        "Do not promote render/material board/FF&E list as professional execution."
+      ]
+    },
+    {
+      "domain": "Landscape Architecture",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+        "machine": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+        "machine_blob_sha": "7f0f6fe21ffed880dfbbe8417657a9bc102dc1d2",
+        "stage_ids": [
+          "LA-DP0",
+          "LA-DP1",
+          "LA-DP2",
+          "LA-DP3",
+          "LA-DP4",
+          "LA-DP5",
+          "LA-DP6",
+          "LA-DP7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_BOUNDED_PROJECT_REAPPLICATION"
+      },
+      "ci_evidence": {
+        "run": "AI Governance #4880",
+        "definition_step": "PASS",
+        "project_instance_step": "PASS_IN_PRIOR_AND_CURRENT_CI_LINEAGE"
+      },
+      "regression_ids": [
+        "FAIL-009",
+        "FAIL-010",
+        "FAIL-011",
+        "FAIL-012"
+      ],
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Qingjiang",
+        "receipt": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "0fe05fa53bcfe1307df8b03a866ce63eebab2e07",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "evidence_ceiling": "Design-intelligence spatial/experience + remote environmental support only; survey/grading/drainage/soil/ecology/irrigation/maintenance professional truth remains open."
+      },
+      "interface_exercise": {
+        "exists": false,
+        "note": "C04 exercise classifies professional gaps; it does not close a material Landscape↔Civil/Geotech/Ecology/Operations interface."
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL LANDSCAPE PROFESSIONAL NATIVE-OBJECT EXECUTION + MATERIAL INTERFACE + INDEPENDENT REVIEW",
+      "next_valid_evidence": [
+        "survey/site authority at the next claim ceiling",
+        "one actual grading/drainage/soil/planting/hardscape decision chain",
+        "one material cross-professional interface exercised",
+        "actual readback with failure/HOLD retained",
+        "independent Landscape professional review"
+      ]
+    },
+    {
+      "domain": "Lighting Design",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+        "machine_blob_sha": "f0d56f5c399a2ad45bcebf497aae86713c51ad59",
+        "stage_ids": [
+          "LGT-00",
+          "LGT-01",
+          "LGT-02",
+          "LGT-03",
+          "LGT-04",
+          "LGT-05",
+          "LGT-06",
+          "LGT-07",
+          "LGT-08",
+          "LGT-09"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION",
+        "practitioner_depth_summary": "16 continuous technical threads, photometric/daylight configuration records, luminaire/control/submittal/aiming/commissioning/maintenance objects, 27 interface bindings."
+      },
+      "ci_evidence": {
+        "run": "AI Governance #4880",
+        "definition_step": "PASS"
+      },
+      "regression_ids": [
+        "FAIL-031",
+        "FAIL-032",
+        "FAIL-033",
+        "FAIL-034",
+        "FAIL-035",
+        "FAIL-036",
+        "FAIL-037",
+        "FAIL-038",
+        "FAIL-039",
+        "FAIL-040"
+      ],
+      "practice_reapplication": {
+        "exists": true,
+        "kind": "SYNTHETIC PROFESSIONAL METHOD PRACTICE",
+        "receipt": "06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "cdf5f46363ffa7da2e1bcae06b6834499ffffe27",
+        "coverage": {
+          "LGT-00": "PARTIAL_PRACTICE_SUPPORT",
+          "LGT-01": "PRACTICE_SUPPORT",
+          "LGT-02": "PRACTICE_SUPPORT",
+          "LGT-06": "PRACTICE_SUPPORT",
+          "LGT-03": "NOT_EXERCISED",
+          "LGT-04": "NOT_EXERCISED",
+          "LGT-05": "NOT_EXERCISED",
+          "LGT-07": "NOT_EXERCISED",
+          "LGT-08": "NOT_EXERCISED",
+          "LGT-09": "NOT_EXERCISED"
+        },
+        "project_exercise_counted": false
+      },
+      "project_adoption": {
+        "exists": false
+      },
+      "interface_exercise": {
+        "exists": false,
+        "note": "Synthetic simulation exercises method mechanics but not a real project Electrical/Controls/Architecture/Interior/Field interface."
+      },
+      "change_reopen_exercise": {
+        "exists": true,
+        "scope": "PRACTICE-LEVEL parser/schema/revision correction only; not project configuration/change."
+      },
+      "independent_professional_review": "NOT_RUN_FOR_REAL_PROJECT",
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL PROJECT LIGHTING DECISION OBJECT + PRODUCT/CONTROL/INSTALLATION OR PROJECT-SPECIFIC PHOTOMETRIC EVIDENCE",
+      "next_valid_evidence": [
+        "real project geometry/material/orientation and criterion source",
+        "real luminaire/optic/driver or daylight decision where applicable",
+        "real controls/electrical mapping if control claim is in scope",
+        "project mockup/calculation/substitution/field readback at the relevant stage",
+        "independent Lighting professional review"
+      ],
+      "do_not_fake": [
+        "Do not count the synthetic Radiance/evalglare cell as project exercise.",
+        "Do not use a hero render or image brightness as photometric evidence.",
+        "Do not invent universal lux/CCT/glare criteria."
+      ]
+    },
+    {
+      "domain": "Digital Product / HCD",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+        "machine": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+        "machine_blob_sha": "fcde7bff0aeff6f99d99c6a71999897a2d33ee3e",
+        "stage_ids": [
+          "HCD-DP0",
+          "HCD-DP1",
+          "HCD-DP2",
+          "HCD-DP3",
+          "HCD-DP4",
+          "HCD-DP5",
+          "HCD-DP6",
+          "HCD-DP7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_BOUNDED_PROJECT_REAPPLICATION"
+      },
+      "ci_evidence": {
+        "run": "AI Governance #4880",
+        "definition_step": "PASS",
+        "project_instance_step": "PASS_IN_CURRENT_CI_LINEAGE"
+      },
+      "regression_ids": [
+        "FAIL-013",
+        "FAIL-014",
+        "FAIL-015",
+        "FAIL-016",
+        "FAIL-017",
+        "FAIL-018",
+        "FAIL-019"
+      ],
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Digital Companion",
+        "receipt": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "189d50f9abeeda5d59770332a84a3c3ad476b8ab",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "strong_design_evidence": "IA/state/fallback/offline/editable source",
+        "open_professional_evidence": "representative-user research, usability, disabled-user/AT, WCAG evaluation, privacy/security/legal disposition, analytics/live outcomes, actual browser runtime"
+      },
+      "interface_exercise": {
+        "exists": true,
+        "level": "PARTIAL/OPEN",
+        "note": "Engineering/runtime, accessibility, privacy/security, data and service interfaces are explicitly identified but not accepted/closed."
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL USER RESEARCH / USABILITY / ACCESSIBILITY + IMPLEMENTATION READBACK + INDEPENDENT HCD REVIEW",
+      "next_valid_evidence": [
+        "representative-user research with participant/data-handling boundary",
+        "task-based usability evidence",
+        "accessibility/assistive-technology evidence appropriate to claim",
+        "actual current browser/runtime readback",
+        "privacy/security and analytics handoff where triggered",
+        "independent HCD professional review"
+      ]
+    },
+    {
+      "domain": "Systems Engineering",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+        "machine_blob_sha": "7fe4a4e3802e2e189df2d3868f6ecbc027d2ee5c",
+        "stage_ids": [
+          "SYSENG-DP0",
+          "SYSENG-DP1",
+          "SYSENG-DP2",
+          "SYSENG-DP3",
+          "SYSENG-DP4",
+          "SYSENG-DP5",
+          "SYSENG-DP6",
+          "SYSENG-DP7",
+          "SYSENG-DP8"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION",
+        "practitioner_depth_summary": "13 SE control objects spanning needs/context, function/state, interfaces/allocation, requirements, architecture, configuration, V&V, integration and operations/change."
+      },
+      "ci_evidence": {
+        "run": "AI Governance #4880",
+        "definition_step": "PASS",
+        "c04_process_instance_step": "PASS",
+        "c04_trace_consistency_step": "PASS"
+      },
+      "regression_ids": [
+        "FAIL-043",
+        "FAIL-044",
+        "FAIL-049",
+        "FAIL-050",
+        "FAIL-051"
+      ],
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Digital Companion System",
+        "receipt": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "1fac3fbecbf1d722dd40ac8df1abec8899bbcc63",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "requirements_total": 6,
+        "verification_pass": 4,
+        "verification_hold": 2,
+        "validation_pass": 0,
+        "integrated_interfaces_verified": 0
+      },
+      "interface_exercise": {
+        "exists": true,
+        "level": "OPEN/HOLD",
+        "interfaces": [
+          "IF-STATUS-OFFICIAL = NOT_IMPLEMENTED/HOLD",
+          "IF-DIGITAL-FALLBACK = DEFINED/NOT_FIELD_VERIFIED",
+          "IF-BROWSER-RUNTIME = BLOCKED",
+          "IF-HCD-VALIDATION = NOT_RUN"
+        ]
+      },
+      "change_reopen_exercise": {
+        "exists": true,
+        "evidence": "C04 APP v1→v1.2 bounded change/reverify path affecting SYSREQ-002/005/006."
+      },
+      "independent_professional_review": "NOT_RUN",
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL INTEGRATED-INTERFACE VERIFICATION + APPLICABLE VALIDATION EVIDENCE + INDEPENDENT SE REVIEW",
+      "next_valid_evidence": [
+        "at least one materially integrated interface verified in the actual system context",
+        "at least one applicable validation scenario with real evidence",
+        "task/claim Systems Engineering Knowledge Mount",
+        "independent Systems Engineering professional review"
+      ]
+    }
+  ],
+  "cross_domain_findings": [
+    "All five domains have machine-readable Candidate definitions and main-CI definition validation.",
+    "Definition-side professional granularity is no longer the dominant gap.",
+    "Interior is usage-empty: no authentic practice/project execution has been counted.",
+    "Lighting is method-practice exercised but not project-exercised.",
+    "Landscape, HCD and Systems Engineering have bounded real-project HOLD exercises; none has independent professional PASS.",
+    "Systems Engineering is currently the strongest adoption-side OPEN domain because requirement/V&V trace, interface HOLDs and change/reopen are project-exercised, but validation and independent review remain open.",
+    "No OPEN domain is eligible for Current promotion solely because its Candidate definition is deep or its schema/CI passes."
+  ],
+  "shared_blockers": [
+    "independent domain-professional review",
+    "real native-object execution/readback at the applicable claim ceiling",
+    "material interface evidence where the domain claim depends on another owner",
+    "non-success/HOLD paths must remain visible",
+    "authorized Architecture Map / Current pointer promotion transaction"
+  ],
+  "does_not_prove": [
+    "professional PASS",
+    "design KEEP",
+    "statutory approval",
+    "field truth",
+    "Current promotion"
+  ]
+}
