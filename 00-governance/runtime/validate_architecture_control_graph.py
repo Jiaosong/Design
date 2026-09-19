@@ -74,13 +74,21 @@ def _validate_professional_candidate_mutation_manifest(candidate_record: dict, b
         path = ROOT / rel
         if not path.is_file():
             fail(f"professional-process Candidate manifest file missing: {rel}")
-        raw = path.read_bytes()
-        if hashlib.sha256(raw).hexdigest() != entry.get("sha256"):
-            fail(f"professional-process Candidate manifest SHA256 stale: {rel}")
-        if len(raw) != entry.get("bytes"):
-            fail(f"professional-process Candidate manifest byte count stale: {rel}")
-        if _git_output("git", "hash-object", rel) != entry.get("git_blob"):
+        if rel in set(filter(None, _git_output("git", "diff", "--name-only", "--", rel).splitlines())):
+            fail(f"professional-process Candidate manifest material file has unstaged drift: {rel}")
+        try:
+            actual_git_blob = _git_output("git", "rev-parse", f":{rel}")
+            canonical_blob_bytes = subprocess.check_output(
+                ["git", "cat-file", "blob", actual_git_blob], cwd=ROOT
+            )
+        except subprocess.CalledProcessError:
+            fail(f"professional-process Candidate manifest material file is not staged/tracked: {rel}")
+        if actual_git_blob != entry.get("git_blob"):
             fail(f"professional-process Candidate manifest Git blob stale: {rel}")
+        if hashlib.sha256(canonical_blob_bytes).hexdigest() != entry.get("sha256"):
+            fail(f"professional-process Candidate manifest SHA256 stale: {rel}")
+        if len(canonical_blob_bytes) != entry.get("bytes"):
+            fail(f"professional-process Candidate manifest byte count stale: {rel}")
 
     scope_exclusion_prefixes = manifest.get("scope_exclusion_prefixes", [])
     if not isinstance(scope_exclusion_prefixes, list) or any(

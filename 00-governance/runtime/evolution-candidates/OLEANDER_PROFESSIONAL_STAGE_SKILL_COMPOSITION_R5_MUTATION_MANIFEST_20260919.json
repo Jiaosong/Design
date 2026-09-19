@@ -43,15 +43,15 @@
     },
     {
       "path": "00-governance/design-quality-and-design-development-specification-v1.0.md",
-      "sha256": "3c0954d6bffd0413ce0e4b0979e813ea9988ce4415199041c359389e716f2b55",
+      "sha256": "1c54869e5e1e9c213093e3bede3ca36963d2c88e416eab8ce7012a83407f1cd1",
       "git_blob": "431ec0560f0e25e6b86eadacd4e5bec48ae8e7f9",
-      "bytes": 52462
+      "bytes": 51131
     },
     {
       "path": "00-governance/professional-domain-process-contract-v1.0.md",
-      "sha256": "d00700c14c8d7331470de8b89f50d79fa72222a33f1bbee61ca321fcc0962a45",
+      "sha256": "632059e958e072de4aa1262fe82d0b9cffa9cf83e6307a601890f236219b0f37",
       "git_blob": "95357668c3fdfe68c1c14896c79ef936352f0ade",
-      "bytes": 40722
+      "bytes": 39723
     },
     {
       "path": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
@@ -67,9 +67,9 @@
     },
     {
       "path": "00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json",
-      "sha256": "57a89d7504ecb46413ce51dd4ac5caf48fc66d52e5383ae538ddacf74be1fa0d",
+      "sha256": "8c7f42a0827b76f976910b8eae4f11c0089d484fb90c25030f5261d2f071254a",
       "git_blob": "ff92b75be546afa5875a802477367b91fe89894d",
-      "bytes": 87232
+      "bytes": 85749
     },
     {
       "path": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
@@ -175,9 +175,9 @@
     },
     {
       "path": "00-governance/runtime/validate_architecture_control_graph.py",
-      "sha256": "ae7f9c06e68897df848b74dd9ba8741e7282752c06615fe0e6e03456d47b7634",
-      "git_blob": "254c9184c319a14e986ab705ffaf89966271ee3b",
-      "bytes": 128470
+      "sha256": "437ba67455c0faeedd2f4dec38b6d322f1cdbc262180430a5cad413b969eec15",
+      "git_blob": "e42cb54576eb64d0576b656230dbac17a01d3020",
+      "bytes": 129035
     },
     {
       "path": "00-governance/runtime/validate_execution_contracts.py",
@@ -193,45 +193,45 @@
     },
     {
       "path": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
-      "sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+      "sha256": "adce4c239c0bf21113acf9dad019f07d8e5aaaafc0f612fc064665567de11e59",
       "git_blob": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
-      "bytes": 81295
+      "bytes": 79523
     },
     {
       "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
-      "sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+      "sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
       "git_blob": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
-      "bytes": 85876
+      "bytes": 83934
     },
     {
       "path": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
-      "sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+      "sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
       "git_blob": "a9fca5ba94215374132eef6d50b888ce32051f71",
-      "bytes": 80224
+      "bytes": 78454
     },
     {
       "path": "00-governance/schemas/lighting-design-process.v1.candidate.json",
-      "sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+      "sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
       "git_blob": "6bef3b07b96e436264363f68b55090a5f07c0bab",
-      "bytes": 159469
+      "bytes": 156410
     },
     {
       "path": "00-governance/schemas/professional-domain-process.v1.schema.json",
-      "sha256": "e6410e7c6c71340fd615d35770845ba938a2c39a23a32e1a654df463da60d20d",
+      "sha256": "06c9617bcee864e8b8f4d51cd6e79cfea7a7eeee8e97a8ea0ce4a4fe64315b8a",
       "git_blob": "c33faaa594653ef4d740efd5e5cd50407527a00f",
-      "bytes": 28905
+      "bytes": 28281
     },
     {
       "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
-      "sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+      "sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
       "git_blob": "df711df8f6faf48fcf4a347de214ee5caa30584c",
-      "bytes": 84485
+      "bytes": 82653
     },
     {
       "path": "00-governance/schemas/validate_professional_domain_process.py",
-      "sha256": "008ec745d7e497e1db5d20c9cef9a3d6562cfc5ffe0708f42811814d28b8e103",
+      "sha256": "4d5468b10d525a89b6bcf55de8b1ee2379a362943450682e5d62359264b1df2c",
       "git_blob": "4077cf766107b55fbfe66e56d0276de03f059d26",
-      "bytes": 37169
+      "bytes": 36309
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
@@ -241,9 +241,9 @@
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
-      "sha256": "48329861bedb47c61ca17d2cc25bf0aa62e5fdbb8aea8178fdb76338829650a9",
+      "sha256": "f13b402d87e685a7106eebf7a19626e1f660ef3cc091af0c7c5fd05f7ca4a264",
       "git_blob": "b4fe4c6f8a43de15c7ab285d9cb3a2e70148f652",
-      "bytes": 2121
+      "bytes": 2086
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
@@ -253,9 +253,9 @@
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "249d32b66ebd2ff4dda8216ade4db06e059de6a15b55ddbb63754f734170fb61",
+      "sha256": "fdd66e6a6777bb832a13ae3e5f6686b723876034f3374846ab67095323a62c8d",
       "git_blob": "3ac07ca54314a790c54dd8865587c20d94784404",
-      "bytes": 2250
+      "bytes": 2214
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EVALUATION_RECEIPT_v0.2.json",
@@ -271,9 +271,9 @@
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "1de776806e4473123ebe5657903ae9933c2816cb4e8856693e157838792b5aff",
+      "sha256": "a0b6c3f85ebc304f62c756c50e4700957bff9229002f7009c0104acf53daac54",
       "git_blob": "d0539603ec971cd8b2f806295f70833917904498",
-      "bytes": 2275
+      "bytes": 2239
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EVALUATION_RECEIPT_v0.2.json",
@@ -295,9 +295,9 @@
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
-      "sha256": "ca4fd4590dd18c6257026f160f17efa610b206d0bd7cd2386dd60f6a1b7b7203",
+      "sha256": "0de595e89c9b1e77abf540c5ed28410ef9d3e9cd7a421700dd2a012ebd52dd95",
       "git_blob": "240e09af1782fef02e66c30c9dda8d954d457d10",
-      "bytes": 2083
+      "bytes": 2048
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
@@ -307,9 +307,9 @@
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "d677ef7744dd1aa9ad8ca97714eed4f7706c0f664211571cb7110793cd987a68",
+      "sha256": "5cfc5a55666a907eff88c20841028ba2a230fe9776e3d4080ec128aa3b694942",
       "git_blob": "94df22491d50982deea53b7409b0c6b092aad6e7",
-      "bytes": 2219
+      "bytes": 2184
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
@@ -324,7 +324,7 @@
       "bytes": 1708
     }
   ],
-  "manifest_content_fingerprint_sha256": "be57016d5de317abe9cb68630046ecc37d8716b9f5b3cabe21d8b2cf89044f8a",
+  "manifest_content_fingerprint_sha256": "9eff8fef4fd693c00b377f60aad1f548167a8191dce491373b79085fdd6d30c8",
   "unchanged_current_professional_machine_assertions": [
     {
       "path": "00-governance/schemas/architecture-design-development-process.v1.json",
