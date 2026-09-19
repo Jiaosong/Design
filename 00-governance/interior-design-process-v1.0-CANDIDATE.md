@@ -599,7 +599,34 @@ Reject or HOLD when any applicable condition occurs:
 
 Current status:
 
-`CANDIDATE PROFESSIONAL PROCESS / CURRENT CONTRACT-ALIGNED PROSE TARGET / 2026 CIDQ TASK EVIDENCE / PRACTITIONER OBJECT CHAINS DEEPENED / PROJECT EXERCISE NOT YET CLAIMED / INDEPENDENT INTERIOR PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
+`CANDIDATE PROFESSIONAL PROCESS / CURRENT CONTRACT-ALIGNED / 2026 CIDQ TASK EVIDENCE / PRACTITIONER OBJECT CHAINS DEEPENED / C01 DAGONG HALL BOUNDED PROJECT EXERCISE EXISTS / ID-PW3+PW4 HOLD EXERCISED / INDEPENDENT INTERIOR PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
+
+### C01 bounded project exercise｜Dagong Hall
+
+A real project exercise now exists under:
+
+`05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/`
+
+It uses public/current spatial evidence plus bounded remote/proxy reconstruction to test C01's movable/non-invasive learning mode without inventing current measured room geometry.
+
+Observed project evidence:
+- Dagong Hall group described at approximately 500 m²;
+- three-storey progressively reduced octagonal main tower;
+- recent public description of approximately 10 m overall tower height;
+- first-floor main hall described as more than 100 m²;
+- four large timber columns continue through the upper levels;
+- rear-hall/side-room relation exists in an older public observation.
+
+Professional boundary:
+- no floor-to-floor height is invented from approximate overall height;
+- no rectangular plan is invented from published area;
+- no column spacing, entry width, RCP/service position, fire/egress or accessibility geometry is fabricated;
+- the existing `20–30 people` classroom idea remains a design hypothesis, not verified capacity;
+- `ID-PW0 / PW1 / PW2` provide bounded strategic/brief/concept support;
+- `ID-PW3 / PW4` are explicitly `BLOCKED / HOLD`;
+- construction/procurement, handover and POE remain `NOT_RUN`.
+
+This satisfies the Candidate requirement for a **real project exercise with native project artifacts and a justified HOLD**. It does not satisfy spatial-coordination/technical Interior closure, independent Interior professional review or cross-professional interface acceptance.
 
 Do not change Current Architecture Map from `Interior Design = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN` until:
 
