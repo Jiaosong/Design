@@ -143,7 +143,27 @@
       "result": "PASS",
       "tested_head_sha": "4d767315c435eb62e05647a6da9d3ab899440e71"
     },
-    "v0_2_schema_and_consistency_ci": "PENDING_LATEST_HEAD"
+    "v0_2_schema_and_consistency_ci": {
+      "ai_governance_run_number": 4906,
+      "ai_governance_run_id": 35419829087,
+      "result": "PASS",
+      "steps": [
+        "Validate C04 Systems Engineering v0.2 configured-runtime process instance = PASS",
+        "Validate C04 Systems Engineering v0.2 configured-runtime trace = PASS"
+      ]
+    },
+    "anti_pollution": {
+      "run_number": 837,
+      "run_id": 35419829081,
+      "result": "PASS"
+    },
+    "browser_final_head_recheck": {
+      "run_number": 14,
+      "run_id": 35419829083,
+      "result": "PASS",
+      "tested_head_sha": "3ed05d1565ca4d40566e08472db15e11994dfad1"
+    },
+    "state": "REAL_PROJECT_RUNTIME_PASS + V0.2 MACHINE CONSISTENCY PASS / FINAL RECEIPT UPDATE REQUIRES ONE LAST HEAD RECHECK"
   },
   "current_architecture_disposition": {
     "systems_engineering_domain_process": "OPEN",
@@ -151,6 +171,6 @@
     "architecture_map_modified": false,
     "reason": "One real integrated runtime interface is now verified, but system validation, physical/paper/human fallback integration, official status interface, task/claim knowledge mount and independent Systems Engineering professional review remain open."
   },
-  "maturity": "CANDIDATE R-E PROCESS / C04 PROJECT-EXERCISED REQUIREMENT→ARCHITECTURE→VV TRACE / ACTUAL RUNTIME DEFECT DISCOVERY→REPAIR→RETEST / ONE INTEGRATED INTERFACE VERIFIED / VALIDATION=0 / INDEPENDENT SE REVIEW NOT_RUN / NOT CURRENT / NO PROMOTION",
+  "maturity": "CANDIDATE R-E PROCESS / C04 REQUIREMENT→ARCHITECTURE→VV TRACE / ACTUAL RUNTIME DEFECT DISCOVERY→REPAIR→RETEST / ONE INTEGRATED INTERFACE VERIFIED / V0.2 MACHINE CONSISTENCY PASS / VALIDATION=0 / INDEPENDENT SE REVIEW NOT_RUN / NOT CURRENT / NO PROMOTION",
   "claim_ceiling": "SYSTEMS ENGINEERING ADOPTION EVIDENCE WITH ONE CONFIGURATION-BOUND INTEGRATED RUNTIME VERIFICATION / NO SYSTEM VALIDATION PASS / NO PROFESSIONAL SE PASS / NO DOMAIN OVERRIDE / NO PROMOTION"
 }
