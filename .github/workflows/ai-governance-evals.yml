@@ -73,6 +73,9 @@ jobs:
       - name: Validate Lighting Design professional process candidate definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/lighting-design-process.v1.candidate.json
 
+      - name: Validate C04 Lighting candidate process HOLD instance
+        run: python 00-governance/schemas/validate_professional_domain_process.py 05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json
+
       - name: Validate Systems Engineering professional process candidate definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/systems-engineering-design-process.v1.candidate.json
 
