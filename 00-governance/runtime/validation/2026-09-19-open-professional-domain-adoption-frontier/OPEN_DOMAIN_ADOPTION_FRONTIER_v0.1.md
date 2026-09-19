@@ -38,6 +38,34 @@ The missing evidence is domain-specific.
 
 ---
 
+## 1A｜Definition-side execution-depth readback
+
+All five Candidate machine definitions contain `execution_depth_contract`.
+
+The counts below are **not scores or rankings**. They only demonstrate that professional execution depth is carried through native outputs, actual readbacks, reopen triggers and claim boundaries rather than stage labels alone.
+
+| Domain | Stages | Stage-native output objects | Required readbacks | Reopen triggers | Does-not-prove boundaries |
+|---|---:|---:|---:|---:|---:|
+| Interior | 8 | 72 | 35 | 8 | 32 |
+| Landscape | 8 | 63 | 28 | 8 | 42 |
+| Lighting | 10 | 74 | 69 | 31 | 30 |
+| HCD | 8 | 60 | 26 | 8 | 39 |
+| Systems Engineering | 9 | 48 | 26 | 9 | 37 |
+
+Shared parity regressions:
+- `FAIL-041` — framework/page/stage depth cannot substitute for practitioner execution objects;
+- `FAIL-042` — same professional granularity does not mean same stage count, names, schedules or template.
+
+Therefore:
+
+`SAME GRANULARITY = EQUIVALENT PROFESSIONAL EXECUTION DEPTH`
+
+not
+
+`SAME GRANULARITY = SAME TEMPLATE / SAME LENGTH / SAME STAGE COUNT`.
+
+---
+
 ## 2｜Interior Design
 
 ### Definition side
