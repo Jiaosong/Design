@@ -1372,6 +1372,610 @@
       "analytics as causal proof",
       "prototype polish as usability evidence",
       "same stage count as other domains"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "HCD-OBJ-01",
+        "object_name": "Context / Need / Use-requirement Decision Ledger",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "HCD-DP1",
+          "HCD-DP2"
+        ],
+        "professional_purpose": "Carry evidence-backed context, user need, intended outcome and use-related requirement into product decisions without turning personas/features into research findings.",
+        "native_source_of_truth": "Current research/context evidence + product/service authority + requirement sources.",
+        "required_record_fields": [
+          "decision_id",
+          "user_group_context",
+          "task_goal",
+          "evidence_refs",
+          "finding_or_need",
+          "confidence_limit",
+          "intended_outcome",
+          "use_requirement",
+          "acceptance_or_evaluation_criterion",
+          "conflicts_tradeoffs",
+          "owner",
+          "status",
+          "design_consequence"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Research",
+          "Product",
+          "Service/Operations",
+          "Accessibility"
+        ],
+        "revision_identity": "decision_id + research/source revision + product baseline",
+        "release_or_retention_rule": "Retain only when need/requirement trace is explicit; design assumptions remain marked and cannot close research authority.",
+        "required_readback": [
+          "evidence→finding/need→requirement trace",
+          "representative task/context readback",
+          "conflicting-need review"
+        ],
+        "failure_or_hold_conditions": [
+          "feature request called user need",
+          "persona treated as research",
+          "acceptance criterion absent",
+          "context generalized beyond sample"
+        ],
+        "reopen_triggers": [
+          "new research",
+          "product/service change",
+          "user group/task change",
+          "evaluation contradiction"
+        ],
+        "downstream_handoffs": [
+          "HCD-DP3 interaction design",
+          "Product",
+          "Systems Engineering where formal requirements apply"
+        ],
+        "independent_review_requirement": "Independent HCD/research review samples consequential need claims and evidence quality.",
+        "does_not_prove": [
+          "market demand",
+          "universal user behavior",
+          "usability PASS"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-02",
+        "object_name": "Study / Consent / Data Eligibility / Research Freeze Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "HCD-DP0",
+          "HCD-DP1",
+          "HCD-DP4"
+        ],
+        "professional_purpose": "Control research question, sample/recruitment, consent/data eligibility, study/prototype freeze and finding confidence/limitations.",
+        "native_source_of_truth": "Approved research plan + participant/data handling authority + exact study/prototype/session evidence.",
+        "required_record_fields": [
+          "study_id",
+          "research_question",
+          "method",
+          "participant_profile",
+          "recruitment_basis",
+          "sample_limit",
+          "consent_basis",
+          "data_categories",
+          "retention_access",
+          "prototype_build_id",
+          "task_scenarios",
+          "session_refs",
+          "analysis_owner",
+          "confidence_limit",
+          "freeze_revision",
+          "superseded_or_reopened"
+        ],
+        "decision_owner": "HCD / Research owner",
+        "contributor_or_specialist_refs": [
+          "Privacy/Legal",
+          "Accessibility",
+          "Product"
+        ],
+        "revision_identity": "study_id + protocol/freeze revision + prototype/build identity",
+        "release_or_retention_rule": "Findings may only be used within consent/purpose/sample/context limits; changed prototype or method stales affected conclusions.",
+        "required_readback": [
+          "participant/session/prototype identity audit",
+          "consent/data eligibility readback",
+          "analysis-to-session trace"
+        ],
+        "failure_or_hold_conditions": [
+          "research notes without consent basis",
+          "sample limitation hidden",
+          "prototype changed mid-study without tracking",
+          "old finding reused after material redesign"
+        ],
+        "reopen_triggers": [
+          "protocol/prototype/task change",
+          "new privacy/legal rule",
+          "sample expansion",
+          "finding contradiction"
+        ],
+        "downstream_handoffs": [
+          "User Needs Ledger",
+          "HCD-DP4 findings",
+          "Product decisions"
+        ],
+        "independent_review_requirement": "Distinct research review for material findings; privacy/legal owner controls data authority where required.",
+        "does_not_prove": [
+          "population representativeness beyond sample",
+          "privacy/legal approval beyond stated data handling",
+          "product success"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-03",
+        "object_name": "Interaction / IA / State Concept Option Set",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "HCD-DP2",
+          "HCD-DP3"
+        ],
+        "professional_purpose": "Compare materially different conceptual models, IA/navigation, task flows, state/error/recovery and channel/fallback strategies before UI lock.",
+        "native_source_of_truth": "Matched-fidelity flows/prototypes/content models tied to common user/context/use-requirement baseline.",
+        "required_record_fields": [
+          "option_id",
+          "conceptual_model",
+          "IA_navigation",
+          "primary_task_flow",
+          "state_error_recovery",
+          "offline_fallback",
+          "content_model",
+          "accessibility_implications",
+          "privacy_data_implications",
+          "engineering_service_implications",
+          "tradeoffs",
+          "retained_rejected_reason",
+          "required_test"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Research",
+          "Content",
+          "Engineering",
+          "Accessibility",
+          "Service"
+        ],
+        "revision_identity": "option_id + common user/requirement baseline + prototype revision",
+        "release_or_retention_rule": "Do not count visual styling variants as interaction concepts; compare task architecture and failure/recovery consequences.",
+        "required_readback": [
+          "matched task walkthrough",
+          "state/error/recovery scenario",
+          "no-network/no-device/support-channel scenario"
+        ],
+        "failure_or_hold_conditions": [
+          "same flow with different UI skin called alternative",
+          "happy path only",
+          "privacy/accessibility implications omitted",
+          "different user assumptions across options"
+        ],
+        "reopen_triggers": [
+          "new user evidence",
+          "requirement change",
+          "engineering/service constraint",
+          "accessibility finding"
+        ],
+        "downstream_handoffs": [
+          "HCD-DP4 evaluation",
+          "Engineering",
+          "Content"
+        ],
+        "independent_review_requirement": "Independent HCD review challenges selected concept against strongest causal alternative and failure state.",
+        "does_not_prove": [
+          "usability PASS",
+          "engineering feasibility",
+          "accessibility conformance"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-04",
+        "object_name": "Controlled Prototype / Component / Content / State Specification Package",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "HCD-DP3",
+          "HCD-DP5"
+        ],
+        "professional_purpose": "Carry interaction design through editable prototype, flow/state, component, content, responsive and accessibility-behavior sources with exact build identity.",
+        "native_source_of_truth": "Owner-native design/prototype/design-system/content/specification sources designated Current.",
+        "required_record_fields": [
+          "package_id",
+          "prototype_or_design_file_ref",
+          "build_id",
+          "flow_state_refs",
+          "component_refs",
+          "content_refs",
+          "responsive_rules",
+          "error_empty_loading_states",
+          "accessibility_behavior",
+          "localization_constraints",
+          "analytics_intent",
+          "privacy_security_handoffs",
+          "revision",
+          "author",
+          "reviewer"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Engineering",
+          "Content",
+          "Accessibility",
+          "Research",
+          "Security/Privacy"
+        ],
+        "revision_identity": "package_id + design/prototype revision + build identifier",
+        "release_or_retention_rule": "Screenshot/static export cannot replace interactive source; every evaluation finding must bind exact prototype/build and state.",
+        "required_readback": [
+          "flow/state source ↔ prototype readback",
+          "component/state consistency",
+          "content/localization constraint readback",
+          "interactive behavior at claimed fidelity"
+        ],
+        "failure_or_hold_conditions": [
+          "static screenshot used as interactive source",
+          "finding not bound to build",
+          "component state missing",
+          "content source stale"
+        ],
+        "reopen_triggers": [
+          "prototype/build change",
+          "component/content change",
+          "requirement/accessibility finding",
+          "engineering constraint"
+        ],
+        "downstream_handoffs": [
+          "HCD-DP4 evaluation",
+          "Engineering handoff",
+          "Release Support Matrix"
+        ],
+        "independent_review_requirement": "Independent HCD review on exact prototype/build where promotion-relevant.",
+        "does_not_prove": [
+          "production implementation parity",
+          "usability",
+          "WCAG conformance",
+          "live performance"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-05",
+        "object_name": "Finding → Fix → Build → Retest / Release Support Matrix",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "HCD-DP4",
+          "HCD-DP5",
+          "HCD-DP6"
+        ],
+        "professional_purpose": "Control whether usability/accessibility/content defects are actually fixed in the intended build and supported release matrix before HCD release retention.",
+        "native_source_of_truth": "Research/evaluation findings + exact design fix + implementation build + test matrix.",
+        "required_record_fields": [
+          "finding_id",
+          "severity_user_consequence",
+          "evidence_ref",
+          "design_fix_ref",
+          "source_revision",
+          "build_id",
+          "affected_platforms_browsers_devices_inputs_AT",
+          "retest_method",
+          "retest_result",
+          "residual_risk",
+          "support_matrix_status",
+          "owner",
+          "release_disposition"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Research",
+          "Engineering",
+          "Accessibility",
+          "Content",
+          "QA"
+        ],
+        "revision_identity": "finding_id + fix source revision + exact build/test-matrix revision",
+        "release_or_retention_rule": "Finding closes only after the fix exists in the tested build and retest supports the claimed matrix; one browser/device PASS cannot stand for all.",
+        "required_readback": [
+          "finding→fix source diff",
+          "build identity readback",
+          "retest evidence",
+          "support matrix coverage"
+        ],
+        "failure_or_hold_conditions": [
+          "fix only in design file",
+          "different build tested",
+          "retest on one path only",
+          "accessibility blocker administratively closed"
+        ],
+        "reopen_triggers": [
+          "new build",
+          "component refactor",
+          "platform/browser change",
+          "new finding/regression"
+        ],
+        "downstream_handoffs": [
+          "HCD release receipt",
+          "Engineering/QA"
+        ],
+        "independent_review_requirement": "Distinct research/accessibility reviewer for severe findings or accessibility claims as applicable.",
+        "does_not_prove": [
+          "software engineering quality",
+          "security/privacy approval",
+          "future live usability"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-06",
+        "object_name": "Implemented Product Interaction / Accessibility / Runtime Readback Record",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "HCD-DP6"
+        ],
+        "professional_purpose": "Bind actual implemented behavior, states, browser/device/input/assistive technology and offline/error handling to the released build.",
+        "native_source_of_truth": "Actual current build/runtime + HCD specification + tested platform/device/accessibility evidence.",
+        "required_record_fields": [
+          "readback_id",
+          "build_id",
+          "platform_browser_device",
+          "input_method_AT",
+          "task_or_state",
+          "expected_behavior",
+          "observed_behavior",
+          "responsive_layout",
+          "focus_semantics",
+          "error_recovery",
+          "offline_degraded_state",
+          "content_localization",
+          "defect",
+          "owner",
+          "retest_ref",
+          "disposition"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Engineering",
+          "Accessibility",
+          "QA",
+          "Content"
+        ],
+        "revision_identity": "readback_id + immutable build/version + environment identity",
+        "release_or_retention_rule": "Implemented HCD PASS applies only to actual tested build/environment/support scope; source-build/static checks cannot replace interaction runtime.",
+        "required_readback": [
+          "actual interaction readback",
+          "keyboard/focus/AT readback where applicable",
+          "offline/error/recovery behavior",
+          "spec ↔ implementation parity"
+        ],
+        "failure_or_hold_conditions": [
+          "source build called runtime PASS",
+          "browser matrix assumed",
+          "accessible-looking UI called conformance",
+          "offline design intent not exercised"
+        ],
+        "reopen_triggers": [
+          "build/runtime change",
+          "browser/device change",
+          "component update",
+          "accessibility defect",
+          "service/offline behavior change"
+        ],
+        "downstream_handoffs": [
+          "Release readiness",
+          "Operations/Support"
+        ],
+        "independent_review_requirement": "Independent accessibility/HCD review where claimed support/conformance requires.",
+        "does_not_prove": [
+          "security/privacy approval",
+          "service availability",
+          "future live outcomes"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-07",
+        "object_name": "Live Outcome / Experiment / Support / Reopen Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "HCD-DP7"
+        ],
+        "professional_purpose": "Carry live analytics, research, support, accessibility and experiment evidence into bounded product decisions without treating metrics as causal proof.",
+        "native_source_of_truth": "Governed metric/event definitions + live product/build context + support/research/experiment evidence.",
+        "required_record_fields": [
+          "record_id",
+          "build_release",
+          "user_segment_context",
+          "outcome_or_question",
+          "metric_event_definition",
+          "data_quality_limit",
+          "baseline",
+          "observation_or_experiment",
+          "support_incident_refs",
+          "research_refs",
+          "accessibility_refs",
+          "causal_limit",
+          "decision",
+          "owner",
+          "reopen_or_rollout_state"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Data/Analytics",
+          "Research",
+          "Engineering",
+          "Service/Operations",
+          "Accessibility"
+        ],
+        "revision_identity": "record_id + build/release + metric/experiment revision",
+        "release_or_retention_rule": "Live decision retains metric validity and causal limits; rollout/experiment result never silently becomes universal user outcome.",
+        "required_readback": [
+          "event definition ↔ implementation check",
+          "segment/build/context readback",
+          "analytics ↔ qualitative research/support comparison"
+        ],
+        "failure_or_hold_conditions": [
+          "event fired called outcome achieved",
+          "correlation called causation",
+          "changed instrumentation ignored",
+          "one cohort generalized"
+        ],
+        "reopen_triggers": [
+          "new release",
+          "metric change",
+          "experiment result",
+          "support spike",
+          "accessibility incident",
+          "research contradiction"
+        ],
+        "downstream_handoffs": [
+          "Product roadmap",
+          "Engineering",
+          "Service",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent research/data review for consequential causal/rollout claims.",
+        "does_not_prove": [
+          "market success",
+          "causal effect without valid design",
+          "unobserved user populations"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-08",
+        "object_name": "Independent HCD / Research / Accessibility Review Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "HCD-DP1",
+          "HCD-DP4",
+          "HCD-DP6"
+        ],
+        "professional_purpose": "Independently challenge research evidence, task evaluation, accessibility and implementation readback on exact study/prototype/build identities.",
+        "native_source_of_truth": "Controlled research/evaluation/build sources + declared support/accessibility claim.",
+        "required_record_fields": [
+          "review_id",
+          "scope",
+          "reviewer_role_independence",
+          "study_or_build_refs",
+          "research_quality_checks",
+          "task_usability_checks",
+          "accessibility_checks",
+          "implementation_parity_checks",
+          "privacy_data_boundary",
+          "findings",
+          "severity",
+          "repair",
+          "retest",
+          "verdict",
+          "claim_ceiling"
+        ],
+        "decision_owner": "Independent HCD / Research / Accessibility reviewer",
+        "contributor_or_specialist_refs": [
+          "Privacy/Legal",
+          "Engineering",
+          "Content as triggered"
+        ],
+        "revision_identity": "review_id + exact study/prototype/build revision",
+        "release_or_retention_rule": "Review applies only to exact research/design/build/support scope; material redesign/rebuild or study change stales affected conclusions.",
+        "required_readback": [
+          "source evidence audit",
+          "representative task/failure attack",
+          "accessibility/AT evidence readback",
+          "repair/retest"
+        ],
+        "failure_or_hold_conditions": [
+          "producer critique presented as user evaluation",
+          "old study reused after redesign",
+          "accessibility claim without criteria/evidence",
+          "sample limits hidden"
+        ],
+        "reopen_triggers": [
+          "study/prototype/build change",
+          "new research/accessibility finding",
+          "support matrix change"
+        ],
+        "downstream_handoffs": [
+          "HCD professional receipt",
+          "Product/Release governance"
+        ],
+        "independent_review_requirement": "Review independence appropriate to the claim; specialist privacy/security authority remains separate.",
+        "does_not_prove": [
+          "product success",
+          "security/privacy approval",
+          "Design KEEP"
+        ]
+      },
+      {
+        "object_id": "HCD-OBJ-09",
+        "object_name": "HCD Study / Design / Build / Finding Change Impact Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate research, need, design, content, accessibility, build and instrumentation changes to affected findings, tests, support matrix and live evidence.",
+        "native_source_of_truth": "Controlled change event + trace links across HCD research/design/build/live objects.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "changed_object",
+          "old_revision",
+          "new_revision",
+          "affected_needs_requirements",
+          "affected_flows_components_content",
+          "affected_studies_findings",
+          "affected_builds_support_matrix",
+          "affected_accessibility_privacy_security",
+          "affected_instrumentation",
+          "stale_scope",
+          "owner",
+          "required_retest_research",
+          "closure"
+        ],
+        "decision_owner": "Digital Product / HCD professional owner",
+        "contributor_or_specialist_refs": [
+          "Research",
+          "Engineering",
+          "Accessibility",
+          "Content",
+          "Data/Analytics",
+          "Product"
+        ],
+        "revision_identity": "change_id + source/study/build revision",
+        "release_or_retention_rule": "Change closes only after affected findings/retests/support/live evidence are refreshed or explicitly retained by evidence.",
+        "required_readback": [
+          "trace impact readback",
+          "stale finding/test detection",
+          "post-change retest/research readback"
+        ],
+        "failure_or_hold_conditions": [
+          "design changed but study remains current",
+          "build changed without retest",
+          "event definition changed without analytics reset",
+          "content/localization change ignored"
+        ],
+        "reopen_triggers": [
+          "any material research/need/design/component/content/build/accessibility/instrumentation change"
+        ],
+        "downstream_handoffs": [
+          "all affected HCD stages/interfaces"
+        ],
+        "independent_review_requirement": "Independent re-review when change affects prior material study/accessibility/release conclusion.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic user outcome"
+        ]
+      }
     ]
   },
   "assurance": {
