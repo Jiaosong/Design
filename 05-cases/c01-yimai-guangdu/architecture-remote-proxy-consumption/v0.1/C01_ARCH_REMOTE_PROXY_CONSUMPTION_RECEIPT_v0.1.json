@@ -1,0 +1,132 @@
+{
+  "schema_version": "c01-architecture-remote-proxy-consumption-receipt/0.1",
+  "receipt_id": "C01-ARCH-RPX-CONSUMPTION-001",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "professional_domain": "Architecture",
+  "process_ref": {
+    "path": "00-governance/schemas/architecture-design-development-process.v1.json",
+    "blob_sha": "08359be7faf633d3637a7f1dd9b05b2da54e2748"
+  },
+  "proxy_evidence_ref": {
+    "path": "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+    "blob_sha": "e4b3333ad3e72f6dfeb18fdaa92c10fa3875adcc"
+  },
+  "proxy_receipt_ref": {
+    "path": "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_RECEIPT_v0.1.json",
+    "blob_sha": "a660d8b24dcda759fdb5257fe406fa6ad33318a1"
+  },
+  "outputs": [
+    {
+      "path": "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
+      "blob_sha": "21a46123c267add76e5d6fc97ef7aefe364513fe",
+      "role": "ARCHITECTURE_STAGE_CONSUMPTION_AND_SENSITIVITY_MODEL"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_SITE_AUTHORITY_CHANGE_REGISTER_v0.1.csv",
+      "blob_sha": "566e63dbfabcc141c787b774b6ec8e552f1c46c7",
+      "role": "SURVEY_EXISTING_CONDITION_AUTHORITY_CHANGE_REGISTER"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_SITE_ACCESS_EXTERNAL_FLOW_v0.1.svg",
+      "blob_sha": "6f904e82fc960ad5665422b6a28156e6452e7651",
+      "role": "EDITABLE_NTS_SITE_ACCESS_EXTERNAL_FLOW_DIAGRAM"
+    }
+  ],
+  "stage_readback": {
+    "bounded_keep_support": [
+      "ADD-00",
+      "ADD-01",
+      "ADD-02",
+      "ADD-04",
+      "ADD-06",
+      "ADD-15"
+    ],
+    "bounded_hold": [
+      "ADD-03",
+      "ADD-07",
+      "ADD-08",
+      "ADD-12",
+      "ADD-13"
+    ],
+    "not_run": [
+      "ADD-05",
+      "ADD-09",
+      "ADD-10",
+      "ADD-11",
+      "ADD-14",
+      "ADD-16",
+      "ADD-17"
+    ],
+    "note": "Stage consumption is selective; remote proxy evidence does not force a linear Architecture stage progression."
+  },
+  "sensitivity_checks": [
+    {
+      "check": "P1/P2 stopping space smaller than assumed",
+      "result": "PASS_ROBUST_WITH_RELOCATION",
+      "consequence": "deep reading relocates to handheld/digital/nearby safe public space"
+    },
+    {
+      "check": "P3 approach changes under 2026 road works",
+      "result": "PASS_ROBUST_IF_RELOCATABLE",
+      "consequence": "position reopens; node learning mechanism need not be discarded"
+    },
+    {
+      "check": "indoor 20–30 person mode unavailable",
+      "result": "PASS_ROBUST_WITH_MODE_SWITCH",
+      "consequence": "small-group/movable/off-site/digital mode; capacity remains HOLD"
+    },
+    {
+      "check": "actual route geometry differs from narrative sequence",
+      "result": "PASS_ROBUST_IF_RELATION_FIRST",
+      "consequence": "narrative adapts to existing resident/public route rather than forcing site geometry"
+    }
+  ],
+  "authority_nonpropagation_checks": [
+    {
+      "source": "P1/P2 published object dimensions",
+      "forbidden_propagation": "road/plaza/stopping clearance",
+      "result": "PASS_BOUNDARY"
+    },
+    {
+      "source": "2026 Dapiandi civil-work notice",
+      "forbidden_propagation": "as-built width/level/drainage/guardrail geometry",
+      "result": "PASS_BOUNDARY"
+    },
+    {
+      "source": "existing three-cultural-circle route",
+      "forbidden_propagation": "exact path/distance/capacity/accessibility",
+      "result": "PASS_BOUNDARY"
+    },
+    {
+      "source": "Dagong Hall approximate macro area",
+      "forbidden_propagation": "room area/occupancy/fire capacity",
+      "result": "PASS_BOUNDARY"
+    }
+  ],
+  "editable_output_readback": {
+    "json_parse": "PASS",
+    "csv_structure": "PASS_SOURCE_LEVEL",
+    "svg_source_structure": "PASS_SOURCE_LEVEL",
+    "svg_actual_render": "NOT_RUN",
+    "note": "No pixel/render PASS is claimed; SVG authority is editable relation diagram source."
+  },
+  "current_design_consequence": [
+    "Keep C01 physical interpretation movable/non-contact under open heritage/site geometry.",
+    "Do not issue a pseudo-survey site plan.",
+    "Use relation-level external flow for Architecture support until stronger geometry arrives.",
+    "Reopen only the affected node/flow/room decision when better evidence changes a proxy."
+  ],
+  "professional_verdict": "KEEP SUPPORT / METRIC DEVELOPMENT HOLD",
+  "field_state": "RG2 NOT RUN / E2 UNCHANGED",
+  "does_not_prove": [
+    "survey accuracy",
+    "Architecture professional PASS",
+    "fire/accessibility compliance",
+    "civil/drainage approval",
+    "room occupancy",
+    "fixed heritage intervention permission",
+    "field truth",
+    "promotion"
+  ],
+  "claim_ceiling": "ARCHITECTURE_SITE_CONTEXT + RELATIONSHIP_MODEL + BOUNDED_FLOW_ONLY"
+}
