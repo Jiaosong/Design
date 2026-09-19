@@ -436,21 +436,148 @@ A detector firing does not automatically reject the design. It requires the corr
 
 ## Reference decomposition gate
 
-When a user/project supplies a concrete reference, adopted version or mature example, separate **relation** from **style** before generating options. Record:
+When a user/project supplies a concrete reference, adopted version or mature example, separate **relation / mechanism** from **style / identity** before generating options.
+
+This gate consumes Research outputs such as `precedent_deconstruction / how_made_analysis / transferable_design_moves / project_transfer_candidate`. DESIGN owns the project-specific mapping and artifact consequences; it does not rewrite source authority or authorship.
+
+### A｜Encode the source mechanism
+
+Record only the decision-relevant structure:
+
+- source object / source revision / source-strength state;
+- problem or function actually solved by the source;
+- actors / objects / states involved;
 - hierarchy and dominant alignment;
 - density and whitespace rhythm;
 - object/media scale and crop behavior;
 - section/sequence order;
 - interaction/state relationship;
 - repeated visual/spatial grammar;
-- motion ownership where temporal behavior matters.
-
-Then translate those relationships into the project's own authority, content and constraints.
+- motion ownership where temporal behavior matters;
+- causal or functional mechanism;
+- required environmental / organizational / technical conditions;
+- observed failure / limitation / misread;
+- source-specific identity or assets that must not transfer.
 
 Use:
-`REFERENCE → STRUCTURAL RELATIONS → PROJECT CONSEQUENCES → OPTIONS → ACTUAL ARTIFACT DELTA REVIEW`
+
+`SOURCE ELEMENT → SOURCE ROLE → RELATION / MECHANISM → CONSEQUENCE → CONDITION / LIMIT`.
+
+Do not encode an attractive shape as a mechanism merely because it is memorable.
+
+### B｜Encode the target problem independently
+
+Before mapping, state the project's own:
+
+`TARGET ACTOR / OBJECT / NEED OR FUNCTION / CONTEXT / RELATIONS / HARD CONSTRAINTS / UNKNOWN / AUTHORITY / CLAIM CEILING`.
+
+Do not rewrite the target problem so that it conveniently resembles the reference.
+
+### C｜Build an explicit correspondence map
+
+For each proposed transfer record:
+
+`mapping_id / source_relation / source_role / target_relation / target_role / correspondence_type / evidence_or_reason / required_mutation / mismatch / authority_boundary / test`.
+
+`correspondence_type` may be:
+
+- `RELATIONAL` — similar relation/topology/sequence despite different surface objects;
+- `FUNCTIONAL` — similar function/problem but different embodiment;
+- `CAUSAL` — similar cause→effect mechanism;
+- `BEHAVIORAL` — similar state/interaction behavior;
+- `ATTRIBUTIONAL_ONLY` — similar appearance/material/category but no demonstrated structural correspondence;
+- `NO_CORRESPONDENCE`.
+
+Prefer relation/causal/functional correspondence over attributive resemblance when the design claim is structural.
+
+### D｜Maintain a mismatch ledger
+
+A useful analogy is never assumed complete.
+
+Record:
+
+`source feature / target counterpart / MATCH / PARTIAL / NONE / CONFLICT / consequence / disposition`.
+
+Mandatory mismatch attacks:
+
+1. **surface-similarity trap** — same shape/color/category but different causal relation;
+2. **source-condition loss** — the source works only because of climate, staff, scale, material, data, regulation or infrastructure not present in the target;
+3. **authority leakage** — source performance, rights, technical approval or field truth is silently transferred;
+4. **role inversion** — source actor/component plays a different role in the target;
+5. **scale/regime shift** — a relation does not survive scale, load, duration, density or frequency change;
+6. **interface mismatch** — source interfaces have no valid target owner/counterpart;
+7. **state mismatch** — source assumes states/failures/recovery not available in target;
+8. **identity carryover** — proprietary/branded visual language survives after the structural lesson has been extracted.
+
+`NO TARGET COUNTERPART → DO NOT FORCE A MAPPING`.
+
+### E｜Abstract before project mutation
+
+When useful, rewrite the source lesson without source-domain nouns:
+
+`ABSTRACT STRATEGY = FUNCTION / RELATION / MECHANISM / CONDITIONS / FAILURE BOUNDARY`.
+
+For cross-domain or biomimetic references, remove organism/product/brand-specific labels before design use. A faithful abstraction preserves the mechanism while discarding irrelevant identity.
+
+Then generate at least one **project-native mutation** whose content, geometry, sequence, material, interaction or carrier comes from Current project authority rather than the source artifact.
+
+### F｜Generate more than one mapping when correspondence is open
+
+If the source relation can map to the target in materially different ways, produce at least two project mappings at matched decision-relevant fidelity.
+
+Do not call these separate mappings when they differ only by:
+- color;
+- typography;
+- material skin;
+- source asset substitution;
+- small parameter tuning.
+
+Use the existing concept-family and Variable Budget rules.
+
+### G｜Actual artifact + transfer readback
+
+Use:
+
+`REFERENCE → SOURCE MECHANISM → TARGET PROBLEM → CORRESPONDENCE MAP → MISMATCH LEDGER → PROJECT-NATIVE MUTATIONS → MATCHED ARTIFACTS → ACTUAL READBACK → KEEP / REVISE / REJECT / HOLD`.
+
+Read back:
+
+- can the target artifact still explain its logic without naming/showing the reference?
+- does the intended relation survive when labels/decorative style are removed?
+- did source identity, unverified performance or rights leak into the project?
+- did a mismatch create a new specialist/evidence requirement?
+- is the result materially stronger for the target Decision Question rather than merely more reference-like?
+
+If the project artifact only works because reviewers recognize the precedent, the transfer is not yet project-native.
+
+### H｜Owner boundary
+
+Research owns:
+- source discovery;
+- source chain;
+- authorship;
+- precedent deconstruction;
+- how-made evidence;
+- transferable-move candidate;
+- imitation boundary.
+
+Design Process owns:
+- target-problem encoding;
+- source→target correspondence;
+- mismatch disposition;
+- project-native mutation;
+- matched project artifacts;
+- Design Review.
+
+Professional/technical owners still own feasibility/performance where triggered.
 
 Do not reproduce third-party identity or irrelevant surface decoration unless the task is explicitly a governed reconstruction exercise.
+
+`REFERENCE SIMILARITY ≠ PROJECT FIT`.
+
+`RELATIONAL CORRESPONDENCE ≠ TECHNICAL EQUIVALENCE`.
+
+`TRANSFERRED MECHANISM ≠ TRANSFERRED AUTHORITY`.
 
 ## Evidence-density gate
 
