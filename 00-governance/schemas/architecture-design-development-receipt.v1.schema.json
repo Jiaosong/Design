@@ -9,6 +9,11 @@
     "trigger_reason",
     "project_stage",
     "claim_ceiling",
+    "stage_body_records",
+    "jurisdiction_state",
+    "program_authority_state",
+    "occupancy_authority_state",
+    "site_authority_state",
     "phase_status",
     "open_items",
     "reopened_items",
@@ -23,10 +28,78 @@
     "trigger_reason": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "project_stage": {"type": "string", "minLength": 1},
     "claim_ceiling": {"type": "string", "minLength": 1},
+    "stage_body_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage_id",
+          "body_ref",
+          "title",
+          "section_coverage",
+          "knowledge_mount_refs",
+          "native_artifact_refs",
+          "readback_refs",
+          "claim_ceiling",
+          "open_items",
+          "reopen_triggers",
+          "stage_verdict"
+        ],
+        "properties": {
+          "stage_id": {
+            "enum": [
+              "ADD-00", "ADD-01", "ADD-02", "ADD-03", "ADD-04", "ADD-05",
+              "ADD-06", "ADD-07", "ADD-08", "ADD-09", "ADD-10", "ADD-11",
+              "ADD-12", "ADD-13", "ADD-14", "ADD-15", "ADD-16", "ADD-17"
+            ]
+          },
+          "body_ref": {"type": "string", "minLength": 1},
+          "title": {
+            "type": "string",
+            "minLength": 8,
+            "not": {
+              "enum": [
+                "Analysis", "Concept", "Design Development", "Final", "Planning", "Review",
+                "analysis", "concept", "design development", "final", "planning", "review"
+              ]
+            }
+          },
+          "section_coverage": {
+            "type": "array",
+            "minItems": 10,
+            "maxItems": 10,
+            "allOf": [
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "STAGE_QUESTION_SCOPE"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "CURRENT_CONDITION_PROBLEM"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "AUTHORITY_KNOWLEDGE_INPUTS"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "ARCHITECTURAL_CRITERIA_INTENT"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "DEVELOPMENT_COMPARISON_MECHANISM"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "PROFESSIONAL_INTERFACES"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "NATIVE_OUTPUT_SOURCE_OF_TRUTH"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "ACTUAL_READBACK_FINDING"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "FAILURE_OPEN_DOES_NOT_PROVE"}}, "required": ["semantic_role"]}},
+              {"contains": {"type": "object", "properties": {"semantic_role": {"const": "VERDICT_CLAIM_REOPEN_NEXT_ACTION"}}, "required": ["semantic_role"]}}
+            ],
+            "items": {"$ref": "#/$defs/stageBodySection"}
+          },
+          "knowledge_mount_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "native_artifact_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "claim_ceiling": {"type": "string", "minLength": 1},
+          "open_items": {"type": "array", "items": {"type": "string"}},
+          "reopen_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "stage_verdict": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "REJECT", "HOLD"]}
+        },
+        "additionalProperties": true
+      }
+    },
     "jurisdiction_state": {"type": "string"},
     "program_authority_state": {"type": "string"},
     "occupancy_authority_state": {"type": "string"},
     "site_authority_state": {"type": "string"},
+    "architectural_cad_plan_review_triggered": {"type": "boolean"},
+    "architecture_representation_publication_triggered": {"type": "boolean"},
     "phase_status": {
       "type": "object",
       "required": [
@@ -50,6 +123,130 @@
         "enum": ["NOT_APPLICABLE_WITH_REASON", "OPEN", "IN_PROGRESS", "PASS_AT_CLAIM_CEILING", "REVISE", "BLOCKED_BY_AUTHORITY"]
       }
     },
+    "phase_status_reasons": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "architectural_cad_plan_review": {
+      "type": "object",
+      "required": ["applicable"],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "reason": {"type": "string"},
+        "native_cad_ref": {"type": "string", "minLength": 1},
+        "target_scale": {"type": "string", "minLength": 1},
+        "machine_readback_result": {"enum": ["PASS", "FAIL", "HOLD"]},
+        "machine_readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "target_scale_plot_readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "architect_readback_result": {"enum": ["PENDING", "PASS", "REVISE", "REJECT", "HOLD"]},
+        "architect_readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "operational_review_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "wall_representation_state": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "HOLD", "NOT_APPLICABLE_WITH_REASON"]},
+        "opening_host_binding_state": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "HOLD", "NOT_APPLICABLE_WITH_REASON"]},
+        "core_packing_state": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "HOLD", "NOT_APPLICABLE_WITH_REASON"]},
+        "claim_ceiling": {"type": "string", "minLength": 1},
+        "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"applicable": {"const": true}}, "required": ["applicable"]},
+          "then": {
+            "required": [
+              "native_cad_ref",
+              "target_scale",
+              "machine_readback_result",
+              "machine_readback_refs",
+              "target_scale_plot_readback_refs",
+              "architect_readback_result",
+              "architect_readback_refs",
+              "operational_review_refs",
+              "wall_representation_state",
+              "opening_host_binding_state",
+              "core_packing_state",
+              "claim_ceiling",
+              "does_not_prove"
+            ]
+          },
+          "else": {
+            "required": ["reason"],
+            "properties": {"reason": {"minLength": 1}}
+          }
+        }
+      ],
+      "additionalProperties": true
+    },
+    "architecture_representation_publication_state": {
+      "type": "object",
+      "required": ["applicable"],
+      "properties": {
+        "applicable": {"type": "boolean"},
+        "reason": {"type": "string"},
+        "current_native_master_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "review_view_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "analysis_state_view_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "publication_handoff_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "style_effect_material": {"type": "boolean"},
+        "style_effect_reason": {"type": "string", "minLength": 1},
+        "representation_style_contract_ref": {"type": "string", "minLength": 1},
+        "effect_off_source_baseline_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "target_medium_readback_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "truth_boundary_state": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "HOLD", "NOT_APPLICABLE_WITH_REASON"]},
+        "owner_boundary_state": {"enum": ["PASS_AT_CLAIM_CEILING", "REVISE", "HOLD"]},
+        "claim_ceiling": {"type": "string", "minLength": 1},
+        "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "reopen_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"applicable": {"const": true}}, "required": ["applicable"]},
+          "then": {
+            "required": [
+              "current_native_master_refs",
+              "publication_handoff_refs",
+              "style_effect_material",
+              "target_medium_readback_refs",
+              "truth_boundary_state",
+              "owner_boundary_state",
+              "claim_ceiling",
+              "does_not_prove",
+              "reopen_triggers"
+            ]
+          },
+          "else": {
+            "required": ["reason"],
+            "properties": {"reason": {"minLength": 1}}
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "applicable": {"const": true},
+              "style_effect_material": {"const": true}
+            },
+            "required": ["applicable", "style_effect_material"]
+          },
+          "then": {
+            "required": ["representation_style_contract_ref", "effect_off_source_baseline_refs"],
+            "properties": {
+              "effect_off_source_baseline_refs": {"minItems": 1}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "applicable": {"const": true},
+              "style_effect_material": {"const": false}
+            },
+            "required": ["applicable", "style_effect_material"]
+          },
+          "then": {
+            "required": ["style_effect_reason"]
+          }
+        }
+      ],
+      "additionalProperties": true
+    },
     "evidence": {"type": "object"},
     "open_items": {"type": "array", "items": {"type": "string"}},
     "reopened_items": {"type": "array", "items": {"type": "string"}},
@@ -69,19 +266,183 @@
   },
   "allOf": [
     {
+      "if": {
+        "properties": {
+          "phase_status": {
+            "anyOf": [
+              {"properties": {"site_context": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["site_context"]},
+              {"properties": {"users_operations": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["users_operations"]},
+              {"properties": {"program_room_brief": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["program_room_brief"]},
+              {"properties": {"adjacency": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["adjacency"]},
+              {"properties": {"zoning_options": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["zoning_options"]},
+              {"properties": {"flow_systems": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["flow_systems"]},
+              {"properties": {"circulation": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["circulation"]},
+              {"properties": {"life_safety_aware_planning": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["life_safety_aware_planning"]},
+              {"properties": {"accessibility_aware_planning": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["accessibility_aware_planning"]},
+              {"properties": {"operations_security_hygiene": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["operations_security_hygiene"]},
+              {"properties": {"system_fitback": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["system_fitback"]},
+              {"properties": {"climate_daylight_acoustics": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["climate_daylight_acoustics"]},
+              {"properties": {"ffe_room_use": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["ffe_room_use"]},
+              {"properties": {"area_cost_maintenance": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["area_cost_maintenance"]},
+              {"properties": {"code_matrix": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["code_matrix"]}
+            ]
+          }
+        },
+        "required": ["phase_status"]
+      },
+      "then": {
+        "required": ["phase_status_reasons"]
+      }
+    },
+    {
       "if": {"properties": {"result": {"const": "PASS"}}},
       "then": {
+        "required": ["architectural_cad_plan_review_triggered", "architecture_representation_publication_triggered"],
         "properties": {
+          "stage_body_records": {
+            "minItems": 18,
+            "items": {
+              "properties": {
+                "section_coverage": {
+                  "not": {
+                    "contains": {
+                      "properties": {"status": {"const": "MISSING"}},
+                      "required": ["status"]
+                    }
+                  }
+                },
+                "stage_verdict": {"const": "PASS_AT_CLAIM_CEILING"}
+              }
+            }
+          },
           "independent_plan_review": {
             "properties": {
               "status": {"const": "PASS"},
               "reviewer_independent_from_producer": {"const": true}
             }
           },
+          "phase_status": {
+            "additionalProperties": {
+              "enum": ["PASS_AT_CLAIM_CEILING", "NOT_APPLICABLE_WITH_REASON"]
+            }
+          },
+          "architectural_cad_plan_review": {
+            "if": {"properties": {"applicable": {"const": true}}, "required": ["applicable"]},
+            "then": {
+              "properties": {
+                "machine_readback_result": {"const": "PASS"},
+                "architect_readback_result": {"const": "PASS"},
+                "wall_representation_state": {"const": "PASS_AT_CLAIM_CEILING"},
+                "opening_host_binding_state": {"const": "PASS_AT_CLAIM_CEILING"},
+                "core_packing_state": {"const": "PASS_AT_CLAIM_CEILING"}
+              }
+            }
+          },
+          "architecture_representation_publication_state": {
+            "if": {"properties": {"applicable": {"const": true}}, "required": ["applicable"]},
+            "then": {
+              "properties": {
+                "truth_boundary_state": {"const": "PASS_AT_CLAIM_CEILING"},
+                "owner_boundary_state": {"const": "PASS_AT_CLAIM_CEILING"}
+              }
+            }
+          },
           "stale": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"architectural_cad_plan_review_triggered": {"const": true}},
+        "required": ["architectural_cad_plan_review_triggered"]
+      },
+      "then": {
+        "required": ["architectural_cad_plan_review"],
+        "properties": {
+          "architectural_cad_plan_review": {
+            "properties": {"applicable": {"const": true}},
+            "required": ["applicable"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"architectural_cad_plan_review_triggered": {"const": false}},
+        "required": ["architectural_cad_plan_review_triggered"]
+      },
+      "then": {
+        "properties": {
+          "architectural_cad_plan_review": {
+            "properties": {"applicable": {"const": false}}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"architecture_representation_publication_triggered": {"const": true}},
+        "required": ["architecture_representation_publication_triggered"]
+      },
+      "then": {
+        "required": ["architecture_representation_publication_state"],
+        "properties": {
+          "architecture_representation_publication_state": {
+            "properties": {"applicable": {"const": true}},
+            "required": ["applicable"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"architecture_representation_publication_triggered": {"const": false}},
+        "required": ["architecture_representation_publication_triggered"]
+      },
+      "then": {
+        "properties": {
+          "architecture_representation_publication_state": {
+            "properties": {"applicable": {"const": false}}
+          }
         }
       }
     }
   ],
+  "$defs": {
+    "stageBodySection": {
+      "type": "object",
+      "required": ["semantic_role", "status"],
+      "properties": {
+        "semantic_role": {
+          "enum": [
+            "STAGE_QUESTION_SCOPE",
+            "CURRENT_CONDITION_PROBLEM",
+            "AUTHORITY_KNOWLEDGE_INPUTS",
+            "ARCHITECTURAL_CRITERIA_INTENT",
+            "DEVELOPMENT_COMPARISON_MECHANISM",
+            "PROFESSIONAL_INTERFACES",
+            "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+            "ACTUAL_READBACK_FINDING",
+            "FAILURE_OPEN_DOES_NOT_PROVE",
+            "VERDICT_CLAIM_REOPEN_NEXT_ACTION"
+          ]
+        },
+        "status": {"enum": ["PRESENT", "COMBINED", "NOT_APPLICABLE_WITH_REASON", "MISSING"]},
+        "visible_heading_or_locator": {"type": ["string", "null"]},
+        "reason": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"enum": ["PRESENT", "COMBINED"]}}, "required": ["status"]},
+          "then": {"required": ["visible_heading_or_locator"], "properties": {"visible_heading_or_locator": {"type": "string", "minLength": 1}}}
+        },
+        {
+          "if": {"properties": {"status": {"const": "NOT_APPLICABLE_WITH_REASON"}}, "required": ["status"]},
+          "then": {"required": ["reason"], "properties": {"reason": {"type": "string", "minLength": 1}}}
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
   "additionalProperties": true
 }

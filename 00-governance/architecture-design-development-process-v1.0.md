@@ -1,11 +1,12 @@
 # OLEANDER Architecture Design Development Process v1.0
 
 **Status:** ACTIVE
-**Date:** 2026-09-15
+**Date:** 2026-09-19
+**Revision note:** 2026-09-19 aligns Architecture stage bodies to the shared professional execution spine and adds a cross-stage architecture-representation/publication continuity lane, style/effect truth boundaries, native-master derivative rules and receipt/readback support without adding a new ADD stage or changing specialist authority.
 **Scope:** architecture / school / civic / spatial / built-environment projects in which OLEANDER makes a material claim about functional planning, zoning, circulation, room usability, operational logic, life-safety-aware planning, accessibility-aware planning, or architectural design quality.
 **Position:** discipline-specific design-development process inside the canonical OLEANDER Project Flow. It is not a substitute for statutory approval, licensed professional judgment, engineering design, field verification or the High-Fidelity Built-Environment Model Gate.
 
-**Shared design-development binding:** Architecture retains `ADD-00?ADD-17` as its authentic professional stage semantics. Applicable shared `DD-01?DD-12` responsibilities from `design-quality-and-design-development-specification-v1.0.md` bind into ADD stages as cross-domain design-quality obligations; they do not rename or replace ADD.
+**Shared design-development binding:** Architecture retains `ADD-00..ADD-17` as its authentic professional stage semantics. Applicable shared `DD-01..DD-12` responsibilities from `design-quality-and-design-development-specification-v1.0.md` bind into ADD stages as cross-domain design-quality obligations; they do not rename or replace ADD.
 
 **Knowledge mount binding:** Architecture reads the existing canonical Knowledge corpus through `knowledge-integrity-and-operational-mount-v1.0.md`. `CURRENT / SUPPORT / PROVENANCE` remain corpus/retrieval states; full-body content completion, Knowledge Integrity (`KI*`), task-scoped Operational Eligibility (`OE*`), Design Quality maturity (`DQ*`) and `ADD-*` stage state are independent. No ADD stage may copy a knowledge page into a parallel architectural knowledge corpus or treat `CURRENT` / strong prose as automatic decision authority.
 
@@ -51,13 +52,239 @@ Do not trigger it merely for a decorative background building, abstract massing 
 
 For triggered architecture work, the design path becomes:
 
-`Read / Evidence → Brief → Users / Operations → Program → Adjacency → Zoning Alternatives → Flow Systems → Selected Zoning → Room Planning → Circulation / Vertical Movement → Fire + Accessibility-Aware Planning → Service / Hygiene / Security → Structure + MEP + Envelope Coordination → Climate / Acoustic / Landscape / Maintenance → Detail / FF&E / Cost-Efficiency → Code Matrix → Independent Plan Review → Architectural Design Decision`
+`Read / Evidence → Site / Taskbook → Users / Operations → Program / Room Brief → Adjacency / Separation → Zoning + Massing Alternatives → Flow Systems → Native Plan + Horizontal / Vertical Circulation → Life-Safety / Accessibility-Aware Spatial Reserves → Service / Hygiene / Supervision / Security → Section + Structure / MEP / Envelope Fit-Back → Climate / Daylight / Acoustic Consequence → Landscape / External-Space Integration → FF&E / Real Room Use → Area / Cost / Lifecycle Pressure → Existing / Retention / Phasing → Jurisdictional Matrix → Independent Whole-Architecture Review → Architectural Design Decision → Publication / Presentation Handoff when triggered`
 
 This is **iterative**, not a one-way waterfall. A later contradiction reopens every materially affected earlier step.
 
 The process sits before architectural Design KEEP / Promotion. It may run in parallel with Cross-Disciplinary Integration where structure, MEP, fire, accessibility, landscape, operations or other disciplines materially couple.
 
+The final `Publication / Presentation Handoff` above is **not an `ADD-18` stage and not a second architecture process**. It is a downstream derivative handoff from Current native architecture to the existing presentation owners. Architecture remains the source authority for architectural geometry and design relations; `oleander-story-and-board` may own publication projection, `oleander-3d-pipeline` may own 3D camera/material/light execution, `oleander-data-viz` may own bounded analytical visualization, `T-VISUAL-IMAGE-OPS-001` may execute static treatment operators, and `oleander-motion` may own temporal behavior. None of those downstream owners may silently redesign Current architecture.
+
+Where Project Authority includes war, civil-protection, shelter/protected operation or another material adverse-state condition, that condition is **first-order architectural input**, not a late specialist overlay. Establish the applicable normal / alert / protected / degraded operating states in `ADD-02`, carry their functional/control/separation consequences through zoning and massing/building territories in `ADD-05`, route them in `ADD-06`, test vertical/protected transitions in `ADD-07/08`, and return section/envelope/system consequences through `ADD-10/11`. This does not create a new ADD stage and does not authorize Architecture to invent shelter classification, capacity, structural/fire performance or statutory approval.
+
 The Current stage-level interface/dependency view is `architecture-professional-domain-interface-matrix-v1.0.md`. That matrix references this process for Architecture stage semantics and `cross-disciplinary-design-integration-v1.0.md` for interface semantics; it is not a second Architecture process and it does not invent numbered stages for other professions.
+
+### 3.1｜Architecture stage-body and projection contract
+
+Every materially executed `ADD-*` stage must leave a **structured professional body** that can be read independently from producer memory. The body is a project/runtime record of the architectural decision; it is not a copied Knowledge Object and it does not replace native plan / section / model / schedule / matrix evidence.
+
+Canonical relation:
+
+`ADD STAGE QUESTION → TASK-SCOPED KNOWLEDGE MOUNT → ARCHITECTURAL DEVELOPMENT → NATIVE OUTPUT → ACTUAL READBACK → OPEN / FAILURE → BOUNDED PROFESSIONAL VERDICT → REOPEN RULE`.
+
+#### A｜Title / identity requirement
+
+The visible body must use a specific title that identifies the current decision object. Recommended pattern:
+
+`<project / bounded scope>｜<ADD-id + stage name>｜<decision object / cycle / baseline>`.
+
+Generic titles such as `Analysis`, `Concept`, `Design Development`, `Final`, `Planning` or `Review` are insufficient by themselves because they do not identify what architectural decision is being developed.
+
+One body may cover several tightly coupled ADD stages when that is the clearest professional document, but the title / section hierarchy must preserve each triggered stage identity, claim ceiling, native output and reopen state.
+
+#### B｜Canonical stage-facing execution spine
+
+The visible architecture stage body should use the same professional execution spine as the wider OLEANDER professional-domain system. This is the preferred Current structure for new/successor stage bodies:
+
+1. `Stage`;
+2. `Professional Question / Decision Object`;
+3. `Knowledge Inputs`;
+4. `Operational Knowledge Mount`;
+5. `Required Capability Roles`;
+6. `Current Execution Owners / Skills`;
+7. `Native Outputs`;
+8. `Actual Readback`;
+9. `Independent Review`;
+10. `Stage Closure`.
+
+This is a **restructure without information loss**, not a reduction of the prior semantic responsibilities. Each heading must carry the professional content below:
+
+| Current visible heading | Minimum architecture content that must remain recoverable |
+|---|---|
+| `Stage` | ADD identity, bounded scope, current cycle/baseline and current-condition trigger |
+| `Professional Question / Decision Object` | current problem, architectural criteria/intent, alternatives/mechanism where applicable, exact decision object and controlled variables |
+| `Knowledge Inputs` | Current project authority, canonical sources/evidence, applicable precedent/standard/brief/survey refs and source-state boundaries |
+| `Operational Knowledge Mount` | task-scoped `OE*`, applicability, conditions, claim ceiling, `does_not_prove`, freshness/revalidation trigger and excluded/counterevidence refs |
+| `Required Capability Roles` | professional responsibilities/capabilities needed to make/read/review the decision, including triggered specialist/interface roles |
+| `Current Execution Owners / Skills` | the actual Current owner(s), installed/candidate state where relevant, professional-interface assignments and explicit authority exclusions |
+| `Native Outputs` | editable/native/authoritative carriers, stable IDs, revision and source-of-truth relation |
+| `Actual Readback` | machine/native reopen where applicable, whole/near/use/state/target-scale findings, observed failures and side effects |
+| `Independent Review` | reviewer independence where required, professional challenge, strongest success/contradiction, OPEN/REVISE items and does-not-prove boundary |
+| `Stage Closure` | bounded verdict, claim ceiling, accepted trade-offs, exact downstream handoff, reopen triggers and next action |
+
+The Architecture receipt's existing ten `section_coverage.semantic_role` values remain a machine-compatibility layer for v1 receipts. They may point to one or more of the visible headings above. Do not preserve obsolete heading names merely to satisfy the schema, and do not drop old semantic content merely because the visible spine has been simplified.
+
+`HEADING PRESENT ≠ PROFESSIONAL BODY COMPLETE`.
+
+`PROFESSIONAL BODY COMPLETE ≠ NATIVE ARTIFACT PASS`.
+
+`ARCHITECTURE STAGE PASS ≠ DESIGN KEEP ≠ STATUTORY / ENGINEERING APPROVAL`.
+
+#### C｜Knowledge-mount rule
+
+An architecture stage resolves knowledge by professional question, not by copying pages into the stage body. Consequential knowledge use must reference the live canonical object and carry task-scoped operational eligibility from the Current Knowledge Mount contract.
+
+Minimum mounted relation when knowledge is material:
+
+`knowledge_ref / use_role / OE1|OE2|OE3 / claim_ceiling / applicability / conditions / does_not_prove / freshness-or-revalidation-trigger / review_basis`.
+
+`OE2` may support a bounded architectural decision only with its conditions visible. `OE1` may be retained as an OPEN / excluded / counterevidence record but must not support an in-claim PASS. A `SUPPORT` lifecycle object may still be usable when its task-scoped eligibility permits; a `CURRENT` label alone does not grant architectural decision authority.
+
+#### D｜Native-output-before-prose rule
+
+Where the stage claims a spatial, geometric, operational or interface relation, narrative text is not sufficient evidence. The required relation must exist in the appropriate native or authoritative carrier and be read back from that carrier.
+
+Typical minimum carriers by stage are:
+
+| Stage | Decision body emphasis | Minimum native / authoritative carrier where applicable |
+|---|---|---|
+| `ADD-00` | authority, assumptions, claim ceiling | authority / scope register + current baseline refs |
+| `ADD-01` | site arrival and external systems | editable site plan + access / level / external-flow diagram |
+| `ADD-02` | users, operations and time states | `USER_OPERATION_MATRIX` + operational-state diagram |
+| `ADD-03` | room use requirements | `ROOM_BRIEF_REGISTER` + representative room geometry refs |
+| `ADD-04` | adjacency / separation | `ADJACENCY_MATRIX` + relationship diagram / plan evidence |
+| `ADD-05` | materially distinct zoning alternatives | `ZONING_OPTION_SET` + fixed-criteria comparison + selection receipt |
+| `ADD-06` | multiple flow networks | `FLOW_SYSTEM_MATRIX` + flow drawings tied to current geometry |
+| `ADD-07` | horizontal / vertical circulation | measured plan / section / model `CIRCULATION_READBACK` |
+| `ADD-08` | life-safety / accessibility-aware reserves | route / stair / door / compartment / accessible-path plan-section readbacks with OPEN authority boundary |
+| `ADD-09` | service / hygiene / supervision / security | `OPERATIONS_SECURITY_HYGIENE_MATRIX` + representative plan / threshold evidence |
+| `ADD-10` | structure / MEP / envelope fit-back | coordinated native plan / section / model + `ARCH_SYSTEM_FITBACK_RECEIPT` |
+| `ADD-11` | environmental behavior consequence | analysis input/output refs + explicit architecture delta / plan-section consequence |
+| `ADD-12` | landscape / external-space integration | integrated editable site plan / sections / route-level interface evidence |
+| `ADD-13` | real room usability | furnished/equipped native plan/model `ROOM_USE_READBACKS` |
+| `ADD-14` | area / cost / lifecycle pressure | dated area schedule + cost/lifecycle assumptions + architecture consequence |
+| `ADD-15` | existing / retention / phasing | evidence-typed existing-condition / retention / phase plan and section |
+| `ADD-16` | jurisdictional requirement response | `ARCHITECTURE_CODE_MATRIX` with source / version / applicability / response / status |
+| `ADD-17` | independent whole-plan / section review | fresh readback of current native plan / sections / model + current interface/open-item refs |
+
+The table defines **minimum carrier responsibility**, not one mandatory file format. If a stronger domain-native carrier exists, use it. A screenshot or render may document readback but must not silently replace the editable/native source used to make or measure the decision.
+
+#### E｜Projection / body-text rule
+
+When an ADD stage is projected into a board, report, deck or web review, the projection may compress or reorder information but must preserve the shared Design Quality no-loss contract. In particular, do not separate or hide:
+
+- decision ↔ controlling assumption / unresolved blocker;
+- requirement ↔ authority / source / applicability;
+- measurement ↔ unit / geometry locator;
+- figure ↔ legend / status / claim ceiling;
+- PASS-like wording ↔ `does_not_prove` boundary when omission would widen the claim.
+
+The public or review-facing artifact may be visually concise. The underlying stage body and receipt must remain recoverable and must point back to the native source of truth.
+
+### 3.2｜Cross-stage architectural representation / publication continuity lane
+
+Architectural representation develops with the design, but it is **not a parallel design stage sequence** and it never becomes a second geometry authority. When presentation/publication is materially triggered, maintain one continuity lane across the relevant ADD stages:
+
+`CURRENT ARCHITECTURE → NATIVE MASTER → ARCH REVIEW VIEW → ANALYSIS / STATE DERIVATIVES → SECTION / AXON / RENDER DERIVATIVES → PUBLICATION VIEW → TARGET-MEDIUM READBACK`.
+
+#### A｜One architecture, multiple justified representations
+
+Prefer:
+
+`ONE LOGICAL NATIVE ARCHITECTURAL OBJECT → N JUSTIFIED REPRESENTATIONS`.
+
+Typical roles:
+
+- `AUTHORING / NATIVE VIEW` — complete information needed to design and revise;
+- `ARCH REVIEW VIEW` — professional target-scale plan/section/model review;
+- `ANALYSIS / STATE VIEW` — bounded overlay for flow, permission, phase, environment, structure, service or operating state;
+- `PUBLICATION VIEW` — portfolio/board/book/web derivative with controlled hierarchy and annotation density;
+- `DETAIL / SECTIONAL / AXON / RENDER VIEW` — dependent proof view tied back to Current native geometry.
+
+Publication may change crop, plotted hierarchy, annotation density, context tone, figure grouping and bounded image treatment. It may not silently change walls, openings, room topology, stairs/cores, section datum, authoritative dimensions, permission topology, operating states or evidence state.
+
+#### B｜Stage-to-representation consequences
+
+Representation work should become more architecturally specific as design maturity increases:
+
+| ADD stage family | Representation responsibility when triggered |
+|---|---|
+| `ADD-00` | bind representation target/medium if known, Project Design DNA applicability, truth/claim ceilings and forbidden presentation promotions |
+| `ADD-01..04` | evidence/site/operation/program/adjacency diagrams remain bounded explanatory carriers and do not substitute for later plan geometry |
+| `ADD-05` | massing/zoning options use comparable views/criteria; selected morphology and rejected trade-offs remain visible |
+| `ADD-06` | flows bind to Current geometry; same-building state diagrams use the same base geometry where the physical building is unchanged |
+| `ADD-07` | establish the architectural mother plan/section carrier, target-scale review view, cut-wall/opening/core hierarchy and section-cut locators |
+| `ADD-08..09` | fire/accessibility-aware, permission, service, hygiene and security overlays derive from the same plan/section geometry and preserve OPEN authority boundaries |
+| `ADD-10..11` | section, structure/MEP/envelope and environmental consequences become spatial proof; diagrams must point to actual geometry and analysis inputs/outputs |
+| `ADD-12` | site/landscape/external-space publication views retain access, ground, drainage, thresholds and external operating relationships required by the claim |
+| `ADD-13` | room-use/furniture/equipment views prove occupation and scale; detail/room enlargements must have parent locators |
+| `ADD-14..16` | area/cost/lifecycle, phasing and code-aware graphics remain supporting evidence and may not visually widen their claim ceiling |
+| `ADD-17` | independent review attacks the architecture with color/effect/labels reduced; if publication is triggered, hand off a frozen Current native revision plus derivative/reopen rules rather than a presentation-only redraw |
+
+#### C｜Architectural style / treatment / effect lane
+
+Where visual character is material, resolve it from Project Design DNA and proof role rather than applying a universal OLEANDER house style.
+
+Use:
+
+`COMMUNICATION ROLE → DESIRED CHARACTER → STRUCTURAL CARRIER → STYLE VARIABLES → EFFECT BUDGET → EFFECT-OFF / SOURCE BASELINE → ACTUAL READBACK`.
+
+Style variables may include line/poche, semantic color, saturation/contrast/lightness, background/void, context density, texture/grain, shadow/light, realism level, collage/model-like/diagrammatic/photoreal treatment, entourage, crop/bleed/frame and typography↔drawing↔image relation.
+
+Rules:
+
+- photoreal / collage / model-like / diagrammatic / hybrid are representation modes, not maturity rankings;
+- static treatment routes through the existing `T-VISUAL-IMAGE-OPS-001` contract when image processing is required;
+- 3D geometry/material/light/camera remains with `oleander-3d-pipeline`;
+- temporal timing/easing/transition remains with `oleander-motion`;
+- publication composition remains with `oleander-story-and-board` when triggered;
+- architecture geometry and design decisions remain upstream in Architecture / `oleander-design-process`;
+- an effect must name the relation it clarifies; `EFFECT STRENGTH ≠ DESIGN STRENGTH` and `ATMOSPHERE ≠ EVIDENCE`;
+- if a sectional perspective, render, collage or board needs a new bridge, void, stair, room, opening or other architectural relation, reopen the smallest affected ADD stage before publication.
+
+#### D｜Representation readback
+
+Where representation materially contributes to a design/publication claim, add the relevant tests to normal architectural readback:
+
+- target-scale whole + near read;
+- five-second / thumbnail first-read;
+- grayscale / color-off;
+- label-reduced;
+- effect-off / source-baseline;
+- plan↔section↔axon↔render cross-read;
+- same-base state comparison;
+- truth-boundary read for collage/weather/people/material/context treatment;
+- no-loss check for OPEN/HOLD/assumption/claim-ceiling information.
+
+`GOOD GRAPHICS ≠ ARCHITECTURE PASS`.
+
+`ARCHITECTURE PASS ≠ PUBLICATION KEEP`.
+
+### 3.3｜Architecture causal spine / macro reading order
+
+`ADD-00..ADD-17` remain the only Architecture stage IDs. The macro sequence below is a **reading / orchestration aid only**; it creates no new stage taxonomy and may loop backward whenever readback exposes a contradiction.
+
+`SITE / TASKBOOK → USERS / OPERATIONS → FUNCTION / PROGRAM RELATIONS → ZONING / MASSING → NATIVE PLAN → VERTICAL CIRCULATION / CORE → SECTION / HEIGHT / GROUND RELATION → DAYLIGHT / FACADE / ENVELOPE → STRUCTURE / MEP / ENVIRONMENT FIT-BACK → ROOM / DETAIL / FF&E → VALUE / LIFECYCLE / PHASING / CODE → INDEPENDENT WHOLE-ARCHITECTURE REVIEW → PUBLICATION OR TECHNICAL HANDOFF WHEN AUTHORIZED`.
+
+Practical grouping:
+
+| Macro workface | ADD stages | Architectural decision that must become explicit |
+|---|---|---|
+| **Basis / taskbook** | `ADD-00..02` | what is authoritative, who uses the building, when/how it operates, and which adverse/after-hours states materially change architecture |
+| **Program / relations** | `ADD-03..04` | what rooms/users actually need and which adjacencies, separations, visibility/control and support relationships govern planning |
+| **Overall / massing / flow** | `ADD-05..06` | materially distinct building-territory/massing options and the route/control systems that make them operable |
+| **Plan / vertical circulation / core** | `ADD-07..09` | actual wall/opening/room/corridor/core/threshold geometry, including service/hygiene/security and critical normal/degraded operating paths |
+| **Section / envelope / environment / site fit-back** | `ADD-10..12` | levels, vertical relations, structure/service/envelope depth, daylight/environmental consequences and building↔external-space interfaces |
+| **Room / detail / value / existing / code** | `ADD-13..16` | real use at furniture/equipment scale, maintainability/value pressure, existing/phasing logic and bounded jurisdictional responses |
+| **Independent closure** | `ADD-17` | whether the whole current architecture survives fresh operational, geometric, interface and representation attacks at its declared claim ceiling |
+
+The causal rule is stronger than a drawing-order convention:
+
+- do not design facade language independently of plan/section/environmental consequences;
+- do not freeze a core from symbol placement before circulation, landing, door, structure/service and protected-transition responsibilities fit;
+- do not use section as a late illustration of a plan that has never been tested vertically;
+- do not use render/portfolio polish to bypass unresolved plan/section relations;
+- do not advance to formal technical drawing merely because Architecture has a coherent design artifact. Formal issue/drawing authority remains with the Current authorized Technical Drawing / professional route, and a Candidate owner may not be treated as installed.
+
+For projects with war/civil-protection/adverse-state requirements, read the same causal spine as:
+
+`WAR / CIVIL-PROTECTION + SITE/TASKBOOK → NORMAL / ALERT / PROTECTED / DEGRADED OPERATIONS → FUNCTION / CONTROL / SEPARATION → MASSING / TERRITORIES → PLAN → VERTICAL / PROTECTED TRANSITION → SECTION / PROTECTED-SPACE CONSEQUENCE → FACADE / DAYLIGHT → STRUCTURE / MEP / CIVIL-PROTECTION FIT-BACK → INDEPENDENT REVIEW`.
+
+This adverse-state reading never authorizes Architecture to invent shelter class, capacity, structural/fire performance, MEP performance or statutory approval.
+
+#### F｜Stage-body stale rule
+
+A material change to the decision object, controlling authority, mounted knowledge applicability, shared variable, native geometry, operational state or professional interface makes the affected body/readback stale. Reopen only actual dependency consumers; do not invalidate unrelated ADD stages without a dependency reason.
 
 ## 3A｜Cross-cutting Architecture practitioner control objects
 
@@ -172,6 +399,7 @@ When later-stage Architecture scope is triggered:
 - handover/readback status.
 
 `ISSUED DRAWING ≠ AS-BUILT TRUTH`.
+
 
 ---
 
@@ -321,6 +549,8 @@ Every retained scheme records `driver → move → consequence → technical cos
 
 Output: `ZONING_OPTION_SET` + `ZONING_SELECTION_RECEIPT`.
 
+Where building morphology is materially in claim, the selected zoning must also state its **massing / building-territory consequence** before detailed room planning. This is a consequence of `ADD-05`, not a parallel massing stage.
+
 ## 10｜ADD-06 Flow systems
 
 Architecture must resolve multiple flow networks, not one generic arrow diagram.
@@ -369,7 +599,45 @@ Resolve circulation as real geometry and behavior:
 - floor-to-floor route continuity;
 - peak changeover / dismissal condition.
 
+Where the Current architectural artifact is a CAD plan, the plan must also be readable as an architectural drawing rather than only as a semantic object database. Do not allow a room-envelope diagram, single-fat-line wall system or annotation-heavy overlay to stand in for resolved plan expression.
+
+At the current target drawing scale, distinguish at minimum:
+
+- physical wall thickness from plotted graphic weight;
+- sectioned wall mass / cut faces from visible objects and reference information;
+- real wall openings from door-swing symbols;
+- stair/core packing from generic stair icons;
+- usable circulation territory from leftover white space;
+- representative furniture/equipment from decorative filler;
+- dimensions / room tags / datum information from architectural geometry.
+
+For sectioned walls, use closed wall geometry with an intentional cut/poche or other project-standard material/cut strategy appropriate to the target scale. A single constant-width polyline whose plotted width visually substitutes for physical wall thickness is not a professional plan representation.
+
+Before bounded ADD-07 PASS, perform an actual target-scale plot/readback and a near-read. A screen-only zoomed view is insufficient. If dimensions, door swings, wall junctions, core packing, room tags or use objects become illegible or collide at target scale, the plan remains REVISE even when machine geometry checks pass.
+
+This target-scale architectural-expression gate belongs to **Architecture Design** because the drawing must expose whether the plan itself is spatially and operationally resolved. Formal issue-set conventions, sheet numbering, construction-document hierarchy and production drafting remain a separate downstream Technical Drawing responsibility. The current `oleander-technical-drawing` route is Candidate / not installed on main; its absence must remain explicit and must not cause `oleander-design-process` to self-award formal Technical Drawing or construction-issue authority.
+
 Circulation area being present in GFA residuals is not evidence that circulation works.
+
+### ADD-07 circulation behavior and bottleneck readback
+
+For each critical circulation scenario, bind origin/destination, user group, time state, route geometry, door state/swing, queue/waiting storage, vertical transfer, opposing/crossing flows, furniture/temporary occupation and decision/sightline points to the same Current plan/section.
+
+Test normal, peak and one credible degraded / after-hours state when relevant. Where quantitative demand/capacity or statutory criteria are material, consume Current Fire / Accessibility / operations evidence; Architecture owns the spatial consequence, not compliance.
+
+A pinch point is not closed by width alone. Record the controlling cause, affected users/state, upstream queue or downstream blockage, operational consequence and design response. If a stair, lift, door or route is unavailable, state the fallback or operating limit rather than assuming continuity.
+
+Attack at least these failure patterns when applicable:
+
+- door swing or queue consumes the nominal clear route;
+- accessible movement and general flow compete at a threshold or landing;
+- vertical circulation capacity is locally adequate but arrival/discharge space fails;
+- furniture / informal use converts circulation into an occupied room and erases the route reserve;
+- peak opposing flows or service movements create conflict absent from the normal-state plan;
+- an after-hours closure, access-control boundary or locked zone breaks the intended route chain;
+- a wayfinding decision arrives after the geometric decision point or without enough sightline/time to act.
+
+`PINCH POINT WIDTH CHECK ≠ CIRCULATION BEHAVIOR PROVED`.
 
 Output: `CIRCULATION_READBACK`.
 
@@ -409,6 +677,26 @@ Track, as applicable:
 
 Outputs are design evidence. Formal compliance remains at the applicable professional / authority Gate until verified.
 
+### ADD-08 route and reserve readback
+
+Use Current Fire / Accessibility criteria to trace **complete spatial paths** rather than isolated compliant-looking fragments.
+
+Read representative occupied point → safe/required destination and site arrival → required accessible-use destination through doors, thresholds, landings, stairs/lifts/ramps, compartment edges, assistance/refuge concepts, sanitary/support destinations and controlled boundaries.
+
+For each path record, as applicable:
+
+- operating state and direction of travel;
+- door / shutter / access-control condition;
+- vertical transition and waiting / refuge / assistance condition;
+- queue / turning / furniture / equipment occupation;
+- alternative or degraded route;
+- relationship to incoming responder / service / public flow where relevant;
+- unresolved owner criterion and its current evidence ceiling.
+
+Attack evacuation versus incoming-responder flow, accessible route versus service/furniture occupation, and after-hours access versus protected-zone conflicts where applicable. Architecture may reserve/cohere geometry and expose contradictions; Fire / Accessibility retain compliance authority.
+
+`COMPLIANT-LOOKING FRAGMENTS ≠ CONTINUOUS ROUTE`.
+
 ## 13｜ADD-09 Service, hygiene, supervision and security
 
 Explicitly resolve where applicable:
@@ -432,6 +720,35 @@ Explicitly resolve where applicable:
 
 Output: `OPERATIONS_SECURITY_HYGIENE_MATRIX`.
 
+### ADD-09 deep operating-state review
+
+The matrix must be resolved as **real spatial and operational sequences**, not as a room-name checklist.
+
+For each material service / hygiene / supervision / security relation, record as applicable:
+
+- actor / material / waste / food / equipment origin and destination;
+- clean / dirty, public / staff, supervised / unsupervised and secure / non-secure state boundaries;
+- normal, peak, cleaning, delivery, waste-removal, after-hours and emergency/degraded operating states;
+- door / gate / hatch / counter / pass-through / shutter / access-control condition at each state;
+- storage capacity basis and replenishment / removal frequency where undersizing would change operation;
+- queuing, waiting, handwashing, changing, drying, transfer, privacy and supervision geometry where material;
+- sightline and control relation for reception / supervision / safeguarding without treating surveillance as the only security strategy;
+- staff-only and service routes that remain credible after furniture, carts, bins, equipment doors and temporary occupation are included;
+- hygiene-critical junctions among handwashing, waste, food, toilets, changing, prep, cleaning and stored consumables;
+- access for cleaning, replenishment, inspection, maintenance and replacement without crossing incompatible occupied states where the project requires separation;
+- fail / fallback behavior when a controlled door, lift, service entrance, wash point, kitchen route or secure boundary is unavailable;
+- exact owner of specialist criteria such as food safety, safeguarding, infection control, security engineering or hazardous-material handling.
+
+Attack the design using scenario pairs that commonly expose false adequacy:
+
+`normal occupied ↔ cleaning`, `public open ↔ after-hours`, `delivery ↔ student/user arrival`, `clean ↔ dirty`, `staff supervision ↔ privacy`, `full storage ↔ replenishment`, `waste removal ↔ food/service flow`, `accessible use ↔ maintenance/service occupation`.
+
+A room can be individually adequate while the **sequence between rooms fails**. Closure therefore requires a route/state readback of the relevant chain, not only area or fixture counts.
+
+`ROOM PRESENT ≠ OPERATIONAL SEQUENCE RESOLVED`.
+
+`CONTROLLED DOOR PRESENT ≠ SECURITY / SAFEGUARDING STRATEGY PROVED`.
+
 ## 14｜ADD-10 Structure, MEP and envelope fit-back
 
 The architectural plan must be reread after system coordination begins.
@@ -452,6 +769,42 @@ At minimum check relevant shared variables with:
 Material changes to these shared variables reopen affected architecture decisions and the Cross-Disciplinary Integration receipt when triggered.
 
 Output: `ARCH_SYSTEM_FITBACK_RECEIPT`.
+
+### ADD-10 deep fit-back review
+
+System coordination must be reread as **occupied architecture + real system zones + access / movement / replacement**, not merely as a clash report.
+
+For every materially occupied or technically congested zone, check as applicable:
+
+- finished floor to structure depth, ceiling/service-zone depth and actual clear occupied height as one section chain;
+- primary structure, secondary support, partitions, ceilings, envelope, services and finishes at actual junctions rather than separate discipline models;
+- opening / penetration size, edge distance, fire/acoustic/weather/waterproofing consequence and builder's-work responsibility;
+- riser, shaft and plant-room access after doors, panels, valves, filters, dampers, cable bend radii, lifting/removal zones and maintenance body/tool approach are represented;
+- equipment replacement route from installed position to a credible building exit or replacement opening, including dismantling assumptions;
+- wet-service falls / inverts / traps / access and the architectural floor/ceiling consequences they create;
+- roof plant, screens, drains, overflows, snow/rain paths, parapets, maintenance routes and safe access as one roof operating condition;
+- facade / roof / opening geometry against shading, drainage, flashings, thermal continuity, structure and service penetrations;
+- read selection-critical envelope conditions as continuous layer transitions rather than facade elevations: wall↔window/door, wall↔roof/parapet, wall↔base/ground, balcony/canopy/support, movement joint and service penetration must show how weather, air, thermal and finish layers terminate, overlap or move at the actual geometry;
+- preserve the buildable architectural geometry required by specialist performance: cavity/build-up depth, support zone, falls, upstands/returns, access, tolerances and junction geometry; Envelope/Building Physics/Fire owners retain their criteria, calculations, tests and approvals;
+- test installation and repair sequence before closing critical envelope details: substrate availability, membrane/insulation continuity, frame/anchor access, flashing/sealant installation, temporary weather protection, inspection before concealment and later replacement must be physically possible;
+- where a mockup/test is required by the controlling owner, bind the tested configuration to the exact detail/material/revision; visual similarity does not validate a changed joint, substrate, fixing, sealant path or movement condition;
+- movement / deflection / construction tolerance where flush, brittle, continuous, waterproof or tightly aligned architectural details cross structural or envelope movement;
+- acoustic/privacy consequences of transfer grilles, ducts, return-air paths, penetrations, access panels and lightweight closures;
+- future isolation / commissioning / inspection access where the system cannot be accepted or maintained without opening finished architecture.
+
+At least one plan/section/detail or native-model readback must attack each **selection-critical congested interface**. A coordination model showing `0 clashes` is insufficient if the installed system cannot be accessed, commissioned, replaced, drained, firestopped, waterproofed or visually integrated.
+
+Where a system change forces a loss of room use, ceiling height, design-language invariant, maintenance access, daylight/view, circulation or critical detail quality, the consequence is an architectural design decision and must return to the relevant upstream ADD stage instead of being hidden as a coordination adjustment.
+
+`NO CLASH ≠ FIT-BACK PASS`.
+
+`SYSTEM FITS GEOMETRICALLY ≠ ROOM / DETAIL / MAINTENANCE STILL WORKS`.
+
+Fit-back must also reread the building as **inhabited section**. Compare floor-to-floor, room height, structure/service depth, opening head/sill, stair/landing, void/atrium, balcony/edge and rooflight/skylight relations as one vertical spatial sequence rather than independent technical zones.
+
+Test controlling occupied viewpoints and movement sequences where section drives experience: entry compression/release, vertical-circulation arrival, visual connection across levels, teaching/assembly sightline, daylight penetration, overlooking/privacy and acoustic separation. Plan adequacy cannot compensate for a failed vertical relation.
+
+When structure, services, fire strategy or envelope depth changes, record the spatial consequence before accepting the coordination delta: lost height, altered proportion, blocked view/daylight, fragmented ceiling plane, displaced opening, awkward soffit/column edge or degraded arrival/wayfinding may require architectural redesign rather than technical fit. Use representative long/short sections through the real room/route/external-edge chain and preserve material exceptions; one ideal section cannot stand for materially different bays, orientations or congested zones.
 
 ## 15｜ADD-11 Climate, daylight, acoustics and environmental behavior
 
@@ -474,6 +827,31 @@ Review where applicable:
 
 Analysis that produces no design consequence must not be used as post-rationalization evidence.
 
+### ADD-11 environmental decision depth
+
+Environmental analysis must preserve the chain:
+
+`source / climate / activity → geometry + material + operating assumptions → metric / scenario → observed or modelled consequence → architectural move → specialist re-check`.
+
+For daylight and glare, record the controlling orientation, aperture, shading, room depth, task/view position, surface reflectance/transmittance assumptions and the time / sky / climate condition appropriate to the claim. A bright render or isolated daylight image cannot establish useful daylight or glare performance.
+
+For solar / thermal behavior, distinguish at least:
+
+- external exposure and solar control;
+- internal gains / occupancy / operating schedule where material;
+- perimeter versus internal zone consequence;
+- passive architectural move versus active-system dependence;
+- summer / winter or other controlling seasonal states;
+- user-control assumptions such as blinds, windows, doors or local controls when the design depends on them.
+
+For natural / mixed-mode ventilation claims, Architecture must expose opening location/area logic, flow path, inlet/outlet relation, user/control assumption, noise/security/weather constraints and the mechanical fallback interface. Engineering airflow/performance remains with the relevant environmental/MEP owner.
+
+For acoustics, use **source → path → receiver** reasoning. Identify material airborne/impact/equipment/external sources, sensitive receivers, flanking paths, door/glazing/ceiling/duct interfaces and the spatial separation / buffer / enclosure move that follows. Adding absorptive finishes cannot substitute for missing isolation or zoning logic.
+
+For rain, snow, ice, wind and outdoor comfort, test the actual entrance, threshold, canopy, court, roof, external route and occupied edge states that influence architectural use. A generic climate diagram is insufficient if it does not alter geometry, material, shelter, drainage, access or operations.
+
+Environmental PASS at Architecture level means the **architectural consequence is credible and coordinated at the declared evidence ceiling**. It does not self-award daylight, acoustic, thermal, ventilation, wind, energy or code compliance owned elsewhere.
+
 ## 16｜ADD-12 Landscape and external-space integration
 
 Where site design is in scope, connect landscape to the architectural program:
@@ -492,6 +870,25 @@ Where site design is in scope, connect landscape to the architectural program:
 - maintenance.
 
 Landscape cannot remain a decorative residual around a resolved building object.
+
+### ADD-12 building-edge interface readback
+
+Treat each critical building-to-site transition as a **sectioned interface**, not a line where two drawings meet.
+
+Bind internal level / door / threshold to external route / level, drainage source-path-inlet/overflow, shelter/canopy, facade/base, accessible approach, emergency/service access, supervision, external program, mature planting/root/canopy envelope, lighting/wayfinding and maintenance access as applicable.
+
+Review wet, seasonal and degraded states when they can change use. Each critical interface should have a plan + section/readback and name the Landscape / Civil / Fire / Accessibility controlled variables it consumes.
+
+Attack as applicable:
+
+- external water path toward an entrance during blocked-inlet or exceedance state;
+- accessible threshold continuity after actual paving build-up, drainage and door/frame geometry are included;
+- canopy/shelter that conflicts with facade maintenance, lighting, trees, fire-service access or drainage;
+- tree/root/canopy growth that invalidates a route, sightline, facade access or lighting assumption;
+- service / emergency route crossing a public outdoor program or waiting zone;
+- internal floor/finish strategy that assumes an external level or drainage tolerance not yet owned by Landscape/Civil.
+
+Architecture closes only the **building-edge consequence**; grading, hydrology, planting, fire and accessibility performance remain owner-native.
 
 ## 17｜ADD-13 FF&E, equipment and real room usability
 
@@ -515,6 +912,40 @@ An empty rectangle is not room usability evidence.
 
 Output: representative `ROOM_USE_READBACKS`.
 
+### ADD-13 room-use and FF&E decision depth
+
+Representative critical rooms must be tested as **task systems**, not only furniture layouts.
+
+For each selected room archetype, bind where material:
+
+- actor / task / duration / simultaneous-use state;
+- fixed, movable and temporary FF&E/equipment identity or bounded envelope;
+- chair / drawer / door / equipment operating envelope;
+- approach, reach, transfer, posture, sightline and viewing relation;
+- teaching / presentation / display / writing / screen / demonstration relation where relevant;
+- personal, operational, consumable and equipment storage basis;
+- power/data/water/drainage/exhaust or other service connection assumptions;
+- cleaning / reset / setup / maintenance state;
+- replacement path and anchorage/support assumption for heavy or fixed equipment;
+- accessible participation and companion/carer condition where material;
+- likely migration / reconfiguration boundary and what cannot move without reopening the room design.
+
+Use room sections/elevations or 3D readback where plan alone hides vertical reach, sightline, overhead storage, equipment height, daylight/glare or ceiling-service conflict.
+
+For representative critical room archetypes, read the room through its **transitions** as well as its furniture: floor↔wall, wall↔ceiling, door/frame/reveal, wet↔dry, fixed casework/equipment↔building fabric, service access panel, glazing/privacy edge and room↔corridor/adjacent-room threshold.
+
+Check how actual finish/build-up thickness, falls, skirtings/upstands, thresholds, door swing/hardware, acoustic/privacy seals, impact protection, cleaning access and movement/tolerance affect clear use geometry. Identify transition details that carry several requirements at once—water/cleaning, acoustic separation, fire stopping, accessibility, durability, equipment fixing or inspection—and expose the owner-specific criteria rather than using one architectural detail to imply every specialist PASS.
+
+Repeated rooms require an archetype-plus-exception detail rule. Orientation, wet-service location, facade condition, structural bay, equipment family or accessibility configuration that changes the transition is an exception, not a false typical detail. Where tactile quality, hygiene/cleanability, visible junction craft or repeated high-wear interfaces materially determine Design Quality, use a sample/mockup/readback appropriate to the claim; appearance approval does not prove waterproofing, acoustic, fire or accessibility performance.
+
+Repeated room types require an explicit archetype / variation rule. A single 'typical room' cannot silently represent rooms whose orientation, equipment, user group, daylight, structural bay or services materially differ.
+
+Storage must be checked by object type / quantity or operational basis where capacity is critical. `STORAGE ROOM EXISTS` does not prove that the right objects fit, can be retrieved, or can be replenished without blocking use.
+
+`FURNITURE SYMBOLS FIT ≠ TASK WORKS`.
+
+`TYPICAL ROOM ≠ ALL REPEATED ROOMS`.
+
 ## 18｜ADD-14 Area efficiency, cost pressure and lifecycle
 
 Track at least:
@@ -534,6 +965,28 @@ Track at least:
 
 Area efficiency is a design input, not a reason to erase required spatial quality or technical proof.
 
+### ADD-14 value, area and lifecycle decision depth
+
+Area / cost / lifecycle review must identify **which design relation is being traded**, not only that a saving exists.
+
+For each material value-engineering or efficiency move, record as applicable:
+
+`pressure / target → affected area / element / system → proposed change → capital effect → operational / maintenance / replacement effect → spatial / human / environmental / technical consequence → design-language consequence → interface consequence → retained / rejected reason → reopen trigger`.
+
+Check for false efficiencies such as:
+
+- deleting storage, support, service, plant, acoustic buffer or maintenance access while leaving the primary room count unchanged;
+- reducing circulation until normal movement still fits but queueing, accessible passing, furniture occupation or peak/degraded operation fails;
+- shrinking structure / service / envelope zones by assuming an unverified technical solution;
+- replacing robust or repairable assemblies with lower first-cost work whose maintenance / replacement disruption is materially worse;
+- increasing repetition/modularity while forcing unsuitable room proportions, residual panels, awkward corners or uncontrolled exceptions;
+- increasing gross-to-net efficiency by moving required function into corridors, lobbies or external areas without acknowledging the operational/design consequence;
+- accepting a product substitution whose dimensions, module, reflectance, acoustic behavior, durability or maintenance need reopens coordinated geometry.
+
+Lifecycle thinking should distinguish expected wear / cleaning / inspection / replacement cycles, access/disruption and the parts intended to be sacrificial, replaceable, adaptable or retained. The process does not invent service lives; use Current product/professional evidence where life expectancy is in claim.
+
+When cost/area pressure changes a protected Design DNA relation, human-use requirement or technical reserve, the decision must be explicit. `VALUE ENGINEERING` is not an authority to bypass Design Review or professional owners.
+
 ## 19｜ADD-15 Existing-building, phasing and construction-state logic
 
 For reconstruction / adaptive reuse / damaged buildings, resolve separately:
@@ -549,6 +1002,37 @@ For reconstruction / adaptive reuse / damaged buildings, resolve separately:
 - survey / structural verification required before promotion of reuse claims.
 
 Photographs or visual similarity cannot establish structural retention authority.
+
+Treat each retained or reused architectural element as an **evidence-bounded hypothesis** until geometry, build-up, condition and interfaces are verified to the level needed by the proposed intervention. Historic drawings, visual survey and point cloud answer different questions and must not be silently merged into one existing-condition truth state.
+
+Maintain an existing-fabric evidence map that distinguishes observed surface, measured geometry, concealed/unknown build-up, intrusive/open-up finding, material/sample evidence, known alteration/repair and specialist verification. Bind each retained-detail decision to the strongest evidence actually available at that location.
+
+Plan opening-up/investigation around decisions capable of reversing retention, room layout, waterproofing, fire/acoustic strategy, service routing or construction sequence. Absence of investigation where concealed conditions control the decision remains `HOLD`; unnecessary destructive investigation is not a quality signal.
+
+When site discovery contradicts the assumed condition, issue an explicit delta:
+
+`discovered condition → affected retained/demolished boundary → room/detail/interface/phase consequence → owner re-check → revised native source`.
+
+Do not absorb discovery into a redline while leaving downstream receipts current. Salvage/reuse candidates must distinguish architectural suitability from structural/material/statutory suitability; dimensions, damage, contamination, demountability, finish condition, provenance and future integration may constrain reuse while capacity/compliance remain with the proper specialist owner.
+
+### Phase-state decision content
+
+For each material demolition / retention / enabling-work / construction / partial-occupation phase, resolve the temporary state as an **architectural operating condition** rather than validating only the final design. Record, as applicable:
+
+- exact retained / demolished / temporary boundary and evidence / authority class;
+- occupied / decanted / construction-only zones and access-control boundaries;
+- maintained or temporary egress and accessible-route assumptions, with Fire / Accessibility authority remaining with those owners;
+- weather-tightness, temporary enclosure, drainage and protection of retained fabric;
+- utility / MEP continuity, isolations, shutdown/restart dependencies and temporary services;
+- structural stability / temporary-works dependencies from the responsible Structural / temporary-works owner;
+- construction / service / emergency / material / waste routes and hoarding/logistics boundaries;
+- temporary hygiene, safeguarding, security, noise/dust/vibration and supervision consequences where occupation continues;
+- survey / open-up / hazardous-or-unknown-condition `HOLD` points;
+- phase-specific native plan/section refs, interface refs and actual readback required before the next phase boundary becomes Current.
+
+A phase is architecturally consumable only when the intermediate state itself is a credible bounded operating arrangement. Final-state adequacy cannot validate an unsafe, inaccessible, unserviceable or operationally contradictory intermediate state.
+
+A material change to retained fabric, occupied boundary, temporary support, fire/access route, utilities, weatherproofing or logistics reopens the affected phase and its actual consumers.
 
 ## 20｜ADD-16 Jurisdictional code / standard matrix
 
@@ -590,6 +1074,7 @@ The review must ask whether the building works when:
 - program colors are removed;
 - explanatory labels are reduced;
 - render atmosphere is ignored;
+- nonessential grain / texture / shadow / collage / post-processing is removed;
 - model complexity is ignored;
 - previous KEEP / PASS labels are not trusted.
 
@@ -602,45 +1087,108 @@ Minimum review questions:
 - is circulation legible and continuous?
 - are supervision and access-control boundaries plausible?
 - are critical service / hygiene / sports-support relations credible?
+- does the entry sequence actually enforce its intended public → controlled → school/private transition, or can users bypass control?
+- are stair/core/lift/service vertical systems shown as credible plan/section packing with usable landings and thresholds rather than symbols or empty boxes?
+- are kitchen / food-service clean, dirty, receiving, waste, servery and return routes operationally separated where the brief requires them?
+- do sports, changing and wet-support spaces connect through intentional distribution rather than using activity or changing rooms as corridors?
+- are courts, yards, covered outdoor spaces and inter-wing voids actual programmed/controlled architectural spaces with thresholds and operating roles, rather than named residual gaps?
+- at the declared target scale, do wall mass/poche, openings, doors, room tags, dimensions, furniture/equipment and core graphics retain a professional hierarchy without annotation collision?
+- if publication/representation is in claim, does the same architecture survive grayscale, label-reduced, effect-off and thumbnail/distance readback without presentation treatment rescuing weak geometry?
+- do plan, section, axon/sectional perspective and render derivatives describe the same Current architecture, or has a publication derivative silently introduced a new architectural relation?
+- could collage, people, weather, vegetation, damage, material or lighting treatment be mistaken for verified field/material/site evidence beyond the current claim ceiling?
 - do structure / MEP / envelope assumptions fit the architecture?
 - have fire/accessibility/code-dependent claims remained within evidence ceiling?
 - did any technical repair damage the architectural intent?
 
 Outcome: `PASS / REVISE / REJECT / HOLD` with exact failed relation and reopen scope.
 
+### 21.1｜Architecture stage decision thresholds, handoffs and reopen semantics
+
+The stage list above is not a documentation checklist. Each `ADD-*` stage must leave a professional decision that another discipline or later stage can safely consume. The following table states the minimum architectural **decision threshold** and the handoff/reopen relation for each stage. Quantitative values such as widths, travel distances, areas, acoustic criteria or environmental limits must come from the Current project brief, applicable professional/code source or verified project evidence; this process does not invent universal numbers.
+
+| Stage | Minimum decision threshold before bounded stage PASS | Required downstream handoff | Reopen when… |
+|---|---|---|---|
+| `ADD-00` | authority, fact/assumption split, claim ceiling and unresolved professional approvals are explicit enough that no later stage must guess its governing basis | current scope/baseline + authority/assumption register to all consuming ADD stages and triggered domains | brief, authority, jurisdiction, program, survey/existing-condition or claim ceiling changes materially |
+| `ADD-01` | all in-claim arrival/service/emergency/accessible site routes have credible geometry, level relation and operational ownership; external-space conflicts are visible | site levels/access/control points, landscape/civil/fire-service dependencies to Architecture + R-F consumers | boundary, level, access point, tree/heritage, drainage, service/emergency route or neighboring-condition basis changes |
+| `ADD-02` | every material user group and critical operating state has a defined access, occupancy, supervision/service and space-use consequence; no promoted plan relies on one static-state assumption | operational-state requirements to program, zoning, flow, security, MEP, fire/accessibility and FM/operations | user group, timetable, after-hours model, staffing, occupancy or emergency/shelter scenario changes |
+| `ADD-03` | critical room types have usable dimensional/proportional criteria, equipment/furniture assumptions and service/environment/access requirements sufficient to test real geometry | room requirements and controlled variables to zoning, structure, MEP, interior/FF&E, accessibility and cost | occupancy, equipment, teaching/process model, service requirement, target area or accessibility basis changes |
+| `ADD-04` | every `MUST_*`, separation and controlled-connection relation has a reason and a spatial consequence; no critical relationship exists only as color/bubble notation | adjacency/separation priorities and forbidden conflicts to zoning/plan development and affected professional domains | room role, safeguarding/security, acoustic/hygiene requirement, shared-support strategy or operational state changes |
+| `ADD-05` | retained zoning option is selected from materially distinct alternatives under fixed criteria; accepted trade-offs and rejected routes are visible | selected zoning + rejected-option lessons + controlled geometry/relations to circulation, structure, MEP, landscape and Integration | a controlling criterion, major shared variable, cost/program constraint or interface invalidates the selection basis |
+| `ADD-06` | each critical flow has origin/destination, time state, crossings/checkpoints and credible route geometry; incompatible flows are separated or deliberately managed | flow routes/checkpoints/peak conditions to circulation, access control, fire/accessibility, service/operations and wayfinding | route geometry, occupancy, time state, access boundary, service strategy or emergency condition changes |
+| `ADD-07` | measured circulation geometry supports required movement, door/landing/queue behavior and vertical continuity in the critical peak/degraded conditions in claim | current corridor/stair/ramp/lift/door geometry + pinch-point readbacks to fire/accessibility, structure, MEP and operations | width, door, stair/lift, level, furniture/occupation, occupancy or vertical-transport strategy changes |
+| `ADD-08` | architecture has reserved and coordinated the spatial conditions needed for current life-safety/accessibility strategies without overstating compliance; known unresolved authority points are explicit | route/door/stair/compartment/accessibility geometry and assumptions to the relevant Fire/Accessibility owners and R-F | occupancy, exit/compartment strategy, door/stair/lift geometry, accessible route or governing source/authority changes |
+| `ADD-09` | service/hygiene/security/supervision sequences work as operations, not residual rooms: receiving→use→cleaning/waste, public→controlled, clean→dirty and supervision lines are credible where triggered | operational zones, thresholds, wet/service points and security/safeguarding requirements to MEP, interior, operations/FM and access-control owners | catering/sports/lab/sanitary brief, staffing, access state, waste/service path, hygiene rule or public boundary changes |
+| `ADD-10` | current structural depths/grids/openings, service/plant zones, envelope build-up/openings, drainage/replacement and movement/tolerance interfaces fit the architectural section/plan without hidden loss of required use or design intent | accepted controlled variables and unresolved interface refs to Structure/MEP/Envelope plus updated architecture geometry back through R-F | grid/span/member depth, plant/riser/route, ceiling/service zone, facade/roof, drainage, opening or movement assumption changes |
+| `ADD-11` | environmental analysis has changed or confirmed a real architectural decision; daylight/glare/thermal/acoustic/weather claims have source/input/output and an observable spatial/material consequence | orientation/opening/shading/material/zoning/acoustic or control requirements to Envelope/MEP/Acoustics/Landscape as applicable | climate/source model, occupancy, glazing/shading, room use, acoustic source/path/receiver, material or control strategy changes |
+| `ADD-12` | external spaces are programmatically and operationally integrated with arrival, accessibility, supervision, drainage, shade/seasonality, emergency and maintenance logic | building edge/threshold/level/drainage/access/shared-use variables to Landscape/Civil/Fire/Operations | building footprint/threshold, level/drainage, tree/landscape authority, access/emergency route or external-use program changes |
+| `ADD-13` | representative critical rooms have been tested with actual/bounded FF&E/equipment, circulation, reach, accessibility, door and maintenance clearances; empty-room geometry cannot pass | furniture/equipment/clearance envelopes and service loads/connections to Interior/FF&E, MEP, Structure and accessibility owners | equipment/furniture family, occupancy/task, door/storage/service connection or accessible-use requirement changes |
+| `ADD-14` | area/cost/lifecycle pressure is translated into explicit design trade-offs; efficiency does not silently delete required experience, support space, technical zone or maintainability | current area schedule, high-cost/high-maintenance drivers and accepted value decisions to cost/procurement/FM and affected domains | program/GFA, system selection, material, procurement, lifecycle assumption or value-engineering decision changes |
+| `ADD-15` | retained/demolished/phased fabric is evidence-typed; temporary interfaces and partial-operation routes are credible; reuse claims stop at actual survey/engineering evidence | retained/demolished/temporary/phase boundaries to Structure/MEP/Fire/operations/construction planning | survey, condition, structural evidence, demolition sequence, temporary works or partial-operation strategy changes |
+| `ADD-16` | every material code-aware requirement has current source/version/applicability, a concrete design response and a truthful verification status; no `DESIGN_RESPONSE_PRESENT` is reported as compliance | exact requirement/response/open-owner matrix to the relevant professional/statutory owners and Master review | source/version/applicability, occupancy, geometry or professional authority interpretation changes |
+| `ADD-17` | independent readback finds the current plan/section/model operationally coherent at the claimed ceiling; strongest success and strongest consequential contradiction are both recorded; where publication is triggered, representation does not rescue or mutate the architecture | bounded Architecture verdict + exact reviewed artifact/revision + failed/reopen relations to DQ, R-F and Master compilation; plus a native-master-bound publication handoff when applicable | any material reviewed geometry, operational state, interface, authority or native-artifact revision changes; or a publication derivative requires an architectural geometry/state change |
+
+For spatially consequential stages, the reviewer should be able to point to **where the decision exists in plan/section/model and what fails if it is wrong**. A matrix row, meeting note, color overlay or narrative sentence is not enough when the underlying claim is geometric, operational, environmental, material or interface-dependent.
+
+Minimum stage-to-stage handoff rule:
+
+`decision object + controlled variables + accepted tolerances/conditions + native source ref + actual readback ref + open boundary + consuming owner + reopen trigger`.
+
+The receiving stage/domain must be able to reject the handoff when the source is stale, the controlled variable is ambiguous, the requested maturity is below what its claim needs, or an OPEN item actually sits inside the receiving claim. Acceptance of the handoff does not transfer professional authority from the source domain.
+
+`STAGE OUTPUT EXISTS ≠ STAGE DECISION CONSUMABLE`.
+
+`HANDOFF ACCEPTED ≠ DOWNSTREAM PASS`.
+
 ## 22｜Required Architecture Design Development Receipt
 
-When triggered, emit `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT` containing at minimum:
+When triggered, emit `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`. The machine receipt uses **two layers rather than duplicating every professional object at root**.
+
+**Root control layer — required by the machine contract:**
 
 - `trigger_reason`;
-- `project_stage`;
+- `project_stage` and bounded `claim_ceiling`;
+- `stage_body_records` for every materially executed/in-claim ADD stage, including specific title, semantic coverage, task-scoped knowledge-mount refs, native artifact refs, readback refs, claim ceiling, OPEN items and reopen triggers;
 - `jurisdiction_state`;
 - `program_authority_state`;
 - `occupancy_authority_state`;
 - `site_authority_state`;
-- `user_operation_matrix`;
-- `room_brief_register`;
-- `adjacency_matrix`;
-- `zoning_option_set` and selection rationale;
-- `flow_system_matrix`;
-- `circulation_readback`;
-- `life_safety_aware_planning_state`;
-- `accessibility_aware_planning_state`;
-- `operations_security_hygiene_state`;
-- `system_fitback_state`;
-- `climate_daylight_acoustic_state`;
-- `landscape_state` when applicable;
-- `room_use_readbacks`;
-- `area_efficiency_state`;
-- `existing_phasing_state` when applicable;
-- `architecture_code_matrix`;
+- `phase_status` as the coarse professional closure map;
+- `phase_status_reasons` for every `NOT_APPLICABLE_WITH_REASON` phase disposition, so N/A never becomes a reasonless closure token;
+- `architectural_cad_plan_review_triggered` for final Architecture PASS, explicitly recording whether a CAD plan is materially in claim; an `ADD-07` Current native `.dwg` / `.dxf` plan carrier cannot coexist with this flag set false;
+- `architecture_representation_publication_triggered` for final Architecture PASS, explicitly recording whether the downstream representation/publication lane is materially triggered instead of inferring that condition from prose;
+- `architectural_cad_plan_review` when a CAD plan is materially in claim, binding the native CAD revision, declared target scale, machine reopen/readback, target-scale plot readback, architect whole/near/use readback, operational-review evidence, wall/opening/core state and bounded result;
+- `architecture_representation_publication_state` when publication/portfolio/board/book/web architectural representation is materially triggered, binding the Current native master, derivative/handoff refs, owner/truth boundaries and target-medium readback; when style/effect treatment is material it additionally binds the representation-style contract and effect-off/source baseline;
 - `independent_plan_review`;
 - `open_items`;
 - `reopened_items`;
 - `does_not_prove`;
-- final `PASS / REVISE / REJECT / HOLD`.
+- final `PASS / REVISE / REJECT / HOLD` and `stale`.
+
+**Professional carrier layer — required as stage/native coverage, not duplicated root payload fields:**
+
+- user / operating-state matrix;
+- room brief / program register;
+- adjacency / separation matrix;
+- zoning/massing option set and selection rationale;
+- flow-system matrix;
+- circulation readback;
+- life-safety/accessibility-aware planning evidence;
+- operations/security/hygiene evidence;
+- structure/MEP/envelope fit-back evidence;
+- climate/daylight/acoustic evidence;
+- landscape/external-space evidence when applicable;
+- room-use / FF&E readbacks;
+- area/efficiency/cost/lifecycle evidence;
+- existing/retention/phasing evidence when applicable;
+- jurisdiction/code matrix.
+
+Those carriers must be referenced by the corresponding `stage_body_records[].native_artifact_refs` / `readback_refs` and may additionally be indexed under `evidence`. A receipt is not allowed to inline or duplicate their full professional content merely to satisfy root-field completeness.
 
 The machine-readable schema is `schemas/architecture-design-development-receipt.v1.schema.json`.
+
+`stage_body_records` are runtime/professional records, not new Knowledge Objects. They reference canonical Knowledge and native architectural artifacts; they must not inline reusable knowledge bodies into the Architecture receipt.
+
+For final Architecture `PASS`, all `ADD-00..ADD-17` stage identities must be accounted for by Current stage-body records, every stage must be `PASS_AT_CLAIM_CEILING`, every stage-body responsibility must be `PRESENT`, intentionally `COMBINED`, or `NOT_APPLICABLE_WITH_REASON`, and every `phase_status` entry must be `PASS_AT_CLAIM_CEILING` or `NOT_APPLICABLE_WITH_REASON`. A remaining `MISSING`, `OPEN`, `IN_PROGRESS`, `REVISE` or `BLOCKED_BY_AUTHORITY` condition prevents whole-Architecture `PASS` even if the model opens, drawings export, or selected stages have passed. Partial-stage success remains a bounded stage PASS, not whole-Architecture PASS.
 
 ## 23｜Reopen / change propagation rule
 
@@ -662,7 +1210,7 @@ A material change to any of the following reopens the affected downstream and up
 - site arrival / service / emergency access;
 - retained/demolished existing fabric.
 
-The prior receipt becomes `STALE_AT_AFFECTED_SCOPE` until rerun.
+The **Current consumer/claim binding to the prior receipt becomes stale at the affected scope** until the affected dependency is re-read and reviewed. Preserve the historical receipt under its original authority/artifact/readback baseline; do not mutate it into a new `STALE_AT_AFFECTED_SCOPE` receipt state. Express later staleness/reopen through the existing dependency, receipt-stale/successor and review mechanisms.
 
 ## 24｜Hard FAIL / mandatory REVISE conditions
 
@@ -679,6 +1227,10 @@ The following cannot be averaged away by visual quality, model detail or documen
 - major technical system or movement joint contradicted by architectural geometry;
 - current code / authority requirement cited without source/version/applicability state;
 - old plan-review receipt reused after a material geometry or operational-state change;
+- publication / portfolio geometry diverges from Current native architecture without a recorded DESIGN reopen;
+- render / collage / sectional perspective introduces a material architectural relation absent from the Current native master and is used as if authoritative;
+- visual effect, atmosphere, texture or post-processing is the only reason a weak plan/section relation appears resolved;
+- composited or generated context/material/weather/people/damage is presented as field evidence without the required truth boundary;
 - render/model/QA PASS presented as architectural Design KEEP.
 
 ## 25｜Promotion rule
