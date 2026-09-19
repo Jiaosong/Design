@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1180" viewBox="0 0 1800 1180">
+<style>
+.bg{fill:#f2efe7}.card{fill:#fffdf8;stroke:#c9c4b8;stroke-width:1.2}.ink{fill:#202824}.muted{fill:#69716d}.keep{fill:#416c5c}.hold{fill:#9d5843}.proxy{fill:#68788c}.line{stroke:#34443d;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.dash{stroke:#9a7567;stroke-width:1.5;fill:none;stroke-dasharray:7 6}.thin{stroke:#cbc6bb;stroke-width:1.1;fill:none}.h1{font:700 34px Arial,sans-serif}.h2{font:700 18px Arial,sans-serif}.txt{font:400 14px Arial,sans-serif}.sm{font:400 12px Arial,sans-serif}.xs{font:700 11px Arial,sans-serif;letter-spacing:.8px}
+</style>
+<rect width="1800" height="1180" class="bg"/>
+<text x="56" y="58" class="h1 ink">C01 · DAGONG HALL · INTERIOR REALITY-NEAR SPATIAL ENVELOPE</text>
+<text x="56" y="90" class="txt muted">NTS / PUBLISHED SCALE ANCHORS ONLY · not a measured plan or section · ID-PW3/4 HOLD</text>
+
+<g transform="translate(56,126)">
+<rect width="1688" height="94" rx="14" class="card"/>
+<text x="20" y="28" class="xs keep">PUBLICLY CONSTRAINED</text>
+<text x="20" y="55" class="txt ink">~500 m² whole group · three-storey octagonal tower · ~10 m overall tower · first-floor main hall >100 m² · four through-columns</text>
+<text x="20" y="78" class="xs hold">UNKNOWN: floor-to-floor · column grid · door width · thresholds · RCP/services · fire/egress · accessibility · current usable area</text>
+</g>
+
+<g transform="translate(56,260)">
+  <rect width="650" height="700" rx="16" class="card"/>
+  <text x="24" y="35" class="xs proxy">VERTICAL / STRUCTURAL RELATION · NTS</text>
+  <text x="24" y="63" class="sm muted">Published overall height ≈10 m. Do not divide into invented storey heights.</text>
+  <path d="M100 590h450M140 590V180M510 590V180" class="line"/>
+  <path d="M140 450h370M160 320h330M190 205h270" class="thin"/>
+  <path d="M260 590V205M390 590V205" class="line"/>
+  <text x="105" y="610" class="sm muted">Level 1</text>
+  <text x="105" y="470" class="sm muted">Level 2 relation only</text>
+  <text x="105" y="340" class="sm muted">Level 3 relation only</text>
+  <text x="238" y="170" class="xs keep">4 THROUGH-COLUMNS</text>
+  <path d="M565 590V205" class="dash"/>
+  <text x="574" y="405" class="sm hold" transform="rotate(-90 574 405)">≈10 m overall published / not measured</text>
+
+  <rect x="95" y="635" width="460" height="44" rx="9" fill="#edf3ef" stroke="#8ca99b"/>
+  <text x="115" y="663" class="sm ink">First-floor main hall: published “more than 100 m²” — geometry unknown</text>
+</g>
+
+<g transform="translate(746,260)">
+  <rect width="480" height="700" rx="16" class="card"/>
+  <text x="24" y="35" class="xs keep">ACTIVITY MODES</text>
+
+  <rect x="28" y="78" width="424" height="118" rx="12" class="card"/>
+  <text x="50" y="107" class="h2 ink">M0 · No indoor occupation</text>
+  <text x="50" y="135" class="sm muted">handheld / digital / outdoor / nearby safe space</text>
+  <text x="50" y="160" class="sm keep">concept mechanism survives</text>
+
+  <rect x="28" y="236" width="424" height="118" rx="12" class="card"/>
+  <text x="50" y="265" class="h2 ink">M1 · Movable small group</text>
+  <text x="50" y="293" class="sm muted">movable chairs/cards/archive boxes</text>
+  <text x="50" y="318" class="sm keep">no attachment / short duration</text>
+
+  <rect x="28" y="394" width="424" height="140" rx="12" fill="#fff4ec" stroke="#ad6c57"/>
+  <text x="50" y="423" class="h2 ink">M2 · 20–30 hypothesis</text>
+  <text x="50" y="451" class="sm muted">gross-area plausibility only</text>
+  <text x="50" y="476" class="sm hold">NOT occupancy / egress / accessibility capacity</text>
+  <text x="50" y="501" class="sm hold">reduce or cancel if measured conditions fail</text>
+
+  <text x="28" y="582" class="xs proxy">DESIGN PRINCIPLE</text>
+  <text x="28" y="612" class="txt ink">No fixed joinery or services depend on guessed geometry.</text>
+  <text x="28" y="638" class="txt ink">Real conditions choose M0 / M1 / M2 later.</text>
+</g>
+
+<g transform="translate(1266,260)">
+  <rect width="478" height="700" rx="16" class="card"/>
+  <text x="24" y="35" class="xs hold">INTERIOR CLAIM CEILING</text>
+
+  <text x="24" y="82" class="h2 ink">ID-PW0 / PW1 / PW2</text>
+  <text x="24" y="108" class="txt keep">bounded concept support</text>
+
+  <line x1="24" y1="132" x2="452" y2="132" class="thin"/>
+
+  <text x="24" y="178" class="h2 ink">ID-PW3 spatial coordination</text>
+  <text x="24" y="204" class="txt hold">HOLD — no measured room / RCP / clearance</text>
+
+  <text x="24" y="250" class="h2 ink">ID-PW4 technical design</text>
+  <text x="24" y="276" class="txt hold">HOLD — no technical ceiling / services / finish / doors</text>
+
+  <text x="24" y="322" class="h2 ink">20–30 people</text>
+  <text x="24" y="348" class="txt hold">ASSUMPTION — not verified capacity</text>
+
+  <text x="24" y="394" class="h2 ink">Heritage intervention</text>
+  <text x="24" y="420" class="txt hold">fixed attachment deferred</text>
+
+  <text x="24" y="466" class="h2 ink">RCP / Lighting / HVAC / Fire</text>
+  <text x="24" y="492" class="txt hold">UNKNOWN — no device positions invented</text>
+
+  <rect x="22" y="552" width="430" height="116" rx="12" fill="#edf3ef" stroke="#8ca99b"/>
+  <text x="44" y="580" class="xs keep">ROBUST INTERIOR MOVE</text>
+  <text x="44" y="607" class="sm ink">movable · battery/self-contained where needed</text>
+  <text x="44" y="631" class="sm ink">mode-switch instead of forcing a guessed plan</text>
+</g>
+
+<g transform="translate(56,1005)">
+<rect width="1688" height="112" rx="14" class="card"/>
+<text x="20" y="30" class="xs proxy">DISPOSITION</text>
+<text x="20" y="58" class="txt ink">KEEP Dagong Hall as an Interior concept context. Do not release a coordinated plan/RCP or verified classroom capacity.</text>
+<text x="20" y="84" class="txt hold">Next authority: measured current room/threshold/door/ceiling geometry + heritage/use permission + Fire/Accessibility/MEP inputs.</text>
+</g>
+</svg>
