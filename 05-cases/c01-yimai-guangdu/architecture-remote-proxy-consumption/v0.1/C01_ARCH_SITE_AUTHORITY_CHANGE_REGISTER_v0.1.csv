@@ -1,0 +1,11 @@
+record_id,record_type,current_state,authority_or_basis,architecture_use,blocked_claim,reopen_trigger
+C01-ARCH-A01,site_boundary,UNRESOLVED,No authoritative survey boundary bound in current remote package,Scope/context only,Surveyed site boundary,Authoritative survey or project site plan
+C01-ARCH-A02,P1_object_scale,REMOTE_TRIANGULATED_PUBLISHED,"P1 ZhenXiao 7.8m high x 3.26m wide",Photo-scale/context plausibility,Current measured clearance/road width,Field/object survey or current measured capture
+C01-ARCH-A03,P2_object_scale,REMOTE_TRIANGULATED_PUBLISHED,"P2 He-shi JieXiao 7.9m high x 3.6m wide",Photo-scale/context plausibility,Current measured clearance/road width,Field/object survey or current measured capture
+C01-ARCH-A04,P3_object_scale,UNKNOWN,"No defensible published dimension bound in current package",Preserve evidence asymmetry,Any metric P3 design,Authoritative object record or field measurement
+C01-ARCH-A05,existing_public_route,RELATION_AUTHORITY,"visitor centre/Hand Lion -> Mao ancestral hall -> Quanjing private school cultural circles",Site arrival/adjacency/flow concept,Exact path geometry/distance/capacity,Official/GIS route geometry or field track
+C01-ARCH-A06,Dapiandi_approach,TEMPORALLY_UNSTABLE_PROXY,"2026 road hardening/guardrail/RC pipe/reservoir/retaining-wall works",Staleness/change trigger,As-built road width/level/drainage/guardrail position,Construction drawings/as-built or current field capture
+C01-ARCH-A07,Dagong_Hall_macro_scale,PUBLISHED_CONTEXT,"approx. 500m2 macro area / landmark relation",Macro site/program context,Survey footprint/room area/occupancy,Current measured building documentation
+C01-ARCH-A08,indoor_capacity,ASSUMPTION_ONLY,"20-30 people project planning hypothesis",Scenario design only,Occupancy/fire/accessibility capacity,Room survey + current use + specialist review
+C01-ARCH-A09,heritage_protection_boundary,UNKNOWN,"heritage identity exists but protection/permission geometry unresolved",Low-impact/reversible intervention strategy,Fixed-installation permission/setback,Formal heritage boundary/authority
+C01-ARCH-A10,field_condition,NOT_OBSERVED,"RG2 NOT RUN / E2 unchanged",Claim ceiling control,Field/as-built truth,Reality Gate 2 or later authoritative evidence
