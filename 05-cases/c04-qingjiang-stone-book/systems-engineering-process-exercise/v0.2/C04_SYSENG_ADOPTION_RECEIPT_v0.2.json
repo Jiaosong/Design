@@ -1,0 +1,176 @@
+{
+  "schema_version": "c04-syseng-adoption-receipt/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "process_id": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "state": "CANDIDATE PROCESS ADOPTION / ONE INTEGRATED RUNTIME INTERFACE VERIFIED / VALIDATION HOLD / NOT CURRENT / NO PROMOTION",
+  "purpose": "Advance real project adoption evidence by closing one actual SPA Source ↔ Browser Runtime interface after v1.2 defects were discovered in Chromium, repaired in v1.3, and retested, while preserving verification/validation and professional-authority boundaries.",
+  "bindings": [
+    {
+      "path": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+      "blob_sha": "dafddd0738d00f94dec1bd25a4770a95868519c8",
+      "role": "CANDIDATE_PROCESS_PROSE"
+    },
+    {
+      "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+      "blob_sha": "7fe4a4e3802e2e189df2d3868f6ecbc027d2ee5c",
+      "role": "MACHINE_PROCESS_DEFINITION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.2.json",
+      "blob_sha": "33ec2477c401bb1d98574e37352fd27ca01afa7e",
+      "role": "REQUIREMENT_ARCHITECTURE_VV_TRACE_SUCCESSOR"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_PROCESS_INSTANCE_v0.2.json",
+      "blob_sha": "c3ebf1b8089abdf9c2a1ff0d968d80e06ed61dbd",
+      "role": "DOMAIN_PROCESS_INSTANCE_SUCCESSOR"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_validate_syseng_trace_v0_2.py",
+      "blob_sha": "453c816a061930eb0ed64c928e20259df67db8f6",
+      "role": "TRACE_PROCESS_CONSISTENCY_VALIDATOR"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html",
+      "blob_sha": "99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2",
+      "role": "TESTED_SUCCESSOR_IMPLEMENTATION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/BROWSER_RUNTIME_READBACK_v1_3.json",
+      "blob_sha": "6cdcb3be18bd4e6e31ec7ae6b2fb714ca26f3f3b",
+      "role": "ACTUAL_CONFIGURED_BROWSER_VERIFICATION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/QC_READBACK_v1_3.json",
+      "blob_sha": "9c11b87c3dc1e05f3bfcd98cc1a1ea8c2d6b64af",
+      "role": "V1_3_QC_CLAIM_BOUNDARY"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "0b9e6de5e4257d0464a8542e2e23219c46fc885e",
+      "role": "AIG02_SYSTEMS_ENGINEERING_FAILURE_REGRESSION"
+    }
+  ],
+  "adoption_evidence": {
+    "system_of_interest_defined": true,
+    "requirement_architecture_trace_exercised": true,
+    "requirement_count": 6,
+    "bounded_verification_pass": 5,
+    "verification_hold": 1,
+    "validation_pass": 0,
+    "validation_not_run": 5,
+    "validation_not_applicable": 1,
+    "interface_failure_or_hold_preserved": true,
+    "integrated_interface_verified_count": 1,
+    "integrated_interfaces_open_or_hold_count": 3,
+    "configuration_change_reopen_exercised": true,
+    "actual_defect_discovery_repair_retest_exercised": true,
+    "independent_systems_engineering_review": "NOT_RUN"
+  },
+  "verified_interface": {
+    "interface_id": "IF-BROWSER-RUNTIME",
+    "state": "VERIFIED_FOR_CONFIGURED_CHROMIUM_DESKTOP_AND_MOBILE",
+    "configuration": {
+      "browser": "Chrome for Testing 151.0.7922.34",
+      "playwright": "chromium v1234",
+      "desktop_viewport": [
+        1440,
+        1000
+      ],
+      "mobile_viewport": [
+        390,
+        844
+      ]
+    },
+    "evidence": {
+      "github_actions_run_id": 35419536754,
+      "run_number": 4,
+      "job_id": 105834458437,
+      "tested_head_sha": "4d767315c435eb62e05647a6da9d3ab899440e71",
+      "result": "12_PASS / 0_FAIL"
+    },
+    "does_not_prove": [
+      "Firefox/WebKit parity",
+      "representative-user task success",
+      "usability",
+      "accessibility conformance",
+      "field/paper/human fallback",
+      "official live-service integration",
+      "system validation"
+    ]
+  },
+  "defect_change_retest": {
+    "change_id": "C04-APP-CHANGE-V1_2-TO-V1_3",
+    "predecessor": "APP_GAME_MAP_v1.2@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+    "successor": "APP_GAME_MAP_v1.3@99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2",
+    "actual_runtime_discoveries": [
+      "My Book save mutated the shared default DEF array; clear restored a polluted 5-item default set.",
+      "print.onclick collided with the browser window.print global; the intended print-button fallback handler did not execute."
+    ],
+    "repairs": [
+      "copy G() array before unshift",
+      "bind document.getElementById('print').onclick explicitly"
+    ],
+    "retest": "Configured Chromium desktop/mobile runtime = 12/12 PASS",
+    "test_harness_corrections_not_counted_as_product_defects": [
+      "run 1 wrong static-server working-directory path",
+      "run 2 readiness URL pointed to repository root",
+      "run 3 route-focus assertion used ambiguous selector"
+    ]
+  },
+  "preserved_open_interfaces": [
+    "IF-STATUS-OFFICIAL = NOT_IMPLEMENTED / HOLD",
+    "IF-DIGITAL-FALLBACK = DEFINED / NOT_FIELD_VERIFIED",
+    "IF-HCD-VALIDATION = NOT_RUN"
+  ],
+  "preserved_process_holds": [
+    "C04-SYSREQ-002 integrated physical/paper/human fallback remains HOLD",
+    "SYSENG-DP7 remains BLOCKED / HOLD",
+    "SYSENG-DP8 remains NOT_STARTED / NOT_RUN",
+    "validation_pass remains 0",
+    "independent Systems Engineering review remains NOT_RUN"
+  ],
+  "validation_plan": {
+    "professional_domain_validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "trace_consistency_validator": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_validate_syseng_trace_v0_2.py",
+    "browser_workflow": ".github/workflows/c04-app-v13-browser.yml",
+    "ai_governance_workflow": ".github/workflows/ai-governance-evals.yml",
+    "pull_request": 665,
+    "browser_runtime_run": {
+      "run_id": 35419536754,
+      "run_number": 4,
+      "result": "PASS",
+      "tested_head_sha": "4d767315c435eb62e05647a6da9d3ab899440e71"
+    },
+    "v0_2_schema_and_consistency_ci": {
+      "ai_governance_run_number": 4906,
+      "ai_governance_run_id": 35419829087,
+      "result": "PASS",
+      "steps": [
+        "Validate C04 Systems Engineering v0.2 configured-runtime process instance = PASS",
+        "Validate C04 Systems Engineering v0.2 configured-runtime trace = PASS"
+      ]
+    },
+    "anti_pollution": {
+      "run_number": 837,
+      "run_id": 35419829081,
+      "result": "PASS"
+    },
+    "browser_final_head_recheck": {
+      "run_number": 14,
+      "run_id": 35419829083,
+      "result": "PASS",
+      "tested_head_sha": "3ed05d1565ca4d40566e08472db15e11994dfad1"
+    },
+    "state": "REAL_PROJECT_RUNTIME_PASS + V0.2 MACHINE CONSISTENCY PASS / FINAL RECEIPT UPDATE REQUIRES ONE LAST HEAD RECHECK"
+  },
+  "current_architecture_disposition": {
+    "systems_engineering_domain_process": "OPEN",
+    "changed_to_current": false,
+    "architecture_map_modified": false,
+    "reason": "One real integrated runtime interface is now verified, but system validation, physical/paper/human fallback integration, official status interface, task/claim knowledge mount and independent Systems Engineering professional review remain open."
+  },
+  "maturity": "CANDIDATE R-E PROCESS / C04 REQUIREMENT→ARCHITECTURE→VV TRACE / ACTUAL RUNTIME DEFECT DISCOVERY→REPAIR→RETEST / ONE INTEGRATED INTERFACE VERIFIED / V0.2 MACHINE CONSISTENCY PASS / VALIDATION=0 / INDEPENDENT SE REVIEW NOT_RUN / NOT CURRENT / NO PROMOTION",
+  "claim_ceiling": "SYSTEMS ENGINEERING ADOPTION EVIDENCE WITH ONE CONFIGURATION-BOUND INTEGRATED RUNTIME VERIFICATION / NO SYSTEM VALIDATION PASS / NO PROFESSIONAL SE PASS / NO DOMAIN OVERRIDE / NO PROMOTION"
+}
