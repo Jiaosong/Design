@@ -1,0 +1,208 @@
+{
+  "schema_version": "open-domain-readiness/0.1",
+  "authority_position": "NON_CURRENT READINESS REGISTER / DOES NOT PROMOTE DOMAIN PROCESS",
+  "governing_current_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+  "professional_process_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+  "domains": [
+    {
+      "domain": "Interior Design",
+      "current_architecture_state": "CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
+      "readiness_document": "00-governance/open-domain-readiness/INTERIOR_DESIGN_OPEN_DOMAIN_READINESS_v0.1.md",
+      "professional_scope_state": "VERIFIED_CURRENT_2026",
+      "current_source_basis": [
+        {
+          "authority": "CIDQ",
+          "source": "2026 IDFX blueprint",
+          "role": "fundamentals / existing conditions / pre-design / programming / space planning / preliminary FF&E+finishes / schematics"
+        },
+        {
+          "authority": "CIDQ",
+          "source": "2026 IDIX blueprint",
+          "role": "codes/life safety / integration+FF&E / construction documents / consultant coordination / specifications+schedules"
+        },
+        {
+          "authority": "CIDQ",
+          "source": "2026 IDPX blueprint",
+          "role": "feasibility / schedule+budget / contracts-procurement-permitting / construction / site observation+closeout"
+        }
+      ],
+      "existing_oleander_strengths": [
+        "Architecture professional process",
+        "MEP professional process",
+        "Structural professional process",
+        "Design Process",
+        "artifact/runtime governance",
+        "spatial-experience projects"
+      ],
+      "missing_execution_carrier": [
+        "authoritative interior plan/space plan with professional scope",
+        "reflected ceiling plan",
+        "finish plan + finish schedule",
+        "interior elevations/sections",
+        "joinery/millwork/casework detail",
+        "FF&E plan + schedule",
+        "door/hardware coordination",
+        "acoustic/MEP/fire/accessibility interior interface",
+        "submittal/sample/mockup review",
+        "site observation/punch/closeout"
+      ],
+      "minimum_candidate_carrier_rule": {
+        "minimum_distinct_objects": 4,
+        "must_include": [
+          "at least one technical coordination object",
+          "at least one delivery/readback object",
+          "one native editable artifact",
+          "one professional HOLD/failure",
+          "one cross-discipline interface",
+          "one actual readback",
+          "one competent Interior professional review"
+        ],
+        "optional_examples": [
+          "RCP",
+          "finish schedule",
+          "millwork detail",
+          "FF&E schedule",
+          "door/hardware",
+          "interior consultant interface",
+          "submittal/mockup",
+          "site closeout"
+        ]
+      },
+      "candidate_creation_state": "BLOCKED_EXECUTION_CARRIER_ABSENT",
+      "allowed_next_actions": [
+        "continue professional-source maintenance",
+        "detect qualifying project carrier",
+        "mount current project/jurisdiction knowledge when triggered",
+        "create Candidate only after carrier qualification"
+      ],
+      "forbidden_shortcuts": [
+        "treat indoor space as Interior professional exercise",
+        "treat render/moodboard as technical artifact",
+        "copy Architecture stages into Interior",
+        "invent code/dimension defaults",
+        "promote domain from readiness dossier alone"
+      ],
+      "claim_ceiling": "SCOPE_VERIFIED / EXECUTION_CARRIER_ABSENT / DOMAIN_PROCESS_OPEN"
+    },
+    {
+      "domain": "Lighting Design",
+      "current_architecture_state": "CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
+      "readiness_document": "00-governance/open-domain-readiness/LIGHTING_DESIGN_OPEN_DOMAIN_READINESS_v0.1.md",
+      "professional_scope_state": "VERIFIED_CURRENT_2026",
+      "current_source_basis": [
+        {
+          "authority": "IES",
+          "source": "Lighting Practice Standards collection",
+          "role": "design process / sources / controls / commissioning / maintenance / daylight / environmental / calculation"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-4-20(R2026)",
+          "role": "electric light source selection/specification"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-6-25",
+          "role": "lighting control systems"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-7-20",
+          "role": "lighting design and construction process"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-8-20",
+          "role": "lighting and control commissioning"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-16-22",
+          "role": "control intent narratives and sequences"
+        },
+        {
+          "authority": "IES",
+          "source": "ANSI/IES LP-42-26",
+          "role": "dimming/control method designations"
+        },
+        {
+          "authority": "IALD/CLD",
+          "source": "current Domains of Practice",
+          "role": "professional lighting competence"
+        }
+      ],
+      "existing_oleander_strengths": [
+        "Architecture / MEP / Landscape interfaces",
+        "visual/spatial design",
+        "artifact/runtime governance",
+        "c03 CMF/light concept material"
+      ],
+      "missing_execution_carrier": [
+        "lighting brief / OPR",
+        "lighting concept tied to task/use",
+        "photometric model/calculation",
+        "luminaire schedule with photometric refs",
+        "control zoning + control narrative/sequence",
+        "emergency/electrical interface",
+        "mockup",
+        "submittal/substitution review",
+        "aiming/focusing/scene programming",
+        "commissioning/functional test",
+        "in-use/maintenance readback"
+      ],
+      "minimum_candidate_carrier_rule": {
+        "minimum_distinct_objects": 5,
+        "must_include": [
+          "one photometric or controls object",
+          "one commissioning/field/readback object",
+          "one cross-discipline interface",
+          "one changed condition/substitution",
+          "one professional HOLD/failure",
+          "one competent Lighting professional review"
+        ],
+        "optional_examples": [
+          "OPR/BOD",
+          "lighting plan",
+          "calculation",
+          "luminaire schedule",
+          "control narrative",
+          "emergency interface",
+          "mockup",
+          "aiming/focusing",
+          "commissioning",
+          "post-occupancy readback"
+        ]
+      },
+      "project_nonqualifier_examples": [
+        "visual lighting render",
+        "generic luminaire imagery",
+        "CMF/light-object concept",
+        "project named around light without photometric/control/commissioning evidence"
+      ],
+      "candidate_creation_state": "BLOCKED_EXECUTION_CARRIER_ABSENT",
+      "allowed_next_actions": [
+        "continue professional-source maintenance",
+        "detect qualifying project carrier",
+        "mount current IES/IALD/jurisdiction knowledge when triggered",
+        "create Candidate only after carrier qualification"
+      ],
+      "forbidden_shortcuts": [
+        "treat render as photometric evidence",
+        "treat fixture image as specification",
+        "treat installed as commissioned",
+        "invent universal illuminance/control criteria",
+        "promote domain from readiness dossier alone"
+      ],
+      "claim_ceiling": "SCOPE_VERIFIED / EXECUTION_CARRIER_ABSENT / DOMAIN_PROCESS_OPEN"
+    }
+  ],
+  "global_rule": "OPEN-domain readiness may define professional scope and candidate-entry requirements, but it may not create a professional PASS, Candidate process, Current status, project authority or project evidence.",
+  "does_not_prove": [
+    "professional process maturity",
+    "project execution",
+    "professional review",
+    "field truth",
+    "statutory approval",
+    "promotion"
+  ]
+}
