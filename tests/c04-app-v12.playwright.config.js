@@ -28,7 +28,7 @@ module.exports = defineConfig({
     }
   ],
   webServer: {
-    command: 'STATIC_ROOT=. PORT=4174 node tests/serve-static-root.mjs',
+    command: 'STATIC_ROOT=.. PORT=4174 node serve-static-root.mjs',
     url: 'http://127.0.0.1:4174',
     reuseExistingServer: true,
     timeout: 30_000
