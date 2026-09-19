@@ -62,6 +62,27 @@ def _validate_professional_candidate_mutation_manifest(candidate_record: dict, b
     if binding.get("source_revision_or_commit") != expected_source_revision:
         fail("professional-process Candidate source_revision_or_commit does not bind the exact mutation manifest")
 
+    # The mutation manifest is a frozen Candidate-evaluation snapshot.  Validate
+    # its material files against the commit that last wrote the manifest, not
+    # against the repository's present worktree.  Otherwise every later,
+    # unrelated PR becomes an accidental extension of the historical Candidate
+    # scope and CI can never advance beyond the Candidate merge.
+    try:
+        candidate_snapshot = _git_output("git", "log", "-1", "--format=%H", "--", str(manifest_ref))
+    except subprocess.CalledProcessError:
+        fail("professional-process Candidate mutation manifest snapshot commit cannot be resolved")
+    if not candidate_snapshot:
+        fail("professional-process Candidate mutation manifest has no snapshot commit")
+    try:
+        subprocess.check_call(
+            ["git", "merge-base", "--is-ancestor", baseline, candidate_snapshot],
+            cwd=ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except subprocess.CalledProcessError:
+        fail("professional-process Candidate mutation manifest snapshot is not descended from baseline")
+
     entries = manifest.get("material_files", [])
     if not entries or manifest.get("material_delta_count") != len(entries):
         fail("professional-process Candidate mutation manifest material file count drift")
@@ -71,24 +92,19 @@ def _validate_professional_candidate_mutation_manifest(candidate_record: dict, b
         if not rel or rel in manifest_paths:
             fail("professional-process Candidate mutation manifest has empty/duplicate path")
         manifest_paths.append(rel)
-        path = ROOT / rel
-        if not path.is_file():
-            fail(f"professional-process Candidate manifest file missing: {rel}")
-        if rel in set(filter(None, _git_output("git", "diff", "--name-only", "--", rel).splitlines())):
-            fail(f"professional-process Candidate manifest material file has unstaged drift: {rel}")
         try:
-            actual_git_blob = _git_output("git", "rev-parse", f":{rel}")
+            actual_git_blob = _git_output("git", "rev-parse", f"{candidate_snapshot}:{rel}")
             canonical_blob_bytes = subprocess.check_output(
                 ["git", "cat-file", "blob", actual_git_blob], cwd=ROOT
             )
         except subprocess.CalledProcessError:
-            fail(f"professional-process Candidate manifest material file is not staged/tracked: {rel}")
+            fail(f"professional-process Candidate manifest file missing from frozen snapshot: {rel}")
         if actual_git_blob != entry.get("git_blob"):
-            fail(f"professional-process Candidate manifest Git blob stale: {rel}")
+            fail(f"professional-process Candidate manifest Git blob stale at frozen snapshot: {rel}")
         if hashlib.sha256(canonical_blob_bytes).hexdigest() != entry.get("sha256"):
-            fail(f"professional-process Candidate manifest SHA256 stale: {rel}")
+            fail(f"professional-process Candidate manifest SHA256 stale at frozen snapshot: {rel}")
         if len(canonical_blob_bytes) != entry.get("bytes"):
-            fail(f"professional-process Candidate manifest byte count stale: {rel}")
+            fail(f"professional-process Candidate manifest byte count stale at frozen snapshot: {rel}")
 
     scope_exclusion_prefixes = manifest.get("scope_exclusion_prefixes", [])
     if not isinstance(scope_exclusion_prefixes, list) or any(
@@ -114,24 +130,26 @@ def _validate_professional_candidate_mutation_manifest(candidate_record: dict, b
     if manifest.get("manifest_content_fingerprint_sha256") != fingerprint:
         fail("professional-process Candidate mutation manifest fingerprint drift")
 
-    current_changed = set(
-        filter(None, _git_output("git", "diff", "--name-only", baseline, "--").splitlines())
+    snapshot_changed = set(
+        filter(
+            None,
+            _git_output(
+                "git", "diff", "--name-only", baseline, candidate_snapshot, "--"
+            ).splitlines(),
+        )
     )
-    current_untracked = set(
-        filter(None, _git_output("git", "ls-files", "--others", "--exclude-standard").splitlines())
-    )
-    current_material = (current_changed | current_untracked) - {str(manifest_ref)}
-    current_material = {
+    snapshot_material = snapshot_changed - {str(manifest_ref)}
+    snapshot_material = {
         rel
-        for rel in current_material
+        for rel in snapshot_material
         if not any(rel.startswith(prefix) for prefix in scope_exclusion_prefixes)
     }
-    if current_material != set(manifest_paths):
-        missing = sorted(current_material - set(manifest_paths))
-        stale = sorted(set(manifest_paths) - current_material)
+    if snapshot_material != set(manifest_paths):
+        missing = sorted(snapshot_material - set(manifest_paths))
+        stale = sorted(set(manifest_paths) - snapshot_material)
         fail(
-            "professional-process Candidate mutation manifest scope drift: "
-            f"unlisted_current={missing} stale_manifest_entries={stale}"
+            "professional-process Candidate mutation manifest frozen-snapshot scope drift: "
+            f"unlisted_snapshot={missing} stale_manifest_entries={stale}"
         )
 
     for assertion in manifest.get("unchanged_current_professional_machine_assertions", []):
@@ -139,10 +157,13 @@ def _validate_professional_candidate_mutation_manifest(candidate_record: dict, b
         if not rel:
             fail("professional-process Candidate manifest has malformed Current-machine assertion")
         base_blob = _git_output("git", "rev-parse", f"{baseline}:{rel}")
-        worktree_blob = _git_output("git", "hash-object", rel)
-        if assertion.get("base_git_blob") != base_blob or assertion.get("working_tree_git_blob") != worktree_blob:
+        try:
+            snapshot_blob = _git_output("git", "rev-parse", f"{candidate_snapshot}:{rel}")
+        except subprocess.CalledProcessError:
+            fail(f"professional-process Candidate Current-machine assertion missing from frozen snapshot: {rel}")
+        if assertion.get("base_git_blob") != base_blob or assertion.get("working_tree_git_blob") != snapshot_blob:
             fail(f"professional-process Candidate Current-machine assertion stale: {rel}")
-        if worktree_blob != base_blob or assertion.get("unchanged") is not True:
+        if snapshot_blob != base_blob or assertion.get("unchanged") is not True:
             fail(f"professional-process Candidate illegally mutates Current professional machine: {rel}")
     return manifest
 REQUIRED_MACHINE_DENIES = {
