@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C04-SYSENG-PROCESS-INSTANCE-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "C04-E-DIGITAL-INTERACTION",
+  "decision_object_refs": [
+    "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+    "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+    "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+    "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+  ],
+  "process_definition_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+  "process_id": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "domain": "Systems Engineering",
+  "owner": "CANDIDATE PROCESS EXERCISE / NO APPOINTED INDEPENDENT SYSTEMS ENGINEERING PROFESSIONAL PASS AUTHORITY CLAIMED",
+  "current_baseline": "main@3110c53a282a6064cdb5237229eda785267a198b + candidate Systems Engineering process definition",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "SYSTEM BOUNDARY + REQUIREMENT/ARCHITECTURE/VERIFICATION TRACE EXERCISED / INTEGRATION + VALIDATION + INDEPENDENT SE REVIEW OPEN / NO PROFESSIONAL SE PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C04-SYSENG-DP0-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP0",
+      "stage_id": "SYSENG-DP0",
+      "cycle": 1,
+      "baseline_ref": "C04_DIGITAL_COMPANION_SYSTEM_2026-09-19",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "SYSTEM_OF_INTEREST_AND_BOUNDARY_DEFINED / AUTHORITY REVIEW OPEN",
+      "inputs": [
+        "C04 Digital-Off Contract",
+        "CH11 Digital Companion",
+        "C04 v1.2 truth boundary"
+      ],
+      "outputs": [
+        "system of interest boundary",
+        "external-system list",
+        "responsibility/authority exclusions",
+        "claim ceiling"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-STATUS-OFFICIAL",
+        "IF-DIGITAL-FALLBACK",
+        "IF-BROWSER-RUNTIME",
+        "IF-HCD-VALIDATION"
+      ],
+      "evidence_refs": [
+        "C04-E-DIGITAL-OFF@6bb847ac3b8826f96f6709432e3157ce5b318a86",
+        "CH11@4b1d982701d0230f2594cb70914d399bf862030c",
+        "SYSENG-TRACE@C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No independent Systems Engineering professional review has been run.",
+        "No task/claim Systems Engineering Operational Mount is bound.",
+        "Official service, field, HCD and runtime owners remain external authorities."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "C04 system boundary and external interfaces read from current sources"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP1-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP1",
+      "stage_id": "SYSENG-DP1",
+      "cycle": 1,
+      "baseline_ref": "C04_DIGITAL_COMPANION_SYSTEM_2026-09-19",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "STAKEHOLDER_OUTCOME_AND_OPERATIONAL_SCENARIOS_FROM_DESIGN_AUTHORITY / USER VALIDATION OPEN",
+      "inputs": [
+        "CH11 Digital Companion intent",
+        "Digital-Off operational/degraded states",
+        "HCD bounded process instance"
+      ],
+      "outputs": [
+        "stakeholder outcome statement",
+        "normal/degraded/closed/unknown operating scenarios",
+        "digital-on/off operational concept",
+        "external authority assumptions"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-HCD-VALIDATION",
+        "IF-DIGITAL-FALLBACK"
+      ],
+      "evidence_refs": [
+        "CH11@4b1d982701d0230f2594cb70914d399bf862030c",
+        "C04-HCD-PROCESS@6318c3a1c2a39abd8a4329e6ee780a2e1ac18811"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Stakeholder/user outcome is design-derived; representative-user research remains HCD HOLD.",
+        "Actual operational/service scenarios are not field exercised."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "CH11 + HCD HOLD boundary"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP2-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP2",
+      "stage_id": "SYSENG-DP2",
+      "cycle": 1,
+      "baseline_ref": "C04_E_STATE_MODEL",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "CAPABILITY_FUNCTION_STATE_ARCHITECTURE_DEFINED / DOMAIN VALIDATION OPEN",
+      "inputs": [
+        "state model",
+        "digital-off contract",
+        "CH11 role model"
+      ],
+      "outputs": [
+        "capability set",
+        "function/state mapping",
+        "normal/degraded/closed/unknown model",
+        "full/light/off relation",
+        "reverse trace to digital-companion outcome"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-STATUS-OFFICIAL",
+        "IF-DIGITAL-FALLBACK"
+      ],
+      "evidence_refs": [
+        "C04-E-DIGITAL-OFF@6bb847ac3b8826f96f6709432e3157ce5b318a86",
+        "SYSENG-TRACE architecture_trace"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Capability/function architecture has not been independently reviewed by a Systems Engineering professional.",
+        "Field-service behavior remains unvalidated."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "state model and capability trace in SYSENG trace"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP3-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP3",
+      "stage_id": "SYSENG-DP3",
+      "cycle": 1,
+      "baseline_ref": "C04_DIGITAL_EXTERNAL_INTERFACE_SET",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERFACE_ARCHITECTURE_DEFINED / INTEGRATION NOT VERIFIED",
+      "inputs": [
+        "digital-off fallback owners",
+        "official service requirement",
+        "browser runtime",
+        "HCD validation boundary"
+      ],
+      "outputs": [
+        "digital↔official-service interface",
+        "digital↔physical/paper/human fallback interface",
+        "source↔browser runtime interface",
+        "prototype↔HCD validation interface"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-STATUS-OFFICIAL",
+        "IF-DIGITAL-FALLBACK",
+        "IF-BROWSER-RUNTIME",
+        "IF-HCD-VALIDATION"
+      ],
+      "evidence_refs": [
+        "SYSENG-TRACE interface_verification"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No official service interface implementation.",
+        "Physical/paper/human fallback is not field verified.",
+        "Actual browser runtime remains HOLD.",
+        "HCD validation is NOT_RUN."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "interface_verification register in SYSENG trace"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP4-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP4",
+      "stage_id": "SYSENG-DP4",
+      "cycle": 1,
+      "baseline_ref": "C04_SYSREQ_BASELINE_V0.1",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "BOUNDED REQUIREMENT BASELINE + V&V PLAN / VALIDATION OPEN",
+      "inputs": [
+        "Digital-Off Contract",
+        "CH11",
+        "APP v1.2 source/QC"
+      ],
+      "outputs": [
+        "six atomic system requirements",
+        "source/rationale/allocation mapping",
+        "verification methods/results",
+        "validation scenarios/status",
+        "reopen triggers"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-BROWSER-RUNTIME",
+        "IF-HCD-VALIDATION"
+      ],
+      "evidence_refs": [
+        "C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Requirement set is bounded to the current digital companion exercise, not claimed complete for the entire project.",
+        "Validation evidence is largely NOT_RUN.",
+        "No independent SE requirements review."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "six requirements inspected against current source/configuration"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP5-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP5",
+      "stage_id": "SYSENG-DP5",
+      "cycle": 1,
+      "baseline_ref": "C04_DIGITAL_LOGICAL_ARCHITECTURE",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "LOGICAL_ARCHITECTURE EXTRACTED / FORMAL ALTERNATIVE TRADE STUDY NOT_RUN",
+      "inputs": [
+        "capabilities",
+        "requirements",
+        "interface set",
+        "HCD experience architecture"
+      ],
+      "outputs": [
+        "TODAY/ROUTE/READ/MY BOOK/SERVICE logical elements",
+        "state/reality logic",
+        "local memory element",
+        "external fallback interfaces",
+        "requirement allocation"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-STATUS-OFFICIAL",
+        "IF-DIGITAL-FALLBACK",
+        "IF-HCD-VALIDATION"
+      ],
+      "evidence_refs": [
+        "SYSENG-TRACE architecture_trace"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No formal systems architecture alternatives/trade study was run in this bounded replay.",
+        "HCD/domain-professional validation remains controlling for user/field claims."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "logical/physical architecture extracted from current design artifacts"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP6-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP6",
+      "stage_id": "SYSENG-DP6",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "PHYSICAL REALIZATION / CONFIGURATION IDENTIFIED / INTEGRATION VERIFICATION OPEN",
+      "inputs": [
+        "portable HTML/SVG SPA",
+        "browser runtime requirement",
+        "localStorage",
+        "print fallback",
+        "external fallback allocations"
+      ],
+      "outputs": [
+        "physical realization/PBS subset",
+        "configuration identity",
+        "integration sequence",
+        "V&V allocation",
+        "change/reopen record"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-BROWSER-RUNTIME",
+        "IF-DIGITAL-FALLBACK"
+      ],
+      "evidence_refs": [
+        "APP-v1.2@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+        "SYSENG-TRACE configuration_change_reopen"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Actual browser runtime is not verified.",
+        "External fallback system is not integrated/field verified.",
+        "No PDR or independent SE review is claimed."
+      ],
+      "stale_scope": [],
+      "reopen_events": [
+        "C04-APP-CHANGE-V1-TO-V1_2"
+      ],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "v1→v1.2 change-impact/reverify path"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP7-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP7",
+      "stage_id": "SYSENG-DP7",
+      "cycle": 1,
+      "baseline_ref": "APP_GAME_MAP_v1.2",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "PARTIAL REQUIREMENT VERIFICATION / INTEGRATION + VALIDATION BLOCKED",
+      "inputs": [
+        "v1.2 implementation",
+        "QC readback",
+        "requirement trace",
+        "interface register",
+        "HCD HOLD instance"
+      ],
+      "outputs": [
+        "requirement verification results",
+        "validation scenario plan/results",
+        "integration/interface verification register",
+        "residual open items"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [
+        "IF-STATUS-OFFICIAL",
+        "IF-DIGITAL-FALLBACK",
+        "IF-BROWSER-RUNTIME",
+        "IF-HCD-VALIDATION"
+      ],
+      "evidence_refs": [
+        "APP-QC-v1.2@636cc9024a545d792fc0a5f13f24af1be47a4593",
+        "C04-HCD-PROCESS@6318c3a1c2a39abd8a4329e6ee780a2e1ac18811",
+        "C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "C04-SYSREQ-002 integrated physical/paper/human fallback verification remains HOLD.",
+        "C04-SYSREQ-006 actual browser/runtime verification remains HOLD.",
+        "No system validation scenario has PASS evidence.",
+        "No integrated interface has VERIFIED maturity.",
+        "Independent Systems Engineering professional review NOT_RUN."
+      ],
+      "stale_scope": [],
+      "reopen_events": [
+        "C04-APP-CHANGE-V1-TO-V1_2"
+      ],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "4/6 requirements verified at current bounded source/static ceiling",
+        "2/6 requirements HOLD",
+        "0 validation PASS",
+        "actual_live_browser HOLD"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-SYSENG-DP8-001",
+      "stage_definition_ref": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS@1.0-CANDIDATE#SYSENG-DP8",
+      "stage_id": "SYSENG-DP8",
+      "cycle": 1,
+      "baseline_ref": "NO_LIVE_OPERATION",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO OPERATIONS/SUPPORT/RETIREMENT CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No live operational performance evidence.",
+        "No support/maintenance/configuration-in-operation evidence.",
+        "No retirement/decommissioning scope."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    }
+  ],
+  "active_interface_refs": [
+    "IF-STATUS-OFFICIAL",
+    "IF-DIGITAL-FALLBACK",
+    "IF-BROWSER-RUNTIME",
+    "IF-HCD-VALIDATION"
+  ],
+  "open_items": [
+    "Systems Engineering professional process remains Candidate and Current Architecture Map remains DOMAIN PROCESS OPEN.",
+    "No independent Systems Engineering professional review.",
+    "No task/claim Systems Engineering knowledge mount.",
+    "Integrated physical/paper/human fallback not field verified.",
+    "Actual browser/runtime verification HOLD.",
+    "System validation/user context evidence NOT_RUN.",
+    "No live operations/support evidence."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [
+    "C04-APP-CHANGE-V1-TO-V1_2"
+  ],
+  "last_updated": "2026-09-19"
+}
