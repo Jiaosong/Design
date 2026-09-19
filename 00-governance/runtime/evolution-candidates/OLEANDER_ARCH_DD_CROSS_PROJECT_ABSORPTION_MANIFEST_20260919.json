@@ -1,6 +1,5 @@
 {
-  "receipt_id": "EXR-20260919-ARCH-DD-CROSS-PROJECT-ABSORPTION",
-  "status": "CANDIDATE_MATERIAL_DELTA_READY_FOR_PR",
+  "status": "CANDIDATE_MATERIAL_DELTA_PR_OPEN_CI_REPAIR_READY",
   "baseline_main": "e59b87a3698dd4f68f09dc9ed198815a46f12921",
   "source_context": {
     "source_worktree": "D:/Desgin",
@@ -29,13 +28,17 @@
     "unittest_count": 41,
     "unittest_result": "PASS",
     "json_parse": "PASS",
-    "diff_check": "PASS_AFTER_TRAILING_WHITESPACE_NORMALIZATION",
+    "diff_check": "PASS",
     "schema_no_loss": {
       "architecture_main_only_properties": 0,
       "design_quality_main_only_properties": 0
     },
     "canonical_old_route_present": false,
-    "mojibake_detected": false
+    "mojibake_detected": false,
+    "specialized_unittest": "41/41 PASS",
+    "control_plane_unittest": "111/111 PASS",
+    "execution_contract_validation": "PASS",
+    "manifest_namespace": "EVOLUTION_CANDIDATE_PROVENANCE_NOT_EXECUTION_RECEIPT"
   },
   "claim_boundary": [
     "Artifact existence != Design quality",
@@ -82,8 +85,8 @@
     },
     {
       "path": "00-governance/schemas/validate_design_development_receipts.py",
-      "bytes": 46717,
-      "sha256": "e6401074b2e6418f5d8ba8bff0eaa8b3535b1b06ce605b9e0300122effd0404f"
+      "bytes": 47712,
+      "sha256": "61a0eee6938cc2977267e83ce19be13b1d65aed78531a320f9bab32fd54cbbc3"
     },
     {
       "path": "oleander-skills/oleander-story-and-board/ARCHITECTURAL_PORTFOLIO_PUBLICATION_EXTENSION.md",
@@ -101,5 +104,7 @@
       "sha256": "b664a3b1d289b4fbf9326db9814a3adfcb84c032665d32fb5748dc6d13fdcbe0"
     }
   ],
-  "material_file_count": 11
+  "material_file_count": 11,
+  "manifest_id": "OLEANDER-ARCH-DD-CROSS-PROJECT-ABSORPTION-20260919",
+  "provenance_class": "ABSORPTION_MUTATION_MANIFEST_NOT_EXECUTION_RECEIPT"
 }

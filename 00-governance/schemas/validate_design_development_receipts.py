@@ -472,6 +472,29 @@ def validate_design_quality(
                 errors.append("DQ5 cross_context_validation requires does_not_prove boundary")
 
     if strict_current_emission:
+        # v1.1 emits bounded Design-review dispositions, not workflow progress
+        # states. Keep this explicit in the stdlib validator as well as the
+        # JSON Schema so behavior is identical when jsonschema is unavailable.
+        strict_state_fields = (
+            "design_language_state",
+            "experience_state",
+            "human_relation_state",
+            "sensory_state",
+            "detail_craft_state",
+            "adaptation_state",
+            "meaning_memory_state",
+            "coherence_state",
+            "content_projection_state",
+        )
+        legacy_workflow_states = {"OPEN", "IN_PROGRESS"}
+        for field in strict_state_fields:
+            state = payload.get(field)
+            if state in legacy_workflow_states:
+                errors.append(
+                    f"schema_version 1.1: {field} cannot use legacy workflow state {state!r}; "
+                    "use KEEP/REVISE/REJECT/HOLD or NOT_APPLICABLE_WITH_REASON"
+                )
+
         triggered = set(payload.get("triggered_design_dimensions") or [])
         for dimension, field in {
             "DD-05_HUMAN_RELATION": "human_relation_state",
