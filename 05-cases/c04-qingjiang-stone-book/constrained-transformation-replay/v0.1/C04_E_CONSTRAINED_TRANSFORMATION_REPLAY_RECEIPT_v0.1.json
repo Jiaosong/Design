@@ -1,0 +1,125 @@
+{
+  "schema_version": "c04-constrained-transformation-replay-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "replay_id": "C04-E-CTR-REPLAY-001",
+  "extension": "oleander-skills/oleander-design-process/CONSTRAINED_TRANSFORMATION_EXTENSION.md",
+  "state": "BOUNDED_RETROSPECTIVE_REPLAY / SUPPORT_ONLY / CURRENT_NOT_REOPENED / NO_PROMOTION",
+  "purpose": "Record a real constrained-transformation replay against the mature C04 digital companion without redesigning E or mutating Current authority.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob_sha": "6bb847ac3b8826f96f6709432e3157ce5b318a86"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+      "blob_sha": "c918d18c6e0b63ca06cae482c5f7a0cd314dc9d8"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+      "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+      "blob_sha": "4b1d982701d0230f2594cb70914d399bf862030c"
+    }
+  ],
+  "replay_artifacts": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/constrained-transformation-replay/v0.1/C04_E_CONSTRAINED_TRANSFORMATION_REPLAY_v0.1.json",
+      "blob_sha": "919022e8c5f598d899d04d707e2f7ce1fb069ae2",
+      "role": "MACHINE_READABLE_CONSTRAINT_WORLD_AND_TRANSFORMATIONS"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/constrained-transformation-replay/v0.1/C04_E_CONSTRAINED_TRANSFORMATION_MATCHED_v0.1.svg",
+      "blob_sha": "606fc23334158e845097b4f5d275483ccf78c155",
+      "role": "EDITABLE_MATCHED_FIDELITY_SCHEMATIC"
+    }
+  ],
+  "transform_summary": {
+    "operator_runs": 5,
+    "retained_new_structural_candidates": 1,
+    "rejected_transformations": 2,
+    "baseline_reconstructions": [
+      {
+        "id": "CTR-04",
+        "finding": "ROUTE carrying return-purpose mode reuses one map truth instead of duplicating authority"
+      },
+      {
+        "id": "CTR-05",
+        "finding": "route/return independence from content completion is a valid dependency-breaking move already present in Current"
+      }
+    ],
+    "retained_candidate": {
+      "id": "CTR-A",
+      "family": "READLESS_CONTEXTUAL_REVEAL",
+      "disposition": "HOLD",
+      "material_delta": "remove top-level READ; retain optional reading through contextual scene/route entry"
+    },
+    "rejected": [
+      {
+        "id": "CTR-02",
+        "reason": "duplicated route/return truth surfaces and synchronization burden"
+      },
+      {
+        "id": "CTR-03",
+        "reason": "protected-axis collapse between reality state and content intensity"
+      }
+    ]
+  },
+  "readback": {
+    "first_render": {
+      "result": "FAIL",
+      "defect": "SVG XML parse failed because subtitle contained an unescaped ampersand.",
+      "repair": "Replace raw '&' with '&amp;' in the editable SVG source.",
+      "disposition": "REPAIR_AND_RERENDER"
+    },
+    "second_render": {
+      "result": "PASS_SUPPORT",
+      "renderer": "CairoSVG local render",
+      "dimensions": [
+        1800,
+        1120
+      ],
+      "png_bytes": 116004,
+      "png_sha256": "a342613a99fd939f79c4e9c7668921dc062772e782b020d4e7e8572111a64ad6",
+      "findings": [
+        "Current and CTR-A are shown at comparable IA/state schematic fidelity.",
+        "Retained alternative and rejected transformations are visually distinguishable by structural relation rather than decorative styling.",
+        "Protected invariants and rejection reasons remain readable at whole-view scale.",
+        "No clipping or panel overlap was observed after the XML repair."
+      ],
+      "boundary": "Visual/readability support only; does not prove usability, accessibility, runtime behavior, field status or design superiority."
+    }
+  },
+  "current_disposition": {
+    "result": "KEEP_CURRENT_AUTHORITY",
+    "rationale": [
+      "Replay is retrospective and non-blind.",
+      "CTR-A is a genuine structural IA alternative but lacks representative-user evidence.",
+      "CTR-02 and CTR-03 were rejected by protected-invariant attacks before any selection claim.",
+      "Current reconstruction patterns are not double-counted as new concepts."
+    ]
+  },
+  "professional_and_runtime_boundary": {
+    "HCD_usability": "NOT_RUN",
+    "accessibility": "NOT_RUN",
+    "actual_live_browser": "HOLD_ENVIRONMENT_ADMIN_BLOCK",
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO"
+  },
+  "method_findings": [
+    "Constrained transformation can add structural option diversity inside a mature object without reopening unrelated field/source authority.",
+    "Operator application is not equivalent to candidate generation; invalid and baseline-reconstructing moves remain separately classified.",
+    "Protected invariants reject superficially simpler or more prominent configurations when they duplicate truth or collapse required state axes.",
+    "External/context variables remain evidence/authority-bound instead of being free brainstorming inputs.",
+    "Actual artifact readback caught and repaired a real SVG-source defect before maturity was recorded."
+  ],
+  "maturity": "ONE REAL PROJECT RETROSPECTIVE REPLAY / ONE RETAINED STRUCTURAL ALTERNATIVE / TWO PROTECTED-INVARIANT REJECTIONS / MATCHED EDITABLE ARTIFACT + ACTUAL RENDER READBACK / HCD + RUNTIME + FIELD EVIDENCE OPEN / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION",
+  "claim_ceiling": "METHOD REPLAY AND STRUCTURAL OPTION-SPACE SUPPORT ONLY / CURRENT NOT REOPENED / NO USER TEST / NO RUNTIME PASS / NO FIELD PASS / NO PROMOTION"
+}
