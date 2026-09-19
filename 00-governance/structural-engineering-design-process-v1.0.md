@@ -889,3 +889,278 @@ CURRENT STRUCTURAL CLAIM
 ```
 
 Anything less may still be useful design evidence, but it must not be promoted as a stronger structural-engineering claim.
+
+
+---
+
+## Practitioner object contracts｜执业对象合同层
+
+Machine carrier: `00-governance/schemas/structural-engineering-design-process.v1.json`
+
+The earlier execution-depth object lists are an index only. The objects below are the field-level practitioner contracts used to make Structural Engineering executable at professional depth. The machine carrier is authoritative for validation; this prose mirrors the same substance for human review.
+
+A named register/schedule/model is not considered sufficient unless its source, required fields, owner, revision identity, release/readback, HOLD and reopen semantics are all resolved.
+
+### STR-OBJ-01｜Basis of Structural Design / Design Criteria Record
+
+- **Parity dimension:** `PROFESSIONAL_PROBLEM_AND_JUDGMENT`
+- **Stage refs:** `SE-SPW0`, `SE-SPW1`, `SE-SPW2`
+- **Professional purpose:** Define structural performance, design situations, actions, materials, robustness/serviceability/fire/durability assumptions and responsibility basis for structural decisions.
+- **Native source of truth:** Current structural brief + applicable codes/standards + geotechnical/site/architectural authority.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Architecture; Geotechnical; Fire Engineering; Temporary Works where applicable
+- **Revision identity:** basis_id + criteria/source revision + structural baseline revision
+- **Required record fields:** `basis_id`, `structure_scope`, `design_life_or_project_basis`, `design_situations`, `actions_and_combinations_basis`, `material_systems`, `serviceability_criteria`, `robustness_and_disproportionate_collapse_basis`, `fire_durability_basis`, `geotechnical_basis`, `temporary_stage_dependencies`, `interfaces`, `assumptions`, `open_items`, `owner`, `checker`
+- **Release / retention rule:** Retain only when controlling criteria/sources and consequential assumptions are explicit; unresolved inputs cap downstream claims.
+- **Required readback:**
+  - criteria/source readback
+  - load/action basis trace
+  - interface assumption attack
+- **Failure / HOLD conditions:**
+  - design criteria inferred from precedent
+  - geotechnical/site input absent but treated final
+  - temporary/construction state ignored where material
+- **Reopen triggers:**
+  - code/standard change
+  - brief/use/load change
+  - geotechnical change
+  - architecture/grid change
+  - construction method change
+- **Downstream handoffs:** SE-SPW2 options; analysis/calculation baseline; member/connection/foundation design
+- **Independent review:** Independent checker must review the governing basis proportionate to consequence before final structural reliance.
+- **Does not prove:** code approval; geotechnical PASS; construction-stage safety approval
+
+### STR-OBJ-02｜Analysis / Calculation Assumption & Baseline Register
+
+- **Parity dimension:** `ASSUMPTION_UNCERTAINTY`
+- **Stage refs:** `SE-SPW2`, `SE-SPW3`, `SE-SPW4`
+- **Professional purpose:** Control analytical model assumptions, idealisations, boundary conditions, stiffness/load paths and calculation revisions.
+- **Native source of truth:** Owner-native calculation/model sources + Basis of Structural Design + current geometry/material inputs.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Analysis specialist; Geotechnical; Architecture
+- **Revision identity:** analysis_id + exact model/calculation revision/hash + input baseline
+- **Required record fields:** `analysis_id`, `model_or_calc_ref`, `revision`, `purpose`, `geometry_source`, `material_properties_source`, `supports_boundary_conditions`, `loads_combinations`, `stiffness_release_idealisation`, `second_order_or_nonlin_basis`, `imperfection_basis`, `sensitivity_or_handcheck`, `assumptions`, `limitations`, `checker`, `status`
+- **Release / retention rule:** No final member/connection/foundation release may rely on an analysis whose consequential assumptions or source geometry are stale/unread.
+- **Required readback:**
+  - model input audit
+  - equilibrium/load-path sanity check
+  - independent hand/sensitivity check appropriate to risk
+  - result ↔ member/detail trace
+- **Failure / HOLD conditions:**
+  - wrong geometry/load revision
+  - unstated support idealisation
+  - solver convergence/result accepted without engineering check
+  - local model used beyond validity
+- **Reopen triggers:**
+  - geometry/load/material/support change
+  - analysis method change
+  - field/nonconformity change
+  - review contradiction
+- **Downstream handoffs:** design packages; release schedule; checking record
+- **Independent review:** Independent structural checker must inspect inputs/assumptions and representative critical outputs, not only final ratios.
+- **Does not prove:** structural adequacy beyond analysed scope; construction conformity; geotechnical validity
+
+### STR-OBJ-03｜Structural System / Load-path Option Study
+
+- **Parity dimension:** `OPTION_COMPARISON`
+- **Stage refs:** `SE-SPW2`
+- **Professional purpose:** Compare materially different structural systems, stability strategies, spans/grids, materials and foundation concepts under common criteria.
+- **Native source of truth:** Editable structural option diagrams/models/calculations tied to same architectural/site/BOSD baseline.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Architecture; Geotechnical; MEP; Cost/Construction
+- **Revision identity:** option_id + common basis revision + option source revision
+- **Required record fields:** `option_id`, `system_family`, `gravity_load_path`, `lateral_stability`, `grid_span_depth`, `material_system`, `foundation_strategy`, `movement_robustness`, `construction_sequence_implication`, `MEP_architecture_consequence`, `carbon_cost_programme_consequence`, `critical_risks`, `required_tests`, `retained_rejected_reason`
+- **Release / retention rule:** Selection requires explicit load-path/stability/foundation logic; optimization score or member tonnage alone cannot select the system.
+- **Required readback:**
+  - load-path diagram readback
+  - representative order-of-magnitude checks
+  - spatial coordination consequence comparison
+- **Failure / HOLD conditions:**
+  - same system with member-size variants counted as families
+  - stability path omitted
+  - foundation consequence ignored
+  - unsupported precision in early option
+- **Reopen triggers:**
+  - architecture/grid/span change
+  - geotechnical change
+  - material/procurement change
+  - new robustness/fire requirement
+- **Downstream handoffs:** SE-SPW3 coordination; Architecture; MEP; Geotechnical
+- **Independent review:** Independent review must attack the selected system's governing stability/load-path/foundation assumptions and compare strongest alternative.
+- **Does not prove:** final analysis PASS; fabrication readiness; code/statutory approval
+
+### STR-OBJ-04｜Controlled Structural Analysis / Drawing / Design Package
+
+- **Parity dimension:** `NATIVE_WORK`
+- **Stage refs:** `SE-SPW3`, `SE-SPW4`, `SE-SPW4.5`
+- **Professional purpose:** Carry the actual structural design through coordinated models, calculations, drawings, schedules and details with traceable input/output identity.
+- **Native source of truth:** Controlled structural analysis/calculation models + drawings/BIM/details/specifications.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** BIM/CAD; Connection specialist; Geotechnical; Architecture
+- **Revision identity:** package_id + exact native model/calculation/drawing revision
+- **Required record fields:** `package_id`, `analysis_refs`, `calculation_refs`, `drawing_model_refs`, `member_schedule_refs`, `connection_detail_refs`, `foundation_refs`, `grid_level_source`, `material_grade_refs`, `load_case_refs`, `interface_refs`, `revision`, `author`, `checker`, `issue_status`
+- **Release / retention rule:** Downstream use requires coordinated calculation/model/drawing identity; extracted PDFs do not replace native analytical/design sources.
+- **Required readback:**
+  - analysis ↔ drawing/member schedule trace
+  - critical connection/foundation detail readback
+  - grid/level/interface consistency
+- **Failure / HOLD conditions:**
+  - analysis and drawing revisions diverge
+  - member schedule not tied to calc
+  - connection load not traceable
+  - foundation assumption stale
+- **Reopen triggers:**
+  - analysis revision
+  - architecture/grid/level change
+  - material/connection/foundation change
+  - field deviation
+- **Downstream handoffs:** fabrication/shop drawing; construction; record structure
+- **Independent review:** Independent checker reviews exact controlled package or bounded subset with explicit limits.
+- **Does not prove:** fabrication conformity; site installation; temporary works adequacy unless included
+
+### STR-OBJ-05｜Member / Connection / Foundation Release & Specialist Submittal Register
+
+- **Parity dimension:** `RELEASE_CONTROL`
+- **Stage refs:** `SE-SPW4`, `SE-SPW4.5`
+- **Professional purpose:** Control which structural elements/details/specialist designs are sufficiently checked and coordinated for downstream manufacture/construction reliance.
+- **Native source of truth:** Current structural design package + checked specialist/fabrication/submittal information.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Fabricator/Specialist designer; Independent checker; Architecture; MEP
+- **Revision identity:** release_id + exact design/submittal revision
+- **Required record fields:** `release_id`, `element_or_scope`, `design_action_demand_ref`, `native_design_ref`, `specialist_submittal_ref`, `revision`, `checking_class_or_plan_ref`, `interfaces`, `review_comments`, `conditions`, `release_authority`, `release_state`, `supersedes`, `downstream_receiver`
+- **Release / retention rule:** Release cannot exceed checked scope; conditional release retains open conditions and may not imply whole-structure approval.
+- **Required readback:**
+  - submittal ↔ design load/geometry/material comparison
+  - checker disposition readback
+  - downstream revision acknowledgement
+- **Failure / HOLD conditions:**
+  - shop drawing accepted against stale design
+  - connection load unavailable
+  - conditional item treated closed
+  - different revision fabricated
+- **Reopen triggers:**
+  - design change
+  - fabricator proposal
+  - RFI
+  - material/substitution
+  - interface change
+- **Downstream handoffs:** fabrication; construction; inspection/test
+- **Independent review:** Independent checking per declared structural assurance plan and consequence class.
+- **Does not prove:** fabrication workmanship; site installation conformity; statutory approval
+
+### STR-OBJ-06｜Inspection / Test / Material / Field Nonconformity Register
+
+- **Parity dimension:** `IMPLEMENTATION_FIELD`
+- **Stage refs:** `SE-SPW5`
+- **Professional purpose:** Bind observed/tested construction evidence, material certification, nonconformities and field changes to the exact structural design scope.
+- **Native source of truth:** ITP/test/material/site evidence + issued structural information.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Contractor; Fabricator; Testing laboratory; Site inspector; Independent checker
+- **Revision identity:** field_item_id + exact element/location + design revision + evidence date
+- **Required record fields:** `field_item_id`, `element_location`, `inspection_or_test_type`, `date`, `issued_design_ref`, `material_heat_batch_or_product_ref`, `measured_test_result`, `acceptance_basis`, `nonconformity`, `engineering_assessment`, `disposition`, `repair_or_retest`, `affected_design_refs`, `owner`, `closure_evidence`
+- **Release / retention rule:** Observed/tested evidence closes only the inspected/tested scope; material field changes require design/calculation/readback updates.
+- **Required readback:**
+  - test certificate/result audit
+  - field condition ↔ design detail
+  - repair/retest readback
+- **Failure / HOLD conditions:**
+  - test result without sample/location trace
+  - site photo generalized to all work
+  - repair not rechecked
+  - field change not fed back to model/drawing
+- **Reopen triggers:**
+  - failed test
+  - nonconformity
+  - material substitution
+  - site geometry deviation
+  - construction-stage condition change
+- **Downstream handoffs:** closeout/as-constructed; future monitoring
+- **Independent review:** Independent/specialist witness required when stated by assurance/ITP/statutory/contractual basis.
+- **Does not prove:** uninspected work; hidden work conformity; whole-structure PASS
+
+### STR-OBJ-07｜Structural Closeout / Residual Risk / Monitoring Register
+
+- **Parity dimension:** `HANDOVER_INUSE`
+- **Stage refs:** `SE-SPW6`, `SE-SPW7`
+- **Professional purpose:** Transfer as-constructed structural information, residual risks, inspection/maintenance/monitoring requirements and future-change constraints.
+- **Native source of truth:** Accepted as-constructed structural records + unresolved items + monitoring/use evidence.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Operations/FM; Client; Contractor; Monitoring specialist
+- **Revision identity:** closeout_id + as-constructed baseline revision
+- **Required record fields:** `closeout_id`, `structure_scope`, `as_constructed_refs`, `material_and_product_refs`, `residual_risks`, `load_or_use_constraints`, `inspection_maintenance_requirements`, `monitoring_points_and_baseline`, `open_items`, `owner`, `future_change_restrictions`, `inuse_observations`, `closure_state`
+- **Release / retention rule:** Handover must distinguish design intent, accepted as-constructed information and unverified field conditions; monitoring criteria remain configuration-specific.
+- **Required readback:**
+  - as-constructed ↔ design baseline comparison
+  - open-item closure
+  - monitoring baseline/result readback where claimed
+- **Failure / HOLD conditions:**
+  - design drawings mislabeled as record
+  - residual risk omitted
+  - future penetration/load change not controlled
+  - monitoring result without baseline/configuration
+- **Reopen triggers:**
+  - future loading/change
+  - damage/incident
+  - monitoring threshold
+  - alteration/penetration
+  - new inspection evidence
+- **Downstream handoffs:** Operations/FM; future structural engineer; G9 bounded learning
+- **Independent review:** Independent closeout/checking review when required by assurance plan or consequence.
+- **Does not prove:** future performance; all hidden construction conformity; fitness for unassessed future change
+
+### STR-OBJ-08｜Structural Design Assurance / Independent Check Record
+
+- **Parity dimension:** `INDEPENDENT_REVIEW`
+- **Stage refs:** `SE-SPW1`, `SE-SPW4`, `SE-SPW4.5`, `SE-SPW5`
+- **Professional purpose:** Provide risk-proportionate independent checking of basis, analysis, design, details and material changes on exact baselines.
+- **Native source of truth:** Structural assurance/checking plan + controlled design/calculation/submittal/field evidence.
+- **Decision owner:** Independent Structural checker
+- **Contributor / specialist refs:** Structural professional owner; Specialist reviewers
+- **Revision identity:** check_id + exact checked baseline revision
+- **Required record fields:** `check_id`, `check_scope`, `consequence_or_check_basis`, `reviewer_independence`, `baseline_refs`, `methods`, `critical_elements`, `independent_calculation_or_review_refs`, `findings`, `severity`, `repair_required`, `recheck_refs`, `verdict`, `claim_ceiling`
+- **Release / retention rule:** Check applies only to declared scope/revision; material changes stale affected check conclusions.
+- **Required readback:**
+  - independent calc/review readback
+  - critical load-path/stability/detail attack
+  - repair/recheck evidence
+- **Failure / HOLD conditions:**
+  - checker not independent where required
+  - review only final utilization ratios
+  - changed baseline not rechecked
+  - major contradiction unresolved
+- **Reopen triggers:**
+  - design/calculation/detail change
+  - new field evidence
+  - material/nonconformity
+  - load/criteria change
+- **Downstream handoffs:** release register; professional receipt
+- **Independent review:** Reviewer independence and method must be proportionate to consequence/risk and declared in the assurance plan.
+- **Does not prove:** construction conformity; statutory approval; Design KEEP
+
+### STR-OBJ-09｜Structural Change / Reanalysis / Reverification Ledger
+
+- **Parity dimension:** `CHANGE_PROPAGATION`
+- **Stage refs:** `CROSS_STAGE`
+- **Professional purpose:** Propagate structural changes to affected calculations, models, drawings, releases, checks and field evidence.
+- **Native source of truth:** Controlled change event + dependency links from structural models/design packages/releases.
+- **Decision owner:** Structural Engineering professional owner
+- **Contributor / specialist refs:** Architecture; MEP; Geotechnical; Fabricator/Contractor; Independent checker
+- **Revision identity:** change_id + source revision
+- **Required record fields:** `change_id`, `trigger`, `changed_parameter_or_object`, `old_revision`, `new_revision`, `affected_load_paths`, `affected_analysis_models`, `affected_members_connections_foundations`, `affected_drawings_schedules`, `affected_interfaces`, `affected_checks_releases`, `required_reanalysis`, `required_reinspection_or_retest`, `owner`, `closure`
+- **Release / retention rule:** No closure until affected analytical/design/release/check scopes are re-established or explicitly retained by evidence.
+- **Required readback:**
+  - dependency impact trace
+  - reanalysis/recheck readback
+  - affected submittal/field notification
+- **Failure / HOLD conditions:**
+  - change recorded only in drawing
+  - calculation not reopened
+  - released fabrication not assessed
+  - inspection/test applicability assumed unchanged
+- **Reopen triggers:**
+  - any material geometry/load/material/support/connection/foundation/site change
+- **Downstream handoffs:** all affected structural stages/interfaces
+- **Independent review:** Independent checker involvement when changed scope falls within prior independent-check basis.
+- **Does not prove:** unaffected scope invalidation; automatic adequacy after change
+
+The practitioner-object layer does not change this domain's Current/Candidate authority status and does not by itself prove project execution or professional PASS.
