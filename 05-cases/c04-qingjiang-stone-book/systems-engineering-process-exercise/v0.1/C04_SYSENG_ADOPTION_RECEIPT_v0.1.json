@@ -1,0 +1,118 @@
+{
+  "schema_version": "c04-syseng-adoption-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "process_id": "OLEANDER-SYSTEMS-ENGINEERING-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "state": "CANDIDATE PROCESS ADOPTION / PROJECT EXERCISED / BLOCKED-HOLD / NOT CURRENT / NO PROMOTION",
+  "purpose": "Provide project-level adoption evidence for the existing Systems Engineering Candidate process using the C04 Digital Companion system without collapsing verification into validation or Systems Engineering into domain-professional authority.",
+  "bindings": [
+    {
+      "path": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+      "blob_sha": "dafddd0738d00f94dec1bd25a4770a95868519c8",
+      "role": "CANDIDATE_PROCESS_PROSE"
+    },
+    {
+      "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+      "blob_sha": "7fe4a4e3802e2e189df2d3868f6ecbc027d2ee5c",
+      "role": "MACHINE_PROCESS_DEFINITION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json",
+      "blob_sha": "e4eab9a5ad1df18fe2e545e046ab90c7db239aa4",
+      "role": "REQUIREMENT_ARCHITECTURE_VV_TRACE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "a3465fd5ff9cd7ea634808d0e31a8b76159fba0c",
+      "role": "DOMAIN_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.svg",
+      "blob_sha": "c3e672925eea1e27b6f350ed7de5d7793b4602df",
+      "role": "EDITABLE_REQUIREMENT_VV_MATRIX"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_validate_syseng_trace_v0_1.py",
+      "blob_sha": "44319a539999d5f200db252f732123815c2a0af7",
+      "role": "PROJECT_TRACE_CONSISTENCY_VALIDATOR"
+    },
+    {
+      "path": "oleander-skills/training/2026-09-19_systems-engineering-c04-adoption.md",
+      "blob_sha": "772b4f06dd77fc999da35687cedac732eeb0239c",
+      "role": "ADOPTION_PROVENANCE"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "0b9e6de5e4257d0464a8542e2e23219c46fc885e",
+      "role": "AIG02_SYSTEMS_ENGINEERING_FAILURE_REGRESSION"
+    },
+    {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "blob_sha": "a25a41944ea094561f71bf251c7e91ea6685e6af",
+      "role": "CI_BINDING"
+    }
+  ],
+  "adoption_evidence": {
+    "system_of_interest_defined": true,
+    "requirement_architecture_trace_exercised": true,
+    "requirement_count": 6,
+    "bounded_verification_pass": 4,
+    "verification_hold": 2,
+    "validation_pass": 0,
+    "validation_not_run": 5,
+    "validation_not_applicable": 1,
+    "interface_failure_or_hold_preserved": true,
+    "integrated_interface_verified_count": 0,
+    "configuration_change_reopen_exercised": true,
+    "independent_systems_engineering_review": "NOT_RUN"
+  },
+  "preserved_failures": [
+    "IF-BROWSER-RUNTIME = BLOCKED",
+    "IF-HCD-VALIDATION = NOT_RUN",
+    "IF-DIGITAL-FALLBACK = DEFINED / NOT_FIELD_VERIFIED",
+    "SYSENG-DP7 = BLOCKED / HOLD",
+    "SYSENG-DP8 = NOT_STARTED / NOT_RUN"
+  ],
+  "regression": {
+    "existing": [
+      "FAIL-043",
+      "FAIL-044"
+    ],
+    "added": [
+      "FAIL-049",
+      "FAIL-050",
+      "FAIL-051"
+    ],
+    "meanings": [
+      "verification/validation collapse",
+      "Systems Engineering as domain super-authority",
+      "wrong configuration reused for verification",
+      "component/subsystem PASS promoted to integrated-system PASS",
+      "orphan requirement enters baseline"
+    ]
+  },
+  "configuration_change_evidence": {
+    "change_id": "C04-APP-CHANGE-V1-TO-V1_2",
+    "affected_requirements": [
+      "C04-SYSREQ-002",
+      "C04-SYSREQ-005",
+      "C04-SYSREQ-006"
+    ],
+    "result": "BOUNDED REVERIFY PATH EXERCISED / ACTUAL BROWSER VERIFICATION REMAINS HOLD",
+    "does_not_prove": "Predecessor v1.1 runtime defect was independently reproduced; v1.2 README documents the binding fix but the reviewed repository only retains v1 and v1.2 source packages."
+  },
+  "validation_plan": {
+    "professional_domain_validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "trace_consistency_validator": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_validate_syseng_trace_v0_1.py",
+    "ci_workflow": ".github/workflows/ai-governance-evals.yml",
+    "state": "PENDING_REAL_PR_CI"
+  },
+  "current_architecture_disposition": {
+    "systems_engineering_domain_process": "OPEN",
+    "changed_to_current": false,
+    "architecture_map_modified": false,
+    "reason": "Project adoption evidence is materially stronger, but validation, integrated interface verification, task/claim Knowledge Mount and independent Systems Engineering professional review remain open."
+  },
+  "maturity": "CANDIDATE R-E PROCESS / MACHINE DEFINITION + C04 REQUIREMENT→ARCHITECTURE→VV REAPPLICATION / CONFIGURATION REOPEN EXERCISED / INTEGRATION+VALIDATION HOLD / NO INDEPENDENT SE REVIEW / NOT CURRENT / NO PROMOTION",
+  "claim_ceiling": "SYSTEMS ENGINEERING CANDIDATE ADOPTION EVIDENCE ONLY / NO PROFESSIONAL PASS / NO DOMAIN OVERRIDE / NO SYSTEM VALIDATION PASS / NO PROMOTION"
+}
