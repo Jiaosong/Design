@@ -1,0 +1,862 @@
+{
+  "schema_version": "c01-p01-p06-figure-register/0.1",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "state": "REPRESENTATION EXECUTION DEFINED / SOURCE-BOUND / E2 UNCHANGED / RG2 NOT RUN / NO PROMOTION",
+  "authority_refs": [
+    "05-cases/c01-yimai-guangdu/README.md",
+    "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+    "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+    "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
+    "oleander-skills/oleander-design-process/REPRESENTATION_REDRAW_EXECUTION_EXTENSION.md"
+  ],
+  "base_world": {
+    "world_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+    "status": "RELATION-LEVEL ONLY / METRIC SURVEY WORLD NOT AVAILABLE",
+    "fixed_truth": [
+      "P1/P2/P3 remain distinct archway objects",
+      "existing public-cultural route already links visitor centre/Hand Lion, Mao ancestral hall and Quanjing private school",
+      "resident/community use has priority over visitor interpretation",
+      "2026 Dapiandi road works are a material current-change trigger",
+      "FIELD_OBSERVED=0 and FIELD_MEASURED=0 remain",
+      "E2 evidence level remains"
+    ],
+    "unresolved": [
+      "current exact village/building/route coordinates sufficient for survey claim",
+      "current road/lane widths and levels",
+      "current surface and drainage condition",
+      "heritage protection boundaries and intervention permission",
+      "safe stopping envelopes",
+      "N08 exact host and capacity",
+      "night lighting condition and operational permissions"
+    ],
+    "source_chain": "RAW/PUBLIC SOURCES → REMOTE PROXY → RELATION-LEVEL WORLD → FIGURE DERIVATIVES",
+    "forbidden": "No figure may upgrade this world to surveyed masterplan, verified drainage, verified accessibility, heritage approval or field truth."
+  },
+  "continuity_grammar": {
+    "fixed": [
+      "stable figure/node IDs",
+      "OBSERVED / SOURCE / INFERENCE / ASSUMPTION / DECISION semantics",
+      "normal/degraded/off/unknown state semantics where used",
+      "source and DOES_NOT_PROVE captions",
+      "same-world binding for spatially corresponding views"
+    ],
+    "variable": [
+      "style",
+      "palette",
+      "projection",
+      "density",
+      "camera",
+      "image treatment",
+      "degree of abstraction",
+      "atmosphere"
+    ],
+    "rule": "STYLE IS SELECTED BY THE FIGURE QUESTION; continuity does not require a single house look."
+  },
+  "pages": [
+    {
+      "page_id": "P01",
+      "title": "村庄本身 / Existing-world village",
+      "decision_question": "What is the real inhabited village world that the project must enter rather than overwrite?",
+      "primary_figure": {
+        "figure_id": "C01-P01-F01",
+        "name": "Existing-world village axon / masterplan",
+        "representation_mode": [
+          "cartographic",
+          "axonometric",
+          "documentary"
+        ],
+        "redraw_ops": [
+          "PRESERVE",
+          "CLEAN",
+          "CLASSIFY",
+          "RECONSTRUCT",
+          "PROJECT",
+          "EXTRUDE",
+          "ANNOTATE"
+        ],
+        "must_show": [
+          "buildings",
+          "lanes/roads",
+          "fields/edge",
+          "water where supportable",
+          "heritage objects",
+          "everyday-life/public-cultural anchors",
+          "Hand Lion source/operation relation"
+        ],
+        "owner_chain": [
+          "oleander-research",
+          "oleander-data-viz",
+          "oleander-design-process",
+          "oleander-3d-pipeline",
+          "oleander-story-and-board"
+        ],
+        "native_outputs": [
+          "source/confidence layer register",
+          "editable 2D spatial master",
+          "optional editable 3D/axon world derived from same base",
+          "SVG/PDF derivative"
+        ],
+        "current_state": "READY_FOR_RELATION-WORLD ASSEMBLY / HOLD_METRIC_MASTERPLAN",
+        "actual_readback_required": [
+          "same-source overlay",
+          "object identity check",
+          "route/topology compatibility",
+          "target-scale first read"
+        ],
+        "does_not_prove": [
+          "survey coordinates",
+          "parcel/protection boundary",
+          "current lane width/level",
+          "drainage design",
+          "field condition"
+        ]
+      },
+      "support_figures": [
+        {
+          "figure_id": "C01-P01-F02",
+          "name": "Evidence/confidence key + current-change layer",
+          "redraw_ops": [
+            "CLASSIFY",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "current_state": "READY",
+          "purpose": "Expose which world elements are source-grounded, reconstructed, temporally unstable or still unknown."
+        }
+      ]
+    },
+    {
+      "page_id": "P02",
+      "title": "活态文化在哪里断裂 / Relation cuts",
+      "decision_question": "Where do cultural continuity and everyday spatial use actually break or conflict?",
+      "page_rule": "Not SWOT. Each cut must bind locator + local relation + necessary section/cut + source/lived evidence + design consequence.",
+      "cuts": [
+        {
+          "figure_id": "C01-P02-RC01",
+          "cut": "门槛 / Threshold",
+          "question": "Where does public passage become semi-public/private or permission-dependent?",
+          "redraw_ops": [
+            "EXTRACT",
+            "MASK",
+            "CUT",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "photo overdraw",
+            "local plan",
+            "threshold section if evidence supports it"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-story-and-board"
+          ],
+          "state": "RELATION READY / LOCAL GEOMETRY HOLD",
+          "missing": [
+            "current threshold dimensions",
+            "resident permission behavior evidence"
+          ],
+          "does_not_prove": [
+            "legal access right",
+            "universal household boundary behavior"
+          ]
+        },
+        {
+          "figure_id": "C01-P02-RC02",
+          "cut": "古巷 / Lane",
+          "question": "Where do passage, stopping, resident access and visitor reading compete?",
+          "redraw_ops": [
+            "EXTRACT",
+            "MASK",
+            "CUT",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "lane plan",
+            "cross-section",
+            "behavior overlay",
+            "documentary image"
+          ],
+          "state": "RELATION READY / WIDTH+LEVEL HOLD",
+          "missing": [
+            "current clear width",
+            "edge height",
+            "steps/slope",
+            "actual conflict observation"
+          ],
+          "does_not_prove": [
+            "capacity",
+            "accessible route",
+            "safe stopping"
+          ]
+        },
+        {
+          "figure_id": "C01-P02-RC03",
+          "cut": "井 / Well + everyday water-life",
+          "question": "How does a heritage/everyday water object relate to circulation, stopping and resident life?",
+          "redraw_ops": [
+            "EXTRACT",
+            "OVERLAY",
+            "CUT",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "locator",
+            "photo evidence",
+            "local plan/section if supportable"
+          ],
+          "state": "OBJECT/ADDRESS RELATION READY / CURRENT ACCESS HOLD",
+          "missing": [
+            "current exact access condition",
+            "current stopping behavior"
+          ],
+          "does_not_prove": [
+            "current use",
+            "installation permission"
+          ]
+        },
+        {
+          "figure_id": "C01-P02-RC04",
+          "cut": "排水 / Drainage",
+          "question": "Where may surface water, thresholds and low points conflict with circulation or intervention?",
+          "redraw_ops": [
+            "PRESERVE",
+            "RECONSTRUCT",
+            "OVERLAY",
+            "CUT",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "terrain/slope inference",
+            "ground section",
+            "photo evidence"
+          ],
+          "state": "HOLD FOR CURRENT SURFACE/LEVEL EVIDENCE",
+          "missing": [
+            "current levels",
+            "surface material",
+            "ditch/inlet condition",
+            "runoff path"
+          ],
+          "does_not_prove": [
+            "hydraulic performance",
+            "verified flow direction",
+            "drainage capacity"
+          ]
+        },
+        {
+          "figure_id": "C01-P02-RC05",
+          "cut": "村落边缘 / Village–field edge",
+          "question": "How does the inhabited settlement meet field/natural/productive landscape?",
+          "redraw_ops": [
+            "EXTRACT",
+            "GENERALIZE",
+            "CUT",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "GIS/imagery relation",
+            "long section/axon when base exists"
+          ],
+          "state": "REMOTE RELATION CANDIDATE / EXACT EDGE HOLD",
+          "missing": [
+            "current geospatial base precise enough for local edge design"
+          ],
+          "does_not_prove": [
+            "property boundary",
+            "ecological survey"
+          ]
+        },
+        {
+          "figure_id": "C01-P02-RC06",
+          "cut": "居民 / 游客 / 公共空间冲突",
+          "question": "Where can visitor attention/stopping interfere with resident movement, privacy or ordinary use?",
+          "redraw_ops": [
+            "OVERLAY",
+            "SEQUENCE",
+            "ANNOTATE"
+          ],
+          "preferred_media": [
+            "same-base behavior scenarios",
+            "photo overdraw",
+            "time-state comparison"
+          ],
+          "state": "DESIGN HYPOTHESIS / HUMAN-FIELD EVIDENCE NOT RUN",
+          "missing": [
+            "actual resident/visitor observation",
+            "co-review",
+            "time-of-day use"
+          ],
+          "does_not_prove": [
+            "measured conflict frequency",
+            "resident acceptance"
+          ]
+        }
+      ]
+    },
+    {
+      "page_id": "P03",
+      "title": "设计如何介入 / Intervention masterplan",
+      "decision_question": "Where is intervention justified, and how intense may it become without overwriting village life?",
+      "primary_figure": {
+        "figure_id": "C01-P03-F01",
+        "name": "Z0–Z4 intervention masterplan",
+        "representation_mode": [
+          "source-bound masterplan",
+          "intervention contrast"
+        ],
+        "redraw_ops": [
+          "PRESERVE",
+          "OVERLAY",
+          "CLASSIFY",
+          "ANNOTATE"
+        ],
+        "intervention_levels": {
+          "Z0": "observe / document only",
+          "Z1": "reading or lightweight non-contact cue",
+          "Z2": "movable/reversible surface or threshold support, still permission-bounded",
+          "Z3": "node-level spatial intervention only where professional/site evidence supports it",
+          "Z4": "active/mobile/event deployment such as Hand Lion workshop; permission and operation dependent"
+        },
+        "owner_chain": [
+          "oleander-design-process",
+          "oleander-data-viz",
+          "oleander-story-and-board"
+        ],
+        "current_state": "RELATION-LEVEL INTERVENTION MAP READY / EXACT FOOTPRINT HOLD",
+        "rules": [
+          "Only real design locations receive intervention salience.",
+          "Existing world stays visually subordinate but legible.",
+          "Do not turn Z0–Z4 into a decorative gradient across the village."
+        ],
+        "does_not_prove": [
+          "permission",
+          "construction footprint",
+          "heritage approval",
+          "survey-based masterplan"
+        ]
+      }
+    },
+    {
+      "page_id": "P04",
+      "title": "一次真实体验 / Continuous spatial experience",
+      "decision_question": "Can one visitor experience the project as a continuous inhabited-village sequence rather than a route dashboard?",
+      "base_world_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+      "sequence": [
+        {
+          "figure_id": "C01-P04-S01",
+          "scene": "抵达 / Arrival",
+          "claim": "orientation + village-as-lived-place first read",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        },
+        {
+          "figure_id": "C01-P04-S02",
+          "scene": "进入 / Threshold",
+          "claim": "public/semi-public/private reading begins",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        },
+        {
+          "figure_id": "C01-P04-S03",
+          "scene": "阅读 / Reading",
+          "claim": "one evidence-rich object is read without over-explanation",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        },
+        {
+          "figure_id": "C01-P04-S04",
+          "scene": "日常交叠 / Everyday overlap",
+          "claim": "visitor experience yields to resident life",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        },
+        {
+          "figure_id": "C01-P04-S05",
+          "scene": "手狮共创 / Hand Lion co-creation",
+          "claim": "participation occurs only under permission/teacher authority",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        },
+        {
+          "figure_id": "C01-P04-S06",
+          "scene": "Return",
+          "claim": "experience closes through return/re-entry rather than one-way consumption",
+          "representation_mode": [
+            "spatial narrative",
+            "cinematic/documentary hybrid"
+          ],
+          "redraw_ops": [
+            "PROJECT",
+            "SEQUENCE",
+            "ANNOTATE",
+            "ATMOSPHERE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-3d-pipeline",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "SHOT/SCENE BRIEF READY / WORLD-CAMERA RENDER NOT RUN",
+          "rules": [
+            "All scenes derive from one compatible world/base relation.",
+            "Atmosphere is presentation/experience only.",
+            "Synthetic people/sky/effects remain synthetic if used.",
+            "Camera cannot invent missing site geometry."
+          ],
+          "does_not_prove": [
+            "actual visitor response",
+            "current site condition",
+            "professional technical closure"
+          ]
+        }
+      ],
+      "optional_realtime_test": {
+        "state": "DESIGNED / NOT RUN",
+        "purpose": "Use a coarse same-world blockout to test sightline, spatial pacing, choice, compression/reveal and Return before final cinematic rendering.",
+        "owner_chain": [
+          "oleander-design-process",
+          "oleander-3d-pipeline",
+          "oleander-motion"
+        ],
+        "boundary": "Realtime/playable output is experience-prototype evidence only; it does not upgrade site truth."
+      }
+    },
+    {
+      "page_id": "P05",
+      "title": "三个真正做深的节点 / Deep nodes",
+      "decision_question": "Can the three main interventions survive plan, section, ground, assembly, material, behavior and operating-state readback?",
+      "nodes": [
+        {
+          "node_id": "N01-S00",
+          "title": "Entry + Return",
+          "package_state": "CONCEPT/RELATION READY / METRIC NODE HOLD",
+          "required_figures": [
+            "context+locator",
+            "plan",
+            "section",
+            "ground/drainage",
+            "assembly/exploded",
+            "materials",
+            "human behavior",
+            "normal/degraded"
+          ],
+          "known": [
+            "arrival/return role",
+            "resident-priority",
+            "safe-stopping uncertainty requires relocation fallback"
+          ],
+          "missing": [
+            "current stopping envelope",
+            "width/level/surface/drainage",
+            "permission"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-technical-drawing",
+            "oleander-3d-pipeline",
+            "oleander-story-and-board"
+          ]
+        },
+        {
+          "node_id": "N07",
+          "title": "古巷 / Boundary",
+          "package_state": "BOUNDARY LOGIC READY / METRIC+FIELD HOLD",
+          "required_figures": [
+            "context+locator",
+            "plan",
+            "cross-section",
+            "ground/drainage",
+            "edge/threshold exploded detail",
+            "materials",
+            "resident/visitor behavior",
+            "normal/degraded"
+          ],
+          "known": [
+            "public passage/public short stop/permission/private states",
+            "no forced private-courtyard route"
+          ],
+          "missing": [
+            "lane width",
+            "threshold/edge heights",
+            "steps/slope",
+            "surface/drainage",
+            "resident co-review"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-technical-drawing",
+            "oleander-3d-pipeline",
+            "oleander-story-and-board"
+          ]
+        },
+        {
+          "node_id": "N08",
+          "title": "手狮 / Mobile Workshop",
+          "package_state": "MOBILE PROGRAM LOGIC READY / HOST+CAPACITY+TECHNICAL HOLD",
+          "required_figures": [
+            "deployment context",
+            "plan",
+            "section",
+            "ground/interface",
+            "mobile assembly exploded",
+            "materials/storage",
+            "teacher/learner behavior",
+            "normal/degraded/permission-off"
+          ],
+          "known": [
+            "mobile workshop not fixed hall",
+            "teaching authority belongs to inheritor/confirmed teacher",
+            "permission-off fallback required"
+          ],
+          "missing": [
+            "exact host",
+            "capacity",
+            "surface/load/anchoring where any",
+            "weather/night operation",
+            "storage/transport reality"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-technical-drawing",
+            "oleander-3d-pipeline",
+            "oleander-story-and-board",
+            "oleander-motion"
+          ]
+        }
+      ],
+      "node_rule": "Do not draw invented dimensions to make the node package look complete. Missing metric/technical carriers remain visibly HOLD."
+    },
+    {
+      "page_id": "P06",
+      "title": "时间与运营 / Time + operation",
+      "decision_question": "Does the design remain legible and reversible across ordinary use, events, adverse weather, night, permission withdrawal and maintenance?",
+      "base_world_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+      "states": [
+        {
+          "figure_id": "C01-P06-ST01",
+          "state": "普通日 / Ordinary day",
+          "claim": "resident life dominates; interpretation remains light/pass-through",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        },
+        {
+          "figure_id": "C01-P06-ST02",
+          "state": "活动日 / Event day",
+          "claim": "temporary deployment increases but resident/public access remains protected",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        },
+        {
+          "figure_id": "C01-P06-ST03",
+          "state": "雨天 / Rain",
+          "claim": "wet/unsafe/uncertain areas downgrade or close; no unverified drainage claim",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        },
+        {
+          "figure_id": "C01-P06-ST04",
+          "state": "夜间 / Night",
+          "claim": "only verified/approved lighting and routes may be shown as operational; otherwise conceptual",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        },
+        {
+          "figure_id": "C01-P06-ST05",
+          "state": "permission OFF",
+          "claim": "workshop/private/permission-dependent content retracts without breaking return path",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        },
+        {
+          "figure_id": "C01-P06-ST06",
+          "state": "维护撤场 / Maintenance withdrawal",
+          "claim": "movable elements are removed/serviced and the village remains functional",
+          "redraw_ops": [
+            "STATE_SWITCH",
+            "MASK",
+            "OVERLAY",
+            "ANNOTATE"
+          ],
+          "owner_chain": [
+            "oleander-design-process",
+            "oleander-data-viz",
+            "oleander-motion",
+            "oleander-story-and-board"
+          ],
+          "current_state": "STATE LOGIC READY / SPATIAL RENDER DERIVATIVE NOT RUN",
+          "rule": "Derive from the same base; do not redraw a different village for each state."
+        }
+      ],
+      "does_not_prove": [
+        "actual operating schedule",
+        "weather performance",
+        "lighting commissioning",
+        "maintenance staffing",
+        "permission granted"
+      ]
+    }
+  ],
+  "global_image_handling": {
+    "evidence_image": "truth-preserving crop/tonal cleanup only; keep source identity",
+    "analytical_overdraw": "preserved image + separate OBSERVED/INFERRED/ASSUMPTION/DECISION layers",
+    "spatial_narrative": "experience representation bound to same world; may use bounded atmosphere",
+    "technical_image": "must route dimensions/material/assembly claims to specialist owner",
+    "state_image": "same-base state derivative; record trigger and simulated/observed status"
+  },
+  "global_gis_handling": {
+    "layers": [
+      "RAW_SOURCE",
+      "CLEAN_SOURCE",
+      "ANALYSIS",
+      "PRESENTATION_DERIVATIVE"
+    ],
+    "required": [
+      "CRS/source basis",
+      "date/version",
+      "scale-specific generalization",
+      "topology check",
+      "confidence/missing data",
+      "editable export"
+    ],
+    "forbidden": [
+      "invented coordinates",
+      "one simplification reused at every scale",
+      "GIS treated as survey",
+      "unverified parcel/protection boundary shown as exact"
+    ]
+  },
+  "global_style_handling": {
+    "rule": "No fixed project style. Select visual language per figure claim.",
+    "modes": [
+      "documentary",
+      "cartographic",
+      "analytical",
+      "technical",
+      "material/assembly",
+      "editorial",
+      "cinematic/atmospheric",
+      "state/operational",
+      "realtime/interactive"
+    ],
+    "continuity": "Use IDs, annotation/evidence/state semantics, source captions and recurring project grammar rather than identical palette/layout."
+  },
+  "execution_order": [
+    "0 source/authority and GIS/image inventory",
+    "1 build relation-level C01-WORLD-REMOTE-RELATION-v0.1 without fake survey precision",
+    "2 P01 world readback",
+    "3 P02 relation cuts from the same base + evidence overdraw",
+    "4 P03 intervention overlay Z0–Z4",
+    "5 P05 N01/N07/N08 node packages; stop metric/technical fields where evidence is absent",
+    "6 P04 same-world scene/blockout sequence derived from accepted spatial logic",
+    "7 P06 same-base state variants",
+    "8 Story & Board selection / target-scale readback; preserve technical/support depth outside the main board"
+  ],
+  "closure": {
+    "current_verdict": "KEEP EXECUTION PLAN / PROJECT FIGURES NOT YET RENDERED OR PROFESSIONALLY CLOSED",
+    "claim_ceiling": "REPRESENTATION METHOD + SOURCE-BOUND FIGURE SPECIFICATION / E2 / NO SURVEY / NO FIELD / NO PROFESSIONAL PASS",
+    "reopen_triggers": [
+      "new current GIS/survey geometry",
+      "2026 Dapiandi construction drawing/as-built materialized",
+      "current site photo/field capture",
+      "heritage/protection boundary authority",
+      "resident/inheritor permission/co-review",
+      "node dimensions/levels/drainage evidence",
+      "real night/operation evidence"
+    ]
+  }
+}

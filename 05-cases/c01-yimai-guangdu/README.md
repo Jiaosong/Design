@@ -22,6 +22,7 @@
 - `PRAC-C01-TRANS-ABC-001_fieldpack_v0.2.html`：Reality Gate 2 现场记录包；记录 A0 / A1 / B / C1 / C2、现场约束、解释权与原始 JSON。
 - `R03_participant_runner_v0.3.html`：已完成浏览器 dry-run 的阶段锁定 participant runner；这只证明 workflow integrity，不代表 human pilot 已执行。
 - `PRAC-C01-TRANS-ABC-001_R04_REMOTE-PREFLIGHT.md`：三牌坊对象身份、官方记录映射边界与 C2 evidence asymmetry 的远程证据预检。
+- `representation-execution/v0.1/C01_P01_P06_REPRESENTATION_EXECUTION_v0.1.md`：P01–P06 的 source-bound 重绘/表达执行计划；固定 authority/evidence，不固定视觉风格；把 GIS、relation cuts、intervention、experience、deep nodes、time/operation 绑定到同一关系级世界与现有 Skill owner。
 
 当前决策：
 
