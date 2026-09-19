@@ -37,6 +37,10 @@ Before reading or writing research knowledge:
 
 For consequential research, apply `PROFESSIONAL_RESEARCH_GATE_v0.1.md` as the detailed research-execution extension. It is now bound under `PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md`; do not treat the legacy filename as a parallel authority.
 
+When consequential design must continue while field/site/building reality is incomplete or inaccessible, route the bounded evidence problem to `REMOTE_PROXY_REALITY_RECONSTRUCTION_EXTENSION.md`. Use it to construct a reality-near provisional model from Current anchors, multiple source families, explicit ranges, contradiction checks and sensitivity testing. Do **not** use it to convert remote/inferred values into FIELD MEASURED truth.
+
+When actual field capture is available or required, use `FIELD_SURVEY_REALITY_CAPTURE_EVIDENCE_EXTENSION.md`. When quantitative uncertainty affects the decision boundary, also use `MEASUREMENT_UNCERTAINTY_EXTENSION.md`.
+
 The gate is required when research can materially change a design, technical, safety, regulatory, material, spatial, service, UX, environmental, strategy, or governance decision. Select and declare the minimum sufficient research depth (`RDC-0` to `RDC-4`). Do not call ordinary browsing a systematic review.
 
 At minimum, decision-grade research must make the following auditable when applicable:
