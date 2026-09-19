@@ -3,6 +3,7 @@
   "status": "ACTIVE_RUNTIME_COMPATIBILITY_PROJECTION",
   "semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
   "purpose": "Provide stage capability composition for already-Current professional process machines without mutating their Current authority carriers in place.",
+  "current_machine_sha256_semantics": "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT",
   "authority_rule": "The exact Current professional machine remains authoritative for professional process semantics. This projection owns execution routing only and becomes stale when the bound machine blob or SHA256 drifts.",
   "migration_rule": "A future authorized professional-process evolution may move equivalent stage execution requirements into a successor Current machine. Until that transaction, this carrier remains runtime-only.",
   "does_not_create": [
@@ -16,7 +17,7 @@
       "domain": "Architecture",
       "current_machine_ref": "00-governance/schemas/architecture-design-development-process.v1.json",
       "current_machine_blob": "08359be7faf633d3637a7f1dd9b05b2da54e2748",
-      "current_machine_sha256": "e6e035acec815cee0bfd7c8bc139ee5d2f407a92b9efb07e578b95aa63bd7753",
+      "current_machine_sha256": "1a583d0e4271768e58b3dd9cbe82481d1f76a7d6395037ea1e8bf9ea0ee4feb1",
       "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
       "stages": {
         "ADD-00": {
@@ -745,7 +746,7 @@
       "domain": "Structural Engineering",
       "current_machine_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
       "current_machine_blob": "44f8654cf366aa03c559acb8a454003a911bb749",
-      "current_machine_sha256": "0fe6146767c470cdf30ccf89a5ba30a1710751fe4fb1b65c25430c3e23b08d0e",
+      "current_machine_sha256": "00c615ff31026bae54bfde9c0e2945ddc00cb0c4c6cce167cfe416d083747667",
       "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
       "stages": {
         "SE-SPW0": {
@@ -1114,7 +1115,7 @@
       "domain": "Building Services / MEP",
       "current_machine_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
       "current_machine_blob": "2947c0b7a1a9d77fabf46ce7f5d4fbb9700c0b57",
-      "current_machine_sha256": "7f568b8540a7ec9ee1b8a780adf9a98a077f32ac61e553a90489021de0e796d3",
+      "current_machine_sha256": "ba6c3a47f810a98e31dbe37a0d794f6b4c6e9c7d56db227e39266b79bdabad8e",
       "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
       "stages": {
         "BSP-STRATEGIC": {

@@ -121,9 +121,9 @@
     },
     {
       "path": "00-governance/runtime/OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json",
-      "sha256": "8c7f42a0827b76f976910b8eae4f11c0089d484fb90c25030f5261d2f071254a",
-      "git_blob": "ff92b75be546afa5875a802477367b91fe89894d",
-      "bytes": 85749
+      "sha256": "ddf157b0c3a8e1d8ca336fc23895aa540bb2889fc8963426463155a0795156ee",
+      "git_blob": "e6a72dcb62d16789e62f9aa7b4d5b86afcc12dfd",
+      "bytes": 85827
     },
     {
       "path": "00-governance/runtime/README.md",
@@ -181,9 +181,9 @@
     },
     {
       "path": "00-governance/runtime/validate_execution_contracts.py",
-      "sha256": "960ff660f378378f79419713d20f0ef41e720f90fff22f66fc4acd09aa85b0d4",
-      "git_blob": "5200929a0886f06e2bf46cd0c47faa9006db1cc1",
-      "bytes": 67342
+      "sha256": "919eb4bec85dd099cc4b99926265e51cb75da0cac68cf0cbaec4425d725be8ee",
+      "git_blob": "747c4dc19aa848143cd382d96b4a5993bc64ad97",
+      "bytes": 68023
     },
     {
       "path": "00-governance/runtime/validate_execution_locks.py",
@@ -324,7 +324,7 @@
       "bytes": 1700
     }
   ],
-  "manifest_content_fingerprint_sha256": "c42fd89c891d7c65af948796d4aa09d57655fd750e5b07dcff420a7b71025d74",
+  "manifest_content_fingerprint_sha256": "db9eaabadf6c791abb7acc71ee665d478cca40273e4fa02d05cdd0d56b4f5910",
   "unchanged_current_professional_machine_assertions": [
     {
       "path": "00-governance/schemas/architecture-design-development-process.v1.json",

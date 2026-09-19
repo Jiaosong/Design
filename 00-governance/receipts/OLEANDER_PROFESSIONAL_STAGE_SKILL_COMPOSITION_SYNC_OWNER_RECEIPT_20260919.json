@@ -13,7 +13,7 @@
   "mutation_manifest": {
     "id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
-    "fingerprint_sha256": "c42fd89c891d7c65af948796d4aa09d57655fd750e5b07dcff420a7b71025d74",
+    "fingerprint_sha256": "db9eaabadf6c791abb7acc71ee665d478cca40273e4fa02d05cdd0d56b4f5910",
     "material_delta_count": 50
   },
   "canonical_professional_stage_execution_chain": [

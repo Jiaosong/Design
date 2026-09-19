@@ -493,6 +493,8 @@ def _professional_stage_exec_for(
     )
     if projection.get("semantic_class") != "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION":
         fail("Current professional stage execution projection must remain non-authority runtime compatibility only")
+    if projection.get("current_machine_sha256_semantics") != "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT":
+        fail("Current professional stage execution projection SHA256 semantics drift")
     entry = next(
         (
             item
@@ -503,9 +505,26 @@ def _professional_stage_exec_for(
     )
     if not entry:
         fail(f"{row.get('domain')} Current professional machine lacks exact-revision execution projection")
-    path = ROOT / process_ref
-    actual_sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
-    actual_blob = subprocess.check_output(["git", "hash-object", process_ref], cwd=ROOT, text=True).strip()
+    if process_ref in set(
+        filter(None, subprocess.check_output(
+            ["git", "diff", "--name-only", "--", process_ref],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        ).splitlines())
+    ):
+        fail(f"{row.get('domain')} Current professional machine has unstaged drift")
+    actual_blob = subprocess.check_output(
+        ["git", "rev-parse", f":{process_ref}"],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+    ).strip()
+    canonical_machine_bytes = subprocess.check_output(
+        ["git", "cat-file", "blob", actual_blob],
+        cwd=ROOT,
+    )
+    actual_sha256 = hashlib.sha256(canonical_machine_bytes).hexdigest()
     if entry.get("current_machine_sha256") != actual_sha256:
         fail(f"{row.get('domain')} Current stage execution projection SHA256 is stale")
     if entry.get("current_machine_blob") != actual_blob:
