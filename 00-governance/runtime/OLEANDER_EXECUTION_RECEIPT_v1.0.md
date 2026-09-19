@@ -252,6 +252,14 @@ Canonical phases:
 11. `INDEPENDENT_REVIEW_AS_APPLICABLE`
 12. `SYNC_RECEIPT_AND_DRIFT_AS_APPLICABLE`
 
+These twelve phases are the **generic Execution Receipt compatibility flow**. They are not the ordering authority for an authentic Professional Stage.
+
+When a receipt binds material Professional Stage execution, the stage-side order is always:
+
+`Stage → Professional Question / Decision Object → Knowledge Inputs → Operational Knowledge Mount → Required Capability Roles → Current Execution Owners / Skills → Native Outputs → Actual Readback → Independent Review → Stage Closure`.
+
+Receipt phases such as `REQUIRED_NATIVE_OUTPUT_DEFINITION`, `CAPABILITY_AND_MINIMUM_OWNER_SET`, tool routing, regression and sync are attached to the appropriate stage-spine node. They may not be interpreted as a competing top-level professional-stage sequence.
+
 For full-flow work, Authority, Constraint Resolution, Existing Knowledge/Skill Resolution, Native Output, Minimum Owner Set, Real Execution and Actual Readback cannot be skipped. The Existing Visual/Image Consumption phase is additionally mandatory when semantic content imagery is involved.
 
 Optional phases may be `NOT_APPLICABLE` only with a real reason.

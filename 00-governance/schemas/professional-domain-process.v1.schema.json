@@ -17,6 +17,87 @@
       "minItems": 1,
       "items": {"$ref": "#/$defs/nonEmptyString"}
     },
+    "stageExecutionRequirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_capability_roles",
+        "supporting_capability_roles",
+        "multi_skill_required_when",
+        "single_owner_allowed_when",
+        "owner_set_recompute_triggers",
+        "forbidden_substitutions",
+        "composition_readback_requirements"
+      ],
+      "properties": {
+        "required_capability_roles": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "supporting_capability_roles": {"$ref": "#/$defs/stringArray"},
+        "multi_skill_required_when": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "single_owner_allowed_when": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "owner_set_recompute_triggers": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "forbidden_substitutions": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "composition_readback_requirements": {"$ref": "#/$defs/nonEmptyStringArray"}
+      }
+    },
+    "stageBodyContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title_rule",
+        "required_semantic_sections",
+        "knowledge_mount_rule",
+        "native_source_rule",
+        "readback_rule",
+        "open_failure_rule",
+        "verdict_reopen_rule"
+      ],
+      "properties": {
+        "title_rule": {"$ref": "#/$defs/nonEmptyString"},
+        "required_semantic_sections": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "knowledge_mount_rule": {"$ref": "#/$defs/nonEmptyString"},
+        "native_source_rule": {"$ref": "#/$defs/nonEmptyString"},
+        "readback_rule": {"$ref": "#/$defs/nonEmptyString"},
+        "open_failure_rule": {"$ref": "#/$defs/nonEmptyString"},
+        "verdict_reopen_rule": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "interfaceBindingRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "source_domain",
+        "source_stage_ref",
+        "direction",
+        "shared_variables",
+        "coupling_hypothesis",
+        "criticality_hypothesis",
+        "required_maturity_to_enter",
+        "required_maturity_to_close",
+        "allowed_dispositions_on_exit",
+        "required_native_source_role",
+        "requested_change_reopen_rule"
+      ],
+      "properties": {
+        "requirement_id": {"$ref": "#/$defs/nonEmptyString"},
+        "source_domain": {"$ref": "#/$defs/nonEmptyString"},
+        "source_stage_ref": {"type": ["string", "null"], "minLength": 1},
+        "direction": {"enum": ["IN", "OUT", "BIDIRECTIONAL"]},
+        "shared_variables": {"$ref": "#/$defs/nonEmptyStringArray"},
+        "coupling_hypothesis": {"$ref": "#/$defs/nonEmptyString"},
+        "criticality_hypothesis": {"$ref": "#/$defs/nonEmptyString"},
+        "required_maturity_to_enter": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+        "required_maturity_to_close": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+        "allowed_dispositions_on_exit": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["OPEN", "BLOCKED", "CLOSED", "OUTSIDE_CLAIM"]}
+        },
+        "required_native_source_role": {"$ref": "#/$defs/nonEmptyString"},
+        "requested_change_reopen_rule": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
     "professionalVerdict": {
       "enum": ["NOT_RUN", "N_A", "PASS", "REVISE", "REJECT", "HOLD"]
     },
@@ -93,6 +174,7 @@
         "stage_id": {"$ref": "#/$defs/nonEmptyString"},
         "stage_name": {"$ref": "#/$defs/nonEmptyString"},
         "professional_question": {"$ref": "#/$defs/nonEmptyString"},
+        "stage_body_contract": {"$ref": "#/$defs/stageBodyContract"},
         "entry_conditions": {"$ref": "#/$defs/stringArray"},
         "required_inputs": {"$ref": "#/$defs/stringArray"},
         "knowledge_inputs": {"$ref": "#/$defs/stringArray"},
@@ -110,6 +192,11 @@
           "type": "array",
           "items": {"$ref": "#/$defs/interfaceBinding"}
         },
+        "interface_binding_requirements": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/interfaceBindingRequirement"}
+        },
+        "stage_execution_requirements": {"$ref": "#/$defs/stageExecutionRequirements"},
         "human_experience_consequences": {"$ref": "#/$defs/stringArray"},
         "design_language_consequences": {"$ref": "#/$defs/stringArray"},
         "technical_consequences": {"$ref": "#/$defs/stringArray"},
@@ -248,6 +335,16 @@
             "option_comparison_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
             "native_work_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
             "release_control_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
+            "object_identity_contract": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["applies_to", "required_fields", "rules"],
+              "properties": {
+                "applies_to": {"$ref": "#/$defs/nonEmptyStringArray"},
+                "required_fields": {"$ref": "#/$defs/nonEmptyStringArray"},
+                "rules": {"$ref": "#/$defs/nonEmptyStringArray"}
+              }
+            },
             "implementation_field_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
             "handover_inuse_objects": {"$ref": "#/$defs/nonEmptyStringArray"},
             "independent_review_objects": {"$ref": "#/$defs/nonEmptyStringArray"},

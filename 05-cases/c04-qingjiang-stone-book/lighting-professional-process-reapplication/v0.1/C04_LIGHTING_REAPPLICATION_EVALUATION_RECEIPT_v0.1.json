@@ -1,0 +1,39 @@
+{
+  "schema_version": "oleander-professional-candidate-evaluation-receipt/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Lighting Design",
+  "status": "HOLD",
+  "real_project_exercise_counted": true,
+  "exercise_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+  "continuation_checkpoint_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
+  "candidate_binding": {
+    "prose_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+    "prose_blob": "aa5f8f352b7bc9b326d8f2189651f8477c138a50",
+    "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+    "machine_blob": "6bef3b07b96e436264363f68b55090a5f07c0bab",
+    "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
+    "source_revision_or_commit": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
+  },
+  "current_candidate_revision_exercised": true,
+  "stage_composition_owner_resolution_exercised": true,
+  "knowledge_mount_gate_exercised": true,
+  "hold_release_condition_read_back": true,
+  "hold_release_condition_satisfied": false,
+  "selective_retest_executed": false,
+  "successor_receipt_ref": null,
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "independent_professional_review": "NOT_RUN",
+  "verdict": "HOLD_CURRENT_REVISION_EVALUATED_RELEASE_UNSATISFIED",
+  "does_not_prove": [
+    "EV3_EVAL_PASSED",
+    "EV4_INDEPENDENT_REVIEWED",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED"
+  ],
+  "real_project_source_refs": [
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json"
+  ]
+}

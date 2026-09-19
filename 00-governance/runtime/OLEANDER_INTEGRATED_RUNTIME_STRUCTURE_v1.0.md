@@ -90,9 +90,11 @@ Current formalized professional processes:
 
 Other domains retain their own authentic stage semantics. Candidate process definitions do not become Current merely because a candidate file exists; domains without a Current process remain OPEN under the shared Professional Domain Process Contract.
 
-Professional stages bind to DD responsibilities; they are not renamed as DD stages. A stage is also **not the default smallest execution unit**. When material precision is required, the stage instance resolves:
+Professional stages bind to DD responsibilities; they are not renamed as DD stages. A stage is also **not the default smallest execution unit**. Every triggered professional stage uses the same canonical execution spine:
 
-`Decision Object → Claim → Knowledge Mount → Required Native Output → Capability Roles → Minimum Sufficient Skill/Execution Owner Set → Tool/Adapter when required → Native Artifact → Actual Readback`.
+`Professional Stage → Professional Question / Decision Object → Knowledge Inputs → Operational Knowledge Mount → Required Capability Roles → Current Execution Owners / Skills → Native Outputs → Actual Readback → Independent Review → Stage Closure`.
+
+Claim scope, DD responsibilities, interfaces and Tool/Adapter routes remain internal bindings on this spine; they do not create additional top-level professional-stage steps.
 
 This decision/claim/output join is runtime binding, not a new professional stage namespace or Capability taxonomy.
 
@@ -115,9 +117,11 @@ Canonical owner: `cross-disciplinary-design-integration-v1.0.md`.
 
 ### R-G | Capability / Skill / Tool Runtime
 
-Resolution order:
+Resolution order inside the professional-stage spine:
 
-`Decision Object / Claim → Required Native Output → Required Capability Roles → Minimum Sufficient Owner Set → Skill / Execution Owner → Tool / Adapter when required → Runtime Availability → Execute`.
+`Required Capability Roles → Current Execution Owners / Skills → Native Outputs`.
+
+Tool / Adapter and runtime-availability checks are subordinate execution details inside `Current Execution Owners / Skills → Native Outputs`; they do not sit between professional-stage nodes.
 
 Knowledge is mounted to the task/claim before Skill routing; it does not route directly by Skill or Tool identity. The required native output is the bridge from professional semantics into executable capability resolution.
 
@@ -243,9 +247,11 @@ A promotion claim must state which axes are in scope and must not use one axis a
 
 ## 6 | Professional-process binding contract
 
-Every professional stage maps, where applicable, to:
+Every professional stage maps to the same top-level spine:
 
-`Professional Question → Candidate Knowledge Resolution → Operational Knowledge Mount → Required DD Responsibilities → Required Native Outputs → Interfaces → Required Capability → Tool/Adapter → Actual Readback → Professional Review → Design Review → Reopen Triggers`.
+`Professional Stage → Professional Question / Decision Object → Knowledge Inputs → Operational Knowledge Mount → Required Capability Roles → Current Execution Owners / Skills → Native Outputs → Actual Readback → Independent Review → Stage Closure`.
+
+Required DD responsibilities, interfaces, claim ceilings, tools/adapters, professional/design/technical/evidence subreviews and reopen triggers are attached to the appropriate spine node. They do not alter the canonical order.
 
 The reusable envelope is defined in `../professional-domain-process-contract-v1.0.md`. It separates the reusable `PROFESSIONAL_DOMAIN_PROCESS` definition from project `DOMAIN_PROCESS_INSTANCE` and runtime `DOMAIN_STAGE_INSTANCE` objects while keeping the Master Runtime summary intentionally thin.
 

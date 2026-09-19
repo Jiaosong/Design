@@ -2,7 +2,7 @@
 
 Status: `DIAGNOSTIC READBACK / SUPERSEDES v0.1 SNAPSHOT / NOT AN AUTHORITY STATE FAMILY / NO PROMOTION`
 
-Baseline: `main@be280aa1f42ad618f1047400b2f96312bd1eda34`
+Baseline: `main@451accfa81216c3f5b094cb94cd4d50462767ce8`
 
 Authority remains:
 
@@ -152,7 +152,7 @@ v0.2 closes a diagnostic-governance defect in v0.1.
 
 The v0.1 validator could remain green even after new project evidence had been added, because it validated only the old snapshot's own claims.
 
-v0.2 therefore blob-binds:
+v0.2 therefore Git-canonical-blob-binds:
 - all five Candidate machine definitions;
 - all five project process/evidence carriers used by this diagnostic;
 - Lighting synthetic practice evidence.

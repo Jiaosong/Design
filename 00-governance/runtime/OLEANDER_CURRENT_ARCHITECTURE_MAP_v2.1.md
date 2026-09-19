@@ -221,22 +221,22 @@ As of the current professional-process baseline, **Architecture, Structural Engi
 
 Professional synchronization is by **interface requirement and required maturity**, never by matching stage numbers.
 
-Professional execution granularity is subordinate to the stage, not a replacement stage system. When material precision is required, use the existing runtime objects in this order:
+Professional execution granularity is subordinate to the stage, not a replacement stage system. The single canonical professional-stage execution spine is:
 
 ```text
-Professional Stage context
-→ Decision Object
-→ Claim
-→ task/claim Knowledge Mount
-→ Required Native Output
+Professional Stage
+→ Professional Question / Decision Object
+→ Knowledge Inputs
+→ Operational Knowledge Mount
 → Required Capability Roles
-→ minimum sufficient Skill / Execution Owner Set
-→ Tool / Adapter when required
-→ Native Artifact
+→ Current Execution Owners / Skills
+→ Native Outputs
 → Actual Readback
+→ Independent Review
+→ Stage Closure
 ```
 
-The **Decision Object** is the preferred horizontal join key across R-C / R-D / R-E / R-F / R-G / R-H / R-I at fine-grained scope. DD responsibilities and Integration interfaces remain overlays on that decision/claim; Knowledge Role, Capability, Skill and Tool identity do not become professional stages.
+The **Decision Object** is the preferred horizontal join key across R-C / R-D / R-E / R-F / R-G / R-H / R-I at fine-grained scope. Claim scope, DD responsibilities and Integration interfaces remain overlays on the chain. Tool / Adapter selection is internal to `Current Execution Owners / Skills → Native Outputs`. Knowledge Role, Capability, Skill, Tool, Claim, DD or Interface identity does not become an extra professional-stage node.
 
 
 ---
@@ -623,14 +623,16 @@ Current process-definition state:
 Architecture             = FORMALIZED + MACHINE_BOUND + PROJECT-EXERCISED REFERENCE
 Structural Engineering  = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
 Building Services / MEP = FORMALIZED + MACHINE_BOUND / PROJECT_EXERCISE NOT CLAIMED HERE
-Interior Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-Landscape Architecture   = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-Lighting Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-Digital Product / HCD    = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
-Systems Engineering      = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN
+Interior Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN / CANDIDATE EVALUATION AVAILABLE
+Landscape Architecture   = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN / CANDIDATE EVALUATION AVAILABLE
+Lighting Design          = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN / CANDIDATE EVALUATION AVAILABLE
+Digital Product / HCD    = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN / CANDIDATE EVALUATION AVAILABLE
+Systems Engineering      = CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN / CANDIDATE EVALUATION AVAILABLE
 ```
 
 A Current process document and passing machine schema prove that a domain definition is formalized/machine-bound. They do not by themselves prove project execution, independent readback, professional PASS or Design KEEP.
+
+For an OPEN domain with `candidate_process_ref + candidate_machine_schema_ref + candidate_evolution_ref`, `CANDIDATE EVALUATION AVAILABLE` means only that the Resolver may run an exact-revision `BOUNDED_NON_CURRENT_PROJECT_EXERCISE`. It does **not** fill `current_process_ref`, change the domain state, or grant professional authority. Candidate exercise must remain visibly Candidate until the Controlled Evolution chain reaches `EV5_PROMOTION_READY` and an authorized human adoption decision changes the Current pointer.
 
 ---
 
@@ -1117,7 +1119,7 @@ A candidate may not mutate the Current runtime used by the same evaluation run.
 | file-handling/materialization routes | yes | byte identity + mutation safety + recovery/readback tests |
 | validators / schemas | yes | fixture migration + compatibility analysis + false-pass/false-fail review |
 | knowledge methods / reusable procedures | yes | Content/KI/OE + evidence + bounded transfer validation |
-| professional-domain process definitions | yes, slowly | professional evidence + project replay + independent domain review + migration |
+| professional-domain process definitions | yes, slowly | exact candidate mutation manifest/revision + authentic bounded real-project exercise + task/claim Knowledge Mount gate + stage-specific capability/Current-owner recomposition + actual DAG/typed handoffs where multi-owner + HOLD/release selective retest + post-retest successor receipt + regression + independent domain review + migration/rollback |
 | architecture control graph | yes, slowly | full governance regression + dependency/reopen analysis + migration + human promotion |
 | Current Authority identity | **not autonomously** | explicit governance/human authority change |
 | active user constraints | **not autonomously** | only later explicit user instruction may change/revoke |
@@ -1133,6 +1135,37 @@ Separate lifecycle:
 Candidates must prove at least: semantic purpose preserved, authority boundaries preserved, NO COMPRESSION / NO LOSS preserved, known regressions fixed, old valid cases still pass, adversarial cases pass, quality/reliability improves, false-promotion risk does not rise, file/readback/recovery remains valid, cost/latency tradeoff is justified, and rollback exists.
 
 `CANDIDATE VARIANT ? CURRENT / EVAL PASS ? HUMAN PROMOTION / PR MERGED ? PROJECT DESIGN PASS / CURRENT ADOPTED ? OLD RECEIPTS REINTERPRETED`.
+
+For `PROFESSIONAL_PROCESS_DEFINITIONS` specifically:
+
+```text
+PROCESS_OPEN
+→ exact Candidate definition binding
+→ bounded non-Current real-project exercise
+→ active professional-stage knowledge inputs
+→ task/claim Knowledge Mount eligibility / freshness / claim-ceiling gate
+→ materially different stages recompute capability / owner sets
+→ Candidate Skills / Candidate Bodies remain non-Current and cannot satisfy owner coverage
+→ multi-owner Current execution materializes the existing DAG + typed handoffs
+→ one-owner stages justify complete capability coverage
+→ actual readback
+→ HOLD / REVISE / REJECT / bounded PASS
+→ pre-release evaluation receipt + release condition + continuation checkpoint
+→ selective affected-binding reopen / retest
+→ successor receipt only after actual post-release retest
+→ regression
+→ independent domain review
+→ migration + rollback readiness
+→ EV5_PROMOTION_READY
+→ authorized human adoption
+→ Current-pointer readback + monitoring
+```
+
+`PROFESSIONAL PROCESS ADOPTED ≠ ONE OR TWO SKILLS REUSED THROUGH EVERY STAGE`.
+
+`MINIMUM SUFFICIENT OWNER SET ≠ MINIMUM SKILL COUNT`. The minimum set is the smallest set that still covers every material capability, native output, readback, authority boundary and review triggered by the active stage. This also does not authorize the opposite shortcut of running every Skill at every stage.
+
+When an exercise hits a material problem, its runtime record must bind the affected professional stage/decision/output, active Knowledge Mount state, release condition, continuation checkpoint, affected capability/output bindings, unaffected verified bindings, selective retest plan and pre-release evaluation receipt. `successor_receipt_ref` remains null until the release condition is actually satisfied and an affected-binding retest executes. Once released, only affected bindings are recomputed/retested unless dependency analysis proves wider staleness.
 
 ### 24.4 Evolution ownership
 

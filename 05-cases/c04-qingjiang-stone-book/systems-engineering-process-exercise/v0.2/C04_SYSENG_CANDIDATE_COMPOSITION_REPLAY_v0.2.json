@@ -1,0 +1,601 @@
+{
+  "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Systems Engineering",
+  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": true,
+  "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+    "prose_blob": "dafddd0738d00f94dec1bd25a4770a95868519c8",
+    "machine_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+    "machine_blob": "df711df8f6faf48fcf4a347de214ee5caa30584c",
+    "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+      "blob": "1fac3fbecbf1d722dd40ac8df1abec8899bbcc63"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+      "blob": "a3465fd5ff9cd7ea634808d0e31a8b76159fba0c"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json",
+      "blob": "e4eab9a5ad1df18fe2e545e046ab90c7db239aa4"
+    }
+  ],
+  "stage_exercises": [
+    {
+      "stage_id": "SYSENG-DP0",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Systems Engineering",
+        "stage_id": "SYSENG-DP0",
+        "stage_name": "Scope, System of Interest & Authority",
+        "professional_question": "What is the system of interest, where is its boundary, who owns consequential decisions, and what claim is this Systems Engineering process allowed to make?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "SYSENG-DP0"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What is the system of interest, where is its boundary, who owns consequential decisions, and what claim is this Systems Engineering process allowed to make?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "system-of-interest definition",
+              "SE responsibility/authority",
+              "lifecycle framing",
+              "technical management authority"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "SYSTEM_CONTEXT_RESEARCH",
+              "BOUNDARY_AUTHORITY_REASONING",
+              "CONTEXT_DIAGRAM_MODELLING",
+              "EVIDENCE_TRACEABILITY"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "Systems Engineering Responsibility / Authority Matrix",
+              "System-of-Interest / Context / Boundary Register",
+              "initial lifecycle/use/transition scope",
+              "initial risk/assumption register",
+              "claim-ceiling record"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "System-of-Interest / Context / Boundary Register",
+              "Systems Engineering Responsibility / Authority Matrix",
+              "claim-ceiling record",
+              "initial lifecycle/use/transition scope",
+              "initial risk/assumption register"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Systems Engineering",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "system-of-interest definition",
+            "SE responsibility/authority",
+            "lifecycle framing",
+            "technical management authority"
+          ],
+          "active_knowledge_inputs": [
+            "system-of-interest definition",
+            "SE responsibility/authority",
+            "lifecycle framing",
+            "technical management authority"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "system-of-interest definition": [],
+            "SE responsibility/authority": [],
+            "lifecycle framing": [],
+            "technical management authority": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:system-of-interest definition",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:SE responsibility/authority",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:lifecycle framing",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:technical management authority"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "SYSTEM_CONTEXT_RESEARCH",
+          "BOUNDARY_AUTHORITY_REASONING",
+          "CONTEXT_DIAGRAM_MODELLING",
+          "EVIDENCE_TRACEABILITY"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_SYSTEMS_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "SYSTEM_CONTEXT_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "BOUNDARY_AUTHORITY_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "CONTEXT_DIAGRAM_MODELLING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "EVIDENCE_TRACEABILITY",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "Systems Engineering Responsibility / Authority Matrix",
+          "System-of-Interest / Context / Boundary Register",
+          "initial lifecycle/use/transition scope",
+          "initial risk/assumption register",
+          "claim-ceiling record"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:system-of-interest definition",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:SE responsibility/authority",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:lifecycle framing",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:technical management authority"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    },
+    {
+      "stage_id": "SYSENG-DP1",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Systems Engineering",
+        "stage_id": "SYSENG-DP1",
+        "stage_name": "Stakeholder Needs, Operational Context & Concept",
+        "professional_question": "What outcomes, actors, operational scenarios, constraints and degraded conditions must the system address before functions or solutions are committed?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "SYSENG-DP1"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What outcomes, actors, operational scenarios, constraints and degraded conditions must the system address before functions or solutions are committed?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "stakeholder needs",
+              "operational concepts",
+              "mission/use scenarios",
+              "normal/degraded/failure context"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "STAKEHOLDER_USER_RESEARCH",
+              "OPERATIONAL_CONCEPT_MODELLING",
+              "MISSION_THREAD_REASONING",
+              "DEGRADED_FAILURE_SCENARIO_ANALYSIS"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "HOLD",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "stakeholder need set",
+              "operational concept / mission threads",
+              "context diagrams",
+              "Stakeholder Need / Use-Case / Requirement Trace Matrix seed",
+              "unresolved need/assumption register"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "Stakeholder Need / Use-Case / Requirement Trace Matrix seed",
+              "context diagrams",
+              "operational concept / mission threads",
+              "stakeholder need set",
+              "unresolved need/assumption register"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Systems Engineering",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential stakeholder, operational, system, architecture, interface, requirement, V&V and lifecycle sources through the Current task/claim Operational Mount before they support a Systems Engineering decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "stakeholder needs",
+            "operational concepts",
+            "mission/use scenarios",
+            "normal/degraded/failure context"
+          ],
+          "active_knowledge_inputs": [
+            "stakeholder needs",
+            "operational concepts",
+            "mission/use scenarios",
+            "normal/degraded/failure context"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "stakeholder needs": [],
+            "operational concepts": [],
+            "mission/use scenarios": [],
+            "normal/degraded/failure context": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:stakeholder needs",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:operational concepts",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:mission/use scenarios",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:normal/degraded/failure context"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "STAKEHOLDER_USER_RESEARCH",
+          "OPERATIONAL_CONCEPT_MODELLING",
+          "MISSION_THREAD_REASONING",
+          "DEGRADED_FAILURE_SCENARIO_ANALYSIS"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_SYSTEMS_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "STAKEHOLDER_USER_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "OPERATIONAL_CONCEPT_MODELLING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "MISSION_THREAD_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "DEGRADED_FAILURE_SCENARIO_ANALYSIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "stakeholder need set",
+          "operational concept / mission threads",
+          "context diagrams",
+          "Stakeholder Need / Use-Case / Requirement Trace Matrix seed",
+          "unresolved need/assumption register"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:stakeholder needs",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:operational concepts",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:mission/use scenarios",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:normal/degraded/failure context",
+          "OPERATIONAL_CONCEPT_MODELLING:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    }
+  ],
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
+  "release_condition": "Task/claim Systems Engineering Knowledge Mount becomes valid and any affected operational/interface validation gaps are released; independent Systems Engineering review remains separate.",
+  "claim_ceiling": "CURRENT CANDIDATE REVISION REPLAY OVER MAIN C04 SYSTEMS V&V EVIDENCE / KNOWLEDGE MOUNT + VALIDATION/INDEPENDENT REVIEW HOLD / NO SYSTEMS PASS / NO ADOPTION",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "CURRENT_ADOPTION",
+    "RELEASE_CONDITION_SATISFIED",
+    "SELECTIVE_RETEST_EXECUTED"
+  ]
+}

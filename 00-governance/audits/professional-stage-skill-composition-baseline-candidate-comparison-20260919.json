@@ -1,0 +1,191 @@
+{
+  "audit_id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-COMPARISON-20260919",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "baseline_ref": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
+  "candidate_branch": "candidate/professional-stage-skill-composition-20260919-r5",
+  "comparison_scope": "Execution-mechanism quality, fail-closed reliability and bounded local resolver cost only. This comparison does not score or prove project design quality or professional domain PASS.",
+  "baseline": {
+    "professional_machine_stage_count": 79,
+    "candidate_stages_with_native_stage_execution_requirements": 0,
+    "current_stages_with_exact_revision_runtime_execution_projection": 0,
+    "stage_specific_capability_owner_routing": "ABSENT",
+    "professional_stage_knowledge_mount_preflight_gate": "NOT_WIRED_IN_CHAT_COS_ADAPTER",
+    "explicit_minimum_sufficient_not_minimum_skill_count_guard": false,
+    "open_candidate_domains_with_current_revision_real_project_stage_composition_reapplication": 0,
+    "professional_candidate_bounded_invocation_route": "ABSENT",
+    "hold_release_selective_reroute_contract": "NOT_BOUND_TO_STAGE_CAPABILITY_OWNER_SET",
+    "candidate_definition_exact_hash_to_project_exercise_guard": "NOT_ENFORCED_FOR_ALL_OPEN_DOMAINS"
+  },
+  "candidate": {
+    "canonical_professional_stage_execution_chain": [
+      "PROFESSIONAL_STAGE",
+      "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+      "KNOWLEDGE_INPUTS",
+      "OPERATIONAL_KNOWLEDGE_MOUNT",
+      "REQUIRED_CAPABILITY_ROLES",
+      "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+      "NATIVE_OUTPUTS",
+      "ACTUAL_READBACK",
+      "INDEPENDENT_REVIEW",
+      "STAGE_CLOSURE"
+    ],
+    "professional_machine_stage_count": 79,
+    "candidate_stages_with_native_stage_execution_requirements": 43,
+    "current_stages_with_exact_revision_runtime_execution_projection": 36,
+    "runtime_stage_composition_coverage": "79_OF_79",
+    "unique_required_and_supporting_capability_roles": 308,
+    "roles_using_unnamed_owner_routing_fallback": 0,
+    "open_candidate_domain_count": 5,
+    "open_candidate_domains_with_current_revision_real_project_stage_composition_reapplication": 5,
+    "real_project_counted_domains": [
+      "Interior Design",
+      "Landscape Architecture",
+      "Lighting Design",
+      "Digital Product / HCD",
+      "Systems Engineering"
+    ],
+    "bounded_context_only_domains": [],
+    "bounded_invocation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+    "current_authority_preserved_during_evaluation": "PROCESS_OPEN + current_process_ref=null",
+    "current_process_machine_mutation_for_routing_metadata": "FORBIDDEN",
+    "current_execution_projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
+    "professional_stage_knowledge_mount_gate": "ACTIVE_FAIL_CLOSED",
+    "candidate_skill_owner_current_callability": "HOLD_NON_CURRENT",
+    "stage_transition_owner_set_recompute": true,
+    "affected_binding_selective_reroute_contract": true,
+    "unaffected_verified_output_reuse_contract": true,
+    "exact_candidate_machine_sha256_guard": true,
+    "independent_reviewer_producer_collapse_guard": true,
+    "specialist_gap_fail_closed": true
+  },
+  "real_project_exercise_evidence": [
+    {
+      "domain": "Interior Design",
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "main_real_project_evidence_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "current_candidate_replay_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    },
+    {
+      "domain": "Landscape Architecture",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "exercise_ref": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EXERCISE_v0.2.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    },
+    {
+      "domain": "Lighting Design",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "main_real_project_evidence_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "current_candidate_replay_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    },
+    {
+      "domain": "Digital Product / HCD",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "exercise_ref": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "candidate_ui_owner_boundary": "CANDIDATE_SKILLS_NOT_CURRENT_CALLABLE",
+      "release_condition": "UNSATISFIED"
+    },
+    {
+      "domain": "Systems Engineering",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "main_real_project_evidence_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+      "current_candidate_replay_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    }
+  ],
+  "quality_comparison": {
+    "dimension": "EXECUTION_MECHANISM_QUALITY_NOT_PROJECT_DESIGN_QUALITY",
+    "baseline": "Professional-process and Knowledge Mount contracts existed, but stage-specific owner composition and task/claim Knowledge Mount enforcement were not closed at Chat/CoS preflight.",
+    "candidate": "All 79 stages have runtime composition coverage without mutating already-Current process machines; all active stage knowledge inputs now fail closed on missing/ineligible/stale task/claim mounts; Candidate Skills remain non-Current.",
+    "result": "IMPROVED",
+    "does_not_prove": "Better execution mechanism does not prove better project design or professional domain PASS."
+  },
+  "reliability_comparison": {
+    "baseline_failure_modes": [
+      "minimum sufficient owner set could be read as minimum Skill count",
+      "same owner/Skill set could persist across materially different stages",
+      "specialist capability gaps could remain implicit",
+      "Candidate Skill identity could be mistaken for Current callability",
+      "active knowledge inputs could reach professional execution without task/claim mount enforcement at Chat/CoS preflight",
+      "pre-release HOLD receipt semantics could be confused with a post-release successor receipt"
+    ],
+    "candidate_guards": [
+      "MINIMUM_SUFFICIENT_OWNER_SET_IS_NOT_MINIMUM_SKILL_COUNT",
+      "PROFESSIONAL_STAGE_CHANGE_REQUIRES_OWNER_SET_RECOMPUTE",
+      "PROJECT_OR_SPECIALIST_OWNER_REQUIRED_FAILS_CLOSED",
+      "CANDIDATE_SKILL_AND_CANDIDATE_BODY_ARE_NOT_CURRENT_CALLABLE",
+      "ACTIVE_KNOWLEDGE_INPUT_REQUIRES_OE2_OR_OE3_CURRENT_OR_REVALIDATED_TASK_CLAIM_MOUNT",
+      "CURRENT_PROCESS_MACHINE_IS_NOT_MUTATED_IN_PLACE_FOR_ROUTING_METADATA",
+      "PRE_RELEASE_HOLD_USES_EVALUATION_RECEIPT_NOT_SUCCESSOR_RECEIPT",
+      "EV3_EV4_EV5_STATE_STRINGS_HAVE_MACHINE_PREREQUISITES"
+    ],
+    "regression_status": "PASS_PENDING_FINAL_FULL_SUITE",
+    "result": "IMPROVED_WITH_REAL_RELEASE_DAG_HANDOFF_INDEPENDENT_REVIEW_AND_DOMAIN_EVIDENCE_GAPS_OPEN"
+  },
+  "cost_latency_comparison": {
+    "baseline": "No comparable combined stage-composition + Knowledge Mount preflight runtime existed, so ratio-to-baseline is not defined.",
+    "candidate_local_benchmark": {
+      "case": "Architecture ADD-00 Current exact-revision projection + OE3 Knowledge Mount + owner routing",
+      "warmup_runs": 5,
+      "measured_runs": 100,
+      "median_ms": 4.36,
+      "p95_ms": 5.864,
+      "max_ms": 7.934,
+      "environment": "local Python execution in the r3 worktree; repository JSON reads included",
+      "claim_ceiling": "Local mechanism overhead only; excludes network, tool execution, connected-source retrieval, human review and real project production latency."
+    },
+    "tradeoff": "A few milliseconds of local resolver overhead is accepted for exact Current projection checks, knowledge eligibility/freshness coverage, specialist HOLDs and Current-owner authority safety.",
+    "result": "BOUNDED_COST_ACCEPTED_FOR_EVALUATION"
+  },
+  "remaining_adoption_evidence_gaps": [
+    "task/claim Knowledge Mounts remain HOLD in the current bounded project reapplications",
+    "release conditions remain UNSATISFIED; therefore no post-release selective retest or successor receipt is claimed",
+    "required real Multi-Skill DAG / typed-handoff evidence is not materialized where Current multi-owner execution would apply",
+    "independent domain professional review remains NOT_RUN for all five OPEN Candidate domains",
+    "project/domain-specific field, user, specialist or validation authority remains open where each record states it",
+    "human adoption and Current pointer mutation remain forbidden before EV5 + authorized decision",
+    "Interior and Lighting now have real-project HOLD exercises and current-revision replays, but required domain-native outputs, task/claim Knowledge Mounts, authority closure and independent professional review remain open."
+  ],
+  "bounded_verdict": "BASELINE_VS_CANDIDATE_EXECUTION_MECHANISM_COMPARISON_REFRESHED_ON_451ACCFA / KNOWLEDGE_AND_SKILL_RUNTIME_ROUTING_IMPROVED / PROFESSIONAL_ADOPTION_REMAINS_HOLD",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "FIELD_TRUTH",
+    "USER_VALIDATION",
+    "ENGINEERING_APPROVAL",
+    "STATUTORY_APPROVAL",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED"
+  ],
+  "bounded_context_reapplication_evidence_history": [
+    {
+      "domain": "Interior Design",
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "reapplication_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "result": "HOLD",
+      "real_project_adoption_counted": false,
+      "reason": "Historical pre-main-drift classification retained as provenance; latest main now supplies a real-project HOLD exercise, which is consumed by the current-revision replay without granting professional adoption.",
+      "historical_state": "SUPERSEDED_BY_REAL_PROJECT_HOLD_EXERCISE_PLUS_CURRENT_REVISION_REPLAY"
+    },
+    {
+      "domain": "Lighting Design",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "reapplication_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "result": "HOLD",
+      "real_project_adoption_counted": false,
+      "reason": "Historical pre-main-drift classification retained as provenance; latest main now supplies a real-project HOLD exercise, which is consumed by the current-revision replay without granting professional adoption.",
+      "historical_state": "SUPERSEDED_BY_REAL_PROJECT_HOLD_EXERCISE_PLUS_CURRENT_REVISION_REPLAY"
+    }
+  ]
+}

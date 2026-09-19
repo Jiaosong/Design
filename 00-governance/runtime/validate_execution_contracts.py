@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -28,6 +30,7 @@ EXPECTED_IDS = {
 RESOLVER_CURRENT = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json"
 RESOLVER_PREVIOUS = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json"
 OWNER_MAP = RUNTIME / "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
+CONTROL_GRAPH = RUNTIME / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
 RECEIPT_DIR = RUNTIME / "receipts"
 LIFECYCLE_BASELINE = RUNTIME / "skill-lifecycle" / "BASELINE_ADOPTION_2026-08-18.json"
@@ -140,17 +143,28 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
     if closure_cleanup.get("bulk_delete_requires_ref_sha_audit") is not True or closure_cleanup.get("unmerged_age_only_delete_forbidden") is not True:
         fail("resolver closure cleanup must preserve ref audit and forbid age-only unmerged deletion")
     required_order = [
-        "DEFINE_REQUIRED_NATIVE_OUTPUT",
+        "RESOLVE_PROFESSIONAL_PROCESS_CURRENT_OR_BOUNDED_CANDIDATE_EVALUATION_MODE",
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
         "RESOLVE_EXECUTION_OWNER_MAP",
         "LOAD_SKILL_CAPABILITY_CONTRACT",
         "SELECT_MINIMUM_SUFFICIENT_EXECUTION_OWNER_SET",
         "RESOLVE_TOOL_ADAPTERS_WHEN_REQUIRED",
+        "NATIVE_OUTPUTS",
+        "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "EMIT_NATIVE_ARTIFACT_RECORDS_AND_TYPED_HANDOFFS",
         "RUN_STRUCTURAL_SEMANTIC_VISUAL_ROI_RUNTIME_REGRESSION_AS_APPLICABLE",
         "ACTUAL_READBACK",
+        "READ_BACK_CAPABILITY_COVERAGE_BEFORE_STAGE_CLOSURE",
+        "INDEPENDENT_REVIEW",
         "EVIDENCE_GATE",
         "INDEPENDENT_DESIGN_QUALITY_GATE",
+        "STAGE_CLOSURE",
         "EMIT_EXECUTION_RECEIPT",
     ]
     positions = []
@@ -160,6 +174,183 @@ def validate_current_resolver_and_pointers() -> tuple[dict, dict]:
         positions.append(order.index(token))
     if positions != sorted(positions):
         fail("resolver v1.2 execution-contract order is inconsistent")
+
+    canonical_chain = current.get("canonical_professional_stage_execution_chain", {})
+    require_fields(
+        canonical_chain,
+        [
+            "chain",
+            "is_single_canonical_stage_spine",
+            "ordering_rule",
+            "auxiliary_bindings_do_not_insert_new_top_level_steps",
+            "auxiliary_substeps",
+            "closure_rule",
+            "does_not_create",
+        ],
+        "resolver-v1.2:canonical-professional-stage-execution-chain",
+    )
+    expected_chain = [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE",
+    ]
+    if canonical_chain.get("chain") != expected_chain:
+        fail("canonical professional-stage execution chain order drift")
+    if canonical_chain.get("is_single_canonical_stage_spine") is not True:
+        fail("professional-stage execution chain must remain the single canonical stage spine")
+    top_positions = [order.index(token) for token in expected_chain]
+    if top_positions != sorted(top_positions):
+        fail("default resolver order violates canonical professional-stage execution chain")
+
+    stage_comp = current.get("stage_composition_policy", {})
+    require_fields(
+        stage_comp,
+        [
+            "purpose",
+            "minimum_sufficient_means",
+            "minimum_sufficient_does_not_mean",
+            "resolve_sequence",
+            "recompute_on",
+            "stage_transition_rule",
+            "multi_skill_required_when",
+            "single_owner_allowed_when",
+            "selective_reroute_rule",
+            "forbidden_compressions",
+            "does_not_create",
+        ],
+        "resolver-v1.2:stage-composition",
+    )
+    if stage_comp.get("minimum_sufficient_does_not_mean") != "MINIMUM_SKILL_COUNT":
+        fail("resolver stage composition must explicitly reject minimum-skill-count interpretation")
+    for token in [
+        "READ_PROFESSIONAL_STAGE_AND_PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "RESOLVE_ACTIVE_PROFESSIONAL_STAGE_KNOWLEDGE_INPUTS",
+        "BIND_AND_VALIDATE_OPERATIONAL_KNOWLEDGE_MOUNT",
+        "RESOLVE_REQUIRED_CAPABILITY_ROLES",
+        "SELECT_CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "HOLD_CANDIDATE_SKILL_OR_CANDIDATE_BODY_AS_NON_CURRENT_UNLESS_EXPLICIT_LEGAL_PROJECT_SPECIALIST_OVERRIDE",
+        "DEDUPE_ONLY_AFTER_CAPABILITY_COVERAGE_IS_PROVEN",
+        "BIND_AND_EXECUTE_REQUIRED_NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW_WHEN_TRIGGERED",
+        "STAGE_CLOSURE_GATE",
+    ]:
+        if token not in stage_comp.get("resolve_sequence", []):
+            fail(f"resolver stage composition missing resolve token {token}")
+    for token in [
+        "PROFESSIONAL_STAGE_CHANGE",
+        "REQUIRED_NATIVE_OUTPUT_OR_READBACK_CHANGE",
+        "HOLD_RELEASE_CONDITION_ACTIVATES_NEW_VERIFICATION_PATH",
+        "ACTUAL_READBACK_PROVES_CAPABILITY_GAP",
+    ]:
+        if token not in stage_comp.get("recompute_on", []):
+            fail(f"resolver stage composition missing recompute trigger {token}")
+
+    knowledge_policy = current.get("professional_stage_knowledge_mount_policy", {})
+    require_fields(
+        knowledge_policy,
+        [
+            "purpose",
+            "contract_ref",
+            "active_input_rule",
+            "required_mount_record_fields",
+            "eligible_states",
+            "accepted_freshness_states",
+            "fail_closed_when",
+            "does_not_prove",
+        ],
+        "resolver-v1.2:professional-stage-knowledge-mount",
+    )
+    if knowledge_policy.get("contract_ref") != "00-governance/knowledge-integrity-and-operational-mount-v1.0.md":
+        fail("professional-stage Knowledge Mount policy must bind the Current Knowledge Integrity / Operational Mount owner")
+    required_mount_fields = {
+        "knowledge_ref",
+        "use_role",
+        "operational_eligibility",
+        "eligibility_scope",
+        "claim_ceiling",
+        "applicability",
+        "conditions",
+        "unresolved_items",
+        "freshness_state",
+        "freshness_or_revalidation_trigger",
+        "does_not_prove",
+        "review_basis",
+        "satisfies_knowledge_inputs",
+    }
+    if set(knowledge_policy.get("required_mount_record_fields", [])) != required_mount_fields:
+        fail("professional-stage Knowledge Mount required record fields drift")
+    if not {"OE2", "OE3", "OE2_CONDITIONAL", "OE3_ELIGIBLE"}.issubset(
+        set(knowledge_policy.get("eligible_states", []))
+    ):
+        fail("professional-stage Knowledge Mount eligible states incomplete")
+    if set(knowledge_policy.get("accepted_freshness_states", [])) != {"CURRENT", "REVALIDATED_CURRENT"}:
+        fail("professional-stage Knowledge Mount freshness states must fail closed outside Current/revalidated Current")
+    for token in {
+        "ACTIVE_KNOWLEDGE_INPUT_HAS_NO_USABLE_MOUNT",
+        "MOUNT_IS_OE1_OR_NOT_ELIGIBLE",
+        "MOUNT_IS_STALE_UNKNOWN_OR_REVALIDATION_REQUIRED",
+        "OMITTED_KNOWLEDGE_INPUT_HAS_NO_EXPLICIT_REASON",
+    }:
+        if token not in knowledge_policy.get("fail_closed_when", []):
+            fail(f"professional-stage Knowledge Mount policy missing fail-closed token {token}")
+
+    candidate_policy = current.get("candidate_professional_process_evaluation_policy", {})
+    require_fields(
+        candidate_policy,
+        [
+            "purpose",
+            "eligible_graph_state",
+            "requires_candidate_refs",
+            "evaluation_mode",
+            "authority_rule",
+            "exact_binding_required",
+            "entry_requires",
+            "exercise_sequence",
+            "problem_record_requires",
+            "hold_release_rule",
+            "stage_recomposition_evidence_required",
+            "candidate_result_never_means",
+            "does_not_create",
+        ],
+        "resolver-v1.2:candidate-professional-process-evaluation",
+    )
+    if candidate_policy.get("eligible_graph_state") != "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN":
+        fail("candidate professional-process evaluation must bind PROCESS_OPEN graph state")
+    if candidate_policy.get("evaluation_mode") != "BOUNDED_NON_CURRENT_PROJECT_EXERCISE":
+        fail("candidate professional-process evaluation mode drift")
+    if "CURRENT_PROCESS_REF_REMAINS_NULL" not in candidate_policy.get("authority_rule", ""):
+        fail("candidate professional-process evaluation must keep current_process_ref null")
+    if candidate_policy.get("stage_recomposition_evidence_required") is not True:
+        fail("candidate professional-process evaluation must require stage recomposition evidence")
+    for token in {
+        "RESOLVE_ACTIVE_KNOWLEDGE_INPUTS",
+        "BIND_AND_VALIDATE_TASK_CLAIM_KNOWLEDGE_MOUNTS",
+        "HOLD_NON_CURRENT_CANDIDATE_SKILL_OWNERS",
+        "RECORD_HOLD_REVISE_REJECT_OR_PASS_WITH_CLAIM_CEILING",
+        "PERSIST_CONTINUATION_CHECKPOINT_WHEN_TRIGGERED",
+        "SELECTIVE_RETEST_AFTER_RELEASE_CONDITION",
+        "EMIT_SUCCESSOR_RECEIPT_ONLY_AFTER_MATERIAL_RETEST_EXECUTES",
+    }:
+        if token not in candidate_policy.get("exercise_sequence", []):
+            fail(f"candidate professional-process exercise sequence missing {token}")
+    for token in {
+        "RELEASE_CONDITION",
+        "CONTINUATION_CHECKPOINT_REF",
+        "AFFECTED_CAPABILITY_OUTPUT_BINDINGS",
+        "UNAFFECTED_VERIFIED_BINDINGS",
+        "SELECTIVE_RETEST_PLAN",
+        "EVALUATION_RECEIPT_REF",
+    }:
+        if token not in candidate_policy.get("problem_record_requires", []):
+            fail(f"candidate professional-process problem record missing {token}")
     return current, owner_map
 
 
@@ -255,6 +446,229 @@ def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict
         fail("Owner Map Technical Drawing state drift")
 
 
+def _professional_role_matches_rule(role: str, rule: dict) -> bool:
+    match = rule.get("match") or {}
+    if match.get("fallback") is True:
+        return True
+    if role in {str(x) for x in match.get("exact_any") or []}:
+        return True
+    if any(role.startswith(str(prefix)) for prefix in match.get("starts_with_any") or []):
+        return True
+    if any(str(token) in role for token in match.get("contains_any") or []):
+        return True
+    return False
+
+
+def _professional_stage_exec_for(
+    *,
+    row: dict,
+    process_ref: str,
+    process: dict,
+    stage: dict,
+    owner_map: dict,
+) -> tuple[dict, str]:
+    direct = stage.get("stage_execution_requirements")
+    if isinstance(direct, dict):
+        if row.get("state") in {"FORMALIZED_PROJECT_EXERCISED", "FORMALIZED_MACHINE_BOUND"}:
+            fail(
+                f"{row.get('domain')}:{stage.get('stage_id')} mutates a Current professional machine in place "
+                "with stage_execution_requirements"
+            )
+        return direct, "CANDIDATE_PROCESS_DEFINITION"
+
+    if row.get("state") not in {"FORMALIZED_PROJECT_EXERCISED", "FORMALIZED_MACHINE_BOUND"}:
+        fail(f"{row.get('domain')}:{stage.get('stage_id')} Candidate stage lacks stage_execution_requirements")
+
+    projection_ref = owner_map.get("current_professional_stage_execution_projection_ref")
+    if not projection_ref:
+        fail("Execution Owner Map missing Current professional-stage execution projection ref")
+    projection_path = ROOT / projection_ref
+    if not projection_path.is_file():
+        fail("Current professional-stage execution projection ref is unreadable")
+    projection = load_json(projection_path)
+    require_fields(
+        projection,
+        ["purpose", "semantic_class", "authority_rule", "migration_rule", "does_not_create", "processes"],
+        "execution-owner-map:current-professional-stage-execution-projection",
+    )
+    if projection.get("semantic_class") != "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION":
+        fail("Current professional stage execution projection must remain non-authority runtime compatibility only")
+    if projection.get("current_machine_sha256_semantics") != "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT":
+        fail("Current professional stage execution projection SHA256 semantics drift")
+    entry = next(
+        (
+            item
+            for item in projection.get("processes", [])
+            if item.get("current_machine_ref") == process_ref
+        ),
+        None,
+    )
+    if not entry:
+        fail(f"{row.get('domain')} Current professional machine lacks exact-revision execution projection")
+    if process_ref in set(
+        filter(None, subprocess.check_output(
+            ["git", "diff", "--name-only", "--", process_ref],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        ).splitlines())
+    ):
+        fail(f"{row.get('domain')} Current professional machine has unstaged drift")
+    actual_blob = subprocess.check_output(
+        ["git", "rev-parse", f":{process_ref}"],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+    ).strip()
+    canonical_machine_bytes = subprocess.check_output(
+        ["git", "cat-file", "blob", actual_blob],
+        cwd=ROOT,
+    )
+    actual_sha256 = hashlib.sha256(canonical_machine_bytes).hexdigest()
+    if entry.get("current_machine_sha256") != actual_sha256:
+        fail(f"{row.get('domain')} Current stage execution projection SHA256 is stale")
+    if entry.get("current_machine_blob") != actual_blob:
+        fail(f"{row.get('domain')} Current stage execution projection blob is stale")
+    stage_exec = (entry.get("stages") or {}).get(stage.get("stage_id"))
+    if not isinstance(stage_exec, dict):
+        fail(f"{row.get('domain')}:{stage.get('stage_id')} missing exact-revision execution projection")
+    return stage_exec, "CURRENT_EXACT_REVISION_RUNTIME_PROJECTION"
+
+
+def validate_professional_stage_capability_routing(owner_map: dict, capability: dict) -> tuple[int, int, int]:
+    routing = owner_map.get("professional_stage_capability_routing", {})
+    require_fields(
+        routing,
+        [
+            "purpose",
+            "is_routing_extension_not_taxonomy",
+            "resolution_inputs",
+            "valid_resolution_classes",
+            "ordered_first_match",
+            "rules",
+            "composition_rule",
+            "single_owner_rule",
+            "no_owner_rule",
+            "recompute_rule",
+            "candidate_owner_rule",
+            "candidate_body_rule",
+        ],
+        "execution-owner-map:professional-stage-capability-routing",
+    )
+    if routing.get("is_routing_extension_not_taxonomy") is not True:
+        fail("professional-stage capability routing must remain an owner-map extension, not a new taxonomy")
+    if routing.get("ordered_first_match") is not True:
+        fail("professional-stage capability routing must use deterministic ordered-first-match semantics")
+    if "NOT_CURRENT_CALLABLE_EXECUTION_AUTHORITY" not in routing.get("candidate_owner_rule", ""):
+        fail("Candidate Skill routing must explicitly remain non-Current execution authority")
+    if "NOT_CURRENT_CALLABLE_EXECUTION_AUTHORITY" not in routing.get("candidate_body_rule", ""):
+        fail("Candidate Body routing must explicitly remain non-Current execution authority")
+
+    rules = routing.get("rules", [])
+    rule_ids = [str(rule.get("rule_id") or "") for rule in rules]
+    if len(rule_ids) != len(set(rule_ids)) or any(not rule_id for rule_id in rule_ids):
+        fail("professional-stage capability routing rule ids must be unique and non-empty")
+    required_rule_ids = {
+        "PSC-INDEPENDENT-REVIEW",
+        "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+        "PSC-TECHNICAL-DRAWING",
+        "PSC-RESEARCH-EVIDENCE",
+        "PSC-DATA-GIS",
+        "PSC-3D-GEOMETRY",
+        "PSC-DESIGN-PROCESS",
+        "PSC-UNOWNED-PROFESSIONAL-CAPABILITY",
+    }
+    if not required_rule_ids.issubset(set(rule_ids)):
+        fail("professional-stage capability routing is missing required semantic guards")
+    fallback_rules = [rule for rule in rules if (rule.get("match") or {}).get("fallback") is True]
+    if len(fallback_rules) != 1 or rules[-1] is not fallback_rules[0]:
+        fail("professional-stage capability routing must have exactly one final fallback rule")
+    if fallback_rules[0].get("resolution_class") != "PROJECT_OR_SPECIALIST_OWNER_REQUIRED":
+        fail("professional-stage fallback must fail closed to project/specialist owner required")
+
+    valid_classes = set(routing.get("valid_resolution_classes", []))
+    owner_contracts = {str(owner.get("skill_id")): owner for owner in capability.get("owners", [])}
+    for rule in rules:
+        resolution_class = rule.get("resolution_class")
+        if resolution_class not in valid_classes:
+            fail(f"professional-stage rule {rule.get('rule_id')} uses undeclared resolution class {resolution_class}")
+        for owner_id in rule.get("owner_refs", []):
+            if owner_id not in owner_contracts:
+                fail(f"professional-stage rule {rule.get('rule_id')} references unknown owner {owner_id}")
+            routing_state = owner_contracts[owner_id].get("routing_state")
+            if resolution_class == "EXISTING_OWNER" and routing_state != "INSTALLED_OWNER":
+                fail(f"professional-stage existing-owner rule points to non-installed owner {owner_id}")
+            if resolution_class == "CANDIDATE_OWNER" and routing_state != "CANDIDATE_OWNER":
+                fail(f"professional-stage candidate-owner rule points to non-candidate owner {owner_id}")
+            if resolution_class == "CANDIDATE_BODY_REQUIRES_CALLABILITY" and routing_state != "CANDIDATE_BODY":
+                fail(f"professional-stage candidate-body rule points to wrong owner state {owner_id}")
+
+    specialist_rule = next(rule for rule in rules if rule.get("rule_id") == "PSC-PROFESSIONAL-SPECIALIST-GUARD")
+    design_rule = next(rule for rule in rules if rule.get("rule_id") == "PSC-DESIGN-PROCESS")
+    if rules.index(specialist_rule) > rules.index(design_rule):
+        fail("professional specialist guard must precede generic design-process routing")
+
+    graph = load_json(CONTROL_GRAPH)
+    stage_count = 0
+    knowledge_bound_stage_count = 0
+    unique_roles: set[str] = set()
+    fallback_roles: set[str] = set()
+    design_roles: set[str] = set()
+    process_rows = graph.get("professional_domain_process_state", [])
+    if not process_rows:
+        fail("control graph has no professional-domain process state")
+    for row in process_rows:
+        ref = row.get("machine_schema_ref") or row.get("candidate_machine_schema_ref")
+        if not ref:
+            fail(f"professional domain {row.get('domain')} has no machine process ref for capability routing")
+        process = load_json(ROOT / ref)
+        if process.get("kind") != "PROFESSIONAL_DOMAIN_PROCESS_DEFINITION":
+            fail(f"professional domain {row.get('domain')} machine ref is not a process definition: {ref}")
+        for stage in process.get("stages", []):
+            stage_count += 1
+            if not stage.get("knowledge_inputs"):
+                fail(f"{row.get('domain')}:{stage.get('stage_id')} has no declared knowledge_inputs")
+            if not str(stage.get("knowledge_mount_requirement") or "").strip():
+                fail(f"{row.get('domain')}:{stage.get('stage_id')} has no knowledge_mount_requirement")
+            knowledge_bound_stage_count += 1
+            stage_exec, _ = _professional_stage_exec_for(
+                row=row,
+                process_ref=ref,
+                process=process,
+                stage=stage,
+                owner_map=owner_map,
+            )
+            roles = list(stage_exec.get("required_capability_roles", []))
+            roles += list(stage_exec.get("supporting_capability_roles", []))
+            if not roles:
+                fail(f"{row.get('domain')}:{stage.get('stage_id')} has no stage capability roles")
+            for role in roles:
+                role = str(role)
+                unique_roles.add(role)
+                matched = next((rule for rule in rules if _professional_role_matches_rule(role, rule)), None)
+                if matched is None:
+                    fail(f"professional capability role has no owner-map classification: {role}")
+                if matched.get("rule_id") == "PSC-UNOWNED-PROFESSIONAL-CAPABILITY":
+                    fallback_roles.add(role)
+                if matched.get("rule_id") == "PSC-DESIGN-PROCESS":
+                    design_roles.add(role)
+
+    if fallback_roles:
+        fail(
+            "professional capability roles may not rely on unnamed fallback; classify them explicitly: "
+            + ", ".join(sorted(fallback_roles))
+        )
+    wrongly_generic = sorted(
+        role for role in design_roles if _professional_role_matches_rule(role, specialist_rule)
+    )
+    if wrongly_generic:
+        fail(
+            "professional specialist roles were swallowed by generic design-process routing: "
+            + ", ".join(wrongly_generic)
+        )
+    return stage_count, len(unique_roles), knowledge_bound_stage_count
+
+
 def validate_dag(data: dict) -> None:
     if not data.get("minimum_sufficient_owner_set"):
         fail("DAG must enforce minimum_sufficient_owner_set")
@@ -263,6 +677,23 @@ def validate_dag(data: dict) -> None:
     required_roles = {"PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"}
     if not required_roles.issubset(set(data.get("node_roles", []))):
         fail("DAG node roles incomplete")
+    required_dag_fields = set(data.get("required_dag_fields", []))
+    for token in {"stage_or_decision_scope", "required_capability_roles", "capability_coverage", "reroute_triggers"}:
+        if token not in required_dag_fields:
+            fail(f"DAG required fields missing stage-composition field {token}")
+    if "NOT_MINIMUM_SKILL_COUNT" not in data.get("minimum_sufficient_definition", ""):
+        fail("DAG minimum_sufficient_definition must reject minimum-skill-count interpretation")
+    for token in {
+        "SUPPORTING_OWNER_IS_NOT_OPTIONAL_WHEN_ITS_CAPABILITY_IS_MATERIAL_TO_THE_CLAIM",
+        "INDEPENDENT_REVIEWER_CANNOT_BE_COLLAPSED_INTO_PRODUCER_FOR_COUNT_MINIMIZATION",
+        "SELECTIVE_REOPEN_REROUTES_ONLY_AFFECTED_CAPABILITY_OUTPUT_BINDINGS",
+    }:
+        if token not in data.get("composition_rules", []):
+            fail(f"DAG composition rules missing {token}")
+    if "minimum_sufficient_does_not_mean_minimum_skill_count" not in data.get("hard_guards", []):
+        fail("DAG must reject minimum-skill-count interpretation")
+    if "stage_specific_capability_composition_required_for_material_professional_work" not in data.get("hard_guards", []):
+        fail("DAG must require stage-specific capability composition for material professional work")
 
 
 def validate_tool(data: dict) -> None:
@@ -439,6 +870,22 @@ def validate_receipts() -> None:
     schema = load_json(RECEIPT_CONTRACT)
     if schema.get("status") != "ACTIVE_CURRENT" or schema.get("version") != "1.0":
         fail("Execution Receipt v1.0 must be ACTIVE_CURRENT")
+    expected_stage_chain = [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE",
+    ]
+    if schema.get("professional_stage_canonical_execution_chain") != expected_stage_chain:
+        fail("Execution Receipt professional-stage canonical execution chain drift")
+    if "MUST_NOT_BE_USED_TO_REORDER" not in str(schema.get("professional_stage_flow_binding_rule") or ""):
+        fail("Execution Receipt generic flow phases must remain subordinate to professional-stage spine")
 
     typed_validation = schema.get("typed_validation_extension", {})
     require_fields(
@@ -825,6 +1272,9 @@ def main() -> None:
     resolver, owner_map = validate_current_resolver_and_pointers()
     contracts = validate_contract_headers()
     validate_owner_consistency(contracts["capability"], resolver, owner_map)
+    professional_stage_count, professional_role_count, knowledge_bound_stage_count = validate_professional_stage_capability_routing(
+        owner_map, contracts["capability"]
+    )
     validate_dag(contracts["dag"])
     validate_tool(contracts["tool"])
     validate_artifact(contracts["artifact"])
@@ -843,6 +1293,8 @@ def main() -> None:
     print(f"candidate UI owners consistent: {len(candidates)}")
     print(f"lifecycle promotion records applied: {len(list(LIFECYCLE_DIR.glob('PROMOTION_*.json')))}")
     print(f"real execution receipts: {len(list(RECEIPT_DIR.glob('*.json')))}")
+    print(f"professional stage capability routing: {professional_stage_count} stages / {professional_role_count} unique roles / unnamed fallback=0")
+    print(f"professional stage knowledge binding: {knowledge_bound_stage_count}/{professional_stage_count} stages declare knowledge inputs + mount requirement")
     print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 
 

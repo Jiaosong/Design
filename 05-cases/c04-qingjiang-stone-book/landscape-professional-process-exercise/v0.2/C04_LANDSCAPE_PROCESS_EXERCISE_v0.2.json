@@ -1,0 +1,611 @@
+{
+  "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Landscape Architecture",
+  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": true,
+  "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+    "prose_blob": "55d2ace8abb7cb34314e05ffc0214845923a6290",
+    "machine_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+    "machine_blob": "a9fca5ba94215374132eef6d50b888ce32051f71",
+    "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob": "0fe05fa53bcfe1307df8b03a866ce63eebab2e07"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+      "blob": "6a3bfa45bf6938359b0d3440f31969292fd01d60"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/EVIDENCE_BOUNDARY.md",
+      "blob": "2426c067620ad25a9fe43e979d7724b92beaa0c8"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/remote-proxy-reconstruction/v0.1/C04_REMOTE_PROXY_RECONSTRUCTION_READBACK_v0.1.json",
+      "blob": "bc85803fc35153a8f13b5d43f6f66445696141ae"
+    }
+  ],
+  "stage_exercises": [
+    {
+      "stage_id": "LA-DP0",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Landscape Architecture",
+        "stage_id": "LA-DP0",
+        "stage_name": "Scope, Authority & Landscape Brief",
+        "professional_question": "Is landscape scope, site authority, appointment responsibility and information need sufficient to begin professional work without fabricating site truth?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "LA-DP0"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "Is landscape scope, site authority, appointment responsibility and information need sufficient to begin professional work without fabricating site truth?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "professional responsibility",
+              "site information requirements",
+              "jurisdiction route"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "SITE_AUTHORITY_RESEARCH",
+              "LANDSCAPE_BRIEF_SYNTHESIS",
+              "GIS_BASE_DATA_RESOLUTION",
+              "SCOPE_INTERFACE_REASONING"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process",
+              "oleander-data-viz"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "LANDSCAPE_SCOPE_AUTHORITY_REGISTER",
+              "SITE_INFORMATION_REQUIREMENT_REGISTER",
+              "landscape brief",
+              "initial interface owner map"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "LANDSCAPE_SCOPE_AUTHORITY_REGISTER",
+              "SITE_INFORMATION_REQUIREMENT_REGISTER",
+              "initial interface owner map",
+              "landscape brief"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Landscape Architecture",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "professional responsibility",
+            "site information requirements",
+            "jurisdiction route"
+          ],
+          "active_knowledge_inputs": [
+            "professional responsibility",
+            "site information requirements",
+            "jurisdiction route"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "professional responsibility": [],
+            "site information requirements": [],
+            "jurisdiction route": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional responsibility",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:site information requirements",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:jurisdiction route"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "SITE_AUTHORITY_RESEARCH",
+          "LANDSCAPE_BRIEF_SYNTHESIS",
+          "GIS_BASE_DATA_RESOLUTION",
+          "SCOPE_INTERFACE_REASONING"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_LANDSCAPE_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "SITE_AUTHORITY_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "LANDSCAPE_BRIEF_SYNTHESIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "GIS_BASE_DATA_RESOLUTION",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DATA-GIS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-data-viz"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "SCOPE_INTERFACE_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process",
+          "oleander-data-viz"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process",
+          "oleander-data-viz"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "LANDSCAPE_SCOPE_AUTHORITY_REGISTER",
+          "SITE_INFORMATION_REQUIREMENT_REGISTER",
+          "landscape brief",
+          "initial interface owner map"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional responsibility",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:site information requirements",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:jurisdiction route"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/EVIDENCE_BOUNDARY.md",
+        "05-cases/c04-qingjiang-stone-book/remote-proxy-reconstruction/v0.1/C04_REMOTE_PROXY_RECONSTRUCTION_READBACK_v0.1.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    },
+    {
+      "stage_id": "LA-DP1",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Landscape Architecture",
+        "stage_id": "LA-DP1",
+        "stage_name": "Inventory, Analysis & Site-System Diagnosis",
+        "professional_question": "What existing site/context systems, opportunities, constraints and uncertainties materially govern landscape decisions?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "LA-DP1"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What existing site/context systems, opportunities, constraints and uncertainties materially govern landscape decisions?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "site analysis",
+              "landform/hydrology/soil/vegetation/ecology",
+              "access/circulation",
+              "climate/visual/cultural landscape",
+              "maintenance/operations"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "FIELD_REMOTE_EVIDENCE_RESEARCH",
+              "GIS_SPATIAL_ANALYSIS",
+              "ENVIRONMENTAL_DATA_VISUALIZATION",
+              "SITE_SYSTEM_DIAGNOSIS"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-data-viz",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "site/base authority map",
+              "site systems inventory",
+              "constraints/opportunities map",
+              "existing vegetation/tree/soil evidence register",
+              "LANDSCAPE_SITE_ANALYSIS_RECEIPT"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "LANDSCAPE_SITE_ANALYSIS_RECEIPT",
+              "constraints/opportunities map",
+              "existing vegetation/tree/soil evidence register",
+              "site systems inventory",
+              "site/base authority map"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Landscape Architecture",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential site, professional, technical, regulatory and evidence sources through the Current task/claim Operational Mount before they support a professional landscape decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "site analysis",
+            "landform/hydrology/soil/vegetation/ecology",
+            "access/circulation",
+            "climate/visual/cultural landscape",
+            "maintenance/operations"
+          ],
+          "active_knowledge_inputs": [
+            "site analysis",
+            "landform/hydrology/soil/vegetation/ecology",
+            "access/circulation",
+            "climate/visual/cultural landscape",
+            "maintenance/operations"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "site analysis": [],
+            "landform/hydrology/soil/vegetation/ecology": [],
+            "access/circulation": [],
+            "climate/visual/cultural landscape": [],
+            "maintenance/operations": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:site analysis",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:landform/hydrology/soil/vegetation/ecology",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:access/circulation",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:climate/visual/cultural landscape",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:maintenance/operations"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "FIELD_REMOTE_EVIDENCE_RESEARCH",
+          "GIS_SPATIAL_ANALYSIS",
+          "ENVIRONMENTAL_DATA_VISUALIZATION",
+          "SITE_SYSTEM_DIAGNOSIS"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_LANDSCAPE_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "FIELD_REMOTE_EVIDENCE_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "GIS_SPATIAL_ANALYSIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DATA-GIS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-data-viz"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "ENVIRONMENTAL_DATA_VISUALIZATION",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DATA-GIS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-data-viz"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "SITE_SYSTEM_DIAGNOSIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-data-viz",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-data-viz",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "site/base authority map",
+          "site systems inventory",
+          "constraints/opportunities map",
+          "existing vegetation/tree/soil evidence register",
+          "LANDSCAPE_SITE_ANALYSIS_RECEIPT"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:site analysis",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:landform/hydrology/soil/vegetation/ecology",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:access/circulation",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:climate/visual/cultural landscape",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:maintenance/operations"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+        "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/EVIDENCE_BOUNDARY.md",
+        "05-cases/c04-qingjiang-stone-book/remote-proxy-reconstruction/v0.1/C04_REMOTE_PROXY_RECONSTRUCTION_READBACK_v0.1.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    }
+  ],
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
+  "release_condition": "Task/claim Landscape Knowledge Mount plus required professional/site authority becomes valid; field/site evidence and independent Landscape review remain separate gates.",
+  "claim_ceiling": "CURRENT CANDIDATE REVISION BOUNDED C04 REAPPLICATION / KNOWLEDGE MOUNT + FIELD/PROFESSIONAL AUTHORITY HOLD / NO LANDSCAPE PASS / NO ADOPTION",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "CURRENT_ADOPTION",
+    "RELEASE_CONDITION_SATISFIED",
+    "SELECTIVE_RETEST_EXECUTED"
+  ]
+}

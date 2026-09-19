@@ -228,6 +228,46 @@
         "read existing user/product evidence against claimed HCD scope",
         "verify research/accessibility/privacy-security ownership"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "HCD_SCOPE_RESEARCH",
+          "PRODUCT_GOAL_FRAMING",
+          "RESEARCH_PLAN_DESIGN",
+          "EVIDENCE_GOVERNANCE"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -359,6 +399,46 @@
         "finding-to-evidence trace",
         "context contradiction and evidence-gap audit"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "USER_RESEARCH_EXECUTION",
+          "RESEARCH_DATA_SYNTHESIS",
+          "CONTEXT_OF_USE_MODELLING",
+          "EVIDENCE_DATA_VISUALIZATION"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -490,6 +570,46 @@
         "requirement conflict check",
         "IA/navigation task-continuity readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "USER_NEED_REQUIREMENT_SYNTHESIS",
+          "EXPERIENCE_ARCHITECTURE",
+          "SERVICE_JOURNEY_REASONING",
+          "INFORMATION_ROUTE_MODELLING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -623,6 +743,46 @@
         "unknown/error/recovery/fallback readback",
         "content-source and privacy/security consequence readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "INTERACTION_STATE_DESIGN",
+          "CONTENT_INFORMATION_DESIGN",
+          "UI_VISUAL_COMPOSITION",
+          "TEMPORAL_MOTION_BEHAVIOR"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -759,6 +919,46 @@
         "finding severity/causal-hypothesis audit",
         "repair/retest readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "INTERACTIVE_PROTOTYPE_EXECUTION",
+          "USABILITY_RESEARCH",
+          "ACCESSIBILITY_EVALUATION",
+          "UI_VISUAL_AND_INTERACTION_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -898,6 +1098,46 @@
         "engineering ambiguity attack",
         "analytics/privacy handoff readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "DETAILED_PRODUCT_DESIGN",
+          "ENGINEERING_HANDOFF_SPECIFICATION",
+          "UI_INTERACTION_IMPLEMENTATION_ALIGNMENT",
+          "DESIGN_SYSTEM_CONTENT_HANDOFF"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -1036,6 +1276,46 @@
         "instrumentation check",
         "specialist handoff status"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "IMPLEMENTED_RUNTIME_READBACK",
+          "RELEASE_QC",
+          "ACCESSIBILITY_RUNTIME_CHECK",
+          "SUPPORT_DEGRADED_STATE_VALIDATION"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [
@@ -1171,6 +1451,46 @@
         "analytics-vs-causality boundary",
         "affected-stage/interface reopen analysis"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "LIVE_USER_RESEARCH",
+          "ANALYTICS_EXPERIMENT_DATA_ANALYSIS",
+          "SERVICE_OPERATION_FEEDBACK",
+          "CONTINUOUS_IMPROVEMENT_REASONING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Digital Product / Human-Centred Design professional owner",
       "independent_review_requirement": "Independent or distinct HCD/product review at the declared claim ceiling when promotion-relevant; accessibility, privacy/security, engineering and other specialist reviews remain separate where responsibility is outside HCD.",
       "open_items_allowed": [

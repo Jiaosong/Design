@@ -1,0 +1,306 @@
+{
+  "candidate_id": "OLEANDER-EV-PROFESSIONAL-PROCESS-LIGHTING-20260919",
+  "state": "EVH_HOLD",
+  "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
+  "target_owner": "Lighting Design professional process owner",
+  "target_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+  "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "baseline": {
+    "current_version_or_revision": "PROCESS_OPEN / origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
+    "authority_fingerprint": "Lighting Design professional process owner|CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN|current_process_ref=null|origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
+    "source_hash_or_commit": "451accfa81216c3f5b094cb94cd4d50462767ce8",
+    "frozen_at": "2026-09-19"
+  },
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+    "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+    "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
+    "source_revision_or_commit": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
+    "stage_count": 10,
+    "distinct_required_capability_profiles": 10,
+    "mutation_manifest_ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
+    "mutation_manifest_id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
+  },
+  "trigger_evidence": [
+    "USER_CORRECTION_CANDIDATE_ADOPTION_MUST_BE_TESTED_ON_REAL_TASK_PROBLEMS",
+    "USER_CORRECTION_DIFFERENT_PROFESSIONAL_STAGES_REQUIRE_DIFFERENT_SKILL_CAPABILITY_COMPOSITIONS",
+    "LATEST_MAIN_HAS_PROCESS_LEVEL_CAPABILITY_ROUTING_BUT_PREVIOUSLY_LACKED_STAGE_SPECIFIC_COMPOSITION_CARRIER",
+    "LATEST_MAIN_ADDS_REAL_C04_LIGHTING_PROJECT_HOLD_EXERCISE"
+  ],
+  "hypothesis": "A professional-process candidate is adoption-eligible only if bounded real-project exercises prove exact-revision professional behavior, stage-specific capability/owner recomposition, typed handoffs, actual readback, HOLD release and selective retest without granting Current authority during evaluation.",
+  "mutation_scope": [
+    "00-governance/schemas/lighting-design-process.v1.candidate.json",
+    "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+    "00-governance/professional-domain-process-contract-v1.0.md",
+    "00-governance/schemas/professional-domain-process.v1.schema.json",
+    "00-governance/schemas/validate_professional_domain_process.py",
+    "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+    "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md",
+    "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json",
+    "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
+    "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+    "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
+    "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+    "00-governance/runtime/oleander_chat_resolver_adapter.py",
+    "00-governance/runtime/validate_execution_contracts.py",
+    "00-governance/runtime/validate_architecture_control_graph.py"
+  ],
+  "evaluation": {
+    "eval_set_refs": [
+      ".github/workflows/ai-governance-evals.yml"
+    ],
+    "real_case_refs": [
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json"
+    ],
+    "counterexample_refs": [
+      "evals/failure/failure_cases.jsonl"
+    ],
+    "regression_refs": [
+      "00-governance/schemas/validate_professional_domain_process.py",
+      "00-governance/runtime/validate_execution_contracts.py",
+      "00-governance/runtime/validate_architecture_control_graph.py"
+    ],
+    "metrics": [
+      "EXACT_CANDIDATE_REVISION_BOUND",
+      "REAL_PROJECT_EXERCISE_COUNT",
+      "DISTINCT_STAGE_CAPABILITY_COMPOSITION_COUNT",
+      "MULTI_OWNER_DAG_AND_TYPED_HANDOFF_COVERAGE",
+      "ACTUAL_READBACK_COVERAGE",
+      "HOLD_RELEASE_SELECTIVE_RETEST_COVERAGE",
+      "INDEPENDENT_REVIEW_COVERAGE",
+      "MIGRATION_ROLLBACK_READBACK_READINESS"
+    ],
+    "acceptance_thresholds": [
+      "ALL_MATERIAL_EXERCISE_EVIDENCE_BINDS_CURRENT_CANDIDATE_REVISION",
+      "MATERIALLY_DIFFERENT_STAGES_RECOMPUTE_OWNER_SETS_WHEN_CAPABILITIES_DIFFER",
+      "NO_MATERIAL_CAPABILITY_DROPPED_TO_MINIMIZE_SKILL_COUNT",
+      "AT_LEAST_ONE_MATERIAL_HOLD_REOPEN_OR_STAGE_SCOPE_CHANGE_PROVES_SELECTIVE_REROUTE",
+      "INDEPENDENT_DOMAIN_REVIEW_COMPLETED_BEFORE_EV4",
+      "MIGRATION_ROLLBACK_AND_POST_ADOPTION_READBACK_READY_BEFORE_EV5"
+    ],
+    "result": "HOLD"
+  },
+  "runtime_exercise": {
+    "state": "CURRENT_CANDIDATE_REVISION_REAL_PROJECT_BOUNDED_REAPPLICATION_HOLD",
+    "real_case_refs": [
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json"
+    ],
+    "current_candidate_revision_exercised": true,
+    "current_candidate_stage_composition_owner_resolution_exercised": true,
+    "current_candidate_knowledge_mount_gate_exercised": true,
+    "real_project_exercise_counted": true,
+    "current_candidate_hold_release_selective_retest_exercised": false
+  },
+  "continuation_recovery": {
+    "state": "RELEASE_CONDITION_UNSATISFIED_SELECTIVE_RETEST_NOT_RUN",
+    "required_problem_fields": [
+      "professional_stage_ref",
+      "decision_or_output_scope",
+      "problem_state",
+      "release_condition",
+      "continuation_checkpoint_ref",
+      "affected_capability_output_bindings",
+      "unaffected_verified_bindings",
+      "selective_retest_plan",
+      "evaluation_receipt_ref"
+    ],
+    "release_condition_readback": "UNSATISFIED_ON_CURRENT_CANDIDATE_REVISION",
+    "selective_retest_readback": "NOT_RUN_RELEASE_CONDITION_UNSATISFIED",
+    "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
+    "successor_receipt_ref": null,
+    "continuation_checkpoint_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json"
+  },
+  "stage_composition_evidence": {
+    "definition_stage_count": 10,
+    "definition_distinct_required_capability_profiles": 10,
+    "definition_profile_state": "PRESENT_IN_CANDIDATE_MACHINE",
+    "stage_scope": [
+      "LGT-00",
+      "LGT-01"
+    ],
+    "required_capability_roles": [
+      "VISUAL_TASK_USER_RESEARCH",
+      "LIGHTING_BRIEF_SYNTHESIS",
+      "OPERATING_STATE_REASONING",
+      "SOURCE_STANDARD_RESEARCH",
+      "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN",
+      "3D_SPATIAL_LIGHT_READBACK",
+      "SURFACE_MATERIAL_INTERACTION_REASONING",
+      "OPTION_COMPARISON"
+    ],
+    "resolved_owner_set": [
+      "oleander-research",
+      "oleander-design-process",
+      "oleander-3d-pipeline"
+    ],
+    "multi_skill_dag_ref_or_single_owner_justification": "NOT_MATERIALIZED_CURRENT_OWNER_OR_KNOWLEDGE_GAPS_HOLD",
+    "typed_handoff_refs": [],
+    "actual_readback_refs": [
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json"
+    ],
+    "omitted_capability_reasoning": [
+      "independent professional review remains a separate unresolved adoption gate",
+      "Candidate Skill identities are not accepted as Current callable owners"
+    ],
+    "knowledge_mount_gate": "HOLD",
+    "result": "HOLD_CANONICAL_STAGE_CHAIN_READBACK",
+    "canonical_stage_execution_chain": [
+      "PROFESSIONAL_STAGE",
+      "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+      "KNOWLEDGE_INPUTS",
+      "OPERATIONAL_KNOWLEDGE_MOUNT",
+      "REQUIRED_CAPABILITY_ROLES",
+      "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+      "NATIVE_OUTPUTS",
+      "ACTUAL_READBACK",
+      "INDEPENDENT_REVIEW",
+      "STAGE_CLOSURE"
+    ],
+    "professional_question_or_decision_object_refs": [
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-00-001",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-01-001",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?"
+    ],
+    "knowledge_inputs": [
+      "Current visual task/project/space authority",
+      "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+      "Current luminaire/photometric/control/manufacturer technical data with provenance",
+      "material reflectance/transmittance and architectural geometry at correct revision",
+      "calculation/mockup/site measurement and night-readback evidence"
+    ],
+    "operational_knowledge_mount_refs": [],
+    "native_output_refs": [
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::lighting brief",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::visual-task/scene matrix",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::adjacency/adaptation map",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::criteria/source register",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::open assumptions",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::Lighting Basis / Scope / Responsibility Matrix",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-00::Visual Task / Experience / Time-State Matrix",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::daylight/electric-light concept",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::luminous hierarchy diagrams",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::source/surface/viewer relations",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::scene concept",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::option comparison",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::Daylight Model Configuration Record where simulation is consequential",
+      "00-governance/schemas/lighting-design-process.v1.candidate.json#LGT-01::daylight-electric integration strategy"
+    ],
+    "independent_review_refs": [],
+    "stage_closure_state": "HOLD_NOT_CLOSED"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "DOMAIN_PROCESS_OPEN_WITHOUT_CURRENT_PROCESS_AUTHORITY",
+    "candidate_result": "CURRENT_CANDIDATE_REVISION_BOUNDED_REAPPLICATION_EXERCISED; KNOWLEDGE_MOUNT_CURRENT_OWNER_DAG_HANDOFF_RELEASE_RETEST_AND_INDEPENDENT_REVIEW_GAPS_REMAIN_VISIBLE",
+    "regressions": [
+      "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",
+      "NO_POST_RELEASE_SELECTIVE_RETEST_SUCCESSOR_RECEIPT",
+      "REQUIRED_MULTI_OWNER_DAG_AND_TYPED_HANDOFF_EVIDENCE_NOT_MATERIALIZED_WHERE_APPLICABLE",
+      "INDEPENDENT_LIGHTING_PROFESSIONAL_REVIEW_NOT_RUN",
+      "REAL_PROJECT_LIGHTING_HOLD_EXERCISE_PRESENT_BUT_PHOTOMETRIC_PRODUCT_CONTROL_FIELD_KNOWLEDGE_MOUNT_AUTHORITY_AND_REVIEW_GAPS_REMAIN"
+    ],
+    "quality_delta": "EXECUTION_MECHANISM_QUALITY_IMPROVED: 43 OPEN-Candidate stages carry native stage execution requirements, 36 already-Current stages use an exact-revision non-authority runtime projection, and the combined 79-stage runtime corpus has 308 explicitly classified capability roles; does not prove project design quality.",
+    "reliability_delta": "IMPROVED_FAIL_CLOSED_STAGE_RECOMPOSITION_KNOWLEDGE_MOUNT_CURRENT_OWNER_EXACT_CANDIDATE_HASH_AND_SPECIALIST_REVIEW_BOUNDARIES; all five OPEN domains now have real-project current-revision bounded reapplication evidence, while all remain HOLD with professional adoption gates open.",
+    "cost_latency_delta": "LOCAL_CURRENT_ADD00_PROJECTION_PLUS_OE3_KNOWLEDGE_MOUNT_PLUS_OWNER_ROUTING_BENCHMARK_MEDIAN_4.360MS_P95_5.864MS_MAX_7.934MS_OVER_100_RUNS; network/tool/human execution latency not measured.",
+    "decision_basis": "EVH_HOLD_UNTIL_KNOWLEDGE_MOUNT_NATIVE_OUTPUT_READBACK_INDEPENDENT_REVIEW_AND_ADOPTION_CHAIN_CLOSE",
+    "evidence_ref": "00-governance/audits/professional-stage-skill-composition-baseline-candidate-comparison-20260919.json"
+  },
+  "independent_review": {
+    "reviewer_id": "NOT_ASSIGNED",
+    "independence_state": "NOT_RUN",
+    "review_input_revision": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
+    "verdict": "HOLD",
+    "blocking_findings": [
+      "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",
+      "NO_POST_RELEASE_SELECTIVE_RETEST_SUCCESSOR_RECEIPT",
+      "REQUIRED_MULTI_OWNER_DAG_AND_TYPED_HANDOFF_EVIDENCE_NOT_MATERIALIZED_WHERE_APPLICABLE",
+      "INDEPENDENT_LIGHTING_PROFESSIONAL_REVIEW_NOT_RUN",
+      "REAL_PROJECT_LIGHTING_HOLD_EXERCISE_PRESENT_BUT_PHOTOMETRIC_PRODUCT_CONTROL_FIELD_KNOWLEDGE_MOUNT_AUTHORITY_AND_REVIEW_GAPS_REMAIN"
+    ]
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "HOLD",
+    "decision_by": null,
+    "decision_at": null
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_CANDIDATE_TO_CURRENT_POINTER_IF_LATER_ADOPTED",
+    "affected_carriers": [
+      "professional_domain_process_state",
+      "professional process machine/prose references",
+      "resolver candidate/current process routing",
+      "project process instances and successor receipts"
+    ],
+    "affected_scope": "Lighting Design",
+    "migration_steps": [
+      "freeze exact EV5 candidate revision",
+      "authorized human adoption decision",
+      "change only the domain Current process pointer/state",
+      "revalidate resolver and architecture control graph",
+      "run bounded project/runtime readback without rewriting historical receipts"
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": null,
+    "rollback_action": "RESTORE_DOMAIN_PROCESS_OPEN_AND_CURRENT_PROCESS_REF_NULL",
+    "rollback_test": "ARCHITECTURE_CONTROL_GRAPH_AND_RESOLVER_READBACK",
+    "provenance_ref": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8"
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "AFTER_AUTHORIZED_ADOPTION_ON_FIRST_MATERIAL_PROJECT_EXERCISE_AND_ANY_TRIGGERED_REGRESSION",
+    "regression_signals": [
+      "fixed one/two-skill reuse across materially different stages",
+      "missing capability owner or typed handoff",
+      "false professional/current promotion",
+      "full-stack restart after local HOLD",
+      "historical receipt reinterpretation"
+    ],
+    "reopen_rule": "REOPEN_EVOLUTION_CANDIDATE_OR_ROLL_BACK_CURRENT_POINTER_WHEN_POST_ADOPTION_READBACK_BREAKS_ACCEPTANCE_OR_AUTHORITY_INVARIANTS",
+    "post_adoption_readback_ref": null
+  },
+  "adoption_blockers": [
+    "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",
+    "NO_POST_RELEASE_SELECTIVE_RETEST_SUCCESSOR_RECEIPT",
+    "REQUIRED_MULTI_OWNER_DAG_AND_TYPED_HANDOFF_EVIDENCE_NOT_MATERIALIZED_WHERE_APPLICABLE",
+    "INDEPENDENT_LIGHTING_PROFESSIONAL_REVIEW_NOT_RUN",
+    "NO_REAL_LIGHTING_PROJECT_NATIVE_DECISION_OBJECT_OR_PROJECT_PHOTOMETRIC_CONTROL_FIELD_EVIDENCE"
+  ],
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "UNIVERSAL_TRANSFERABILITY"
+  ],
+  "evaluation_invariants": [
+    "DOMAIN_REMAINS_CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN_THROUGH_EV5",
+    "CURRENT_PROCESS_REF_REMAINS_NULL_THROUGH_EV5",
+    "CANDIDATE_EXERCISE_DOES_NOT_AWARD_CURRENT_PROCESS_AUTHORITY",
+    "AUTHORIZED_HUMAN_ADOPTION_IS_REQUIRED_FOR_EV6_CURRENT_POINTER_CHANGE"
+  ],
+  "repaired_baseline_defects": [
+    "BASELINE_STRICT_SCHEMA_DRIFT_FOR_STAGE_BODY_CONTRACT_AND_INTERFACE_BINDING_REQUIREMENTS_REPAIRED_IN_EXISTING_SHARED_SCHEMA_ON_THIS_CANDIDATE_BRANCH"
+  ]
+}

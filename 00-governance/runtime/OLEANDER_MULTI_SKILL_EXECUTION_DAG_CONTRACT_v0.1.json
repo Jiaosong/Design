@@ -4,11 +4,21 @@
   "status": "ACTIVE_CURRENT",
   "decision_date": "2026-08-18",
   "node_roles": ["PRIMARY_OWNER", "SUPPORTING_OWNER", "READ_ONLY_CONSUMER", "VALIDATOR", "INDEPENDENT_REVIEWER"],
-  "required_dag_fields": ["dag_id", "task_id", "required_native_output", "primary_owner", "nodes", "edges", "artifact_contracts", "conflict_precedence", "reviewer_node", "completion_condition", "does_not_prove"],
+  "required_dag_fields": ["dag_id", "task_id", "stage_or_decision_scope", "required_capability_roles", "capability_coverage", "required_native_output", "primary_owner", "nodes", "edges", "artifact_contracts", "conflict_precedence", "reviewer_node", "completion_condition", "reroute_triggers", "does_not_prove"],
   "required_node_fields": ["owner_id", "role", "lifecycle_state", "read_permissions", "write_permissions", "inputs", "outputs", "gates", "can_promote"],
   "handoff_permissions": ["READ_ONLY", "DERIVE", "MUTATE_PRESENTATION_ONLY", "MUTATE_AUTHORIZED_SOURCE"],
   "default_handoff_permission": "READ_ONLY",
   "minimum_sufficient_owner_set": true,
+  "minimum_sufficient_definition": "MINIMUM_OWNER_SET_THAT_COVERS_ALL_MATERIAL_CAPABILITY_ROLES_OUTPUTS_READBACKS_AND_AUTHORITY_BOUNDARIES_FOR_THE_ACTIVE_STAGE_OR_DECISION_SCOPE; NOT_MINIMUM_SKILL_COUNT",
+  "composition_rules": [
+    "RESOLVE_CAPABILITY_PER_MATERIAL_OUTPUT_OR_DECISION_BINDING_BEFORE_OWNER_DEDUPLICATION",
+    "ONE_OWNER_MAY_COVER_MULTIPLE_CAPABILITIES_ONLY_WHEN_CURRENT_CAPABILITY_AND_AUTHORITY_BOUNDARIES_SUPPORT_EACH_BINDING",
+    "STAGE_TRANSITION_REQUIRES_OWNER_SET_RECOMPUTE_WHEN_CAPABILITY_SCOPE_CHANGES",
+    "SUPPORTING_OWNER_IS_NOT_OPTIONAL_WHEN_ITS_CAPABILITY_IS_MATERIAL_TO_THE_CLAIM",
+    "INDEPENDENT_REVIEWER_CANNOT_BE_COLLAPSED_INTO_PRODUCER_FOR_COUNT_MINIMIZATION",
+    "SELECTIVE_REOPEN_REROUTES_ONLY_AFFECTED_CAPABILITY_OUTPUT_BINDINGS"
+  ],
+  "stage_handoff_requirements": ["SOURCE_OR_NATIVE_AUTHORITY_PRESERVED", "INPUT_OUTPUT_IDENTITY_AND_REVISION_BOUND", "CAPABILITY_ROLE_AND_OWNER_BOUNDARY_EXPLICIT", "READBACK_EXPECTATION_EXPLICIT", "REOPEN_OR_REROUTE_TRIGGER_EXPLICIT"],
   "conflict_precedence": [
     "CURRENT_PROJECT_SOURCE_DESIGN_AUTHORITY",
     "AUTHORITATIVE_NATIVE_SOURCE_OWNER",
@@ -27,6 +37,8 @@
   ],
   "hard_guards": [
     "no_automatic_full_pipeline",
+    "minimum_sufficient_does_not_mean_minimum_skill_count",
+    "stage_specific_capability_composition_required_for_material_professional_work",
     "downstream_cannot_silently_overwrite_upstream_master",
     "producer_self_check_is_not_independent_verdict"
   ],

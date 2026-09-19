@@ -83,6 +83,37 @@ Resolve in this order:
 
 After owner resolution, Resolver v1.2 applies `OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1` and the `MINIMUM SUFFICIENT OWNER SET` rule. Do not expand to a full multi-Skill chain by default.
 
+### 4.1 Professional-stage capability-role routing
+
+Professional process definitions declare domain-native capability roles, not Skill IDs. The machine owner map therefore contains one ordered `professional_stage_capability_routing` extension that translates a stage role into an **existing routing outcome**:
+
+- `EXISTING_OWNER` — installed reusable owner is authorized for that execution slice;
+- `CANDIDATE_OWNER` — candidate capability match only; it is **not** Current callable execution authority and remains HOLD unless an explicit legal Current project/specialist binding overrides that role;
+- `CANDIDATE_BODY_REQUIRES_CALLABILITY` — the bounded body exists but must not be treated as an installed/callable owner;
+- `PROJECT_OR_SPECIALIST_OWNER_REQUIRED` — project/domain professional binding is required; missing binding = `HOLD`;
+- `INDEPENDENT_REVIEWER_REQUIRED` — reviewer binding must remain independent from the producer;
+- `NO_DEDICATED_OWNER_HOLD` — no legal owner is available.
+
+This is a routing normalization layer inside the **existing Execution Owner Map**, not a new capability taxonomy. Resolution still uses:
+
+`PROFESSIONAL DOMAIN + STAGE + CAPABILITY ROLE + REQUIRED NATIVE OUTPUT + CURRENT PROJECT OWNER BINDINGS + CURRENT CALLABILITY + CLAIM/REVIEW BOUNDARY`.
+
+For already-Current Architecture / Structural / MEP process machines, the Owner Map references `OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json`. That carrier is an exact-machine-revision runtime compatibility projection only. It must not mutate or replace the Current professional-process machine, and becomes stale as soon as the bound Current machine blob/SHA256 changes.
+
+The ordered rules intentionally fail closed. For example:
+
+- research/evidence roles may resolve to `oleander-research`;
+- GIS/data-analysis roles may resolve to `oleander-data-viz`;
+- 3D geometry/readback roles may resolve to `oleander-3d-pipeline`;
+- UI visual/interaction roles may identify the existing candidate UI owners as capability matches, but Candidate status means **non-Current**: runtime remains HOLD until a legal Current owner exists for the role;
+- technical-drawing roles remain bounded by the existing Technical Drawing Candidate Body unless an explicit legal project owner is bound;
+- structural/MEP/photometric/commissioning/field/usability-validation and other specialist proof roles do **not** fall through to a generic design Skill;
+- independent review never resolves to the producer merely to reduce owner count.
+
+Each active capability role is resolved independently. Only **after** complete role coverage is proven may repeated owner identities be deduplicated and the minimum sufficient owner set be formed.
+
+`PROJECT_OR_SPECIALIST_OWNER_REQUIRED`, `CANDIDATE_OWNER`, unavailable `CANDIDATE_BODY`, and `NO_DEDICATED_OWNER_HOLD` are valid runtime outcomes. They are not permission to create a Skill or substitute `oleander-design-process`. They produce a precise HOLD until the required Current owner/callability exists.
+
 ## 5｜Knowledge-role routing
 
 | Notion knowledge role | Default execution route |
@@ -180,12 +211,17 @@ This routing result becomes input to the Capability Contract and, if needed, the
 - Notion Canonical ID / Domain / Role / relations remain upstream.
 - Execution owner never changes Notion naming or physical Registry location.
 - `NO_DEDICATED_OWNER` does not trigger automatic Skill creation.
-- Candidate owner remains candidate.
+- Candidate owner remains candidate and is not Current callable execution authority.
 - One execution owner may serve many Notion METHODs/Domains.
 - One METHOD may call several execution owners across different outputs.
 - Delivery QC ≠ Design Review ≠ user validation.
 - Installed design-process ownership does not grant specialist technical proof, final presentation KEEP, field/manufacturing/engineering truth or human-test PASS.
 - `MINIMUM SUFFICIENT OWNER SET` precedes DAG expansion.
+- Every active professional-stage capability role resolves before owner-count minimization.
+- Missing project/specialist owner binding is `HOLD`, not generic-Skill substitution.
+- Independent reviewer binding must remain independent from the producer.
+- Candidate Body availability must be checked; Candidate Body ≠ installed callable owner.
+- Candidate Skill identity may be surfaced as a bounded evaluation suggestion, but it cannot satisfy Current owner coverage by itself.
 - Owner mapping does not prove METHOD validity, Design PASS, field/engineering truth, rights clearance or promotion.
 
 ## 11｜Relationship to Current contracts

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -37,11 +38,26 @@ def check_path(rel: str, label: str) -> Path:
 
 
 def git_blob_sha(path: Path) -> str:
-    raw = path.read_bytes()
-    h = hashlib.sha1()
-    h.update(f"blob {len(raw)}\0".encode("ascii"))
-    h.update(raw)
-    return h.hexdigest()
+    rel = path.relative_to(ROOT).as_posix()
+    try:
+        blob = subprocess.check_output(
+            ["git", "rev-parse", f":{rel}"],
+            cwd=ROOT,
+            text=True,
+            encoding="utf-8",
+        ).strip()
+        canonical = subprocess.check_output(
+            ["git", "cat-file", "blob", blob],
+            cwd=ROOT,
+        )
+    except subprocess.CalledProcessError:
+        fail(f"bound evidence is not staged/tracked in Git: {rel}")
+    expected = hashlib.sha1(
+        f"blob {len(canonical)}\0".encode("ascii") + canonical
+    ).hexdigest()
+    if expected != blob:
+        fail(f"Git canonical blob verification failed: {rel}")
+    return blob
 
 
 def main() -> None:

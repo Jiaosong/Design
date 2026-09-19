@@ -1,0 +1,35 @@
+{
+  "schema_version": "oleander-professional-candidate-continuation-checkpoint/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Systems Engineering",
+  "candidate_process_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+  "candidate_machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
+  "checkpoint_state": "HOLD",
+  "current_node": "SYSENG-DP1_RELEASE_FRONTIER",
+  "release_condition": "Task/claim Systems Engineering Knowledge Mount becomes valid and any affected operational/interface validation gaps are released; independent Systems Engineering review remains separate.",
+  "release_condition_readback": "UNSATISFIED",
+  "affected_capability_output_bindings": [
+    "SYSENG-DP0: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback",
+    "SYSENG-DP1: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback"
+  ],
+  "unaffected_verified_bindings": [
+    "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json"
+  ],
+  "selective_retest_plan": [
+    "revalidate only affected knowledge/capability/output bindings after the release condition changes",
+    "reuse unaffected source-valid project evidence",
+    "materialize a real Multi-Skill DAG and typed handoffs only after all required Current callable owners are resolved",
+    "emit a successor receipt only after an actual post-release selective retest executes"
+  ],
+  "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+  "successor_receipt_ref": null,
+  "selective_retest_executed": false,
+  "does_not_prove": [
+    "HOLD_RELEASE",
+    "SUCCESSOR_RETEST",
+    "PROFESSIONAL_PASS",
+    "CURRENT_ADOPTION"
+  ]
+}

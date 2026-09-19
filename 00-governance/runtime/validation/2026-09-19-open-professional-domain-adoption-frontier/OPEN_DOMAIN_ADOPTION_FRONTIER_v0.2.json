@@ -1,7 +1,7 @@
 {
   "schema_version": "oleander-open-domain-adoption-frontier/0.2",
   "snapshot_date": "2026-09-19",
-  "baseline_commit": "be280aa1f42ad618f1047400b2f96312bd1eda34",
+  "baseline_commit": "451accfa81216c3f5b094cb94cd4d50462767ce8",
   "supersedes": {
     "path": "00-governance/runtime/validation/2026-09-19-open-professional-domain-adoption-frontier/OPEN_DOMAIN_ADOPTION_FRONTIER_v0.1.json",
     "reason": "Interior and Lighting gained real-project bounded HOLD reapplications after the v0.1 snapshot."
@@ -11,7 +11,7 @@
   "state": "DIAGNOSTIC READBACK / NOT AN AUTHORITY STATE FAMILY / NO PROMOTION",
   "purpose": "Refresh the five OPEN professional-domain adoption frontiers after C01 Interior and C04 Lighting real-project reapplications, and bind the diagnostic to exact Candidate/project evidence so stale adoption conclusions fail CI instead of remaining green.",
   "common_current_status": "CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
-  "evidence_binding_rule": "Candidate machine definitions and project/practice evidence directly supporting this frontier are blob-bound. A changed bound artifact requires regenerating this diagnostic before CI can pass.",
+  "evidence_binding_rule": "Candidate machine definitions and project/practice evidence directly supporting this frontier are bound to Git canonical blobs. A changed bound artifact requires regenerating this diagnostic before CI can pass.",
   "dimensions": [
     "candidate_definition",
     "machine_definition",
@@ -29,27 +29,27 @@
   "source_bindings": [
     {
       "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
-      "blob_sha": "4ce800bf5b6caf3a607ae2d256fffa799c881404",
+      "blob_sha": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
       "role": "INTERIOR_CANDIDATE_MACHINE_DEFINITION"
     },
     {
       "path": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
-      "blob_sha": "7f0f6fe21ffed880dfbbe8417657a9bc102dc1d2",
+      "blob_sha": "a9fca5ba94215374132eef6d50b888ce32051f71",
       "role": "LANDSCAPE_CANDIDATE_MACHINE_DEFINITION"
     },
     {
       "path": "00-governance/schemas/lighting-design-process.v1.candidate.json",
-      "blob_sha": "23649a0ae9949b62d890c4c56916a25cf5ce7a60",
+      "blob_sha": "6bef3b07b96e436264363f68b55090a5f07c0bab",
       "role": "LIGHTING_CANDIDATE_MACHINE_DEFINITION"
     },
     {
       "path": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
-      "blob_sha": "fcde7bff0aeff6f99d99c6a71999897a2d33ee3e",
+      "blob_sha": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
       "role": "HCD_CANDIDATE_MACHINE_DEFINITION"
     },
     {
       "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
-      "blob_sha": "7fe4a4e3802e2e189df2d3868f6ecbc027d2ee5c",
+      "blob_sha": "df711df8f6faf48fcf4a347de214ee5caa30584c",
       "role": "SYSTEMS_ENGINEERING_CANDIDATE_MACHINE_DEFINITION"
     },
     {
@@ -196,7 +196,7 @@
       "candidate_definition": {
         "prose": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
         "machine": "00-governance/schemas/interior-design-process.v1.candidate.json",
-        "machine_blob_sha": "4ce800bf5b6caf3a607ae2d256fffa799c881404",
+        "machine_blob_sha": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
         "stage_ids": [
           "ID-PW0",
           "ID-PW1",
@@ -265,7 +265,7 @@
       "candidate_definition": {
         "prose": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
         "machine": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
-        "machine_blob_sha": "7f0f6fe21ffed880dfbbe8417657a9bc102dc1d2",
+        "machine_blob_sha": "a9fca5ba94215374132eef6d50b888ce32051f71",
         "stage_ids": [
           "LA-DP0",
           "LA-DP1",
@@ -325,7 +325,7 @@
       "candidate_definition": {
         "prose": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
         "machine": "00-governance/schemas/lighting-design-process.v1.candidate.json",
-        "machine_blob_sha": "23649a0ae9949b62d890c4c56916a25cf5ce7a60",
+        "machine_blob_sha": "6bef3b07b96e436264363f68b55090a5f07c0bab",
         "stage_ids": [
           "LGT-00",
           "LGT-01",
@@ -406,7 +406,7 @@
       "candidate_definition": {
         "prose": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
         "machine": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
-        "machine_blob_sha": "fcde7bff0aeff6f99d99c6a71999897a2d33ee3e",
+        "machine_blob_sha": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
         "stage_ids": [
           "HCD-DP0",
           "HCD-DP1",
@@ -471,7 +471,7 @@
       "candidate_definition": {
         "prose": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
         "machine": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
-        "machine_blob_sha": "7fe4a4e3802e2e189df2d3868f6ecbc027d2ee5c",
+        "machine_blob_sha": "df711df8f6faf48fcf4a347de214ee5caa30584c",
         "stage_ids": [
           "SYSENG-DP0",
           "SYSENG-DP1",

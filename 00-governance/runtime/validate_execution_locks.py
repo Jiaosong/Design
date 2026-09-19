@@ -470,20 +470,29 @@ def validate_resolver() -> dict:
         "REVALIDATE_AUTHORITY_IF_CHECKPOINT_REQUIRES",
         "RESOLVE_STICKY_EXECUTION_CONSTRAINTS",
         "ENFORCE_TOOL_OUTPUT_CREATION_AND_PROCESS_LOCKS",
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
         "VERIFY_REQUIRED_EXISTING_METHOD_AND_SKILL_FILES_WERE_ACTUALLY_READ",
+        "RESOLVE_EXECUTION_OWNER_MAP",
+        "NATIVE_OUTPUTS",
+        "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "RESOLVE_EXISTING_VISUAL_AUTHORITY_WHEN_VISUAL_OUTPUT_IS_REQUIRED",
         "LOOKUP_IMAGE_CONSUMPTION_REGISTER_BEFORE_CONTENT_IMAGE_BINDING",
         "BLOCK_DUPLICATE_SEMANTIC_IMAGE_OR_RESERVE_AVAILABLE_IMAGE",
-        "DEFINE_REQUIRED_NATIVE_OUTPUT",
         "BUILD_APPLICABLE_FLOW_COMPLETION_CHECKLIST",
-        "RESOLVE_EXECUTION_OWNER_MAP",
         "GUARD_EXPECTED_CHECKPOINT_SEQUENCE_BEFORE_MUTATION",
         "VERIFY_UNCERTAIN_REMOTE_MUTATION_POSTCONDITION_BEFORE_RETRY",
         "EXECUTE_ACTUAL_NATIVE_ARTIFACT",
         "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE",
+        "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE_OR_COMPLETE_CLAIM",
         "UPDATE_EXISTING_CONTINUATION_CHECKPOINT_AS_APPLICABLE",
         "AUTO_ADVANCE_READY_NODES_UNTIL_STOP_CONDITION",
-        "VERIFY_FLOW_COMPLETION_GATE_BEFORE_CLOSURE_OR_COMPLETE_CLAIM",
         "EMIT_EXECUTION_RECEIPT",
     ]
     positions = []
@@ -492,7 +501,7 @@ def validate_resolver() -> dict:
             fail(f"resolver order missing {token}")
         positions.append(order.index(token))
     if positions != sorted(positions):
-        fail("constraint / frontier / continuation / concurrency / idempotency / auto-advance / image-consumption / full-flow resolver order is invalid")
+        fail("constraint / frontier / canonical professional-stage spine / continuation / concurrency / idempotency / auto-advance / image-consumption / full-flow resolver order is invalid")
     return data
 
 
@@ -608,6 +617,22 @@ def validate_receipt_contract() -> dict:
     }
     if legacy != expected_legacy:
         fail("legacy Receipt allowlist must be explicit and exact")
+    expected_stage_chain = [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE",
+    ]
+    if data.get("professional_stage_canonical_execution_chain") != expected_stage_chain:
+        fail("Execution Receipt professional-stage canonical execution chain drift")
+    if "MUST_NOT_BE_USED_TO_REORDER" not in str(data.get("professional_stage_flow_binding_rule") or ""):
+        fail("Execution Receipt generic flow phases must not override professional-stage spine")
     closed_rule = str(data.get("closed_state_rule") or "")
     for token in [
         "COMPLETION_GATE_MUST_BE_PASS",

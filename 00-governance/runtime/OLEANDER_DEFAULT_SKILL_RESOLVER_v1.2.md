@@ -350,9 +350,142 @@ A timeout or connector ambiguity is not evidence that the write failed and does 
 
 `NO COMPRESSION / NO LOSS` protects information. It does not require every Skill to run.
 
-For each task, use the smallest owner set that can produce the required native output and applicable validation/review. Multi-owner work must use explicit DAG roles and typed handoffs.
+For each active professional stage / decision-object / required-output set, use the smallest owner set that can cover **all material capability roles, authoritative native outputs, actual readbacks, authority boundaries and triggered validation/review**. Multi-owner work must use explicit DAG roles and typed handoffs.
+
+`MINIMUM SUFFICIENT OWNER SET ≠ MINIMUM SKILL COUNT`.
+
+A one-Skill route is legal only when that owner genuinely covers the complete active capability/readback set without:
+
+- replacing research/evidence resolution with design intuition;
+- replacing domain-native geometry/data/runtime carriers with presentation derivatives;
+- replacing specialist/technical authority with a general design owner;
+- replacing independent review with producer self-check;
+- dropping a material design dimension merely to keep the owner set small.
+
+Resolve capabilities per material output/decision, then deduplicate owners only after capability coverage is proven.
+
+### 4.1 Stage-specific composition
+
+The owner set is not sticky across an entire professional process.
+
+Every triggered professional stage follows one top-level spine:
+
+```text
+Stage
+→ Professional Question / Decision Object
+→ Knowledge Inputs
+→ Operational Knowledge Mount
+→ Required Capability Roles
+→ Current Execution Owners / Skills
+→ Native Outputs
+→ Actual Readback
+→ Independent Review
+→ Stage Closure
+```
+
+Operational detail is subordinate to that spine:
+
+- Candidate `stage_execution_requirements`, or the exact-revision non-authority projection for an already-Current machine, supplies the Required Capability Roles;
+- Candidate Skills / Candidate Bodies remain non-Current HOLDs unless a legal Current project/specialist binding owns the role;
+- owner deduplication and the Multi-Skill DAG occur inside `Current Execution Owners / Skills`;
+- Tool / Adapter selection and runtime probing occur inside `Current Execution Owners / Skills → Native Outputs`;
+- content-image/visual-source checks, native execution and artifact emission occur inside `Native Outputs`;
+- capability-coverage readback is part of `Actual Readback`;
+- evidence/design/professional review gates roll up into `Independent Review` where independence is triggered;
+- flow-completion and exit-condition checks roll up into `Stage Closure`.
+
+No auxiliary binding creates an eleventh top-level professional-stage step.
+
+Typical design work should therefore change composition over time: evidence-heavy stages may route through research/data capabilities; option and spatial stages may add design/3D/GIS/UI capabilities; technical-development stages may add technical drawing/model/readback capabilities; commissioning/site/live stages may add measurement, runtime, delivery-QC or post-occupancy capabilities. This is not a fixed universal sequence; the actual combination follows the domain stage and required outputs.
+
+### 4.2 Recompute and selective reroute
+
+Recompute the owner set when:
+
+- professional stage changes;
+- active decision object or claim changes materially;
+- required native output/readback changes;
+- interface maturity/owner changes the handoff;
+- a selected owner/tool becomes unavailable or insufficient;
+- a HOLD release condition activates a new verification path;
+- actual readback proves missing capability coverage.
+
+Do not restart every Skill. Reuse unaffected outputs/owners and reroute only the affected capability/output bindings.
 
 **Full OLEANDER flow ≠ full Skill stack.**
+
+### 4.2A Professional-stage Knowledge Mount gate
+
+`FULL OLEANDER FLOW ≠ MOUNT EVERY KNOWLEDGE OBJECT`.
+
+The professional stage declares knowledge questions/routes. Runtime mounts only the minimum sufficient eligible set for the active decision. Consequential mount records preserve:
+
+`knowledge_ref / use_role / operational_eligibility / eligibility_scope / claim_ceiling / applicability / conditions / unresolved_items / freshness_state / freshness_or_revalidation_trigger / does_not_prove / review_basis / satisfies_knowledge_inputs`.
+
+The gate fails closed when:
+
+- an active declared knowledge input has no usable mount;
+- the mount is `OE1 / NOT_ELIGIBLE`;
+- freshness is stale, unknown or requires revalidation;
+- claim scope / applicability is unresolved;
+- a declared knowledge input is omitted without explicit N/A / not-triggered reasoning.
+
+Knowledge eligibility never means Design KEEP or Professional PASS.
+
+### 4.3 Candidate professional-process evaluation mode
+
+When the Current Architecture Control Graph reports a professional domain as `CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN`, a Candidate process may be exercised only through the existing Controlled Evolution path. Candidate exercise is not a hidden Current process.
+
+The bounded route is:
+
+```text
+PROCESS_OPEN
+→ candidate_process_ref + candidate_machine_schema_ref + candidate_evolution_ref
+→ BOUNDED_NON_CURRENT_PROJECT_EXERCISE
+→ exact candidate revision/hash binding
+→ Stage
+→ Professional Question / Decision Object
+→ Knowledge Inputs
+→ Operational Knowledge Mount
+→ Required Capability Roles
+→ Current Execution Owners / Skills
+→ Native Outputs
+→ Actual Readback
+→ Independent Review
+→ Stage Closure
+→ HOLD / REVISE / REJECT / bounded PASS
+→ continuation checkpoint when triggered
+→ release-condition check
+→ selective affected-binding retest
+→ successor receipt only after the material retest actually executes
+→ regression + independent review
+→ migration / rollback readiness
+→ EV5_PROMOTION_READY
+→ authorized human adoption
+```
+
+During this route:
+
+- `current_process_ref` remains `null` and the domain remains `PROCESS_OPEN`;
+- the candidate must be bound to its exact prose/machine path and machine hash or equivalent immutable revision;
+- project Source Authority and Design Authority remain Current and are not replaced by the candidate process;
+- each material stage is evaluated through the same canonical ten-step stage spine;
+- each material stage reads its own `stage_execution_requirements` (or authorized compatibility projection where applicable) and recomputes the owner set;
+- each active stage knowledge input is covered by task/claim-scoped operational eligibility; missing/OE1/stale mount coverage is a HOLD;
+- materially different stages must not silently reuse one fixed owner/Skill set where their capability needs differ;
+- Candidate Skills / Candidate Bodies do not become Current callable owners merely because the Candidate process references their capability;
+- a multi-owner stage records the existing Multi-Skill DAG and typed handoffs only after the Current owner set is actually resolved and the execution graph is materialized;
+- a one-owner stage is legal only with complete active-capability coverage justification;
+- Stage Closure cannot precede required Native Output readback or triggered Independent Review;
+- Candidate `PASS` is bounded exercise evidence only and cannot award Current process authority, Design KEEP or statutory approval.
+
+When an exercise hits a material problem, record at minimum:
+
+`professional_stage_ref / decision_or_output_scope / problem_state / release_condition / continuation_checkpoint_ref / affected_capability_output_bindings / unaffected_verified_bindings / selective_retest_plan / evaluation_receipt_ref`.
+
+A pre-release HOLD evaluation may emit an **evaluation receipt**. It must not be called a successor receipt. `successor_receipt_ref` remains null until the release condition is actually satisfied and the affected bindings are selectively retested.
+
+On release, re-check the release condition and recompute only the affected capability/output bindings. Reuse unaffected verified work. A full Skill-stack restart is forbidden unless dependency analysis proves a wider stale scope.
 
 ## 5｜Flow Completion Gate
 
@@ -418,10 +551,10 @@ If any required applicable phase is missing, `FAIL` or `HOLD`, the task state is
 12. Before binding any semantic content image, query the project Image Consumption Ledger/Register by source hash / parent source / child figure / semantic identity.
 13. If that `semantic_image_id` is already `RESERVED / CONSUMED / LEGACY_MULTI_CONSUMED / REJECTED_NOT_ELIGIBLE` for another consumer, stop and select another image; crop/recolor/mask/contour/screenshot derivatives do not reset identity.
 14. Reserve an available image to the current consumer unit before layout production.
-15. Define the required native output.
-16. Build the applicable Flow Completion checklist.
+15. Read the active professional stage's `stage_execution_requirements` and define the required native output.
+16. Resolve active decision/output bindings and capability roles; recompute rather than inheriting a prior-stage owner set by default, then build the applicable Flow Completion checklist.
 17. Resolve Execution Owner Map and Skill Capability Contract.
-18. Select the Minimum Sufficient Owner Set; build DAG only when necessary.
+18. Select the Minimum Sufficient Owner Set only after capability coverage is proven; build the existing Multi-Skill DAG when more than one owner remains.
 19. Resolve TOOL/plugin/runtime adapters through capability-role routing; probe only the selected/needed surfaces.
 20. If resuming, skip already verified completed nodes and restore the first `next_allowed_action`; otherwise execute the normal first ready node.
 21. Re-read the current checkpoint carrier and enforce `observed_checkpoint_sequence == expected_checkpoint_sequence` before Remote/Authority/Release mutation.
