@@ -870,3 +870,30 @@ TERMINAL REJECT REMAINS LEGAL WHEN DOMAIN-AUTHENTIC AND EVIDENCED
 NO LOSS / NO COMPRESSION
 NO AUTOMATIC DESIGN OR PROMOTION INFERENCE
 ```
+
+---
+
+## 2026-09-19｜Professional-process OPEN fail-closed rule
+
+When a material professional claim targets a domain that has mature Knowledge, Skills, Practice evidence or professional sources but **does not have a Current or legally consumable Candidate R-E professional-process owner**, the runtime must return `PROFESSIONAL_PROCESS_OPEN` for whole-domain professional closure.
+
+```text
+MATURE KNOWLEDGE
++ MATURE SKILL
++ PRACTICE EVIDENCE
++ PROFESSIONAL SOURCE
+≠ R-E PROFESSIONAL PROCESS
+```
+
+Required behavior:
+- bounded Knowledge + Skill/Tool execution may continue at the exact proven claim ceiling;
+- the resolver must not infer a professional process from Skill depth, artifact quality, source authority or project success;
+- whole-domain professional verdict remains `PROFESSIONAL_PROCESS_OPEN / PROJECT_SPECIALIST_REQUIRED`;
+- if a controlled Candidate later exists, it may be consumed only in its legal Candidate-evaluation/project-exercise context and cannot silently become Current;
+- Current adoption, independent review, field truth and Design KEEP remain separate decisions.
+
+Current explicit OPEN examples at this baseline:
+- **Physical Product / Industrial Design** — WDO / IDSA profession-scope evidence + VDI 2221 technical-development evidence + mature Product/CMF/DFM/prototype Skills do not yet constitute an R-E process.
+- **Visual Communication / Graphic Design** — AIGA professional-practice evidence + current Typography/Editorial/Image/Color/ISO/PDF/Production owners + Visual Skill depth do not yet constitute an R-E process.
+
+This rule adds no new state family, Domain, Skill family, Review family or stage taxonomy. It only makes absence of a professional owner fail closed.
