@@ -1,0 +1,512 @@
+{
+  "schema_version": "c04-constrained-transformation-replay/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "C04-E-DIGITAL-COMPANION",
+  "replay_id": "C04-E-CTR-REPLAY-001",
+  "state": "BOUNDED_RETROSPECTIVE_REPLAY / NON_BLIND / SUPPORT_ONLY / CURRENT_NOT_REOPENED",
+  "purpose": "Test the Constrained Transformation Extension against the mature C04 digital companion without redesigning E or changing Current authority.",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob_sha": "6bb847ac3b8826f96f6709432e3157ce5b318a86",
+      "role": "LOCKED_STATE_AND_DIGITAL_OFF_CONTRACT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+      "blob_sha": "c918d18c6e0b63ca06cae482c5f7a0cd314dc9d8",
+      "role": "CURRENT_PRODUCT_SUMMARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593",
+      "role": "CURRENT_QC_AND_TRUTH_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+      "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+      "role": "EDITABLE_BASELINE_ARTIFACT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+      "blob_sha": "4b1d982701d0230f2594cb70914d399bf862030c",
+      "role": "EXPERIENCE_AND_INFORMATION_ARCHITECTURE_AUTHORITY"
+    }
+  ],
+  "method_boundary": {
+    "retrospective_not_blind": true,
+    "current_authority_preserved": true,
+    "e_workstream_not_restarted": true,
+    "no_field_or_live_status_created": true,
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "promotion": "NO",
+    "actual_live_browser": "HOLD_ENVIRONMENT_ADMIN_BLOCK",
+    "human_usability_test": "NOT_RUN"
+  },
+  "constraint_world_register": {
+    "world_id": "C04-E-CW-001",
+    "current_or_best_existing": "APP_GAME_MAP_v1.2 + CH11 + Digital-Off Contract",
+    "internal_components": [
+      {
+        "id": "C-TODAY",
+        "role": "entry judgment / scale choice / nearby content"
+      },
+      {
+        "id": "C-ROUTE",
+        "role": "relational map / purpose mode / travel focus / route-content access"
+      },
+      {
+        "id": "C-READ",
+        "role": "top-level access to optional R01-R13 reading library"
+      },
+      {
+        "id": "C-BOOK",
+        "role": "personal local-device memory / later readback"
+      },
+      {
+        "id": "C-SERVICE",
+        "role": "service / return / paper-human fallback / unknown state"
+      },
+      {
+        "id": "C-RETURN",
+        "role": "parallel re-entry to direction/return; header control + route return purpose"
+      },
+      {
+        "id": "C-IMPRINT-DIALOG",
+        "role": "contextual scene read / action / save / skip"
+      },
+      {
+        "id": "C-STATE",
+        "role": "NORMAL / DEGRADED / CLOSED / UNKNOWN"
+      },
+      {
+        "id": "C-INTENSITY",
+        "role": "FULL / LIGHT / OFF"
+      },
+      {
+        "id": "C-PAPER-HUMAN",
+        "role": "no-phone route/return redundancy"
+      },
+      {
+        "id": "C-LOCAL-MEMORY",
+        "role": "localStorage personal notes without login/cloud"
+      }
+    ],
+    "immediate_external_context": [
+      {
+        "id": "X-FIELD-STATUS",
+        "evidence_state": "UNVERIFIED / G1F HOLD",
+        "allowed_design_use": "must remain UNKNOWN/fail-closed until official/field update",
+        "owner": "FIELD / OFFICIAL SERVICE"
+      },
+      {
+        "id": "X-NETWORK",
+        "evidence_state": "NOT_VERIFIED",
+        "allowed_design_use": "cannot be required for base route/return",
+        "owner": "RUNTIME / FIELD"
+      },
+      {
+        "id": "X-USER-STAMINA",
+        "evidence_state": "DESIGN SCENARIO ONLY",
+        "allowed_design_use": "may support optional content/return framing but cannot drive pseudo-live adaptive state",
+        "owner": "HCD / HUMAN FACTORS if later tested"
+      },
+      {
+        "id": "X-PAPER-SIGNAGE-HUMAN",
+        "evidence_state": "DESIGN REDUNDANCY CONTRACT / FIELD SUFFICIENCY OPEN",
+        "allowed_design_use": "architecture-level fallback only, not field adequacy claim",
+        "owner": "PHYSICAL / SERVICE / FIELD"
+      }
+    ],
+    "current_relations": [
+      "TODAY → ROUTE → READ/SCENE/EXPLORE → MY BOOK",
+      "RETURN is parallel to major pages",
+      "ROUTE owns relational/NTS map, not surveyed geometry",
+      "scene/imprint content may be opened, skipped and accessed out of order",
+      "route/safety/return never depend on completing content",
+      "MY BOOK is personal, not completion score",
+      "SERVICE/RETURN owns UNKNOWN fail-closed and paper/human fallback"
+    ],
+    "current_states": {
+      "reality_state": [
+        "NORMAL",
+        "DEGRADED",
+        "CLOSED",
+        "UNKNOWN"
+      ],
+      "delivery_modifier": [
+        "NONE",
+        "OFFLINE",
+        "RETURN-PRIORITY"
+      ],
+      "content_intensity": [
+        "FULL",
+        "LIGHT",
+        "OFF"
+      ]
+    },
+    "protected_invariants": [
+      "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OR_OPEN",
+      "OFFLINE_DOES_NOT_EQUAL_DEGRADED",
+      "REALITY_STATE_AND_CONTENT_INTENSITY_REMAIN_SEPARATE_AXES",
+      "RETURN_PRIORITY_MAY_OVERLAY_NORMAL_DEGRADED_UNKNOWN",
+      "CLOSED_REQUIRES_BYPASS_REROUTE_OR_EXIT",
+      "OPTIONAL_DEPTH_CLOSES_BEFORE_ROUTE_SAFETY_RETURN",
+      "DIGITAL_NOT_REQUIRED_FOR_ROUTE",
+      "DIGITAL_NOT_REQUIRED_FOR_RETURN",
+      "PSEUDO_LIVE_STATUS_PROHIBITED",
+      "MAP_RELATIONAL_NTS_NOT_SURVEY",
+      "FIELD_OBSERVED_0_FIELD_MEASURED_0_G1F_HOLD",
+      "MY_BOOK_NOT_COMPLETION_SCORE"
+    ],
+    "open_design_variables": [
+      "top-level IA count",
+      "entry points to optional reading",
+      "distribution of content discovery across TODAY/ROUTE/READ",
+      "surface allocation for Return/Service provided truth authority is not duplicated",
+      "component role sharing when protected invariants survive"
+    ],
+    "claim_ceiling": "DIGITAL DESIGN / EDITABLE PROTOTYPE SUPPORT ONLY / FIELD + USER TEST + LIVE BROWSER HOLD"
+  },
+  "transformation_ledger": [
+    {
+      "transformation_id": "CTR-01",
+      "operator": "REMOVE",
+      "target_components_or_variables": [
+        "C-READ top-level navigation surface"
+      ],
+      "protected_invariants": [
+        "route/safety/return independent from content completion",
+        "optional R01-R13 content remains available but skippable",
+        "Return remains parallel",
+        "no-phone fallback remains outside app"
+      ],
+      "exact_delta": "Remove READ as a top-level bottom-nav destination; preserve R01-R13 content through contextual entry from TODAY nearby scenes and ROUTE/imprint dialogs, with deep-read access inside the dialog or post-route detail.",
+      "resulting_configuration": "TODAY / ROUTE / MY BOOK as primary exploration surfaces; SERVICE/RETURN remains parallel; optional reading becomes context-first rather than library-first.",
+      "causal_change": "Content discovery shifts from a dedicated library surface toward scene/route-triggered contextual reveal.",
+      "hypothesized_value_or_design_consequence": {
+        "type": "DESIGN_HYPOTHESIS",
+        "benefit": "reduces top-level digital attention and reinforces 'visit first, read when relevant'",
+        "risk": "deep-read library becomes less discoverable for users who want to browse content independent of route"
+      },
+      "affected_functions": [
+        "content discovery",
+        "deep reading",
+        "navigation hierarchy"
+      ],
+      "affected_relations": [
+        "TODAY→ROUTE→READ",
+        "ROUTE→SCENE CONTENT",
+        "READ→MY BOOK"
+      ],
+      "affected_interfaces": [
+        "UI navigation",
+        "content architecture"
+      ],
+      "affected_states": [],
+      "new_dependencies": [
+        "deep-read discoverability depends more strongly on scene/context entry points"
+      ],
+      "removed_dependencies": [
+        "top-level READ tab as independent content-library entry"
+      ],
+      "unknowns": [
+        "whether independent browse is a material user need",
+        "whether discoverability loss is acceptable"
+      ],
+      "failure_conditions": [
+        "users cannot intentionally browse deeper content without being at/choosing a scene",
+        "contextual entry makes source/deep-read content harder to find",
+        "removal causes content to become route-owned rather than optional"
+      ],
+      "artifact_required": "matched IA schematic + future interactive prototype if decision is reopened",
+      "specialist_handoffs": [
+        "HCD usability evaluation if reopened"
+      ],
+      "disposition": "RETAIN_AS_BOUNDED_ALTERNATIVE / HOLD / CURRENT_NOT_REOPENED"
+    },
+    {
+      "transformation_id": "CTR-02",
+      "operator": "DUPLICATE_DIFFERENTIATE",
+      "target_components_or_variables": [
+        "C-ROUTE",
+        "C-RETURN"
+      ],
+      "protected_invariants": [
+        "one truth authority for route/return",
+        "Return always available",
+        "UNKNOWN fail-closed"
+      ],
+      "exact_delta": "Create a separate dedicated RETURN bottom-nav surface while also retaining ROUTE return mode and SERVICE/RETURN header access.",
+      "resulting_configuration": "ROUTE and RETURN become independent top-level surfaces with overlapping direction/status content.",
+      "causal_change": "Return gains a dedicated navigation destination but duplicates route/service truth surfaces.",
+      "hypothesized_value_or_design_consequence": {
+        "type": "DESIGN_HYPOTHESIS",
+        "benefit": "higher visual prominence for return",
+        "risk": "three partially overlapping return authorities create divergence and maintenance burden"
+      },
+      "affected_functions": [
+        "return recovery",
+        "route orientation",
+        "service status"
+      ],
+      "affected_relations": [
+        "ROUTE↔RETURN",
+        "SERVICE↔RETURN"
+      ],
+      "affected_interfaces": [
+        "route truth",
+        "service truth"
+      ],
+      "affected_states": [
+        "UNKNOWN",
+        "CLOSED"
+      ],
+      "new_dependencies": [
+        "multiple surfaces must remain synchronized"
+      ],
+      "removed_dependencies": [],
+      "unknowns": [
+        "whether visual prominence improves actual recovery"
+      ],
+      "failure_conditions": [
+        "route and return surfaces disagree",
+        "service status updates only one surface",
+        "user cannot distinguish route exploration from return truth"
+      ],
+      "artifact_required": "matched IA schematic",
+      "specialist_handoffs": [
+        "HCD if ever reconsidered"
+      ],
+      "disposition": "REJECT / DUPLICATED_TRUTH_AND_COMMON_MAINTENANCE_BURDEN"
+    },
+    {
+      "transformation_id": "CTR-03",
+      "operator": "CREATE_DEPENDENCY",
+      "target_components_or_variables": [
+        "C-STATE",
+        "C-INTENSITY"
+      ],
+      "protected_invariants": [
+        "REALITY_STATE_AND_CONTENT_INTENSITY_REMAIN_SEPARATE_AXES",
+        "UNKNOWN fail-closed",
+        "NORMAL×OFF remains possible",
+        "OFFLINE does not equal degraded"
+      ],
+      "exact_delta": "Force content intensity from reality state: NORMAL→FULL; DEGRADED→LIGHT; CLOSED/UNKNOWN→OFF.",
+      "resulting_configuration": "One combined state mapping replaces two independent axes.",
+      "causal_change": "content intensity becomes a function of route/reality state.",
+      "hypothesized_value_or_design_consequence": {
+        "type": "DESIGN_HYPOTHESIS",
+        "benefit": "simpler automatic state logic",
+        "risk": "collapses independent dimensions and falsely implies content availability from field/reality state"
+      },
+      "affected_functions": [
+        "content intervention",
+        "reality-state communication",
+        "fail-closed behavior"
+      ],
+      "affected_relations": [
+        "reality state ↔ content intensity"
+      ],
+      "affected_interfaces": [
+        "field/official status",
+        "digital content system"
+      ],
+      "affected_states": [
+        "NORMAL",
+        "DEGRADED",
+        "CLOSED",
+        "UNKNOWN",
+        "FULL",
+        "LIGHT",
+        "OFF"
+      ],
+      "new_dependencies": [
+        "reality_state drives content_intensity"
+      ],
+      "removed_dependencies": [
+        "manual/contextual independence of content intensity"
+      ],
+      "unknowns": [],
+      "failure_conditions": [
+        "NORMAL×OFF becomes impossible",
+        "UNKNOWN is treated as sufficient authority to infer every content state",
+        "offline/content availability becomes conflated with field condition"
+      ],
+      "artifact_required": "state matrix comparison",
+      "specialist_handoffs": [],
+      "disposition": "REJECT / PROTECTED_AXIS_COLLAPSE"
+    },
+    {
+      "transformation_id": "CTR-04",
+      "operator": "REASSIGN_ROLE",
+      "target_components_or_variables": [
+        "C-ROUTE"
+      ],
+      "protected_invariants": [
+        "Return parallel",
+        "one route truth",
+        "UNKNOWN fail-closed"
+      ],
+      "exact_delta": "Let the ROUTE map also express a dedicated RETURN purpose mode while retaining its journey/culture/rest purposes.",
+      "resulting_configuration": "one map carrier presents several purpose views; return is a mode, not a duplicated map truth source.",
+      "causal_change": "ROUTE gains a second role: exploration map + return-oriented relation view.",
+      "hypothesized_value_or_design_consequence": {
+        "type": "SUPPORTED_CONSEQUENCE",
+        "benefit": "supports return without creating a second route authority",
+        "risk": "mode switching must remain legible"
+      },
+      "affected_functions": [
+        "route exploration",
+        "return orientation"
+      ],
+      "affected_relations": [
+        "ROUTE↔RETURN"
+      ],
+      "affected_interfaces": [
+        "map purpose mode"
+      ],
+      "affected_states": [],
+      "new_dependencies": [
+        "mode-specific overlay depends on same underlying relational map"
+      ],
+      "removed_dependencies": [
+        "need for a second independent return map surface"
+      ],
+      "unknowns": [
+        "actual user comprehension"
+      ],
+      "failure_conditions": [
+        "return mode obscures base route",
+        "mode state is not obvious"
+      ],
+      "artifact_required": "already present in v1.2",
+      "specialist_handoffs": [
+        "HCD evaluation remains open"
+      ],
+      "disposition": "BASELINE_RECONSTRUCTION / NOT_A_NEW_CANDIDATE"
+    },
+    {
+      "transformation_id": "CTR-05",
+      "operator": "BREAK_DEPENDENCY",
+      "target_components_or_variables": [
+        "content completion",
+        "route/return"
+      ],
+      "protected_invariants": [
+        "route/safety/return independent from content completion",
+        "MY BOOK not completion score"
+      ],
+      "exact_delta": "Break any requirement that route/return or journey completion depends on completing R01-R13 content or collecting all items.",
+      "resulting_configuration": "content remains optional/open-order; route/return stays continuously available.",
+      "causal_change": "journey truth is decoupled from gamified content completion.",
+      "hypothesized_value_or_design_consequence": {
+        "type": "SUPPORTED_CONSEQUENCE",
+        "benefit": "preserves real landscape primacy and safe exit/return",
+        "risk": "none created by this replay; already Current"
+      },
+      "affected_functions": [
+        "route",
+        "return",
+        "optional reading",
+        "memory"
+      ],
+      "affected_relations": [
+        "content completion ↔ route/return"
+      ],
+      "affected_interfaces": [
+        "game-like content vs route truth"
+      ],
+      "affected_states": [],
+      "new_dependencies": [],
+      "removed_dependencies": [
+        "completion gate on route/return"
+      ],
+      "unknowns": [],
+      "failure_conditions": [
+        "any later gamification reintroduces route/return gating"
+      ],
+      "artifact_required": "already present in Current contracts/source",
+      "specialist_handoffs": [],
+      "disposition": "BASELINE_RECONSTRUCTION / NOT_A_NEW_CANDIDATE"
+    }
+  ],
+  "transformed_candidate_ledger": [
+    {
+      "candidate_id": "CTR-CURRENT",
+      "family": "CURRENT_DEDICATED_READ + CONTEXTUAL_REVEAL",
+      "source": "APP_GAME_MAP_v1.2 / CH11",
+      "primary_structural_delta": "baseline",
+      "status": "CURRENT_AUTHORITY_UNCHANGED",
+      "note": "Dedicated READ remains available while contextual scene access also exists."
+    },
+    {
+      "candidate_id": "CTR-A",
+      "family": "READLESS_CONTEXTUAL_REVEAL",
+      "source_transformation": "CTR-01",
+      "primary_structural_delta": "remove top-level READ and route all optional reading through contextual scene entry",
+      "status": "RETAINED_ALTERNATIVE / HOLD",
+      "falsifier": "deep-read/browse discoverability becomes materially worse or content becomes route-owned rather than optional",
+      "required_next_test_if_reopened": "matched interactive prototype + representative-user HCD test"
+    }
+  ],
+  "rejected_transformation_ledger": [
+    {
+      "transformation_id": "CTR-02",
+      "reason": "Duplicates route/return truth surfaces and creates synchronization/common-maintenance risk without enough evidence of benefit."
+    },
+    {
+      "transformation_id": "CTR-03",
+      "reason": "Violates explicit Current invariant that reality state and content intensity are independent axes."
+    }
+  ],
+  "baseline_reconstruction": [
+    {
+      "transformation_id": "CTR-04",
+      "finding": "Current ROUTE return-purpose mode is a legitimate role-reassignment pattern because it reuses one map authority rather than duplicating truth."
+    },
+    {
+      "transformation_id": "CTR-05",
+      "finding": "Current no-completion-gate rule is a dependency-breaking pattern that protects return/safety and non-gamified journey logic."
+    }
+  ],
+  "deduplication": {
+    "operator_runs": 5,
+    "retained_new_structural_candidates": 1,
+    "rejected_transformations": 2,
+    "baseline_reconstructions": 2,
+    "cosmetic_or_parameter_variants_counted_as_candidates": 0,
+    "idea_count_used_as_quality_metric": false
+  },
+  "matched_artifact_requirement": {
+    "status": "TO_BE_CREATED_IN_THIS_REPLAY",
+    "rule": "Compare Current and CTR-A at the same IA/state schematic fidelity; rejected transformations are shown only to expose why they fail."
+  },
+  "design_review_disposition": {
+    "result": "KEEP_CURRENT_AUTHORITY / CTR-A SUPPORT_ONLY",
+    "rationale": [
+      "The replay is retrospective and non-blind, so it cannot independently reselect Current.",
+      "CTR-A is a real IA family difference because top-level content-library access is removed and contextual entry becomes primary.",
+      "CTR-02 demonstrates that duplication can worsen truth authority even when visual prominence improves.",
+      "CTR-03 demonstrates that a new dependency can be invalid because it collapses two explicitly independent state axes.",
+      "CTR-04/05 reconstruct existing Current design moves and are therefore not counted as alternatives."
+    ]
+  },
+  "professional_and_runtime_boundary": {
+    "HCD_usability": "NOT_RUN",
+    "accessibility": "NOT_RUN",
+    "actual_live_browser": "HOLD_ENVIRONMENT_ADMIN_BLOCK",
+    "field_truth": "HOLD",
+    "promotion": "NO"
+  },
+  "method_findings": [
+    "The technique pack can generate a material alternative from an existing mature baseline without reopening field or route authority.",
+    "Operator use does not imply candidate retention; protected-invariant attacks rejected two transformations.",
+    "Existing Current moves can be recognized as transformation patterns without being double-counted as new concepts.",
+    "External context and state variables remain authority-bound rather than free ideation resources.",
+    "Idea/operator count is not used as option-space quality."
+  ],
+  "claim_ceiling": "RETROSPECTIVE DESIGN-METHOD REPLAY / ONE DIGITAL OBJECT / CURRENT NOT REOPENED / HCD + RUNTIME + FIELD EVIDENCE OPEN / NO PROMOTION"
+}

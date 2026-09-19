@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120">
+<style>
+.bg{fill:#f2efe7}.panel{fill:#fffdf8;stroke:#c8c4b9;stroke-width:1.2}.rej{fill:#fff3ee;stroke:#bb7a65;stroke-width:1.2}.ink{fill:#202825}.muted{fill:#68716c}.green{fill:#416f61}.red{fill:#9b4d3e}.blue{fill:#64768f}.line{stroke:#31413b;stroke-width:2;fill:none;stroke-linecap:round}.thin{stroke:#c9c5bb;stroke-width:1.2;fill:none}.dash{stroke:#a35f4a;stroke-width:1.6;fill:none;stroke-dasharray:7 6}.h1{font:700 32px Arial,sans-serif}.h2{font:700 20px Arial,sans-serif}.h3{font:700 14px Arial,sans-serif}.txt{font:400 13px Arial,sans-serif}.sm{font:400 11px Arial,sans-serif}.xs{font:700 10px Arial,sans-serif;letter-spacing:.9px}
+</style>
+<rect class="bg" width="1800" height="1120"/>
+<text x="58" y="58" class="h1 ink">C04 E · CONSTRAINED TRANSFORMATION · MATCHED IA / STATE REPLAY</text>
+<text x="58" y="88" class="txt muted">Retrospective / non-blind · Current authority not reopened · same schematic fidelity · FIELD 0 / G1F HOLD · HCD &amp; live-browser evidence open</text>
+
+<g transform="translate(58,126)">
+  <rect width="1684" height="104" rx="14" class="panel"/>
+  <text x="20" y="27" class="xs green">PROTECTED INVARIANTS</text>
+  <text x="20" y="54" class="txt ink">UNKNOWN fail-closed · Return parallel · route/safety/return independent from content completion · digital-off journey still works</text>
+  <text x="20" y="78" class="txt ink">Reality state ≠ content intensity · no pseudo-live status · map stays relational/NTS · MY BOOK ≠ completion score</text>
+</g>
+
+<g transform="translate(58,260)">
+  <g>
+    <rect width="800" height="455" rx="18" class="panel"/>
+    <text x="24" y="36" class="xs green">CTR-CURRENT · CURRENT AUTHORITY</text>
+    <text x="24" y="70" class="h2 ink">Dedicated READ + contextual reveal</text>
+    <text x="24" y="95" class="sm muted">Current baseline: content has its own library surface and can also be entered from scenes/map.</text>
+
+    <g transform="translate(38,142)">
+      <rect x="0" y="0" width="720" height="212" rx="20" fill="#f7f3ea" stroke="#d1ccc0"/>
+      <rect x="22" y="18" width="676" height="42" rx="12" fill="#e8eee9"/>
+      <text x="40" y="44" class="h3 ink">HEADER · Qingjiang</text>
+      <rect x="545" y="25" width="132" height="27" rx="14" fill="#fffdf8" stroke="#a9afa8"/>
+      <text x="566" y="43" class="xs red">RETURN / SERVICE</text>
+      <rect x="52" y="84" width="122" height="52" rx="11" fill="#e5eee9"/><text x="83" y="114" class="h3 ink">TODAY</text>
+      <rect x="196" y="84" width="122" height="52" rx="11" fill="#e5eee9"/><text x="228" y="114" class="h3 ink">ROUTE</text>
+      <rect x="340" y="84" width="122" height="52" rx="11" fill="#e5eee9"/><text x="378" y="114" class="h3 ink">READ</text>
+      <rect x="484" y="84" width="122" height="52" rx="11" fill="#e5eee9"/><text x="512" y="114" class="h3 ink">MY BOOK</text>
+      <path d="M257 136v30h144v-30" class="line"/>
+      <text x="274" y="187" class="sm blue">scene / imprint contextual reveal</text>
+    </g>
+
+    <text x="24" y="386" class="h3 ink">Causal relation</text>
+    <text x="24" y="410" class="sm muted">Independent browse + contextual reveal coexist; Return remains parallel.</text>
+    <text x="24" y="435" class="xs green">KEEP CURRENT AUTHORITY</text>
+  </g>
+
+  <g transform="translate(840,0)">
+    <rect width="844" height="455" rx="18" class="panel"/>
+    <text x="24" y="36" class="xs blue">CTR-A · RETAINED ALTERNATIVE / HOLD</text>
+    <text x="24" y="70" class="h2 ink">READLESS contextual reveal</text>
+    <text x="24" y="95" class="sm muted">Operator: REMOVE top-level READ. Optional reading survives through scene/route entry.</text>
+
+    <g transform="translate(40,142)">
+      <rect x="0" y="0" width="764" height="212" rx="20" fill="#f7f3ea" stroke="#d1ccc0"/>
+      <rect x="22" y="18" width="720" height="42" rx="12" fill="#e8eee9"/>
+      <text x="40" y="44" class="h3 ink">HEADER · Qingjiang</text>
+      <rect x="585" y="25" width="135" height="27" rx="14" fill="#fffdf8" stroke="#a9afa8"/>
+      <text x="606" y="43" class="xs red">RETURN / SERVICE</text>
+      <rect x="92" y="84" width="136" height="52" rx="11" fill="#e5eee9"/><text x="130" y="114" class="h3 ink">TODAY</text>
+      <rect x="314" y="84" width="136" height="52" rx="11" fill="#e5eee9"/><text x="352" y="114" class="h3 ink">ROUTE</text>
+      <rect x="536" y="84" width="136" height="52" rx="11" fill="#e5eee9"/><text x="570" y="114" class="h3 ink">MY BOOK</text>
+      <path d="M160 136v28h222v-28M382 164h222v-28" class="line"/>
+      <text x="212" y="188" class="sm blue">scene → optional read → deep read</text>
+    </g>
+
+    <text x="24" y="386" class="h3 ink">Material delta</text>
+    <text x="24" y="410" class="sm muted">Top-level content library disappears; context becomes the primary content gateway.</text>
+    <text x="24" y="435" class="xs red">HOLD · falsifier: independent deep-browse discoverability materially degrades</text>
+  </g>
+</g>
+
+<g transform="translate(58,744)">
+  <g>
+    <rect width="800" height="300" rx="18" class="rej"/>
+    <text x="24" y="36" class="xs red">CTR-02 · REJECT</text>
+    <text x="24" y="68" class="h2 ink">Duplicate RETURN as another top-level surface</text>
+    <text x="24" y="96" class="sm muted">ROUTE return-mode + header Service/Return already exist. A new top-level Return duplicates truth.</text>
+    <g transform="translate(38,132)">
+      <rect x="0" y="0" width="720" height="100" rx="16" fill="#fffdf8" stroke="#d4b1a4"/>
+      <rect x="24" y="24" width="116" height="42" rx="10" fill="#eee7dd"/><text x="58" y="50" class="h3 ink">ROUTE</text>
+      <rect x="198" y="24" width="116" height="42" rx="10" fill="#eee7dd"/><text x="224" y="50" class="h3 ink">RETURN</text>
+      <rect x="372" y="24" width="138" height="42" rx="10" fill="#eee7dd"/><text x="393" y="50" class="h3 ink">SERVICE/RETURN</text>
+      <path d="M140 45h58M314 45h58" class="dash"/>
+      <text x="538" y="50" class="xs red">3 truth surfaces</text>
+    </g>
+    <text x="24" y="267" class="xs red">FAILURE: synchronization / duplicated authority / maintenance burden</text>
+  </g>
+
+  <g transform="translate(840,0)">
+    <rect width="844" height="300" rx="18" class="rej"/>
+    <text x="24" y="36" class="xs red">CTR-03 · REJECT</text>
+    <text x="24" y="68" class="h2 ink">Force reality state → content intensity</text>
+    <text x="24" y="96" class="sm muted">Proposed dependency collapses two axes that Current explicitly keeps independent.</text>
+    <g transform="translate(38,126)">
+      <text x="0" y="18" class="xs muted">FORCED MAPPING</text>
+      <text x="0" y="48" class="txt ink">NORMAL → FULL</text>
+      <text x="0" y="76" class="txt ink">DEGRADED → LIGHT</text>
+      <text x="0" y="104" class="txt ink">CLOSED / UNKNOWN → OFF</text>
+      <path d="M230 20h2v95h-2" class="dash"/>
+      <text x="270" y="18" class="xs green">CURRENT ALLOWS</text>
+      <text x="270" y="48" class="txt ink">NORMAL × OFF</text>
+      <text x="270" y="76" class="txt ink">DEGRADED × LIGHT</text>
+      <text x="270" y="104" class="txt ink">UNKNOWN × OFF</text>
+      <text x="520" y="48" class="sm muted">state truth and content delivery are separate</text>
+    </g>
+    <text x="24" y="267" class="xs red">FAILURE: protected-axis collapse / pseudo inference from field state</text>
+  </g>
+</g>
+</svg>
