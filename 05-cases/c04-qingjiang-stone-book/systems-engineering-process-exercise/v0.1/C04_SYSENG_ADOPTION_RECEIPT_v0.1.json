@@ -105,7 +105,23 @@
     "professional_domain_validator": "00-governance/schemas/validate_professional_domain_process.py",
     "trace_consistency_validator": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_validate_syseng_trace_v0_1.py",
     "ci_workflow": ".github/workflows/ai-governance-evals.yml",
-    "state": "PENDING_REAL_PR_CI"
+    "pull_request": 663,
+    "validated_head_sha": "161b70d313ac0556af84933417826581ef1f301e",
+    "ai_governance_run": {
+      "run_number": 4878,
+      "run_id": 35415781011,
+      "result": "PASS"
+    },
+    "systems_candidate_definition_step": "PASS",
+    "c04_process_instance_step": "PASS",
+    "c04_requirement_vv_trace_step": "PASS",
+    "eval_corpus_with_FAIL_049_to_FAIL_051": "PASS",
+    "anti_pollution_run": {
+      "run_number": 809,
+      "run_id": 35415781009,
+      "result": "PASS"
+    },
+    "state": "REAL_PR_CI_PASS / RECEIPT_UPDATE_REQUIRES_FINAL_HEAD_RECHECK"
   },
   "current_architecture_disposition": {
     "systems_engineering_domain_process": "OPEN",
@@ -113,6 +129,6 @@
     "architecture_map_modified": false,
     "reason": "Project adoption evidence is materially stronger, but validation, integrated interface verification, task/claim Knowledge Mount and independent Systems Engineering professional review remain open."
   },
-  "maturity": "CANDIDATE R-E PROCESS / MACHINE DEFINITION + C04 REQUIREMENT→ARCHITECTURE→VV REAPPLICATION / CONFIGURATION REOPEN EXERCISED / INTEGRATION+VALIDATION HOLD / NO INDEPENDENT SE REVIEW / NOT CURRENT / NO PROMOTION",
+  "maturity": "CANDIDATE R-E PROCESS / C04 PROJECT-EXERCISED REQUIREMENT→ARCHITECTURE→VV TRACE / PROCESS INSTANCE + TRACE CONSISTENCY VALIDATED / AIG REGRESSION PASS / CONFIGURATION REOPEN EXERCISED / INTEGRATION+VALIDATION HOLD / NO INDEPENDENT SE REVIEW / NOT CURRENT / NO PROMOTION",
   "claim_ceiling": "SYSTEMS ENGINEERING CANDIDATE ADOPTION EVIDENCE ONLY / NO PROFESSIONAL PASS / NO DOMAIN OVERRIDE / NO SYSTEM VALIDATION PASS / NO PROMOTION"
 }
