@@ -1,0 +1,337 @@
+{
+  "schema_version": "c01-architecture-remote-proxy-consumption/0.1",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "process_ref": {
+    "path": "00-governance/schemas/architecture-design-development-process.v1.json",
+    "blob_sha": "08359be7faf633d3637a7f1dd9b05b2da54e2748"
+  },
+  "research_proxy_ref": {
+    "path": "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+    "blob_sha": "e4b3333ad3e72f6dfeb18fdaa92c10fa3875adcc"
+  },
+  "state": "BOUNDED ARCHITECTURE CONSUMPTION / RELATION-LEVEL SITE PLANNING / SURVEY OPEN / NO ARCHITECTURE PASS",
+  "purpose": "Demonstrate how Current Architecture ADD consumes a reality-near remote proxy without converting it into survey, fire/accessibility, civil, interior or field authority.",
+  "site_authority_state": {
+    "site_boundary": "UNRESOLVED_FOR_SURVEY_CLAIM",
+    "exact_coordinates": "UNRESOLVED_EXCEPT_SOURCE-SPECIFIC_CONTEXT_POINTS",
+    "current_levels": "NOT_MEASURED",
+    "current_road_widths": "NOT_MEASURED",
+    "current_route_topology": "PARTIAL_RELATION_AUTHORITY",
+    "protected_object_identity": "PARTIAL / OBJECT-SPECIFIC",
+    "current_change_events": "2026 DAPIANDI ROAD WORKS = MATERIAL CHANGE TRIGGER",
+    "field_observed": 0,
+    "field_measured": 0
+  },
+  "architecture_stage_consumption": [
+    {
+      "stage_id": "ADD-00",
+      "stage_name": "Scope, authority and claim ceiling",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "HOLD",
+      "consumed_proxy_objects": [
+        "reality anchors",
+        "current-change event",
+        "field-only register"
+      ],
+      "native_outputs": [
+        "ARCHITECTURE_SCOPE_AUTHORITY_REGISTER projection",
+        "Survey / Existing-Condition Authority & Change Register"
+      ],
+      "allowed_claim": "Architecture may continue at relationship/site-context exploration ceiling.",
+      "blocked_claims": [
+        "survey accuracy",
+        "code compliance",
+        "field truth",
+        "Architecture PASS"
+      ]
+    },
+    {
+      "stage_id": "ADD-01",
+      "stage_name": "Site, context and arrival systems",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "KEEP_SUPPORT",
+      "consumed_proxy_objects": [
+        "existing three-cultural-circle visitor route",
+        "P1/P2/P3 object/location relations",
+        "Dagong Hall macro context",
+        "2026 Dapiandi road works change event",
+        "resident/community-priority route constraints"
+      ],
+      "native_outputs": [
+        "site access + external flow diagram",
+        "site/context consequence record"
+      ],
+      "allowed_claim": "Relation-level external flow / arrival / heritage-node planning only.",
+      "blocked_claims": [
+        "surveyed site plan",
+        "accessible route compliance",
+        "emergency access approval",
+        "civil/drainage approval",
+        "exact stopping geometry"
+      ]
+    },
+    {
+      "stage_id": "ADD-02",
+      "stage_name": "Brief, users and operational states",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "KEEP_SUPPORT",
+      "consumed_proxy_objects": [
+        "resident-priority constraint",
+        "existing public-cultural route",
+        "visitor/learning/workshop design hypotheses",
+        "indoor-unavailable fallback"
+      ],
+      "native_outputs": [
+        "bounded USER_OPERATION_MATRIX projection"
+      ],
+      "allowed_claim": "Residents/community use remain controlling; visitor experience must downgrade/relocate when use conflicts.",
+      "blocked_claims": [
+        "actual visitor behavior",
+        "verified operating hours",
+        "approved occupancy",
+        "professional HCD evidence"
+      ]
+    },
+    {
+      "stage_id": "ADD-03",
+      "stage_name": "Program and room-level brief",
+      "execution_state": "BLOCKED",
+      "professional_verdict": "HOLD",
+      "consumed_proxy_objects": [
+        "Dagong Hall approximate macro area",
+        "indoor 20–30 person planning hypothesis"
+      ],
+      "native_outputs": [
+        "open-item only"
+      ],
+      "allowed_claim": "Scenario-level learning/workshop need only.",
+      "blocked_claims": [
+        "verified room brief",
+        "usable room dimensions",
+        "20–30 person capacity",
+        "fire/accessibility capacity",
+        "Interior PASS"
+      ],
+      "reason": "No current room geometry, occupancy/fire/accessibility or building-use authority sufficient for room-level closure."
+    },
+    {
+      "stage_id": "ADD-04",
+      "stage_name": "Adjacency and separation logic",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "KEEP_SUPPORT",
+      "consumed_proxy_objects": [
+        "existing visitor centre / Mao ancestral hall / Quanjing private school cultural circles",
+        "P1/P2/P3 distinct object identity",
+        "public/semi-public/private boundary principle",
+        "Dagong Hall / field / stream contextual relation"
+      ],
+      "native_outputs": [
+        "relationship diagram"
+      ],
+      "allowed_claim": "Adjacency / narrative relation and separation logic only.",
+      "blocked_claims": [
+        "working site plan",
+        "exact separation distance",
+        "private-property access rights"
+      ]
+    },
+    {
+      "stage_id": "ADD-05",
+      "stage_name": "Zoning alternatives and selection",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN",
+      "reason": "No metric site/ownership/operation basis sufficient for consequential zoning selection."
+    },
+    {
+      "stage_id": "ADD-06",
+      "stage_name": "Flow systems",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "KEEP_SUPPORT",
+      "consumed_proxy_objects": [
+        "existing cultural-route relation",
+        "resident-priority constraint",
+        "no-private-courtyard rule",
+        "relocatable/pass-through fallback"
+      ],
+      "native_outputs": [
+        "relation-level flow drawing"
+      ],
+      "allowed_claim": "Public visitor flow concept at topology/behavior level.",
+      "blocked_claims": [
+        "capacity verification",
+        "accessible/emergency flow compliance",
+        "field operation",
+        "exact path width"
+      ]
+    },
+    {
+      "stage_id": "ADD-07",
+      "stage_name": "Horizontal and vertical circulation",
+      "execution_state": "BLOCKED",
+      "professional_verdict": "HOLD",
+      "reason": "Critical route widths, levels, steps, slopes, thresholds and building circulation geometry are not measured."
+    },
+    {
+      "stage_id": "ADD-08",
+      "stage_name": "Life-safety-aware and accessibility-aware planning",
+      "execution_state": "BLOCKED",
+      "professional_verdict": "HOLD",
+      "reason": "Remote proxy cannot close fire/accessibility geometry or specialist authority."
+    },
+    {
+      "stage_id": "ADD-09",
+      "stage_name": "Service, hygiene, supervision and security",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ADD-10",
+      "stage_name": "Structure, MEP and envelope fit-back",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ADD-11",
+      "stage_name": "Climate, daylight, acoustics and environmental behavior",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ADD-12",
+      "stage_name": "Landscape and external-space integration",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "HOLD",
+      "consumed_proxy_objects": [
+        "village stream/field/building contextual relation",
+        "current road-work change event"
+      ],
+      "allowed_claim": "Architecture recognizes external-space dependencies and keeps physical media low-impact/relocatable.",
+      "blocked_claims": [
+        "landscape grading",
+        "drainage design",
+        "planting/ecology",
+        "field performance"
+      ]
+    },
+    {
+      "stage_id": "ADD-13",
+      "stage_name": "FF&E, equipment and real room usability",
+      "execution_state": "BLOCKED",
+      "professional_verdict": "HOLD",
+      "reason": "Current indoor room geometry and use capacity are unverified; movable media is a design-risk response, not room-use PASS."
+    },
+    {
+      "stage_id": "ADD-14",
+      "stage_name": "Area efficiency, cost pressure and lifecycle",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ADD-15",
+      "stage_name": "Existing-building, phasing and construction-state logic",
+      "execution_state": "CURRENT_BOUNDED",
+      "professional_verdict": "KEEP_SUPPORT",
+      "consumed_proxy_objects": [
+        "2026 Hejinyin–Dapiandi road works",
+        "heritage-object identity/protection uncertainty",
+        "older imagery temporal mismatch"
+      ],
+      "native_outputs": [
+        "Survey / Existing-Condition Authority & Change Register"
+      ],
+      "allowed_claim": "Current-change awareness and provisional phasing/relocation logic.",
+      "blocked_claims": [
+        "as-built road condition",
+        "existing structural adequacy",
+        "construction safety",
+        "heritage intervention permission"
+      ]
+    },
+    {
+      "stage_id": "ADD-16",
+      "stage_name": "Jurisdictional code / standard matrix",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ADD-17",
+      "stage_name": "Independent plan / section review",
+      "execution_state": "NOT_STARTED",
+      "professional_verdict": "NOT_RUN",
+      "reason": "No promoted metric plan/section exists to review."
+    }
+  ],
+  "architecture_proxy_variables": [
+    {
+      "variable_id": "ARCH-PV-01",
+      "variable": "P1/P2 arch object scale",
+      "basis": "published dimensions cross-referenced to object/date identity",
+      "allowed_use": "photo-scale/context plausibility and human/object relation",
+      "forbidden_use": "surrounding road/plaza clearance or protection setback",
+      "sensitivity": "MEDIUM"
+    },
+    {
+      "variable_id": "ARCH-PV-02",
+      "variable": "village visitor-route topology",
+      "basis": "existing three-cultural-circle route + C01 node relations",
+      "allowed_use": "arrival/sequence/adjacency/flow concept",
+      "forbidden_use": "distance/time/capacity/accessibility claim",
+      "sensitivity": "MEDIUM"
+    },
+    {
+      "variable_id": "ARCH-PV-03",
+      "variable": "Dapiandi approach/current road condition",
+      "basis": "2026 public civil-works event",
+      "allowed_use": "change/staleness trigger and relocatable-design requirement",
+      "forbidden_use": "exact as-built width/level/surface/guardrail location",
+      "sensitivity": "HIGH"
+    },
+    {
+      "variable_id": "ARCH-PV-04",
+      "variable": "Dagong Hall macro scale",
+      "basis": "published approx. 500 m² macro area plus public architectural descriptions",
+      "allowed_use": "landmark/program context",
+      "forbidden_use": "survey footprint, room area, occupancy",
+      "sensitivity": "LOW for macro identity / HIGH for room planning"
+    },
+    {
+      "variable_id": "ARCH-PV-05",
+      "variable": "indoor workshop/class capacity",
+      "basis": "existing 20–30 person project planning hypothesis only",
+      "allowed_use": "scenario testing with indoor-unavailable fallback",
+      "forbidden_use": "verified capacity/fire/accessibility",
+      "sensitivity": "HIGH"
+    }
+  ],
+  "sensitivity_readback": [
+    {
+      "test": "If P1/P2 immediate stopping space is substantially narrower than assumed",
+      "consequence": "deep reading relocates to handheld/digital/nearby safe public space; object-reading mechanism survives",
+      "robustness": "ROBUST_WITH_RELOCATION"
+    },
+    {
+      "test": "If P3 approach geometry changes after 2026 road works",
+      "consequence": "no fixed site-specific medium is locked; route/node position reopens against current condition",
+      "robustness": "ROBUST_IF_RELOCATABLE"
+    },
+    {
+      "test": "If indoor room cannot legally/operationally host 20–30 people",
+      "consequence": "learning mode downgrades to small-group/movable/off-site/digital; capacity claim remains HOLD",
+      "robustness": "ROBUST_WITH_MODE_SWITCH"
+    },
+    {
+      "test": "If exact cultural-route geometry differs from narrative order",
+      "consequence": "C01 narrative order must adapt to existing resident/public route rather than forcing geometry",
+      "robustness": "ROBUST_IF_RELATION-FIRST"
+    }
+  ],
+  "design_consequences": [
+    "Do not issue a pseudo-survey masterplan.",
+    "Use relation-level site flow as the Architecture Current support artifact until stronger geometry arrives.",
+    "All fixed intervention near heritage objects remains deferred; movable/non-contact media stays preferred.",
+    "Current 2026 road-change evidence makes older P3/Dapiandi surface assumptions stale-sensitive.",
+    "Architecture plan development beyond relation level reopens only after the specific geometry required by that decision is resolved."
+  ],
+  "verdict": "KEEP SUPPORT / ARCHITECTURE SITE-CONTEXT CONSUMPTION PROVEN / METRIC DEVELOPMENT HOLD",
+  "claim_ceiling": "ARCHITECTURE_SITE_CONTEXT + RELATIONSHIP_MODEL + BOUNDED FLOW / NO SURVEY / NO FIRE-ACCESSIBILITY-CIVIL PASS / NO ARCHITECTURE PROFESSIONAL PASS / NO PROMOTION"
+}
