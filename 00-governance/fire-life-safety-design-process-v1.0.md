@@ -397,3 +397,35 @@ It does not automatically prove:
 - Project Promotion.
 
 `PROFESSIONAL PASS ≠ APPROVAL ≠ FIELD TRUTH ≠ DESIGN KEEP ≠ PROMOTION`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Fire / Life Safety professional-depth parity
+
+**Candidate boundary:** additive parity repair only. This remains an evolution candidate; prior v001 Independent Review packet binds the older EV3 input and does **not** review this later head.
+
+### Knowledge / owner routing
+- Current fire/life-safety INDEX/SOURCE/SYS objects remain knowledge authority; `oleander-research` supports source/AHJ/standard comparison.
+- `oleander-design-process` may support strategy options, interface/change reasoning and scenario framing, but cannot award FLS, AHJ or statutory PASS.
+- `oleander-3d-pipeline` may support bounded geometry/scenario carrier; geometry/runtime success is not fire-engineering evidence.
+- `oleander-technical-drawing` remains candidate-only for drawing production.
+- `oleander-delivery-qc` checks package/native-source integrity only.
+- Fire engineering analysis, egress/smoke/hydraulic tools, cause-effect commissioning, competent FLS professional and AHJ/statutory authority are `PROJECT_SPECIALIST_REQUIRED` when the claim needs them.
+
+### Required native carriers
+Authority/compliance-route basis；strategy；occupancy/egress/assisted-evacuation；compartment/passive protection；active-system requirements；cause-effect/fail-state matrix；scenario/model package when triggered；submittal/substitution release；inspection/test/commissioning witness；as-built/impairment/in-use records。
+
+### Object-level invocation matrix
+#### A｜Basis / route / strategy
+Knowledge: jurisdiction + AHJ + use/hazard + current FLS sources. Tool: controlled strategy/authority register. Readback: exact adopted route and responsible authority. Reopen: jurisdiction/use/hazard/AHJ/source revision.
+#### B｜Egress / human / emergency
+Tool: authoritative plans/sections + occupancy/door/vertical-transport/emergency-state carrier. Readback: continuous egress, assisted states, door/control state, capacity/travel assumptions. Reopen: geometry/occupancy/door/lift/security/accessibility change.
+#### C｜Passive / active / cause-effect
+Tool: exact assembly/product/system identity + cause-effect / points / interface record. Readback: installed configuration, penetration/junction/door-set completeness, command→physical end state. Reopen: product/system/substitution/interface/site change.
+#### D｜Performance / scenario analysis
+Tool: project-authorized fire/smoke/egress analysis runtime with method/version/input/sensitivity. Readback: scenario, acceptance criterion, geometry/configuration, uncertainty and contradiction. Reopen: scenario/input/model/system/criterion change.
+#### E｜Delivery / commissioning / in-use
+Tool: inspection/test/FPT/commissioning/impairment records. Readback: exact tested configuration + defects + repair/retest + as-built state. Reopen: failed test, site deviation, impairment, incident/near-miss or operational change.
+
+### Boundary
+`CODE CHECK ≠ FLS PROFESSIONAL PASS`；`MODEL PASS ≠ AHJ APPROVAL`；`PRODUCT EVIDENCE ≠ INSTALLED SYSTEM PASS`；`ONE SYSTEM CX PASS ≠ WHOLE FLS CLOSE`；`R-F INTEGRATION PASS` remains separate.
