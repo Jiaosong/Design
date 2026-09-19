@@ -621,11 +621,48 @@ It is not:
 
 ---
 
-## 17｜Maturity
+## 17｜Architecture domain reapplication｜C01
+
+The first domain-distinct reapplication was run through the Current Architecture ADD process using C01 Guangdu.
+
+Consumed stages:
+- `ADD-00` scope / authority;
+- `ADD-01` site, context and arrival;
+- `ADD-02` users / operations;
+- `ADD-04` adjacency;
+- `ADD-06` flow systems;
+- `ADD-15` existing / phasing / current-change logic.
+
+Held or not run when metric/professional authority was insufficient:
+- room-level brief/capacity;
+- metric circulation;
+- fire/accessibility-aware planning;
+- Structure/MEP fit-back;
+- code matrix;
+- independent plan/section review.
+
+Native project outputs include:
+- Architecture stage-consumption/sensitivity model;
+- Survey / Existing-Condition Authority & Change Register;
+- editable NTS site access / external-flow diagram;
+- Architecture remote-proxy consumption receipt.
+
+The reapplication demonstrated that:
+- published object dimensions can support object/photo-scale reasoning without propagating into surrounding clearances;
+- a current public road-work event can invalidate old approach assumptions without invalidating unrelated cultural/spatial evidence;
+- relation-level flow can remain useful before survey geometry exists;
+- movable/non-contact/relocatable design can preserve the concept across plausible site conditions;
+- Architecture professional PASS remains blocked where site/fire/accessibility/civil/room authority is absent.
+
+This counts as **domain-distinct reapplication 1/2** toward method promotion. It does not by itself satisfy the cross-domain promotion requirement.
+
+---
+
+## 18｜Maturity
 
 Current maturity:
 
-`CANDIDATE EXTENSION / EXISTING RESEARCH OWNER / C04 PRACTICE-DERIVED / FIELD-SURVEY OWNER ALIGNED / MEASUREMENT-UNCERTAINTY OWNER ALIGNED / GOLDEN REGRESSION REQUIRED / CROSS-DOMAIN REAPPLICATION REQUIRED / NO PROMOTION`.
+`CANDIDATE EXTENSION / EXISTING RESEARCH OWNER / C04 PRACTICE-DERIVED / C01 ARCHITECTURE DOMAIN REAPPLICATION 1 OF 2 / FIELD-SURVEY OWNER ALIGNED / MEASUREMENT-UNCERTAINTY OWNER ALIGNED / GOLDEN REGRESSION PRESENT / SECOND DOMAIN-DISTINCT REAPPLICATION REQUIRED / NO PROMOTION`.
 
 Promotion requires:
 - at least two domain-distinct project reapplications beyond C04 route/site evidence;
