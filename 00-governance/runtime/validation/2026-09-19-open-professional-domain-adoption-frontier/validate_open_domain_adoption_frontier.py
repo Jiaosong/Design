@@ -57,6 +57,22 @@ def main() -> None:
         check_path(cand["prose"], f"{name} candidate prose")
         check_path(cand["machine"], f"{name} candidate machine definition")
 
+        machine = json.loads((ROOT / cand["machine"]).read_text(encoding="utf-8"))
+        if not machine.get("execution_depth_contract"):
+            fail(f"{name}: execution_depth_contract missing")
+        stages = machine.get("stages", [])
+        if not stages:
+            fail(f"{name}: no professional stages")
+        for st in stages:
+            if not st.get("required_native_outputs"):
+                fail(f"{name}/{st.get('stage_id')}: no native outputs")
+            if not st.get("required_readback"):
+                fail(f"{name}/{st.get('stage_id')}: no readback")
+            if not st.get("reopen_triggers"):
+                fail(f"{name}/{st.get('stage_id')}: no reopen trigger")
+            if not st.get("does_not_prove"):
+                fail(f"{name}/{st.get('stage_id')}: no does-not-prove boundary")
+
         project = d.get("project_adoption", {})
         if project.get("exists"):
             receipt = project.get("receipt")
@@ -94,6 +110,24 @@ def main() -> None:
         fail("Systems Engineering adoption must not report validation PASS in this snapshot")
     if se.get("integrated_interfaces_verified") != 0:
         fail("Systems Engineering adoption must not report integrated interface VERIFIED in this snapshot")
+
+    failures_path = ROOT / "evals/failure/failure_cases.jsonl"
+    failure_ids = {
+        json.loads(line)["case_id"]
+        for line in failures_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    }
+    for required in ("FAIL-041", "FAIL-042"):
+        if required not in failure_ids:
+            fail(f"shared professional-parity regression missing: {required}")
+
+    depth = data.get("definition_depth_readback", {})
+    if set(depth.get("shared_regression_ids", [])) != {"FAIL-041", "FAIL-042"}:
+        fail("definition-depth shared regression binding drift")
+    if set(depth.get("domains", {})) != EXPECTED:
+        fail("definition-depth domain set drift")
+    if not all(v.get("execution_depth_contract_present") for v in depth["domains"].values()):
+        fail("definition-depth readback contains missing execution-depth contract")
 
     print("PASS: open professional-domain adoption frontier is internally consistent")
 
