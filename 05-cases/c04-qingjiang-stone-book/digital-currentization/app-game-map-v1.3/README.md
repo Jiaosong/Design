@@ -65,6 +65,30 @@ Real product execution:
 
 The two harness failures remain useful provenance and are not described as product failures.
 
+## Verified browser result
+
+Actual configured runtime verification is now complete.
+
+Primary successful run:
+- GitHub Actions run `35419536754` / run #4;
+- Chrome for Testing `151.0.7922.34`;
+- Playwright `chromium v1234`;
+- desktop `1440×1000`;
+- mobile `390×844`;
+- result: `12 PASS / 0 FAIL`.
+
+Latest evidence-head recheck:
+- browser workflow run #14 / run ID `35419829083`;
+- result: `PASS`.
+
+Machine readback:
+- `BROWSER_RUNTIME_READBACK_v1_3.json`;
+- `QC_READBACK_v1_3.json`.
+
+The result is configuration-bound and does not add Firefox/WebKit, user-validation, accessibility, field or live-service claims.
+
+---
+
 ## Truth boundary
 
 Unchanged:
