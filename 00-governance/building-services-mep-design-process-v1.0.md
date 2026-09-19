@@ -1077,3 +1077,70 @@ CURRENT MEP CLAIM
 ```
 
 A system model that omits any applicable controlling relation may remain useful coordination evidence, but it must not be promoted as a stronger Building Services engineering claim.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Building Services / MEP professional-depth parity
+
+**Status effect:** additive execution-depth binding only. This does not change the Current MEP process, commissioning responsibility, statutory authority or existing SYS object ownership.
+
+### Knowledge binding
+- `KN-METHOD-MEP-DESIGN-TRACE-001` — demand/load → calculation → duty point → equipment → distribution → terminal/interface;
+- `KN-METHOD-MEP-CALC-RELEASE-001` — calculation/version ↔ schedule ↔ selected product/substitution ↔ recalc/release;
+- `KN-METHOD-MEP-COORDINATION-ACCESS-001` — route/size/slope/radius/insulation/support/access/replacement/penetration/installation sequence;
+- `KN-METHOD-MEP-CONTROL-CX-001` — points/sensors/actuators → sequence → interlock/fail state → TAB/FPT → issue/retest → systems manual;
+- current HVAC/electrical/plumbing/fire/BMS/energy/product/commissioning SOURCE and SYS owners as triggered.
+
+### `required_native_outputs[]`
+- current basis of design, operating/design-condition and responsibility/deliverables records;
+- native load/flow/pressure/static/electrical/hydraulic/thermal/ventilation/protection calculations as applicable;
+- system schematics/single-lines/riser/zone/network models and coordinated plans/sections;
+- equipment/terminal/fixture schedules with current duty/operating points;
+- calculation↔schedule↔drawing↔selected-product trace and substitution/recalc register;
+- coordination/access/replacement/support/opening/penetration/firestop interface records;
+- controls point/I-O/address/setpoint/alarm/sequence/interlock/C&E records;
+- Commissioning Plan/Specification, pre-functional/TAB/FPT/IST/test scripts and issue/retest records;
+- as-built settings/points/sequences, systems manual, training, trend/seasonal/in-use evidence where in scope.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research` — codes/standards/product/commissioning/source evidence;
+- `oleander-design-process` — system-option/interface/change reasoning; not MEP engineering validation;
+- `oleander-data-viz` — load/energy/trend/monitoring analytical visualization only when useful; not source values or measured-performance authority;
+- `oleander-3d-pipeline` — spatial coordination/exchange where fit; does not prove sizing, commissioning or constructability;
+- `oleander-technical-drawing` — candidate PR #172 only;
+- `oleander-delivery-qc` — package/native-master/export integrity only.
+
+**Specialist execution gap / routing rule:** the Current core Skill registry has no installed HVAC/Electrical/Plumbing/Fire/BMS engineering solver family. Consequential calculations and commissioning claims must bind project-authorized discipline calculation tools, manufacturer selection tools where appropriately source-bounded, field instruments/test procedures and responsible MEP professionals. Missing callable capability must remain explicit `CAPABILITY_HOLD`; a diagram or selected datasheet cannot substitute for engineering.
+
+### `tool_adapter_requirements[]`
+- discipline calculation/model runtime appropriate to the current HVAC/electrical/plumbing/fire/BMS claim;
+- project CAD/BIM/coordination runtime with units/levels/zones/IDs and access-envelope readback;
+- exact manufacturer selection/submittal data linked to current duty points;
+- controls/BMS configuration/address/sequence carrier when controls are consequential;
+- TAB/balancing/commissioning instrument/test records and configuration identity;
+- trend/metering/in-use data carrier for operational claims;
+- format-specific native reopen/readback and issue/revision comparison.
+
+### `typed_handoff_contracts[]`
+- Architecture/Interior/Operations → MEP: room/zone/process/occupancy/schedule/performance/access/plant-space requirements + revision;
+- MEP → Architecture/Structure/Fire/Interior/Lighting: loads, openings, supports, plant/riser/ceiling zones, heat/noise/drainage, power/control, access/replacement and penetration criteria;
+- Calculation → Procurement: exact duty/operating point + design condition + interface + approved deviation envelope;
+- Submittal return → MEP: exact model/configuration/performance/electrical/control/dimensional delta + affected calculations/drawings/sequences;
+- Controls → Commissioning: point/address/sequence/setpoint/fail-state + expected measurable result;
+- Field/Cx return → MEP: test configuration + measured result + issue/root cause + repair/retest + as-built update.
+
+### `actual_readback_requirements[]`
+- source room/process data and design conditions ↔ current calculation inputs;
+- critical demand/result/duty point ↔ equipment/terminal schedule and selected product;
+- system schematic/network ↔ coordinated route/zone/plant/terminal geometry;
+- slope/radius/insulation/support/access/replacement/penetration reality, not clash count only;
+- point list ↔ physical sensor/actuator ↔ sequence/interlock/fail state;
+- commissioning prerequisites/TAB/settings ↔ FPT/IST expected and measured results;
+- substitution/site change ↔ recalculation/recoordination/retest propagation;
+- as-built settings/trends/seasonal/in-use evidence where operational performance is claimed.
+
+### `reopen_triggers[]`
+Programme/occupancy/process/design-condition change; load/diversity/redundancy assumption change; utility/source change; network/routing/level change; equipment/terminal/control substitution; Architecture/Structure/fire interface change; manufacturer data revision; field coordination deviation; TAB/FPT/IST failure; sensor/point/sequence/setpoint change; energy/trend/in-use evidence materially contradicting the design basis.
+
+### Professional boundary
+`LOAD CALC PASS ≠ SYSTEM PASS`; `DATASHEET ACCEPTED ≠ DUTY PASS`; `CLASH-FREE ≠ COORDINATED`; `POINT LIST COMPLETE ≠ SEQUENCE VERIFIED`; `STARTUP ≠ COMMISSIONING`; `ONE-SYSTEM CX PASS ≠ WHOLE-BUILDING INTEGRATION PASS`; `DELIVERY QC PASS ≠ ENGINEERING APPROVAL`.

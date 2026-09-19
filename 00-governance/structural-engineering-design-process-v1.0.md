@@ -889,3 +889,68 @@ CURRENT STRUCTURAL CLAIM
 ```
 
 Anything less may still be useful design evidence, but it must not be promoted as a stronger structural-engineering claim.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Structural professional-depth parity
+
+**Status effect:** additive execution-depth binding only. This does not change the Current Structural process, engineering responsibility, checking class or statutory authority.
+
+### Knowledge binding
+- `KN-METHOD-STRUCT-LOADPATH-CONNECTION-001` — hazard/load basis → global stability → load path → members/connections/supports;
+- `KN-METHOD-STRUCT-CALC-DRAWING-RELEASE-001` — analysis/calculation ↔ schedule/drawing/detail ↔ RFI/shop/change/reanalysis;
+- `KN-METHOD-STRUCT-ERECTION-TEMPWORKS-001` — staged/incomplete states, temporary support, sequence, tolerance and release;
+- `KN-METHOD-STRUCT-FOUNDATION-GEOTECH-001` — ground model/parameters ↔ reactions/foundation/movement/groundwater/construction QA;
+- current material/code/load/seismic/fire/geotechnical/product/test SOURCE owners as applicable.
+
+### `required_native_outputs[]`
+- current structural basis/load/hazard/assumption register;
+- authoritative analysis model(s) and calculation package with version identity;
+- load-path/stability/diaphragm/collector/transfer reasoning carriers;
+- member/element/reaction schedules and connection force/criteria;
+- coordinated structural plans/sections/details and calculation↔drawing trace;
+- foundation-geotechnical interface/reaction/parameter/movement/test records;
+- delegated connection/shop/submittal/RFI/change/reanalysis records;
+- erection-stage/staged-analysis/temporary-support/tolerance/hold-point records where triggered;
+- inspection/test/NCR/as-built/residual-risk closeout evidence.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research` — current code/material/geotechnical/test/source evidence;
+- `oleander-design-process` — option/interface/change reasoning only; **not structural validation or engineering approval**;
+- `oleander-3d-pipeline` — geometry/exchange/coordination carrier only; its current Blender/FreeCAD bounded capabilities do not become a structural solver or constructability proof;
+- `oleander-technical-drawing` — candidate PR #172 only;
+- `oleander-delivery-qc` — calculation/drawing/package integrity and reopenability only.
+
+**Specialist execution gap / routing rule:** the Current core Skill registry has no installed Structural Analysis / Engineering Checker Skill. Consequential structural claims must bind the project-authorized analysis/calculation environment, competent structural engineer and required independent checker/reviewer. Solver execution alone is not approval. If required analysis/checking cannot be executed or read back, the claim remains `CAPABILITY_HOLD / PROFESSIONAL_HOLD` as applicable.
+
+### `tool_adapter_requirements[]`
+- project-authorized structural analysis/calculation solver with model/version/load-combination readback;
+- project-authorized CAD/BIM/drawing/detail environment with stable object/grid/level/member identities;
+- geotechnical parameter/report/test carrier linked to foundation calculations;
+- connection/delegated-design/submittal carrier with force/stiffness/geometry/tolerance handoff;
+- staged/temporary-works analysis carrier where triggered;
+- inspection/test/survey/as-built evidence carrier;
+- independent checker/review receipt appropriate to the claim.
+
+### `typed_handoff_contracts[]`
+- Architecture → Structure: current grids/levels/geometry/openings/use/load assumptions/interfaces/revision;
+- Geotechnical → Structure: ground model + parameter + scope/location/depth/condition/confidence + groundwater/hazard + recheck trigger;
+- Structure → Architecture/MEP/Facade/Foundation: member zones, reactions, openings, embeds/anchors, movement/deflection/tolerance and load criteria;
+- Structure → Connection/Fabricator/Erector: current forces/stiffness/geometry/tolerance/sequence/special-condition criteria + responsibility boundary;
+- Field/Shop return → Structure: exact object/location/revision/deviation/test + load-path/analysis impact + engineering disposition/reopen.
+
+### `actual_readback_requirements[]`
+- load/hazard basis ↔ current analysis model and load combinations;
+- complete gravity/lateral/staged load path including discontinuities/transfers/collectors;
+- model assumption/fixity/stiffness ↔ connection/detail/support reality;
+- member/reaction/connection criteria ↔ issued drawings/schedules;
+- geotechnical parameter/reaction/foundation location and movement compatibility;
+- RFI/shop/site change ↔ reanalysis trigger and propagated drawing/detail revision;
+- erection-stage load path / connection completion / temporary support before release;
+- inspection/test/as-built deviation and checker disposition.
+
+### `reopen_triggers[]`
+Geometry/grid/level/opening change; load/use/equipment/facade/MEP load change; code/hazard/material/source revision; geotechnical/groundwater/unexpected-ground change; member/system/connection/foundation substitution; delegated-design/shop/RFI delta; erection sequence/temporary-support change; failed inspection/test/survey; field deviation; any calculation↔drawing inconsistency.
+
+### Professional boundary
+`MODEL RUN ≠ ENGINEERING PASS`; `MEMBER CHECKS GREEN ≠ LOAD PATH CLOSED`; `CALCULATION PASS ≠ DRAWING RELEASE`; `FINAL-STATE STABLE ≠ ERECTION-STAGE STABLE`; `DELIVERY QC PASS ≠ INDEPENDENT CHECK`. Human professional/engineer-of-record/statutory authority remains external and explicit.

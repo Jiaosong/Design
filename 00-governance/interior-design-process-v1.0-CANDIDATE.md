@@ -616,3 +616,67 @@ Until then:
 `INTERIOR DESIGN DOMAIN PROCESS = OPEN`.
 
 `INTERIOR CANDIDATE EXISTS ≠ CURRENT PROFESSIONAL PROCESS`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Interior professional-depth parity
+
+**Status effect:** additive candidate-depth binding only. `CANDIDATE` remains `CANDIDATE`; no Current promotion, no stage renaming and no parallel Interior Skill family.
+
+### Knowledge binding
+Task/claim-scoped mounts must resolve the applicable Interior knowledge before consequential decisions, including:
+- `KN-METHOD-INTERIOR-ROOM-DATA-INTERFACE-001` — room use / furniture-equipment / wall-floor-ceiling / MEP-light-acoustic / access;
+- `KN-METHOD-INTERIOR-FINISH-JOINERY-RELEASE-001` — substrate / finish / joint / fixing / tolerance / sample / shop / install;
+- `KN-METHOD-INTERIOR-CEILING-COORD-001` — continuous RCP field / devices / suspension / access / partition head / close-up release;
+- current product/system, fire, accessibility, acoustic, lighting, MEP and material SOURCE owners when triggered.
+
+### `required_native_outputs[]`
+- room data sheets and room/zone IDs tied to current plan geometry;
+- dimensioned plans, RCPs, interior elevations and critical sections;
+- furniture/equipment/FF&E schedules and clearances;
+- finish system schedule, material/finish transition matrix and substrate/build-up records;
+- joinery/millwork package, hardware/fixing/backing schedule and shop-drawing review record;
+- ceiling/device/access-panel coordination matrix and above-ceiling pre-close inspection record;
+- door/opening/signage/equipment/MEP interface details where Interior owns the interface;
+- sample / benchmark / mockup / submittal / substitution register;
+- installation/punch/care/replacement and closeout asset evidence when in scope.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research` — product/material/system/accessibility/acoustic/fire evidence;
+- `oleander-design-process` — spatial/use/option/interface reasoning and change propagation;
+- `oleander-3d-pipeline` — editable room/joinery/spatial geometry and exchange where fit; not fabrication or field truth;
+- `oleander-technical-drawing` — candidate PR #172 only; no installed-production claim;
+- `oleander-delivery-qc` — native-master/package/export integrity only;
+- `oleander-data-viz` only when room/asset/schedule data genuinely benefits from analytical visualization.
+
+Project-authorized CAD/BIM/interior-detailing, scheduling/specification and shop/fabrication environments remain external execution owners when required. Physical sample/mockup and field fit cannot be replaced by digital output.
+
+### `tool_adapter_requirements[]`
+- Current Notion/source retrieval;
+- project-authorized CAD/BIM or equivalent editable drawing/model runtime;
+- schedule/database/spreadsheet carrier with stable IDs for room/finish/FF&E/opening data;
+- sample/mockup/submittal evidence carrier;
+- format-specific readback/reopen for drawings/models/schedules;
+- field measurement/inspection carrier when dimensional or installation claims are made.
+
+### `typed_handoff_contracts[]`
+- Architecture → Interior: stable room/opening/grid/level geometry, envelope/core constraints and current revision;
+- Interior → MEP/Lighting/Fire/Acoustic: room/task/device/interface requirements with exact ceiling/wall/floor zones;
+- Interior → Contractor/Fabricator: issued detail/schedule + tolerance + substrate + fixing + sample/mockup + acceptance scope;
+- Product/Substitution return → Interior: exact model/configuration + dimensional/performance/finish/maintenance delta + affected room/detail/schedule;
+- Field return → Interior: location/object ID + deviation/defect + disposition + reinspection/reopen state.
+
+### `actual_readback_requirements[]`
+- Room Data ↔ plan ↔ RCP ↔ elevations ↔ finish/FF&E/joinery schedules;
+- furniture/equipment operational clearance, not only static fit;
+- above-ceiling access/removal and device/support reality before close-up;
+- joinery edge/joint/fixing/tolerance/MEP-hardware interface at detail scale;
+- sample/mockup under intended scale/light/use when material to approval;
+- shop/submittal/substitution delta against current native design;
+- installed room/punch/defect/O&M evidence when field/closeout claim is made.
+
+### `reopen_triggers[]`
+Room/program/use change; Architecture geometry/datum/opening change; MEP/lighting/fire/acoustic device or zone change; finish/build-up/substrate/product substitution; joinery/hardware/shop-drawing delta; failed sample/mockup; field tolerance/rough-opening discrepancy; access/maintenance failure; repeated defect or in-use evidence contradicting the design assumption.
+
+### Professional boundary
+`MOODBOARD PASS ≠ ROOM PASS ≠ RCP COORDINATION PASS ≠ SAMPLE PASS ≠ SHOP PASS ≠ INSTALLED-ROOM PASS`. Independent Interior professional review and actual project exercise remain required by the existing candidate promotion boundary.

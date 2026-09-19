@@ -895,3 +895,67 @@ Current Candidate maturity:
 Remaining gap is **real project exercise + independent Lighting professional review**, not missing process prose.
 
 `LIGHTING CANDIDATE EXISTS ≠ CURRENT PROFESSIONAL PROCESS`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Lighting professional-depth parity
+
+**Status effect:** additive candidate-depth binding only. Lighting remains Candidate; no installed Lighting Skill or solver authority is implied.
+
+### Knowledge binding
+- `KN-METHOD-SPATIAL-LIGHTING-PERFORMANCE-001` — spatial/task light role → physical inputs → performance readback;
+- `KN-METHOD-LIGHTING-LUMINANCE-ADAPTATION-001` — luminance / contrast / adaptation / reflections / glare-at-viewpoint;
+- `KN-METHOD-LIGHTING-CRITERIA-SUBMITTAL-001` — criterion ↔ model/result ↔ exact luminaire/photometry ↔ substitution ↔ field acceptance;
+- `KN-METHOD-LIGHTING-SCHEDULE-CONTROL-CX-001` — tag / circuit / driver / group-address / scene / sensor / functional test / as-built;
+- current IES/application/code/project/luminaire/control SOURCE owners as applicable.
+
+### `required_native_outputs[]`
+- light-role / task / viewpoint / source-mediator-surface map;
+- authoritative geometry/material/weather-time/control input contract;
+- native photometric/daylight model files and run/scenario identity when simulation supports a claim;
+- luminance/HDR/false-color or measured visual-field readback where appropriate;
+- criterion-result-compliance matrix with evaluation location/view/scenario;
+- luminaire schedule and exact IES/LDT/photometry identity;
+- layout/aiming plan, circuit/driver/control-zone/group/address schedules;
+- control narrative/sequence and scene-state/sensor matrix;
+- submittal/substitution/recalculation register;
+- commissioning/FPT/aiming/tuning/field measurement/as-built records.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research` — standards/application/luminaire/control evidence;
+- `oleander-design-process` — task/spatial/option/design-continuity reasoning; cannot validate photometric truth by itself;
+- `oleander-data-viz` — analytical result maps/false-color/evidence graphics when source-bound; does not own simulation values;
+- `oleander-3d-pipeline` — geometry/material/exchange support when fit; Blender render is not lighting-performance evidence;
+- `oleander-technical-drawing` — candidate PR #172 only for drawing production support;
+- `oleander-delivery-qc` — file/package/export integrity only.
+
+**Specialist execution gap / routing rule:** the Current core Skill registry does not contain an installed lighting-engineering / photometric-solver Skill. Consequential simulation or field claims must therefore bind an actually callable project-authorized photometric/daylight solver, measurement workflow and responsible lighting professional per run. If the solver/input/readback surface is unavailable, return `CAPABILITY_HOLD` for that claim; do not substitute a render.
+
+### `tool_adapter_requirements[]`
+- exact luminaire photometry/source files and version identity;
+- project-authorized daylight/photometric/glare calculation runtime when calculation is consequential;
+- source-bound HDR/luminance/illuminance measurement/readback workflow when field evidence is claimed;
+- control-system configuration/address/sequence readback where control performance is claimed;
+- editable drawing/schedule/model carrier and reopenable calculation input/output package.
+
+### `typed_handoff_contracts[]`
+- Architecture/Interior → Lighting: current geometry/material/task/view/ceiling/opening/control constraints + revision;
+- Lighting → Electrical/Controls: luminaire/driver/load/circuit/group/address/control/scene/sensor requirements;
+- Lighting → Architecture/Interior: aperture/shading/finish/reflectance/device-location consequences and unresolved conflicts;
+- Submittal return → Lighting: exact product/optic/photometry/driver/control/dimension delta and recalc/retest disposition;
+- Field return → Lighting: installed tag/optic/aiming/control state + measurement/viewpoint/time/condition + issue/tuning/retest.
+
+### `actual_readback_requirements[]`
+- exact geometry/material/weather/luminaire/control inputs used by each consequential result;
+- task/viewpoint/luminance distribution and adaptation path, not only horizontal lux;
+- calculation/result ↔ luminaire tag ↔ exact photometry identity;
+- layout/aiming ↔ circuit/group/address/scene/sequence consistency;
+- substitution delta and recalculation decision;
+- installed aiming/control state before field measurement;
+- field measurement/test configuration against the correct criterion and issue/retest log.
+
+### `reopen_triggers[]`
+Geometry/opening/shading/finish/reflectance change; task/view/occupancy change; criterion/source revision; luminaire/optic/driver/control substitution; circuit/group/address/scene/sensor change; daylight/weather/scenario assumption change; failed simulation/mockup/FPT/field measurement; maintenance/aiming/control drift or in-use visual complaint with evidence.
+
+### Professional boundary
+`RENDER PASS ≠ PHOTOMETRIC PASS`; `LUX PASS ≠ VISUAL COMFORT PASS`; `SIMULATION PASS ≠ INSTALLED PASS`; `COMMISSIONING OF ONE STATE ≠ WHOLE OPERATION PASS`. Candidate promotion remains governed by real project evidence and independent Lighting professional review.
