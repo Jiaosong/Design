@@ -138,6 +138,7 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 "handover_inuse_objects",
                 "independent_review_objects",
                 "change_propagation_objects",
+                "practitioner_object_contracts",
                 "does_not_require",
             },
             "assurance": {
@@ -194,6 +195,107 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                 require_nonempty_list(
                     execution_depth, key, "execution_depth_contract", errors
                 )
+
+            practitioner_contracts = execution_depth.get("practitioner_object_contracts")
+            if not isinstance(practitioner_contracts, list) or not practitioner_contracts:
+                errors.append(
+                    "execution_depth_contract: practitioner_object_contracts must be a non-empty array"
+                )
+            else:
+                practitioner_required = {
+                    "object_id",
+                    "object_name",
+                    "parity_dimensions",
+                    "stage_refs",
+                    "professional_purpose",
+                    "native_source_of_truth",
+                    "required_record_fields",
+                    "decision_owner",
+                    "revision_identity",
+                    "release_or_retention_rule",
+                    "required_readback",
+                    "failure_or_hold_conditions",
+                    "reopen_triggers",
+                    "downstream_handoffs",
+                    "independent_review_requirement",
+                    "does_not_prove",
+                }
+                parity_dimensions = {
+                    "PROFESSIONAL_PROBLEM_AND_JUDGMENT",
+                    "ASSUMPTION_UNCERTAINTY",
+                    "OPTION_COMPARISON",
+                    "NATIVE_WORK",
+                    "RELEASE_CONTROL",
+                    "IMPLEMENTATION_FIELD",
+                    "HANDOVER_INUSE",
+                    "INDEPENDENT_REVIEW",
+                    "CHANGE_PROPAGATION",
+                }
+                seen_object_ids: list[str] = []
+                covered_dimensions: set[str] = set()
+                stage_ids_for_contracts = {
+                    item.get("stage_id")
+                    for item in payload.get("stages", [])
+                    if isinstance(item, dict) and isinstance(item.get("stage_id"), str)
+                }
+                for index, contract in enumerate(practitioner_contracts):
+                    label = f"execution_depth_contract.practitioner_object_contracts[{index}]"
+                    if not isinstance(contract, dict):
+                        errors.append(f"{label}: expected object")
+                        continue
+                    require_keys(contract, practitioner_required, label, errors)
+                    for list_key in (
+                        "parity_dimensions",
+                        "stage_refs",
+                        "required_record_fields",
+                        "required_readback",
+                        "failure_or_hold_conditions",
+                        "reopen_triggers",
+                        "does_not_prove",
+                    ):
+                        require_nonempty_list(contract, list_key, label, errors)
+                    object_id = contract.get("object_id")
+                    if isinstance(object_id, str) and object_id:
+                        seen_object_ids.append(object_id)
+                    dimensions = contract.get("parity_dimensions")
+                    if isinstance(dimensions, list):
+                        invalid_dimensions = sorted(
+                            {item for item in dimensions if item not in parity_dimensions}
+                        )
+                        if invalid_dimensions:
+                            errors.append(
+                                f"{label}: invalid parity_dimensions: {', '.join(invalid_dimensions)}"
+                            )
+                        covered_dimensions.update(
+                            item for item in dimensions if item in parity_dimensions
+                        )
+                    stage_refs = contract.get("stage_refs")
+                    if isinstance(stage_refs, list):
+                        unknown_stage_refs = sorted(
+                            {
+                                item
+                                for item in stage_refs
+                                if isinstance(item, str)
+                                and item not in stage_ids_for_contracts
+                                and item != "CROSS_STAGE"
+                            }
+                        )
+                        if unknown_stage_refs:
+                            errors.append(
+                                f"{label}: unknown stage_refs: {', '.join(unknown_stage_refs)}"
+                            )
+                duplicate_object_ids = duplicate_values(seen_object_ids)
+                if duplicate_object_ids:
+                    errors.append(
+                        "execution_depth_contract.practitioner_object_contracts: "
+                        f"duplicate object_id values: {', '.join(duplicate_object_ids)}"
+                    )
+                missing_dimensions = sorted(parity_dimensions - covered_dimensions)
+                if missing_dimensions:
+                    errors.append(
+                        "execution_depth_contract.practitioner_object_contracts: "
+                        f"missing parity dimension coverage: {', '.join(missing_dimensions)}"
+                    )
 
         stages = payload.get("stages")
         if not isinstance(stages, list) or not stages:
