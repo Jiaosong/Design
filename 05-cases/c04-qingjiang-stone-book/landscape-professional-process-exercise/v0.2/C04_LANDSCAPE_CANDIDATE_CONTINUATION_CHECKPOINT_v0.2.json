@@ -1,0 +1,36 @@
+{
+  "schema_version": "oleander-professional-candidate-continuation-checkpoint/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Landscape Architecture",
+  "candidate_process_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+  "candidate_machine_sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+  "checkpoint_state": "HOLD",
+  "current_node": "LA-DP1_RELEASE_FRONTIER",
+  "release_condition": "Task/claim Landscape Knowledge Mount plus required professional/site authority becomes valid; field/site evidence and independent Landscape review remain separate gates.",
+  "release_condition_readback": "UNSATISFIED",
+  "affected_capability_output_bindings": [
+    "LA-DP0: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback",
+    "LA-DP1: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback"
+  ],
+  "unaffected_verified_bindings": [
+    "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH02_SITE-LANDSCAPE-ANALYSIS.md",
+    "05-cases/c04-qingjiang-stone-book/environment-analysis/v0.2/EVIDENCE_BOUNDARY.md",
+    "05-cases/c04-qingjiang-stone-book/remote-proxy-reconstruction/v0.1/C04_REMOTE_PROXY_RECONSTRUCTION_READBACK_v0.1.json"
+  ],
+  "selective_retest_plan": [
+    "revalidate only affected knowledge/capability/output bindings after the release condition changes",
+    "reuse unaffected source-valid project evidence",
+    "materialize a real Multi-Skill DAG and typed handoffs only after all required Current callable owners are resolved",
+    "emit a successor receipt only after an actual post-release selective retest executes"
+  ],
+  "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EVALUATION_RECEIPT_v0.2.json",
+  "successor_receipt_ref": null,
+  "selective_retest_executed": false,
+  "does_not_prove": [
+    "HOLD_RELEASE",
+    "SUCCESSOR_RETEST",
+    "PROFESSIONAL_PASS",
+    "CURRENT_ADOPTION"
+  ]
+}

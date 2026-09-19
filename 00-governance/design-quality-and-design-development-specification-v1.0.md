@@ -1236,7 +1236,9 @@ Professional Design Requirement determines what must be resolved. Skill/Capabili
 
 Canonical relation:
 
-`Professional Stage → Required Native Output → Required Capability → Skill / Execution Owner → Tool / Adapter → Native Artifact → Actual Readback → Design Review`.
+`Professional Stage → Professional Question / Decision Object → Knowledge Inputs → Operational Knowledge Mount → Required Capability Roles → Current Execution Owners / Skills → Native Outputs → Actual Readback → Independent Review → Stage Closure`.
+
+Tool / Adapter, DD responsibility, interface and claim-scope bindings remain subordinate to this professional-stage spine and must not be promoted into parallel top-level stage steps.
 
 Rules:
 

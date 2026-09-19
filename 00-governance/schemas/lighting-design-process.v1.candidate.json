@@ -259,6 +259,46 @@
         "check each quantitative criterion has source/condition",
         "responsibility boundary across Lighting / Electrical / Controls / Fire / Architecture / Interior / Landscape / FM"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "VISUAL_TASK_USER_RESEARCH",
+          "LIGHTING_BRIEF_SYNTHESIS",
+          "OPERATING_STATE_REASONING",
+          "SOURCE_STANDARD_RESEARCH"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -441,6 +481,46 @@
         "freeze daylight-model location/time/weather-sky/orientation/geometry/glazing/material/shade/sensor-view/engine assumptions and sensitivity-test reversal-critical inputs",
         "daylight-model configuration/revision and sensitivity readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN",
+          "3D_SPATIAL_LIGHT_READBACK",
+          "SURFACE_MATERIAL_INTERACTION_REASONING",
+          "OPTION_COMPARISON"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -632,6 +712,46 @@
         "photometric result ↔ actual task/view/receiving-plane relation",
         "color metric ↔ project reason / source / phase-specific specification consequence"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "PHOTOMETRIC_CALCULATION",
+          "GLARE_BRIGHTNESS_COLOR_ANALYSIS",
+          "DATA_VISUALIZATION",
+          "3D_LIGHTING_MODEL_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -818,6 +938,46 @@
         "tag ↔ exact product/optic/driver/control/file identity consistency",
         "mounting/aiming/access/thermal/maintenance coordination"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "LUMINAIRE_OPTICS_INTEGRATION",
+          "TECHNICAL_DRAWING_DETAILING",
+          "3D_ARCHITECTURAL_COORDINATION",
+          "PRODUCT_DATA_REVIEW"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -1036,6 +1196,46 @@
         "temporal-light quality readback binds the material user/task/camera/display condition to governing criterion/source, exact driver/control/dimming/output configuration, method and limitation; no universal metric threshold is invented",
         "networked controls readback binds protocol/topology/gateway/remote-access/firmware-or-config identity, interoperability dependency and failure/degraded state while Controls/IT/Cybersecurity acceptance remains owner-native"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "LIGHTING_CONTROL_STATE_DESIGN",
+          "INTERACTION_BEHAVIOR_PROTOTYPE",
+          "TEMPORAL_TRANSITION_REASONING",
+          "CONTROL_SEQUENCE_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -1248,6 +1448,46 @@
         "read facade/landscape spill as source → surface/path → sensitive receptor including direct view, reflected contribution, cumulative luminaires, wet/seasonal/event states and governing curfew/control scene",
         "source→path/surface→receptor readback across relevant night/season/wet/event states"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "EXTERIOR_NIGHT_ENVIRONMENT_DESIGN",
+          "LANDSCAPE_FACADE_INTERFACE",
+          "GIS_CONTEXT_ANALYSIS",
+          "3D_NIGHT_SPATIAL_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -1456,6 +1696,46 @@
         "mockup exact product/optic/geometry/material/control/daylight-state identity",
         "observed-versus-predicted discrepancy classification before calibration"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "PHYSICAL_MOCKUP_SAMPLE_REVIEW",
+          "PHOTOMETRIC_VERIFICATION",
+          "MEASUREMENT_DATA_ANALYSIS",
+          "DESIGN_TO_MOCKUP_CORRELATION"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -1642,6 +1922,46 @@
         "lighting tag ↔ electrical/control mapping coordination",
         "accepted substitution/change propagation to calculation/mockup/spec/schedule/current refs"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "LIGHTING_SPECIFICATION_PROCUREMENT",
+          "SUBSTITUTION_EQUIVALENCE_REVIEW",
+          "TECHNICAL_SCHEDULE_QC",
+          "CONSTRUCTION_COORDINATION"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -1886,6 +2206,46 @@
         "measurement record binds instrument identity, calibration/status, method, location/plane/view, time/state, sampling/repeatability and uncertainty/method limits appropriate to the claim",
         "commissioned baseline binds final luminaire/optic/driver/control/address/firmware-or-config/scene/aim/sensor identity, accepted deviations and final settings before handover/in-use comparison"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "COMMISSIONING_AND_AIMING",
+          "FIELD_MEASUREMENT",
+          "CONTROL_SCENE_RUNTIME_READBACK",
+          "NIGHT_CONDITION_EVIDENCE_QC"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [
@@ -2123,6 +2483,46 @@
         "post-replacement or post-tuning actual readback",
         "commissioned baseline ↔ in-use changed configuration comparison"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "MAINTENANCE_REPLACEMENT_REASONING",
+          "POST_OCCUPANCY_RESEARCH",
+          "TUNING_CHANGE_ANALYSIS",
+          "PERFORMANCE_DATA_TRENDING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
       "open_items_allowed": [

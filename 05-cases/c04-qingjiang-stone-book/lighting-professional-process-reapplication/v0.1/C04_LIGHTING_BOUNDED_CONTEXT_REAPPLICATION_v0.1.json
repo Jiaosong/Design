@@ -1,0 +1,623 @@
+{
+  "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Lighting Design",
+  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": false,
+  "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+    "prose_blob": "2248942b8f281385a3c8be47dc1e02d712830119",
+    "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+    "machine_blob": "20c56c17dc859806989679c9654f7b9f820e2406",
+    "machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+      "blob": "dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.md",
+      "blob": "bfcdefdd7ec98976c7a3eb1cf1f1cf859901a1e3"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md",
+      "blob": "69894dfe435bc60423a6ba6702cd4238a11a4b82"
+    }
+  ],
+  "stage_exercises": [
+    {
+      "stage_id": "LGT-00",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Lighting Design",
+        "stage_id": "LGT-00",
+        "stage_name": "Lighting Brief, Visual Tasks and Operating States",
+        "professional_question": "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "LGT-00"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "Current visual task/project/space authority",
+              "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+              "Current luminaire/photometric/control/manufacturer technical data with provenance",
+              "material reflectance/transmittance and architectural geometry at correct revision",
+              "calculation/mockup/site measurement and night-readback evidence"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "VISUAL_TASK_USER_RESEARCH",
+              "LIGHTING_BRIEF_SYNTHESIS",
+              "OPERATING_STATE_REASONING",
+              "SOURCE_STANDARD_RESEARCH"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "HOLD",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "lighting brief",
+              "visual-task/scene matrix",
+              "adjacency/adaptation map",
+              "criteria/source register",
+              "open assumptions",
+              "Lighting Basis / Scope / Responsibility Matrix",
+              "Visual Task / Experience / Time-State Matrix"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "Lighting Basis / Scope / Responsibility Matrix",
+              "Visual Task / Experience / Time-State Matrix",
+              "adjacency/adaptation map",
+              "criteria/source register",
+              "lighting brief",
+              "open assumptions",
+              "visual-task/scene matrix"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Lighting Design",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+          "declared_knowledge_inputs": [
+            "Current visual task/project/space authority",
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "material reflectance/transmittance and architectural geometry at correct revision",
+            "calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "active_knowledge_inputs": [
+            "Current visual task/project/space authority",
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "material reflectance/transmittance and architectural geometry at correct revision",
+            "calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "Current visual task/project/space authority": [],
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners": [],
+            "Current luminaire/photometric/control/manufacturer technical data with provenance": [],
+            "material reflectance/transmittance and architectural geometry at correct revision": [],
+            "calculation/mockup/site measurement and night-readback evidence": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current visual task/project/space authority",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:material reflectance/transmittance and architectural geometry at correct revision",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "VISUAL_TASK_USER_RESEARCH",
+          "LIGHTING_BRIEF_SYNTHESIS",
+          "OPERATING_STATE_REASONING",
+          "SOURCE_STANDARD_RESEARCH"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_LIGHTING_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "VISUAL_TASK_USER_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "LIGHTING_BRIEF_SYNTHESIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "OPERATING_STATE_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "SOURCE_STANDARD_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "lighting brief",
+          "visual-task/scene matrix",
+          "adjacency/adaptation map",
+          "criteria/source register",
+          "open assumptions",
+          "Lighting Basis / Scope / Responsibility Matrix",
+          "Visual Task / Experience / Time-State Matrix"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current visual task/project/space authority",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current luminaire/photometric/control/manufacturer technical data with provenance",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:material reflectance/transmittance and architectural geometry at correct revision",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:calculation/mockup/site measurement and night-readback evidence",
+          "LIGHTING_BRIEF_SYNTHESIS:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+        "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.md",
+        "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    },
+    {
+      "stage_id": "LGT-01",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Lighting Design",
+        "stage_id": "LGT-01",
+        "stage_name": "Daylight and Luminous Concept / Spatial Hierarchy",
+        "professional_question": "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "LGT-01"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "Current visual task/project/space authority",
+              "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+              "Current luminaire/photometric/control/manufacturer technical data with provenance",
+              "material reflectance/transmittance and architectural geometry at correct revision",
+              "calculation/mockup/site measurement and night-readback evidence"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN",
+              "3D_SPATIAL_LIGHT_READBACK",
+              "SURFACE_MATERIAL_INTERACTION_REASONING",
+              "OPTION_COMPARISON"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "HOLD",
+            "owner_ids": [
+              "oleander-3d-pipeline",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "daylight/electric-light concept",
+              "luminous hierarchy diagrams",
+              "source/surface/viewer relations",
+              "scene concept",
+              "option comparison",
+              "Daylight Model Configuration Record where simulation is consequential",
+              "daylight-electric integration strategy"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "Daylight Model Configuration Record where simulation is consequential",
+              "daylight-electric integration strategy",
+              "daylight/electric-light concept",
+              "luminous hierarchy diagrams",
+              "option comparison",
+              "scene concept",
+              "source/surface/viewer relations"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Lighting Design",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential professional knowledge/evidence at the exact project condition, source version, geometry/material/environment/configuration needed for this claim; candidate methods and project observations do not self-promote to Current Knowledge.",
+          "declared_knowledge_inputs": [
+            "Current visual task/project/space authority",
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "material reflectance/transmittance and architectural geometry at correct revision",
+            "calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "active_knowledge_inputs": [
+            "Current visual task/project/space authority",
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "material reflectance/transmittance and architectural geometry at correct revision",
+            "calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "Current visual task/project/space authority": [],
+            "Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners": [],
+            "Current luminaire/photometric/control/manufacturer technical data with provenance": [],
+            "material reflectance/transmittance and architectural geometry at correct revision": [],
+            "calculation/mockup/site measurement and night-readback evidence": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current visual task/project/space authority",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current luminaire/photometric/control/manufacturer technical data with provenance",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:material reflectance/transmittance and architectural geometry at correct revision",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:calculation/mockup/site measurement and night-readback evidence"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN",
+          "3D_SPATIAL_LIGHT_READBACK",
+          "SURFACE_MATERIAL_INTERACTION_REASONING",
+          "OPTION_COMPARISON"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LIGHTING_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_LIGHTING_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "3D_SPATIAL_LIGHT_READBACK",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-3D-GEOMETRY",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-3d-pipeline"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "SURFACE_MATERIAL_INTERACTION_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "OPTION_COMPARISON",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-3d-pipeline",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-3d-pipeline",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "daylight/electric-light concept",
+          "luminous hierarchy diagrams",
+          "source/surface/viewer relations",
+          "scene concept",
+          "option comparison",
+          "Daylight Model Configuration Record where simulation is consequential",
+          "daylight-electric integration strategy"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current visual task/project/space authority",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current applicable lighting/daylight/energy/emergency/accessibility sources through proper owners",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:Current luminaire/photometric/control/manufacturer technical data with provenance",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:material reflectance/transmittance and architectural geometry at correct revision",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:calculation/mockup/site measurement and night-readback evidence",
+          "DAYLIGHT_LUMINOUS_CONCEPT_DESIGN:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED",
+          "SURFACE_MATERIAL_INTERACTION_REASONING:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+        "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.md",
+        "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    }
+  ],
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
+  "release_condition": "A real project Lighting decision object with task/claim Lighting Knowledge Mount, Lighting specialist authority and applicable model/product/control/field evidence becomes available.",
+  "claim_ceiling": "BOUNDED C04 LIGHTING-CONTEXT REAPPLICATION ONLY / NOT A REAL LIGHTING PROJECT ADOPTION EXERCISE / NO LIGHTING PASS",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "CURRENT_ADOPTION",
+    "RELEASE_CONDITION_SATISFIED",
+    "SELECTIVE_RETEST_EXECUTED"
+  ]
+}

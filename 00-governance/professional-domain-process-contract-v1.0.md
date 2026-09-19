@@ -65,6 +65,30 @@ Current Authority
 
 The professional process owns the **discipline's authentic development logic**. It does not own unrelated review, knowledge-integrity, operational-eligibility or integration authority.
 
+Within every triggered professional stage, the **single canonical execution spine** is:
+
+```text
+Stage
+→ Professional Question / Decision Object
+→ Knowledge Inputs
+→ Operational Knowledge Mount
+→ Required Capability Roles
+→ Current Execution Owners / Skills
+→ Native Outputs
+→ Actual Readback
+→ Independent Review
+→ Stage Closure
+```
+
+This order is invariant across professional domains. Discipline-specific content changes; the spine does not. `Claim`, DD responsibilities, interfaces, specialist/statutory boundaries and Tool/Adapter routing are **bindings inside these steps**, not additional top-level professional-stage steps.
+
+In particular:
+
+- `Native Outputs` do **not** precede capability/owner resolution in the canonical stage spine;
+- `Tool / Adapter` is an execution detail under `Current Execution Owners / Skills → Native Outputs`, not a professional-stage node;
+- `Independent Review` is an explicit pre-closure gate, not an after-the-fact annotation;
+- `Stage Closure` is forbidden until required native outputs have actual readback and every triggered independent review is complete.
+
 Hard boundaries:
 
 ```text
@@ -247,9 +271,17 @@ entry_conditions[]
 required_inputs[]
 knowledge_inputs[]
 knowledge_mount_requirement
+stage_execution_requirements:
+  required_capability_roles[]
+  supporting_capability_roles[]
+  multi_skill_required_when[]
+  single_owner_allowed_when[]
+  owner_set_recompute_triggers[]
+  forbidden_substitutions[]
+  composition_readback_requirements[]
 required_dd_dimensions[]
-required_native_outputs[]
 interface_requirements[]
+required_native_outputs[]
 human_experience_consequences[]
 design_language_consequences[]
 technical_consequences[]
@@ -539,11 +571,13 @@ The join uses existing OLEANDER objects and owners:
 - **Decision Object** is the smallest materially independent design/system object being decided or changed. It is the primary horizontal join key across R-C / R-D / R-E / R-F / R-G / R-H / R-I when that precision is required.
 - **Claim** states what the current decision/output is allowed to prove. Claims may be narrower than the stage claim ceiling.
 - **Knowledge Mount** remains owned by R-B and is bound to the task/claim, not to a Skill name or tool.
-- **Required Native Output** is the bridge from professional semantics into execution. Knowledge does not route directly to a Skill.
-- **Required Capability Roles** describe what executable ability the output needs. They are runtime requirements, not a new knowledge taxonomy and not a fixed one-capability/one-Skill mapping.
-- **Skill / Execution Owner Set** is resolved dynamically by the Current Skill Resolver as the minimum sufficient owner set.
-- **Tool / Adapter** is selected only after capability resolution and runtime availability. A professional stage must not hardcode vendor/software inventory.
-- **Artifact + Actual Readback** prove what was actually produced/observed; execution success does not prove professional validity.
+- **Required Capability Roles** describe what executable abilities are required to answer the active professional question / Decision Object using the admitted Knowledge Inputs. They are resolved **before** Current owner selection and are not a fixed one-capability/one-Skill mapping.
+- **Current Execution Owners / Skills** are resolved dynamically from those roles as the minimum sufficient Current owner set. Candidate Skill identity alone is not Current callability.
+- **Native Outputs** are then executed by the resolved Current owner set. They are downstream execution objects, not the upstream source of capability semantics.
+- **Tool / Adapter** is subordinate to the owner/output execution path and must not become an extra professional-stage node.
+- **Actual Readback** proves what was actually produced/observed and whether required output bindings reached their declared readback state.
+- **Independent Review** consumes the actual readback and must remain distinct from producer self-check where independence is triggered.
+- **Stage Closure** consumes the preceding readback/review state. It cannot be used as evidence for steps that have not yet passed.
 
 For prospective material stage instances, use `granularity_binding_state = DECISION_OBJECT_BOUND` and record:
 
@@ -555,11 +589,11 @@ output_execution_bindings[]:
   decision_object_ref
   claim_refs[]
   knowledge_mount_refs[]
+  required_capability_roles[]
+  owner_set_ref
   output_requirement_ref
   required_native_output
-  required_capability_roles[]
   tool_adapter_required
-  owner_set_ref
   adapter_route_ref
   artifact_refs[]
   readback_refs[]
@@ -694,6 +728,34 @@ Presentation imagery, screenshots and renders may support readback, but they do 
 
 Professional stages are many-to-many with Skills and tools.
 
+`MINIMUM SUFFICIENT OWNER SET ≠ MINIMUM NUMBER OF SKILLS`.
+
+`minimum sufficient` means the smallest **owner set that still covers every material capability role, native output, actual readback, authority boundary and triggered review for the active stage / decision / output scope**. It does not mean preferring one or two Skills because a smaller count looks simpler.
+
+Each material stage therefore needs capability semantics through `stage_execution_requirements` rather than hardcoding Skill identities:
+
+```text
+required_capability_roles[]
+supporting_capability_roles[]
+multi_skill_required_when[]
+single_owner_allowed_when[]
+owner_set_recompute_triggers[]
+forbidden_substitutions[]
+composition_readback_requirements[]
+```
+
+These are capability roles, not GitHub Skill IDs, plugin names or software names. The Current Resolver binds them against the live owner registry and actual callable execution surfaces.
+
+For a **Candidate / successor professional-process definition**, the carrier may declare `stage_execution_requirements` directly.
+
+For an already-Current professional machine, do **not** mutate the Current authority carrier in place merely to add execution-routing metadata. Until an authorized professional-process evolution adopts an equivalent successor carrier, the existing Execution Owner Map may reference an **exact-revision, non-authority runtime compatibility projection**. That projection:
+
+- must bind the exact Current machine path + blob/SHA256;
+- becomes stale on Current machine drift;
+- owns execution routing only, never professional-process semantics;
+- may not grant Process Current, Professional PASS, Design KEEP or statutory authority;
+- must disappear or be superseded when an authorized successor Current machine natively carries the same execution semantics.
+
 Example:
 
 ```text
@@ -711,6 +773,71 @@ Architecture ADD-07
 The Current Default Skill Resolver determines the minimum sufficient owner set from the live registry and actual callable execution surfaces.
 
 Do not create one Skill because one professional stage exists. Do not hardcode a global Skill list inside a professional-process definition.
+
+### 13.1｜Stage-specific composition
+
+The owner set is **not sticky across an entire professional process**. At each stage entry, or when its material decision/output scope changes:
+
+1. resolve the **Professional Stage** and its `professional_question` / active Decision Object;
+2. resolve the stage's active `knowledge_inputs[]`;
+3. bind and validate the minimum sufficient task/claim **Operational Knowledge Mount** under `knowledge-integrity-and-operational-mount-v1.0.md`;
+4. read `stage_execution_requirements` or the exact-revision Current runtime projection and resolve **Required Capability Roles**;
+5. resolve **Current Execution Owners / Skills** only after complete active capability coverage is explicit; Candidate Skills / Candidate Bodies remain non-Current HOLDs unless a legal Current project/specialist binding overrides the role;
+6. under those owners, bind tools/adapters as needed and execute the declared **Native Outputs**;
+7. perform **Actual Readback** on the outputs; for decision-object-bound execution every required native output must reach `READBACK_COMPLETE` with artifact + readback refs;
+8. run the required **Independent Review**, keeping reviewer identity separate from the producer;
+9. evaluate exit conditions and only then allow **Stage Closure**;
+10. on HOLD/REVISE/change, reopen only the affected bindings and preserve unaffected verified work.
+
+Different stages should therefore resolve different capability compositions whenever their professional questions, native outputs or verification methods differ. Research-heavy, spatial/model, technical-drawing, interaction/runtime, field/commissioning and delivery/readback stages must not be collapsed into one fixed Skill set merely to minimize owner count.
+
+`FULL OLEANDER FLOW ≠ FULL SKILL STACK` remains true. A stage must not run every Skill by default; inactive capabilities are omitted with an explicit not-triggered / N/A reason.
+
+The same applies to knowledge: `FULL OLEANDER FLOW ≠ MOUNT EVERY KNOWLEDGE OBJECT`. A stage mounts only the minimum sufficient eligible set for the active professional question. Every declared `knowledge_inputs[]` item not active in the current decision scope needs an explicit N/A / not-triggered reason.
+
+For runtime use, a consequential mount record must preserve at least:
+
+```text
+knowledge_ref
+use_role
+operational_eligibility
+eligibility_scope
+claim_ceiling
+applicability
+conditions[]
+unresolved_items[]
+freshness_state
+freshness_or_revalidation_trigger
+does_not_prove[]
+review_basis
+satisfies_knowledge_inputs[]
+```
+
+`OE1 / NOT_ELIGIBLE`, stale / revalidation-required knowledge, a missing mount, or an uncovered active knowledge input is a **HOLD**, not a reason to substitute design intuition or a generic Skill.
+
+### 13.2｜Recompute and selective reroute
+
+Recompute the owner set when any of the following materially changes:
+
+- professional stage;
+- decision object or claim;
+- required native output or readback;
+- interface handoff or required maturity;
+- Current owner/tool availability or sufficiency;
+- a HOLD release condition that activates a new verification path;
+- actual readback showing a capability gap.
+
+Stage transition does not inherit the prior owner set by default. Retain only owners still required by the new active capability/output bindings.
+
+After HOLD / REVISE or a material change, do **not** restart the whole Skill stack. Reuse unaffected verified outputs and owners, reopen the smallest affected capability/output/interface bindings, and rerun only the necessary execution/readback/review chain.
+
+Forbidden count-minimizing substitutions include:
+
+- research/evidence resolution → unsupported design intuition;
+- domain-native source/readback → presentation derivative;
+- specialist/technical authority → general design execution owner;
+- independent review → producer self-check;
+- dropping a material design dimension only to reduce owner count.
 
 ---
 

@@ -1,0 +1,35 @@
+{
+  "schema_version": "oleander-professional-candidate-continuation-checkpoint/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Lighting Design",
+  "candidate_process_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+  "candidate_machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+  "checkpoint_state": "HOLD",
+  "current_node": "LGT-01_RELEASE_FRONTIER",
+  "release_condition": "A real project Lighting decision object with task/claim Lighting Knowledge Mount, Lighting specialist authority and applicable model/product/control/field evidence becomes available.",
+  "release_condition_readback": "UNSATISFIED",
+  "affected_capability_output_bindings": [
+    "LGT-00: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback",
+    "LGT-01: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback"
+  ],
+  "unaffected_verified_bindings": [
+    "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+    "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.md",
+    "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md"
+  ],
+  "selective_retest_plan": [
+    "revalidate only affected knowledge/capability/output bindings after the release condition changes",
+    "reuse unaffected source-valid project evidence",
+    "materialize a real Multi-Skill DAG and typed handoffs only after all required Current callable owners are resolved",
+    "emit a successor receipt only after an actual post-release selective retest executes"
+  ],
+  "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
+  "successor_receipt_ref": null,
+  "selective_retest_executed": false,
+  "does_not_prove": [
+    "HOLD_RELEASE",
+    "SUCCESSOR_RETEST",
+    "PROFESSIONAL_PASS",
+    "CURRENT_ADOPTION"
+  ]
+}

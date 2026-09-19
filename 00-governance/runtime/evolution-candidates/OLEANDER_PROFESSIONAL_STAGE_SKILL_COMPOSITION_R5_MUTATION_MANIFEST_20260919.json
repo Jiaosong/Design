@@ -1,0 +1,357 @@
+{
+  "schema_version": "oleander-professional-stage-skill-composition-mutation-manifest/0.1",
+  "manifest_id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
+  "baseline_commit": "43030cfa75e8f8576c89555bbfdc872a2b7ec287",
+  "branch": "candidate/professional-stage-skill-composition-20260919-r5",
+  "generated_date": "2026-09-19",
+  "semantic_class": "EXACT_WORKTREE_MUTATION_MANIFEST_NOT_CURRENT_AUTHORITY",
+  "scope_exclusion_prefixes": [
+    "00-governance/receipts/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_SYNC_"
+  ],
+  "scope_exclusion_rule": "Files under the exact sync-evidence prefix are governed by the separate cross-platform Owner Receipt / readback chain and are not professional-stage implementation mutations.",
+  "canonical_professional_stage_execution_chain": [
+    "PROFESSIONAL_STAGE",
+    "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+    "KNOWLEDGE_INPUTS",
+    "OPERATIONAL_KNOWLEDGE_MOUNT",
+    "REQUIRED_CAPABILITY_ROLES",
+    "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+    "NATIVE_OUTPUTS",
+    "ACTUAL_READBACK",
+    "INDEPENDENT_REVIEW",
+    "STAGE_CLOSURE"
+  ],
+  "material_delta_count": 50,
+  "material_files": [
+    {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "sha256": "617dc5a7e31b9c2d70c07c67aa21429cb9d9b88d3f54fe46296fe8df5d9b1c0c",
+      "git_blob": "0b8293738d666fa1ea6b19e27a6d6be35cc4160e",
+      "bytes": 13312
+    },
+    {
+      "path": "00-governance/audits/professional-candidate-adoption-runtime-gap-audit-20260919.md",
+      "sha256": "290282dff5af9865460a6e2b82d59ec78b9d6d6e719ac1100cf5589c5d390164",
+      "git_blob": "c807bf4062de583cd7853cec36b544dbb492452e",
+      "bytes": 18077
+    },
+    {
+      "path": "00-governance/audits/professional-stage-skill-composition-baseline-candidate-comparison-20260919.json",
+      "sha256": "a24d247580277123a1c34d529e8fe1b280261bec862e064610ee0fddbd6e775b",
+      "git_blob": "e52035810b08c9eb3848a70c51d394dedd16a317",
+      "bytes": 9734
+    },
+    {
+      "path": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "sha256": "3c0954d6bffd0413ce0e4b0979e813ea9988ce4415199041c359389e716f2b55",
+      "git_blob": "431ec0560f0e25e6b86eadacd4e5bec48ae8e7f9",
+      "bytes": 52462
+    },
+    {
+      "path": "00-governance/professional-domain-process-contract-v1.0.md",
+      "sha256": "d00700c14c8d7331470de8b89f50d79fa72222a33f1bbee61ca321fcc0962a45",
+      "git_blob": "95357668c3fdfe68c1c14896c79ef936352f0ade",
+      "bytes": 40722
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "sha256": "c13f9eb5dca87d6714f38c134d0aad571a2be339889d1d7fc3ab12411f131359",
+      "git_blob": "447813fab3a34fcfb2bedf25e947a22b73503280",
+      "bytes": 71183
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "sha256": "d13fd8f91817b61af70fa6f5744c6832217dc323964b1e11de6d6dbb423e44aa",
+      "git_blob": "0311085db7d3d964fe4dedcf9e18c14e9bbcfc46",
+      "bytes": 139100
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json",
+      "sha256": "57a89d7504ecb46413ce51dd4ac5caf48fc66d52e5383ae538ddacf74be1fa0d",
+      "git_blob": "ff92b75be546afa5875a802477367b91fe89894d",
+      "bytes": 87232
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+      "sha256": "43c8b1c3b8d6c4c6a0000d53f1f1ebdeaef55bb3ba6a3cfbebd3882c474f5d04",
+      "git_blob": "7b74c46fdb5c3c599e6d6d452417b2c0a597ddc1",
+      "bytes": 38264
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.md",
+      "sha256": "ee4c81efde5a5d4b6fe2e52e2c4de51b72c2f9532cc1328038e675fb99f81ead",
+      "git_blob": "b1be0da605d29e1ecfd3f3286eec1c37548a9dd1",
+      "bytes": 43307
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
+      "sha256": "91430433da605e32438ce87b8ed332440adb853403c0859cb2d8e1f9884fa2df",
+      "git_blob": "00dd7c080cc82fc5435c26d440ba48bb56655af7",
+      "bytes": 8559
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+      "sha256": "61eaaff70e202da5a81d32010ef61b363be73514c433c0e2aed6607a2f97bd40",
+      "git_blob": "265fd9993bef768a1bbf3458152cee14f73faa97",
+      "bytes": 27184
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.md",
+      "sha256": "dae222c21847d9b5c723d7adb6b09e4df1a8f89d5cfd10f578efd46d8b65440a",
+      "git_blob": "26a1cc0c9eb7877f54c15a66befd9c8a14163f8b",
+      "bytes": 29221
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md",
+      "sha256": "5dc133370200f3ceb409cfc0733356c0187a18f0ca436e0381fc7a6db043afdc",
+      "git_blob": "83c92b06272f62d3a506d6535ad43f6b64df0053",
+      "bytes": 19179
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+      "sha256": "92478e39c7f727dec18e7fbc10ec50a8b94f9ba6a40415e1f18521e912bccdcf",
+      "git_blob": "ce21aeb7e0c51dcdb9699ebb2a35528204589c4b",
+      "bytes": 3156
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json",
+      "sha256": "15f6dad4f0d0a4673d712f06fee849153cd80d584365aab2e6dcaa3954c174ee",
+      "git_blob": "102e6b9393b9a2ddc0146689d5d7d5baaf739c32",
+      "bytes": 24486
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
+      "sha256": "fbea0ddfa64bc9bdb1753778ed0fb5e5bd60b77148626289d38d5b2dbfc07c80",
+      "git_blob": "9eb39e9219f44595cc47e6a35305ebe0512ca93e",
+      "bytes": 16174
+    },
+    {
+      "path": "00-governance/runtime/README.md",
+      "sha256": "11ebc0b78d3f7ee8f6de475b0f3c2694433cae7761112e97b9ffca2bb18dccd5",
+      "git_blob": "e0cd034c6c698b831fb75a7cbcba0b1104f00a43",
+      "bytes": 21276
+    },
+    {
+      "path": "00-governance/runtime/bind_chat_on_steroids_oleander.py",
+      "sha256": "62e54ef474ce90aaa4d93efc8f7be6dd252cadaea81089986914fa6f79ad8ef3",
+      "git_blob": "75f16d8226251837810db8b27772033f5a133feb",
+      "bytes": 11630
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_HCD_20260919.json",
+      "sha256": "8e4078778d44408e1f359dfabde593304d307a1efbe788e6486d6a33a8f5f6ca",
+      "git_blob": "31cb2a34280ce635630208328ac460a7f879cce6",
+      "bytes": 16830
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
+      "sha256": "03cd02d27fa4679bfc73728ceb677fdec3ca322d167031b11c7f4e8ba88067a6",
+      "git_blob": "6d7a36b6ab50851e2764e8f3b42634b7f8d3ace8",
+      "bytes": 16467
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
+      "sha256": "03adda71418b30cb439892705f8c3dbab39d96c619ecec3ce37d734f36fbd22c",
+      "git_blob": "014d551e11b682035c4ace6ddd0d8a4d2d21f98b",
+      "bytes": 16057
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
+      "sha256": "541ca7b9940baac9797f7bf49f7e2a17b0867b2857b8db2b400efa6ead65e1e4",
+      "git_blob": "da0660529f295baf19d7737602652978e90ffd00",
+      "bytes": 16872
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
+      "sha256": "88bddd071d229365ef561732b4e8e1a2f4c50026921d742e27200aa5a2ff61ed",
+      "git_blob": "7a3f9159c7cd872bf70b4b0f4df0d6e48cbc8d68",
+      "bytes": 16558
+    },
+    {
+      "path": "00-governance/runtime/oleander_chat_resolver_adapter.py",
+      "sha256": "51b56384e11ff62d1117e60173b34d84173d8f89c9cdf3eff9ea7d5949715b75",
+      "git_blob": "30c0286440f3ab1dfa34c87f21e06f8a05149f7c",
+      "bytes": 69506
+    },
+    {
+      "path": "00-governance/runtime/validate_architecture_control_graph.py",
+      "sha256": "ae7f9c06e68897df848b74dd9ba8741e7282752c06615fe0e6e03456d47b7634",
+      "git_blob": "254c9184c319a14e986ab705ffaf89966271ee3b",
+      "bytes": 128470
+    },
+    {
+      "path": "00-governance/runtime/validate_execution_contracts.py",
+      "sha256": "960ff660f378378f79419713d20f0ef41e720f90fff22f66fc4acd09aa85b0d4",
+      "git_blob": "5200929a0886f06e2bf46cd0c47faa9006db1cc1",
+      "bytes": 67342
+    },
+    {
+      "path": "00-governance/runtime/validate_execution_locks.py",
+      "sha256": "b40126471110025f6ffc19a8b36ba7b12d1c00000e5dbe92a7b979cec61dc60f",
+      "git_blob": "ae095988b8756515941b2c841e9fcee222ada211",
+      "bytes": 57288
+    },
+    {
+      "path": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+      "sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+      "git_blob": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
+      "bytes": 81295
+    },
+    {
+      "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
+      "sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+      "git_blob": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
+      "bytes": 85876
+    },
+    {
+      "path": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+      "sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+      "git_blob": "a9fca5ba94215374132eef6d50b888ce32051f71",
+      "bytes": 80224
+    },
+    {
+      "path": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+      "sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+      "git_blob": "6bef3b07b96e436264363f68b55090a5f07c0bab",
+      "bytes": 159469
+    },
+    {
+      "path": "00-governance/schemas/professional-domain-process.v1.schema.json",
+      "sha256": "e6410e7c6c71340fd615d35770845ba938a2c39a23a32e1a654df463da60d20d",
+      "git_blob": "c33faaa594653ef4d740efd5e5cd50407527a00f",
+      "bytes": 28905
+    },
+    {
+      "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+      "sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+      "git_blob": "df711df8f6faf48fcf4a347de214ee5caa30584c",
+      "bytes": 84485
+    },
+    {
+      "path": "00-governance/schemas/validate_professional_domain_process.py",
+      "sha256": "008ec745d7e497e1db5d20c9cef9a3d6562cfc5ffe0708f42811814d28b8e103",
+      "git_blob": "4077cf766107b55fbfe66e56d0276de03f059d26",
+      "bytes": 37169
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "sha256": "243fc1680516cc0355d1cd1d8989cce1231a189ddf8599770ecc5b3d3bc735c1",
+      "git_blob": "18edf80a95086954a74bc82b92c02c5d36a21f7d",
+      "bytes": 24389
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
+      "sha256": "48329861bedb47c61ca17d2cc25bf0aa62e5fdbb8aea8178fdb76338829650a9",
+      "git_blob": "b4fe4c6f8a43de15c7ab285d9cb3a2e70148f652",
+      "bytes": 2121
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
+      "sha256": "18b5b297ef4f54c2690d3c93f694745bb6beb0bb24b00fbcf2af77768dee8e6a",
+      "git_blob": "963174bb5a6bd8df0516a60455a5dbb2dd8ef85e",
+      "bytes": 1677
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
+      "sha256": "249d32b66ebd2ff4dda8216ade4db06e059de6a15b55ddbb63754f734170fb61",
+      "git_blob": "3ac07ca54314a790c54dd8865587c20d94784404",
+      "bytes": 2250
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EVALUATION_RECEIPT_v0.2.json",
+      "sha256": "03f7f339953a5039d8f0b3c46e4681c15efb100cd417cf9889e4c751d34ddddb",
+      "git_blob": "934a86ad383cfe1a352e245d9b54b2b8945a7d67",
+      "bytes": 1680
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json",
+      "sha256": "d039def1eece623183e8f81d18f791b8efeb5c5ad89424478afa552cdc5eefc4",
+      "git_blob": "896da02b18ba8ee1676285c0eee67885cb54c265",
+      "bytes": 26075
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
+      "sha256": "1de776806e4473123ebe5657903ae9933c2816cb4e8856693e157838792b5aff",
+      "git_blob": "d0539603ec971cd8b2f806295f70833917904498",
+      "bytes": 2275
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EVALUATION_RECEIPT_v0.2.json",
+      "sha256": "ac03b8c38c4837d8beae715e106e296df03f9bb74142266ecc40aba4d6bb971e",
+      "git_blob": "e1c945f4649f4acd949cd7c2b2480a4a5891e54c",
+      "bytes": 1711
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EXERCISE_v0.2.json",
+      "sha256": "9526466ad9595f1e1fef14ceaa50140aee11d23f2c725b8b6b30fdeafc162d6c",
+      "git_blob": "d55e362015f9153d27c1721a3c2fcd4cc9a1e1d2",
+      "bytes": 24742
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "sha256": "9839cb960d5280d6ee0d66ac8972a7ff9a82bb9da8a5b22f2c1c4554eb4fd5f0",
+      "git_blob": "5a964586d8ac24a861eae72da3e2d987de16657a",
+      "bytes": 28503
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
+      "sha256": "ca4fd4590dd18c6257026f160f17efa610b206d0bd7cd2386dd60f6a1b7b7203",
+      "git_blob": "240e09af1782fef02e66c30c9dda8d954d457d10",
+      "bytes": 2083
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
+      "sha256": "8a201b622fa276937204113c4ff9d84ffd128d7d83b36a175d9b5dbdfce94161",
+      "git_blob": "48934536afb1d755b3bbd37a7d7a5174f8a4a49a",
+      "bytes": 1694
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
+      "sha256": "d677ef7744dd1aa9ad8ca97714eed4f7706c0f664211571cb7110793cd987a68",
+      "git_blob": "94df22491d50982deea53b7409b0c6b092aad6e7",
+      "bytes": 2219
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "sha256": "ecd6441474618091f1db16ede1f02106358e05648882412f4f2933c14e342c4f",
+      "git_blob": "d0dd603964947166c7de397fa98951aa822b46c3",
+      "bytes": 24809
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+      "sha256": "666db0a5c10fdb09521b8a7e8891a5005ca891e2a3c007701c25801ead133934",
+      "git_blob": "fd25bdde2b58e30727cd822ab0531efc1d6e0eef",
+      "bytes": 1708
+    }
+  ],
+  "manifest_content_fingerprint_sha256": "be57016d5de317abe9cb68630046ecc37d8716b9f5b3cabe21d8b2cf89044f8a",
+  "unchanged_current_professional_machine_assertions": [
+    {
+      "path": "00-governance/schemas/architecture-design-development-process.v1.json",
+      "base_git_blob": "08359be7faf633d3637a7f1dd9b05b2da54e2748",
+      "working_tree_git_blob": "08359be7faf633d3637a7f1dd9b05b2da54e2748",
+      "unchanged": true
+    },
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "base_git_blob": "44f8654cf366aa03c559acb8a454003a911bb749",
+      "working_tree_git_blob": "44f8654cf366aa03c559acb8a454003a911bb749",
+      "unchanged": true
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "base_git_blob": "2947c0b7a1a9d77fabf46ce7f5d4fbb9700c0b57",
+      "working_tree_git_blob": "2947c0b7a1a9d77fabf46ce7f5d4fbb9700c0b57",
+      "unchanged": true
+    }
+  ],
+  "authority_rule": "This manifest fingerprints the Candidate professional-stage implementation/evidence delta only. Separate sync-recovery receipts do not promote the Candidate or modify Current authority.",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED",
+    "MERGED_OR_COMMITTED_REVISION",
+    "CROSS_PLATFORM_SYNC_COMPLETE"
+  ]
+}

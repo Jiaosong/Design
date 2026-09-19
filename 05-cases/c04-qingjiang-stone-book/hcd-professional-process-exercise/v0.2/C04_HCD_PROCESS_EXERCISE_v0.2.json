@@ -1,0 +1,626 @@
+{
+  "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Digital Product / HCD",
+  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": true,
+  "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+    "prose_blob": "cc19dd76b74870becd8de80927df5760364cebc4",
+    "machine_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+    "machine_blob": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
+    "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob": "189d50f9abeeda5d59770332a84a3c3ad476b8ab"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-WS-02_DIGITAL-UI-DETAIL-SYSTEM_v0.6.md",
+      "blob": "095f5294e9e741206f65a90baa38cc197110d314"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob": "6bb847ac3b8826f96f6709432e3157ce5b318a86"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob": "636cc9024a545d792fc0a5f13f24af1be47a4593"
+    }
+  ],
+  "stage_exercises": [
+    {
+      "stage_id": "HCD-DP3",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Digital Product / HCD",
+        "stage_id": "HCD-DP3",
+        "stage_name": "Concept, Interaction, Content & State Design",
+        "professional_question": "Which interaction concept best supports user tasks and use-related requirements, including failure/recovery and content depth?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "HCD-DP3"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "Which interaction concept best supports user tasks and use-related requirements, including failure/recovery and content depth?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "interaction design",
+              "state/error/recovery",
+              "content design",
+              "navigation",
+              "accessibility-aware concept design",
+              "offline/fallback"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "INTERACTION_STATE_DESIGN",
+              "CONTENT_INFORMATION_DESIGN",
+              "UI_VISUAL_COMPOSITION",
+              "TEMPORAL_MOTION_BEHAVIOR"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "HOLD",
+            "owner_ids": [
+              "oleander-design-process",
+              "oleander-motion"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "interaction concept set",
+              "task/flow/state model",
+              "low/mid-fidelity prototypes",
+              "content model",
+              "state/error/recovery matrix",
+              "concept design-review disposition"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "concept design-review disposition",
+              "content model",
+              "interaction concept set",
+              "low/mid-fidelity prototypes",
+              "state/error/recovery matrix",
+              "task/flow/state model"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Digital Product / HCD",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_HCD_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential HCD, accessibility, content, privacy/security, product, operational and evidence sources through the Current task/claim Operational Mount before they support a professional HCD decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "interaction design",
+            "state/error/recovery",
+            "content design",
+            "navigation",
+            "accessibility-aware concept design",
+            "offline/fallback"
+          ],
+          "active_knowledge_inputs": [
+            "interaction design",
+            "state/error/recovery",
+            "content design",
+            "navigation",
+            "accessibility-aware concept design",
+            "offline/fallback"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "interaction design": [],
+            "state/error/recovery": [],
+            "content design": [],
+            "navigation": [],
+            "accessibility-aware concept design": [],
+            "offline/fallback": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:interaction design",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:state/error/recovery",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:content design",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:navigation",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility-aware concept design",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:offline/fallback"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "INTERACTION_STATE_DESIGN",
+          "CONTENT_INFORMATION_DESIGN",
+          "UI_VISUAL_COMPOSITION",
+          "TEMPORAL_MOTION_BEHAVIOR"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_HCD_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "INTERACTION_STATE_DESIGN",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-UI-INTERACTION",
+            "resolution_class": "CANDIDATE_OWNER",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-interaction"
+          },
+          {
+            "capability_role": "CONTENT_INFORMATION_DESIGN",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "UI_VISUAL_COMPOSITION",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-UI-VISUAL",
+            "resolution_class": "CANDIDATE_OWNER",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-visual-composition"
+          },
+          {
+            "capability_role": "TEMPORAL_MOTION_BEHAVIOR",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-MOTION",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-motion"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-design-process",
+          "oleander-motion"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-design-process",
+          "oleander-motion"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "interaction concept set",
+          "task/flow/state model",
+          "low/mid-fidelity prototypes",
+          "content model",
+          "state/error/recovery matrix",
+          "concept design-review disposition"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:interaction design",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:state/error/recovery",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:content design",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:navigation",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility-aware concept design",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:offline/fallback",
+          "INTERACTION_STATE_DESIGN:CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-interaction",
+          "UI_VISUAL_COMPOSITION:CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-visual-composition"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/C04-WS-02_DIGITAL-UI-DETAIL-SYSTEM_v0.6.md",
+        "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    },
+    {
+      "stage_id": "HCD-DP4",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Digital Product / HCD",
+        "stage_id": "HCD-DP4",
+        "stage_name": "Prototype Evaluation, Usability & Accessibility",
+        "professional_question": "Does the current prototype actually help representative users achieve intended goals with acceptable effectiveness, efficiency, satisfaction and inclusive access?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "HCD-DP4"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "Does the current prototype actually help representative users achieve intended goals with acceptable effectiveness, efficiency, satisfaction and inclusive access?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "usability evaluation",
+              "prototype testing",
+              "inclusive research",
+              "accessibility inspection/testing",
+              "severity/retest"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "INTERACTIVE_PROTOTYPE_EXECUTION",
+              "USABILITY_RESEARCH",
+              "ACCESSIBILITY_EVALUATION",
+              "UI_VISUAL_AND_INTERACTION_READBACK"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "HOLD",
+            "owner_ids": []
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "evaluation plan",
+              "participant/sample boundary",
+              "prototype identity",
+              "task/scenario set",
+              "usability findings/severity",
+              "accessibility findings",
+              "repair/retest record",
+              "HCD_EVALUATION_RECEIPT",
+              "Finding → Fix → Build → Retest Chain"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "Finding → Fix → Build → Retest Chain",
+              "HCD_EVALUATION_RECEIPT",
+              "accessibility findings",
+              "evaluation plan",
+              "participant/sample boundary",
+              "prototype identity",
+              "repair/retest record",
+              "task/scenario set",
+              "usability findings/severity"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Digital Product / HCD",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_HCD_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential HCD, accessibility, content, privacy/security, product, operational and evidence sources through the Current task/claim Operational Mount before they support a professional HCD decision or stage closure.",
+          "declared_knowledge_inputs": [
+            "usability evaluation",
+            "prototype testing",
+            "inclusive research",
+            "accessibility inspection/testing",
+            "severity/retest"
+          ],
+          "active_knowledge_inputs": [
+            "usability evaluation",
+            "prototype testing",
+            "inclusive research",
+            "accessibility inspection/testing",
+            "severity/retest"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "usability evaluation": [],
+            "prototype testing": [],
+            "inclusive research": [],
+            "accessibility inspection/testing": [],
+            "severity/retest": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:usability evaluation",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:prototype testing",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:inclusive research",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility inspection/testing",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:severity/retest"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "INTERACTIVE_PROTOTYPE_EXECUTION",
+          "USABILITY_RESEARCH",
+          "ACCESSIBILITY_EVALUATION",
+          "UI_VISUAL_AND_INTERACTION_READBACK"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_HCD_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_HCD_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "INTERACTIVE_PROTOTYPE_EXECUTION",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-UI-INTERACTION",
+            "resolution_class": "CANDIDATE_OWNER",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-interaction"
+          },
+          {
+            "capability_role": "USABILITY_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "ACCESSIBILITY_EVALUATION",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-PROFESSIONAL-SPECIALIST-GUARD",
+            "resolution_class": "PROJECT_OR_SPECIALIST_OWNER_REQUIRED",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED"
+          },
+          {
+            "capability_role": "UI_VISUAL_AND_INTERACTION_READBACK",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-UI-VISUAL-INTERACTION-COMBINED",
+            "resolution_class": "CANDIDATE_OWNER",
+            "state": "HOLD",
+            "owner_ids": [],
+            "reason": "CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-visual-composition"
+          }
+        ],
+        "resolved_owner_set": [],
+        "reusable_skill_owner_ids": [],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "evaluation plan",
+          "participant/sample boundary",
+          "prototype identity",
+          "task/scenario set",
+          "usability findings/severity",
+          "accessibility findings",
+          "repair/retest record",
+          "HCD_EVALUATION_RECEIPT",
+          "Finding → Fix → Build → Retest Chain"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": false,
+        "typed_handoff_required": false,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:usability evaluation",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:prototype testing",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:inclusive research",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility inspection/testing",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:severity/retest",
+          "INTERACTIVE_PROTOTYPE_EXECUTION:CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-interaction",
+          "USABILITY_RESEARCH:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED",
+          "ACCESSIBILITY_EVALUATION:PROJECT_OR_SPECIALIST_OWNER_BINDING_REQUIRED",
+          "UI_VISUAL_AND_INTERACTION_READBACK:CANDIDATE_OWNER_NOT_CURRENT_CALLABLE:oleander-ui-visual-composition"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/C04-WS-02_DIGITAL-UI-DETAIL-SYSTEM_v0.6.md",
+        "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+        "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    }
+  ],
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
+  "release_condition": "Task/claim HCD Knowledge Mount plus any stage-triggered Current execution owners/specialists become valid; representative-user usability/accessibility evidence and independent HCD review remain separate gates.",
+  "claim_ceiling": "CURRENT CANDIDATE REVISION BOUNDED C04 REAPPLICATION / KNOWLEDGE MOUNT + CURRENT OWNER GAPS HOLD / NO HCD PASS / NO ADOPTION",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "CURRENT_ADOPTION",
+    "RELEASE_CONDITION_SATISFIED",
+    "SELECTIVE_RETEST_EXECUTED"
+  ]
+}

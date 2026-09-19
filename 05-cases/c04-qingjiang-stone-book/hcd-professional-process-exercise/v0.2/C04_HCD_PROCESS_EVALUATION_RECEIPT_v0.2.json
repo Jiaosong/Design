@@ -1,0 +1,34 @@
+{
+  "schema_version": "oleander-professional-candidate-evaluation-receipt/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "domain": "Digital Product / HCD",
+  "status": "HOLD",
+  "real_project_exercise_counted": true,
+  "exercise_ref": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json",
+  "continuation_checkpoint_ref": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
+  "candidate_binding": {
+    "prose_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+    "prose_blob": "cc19dd76b74870becd8de80927df5760364cebc4",
+    "machine_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+    "machine_blob": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
+    "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "current_candidate_revision_exercised": true,
+  "stage_composition_owner_resolution_exercised": true,
+  "knowledge_mount_gate_exercised": true,
+  "hold_release_condition_read_back": true,
+  "hold_release_condition_satisfied": false,
+  "selective_retest_executed": false,
+  "successor_receipt_ref": null,
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "independent_professional_review": "NOT_RUN",
+  "verdict": "HOLD_CURRENT_REVISION_EVALUATED_RELEASE_UNSATISFIED",
+  "does_not_prove": [
+    "EV3_EVAL_PASSED",
+    "EV4_INDEPENDENT_REVIEWED",
+    "EV5_PROMOTION_READY",
+    "EV6_CURRENT_ADOPTED"
+  ]
+}

@@ -711,7 +711,7 @@
       "domain": "Architecture",
       "state": "FORMALIZED_PROJECT_EXERCISED",
       "current_process_ref": "00-governance/architecture-design-development-process-v1.0.md",
-      "machine_schema_ref": "00-governance/schemas/professional-domain-process.example.json",
+      "machine_schema_ref": "00-governance/schemas/architecture-design-development-process.v1.json",
       "project_exercised_claim": true
     },
     {
@@ -731,29 +731,85 @@
     {
       "domain": "Interior Design",
       "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "current_process_ref": null,
+      "candidate_process_ref": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+      "candidate_machine_schema_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+      "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
+      "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+      "project_exercised_claim": false,
+      "candidate_project_exercise_evidence_state": "BOUNDED_CONTEXT_REAPPLICATION_NOT_PROJECT_ADOPTION_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Landscape Architecture",
       "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "current_process_ref": null,
+      "candidate_process_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+      "candidate_machine_schema_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+      "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
+      "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+      "project_exercised_claim": false,
+      "candidate_project_exercise_evidence_state": "CURRENT_REVISION_PROJECT_REAPPLICATION_HOLD_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Lighting Design",
       "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "current_process_ref": null,
+      "candidate_process_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+      "candidate_machine_schema_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+      "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
+      "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+      "project_exercised_claim": false,
+      "candidate_project_exercise_evidence_state": "BOUNDED_CONTEXT_REAPPLICATION_NOT_PROJECT_ADOPTION_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Digital Product / HCD",
       "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "current_process_ref": null,
+      "candidate_process_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+      "candidate_machine_schema_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+      "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_HCD_20260919.json",
+      "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+      "project_exercised_claim": false,
+      "candidate_project_exercise_evidence_state": "CURRENT_REVISION_PROJECT_REAPPLICATION_HOLD_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Systems Engineering",
       "state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
-      "current_process_ref": null
+      "current_process_ref": null,
+      "candidate_process_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+      "candidate_machine_schema_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+      "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
+      "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+      "project_exercised_claim": false,
+      "candidate_project_exercise_evidence_state": "CURRENT_REVISION_REPLAY_OVER_MAIN_PROJECT_ADOPTION_HOLD_RELEASE_UNSATISFIED"
     }
   ],
+  "professional_stage_canonical_execution_chain": {
+    "chain": [
+      "PROFESSIONAL_STAGE",
+      "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+      "KNOWLEDGE_INPUTS",
+      "OPERATIONAL_KNOWLEDGE_MOUNT",
+      "REQUIRED_CAPABILITY_ROLES",
+      "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+      "NATIVE_OUTPUTS",
+      "ACTUAL_READBACK",
+      "INDEPENDENT_REVIEW",
+      "STAGE_CLOSURE"
+    ],
+    "authority_rule": "ONE_CANONICAL_TOP_LEVEL_STAGE_SPINE_ACROSS_ALL_PROFESSIONAL_DOMAINS",
+    "auxiliary_bindings": [
+      "CLAIM_SCOPE",
+      "DD_RESPONSIBILITIES",
+      "INTERFACES",
+      "TOOL_ADAPTER",
+      "MULTI_SKILL_DAG_TYPED_HANDOFFS",
+      "SPECIALIST_STATUTORY_BOUNDARIES",
+      "REGRESSION_AND_EVIDENCE_SUBREVIEWS"
+    ],
+    "auxiliary_binding_rule": "AUXILIARY_BINDINGS_ATTACH_TO_A_CHAIN_NODE_AND_MUST_NOT_CREATE_AN_EXTRA_TOP_LEVEL_PROFESSIONAL_STAGE_STEP",
+    "closure_rule": "REQUIRED_NATIVE_OUTPUTS_MUST_HAVE_ACTUAL_READBACK_AND_TRIGGERED_INDEPENDENT_REVIEW_MUST_COMPLETE_BEFORE_STAGE_CLOSURE"
+  },
   "decision_rights": {
     "machine_may": [
       "VALIDATE_SCHEMA",
@@ -1786,7 +1842,10 @@
       "FREEZE_CURRENT_BASELINE",
       "BUILD_OR_REUSE_EVAL_SET",
       "GENERATE_ISOLATED_VARIANTS",
+      "RUN_BOUNDED_REAL_PROJECT_EXERCISE_AS_APPLICABLE",
       "RUN_TARGET_SPECIFIC_EVALS",
+      "VERIFY_STAGE_SPECIFIC_CAPABILITY_RECOMPOSITION_AS_APPLICABLE",
+      "VERIFY_HOLD_RELEASE_SELECTIVE_RETEST_AS_APPLICABLE",
       "RUN_CONSTRAINT_AND_REGRESSION_GATES",
       "INDEPENDENT_REVIEW",
       "CANDIDATE_PR_AND_MIGRATION_PLAN",
@@ -1816,6 +1875,10 @@
       "STATUTORY_LICENSED_AUTHORITY"
     ],
     "candidate_may_modify_live_baseline_during_eval": false,
+    "professional_process_candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+    "professional_process_candidate_current_authority_during_eval": "PROCESS_OPEN_CURRENT_PROCESS_REF_NULL",
+    "professional_process_adoption_requires_stage_recomposition_evidence": true,
+    "professional_process_adoption_requires_selective_retest_evidence": true,
     "human_promotion_required": true,
     "rollback_required": true,
     "migration_provenance_required": true,

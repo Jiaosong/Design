@@ -223,6 +223,46 @@
         "system boundary/external actor readback",
         "decision/professional authority readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SYSTEM_CONTEXT_RESEARCH",
+          "BOUNDARY_AUTHORITY_REASONING",
+          "CONTEXT_DIAGRAM_MODELLING",
+          "EVIDENCE_TRACEABILITY"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -348,6 +388,46 @@
         "mission-thread coverage",
         "normal/degraded/failure scenario readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "STAKEHOLDER_USER_RESEARCH",
+          "OPERATIONAL_CONCEPT_MODELLING",
+          "MISSION_THREAD_REASONING",
+          "DEGRADED_FAILURE_SCENARIO_ANALYSIS"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -448,6 +528,46 @@
         "feature/component leakage attack",
         "degraded/failure behavior readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "FUNCTIONAL_LOGICAL_MODELLING",
+          "STATE_BEHAVIOR_MODELLING",
+          "CAPABILITY_FUNCTION_TRACEABILITY",
+          "MODEL_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -571,6 +691,46 @@
         "human/system allocation challenge",
         "interface owner/failure-mode readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "INFORMATION_ARCHITECTURE_MODELLING",
+          "HUMAN_SYSTEM_ALLOCATION_REASONING",
+          "INTERFACE_CONTROL_MODELLING",
+          "INTERFACE_FAILURE_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -693,6 +853,46 @@
         "duplicate/conflict/orphan/solution-bias/unverifiable wording checks",
         "need→requirement→V&V reverse coverage"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "REQUIREMENTS_ENGINEERING",
+          "SOURCE_EVIDENCE_RESEARCH",
+          "ACCEPTANCE_CRITERIA_MODELLING",
+          "VERIFICATION_VALIDATION_PLANNING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -794,6 +994,46 @@
         "requirement/interface/V&V allocation readback",
         "trade-study sensitivity/counterevidence"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SYSTEM_TRADE_STUDY",
+          "OPTION_SPACE_REASONING",
+          "LOGICAL_ARCHITECTURE_ALLOCATION",
+          "COMPARATIVE_DATA_ANALYSIS"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -918,6 +1158,46 @@
         "interface/configuration baseline consistency",
         "PDR open-item readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "PHYSICAL_ARCHITECTURE_MODELLING",
+          "CONFIGURATION_DATA_MANAGEMENT",
+          "INTEGRATION_STRATEGY_PLANNING",
+          "PDR_READINESS_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -1052,6 +1332,46 @@
         "validation scenario/outcome readback",
         "anomaly→repair→retest regression readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SYSTEM_INTEGRATION_EXECUTION",
+          "VERIFICATION_TEST_ANALYSIS",
+          "VALIDATION_USER_OPERATION_RESEARCH",
+          "ANOMALY_CONFIGURATION_BOUND_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [
@@ -1179,6 +1499,46 @@
         "retirement/support readiness",
         "observation vs reusable-knowledge boundary"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "IN_USE_CHANGE_IMPACT_ANALYSIS",
+          "REVERIFICATION_REVALIDATION_PLANNING",
+          "OPERATIONAL_DATA_TRENDING",
+          "SUPPORT_RETIREMENT_LESSON_RESEARCH"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_SYSTEMS_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Systems Engineering professional owner",
       "independent_review_requirement": "Independent or distinct Systems Engineering review at the declared claim ceiling when promotion-relevant; domain-professional, statutory, verification and validation authorities remain separate where responsibility is outside Systems Engineering.",
       "open_items_allowed": [

@@ -1,0 +1,605 @@
+{
+  "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "domain": "Interior Design",
+  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": false,
+  "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
+  "candidate_definition_binding": {
+    "prose_ref": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+    "prose_blob": "54349c3516303a3e00f3c573e39f4950c0118659",
+    "machine_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+    "machine_blob": "3776ad3cbde8478ea7b85282072301710effd763",
+    "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+  },
+  "source_bindings": [
+    {
+      "path": "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
+      "blob": "21a46123c267add76e5d6fc97ef7aefe364513fe"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+      "blob": "e4b3333ad3e72f6dfeb18fdaa92c10fa3875adcc"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+      "blob": "43da954cd24f200baa07bcd5db65ab6e9774c0de"
+    }
+  ],
+  "stage_exercises": [
+    {
+      "stage_id": "ID-PW0",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Interior Design",
+        "stage_id": "ID-PW0",
+        "stage_name": "Strategic Definition",
+        "professional_question": "What interior scope, reuse constraints, appointment and procurement responsibilities materially affect the strategic project decision?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "ID-PW0"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "What interior scope, reuse constraints, appointment and procurement responsibilities materially affect the strategic project decision?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "interior strategic constraints",
+              "existing-condition evidence",
+              "professional/commercial role guidance"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "APPOINTMENT_SCOPE_EVIDENCE_RESEARCH",
+              "EXISTING_CONDITION_DUE_DILIGENCE",
+              "PROCUREMENT_RESPONSIBILITY_REASONING",
+              "INTERIOR_FEASIBILITY_DATA_SYNTHESIS"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "strategic interior constraints/opportunities note",
+              "survey need list",
+              "initial responsibility/procurement-role map",
+              "interior feasibility / due-diligence constraints note",
+              "stakeholder / professional-responsibility map"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "initial responsibility/procurement-role map",
+              "interior feasibility / due-diligence constraints note",
+              "stakeholder / professional-responsibility map",
+              "strategic interior constraints/opportunities note",
+              "survey need list"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Interior Design",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential existing-condition, appointment and procurement-role sources before making strategic interior claims.",
+          "declared_knowledge_inputs": [
+            "interior strategic constraints",
+            "existing-condition evidence",
+            "professional/commercial role guidance"
+          ],
+          "active_knowledge_inputs": [
+            "interior strategic constraints",
+            "existing-condition evidence",
+            "professional/commercial role guidance"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "interior strategic constraints": [],
+            "existing-condition evidence": [],
+            "professional/commercial role guidance": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:interior strategic constraints",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:existing-condition evidence",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional/commercial role guidance"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "APPOINTMENT_SCOPE_EVIDENCE_RESEARCH",
+          "EXISTING_CONDITION_DUE_DILIGENCE",
+          "PROCUREMENT_RESPONSIBILITY_REASONING",
+          "INTERIOR_FEASIBILITY_DATA_SYNTHESIS"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_INTERIOR_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_INTERIOR_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "APPOINTMENT_SCOPE_EVIDENCE_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "EXISTING_CONDITION_DUE_DILIGENCE",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "PROCUREMENT_RESPONSIBILITY_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "INTERIOR_FEASIBILITY_DATA_SYNTHESIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "strategic interior constraints/opportunities note",
+          "survey need list",
+          "initial responsibility/procurement-role map",
+          "interior feasibility / due-diligence constraints note",
+          "stakeholder / professional-responsibility map"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:interior strategic constraints",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:existing-condition evidence",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional/commercial role guidance"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
+        "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+        "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    },
+    {
+      "stage_id": "ID-PW1",
+      "composition_readback": {
+        "gate": "HOLD",
+        "action": "HOLD_PROFESSIONAL_STAGE_EXECUTION_CHAIN",
+        "process_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+        "process_mode": "CANDIDATE",
+        "domain": "Interior Design",
+        "stage_id": "ID-PW1",
+        "stage_name": "Preparation and Briefing",
+        "professional_question": "Is there a sufficiently complete interior brief, user/activity basis and scope-of-services boundary to begin concept design?",
+        "decision_object_refs": [],
+        "canonical_stage_execution_chain": [
+          "PROFESSIONAL_STAGE",
+          "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+          "KNOWLEDGE_INPUTS",
+          "OPERATIONAL_KNOWLEDGE_MOUNT",
+          "REQUIRED_CAPABILITY_ROLES",
+          "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+          "NATIVE_OUTPUTS",
+          "ACTUAL_READBACK",
+          "INDEPENDENT_REVIEW",
+          "STAGE_CLOSURE"
+        ],
+        "canonical_stage_execution_readback": [
+          {
+            "step": "PROFESSIONAL_STAGE",
+            "state": "RESOLVED",
+            "value": "ID-PW1"
+          },
+          {
+            "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+            "state": "RESOLVED",
+            "professional_question": "Is there a sufficiently complete interior brief, user/activity basis and scope-of-services boundary to begin concept design?",
+            "decision_object_refs": []
+          },
+          {
+            "step": "KNOWLEDGE_INPUTS",
+            "state": "RESOLVED",
+            "values": [
+              "human-use methods",
+              "accessibility/fire/material/product routes",
+              "professional scope guidance"
+            ]
+          },
+          {
+            "step": "OPERATIONAL_KNOWLEDGE_MOUNT",
+            "state": "HOLD",
+            "mount_refs": []
+          },
+          {
+            "step": "REQUIRED_CAPABILITY_ROLES",
+            "state": "RESOLVED",
+            "values": [
+              "USER_ACTIVITY_RESEARCH",
+              "INTERIOR_BRIEF_SYNTHESIS",
+              "ROOM_USE_OPERATION_REASONING",
+              "PROGRAM_DATA_SCHEDULE"
+            ]
+          },
+          {
+            "step": "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research",
+              "oleander-design-process",
+              "oleander-data-viz"
+            ]
+          },
+          {
+            "step": "NATIVE_OUTPUTS",
+            "state": "DECLARED",
+            "required": [
+              "Interior Design Brief",
+              "User-Activity-Experience Matrix",
+              "Interior Responsibility/Schedule of Services",
+              "initial Room/FF&E Interface Register",
+              "procurement-role statement",
+              "sample/mockup strategy",
+              "existing-condition / base-building authority register",
+              "initial code/life-safety/accessibility trigger register",
+              "initial technical-thread status"
+            ],
+            "actual": [],
+            "readback_complete_native_outputs": [],
+            "missing_readback_complete_native_outputs": [
+              "Interior Design Brief",
+              "Interior Responsibility/Schedule of Services",
+              "User-Activity-Experience Matrix",
+              "existing-condition / base-building authority register",
+              "initial Room/FF&E Interface Register",
+              "initial code/life-safety/accessibility trigger register",
+              "initial technical-thread status",
+              "procurement-role statement",
+              "sample/mockup strategy"
+            ]
+          },
+          {
+            "step": "ACTUAL_READBACK",
+            "state": "NOT_RUN",
+            "refs": []
+          },
+          {
+            "step": "INDEPENDENT_REVIEW",
+            "state": "NOT_RUN",
+            "refs": [],
+            "reviewer_owner_ids": []
+          },
+          {
+            "step": "STAGE_CLOSURE",
+            "state": "NOT_EVALUATED",
+            "exit_condition_state": "NOT_EVALUATED"
+          }
+        ],
+        "stage_execution_requirements_source": "CANDIDATE_PROCESS_DEFINITION",
+        "candidate_binding": {
+          "domain": "Interior Design",
+          "graph_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
+          "current_process_ref": null,
+          "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
+          "candidate_evolution_state": "EVH_HOLD",
+          "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+          "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
+        },
+        "knowledge_mount_readback": {
+          "gate": "HOLD",
+          "contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+          "knowledge_mount_requirement": "Mount consequential user, accessibility, fire, material/product and existing-condition evidence at current claim ceiling.",
+          "declared_knowledge_inputs": [
+            "human-use methods",
+            "accessibility/fire/material/product routes",
+            "professional scope guidance"
+          ],
+          "active_knowledge_inputs": [
+            "human-use methods",
+            "accessibility/fire/material/product routes",
+            "professional scope guidance"
+          ],
+          "omitted_knowledge_inputs": [],
+          "mount_records": [],
+          "active_input_coverage": {
+            "human-use methods": [],
+            "accessibility/fire/material/product routes": [],
+            "professional scope guidance": []
+          },
+          "hold_reasons": [
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:human-use methods",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility/fire/material/product routes",
+            "ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional scope guidance"
+          ],
+          "does_not_prove": [
+            "KNOWLEDGE_CLEAN_IMPLIES_UNIVERSAL_ELIGIBILITY",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_DESIGN_KEEP",
+            "OPERATIONAL_ELIGIBILITY_IMPLIES_PROFESSIONAL_PASS"
+          ]
+        },
+        "required_capability_roles": [
+          "USER_ACTIVITY_RESEARCH",
+          "INTERIOR_BRIEF_SYNTHESIS",
+          "ROOM_USE_OPERATION_REASONING",
+          "PROGRAM_DATA_SCHEDULE"
+        ],
+        "declared_supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_INTERIOR_REVIEW_BINDING"
+        ],
+        "active_supporting_capability_roles": [],
+        "omitted_supporting_capabilities": [
+          {
+            "capability_role": "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          },
+          {
+            "capability_role": "INDEPENDENT_INTERIOR_REVIEW_BINDING",
+            "reason": "not triggered as an active execution/review owner in this bounded HOLD evidence replay"
+          }
+        ],
+        "capability_coverage": [
+          {
+            "capability_role": "USER_ACTIVITY_RESEARCH",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-RESEARCH-EVIDENCE",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-research"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "INTERIOR_BRIEF_SYNTHESIS",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "ROOM_USE_OPERATION_REASONING",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DESIGN-PROCESS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-design-process"
+            ],
+            "reason": null
+          },
+          {
+            "capability_role": "PROGRAM_DATA_SCHEDULE",
+            "required_or_supporting": "REQUIRED",
+            "routing_rule_id": "PSC-DATA-GIS",
+            "resolution_class": "EXISTING_OWNER",
+            "state": "RESOLVED",
+            "owner_ids": [
+              "oleander-data-viz"
+            ],
+            "reason": null
+          }
+        ],
+        "resolved_owner_set": [
+          "oleander-research",
+          "oleander-design-process",
+          "oleander-data-viz"
+        ],
+        "reusable_skill_owner_ids": [
+          "oleander-research",
+          "oleander-design-process",
+          "oleander-data-viz"
+        ],
+        "project_or_specialist_owner_ids": [],
+        "independent_reviewer_owner_ids": [],
+        "required_native_outputs": [
+          "Interior Design Brief",
+          "User-Activity-Experience Matrix",
+          "Interior Responsibility/Schedule of Services",
+          "initial Room/FF&E Interface Register",
+          "procurement-role statement",
+          "sample/mockup strategy",
+          "existing-condition / base-building authority register",
+          "initial code/life-safety/accessibility trigger register",
+          "initial technical-thread status"
+        ],
+        "actual_native_outputs": [],
+        "actual_readback_refs": [],
+        "independent_review_refs": [],
+        "independent_review_verdict": "NOT_RUN",
+        "stage_exit_condition_state": "NOT_EVALUATED",
+        "stage_closure_gate": "NOT_EVALUATED",
+        "multi_skill_dag_required": true,
+        "typed_handoff_required": true,
+        "hold_reasons": [
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:human-use methods",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:accessibility/fire/material/product routes",
+          "KNOWLEDGE:ACTIVE_KNOWLEDGE_INPUT_NOT_COVERED:professional scope guidance"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "DESIGN_KEEP",
+          "FIELD_TRUTH",
+          "STATUTORY_APPROVAL",
+          "CANDIDATE_ADOPTION"
+        ]
+      },
+      "professional_verdict": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "actual_readback_refs": [
+        "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
+        "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+        "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md"
+      ],
+      "canonical_stage_execution_chain": [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE"
+      ],
+      "stage_closure_gate": "NOT_EVALUATED"
+    }
+  ],
+  "multi_skill_dag_materialized": false,
+  "typed_handoff_records_materialized": false,
+  "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
+  "release_condition": "Authentic Interior native-object execution evidence, task/claim Interior Knowledge Mount, authoritative existing-condition/base-building information and appointed Interior responsibility become available.",
+  "claim_ceiling": "BOUNDED C01 CONTEXT REAPPLICATION ONLY / NOT AN INTERIOR PROJECT ADOPTION EXERCISE / NO INTERIOR PASS",
+  "does_not_prove": [
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "CURRENT_ADOPTION",
+    "RELEASE_CONDITION_SATISFIED",
+    "SELECTIVE_RETEST_EXECUTED"
+  ]
+}

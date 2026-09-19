@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install strict JSON Schema validator
+        run: python -m pip install jsonschema==4.24.0
+
       - name: Enforce canonical LF in critical runtime blobs
         run: python evals/scripts/validate_runtime_line_endings.py
 

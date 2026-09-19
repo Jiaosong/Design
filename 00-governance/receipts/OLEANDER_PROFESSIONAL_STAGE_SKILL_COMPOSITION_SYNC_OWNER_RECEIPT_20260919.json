@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.owner-receipt-run-manifest.v1",
+  "object": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION",
+  "source": "user-directive-2026-09-19: canonical professional stage execution spine plus OLEANDER cross-platform sync recovery",
+  "source_hash_sha256": "b5c0a8e3076cde331dc26ffa6fd18c42f197ac9a0ad26938c15787be88e80597",
+  "revision": "r5-sync-recovery-1",
+  "time": "2026-09-19T18:55:04+08:00",
+  "state": "OWNER_RECEIPT_CREATED / MATERIAL_DELTA_CONFIRMED / LOCAL_CANDIDATE_VALIDATED / GITHUB_UNSYNCED / NOTION_UNSYNCED / NO_PROMOTION",
+  "material_delta": true,
+  "owner": "OLEANDER Governance",
+  "baseline_commit": "43030cfa75e8f8576c89555bbfdc872a2b7ec287",
+  "branch": "candidate/professional-stage-skill-composition-20260919-r5",
+  "mutation_manifest": {
+    "id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
+    "ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
+    "fingerprint_sha256": "be57016d5de317abe9cb68630046ecc37d8716b9f5b3cabe21d8b2cf89044f8a",
+    "material_delta_count": 50
+  },
+  "canonical_professional_stage_execution_chain": [
+    "PROFESSIONAL_STAGE",
+    "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+    "KNOWLEDGE_INPUTS",
+    "OPERATIONAL_KNOWLEDGE_MOUNT",
+    "REQUIRED_CAPABILITY_ROLES",
+    "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+    "NATIVE_OUTPUTS",
+    "ACTUAL_READBACK",
+    "INDEPENDENT_REVIEW",
+    "STAGE_CLOSURE"
+  ],
+  "chronology_repair": {
+    "process_deviation_recorded": true,
+    "observed_deviation": "The local Candidate artifact write and local validation existed before this formal Owner Receipt / Run Manifest was created.",
+    "repair_rule": "Do not backdate or claim ideal chronology. This receipt opens the formal persistence/readback chain from the observed recovery point onward.",
+    "pre_receipt_local_state": "LOCAL_CANDIDATE_MATERIAL_DELTA / LOCALLY_VALIDATED / NOT_FORMALLY_SYNCHRONIZED"
+  },
+  "intended_persistence_chains": {
+    "github": [
+      "OWNER_RECEIPT",
+      "BRANCH",
+      "ARTIFACT_WRITE_ALREADY_PRESENT_AND_RECORDED_AS_PROCESS_DEVIATION",
+      "COMMIT",
+      "PR",
+      "CI",
+      "REMOTE_READBACK",
+      "F_CROSSLINE_READBACK"
+    ],
+    "notion": [
+      "OWNER_RECEIPT",
+      "CANONICAL_TARGET_CHECK",
+      "NOTION_WRITE",
+      "NOTION_READBACK",
+      "F_CROSSLINE_READBACK"
+    ]
+  },
+  "authority_boundary": {
+    "candidate_processes_remain": "EVH_HOLD",
+    "professional_process_adoption": "HOLD",
+    "ev5": "NO",
+    "ev6": "NO",
+    "merge": "NOT_YET_REQUESTED_BY_AUTHORITY_GATE",
+    "promotion": "NO_PROMOTION",
+    "current_architecture_structural_mep_machine_mutation": false
+  },
+  "does_not_prove": [
+    "This recovery receipt does not prove GitHub commit, PR, CI, remote readback, F readback, merge or promotion.",
+    "This recovery receipt does not prove a Notion canonical target was resolved, written, read back or F-read back.",
+    "This recovery receipt does not prove Professional PASS, Design KEEP, statutory approval, field validation or specialist approval.",
+    "Candidate professional processes remain EVH_HOLD and are not Current callable authority merely because this sync chain is opened.",
+    "The receipt records a process-order repair; it does not rewrite history to claim that the receipt preceded the local Artifact Write."
+  ]
+}

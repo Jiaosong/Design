@@ -249,6 +249,31 @@ def validate_fallback_structure(payload: dict[str, Any]) -> list[str]:
                     errors.append(
                         f"{label}: independent_review_requirement must be non-empty"
                     )
+                stage_exec = stage.get("stage_execution_requirements")
+                if isinstance(stage_exec, dict):
+                    for key in (
+                        "required_capability_roles",
+                        "multi_skill_required_when",
+                        "single_owner_allowed_when",
+                        "owner_set_recompute_triggers",
+                        "forbidden_substitutions",
+                        "composition_readback_requirements",
+                    ):
+                        require_nonempty_list(
+                            stage_exec,
+                            key,
+                            f"{label}.stage_execution_requirements",
+                            errors,
+                        )
+                    supporting = stage_exec.get("supporting_capability_roles")
+                    if not isinstance(supporting, list):
+                        errors.append(
+                            f"{label}.stage_execution_requirements.supporting_capability_roles: expected array"
+                        )
+                elif "stage_execution_requirements" in stage:
+                    errors.append(
+                        f"{label}.stage_execution_requirements: expected object"
+                    )
                 bindings = stage.get("interface_bindings", [])
                 if not isinstance(bindings, list):
                     errors.append(f"{label}.interface_bindings: expected array")
@@ -394,6 +419,50 @@ def validate_semantics(payload: dict[str, Any]) -> list[str]:
 
         for stage in stages:
             stage_id = stage.get("stage_id", "<unknown>")
+            stage_exec = stage.get("stage_execution_requirements")
+            if stage_exec is not None:
+                if not isinstance(stage_exec, dict):
+                    errors.append(
+                        f"{stage_id}: stage_execution_requirements must be an object when present"
+                    )
+                    continue
+                role_fields = (
+                    "required_capability_roles",
+                    "supporting_capability_roles",
+                )
+                for role_field in role_fields:
+                    roles = stage_exec.get(role_field)
+                    if not isinstance(roles, list):
+                        errors.append(
+                            f"{stage_id}: stage_execution_requirements.{role_field} must be an array"
+                        )
+                        continue
+                    if role_field == "required_capability_roles" and not roles:
+                        errors.append(
+                            f"{stage_id}: required_capability_roles must be a non-empty array"
+                        )
+                    for role in roles:
+                        normalized = str(role).lower()
+                        if (
+                            "oleander-" in normalized
+                            or "/skill" in normalized
+                            or "skills/" in normalized
+                        ):
+                            errors.append(
+                                f"{stage_id}: {role_field} must describe capabilities, not hardcode Skill identities ({role})"
+                            )
+                for required_exec_list in (
+                    "multi_skill_required_when",
+                    "single_owner_allowed_when",
+                    "owner_set_recompute_triggers",
+                    "forbidden_substitutions",
+                    "composition_readback_requirements",
+                ):
+                    value = stage_exec.get(required_exec_list)
+                    if not isinstance(value, list) or not value:
+                        errors.append(
+                            f"{stage_id}: stage_execution_requirements.{required_exec_list} must be a non-empty array"
+                        )
             bindings = stage.get("interface_bindings", [])
             duplicate_binding_ids = duplicate_values(
                 [

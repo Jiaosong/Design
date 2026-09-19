@@ -216,6 +216,46 @@
         "read actual site/source set against declared claim",
         "verify FIELD_OBSERVED/FIELD_MEASURED state"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SITE_AUTHORITY_RESEARCH",
+          "LANDSCAPE_BRIEF_SYNTHESIS",
+          "GIS_BASE_DATA_RESOLUTION",
+          "SCOPE_INTERFACE_REASONING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -348,6 +388,46 @@
         "source-vs-inference audit",
         "field-evidence gap audit"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "FIELD_REMOTE_EVIDENCE_RESEARCH",
+          "GIS_SPATIAL_ANALYSIS",
+          "ENVIRONMENTAL_DATA_VISUALIZATION",
+          "SITE_SYSTEM_DIAGNOSIS"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -485,6 +565,46 @@
         "compare options at matched evidence/fidelity",
         "read landform-water-planting-hardscape-maintenance coherence"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "LANDSCAPE_OPTION_SPACE_REASONING",
+          "MASTERPLAN_SPATIAL_DESIGN",
+          "GIS_DATA_OVERLAY",
+          "3D_TERRAIN_SPATIAL_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -630,6 +750,46 @@
         "material/joint/drainage coordination",
         "maintenance-access readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "DEVELOPED_LANDSCAPE_SYSTEM_DESIGN",
+          "3D_TERRAIN_AND_SPACE_MODEL",
+          "TECHNICAL_PLAN_SECTION",
+          "PLANTING_HARDSCAPE_DATA_SCHEDULE"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -776,6 +936,46 @@
         "hardscape joint/edge/drainage relation",
         "consultant coordination"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "GRADING_DRAINAGE_TECHNICAL_REASONING",
+          "TECHNICAL_DRAWING_DETAILING",
+          "GIS_LEVEL_DATA_CHECK",
+          "3D_SITE_ENGINEERING_READBACK"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -910,6 +1110,46 @@
         "substitution equivalence review",
         "affected-interface/change propagation readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SITE_CONSTRUCTION_OBSERVATION",
+          "SUBSTITUTION_EQUIVALENCE_REVIEW",
+          "NONCONFORMITY_EVIDENCE_TRACKING",
+          "FIELD_CHANGE_TECHNICAL_RECORD"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -1045,6 +1285,46 @@
         "plant/soil/irrigation/drainage establishment readback",
         "maintenance responsibility readback"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "ESTABLISHMENT_FIELD_READBACK",
+          "MAINTENANCE_OPERATION_SCHEDULING",
+          "PLANT_SOIL_IRRIGATION_DATA",
+          "HANDOVER_PACKAGE_QC"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [
@@ -1175,6 +1455,46 @@
         "cause-hypothesis boundary",
         "affected-stage/interface reopen analysis"
       ],
+      "stage_execution_requirements": {
+        "required_capability_roles": [
+          "SEASONAL_IN_USE_OBSERVATION",
+          "POST_OCCUPANCY_RESEARCH",
+          "LANDSCAPE_PERFORMANCE_DATA_ANALYSIS",
+          "STEWARDSHIP_CHANGE_REASONING"
+        ],
+        "supporting_capability_roles": [
+          "CROSS_DOMAIN_INTERFACE_COORDINATION",
+          "INDEPENDENT_LANDSCAPE_REVIEW_BINDING"
+        ],
+        "multi_skill_required_when": [
+          "multiple material native outputs require different capability owners or authoritative execution surfaces",
+          "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+          "producer execution and required independent review must remain separate"
+        ],
+        "single_owner_allowed_when": [
+          "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+        ],
+        "owner_set_recompute_triggers": [
+          "professional stage changes",
+          "material decision object or claim changes",
+          "required native output, readback or interface handoff changes",
+          "selected owner or tool becomes unavailable or insufficient",
+          "HOLD release condition activates a new verification route"
+        ],
+        "forbidden_substitutions": [
+          "research or evidence resolution replaced by unsupported design intuition",
+          "domain-native source or readback replaced by presentation derivative",
+          "specialist or technical authority replaced by a general design execution owner",
+          "independent review replaced by producer self-check",
+          "material design dimension dropped only to reduce owner count"
+        ],
+        "composition_readback_requirements": [
+          "each active required capability role resolves to a Current callable owner or explicit HOLD",
+          "each material native output and readback identifies execution and readback ownership",
+          "typed handoffs between distinct owners are explicit and accepted before stage closure",
+          "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+        ]
+      },
       "professional_review_owner": "Landscape Architecture professional owner",
       "independent_review_requirement": "Independent or distinct landscape-professional review at the declared claim ceiling when the stage is promotion-relevant; specialist reviews remain separate where responsibility is outside Landscape Architecture.",
       "open_items_allowed": [

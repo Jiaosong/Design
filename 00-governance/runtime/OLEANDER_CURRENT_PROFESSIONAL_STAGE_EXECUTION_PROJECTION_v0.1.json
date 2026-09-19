@@ -1,0 +1,1483 @@
+{
+  "schema_version": "oleander-current-professional-stage-execution-projection/0.1",
+  "status": "ACTIVE_RUNTIME_COMPATIBILITY_PROJECTION",
+  "semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
+  "purpose": "Provide stage capability composition for already-Current professional process machines without mutating their Current authority carriers in place.",
+  "authority_rule": "The exact Current professional machine remains authoritative for professional process semantics. This projection owns execution routing only and becomes stale when the bound machine blob or SHA256 drifts.",
+  "migration_rule": "A future authorized professional-process evolution may move equivalent stage execution requirements into a successor Current machine. Until that transaction, this carrier remains runtime-only.",
+  "does_not_create": [
+    "SECOND_PROFESSIONAL_PROCESS",
+    "SECOND_ROUTER",
+    "NEW_SKILL_TAXONOMY",
+    "PROCESS_AUTHORITY"
+  ],
+  "processes": [
+    {
+      "domain": "Architecture",
+      "current_machine_ref": "00-governance/schemas/architecture-design-development-process.v1.json",
+      "current_machine_blob": "08359be7faf633d3637a7f1dd9b05b2da54e2748",
+      "current_machine_sha256": "e6e035acec815cee0bfd7c8bc139ee5d2f407a92b9efb07e578b95aa63bd7753",
+      "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
+      "stages": {
+        "ADD-00": {
+          "required_capability_roles": [
+            "SOURCE_AUTHORITY_RESEARCH",
+            "ARCHITECTURE_SCOPE_CLAIM_REASONING",
+            "ASSUMPTION_DEPENDENCY_REGISTER",
+            "BASELINE_READBACK_CONTROL"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-01": {
+          "required_capability_roles": [
+            "SITE_CONTEXT_RESEARCH",
+            "GIS_SITE_DATA_ANALYSIS",
+            "SITE_CIRCULATION_ACCESS_DESIGN",
+            "EDITABLE_SITE_PLAN_LEVEL_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-02": {
+          "required_capability_roles": [
+            "USER_ACTIVITY_RESEARCH",
+            "OPERATIONAL_STATE_SERVICE_REASONING",
+            "OCCUPANCY_PROGRAM_DATA",
+            "STATE_FLOW_DIAGRAMMING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-03": {
+          "required_capability_roles": [
+            "BRIEF_PROGRAM_SYNTHESIS",
+            "ROOM_USE_REASONING",
+            "FURNITURE_EQUIPMENT_DATA",
+            "PLAN_MODEL_ROOM_FIT_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-04": {
+          "required_capability_roles": [
+            "RELATIONSHIP_ADJACENCY_REASONING",
+            "OPERATIONAL_CONFLICT_ANALYSIS",
+            "DIAGRAM_DATA_REPRESENTATION",
+            "PLAN_GEOMETRY_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-05": {
+          "required_capability_roles": [
+            "ARCHITECTURAL_OPTION_GENERATION",
+            "COMPARATIVE_CRITERIA_DATA_ANALYSIS",
+            "ZONING_SPATIAL_DESIGN",
+            "OPTION_VISUALIZATION_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-06": {
+          "required_capability_roles": [
+            "MULTI_FLOW_NETWORK_REASONING",
+            "ROUTE_TOPOLOGY_MAPPING",
+            "PLAN_SECTION_GEOMETRY",
+            "PEAK_DEGRADED_OPERATION_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-07": {
+          "required_capability_roles": [
+            "CIRCULATION_DESIGN",
+            "MEASURED_PLAN_SECTION_PRODUCTION",
+            "3D_SPATIAL_READBACK",
+            "ACCESSIBILITY_FIRE_INTERFACE_CHECKING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-08": {
+          "required_capability_roles": [
+            "CODE_SOURCE_RESEARCH",
+            "LIFE_SAFETY_ACCESSIBILITY_SPATIAL_RESERVATION",
+            "PLAN_SECTION_TECHNICAL_READBACK",
+            "SPECIALIST_INTERFACE_HANDOFF"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-09": {
+          "required_capability_roles": [
+            "SERVICE_HYGIENE_SECURITY_WORKFLOW_REASONING",
+            "THRESHOLD_ACCESS_CONTROL_DESIGN",
+            "WET_SERVICE_DATA_COORDINATION",
+            "OPERATIONAL_SEQUENCE_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-10": {
+          "required_capability_roles": [
+            "ARCHITECTURAL_SYSTEM_FIT_REASONING",
+            "3D_BIM_SPATIAL_COORDINATION",
+            "TECHNICAL_PLAN_SECTION_DETAIL_PRODUCTION",
+            "STRUCTURE_MEP_ENVELOPE_INTERFACE_DATA"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-11": {
+          "required_capability_roles": [
+            "CLIMATE_ENVIRONMENT_EVIDENCE_RESEARCH",
+            "ENVIRONMENTAL_SIMULATION_DATA_ANALYSIS",
+            "ARCHITECTURAL_OPTION_ADJUSTMENT",
+            "PLAN_SECTION_MATERIAL_CONSEQUENCE_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-12": {
+          "required_capability_roles": [
+            "SITE_LANDSCAPE_INTEGRATION_REASONING",
+            "GIS_LEVEL_DRAINAGE_DATA",
+            "BUILDING_EDGE_THRESHOLD_DESIGN",
+            "INTEGRATED_SITE_PLAN_SECTION_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-13": {
+          "required_capability_roles": [
+            "FURNISHED_EQUIPPED_SPATIAL_DESIGN",
+            "HUMAN_FACTORS_USE_REASONING",
+            "2D_3D_ROOM_FIT_PRODUCTION",
+            "CLEARANCE_ACCESS_MAINTENANCE_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-14": {
+          "required_capability_roles": [
+            "AREA_DATA_ANALYSIS",
+            "COST_LIFECYCLE_EVIDENCE_INTERPRETATION",
+            "VALUE_TRADEOFF_DESIGN_REASONING",
+            "SCHEDULE_GEOMETRY_CONSEQUENCE_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-15": {
+          "required_capability_roles": [
+            "EXISTING_CONDITION_RESEARCH",
+            "RETENTION_PHASING_OPTION_REASONING",
+            "TECHNICAL_PLAN_SECTION_PRODUCTION",
+            "SEQUENCE_TEMPORARY_STATE_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-16": {
+          "required_capability_roles": [
+            "JURISDICTION_SOURCE_RESEARCH",
+            "REQUIREMENT_RESPONSE_TRACEABILITY",
+            "ARCHITECTURE_RESPONSE_DESIGN",
+            "PROFESSIONAL_STATUTORY_HANDOFF_CONTROL"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "ADD-17": {
+          "required_capability_roles": [
+            "FRESH_NATIVE_ARTIFACT_READBACK",
+            "WHOLE_PLAN_SECTION_DESIGN_CRITIQUE",
+            "CROSS_DOMAIN_CONTRADICTION_ANALYSIS",
+            "INDEPENDENT_REVIEW_BINDING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_ARCHITECTURE_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        }
+      }
+    },
+    {
+      "domain": "Structural Engineering",
+      "current_machine_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "current_machine_blob": "44f8654cf366aa03c559acb8a454003a911bb749",
+      "current_machine_sha256": "0fe6146767c470cdf30ccf89a5ba30a1710751fe4fb1b65c25430c3e23b08d0e",
+      "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
+      "stages": {
+        "SE-SPW0": {
+          "required_capability_roles": [
+            "SOURCE_EVIDENCE_RESEARCH",
+            "STRUCTURAL_STRATEGY_OPTION_REASONING",
+            "SITE_EXISTING_CONDITION_ANALYSIS",
+            "DATA_COMPARISON"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW1": {
+          "required_capability_roles": [
+            "STRUCTURAL_BASIS_DEFINITION",
+            "LOAD_ASSUMPTION_MODELLING",
+            "SOURCE_EVIDENCE_RESEARCH",
+            "STRUCTURED_DATA_SCHEDULE"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW2": {
+          "required_capability_roles": [
+            "STRUCTURAL_OPTION_SPACE_REASONING",
+            "CONCEPT_STRUCTURAL_MODELLING",
+            "3D_SPATIAL_MODEL_READBACK",
+            "COMPARATIVE_DATA_ANALYSIS"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW3": {
+          "required_capability_roles": [
+            "STRUCTURAL_SPATIAL_COORDINATION",
+            "3D_GEOMETRY_MODEL",
+            "TECHNICAL_DRAWING",
+            "INTERFACE_DATA_COORDINATION"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW4": {
+          "required_capability_roles": [
+            "STRUCTURAL_ANALYSIS_CALCULATION",
+            "3D_STRUCTURAL_MODEL",
+            "TECHNICAL_DRAWING_DETAILING",
+            "DESIGN_DATA_CHECKING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW4.5": {
+          "required_capability_roles": [
+            "FABRICATION_INFORMATION_REVIEW",
+            "TECHNICAL_DRAWING_DETAILING",
+            "3D_MODEL_COORDINATION",
+            "SUBMITTAL_AND_RELEASE_QC"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW5": {
+          "required_capability_roles": [
+            "SITE_CONSTRUCTION_READBACK",
+            "FABRICATION_ERECTION_COORDINATION",
+            "NONCONFORMITY_EVIDENCE_REVIEW",
+            "TECHNICAL_RECORD_QC"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW6": {
+          "required_capability_roles": [
+            "HANDOVER_RECONCILIATION",
+            "AS_BUILT_EVIDENCE_READBACK",
+            "MONITORING_BASELINE_DATA",
+            "DELIVERY_PACKAGE_QC"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "SE-SPW7": {
+          "required_capability_roles": [
+            "IN_USE_MONITORING_ANALYSIS",
+            "INSPECTION_EVIDENCE_RESEARCH",
+            "CHANGE_IMPACT_REASONING",
+            "DATA_TREND_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_STRUCTURAL_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        }
+      }
+    },
+    {
+      "domain": "Building Services / MEP",
+      "current_machine_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "current_machine_blob": "2947c0b7a1a9d77fabf46ce7f5d4fbb9700c0b57",
+      "current_machine_sha256": "7f568b8540a7ec9ee1b8a780adf9a98a077f32ac61e553a90489021de0e796d3",
+      "projection_semantic_class": "NON_AUTHORITY_RUNTIME_COMPATIBILITY_PROJECTION",
+      "stages": {
+        "BSP-STRATEGIC": {
+          "required_capability_roles": [
+            "UTILITY_EXISTING_SYSTEM_RESEARCH",
+            "MEP_STRATEGY_OPTION_REASONING",
+            "SITE_INFRASTRUCTURE_DATA_ANALYSIS",
+            "ENERGY_RESILIENCE_COMPARISON"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-BRIEF": {
+          "required_capability_roles": [
+            "BASIS_OF_DESIGN_DEFINITION",
+            "DEMAND_LOAD_ASSUMPTION_MODELLING",
+            "SURVEY_INVESTIGATION_RESEARCH",
+            "COMMISSIONING_ACCEPTANCE_PLANNING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-CONCEPT": {
+          "required_capability_roles": [
+            "SYSTEM_TOPOLOGY_OPTION_REASONING",
+            "LOAD_AND_DIVERSITY_CALCULATION",
+            "SYSTEM_DIAGRAM_PRODUCTION",
+            "ENERGY_RESILIENCE_ANALYSIS"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-SPATIAL": {
+          "required_capability_roles": [
+            "MEP_SPATIAL_COORDINATION",
+            "3D_ROUTE_AND_PLANT_MODEL",
+            "TECHNICAL_DRAWING",
+            "MAINTENANCE_REPLACEMENT_ACCESS_READBACK"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-TECHNICAL": {
+          "required_capability_roles": [
+            "MEP_ENGINEERING_CALCULATION",
+            "CONTROLS_SEQUENCE_DESIGN",
+            "TECHNICAL_DRAWING_AND_SCHEDULE",
+            "COMMISSIONING_TEST_DEFINITION"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-PRODUCTION": {
+          "required_capability_roles": [
+            "INSTALLATION_INFORMATION_REVIEW",
+            "TECHNICAL_DRAWING_AND_SCHEDULE",
+            "EQUIPMENT_SUBMITTAL_REVIEW",
+            "3D_INSTALLATION_COORDINATION"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-CONSTRUCTION-CX": {
+          "required_capability_roles": [
+            "INSTALLATION_SITE_READBACK",
+            "PRE_FUNCTIONAL_AND_FUNCTIONAL_TESTING",
+            "TAB_BALANCING_DATA_ANALYSIS",
+            "DEFECT_NONCONFORMITY_TRACKING"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-HANDOVER": {
+          "required_capability_roles": [
+            "O_AND_M_ASSET_DATA_RECONCILIATION",
+            "TRAINING_AND_OPERATIONAL_READINESS",
+            "COMMISSIONING_RECORD_QC",
+            "DELIVERY_PACKAGE_QC"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        },
+        "BSP-INUSE": {
+          "required_capability_roles": [
+            "MEASURED_PERFORMANCE_ANALYSIS",
+            "TREND_METER_DATA_VISUALIZATION",
+            "FINE_TUNING_CHANGE_REASONING",
+            "OCCUPANT_OPERATION_FEEDBACK_RESEARCH"
+          ],
+          "supporting_capability_roles": [
+            "CROSS_DOMAIN_INTERFACE_COORDINATION",
+            "INDEPENDENT_MEP_REVIEW_BINDING"
+          ],
+          "multi_skill_required_when": [
+            "multiple material native outputs require different capability owners or authoritative execution surfaces",
+            "a specialist or technical capability cannot be collapsed into the general design owner without widening authority",
+            "producer execution and required independent review must remain separate"
+          ],
+          "single_owner_allowed_when": [
+            "one Current callable owner demonstrably covers every active required capability, native output and readback without authority or fidelity loss"
+          ],
+          "owner_set_recompute_triggers": [
+            "professional stage changes",
+            "material decision object or claim changes",
+            "required native output, readback or interface handoff changes",
+            "selected owner or tool becomes unavailable or insufficient",
+            "HOLD release condition activates a new verification route"
+          ],
+          "forbidden_substitutions": [
+            "research or evidence resolution replaced by unsupported design intuition",
+            "domain-native source or readback replaced by presentation derivative",
+            "specialist or technical authority replaced by a general design execution owner",
+            "independent review replaced by producer self-check",
+            "material design dimension dropped only to reduce owner count"
+          ],
+          "composition_readback_requirements": [
+            "each active required capability role resolves to a Current callable owner or explicit HOLD",
+            "each material native output and readback identifies execution and readback ownership",
+            "typed handoffs between distinct owners are explicit and accepted before stage closure",
+            "omitted supporting capabilities have an explicit N/A or not-triggered reason"
+          ]
+        }
+      }
+    }
+  ]
+}

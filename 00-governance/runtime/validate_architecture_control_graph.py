@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -36,6 +38,105 @@ REQUIRED_OBSERVABILITY = {
     "next_allowed_action",
     "observed_at",
 }
+
+
+def _git_output(*args: str) -> str:
+    return subprocess.check_output(args, cwd=ROOT, text=True, encoding="utf-8").strip()
+
+
+def _validate_professional_candidate_mutation_manifest(candidate_record: dict, binding: dict) -> dict:
+    manifest_ref = binding.get("mutation_manifest_ref")
+    manifest_id = binding.get("mutation_manifest_id")
+    if not manifest_ref or not manifest_id:
+        fail("professional-process Candidate binding missing exact mutation manifest ref/id")
+    manifest_path = ROOT / manifest_ref
+    if not manifest_path.is_file():
+        fail(f"professional-process Candidate mutation manifest missing: {manifest_ref}")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("manifest_id") != manifest_id:
+        fail("professional-process Candidate mutation manifest id drift")
+    baseline = candidate_record.get("baseline", {}).get("source_hash_or_commit")
+    if manifest.get("baseline_commit") != baseline:
+        fail("professional-process Candidate mutation manifest baseline drift")
+    expected_source_revision = f"origin/main@{baseline}+manifest:{manifest_id}"
+    if binding.get("source_revision_or_commit") != expected_source_revision:
+        fail("professional-process Candidate source_revision_or_commit does not bind the exact mutation manifest")
+
+    entries = manifest.get("material_files", [])
+    if not entries or manifest.get("material_delta_count") != len(entries):
+        fail("professional-process Candidate mutation manifest material file count drift")
+    manifest_paths: list[str] = []
+    for entry in entries:
+        rel = str(entry.get("path") or "")
+        if not rel or rel in manifest_paths:
+            fail("professional-process Candidate mutation manifest has empty/duplicate path")
+        manifest_paths.append(rel)
+        path = ROOT / rel
+        if not path.is_file():
+            fail(f"professional-process Candidate manifest file missing: {rel}")
+        raw = path.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != entry.get("sha256"):
+            fail(f"professional-process Candidate manifest SHA256 stale: {rel}")
+        if len(raw) != entry.get("bytes"):
+            fail(f"professional-process Candidate manifest byte count stale: {rel}")
+        if _git_output("git", "hash-object", rel) != entry.get("git_blob"):
+            fail(f"professional-process Candidate manifest Git blob stale: {rel}")
+
+    scope_exclusion_prefixes = manifest.get("scope_exclusion_prefixes", [])
+    if not isinstance(scope_exclusion_prefixes, list) or any(
+        not isinstance(prefix, str) or not prefix for prefix in scope_exclusion_prefixes
+    ):
+        fail("professional-process Candidate mutation manifest scope exclusion prefixes malformed")
+    allowed_sync_prefix = "00-governance/receipts/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_SYNC_"
+    if any(prefix != allowed_sync_prefix for prefix in scope_exclusion_prefixes):
+        fail("professional-process Candidate mutation manifest uses an unbounded scope exclusion prefix")
+
+    fingerprint_payload = "\n".join(
+        [
+            f"baseline={manifest.get('baseline_commit')}",
+            f"manifest_id={manifest_id}",
+            *[f"scope_exclusion_prefix={prefix}" for prefix in scope_exclusion_prefixes],
+        ]
+        + [
+            f"{entry['path']}|{entry['sha256']}|{entry['git_blob']}|{entry['bytes']}"
+            for entry in entries
+        ]
+    )
+    fingerprint = hashlib.sha256(fingerprint_payload.encode("utf-8")).hexdigest()
+    if manifest.get("manifest_content_fingerprint_sha256") != fingerprint:
+        fail("professional-process Candidate mutation manifest fingerprint drift")
+
+    current_changed = set(
+        filter(None, _git_output("git", "diff", "--name-only", baseline, "--").splitlines())
+    )
+    current_untracked = set(
+        filter(None, _git_output("git", "ls-files", "--others", "--exclude-standard").splitlines())
+    )
+    current_material = (current_changed | current_untracked) - {str(manifest_ref)}
+    current_material = {
+        rel
+        for rel in current_material
+        if not any(rel.startswith(prefix) for prefix in scope_exclusion_prefixes)
+    }
+    if current_material != set(manifest_paths):
+        missing = sorted(current_material - set(manifest_paths))
+        stale = sorted(set(manifest_paths) - current_material)
+        fail(
+            "professional-process Candidate mutation manifest scope drift: "
+            f"unlisted_current={missing} stale_manifest_entries={stale}"
+        )
+
+    for assertion in manifest.get("unchanged_current_professional_machine_assertions", []):
+        rel = assertion.get("path")
+        if not rel:
+            fail("professional-process Candidate manifest has malformed Current-machine assertion")
+        base_blob = _git_output("git", "rev-parse", f"{baseline}:{rel}")
+        worktree_blob = _git_output("git", "hash-object", rel)
+        if assertion.get("base_git_blob") != base_blob or assertion.get("working_tree_git_blob") != worktree_blob:
+            fail(f"professional-process Candidate Current-machine assertion stale: {rel}")
+        if worktree_blob != base_blob or assertion.get("unchanged") is not True:
+            fail(f"professional-process Candidate illegally mutates Current professional machine: {rel}")
+    return manifest
 REQUIRED_MACHINE_DENIES = {
     "AWARD_DESIGN_KEEP",
     "AWARD_DQ3_DQ5",
@@ -425,6 +526,29 @@ def validate_observability_recovery_contract(graph: dict, layers_by_id: dict[str
 
 def main() -> None:
     graph = load_graph()
+    stage_chain = graph.get("professional_stage_canonical_execution_chain", {})
+    expected_stage_chain = [
+        "PROFESSIONAL_STAGE",
+        "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+        "KNOWLEDGE_INPUTS",
+        "OPERATIONAL_KNOWLEDGE_MOUNT",
+        "REQUIRED_CAPABILITY_ROLES",
+        "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+        "NATIVE_OUTPUTS",
+        "ACTUAL_READBACK",
+        "INDEPENDENT_REVIEW",
+        "STAGE_CLOSURE",
+    ]
+    if stage_chain.get("chain") != expected_stage_chain:
+        fail("architecture control graph professional-stage canonical execution chain drift")
+    if stage_chain.get("authority_rule") != "ONE_CANONICAL_TOP_LEVEL_STAGE_SPINE_ACROSS_ALL_PROFESSIONAL_DOMAINS":
+        fail("architecture control graph professional-stage spine authority rule drift")
+    if "MUST_NOT_CREATE_AN_EXTRA_TOP_LEVEL_PROFESSIONAL_STAGE_STEP" not in str(
+        stage_chain.get("auxiliary_binding_rule") or ""
+    ):
+        fail("architecture control graph must keep auxiliary bindings subordinate to canonical stage spine")
+    if "INDEPENDENT_REVIEW" not in str(stage_chain.get("closure_rule") or ""):
+        fail("architecture control graph Stage Closure must require triggered Independent Review")
 
     if graph.get("schema") != "oleander.architecture-control-graph.v2.1":
         fail("unexpected schema id")
@@ -545,6 +669,255 @@ def main() -> None:
             fail(f"{domain} must not be auto-promoted beyond current evidence")
         if row.get("current_process_ref") is not None:
             fail(f"{domain} declares a process ref while state remains PROCESS_OPEN")
+        if row.get("candidate_evaluation_mode") != "BOUNDED_NON_CURRENT_PROJECT_EXERCISE":
+            fail(f"{domain} PROCESS_OPEN candidate must use bounded non-Current project exercise mode")
+        if row.get("project_exercised_claim") is not False:
+            fail(f"{domain} candidate exercise evidence may not become a Current project-exercised claim")
+        for candidate_ref_field in (
+            "candidate_process_ref",
+            "candidate_machine_schema_ref",
+            "candidate_evolution_ref",
+        ):
+            candidate_ref = row.get(candidate_ref_field)
+            if not candidate_ref:
+                fail(f"{domain} PROCESS_OPEN candidate missing {candidate_ref_field}")
+            check_ref(candidate_ref)
+        candidate_record = json.loads(
+            (ROOT / row["candidate_evolution_ref"]).read_text(encoding="utf-8")
+        )
+        candidate_contract = json.loads(EVOLUTION_CANDIDATE.read_text(encoding="utf-8"))
+        for required in candidate_contract.get("required_candidate_fields", []):
+            if required not in candidate_record:
+                fail(f"{domain} candidate evolution record missing required field {required}")
+        for object_key, contract_field_key in (
+            ("baseline", "baseline_required_fields"),
+            ("evaluation", "evaluation_required_fields"),
+            ("constraints", "constraint_required_fields"),
+            ("comparison", "comparison_required_fields"),
+            ("independent_review", "independent_review_required_fields"),
+            ("promotion", "promotion_required_fields"),
+            ("migration", "migration_required_fields"),
+            ("rollback", "rollback_required_fields"),
+            ("monitoring", "monitoring_required_fields"),
+        ):
+            payload = candidate_record.get(object_key, {})
+            for required in candidate_contract.get(contract_field_key, []):
+                if required not in payload:
+                    fail(f"{domain} candidate evolution {object_key} missing required field {required}")
+        if candidate_record.get("state") not in {
+            "EV1_CANDIDATE",
+            "EV2_EVAL_READY",
+            "EV3_EVAL_PASSED",
+            "EV4_INDEPENDENT_REVIEWED",
+            "EV5_PROMOTION_READY",
+            "EVH_HOLD",
+        }:
+            fail(f"{domain} candidate evolution state is not legal for bounded evaluation")
+        if candidate_record.get("target_class") != "PROFESSIONAL_PROCESS_DEFINITIONS":
+            fail(f"{domain} candidate evolution record target_class drift")
+        if candidate_record.get("target_ref") != row.get("candidate_machine_schema_ref"):
+            fail(f"{domain} candidate evolution target_ref does not match graph machine candidate")
+        binding = candidate_record.get("candidate_definition_binding", {})
+        if binding.get("prose_ref") != row.get("candidate_process_ref"):
+            fail(f"{domain} candidate evolution prose binding does not match graph candidate")
+        if binding.get("machine_ref") != row.get("candidate_machine_schema_ref"):
+            fail(f"{domain} candidate evolution machine binding does not match graph candidate")
+        _validate_professional_candidate_mutation_manifest(candidate_record, binding)
+        machine_path = ROOT / row["candidate_machine_schema_ref"]
+        actual_machine_sha256 = hashlib.sha256(machine_path.read_bytes()).hexdigest()
+        if binding.get("machine_sha256") != actual_machine_sha256:
+            fail(f"{domain} candidate evolution machine_sha256 is stale")
+        machine_definition = json.loads(machine_path.read_text(encoding="utf-8"))
+        machine_stages = machine_definition.get("stages", [])
+        if binding.get("stage_count") != len(machine_stages):
+            fail(f"{domain} candidate evolution stage_count is stale")
+        distinct_profiles = {
+            tuple(
+                stage.get("stage_execution_requirements", {}).get(
+                    "required_capability_roles", []
+                )
+            )
+            for stage in machine_stages
+        }
+        if any(
+            not isinstance(stage.get("stage_execution_requirements"), dict)
+            or not stage.get("stage_execution_requirements", {}).get("required_capability_roles")
+            for stage in machine_stages
+        ):
+            fail(f"{domain} Candidate stages must declare non-empty stage_execution_requirements")
+        if binding.get("distinct_required_capability_profiles") != len(distinct_profiles):
+            fail(f"{domain} candidate evolution capability-profile count is stale")
+        runtime_exercise = candidate_record.get("runtime_exercise", {})
+        if runtime_exercise.get("current_candidate_revision_exercised") is True:
+            real_project_counted = runtime_exercise.get("real_project_exercise_counted") is True
+            graph_evidence_state = str(row.get("candidate_project_exercise_evidence_state") or "")
+            if real_project_counted and (
+                "CURRENT_REVISION" not in graph_evidence_state
+                or "NOT_PROJECT_ADOPTION" in graph_evidence_state
+            ):
+                fail(f"{domain} graph candidate evidence state understates or contradicts counted real-project reapplication")
+            if not real_project_counted and "NOT_PROJECT_ADOPTION" not in graph_evidence_state:
+                fail(f"{domain} graph must explicitly preserve non-project-adoption ceiling for bounded context reapplication")
+            if runtime_exercise.get("current_candidate_stage_composition_owner_resolution_exercised") is not True:
+                fail(f"{domain} current-revision exercise must include stage composition owner-resolution readback")
+            if runtime_exercise.get("current_candidate_knowledge_mount_gate_exercised") is not True:
+                fail(f"{domain} current-revision exercise must execute the task/claim Knowledge Mount gate")
+            real_case_refs = candidate_record.get("evaluation", {}).get("real_case_refs", [])
+            if not real_case_refs:
+                fail(f"{domain} current-revision exercise has no real_case_refs")
+            for real_case_ref in real_case_refs:
+                check_ref(real_case_ref)
+            recovery = candidate_record.get("continuation_recovery", {})
+            evaluation_receipt_ref = recovery.get("evaluation_receipt_ref")
+            successor_receipt_ref = recovery.get("successor_receipt_ref")
+            checkpoint_ref = recovery.get("continuation_checkpoint_ref")
+            if not evaluation_receipt_ref or not checkpoint_ref:
+                fail(f"{domain} current-revision HOLD evaluation must bind evaluation receipt and continuation checkpoint")
+            check_ref(evaluation_receipt_ref)
+            check_ref(checkpoint_ref)
+            evaluation_receipt = json.loads((ROOT / evaluation_receipt_ref).read_text(encoding="utf-8"))
+            checkpoint = json.loads((ROOT / checkpoint_ref).read_text(encoding="utf-8"))
+            if evaluation_receipt.get("current_candidate_revision_exercised") is not True:
+                fail(f"{domain} evaluation receipt does not prove current candidate revision evaluation")
+            if evaluation_receipt.get("stage_composition_owner_resolution_exercised") is not True:
+                fail(f"{domain} evaluation receipt lacks stage composition owner-resolution readback")
+            if evaluation_receipt.get("knowledge_mount_gate_exercised") is not True:
+                fail(f"{domain} evaluation receipt lacks Knowledge Mount gate readback")
+            evaluation_binding = evaluation_receipt.get("candidate_binding", {})
+            if evaluation_binding.get("machine_ref") != row.get("candidate_machine_schema_ref"):
+                fail(f"{domain} evaluation receipt candidate machine ref drift")
+            if evaluation_binding.get("machine_sha256") != actual_machine_sha256:
+                fail(f"{domain} evaluation receipt candidate machine hash is stale")
+            if checkpoint.get("candidate_process_ref") != row.get("candidate_machine_schema_ref"):
+                fail(f"{domain} continuation checkpoint candidate process ref drift")
+            if checkpoint.get("candidate_machine_sha256") != actual_machine_sha256:
+                fail(f"{domain} continuation checkpoint candidate machine hash is stale")
+            if checkpoint.get("release_condition_readback") != "UNSATISFIED":
+                fail(f"{domain} current HOLD evaluation currently claims a release condition other than evidenced UNSATISFIED")
+            if evaluation_receipt.get("hold_release_condition_satisfied") is not False:
+                fail(f"{domain} evaluation receipt must not claim HOLD release while release evidence is absent")
+            if evaluation_receipt.get("selective_retest_executed") is not False:
+                fail(f"{domain} evaluation receipt may not claim selective retest before release")
+            if successor_receipt_ref is not None or evaluation_receipt.get("successor_receipt_ref") is not None:
+                fail(f"{domain} may not emit a successor receipt before release and actual selective retest")
+            stage_evidence = candidate_record.get("stage_composition_evidence", {})
+            required_stage_evidence_fields = {
+                "stage_scope",
+                "canonical_stage_execution_chain",
+                "professional_question_or_decision_object_refs",
+                "knowledge_inputs",
+                "operational_knowledge_mount_refs",
+                "required_capability_roles",
+                "resolved_owner_set",
+                "native_output_refs",
+                "multi_skill_dag_ref_or_single_owner_justification",
+                "typed_handoff_refs",
+                "actual_readback_refs",
+                "independent_review_refs",
+                "stage_closure_state",
+                "omitted_capability_reasoning",
+            }
+            missing_stage_evidence_fields = sorted(
+                required_stage_evidence_fields - set(stage_evidence)
+            )
+            if missing_stage_evidence_fields:
+                fail(
+                    f"{domain} stage-composition evidence missing canonical chain fields: "
+                    + ", ".join(missing_stage_evidence_fields)
+                )
+            expected_stage_chain = [
+                "PROFESSIONAL_STAGE",
+                "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
+                "KNOWLEDGE_INPUTS",
+                "OPERATIONAL_KNOWLEDGE_MOUNT",
+                "REQUIRED_CAPABILITY_ROLES",
+                "CURRENT_EXECUTION_OWNERS_OR_SKILLS",
+                "NATIVE_OUTPUTS",
+                "ACTUAL_READBACK",
+                "INDEPENDENT_REVIEW",
+                "STAGE_CLOSURE",
+            ]
+            if stage_evidence.get("canonical_stage_execution_chain") != expected_stage_chain:
+                fail(f"{domain} stage-composition evidence canonical stage chain order drift")
+            for evidence_ref in stage_evidence.get("actual_readback_refs", []):
+                check_ref(evidence_ref)
+            comparison_ref = candidate_record.get("comparison", {}).get("evidence_ref")
+            if not comparison_ref:
+                fail(f"{domain} current-revision exercised candidate must bind baseline-vs-candidate comparison evidence")
+            check_ref(comparison_ref)
+            comparison = json.loads((ROOT / comparison_ref).read_text(encoding="utf-8"))
+            if comparison.get("target_class") != "PROFESSIONAL_PROCESS_DEFINITIONS":
+                fail(f"{domain} comparison evidence target_class drift")
+            if comparison.get("candidate", {}).get("professional_machine_stage_count") != 79:
+                fail(f"{domain} comparison evidence professional stage-count drift")
+            if comparison.get("candidate", {}).get("unique_required_and_supporting_capability_roles") != 308:
+                fail(f"{domain} comparison evidence capability-role count drift")
+            if comparison.get("candidate", {}).get("roles_using_unnamed_owner_routing_fallback") != 0:
+                fail(f"{domain} comparison evidence must preserve zero unnamed routing fallbacks")
+        candidate_state = candidate_record.get("state")
+        if candidate_state in {"EV3_EVAL_PASSED", "EV4_INDEPENDENT_REVIEWED", "EV5_PROMOTION_READY"}:
+            if candidate_record.get("evaluation", {}).get("result") != "PASS":
+                fail(f"{domain} {candidate_state} requires evaluation.result=PASS")
+            if runtime_exercise.get("real_project_exercise_counted") is not True:
+                fail(f"{domain} {candidate_state} requires at least one authentic real-project exercise")
+            stage_evidence = candidate_record.get("stage_composition_evidence", {})
+            if stage_evidence.get("knowledge_mount_gate") != "PASS":
+                fail(f"{domain} {candidate_state} requires task/claim Knowledge Mount gate PASS")
+            if not stage_evidence.get("operational_knowledge_mount_refs"):
+                fail(f"{domain} {candidate_state} requires mounted operational knowledge refs")
+            if not stage_evidence.get("native_output_refs"):
+                fail(f"{domain} {candidate_state} requires native-output evidence in the canonical stage chain")
+            if not stage_evidence.get("actual_readback_refs"):
+                fail(f"{domain} {candidate_state} requires stage composition actual readback evidence")
+            if not stage_evidence.get("independent_review_refs"):
+                fail(f"{domain} {candidate_state} requires independent-review evidence before stage closure")
+            if stage_evidence.get("stage_closure_state") != "PASS":
+                fail(f"{domain} {candidate_state} requires canonical Stage Closure PASS")
+        if candidate_state in {"EV4_INDEPENDENT_REVIEWED", "EV5_PROMOTION_READY"}:
+            review = candidate_record.get("independent_review", {})
+            if review.get("independence_state") != "INDEPENDENT":
+                fail(f"{domain} {candidate_state} requires an independent domain-professional reviewer")
+            if review.get("reviewer_id") in {None, "", "NOT_ASSIGNED"}:
+                fail(f"{domain} {candidate_state} requires a bound reviewer identity")
+            if review.get("review_input_revision") != actual_machine_sha256:
+                fail(f"{domain} {candidate_state} independent review must bind the exact Candidate machine revision")
+            if review.get("verdict") != "PASS":
+                fail(f"{domain} {candidate_state} requires independent review verdict PASS")
+        if candidate_state == "EV5_PROMOTION_READY":
+            recovery = candidate_record.get("continuation_recovery", {})
+            if runtime_exercise.get("current_candidate_hold_release_selective_retest_exercised") is not True:
+                fail(f"{domain} EV5 requires an actual post-release selective retest")
+            if recovery.get("release_condition_readback") != "SATISFIED_ON_CURRENT_CANDIDATE_REVISION":
+                fail(f"{domain} EV5 requires release-condition satisfaction readback")
+            if recovery.get("selective_retest_readback") != "PASS_AFFECTED_BINDINGS_ONLY":
+                fail(f"{domain} EV5 requires affected-binding selective retest PASS readback")
+            successor_ref = recovery.get("successor_receipt_ref")
+            if not successor_ref:
+                fail(f"{domain} EV5 requires a successor receipt bound to the retest result")
+            check_ref(successor_ref)
+            successor = json.loads((ROOT / successor_ref).read_text(encoding="utf-8"))
+            if successor.get("hold_release_condition_satisfied") is not True:
+                fail(f"{domain} EV5 successor receipt must bind satisfied release condition")
+            if successor.get("selective_retest_executed") is not True:
+                fail(f"{domain} EV5 successor receipt must bind actual selective retest")
+            stage_evidence = candidate_record.get("stage_composition_evidence", {})
+            resolved_owner_set = stage_evidence.get("resolved_owner_set", [])
+            dag_ref = stage_evidence.get("multi_skill_dag_ref_or_single_owner_justification")
+            typed_handoffs = stage_evidence.get("typed_handoff_refs", [])
+            if len(resolved_owner_set) > 1:
+                if not dag_ref or str(dag_ref).startswith("NOT_"):
+                    fail(f"{domain} EV5 multi-owner stage requires a materialized Multi-Skill DAG ref")
+                check_ref(dag_ref)
+                if not typed_handoffs:
+                    fail(f"{domain} EV5 multi-owner stage requires typed-handoff records")
+                for handoff_ref in typed_handoffs:
+                    check_ref(handoff_ref)
+            if candidate_record.get("adoption_blockers"):
+                fail(f"{domain} EV5 may not retain adoption blockers")
+        if candidate_record.get("promotion", {}).get("eligible") is True and candidate_state != "EV5_PROMOTION_READY":
+            fail(f"{domain} candidate cannot be promotion-eligible before EV5_PROMOTION_READY")
+        if candidate_state != "EV5_PROMOTION_READY" and candidate_record.get("promotion", {}).get("eligible") is True:
+            fail(f"{domain} non-EV5 candidate may not be promotion eligible")
 
     rights = graph.get("decision_rights", {})
     machine_denies = set(rights.get("machine_may_not", []))
@@ -974,9 +1347,17 @@ def main() -> None:
         fail("evolution requires rollback and migration provenance")
     if evolution.get("one_success_may_universalize_rule") is not False:
         fail("one project success may not universalize an OLEANDER rule")
-    required_evolution_steps = {"FREEZE_CURRENT_BASELINE", "GENERATE_ISOLATED_VARIANTS", "RUN_TARGET_SPECIFIC_EVALS", "RUN_CONSTRAINT_AND_REGRESSION_GATES", "INDEPENDENT_REVIEW", "HUMAN_PROMOTION_DECISION", "ACTUAL_READBACK", "POST_ADOPTION_MONITORING"}
+    required_evolution_steps = {"FREEZE_CURRENT_BASELINE", "GENERATE_ISOLATED_VARIANTS", "RUN_BOUNDED_REAL_PROJECT_EXERCISE_AS_APPLICABLE", "RUN_TARGET_SPECIFIC_EVALS", "VERIFY_STAGE_SPECIFIC_CAPABILITY_RECOMPOSITION_AS_APPLICABLE", "VERIFY_HOLD_RELEASE_SELECTIVE_RETEST_AS_APPLICABLE", "RUN_CONSTRAINT_AND_REGRESSION_GATES", "INDEPENDENT_REVIEW", "HUMAN_PROMOTION_DECISION", "ACTUAL_READBACK", "POST_ADOPTION_MONITORING"}
     if not required_evolution_steps.issubset(set(evolution.get("loop", []))):
         fail("controlled evolution loop incomplete")
+    if evolution.get("professional_process_candidate_evaluation_mode") != "BOUNDED_NON_CURRENT_PROJECT_EXERCISE":
+        fail("professional-process candidate evaluation mode drift")
+    if evolution.get("professional_process_candidate_current_authority_during_eval") != "PROCESS_OPEN_CURRENT_PROCESS_REF_NULL":
+        fail("professional-process candidate evaluation must preserve PROCESS_OPEN/current_process_ref=null")
+    if evolution.get("professional_process_adoption_requires_stage_recomposition_evidence") is not True:
+        fail("professional-process adoption must require stage recomposition evidence")
+    if evolution.get("professional_process_adoption_requires_selective_retest_evidence") is not True:
+        fail("professional-process adoption must require selective retest evidence")
     protected = set(evolution.get("protected_targets", []))
     for required in {"CURRENT_AUTHORITY_IDENTITY", "ACTIVE_USER_CONSTRAINTS", "HUMAN_PROMOTION_RIGHT", "STATUTORY_LICENSED_AUTHORITY"}:
         if required not in protected:
@@ -1129,6 +1510,28 @@ def main() -> None:
         fail("compatibility rollback projection requires Evolution previous_pointer + provenance_ref")
     if "ADOPTION_DOES_NOT_REINTERPRET_OLD_RECEIPTS" not in set(evolution_candidate.get("invariants", [])):
         fail("Evolution contract must preserve old receipt interpretation boundary")
+    professional_policy = evolution_candidate.get("professional_process_candidate_policy", {})
+    if professional_policy.get("evaluation_mode") != "BOUNDED_NON_CURRENT_PROJECT_EXERCISE":
+        fail("Evolution contract professional-process candidate mode drift")
+    if professional_policy.get("current_authority_during_evaluation") != "REMAINS_OPEN_WITH_CURRENT_PROCESS_REF_NULL":
+        fail("Evolution contract must preserve PROCESS_OPEN/current_process_ref=null during candidate exercise")
+    required_professional_ev5 = {
+        "MATERIALLY_DIFFERENT_STAGES_DEMONSTRATE_RECOMPUTED_CAPABILITY_OWNER_SETS",
+        "MULTI_OWNER_STAGE_HAS_DAG_AND_TYPED_HANDOFF_EVIDENCE",
+        "AT_LEAST_ONE_MATERIAL_HOLD_REOPEN_OR_STAGE_SCOPE_CHANGE_DEMONSTRATES_SELECTIVE_REROUTE",
+        "UNAFFECTED_VERIFIED_OUTPUTS_REUSED_RATHER_THAN_FULL_STACK_RESTART",
+        "SUCCESSOR_RECEIPT_BINDS_RETEST_RESULT",
+    }
+    if not required_professional_ev5.issubset(set(professional_policy.get("required_before_ev5", []))):
+        fail("Evolution contract professional-process EV5 evidence gate incomplete")
+    required_professional_invariants = {
+        "PROFESSIONAL_PROCESS_CANDIDATE_EVALUATION_DOES_NOT_CREATE_CURRENT_PROCESS_AUTHORITY",
+        "PROFESSIONAL_PROCESS_ADOPTED_DOES_NOT_MEAN_ONE_OR_TWO_SKILLS_REUSED_THROUGH_EVERY_STAGE",
+        "MINIMUM_SUFFICIENT_OWNER_SET_DOES_NOT_MEAN_MINIMUM_SKILL_COUNT",
+        "HOLD_RELEASE_RETESTS_ONLY_AFFECTED_CAPABILITY_OUTPUT_BINDINGS_UNLESS_DEPENDENCY_ANALYSIS_PROVES_WIDER_STALENESS",
+    }
+    if not required_professional_invariants.issubset(set(evolution_candidate.get("invariants", []))):
+        fail("Evolution contract professional-process adoption invariants incomplete")
 
     try:
         recovery_contract = json.loads(OBSERVABILITY_RECOVERY.read_text(encoding="utf-8"))
