@@ -244,11 +244,105 @@ This batch does not:
 
 ---
 
+# C01 Dagong Hall bounded project exercise｜2026-09-19
+
+A previously unmerged project exercise branch was independently reviewed and carried forward onto current main rather than merged wholesale.
+
+Historical source branch:
+
+`agent/interior-remote-proxy-exercise-20260919`
+
+Adopted project artifacts:
+
+- `C01_INTERIOR_EXISTING_CONDITION_PROXY_REGISTER_v0.1.csv`;
+- `C01_INTERIOR_DAGONGHALL_SPATIAL_ENVELOPE_v0.1.svg`;
+- `C01_INTERIOR_REMOTE_PROXY_READBACK_v0.1.json`;
+- `C01_INTERIOR_PROCESS_INSTANCE_v0.1.json`.
+
+## Why this counts as a real project exercise
+
+The exercise is bound to a real C01 object:
+
+`C01-N02-DAGONG-HALL-LEARNING-MODE`.
+
+It uses published/current project evidence about Dagong Hall, then explicitly separates:
+
+`PUBLISHED / REMOTE PROXY → ALLOWED USE → FORBIDDEN USE → REPLACEMENT EVIDENCE`.
+
+Examples:
+- approximately 500 m² group footprint supports macro scale only, not net usable area/occupancy;
+- approximately 10 m overall height supports vertical-envelope plausibility, not floor-to-floor/ceiling datums;
+- >100 m² first-floor description supports gross-area plausibility, not exact plan/capacity;
+- four through-columns support a no-fixed-attachment/clearance strategy, not spacing/diameter/capacity;
+- RCP/services, accessibility geometry and fire/egress capacity remain `UNKNOWN / NOT_EVIDENCED`.
+
+This is project evidence because it acts on a real project decision object and produces editable/project-specific carriers.
+
+It is not technical Interior closure because the missing information is retained as a blocker instead of fabricated.
+
+## Stage result
+
+- `ID-PW0` — CURRENT evidence / HOLD; strategic support only.
+- `ID-PW1` — CURRENT evidence / HOLD; preparation/brief support only.
+- `ID-PW2` — CURRENT evidence / HOLD; concept support only.
+- `ID-PW3` — BLOCKED / HOLD; no spatial-coordination PASS.
+- `ID-PW4` — BLOCKED / HOLD; no technical-design PASS.
+- `ID-PW5` — NOT_STARTED / NOT_RUN.
+- `ID-PW6` — NOT_STARTED / NOT_RUN.
+- `ID-PW7` — NOT_STARTED / NOT_RUN.
+
+Overall:
+
+`BLOCKED / HOLD`.
+
+## Native artifact boundary
+
+The editable SVG is a **spatial-envelope carrier**, not a measured plan/RCP.
+
+It may support:
+- movable/non-contact layout plausibility;
+- M0/M1/M2 operating-mode comparison;
+- sensitivity to unknown structural/entry/clearance conditions.
+
+It may not support:
+- measured plan/section;
+- coordinated RCP;
+- fire/egress capacity;
+- accessibility;
+- joinery/door/finish technical release;
+- MEP coordination;
+- procurement or construction.
+
+## Adoption meaning
+
+This closes the Interior Candidate promotion prerequisite:
+
+> at least one real project exercise produces native interior artifacts **or a justified HOLD** against real source evidence.
+
+It does **not** close:
+- material Architecture/MEP/fire/accessibility/product/procurement interface exercise;
+- ID-PW3/PW4 native technical objects;
+- independent Interior professional review;
+- field Reality Gate 2;
+- Current promotion.
+
+Therefore Interior adoption frontier moves from:
+
+`DEFINITION_ONLY`
+
+to:
+
+`REAL PROJECT BOUNDED STRATEGIC/BRIEF/CONCEPT EXERCISE / SPATIAL+TECHNICAL HOLD`.
+
+No new formal maturity state is created by this wording.
+
+---
+
 # Maturity
 
 Current evidence ceiling:
 
-`CANDIDATE PROCESS / HISTORICAL CANDIDATE CONTENT PRESERVED / 2026 PROFESSIONAL TASK EVIDENCE / MACHINE DEFINITION / PRACTITIONER RELEASE OBJECTS / AIG FAILURE REGRESSION / PROJECT EXERCISE NOT CLAIMED / INDEPENDENT INTERIOR PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
+`CANDIDATE PROCESS / HISTORICAL CANDIDATE CONTENT PRESERVED / 2026 PROFESSIONAL TASK EVIDENCE / MACHINE DEFINITION / PRACTITIONER RELEASE OBJECTS / AIG FAILURE REGRESSION / C01 BOUNDED REAL-PROJECT EXERCISE / ID-PW3+PW4 HOLD / INDEPENDENT INTERIOR PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION`.
 
 The remaining Interior gap is no longer process granularity.
 
