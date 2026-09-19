@@ -1480,8 +1480,41 @@
       "Door / Opening / Hardware Coordination Register",
       "Finish / Substrate / Transition Register",
       "Joinery / Millwork Production Register",
-      "Submittal / Sample / Mockup / Substitution Release Register"
+      "Submittal / Sample / Mockup / Substitution Release Register",
+      "Professional Object Identity / Revision / Release Register"
     ],
+    "object_identity_contract": {
+      "applies_to": [
+        "room / zone",
+        "RCP zone",
+        "door / opening / hardware set",
+        "finish",
+        "joinery / millwork",
+        "FF&E / equipment",
+        "detail",
+        "submittal / mockup / sample",
+        "installed / closeout item"
+      ],
+      "required_fields": [
+        "stable object id",
+        "object class / location",
+        "current revision / configuration",
+        "native source ref",
+        "product / material / fabrication identity when material",
+        "responsible owner",
+        "interface refs",
+        "release state / claim boundary",
+        "actual readback ref",
+        "open item / reopen trigger"
+      ],
+      "rules": [
+        "tag alone is insufficient where drawings/schedules/specifications/product data/field records can diverge",
+        "Current resolves one owner-native bounded revision/configuration rather than latest-file prose",
+        "substitution creates a successor configuration and cannot silently inherit prior release/readback",
+        "actual readback binds the released object identity/revision/configuration or records the observed deviation",
+        "owner/source/revision/configuration/installed-identity/interface change reopens affected consumers"
+      ]
+    },
     "implementation_field_objects": [
       "site observation/change records",
       "submittal/shop drawing/sample/mockup review",
@@ -1499,7 +1532,8 @@
     "change_propagation_objects": [
       "room/RCP/detail/schedule/spec consistency reopen",
       "submittal/field-change propagation",
-      "closeout installed-identity reopen"
+      "closeout installed-identity reopen",
+      "object revision/configuration/owner/source identity change propagation"
     ],
     "does_not_require": [
       "same structural/MEP engineering artifacts",
