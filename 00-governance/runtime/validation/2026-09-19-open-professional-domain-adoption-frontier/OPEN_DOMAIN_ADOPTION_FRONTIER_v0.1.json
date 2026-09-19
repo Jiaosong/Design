@@ -445,15 +445,6 @@
         "does_not_prove_boundaries": 30,
         "parity_rule": "Equivalent Lighting Design execution depth is demonstrated through visual-task criteria, model configuration, luminaire/control release, mockup/substitution, commissioning/aiming measurement and replacement equivalence objects."
       },
-      "Digital Product / Human-Centred Design": {
-        "execution_depth_contract_present": true,
-        "stage_count": 8,
-        "native_output_objects": 60,
-        "readback_checks": 26,
-        "reopen_triggers": 8,
-        "does_not_prove_boundaries": 39,
-        "parity_rule": "Equivalent HCD execution depth is demonstrated through research eligibility, version-bound findings, fix/build/retest evidence, release support, cross-functional handoffs and live outcome objects rather than screen completeness."
-      },
       "Systems Engineering": {
         "execution_depth_contract_present": true,
         "stage_count": 9,
@@ -462,6 +453,16 @@
         "reopen_triggers": 9,
         "does_not_prove_boundaries": 37,
         "parity_rule": "Equivalent Systems Engineering execution depth is demonstrated through controlled needs/requirements/architecture/interface/configuration/V&V/change objects, not by generic systems diagrams or process-stage labels."
+      },
+      "Digital Product / HCD": {
+        "execution_depth_contract_present": true,
+        "stage_count": 8,
+        "native_output_objects": 60,
+        "readback_checks": 26,
+        "reopen_triggers": 8,
+        "does_not_prove_boundaries": 39,
+        "parity_rule": "Equivalent HCD execution depth is demonstrated through research eligibility, version-bound findings, fix/build/retest evidence, release support, cross-functional handoffs and live outcome objects rather than screen completeness.",
+        "machine_domain": "Digital Product / Human-Centred Design"
       }
     },
     "result": "ALL_FIVE_CANDIDATE_DEFINITIONS_HAVE_EXECUTION_DEPTH_CONTRACT_AND_STAGE_NATIVE_OUTPUT_READBACK_REOPEN_BOUNDARIES"
