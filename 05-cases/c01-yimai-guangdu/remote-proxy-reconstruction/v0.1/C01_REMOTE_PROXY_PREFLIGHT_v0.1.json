@@ -1,0 +1,351 @@
+{
+  "schema_version": "c01-remote-proxy-preflight/0.1",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "method_ref": "oleander-skills/oleander-research/REMOTE_PROXY_REALITY_RECONSTRUCTION_EXTENSION.md",
+  "state": "REMOTE PROXY PREFLIGHT / REALITY GATE 2 NOT RUN / E2 UNCHANGED / NO PROMOTION",
+  "purpose": "Use current project evidence plus public current/traceable sources to construct a reality-near provisional spatial baseline without fabricating survey geometry or overriding C01 R04 evidence asymmetry.",
+  "source_register": [
+    {
+      "source_id": "C01-RPX-S01",
+      "type": "CURRENT_PUBLIC_PROCUREMENT",
+      "title": "广渡贺金银至大爿地村庄道路硬化项目",
+      "publisher": "衢州市阳光交易服务平台 / 江山市峡口镇广渡村集体经济组织",
+      "date": "2026-05-28",
+      "url": "https://qzygjy.com/jss/jyxx/001003/001003001/001003001001/20260528/d5f3c613-2d8a-48cb-bb55-57716e160aed.html",
+      "supports": [
+        "2026 current civil works on the Hejinyin–Dapiandi village road",
+        "scope includes concrete road hardening, wave-beam guardrail, reinforced-concrete pipe, reservoir and masonry retaining-wall removal/reinstatement",
+        "Dapiandi approach conditions are temporally active and may differ from older imagery"
+      ],
+      "does_not_prove": "exact road alignment/width/levels because the construction drawing attachment has not been materialized/read back in this run"
+    },
+    {
+      "source_id": "C01-RPX-S02",
+      "type": "CURRENT_LOCAL_MEDIA_WITH_ACCOMPANIED_SITE_OBSERVATION",
+      "title": "牌坊里的女人 / 牌坊里的故事",
+      "publisher": "潮新闻",
+      "date": "2025-03-07",
+      "url": "https://tidenews.com.cn/tmh_news.html?id=67ca9adb3275950001dfb3f8",
+      "supports": [
+        "three archways exist as separate objects",
+        "locations: Shangmashi, Bagu Ting, Dapiandi",
+        "P1 Zhenxiao arch at Shangmashi / village-entry-road relation",
+        "object-person-date narratives used by current C01 R04"
+      ],
+      "does_not_prove": "formal heritage ID mapping, exact coordinate, protection boundary, current stopping safety"
+    },
+    {
+      "source_id": "C01-RPX-S03",
+      "type": "INSTITUTIONAL_PUBLIC_CULTURE_SOURCE",
+      "title": "衢州市首届最美公共文化空间评选——最美融合空间：古韵广渡文化空间",
+      "publisher": "中国网 / 衢州有礼",
+      "date": "2023-12-04",
+      "url": "https://qz.china.com.cn/2023-12/04/content_42621667.html",
+      "supports": [
+        "existing village visitor route is already organized as three cultural circles",
+        "circle 1 = village visitor center / Hand Lion performance",
+        "circle 2 = Guangdu Mao ancestral hall",
+        "circle 3 = Quanjing private school",
+        "village has existing tourism/public-cultural infrastructure and should not be treated as a blank-slate wayfinding site"
+      ],
+      "does_not_prove": "exact route geometry, distances, current 2026 opening/stopping conditions"
+    },
+    {
+      "source_id": "C01-RPX-S04",
+      "type": "REGIONAL_NEWSPAPER / ARCHITECTURAL_DESCRIPTION",
+      "title": "广渡，浙赣边界的文化名村",
+      "publisher": "衢州日报 / syndicated by Sina",
+      "date": "2022-08-15",
+      "url": "https://finance.sina.cn/2022-08-15/detail-imizirav8153420.d.html",
+      "supports": [
+        "Dagong Hall at northeast end by Guangdu Port, approximate area 500 square metres",
+        "Dagong Hall three-storey progressively reduced octagonal structure",
+        "central JieXiao arch: Jiaqing 7 / 1802, published height 7.9 m, width 3.6 m",
+        "north ZhenXiao arch: Daoguang 6 / 1826, published height 7.8 m, width 3.26 m"
+      ],
+      "does_not_prove": "2026 field-measured dimensions or exact protection clearance"
+    },
+    {
+      "source_id": "C01-RPX-S05",
+      "type": "OFFICIAL_TOWN_SPATIAL_PLAN",
+      "title": "江山市峡口镇国土空间总体规划",
+      "publisher": "江山市 / 浙江省政务公开",
+      "date": "2025-publication-context",
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web1839/site/attach/0/a07181206dc948d2b7c158cd26fbcada.pdf",
+      "supports": [
+        "Guangdu is a national traditional village and Zhejiang historical-cultural village",
+        "Dagong Hall is a provincial-level protected cultural property within town protection system",
+        "traditional buildings, overall character, folk culture and natural environment are explicit protection concerns"
+      ],
+      "does_not_prove": "parcel/survey geometry, individual intervention permission"
+    },
+    {
+      "source_id": "C01-RPX-S06",
+      "type": "PUBLIC_HERITAGE_LIST",
+      "title": "江政发〔2010〕55号 / 江山市文物保护单位名录",
+      "publisher": "江山市人民政府",
+      "date": "2010 decision / current public file",
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web1839/site/picture/P020141224379155694037.pdf",
+      "supports": [
+        "Guangdu JieXiao arch, Mao ancestral hall, ZhenXiao arch and Bagua well are individually recognized heritage objects"
+      ],
+      "does_not_prove": "which generic JieXiao official record maps to P2 versus P3"
+    },
+    {
+      "source_id": "C01-RPX-S07",
+      "type": "PUBLIC_HERITAGE_INVENTORY",
+      "title": "浙江省古井名录（2020年）",
+      "publisher": "浙江省 public heritage inventory",
+      "date": "2020 / current public file",
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3028/site/attach/0/5dd3306f30c54b3fbe6de3e810643418.pdf",
+      "supports": [
+        "Bagua well: Guangdu village No.78 north side 3 m",
+        "Four-corner well: Guangdu village No.37 west 1 m",
+        "Quanshui well: Guangdu village No.335 south 3 m"
+      ],
+      "does_not_prove": "current access, route width, protection/installation permission"
+    },
+    {
+      "source_id": "C01-RPX-S08",
+      "type": "GEOREFERENCED_PUBLIC_PHOTO",
+      "title": "Jiangshan Dagongdian 2018.06.23 18-00-11",
+      "publisher": "Wikimedia Commons / author Zhangzhugang",
+      "date": "2018-06-23",
+      "url": "https://commons.wikimedia.org/wiki/File:Jiangshan_Dagongdian_2018.06.23_18-00-11.jpg",
+      "supports": [
+        "photo directly depicts Guangdu Dagong Hall",
+        "camera location 28.428230, 118.460507 provides a local geographic context anchor"
+      ],
+      "does_not_prove": "building centroid/footprint coordinate; camera position is not the building position; 2026 condition"
+    }
+  ],
+  "reality_anchor_register": [
+    {
+      "anchor_id": "C01-RA-01",
+      "type": "OBJECT_IDENTITY_RELATION",
+      "value": "P1 = Shangmashi / Xu-shi ZhenXiao arch / 1826",
+      "confidence": "R2 REMOTE TRIANGULATED",
+      "basis": [
+        "C01 R04",
+        "C01-RPX-S02",
+        "C01-RPX-S04"
+      ],
+      "design_use": "scale and object-identity reference; approach relation",
+      "does_not_prove": "formal heritage ID / exact coordinate / stopping safety"
+    },
+    {
+      "anchor_id": "C01-RA-02",
+      "type": "PUBLISHED_DIMENSION",
+      "value": {
+        "object": "P1 ZhenXiao arch",
+        "height_m": 7.8,
+        "width_m": 3.26
+      },
+      "confidence": "R2 REMOTE TRIANGULATED / PUBLISHED VALUE NOT FIELD RE-MEASURED",
+      "basis": [
+        "C01-RPX-S02",
+        "C01-RPX-S04"
+      ],
+      "design_use": "photo-scale plausibility anchor and comparison baseline",
+      "does_not_prove": "current 2026 measured dimension, clearance or protection boundary"
+    },
+    {
+      "anchor_id": "C01-RA-03",
+      "type": "OBJECT_IDENTITY_RELATION",
+      "value": "P2 = Bagu Ting-front / He-shi JieXiao arch / 1802",
+      "confidence": "R2 REMOTE TRIANGULATED",
+      "basis": [
+        "C01 R04",
+        "C01-RPX-S02",
+        "C01-RPX-S04"
+      ],
+      "design_use": "object comparison and local route relation",
+      "does_not_prove": "generic official JieXiao heritage ID maps uniquely to P2"
+    },
+    {
+      "anchor_id": "C01-RA-04",
+      "type": "PUBLISHED_DIMENSION",
+      "value": {
+        "object": "P2 He-shi JieXiao arch",
+        "height_m": 7.9,
+        "width_m": 3.6
+      },
+      "confidence": "R2 REMOTE TRIANGULATED / PUBLISHED VALUE NOT FIELD RE-MEASURED",
+      "basis": [
+        "C01-RPX-S02",
+        "C01-RPX-S04"
+      ],
+      "design_use": "photo-scale plausibility anchor and comparison baseline",
+      "does_not_prove": "current 2026 measured dimension or exact surrounding clear width"
+    },
+    {
+      "anchor_id": "C01-RA-05",
+      "type": "OBJECT_IDENTITY_RELATION",
+      "value": "P3 = Dapiandi / Liu-shi JieXiao (vegetable-selling) arch / 1830 narrative",
+      "confidence": "R2 REMOTE SOURCE CLAIM",
+      "basis": [
+        "C01 R04",
+        "C01-RPX-S02"
+      ],
+      "design_use": "object identity kept separate from P2",
+      "does_not_prove": "formal heritage mapping, published dimension, exact coordinate"
+    },
+    {
+      "anchor_id": "C01-RA-06",
+      "type": "MACRO_SCALE_RELATION",
+      "value": {
+        "object": "Dagong Hall",
+        "approx_area_m2": 500,
+        "location_relation": "northeast end of village / Guangdu Port side"
+      },
+      "confidence": "PUBLISHED ARCHITECTURAL DESCRIPTION",
+      "basis": [
+        "C01-RPX-S04",
+        "C01-RPX-S08"
+      ],
+      "design_use": "macro landmark/site scale context only",
+      "does_not_prove": "survey footprint or exact current usable floor area"
+    },
+    {
+      "anchor_id": "C01-RA-07",
+      "type": "EXISTING_OPERATIONAL_ROUTE",
+      "value": [
+        "village visitor center / Hand Lion",
+        "Mao ancestral hall",
+        "Quanjing private school"
+      ],
+      "confidence": "PUBLIC INSTITUTIONAL DESCRIPTION",
+      "basis": [
+        "C01-RPX-S03"
+      ],
+      "design_use": "C01 must overlay/coordinate with an existing visitor/public-culture system rather than assume no prior route",
+      "does_not_prove": "exact path geometry or mandatory sequence for every visitor"
+    },
+    {
+      "anchor_id": "C01-RA-08",
+      "type": "CURRENT_CHANGE_EVENT",
+      "value": "2026 Hejinyin–Dapiandi road works include hardening, guardrail, RC pipe, reservoir and retaining-wall works",
+      "confidence": "CURRENT PUBLIC PROCUREMENT",
+      "basis": [
+        "C01-RPX-S01"
+      ],
+      "design_use": "forces temporal reopen of older P3/Dapiandi approach and surface assumptions",
+      "does_not_prove": "as-built completion or exact road width/level"
+    }
+  ],
+  "proxy_variable_register": [
+    {
+      "variable_id": "C01-PV-01",
+      "quantity_or_relation": "P1 approach / stopping envelope",
+      "state": "UNRESOLVED_PROXY",
+      "current_constraints": [
+        "P1 is near village-entry road",
+        "arch published width 3.26 m may be used as object scale anchor",
+        "resident/vehicle movement must remain prior",
+        "fieldpack requires road width and conflict observation"
+      ],
+      "allowed_now": "visual/photo scale reconstruction and low/medium/high stopping scenarios after usable images are bound",
+      "forbidden_now": "exact road width, safe stopping capacity, fixed installation footprint",
+      "replacement": "Reality Gate 2 road-width + traffic/conflict + approach/front/leave capture"
+    },
+    {
+      "variable_id": "C01-PV-02",
+      "quantity_or_relation": "P2 immediate comparison/view envelope",
+      "state": "UNRESOLVED_PROXY",
+      "current_constraints": [
+        "P2 is associated with Bagu Ting-front relation",
+        "arch published width 3.6 m / height 7.9 m",
+        "formal generic JieXiao official mapping remains unresolved"
+      ],
+      "allowed_now": "relative object scale and comparison composition",
+      "forbidden_now": "exact plaza/road dimensions or protection setback",
+      "replacement": "field capture + formal heritage mapping"
+    },
+    {
+      "variable_id": "C01-PV-03",
+      "quantity_or_relation": "P3 Dapiandi approach condition",
+      "state": "TEMPORALLY_UNSTABLE_PROXY",
+      "current_constraints": [
+        "P3 is at Dapiandi",
+        "2026 civil road project directly targets Hejinyin–Dapiandi",
+        "construction drawings exist publicly but were not materialized/read back in this run"
+      ],
+      "allowed_now": "current-change flag + route alternative / relocatable interpretation design",
+      "forbidden_now": "use older imagery as current road/surface truth",
+      "replacement": "read 2026 construction drawings/as-built or current site capture"
+    },
+    {
+      "variable_id": "C01-PV-04",
+      "quantity_or_relation": "village cultural-route geometry",
+      "state": "RELATION_ONLY",
+      "current_constraints": [
+        "existing route already links visitor center, Mao ancestral hall and Quanjing private school",
+        "heritage/wells/lanes remain part of existing public-cultural context"
+      ],
+      "allowed_now": "overlay C01 node logic onto existing cultural circles and preserve resident priority",
+      "forbidden_now": "invent exact walking distances or force C01 narrative order onto the village",
+      "replacement": "GIS/official plan/materialized route map or field track"
+    },
+    {
+      "variable_id": "C01-PV-05",
+      "quantity_or_relation": "indoor learning / workshop capacity",
+      "state": "ASSUMPTION_ONLY",
+      "current_constraints": [
+        "C01 v0.1 uses 20–30 people as planning hypothesis",
+        "real fire safety/opening/community use unresolved"
+      ],
+      "allowed_now": "low/base/high activity scenario and movable/off-site fallback",
+      "forbidden_now": "verified occupancy or fire-safety capacity",
+      "replacement": "actual room geometry + current use + fire/accessibility/professional review"
+    }
+  ],
+  "reality_divergence_findings": [
+    {
+      "finding_id": "C01-RD-01",
+      "issue": "P3 approach may be materially changed by 2026 road works",
+      "consequence": "older photographs/maps cannot be Current surface/guardrail/drainage authority; any fixed media or stopping design near P3 remains relocatable/provisional"
+    },
+    {
+      "finding_id": "C01-RD-02",
+      "issue": "existing tourist route already exists",
+      "consequence": "C01 value proposition remains evidence-layered interpretation, not 'first guide system'; node routing must integrate rather than overwrite"
+    },
+    {
+      "finding_id": "C01-RD-03",
+      "issue": "two JieXiao objects share a generic official heritage name",
+      "consequence": "published/local object mapping may support bounded comparison, but formal heritage ID/protection authority remains open"
+    },
+    {
+      "finding_id": "C01-RD-04",
+      "issue": "published arch dimensions are object anchors, not surrounding-space dimensions",
+      "consequence": "they may calibrate photo scale but cannot be propagated to road/plaza/stopping clearances without image/site evidence"
+    }
+  ],
+  "immediate_design_rules": [
+    "Keep all C01 physical interpretation movable/non-contact until protection/permission and actual site geometry close.",
+    "Use P1/P2 published object dimensions only as object/photo-scale anchors.",
+    "Do not manufacture a dimension for P3; preserve asymmetry.",
+    "Treat 2026 Dapiandi road works as a Current-change trigger.",
+    "Overlay C01 experience onto existing three-cultural-circle infrastructure; do not claim blank-slate wayfinding.",
+    "Any classroom/workshop planning must survive 'indoor unavailable' and remain capacity-unverified."
+  ],
+  "next_remote_actions": [
+    "materialize/read the 2026 Dapiandi road construction drawing if technically retrievable",
+    "retrieve/map current public geospatial network around Dagong Hall / visitor center / Mao ancestral hall / Quanjing private school",
+    "bind current usable P1/P2/P3 photographs and run image-scale plausibility reconstruction",
+    "build low/base/high route/stopping scenarios only after those anchors are available"
+  ],
+  "field_only_or_professional_hold": [
+    "current exact road widths",
+    "current exact object coordinates",
+    "heritage protection boundaries",
+    "safe stopping locations",
+    "current drainage/surface condition",
+    "indoor usable dimensions",
+    "fire/accessibility capacity",
+    "installation permission",
+    "resident acceptance"
+  ],
+  "verdict": "KEEP / REALITY-NEAR REMOTE BASELINE IMPROVED / RG2 STILL NOT RUN / E2 UNCHANGED",
+  "claim_ceiling": "REMOTE TRIANGULATED OBJECT + ROUTE RELATIONS / PUBLISHED SCALE ANCHORS / NO SURVEY OR IMPLEMENTATION PASS"
+}

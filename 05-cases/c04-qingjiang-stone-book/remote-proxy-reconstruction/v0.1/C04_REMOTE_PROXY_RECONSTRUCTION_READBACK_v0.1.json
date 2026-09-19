@@ -1,0 +1,170 @@
+{
+  "schema_version": "c04-remote-proxy-reconstruction/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "method_ref": "oleander-skills/oleander-research/REMOTE_PROXY_REALITY_RECONSTRUCTION_EXTENSION.md",
+  "state": "PROJECT_REAPPLICATION / PROVISIONAL REALITY MODEL / FIELD OPEN / NO_PROMOTION",
+  "purpose": "Re-read the existing C04 remote evidence through the generalized Remote / Proxy Reality Reconstruction contract without changing historical C04 authority.",
+  "current_authority_boundary": {
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "construction": "NOT_READY",
+    "promotion": "NO"
+  },
+  "reality_anchors": [
+    {
+      "anchor_id": "C04-RA-01",
+      "type": "RELATION_ANCHOR",
+      "evidence": "Official scenic guide + panoramic guide",
+      "value": "cross-river cable + south-bank multi-branch / loop walking network",
+      "claim_level": "REMOTE OFFICIAL / RELATION LEVEL",
+      "does_not_prove": "survey geometry, exact route length, width, slope"
+    },
+    {
+      "anchor_id": "C04-RA-02",
+      "type": "OPERATIONAL_ANCHOR",
+      "evidence": "2025 official scenic guide",
+      "value": "scenic visit approximately 3 hours",
+      "claim_level": "OFFICIAL PUBLISHED",
+      "does_not_prove": "segment-level actual time distribution"
+    },
+    {
+      "anchor_id": "C04-RA-03",
+      "type": "DIMENSIONAL_ANCHOR",
+      "evidence": "operator publications 2023 + 2026",
+      "value": {
+        "cable_length_m": 1056,
+        "elevation_difference_m": 156,
+        "max_speed_mps": 6,
+        "design_capacity_pph": 2700
+      },
+      "claim_level": "OFFICIAL / COMPONENT SPEC",
+      "does_not_prove": "walking grade, actual current speed, total scenic-system capacity"
+    },
+    {
+      "anchor_id": "C04-RA-04",
+      "type": "CURRENT_CONTEXT_ANCHOR",
+      "evidence": "2026 operator reports",
+      "value": "cable also serves local resident cross-river mobility; river/boat access can be seasonally affected",
+      "claim_level": "CURRENT CONTEXT",
+      "does_not_prove": "future operational priority rules, queue magnitude, closure thresholds"
+    }
+  ],
+  "proxy_variables": [
+    {
+      "variable_id": "C04-PV-01",
+      "quantity_or_relation": "total experience time",
+      "unit": "min",
+      "low": 138,
+      "base": 182,
+      "high": 230,
+      "derivation": "segment scenario allocation reconciled against official approximately-180-minute total visit anchor",
+      "evidence_state": "ASSUMPTION / DESIGN TEST",
+      "sensitivity": "HIGH",
+      "does_not_prove": "field-measured duration"
+    },
+    {
+      "variable_id": "C04-PV-02",
+      "quantity_or_relation": "south-bank walking segment grade envelopes",
+      "unit": "percent",
+      "low": "segment-specific",
+      "base": "segment-specific",
+      "high": "segment-specific",
+      "derivation": "design-test bands constrained by route topology and terrain plausibility; not copied from cable ratio",
+      "evidence_state": "ASSUMPTION / DESIGN TEST",
+      "sensitivity": "HIGH",
+      "does_not_prove": "site slope"
+    },
+    {
+      "variable_id": "C04-PV-03",
+      "quantity_or_relation": "system effective capacity stress-test",
+      "unit": "pph",
+      "low": 240,
+      "base": 480,
+      "high": 720,
+      "derivation": "min(cable,station,walk,node,return) × operational factor; only cable design capacity is factual",
+      "evidence_state": "ASSUMPTION / STRESS TEST",
+      "sensitivity": "HIGH",
+      "does_not_prove": "approved or observed scenic-system capacity"
+    },
+    {
+      "variable_id": "C04-PV-04",
+      "quantity_or_relation": "cable chord vertical ratio",
+      "unit": "percent",
+      "low": 14.8,
+      "base": 14.8,
+      "high": 14.8,
+      "derivation": "156 / 1056",
+      "evidence_state": "INFERENCE FROM OFFICIAL COMPONENT DIMENSIONS",
+      "sensitivity": "LOW for cable relation / INVALID for terrain",
+      "does_not_prove": "walking slope or terrain grade"
+    }
+  ],
+  "consistency_checks": [
+    {
+      "check_id": "C04-CK-01",
+      "relation": "segment time total vs official approximately-3-hour visit",
+      "result": "CONSISTENT_AT_BASE",
+      "note": "182 min remains inside the official approximate total relation; low/high are explicit stress-test bounds."
+    },
+    {
+      "check_id": "C04-CK-02",
+      "relation": "component capacity vs system capacity",
+      "result": "PASS_BOUNDARY",
+      "note": "2700 pph cable rating is not propagated to site/system capacity; bottleneck model remains controlling."
+    },
+    {
+      "check_id": "C04-CK-03",
+      "relation": "cable dimensions vs terrain grade",
+      "result": "PASS_BOUNDARY",
+      "note": "14.8% is preserved as cable chord vertical ratio only and is explicitly forbidden as walking grade."
+    },
+    {
+      "check_id": "C04-CK-04",
+      "relation": "route numbering vs spatial topology",
+      "result": "PASS_RELATION",
+      "note": "experience sequence no longer forces old linear QJ13 numbering onto a multi-branch/loop route."
+    }
+  ],
+  "robust_decisions": [
+    "Return-first service logic remains valid across plausible route-time/grade scenarios.",
+    "Thirteen Imprints remain optional reading, not mandatory linear hardware.",
+    "Real landscape / official spatial relation remains more authoritative than model hero geometry.",
+    "Node concepts must remain relocatable/reversible where exact field geometry is open."
+  ],
+  "sensitive_or_held_decisions": [
+    "exact node position",
+    "walking clear width",
+    "actual walking slope",
+    "step geometry",
+    "edge/fall condition",
+    "drainage",
+    "power/network",
+    "structural support",
+    "approved site capacity"
+  ],
+  "field_replacement_register": [
+    {
+      "proxy": "walking distance / slope / step geometry",
+      "replace_with": "survey/GNSS/level/site route capture"
+    },
+    {
+      "proxy": "clear width / stopping zone",
+      "replace_with": "field measurement + use observation"
+    },
+    {
+      "proxy": "capacity scenarios",
+      "replace_with": "operations data / queue counts / route-node observations"
+    },
+    {
+      "proxy": "node structural/support condition",
+      "replace_with": "field structural inspection + professional verification"
+    },
+    {
+      "proxy": "drainage / surface condition",
+      "replace_with": "field observation + civil/landscape evidence"
+    }
+  ],
+  "verdict": "KEEP AS REALITY-NEAR PROVISIONAL MODEL / NO FIELD UPGRADE",
+  "claim_ceiling": "RELATION + PROVISIONAL DESIGN + STRESS TEST ONLY / FIELD + SAFETY + ENGINEERING + CONSTRUCTION OPEN"
+}
