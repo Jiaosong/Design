@@ -417,3 +417,34 @@ It does not automatically prove:
 - Project Promotion.
 
 `ACCESSIBILITY PROFESSIONAL PASS ≠ UNIVERSAL USABILITY ≠ RIGHTS CLOSE ≠ DESIGN KEEP ≠ PROMOTION`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Built-Environment Accessibility professional-depth parity
+
+**Candidate boundary:** additive parity repair only. v001 Independent Review remains bound to the older EV3 input and does not cover this later head.
+
+### Knowledge / owner routing
+- `IDX-ACCESSIBILITY-INCLUSIVE-001` remains the cross-line index; Physical Accessibility must resolve current local law/code/rights/AHJ sources.
+- `oleander-research` supports source/jurisdiction evidence; `oleander-design-process` supports route/task/option/change reasoning only.
+- GIS/3D/drawing skills may carry geometry when fit but cannot prove accessibility.
+- `oleander-technical-drawing` remains candidate-only; `oleander-delivery-qc` is package integrity only.
+- Accessibility professional, rights/legal owner, vertical-transport/FLS/security/domain professionals and representative-user/task evidence are `PROJECT_SPECIALIST_REQUIRED` when triggered.
+
+### Required native carriers
+Basis/duty/authority；actor-task-barrier-accommodation；continuous journey plan/section；space/fixture/equipment/control task-use；wayfinding/sensory information；door/lift/security/emergency interfaces；representative test/mockup；field dimensions/operation；in-use accommodation/change。
+
+### Object-level invocation matrix
+#### A｜Rights / jurisdiction / duty
+Tool: authority/source register. Readback: exact law/code/rights/accommodation route and scope. Reopen: jurisdiction/source/appointment/rights duty change.
+#### B｜Continuous journey
+Tool: authoritative survey/plan/section/route carrier. Readback: site→arrival→entry→horizontal/vertical→destination→amenity→exit/support continuity under actual level/door/lift/security states. Reopen: geometry/level/door/lift/security/operation change.
+#### C｜Task-use
+Tool: room/fixture/equipment/control detail + anthropometric/assistive-device context. Readback: approach/transfer/reach/operation/recovery, not static fit. Reopen: product/control/furniture/equipment/user-task change.
+#### D｜Information / sensory / wayfinding
+Tool: signage/info/lighting/acoustic/tactile carrier. Readback: decision points, redundant channels, legibility/perceivability under actual route/state. Reopen: route/content/signage/light/acoustic/control change.
+#### E｜Representative test / field / in-use
+Tool: mockup/task protocol + field measurement + complaint/accommodation record. Readback: exact participant/equipment/task/context/configuration and failed cases. Reopen: field deviation, service outage, accommodation request, recurring barrier or change.
+
+### Boundary
+`DIMENSION CHECKLIST ≠ ACCESSIBILITY PROFESSIONAL PASS`；`ONE SEGMENT ≠ CONTINUOUS ACCESS`；`MINIMUM COMPLIANCE ≠ UNIVERSAL USABILITY`；`DESIGNER TRY-OUT ≠ REPRESENTATIVE DISABLED-PERSON VALIDATION`；Digital Accessibility, Rights, FLS and R-F remain separate authorities.

@@ -109,294 +109,858 @@
       "stage_id": "ACC-BASIS",
       "stage_name": "Jurisdiction / Rights / Appointment Basis",
       "professional_question": "What built-environment accessibility claim is in scope, under which rights/statutory/professional route, for which physical environment and users?",
-      "entry_conditions": ["project and accessibility decision scope identified"],
-      "required_inputs": ["jurisdiction/use/project context", "current rights/standard/source context"],
-      "knowledge_inputs": ["accessibility index and applicable source routes", "project authority evidence"],
+      "entry_conditions": [
+        "project and accessibility decision scope identified"
+      ],
+      "required_inputs": [
+        "jurisdiction/use/project context",
+        "current rights/standard/source context"
+      ],
+      "knowledge_inputs": [
+        "accessibility index and applicable source routes",
+        "project authority evidence"
+      ],
       "knowledge_mount_requirement": "Consequential rights/standard/applicability claims require task/claim-scoped Operational Mount.",
-      "required_dd_dimensions": ["DD-01", "DD-05", "DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_BASIS_DUTY_REGISTER", "ACCESSIBILITY_AUTHORITY_MAP"],
-      "interface_requirements": ["identify rights, statutory, architecture, FLS and specialist owners"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_BASIS_DUTY_REGISTER",
+        "ACCESSIBILITY_AUTHORITY_MAP"
+      ],
+      "interface_requirements": [
+        "identify rights, statutory, architecture, FLS and specialist owners"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["affected people/tasks and known accommodation needs become explicit"],
-      "design_language_consequences": ["visual/spatial design intent cannot override accessibility duties"],
-      "technical_consequences": ["source status, including standards under review, remains explicit"],
-      "content_projection_requirements": ["state jurisdiction, source/version/status, appointment, rights route and claim ceiling"],
-      "required_readback": ["scope/authority/source-status readback", "open interpretation list"],
+      "human_experience_consequences": [
+        "affected people/tasks and known accommodation needs become explicit"
+      ],
+      "design_language_consequences": [
+        "visual/spatial design intent cannot override accessibility duties"
+      ],
+      "technical_consequences": [
+        "source status, including standards under review, remains explicit"
+      ],
+      "content_projection_requirements": [
+        "state jurisdiction, source/version/status, appointment, rights route and claim ceiling"
+      ],
+      "required_readback": [
+        "scope/authority/source-status readback",
+        "open interpretation list"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Independent Professional Domain review required for promotion-relevant adoption.",
-      "open_items_allowed": ["later detailed task/geometry issues may remain open at basis stage"],
-      "exit_conditions": ["accessibility authority, source status, scope and claim ceiling are explicit"],
-      "reopen_triggers": ["jurisdiction, rights, source-status, scope or use change"],
+      "open_items_allowed": [
+        "later detailed task/geometry issues may remain open at basis stage"
+      ],
+      "exit_conditions": [
+        "accessibility authority, source status, scope and claim ceiling are explicit"
+      ],
+      "reopen_triggers": [
+        "jurisdiction, rights, source-status, scope or use change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_BASIS_RESOLVED",
-      "does_not_prove": ["ACCESSIBILITY_COMPLIANCE", "RIGHTS_CLOSE", "FIELD_USABILITY"]
+      "does_not_prove": [
+        "ACCESSIBILITY_COMPLIANCE",
+        "RIGHTS_CLOSE",
+        "FIELD_USABILITY"
+      ]
     },
     {
       "stage_id": "ACC-CONTEXT",
       "stage_name": "People / Tasks / Context / Barriers",
       "professional_question": "Who must use or is affected by the environment, to perform what task, under which capability, assistive-device and contextual conditions?",
-      "entry_conditions": ["basis and affected physical scope identified"],
-      "required_inputs": ["user/operation context", "known accommodation or access evidence"],
-      "knowledge_inputs": ["human-factors/accessibility methods", "rights and project user evidence"],
+      "entry_conditions": [
+        "basis and affected physical scope identified"
+      ],
+      "required_inputs": [
+        "user/operation context",
+        "known accommodation or access evidence"
+      ],
+      "knowledge_inputs": [
+        "human-factors/accessibility methods",
+        "rights and project user evidence"
+      ],
       "knowledge_mount_requirement": "Human/user/accommodation evidence remains scope- and source-bound.",
-      "required_dd_dimensions": ["DD-03", "DD-05", "DD-06"],
-      "required_native_outputs": ["ACTOR_TASK_BARRIER_REGISTER", "ACCESSIBILITY_CONTEXT_MAP"],
-      "interface_requirements": ["operations, rights and design owners receive relevant task/barrier inputs"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06"
+      ],
+      "required_native_outputs": [
+        "ACTOR_TASK_BARRIER_REGISTER",
+        "ACCESSIBILITY_CONTEXT_MAP"
+      ],
+      "interface_requirements": [
+        "operations, rights and design owners receive relevant task/barrier inputs"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["mobility, sensory, cognitive, communication and assistance conditions addressed without stereotyping"],
-      "design_language_consequences": ["design consistency may yield where task access requires a different solution"],
-      "technical_consequences": ["disability label alone cannot substitute for task/context requirement"],
-      "content_projection_requirements": ["barrier/requirement claims preserve evidence and limitations"],
-      "required_readback": ["actor/task/barrier evidence and missing representation readback"],
+      "human_experience_consequences": [
+        "mobility, sensory, cognitive, communication and assistance conditions addressed without stereotyping"
+      ],
+      "design_language_consequences": [
+        "design consistency may yield where task access requires a different solution"
+      ],
+      "technical_consequences": [
+        "disability label alone cannot substitute for task/context requirement"
+      ],
+      "content_projection_requirements": [
+        "barrier/requirement claims preserve evidence and limitations"
+      ],
+      "required_readback": [
+        "actor/task/barrier evidence and missing representation readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Independent review required for reusable process adoption, not for every project observation by default.",
-      "open_items_allowed": ["unrepresented user contexts remain explicit UNKNOWN rather than generalized"],
-      "exit_conditions": ["material accessibility tasks/barriers and evidence gaps are explicit"],
-      "reopen_triggers": ["user, task, context or accommodation basis change"],
+      "open_items_allowed": [
+        "unrepresented user contexts remain explicit UNKNOWN rather than generalized"
+      ],
+      "exit_conditions": [
+        "material accessibility tasks/barriers and evidence gaps are explicit"
+      ],
+      "reopen_triggers": [
+        "user, task, context or accommodation basis change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_CONTEXT_DEFINED",
-      "does_not_prove": ["POPULATION_TRUTH", "FINAL_DESIGN_REQUIREMENT", "UNIVERSAL_USABILITY"]
+      "does_not_prove": [
+        "POPULATION_TRUTH",
+        "FINAL_DESIGN_REQUIREMENT",
+        "UNIVERSAL_USABILITY"
+      ]
     },
     {
       "stage_id": "ACC-JOURNEY",
       "stage_name": "Continuous Physical Access Journey",
       "professional_question": "Is the required physical journey continuous from approach through destination/use and exit/emergency interfaces rather than a set of isolated passing fragments?",
-      "entry_conditions": ["material users/tasks and project access scope defined"],
-      "required_inputs": ["site/building plans/levels/routes", "task/barrier basis"],
-      "knowledge_inputs": ["applicable physical accessibility sources", "route/level/door/lift evidence"],
+      "entry_conditions": [
+        "material users/tasks and project access scope defined"
+      ],
+      "required_inputs": [
+        "site/building plans/levels/routes",
+        "task/barrier basis"
+      ],
+      "knowledge_inputs": [
+        "applicable physical accessibility sources",
+        "route/level/door/lift evidence"
+      ],
       "knowledge_mount_requirement": "Technical requirements and source values require applicable current source mounts.",
-      "required_dd_dimensions": ["DD-03", "DD-04", "DD-05", "DD-12"],
-      "required_native_outputs": ["CONTINUOUS_ACCESS_JOURNEY_REGISTER", "ACCESSIBILITY_ROUTE_PLANS_SECTIONS"],
-      "interface_requirements": ["Architecture, Landscape, Structure, MEP, Vertical Transportation, Security and FLS coordination"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-04",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "CONTINUOUS_ACCESS_JOURNEY_REGISTER",
+        "ACCESSIBILITY_ROUTE_PLANS_SECTIONS"
+      ],
+      "interface_requirements": [
+        "Architecture, Landscape, Structure, MEP, Vertical Transportation, Security and FLS coordination"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["whole journey, assistance and return/exit conditions remain legible and usable"],
-      "design_language_consequences": ["threshold, level and route legibility consequences remain visible"],
-      "technical_consequences": ["one passing segment cannot support a continuous-route claim"],
-      "content_projection_requirements": ["critical level/door/lift/threshold pinch points are explicitly shown"],
-      "required_readback": ["continuous-route topology and critical pinch readback"],
+      "human_experience_consequences": [
+        "whole journey, assistance and return/exit conditions remain legible and usable"
+      ],
+      "design_language_consequences": [
+        "threshold, level and route legibility consequences remain visible"
+      ],
+      "technical_consequences": [
+        "one passing segment cannot support a continuous-route claim"
+      ],
+      "content_projection_requirements": [
+        "critical level/door/lift/threshold pinch points are explicitly shown"
+      ],
+      "required_readback": [
+        "continuous-route topology and critical pinch readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Independent review required for candidate process adoption; project statutory review remains separate.",
-      "open_items_allowed": ["later detailed field verification may remain open when claim stays at coordinated-design level"],
-      "exit_conditions": ["no unresolved in-claim critical break exists in the required continuous journey"],
-      "reopen_triggers": ["site level, route, entry, door, lift, room location or FLS route change"],
+      "open_items_allowed": [
+        "later detailed field verification may remain open when claim stays at coordinated-design level"
+      ],
+      "exit_conditions": [
+        "no unresolved in-claim critical break exists in the required continuous journey"
+      ],
+      "reopen_triggers": [
+        "site level, route, entry, door, lift, room location or FLS route change"
+      ],
       "claim_ceiling": "CONTINUOUS_ACCESS_DESIGN_COORDINATED",
-      "does_not_prove": ["FIELD_ROUTE_PASS", "ALL_USER_NEEDS", "STATUTORY_APPROVAL"]
+      "does_not_prove": [
+        "FIELD_ROUTE_PASS",
+        "ALL_USER_NEEDS",
+        "STATUTORY_APPROVAL"
+      ]
     },
     {
       "stage_id": "ACC-USE",
       "stage_name": "Space / Fixture / Equipment / Physical Control Use",
       "professional_question": "Can the declared task be performed with appropriate approach, manoeuvre, transfer, reach, operation, privacy, dignity and assistance at the destination?",
-      "entry_conditions": ["destination/task scope and applicable journey resolved"],
-      "required_inputs": ["room/furniture/fixture/equipment geometry", "actor/task/barrier requirements"],
-      "knowledge_inputs": ["applicable accessibility and product sources", "human-use evidence"],
+      "entry_conditions": [
+        "destination/task scope and applicable journey resolved"
+      ],
+      "required_inputs": [
+        "room/furniture/fixture/equipment geometry",
+        "actor/task/barrier requirements"
+      ],
+      "knowledge_inputs": [
+        "applicable accessibility and product sources",
+        "human-use evidence"
+      ],
       "knowledge_mount_requirement": "Dimensions/product-operation claims require applicable current sources and exact product evidence.",
-      "required_dd_dimensions": ["DD-05", "DD-08", "DD-12"],
-      "required_native_outputs": ["ACCESSIBLE_TASK_USE_DETAILS", "FIXTURE_EQUIPMENT_CONTROL_REGISTER"],
-      "interface_requirements": ["Architecture, Interior, MEP, FF&E/Product, Structure and Operations coordination"],
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBLE_TASK_USE_DETAILS",
+        "FIXTURE_EQUIPMENT_CONTROL_REGISTER"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, MEP, FF&E/Product, Structure and Operations coordination"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["independence, assistance, privacy/dignity and real task sequence addressed"],
-      "design_language_consequences": ["finish/furniture language cannot consume required operable/clear space"],
-      "technical_consequences": ["exact fixture/control/product operation remains configuration-bound"],
-      "content_projection_requirements": ["approach/transfer/reach/operation conditions are graphical and traceable"],
-      "required_readback": ["critical task-use geometry/product readback"],
+      "human_experience_consequences": [
+        "independence, assistance, privacy/dignity and real task sequence addressed"
+      ],
+      "design_language_consequences": [
+        "finish/furniture language cannot consume required operable/clear space"
+      ],
+      "technical_consequences": [
+        "exact fixture/control/product operation remains configuration-bound"
+      ],
+      "content_projection_requirements": [
+        "approach/transfer/reach/operation conditions are graphical and traceable"
+      ],
+      "required_readback": [
+        "critical task-use geometry/product readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Independent review remains separate from project product/system approvals.",
-      "open_items_allowed": ["representative task/field tests may remain later if uncertainty is explicitly tracked"],
-      "exit_conditions": ["material task-use geometry/interfaces are coordinated at the declared claim ceiling"],
-      "reopen_triggers": ["room, furniture, fixture, equipment, control or assistance condition change"],
+      "open_items_allowed": [
+        "representative task/field tests may remain later if uncertainty is explicitly tracked"
+      ],
+      "exit_conditions": [
+        "material task-use geometry/interfaces are coordinated at the declared claim ceiling"
+      ],
+      "reopen_triggers": [
+        "room, furniture, fixture, equipment, control or assistance condition change"
+      ],
       "claim_ceiling": "ACCESSIBLE_TASK_USE_DESIGN_COORDINATED",
-      "does_not_prove": ["REAL_USER_PASS", "FIELD_INSTALLATION_PASS", "UNIVERSAL_FIT"]
+      "does_not_prove": [
+        "REAL_USER_PASS",
+        "FIELD_INSTALLATION_PASS",
+        "UNIVERSAL_FIT"
+      ]
     },
     {
       "stage_id": "ACC-INFO",
       "stage_name": "Information / Wayfinding / Communication",
       "professional_question": "Can people identify, understand and act on the built-environment information needed to navigate and use the place?",
-      "entry_conditions": ["journey, decision points and communication tasks identified"],
-      "required_inputs": ["wayfinding/information plan", "lighting/acoustic/context constraints"],
-      "knowledge_inputs": ["applicable signage/wayfinding/accessibility sources", "user/task evidence"],
+      "entry_conditions": [
+        "journey, decision points and communication tasks identified"
+      ],
+      "required_inputs": [
+        "wayfinding/information plan",
+        "lighting/acoustic/context constraints"
+      ],
+      "knowledge_inputs": [
+        "applicable signage/wayfinding/accessibility sources",
+        "user/task evidence"
+      ],
       "knowledge_mount_requirement": "Specific technical thresholds remain source/jurisdiction-bound.",
-      "required_dd_dimensions": ["DD-03", "DD-05", "DD-06", "DD-07", "DD-12"],
-      "required_native_outputs": ["ACCESSIBLE_INFORMATION_WAYFINDING_REQUIREMENTS", "DECISION_POINT_MAP"],
-      "interface_requirements": ["Wayfinding/Graphic, Lighting, Acoustics, Architecture and Digital Accessibility where physically coupled"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-06",
+        "DD-07",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBLE_INFORMATION_WAYFINDING_REQUIREMENTS",
+        "DECISION_POINT_MAP"
+      ],
+      "interface_requirements": [
+        "Wayfinding/Graphic, Lighting, Acoustics, Architecture and Digital Accessibility where physically coupled"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["visual, tactile, auditory and cognitive information needs addressed as applicable"],
-      "design_language_consequences": ["brand/visual consistency cannot defeat legibility or task meaning"],
-      "technical_consequences": ["digital conformance remains with Digital Accessibility owner"],
-      "content_projection_requirements": ["information role, location, medium and task remain explicit"],
-      "required_readback": ["decision-point and installed/representative information readback where claimed"],
+      "human_experience_consequences": [
+        "visual, tactile, auditory and cognitive information needs addressed as applicable"
+      ],
+      "design_language_consequences": [
+        "brand/visual consistency cannot defeat legibility or task meaning"
+      ],
+      "technical_consequences": [
+        "digital conformance remains with Digital Accessibility owner"
+      ],
+      "content_projection_requirements": [
+        "information role, location, medium and task remain explicit"
+      ],
+      "required_readback": [
+        "decision-point and installed/representative information readback where claimed"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Professional process review remains separate from wayfinding/digital-accessibility reviews.",
-      "open_items_allowed": ["later artwork/product implementation may remain open if requirements are fixed and claim bounded"],
-      "exit_conditions": ["material physical wayfinding/information requirements and interfaces are coordinated"],
-      "reopen_triggers": ["route, lighting, signage, information, language or physical-digital interface change"],
+      "open_items_allowed": [
+        "later artwork/product implementation may remain open if requirements are fixed and claim bounded"
+      ],
+      "exit_conditions": [
+        "material physical wayfinding/information requirements and interfaces are coordinated"
+      ],
+      "reopen_triggers": [
+        "route, lighting, signage, information, language or physical-digital interface change"
+      ],
       "claim_ceiling": "ACCESSIBLE_INFORMATION_REQUIREMENTS_COORDINATED",
-      "does_not_prove": ["DIGITAL_WCAG_CONFORMANCE", "INSTALLED_SIGNAGE_PASS", "ALL_COGNITIVE_NEEDS"]
+      "does_not_prove": [
+        "DIGITAL_WCAG_CONFORMANCE",
+        "INSTALLED_SIGNAGE_PASS",
+        "ALL_COGNITIVE_NEEDS"
+      ]
     },
     {
       "stage_id": "ACC-SYSTEM",
       "stage_name": "Doors / Lifts / Controls / Safety / Emergency Interfaces",
       "professional_question": "Do building systems and controlled elements support accessible use in normal, degraded and emergency states?",
-      "entry_conditions": ["triggered system interfaces identified"],
-      "required_inputs": ["system/product operating states", "accessibility task requirements"],
-      "knowledge_inputs": ["system/product evidence", "FLS/security/vertical-transport/accessibility requirements"],
+      "entry_conditions": [
+        "triggered system interfaces identified"
+      ],
+      "required_inputs": [
+        "system/product operating states",
+        "accessibility task requirements"
+      ],
+      "knowledge_inputs": [
+        "system/product evidence",
+        "FLS/security/vertical-transport/accessibility requirements"
+      ],
       "knowledge_mount_requirement": "System/product capabilities require exact identity and applicable source evidence.",
-      "required_dd_dimensions": ["DD-05", "DD-08", "DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_SYSTEM_INTERFACE_REGISTER", "ACCESSIBLE_OPERATING_FAILSTATE_MATRIX"],
-      "interface_requirements": ["FLS, Vertical Transportation, Security, MEP/Electrical, Controls and Architecture coordination"],
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_SYSTEM_INTERFACE_REGISTER",
+        "ACCESSIBLE_OPERATING_FAILSTATE_MATRIX"
+      ],
+      "interface_requirements": [
+        "FLS, Vertical Transportation, Security, MEP/Electrical, Controls and Architecture coordination"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["normal, assisted, degraded and emergency use states addressed"],
-      "design_language_consequences": ["controls/security integration must preserve discoverability and operability"],
-      "technical_consequences": ["system command/certification does not prove actual accessible operation"],
-      "content_projection_requirements": ["physical end state and assistance/failure consequences are explicit"],
-      "required_readback": ["critical system-state and control readback"],
+      "human_experience_consequences": [
+        "normal, assisted, degraded and emergency use states addressed"
+      ],
+      "design_language_consequences": [
+        "controls/security integration must preserve discoverability and operability"
+      ],
+      "technical_consequences": [
+        "system command/certification does not prove actual accessible operation"
+      ],
+      "content_projection_requirements": [
+        "physical end state and assistance/failure consequences are explicit"
+      ],
+      "required_readback": [
+        "critical system-state and control readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Accessibility review does not replace FLS/system technical approval.",
-      "open_items_allowed": ["system commissioning may remain owned by later/other domain when current claim is bounded"],
-      "exit_conditions": ["material accessibility system-interface requirements are coordinated"],
-      "reopen_triggers": ["door/lift/security/control/FLS/system state or product change"],
+      "open_items_allowed": [
+        "system commissioning may remain owned by later/other domain when current claim is bounded"
+      ],
+      "exit_conditions": [
+        "material accessibility system-interface requirements are coordinated"
+      ],
+      "reopen_triggers": [
+        "door/lift/security/control/FLS/system state or product change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_SYSTEM_INTERFACES_COORDINATED",
-      "does_not_prove": ["FLS_PASS", "SYSTEM_TECHNICAL_PASS", "INTEGRATED_COMMISSIONING_PASS"]
+      "does_not_prove": [
+        "FLS_PASS",
+        "SYSTEM_TECHNICAL_PASS",
+        "INTEGRATED_COMMISSIONING_PASS"
+      ]
     },
     {
       "stage_id": "ACC-COORD",
       "stage_name": "Cross-disciplinary Accessibility Coordination",
       "professional_question": "Are accessibility requirements preserved across all materially coupled geometry, products, systems, information and operations?",
-      "entry_conditions": ["material accessibility interfaces identified"],
-      "required_inputs": ["current accessibility outputs", "current R-F interface objects and domain outputs"],
-      "knowledge_inputs": ["interface acceptance contracts", "current exact source/product evidence"],
+      "entry_conditions": [
+        "material accessibility interfaces identified"
+      ],
+      "required_inputs": [
+        "current accessibility outputs",
+        "current R-F interface objects and domain outputs"
+      ],
+      "knowledge_inputs": [
+        "interface acceptance contracts",
+        "current exact source/product evidence"
+      ],
       "knowledge_mount_requirement": "Consequential interface evidence remains source/owner-bound.",
-      "required_dd_dimensions": ["DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_INTERFACE_REGISTER", "COORDINATED_ACCESSIBILITY_READBACK"],
-      "interface_requirements": ["critical accessibility interfaces must reach maturity required by the current project claim"],
+      "required_dd_dimensions": [
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_INTERFACE_REGISTER",
+        "COORDINATED_ACCESSIBILITY_READBACK"
+      ],
+      "interface_requirements": [
+        "critical accessibility interfaces must reach maturity required by the current project claim"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["continuous task/journey consequences are read back across domain boundaries"],
-      "design_language_consequences": ["visual/spatial coherence cannot hide an accessibility conflict"],
-      "technical_consequences": ["Accessibility coordination does not award R-F or other-domain PASS"],
-      "content_projection_requirements": ["critical open interfaces and owners remain visible"],
-      "required_readback": ["actual coordinated geometry/product/system state for critical interfaces"],
+      "human_experience_consequences": [
+        "continuous task/journey consequences are read back across domain boundaries"
+      ],
+      "design_language_consequences": [
+        "visual/spatial coherence cannot hide an accessibility conflict"
+      ],
+      "technical_consequences": [
+        "Accessibility coordination does not award R-F or other-domain PASS"
+      ],
+      "content_projection_requirements": [
+        "critical open interfaces and owners remain visible"
+      ],
+      "required_readback": [
+        "actual coordinated geometry/product/system state for critical interfaces"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner",
       "independent_review_requirement": "Professional review remains separate from R-F Integration review.",
-      "open_items_allowed": ["outside-claim/later work only where it does not contradict current accessibility claim"],
-      "exit_conditions": ["no unresolved in-claim critical accessibility contradiction remains at required interface maturity"],
-      "reopen_triggers": ["any material coupled-domain/interface change"],
+      "open_items_allowed": [
+        "outside-claim/later work only where it does not contradict current accessibility claim"
+      ],
+      "exit_conditions": [
+        "no unresolved in-claim critical accessibility contradiction remains at required interface maturity"
+      ],
+      "reopen_triggers": [
+        "any material coupled-domain/interface change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_PROFESSIONAL_COORDINATION_COMPLETE_FOR_SCOPE",
-      "does_not_prove": ["R_F_INTEGRATION_PASS", "OTHER_DOMAIN_PASS", "STATUTORY_APPROVAL"]
+      "does_not_prove": [
+        "R_F_INTEGRATION_PASS",
+        "OTHER_DOMAIN_PASS",
+        "STATUTORY_APPROVAL"
+      ]
     },
     {
       "stage_id": "ACC-TEST",
       "stage_name": "Mockup / Representative Task / Specialist Test",
       "professional_question": "Where material uncertainty remains, does representative physical task/testing evidence support the bounded accessibility claim?",
-      "entry_conditions": ["testable accessibility uncertainty identified"],
-      "required_inputs": ["exact mockup/installed configuration", "actor/task/barrier hypothesis and criteria"],
-      "knowledge_inputs": ["representative human-factors/accessibility test methods", "current task evidence"],
+      "entry_conditions": [
+        "testable accessibility uncertainty identified"
+      ],
+      "required_inputs": [
+        "exact mockup/installed configuration",
+        "actor/task/barrier hypothesis and criteria"
+      ],
+      "knowledge_inputs": [
+        "representative human-factors/accessibility test methods",
+        "current task evidence"
+      ],
       "knowledge_mount_requirement": "Human participant/task/test evidence remains population/context/configuration-bound.",
-      "required_dd_dimensions": ["DD-05", "DD-09", "DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_TEST_PROTOCOL", "REPRESENTATIVE_TASK_READBACK"],
-      "interface_requirements": ["test findings route to affected design/system/rights owners"],
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_TEST_PROTOCOL",
+        "REPRESENTATIVE_TASK_READBACK"
+      ],
+      "interface_requirements": [
+        "test findings route to affected design/system/rights owners"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["failed tasks and subgroup/high-consequence issues cannot be averaged away"],
-      "design_language_consequences": ["tested usability may require design-language exception"],
-      "technical_consequences": ["designer simulation does not substitute for representative disabled-person evidence where required"],
-      "content_projection_requirements": ["participant/equipment/task/context/configuration/limitations are recorded"],
-      "required_readback": ["actual task outcome, failure and limitation readback"],
+      "human_experience_consequences": [
+        "failed tasks and subgroup/high-consequence issues cannot be averaged away"
+      ],
+      "design_language_consequences": [
+        "tested usability may require design-language exception"
+      ],
+      "technical_consequences": [
+        "designer simulation does not substitute for representative disabled-person evidence where required"
+      ],
+      "content_projection_requirements": [
+        "participant/equipment/task/context/configuration/limitations are recorded"
+      ],
+      "required_readback": [
+        "actual task outcome, failure and limitation readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist or applicable human-factors/test owner",
       "independent_review_requirement": "Test evidence review remains separate from candidate-process Independent Review.",
-      "open_items_allowed": ["unrepresented contexts remain UNKNOWN and must not be generalized"],
-      "exit_conditions": ["tested claim is bounded to exact representative evidence and unresolved failures are routed"],
-      "reopen_triggers": ["configuration, task, population/context or acceptance criterion change"],
+      "open_items_allowed": [
+        "unrepresented contexts remain UNKNOWN and must not be generalized"
+      ],
+      "exit_conditions": [
+        "tested claim is bounded to exact representative evidence and unresolved failures are routed"
+      ],
+      "reopen_triggers": [
+        "configuration, task, population/context or acceptance criterion change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_TEST_SUPPORTED_FOR_DECLARED_SCOPE",
-      "does_not_prove": ["ALL_USERS_PASS", "STATUTORY_APPROVAL", "UNTESTED_CONTEXT_USABILITY"]
+      "does_not_prove": [
+        "ALL_USERS_PASS",
+        "STATUTORY_APPROVAL",
+        "UNTESTED_CONTEXT_USABILITY"
+      ]
     },
     {
       "stage_id": "ACC-DELIVERY",
       "stage_name": "Documentation / Procurement / Installation / Field Readback",
       "professional_question": "Has accessibility intent survived detailed documentation, product selection, substitution, installation and actual field conditions?",
-      "entry_conditions": ["accessibility design scope sufficiently resolved for delivery"],
-      "required_inputs": ["current design/accessibility requirements", "submittal/product/site evidence"],
-      "knowledge_inputs": ["installation/product sources", "inspection and field measurement evidence"],
+      "entry_conditions": [
+        "accessibility design scope sufficiently resolved for delivery"
+      ],
+      "required_inputs": [
+        "current design/accessibility requirements",
+        "submittal/product/site evidence"
+      ],
+      "knowledge_inputs": [
+        "installation/product sources",
+        "inspection and field measurement evidence"
+      ],
       "knowledge_mount_requirement": "Product/submittal/field evidence must be current and exact-scope mounted evidence.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_DELIVERY_PACKAGE", "ACCESSIBILITY_FIELD_READBACK", "ACCESSIBILITY_CLOSURE_REGISTER"],
-      "interface_requirements": ["substitution/site changes propagate to affected owners and R-F interfaces"],
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_DELIVERY_PACKAGE",
+        "ACCESSIBILITY_FIELD_READBACK",
+        "ACCESSIBILITY_CLOSURE_REGISTER"
+      ],
+      "interface_requirements": [
+        "substitution/site changes propagate to affected owners and R-F interfaces"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["actual route/task/control/information conditions checked where claimed"],
-      "design_language_consequences": ["finishes/furniture/temporary elements cannot silently consume access"],
-      "technical_consequences": ["field dimensions/operation are distinguished from drawing intent"],
-      "content_projection_requirements": ["as-built/open-item/nonconformity status explicit"],
-      "required_readback": ["critical field geometry/operation readback", "corrective-action status"],
+      "human_experience_consequences": [
+        "actual route/task/control/information conditions checked where claimed"
+      ],
+      "design_language_consequences": [
+        "finishes/furniture/temporary elements cannot silently consume access"
+      ],
+      "technical_consequences": [
+        "field dimensions/operation are distinguished from drawing intent"
+      ],
+      "content_projection_requirements": [
+        "as-built/open-item/nonconformity status explicit"
+      ],
+      "required_readback": [
+        "critical field geometry/operation readback",
+        "corrective-action status"
+      ],
       "professional_review_owner": "Built-Environment Accessibility professional/specialist owner plus applicable authority owners",
       "independent_review_requirement": "Candidate process Independent Review remains separate from project statutory/site acceptance.",
-      "open_items_allowed": ["outside-claim authority/accommodation items with explicitly capped claim"],
-      "exit_conditions": ["declared delivery scope has current field/readback evidence and no hidden critical nonconformity"],
-      "reopen_triggers": ["substitution, field deviation, furnishing, operational or failed-inspection change"],
+      "open_items_allowed": [
+        "outside-claim authority/accommodation items with explicitly capped claim"
+      ],
+      "exit_conditions": [
+        "declared delivery scope has current field/readback evidence and no hidden critical nonconformity"
+      ],
+      "reopen_triggers": [
+        "substitution, field deviation, furnishing, operational or failed-inspection change"
+      ],
       "claim_ceiling": "ACCESSIBILITY_DELIVERY_READBACK_COMPLETE_FOR_SCOPE",
-      "does_not_prove": ["STATUTORY_APPROVAL", "RIGHTS_CLOSE", "UNINSPECTED_WORK_PASS"]
+      "does_not_prove": [
+        "STATUTORY_APPROVAL",
+        "RIGHTS_CLOSE",
+        "UNINSPECTED_WORK_PASS"
+      ]
     },
     {
       "stage_id": "ACC-INUSE",
       "stage_name": "In-use Accommodation / Support / Feedback / Change",
       "professional_question": "Does the environment remain accessible through operation, furnishing, maintenance, changing users/tasks and accommodation needs?",
-      "entry_conditions": ["environment is in use or transition to use"],
-      "required_inputs": ["as-built accessibility basis", "operations/accommodation/complaint/post-occupancy evidence"],
-      "knowledge_inputs": ["rights/accommodation route", "bounded operational/user evidence"],
+      "entry_conditions": [
+        "environment is in use or transition to use"
+      ],
+      "required_inputs": [
+        "as-built accessibility basis",
+        "operations/accommodation/complaint/post-occupancy evidence"
+      ],
+      "knowledge_inputs": [
+        "rights/accommodation route",
+        "bounded operational/user evidence"
+      ],
       "knowledge_mount_requirement": "Operational observations remain project/context-scoped unless separately validated for reuse.",
-      "required_dd_dimensions": ["DD-10", "DD-12"],
-      "required_native_outputs": ["ACCESSIBILITY_INUSE_ISSUE_REGISTER", "ACCOMMODATION_CHANGE_LOG", "G9_CANDIDATE_INPUT"],
-      "interface_requirements": ["Operations/FM, rights owner and affected design/system owners receive material changes"],
+      "required_dd_dimensions": [
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACCESSIBILITY_INUSE_ISSUE_REGISTER",
+        "ACCOMMODATION_CHANGE_LOG",
+        "G9_CANDIDATE_INPUT"
+      ],
+      "interface_requirements": [
+        "Operations/FM, rights owner and affected design/system owners receive material changes"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["real barriers, support burden and accommodation experience remain visible"],
-      "design_language_consequences": ["operational presentation/temporary fitout cannot block accessible use"],
-      "technical_consequences": ["in-use contradiction can reopen drawing/system/product accessibility claims"],
-      "content_projection_requirements": ["complaint/accommodation evidence preserves privacy, uncertainty and transfer boundary"],
-      "required_readback": ["material recurring barrier/accommodation/change readback"],
+      "human_experience_consequences": [
+        "real barriers, support burden and accommodation experience remain visible"
+      ],
+      "design_language_consequences": [
+        "operational presentation/temporary fitout cannot block accessible use"
+      ],
+      "technical_consequences": [
+        "in-use contradiction can reopen drawing/system/product accessibility claims"
+      ],
+      "content_projection_requirements": [
+        "complaint/accommodation evidence preserves privacy, uncertainty and transfer boundary"
+      ],
+      "required_readback": [
+        "material recurring barrier/accommodation/change readback"
+      ],
       "professional_review_owner": "Built-Environment Accessibility / rights / operations owner as applicable",
       "independent_review_requirement": "Reusable learning remains subject to Knowledge validation; candidate process adoption remains independently reviewed.",
-      "open_items_allowed": ["non-material observations may remain monitored without widening claims"],
-      "exit_conditions": ["material in-use accessibility changes are routed and affected prior claims reopened or confirmed"],
-      "reopen_triggers": ["accommodation request, complaint, recurring barrier, operational change, incident or source update"],
+      "open_items_allowed": [
+        "non-material observations may remain monitored without widening claims"
+      ],
+      "exit_conditions": [
+        "material in-use accessibility changes are routed and affected prior claims reopened or confirmed"
+      ],
+      "reopen_triggers": [
+        "accommodation request, complaint, recurring barrier, operational change, incident or source update"
+      ],
       "claim_ceiling": "ACCESSIBILITY_INUSE_READBACK_CURRENT_FOR_SCOPE",
-      "does_not_prove": ["UNIVERSAL_ACCESSIBILITY_RULE", "ALL_RIGHTS_DUTIES_CLOSED", "KNOWLEDGE_PROMOTION"]
+      "does_not_prove": [
+        "UNIVERSAL_ACCESSIBILITY_RULE",
+        "ALL_RIGHTS_DUTIES_CLOSED",
+        "KNOWLEDGE_PROMOTION"
+      ]
     }
   ],
   "interface_contract": {
     "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
-    "inputs_from_domains": ["Architecture", "Interior Design", "Landscape Architecture", "Structural Engineering", "Building Services / MEP", "Fire / Life Safety", "Lighting Design", "Vertical Transportation", "Wayfinding / Graphic", "Security", "FF&E / Product", "FM / Operations", "Digital Accessibility where physically coupled"],
-    "outputs_to_domains": ["accessibility journey/task requirements", "geometry/product/control requirements", "wayfinding/information requirements", "accommodation and emergency-interface consequences", "field/change consequences"],
-    "shared_variables": ["routes/levels/thresholds", "door/gate operation", "lift/vertical circulation", "clear/transfer/reach zones", "fixture/equipment/control identity", "signage/information", "lighting/acoustic conditions", "security/access-control state", "emergency/refuge/assistance state", "furniture/operations"],
-    "controlling_authority_requirements": ["rights/legal/statutory authority is not replaced by R-E", "Digital Accessibility remains separately owned", "FLS and other system/domain technical authority remains separate", "R-F retains interface maturity/disposition truth"],
+    "inputs_from_domains": [
+      "Architecture",
+      "Interior Design",
+      "Landscape Architecture",
+      "Structural Engineering",
+      "Building Services / MEP",
+      "Fire / Life Safety",
+      "Lighting Design",
+      "Vertical Transportation",
+      "Wayfinding / Graphic",
+      "Security",
+      "FF&E / Product",
+      "FM / Operations",
+      "Digital Accessibility where physically coupled"
+    ],
+    "outputs_to_domains": [
+      "accessibility journey/task requirements",
+      "geometry/product/control requirements",
+      "wayfinding/information requirements",
+      "accommodation and emergency-interface consequences",
+      "field/change consequences"
+    ],
+    "shared_variables": [
+      "routes/levels/thresholds",
+      "door/gate operation",
+      "lift/vertical circulation",
+      "clear/transfer/reach zones",
+      "fixture/equipment/control identity",
+      "signage/information",
+      "lighting/acoustic conditions",
+      "security/access-control state",
+      "emergency/refuge/assistance state",
+      "furniture/operations"
+    ],
+    "controlling_authority_requirements": [
+      "rights/legal/statutory authority is not replaced by R-E",
+      "Digital Accessibility remains separately owned",
+      "FLS and other system/domain technical authority remains separate",
+      "R-F retains interface maturity/disposition truth"
+    ],
     "interface_maturity_policy": "Accessibility may define professional interface requirements but R-F owns IDENTIFIED/DEFINED/COORDINATED/EXERCISED/VERIFIED maturity and OPEN/BLOCKED/CLOSED/OUTSIDE_CLAIM disposition.",
-    "allowed_open_interface_conditions": ["later/outside-claim work may remain open only when current accessibility claim is not widened and no critical continuous-journey/task contradiction remains"],
-    "integration_readback_requirements": ["actual geometry/product/system state for critical accessibility interfaces", "continuous task/journey readback and change propagation"]
+    "allowed_open_interface_conditions": [
+      "later/outside-claim work may remain open only when current accessibility claim is not widened and no critical continuous-journey/task contradiction remains"
+    ],
+    "integration_readback_requirements": [
+      "actual geometry/product/system state for critical accessibility interfaces",
+      "continuous task/journey readback and change propagation"
+    ]
   },
   "execution_binding": {
-    "required_native_outputs": ["accessibility basis/duty and actor-task-barrier registers", "continuous journey plans/sections", "task-use details", "information/wayfinding requirements", "system/fail-state and interface registers", "test/readback when triggered", "field accessibility readback"],
-    "native_source_of_truth_rules": ["editable drawings/models/schedules remain source authority within professional scope", "automated geometry check or simulation cannot replace field/representative task evidence", "legal/statutory/rights authority remains externally owned"],
-    "execution_owner_requirements": ["appropriate built-environment accessibility professional/specialist owner", "separate digital accessibility, FLS and technical-domain owners", "rights/legal/statutory owner where applicable"],
-    "required_capabilities": ["accessibility authority/source resolution", "continuous journey and task-use design review", "cross-disciplinary accessibility coordination", "representative task/mockup testing when material", "field accessibility inspection/readback"],
-    "tool_adapter_requirements": ["tools preserve units, source/version, geometry/product/configuration and evidence provenance", "no automated checker or simulation may self-award professional/statutory PASS"],
-    "typed_handoff_contracts": ["accessibility requirements to design/system domains", "interface/change impacts to R-F", "rights/accommodation questions to applicable owner", "operational observations to bounded G9 candidate route"],
-    "actual_readback_requirements": ["reopen actual current drawings/models/site conditions", "verify exact route/task/product/control state before field/usability claims"]
+    "required_native_outputs": [
+      "accessibility basis/duty and actor-task-barrier registers",
+      "continuous journey plans/sections",
+      "task-use details",
+      "information/wayfinding requirements",
+      "system/fail-state and interface registers",
+      "test/readback when triggered",
+      "field accessibility readback"
+    ],
+    "native_source_of_truth_rules": [
+      "editable drawings/models/schedules remain source authority within professional scope",
+      "automated geometry check or simulation cannot replace field/representative task evidence",
+      "legal/statutory/rights authority remains externally owned"
+    ],
+    "execution_owner_requirements": [
+      "appropriate built-environment accessibility professional/specialist owner",
+      "separate digital accessibility, FLS and technical-domain owners",
+      "rights/legal/statutory owner where applicable"
+    ],
+    "required_capabilities": [
+      "accessibility authority/source resolution",
+      "continuous journey and task-use design review",
+      "cross-disciplinary accessibility coordination",
+      "representative task/mockup testing when material",
+      "field accessibility inspection/readback"
+    ],
+    "tool_adapter_requirements": [
+      "tools preserve units, source/version, geometry/product/configuration and evidence provenance",
+      "no automated checker or simulation may self-award professional/statutory PASS"
+    ],
+    "typed_handoff_contracts": [
+      "accessibility requirements to design/system domains",
+      "interface/change impacts to R-F",
+      "rights/accommodation questions to applicable owner",
+      "operational observations to bounded G9 candidate route"
+    ],
+    "actual_readback_requirements": [
+      "reopen actual current drawings/models/site conditions",
+      "verify exact route/task/product/control state before field/usability claims"
+    ]
   },
   "assurance": {
     "professional_review": "Built-Environment Accessibility professional/specialist review of exact current scope and native outputs.",
     "evidence_review": "Evidence/Truth review remains separate for source applicability, human/task, product and field claims.",
-    "technical_gates": ["applicable rights/legal/statutory/building-control review", "FLS/emergency-use review", "product/system technical review", "representative human/task review where triggered", "site inspection/acceptance"],
+    "technical_gates": [
+      "applicable rights/legal/statutory/building-control review",
+      "FLS/emergency-use review",
+      "product/system technical review",
+      "representative human/task review where triggered",
+      "site inspection/acceptance"
+    ],
     "independent_review": "Promotion-relevant adoption of this reusable process requires exact-input eligible Independent Professional Domain review under Current review-freshness controls.",
     "receipt_contract": "A professional receipt must bind project/task scope, exact process/stage revision, jurisdiction/source/right basis, native outputs/readback, open items, reviewer/owner and claim ceiling.",
-    "does_not_prove": ["UNIVERSAL_USABILITY", "RIGHTS_CLOSE", "DIGITAL_WCAG_CONFORMANCE", "FLS_PASS", "R_F_INTEGRATION_PASS", "STATUTORY_APPROVAL", "DESIGN_KEEP", "PROJECT_PROMOTION"]
+    "does_not_prove": [
+      "UNIVERSAL_USABILITY",
+      "RIGHTS_CLOSE",
+      "DIGITAL_WCAG_CONFORMANCE",
+      "FLS_PASS",
+      "R_F_INTEGRATION_PASS",
+      "STATUTORY_APPROVAL",
+      "DESIGN_KEEP",
+      "PROJECT_PROMOTION"
+    ]
   },
   "change_contract": {
-    "reopen_triggers": ["jurisdiction/rights/source status", "people/task/accommodation", "route/level/room/furniture", "door/lift/security/control/system", "FLS/emergency", "product/fixture", "information/wayfinding", "field/test/complaint"],
-    "stale_scope_rules": ["mark only accessibility claims depending on materially changed inputs/interfaces stale", "historical receipts remain immutable under their consumed source/configuration snapshot"],
-    "upstream_impact_rules": ["rights/source/user/task changes may reopen basis/context and dependent journey/use stages"],
-    "downstream_impact_rules": ["journey/use/system changes propagate to coordination, testing, delivery and in-use requirements"],
-    "interface_reopen_rules": ["reopen affected R-F interfaces when shared geometry/product/system/operational variables materially change"],
-    "receipt_stale_rules": ["a receipt cannot support a materially changed route/task/product/source relation without scoped re-resolution and new evidence"]
+    "reopen_triggers": [
+      "jurisdiction/rights/source status",
+      "people/task/accommodation",
+      "route/level/room/furniture",
+      "door/lift/security/control/system",
+      "FLS/emergency",
+      "product/fixture",
+      "information/wayfinding",
+      "field/test/complaint"
+    ],
+    "stale_scope_rules": [
+      "mark only accessibility claims depending on materially changed inputs/interfaces stale",
+      "historical receipts remain immutable under their consumed source/configuration snapshot"
+    ],
+    "upstream_impact_rules": [
+      "rights/source/user/task changes may reopen basis/context and dependent journey/use stages"
+    ],
+    "downstream_impact_rules": [
+      "journey/use/system changes propagate to coordination, testing, delivery and in-use requirements"
+    ],
+    "interface_reopen_rules": [
+      "reopen affected R-F interfaces when shared geometry/product/system/operational variables materially change"
+    ],
+    "receipt_stale_rules": [
+      "a receipt cannot support a materially changed route/task/product/source relation without scoped re-resolution and new evidence"
+    ]
   },
   "completion_contract": {
-    "process_exit_conditions": ["applicable accessibility stages executed for declared physical scope", "critical continuous-journey/task contradictions resolved at required claim ceiling", "required native readback and triggered reviews exist", "rights/statutory/source status accurately stated"],
-    "open_items_allowed": ["outside-claim or later rights/statutory/accommodation items when explicitly bounded and non-contradictory"],
+    "process_exit_conditions": [
+      "applicable accessibility stages executed for declared physical scope",
+      "critical continuous-journey/task contradictions resolved at required claim ceiling",
+      "required native readback and triggered reviews exist",
+      "rights/statutory/source status accurately stated"
+    ],
+    "open_items_allowed": [
+      "outside-claim or later rights/statutory/accommodation items when explicitly bounded and non-contradictory"
+    ],
     "professional_receipt": "Exact-scope Built-Environment Accessibility professional receipt with rights/jurisdiction/source basis, task/configuration, readback, review and claim ceiling.",
     "promotion_effect": "Professional Process PASS cannot directly promote Project, Design Quality, Integration, Knowledge, rights or statutory state; those remain owner-controlled.",
     "claim_ceiling": "BUILT_ENVIRONMENT_ACCESSIBILITY_PROFESSIONAL_SCOPE_ONLY",
-    "does_not_prove": ["UNIVERSAL_USABILITY", "ALL_RIGHTS_OR_ACCOMMODATIONS_CLOSED", "DIGITAL_ACCESSIBILITY_PASS", "FLS_PASS", "R_F_INTEGRATION_PASS", "STATUTORY_APPROVAL", "FIELD_TRUTH_OUTSIDE_READBACK", "DESIGN_KEEP", "CURRENT_KNOWLEDGE", "PROJECT_PROMOTION"]
+    "does_not_prove": [
+      "UNIVERSAL_USABILITY",
+      "ALL_RIGHTS_OR_ACCOMMODATIONS_CLOSED",
+      "DIGITAL_ACCESSIBILITY_PASS",
+      "FLS_PASS",
+      "R_F_INTEGRATION_PASS",
+      "STATUTORY_APPROVAL",
+      "FIELD_TRUTH_OUTSIDE_READBACK",
+      "DESIGN_KEEP",
+      "CURRENT_KNOWLEDGE",
+      "PROJECT_PROMOTION"
+    ]
+  },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Built-Environment Accessibility execution depth is demonstrated through rights/jurisdiction basis, continuous journey, task-use, sensory/information, system-state, representative testing, field and in-use accommodation objects rather than dimension-check completeness.",
+    "professional_problem_and_judgment_objects": [
+      "Accessibility Basis / Duty / Authority Register",
+      "Actor–Task–Barrier–Accommodation Register",
+      "Continuous Accessible Journey Register",
+      "Space / Fixture / Equipment / Control Task-Use Register",
+      "Information / Wayfinding / Sensory Accessibility Register"
+    ],
+    "assumption_uncertainty_objects": [
+      "jurisdiction/rights/source-version register",
+      "user/task/equipment/assistance assumptions",
+      "temporary/operational obstruction assumptions",
+      "representativeness and test limitations"
+    ],
+    "option_comparison_objects": [
+      "materially different accessible route/task/control/information solutions",
+      "accommodation alternatives with rights/operation consequence",
+      "exception/deviation alternatives where authority permits"
+    ],
+    "native_work_objects": [
+      "continuous access plans/sections",
+      "task-use details",
+      "door/lift/security/control interfaces",
+      "wayfinding/sensory information carriers",
+      "clearance/reach/transfer/operation schedules"
+    ],
+    "release_control_objects": [
+      "accessibility interface/release register",
+      "product/control/substitution review",
+      "representative mockup/task-test plan",
+      "field issue/RFI/change disposition"
+    ],
+    "implementation_field_objects": [
+      "field dimensions/levels/clearances and operational obstruction readback",
+      "installed fixture/control/door/lift task test where in claim",
+      "representative disabled-person/task evidence when required",
+      "defect/repair/retest record"
+    ],
+    "handover_inuse_objects": [
+      "accommodation/request/complaint register",
+      "temporary obstruction/service outage and recovery record",
+      "post-occupancy accessibility readback",
+      "material change/revalidation record"
+    ],
+    "independent_review_objects": [
+      "independent accessibility professional review at claim ceiling",
+      "rights/legal and statutory review remain separate",
+      "representative user evidence is distinct from professional review"
+    ],
+    "change_propagation_objects": [
+      "continuous-route and task-use stale propagation",
+      "geometry/product/control/operation/furnishing change reopen",
+      "field failure/accommodation request → exact affected scope and retest"
+    ],
+    "does_not_require": [
+      "WCAG as physical criterion",
+      "wheelchair-only representation",
+      "minimum technical compliance as universal usability",
+      "same stages/artifacts as Architecture",
+      "representative user test where claim does not reach that ceiling"
+    ]
   }
 }
