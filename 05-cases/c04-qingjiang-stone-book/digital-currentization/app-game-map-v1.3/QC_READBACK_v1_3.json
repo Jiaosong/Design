@@ -1,0 +1,65 @@
+{
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "artifact": "APP_GAME_MAP_v1.3",
+  "state": "MAIN_CANDIDATE / RUNTIME_REPAIRED / FIELD_OPEN / NO_PROMOTION",
+  "predecessor": {
+    "artifact": "APP_GAME_MAP_v1.2",
+    "source_blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+    "historical_qc": "QC_READBACK_v1_2.json"
+  },
+  "source": {
+    "path": "C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html",
+    "blob_sha": "99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2"
+  },
+  "material_delta": [
+    "My Book state repair: copy G() result before unshift so default DEF is not mutated",
+    "Print fallback repair: bind #print button explicitly instead of relying on global print name",
+    "Actual configured Chromium desktop/mobile runtime verification added"
+  ],
+  "inherited_nonmaterial_design": [
+    "information architecture",
+    "route/game-map geometry and content",
+    "R01-R13 library",
+    "NORMAL/DEGRADED/CLOSED/UNKNOWN",
+    "FULL/LIGHT/OFF",
+    "relational/NTS truth boundary",
+    "visual language"
+  ],
+  "runtime_checks": {
+    "configured_chromium": "PASS_12_OF_12",
+    "desktop_1440x1000": "PASS",
+    "mobile_390x844": "PASS",
+    "five_views_service_return": "PASS",
+    "unknown_fail_closed": "PASS",
+    "route_mode_focus": "PASS",
+    "imprint_to_mybook": "PASS",
+    "localstorage_write_clear_default_reset": "PASS",
+    "print_route_fallback": "PASS",
+    "horizontal_overflow": "PASS",
+    "javascript_runtime_errors": "PASS_NONE_OBSERVED_ON_TESTED_PATHS"
+  },
+  "runtime_evidence": "BROWSER_RUNTIME_READBACK_v1_3.json",
+  "runtime_limitations": {
+    "firefox": "NOT_RUN",
+    "webkit": "NOT_RUN",
+    "representative_user": "NOT_RUN",
+    "accessibility_conformance": "NOT_RUN",
+    "live_service": "NOT_IMPLEMENTED",
+    "field_fallback": "NOT_FIELD_VERIFIED"
+  },
+  "design_crit": {
+    "disposition": "INHERITED_MAIN_CANDIDATE / NO NEW DESIGN_SELECTION",
+    "reason": "v1.3 is a bounded runtime-repair successor; no design-language or IA re-selection was performed."
+  },
+  "truth_boundary": {
+    "FIELD_OBSERVED": 0,
+    "FIELD_MEASURED": 0,
+    "G1F": "HOLD",
+    "promotion": "NO_PROMOTION",
+    "map": "RELATIONAL_NTS_NOT_SURVEY",
+    "live_operations": "NOT_CLAIMED"
+  },
+  "ai_image_used": false,
+  "text_layer": "HTML_SVG_VECTOR_EDITABLE",
+  "claim_ceiling": "CONFIGURED_CHROMIUM_RUNTIME PASS / HCD VALIDATION + FIELD FALLBACK + LIVE SERVICE + PROFESSIONAL PASS OPEN"
+}
