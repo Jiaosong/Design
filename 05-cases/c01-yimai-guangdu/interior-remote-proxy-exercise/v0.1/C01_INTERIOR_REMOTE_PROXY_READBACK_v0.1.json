@@ -1,0 +1,282 @@
+{
+  "schema_version": "c01-interior-remote-proxy-readback/0.1",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "object_id": "C01-N02-DAGONG-HALL-LEARNING-MODE",
+  "professional_domain": "Interior Design",
+  "process_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+  "state": "BOUNDED PROJECT EXERCISE / CONCEPT PROXY ONLY / SPATIAL COORDINATION HOLD / NO PROMOTION",
+  "design_intent": "Test whether C01's movable/non-invasive learning mode can remain plausible inside Dagong Hall without inventing current room/RCP/service/fire/accessibility geometry.",
+  "public_sources": [
+    {
+      "source_id": "C01-INT-S01",
+      "title": "广渡，浙赣边界的文化名村",
+      "publisher": "衢州日报 / 新浪转载",
+      "date": "2022-08-15",
+      "url": "https://finance.sina.com.cn/jjxw/2022-08-15/doc-imizirav8153420.shtml",
+      "supports": [
+        "Dagong Hall at northeast village / Guangdu Port relation",
+        "group footprint described as approximately 500 m²",
+        "three-storey progressively reduced octagonal main tower",
+        "four main columns rise from ground floor through upper levels",
+        "eight peripheral eave columns around first level",
+        "building group includes main structure, side rooms, pond and gate pavilion"
+      ],
+      "authority": "PUBLISHED ARCHITECTURAL DESCRIPTION / NOT FIELD SURVEY",
+      "does_not_prove": "current measured plan, usable area, floor heights, egress, services or accessibility"
+    },
+    {
+      "source_id": "C01-INT-S02",
+      "title": "江山广渡，育英才、渡学子",
+      "publisher": "搜狐发布 / 内容提供：江山市文旅局",
+      "date": "2024-06-04",
+      "url": "https://www.sohu.com/a/783705933_121123867",
+      "supports": [
+        "main tower described as approximately 10 m high",
+        "first-floor main hall described as more than 100 m²",
+        "four large timber columns continue to the third floor",
+        "upper floors/windows/roof structure remain visually legible",
+        "entrance is offset rather than centered"
+      ],
+      "authority": "RECENT PUBLIC CULTURAL/TOURISM DESCRIPTION / NOT MEASURED DRAWING",
+      "does_not_prove": "exact height, exact first-floor area, doorway width, current occupancy, fire/accessibility or current services"
+    },
+    {
+      "source_id": "C01-INT-S03",
+      "title": "三衢记忆｜广渡，一个让人出神的村子",
+      "publisher": "浙江在线衢州频道",
+      "date": "2020-05-24",
+      "url": "https://qz.zjol.com.cn/qzxw/202005/t20200524_11992347.shtml",
+      "supports": [
+        "rear portion historically described with two rooms to each side and a semi-open central hall",
+        "rear hall is spatially connected to the main tower"
+      ],
+      "authority": "OLDER PUBLIC OBSERVATION / TEMPORALLY WEAKER",
+      "does_not_prove": "current room count/use/condition in 2026"
+    }
+  ],
+  "existing_condition_proxy_register": [
+    {
+      "variable_id": "INT-PV-01",
+      "quantity_or_relation": "whole Dagong Hall group footprint",
+      "proxy_value": "approximately 500 m²",
+      "evidence_class": "PUBLISHED CONTEXT",
+      "allowed_use": "macro scale / site and reuse feasibility context",
+      "forbidden_use": "net interior usable area, occupancy, room schedule"
+    },
+    {
+      "variable_id": "INT-PV-02",
+      "quantity_or_relation": "main tower overall height",
+      "proxy_value": "approximately 10 m",
+      "evidence_class": "PUBLISHED RECENT DESCRIPTION",
+      "allowed_use": "overall vertical-envelope plausibility",
+      "forbidden_use": "divide by three to invent floor-to-floor heights, ceiling datum or stair geometry"
+    },
+    {
+      "variable_id": "INT-PV-03",
+      "quantity_or_relation": "first-floor main hall area",
+      "proxy_value": ">100 m² published description",
+      "evidence_class": "PUBLISHED RECENT DESCRIPTION",
+      "allowed_use": "gross-area plausibility for a movable learning mode",
+      "forbidden_use": "exact plan dimensions, safe occupancy, furniture clearance or accessibility"
+    },
+    {
+      "variable_id": "INT-PV-04",
+      "quantity_or_relation": "primary internal structural relation",
+      "proxy_value": "four large timber columns continue through the three-storey tower",
+      "evidence_class": "MULTI-SOURCE PUBLISHED RELATION",
+      "allowed_use": "keep movable layout clear of assumed structural core and avoid fixed attachment",
+      "forbidden_use": "column diameter, spacing, structural capacity or anchor permission"
+    },
+    {
+      "variable_id": "INT-PV-05",
+      "quantity_or_relation": "first-floor perimeter structural relation",
+      "proxy_value": "eight peripheral/eave columns described around first level",
+      "evidence_class": "PUBLISHED DESCRIPTION",
+      "allowed_use": "recognize non-free-plan perimeter rhythm",
+      "forbidden_use": "exact bay/grid reconstruction"
+    },
+    {
+      "variable_id": "INT-PV-06",
+      "quantity_or_relation": "entry geometry",
+      "proxy_value": "offset entrance; public article describes a narrow/two-person passage impression",
+      "evidence_class": "QUALITATIVE PUBLISHED OBSERVATION",
+      "allowed_use": "treat entrance as a potential bottleneck and avoid simultaneous-group assumptions",
+      "forbidden_use": "door width, accessible clear opening, egress capacity"
+    },
+    {
+      "variable_id": "INT-PV-07",
+      "quantity_or_relation": "rear hall / side-room relation",
+      "proxy_value": "older source describes two rooms each side around a semi-open hall",
+      "evidence_class": "TEMPORALLY WEAKER RELATION",
+      "allowed_use": "alternative spill-out / distributed small-group hypothesis only",
+      "forbidden_use": "current room program or usable geometry"
+    },
+    {
+      "variable_id": "INT-PV-08",
+      "quantity_or_relation": "current ceiling/RCP/services",
+      "proxy_value": "UNKNOWN",
+      "evidence_class": "NOT_EVIDENCED",
+      "allowed_use": "none beyond explicit open interface",
+      "forbidden_use": "lighting layout, HVAC/fire/AV/sensor/access-panel coordination"
+    },
+    {
+      "variable_id": "INT-PV-09",
+      "quantity_or_relation": "current floor/threshold/accessibility geometry",
+      "proxy_value": "UNKNOWN",
+      "evidence_class": "NOT_EVIDENCED",
+      "allowed_use": "require alternative non-indoor/assisted route",
+      "forbidden_use": "accessible indoor-use claim"
+    },
+    {
+      "variable_id": "INT-PV-10",
+      "quantity_or_relation": "current fire/egress capacity",
+      "proxy_value": "UNKNOWN",
+      "evidence_class": "NOT_EVIDENCED",
+      "allowed_use": "none; capacity remains a planning hypothesis",
+      "forbidden_use": "20–30 person verified occupancy or egress PASS"
+    }
+  ],
+  "activity_modes": [
+    {
+      "mode_id": "M0",
+      "name": "NO_INDOOR_OCCUPATION",
+      "trigger": "indoor access/use/heritage/fire/accessibility condition not acceptable",
+      "interior_move": "handheld/digital/outdoor or nearby safe public-space learning",
+      "fixed_work": "NONE"
+    },
+    {
+      "mode_id": "M1",
+      "name": "MOVABLE_SMALL_GROUP",
+      "trigger": "bounded indoor use is permitted but room/entry/clearance remains conservative",
+      "interior_move": "movable chairs/cards/boxes; no attachment; distributed short-duration learning",
+      "fixed_work": "NONE"
+    },
+    {
+      "mode_id": "M2",
+      "name": "20_30_PERSON_DESIGN_HYPOTHESIS",
+      "trigger": "only for concept stress-test; not operational approval",
+      "interior_move": "movable-only layout; must be reduced/abandoned if measured clearances/egress/current community use do not support it",
+      "fixed_work": "NONE",
+      "evidence_state": "ASSUMPTION ONLY"
+    }
+  ],
+  "interior_stage_consumption": [
+    {
+      "stage_id": "ID-PW0",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "usable_evidence": [
+        "heritage/reuse constraint",
+        "public spatial skeleton",
+        "no-invasive design priority"
+      ],
+      "result": "Strategic reuse/constraint question can proceed; professional closure remains open."
+    },
+    {
+      "stage_id": "ID-PW1",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "usable_evidence": [
+        "learning-mode intent",
+        "community-priority rule",
+        "survey/investigation needs",
+        "proxy existing-condition register"
+      ],
+      "result": "Brief and investigation scope can proceed without pretending room geometry is known."
+    },
+    {
+      "stage_id": "ID-PW2",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "usable_evidence": [
+        "gross first-floor scale plausibility",
+        "three-level/column spatial skeleton",
+        "movable/no-contact concept",
+        "M0/M1/M2 fallback modes"
+      ],
+      "result": "Concept-level Interior intent is supportable; no coordinated plan/RCP claim."
+    },
+    {
+      "stage_id": "ID-PW3",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "blockers": [
+        "exact room dimensions",
+        "ceiling heights/datums",
+        "door/threshold clearances",
+        "RCP/service devices",
+        "FF&E clearances",
+        "maintenance/replacement paths"
+      ],
+      "result": "Spatial Coordination cannot close."
+    },
+    {
+      "stage_id": "ID-PW4",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "blockers": [
+        "technical survey",
+        "RCP",
+        "fire/accessibility",
+        "finish/substrate state",
+        "door/hardware",
+        "joinery/support",
+        "MEP interfaces"
+      ],
+      "result": "Technical Design cannot start as a release claim."
+    },
+    {
+      "stage_id": "ID-PW5",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ID-PW6",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN"
+    },
+    {
+      "stage_id": "ID-PW7",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN"
+    }
+  ],
+  "sensitivity_readback": [
+    {
+      "test": "first-floor net usable area is materially smaller than the >100 m² published gross description suggests",
+      "consequence": "reduce group size / distribute activity / use M0 or M1; do not force M2",
+      "disposition": "ROBUST IF MODE SWITCH ALLOWED"
+    },
+    {
+      "test": "four through-columns/perimeter columns reduce furniture or circulation fit",
+      "consequence": "movable kit shifts around actual clear zones after survey; no fixed joinery depends on guessed bays",
+      "disposition": "ROBUST IF NO FIXED GRID"
+    },
+    {
+      "test": "entry clear width or egress condition is restrictive",
+      "consequence": "stagger/small-group/outdoor fallback; no 20–30 occupancy claim",
+      "disposition": "M2 HOLD"
+    },
+    {
+      "test": "heritage authority prohibits furniture or indoor teaching",
+      "consequence": "M0 external/digital learning path retains the educational mechanism",
+      "disposition": "CONCEPT SURVIVES / INTERIOR OCCUPATION CANCELLED"
+    },
+    {
+      "test": "current RCP/services conflict with intended lighting/media",
+      "consequence": "do not add fixed lighting/power; handheld/battery/self-contained media only until coordination exists",
+      "disposition": "PW3/PW4 HOLD"
+    }
+  ],
+  "design_disposition": [
+    "Keep Dagong Hall as a plausible interpretive/learning context, not a verified 20–30 person classroom.",
+    "Keep all media and furniture movable/non-invasive.",
+    "Do not create a dimensioned interior plan from area/height prose.",
+    "Do not divide approximate 10 m overall height into invented floor-to-floor values.",
+    "Do not create RCP/service coordination until current survey/consultant evidence exists.",
+    "Use M0/M1/M2 mode switching so the concept survives narrower real conditions."
+  ],
+  "professional_verdict": "HOLD",
+  "design_support_disposition": "KEEP CONCEPT SUPPORT / SPATIAL COORDINATION BLOCKED",
+  "claim_ceiling": "INTERIOR STRATEGIC + BRIEF + CONCEPT SUPPORT ONLY / NO SPATIAL COORDINATION / NO TECHNICAL DESIGN / NO FIRE-ACCESSIBILITY-MEP PASS / NO PROMOTION"
+}
