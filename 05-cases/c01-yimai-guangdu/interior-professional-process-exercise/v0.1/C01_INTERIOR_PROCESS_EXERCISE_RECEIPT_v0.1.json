@@ -1,0 +1,93 @@
+{
+  "schema_version": "c01-interior-process-exercise-receipt/0.1",
+  "project_id": "C01-YIMAI-GUANGDU",
+  "object_id": "C01-N04-BAGUTING-LEARNING-ROOM",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "purpose": "Exercise the existing Interior Design Candidate against the real C01 Baguting learning-room hypothesis without inventing room survey, capacity, fire/accessibility, heritage permission, RCP, FF&E or technical design evidence.",
+  "bindings": [
+    {
+      "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
+      "blob_sha": "4ce800bf5b6caf3a607ae2d256fffa799c881404",
+      "role": "CANDIDATE_PROCESS_MACHINE_DEFINITION"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "ffebd1e75792422c9f126b853fa14379b0ed0749",
+      "role": "C01_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_THREAD_READBACK_v0.1.json",
+      "blob_sha": "03717e586e581241e0cd32ca7803277109022db4",
+      "role": "C01_TECHNICAL_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+      "blob_sha": "43da954cd24f200baa07bcd5db65ab6e9774c0de",
+      "role": "CURRENT_DESIGN_INTENT_SOURCE"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/C01_NODE-PROTOTYPE_v0.1-B-C.md",
+      "blob_sha": "f0d5f481530429aee515c048df54933bf628712c",
+      "role": "PROTOTYPE_TRUTH_BOUNDARY_SOURCE"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "da407dc9103eca9fc77850daa560b2bf312811c0",
+      "role": "AIG02_INTERIOR_FAILURE_REGRESSION"
+    }
+  ],
+  "findings": {
+    "retained_design_evidence": [
+      "learning behaviour chain: observation → question → discussion → writing → revision",
+      "movable/non-invasive furniture/media principle",
+      "community-use priority",
+      "indoor unavailable/closed/unknown downgrade path",
+      "nearby safe public-space / digital fallback"
+    ],
+    "professional_holds": [
+      "no appointed Interior professional authority",
+      "no measured room/base-building geometry",
+      "20–30 remains planning hypothesis, not verified capacity",
+      "no fire/life-safety/accessibility closure",
+      "no heritage/property/operation indoor-use permission closure",
+      "no RCP/lighting/MEP/acoustic coordination",
+      "no FF&E/product/procurement identity",
+      "no technical drawing/detail/schedule package",
+      "no field/construction/handover evidence"
+    ]
+  },
+  "stage_coverage": {
+    "ID-PW0": "BLOCKED/HOLD — strategic intent exists, authority/base-building evidence open",
+    "ID-PW1": "BLOCKED/HOLD — partial program/user/activity intent, capacity/base building unresolved",
+    "ID-PW2": "BLOCKED/HOLD — reversible concept principle only, no professional room concept artifact",
+    "ID-PW3": "NOT_STARTED/NOT_RUN",
+    "ID-PW4": "NOT_STARTED/NOT_RUN",
+    "ID-PW5": "NOT_STARTED/NOT_RUN",
+    "ID-PW6": "NOT_STARTED/NOT_RUN",
+    "ID-PW7": "NOT_STARTED/NOT_RUN"
+  },
+  "regression": {
+    "cases": [
+      "FAIL-057",
+      "FAIL-058"
+    ],
+    "attacks": [
+      "planning headcount/layout promoted to verified capacity/occupancy",
+      "reversible/non-invasive principle promoted to heritage/fire/accessibility/MEP/installation approval"
+    ]
+  },
+  "current_architecture_disposition": {
+    "interior_domain_process": "OPEN",
+    "changed_to_current": false,
+    "reason": "One real project HOLD exercise improves candidate evidence but does not provide a resolved Interior native-artifact cycle or independent Interior professional review."
+  },
+  "validation_plan": {
+    "validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "target": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+    "ci_state": "PENDING_REAL_PR_CI"
+  },
+  "maturity": "REAL PROJECT HOLD REAPPLICATION / PROJECT-SPECIFIC INTERIOR TRUTH BOUNDARIES EXERCISED / NATIVE INTERIOR ARTIFACTS NOT YET PRODUCED / INDEPENDENT INTERIOR PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION",
+  "claim_ceiling": "REAL PROJECT INTERIOR PROGRAMMATIC/REVERSIBLE-USE HOLD EVIDENCE ONLY / NO VERIFIED ROOM DESIGN / NO CAPACITY OR COMPLIANCE PASS / NO FIELD OR PROMOTION CLAIM"
+}

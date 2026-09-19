@@ -2,16 +2,16 @@
   "schema_version": "oleander-professional-candidate-bounded-reapplication/0.2",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "domain": "Lighting Design",
-  "state": "BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
-  "real_project_exercise_counted": false,
+  "state": "REAL_PROJECT_CURRENT_REVISION_BOUNDED_REAPPLICATION / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "real_project_exercise_counted": true,
   "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
   "candidate_definition_binding": {
     "prose_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
-    "prose_blob": "2248942b8f281385a3c8be47dc1e02d712830119",
+    "prose_blob": "aa5f8f352b7bc9b326d8f2189651f8477c138a50",
     "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
-    "machine_blob": "20c56c17dc859806989679c9654f7b9f820e2406",
+    "machine_blob": "6bef3b07b96e436264363f68b55090a5f07c0bab",
     "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
-    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
   },
   "source_bindings": [
     {
@@ -25,6 +25,18 @@
     {
       "path": "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md",
       "blob": "69894dfe435bc60423a6ba6702cd4238a11a4b82"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob": "036cb0b04bfe6845710056bcde80f199edcc14c9"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+      "blob": "5cf319f5242178e99b6e82b8f240e9aad25d97c6"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+      "blob": "79f3762a603d7b416141fc6ec244b8f60d1331f6"
     }
   ],
   "stage_exercises": [
@@ -39,7 +51,9 @@
         "stage_id": "LGT-00",
         "stage_name": "Lighting Brief, Visual Tasks and Operating States",
         "professional_question": "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
-        "decision_object_refs": [],
+        "decision_object_refs": [
+          "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-00-001"
+        ],
         "canonical_stage_execution_chain": [
           "PROFESSIONAL_STAGE",
           "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
@@ -62,7 +76,9 @@
             "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
             "state": "RESOLVED",
             "professional_question": "What must people see/perceive/do, under which daylight/electric-light/operating states and at what evidence/authority ceiling?",
-            "decision_object_refs": []
+            "decision_object_refs": [
+              "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-00-001"
+            ]
           },
           {
             "step": "KNOWLEDGE_INPUTS",
@@ -329,7 +345,9 @@
         "stage_id": "LGT-01",
         "stage_name": "Daylight and Luminous Concept / Spatial Hierarchy",
         "professional_question": "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
-        "decision_object_refs": [],
+        "decision_object_refs": [
+          "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-01-001"
+        ],
         "canonical_stage_execution_chain": [
           "PROFESSIONAL_STAGE",
           "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
@@ -352,7 +370,9 @@
             "step": "PROFESSIONAL_QUESTION_OR_DECISION_OBJECT",
             "state": "RESOLVED",
             "professional_question": "What luminous hierarchy and daylight/electric-light relation best supports task, orientation, material, atmosphere and spatial intent?",
-            "decision_object_refs": []
+            "decision_object_refs": [
+              "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json#C04-LGT-01-001"
+            ]
           },
           {
             "step": "KNOWLEDGE_INPUTS",
@@ -611,13 +631,18 @@
   "multi_skill_dag_materialized": false,
   "typed_handoff_records_materialized": false,
   "dag_handoff_note": "The preflight determines whether a DAG/handoff is required. No DAG or typed-handoff artifact is claimed until Current callable owners are fully resolved and an actual execution graph is materialized.",
-  "release_condition": "A real project Lighting decision object with task/claim Lighting Knowledge Mount, Lighting specialist authority and applicable model/product/control/field evidence becomes available.",
-  "claim_ceiling": "BOUNDED C04 LIGHTING-CONTEXT REAPPLICATION ONLY / NOT A REAL LIGHTING PROJECT ADOPTION EXERCISE / NO LIGHTING PASS",
+  "release_condition": "Current real-project Lighting HOLD evidence exists; release still requires task/claim Lighting Knowledge Mount, Lighting specialist authority, required native photometric/product/control/night/field outputs and readback, and independent professional review.",
+  "claim_ceiling": "REAL PROJECT CURRENT-REVISION LIGHTING BOUNDED REAPPLICATION / HOLD / NO PHOTOMETRIC, CONTROL, ECOLOGY, ELECTRICAL, COMMISSIONING, FIELD OR PROFESSIONAL PASS",
   "does_not_prove": [
     "PROFESSIONAL_PASS",
     "DESIGN_KEEP",
     "CURRENT_ADOPTION",
     "RELEASE_CONDITION_SATISFIED",
     "SELECTIVE_RETEST_EXECUTED"
+  ],
+  "real_project_source_evidence_refs": [
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json"
   ]
 }

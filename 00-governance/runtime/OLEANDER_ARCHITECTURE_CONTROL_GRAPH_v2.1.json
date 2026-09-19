@@ -737,7 +737,7 @@
       "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
       "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
       "project_exercised_claim": false,
-      "candidate_project_exercise_evidence_state": "BOUNDED_CONTEXT_REAPPLICATION_NOT_PROJECT_ADOPTION_RELEASE_UNSATISFIED"
+      "candidate_project_exercise_evidence_state": "CURRENT_REVISION_PROJECT_REAPPLICATION_HOLD_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Landscape Architecture",
@@ -759,7 +759,7 @@
       "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
       "candidate_evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
       "project_exercised_claim": false,
-      "candidate_project_exercise_evidence_state": "BOUNDED_CONTEXT_REAPPLICATION_NOT_PROJECT_ADOPTION_RELEASE_UNSATISFIED"
+      "candidate_project_exercise_evidence_state": "CURRENT_REVISION_PROJECT_REAPPLICATION_HOLD_RELEASE_UNSATISFIED"
     },
     {
       "domain": "Digital Product / HCD",
@@ -1580,8 +1580,16 @@
     ],
     "runtime_implementation_ref": "00-governance/runtime/validate_runtime_resilience.py",
     "applies_when": "ONE_LOGICAL_MATERIAL_MUTATION_HAS_MULTIPLE_SIDE_EFFECT_LEGS_OR_DEPENDENT_HANDOFF_REQUIRES_MULTI_LEG_COHERENCE",
-    "leg_observation_values": ["CONFIRMED", "ABSENT", "UNCERTAIN"],
-    "reconciliation_results": ["COHERENT_COMMIT", "PARTIAL_COMMIT", "HOLD"],
+    "leg_observation_values": [
+      "CONFIRMED",
+      "ABSENT",
+      "UNCERTAIN"
+    ],
+    "reconciliation_results": [
+      "COHERENT_COMMIT",
+      "PARTIAL_COMMIT",
+      "HOLD"
+    ],
     "current_runtime_actions": [
       "ADVANCE_AFTER_COHERENT_COMMIT",
       "VERIFY_UNCERTAIN_LEGS_BEFORE_ADVANCE",

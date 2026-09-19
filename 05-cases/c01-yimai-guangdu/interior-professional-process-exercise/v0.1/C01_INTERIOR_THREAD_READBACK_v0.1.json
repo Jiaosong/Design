@@ -1,0 +1,158 @@
+{
+  "schema_version": "c01-interior-thread-readback/0.1",
+  "project_id": "C01-YIMAI-GUANGDU",
+  "object_id": "C01-N04-BAGUTING-LEARNING-ROOM",
+  "state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NO INTERIOR PROFESSIONAL PASS",
+  "source_boundary": {
+    "current_design_source": "C01_NODE-DESIGN_v0.1",
+    "prototype_source": "C01_NODE-PROTOTYPE_v0.1-B-C",
+    "exact_room_survey": false,
+    "field_observed": 0,
+    "field_measured": 0,
+    "human_test": "NOT_RUN",
+    "reality_gate_2": "NOT_RUN",
+    "evidence_level": "E2"
+  },
+  "threads": [
+    {
+      "id": "IDT-01",
+      "name": "Existing Conditions / Base-Building Authority",
+      "state": "HOLD",
+      "evidence": "Historic/learning-use object identified, but no authoritative measured room survey/base-building interior record.",
+      "does_not_prove": "room dimensions, openings, ceiling height, levels, fabric condition, services or usable floor area"
+    },
+    {
+      "id": "IDT-02",
+      "name": "Programming / User / Operations",
+      "state": "PARTIAL_DESIGN_EVIDENCE",
+      "evidence": "Observation→question→discussion→writing→revision learning behaviour; community-use priority; indoor/off-site/digital fallback.",
+      "does_not_prove": "verified cohort size, schedule, occupancy, storage, staffing or operating permission"
+    },
+    {
+      "id": "IDT-03",
+      "name": "Code / Life Safety / Accessibility",
+      "state": "NOT_RUN",
+      "evidence": "Project source explicitly says capacity/fire-safety clearance not verified.",
+      "does_not_prove": "occupancy, egress, fire/life-safety, accessibility or statutory compliance"
+    },
+    {
+      "id": "IDT-04",
+      "name": "Space Planning / Circulation / Clearances",
+      "state": "NOT_RUN",
+      "evidence": "No measured room plan/furniture layout.",
+      "does_not_prove": "circulation, clearances, turning space, furniture fit or actual 20–30 person capacity"
+    },
+    {
+      "id": "IDT-05",
+      "name": "Partitions / Doors / Hardware / Glazing",
+      "state": "NOT_RUN",
+      "evidence": "No current door/opening/partition/hardware object set.",
+      "does_not_prove": "opening geometry, access, fire/acoustic rating, hardware, thresholds or heritage impact"
+    },
+    {
+      "id": "IDT-06",
+      "name": "RCP / Lighting / MEP / Acoustics",
+      "state": "NOT_RUN",
+      "evidence": "No current RCP/service/lighting/acoustic room coordination.",
+      "does_not_prove": "ceiling/service fit, lighting quality, controls, HVAC, fire devices, AV, sensors or acoustic performance"
+    },
+    {
+      "id": "IDT-07",
+      "name": "Finishes / Substrates / Transitions",
+      "state": "NOT_RUN",
+      "evidence": "No finish/build-up/substrate/joint schedule.",
+      "does_not_prove": "material suitability, fire/slip/health/wear/cleaning/heritage performance"
+    },
+    {
+      "id": "IDT-08",
+      "name": "Joinery / Millwork / Custom Fabrication",
+      "state": "OUTSIDE_CURRENT_CLAIM",
+      "evidence": "Current concept explicitly prioritizes movable/non-invasive furniture/media; no custom fixed interior fabrication claimed.",
+      "does_not_prove": "that future joinery is unnecessary or permitted"
+    },
+    {
+      "id": "IDT-09",
+      "name": "FF&E / Equipment / Procurement / Logistics",
+      "state": "PARTIAL_DESIGN_PRINCIPLE",
+      "evidence": "Movable/non-invasive furniture/media principle.",
+      "does_not_prove": "item identity, quantity, dimensions, accessibility, lead time, procurement, delivery, storage or installation"
+    },
+    {
+      "id": "IDT-10",
+      "name": "Details / Specifications / Schedules / QA-QC",
+      "state": "NOT_RUN",
+      "evidence": "No professional interior technical drawing/spec/schedule package.",
+      "does_not_prove": "technical completeness or buildability"
+    },
+    {
+      "id": "IDT-11",
+      "name": "Submittals / Samples / Mockups / Substitutions",
+      "state": "NOT_RUN",
+      "evidence": "No material/product release or mockup scope.",
+      "does_not_prove": "approved benchmark, product identity or substitution equivalence"
+    },
+    {
+      "id": "IDT-12",
+      "name": "Construction Administration / Site Observation / Change",
+      "state": "NOT_RUN",
+      "evidence": "No construction/installation scope or interior field observation.",
+      "does_not_prove": "field conformity or installed condition"
+    },
+    {
+      "id": "IDT-13",
+      "name": "Closeout / O&M / Warranties / Asset Data",
+      "state": "NOT_RUN",
+      "evidence": "No installed interior scope.",
+      "does_not_prove": "handover, warranties, O&M or asset completeness"
+    },
+    {
+      "id": "IDT-14",
+      "name": "Post-Occupancy / Maintenance / Adaptation",
+      "state": "NOT_RUN",
+      "evidence": "No implemented/occupied learning-room interior.",
+      "does_not_prove": "user satisfaction, maintenance burden or adaptation performance"
+    },
+    {
+      "id": "IDT-15",
+      "name": "Interfaces / Responsibility",
+      "state": "UNRESOLVED",
+      "evidence": "Community use priority and indoor-use contingency are explicit, but Architecture/Heritage/Fire/Accessibility/MEP/Lighting/Acoustics/Operations owners are not resolved.",
+      "does_not_prove": "cross-disciplinary maturity or permission"
+    }
+  ],
+  "critical_truth_boundaries": [
+    "`20–30 people` = planning hypothesis, not verified capacity.",
+    "Movable / non-invasive = design principle, not heritage/property/fire/accessibility/MEP approval.",
+    "Indoor candidate / unavailable-or-closed / unknown = simulated prototype branch, not existing-condition fact.",
+    "Community priority = design/operation rule, not a current occupancy schedule or permission.",
+    "Course behaviour concept = Design Intelligence evidence, not Interior room professional completion."
+  ],
+  "disposition": {
+    "keep": [
+      "八股厅 as a conditional learning-node design hypothesis.",
+      "Movable/non-invasive furniture-media principle.",
+      "Community-priority rule.",
+      "Indoor → nearby safe public space/digital fallback.",
+      "20–30 only as an explicitly bounded planning hypothesis."
+    ],
+    "hold": [
+      "Interior professional scope/appointment.",
+      "Measured room/base-building authority.",
+      "Capacity/life safety/accessibility.",
+      "RCP/lighting/MEP/acoustics.",
+      "FF&E/product/procurement.",
+      "technical drawings/details/schedules.",
+      "construction/field/handover claims."
+    ],
+    "next_valid_actions": [
+      "Obtain authoritative existing-condition room geometry/base-building evidence before spatial coordination.",
+      "Resolve heritage/property/operation permission for indoor use.",
+      "Mount applicable fire/life-safety/accessibility criteria and responsible owners before any capacity claim.",
+      "Only if indoor use remains viable, create room data + measured plan/section + furniture/clearance options.",
+      "Route ceiling/service/lighting/acoustic interfaces before any coordinated RCP claim.",
+      "Do not develop fixed joinery/fabrication until reversible/movable scope fails or project authority changes."
+    ]
+  },
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "REAL PROJECT INTERIOR PROGRAMMATIC/REVERSIBLE-USE INTENT ONLY / NO VERIFIED ROOM DESIGN / NO PROFESSIONAL INTERIOR PASS / NO PROMOTION"
+}

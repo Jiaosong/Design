@@ -865,3 +865,116 @@ Until then:
 `DESIGN KEEP ≠ ENGINEERING / SECURITY / PRIVACY / LIVE PASS`
 
 `CURRENT PROFESSIONAL PROCESS REMAINS OPEN UNTIL EXPLICIT PROMOTION`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Digital Product / HCD professional-depth parity
+
+**Status effect:** additive candidate-depth binding only. `CANDIDATE PROFESSIONAL DOMAIN PROCESS / NOT CURRENT / NO PROMOTION` remains unchanged. No separate HCD Skill family is created.
+
+### Knowledge binding
+Consequential HCD/product claims resolve task/claim-scoped Current knowledge before use, including as applicable:
+- `MTH-DESIGN-HCD-IDEO-001` — bounded HCD method routing; METHOD ≠ professional-process PASS;
+- `MTH-DESIGN-CONTEXTUAL-DESIGN-001` — work-practice/context modelling where the research question requires it;
+- `KN-DESIGN-DIGITAL-A11Y-001` — digital accessibility source/diagnostic routing;
+- `KN-METHOD-MULTI-STAKEHOLDER-EVALUATION-001` — conflicting actor/evidence separation when applicable;
+- current usability, accessibility, content/localization, privacy/security, analytics, research-ethics and platform/source owners.
+
+### `required_native_outputs[]`
+- HCD scope/authority and research/evaluation plan;
+- context-of-use / user-task-resource-environment model and evidence refs;
+- user-needs ledger and use-related requirements with source/confidence/conflict;
+- conceptual model / IA / navigation / task-flow / state-error-recovery models;
+- interactive prototype(s) with stable version/test identity;
+- study repository / research-freeze and consent/data-eligibility records;
+- finding → fix → source/build → retest chain;
+- detailed UI/component/state/responsive/content specification and implementation parity readback;
+- release-support matrix across declared browser/OS/device/input/assistive-technology scope;
+- content/localization and privacy/security interaction handoff registers;
+- instrumentation/outcome definitions, experiment/rollout object and live research/analytics evidence when triggered.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research [INSTALLED_CORE]` — external/source/precedent evidence; **not participant-study validity or consent authority**;
+- `oleander-design-process [INSTALLED_CORE]` — HCD framing, option/interaction reasoning, prototype fidelity, repair/change propagation; cannot prove human-test PASS;
+- `oleander-web-ui [CANDIDATE_COMPOSITE_ROUTE]` — browser implementation/integration only when its candidate route and specialist dependencies are valid for the run;
+- `oleander-visual-design [CANDIDATE]` — visual layer only; visual polish cannot replace usability/accessibility evidence;
+- `oleander-data-viz [INSTALLED_CORE]` — analytics/research-result visualization only; dashboard correctness does not establish causal user outcome;
+- `oleander-delivery-qc [INSTALLED_CORE]` — package/runtime-output integrity only.
+
+**Professional execution boundary:** participant research, usability testing, accessibility evaluation with the required proof class, privacy/security/legal review, analytics implementation/data quality and software engineering remain actual project-owner activities. If a consequential claim requires a participant, assistive technology, browser/device, instrumented build or live environment that is not callable/observable, return `CAPABILITY_HOLD / EVIDENCE_HOLD`; do not infer the result from a prototype or design annotation.
+
+### `tool_adapter_requirements[]`
+- research repository / consent / participant-eligibility / session-evidence carrier appropriate to the study;
+- editable IA/flow/state/prototype runtime with stable version identity;
+- actual browser/app/device runtime for interaction and implementation-parity readback;
+- keyboard / screen-reader / zoom / contrast / pointer / other accessibility tools according to the claimed criterion, not a generic accessibility badge;
+- content/localization review carrier;
+- privacy/security/legal handoff evidence carrier;
+- analytics/event schema, data-quality and experiment/rollout runtime when live outcome is claimed;
+- format-specific reopen/readback for source design, implementation and release artifacts.
+
+### `typed_handoff_contracts[]`
+- Research → HCD: participant/context/sample/task/evidence/consent limits + study/prototype identity;
+- HCD → Product/Engineering: need/requirement/state/error/recovery/content/accessibility behavior + acceptance/retest evidence;
+- Engineering → HCD: exact build/component/version + implementation deviation + browser/device/runtime state;
+- HCD ↔ Accessibility/Content/Privacy/Security: issue/criterion/owner/evidence/disposition with claim ceiling;
+- HCD ↔ Data/Analytics: outcome definition → event/instrumentation → data-quality boundary → interpretation;
+- Live return → HCD: exact release/cohort/context/time + observed outcome/support/accessibility evidence + reopen target.
+
+### `actual_readback_requirements[]`
+- research finding ↔ exact study / participant boundary / prototype or product version;
+- user need/requirement ↔ interaction/state/content consequence;
+- prototype ↔ implemented build parity for the claim being reused;
+- actual keyboard/focus/assistive-tech/responsive/browser/device behavior where claimed;
+- content/localization/privacy-security handoff state at release scope;
+- instrumentation event/data ↔ intended outcome definition and known causal limitation;
+- finding closure only through material fix/build/retest evidence, not ticket status;
+- live outcome or experiment claims only from actual released configuration/cohort/evidence.
+
+### `reopen_triggers[]`
+User/context/task/need change; new or contradictory research; prototype/build divergence; component/state/content/localization change; accessibility finding; privacy/security/legal disposition; browser/device/platform change; instrumentation/data-quality change; failed usability/retest; experiment/live outcome/support evidence materially contradicting the design assumption.
+
+### Object-level invocation matrix
+
+#### A｜Context-of-use / Study authority
+- Knowledge: HCD / Contextual Design / research-ethics and applicable domain sources.
+- Skills: `oleander-research` for external evidence + `oleander-design-process` for framing; participant-study owner = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: study protocol/repository + consent/eligibility/session-evidence carrier.
+- Native carrier: context model, protocol/version freeze, participant/sample boundary, raw-evidence index, finding-confidence record.
+- Readback: claimed context/user/task is actually represented by the observed evidence and study version.
+- Reopen: participant/context/task/protocol/evidence-quality or ethics/data-eligibility change.
+
+#### B｜Needs → IA / Interaction / State
+- Knowledge: HCD method + user-needs/use-requirements + accessibility/content sources.
+- Skills: `oleander-design-process`; web-ui/visual-design only after the interaction object requires those surfaces.
+- Tool class: editable IA/flow/state/prototype carrier.
+- Native carrier: needs ledger, IA/navigation, task flows, state/error/recovery model, concept prototypes.
+- Readback: each material interaction decision traces to a need/requirement and survives realistic task/error/recovery scenarios.
+- Reopen: need/requirement/content/accessibility/state/platform change.
+
+#### C｜Finding → Fix → Build → Retest
+- Knowledge: usability/accessibility criterion and exact study evidence.
+- Skills: design-process for repair; actual implementation owner + research/evaluation owner required for closure.
+- Tool class: issue/finding ledger + source design + build/runtime + retest evidence.
+- Native carrier: finding severity/user consequence, source fix, build ID, retest method/result, residual risk/closure.
+- Readback: the tested build actually contains the intended fix and the same failure mode was retested.
+- Reopen: source/build drift, new evidence, failed/partial retest or residual risk change.
+
+#### D｜Release support / Accessibility / Content / Privacy-Security
+- Knowledge: digital accessibility + content/localization + privacy/security/legal authority.
+- Skills: web-ui candidate for browser integration when applicable; delivery-qc for package integrity; specialist reviewers remain separate.
+- Tool class: declared support matrix + actual browser/device/AT tests + content/privacy-security handoff records.
+- Native carrier: release-support matrix, accessibility evidence, content/localization register, privacy/security interaction handoff, blocker register.
+- Readback: claimed support envelope has actual evidence for the relevant proof class; static screenshot ≠ runtime/AT proof.
+- Reopen: browser/device/AT/content/legal/security/platform or implementation change.
+
+#### E｜Instrumentation / Experiment / Live outcome
+- Knowledge: current metric/outcome/experiment methods and data-governance sources.
+- Skills: data-viz for analysis/visualization + design-process for product consequence; analytics/experiment engineering = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: event schema/instrumented build + data-quality checks + experiment/rollout system + live research/support evidence.
+- Native carrier: outcome definition, event mapping, guardrail, rollout/cohort identity, live result, causal limitation and reopen record.
+- Readback: event fired ≠ outcome achieved; verify event semantics, cohort/release identity, missingness/bias and alternative explanations.
+- Reopen: event/schema/data-quality/cohort/release/guardrail/support/live research change.
+
+### Professional boundary
+`PROTOTYPE PASS ≠ USABILITY PASS`; `STATIC CHECK ≠ INTERACTION READBACK`; `ACCESSIBLE-LOOKING ≠ ACCESSIBILITY CONFORMANCE`; `EVENT FIRED ≠ USER OUTCOME`; `ANALYTICS CORRELATION ≠ CAUSAL VALIDATION`; `DELIVERY QC PASS ≠ HCD PROFESSIONAL PASS`.

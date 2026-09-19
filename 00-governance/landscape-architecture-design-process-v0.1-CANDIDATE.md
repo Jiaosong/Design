@@ -1252,3 +1252,103 @@ No jurisdiction-specific numeric slope, drainage, irrigation, planting, accessib
 `LANDSCAPE PROFESSIONAL PASS ≠ CIVIL / STRUCTURAL / ECOLOGY / ACCESSIBILITY / STATUTORY PASS`
 
 `CURRENT PROFESSIONAL PROCESS REMAINS OPEN UNTIL EXPLICIT PROMOTION`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Landscape professional-depth parity
+
+**Status effect:** additive candidate-depth binding only. The Landscape process remains Candidate and retains its existing review/promotion boundary.
+
+### Knowledge binding
+- `IDX-ARCH-SITE-003` — survey/geotech/planning/climate/ecology/access/utilities/levels evidence routing;
+- `KN-METHOD-LANDSCAPE-GRADING-WATER-SOIL-001` — levels / water path / earthwork / soil / vegetation interface;
+- `KN-METHOD-LANDSCAPE-PLANTING-SOIL-RELEASE-001` — retained tree / soil / planting provenance / substitution / establishment;
+- `KN-METHOD-LANDSCAPE-HARDSCAPE-EDGE-001` — paving/base/joint/edge/slope/drainage/accessibility release;
+- `KN-METHOD-LANDSCAPE-IRRIGATION-001` — hydrozone / water budget / hydraulics / controls / establishment / audit;
+- applicable current ecology/arboriculture/hydrology/accessibility/material/water SOURCE owners.
+
+### `required_native_outputs[]`
+- authoritative survey/GIS/terrain carrier with CRS/datum/accuracy/source metadata;
+- grading plan/model, spot-level/threshold schedule, critical sections and drainage/overflow paths;
+- earthwork/soil movement and soil profile/amendment/test records;
+- hardscape setting-out, joint/module, edge/base/threshold/utility/tree interface details;
+- retained-tree/protection and construction-access/protection records;
+- planting-community schedule, provenance/substitution and establishment plan;
+- irrigation hydrozone, water-budget, hydraulic/zone/control plan, commissioning/audit record;
+- construction hold-point/inspection and seasonal establishment/mortality/O&M readback.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research` — survey/source/ecology/hydrology/arboriculture/material evidence;
+- `oleander-data-viz` — **primary installed owner for GIS/mapping/analytical spatial evidence when triggered**; it preserves source geometry/CRS but cannot create field truth;
+- `oleander-design-process` — landscape option/relationship/design-continuity reasoning;
+- `oleander-3d-pipeline` — terrain/spatial model/exchange when 3D materially resolves the decision; not survey authority;
+- `oleander-technical-drawing` — candidate PR #172 only;
+- `oleander-delivery-qc` — package/master/export integrity only.
+
+Project-authorized GIS/CAD/civil/grading/irrigation and field-survey tools remain per-run adapters where native professional output requires them. `PUBLIC GIS / REMOTE DATA ≠ FIELD SURVEY ≠ LEGAL/GEOTECH AUTHORITY`.
+
+### `tool_adapter_requirements[]`
+- source-preserving GIS with CRS/datum/unit readback;
+- terrain/CAD/grading runtime capable of editable levels/contours/sections when required;
+- tabular calculation/schedule runtime for earthwork, soil, planting and irrigation data;
+- project-authorized irrigation/hydraulic calculation tool when consequential;
+- field survey/inspection/testing records for levels, drainage, soil/tree/planting and irrigation performance;
+- native-source reopen and derivative comparison.
+
+### `typed_handoff_contracts[]`
+- Survey/Site → Landscape: CRS/datum/accuracy/date/source + current boundary/levels/features;
+- Architecture → Landscape: thresholds/entries/FFL/roof/site discharge/utility/structure/opening constraints;
+- Landscape → Civil/MEP/Structure: design levels, flows, loads, utilities, drainage/irrigation interfaces and protection zones;
+- Landscape → Contractor/Nursery: exact material/plant/soil/detail/provenance/substitution/establishment requirements;
+- Field return: exact location/feature ID + observed level/soil/tree/plant/water condition + test/inspection + disposition/reopen.
+
+### `actual_readback_requirements[]`
+- survey/GIS/terrain geometry and CRS/datum integrity;
+- every low point / overflow / threshold water path;
+- cut/fill/soil movement against retained-tree/root/soil protection;
+- hardscape level/slope/joint/edge/drainage/accessibility at critical sections;
+- plant community against actual soil/moisture/light/maintenance regime;
+- irrigation design flow/pressure/coverage/control against field test/audit where claimed;
+- construction protection and seasonal establishment/survival evidence.
+
+### `reopen_triggers[]`
+Survey/datum/boundary/planning/geotech/hydrology/ecology update; building threshold/utility change; unexpected groundwater/soil; tree-condition change; grading/drainage/overflow failure; hardscape/material substitution; plant/soil substitution; irrigation source/pressure/control change; construction damage; mortality/ponding/erosion/repeated maintenance evidence.
+
+### Professional boundary
+`GIS PASS ≠ SITE TRUTH`; `PLANTING PLAN PASS ≠ ESTABLISHMENT PASS`; `DRAINAGE DIAGRAM PASS ≠ FIELD DRAINAGE PASS`. Candidate promotion still requires real project exercise and independent Landscape professional review under the existing process boundary.
+
+### Object-level invocation matrix
+
+`INSTALLED_CORE / CANDIDATE_ONLY / PROJECT_SPECIALIST_REQUIRED` semantics follow the Current Skill Registry and this candidate's no-promotion boundary.
+
+#### A｜Grading–Water–Soil
+- Knowledge: `KN-METHOD-LANDSCAPE-GRADING-WATER-SOIL-001` + current survey/geotech/hydrology/ecology/access sources.
+- Skills: research + `oleander-data-viz [INSTALLED_CORE]` for GIS/source-bound mapping + design-process; 3d-pipeline for terrain/spatial model when fit.
+- Tool class: source-preserving GIS/terrain/CAD; project civil/hydrology tools = `PROJECT_SPECIALIST_REQUIRED` when calculations are consequential.
+- Native carrier: grading/spot-level/threshold plan, water/overflow map, earthwork/soil movement, critical sections.
+- Readback: CRS/datum; low-point/overflow path; threshold/access route; cut-fill/root/soil/utility conflict.
+- Reopen: survey/datum/hydrology/geotech/building-threshold/utility/tree/soil change.
+
+#### B｜Hardscape–Edge–Drainage
+- Knowledge: `KN-METHOD-LANDSCAPE-HARDSCAPE-EDGE-001`.
+- Skills: design-process + data-viz/GIS for source levels + project drawing owner; 3d-pipeline when level/edge geometry benefits.
+- Tool class: CAD/grading detail carrier + material/subgrade/field inspection records.
+- Native carrier: setting-out/joint/slope plan, base/subbase and edge/threshold/utility/tree interface details, mockup/ponding record.
+- Readback: pattern through slopes/curves/drains; water path; subgrade/base/loading; accessible route; permeable-system continuity.
+- Reopen: level/drain/material/base/utility/tree/accessibility/field-ponding change.
+
+#### C｜Planting–Soil Release
+- Knowledge: `KN-METHOD-LANDSCAPE-PLANTING-SOIL-RELEASE-001` + ecology/arboriculture/soil/nursery sources.
+- Skills: research + data-viz/GIS + design-process; field/nursery/arboricultural authority = `PROJECT_SPECIALIST_REQUIRED` where consequential.
+- Tool class: planting/soil schedule + GIS/CAD + soil/tree/field inspection records.
+- Native carrier: retained-tree/protection register, soil schedule/tests, plant-community/provenance/substitution, establishment and mortality/O&M records.
+- Readback: retained root/soil protection vs works; plant↔soil/moisture/light/maintenance fit; provenance/substitution; seasonal survival/root cause.
+- Reopen: tree condition, soil test, water regime, plant substitution, construction damage or mortality pattern.
+
+#### D｜Irrigation Water Budget & Control
+- Knowledge: `KN-METHOD-LANDSCAPE-IRRIGATION-001` + current water/source/control rules.
+- Skills: research + design-process; data-viz for water-budget/zone evidence; hydraulic/irrigation calculation and field audit = `PROJECT_SPECIALIST_REQUIRED` where consequential.
+- Tool class: tabular water budget + hydraulic network/valve/controller carrier + field pressure/coverage/audit instruments.
+- Native carrier: hydrozone map, water-budget basis, design flow/pressure schedule, pipe/valve/controller plan, commissioning/audit/O&M record.
+- Readback: hydrozone basis; source pressure/capacity; hydraulic critical point; emitter coverage/overspray; controller/sensor state; field audit vs design.
+- Reopen: climate/source pressure/water quality/plant zone/system/emitter/controller/field coverage change.

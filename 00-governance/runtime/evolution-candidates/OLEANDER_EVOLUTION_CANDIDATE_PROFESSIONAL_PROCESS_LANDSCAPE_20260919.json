@@ -6,16 +6,16 @@
   "target_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
   "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
   "baseline": {
-    "current_version_or_revision": "PROCESS_OPEN / origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287",
-    "authority_fingerprint": "Landscape Architecture professional process owner|CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN|current_process_ref=null|origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287",
-    "source_hash_or_commit": "43030cfa75e8f8576c89555bbfdc872a2b7ec287",
+    "current_version_or_revision": "PROCESS_OPEN / origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
+    "authority_fingerprint": "Landscape Architecture professional process owner|CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN|current_process_ref=null|origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
+    "source_hash_or_commit": "be280aa1f42ad618f1047400b2f96312bd1eda34",
     "frozen_at": "2026-09-19"
   },
   "candidate_definition_binding": {
     "prose_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
     "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
-    "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
+    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 8,
     "distinct_required_capability_profiles": 8,
     "mutation_manifest_ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
@@ -207,7 +207,7 @@
       "FIELD_OBSERVED_0_FIELD_MEASURED_0_G1F_HOLD_FOR_SITE_TRUTH"
     ],
     "quality_delta": "EXECUTION_MECHANISM_QUALITY_IMPROVED: 43 OPEN-Candidate stages carry native stage execution requirements, 36 already-Current stages use an exact-revision non-authority runtime projection, and the combined 79-stage runtime corpus has 308 explicitly classified capability roles; does not prove project design quality.",
-    "reliability_delta": "IMPROVED_FAIL_CLOSED_STAGE_RECOMPOSITION_KNOWLEDGE_MOUNT_CURRENT_OWNER_EXACT_CANDIDATE_HASH_AND_SPECIALIST_REVIEW_BOUNDARIES; real-project current-revision reapplication is counted only for Landscape, HCD and Systems, while Interior and Lighting remain bounded context reapplications.",
+    "reliability_delta": "IMPROVED_FAIL_CLOSED_STAGE_RECOMPOSITION_KNOWLEDGE_MOUNT_CURRENT_OWNER_EXACT_CANDIDATE_HASH_AND_SPECIALIST_REVIEW_BOUNDARIES; all five OPEN domains now have real-project current-revision bounded reapplication evidence, while all remain HOLD with professional adoption gates open.",
     "cost_latency_delta": "LOCAL_CURRENT_ADD00_PROJECTION_PLUS_OE3_KNOWLEDGE_MOUNT_PLUS_OWNER_ROUTING_BENCHMARK_MEDIAN_4.360MS_P95_5.864MS_MAX_7.934MS_OVER_100_RUNS; network/tool/human execution latency not measured.",
     "decision_basis": "EVH_HOLD_UNTIL_REAL_PROJECT_EXERCISE_INDEPENDENT_REVIEW_AND_ADOPTION_CHAIN_CLOSE",
     "evidence_ref": "00-governance/audits/professional-stage-skill-composition-baseline-candidate-comparison-20260919.json"
@@ -254,7 +254,7 @@
     "previous_pointer": null,
     "rollback_action": "RESTORE_DOMAIN_PROCESS_OPEN_AND_CURRENT_PROCESS_REF_NULL",
     "rollback_test": "ARCHITECTURE_CONTROL_GRAPH_AND_RESOLVER_READBACK",
-    "provenance_ref": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+    "provenance_ref": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34"
   },
   "monitoring": {
     "monitor_window_or_condition": "AFTER_AUTHORIZED_ADOPTION_ON_FIRST_MATERIAL_PROJECT_EXERCISE_AND_ANY_TRIGGERED_REGRESSION",

@@ -3,16 +3,16 @@
   "project_id": "PRJ-C01-YIMAI-GUANGDU",
   "domain": "Interior Design",
   "status": "HOLD",
-  "real_project_exercise_counted": false,
+  "real_project_exercise_counted": true,
   "exercise_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
   "continuation_checkpoint_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
   "candidate_binding": {
     "prose_ref": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
-    "prose_blob": "54349c3516303a3e00f3c573e39f4950c0118659",
+    "prose_blob": "11cea4bea4a41355671d34613cf5417e6b345544",
     "machine_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
-    "machine_blob": "3776ad3cbde8478ea7b85282072301710effd763",
+    "machine_blob": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
     "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
-    "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
+    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
   },
   "current_candidate_revision_exercised": true,
   "stage_composition_owner_resolution_exercised": true,
@@ -30,5 +30,10 @@
     "EV4_INDEPENDENT_REVIEWED",
     "EV5_PROMOTION_READY",
     "EV6_CURRENT_ADOPTED"
+  ],
+  "real_project_source_refs": [
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_THREAD_READBACK_v0.1.json"
   ]
 }

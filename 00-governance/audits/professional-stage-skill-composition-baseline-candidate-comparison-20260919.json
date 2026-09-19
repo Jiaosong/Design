@@ -1,7 +1,7 @@
 {
   "audit_id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-COMPARISON-20260919",
   "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
-  "baseline_ref": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287",
+  "baseline_ref": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
   "candidate_branch": "candidate/professional-stage-skill-composition-20260919-r5",
   "comparison_scope": "Execution-mechanism quality, fail-closed reliability and bounded local resolver cost only. This comparison does not score or prove project design quality or professional domain PASS.",
   "baseline": {
@@ -36,16 +36,15 @@
     "unique_required_and_supporting_capability_roles": 308,
     "roles_using_unnamed_owner_routing_fallback": 0,
     "open_candidate_domain_count": 5,
-    "open_candidate_domains_with_current_revision_real_project_stage_composition_reapplication": 3,
+    "open_candidate_domains_with_current_revision_real_project_stage_composition_reapplication": 5,
     "real_project_counted_domains": [
+      "Interior Design",
       "Landscape Architecture",
+      "Lighting Design",
       "Digital Product / HCD",
       "Systems Engineering"
     ],
-    "bounded_context_only_domains": [
-      "Interior Design",
-      "Lighting Design"
-    ],
+    "bounded_context_only_domains": [],
     "bounded_invocation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
     "current_authority_preserved_during_evaluation": "PROCESS_OPEN + current_process_ref=null",
     "current_process_machine_mutation_for_routing_metadata": "FORBIDDEN",
@@ -61,9 +60,27 @@
   },
   "real_project_exercise_evidence": [
     {
+      "domain": "Interior Design",
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "main_real_project_evidence_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "current_candidate_replay_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    },
+    {
       "domain": "Landscape Architecture",
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "exercise_ref": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EXERCISE_v0.2.json",
+      "result": "HOLD",
+      "knowledge_mount_gate": "HOLD",
+      "release_condition": "UNSATISFIED"
+    },
+    {
+      "domain": "Lighting Design",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "main_real_project_evidence_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "current_candidate_replay_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
       "result": "HOLD",
       "knowledge_mount_gate": "HOLD",
       "release_condition": "UNSATISFIED"
@@ -136,11 +153,11 @@
     "release conditions remain UNSATISFIED; therefore no post-release selective retest or successor receipt is claimed",
     "required real Multi-Skill DAG / typed-handoff evidence is not materialized where Current multi-owner execution would apply",
     "independent domain professional review remains NOT_RUN for all five OPEN Candidate domains",
-    "Interior and Lighting still lack authentic project-level adoption exercises",
     "project/domain-specific field, user, specialist or validation authority remains open where each record states it",
-    "human adoption and Current pointer mutation remain forbidden before EV5 + authorized decision"
+    "human adoption and Current pointer mutation remain forbidden before EV5 + authorized decision",
+    "Interior and Lighting now have real-project HOLD exercises and current-revision replays, but required domain-native outputs, task/claim Knowledge Mounts, authority closure and independent professional review remain open."
   ],
-  "bounded_verdict": "BASELINE_VS_CANDIDATE_EXECUTION_MECHANISM_COMPARISON_REFRESHED_ON_CF9BA319 / KNOWLEDGE_AND_SKILL_RUNTIME_ROUTING_IMPROVED / PROFESSIONAL_ADOPTION_REMAINS_HOLD",
+  "bounded_verdict": "BASELINE_VS_CANDIDATE_EXECUTION_MECHANISM_COMPARISON_REFRESHED_ON_BE280AA1 / KNOWLEDGE_AND_SKILL_RUNTIME_ROUTING_IMPROVED / PROFESSIONAL_ADOPTION_REMAINS_HOLD",
   "does_not_prove": [
     "PROFESSIONAL_PASS",
     "DESIGN_KEEP",
@@ -151,14 +168,15 @@
     "EV5_PROMOTION_READY",
     "EV6_CURRENT_ADOPTED"
   ],
-  "bounded_context_reapplication_evidence": [
+  "bounded_context_reapplication_evidence_history": [
     {
       "domain": "Interior Design",
       "project_id": "PRJ-C01-YIMAI-GUANGDU",
       "reapplication_ref": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
       "result": "HOLD",
       "real_project_adoption_counted": false,
-      "reason": "C01 proxy/concept evidence does not constitute authentic Interior native-object professional execution."
+      "reason": "Historical pre-main-drift classification retained as provenance; latest main now supplies a real-project HOLD exercise, which is consumed by the current-revision replay without granting professional adoption.",
+      "historical_state": "SUPERSEDED_BY_REAL_PROJECT_HOLD_EXERCISE_PLUS_CURRENT_REVISION_REPLAY"
     },
     {
       "domain": "Lighting Design",
@@ -166,7 +184,8 @@
       "reapplication_ref": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
       "result": "HOLD",
       "real_project_adoption_counted": false,
-      "reason": "Lighting-context/practice evidence lacks a real Lighting native decision object and project photometric/control/field evidence."
+      "reason": "Historical pre-main-drift classification retained as provenance; latest main now supplies a real-project HOLD exercise, which is consumed by the current-revision replay without granting professional adoption.",
+      "historical_state": "SUPERSEDED_BY_REAL_PROJECT_HOLD_EXERCISE_PLUS_CURRENT_REVISION_REPLAY"
     }
   ]
 }

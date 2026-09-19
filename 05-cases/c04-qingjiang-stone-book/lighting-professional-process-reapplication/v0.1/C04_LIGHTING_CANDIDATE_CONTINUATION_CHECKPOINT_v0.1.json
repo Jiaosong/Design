@@ -6,7 +6,7 @@
   "candidate_machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
   "checkpoint_state": "HOLD",
   "current_node": "LGT-01_RELEASE_FRONTIER",
-  "release_condition": "A real project Lighting decision object with task/claim Lighting Knowledge Mount, Lighting specialist authority and applicable model/product/control/field evidence becomes available.",
+  "release_condition": "Task/claim Lighting Knowledge Mount, Lighting specialist authority, required native photometric/product/control/night/field outputs/readback and independent professional review become available.",
   "release_condition_readback": "UNSATISFIED",
   "affected_capability_output_bindings": [
     "LGT-00: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback",
@@ -15,7 +15,10 @@
   "unaffected_verified_bindings": [
     "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
     "05-cases/c04-qingjiang-stone-book/orchestration/CH13_VISUAL_PRODUCTION_MAP_v0_2.md",
-    "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md"
+    "05-cases/c04-qingjiang-stone-book/C04-WS-04_QJ-D_FIELD-GATE-PREP_v0.4.md",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json"
   ],
   "selective_retest_plan": [
     "revalidate only affected knowledge/capability/output bindings after the release condition changes",

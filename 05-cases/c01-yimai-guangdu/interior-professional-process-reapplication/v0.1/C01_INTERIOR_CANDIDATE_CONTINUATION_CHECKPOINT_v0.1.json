@@ -6,7 +6,7 @@
   "candidate_machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
   "checkpoint_state": "HOLD",
   "current_node": "ID-PW1_RELEASE_FRONTIER",
-  "release_condition": "Authentic Interior native-object execution evidence, task/claim Interior Knowledge Mount, authoritative existing-condition/base-building information and appointed Interior responsibility become available.",
+  "release_condition": "Task/claim Interior Knowledge Mount, authoritative existing-condition/base-building information, appointed Interior responsibility, required native Interior outputs/readback and independent professional review become available.",
   "release_condition_readback": "UNSATISFIED",
   "affected_capability_output_bindings": [
     "ID-PW0: unresolved Current owner / knowledge mount / professional evidence bindings as recorded in composition_readback",
@@ -15,7 +15,10 @@
   "unaffected_verified_bindings": [
     "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json",
     "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
-    "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md"
+    "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+    "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_THREAD_READBACK_v0.1.json"
   ],
   "selective_retest_plan": [
     "revalidate only affected knowledge/capability/output bindings after the release condition changes",

@@ -13,7 +13,7 @@
   "mutation_manifest": {
     "id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
-    "fingerprint_sha256": "db9eaabadf6c791abb7acc71ee665d478cca40273e4fa02d05cdd0d56b4f5910",
+    "fingerprint_sha256": "b468faf6a15a9fe5c597aa5834d95002f967618cbd64a015a911318b9c4277f5",
     "material_delta_count": 50
   },
   "canonical_professional_stage_execution_chain": [
@@ -68,5 +68,21 @@
     "This recovery receipt does not prove Professional PASS, Design KEEP, statutory approval, field validation or specialist approval.",
     "Candidate professional processes remain EVH_HOLD and are not Current callable authority merely because this sync chain is opened.",
     "The receipt records a process-order repair; it does not rewrite history to claim that the receipt preceded the local Artifact Write."
-  ]
+  ],
+  "baseline_reconciliation": {
+    "initial_receipt_baseline_commit": "43030cfa75e8f8576c89555bbfdc872a2b7ec287",
+    "latest_reconciled_origin_main": "be280aa1f42ad618f1047400b2f96312bd1eda34",
+    "drift_detected_after_initial_remote_readback": true,
+    "overlap_paths": [
+      ".github/workflows/ai-governance-evals.yml",
+      "00-governance/professional-domain-process-contract-v1.0.md"
+    ],
+    "merge_result": "CLEAN_NO_TEXT_CONFLICT",
+    "material_new_main_evidence": [
+      "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/",
+      "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/"
+    ],
+    "evidence_reclassification": "Interior and Lighting now have real-project HOLD source exercises consumed by current-revision bounded replays; all five OPEN domains have real-project current-revision bounded reapplication evidence, while all five remain EVH_HOLD.",
+    "chronology_rule": "Initial receipt baseline is preserved as historical fact. The exact mutation manifest is re-fingerprinted against the latest reconciled main rather than backdating the receipt."
+  }
 }

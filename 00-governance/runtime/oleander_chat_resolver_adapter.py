@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -148,9 +149,21 @@ def _stage_execution_requirements(
     )
     if not isinstance(process_entry, dict):
         raise ValueError(f"Current professional process has no runtime execution projection: {process_ref}")
-    actual_sha256 = hashlib.sha256(process_path.read_bytes()).hexdigest()
+    actual_blob = subprocess.check_output(
+        ["git", "rev-parse", f":{process_ref}"],
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+    ).strip()
+    canonical_machine_bytes = subprocess.check_output(
+        ["git", "cat-file", "blob", actual_blob],
+        cwd=ROOT,
+    )
+    actual_sha256 = hashlib.sha256(canonical_machine_bytes).hexdigest()
     if process_entry.get("current_machine_sha256") != actual_sha256:
         raise ValueError(f"Current stage execution projection SHA256 stale for {process_ref}")
+    if process_entry.get("current_machine_blob") != actual_blob:
+        raise ValueError(f"Current stage execution projection Git blob stale for {process_ref}")
     stage_projection = dict(
         (process_entry.get("stages") or {}).get(str(stage.get("stage_id") or "")) or {}
     )

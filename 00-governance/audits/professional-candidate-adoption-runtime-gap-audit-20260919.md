@@ -1,21 +1,21 @@
-# OLEANDER Professional Candidate Adoption Runtime Gap Audit — 2026-09-19 / r3
+# OLEANDER Professional Candidate Adoption Runtime Gap Audit — 2026-09-19 / r5
 
 ## 1. Scope, authority and latest baseline
 
 This audit is bound to:
 
 - branch: `candidate/professional-stage-skill-composition-20260919-r5`;
-- frozen comparison baseline: `origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287`;
+- frozen comparison baseline: `origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34`;
 - target class: `PROFESSIONAL_PROCESS_DEFINITIONS`;
 - Current authority invariant: Candidate evaluation may not mutate, impersonate or silently replace Current professional-process authority.
 
-This r3 audit supersedes the earlier r2 audit conclusions where later Current evidence or independent review proved them too optimistic. The older records remain provenance; they are not silently rewritten into evidence they did not contain.
+This r5 audit supersedes the earlier r2 audit conclusions where later Current evidence or independent review proved them too optimistic. The older records remain provenance; they are not silently rewritten into evidence they did not contain.
 
-The major baseline changes between r2 and r3 are material:
+The major baseline changes between r2 and r5 are material:
 
-1. `origin/main` advanced from `3110c53a...` to `cf9ba319...`;
+1. `origin/main` advanced from `3110c53a...` through multiple governance/evidence merges to `be280aa1...`;
 2. main gained stronger real C04 Systems Engineering requirement/V&V adoption evidence;
-3. main gained an OPEN-domain adoption-frontier audit showing that Interior and Lighting still lack authentic project-level adoption evidence;
+3. main later gained real C01 Interior and C04 Lighting project HOLD exercises; r5 consumes those real-project sources through the current Candidate revision without upgrading their HOLD/adoption ceiling;
 4. independent read-only mechanism review found Current-authority mutation, Candidate-owner callability, pre-release successor-receipt, fake DAG/handoff and EV-state-prerequisite risks in the r2 candidate.
 
 Those findings are treated as blocking corrections, not editorial comments.
@@ -26,7 +26,7 @@ Those findings are treated as blocking corrections, not editorial comments.
 
 The r2 candidate directly inserted `stage_execution_requirements` into already-Current Architecture, Structural and MEP machine definitions. Independent review correctly identified that as a Current-authority violation.
 
-r3 restores these three machine files to Current main content with no routing-metadata mutation:
+r5 restores these three machine files to Current main content with no routing-metadata mutation:
 
 - `architecture-design-development-process.v1.json` — 18 stages;
 - `structural-engineering-design-process.v1.json` — 9 stages;
@@ -120,7 +120,7 @@ Prior-stage owners are not sticky by default. Unaffected verified outputs may be
 
 r2 incorrectly allowed Candidate UI Skill identities to appear in a “resolved owner set” as if Candidate status plus implementation paths were enough to execute.
 
-r3 closes that gap:
+r5 closes that gap:
 
 - `CANDIDATE_OWNER` is a capability match / bounded evaluation suggestion, not Current callable execution authority;
 - `CANDIDATE_BODY` is likewise non-Current;
@@ -138,7 +138,7 @@ All 79 professional stages already declare both:
 
 All eight process definitions also bind the existing Knowledge Integrity / Operational Mount owner. The remaining gap was runtime enforcement: a Chat/CoS professional-stage preflight could previously resolve Skills without proving that consequential knowledge had actually been admitted for the task/claim.
 
-r3 wires this into `oleander_chat_resolver_adapter.py`.
+r5 wires this into `oleander_chat_resolver_adapter.py`.
 
 For each active stage, declared knowledge inputs are active by default. Any omitted declared input requires explicit N/A / not-triggered reasoning.
 
@@ -181,7 +181,7 @@ The runtime may determine that a stage **requires** a Multi-Skill DAG. That dete
 
 r2 records used exercise JSON paths as `multi_skill_dag_ref_or_single_owner_justification` and `typed_handoff_refs` without actual DAG/handoff artifacts. Independent review correctly identified this as false evidence.
 
-r3 records therefore distinguish:
+r5 records therefore distinguish:
 
 - `multi_skill_dag_required` — preflight requirement only;
 - materialized DAG ref — actual runtime artifact, required before EV5 when multiple Current owners remain;
@@ -193,7 +193,7 @@ Current OPEN Candidate records do **not** claim materialized DAG/handoff evidenc
 
 r2 generated files named `SUCCESSOR_RECEIPT` while the release condition was explicitly `UNSATISFIED`. That was semantically contradictory.
 
-r3 separates the records:
+r5 separates the records:
 
 ### Before release
 
@@ -215,7 +215,7 @@ No current OPEN Candidate record claims that this post-release event has happene
 
 The Candidate contract already described EV3/EV4/EV5 prerequisites, but r2 did not make the state strings fail closed against those prerequisites.
 
-r3 `validate_architecture_control_graph.py` now machine-enforces:
+r5 `validate_architecture_control_graph.py` now machine-enforces:
 
 ### EV3_EVAL_PASSED
 
@@ -252,28 +252,28 @@ EV5 still does not equal Current. EV6 still requires an authorized human adoptio
 
 All five remain `EVH_HOLD`.
 
-### 8.1 Interior Design — context reapplication only
+### 8.1 Interior Design — real C01 project HOLD evidence + current-revision replay
 
-Latest main adoption-frontier evidence rejects C01 proxy/concept material as authentic Interior native-object project adoption.
+Latest main now contains `05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/`, explicitly classified as `REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION` against the Baguting learning-room hypothesis.
 
-r3 therefore records:
+r5 consumes that real-project source through the current Candidate revision in:
 
 `05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/`
 
-as bounded context reapplication only:
+Current classification:
 
-- `real_project_exercise_counted = false`;
-- no Interior project-adoption claim;
-- Knowledge Mount gate HOLD;
-- independent Interior review NOT_RUN.
+- `real_project_exercise_counted = true` for bounded current-revision project reapplication evidence;
+- this is not Interior professional adoption or a verified room design;
+- task/claim Interior Knowledge Mount remains HOLD;
+- authoritative room/base-building geometry, appointment/scope, required native Interior outputs/readback and independent Interior review remain open.
 
-Remaining material gaps include authentic Interior project/native-object execution, Interior appointment/scope, authoritative existing-condition/base-building information, task/claim Knowledge Mounts and independent review.
+The earlier context-only classification is retained only as provenance in the comparison record; it is superseded by the new main real-project HOLD exercise plus current-revision replay.
 
 ### 8.2 Landscape Architecture — real C04 project HOLD evidence
 
 The historical v0.1 C04 Landscape exercise remains provenance and binds its predecessor Candidate revision.
 
-r3 adds a current-revision bounded reapplication in:
+r5 adds a current-revision bounded reapplication in:
 
 `05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/`
 
@@ -284,24 +284,24 @@ It is counted as real project context because it exercises the Candidate against
 - independent Landscape professional review is NOT_RUN;
 - no post-release selective retest has occurred.
 
-### 8.3 Lighting Design — context/practice reapplication only
+### 8.3 Lighting Design — real C04 project HOLD evidence + current-revision replay
 
-Latest main does not provide authentic project-level Lighting adoption evidence. Existing C04 step-light/strong-light/field-gate material remains useful design/practice context, not a Lighting project execution substitute.
+Latest main now contains `05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/`, explicitly classified as `REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION` against the C04 P01 step-light concept.
 
-r3 records:
+r5 consumes that real-project source through the current Candidate revision in:
 
 `05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/`
 
-with:
+Current classification:
 
-- `real_project_exercise_counted = false`;
-- Knowledge Mount gate HOLD;
-- Lighting specialist/project photometric-control-field evidence open;
-- independent Lighting review NOT_RUN.
+- `real_project_exercise_counted = true` for bounded current-revision project reapplication evidence;
+- no Lighting professional adoption, photometric/control/electrical/commissioning/field PASS is claimed;
+- task/claim Lighting Knowledge Mount remains HOLD;
+- specialist authority, required native Lighting outputs/readback and independent Lighting review remain open.
 
 ### 8.4 Digital Product / HCD — real C04 project HOLD evidence
 
-r3 uses:
+r5 uses:
 
 `05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/`
 
@@ -320,13 +320,13 @@ No Multi-Skill DAG or typed handoff is claimed until a legal Current owner set a
 
 ### 8.5 Systems Engineering — reuse stronger main C04 V&V evidence
 
-r3 does not replace the stronger main evidence:
+r5 does not replace the stronger main evidence:
 
 `05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/`
 
 including its real requirement/V&V trace and adoption receipt.
 
-r3 only adds current Candidate revision composition/Knowledge replay in:
+r5 only adds current Candidate revision composition/Knowledge replay in:
 
 `05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/`
 
@@ -338,15 +338,15 @@ Machine evidence:
 
 `00-governance/audits/professional-stage-skill-composition-baseline-candidate-comparison-20260919.json`
 
-Current r3 comparison:
+Current r5 comparison:
 
 - baseline: 79 stages without stage-specific runtime composition closure in Chat/CoS;
 - candidate: 43 OPEN Candidate stages directly carry execution requirements;
 - 36 already-Current stages are covered by exact-revision non-authority runtime projection;
 - total runtime composition coverage: 79/79;
 - capability-role corpus: 308 unique roles / 0 unnamed fallback;
-- real-project current-revision reapplication counted: 3/5 OPEN domains — Landscape, HCD, Systems;
-- bounded non-project context reapplication: Interior, Lighting;
+- real-project current-revision bounded reapplication counted: 5/5 OPEN domains — Interior, Landscape, Lighting, HCD, Systems;
+- all five remain HOLD; real-project exercise count does not equal Professional PASS, Current adoption or Stage Closure;
 - professional-stage task/claim Knowledge Mount gate: now active/fail-closed;
 - Candidate Skill current callability: HOLD/non-Current;
 - Current professional machine mutation for routing metadata: forbidden.
@@ -366,7 +366,7 @@ This is local Python/repository overhead only. It does not measure network retri
 
 Earlier investigation found a real pre-existing Lighting strict-schema drift: live Lighting stage carriers used fields the shared strict schema did not admit, while CI could fall back to a weaker validator when `jsonschema` was absent.
 
-r3 preserves the shared-schema repair and adds pinned `jsonschema==4.24.0` installation to the existing AI Governance workflow. This extends the existing validation path; it does not create another schema framework.
+r5 preserves the shared-schema repair and adds pinned `jsonschema==4.24.0` installation to the existing AI Governance workflow. This extends the existing validation path; it does not create another schema framework.
 
 ## 11. Current adoption blockers
 
@@ -379,12 +379,12 @@ Common blockers intentionally retained where applicable:
 5. required real Multi-Skill DAG / typed-handoff evidence not materialized where a multi-owner Current execution would apply;
 6. independent domain-professional review NOT_RUN;
 7. domain-specific field/user/specialist/validation evidence remains open as recorded by each Candidate;
-8. Interior and Lighting still lack authentic project-level adoption exercises;
-9. the exact r3 mutation manifest must remain hash-consistent through final validation; any later file delta invalidates it and requires regeneration before the Candidate evidence is exact-revision complete.
+8. Interior and Lighting now have real-project HOLD exercises and current-revision replays, but required domain-native outputs, Knowledge Mounts, specialist/appointment authority and independent review remain open;
+9. the exact r5 mutation manifest must remain hash-consistent through final validation; any later file delta invalidates it and requires regeneration before the Candidate evidence is exact-revision complete.
 
 ## 12. Bounded verdict
 
-Current r3 status:
+Current r5 status:
 
 `STAGE-SPECIFIC CAPABILITY ROUTING = IMPLEMENTED / 79-OF-79 RUNTIME COVERAGE`
 
