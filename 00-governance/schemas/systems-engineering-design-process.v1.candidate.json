@@ -1390,6 +1390,593 @@
       "same stages/artifacts as building professions",
       "Systems Engineering authority over domain professionals",
       "verification and validation to share one verdict"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "SYS-OBJ-01",
+        "object_name": "System-of-Interest / Need / Capability / Authority Decision Register",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "SYSENG-DP0",
+          "SYSENG-DP1",
+          "SYSENG-DP2"
+        ],
+        "professional_purpose": "Define system boundary, stakeholder need, operational context, capabilities and decision authority without making Systems Engineering a super-authority over domain professions.",
+        "native_source_of_truth": "Current system definition chain + stakeholder/operational evidence + domain owner authority.",
+        "required_record_fields": [
+          "decision_id",
+          "system_of_interest",
+          "boundary",
+          "external_systems_actors",
+          "stakeholder_need",
+          "operational_scenario",
+          "capability",
+          "success_or_effectiveness_measure",
+          "domain_owner_refs",
+          "assumptions",
+          "decision_authority",
+          "status",
+          "claim_ceiling"
+        ],
+        "decision_owner": "Systems Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Domain professional owners",
+          "Operations",
+          "Product/Client"
+        ],
+        "revision_identity": "decision_id + system-definition/baseline revision",
+        "release_or_retention_rule": "Retain only with explicit boundary/authority and domain ownership; SE may integrate/trace but cannot waive owner-native professional authority.",
+        "required_readback": [
+          "boundary/context readback",
+          "need→capability trace",
+          "domain-owner authority check"
+        ],
+        "failure_or_hold_conditions": [
+          "system boundary drifts silently",
+          "SE assigns professional PASS to domain",
+          "stakeholder need becomes design solution",
+          "external system omitted"
+        ],
+        "reopen_triggers": [
+          "boundary/mission/stakeholder change",
+          "domain authority change",
+          "operational evidence"
+        ],
+        "downstream_handoffs": [
+          "Functions/requirements/architecture",
+          "domain owners"
+        ],
+        "independent_review_requirement": "Independent SE review challenges boundary, need/capability trace and authority allocation.",
+        "does_not_prove": [
+          "domain professional PASS",
+          "operational validation",
+          "Design KEEP"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-02",
+        "object_name": "Assumption / Decision / Risk / Trade-study Uncertainty Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "SYSENG-DP0",
+          "SYSENG-DP1",
+          "SYSENG-DP4",
+          "SYSENG-DP5"
+        ],
+        "professional_purpose": "Keep system assumptions, decisions, constraints, risks and uncertainty explicit with source, consequence and closure route.",
+        "native_source_of_truth": "Controlled system-definition sources + domain inputs + operational evidence.",
+        "required_record_fields": [
+          "item_id",
+          "type",
+          "statement",
+          "source_or_basis",
+          "confidence_or_limit",
+          "affected_needs_requirements_functions_interfaces",
+          "risk_if_wrong",
+          "owner",
+          "validation_or_resolution_method",
+          "decision_ref",
+          "status",
+          "reopen_trigger"
+        ],
+        "decision_owner": "Systems Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Domain owners",
+          "Risk/Program",
+          "Operations"
+        ],
+        "revision_identity": "item_id + source/system baseline revision",
+        "release_or_retention_rule": "No assumption may become requirement/interface fact by repetition; consequential unknowns remain linked to affected architecture/V&V.",
+        "required_readback": [
+          "source/trace audit",
+          "sensitivity/impact review",
+          "resolution evidence"
+        ],
+        "failure_or_hold_conditions": [
+          "assumption hidden inside model",
+          "risk disconnected from architecture",
+          "decision lacks source/rationale",
+          "domain unknown normalized by SE"
+        ],
+        "reopen_triggers": [
+          "source/domain evidence change",
+          "trade result",
+          "test/validation contradiction",
+          "mission change"
+        ],
+        "downstream_handoffs": [
+          "Requirements baseline",
+          "Architecture alternatives",
+          "V&V"
+        ],
+        "independent_review_requirement": "Independent SE review samples high-impact unresolved assumptions and decisions.",
+        "does_not_prove": [
+          "technical/domain validity",
+          "risk acceptance outside authority"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-03",
+        "object_name": "Logical / Allocation / Interface Architecture Alternative Trade Set",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "SYSENG-DP5",
+          "SYSENG-DP6"
+        ],
+        "professional_purpose": "Compare materially different logical architectures, allocations, interfaces and physical realization strategies under common needs/requirements.",
+        "native_source_of_truth": "Controlled needs/requirements/functions/interfaces + alternative architecture models/trade evidence.",
+        "required_record_fields": [
+          "option_id",
+          "architecture_family",
+          "capability_function_allocation",
+          "human_system_allocation",
+          "information_flow",
+          "interfaces",
+          "physical_realization_implications",
+          "integration_strategy",
+          "verification_validation_implications",
+          "cost_schedule_risk",
+          "domain_impacts",
+          "trade_criteria_sources",
+          "sensitivity",
+          "retained_rejected_reason"
+        ],
+        "decision_owner": "Systems Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Domain professional owners",
+          "Program/Cost",
+          "Human Factors/HCD"
+        ],
+        "revision_identity": "option_id + common requirements/architecture baseline + option revision",
+        "release_or_retention_rule": "Weighted score alone cannot select architecture; hard constraints, domain authority and sensitivity remain visible.",
+        "required_readback": [
+          "requirement/function/interface coverage",
+          "trade sensitivity",
+          "domain-impact readback",
+          "integration/V&V feasibility"
+        ],
+        "failure_or_hold_conditions": [
+          "cosmetic allocation variants counted as alternatives",
+          "different requirement baselines",
+          "domain owner objection hidden",
+          "score masks hard failure"
+        ],
+        "reopen_triggers": [
+          "requirement/need change",
+          "interface/domain constraint",
+          "test/analysis evidence",
+          "program constraint"
+        ],
+        "downstream_handoffs": [
+          "PDR baseline",
+          "Domain professional processes"
+        ],
+        "independent_review_requirement": "Independent SE review challenges trade assumptions and strongest rejected architecture.",
+        "does_not_prove": [
+          "domain design adequacy",
+          "project approval",
+          "validation success"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-04",
+        "object_name": "Controlled Requirements / Logical / Physical Architecture Baseline",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "SYSENG-DP2",
+          "SYSENG-DP3",
+          "SYSENG-DP4",
+          "SYSENG-DP5",
+          "SYSENG-DP6"
+        ],
+        "professional_purpose": "Carry the actual system architecture through controlled capabilities, functions, states, information, allocations, requirements, interfaces, logical and physical architecture.",
+        "native_source_of_truth": "Owner-native system-model/requirements/interface/PBS/baseline artifacts.",
+        "required_record_fields": [
+          "baseline_id",
+          "need_capability_refs",
+          "function_behavior_state_refs",
+          "information_model_refs",
+          "human_system_allocation",
+          "requirements_set",
+          "interface_set",
+          "logical_architecture_ref",
+          "physical_architecture_PBS_ref",
+          "configuration_items",
+          "domain_allocations",
+          "revision",
+          "author",
+          "checker",
+          "baseline_status"
+        ],
+        "decision_owner": "Systems Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Domain architecture/engineering owners",
+          "Configuration management"
+        ],
+        "revision_identity": "baseline_id + exact controlled artifact revisions",
+        "release_or_retention_rule": "Baseline components must be mutually traceable; diagrams/reports cannot substitute for controlled requirements/interface/configuration sources.",
+        "required_readback": [
+          "need↔requirement↔function trace",
+          "interface consistency",
+          "logical↔physical allocation",
+          "orphan/duplicate/conflict readback"
+        ],
+        "failure_or_hold_conditions": [
+          "orphan requirement",
+          "interface not allocated",
+          "PBS differs from architecture",
+          "diagram newer than controlled requirements"
+        ],
+        "reopen_triggers": [
+          "need/requirement/interface/allocation/configuration change",
+          "domain architecture change"
+        ],
+        "downstream_handoffs": [
+          "Integration/V&V",
+          "Domain owners",
+          "Configuration control"
+        ],
+        "independent_review_requirement": "Independent SE review on exact baseline, preserving domain-owner boundaries.",
+        "does_not_prove": [
+          "domain professional adequacy",
+          "verification/validation success",
+          "operational acceptance"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-05",
+        "object_name": "Requirements / Interface / Configuration Baseline Release Register",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "SYSENG-DP4",
+          "SYSENG-DP6"
+        ],
+        "professional_purpose": "Control when requirements, interfaces and configuration baselines may be relied upon by domain teams and integration/V&V.",
+        "native_source_of_truth": "Current requirements/interface/configuration artifacts + authorized change/approval evidence.",
+        "required_record_fields": [
+          "release_id",
+          "baseline_type",
+          "baseline_ref",
+          "revision",
+          "scope",
+          "included_items",
+          "excluded_open_items",
+          "interface_versions",
+          "domain_owner_acknowledgements",
+          "verification_validation_plan_refs",
+          "change_authority",
+          "release_authority",
+          "conditions",
+          "supersedes",
+          "downstream_consumers"
+        ],
+        "decision_owner": "Systems Engineering professional owner / Configuration authority per governance",
+        "contributor_or_specialist_refs": [
+          "Domain owners",
+          "Configuration management",
+          "V&V"
+        ],
+        "revision_identity": "release_id + exact baseline/interface revision",
+        "release_or_retention_rule": "Release does not grant domain professional PASS; unresolved conditions and interface maturity remain explicit.",
+        "required_readback": [
+          "released baseline ↔ native source",
+          "domain receiver acknowledgement",
+          "interface/version consistency"
+        ],
+        "failure_or_hold_conditions": [
+          "baseline released with unresolved controlling conflict",
+          "domain owner not consulted",
+          "interface version mismatch",
+          "change after release not propagated"
+        ],
+        "reopen_triggers": [
+          "authorized change",
+          "domain design change",
+          "interface change",
+          "verification finding"
+        ],
+        "downstream_handoffs": [
+          "Domain teams",
+          "Integration/V&V",
+          "Program"
+        ],
+        "independent_review_requirement": "Independent/configuration review where governance requires before baseline retention.",
+        "does_not_prove": [
+          "domain professional approval",
+          "verification/validation PASS",
+          "promotion"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-06",
+        "object_name": "Integration / Interface Verification / Anomaly Record",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "SYSENG-DP7"
+        ],
+        "professional_purpose": "Bind integrated configuration, interface versions, test conditions, anomalies and regression evidence to exact system baseline.",
+        "native_source_of_truth": "Actual integrated system/configuration + controlled interface/V&V procedures + observed test evidence.",
+        "required_record_fields": [
+          "record_id",
+          "integrated_configuration",
+          "interface_versions",
+          "preconditions",
+          "test_or_integration_step",
+          "expected_behavior",
+          "observed_behavior",
+          "verification_method",
+          "evidence_ref",
+          "anomaly_id",
+          "severity",
+          "workaround_or_fix",
+          "owner",
+          "retest_regression_scope",
+          "disposition"
+        ],
+        "decision_owner": "Systems Engineering professional owner / V&V owner per plan",
+        "contributor_or_specialist_refs": [
+          "Domain owners",
+          "Test/Integration",
+          "Configuration management"
+        ],
+        "revision_identity": "record_id + exact integrated configuration + procedure revision + date",
+        "release_or_retention_rule": "Verification applies only to exact configuration/method; workaround/fix must propagate to baseline and regression scope.",
+        "required_readback": [
+          "configuration identity",
+          "interface handshake/data/state readback",
+          "anomaly→fix→retest trace"
+        ],
+        "failure_or_hold_conditions": [
+          "test on wrong config",
+          "interface version unspecified",
+          "workaround accepted without baseline change",
+          "verification result called validation"
+        ],
+        "reopen_triggers": [
+          "config/interface/software/hardware/domain change",
+          "anomaly fix",
+          "procedure change"
+        ],
+        "downstream_handoffs": [
+          "Validation/Transition",
+          "Domain teams",
+          "Configuration control"
+        ],
+        "independent_review_requirement": "Independent V&V review when required by assurance/risk; keep verification distinct from validation.",
+        "does_not_prove": [
+          "validation",
+          "domain professional adequacy",
+          "operational acceptance"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-07",
+        "object_name": "Validation / Transition / Operations / Support / Retirement Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "SYSENG-DP7",
+          "SYSENG-DP8"
+        ],
+        "professional_purpose": "Carry stakeholder-context validation, transition, operational discrepancies, support changes and retirement consequences against the accepted system configuration.",
+        "native_source_of_truth": "Validated operational scenarios + accepted transition/operations/support/retirement evidence.",
+        "required_record_fields": [
+          "record_id",
+          "configuration",
+          "validation_scenario",
+          "stakeholder_or_operational_context",
+          "success_measure",
+          "evidence",
+          "validation_result",
+          "transition_acceptance",
+          "support_maintenance_need",
+          "operational_discrepancy",
+          "change_or_revalidation_need",
+          "retirement_or_disposal_constraint",
+          "owner",
+          "closure_state"
+        ],
+        "decision_owner": "Systems Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Operations",
+          "Stakeholders",
+          "Domain owners",
+          "Support/Maintenance"
+        ],
+        "revision_identity": "record_id + system configuration + scenario/evidence revision",
+        "release_or_retention_rule": "Validation result is scenario/context/configuration bounded; transition or operations discrepancies reopen affected requirements/architecture/V&V.",
+        "required_readback": [
+          "scenario evidence readback",
+          "stakeholder/operational acceptance evidence",
+          "support/readiness check",
+          "post-change revalidation"
+        ],
+        "failure_or_hold_conditions": [
+          "verification called validation",
+          "one scenario generalized",
+          "operational discrepancy not traced back",
+          "retirement/support ignored"
+        ],
+        "reopen_triggers": [
+          "operational evidence",
+          "mission/stakeholder change",
+          "support issue",
+          "system modification",
+          "retirement decision"
+        ],
+        "downstream_handoffs": [
+          "Operations/Support",
+          "Change control",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent validation review where material; stakeholder/domain authority remains explicit.",
+        "does_not_prove": [
+          "future operation",
+          "domain professional PASS",
+          "market/user success"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-08",
+        "object_name": "Independent Systems Engineering Architecture / Requirements / V&V Review Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "SYSENG-DP4",
+          "SYSENG-DP5",
+          "SYSENG-DP6",
+          "SYSENG-DP7"
+        ],
+        "professional_purpose": "Independently challenge requirement quality/trace, architecture completeness, interface ownership, configuration identity and V&V logic without overriding domain professions.",
+        "native_source_of_truth": "Controlled requirements/architecture/interface/configuration/V&V artifacts.",
+        "required_record_fields": [
+          "review_id",
+          "baseline_refs",
+          "reviewer_identity_independence",
+          "scope",
+          "requirements_trace_checks",
+          "architecture_allocation_checks",
+          "interface_checks",
+          "configuration_checks",
+          "verification_validation_separation",
+          "domain_authority_checks",
+          "findings",
+          "severity",
+          "repair",
+          "recheck",
+          "verdict"
+        ],
+        "decision_owner": "Independent Systems Engineering reviewer",
+        "contributor_or_specialist_refs": [
+          "Domain professional reviewers",
+          "V&V",
+          "Configuration management"
+        ],
+        "revision_identity": "review_id + exact reviewed baseline/configuration revision",
+        "release_or_retention_rule": "Review stales when affected requirement/architecture/interface/configuration changes; cannot substitute for domain professional review.",
+        "required_readback": [
+          "trace/orphan/conflict attack",
+          "architecture/interface consistency",
+          "V&V method/context check",
+          "domain-authority boundary check"
+        ],
+        "failure_or_hold_conditions": [
+          "SE review grants domain PASS",
+          "verification/validation collapsed",
+          "baseline unspecified",
+          "changed interface not re-reviewed"
+        ],
+        "reopen_triggers": [
+          "requirement/architecture/interface/configuration/V&V change"
+        ],
+        "downstream_handoffs": [
+          "SE professional receipt",
+          "Program/Decision authority"
+        ],
+        "independent_review_requirement": "Reviewer independence proportionate to system consequence and governance; domain specialist review remains separate.",
+        "does_not_prove": [
+          "domain professional PASS",
+          "promotion",
+          "operational success"
+        ]
+      },
+      {
+        "object_id": "SYS-OBJ-09",
+        "object_name": "System Change / Configuration / Impact / Re-V&V Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate system changes to needs, requirements, functions, architecture, interfaces, domain allocations, configuration and V&V without blanket reset or silent staleness.",
+        "native_source_of_truth": "Authorized change/anomaly/operational event + full trace/dependency graph.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "change_request",
+          "old_baseline",
+          "new_baseline",
+          "reason_authority",
+          "affected_needs_requirements",
+          "affected_functions_architecture",
+          "affected_interfaces_domains",
+          "affected_configuration_items",
+          "affected_verification",
+          "affected_validation",
+          "stale_scope",
+          "owner",
+          "required_reintegration_reVV",
+          "closure"
+        ],
+        "decision_owner": "Systems Engineering professional owner / Configuration authority",
+        "contributor_or_specialist_refs": [
+          "Domain owners",
+          "V&V",
+          "Operations",
+          "Program"
+        ],
+        "revision_identity": "change_id + authorized baseline revision",
+        "release_or_retention_rule": "Change closes only after affected baseline, domain handoffs and re-verification/revalidation scope are updated or explicitly retained with evidence.",
+        "required_readback": [
+          "trace-based impact analysis",
+          "domain notification/acknowledgement",
+          "post-change integration/V&V readback"
+        ],
+        "failure_or_hold_conditions": [
+          "change only in requirement text",
+          "domain allocation not reopened",
+          "validation assumed current",
+          "blanket invalidate everything without trace"
+        ],
+        "reopen_triggers": [
+          "any authorized material system/domain/interface/configuration change",
+          "anomaly",
+          "operational discrepancy"
+        ],
+        "downstream_handoffs": [
+          "all affected system/domain processes"
+        ],
+        "independent_review_requirement": "Independent re-review where change affects prior architecture/V&V decision basis.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic domain acceptance"
+        ]
+      }
     ]
   },
   "assurance": {
