@@ -702,3 +702,109 @@ For triggered projects, architectural Design KEEP / MAIN / canonical architectur
 **Site → Brief → Users → Program → Room Brief → Adjacency → Zoning Alternatives → Selected Zoning → Multi-Flow Systems → Room Planning → Horizontal/Vertical Circulation → Life-Safety + Accessibility-Aware Planning → Service/Hygiene/Security → Structure/MEP/Envelope Fit-Back → Climate/Daylight/Acoustics → Landscape → FF&E/Room Use → Area/Cost/Maintenance → Existing/Phasing → Code Matrix → Independent Plan Review → Decide → Reopen when changed**
 
 This chain is now the default OLEANDER architectural design-development process. It must not be replaced by program overlay, clash checking, model completion, rendering or presentation evidence.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Architecture professional-depth parity
+
+**Status effect:** additive execution-depth binding only. This does not change the Current Architecture process identity, stage sequence, review taxonomy, professional authority or promotion state.
+
+### Knowledge binding
+Consequential Architecture execution resolves task/claim-scoped knowledge mounts before the affected decision is relied on. Current narrow METHOD routes include:
+- `KN-METHOD-ARCH-PROGRAM-RELATION-001` — programme / actor / adjacency / flow / operation;
+- `KN-METHOD-ARCH-PLAN-SECTION-CORE-001` — plan / section / levels / core / structure–MEP spatial consistency;
+- `KN-METHOD-ARCH-FACADE-ENVIRONMENT-INTERFACE-001` — opening / envelope / heat-air-water-moisture control continuity / transition / test;
+- `KN-METHOD-ARCH-OPENING-SCHEDULE-001` — door/window/opening identity, threshold, hardware and multi-system interface;
+- `IDX-ARCH-SITE-003` and applicable current site / planning / code / accessibility / life-safety / product/system SOURCE owners when triggered.
+
+`KNOWLEDGE PAGE EXISTS ≠ TASK-CLAIM MOUNT PASS ≠ ARCHITECTURE PROFESSIONAL PASS`.
+
+### `required_native_outputs[]`
+Resolve only the objects required by the active Architecture question, but consequential work must use authoritative/editable carriers rather than presentation substitutes:
+- programme / room-space schedule and adjacency/flow/operation records;
+- authoritative survey/site constraint carrier and buildable-envelope/interface record;
+- editable plans, sections, level/core/shaft and critical spatial coordination views;
+- editable massing/spatial model when 3D is needed to resolve the decision;
+- facade/enclosure orientation, opening, transition and critical-detail carriers when triggered;
+- opening / door / window schedules and head-jamb-sill / threshold / hardware-interface details when triggered;
+- current drawing/model issue set, decision/change register and affected-interface list;
+- tender/construction, site and closeout records routed through existing G7/G8/G9 owners.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+Minimum sufficient owner set; do not create a parallel Architecture Skill:
+- `oleander-research` — source authority, site/code/product evidence and unresolved conflict;
+- `oleander-design-process` — Architecture design reasoning, option-space, design continuity and change propagation; it cannot prove engineering, field or statutory truth;
+- `oleander-data-viz` — GIS/maps/analytical evidence only when geospatial/data encoding is material; visualization does not become geometry/source authority;
+- `oleander-3d-pipeline` — spatial model / units-axes / geometry exchange when fit; current Blender runtime may support bounded editable geometry but does not prove BIM-native parity, constructability or engineering approval;
+- `oleander-technical-drawing` — **CANDIDATE_DRAFT / PR #172 only**. Reuse it only under its current candidate boundary; do not treat it as an installed production owner or create a parallel technical-drawing skill;
+- `oleander-delivery-qc` — package/export/master/dependency integrity only; it cannot grant Architecture Professional PASS.
+
+Where the required native carrier needs CAD/BIM, code-check, specialist-envelope or other professional software beyond an installed OLEANDER owner, resolve the **project-authorized professional tool/owner per run**. `TOOL NOT CALLABLE → CAPABILITY_HOLD`; do not replace the missing native proof with prose, render or generic Blender geometry.
+
+### `tool_adapter_requirements[]`
+- Current Notion Knowledge + authoritative source retrieval for consequential claims;
+- source-preserving GIS/data runtime where site evidence is geospatial;
+- project-authorized CAD/BIM/model/drawing runtime for native building information and issued drawings;
+- bounded Blender / exchange route only when its proven scope matches the required carrier;
+- project-authorized specialist envelope/daylight/accessibility/code tools when their output is consequential;
+- format-specific reopen/readback tools for issued native and derivative artifacts.
+
+### `typed_handoff_contracts[]`
+- Programme → Architecture: stable space/actor/activity/capacity/adjacency/operation IDs + open assumptions;
+- Site → Architecture: datum/CRS/accuracy/source/date + constraint geometry + authority/recheck trigger;
+- Architecture → Structure: grids/levels/geometry/openings/loads or load assumptions/interfaces with revision identity;
+- Architecture → MEP: room/zone/plant/riser/ceiling/service-space requirements + access/replacement constraints;
+- Architecture → Interior/Landscape/Lighting/Facade: stable geometry, datums, openings, room/route IDs and locked/open variables;
+- Downstream return: exact affected object/revision + issue/change/substitution/test result + reopen requirement.
+
+### `actual_readback_requirements[]`
+At the active fidelity, inspect the actual authoritative carrier, not only a presentation export:
+- plan ↔ section ↔ level/core/shaft consistency;
+- model ↔ drawing ↔ schedule identity and current revision;
+- threshold/opening ↔ wall/floor/envelope/hardware interface;
+- envelope control-layer continuity at critical transitions when claimed;
+- equipment/service access and replacement geometry where Architecture owns the spatial provision;
+- target-scale drawing legibility plus native-source reopenability when release is claimed;
+- G8 field/RFI/NCR/change evidence and G9 as-built/O&M/POE evidence when those claims are in scope.
+
+### `reopen_triggers[]`
+Reopen exact affected Architecture objects when any material change occurs to: programme/actor/operation; survey/site/planning/code authority; grids/levels/core; structure/MEP zones; opening/hardware/fire/accessibility state; envelope system/product; major substitution; site condition/RFI; failed mockup/test; field deviation; operational/POE evidence contradicting the design assumption.
+
+### Professional boundary
+`SKILL PASS ≠ TOOL PASS ≠ ARCHITECTURE PROFESSIONAL PASS ≠ INTEGRATION PASS ≠ DESIGN KEEP ≠ FIELD TRUTH`. Registered/statutory/professional authority remains with the actual appointed human/professional roles and applicable jurisdiction.
+
+### Object-level invocation matrix
+
+Use these states consistently: `INSTALLED_CORE` = callable OLEANDER core Skill when the current run exposes its runtime; `CANDIDATE_ONLY` = may support bounded review/training/authorized candidate use but is not Current production ownership; `PROJECT_SPECIALIST_REQUIRED` = the project must bind an actual professional/tool owner; unavailable consequential proof remains HOLD.
+
+#### A｜Programme Relation
+- Knowledge: `KN-METHOD-ARCH-PROGRAM-RELATION-001` + current programme/operation/accessibility/fire sources.
+- Skills: `oleander-research [INSTALLED_CORE]` → `oleander-design-process [INSTALLED_CORE]`; data-viz only when a real analytical graph/map is required.
+- Tool class: structured room/programme schedule + editable relation/flow carrier; project CAD/BIM only once spatial geometry becomes consequential.
+- Native carrier: Space/Room Data Schedule, actor×activity×space matrix, adjacency/flow/operation-time graphs, area reconciliation, change log.
+- Mandatory readback: room/space IDs and areas ↔ current brief; adjacency reason; public/staff/service/access routes; capacity/operation assumptions.
+- Reopen: programme/actor/capacity/operating model/accessibility/fire/security/equipment change.
+
+#### B｜Plan–Section–Core
+- Knowledge: `KN-METHOD-ARCH-PLAN-SECTION-CORE-001` + current Structure/MEP/accessibility/life-safety mounts.
+- Skills: `oleander-design-process [INSTALLED_CORE]` + `oleander-3d-pipeline [INSTALLED_CORE when fit]`; `oleander-technical-drawing [CANDIDATE_ONLY]` or project drawing owner.
+- Tool class: project-authorized CAD/BIM/spatial model; Blender only for bounded geometry/exchange where it preserves the claim.
+- Native carrier: coordinated plans/critical sections/core plans/level-clear-height/shaft-riser registers and interface overlays.
+- Mandatory readback: plan↔section datums; clear-height stack; stair/lift/core continuity; riser/shaft continuity; structure/service zones; equipment replacement path.
+- Reopen: level/core/grid/structure/MEP/equipment/access/roof-basement geometry change.
+
+#### C｜Facade–Environment Interface
+- Knowledge: `KN-METHOD-ARCH-FACADE-ENVIRONMENT-INTERFACE-001` + current envelope/building-physics/fire/product sources.
+- Skills: research + design-process + 3d-pipeline where geometry is material; specialist envelope/building-physics tool/owner = `PROJECT_SPECIALIST_REQUIRED` when performance is claimed.
+- Tool class: editable facade/detail carrier; project-authorized thermal/moisture/daylight/facade analysis and mockup/test records as applicable.
+- Native carrier: orientation/opening/shading study, control-layer continuity diagrams, typical/transition details, submittal/mockup/test matrix.
+- Mandatory readback: wall↔window↔roof↔base control continuity; movement/tolerance/joint logic; drainage path; exact product/system delta; mockup/test disposition.
+- Reopen: climate/performance criterion, opening/shading, glass/frame/insulation/seal/firestop/anchor/product substitution or test failure.
+
+#### D｜Opening / Door / Window Schedule
+- Knowledge: `KN-METHOD-ARCH-OPENING-SCHEDULE-001` + applicable accessibility/fire/acoustic/security/product sources.
+- Skills: research + design-process; technical-drawing candidate/project drawing owner for schedule/detail production; delivery-qc for package integrity.
+- Tool class: stable-ID opening/hardware schedule + CAD/BIM/details + access-control/automatic-door interface data when applicable.
+- Native carrier: opening schedule, hardware-set cross-reference, head/jamb/sill/threshold details, field-opening survey, functional adjustment record.
+- Mandatory readback: clear passage/manoeuvring after frame/finish/hardware; threshold/floor/waterproofing; hardware/control/fire release; rough-opening/floor datum vs fabrication.
+- Reopen: wall/floor/opening/hardware/fire/acoustic/security/access-control/product/field datum change.
