@@ -1316,3 +1316,39 @@ Survey/datum/boundary/planning/geotech/hydrology/ecology update; building thresh
 
 ### Professional boundary
 `GIS PASS ≠ SITE TRUTH`; `PLANTING PLAN PASS ≠ ESTABLISHMENT PASS`; `DRAINAGE DIAGRAM PASS ≠ FIELD DRAINAGE PASS`. Candidate promotion still requires real project exercise and independent Landscape professional review under the existing process boundary.
+
+### Object-level invocation matrix
+
+`INSTALLED_CORE / CANDIDATE_ONLY / PROJECT_SPECIALIST_REQUIRED` semantics follow the Current Skill Registry and this candidate's no-promotion boundary.
+
+#### A｜Grading–Water–Soil
+- Knowledge: `KN-METHOD-LANDSCAPE-GRADING-WATER-SOIL-001` + current survey/geotech/hydrology/ecology/access sources.
+- Skills: research + `oleander-data-viz [INSTALLED_CORE]` for GIS/source-bound mapping + design-process; 3d-pipeline for terrain/spatial model when fit.
+- Tool class: source-preserving GIS/terrain/CAD; project civil/hydrology tools = `PROJECT_SPECIALIST_REQUIRED` when calculations are consequential.
+- Native carrier: grading/spot-level/threshold plan, water/overflow map, earthwork/soil movement, critical sections.
+- Readback: CRS/datum; low-point/overflow path; threshold/access route; cut-fill/root/soil/utility conflict.
+- Reopen: survey/datum/hydrology/geotech/building-threshold/utility/tree/soil change.
+
+#### B｜Hardscape–Edge–Drainage
+- Knowledge: `KN-METHOD-LANDSCAPE-HARDSCAPE-EDGE-001`.
+- Skills: design-process + data-viz/GIS for source levels + project drawing owner; 3d-pipeline when level/edge geometry benefits.
+- Tool class: CAD/grading detail carrier + material/subgrade/field inspection records.
+- Native carrier: setting-out/joint/slope plan, base/subbase and edge/threshold/utility/tree interface details, mockup/ponding record.
+- Readback: pattern through slopes/curves/drains; water path; subgrade/base/loading; accessible route; permeable-system continuity.
+- Reopen: level/drain/material/base/utility/tree/accessibility/field-ponding change.
+
+#### C｜Planting–Soil Release
+- Knowledge: `KN-METHOD-LANDSCAPE-PLANTING-SOIL-RELEASE-001` + ecology/arboriculture/soil/nursery sources.
+- Skills: research + data-viz/GIS + design-process; field/nursery/arboricultural authority = `PROJECT_SPECIALIST_REQUIRED` where consequential.
+- Tool class: planting/soil schedule + GIS/CAD + soil/tree/field inspection records.
+- Native carrier: retained-tree/protection register, soil schedule/tests, plant-community/provenance/substitution, establishment and mortality/O&M records.
+- Readback: retained root/soil protection vs works; plant↔soil/moisture/light/maintenance fit; provenance/substitution; seasonal survival/root cause.
+- Reopen: tree condition, soil test, water regime, plant substitution, construction damage or mortality pattern.
+
+#### D｜Irrigation Water Budget & Control
+- Knowledge: `KN-METHOD-LANDSCAPE-IRRIGATION-001` + current water/source/control rules.
+- Skills: research + design-process; data-viz for water-budget/zone evidence; hydraulic/irrigation calculation and field audit = `PROJECT_SPECIALIST_REQUIRED` where consequential.
+- Tool class: tabular water budget + hydraulic network/valve/controller carrier + field pressure/coverage/audit instruments.
+- Native carrier: hydrozone map, water-budget basis, design flow/pressure schedule, pipe/valve/controller plan, commissioning/audit/O&M record.
+- Readback: hydrozone basis; source pressure/capacity; hydraulic critical point; emitter coverage/overspray; controller/sensor state; field audit vs design.
+- Reopen: climate/source pressure/water quality/plant zone/system/emitter/controller/field coverage change.

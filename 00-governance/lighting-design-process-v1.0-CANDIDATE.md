@@ -959,3 +959,39 @@ Geometry/opening/shading/finish/reflectance change; task/view/occupancy change; 
 
 ### Professional boundary
 `RENDER PASS ≠ PHOTOMETRIC PASS`; `LUX PASS ≠ VISUAL COMFORT PASS`; `SIMULATION PASS ≠ INSTALLED PASS`; `COMMISSIONING OF ONE STATE ≠ WHOLE OPERATION PASS`. Candidate promotion remains governed by real project evidence and independent Lighting professional review.
+
+### Object-level invocation matrix
+
+`PROJECT_SPECIALIST_REQUIRED` is especially important here: the core registry currently has no installed photometric/daylight solver Skill.
+
+#### A｜Spatial Lighting Performance
+- Knowledge: `KN-METHOD-SPATIAL-LIGHTING-PERFORMANCE-001`.
+- Skills: research + design-process; 3d-pipeline for authoritative geometry support; photometric solver/professional = `PROJECT_SPECIALIST_REQUIRED` for performance claims.
+- Tool class: current geometry/material/weather/luminaire/control inputs + actual daylight/electric simulation runtime.
+- Native carrier: light-role map, physical-input contract, scenario matrix, native simulation package, role-vs-result and repair/retest log.
+- Readback: exact geometry/material/sky/time/photometry/control; viewpoint/evaluation plane; result contradiction; repaired rerun.
+- Reopen: spatial/task/input/scenario/control change or simulation/mockup/field contradiction.
+
+#### B｜Luminance–Contrast–Adaptation
+- Knowledge: `KN-METHOD-LIGHTING-LUMINANCE-ADAPTATION-001`.
+- Skills: design-process + data-viz for source-bound HDR/luminance maps; measurement/specialist tool = `PROJECT_SPECIALIST_REQUIRED` for field claims.
+- Tool class: HDR/luminance/visual-field analysis or measured carrier appropriate to the claim.
+- Native carrier: critical-viewpoint register, luminance-role/transition map, reflection/glare source map, HDR/measurement readback.
+- Readback: target/background field, adaptation sequence, bright-source dominance, material reflection at real viewpoints.
+- Reopen: viewpoint/task/finish/reflectance/source/control/daylight/field complaint change.
+
+#### C｜Criteria–Result–Submittal
+- Knowledge: `KN-METHOD-LIGHTING-CRITERIA-SUBMITTAL-001`.
+- Skills: research + design-process + data-viz; solver/professional required for recalculation; delivery-qc only for package identity.
+- Tool class: criterion source, calculation model, exact IES/LDT file identity, product/submittal carrier, field measurement.
+- Native carrier: criterion-result matrix, input provenance, luminaire/photometry/substitution register, recalc decision, field acceptance log.
+- Readback: criterion/view/scenario ↔ result ↔ exact optic/file/tag; substitution delta; field condition before acceptance measurement.
+- Reopen: criterion/model geometry/material/luminaire/photometry/driver/control/substitution/field condition change.
+
+#### D｜Schedule–Control–Commissioning
+- Knowledge: `KN-METHOD-LIGHTING-SCHEDULE-CONTROL-CX-001`.
+- Skills: design-process + project drawing/control owner; data-viz optional for trend evidence; commissioning professional/tool = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: luminaire/circuit/control/address/scene/sensor schedules + live control configuration/FPT evidence.
+- Native carrier: luminaire/aiming plan, circuit/group/address schedule, control narrative/sequence, scene matrix, FPT/tuning/as-built.
+- Readback: tag↔product↔circuit↔driver↔group/address↔scene/sensor; installed aiming; fail/manual/daylight/occupancy states; retest after tuning.
+- Reopen: product/circuit/address/scene/sensor/sequence/substitution/commissioning issue or operational drift.

@@ -954,3 +954,39 @@ Geometry/grid/level/opening change; load/use/equipment/facade/MEP load change; c
 
 ### Professional boundary
 `MODEL RUN ≠ ENGINEERING PASS`; `MEMBER CHECKS GREEN ≠ LOAD PATH CLOSED`; `CALCULATION PASS ≠ DRAWING RELEASE`; `FINAL-STATE STABLE ≠ ERECTION-STAGE STABLE`; `DELIVERY QC PASS ≠ INDEPENDENT CHECK`. Human professional/engineer-of-record/statutory authority remains external and explicit.
+
+### Object-level invocation matrix
+
+`PROJECT_SPECIALIST_REQUIRED` means the consequential structural claim cannot be closed by a generic OLEANDER Skill or model viewer.
+
+#### A｜Load Path–Stability–Connection
+- Knowledge: `KN-METHOD-STRUCT-LOADPATH-CONNECTION-001` + current load/material/code sources.
+- Skills: research + design-process for option/interface reasoning only; structural solver/engineer/checker = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: project-authorized analysis/calculation model; 3d-pipeline only for geometry/exchange.
+- Native carrier: load/hazard basis, analysis model, load-path/stability diagrams, member/reaction and connection-force criteria.
+- Readback: global+local load path, diaphragm/collector/transfer, member demand/capacity, connection assumption, support reaction.
+- Reopen: load/use/geometry/material/system/opening/support/connection/code change.
+
+#### B｜Calculation–Drawing Release
+- Knowledge: `KN-METHOD-STRUCT-CALC-DRAWING-RELEASE-001`.
+- Skills: project engineer/checker + analysis runtime; drawing candidate/project CAD/BIM owner; delivery-qc only for package/reopen integrity.
+- Tool class: analysis model + calculation register + CAD/BIM/drawing + shop/RFI/submittal records.
+- Native carrier: calc/model version receipt, member/reaction schedules, connection criteria, calc↔drawing matrix, change/reanalysis log.
+- Readback: current model version ↔ issued geometry/member/detail; reaction/connection criteria; shop/RFI delta and propagated reanalysis.
+- Reopen: any calculation/drawing/shop/RFI/site mismatch or changed force/stiffness/geometry.
+
+#### C｜Foundation–Geotechnical Interface
+- Knowledge: `KN-METHOD-STRUCT-FOUNDATION-GEOTECH-001` + current geotechnical source/report/test authority.
+- Skills: research for source trace; structural/geotechnical professional tools = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: geotechnical ground model/report + structural reaction/foundation analysis + field test/installation records.
+- Native carrier: parameter provenance, reaction-location schedule, foundation options, settlement/movement map, test/inspection/unexpected-ground log.
+- Readback: parameter scope/location/depth/condition ↔ current reactions; bearing/axial/lateral/uplift mechanism; differential movement; groundwater/excavation; test disposition.
+- Reopen: geotech/groundwater/reaction/foundation/excavation/adjacency/test/unexpected-ground change.
+
+#### D｜Erection & Temporary Stability
+- Knowledge: `KN-METHOD-STRUCT-ERECTION-TEMPWORKS-001` + applicable temporary-works/erection sources.
+- Skills: structural engineer/temporary-works designer/checker = `PROJECT_SPECIALIST_REQUIRED`; 3d-pipeline may visualize sequence but cannot prove stability.
+- Tool class: staged analysis/erection model, sequence drawings, temporary-support design carrier, survey/hold-point records.
+- Native carrier: responsibility matrix, stage/sequence, temporary bracing criteria/design, staged-analysis receipts, inspection/release-to-remove support, final survey.
+- Readback: valid load path at every incomplete stage; connection completion state; temporary support before removal; tolerance/survey against assumptions.
+- Reopen: erection sequence, crane/construction load, temporary support, connection state, tolerance/survey or nonstructural early-load change.

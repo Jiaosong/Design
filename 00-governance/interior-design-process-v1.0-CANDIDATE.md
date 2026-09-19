@@ -680,3 +680,31 @@ Room/program/use change; Architecture geometry/datum/opening change; MEP/lightin
 
 ### Professional boundary
 `MOODBOARD PASS ≠ ROOM PASS ≠ RCP COORDINATION PASS ≠ SAMPLE PASS ≠ SHOP PASS ≠ INSTALLED-ROOM PASS`. Independent Interior professional review and actual project exercise remain required by the existing candidate promotion boundary.
+
+### Object-level invocation matrix
+
+`INSTALLED_CORE / CANDIDATE_ONLY / PROJECT_SPECIALIST_REQUIRED` semantics follow the Current Skill Registry and the Execution Binding Contract above.
+
+#### A｜Room Data & Interface
+- Knowledge: `KN-METHOD-INTERIOR-ROOM-DATA-INTERFACE-001` + current accessibility/fire/acoustic/lighting/MEP/product sources.
+- Skills: research → design-process; 3d-pipeline when room/joinery geometry needs spatial proof; drawing candidate/project CAD owner for production.
+- Tool class: room-data/schedule carrier with stable IDs + CAD/BIM/model.
+- Native carrier: Room Data Sheet, dimensioned plan, furniture/equipment schedule, room RCP/elevations and interface record.
+- Readback: user/task/furniture clearance; wall-floor-ceiling build-up; device/access locations; maintenance/removal path.
+- Reopen: use/occupancy/equipment/architecture/MEP/light/fire/acoustic change.
+
+#### B｜Ceiling / RCP Coordination
+- Knowledge: `KN-METHOD-INTERIOR-CEILING-COORD-001`.
+- Skills: design-process + project CAD/BIM/drawing owner; 3d-pipeline when congested ceiling geometry requires 3D attack; delivery-qc only after native coordination.
+- Tool class: RCP / combined-services / access register; above-ceiling field inspection carrier.
+- Native carrier: master RCP, device matrix, height/zone schedule, access-panel register, suspension/head/edge details, pre-close checklist.
+- Readback: device performance role vs visual placement; actual access/removal; suspension/support conflicts; fire/acoustic partition-head continuity; close-up HOLD items.
+- Reopen: device/system/depth/support/access/partition/ceiling-system substitution or field shift.
+
+#### C｜Finish–Joinery Release
+- Knowledge: `KN-METHOD-INTERIOR-FINISH-JOINERY-RELEASE-001` + exact material/product/system sources.
+- Skills: research + design-process; 3d-pipeline only where geometry/assembly needs it; technical-drawing candidate/project detail owner; delivery-qc for release package.
+- Tool class: finish/joinery schedule, CAD/shop/detail carrier, sample/mockup/submittal records.
+- Native carrier: build-up/transition matrix, joinery/hardware/fixing package, sample/mockup benchmark, shop/substitution review, installation/punch record.
+- Readback: substrate↔finish compatibility; edge/joint/fixing/tolerance; backing/MEP/hardware access; full-scale sample criteria; installed defect pattern.
+- Reopen: substrate/moisture/build-up/material/hardware/thickness/fixing/shop/substitution/mockup/site defect change.

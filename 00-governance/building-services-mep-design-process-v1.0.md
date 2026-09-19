@@ -1144,3 +1144,39 @@ Programme/occupancy/process/design-condition change; load/diversity/redundancy a
 
 ### Professional boundary
 `LOAD CALC PASS ≠ SYSTEM PASS`; `DATASHEET ACCEPTED ≠ DUTY PASS`; `CLASH-FREE ≠ COORDINATED`; `POINT LIST COMPLETE ≠ SEQUENCE VERIFIED`; `STARTUP ≠ COMMISSIONING`; `ONE-SYSTEM CX PASS ≠ WHOLE-BUILDING INTEGRATION PASS`; `DELIVERY QC PASS ≠ ENGINEERING APPROVAL`.
+
+### Object-level invocation matrix
+
+`PROJECT_SPECIALIST_REQUIRED` preserves the boundary between OLEANDER design reasoning/coordination and discipline engineering/commissioning authority.
+
+#### A｜Demand–Calculation–Equipment–Distribution
+- Knowledge: `KN-METHOD-MEP-DESIGN-TRACE-001` + current discipline code/system/product sources.
+- Skills: research + design-process; discipline engineering solver/professional = `PROJECT_SPECIALIST_REQUIRED`; 3d-pipeline only for geometry/coordination.
+- Tool class: HVAC/electrical/plumbing/fire/BMS calculation/model appropriate to the claim.
+- Native carrier: load/demand schedule, calculation package, duty-point equipment schedule, schematics/network, terminal/interface records.
+- Readback: source demand/design conditions → critical result/duty point → network critical point → equipment envelope → terminal/end use.
+- Reopen: programme/load/diversity/source/network/equipment/terminal/design-condition change.
+
+#### B｜Calculation–Schedule–Substitution Release
+- Knowledge: `KN-METHOD-MEP-CALC-RELEASE-001`.
+- Skills: discipline engineer + calculation runtime; research for exact manufacturer data; delivery-qc for package integrity.
+- Tool class: calculation model + equipment/terminal schedule + manufacturer selection/submittal + drawing/control interface.
+- Native carrier: calc register, input/source ledger, duty-point trace, selected-product/substitution delta, recalc trigger and affected-output register.
+- Readback: schedule value ↔ current calc; exact product curve/envelope; substitution effects on pressure/static/head/power/noise/heat/control/space; Cx baseline.
+- Reopen: room/load/network/design condition/manufacturer/product/control/interface substitution or field delta.
+
+#### C｜Coordination–Clearance–Access
+- Knowledge: `KN-METHOD-MEP-COORDINATION-ACCESS-001`.
+- Skills: design-process + 3d-pipeline for spatial exchange; project CAD/BIM/coordination owner; discipline professional owns technical acceptability.
+- Tool class: combined-services model/drawings with access/removal/support/opening/penetration data.
+- Native carrier: coordination sections, route/zone allocation, access/replacement envelopes, opening/embed/support and firestop/acoustic registers.
+- Readback: route size + insulation + slope/radius; actual valve/filter/damper/panel access; replacement path; structural support/opening; installation sequence; field delta.
+- Reopen: system size/routing/ceiling/structure/firestop/access/equipment/support/site change.
+
+#### D｜Controls–Points–Sequence–Commissioning
+- Knowledge: `KN-METHOD-MEP-CONTROL-CX-001` + current control/Cx system sources.
+- Skills: design-process for intent/change; controls/commissioning professional and actual BMS/test tools = `PROJECT_SPECIALIST_REQUIRED`; data-viz only for trend evidence.
+- Tool class: point/I-O/address configuration, sequence/C&E, TAB/balancing records, FPT/IST scripts, field instruments and trend logs.
+- Native carrier: point schedule, I/O map, sequence/interlock/fail-state, prefunctional/TAB baseline, FPT/fault-injection, issues/retest, as-built/system manual.
+- Readback: each sequence statement ↔ actual point/device; fail/manual/network/power states; prerequisites; measurable expected result ↔ test result; retest and as-built update.
+- Reopen: point/device/address/setpoint/sequence/interlock/system configuration, TAB prerequisite, FPT failure, site tuning or trend/in-use contradiction.

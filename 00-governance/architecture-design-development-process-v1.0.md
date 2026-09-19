@@ -772,3 +772,39 @@ Reopen exact affected Architecture objects when any material change occurs to: p
 
 ### Professional boundary
 `SKILL PASS ≠ TOOL PASS ≠ ARCHITECTURE PROFESSIONAL PASS ≠ INTEGRATION PASS ≠ DESIGN KEEP ≠ FIELD TRUTH`. Registered/statutory/professional authority remains with the actual appointed human/professional roles and applicable jurisdiction.
+
+### Object-level invocation matrix
+
+Use these states consistently: `INSTALLED_CORE` = callable OLEANDER core Skill when the current run exposes its runtime; `CANDIDATE_ONLY` = may support bounded review/training/authorized candidate use but is not Current production ownership; `PROJECT_SPECIALIST_REQUIRED` = the project must bind an actual professional/tool owner; unavailable consequential proof remains HOLD.
+
+#### A｜Programme Relation
+- Knowledge: `KN-METHOD-ARCH-PROGRAM-RELATION-001` + current programme/operation/accessibility/fire sources.
+- Skills: `oleander-research [INSTALLED_CORE]` → `oleander-design-process [INSTALLED_CORE]`; data-viz only when a real analytical graph/map is required.
+- Tool class: structured room/programme schedule + editable relation/flow carrier; project CAD/BIM only once spatial geometry becomes consequential.
+- Native carrier: Space/Room Data Schedule, actor×activity×space matrix, adjacency/flow/operation-time graphs, area reconciliation, change log.
+- Mandatory readback: room/space IDs and areas ↔ current brief; adjacency reason; public/staff/service/access routes; capacity/operation assumptions.
+- Reopen: programme/actor/capacity/operating model/accessibility/fire/security/equipment change.
+
+#### B｜Plan–Section–Core
+- Knowledge: `KN-METHOD-ARCH-PLAN-SECTION-CORE-001` + current Structure/MEP/accessibility/life-safety mounts.
+- Skills: `oleander-design-process [INSTALLED_CORE]` + `oleander-3d-pipeline [INSTALLED_CORE when fit]`; `oleander-technical-drawing [CANDIDATE_ONLY]` or project drawing owner.
+- Tool class: project-authorized CAD/BIM/spatial model; Blender only for bounded geometry/exchange where it preserves the claim.
+- Native carrier: coordinated plans/critical sections/core plans/level-clear-height/shaft-riser registers and interface overlays.
+- Mandatory readback: plan↔section datums; clear-height stack; stair/lift/core continuity; riser/shaft continuity; structure/service zones; equipment replacement path.
+- Reopen: level/core/grid/structure/MEP/equipment/access/roof-basement geometry change.
+
+#### C｜Facade–Environment Interface
+- Knowledge: `KN-METHOD-ARCH-FACADE-ENVIRONMENT-INTERFACE-001` + current envelope/building-physics/fire/product sources.
+- Skills: research + design-process + 3d-pipeline where geometry is material; specialist envelope/building-physics tool/owner = `PROJECT_SPECIALIST_REQUIRED` when performance is claimed.
+- Tool class: editable facade/detail carrier; project-authorized thermal/moisture/daylight/facade analysis and mockup/test records as applicable.
+- Native carrier: orientation/opening/shading study, control-layer continuity diagrams, typical/transition details, submittal/mockup/test matrix.
+- Mandatory readback: wall↔window↔roof↔base control continuity; movement/tolerance/joint logic; drainage path; exact product/system delta; mockup/test disposition.
+- Reopen: climate/performance criterion, opening/shading, glass/frame/insulation/seal/firestop/anchor/product substitution or test failure.
+
+#### D｜Opening / Door / Window Schedule
+- Knowledge: `KN-METHOD-ARCH-OPENING-SCHEDULE-001` + applicable accessibility/fire/acoustic/security/product sources.
+- Skills: research + design-process; technical-drawing candidate/project drawing owner for schedule/detail production; delivery-qc for package integrity.
+- Tool class: stable-ID opening/hardware schedule + CAD/BIM/details + access-control/automatic-door interface data when applicable.
+- Native carrier: opening schedule, hardware-set cross-reference, head/jamb/sill/threshold details, field-opening survey, functional adjustment record.
+- Mandatory readback: clear passage/manoeuvring after frame/finish/hardware; threshold/floor/waterproofing; hardware/control/fire release; rough-opening/floor datum vs fabrication.
+- Reopen: wall/floor/opening/hardware/fire/acoustic/security/access-control/product/field datum change.
