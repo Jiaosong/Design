@@ -1,0 +1,171 @@
+{
+  "schema_version": "c04-lighting-thread-readback/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "C04-P01-STEP-LIGHT",
+  "state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NO LIGHTING PROFESSIONAL PASS",
+  "source_boundary": {
+    "concept": "KEEP/HOLD",
+    "presentation": "PROTOTYPE_MAIN_CANDIDATE",
+    "field_observed": 0,
+    "field_measured": 0,
+    "g1f": "HOLD",
+    "construction": "NOT_FOR_CONSTRUCTION",
+    "site_need": "UNVERIFIED",
+    "route_guidance_claim": false,
+    "safety_guidance_claim": false
+  },
+  "threads": [
+    {
+      "id": "LGT-T01",
+      "name": "Scope / visual task / responsibility",
+      "state": "PARTIAL_DESIGN_EVIDENCE",
+      "evidence": "Role is explicitly short local body feedback; not route/safety guidance.",
+      "does_not_prove": "verified project need, lighting brief, professional responsibility matrix or safety role"
+    },
+    {
+      "id": "LGT-T02",
+      "name": "Daylight / temporal state",
+      "state": "PARTIAL_DESIGN_EVIDENCE",
+      "evidence": "DAY/OFF and night-candidate relation are explicit.",
+      "does_not_prove": "actual daylight availability, seasonal/time-state performance or daylight-electric interaction"
+    },
+    {
+      "id": "LGT-T03",
+      "name": "Luminous hierarchy / brightness / glare",
+      "state": "NOT_RUN",
+      "evidence": "Illustrated low-intensity edge response only.",
+      "does_not_prove": "luminance hierarchy, glare, source visibility, adaptation, contrast or comfort"
+    },
+    {
+      "id": "LGT-T04",
+      "name": "Photometric model / calculation assumptions",
+      "state": "NOT_RUN",
+      "evidence": "No project photometric model.",
+      "does_not_prove": "illuminance/luminance distribution, compliance or bounded quantitative lighting performance"
+    },
+    {
+      "id": "LGT-T05",
+      "name": "Color quality / spectral / material appearance",
+      "state": "NOT_RUN",
+      "evidence": "No source spectrum/color-rendering/material response evidence.",
+      "does_not_prove": "color appearance, spectral suitability, material rendering or ecological spectral effect"
+    },
+    {
+      "id": "LGT-T06",
+      "name": "Luminaire / optic / source / driver",
+      "state": "NOT_RUN",
+      "evidence": "No current luminaire/optic/driver/product identity.",
+      "does_not_prove": "beam/distribution/output/dimming/thermal/product suitability"
+    },
+    {
+      "id": "LGT-T07",
+      "name": "Mounting / architectural integration / access",
+      "state": "HOLD",
+      "evidence": "Concept locates response at edge zone and lists flush paving, drainage, waterproofing and maintenance as field gates.",
+      "does_not_prove": "actual mounting, recess, fixing, waterproofing, drainage, thermal/access or maintainable installation"
+    },
+    {
+      "id": "LGT-T08",
+      "name": "Electrical / control mapping / sequences",
+      "state": "PARTIAL_CONCEPT_ONLY",
+      "evidence": "Non-contact sensing → local control → short fade; DAY/fault/maintenance → OFF.",
+      "does_not_prove": "sensor FOV, groups/addresses, circuits, driver/control compatibility, protocol, arbitration, override, restart or acceptance"
+    },
+    {
+      "id": "LGT-T09",
+      "name": "Exterior / night / ecology / spill",
+      "state": "HOLD",
+      "evidence": "Night operation, glare and ecology are explicitly listed as unresolved field gates.",
+      "does_not_prove": "spill, receptor impact, ecology, curfew, wet/seasonal reflection or exterior-light acceptance"
+    },
+    {
+      "id": "LGT-T10",
+      "name": "Mockup / benchmark / verification",
+      "state": "NOT_RUN",
+      "evidence": "1.5–3 s exists only as sample-test target.",
+      "does_not_prove": "tested behavior, luminous quality, user response or correlation to a real product/site"
+    },
+    {
+      "id": "LGT-T11",
+      "name": "Specification / submittal / substitution",
+      "state": "NOT_RUN",
+      "evidence": "No specification/product/submittal object.",
+      "does_not_prove": "procurement or substitution control"
+    },
+    {
+      "id": "LGT-T12",
+      "name": "Construction coordination / field condition",
+      "state": "NOT_RUN",
+      "evidence": "No selected site or installation.",
+      "does_not_prove": "field geometry, paving integration, wiring, drainage, safety or construction coordination"
+    },
+    {
+      "id": "LGT-T13",
+      "name": "Aiming / commissioning / measurement",
+      "state": "NOT_RUN",
+      "evidence": "No installed luminous system.",
+      "does_not_prove": "aiming, scene behavior, commissioning, measured performance or final configuration"
+    },
+    {
+      "id": "LGT-T14",
+      "name": "Handover / O&M / maintenance / replacement",
+      "state": "NOT_RUN",
+      "evidence": "Maintenance/OFF is a conceptual failure state only.",
+      "does_not_prove": "maintainable access, replacement equivalence, O&M, warranty or handover"
+    },
+    {
+      "id": "LGT-T15",
+      "name": "Post-occupancy tuning / learning",
+      "state": "NOT_RUN",
+      "evidence": "No installed/used system.",
+      "does_not_prove": "actual user response, drift, complaints, maintenance burden or in-use tuning"
+    },
+    {
+      "id": "LGT-T16",
+      "name": "Cross-disciplinary interfaces / responsibility",
+      "state": "UNRESOLVED",
+      "evidence": "Paving/slip/drainage/electrical/waterproofing/ecology/operations/accessibility are named field gates.",
+      "does_not_prove": "Architecture/Landscape/Electrical/Controls/Ecology/Accessibility/Operations interface maturity or approval"
+    }
+  ],
+  "critical_truth_boundaries": [
+    "`1.5–3 s` = prototype/sample-test behavior range, not commissioned control setting.",
+    "Rendered/diagrammed glow = concept communication, not photometric evidence.",
+    "Local edge response = body-feedback role only, not route guidance or safety lighting.",
+    "DAY/OFF, fault/OFF, maintenance/OFF = intended failsafe behavior, not implemented control verification.",
+    "Edge-zone concept = design relation, not paving/electrical/waterproofing/drainage approval.",
+    "P01 site need remains UNVERIFIED."
+  ],
+  "disposition": {
+    "keep": [
+      "local short body-feedback mechanism",
+      "normal walking surface remains continuous and untargeted",
+      "edge-zone response rather than step-on light point",
+      "daytime passive material relation",
+      "failure-safe OFF principle",
+      "explicit no route/safety guidance claim"
+    ],
+    "hold": [
+      "site selection / project need",
+      "photometric/glare/color evidence",
+      "luminaire/optic/driver identity",
+      "mounting/waterproofing/drainage/electrical integration",
+      "sensor/control implementation",
+      "night ecology/spill",
+      "mockup/test",
+      "specification/procurement",
+      "commissioning/measurement",
+      "O&M/in-use evidence"
+    ],
+    "next_valid_actions": [
+      "Confirm a real site need and location before photometric development.",
+      "Define actual user/task/night context and responsible Lighting/Electrical/Controls/Ecology/Accessibility owners.",
+      "If the concept survives, select a bounded product/optic/driver/control candidate and build an exact model/configuration record.",
+      "Run photometric/glare/night-receptor evidence appropriate to the selected site.",
+      "Prototype the sensing/fade behavior with exact hardware/configuration before treating 1.5–3 s as a setting.",
+      "Keep route/safety-lighting functions outside P01 unless the project brief is explicitly reopened."
+    ]
+  },
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "REAL PROJECT LIGHTING CONCEPT/BODY-FEEDBACK INTENT ONLY / NO PHOTOMETRIC, PRODUCT, CONTROL, NIGHT-ECOLOGY, COMMISSIONING OR FIELD PASS / NO PROMOTION"
+}

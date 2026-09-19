@@ -1,0 +1,108 @@
+{
+  "schema_version": "c04-lighting-process-exercise-receipt/0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "object_id": "C04-P01-STEP-LIGHT",
+  "process_id": "OLEANDER-LIGHTING-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD / NOT_CURRENT / NO_PROMOTION",
+  "purpose": "Exercise the existing Lighting Design Candidate against real C04 P01 step-light concept evidence without promoting visual/concept artifacts into photometric, control, ecological, electrical, commissioning or field proof.",
+  "bindings": [
+    {
+      "path": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+      "blob_sha": "23649a0ae9949b62d890c4c56916a25cf5ce7a60",
+      "role": "CANDIDATE_PROCESS_MACHINE_DEFINITION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "5cf319f5242178e99b6e82b8f240e9aad25d97c6",
+      "role": "C04_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+      "blob_sha": "79f3762a603d7b416141fc6ec244b8f60d1331f6",
+      "role": "C04_LIGHTING_TECHNICAL_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md",
+      "blob_sha": "dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe",
+      "role": "CURRENT_P01_RELATION_SUMMARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "3019027c806eef4571be7d97b313d300499d1e1a",
+      "role": "CURRENT_P01_TRUTH_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg",
+      "blob_sha": "1e46c839040a2db1dbe18c22da9b85de4b2805ba",
+      "role": "EDITABLE_P01_CONCEPT_ARTIFACT"
+    },
+    {
+      "path": "evals/failure/failure_cases.jsonl",
+      "blob_sha": "d5f8896fe2c8b97e5e50bb2b849db3d35c5594a1",
+      "role": "AIG02_LIGHTING_FAILURE_REGRESSION"
+    }
+  ],
+  "findings": {
+    "retained_design_evidence": [
+      "local short body-feedback mechanism",
+      "continuous untargeted primary walking surface",
+      "edge-zone response rather than step-on light point",
+      "daytime passive material relation",
+      "DAY/OFF + fault/OFF + maintenance/OFF fail-safe intent",
+      "explicit no route-guidance / no safety-indication claim"
+    ],
+    "professional_holds": [
+      "site need and location remain unverified",
+      "no project photometric/glare/color evidence",
+      "no luminaire/optic/source/driver/product identity",
+      "no implemented sensor/control/group/address/sequence",
+      "no exterior night receptor/ecology/spill evidence",
+      "no sample/mockup verification",
+      "no specification/procurement/substitution package",
+      "no commissioning/aiming/measurement/night readback",
+      "no O&M/post-occupancy evidence"
+    ]
+  },
+  "stage_coverage": {
+    "LGT-00": "BLOCKED/HOLD — role intent exists, project brief/site need open",
+    "LGT-01": "BLOCKED/HOLD — local edge-response concept exists, real site conditions open",
+    "LGT-02": "NOT_STARTED/NOT_RUN",
+    "LGT-03": "NOT_STARTED/NOT_RUN",
+    "LGT-04": "BLOCKED/HOLD — control-behavior concept only",
+    "LGT-05": "BLOCKED/HOLD — exterior/night intent only",
+    "LGT-06": "NOT_STARTED/NOT_RUN",
+    "LGT-07": "NOT_STARTED/NOT_RUN",
+    "LGT-08": "NOT_STARTED/NOT_RUN",
+    "LGT-09": "NOT_STARTED/NOT_RUN"
+  },
+  "regression": {
+    "cases": [
+      "FAIL-059",
+      "FAIL-060",
+      "FAIL-061"
+    ],
+    "attacks": [
+      "local body-feedback light promoted to route/safety lighting",
+      "prototype fade timing/failure behavior promoted to commissioned controls",
+      "rendered glow/night image promoted to photometric/glare/ecology/installed proof"
+    ]
+  },
+  "existing_practice_relation": {
+    "prior_practice": "SP03-R02 synthetic Radiance/evalglare practice",
+    "relation": "complementary",
+    "statement": "Synthetic practice exercises LGT-01/LGT-02/LGT-06 method mechanics; C04 P01 adds real-project truth-boundary and HOLD evidence but still does not exercise product/specification/commissioning."
+  },
+  "current_architecture_disposition": {
+    "lighting_domain_process": "OPEN",
+    "changed_to_current": false,
+    "reason": "Synthetic practice plus one real-project HOLD exercise improve candidate evidence but do not provide installed commissioning/field evidence or independent Lighting professional project review."
+  },
+  "validation_plan": {
+    "validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "target": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+    "ci_state": "PENDING_REAL_PR_CI"
+  },
+  "maturity": "SYNTHETIC METHOD PRACTICE + REAL PROJECT HOLD REAPPLICATION / PROJECT LIGHTING TRUTH BOUNDARIES EXERCISED / PRODUCT-SPEC-COMMISSIONING-FIELD EVIDENCE OPEN / INDEPENDENT LIGHTING PROFESSIONAL REVIEW NOT_RUN / NO CURRENT PROMOTION",
+  "claim_ceiling": "REAL PROJECT LIGHTING CONCEPT/BODY-FEEDBACK HOLD EVIDENCE ONLY / NO PHOTOMETRIC, CONTROL, ECOLOGY, ELECTRICAL, COMMISSIONING OR FIELD PASS / NO PROMOTION"
+}
