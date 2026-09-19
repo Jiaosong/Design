@@ -1375,6 +1375,612 @@
       "field evidence where claim excludes field truth",
       "civil/hydraulic/statutory approval from Landscape",
       "same page count/template as other domains"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "LA-OBJ-01",
+        "object_name": "Landscape Site-System Diagnosis / Professional Judgment Register",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "LA-DP0",
+          "LA-DP1",
+          "LA-DP2"
+        ],
+        "professional_purpose": "Carry landscape judgments about landform, water, vegetation, access, use, microclimate, maintenance and place from evidence into design consequence without turning remote/context analysis into site authority.",
+        "native_source_of_truth": "Current survey/site/environmental/user/operation evidence admitted for the exact landscape claim.",
+        "required_record_fields": [
+          "diagnosis_id",
+          "site_system",
+          "location_extent",
+          "source_refs",
+          "observed_documented_condition",
+          "interpretation",
+          "design_consequence",
+          "confidence_limit",
+          "field_or_specialist_need",
+          "owner",
+          "status",
+          "affected_design_objects"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Survey",
+          "Civil/Hydraulic",
+          "Geotechnical",
+          "Ecology/Arboriculture",
+          "Operations/FM"
+        ],
+        "revision_identity": "diagnosis_id + source/basemap revision + landscape baseline",
+        "release_or_retention_rule": "Retain only at the lowest valid evidence ceiling; remote/derived condition never silently becomes measured field truth.",
+        "required_readback": [
+          "source→condition→interpretation→consequence trace",
+          "map/section/site-system cross-readback",
+          "strongest uncertainty attack"
+        ],
+        "failure_or_hold_conditions": [
+          "remote terrain called survey",
+          "D8 convergence called hydraulic drainage",
+          "visual vegetation interpretation called professional inventory"
+        ],
+        "reopen_triggers": [
+          "survey/field evidence",
+          "hydrology/soil/ecology update",
+          "site boundary/use/maintenance change"
+        ],
+        "downstream_handoffs": [
+          "LA-DP2 concept",
+          "Civil",
+          "Architecture",
+          "Ecology/Arboriculture"
+        ],
+        "independent_review_requirement": "Independent landscape review must attack highest-consequence site-system inference and weak evidence.",
+        "does_not_prove": [
+          "survey accuracy",
+          "hydraulic performance",
+          "ecology/arboriculture PASS",
+          "field truth"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-02",
+        "object_name": "Site / Base / Soil / Hydrology / Vegetation Uncertainty Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "LA-DP0",
+          "LA-DP1",
+          "LA-DP3"
+        ],
+        "professional_purpose": "Keep consequential uncertainty in survey, grading, soil, water, vegetation, ecology and maintenance explicit with owner and verification route.",
+        "native_source_of_truth": "Current base/survey/environmental/site investigation evidence + field boundary.",
+        "required_record_fields": [
+          "uncertainty_id",
+          "technical_thread",
+          "location",
+          "statement",
+          "source_or_absence",
+          "evidence_class",
+          "confidence_or_limit",
+          "affected_decisions",
+          "risk_if_wrong",
+          "verification_needed",
+          "responsible_owner",
+          "status",
+          "reopen_trigger"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Survey",
+          "Civil/Hydraulic",
+          "Geotechnical",
+          "Ecology/Arboriculture",
+          "Irrigation",
+          "Operations/FM"
+        ],
+        "revision_identity": "uncertainty_id + source revision + site baseline",
+        "release_or_retention_rule": "No consequential unknown may be normalized into a finished-looking plan; unresolved uncertainty remains tied to affected claims/artifacts.",
+        "required_readback": [
+          "uncertainty ↔ affected plan/section trace",
+          "field/specialist evidence comparison",
+          "risk/sensitivity review"
+        ],
+        "failure_or_hold_conditions": [
+          "site levels inferred",
+          "soil/rooting assumed",
+          "existing tree condition guessed",
+          "maintenance capability invented"
+        ],
+        "reopen_triggers": [
+          "new survey/test/field/specialist evidence",
+          "design system change",
+          "seasonal observation"
+        ],
+        "downstream_handoffs": [
+          "all consuming LA stages and interfaces"
+        ],
+        "independent_review_requirement": "Independent review samples high-consequence/low-confidence unknowns before retention.",
+        "does_not_prove": [
+          "specialist approval",
+          "future seasonal performance"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-03",
+        "object_name": "Landscape Concept / Landform-Water-Planting System Option Set",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "LA-DP2"
+        ],
+        "professional_purpose": "Compare materially different landscape system concepts across movement, landform, water, planting, hardscape, ecology and stewardship.",
+        "native_source_of_truth": "Matched concept plans/sections/system diagrams tied to common site/brief evidence ceiling.",
+        "required_record_fields": [
+          "option_id",
+          "concept_family",
+          "movement_use_structure",
+          "landform_strategy",
+          "water_stormwater_strategy",
+          "planting_ecology_strategy",
+          "hardscape_material_strategy",
+          "maintenance_establishment_strategy",
+          "accessibility_implication",
+          "civil_structural_interfaces",
+          "seasonal_character",
+          "tradeoffs",
+          "retained_rejected_reason",
+          "required_test"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Civil",
+          "Ecology/Arboriculture",
+          "Accessibility",
+          "Operations/FM"
+        ],
+        "revision_identity": "option_id + common site/brief baseline + option revision",
+        "release_or_retention_rule": "Do not count palette/species substitutions as concept families unless landform/water/use/maintenance logic materially changes.",
+        "required_readback": [
+          "matched plan/section/system comparison",
+          "movement/use scenario readback",
+          "water/planting/maintenance coherence review"
+        ],
+        "failure_or_hold_conditions": [
+          "same geometry with different planting palette called alternative",
+          "water feature without catchment/outfall consequence",
+          "maintenance ignored"
+        ],
+        "reopen_triggers": [
+          "site evidence/program change",
+          "Civil/Architecture interface change",
+          "maintenance/seasonal constraint change"
+        ],
+        "downstream_handoffs": [
+          "LA-DP3 developed systems",
+          "Architecture",
+          "Civil",
+          "Operations/FM"
+        ],
+        "independent_review_requirement": "Independent review must challenge the selected concept against strongest alternative at the same site-evidence ceiling.",
+        "does_not_prove": [
+          "hydraulic performance",
+          "species establishment",
+          "construction readiness"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-04",
+        "object_name": "Controlled Grading / Drainage / Planting / Hardscape Landscape Package",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "LA-DP3",
+          "LA-DP4"
+        ],
+        "professional_purpose": "Carry landscape design through coordinated editable plans, sections, levels, grading/drainage, planting/soil, hardscape and details.",
+        "native_source_of_truth": "Owner-native GIS/CAD/BIM/vector/model/schedule/specification sources designated Current within landscape scope.",
+        "required_record_fields": [
+          "package_id",
+          "site_plan_refs",
+          "grading_level_refs",
+          "drainage_stormwater_refs",
+          "planting_soil_refs",
+          "tree_protection_refs",
+          "irrigation_refs",
+          "hardscape_material_refs",
+          "section_detail_refs",
+          "setting_out_refs",
+          "interfaces",
+          "revision",
+          "author",
+          "checker",
+          "issue_status"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Civil/Hydraulic",
+          "Geotechnical",
+          "Ecology/Arboriculture",
+          "Irrigation",
+          "Architecture"
+        ],
+        "revision_identity": "package_id + exact native source revisions + base/survey revision",
+        "release_or_retention_rule": "Plan/section/level/drainage/planting/detail sources must remain mutually consistent; GIS/render/board does not replace technical native source.",
+        "required_readback": [
+          "plan↔section↔level/contour consistency",
+          "drainage route/low-point readback",
+          "planting/soil/root-volume fit",
+          "hardscape/detail/access readback"
+        ],
+        "failure_or_hold_conditions": [
+          "grading and drainage contradiction",
+          "planting plan detached from soil/root volume",
+          "wrong base/survey revision",
+          "hardscape detail blocks drainage/access"
+        ],
+        "reopen_triggers": [
+          "survey/level change",
+          "planting/product change",
+          "Civil utility/drainage change",
+          "field condition/RFI"
+        ],
+        "downstream_handoffs": [
+          "Civil",
+          "Architecture",
+          "Contractor",
+          "Procurement",
+          "Operations/FM"
+        ],
+        "independent_review_requirement": "Independent landscape QA/QC on critical grading/drainage/planting/hardscape relations and exact revisions.",
+        "does_not_prove": [
+          "Civil/hydraulic approval",
+          "field conformity",
+          "plant establishment"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-05",
+        "object_name": "Landscape Material / Plant / Irrigation / Mockup / Substitution Release Register",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "LA-DP4",
+          "LA-DP5"
+        ],
+        "professional_purpose": "Control release of landscape materials, plants, soils, irrigation components, samples/mockups and substitutions against performance/site/maintenance requirements.",
+        "native_source_of_truth": "Current technical landscape package + nursery/manufacturer/submittal/sample/mockup evidence.",
+        "required_record_fields": [
+          "release_id",
+          "item_or_system_tag",
+          "category",
+          "design_requirement_ref",
+          "submitted_identity_revision",
+          "source_or_provenance",
+          "dimensions_performance",
+          "soil_water_climate_fit",
+          "maintenance_requirement",
+          "sample_mockup_ref",
+          "availability_seasonality",
+          "deviations",
+          "review_disposition",
+          "conditions",
+          "release_authority"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Nursery/Supplier",
+          "Civil",
+          "Irrigation",
+          "Ecology/Arboriculture",
+          "Procurement",
+          "Operations/FM"
+        ],
+        "revision_identity": "release_id + design requirement revision + submitted/sample revision",
+        "release_or_retention_rule": "Visual similarity alone never establishes plant/material/system equivalence; site, performance, growth, maintenance and interface differences remain explicit.",
+        "required_readback": [
+          "submittal/sample ↔ schedule/spec/detail comparison",
+          "plant/soil/water compatibility",
+          "mockup/material weathering or installation readback where triggered"
+        ],
+        "failure_or_hold_conditions": [
+          "species substituted without mature/soil/water analysis",
+          "paver substituted ignoring slip/drainage/build-up",
+          "irrigation product changed without control/interface review"
+        ],
+        "reopen_triggers": [
+          "substitution",
+          "nursery availability",
+          "sample/mockup result",
+          "site/soil/water evidence change",
+          "maintenance capability change"
+        ],
+        "downstream_handoffs": [
+          "procurement",
+          "installation",
+          "establishment/maintenance"
+        ],
+        "independent_review_requirement": "Specialist review where ecology/arboriculture/hydraulic/structural/accessibility performance is outside landscape authority.",
+        "does_not_prove": [
+          "supplier quality",
+          "field workmanship",
+          "long-term establishment"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-06",
+        "object_name": "Landscape Earthwork / Protection / Field Change / Nonconformity Register",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "LA-DP5"
+        ],
+        "professional_purpose": "Bind earthwork, grading, drainage, soil, tree protection, planting, hardscape and irrigation field evidence to exact design/site references.",
+        "native_source_of_truth": "Site observation/test/RFI/nonconformity evidence + current issued landscape information.",
+        "required_record_fields": [
+          "field_item_id",
+          "location",
+          "date",
+          "issued_ref_revision",
+          "work_type",
+          "observed_condition",
+          "survey_or_test_ref",
+          "tree_soil_water_condition",
+          "RFI_nonconformity",
+          "design_consequence",
+          "disposition",
+          "revised_artifact",
+          "repair_replacement",
+          "owner",
+          "closure_evidence"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Contractor",
+          "Civil",
+          "Arboriculture",
+          "Ecology",
+          "Irrigation",
+          "Survey"
+        ],
+        "revision_identity": "field_item_id + location + issue/base revision + observation date",
+        "release_or_retention_rule": "Field observation is bounded; changed levels/soil/tree/drainage/material conditions reopen affected technical threads and native sources.",
+        "required_readback": [
+          "field levels/grade ↔ design",
+          "tree protection/soil/planting inspection",
+          "drainage/hardscape mockup/readback",
+          "repair/reinspection"
+        ],
+        "failure_or_hold_conditions": [
+          "site photo generalized",
+          "changed grade not resurveyed",
+          "soil/planting defect hidden",
+          "tree protection breach not dispositioned"
+        ],
+        "reopen_triggers": [
+          "field condition",
+          "survey/as-built measurement",
+          "RFI",
+          "failed establishment",
+          "nonconformity"
+        ],
+        "downstream_handoffs": [
+          "LA-DP6 handover",
+          "Civil",
+          "Operations/FM"
+        ],
+        "independent_review_requirement": "Independent/specialist witness where tree, ecology, drainage, accessibility or contractual acceptance requires.",
+        "does_not_prove": [
+          "unobserved work",
+          "future establishment",
+          "hydraulic/statutory approval"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-07",
+        "object_name": "Planting / Soil Establishment / Maintenance / Seasonal Stewardship Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "LA-DP6",
+          "LA-DP7"
+        ],
+        "professional_purpose": "Track installed landscape systems through establishment, replacement, irrigation, defects, maintenance and seasonal/in-use observations.",
+        "native_source_of_truth": "Accepted installation records + maintenance/irrigation plans + seasonal field evidence.",
+        "required_record_fields": [
+          "record_id",
+          "area_or_asset",
+          "installed_identity",
+          "soil_profile_condition",
+          "planting_condition",
+          "irrigation_state",
+          "defects_replacements",
+          "maintenance_task_owner_frequency",
+          "seasonal_check",
+          "drainage_SuDS_maintenance",
+          "user_use_observation",
+          "open_items",
+          "revisit_date_or_condition",
+          "closure_state"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Operations/FM",
+          "Contractor",
+          "Irrigation",
+          "Arboriculture/Ecology",
+          "Client"
+        ],
+        "revision_identity": "record_id + installed/maintenance baseline + observation date/season",
+        "release_or_retention_rule": "Installation completion cannot equal establishment success; closure follows project-specific establishment criteria and unresolved seasonal items remain explicit.",
+        "required_readback": [
+          "plant/soil/irrigation condition readback",
+          "replacement/defect closure",
+          "maintenance access/capability",
+          "seasonal drainage/use observation"
+        ],
+        "failure_or_hold_conditions": [
+          "installed counted as established",
+          "failed plants repeatedly replaced without cause review",
+          "maintenance burden exceeds operator capability",
+          "seasonal evidence absent but mature claim made"
+        ],
+        "reopen_triggers": [
+          "seasonal review",
+          "plant failure",
+          "irrigation/maintenance change",
+          "user desire lines",
+          "drainage/erosion observation"
+        ],
+        "downstream_handoffs": [
+          "Operations/FM",
+          "future landscape change",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent/professional review of establishment outcome where project claim requires.",
+        "does_not_prove": [
+          "long-term survival",
+          "biodiversity outcome",
+          "future maintenance quality"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-08",
+        "object_name": "Independent Landscape Professional Review Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "LA-DP1",
+          "LA-DP2",
+          "LA-DP3",
+          "LA-DP4",
+          "LA-DP5"
+        ],
+        "professional_purpose": "Attack site-evidence authority, grading/drainage, planting/soil, hardscape/access and field implementation on exact baselines.",
+        "native_source_of_truth": "Controlled landscape package + source/survey/specialist/submittal/field evidence.",
+        "required_record_fields": [
+          "review_id",
+          "baseline_refs",
+          "reviewer_identity_independence",
+          "scope",
+          "critical_site_systems",
+          "grading_drainage_checks",
+          "planting_soil_checks",
+          "access_hardscape_checks",
+          "maintenance_establishment_checks",
+          "specialist_interface_checks",
+          "findings",
+          "severity",
+          "repair",
+          "recheck",
+          "verdict"
+        ],
+        "decision_owner": "Independent Landscape Architecture reviewer",
+        "contributor_or_specialist_refs": [
+          "Civil/Hydraulic",
+          "Geotechnical",
+          "Ecology/Arboriculture",
+          "Accessibility as triggered"
+        ],
+        "revision_identity": "review_id + exact reviewed landscape/base revision",
+        "release_or_retention_rule": "Review applies only to reviewed evidence/site/configuration; material base, grading, planting, water or field change stales affected conclusions.",
+        "required_readback": [
+          "source authority attack",
+          "critical section/grade/drainage readback",
+          "planting/soil/maintenance contradiction attack",
+          "repair/recheck"
+        ],
+        "failure_or_hold_conditions": [
+          "remote analysis accepted as site authority",
+          "Civil/specialist gap ignored",
+          "changed survey not re-reviewed",
+          "establishment claim from install only"
+        ],
+        "reopen_triggers": [
+          "survey/site evidence change",
+          "grading/drainage/planting/material change",
+          "field/seasonal evidence"
+        ],
+        "downstream_handoffs": [
+          "Landscape professional receipt",
+          "Cross-Disciplinary Integration"
+        ],
+        "independent_review_requirement": "Reviewer independence and specialist participation proportionate to scope/risk.",
+        "does_not_prove": [
+          "Civil/hydraulic/ecology/statutory PASS",
+          "field truth",
+          "Design KEEP"
+        ]
+      },
+      {
+        "object_id": "LA-OBJ-09",
+        "object_name": "Landscape Base / Technical-thread / Field Change Reopen Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate survey, level, drainage, soil, planting, irrigation, hardscape, maintenance and field changes to exact affected objects/interfaces/reviews.",
+        "native_source_of_truth": "Controlled change event + dependency links across landscape technical threads and interfaces.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "changed_site_object",
+          "old_revision",
+          "new_revision",
+          "affected_technical_threads",
+          "affected_plans_sections_details",
+          "affected_plant_material_schedules",
+          "affected_interfaces",
+          "affected_submittals_field_records",
+          "affected_reviews",
+          "stale_scope",
+          "owner",
+          "required_rework_readback",
+          "closure"
+        ],
+        "decision_owner": "Landscape Architecture professional owner",
+        "contributor_or_specialist_refs": [
+          "Civil",
+          "Survey",
+          "Ecology/Arboriculture",
+          "Architecture",
+          "Operations/FM"
+        ],
+        "revision_identity": "change_id + source/base revision",
+        "release_or_retention_rule": "Change closes only after affected landscape native objects/interfaces/reviews are re-established or explicitly retained with evidence.",
+        "required_readback": [
+          "impact trace across technical threads",
+          "base/survey change propagation",
+          "post-change plan/section/site readback"
+        ],
+        "failure_or_hold_conditions": [
+          "new survey only swapped under drawing",
+          "grading changed without drainage reopen",
+          "plant substitution not propagated",
+          "old seasonal review retained"
+        ],
+        "reopen_triggers": [
+          "any material site/survey/level/water/soil/plant/material/maintenance/field change"
+        ],
+        "downstream_handoffs": [
+          "all affected landscape stages/interfaces"
+        ],
+        "independent_review_requirement": "Independent re-review when changed scope affects prior critical professional review.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic field PASS"
+        ]
+      }
     ]
   },
   "assurance": {
