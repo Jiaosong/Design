@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C01-INTERIOR-PROCESS-INSTANCE-001",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "workstream_id": "C01-N02-DAGONG-HALL-LEARNING-MODE",
+  "decision_object_refs": [
+    "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+    "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_INTERIOR_REMOTE_PROXY_READBACK_v0.1.json"
+  ],
+  "process_definition_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "domain": "Interior Design",
+  "owner": "CANDIDATE PROCESS EXERCISE / C01 DESIGN OWNER PRESERVED / NO APPOINTED INTERIOR PROFESSIONAL PASS AUTHORITY CLAIMED",
+  "current_baseline": "main@3110c53a282a6064cdb5237229eda785267a198b + C01 bounded remote/proxy interior evidence",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "INTERIOR STRATEGIC + PREPARATION + CONCEPT SUPPORT / SPATIAL COORDINATION + TECHNICAL DESIGN BLOCKED / NO PROFESSIONAL PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C01-ID-PW0-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW0",
+      "stage_id": "ID-PW0",
+      "cycle": 1,
+      "baseline_ref": "C01-DAGONG-HALL-REMOTE-PROXY-v0.1",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERIOR_STRATEGIC_DEFINITION_SUPPORT",
+      "inputs": [
+        "C01 node design",
+        "heritage/reuse constraints",
+        "public spatial descriptions"
+      ],
+      "outputs": [
+        "strategic interior constraints/opportunities note",
+        "survey/investigation need list",
+        "initial responsibility boundary"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_NODE-DESIGN@43da954cd24f200baa07bcd5db65ab6e9774c0de",
+        "C01_INTERIOR_REMOTE_PROXY_READBACK@3e114b8b9c75a08de4db5687f2c7f5c42cd47bd0"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Current measured interior geometry is absent.",
+        "Current heritage/use permission for teaching/furniture is unresolved.",
+        "No task/claim Interior professional knowledge mount or independent professional review exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "remote/proxy existing-condition readback"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW1-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW1",
+      "stage_id": "ID-PW1",
+      "cycle": 1,
+      "baseline_ref": "C01-DAGONG-HALL-REMOTE-PROXY-v0.1",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERIOR_PREPARATION_BRIEF_SUPPORT",
+      "inputs": [
+        "C01 learning-mode intent",
+        "community-priority rule",
+        "public spatial skeleton",
+        "remote proxy register"
+      ],
+      "outputs": [
+        "bounded Interior Design Brief projection",
+        "bounded User-Activity-Experience Matrix projection",
+        "existing-condition/base-building authority register",
+        "initial technical-thread status"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_NODE-DESIGN@43da954cd24f200baa07bcd5db65ab6e9774c0de",
+        "C01_INTERIOR_PROXY_REGISTER@8bcc81969e40c80839fb5f9ab5202501ead313cc"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Actual user/operation schedule and current community-use conflict are not field-verified.",
+        "20–30 people remains a design hypothesis.",
+        "Fire/accessibility/heritage/procurement appointment boundaries remain open."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "M0/M1/M2 mode-switch readback"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW2-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW2",
+      "stage_id": "ID-PW2",
+      "cycle": 1,
+      "baseline_ref": "C01-DAGONG-HALL-REMOTE-PROXY-v0.1",
+      "execution_state": "CURRENT",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERIOR_CONCEPT_DESIGN_SUPPORT_ONLY",
+      "inputs": [
+        "published macro/first-floor spatial anchors",
+        "three-storey/column relation",
+        "C01 movable/non-invasive learning intent"
+      ],
+      "outputs": [
+        "C01_INTERIOR_DAGONGHALL_SPATIAL_ENVELOPE_v0.1.svg",
+        "movable/no-contact FF&E/media concept",
+        "M0/M1/M2 operating-mode comparison",
+        "concept sensitivity readback"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_INTERIOR_REMOTE_PROXY_READBACK@3e114b8b9c75a08de4db5687f2c7f5c42cd47bd0",
+        "C01_INTERIOR_SPATIAL_ENVELOPE@1f158fc6701d2c28923753697842e29c4647d389"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No dimensioned current plan/section exists.",
+        "Exact column spacing/diameter and current clear zones are unknown.",
+        "No current RCP/service/fire/accessibility geometry exists.",
+        "Concept support does not establish a selected/approved interior professional solution."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "OPEN",
+      "actual_readback_refs": [
+        "editable SVG source readback; actual rendered pixel review NOT_RUN"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW3-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW3",
+      "stage_id": "ID-PW3",
+      "cycle": 1,
+      "baseline_ref": "C01-DAGONG-HALL-REMOTE-PROXY-v0.1",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "NO_INTERIOR_SPATIAL_COORDINATION_PASS",
+      "inputs": [
+        "proxy spatial envelope"
+      ],
+      "outputs": [
+        "open coordination blockers only"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "C01_INTERIOR_PROXY_REGISTER@8bcc81969e40c80839fb5f9ab5202501ead313cc"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "Measured room dimensions/clear zones missing.",
+        "Ceiling datums/types and service-device locations missing.",
+        "Door/threshold/accessibility/fire clearances missing.",
+        "FF&E/equipment fit and maintenance/replacement paths not measurable.",
+        "Current consultant/service information missing."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW4-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW4",
+      "stage_id": "ID-PW4",
+      "cycle": 1,
+      "baseline_ref": "C01-DAGONG-HALL-REMOTE-PROXY-v0.1",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "NO_INTERIOR_TECHNICAL_DESIGN_PASS",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No coordinated RCP.",
+        "No finish/substrate/transition evidence.",
+        "No door/hardware coordination.",
+        "No joinery/support/service details.",
+        "No Fire/Accessibility/MEP product/interface evidence."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW5-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW5",
+      "stage_id": "ID-PW5",
+      "cycle": 1,
+      "baseline_ref": "NOT_TRIGGERED",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO_CONSTRUCTION_PROCUREMENT_CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No procurement/construction/admin claim."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW6-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW6",
+      "stage_id": "ID-PW6",
+      "cycle": 1,
+      "baseline_ref": "NOT_TRIGGERED",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO_HANDOVER_CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No built/interior handover claim."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C01-ID-PW7-001",
+      "stage_definition_ref": "OLEANDER-INTERIOR-DESIGN-PROCESS@1.0-CANDIDATE#ID-PW7",
+      "stage_id": "ID-PW7",
+      "cycle": 1,
+      "baseline_ref": "NOT_TRIGGERED",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO_POE_CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No implemented room/use condition exists for POE."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    }
+  ],
+  "active_interface_refs": [],
+  "open_items": [
+    "Interior Candidate process remains not Current.",
+    "Current measured Dagong Hall interior geometry absent.",
+    "Fire/accessibility/MEP/heritage professional interfaces unresolved.",
+    "No independent Interior professional review.",
+    "Actual field Reality Gate 2 not run."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-19"
+}
