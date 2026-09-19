@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1180" viewBox="0 0 1900 1180">
+<style>
+.bg{fill:#f2efe7}.panel{fill:#fffdf8;stroke:#c9c5ba;stroke-width:1.2}.ink{fill:#202825}.muted{fill:#68716c}.pass{fill:#3f7160}.hold{fill:#a05b43}.open{fill:#6e7381}.line{stroke:#d5d1c6;stroke-width:1}.h1{font:700 34px Arial,sans-serif}.h2{font:700 17px Arial,sans-serif}.txt{font:400 14px Arial,sans-serif}.sm{font:400 12px Arial,sans-serif}.xs{font:700 11px Arial,sans-serif;letter-spacing:.8px}
+</style>
+<rect width="1900" height="1180" class="bg"/>
+<text x="56" y="58" class="h1 ink">C04 · SYSTEMS ENGINEERING v0.2 · REQUIREMENT / INTERFACE VERIFICATION READBACK</text>
+<text x="56" y="90" class="txt muted">Candidate process · one configured Chromium runtime interface VERIFIED · system validation = 0 · professional verdict remains HOLD</text>
+
+<g transform="translate(56,126)">
+<rect width="1788" height="92" rx="12" class="panel"/>
+<text x="20" y="28" class="xs pass">MATERIAL DELTA</text>
+<text x="20" y="55" class="txt ink">v1.2 actual Chromium exposed two product defects → v1.3 repaired them → Chromium desktop/mobile 12/12 PASS.</text>
+<text x="1160" y="28" class="xs hold">CLAIM CEILING</text>
+<text x="1160" y="55" class="txt ink">Verification advanced; HCD validation, field fallback, live official interface and independent SE review remain open.</text>
+</g>
+
+<g transform="translate(56,244)">
+<rect width="1788" height="438" rx="14" class="panel"/>
+<text x="22" y="34" class="xs muted">REQUIREMENT</text>
+<text x="400" y="34" class="xs muted">VERIFICATION</text>
+<text x="665" y="34" class="xs muted">VALIDATION</text>
+<text x="900" y="34" class="xs muted">CURRENT BOUNDED EVIDENCE</text>
+<line x1="20" y1="102" x2="1768" y2="102" class="line"/>
+ <text x="22" y="87" class="h2 ink">C04-SYSREQ-001</text>
+ <text x="400" y="87" class="xs pass">PASS</text>
+ <text x="665" y="87" class="xs open">NOT_RUN</text>
+ <text x="900" y="87" class="sm muted">UNKNOWN renders UNKNOWN / FAIL-CLOSED</text>
+<line x1="20" y1="158" x2="1768" y2="158" class="line"/>
+ <text x="22" y="143" class="h2 ink">C04-SYSREQ-002</text>
+ <text x="400" y="143" class="xs hold">HOLD</text>
+ <text x="665" y="143" class="xs open">NOT_RUN</text>
+ <text x="900" y="143" class="sm muted">Digital allocation coherent; physical/paper/human integration not field verified</text>
+<line x1="20" y1="214" x2="1768" y2="214" class="line"/>
+ <text x="22" y="199" class="h2 ink">C04-SYSREQ-003</text>
+ <text x="400" y="199" class="xs pass">PASS</text>
+ <text x="665" y="199" class="xs muted">N/A</text>
+ <text x="900" y="199" class="sm muted">Pseudo-live prohibited; no live-service claim</text>
+<line x1="20" y1="270" x2="1768" y2="270" class="line"/>
+ <text x="22" y="255" class="h2 ink">C04-SYSREQ-004</text>
+ <text x="400" y="255" class="xs pass">PASS</text>
+ <text x="665" y="255" class="xs open">NOT_RUN</text>
+ <text x="900" y="255" class="sm muted">Map remains relational / NTS / no GPS authority</text>
+<line x1="20" y1="326" x2="1768" y2="326" class="line"/>
+ <text x="22" y="311" class="h2 ink">C04-SYSREQ-005</text>
+ <text x="400" y="311" class="xs pass">PASS</text>
+ <text x="665" y="311" class="xs open">NOT_RUN</text>
+ <text x="900" y="311" class="sm muted">v1.3 localStorage write / clear / default reset executes in Chromium</text>
+<line x1="20" y1="382" x2="1768" y2="382" class="line"/>
+ <text x="22" y="367" class="h2 ink">C04-SYSREQ-006</text>
+ <text x="400" y="367" class="xs pass">PASS</text>
+ <text x="665" y="367" class="xs open">NOT_RUN</text>
+ <text x="900" y="367" class="sm muted">Chromium 151.0.7922.34 · desktop 1440×1000 + mobile 390×844 · 12/12 PASS</text>
+</g>
+
+<g transform="translate(56,706)">
+<rect width="1788" height="318" rx="14" class="panel"/>
+<text x="22" y="34" class="xs muted">INTEGRATED INTERFACE</text>
+<text x="520" y="34" class="xs muted">STATE</text>
+<text x="930" y="34" class="xs muted">CONSEQUENCE</text>
+<line x1="20" y1="104" x2="1768" y2="104" class="line"/>
+ <text x="22" y="89" class="h2 ink">IF-BROWSER-RUNTIME</text>
+ <text x="520" y="89" class="xs pass">VERIFIED · CONFIG-BOUND</text>
+ <text x="930" y="89" class="sm muted">SPA ↔ actual Chromium runtime closed for tested desktop/mobile only</text>
+<line x1="20" y1="161" x2="1768" y2="161" class="line"/>
+ <text x="22" y="146" class="h2 ink">IF-DIGITAL-FALLBACK</text>
+ <text x="520" y="146" class="xs hold">DEFINED / NOT_FIELD_VERIFIED</text>
+ <text x="930" y="146" class="sm muted">paper / physical / human fallback integration remains HOLD</text>
+<line x1="20" y1="218" x2="1768" y2="218" class="line"/>
+ <text x="22" y="203" class="h2 ink">IF-STATUS-OFFICIAL</text>
+ <text x="520" y="203" class="xs hold">NOT_IMPLEMENTED / HOLD</text>
+ <text x="930" y="203" class="sm muted">no live/open/closed operational claim</text>
+<line x1="20" y1="275" x2="1768" y2="275" class="line"/>
+ <text x="22" y="260" class="h2 ink">IF-HCD-VALIDATION</text>
+ <text x="520" y="260" class="xs open">NOT_RUN</text>
+ <text x="930" y="260" class="sm muted">runtime verification cannot become user validation</text>
+</g>
+
+<g transform="translate(56,1050)">
+<rect width="1788" height="78" rx="12" fill="#fff4ec" stroke="#b97d68" stroke-width="1.2"/>
+<text x="20" y="28" class="xs hold">DISPOSITION</text>
+<text x="20" y="53" class="txt ink">5/6 requirement verification PASS · 1/6 HOLD · validation PASS = 0 · integrated interfaces VERIFIED = 1/4 · Systems Engineering process remains Candidate / HOLD / NO_PROMOTION.</text>
+</g>
+</svg>
