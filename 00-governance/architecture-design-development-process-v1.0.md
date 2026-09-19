@@ -702,3 +702,276 @@ For triggered projects, architectural Design KEEP / MAIN / canonical architectur
 **Site → Brief → Users → Program → Room Brief → Adjacency → Zoning Alternatives → Selected Zoning → Multi-Flow Systems → Room Planning → Horizontal/Vertical Circulation → Life-Safety + Accessibility-Aware Planning → Service/Hygiene/Security → Structure/MEP/Envelope Fit-Back → Climate/Daylight/Acoustics → Landscape → FF&E/Room Use → Area/Cost/Maintenance → Existing/Phasing → Code Matrix → Independent Plan Review → Decide → Reopen when changed**
 
 This chain is now the default OLEANDER architectural design-development process. It must not be replaced by program overlay, clash checking, model completion, rendering or presentation evidence.
+
+
+---
+
+## Practitioner object contracts｜执业对象合同层
+
+Machine carrier: `00-governance/schemas/architecture-design-development-process.v1.json`
+
+The earlier execution-depth object lists are an index only. The objects below are the field-level practitioner contracts used to make Architecture executable at professional depth. The machine carrier is authoritative for validation; this prose mirrors the same substance for human review.
+
+A named register/schedule/model is not considered sufficient unless its source, required fields, owner, revision identity, release/readback, HOLD and reopen semantics are all resolved.
+
+### ARCH-OBJ-01｜Room / Program / Use Judgment Register
+
+- **Parity dimension:** `PROFESSIONAL_PROBLEM_AND_JUDGMENT`
+- **Stage refs:** `ADD-02`, `ADD-03`, `ADD-13`
+- **Professional purpose:** Carry room-level use, occupancy, equipment and operational judgments into plan development without reducing them to area numbers.
+- **Native source of truth:** Current room brief + user/operation evidence + controlled architectural room/space data.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Client/User representative; Interior Design; Accessibility; Fire/Life Safety; Operations
+- **Revision identity:** room_or_space_id + controlled brief revision + architectural baseline revision
+- **Required record fields:** `room_or_space_id`, `use_and_occupancy`, `user_groups`, `activities`, `capacity_basis`, `required_area_or_range`, `equipment_ff&e_interfaces`, `privacy_supervision_hygiene_notes`, `accessibility_and_life_safety_dependencies`, `owner`, `evidence_refs`, `decision_status`
+- **Release / retention rule:** Retain only when material use/capacity/equipment/interface conflicts are dispositioned or explicitly OPEN with owner and downstream limit.
+- **Required readback:**
+  - room schedule/brief ↔ current plan readback
+  - critical room dimension/use simulation
+  - equipment/FF&E clearance fit-back
+- **Failure / HOLD conditions:**
+  - room exists only as area target
+  - equipment/use conflicts unresolved
+  - critical user or statutory dependency missing
+- **Reopen triggers:**
+  - program/user change
+  - equipment/FF&E change
+  - occupancy/capacity change
+  - life-safety/accessibility requirement change
+- **Downstream handoffs:** ADD-04 adjacency; ADD-06/07 circulation; Interior Design; MEP; Structural where loads/openings are affected
+- **Independent review:** Independent architectural review must challenge representative high-risk rooms and the strongest user/equipment conflict, not just completeness.
+- **Does not prove:** user research PASS; Interior Design PASS; MEP coordination PASS; statutory approval
+
+### ARCH-OBJ-02｜Site / Existing Condition / Brief Assumption Register
+
+- **Parity dimension:** `ASSUMPTION_UNCERTAINTY`
+- **Stage refs:** `ADD-00`, `ADD-01`, `ADD-02`, `ADD-15`
+- **Professional purpose:** Keep site, existing-building, brief and phasing assumptions visible with authority, confidence and consequences.
+- **Native source of truth:** Current site/survey/existing-condition sources + project brief authority + field/evidence boundary.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Survey; Client; Existing-building specialist; Structural; MEP
+- **Revision identity:** assumption_id + source revision + architectural baseline revision
+- **Required record fields:** `assumption_id`, `subject`, `statement`, `source_or_authority`, `evidence_class`, `confidence_or_limit`, `affected_spaces_or_systems`, `design_consequence`, `validation_needed`, `owner`, `status`, `reopen_trigger`
+- **Release / retention rule:** No assumption may be retained as fact; downstream release must expose unresolved consequential assumptions and claim ceiling.
+- **Required readback:**
+  - assumption ↔ source check
+  - representative field/source contradiction attack
+  - affected plan/section trace
+- **Failure / HOLD conditions:**
+  - bare assumption used as authoritative geometry
+  - changed survey not propagated
+  - phasing/existing condition inferred without source
+- **Reopen triggers:**
+  - survey/site update
+  - field observation
+  - brief change
+  - existing condition discovery
+  - construction sequencing change
+- **Downstream handoffs:** all consuming ADD stages; Cross-Disciplinary Integration
+- **Independent review:** Independent review must sample the assumptions with highest consequence and weakest authority.
+- **Does not prove:** survey accuracy; field truth; specialist engineering validity
+
+### ARCH-OBJ-03｜Zoning / Massing / Circulation Option Comparison Set
+
+- **Parity dimension:** `OPTION_COMPARISON`
+- **Stage refs:** `ADD-05`, `ADD-06`, `ADD-07`, `ADD-14`
+- **Professional purpose:** Compare materially different architectural organizations before plan lock, including spatial, circulation, system, cost and lifecycle consequences.
+- **Native source of truth:** Editable option plans/diagrams/models + common brief/criteria baseline.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Structural; MEP; Interior; Cost; Fire/Life Safety
+- **Revision identity:** option_id + option source revision + shared comparison baseline
+- **Required record fields:** `option_id`, `family_or_strategy`, `baseline_ref`, `key_driver`, `spatial_organization`, `primary_circulation`, `vertical_circulation`, `structure_mep_envelope_implications`, `area_efficiency`, `cost_lifecycle_pressure`, `critical_tradeoffs`, `rejected_or_retained_reason`, `required_test`, `reviewer`
+- **Release / retention rule:** Do not retain an option solely from render quality or weighted score; hard conflicts and unresolved controlling interfaces remain explicit.
+- **Required readback:**
+  - matched-fidelity plan/section comparison
+  - circulation/use scenario readback
+  - system fit-back at decision-relevant fidelity
+- **Failure / HOLD conditions:**
+  - cosmetic variants counted as alternatives
+  - different evidence baselines
+  - critical system conflict omitted
+  - selection reason not traceable
+- **Reopen triggers:**
+  - brief/program change
+  - site/structure/MEP change
+  - new hard constraint
+  - independent review contradiction
+- **Downstream handoffs:** ADD-10 system fit-back; ADD-17 independent review; Cost/Procurement
+- **Independent review:** Independent review must compare causal strategy differences and attack the selected option with the strongest rejected alternative.
+- **Does not prove:** Design KEEP; cost approval; structural/MEP/statutory PASS
+
+### ARCH-OBJ-04｜Controlled Plan / Section / Level Baseline Set
+
+- **Parity dimension:** `NATIVE_WORK`
+- **Stage refs:** `ADD-07`, `ADD-08`, `ADD-09`, `ADD-10`, `ADD-11`, `ADD-13`
+- **Professional purpose:** Carry the actual spatial design as editable coordinated plans, sections, levels and room/equipment information rather than presentation-only drawings.
+- **Native source of truth:** Owner-native architectural CAD/BIM/vector/model sources designated as Current for the decision scope.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** BIM/CAD production; Interior; Structural; MEP
+- **Revision identity:** baseline_id + exact native artifact revision/hash + issue/release revision
+- **Required record fields:** `baseline_id`, `drawing_model_refs`, `plan_refs`, `section_refs`, `level_refs`, `grid_datum_refs`, `room_space_ids`, `dimension_basis`, `door_opening_refs`, `equipment_ff&e_refs`, `shared_variable_refs`, `revision`, `author`, `checker`, `status`
+- **Release / retention rule:** Presentation exports cannot replace the native baseline; downstream reliance requires exact revision and readback of material plan/section consistency.
+- **Required readback:**
+  - plan↔section↔level consistency
+  - room/door/equipment fit
+  - critical vertical circulation and threshold readback
+- **Failure / HOLD conditions:**
+  - presentation PDF only
+  - plan/section contradiction
+  - uncontrolled level/grid change
+  - native source missing or stale
+- **Reopen triggers:**
+  - native source revision
+  - shared grid/level/opening change
+  - room/equipment change
+  - interface reopen
+- **Downstream handoffs:** Structural; MEP; Interior; Landscape; Fire/Life Safety; Accessibility
+- **Independent review:** Independent review must inspect the exact native/current baseline or authoritative derivative tied to it.
+- **Does not prove:** construction readiness; specialist coordination PASS; field/as-built truth
+
+### ARCH-OBJ-05｜Architecture Coordination / Submittal Release Register
+
+- **Parity dimension:** `RELEASE_CONTROL`
+- **Stage refs:** `ADD-10`, `ADD-13`, `ADD-15`, `ADD-16`
+- **Professional purpose:** Control architectural release of openings, doors, envelope interfaces, room/equipment data and later submittal/mockup decisions before downstream reliance.
+- **Native source of truth:** Current architectural baseline + controlled interface/submittal evidence.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Cross-Disciplinary Integration; Interior; Structural; MEP; Envelope; Procurement
+- **Revision identity:** release_item_id + native source revision + submittal/mockup revision
+- **Required record fields:** `release_item_id`, `scope`, `native_source_ref`, `revision`, `shared_variables`, `receiving_owner`, `required_maturity`, `submittal_or_mockup_ref`, `review_disposition`, `conditions`, `open_items`, `release_authority`, `release_date`, `supersedes`
+- **Release / retention rule:** Release requires exact source/revision, disposition and conditions; conditional release does not close unresolved professional/statutory dependencies.
+- **Required readback:**
+  - released item ↔ current native source
+  - receiver readback of shared variables
+  - sample/mockup/submittal comparison where triggered
+- **Failure / HOLD conditions:**
+  - release on stale drawing
+  - receiver consumes different revision
+  - condition omitted
+  - unresolved critical interface treated closed
+- **Reopen triggers:**
+  - source revision
+  - submittal/substitution
+  - RFI
+  - shared-variable change
+  - authority comment
+- **Downstream handoffs:** downstream discipline production; procurement/construction
+- **Independent review:** Distinct checker/reviewer required for material release items with safety, interface or procurement consequence.
+- **Does not prove:** downstream professional PASS; statutory approval; field conformity
+
+### ARCH-OBJ-06｜Architecture RFI / Field Change / Nonconformity Record
+
+- **Parity dimension:** `IMPLEMENTATION_FIELD`
+- **Stage refs:** `ADD-15`, `ADD-16`
+- **Professional purpose:** Bind construction/site questions and deviations to exact design sources, impact, disposition and required re-readback.
+- **Native source of truth:** Site/RFI/nonconformity evidence + current issued architectural information.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Contractor; Site supervision; Structural; MEP; Interior; Client
+- **Revision identity:** field_item_id + affected issue revision + field evidence date
+- **Required record fields:** `field_item_id`, `date_location`, `observed_or_reported_condition`, `source_revision_affected`, `request_or_nonconformity`, `evidence_refs`, `impact_on_space_use_interfaces`, `professional_disposition`, `required_revised_artifact`, `downstream_notices`, `owner`, `closure_evidence`, `residual_open_items`
+- **Release / retention rule:** Field disposition cannot silently amend native Current; material changes require controlled source revision and affected reviews reopened.
+- **Required readback:**
+  - field evidence ↔ issued source
+  - revised artifact readback
+  - affected interface recoordination
+- **Failure / HOLD conditions:**
+  - verbal site instruction only
+  - change not incorporated
+  - field photo overgeneralized
+  - affected review remains falsely current
+- **Reopen triggers:**
+  - new site evidence
+  - RFI response change
+  - nonconformity recurrence
+  - revised downstream information
+- **Downstream handoffs:** all affected design disciplines; record/as-built information; closeout
+- **Independent review:** Independent/second review when field change affects life safety, accessibility, primary circulation, significant envelope/opening or other material risk.
+- **Does not prove:** unobserved field conformity; contractor means/methods approval; as-built truth
+
+### ARCH-OBJ-07｜Architecture Closeout / Record / In-use Register
+
+- **Parity dimension:** `HANDOVER_INUSE`
+- **Stage refs:** `ADD-15`, `ADD-17`
+- **Professional purpose:** Close architectural open items and retain record/use information needed for operations, future change and bounded in-use learning.
+- **Native source of truth:** Approved record information + defects/open-item evidence + operations/use readback within architectural scope.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Operations/FM; Client; Contractor; Interior
+- **Revision identity:** closeout_item_id + record/as-built revision + handover revision
+- **Required record fields:** `closeout_item_id`, `space_or_system_scope`, `record_artifact_ref`, `installed_identity_or_condition`, `defect_or_open_item`, `owner`, `due_or_revisit_condition`, `operation_maintenance_note`, `residual_risk`, `future_change_constraint`, `inuse_observation`, `closure_state`
+- **Release / retention rule:** Installed/record state must remain distinct from design intent; unresolved items and future-change constraints remain explicit.
+- **Required readback:**
+  - record plan/section vs accepted field information
+  - defect/open-item closure readback
+  - representative in-use spatial/use readback when claimed
+- **Failure / HOLD conditions:**
+  - design drawing relabeled as as-built
+  - open defects hidden
+  - future modification constraint omitted
+  - single use observation generalized
+- **Reopen triggers:**
+  - record information change
+  - defect recurrence
+  - user/operation change
+  - future alteration
+- **Downstream handoffs:** Operations/FM; future project teams; G9 bounded learning
+- **Independent review:** Independent closeout review where contractual/risk consequence requires; in-use observations must remain context bounded.
+- **Does not prove:** future performance; universal user satisfaction; field truth outside accepted record scope
+
+### ARCH-OBJ-08｜Independent Architecture Plan / Section Review Record
+
+- **Parity dimension:** `INDEPENDENT_REVIEW`
+- **Stage refs:** `ADD-17`
+- **Professional purpose:** Attack the strongest plausible plan/section failure on the exact Current baseline before professional retention.
+- **Native source of truth:** Exact controlled architectural baseline + declared review scope + active interface/authority evidence.
+- **Decision owner:** Independent Architecture reviewer
+- **Contributor / specialist refs:** Fire/Life Safety; Accessibility; Structural; MEP; Interior as needed
+- **Revision identity:** review_id + exact reviewed baseline revision
+- **Required record fields:** `review_id`, `baseline_ref`, `reviewer_identity_and_independence`, `scope`, `critical_scenarios`, `plan_section_checks`, `life_safety_accessibility_checks`, `system_interface_attacks`, `contradictions`, `severity`, `required_repairs`, `retest_refs`, `verdict`, `claim_ceiling`
+- **Release / retention rule:** Review verdict applies only to reviewed scope/baseline; material change automatically stales the affected review.
+- **Required readback:**
+  - exact baseline readback
+  - strongest failure attack
+  - repair/retest readback
+- **Failure / HOLD conditions:**
+  - self-review represented as independent
+  - generic checklist no baseline
+  - material contradiction unresolved
+  - review reused after change
+- **Reopen triggers:**
+  - plan/section/level change
+  - program/circulation change
+  - interface change
+  - new authority evidence
+- **Downstream handoffs:** Architecture process receipt; Design Review
+- **Independent review:** Reviewer must be distinct enough to challenge production assumptions and bind every conclusion to the exact baseline.
+- **Does not prove:** Design KEEP; specialist/statutory PASS; field conformity
+
+### ARCH-OBJ-09｜Architecture Change Impact / Reopen Ledger
+
+- **Parity dimension:** `CHANGE_PROPAGATION`
+- **Stage refs:** `CROSS_STAGE`
+- **Professional purpose:** Propagate material architectural changes to affected spaces, drawings, interfaces, reviews and downstream releases without blanket invalidation or silent staleness.
+- **Native source of truth:** Controlled change request/event + dependency links from current architectural objects.
+- **Decision owner:** Architecture professional owner
+- **Contributor / specialist refs:** Cross-Disciplinary Integration; all affected discipline owners
+- **Revision identity:** change_id + source change revision
+- **Required record fields:** `change_id`, `trigger`, `changed_object`, `old_revision`, `new_revision`, `reason`, `affected_spaces_systems`, `affected_stage_refs`, `affected_native_artifacts`, `affected_interfaces`, `affected_reviews`, `stale_scope`, `owner`, `required_rework`, `required_readback`, `closure`
+- **Release / retention rule:** Change closes only after affected Current artifacts/reviews/interfaces are re-established or explicitly retained with evidence.
+- **Required readback:**
+  - dependency impact readback
+  - stale artifact detection
+  - post-change coordination/readback
+- **Failure / HOLD conditions:**
+  - change only noted in narrative
+  - affected review not reopened
+  - downstream receiver not notified
+  - blanket reset without dependency basis
+- **Reopen triggers:**
+  - any material change
+  - contradictory field evidence
+  - authority/source update
+- **Downstream handoffs:** all affected professional processes; Current/supersession records
+- **Independent review:** Independent review required when change materially affects previously reviewed high-risk architectural relations.
+- **Does not prove:** unaffected scope invalidation; automatic professional PASS after change
+
+The practitioner-object layer does not change this domain's Current/Candidate authority status and does not by itself prove project execution or professional PASS.
