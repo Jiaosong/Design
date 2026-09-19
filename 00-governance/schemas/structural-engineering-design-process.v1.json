@@ -60,79 +60,192 @@
   "knowledge_binding": {
     "operational_mount_contract_ref": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
     "consequential_knowledge_rule": "Consequential structural knowledge, standards, survey/geotechnical facts, existing-condition evidence and product/system evidence must be admitted through task/claim-scoped operational mounts before they support a professional decision.",
-    "required_methods": ["current OLEANDER structural engineering / safety routing", "applicable structural analysis / design methods"],
-    "theory_routes": ["structural systems", "stability / load path / robustness", "serviceability / dynamics", "durability / design life"],
-    "source_routes": ["IStructE Structural Plan of Work 2020", "current applicable structural standards / codes", "current survey / geotechnical / existing-condition sources", "current structural checking guidance"],
-    "evidence_routes": ["project calculations and analytical models", "survey / investigation / inspection / test evidence", "material / product / specialist design evidence"],
-    "standard_code_routes": ["jurisdiction-specific structural codes and standards", "current fire-resistance inputs affecting structure", "current design checking / statutory requirements"],
-    "precedent_case_routes": ["bounded structural precedent only where applicability is established"],
-    "practice_routes": ["current OLEANDER structural practice / failure evidence"],
-    "tool_knowledge_routes": ["current structural analysis / CAD / BIM execution capability guidance when used"]
+    "required_methods": [
+      "current OLEANDER structural engineering / safety routing",
+      "applicable structural analysis / design methods"
+    ],
+    "theory_routes": [
+      "structural systems",
+      "stability / load path / robustness",
+      "serviceability / dynamics",
+      "durability / design life"
+    ],
+    "source_routes": [
+      "IStructE Structural Plan of Work 2020",
+      "current applicable structural standards / codes",
+      "current survey / geotechnical / existing-condition sources",
+      "current structural checking guidance"
+    ],
+    "evidence_routes": [
+      "project calculations and analytical models",
+      "survey / investigation / inspection / test evidence",
+      "material / product / specialist design evidence"
+    ],
+    "standard_code_routes": [
+      "jurisdiction-specific structural codes and standards",
+      "current fire-resistance inputs affecting structure",
+      "current design checking / statutory requirements"
+    ],
+    "precedent_case_routes": [
+      "bounded structural precedent only where applicability is established"
+    ],
+    "practice_routes": [
+      "current OLEANDER structural practice / failure evidence"
+    ],
+    "tool_knowledge_routes": [
+      "current structural analysis / CAD / BIM execution capability guidance when used"
+    ]
   },
   "stages": [
     {
       "stage_id": "SE-SPW0",
       "stage_name": "Strategic Definition",
       "professional_question": "What structural consequences, opportunities and uncertainty materially affect the strategic project decision?",
-      "entry_conditions": ["strategic project need exists"],
-      "required_inputs": ["client/project need", "site/existing context", "known hazards and constraints"],
-      "knowledge_inputs": ["strategic structural constraints", "reuse / extension / demolition evidence"],
+      "entry_conditions": [
+        "strategic project need exists"
+      ],
+      "required_inputs": [
+        "client/project need",
+        "site/existing context",
+        "known hazards and constraints"
+      ],
+      "knowledge_inputs": [
+        "strategic structural constraints",
+        "reuse / extension / demolition evidence"
+      ],
       "knowledge_mount_requirement": "Mount consequential site/existing-condition and structural strategic sources before making a structural feasibility claim.",
-      "required_dd_dimensions": ["DD-01", "DD-02", "DD-12"],
-      "required_native_outputs": ["structural strategic constraints note", "investigation/survey need list", "initial structural authority map"],
-      "interface_requirements": ["Architecture", "Geotechnical", "Fire", "MEP", "Envelope", "Cost/FM as triggered"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-02",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "structural strategic constraints note",
+        "investigation/survey need list",
+        "initial structural authority map"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Geotechnical",
+        "Fire",
+        "MEP",
+        "Envelope",
+        "Cost/FM as triggered"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW0-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["project use", "massing/extent", "reuse/new-build strategy", "major spans/voids"],
+          "shared_variables": [
+            "project use",
+            "massing/extent",
+            "reuse/new-build strategy",
+            "major spans/voids"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MATERIAL",
           "required_maturity_to_enter": "IDENTIFIED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "strategic project brief plus structural strategic constraints",
           "change_reopen_rule": "Reopen when use, development strategy, extent or major geometry materially changes."
         }
       ],
       "human_experience_consequences": [],
       "design_language_consequences": [],
-      "technical_consequences": ["strategic structural feasibility constraints"],
-      "content_projection_requirements": ["show strategic constraints and evidence state"],
-      "required_readback": ["read strategic decision against actual site/existing-condition evidence state"],
+      "technical_consequences": [
+        "strategic structural feasibility constraints"
+      ],
+      "content_projection_requirements": [
+        "show strategic constraints and evidence state"
+      ],
+      "required_readback": [
+        "read strategic decision against actual site/existing-condition evidence state"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Independent structural review when project consequence/novelty/authority requires it; otherwise explicit checking strategy must be recorded.",
-      "open_items_allowed": ["later detailed structural design and verification"],
-      "exit_conditions": ["material strategic structural constraints identified and unknowns explicit"],
-      "reopen_triggers": ["site/existing-condition or project-use change"],
+      "open_items_allowed": [
+        "later detailed structural design and verification"
+      ],
+      "exit_conditions": [
+        "material strategic structural constraints identified and unknowns explicit"
+      ],
+      "reopen_triggers": [
+        "site/existing-condition or project-use change"
+      ],
       "claim_ceiling": "STRUCTURAL_STRATEGIC_DEFINITION",
-      "does_not_prove": ["technical structural feasibility", "member/foundation adequacy", "field condition"]
+      "does_not_prove": [
+        "technical structural feasibility",
+        "member/foundation adequacy",
+        "field condition"
+      ]
     },
     {
       "stage_id": "SE-SPW1",
       "stage_name": "Preparation and Brief",
       "professional_question": "Is there an authoritative enough structural brief, information basis and responsibility boundary to begin concept design?",
-      "entry_conditions": ["project brief development active"],
-      "required_inputs": ["project brief", "site information", "survey/geotechnical state", "jurisdiction route"],
-      "knowledge_inputs": ["current structural routing", "survey/geotechnical source routes", "applicable structural standards"],
+      "entry_conditions": [
+        "project brief development active"
+      ],
+      "required_inputs": [
+        "project brief",
+        "site information",
+        "survey/geotechnical state",
+        "jurisdiction route"
+      ],
+      "knowledge_inputs": [
+        "current structural routing",
+        "survey/geotechnical source routes",
+        "applicable structural standards"
+      ],
       "knowledge_mount_requirement": "Mount consequential site, geotechnical, existing-condition and code-route inputs at the current task/claim ceiling.",
-      "required_dd_dimensions": ["DD-01", "DD-12"],
-      "required_native_outputs": ["structural brief", "Structural Responsibility Matrix", "initial Basis of Structural Design", "checking plan"],
-      "interface_requirements": ["Architecture", "Geotechnical", "Fire", "MEP", "Envelope", "Cost", "FM"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "structural brief",
+        "Structural Responsibility Matrix",
+        "initial Basis of Structural Design",
+        "checking plan"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Geotechnical",
+        "Fire",
+        "MEP",
+        "Envelope",
+        "Cost",
+        "FM"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW1-GEO",
           "source_domain": "Geotechnical Engineering",
           "source_stage_ref": null,
           "direction": "IN",
-          "shared_variables": ["ground model", "foundation constraints", "ground movement", "groundwater", "investigation gaps"],
+          "shared_variables": [
+            "ground model",
+            "foundation constraints",
+            "ground movement",
+            "groundwater",
+            "investigation gaps"
+          ],
           "coupling": "DEPENDENT",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "IDENTIFIED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "BLOCKED"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "BLOCKED"
+          ],
           "native_source_of_truth": "current geotechnical/survey evidence and Structural Basis of Design",
           "change_reopen_rule": "Reopen when geotechnical authority, investigation or ground model changes."
         },
@@ -141,52 +254,121 @@
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["use/occupancy", "grid/span intent", "levels", "core/void intent", "design life assumptions"],
+          "shared_variables": [
+            "use/occupancy",
+            "grid/span intent",
+            "levels",
+            "core/void intent",
+            "design life assumptions"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
           "native_source_of_truth": "current project/architectural brief plus structural brief",
           "change_reopen_rule": "Reopen when brief, use, grid/span/level/core/void intent materially changes."
         }
       ],
       "human_experience_consequences": [],
       "design_language_consequences": [],
-      "technical_consequences": ["information and responsibility basis for concept design"],
-      "content_projection_requirements": ["show authority state, information gaps and responsibility boundaries"],
-      "required_readback": ["read current brief and source authority against structural information requirements"],
+      "technical_consequences": [
+        "information and responsibility basis for concept design"
+      ],
+      "content_projection_requirements": [
+        "show authority state, information gaps and responsibility boundaries"
+      ],
+      "required_readback": [
+        "read current brief and source authority against structural information requirements"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Review responsibility, investigation and checking strategy separately from producer intent where risk requires.",
-      "open_items_allowed": ["later concept and technical design"],
-      "exit_conditions": ["critical information responsibilities and investigation gaps explicit"],
-      "reopen_triggers": ["brief, survey, code or responsibility change"],
+      "open_items_allowed": [
+        "later concept and technical design"
+      ],
+      "exit_conditions": [
+        "critical information responsibilities and investigation gaps explicit"
+      ],
+      "reopen_triggers": [
+        "brief, survey, code or responsibility change"
+      ],
       "claim_ceiling": "STRUCTURAL_PREPARATION_BRIEF",
-      "does_not_prove": ["concept selection", "structural compliance", "ground/existing capacity"]
+      "does_not_prove": [
+        "concept selection",
+        "structural compliance",
+        "ground/existing capacity"
+      ]
     },
     {
       "stage_id": "SE-SPW2",
       "stage_name": "Concept Design",
       "professional_question": "Which structural concept is credible enough to carry forward and what basis governs it?",
-      "entry_conditions": ["structural brief and information basis sufficient for concept comparison"],
-      "required_inputs": ["project brief", "site/ground/existing evidence", "architecture concept", "fire and major MEP/facade constraints"],
-      "knowledge_inputs": ["structural systems", "loads", "serviceability", "durability", "embodied carbon / resource efficiency"],
+      "entry_conditions": [
+        "structural brief and information basis sufficient for concept comparison"
+      ],
+      "required_inputs": [
+        "project brief",
+        "site/ground/existing evidence",
+        "architecture concept",
+        "fire and major MEP/facade constraints"
+      ],
+      "knowledge_inputs": [
+        "structural systems",
+        "loads",
+        "serviceability",
+        "durability",
+        "embodied carbon / resource efficiency"
+      ],
       "knowledge_mount_requirement": "Mount consequential load, ground, material, code and system knowledge before retaining a concept on professional grounds.",
-      "required_dd_dimensions": ["DD-02", "DD-04", "DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["Basis of Structural Design", "structural option set / selection", "initial structural drawings/model", "stability/load-path diagram", "foundation strategy", "concept sustainability assessment"],
-      "interface_requirements": ["Architecture", "Geotechnical", "Fire", "MEP", "Envelope", "Cost/Procurement"],
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-04",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "Basis of Structural Design",
+        "structural option set / selection",
+        "initial structural drawings/model",
+        "stability/load-path diagram",
+        "foundation strategy",
+        "concept sustainability assessment"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Geotechnical",
+        "Fire",
+        "MEP",
+        "Envelope",
+        "Cost/Procurement"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW2-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["grid", "span", "cores", "voids", "levels", "structural depth", "exposed structure intent"],
+          "shared_variables": [
+            "grid",
+            "span",
+            "cores",
+            "voids",
+            "levels",
+            "structural depth",
+            "exposed structure intent"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
           "native_source_of_truth": "concept structural and architectural drawings/models",
           "change_reopen_rule": "Reopen when architectural option geometry or structural system basis materially changes."
         },
@@ -195,52 +377,128 @@
           "source_domain": "Building Services / MEP Engineering",
           "source_stage_ref": "BSP-CONCEPT",
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["plant loads", "major risers/routes", "service zones", "large penetrations", "equipment support assumptions"],
+          "shared_variables": [
+            "plant loads",
+            "major risers/routes",
+            "service zones",
+            "large penetrations",
+            "equipment support assumptions"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MATERIAL",
           "required_maturity_to_enter": "IDENTIFIED",
           "required_maturity_to_close": "DEFINED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "current structural concept and MEP concept schematics/reserves",
           "change_reopen_rule": "Reopen when major plant, route, penetration or equipment-load strategy changes."
         }
       ],
-      "human_experience_consequences": ["span/depth/column/core consequences where they affect spatial use"],
-      "design_language_consequences": ["exposed structural form/material consequences where design intent uses structure expressively"],
-      "technical_consequences": ["system, stability, load, foundation, serviceability and durability concept"],
-      "content_projection_requirements": ["show load path, stability system, major spans/zones and assumptions"],
-      "required_readback": ["review real load paths, stability, major interfaces and assumption authority"],
+      "human_experience_consequences": [
+        "span/depth/column/core consequences where they affect spatial use"
+      ],
+      "design_language_consequences": [
+        "exposed structural form/material consequences where design intent uses structure expressively"
+      ],
+      "technical_consequences": [
+        "system, stability, load, foundation, serviceability and durability concept"
+      ],
+      "content_projection_requirements": [
+        "show load path, stability system, major spans/zones and assumptions"
+      ],
+      "required_readback": [
+        "review real load paths, stability, major interfaces and assumption authority"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Concept-stage design assurance/checking appropriate to project risk and novelty.",
-      "open_items_allowed": ["final member/connection/foundation technical design"],
-      "exit_conditions": ["credible concept selected at bounded concept ceiling", "material assumptions and open items explicit"],
-      "reopen_triggers": ["load/use/system/grid/span/fire/ground/major-interface change"],
+      "open_items_allowed": [
+        "final member/connection/foundation technical design"
+      ],
+      "exit_conditions": [
+        "credible concept selected at bounded concept ceiling",
+        "material assumptions and open items explicit"
+      ],
+      "reopen_triggers": [
+        "load/use/system/grid/span/fire/ground/major-interface change"
+      ],
       "claim_ceiling": "STRUCTURAL_CONCEPT_DESIGN",
-      "does_not_prove": ["final member sizing", "detailed connection adequacy", "fabrication readiness", "construction conformity"]
+      "does_not_prove": [
+        "final member sizing",
+        "detailed connection adequacy",
+        "fabrication readiness",
+        "construction conformity"
+      ]
     },
     {
       "stage_id": "SE-SPW3",
       "stage_name": "Spatial Coordination",
       "professional_question": "Is the structural design developed and coordinated enough that other disciplines can rely on its current geometry, movement and tolerance behavior?",
-      "entry_conditions": ["selected structural concept", "current architectural and system geometry"],
-      "required_inputs": ["selected concept", "current discipline models/drawings", "current load and ground basis"],
-      "knowledge_inputs": ["soil-structure interaction", "movement/tolerances", "constructability", "specialist design boundaries"],
+      "entry_conditions": [
+        "selected structural concept",
+        "current architectural and system geometry"
+      ],
+      "required_inputs": [
+        "selected concept",
+        "current discipline models/drawings",
+        "current load and ground basis"
+      ],
+      "knowledge_inputs": [
+        "soil-structure interaction",
+        "movement/tolerances",
+        "constructability",
+        "specialist design boundaries"
+      ],
       "knowledge_mount_requirement": "Mount changed consequential design/code/source inputs before coordinated structural geometry is treated as current.",
-      "required_dd_dimensions": ["DD-04", "DD-05", "DD-08", "DD-12"],
-      "required_native_outputs": ["spatially coordinated structural drawings/model", "updated calculations", "movement/tolerance report", "outline specification", "contractor-designed-item performance specification"],
-      "interface_requirements": ["Architecture", "Geotechnical", "MEP", "Envelope", "Fire", "Interior/FF&E", "Landscape/Civil", "Cost"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "spatially coordinated structural drawings/model",
+        "updated calculations",
+        "movement/tolerance report",
+        "outline specification",
+        "contractor-designed-item performance specification"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Geotechnical",
+        "MEP",
+        "Envelope",
+        "Fire",
+        "Interior/FF&E",
+        "Landscape/Civil",
+        "Cost"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW3-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["grids", "levels", "member depths", "openings", "cores", "transfers", "movement joints", "critical clearances"],
+          "shared_variables": [
+            "grids",
+            "levels",
+            "member depths",
+            "openings",
+            "cores",
+            "transfers",
+            "movement joints",
+            "critical clearances"
+          ],
           "coupling": "TIGHTLY_COUPLED",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
           "native_source_of_truth": "current coordinated structural and architectural models/drawings",
           "change_reopen_rule": "Reopen when grid/level/opening/transfer/core/movement/clearance geometry changes."
         },
@@ -249,52 +507,121 @@
           "source_domain": "Building Services / MEP Engineering",
           "source_stage_ref": "BSP-SPATIAL",
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["openings", "builder's work", "equipment loads", "supports", "service zones", "plant bases"],
+          "shared_variables": [
+            "openings",
+            "builder's work",
+            "equipment loads",
+            "supports",
+            "service zones",
+            "plant bases"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED"
+          ],
           "native_source_of_truth": "current coordinated structural and MEP drawings/models",
           "change_reopen_rule": "Reopen when services, openings, equipment loads, supports or plant-base requirements change."
         }
       ],
-      "human_experience_consequences": ["member/core/column depth and position effects on use/circulation"],
-      "design_language_consequences": ["coordinated structural expression where visible"],
-      "technical_consequences": ["coordinated grids/zones/openings/movement/foundation/service interfaces"],
-      "content_projection_requirements": ["plans/sections at critical transfers, openings, movement and service interfaces"],
-      "required_readback": ["actual coordinated model/drawings and critical sections"],
+      "human_experience_consequences": [
+        "member/core/column depth and position effects on use/circulation"
+      ],
+      "design_language_consequences": [
+        "coordinated structural expression where visible"
+      ],
+      "technical_consequences": [
+        "coordinated grids/zones/openings/movement/foundation/service interfaces"
+      ],
+      "content_projection_requirements": [
+        "plans/sections at critical transfers, openings, movement and service interfaces"
+      ],
+      "required_readback": [
+        "actual coordinated model/drawings and critical sections"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Stage-aware structural design assurance and checking of stability, load paths, assumptions and critical details.",
-      "open_items_allowed": ["later technical detail outside current spatial claim"],
-      "exit_conditions": ["in-claim critical structural interfaces meet required Integration maturity"],
-      "reopen_triggers": ["grid/level/opening/transfer/plant/facade/foundation/movement change"],
+      "open_items_allowed": [
+        "later technical detail outside current spatial claim"
+      ],
+      "exit_conditions": [
+        "in-claim critical structural interfaces meet required Integration maturity"
+      ],
+      "reopen_triggers": [
+        "grid/level/opening/transfer/plant/facade/foundation/movement change"
+      ],
       "claim_ceiling": "STRUCTURAL_SPATIAL_COORDINATION",
-      "does_not_prove": ["final technical design", "fabrication information", "field as-built condition"]
+      "does_not_prove": [
+        "final technical design",
+        "fabrication information",
+        "field as-built condition"
+      ]
     },
     {
       "stage_id": "SE-SPW4",
       "stage_name": "Technical Design",
       "professional_question": "Is the permanent structural design technically complete at the declared responsibility boundary?",
-      "entry_conditions": ["spatially coordinated structural basis", "current loads/ground/interfaces"],
-      "required_inputs": ["coordinated geometry", "current Basis of Structural Design", "specialist design requirements"],
-      "knowledge_inputs": ["member/material/connection design", "serviceability", "robustness", "durability", "structural fire input"],
+      "entry_conditions": [
+        "spatially coordinated structural basis",
+        "current loads/ground/interfaces"
+      ],
+      "required_inputs": [
+        "coordinated geometry",
+        "current Basis of Structural Design",
+        "specialist design requirements"
+      ],
+      "knowledge_inputs": [
+        "member/material/connection design",
+        "serviceability",
+        "robustness",
+        "durability",
+        "structural fire input"
+      ],
       "knowledge_mount_requirement": "Mount current governing standards, project conditions, product/system evidence and specialist inputs before technical closure.",
-      "required_dd_dimensions": ["DD-07", "DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["technical structural drawings/model", "structural specification", "calculation/analysis package", "connection/performance requirements", "technical checking record"],
-      "interface_requirements": ["Architecture", "Geotechnical", "MEP", "Envelope", "Fire", "specialist structural designers"],
+      "required_dd_dimensions": [
+        "DD-07",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "technical structural drawings/model",
+        "structural specification",
+        "calculation/analysis package",
+        "connection/performance requirements",
+        "technical checking record"
+      ],
+      "interface_requirements": [
+        "Architecture",
+        "Geotechnical",
+        "MEP",
+        "Envelope",
+        "Fire",
+        "specialist structural designers"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW4-ARCH",
           "source_domain": "Architecture",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["final coordinated geometry", "movement/tolerance interfaces", "exposed structure/detail", "openings and attachments"],
+          "shared_variables": [
+            "final coordinated geometry",
+            "movement/tolerance interfaces",
+            "exposed structure/detail",
+            "openings and attachments"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "EXERCISED",
-          "allowed_dispositions_on_exit": ["CLOSED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "technical structural and architectural drawings/models",
           "change_reopen_rule": "Reopen on material architectural geometry/opening/attachment/detail change."
         },
@@ -303,52 +630,122 @@
           "source_domain": "Fire / Life Safety",
           "source_stage_ref": null,
           "direction": "IN",
-          "shared_variables": ["structural fire resistance", "fire protection interface", "robustness/fire assumptions"],
+          "shared_variables": [
+            "structural fire resistance",
+            "fire protection interface",
+            "robustness/fire assumptions"
+          ],
           "coupling": "DEPENDENT",
           "criticality": "CRITICAL",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "COORDINATED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "current fire strategy/authority input plus technical structural design",
           "change_reopen_rule": "Reopen when controlling fire strategy or structural fire-resistance requirement changes."
         }
       ],
-      "human_experience_consequences": ["serviceability/vibration/structural-depth effects where material"],
-      "design_language_consequences": ["exposed material/connection/detail consequences where material"],
-      "technical_consequences": ["complete permanent-work technical design within responsibility"],
-      "content_projection_requirements": ["calculation-model-drawing consistency", "connection/responsibility status", "critical detail readback"],
-      "required_readback": ["technical drawings/model", "calculation package", "critical details and specialist interfaces"],
+      "human_experience_consequences": [
+        "serviceability/vibration/structural-depth effects where material"
+      ],
+      "design_language_consequences": [
+        "exposed material/connection/detail consequences where material"
+      ],
+      "technical_consequences": [
+        "complete permanent-work technical design within responsibility"
+      ],
+      "content_projection_requirements": [
+        "calculation-model-drawing consistency",
+        "connection/responsibility status",
+        "critical detail readback"
+      ],
+      "required_readback": [
+        "technical drawings/model",
+        "calculation package",
+        "critical details and specialist interfaces"
+      ],
       "professional_review_owner": "Responsible Structural Engineering professional owner",
       "independent_review_requirement": "Required structural design checking / third-party checking according to risk, jurisdiction and appointment.",
-      "open_items_allowed": ["production/fabrication detail outside technical-design responsibility if explicitly assigned"],
-      "exit_conditions": ["technical structural design and required checks close at declared responsibility boundary"],
-      "reopen_triggers": ["load/geometry/ground/member/material/connection/specialist/fire/MEP/facade change"],
+      "open_items_allowed": [
+        "production/fabrication detail outside technical-design responsibility if explicitly assigned"
+      ],
+      "exit_conditions": [
+        "technical structural design and required checks close at declared responsibility boundary"
+      ],
+      "reopen_triggers": [
+        "load/geometry/ground/member/material/connection/specialist/fire/MEP/facade change"
+      ],
       "claim_ceiling": "STRUCTURAL_TECHNICAL_DESIGN",
-      "does_not_prove": ["fabrication quality", "temporary works outside scope", "construction conformity", "field validity"]
+      "does_not_prove": [
+        "fabrication quality",
+        "temporary works outside scope",
+        "construction conformity",
+        "field validity"
+      ]
     },
     {
       "stage_id": "SE-SPW4.5",
       "stage_name": "Production Information",
       "professional_question": "Is technical structural design translated into coordinated production/manufacture information with specialist and temporary-works interfaces resolved to the required construction boundary?",
-      "entry_conditions": ["current technical structural design", "responsibility matrix assigns production/specialist scope"],
-      "required_inputs": ["technical design", "specialist/fabricator information", "construction sequence requirements"],
-      "knowledge_inputs": ["fabrication/production methods", "temporary-works interfaces", "material/product data"],
+      "entry_conditions": [
+        "current technical structural design",
+        "responsibility matrix assigns production/specialist scope"
+      ],
+      "required_inputs": [
+        "technical design",
+        "specialist/fabricator information",
+        "construction sequence requirements"
+      ],
+      "knowledge_inputs": [
+        "fabrication/production methods",
+        "temporary-works interfaces",
+        "material/product data"
+      ],
       "knowledge_mount_requirement": "Mount consequential specialist/product/production evidence and changed design basis before production release decisions.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["production/fabrication information", "specialist design integration record", "temporary-works interface record", "production-stage change/check record", "Member / Connection / Foundation Release Schedule", "Fabrication / Shop Drawing / Specialist Submittal Release Register"],
-      "interface_requirements": ["specialist/fabricator", "Architecture", "MEP", "temporary works", "contractor"],
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "production/fabrication information",
+        "specialist design integration record",
+        "temporary-works interface record",
+        "production-stage change/check record",
+        "Member / Connection / Foundation Release Schedule",
+        "Fabrication / Shop Drawing / Specialist Submittal Release Register"
+      ],
+      "interface_requirements": [
+        "specialist/fabricator",
+        "Architecture",
+        "MEP",
+        "temporary works",
+        "contractor"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW4.5-MEP",
           "source_domain": "Building Services / MEP Engineering",
           "source_stage_ref": "BSP-PRODUCTION",
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["supports", "restraints", "openings", "equipment bases", "installation loads"],
+          "shared_variables": [
+            "supports",
+            "restraints",
+            "openings",
+            "equipment bases",
+            "installation loads"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "EXERCISED",
-          "allowed_dispositions_on_exit": ["CLOSED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "structural and MEP production information",
           "change_reopen_rule": "Reopen when support/restraint/opening/base/load or installation sequence changes."
         },
@@ -357,168 +754,445 @@
           "source_domain": "Structural Specialist / Fabricator",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["specialist member/detail geometry", "connections", "fabrication tolerance", "erection/temporary-work assumptions"],
+          "shared_variables": [
+            "specialist member/detail geometry",
+            "connections",
+            "fabrication tolerance",
+            "erection/temporary-work assumptions"
+          ],
           "coupling": "TIGHTLY_COUPLED",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "EXERCISED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED"
+          ],
           "native_source_of_truth": "current specialist/fabricator production information plus structural review record",
           "change_reopen_rule": "Reopen when specialist design, fabrication or temporary-work assumptions change."
         }
       ],
-      "human_experience_consequences": ["retained clearances and exposed-detail effects where applicable"],
-      "design_language_consequences": ["fabricated structural detail consequences where exposed"],
-      "technical_consequences": ["production-ready structural information within assigned responsibility"],
-      "content_projection_requirements": ["show specialist responsibility, temporary-work interface and unresolved production constraints"],
-      "required_readback": ["production/fabrication information", "specialist designs", "critical connections/interfaces"],
+      "human_experience_consequences": [
+        "retained clearances and exposed-detail effects where applicable"
+      ],
+      "design_language_consequences": [
+        "fabricated structural detail consequences where exposed"
+      ],
+      "technical_consequences": [
+        "production-ready structural information within assigned responsibility"
+      ],
+      "content_projection_requirements": [
+        "show specialist responsibility, temporary-work interface and unresolved production constraints"
+      ],
+      "required_readback": [
+        "production/fabrication information",
+        "specialist designs",
+        "critical connections/interfaces"
+      ],
       "professional_review_owner": "Structural Engineering professional owner with assigned specialist reviewers",
       "independent_review_requirement": "Review specialist/fabricator information and manufacturing/construction information according to checking plan.",
-      "open_items_allowed": ["construction-stage conformity and site evidence"],
-      "exit_conditions": ["production/specialist information integrated to declared construction boundary"],
-      "reopen_triggers": ["specialist/fabrication/temporary-work/connection/construction-sequence change"],
+      "open_items_allowed": [
+        "construction-stage conformity and site evidence"
+      ],
+      "exit_conditions": [
+        "production/specialist information integrated to declared construction boundary"
+      ],
+      "reopen_triggers": [
+        "specialist/fabrication/temporary-work/connection/construction-sequence change"
+      ],
       "claim_ceiling": "STRUCTURAL_PRODUCTION_INFORMATION",
-      "does_not_prove": ["manufacture quality", "site erection conformity", "completed permanent-work performance"]
+      "does_not_prove": [
+        "manufacture quality",
+        "site erection conformity",
+        "completed permanent-work performance"
+      ]
     },
     {
       "stage_id": "SE-SPW5",
       "stage_name": "Manufacturing and Construction",
       "professional_question": "Does manufacture and construction conform to the current structural design intent within the observed and assigned scope, and are material nonconformities closed or explicitly held?",
-      "entry_conditions": ["manufacture/construction active", "current design/production information available"],
-      "required_inputs": ["current design/production information", "quality/inspection/test evidence", "site queries and changes"],
-      "knowledge_inputs": ["construction conformity", "inspection/testing", "nonconformity/change control", "temporary works"],
+      "entry_conditions": [
+        "manufacture/construction active",
+        "current design/production information available"
+      ],
+      "required_inputs": [
+        "current design/production information",
+        "quality/inspection/test evidence",
+        "site queries and changes"
+      ],
+      "knowledge_inputs": [
+        "construction conformity",
+        "inspection/testing",
+        "nonconformity/change control",
+        "temporary works"
+      ],
       "knowledge_mount_requirement": "Mount current inspection/test/quality criteria and changed product/material evidence before accepting construction evidence.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["site/manufacture review records", "quality/inspection/test records", "nonconformity/change records", "as-constructed information where assigned", "Inspection / Test / Material / ITP Evidence Register", "Structural RFI / Field Change / Nonconformity Register"],
-      "interface_requirements": ["Contractor", "Temporary Works", "Architecture", "MEP", "Envelope", "specialists"],
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "site/manufacture review records",
+        "quality/inspection/test records",
+        "nonconformity/change records",
+        "as-constructed information where assigned",
+        "Inspection / Test / Material / ITP Evidence Register",
+        "Structural RFI / Field Change / Nonconformity Register"
+      ],
+      "interface_requirements": [
+        "Contractor",
+        "Temporary Works",
+        "Architecture",
+        "MEP",
+        "Envelope",
+        "specialists"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW5-CONSTRUCTION",
           "source_domain": "Construction / Contractor",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["construction sequence", "material/product", "site dimensions", "temporary works", "nonconformities", "as-constructed changes"],
+          "shared_variables": [
+            "construction sequence",
+            "material/product",
+            "site dimensions",
+            "temporary works",
+            "nonconformities",
+            "as-constructed changes"
+          ],
           "coupling": "TIGHTLY_COUPLED",
           "criticality": "CRITICAL",
           "required_maturity_to_enter": "COORDINATED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "current site/manufacture inspection/test/change records",
           "change_reopen_rule": "Reopen on material nonconformity, substitution, sequence or as-constructed change."
         }
       ],
-      "human_experience_consequences": ["actual defect/movement/vibration consequences where observed"],
-      "design_language_consequences": ["built exposed-structure/detail consequences where reviewed"],
-      "technical_consequences": ["bounded construction conformity evidence"],
-      "content_projection_requirements": ["distinguish design intent, observed state, accepted deviation, unresolved nonconformity and field limits"],
-      "required_readback": ["actual site/manufacture evidence for the claimed scope"],
+      "human_experience_consequences": [
+        "actual defect/movement/vibration consequences where observed"
+      ],
+      "design_language_consequences": [
+        "built exposed-structure/detail consequences where reviewed"
+      ],
+      "technical_consequences": [
+        "bounded construction conformity evidence"
+      ],
+      "content_projection_requirements": [
+        "distinguish design intent, observed state, accepted deviation, unresolved nonconformity and field limits"
+      ],
+      "required_readback": [
+        "actual site/manufacture evidence for the claimed scope"
+      ],
       "professional_review_owner": "Structural Engineering professional owner within assigned construction-support scope",
       "independent_review_requirement": "Inspection/witness/checking independence according to contract, risk, specification and statutory requirements.",
-      "open_items_allowed": ["explicit defects/nonconformities that block only the affected claim and remain tracked"],
-      "exit_conditions": ["required observed construction/manufacture evidence and nonconformity decisions are current"],
-      "reopen_triggers": ["site change/substitution/nonconformity/temporary-work/sequence change"],
+      "open_items_allowed": [
+        "explicit defects/nonconformities that block only the affected claim and remain tracked"
+      ],
+      "exit_conditions": [
+        "required observed construction/manufacture evidence and nonconformity decisions are current"
+      ],
+      "reopen_triggers": [
+        "site change/substitution/nonconformity/temporary-work/sequence change"
+      ],
       "claim_ceiling": "STRUCTURAL_CONSTRUCTION_CONFORMITY_OBSERVED_SCOPE",
-      "does_not_prove": ["unobserved work conformity", "future performance", "statutory completion outside assigned evidence"]
+      "does_not_prove": [
+        "unobserved work conformity",
+        "future performance",
+        "statutory completion outside assigned evidence"
+      ]
     },
     {
       "stage_id": "SE-SPW6",
       "stage_name": "Handover",
       "professional_question": "Is the structural information required for handover, defect close, operation and future change current and bounded to the evidence actually available?",
-      "entry_conditions": ["construction sufficiently complete for structural handover decision"],
-      "required_inputs": ["as-constructed information", "defect/nonconformity status", "inspection/test evidence", "maintenance/monitoring requirements"],
-      "knowledge_inputs": ["handover/as-constructed requirements", "maintenance/monitoring", "future alteration information"],
+      "entry_conditions": [
+        "construction sufficiently complete for structural handover decision"
+      ],
+      "required_inputs": [
+        "as-constructed information",
+        "defect/nonconformity status",
+        "inspection/test evidence",
+        "maintenance/monitoring requirements"
+      ],
+      "knowledge_inputs": [
+        "handover/as-constructed requirements",
+        "maintenance/monitoring",
+        "future alteration information"
+      ],
       "knowledge_mount_requirement": "Mount current handover/record requirements and final construction evidence before closure.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["structural handover record", "as-constructed information where assigned", "defect/status record", "maintenance/monitoring/future-change information", "Structural Closeout / Residual Risk / Monitoring Register"],
-      "interface_requirements": ["Client/FM", "Architecture", "Contractor", "future alterations"],
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "structural handover record",
+        "as-constructed information where assigned",
+        "defect/status record",
+        "maintenance/monitoring/future-change information",
+        "Structural Closeout / Residual Risk / Monitoring Register"
+      ],
+      "interface_requirements": [
+        "Client/FM",
+        "Architecture",
+        "Contractor",
+        "future alterations"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW6-FM",
           "source_domain": "Facilities Management / Operations",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["as-constructed information", "maintenance/inspection", "monitoring", "known defects", "future alteration constraints"],
+          "shared_variables": [
+            "as-constructed information",
+            "maintenance/inspection",
+            "monitoring",
+            "known defects",
+            "future alteration constraints"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["CLOSED", "BLOCKED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "CLOSED",
+            "BLOCKED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "current structural handover/as-constructed/defect records",
           "change_reopen_rule": "Reopen when final as-constructed condition, defect status or maintenance requirement changes."
         }
       ],
       "human_experience_consequences": [],
       "design_language_consequences": [],
-      "technical_consequences": ["bounded structural handover information"],
-      "content_projection_requirements": ["co-locate handover status, known defects/limits and future inspection/change triggers"],
-      "required_readback": ["final structural record set and defect/nonconformity status"],
+      "technical_consequences": [
+        "bounded structural handover information"
+      ],
+      "content_projection_requirements": [
+        "co-locate handover status, known defects/limits and future inspection/change triggers"
+      ],
+      "required_readback": [
+        "final structural record set and defect/nonconformity status"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Handover evidence review distinct from contractor self-declaration where required.",
-      "open_items_allowed": ["explicit later monitored/aftercare items with owner and claim boundary"],
-      "exit_conditions": ["handover claim supported by current as-constructed/defect/evidence state"],
-      "reopen_triggers": ["as-constructed/defect/monitoring/maintenance information change"],
+      "open_items_allowed": [
+        "explicit later monitored/aftercare items with owner and claim boundary"
+      ],
+      "exit_conditions": [
+        "handover claim supported by current as-constructed/defect/evidence state"
+      ],
+      "reopen_triggers": [
+        "as-constructed/defect/monitoring/maintenance information change"
+      ],
       "claim_ceiling": "STRUCTURAL_HANDOVER",
-      "does_not_prove": ["indefinite future performance", "unrecorded field conditions", "future alteration adequacy"]
+      "does_not_prove": [
+        "indefinite future performance",
+        "unrecorded field conditions",
+        "future alteration adequacy"
+      ]
     },
     {
       "stage_id": "SE-SPW7",
       "stage_name": "Use",
       "professional_question": "What does real use reveal about structural performance and which assumptions must be reopened or returned to G9?",
-      "entry_conditions": ["in-use structural question / observation / change triggered"],
-      "required_inputs": ["monitoring/inspection/maintenance evidence", "actual use/load changes", "current structural records"],
-      "knowledge_inputs": ["monitoring/assessment methods", "current code/source context for alteration or appraisal"],
+      "entry_conditions": [
+        "in-use structural question / observation / change triggered"
+      ],
+      "required_inputs": [
+        "monitoring/inspection/maintenance evidence",
+        "actual use/load changes",
+        "current structural records"
+      ],
+      "knowledge_inputs": [
+        "monitoring/assessment methods",
+        "current code/source context for alteration or appraisal"
+      ],
       "knowledge_mount_requirement": "Mount consequential observed evidence and current appraisal knowledge before drawing in-use structural conclusions.",
-      "required_dd_dimensions": ["DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["in-use structural assessment/monitoring record", "designed-vs-observed performance record", "G9 lesson candidates"],
-      "interface_requirements": ["FM/Operations", "Architecture", "MEP/equipment", "future alterations"],
+      "required_dd_dimensions": [
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "in-use structural assessment/monitoring record",
+        "designed-vs-observed performance record",
+        "G9 lesson candidates"
+      ],
+      "interface_requirements": [
+        "FM/Operations",
+        "Architecture",
+        "MEP/equipment",
+        "future alterations"
+      ],
       "interface_bindings": [
         {
           "interface_binding_id": "SE-SPW7-FM",
           "source_domain": "Facilities Management / Operations",
           "source_stage_ref": null,
           "direction": "BIDIRECTIONAL",
-          "shared_variables": ["actual use/load", "inspection/monitoring", "defects", "maintenance", "alterations"],
+          "shared_variables": [
+            "actual use/load",
+            "inspection/monitoring",
+            "defects",
+            "maintenance",
+            "alterations"
+          ],
           "coupling": "RECIPROCAL",
           "criticality": "MAJOR",
           "required_maturity_to_enter": "DEFINED",
           "required_maturity_to_close": "VERIFIED",
-          "allowed_dispositions_on_exit": ["OPEN", "CLOSED", "OUTSIDE_CLAIM"],
+          "allowed_dispositions_on_exit": [
+            "OPEN",
+            "CLOSED",
+            "OUTSIDE_CLAIM"
+          ],
           "native_source_of_truth": "actual monitoring/inspection/use records plus current structural records",
           "change_reopen_rule": "Reopen on new use/load, defect, damage, alteration, movement or monitoring evidence."
         }
       ],
-      "human_experience_consequences": ["vibration/movement/defect effects on use where observed"],
+      "human_experience_consequences": [
+        "vibration/movement/defect effects on use where observed"
+      ],
       "design_language_consequences": [],
-      "technical_consequences": ["alteration/change-of-use/monitoring structural consequences"],
-      "content_projection_requirements": ["observation period/location/context and uncertainty"],
-      "required_readback": ["actual monitoring/inspection/use evidence for the declared question"],
+      "technical_consequences": [
+        "alteration/change-of-use/monitoring structural consequences"
+      ],
+      "content_projection_requirements": [
+        "observation period/location/context and uncertainty"
+      ],
+      "required_readback": [
+        "actual monitoring/inspection/use evidence for the declared question"
+      ],
       "professional_review_owner": "Structural Engineering professional owner",
       "independent_review_requirement": "Appropriate independent appraisal/checking when in-use issue consequence requires it.",
-      "open_items_allowed": ["future unobserved performance remains outside each bounded assessment"],
-      "exit_conditions": ["bounded in-use question assessed at its declared evidence ceiling"],
-      "reopen_triggers": ["new use/load, alteration, movement, defect, damage or monitoring evidence"],
+      "open_items_allowed": [
+        "future unobserved performance remains outside each bounded assessment"
+      ],
+      "exit_conditions": [
+        "bounded in-use question assessed at its declared evidence ceiling"
+      ],
+      "reopen_triggers": [
+        "new use/load, alteration, movement, defect, damage or monitoring evidence"
+      ],
       "claim_ceiling": "STRUCTURAL_IN_USE_EVALUATION",
-      "does_not_prove": ["indefinite future safety", "unobserved conditions", "universal transferable rule validity"]
+      "does_not_prove": [
+        "indefinite future safety",
+        "unobserved conditions",
+        "universal transferable rule validity"
+      ]
     }
   ],
   "interface_contract": {
     "integration_owner_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
-    "inputs_from_domains": ["Architecture", "Geotechnical", "MEP", "Fire/Life Safety", "Envelope", "Interior/FF&E", "Landscape/Civil", "Cost", "FM/Operations", "Construction/Specialists"],
-    "outputs_to_domains": ["Architecture", "MEP", "Envelope", "Fire/Life Safety", "Cost", "FM/Operations", "Construction/Specialists"],
-    "shared_variables": ["grid", "levels", "spans", "openings", "loads", "supports", "movement", "tolerances", "foundations", "structural fire input", "specialist design boundaries"],
-    "controlling_authority_requirements": ["each high-impact shared variable has one current authority", "responsibility matrix resolves structural design ownership"],
+    "inputs_from_domains": [
+      "Architecture",
+      "Geotechnical",
+      "MEP",
+      "Fire/Life Safety",
+      "Envelope",
+      "Interior/FF&E",
+      "Landscape/Civil",
+      "Cost",
+      "FM/Operations",
+      "Construction/Specialists"
+    ],
+    "outputs_to_domains": [
+      "Architecture",
+      "MEP",
+      "Envelope",
+      "Fire/Life Safety",
+      "Cost",
+      "FM/Operations",
+      "Construction/Specialists"
+    ],
+    "shared_variables": [
+      "grid",
+      "levels",
+      "spans",
+      "openings",
+      "loads",
+      "supports",
+      "movement",
+      "tolerances",
+      "foundations",
+      "structural fire input",
+      "specialist design boundaries"
+    ],
+    "controlling_authority_requirements": [
+      "each high-impact shared variable has one current authority",
+      "responsibility matrix resolves structural design ownership"
+    ],
     "interface_maturity_policy": "Actual enter/close maturity is resolved per interface / Acceptance Contract by Cross-Disciplinary Integration; SE-SPW stage number does not imply interface maturity or synchronise another domain stage.",
-    "allowed_open_interface_conditions": ["remaining work is later/outside claim", "required maturity for current structural claim is met", "no controlling-authority conflict remains", "open item and later owner are explicit"],
-    "integration_readback_requirements": ["critical geometry/interface readback", "specialist-design integration readback", "change propagation for material shared-variable changes"]
+    "allowed_open_interface_conditions": [
+      "remaining work is later/outside claim",
+      "required maturity for current structural claim is met",
+      "no controlling-authority conflict remains",
+      "open item and later owner are explicit"
+    ],
+    "integration_readback_requirements": [
+      "critical geometry/interface readback",
+      "specialist-design integration readback",
+      "change propagation for material shared-variable changes"
+    ]
   },
   "execution_binding": {
-    "required_native_outputs": ["structural drawings/models", "analytical/calculation models", "Basis of Structural Design", "responsibility matrix", "specifications/details", "checking/review records", "construction/handover records when triggered", "Analysis / Calculation Baseline & Check Register", "Member / Connection / Foundation Release Schedule", "Fabrication / Shop Drawing / Specialist Submittal Release Register", "Inspection / Test / Material / ITP Evidence Register", "Structural RFI / Field Change / Nonconformity Register", "Structural Closeout / Residual Risk / Monitoring Register"],
-    "native_source_of_truth_rules": ["native engineering calculation/model/drawing remains authoritative within its declared scope", "render/screenshot does not replace structural source"],
-    "execution_owner_requirements": ["responsible structural-engineering decision owner identified", "specialist/contractor design owners explicit"],
-    "required_capabilities": ["structural analysis/design", "CAD/BIM/technical drawing as applicable", "coordination/readback", "professional checking"],
-    "tool_adapter_requirements": ["Current Skill Resolver selects tools/capabilities; process does not hardcode software inventory"],
-    "typed_handoff_contracts": ["Architecture↔Structure", "Structure↔MEP", "Structure↔Geotechnical", "Structure↔Envelope/Fire", "Structure↔Specialist/Contractor"],
-    "actual_readback_requirements": ["current native drawings/model/calculation state read back", "critical interfaces/sections/details read back", "site/manufacture evidence read back when claimed", "calculation/check baseline and released member/connection/foundation package readback", "fabrication/shop-drawing/specialist-submittal responsibility and release readback", "inspection/test/ITP evidence plus field RFI/nonconformity closure readback", "as-constructed/residual-risk/monitoring closeout readback when handover is claimed"]
+    "required_native_outputs": [
+      "structural drawings/models",
+      "analytical/calculation models",
+      "Basis of Structural Design",
+      "responsibility matrix",
+      "specifications/details",
+      "checking/review records",
+      "construction/handover records when triggered",
+      "Analysis / Calculation Baseline & Check Register",
+      "Member / Connection / Foundation Release Schedule",
+      "Fabrication / Shop Drawing / Specialist Submittal Release Register",
+      "Inspection / Test / Material / ITP Evidence Register",
+      "Structural RFI / Field Change / Nonconformity Register",
+      "Structural Closeout / Residual Risk / Monitoring Register"
+    ],
+    "native_source_of_truth_rules": [
+      "native engineering calculation/model/drawing remains authoritative within its declared scope",
+      "render/screenshot does not replace structural source"
+    ],
+    "execution_owner_requirements": [
+      "responsible structural-engineering decision owner identified",
+      "specialist/contractor design owners explicit"
+    ],
+    "required_capabilities": [
+      "structural analysis/design",
+      "CAD/BIM/technical drawing as applicable",
+      "coordination/readback",
+      "professional checking"
+    ],
+    "tool_adapter_requirements": [
+      "Current Skill Resolver selects tools/capabilities; process does not hardcode software inventory"
+    ],
+    "typed_handoff_contracts": [
+      "Architecture↔Structure",
+      "Structure↔MEP",
+      "Structure↔Geotechnical",
+      "Structure↔Envelope/Fire",
+      "Structure↔Specialist/Contractor"
+    ],
+    "actual_readback_requirements": [
+      "current native drawings/model/calculation state read back",
+      "critical interfaces/sections/details read back",
+      "site/manufacture evidence read back when claimed",
+      "calculation/check baseline and released member/connection/foundation package readback",
+      "fabrication/shop-drawing/specialist-submittal responsibility and release readback",
+      "inspection/test/ITP evidence plus field RFI/nonconformity closure readback",
+      "as-constructed/residual-risk/monitoring closeout readback when handover is claimed"
+    ]
   },
   "execution_depth_contract": {
     "parity_rule": "Equivalent structural execution depth is demonstrated through checked engineering baselines, released structural packages, fabrication/site evidence and residual-risk handover objects.",
@@ -574,30 +1248,673 @@
       "universal checking category independent of jurisdiction/risk",
       "field conformity beyond observed/tested evidence",
       "same stage count as other domains"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "STR-OBJ-01",
+        "object_name": "Basis of Structural Design / Design Criteria Record",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "SE-SPW0",
+          "SE-SPW1",
+          "SE-SPW2"
+        ],
+        "professional_purpose": "Define structural performance, design situations, actions, materials, robustness/serviceability/fire/durability assumptions and responsibility basis for structural decisions.",
+        "native_source_of_truth": "Current structural brief + applicable codes/standards + geotechnical/site/architectural authority.",
+        "required_record_fields": [
+          "basis_id",
+          "structure_scope",
+          "design_life_or_project_basis",
+          "design_situations",
+          "actions_and_combinations_basis",
+          "material_systems",
+          "serviceability_criteria",
+          "robustness_and_disproportionate_collapse_basis",
+          "fire_durability_basis",
+          "geotechnical_basis",
+          "temporary_stage_dependencies",
+          "interfaces",
+          "assumptions",
+          "open_items",
+          "owner",
+          "checker"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Geotechnical",
+          "Fire Engineering",
+          "Temporary Works where applicable"
+        ],
+        "revision_identity": "basis_id + criteria/source revision + structural baseline revision",
+        "release_or_retention_rule": "Retain only when controlling criteria/sources and consequential assumptions are explicit; unresolved inputs cap downstream claims.",
+        "required_readback": [
+          "criteria/source readback",
+          "load/action basis trace",
+          "interface assumption attack"
+        ],
+        "failure_or_hold_conditions": [
+          "design criteria inferred from precedent",
+          "geotechnical/site input absent but treated final",
+          "temporary/construction state ignored where material"
+        ],
+        "reopen_triggers": [
+          "code/standard change",
+          "brief/use/load change",
+          "geotechnical change",
+          "architecture/grid change",
+          "construction method change"
+        ],
+        "downstream_handoffs": [
+          "SE-SPW2 options",
+          "analysis/calculation baseline",
+          "member/connection/foundation design"
+        ],
+        "independent_review_requirement": "Independent checker must review the governing basis proportionate to consequence before final structural reliance.",
+        "does_not_prove": [
+          "code approval",
+          "geotechnical PASS",
+          "construction-stage safety approval"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-02",
+        "object_name": "Analysis / Calculation Assumption & Baseline Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "SE-SPW2",
+          "SE-SPW3",
+          "SE-SPW4"
+        ],
+        "professional_purpose": "Control analytical model assumptions, idealisations, boundary conditions, stiffness/load paths and calculation revisions.",
+        "native_source_of_truth": "Owner-native calculation/model sources + Basis of Structural Design + current geometry/material inputs.",
+        "required_record_fields": [
+          "analysis_id",
+          "model_or_calc_ref",
+          "revision",
+          "purpose",
+          "geometry_source",
+          "material_properties_source",
+          "supports_boundary_conditions",
+          "loads_combinations",
+          "stiffness_release_idealisation",
+          "second_order_or_nonlin_basis",
+          "imperfection_basis",
+          "sensitivity_or_handcheck",
+          "assumptions",
+          "limitations",
+          "checker",
+          "status"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Analysis specialist",
+          "Geotechnical",
+          "Architecture"
+        ],
+        "revision_identity": "analysis_id + exact model/calculation revision/hash + input baseline",
+        "release_or_retention_rule": "No final member/connection/foundation release may rely on an analysis whose consequential assumptions or source geometry are stale/unread.",
+        "required_readback": [
+          "model input audit",
+          "equilibrium/load-path sanity check",
+          "independent hand/sensitivity check appropriate to risk",
+          "result ↔ member/detail trace"
+        ],
+        "failure_or_hold_conditions": [
+          "wrong geometry/load revision",
+          "unstated support idealisation",
+          "solver convergence/result accepted without engineering check",
+          "local model used beyond validity"
+        ],
+        "reopen_triggers": [
+          "geometry/load/material/support change",
+          "analysis method change",
+          "field/nonconformity change",
+          "review contradiction"
+        ],
+        "downstream_handoffs": [
+          "design packages",
+          "release schedule",
+          "checking record"
+        ],
+        "independent_review_requirement": "Independent structural checker must inspect inputs/assumptions and representative critical outputs, not only final ratios.",
+        "does_not_prove": [
+          "structural adequacy beyond analysed scope",
+          "construction conformity",
+          "geotechnical validity"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-03",
+        "object_name": "Structural System / Load-path Option Study",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "SE-SPW2"
+        ],
+        "professional_purpose": "Compare materially different structural systems, stability strategies, spans/grids, materials and foundation concepts under common criteria.",
+        "native_source_of_truth": "Editable structural option diagrams/models/calculations tied to same architectural/site/BOSD baseline.",
+        "required_record_fields": [
+          "option_id",
+          "system_family",
+          "gravity_load_path",
+          "lateral_stability",
+          "grid_span_depth",
+          "material_system",
+          "foundation_strategy",
+          "movement_robustness",
+          "construction_sequence_implication",
+          "MEP_architecture_consequence",
+          "carbon_cost_programme_consequence",
+          "critical_risks",
+          "required_tests",
+          "retained_rejected_reason"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Geotechnical",
+          "MEP",
+          "Cost/Construction"
+        ],
+        "revision_identity": "option_id + common basis revision + option source revision",
+        "release_or_retention_rule": "Selection requires explicit load-path/stability/foundation logic; optimization score or member tonnage alone cannot select the system.",
+        "required_readback": [
+          "load-path diagram readback",
+          "representative order-of-magnitude checks",
+          "spatial coordination consequence comparison"
+        ],
+        "failure_or_hold_conditions": [
+          "same system with member-size variants counted as families",
+          "stability path omitted",
+          "foundation consequence ignored",
+          "unsupported precision in early option"
+        ],
+        "reopen_triggers": [
+          "architecture/grid/span change",
+          "geotechnical change",
+          "material/procurement change",
+          "new robustness/fire requirement"
+        ],
+        "downstream_handoffs": [
+          "SE-SPW3 coordination",
+          "Architecture",
+          "MEP",
+          "Geotechnical"
+        ],
+        "independent_review_requirement": "Independent review must attack the selected system's governing stability/load-path/foundation assumptions and compare strongest alternative.",
+        "does_not_prove": [
+          "final analysis PASS",
+          "fabrication readiness",
+          "code/statutory approval"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-04",
+        "object_name": "Controlled Structural Analysis / Drawing / Design Package",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "SE-SPW3",
+          "SE-SPW4",
+          "SE-SPW4.5"
+        ],
+        "professional_purpose": "Carry the actual structural design through coordinated models, calculations, drawings, schedules and details with traceable input/output identity.",
+        "native_source_of_truth": "Controlled structural analysis/calculation models + drawings/BIM/details/specifications.",
+        "required_record_fields": [
+          "package_id",
+          "analysis_refs",
+          "calculation_refs",
+          "drawing_model_refs",
+          "member_schedule_refs",
+          "connection_detail_refs",
+          "foundation_refs",
+          "grid_level_source",
+          "material_grade_refs",
+          "load_case_refs",
+          "interface_refs",
+          "revision",
+          "author",
+          "checker",
+          "issue_status"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "BIM/CAD",
+          "Connection specialist",
+          "Geotechnical",
+          "Architecture"
+        ],
+        "revision_identity": "package_id + exact native model/calculation/drawing revision",
+        "release_or_retention_rule": "Downstream use requires coordinated calculation/model/drawing identity; extracted PDFs do not replace native analytical/design sources.",
+        "required_readback": [
+          "analysis ↔ drawing/member schedule trace",
+          "critical connection/foundation detail readback",
+          "grid/level/interface consistency"
+        ],
+        "failure_or_hold_conditions": [
+          "analysis and drawing revisions diverge",
+          "member schedule not tied to calc",
+          "connection load not traceable",
+          "foundation assumption stale"
+        ],
+        "reopen_triggers": [
+          "analysis revision",
+          "architecture/grid/level change",
+          "material/connection/foundation change",
+          "field deviation"
+        ],
+        "downstream_handoffs": [
+          "fabrication/shop drawing",
+          "construction",
+          "record structure"
+        ],
+        "independent_review_requirement": "Independent checker reviews exact controlled package or bounded subset with explicit limits.",
+        "does_not_prove": [
+          "fabrication conformity",
+          "site installation",
+          "temporary works adequacy unless included"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-05",
+        "object_name": "Member / Connection / Foundation Release & Specialist Submittal Register",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "SE-SPW4",
+          "SE-SPW4.5"
+        ],
+        "professional_purpose": "Control which structural elements/details/specialist designs are sufficiently checked and coordinated for downstream manufacture/construction reliance.",
+        "native_source_of_truth": "Current structural design package + checked specialist/fabrication/submittal information.",
+        "required_record_fields": [
+          "release_id",
+          "element_or_scope",
+          "design_action_demand_ref",
+          "native_design_ref",
+          "specialist_submittal_ref",
+          "revision",
+          "checking_class_or_plan_ref",
+          "interfaces",
+          "review_comments",
+          "conditions",
+          "release_authority",
+          "release_state",
+          "supersedes",
+          "downstream_receiver"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Fabricator/Specialist designer",
+          "Independent checker",
+          "Architecture",
+          "MEP"
+        ],
+        "revision_identity": "release_id + exact design/submittal revision",
+        "release_or_retention_rule": "Release cannot exceed checked scope; conditional release retains open conditions and may not imply whole-structure approval.",
+        "required_readback": [
+          "submittal ↔ design load/geometry/material comparison",
+          "checker disposition readback",
+          "downstream revision acknowledgement"
+        ],
+        "failure_or_hold_conditions": [
+          "shop drawing accepted against stale design",
+          "connection load unavailable",
+          "conditional item treated closed",
+          "different revision fabricated"
+        ],
+        "reopen_triggers": [
+          "design change",
+          "fabricator proposal",
+          "RFI",
+          "material/substitution",
+          "interface change"
+        ],
+        "downstream_handoffs": [
+          "fabrication",
+          "construction",
+          "inspection/test"
+        ],
+        "independent_review_requirement": "Independent checking per declared structural assurance plan and consequence class.",
+        "does_not_prove": [
+          "fabrication workmanship",
+          "site installation conformity",
+          "statutory approval"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-06",
+        "object_name": "Inspection / Test / Material / Field Nonconformity Register",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "SE-SPW5"
+        ],
+        "professional_purpose": "Bind observed/tested construction evidence, material certification, nonconformities and field changes to the exact structural design scope.",
+        "native_source_of_truth": "ITP/test/material/site evidence + issued structural information.",
+        "required_record_fields": [
+          "field_item_id",
+          "element_location",
+          "inspection_or_test_type",
+          "date",
+          "issued_design_ref",
+          "material_heat_batch_or_product_ref",
+          "measured_test_result",
+          "acceptance_basis",
+          "nonconformity",
+          "engineering_assessment",
+          "disposition",
+          "repair_or_retest",
+          "affected_design_refs",
+          "owner",
+          "closure_evidence"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Contractor",
+          "Fabricator",
+          "Testing laboratory",
+          "Site inspector",
+          "Independent checker"
+        ],
+        "revision_identity": "field_item_id + exact element/location + design revision + evidence date",
+        "release_or_retention_rule": "Observed/tested evidence closes only the inspected/tested scope; material field changes require design/calculation/readback updates.",
+        "required_readback": [
+          "test certificate/result audit",
+          "field condition ↔ design detail",
+          "repair/retest readback"
+        ],
+        "failure_or_hold_conditions": [
+          "test result without sample/location trace",
+          "site photo generalized to all work",
+          "repair not rechecked",
+          "field change not fed back to model/drawing"
+        ],
+        "reopen_triggers": [
+          "failed test",
+          "nonconformity",
+          "material substitution",
+          "site geometry deviation",
+          "construction-stage condition change"
+        ],
+        "downstream_handoffs": [
+          "closeout/as-constructed",
+          "future monitoring"
+        ],
+        "independent_review_requirement": "Independent/specialist witness required when stated by assurance/ITP/statutory/contractual basis.",
+        "does_not_prove": [
+          "uninspected work",
+          "hidden work conformity",
+          "whole-structure PASS"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-07",
+        "object_name": "Structural Closeout / Residual Risk / Monitoring Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "SE-SPW6",
+          "SE-SPW7"
+        ],
+        "professional_purpose": "Transfer as-constructed structural information, residual risks, inspection/maintenance/monitoring requirements and future-change constraints.",
+        "native_source_of_truth": "Accepted as-constructed structural records + unresolved items + monitoring/use evidence.",
+        "required_record_fields": [
+          "closeout_id",
+          "structure_scope",
+          "as_constructed_refs",
+          "material_and_product_refs",
+          "residual_risks",
+          "load_or_use_constraints",
+          "inspection_maintenance_requirements",
+          "monitoring_points_and_baseline",
+          "open_items",
+          "owner",
+          "future_change_restrictions",
+          "inuse_observations",
+          "closure_state"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Operations/FM",
+          "Client",
+          "Contractor",
+          "Monitoring specialist"
+        ],
+        "revision_identity": "closeout_id + as-constructed baseline revision",
+        "release_or_retention_rule": "Handover must distinguish design intent, accepted as-constructed information and unverified field conditions; monitoring criteria remain configuration-specific.",
+        "required_readback": [
+          "as-constructed ↔ design baseline comparison",
+          "open-item closure",
+          "monitoring baseline/result readback where claimed"
+        ],
+        "failure_or_hold_conditions": [
+          "design drawings mislabeled as record",
+          "residual risk omitted",
+          "future penetration/load change not controlled",
+          "monitoring result without baseline/configuration"
+        ],
+        "reopen_triggers": [
+          "future loading/change",
+          "damage/incident",
+          "monitoring threshold",
+          "alteration/penetration",
+          "new inspection evidence"
+        ],
+        "downstream_handoffs": [
+          "Operations/FM",
+          "future structural engineer",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent closeout/checking review when required by assurance plan or consequence.",
+        "does_not_prove": [
+          "future performance",
+          "all hidden construction conformity",
+          "fitness for unassessed future change"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-08",
+        "object_name": "Structural Design Assurance / Independent Check Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "SE-SPW1",
+          "SE-SPW4",
+          "SE-SPW4.5",
+          "SE-SPW5"
+        ],
+        "professional_purpose": "Provide risk-proportionate independent checking of basis, analysis, design, details and material changes on exact baselines.",
+        "native_source_of_truth": "Structural assurance/checking plan + controlled design/calculation/submittal/field evidence.",
+        "required_record_fields": [
+          "check_id",
+          "check_scope",
+          "consequence_or_check_basis",
+          "reviewer_independence",
+          "baseline_refs",
+          "methods",
+          "critical_elements",
+          "independent_calculation_or_review_refs",
+          "findings",
+          "severity",
+          "repair_required",
+          "recheck_refs",
+          "verdict",
+          "claim_ceiling"
+        ],
+        "decision_owner": "Independent Structural checker",
+        "contributor_or_specialist_refs": [
+          "Structural professional owner",
+          "Specialist reviewers"
+        ],
+        "revision_identity": "check_id + exact checked baseline revision",
+        "release_or_retention_rule": "Check applies only to declared scope/revision; material changes stale affected check conclusions.",
+        "required_readback": [
+          "independent calc/review readback",
+          "critical load-path/stability/detail attack",
+          "repair/recheck evidence"
+        ],
+        "failure_or_hold_conditions": [
+          "checker not independent where required",
+          "review only final utilization ratios",
+          "changed baseline not rechecked",
+          "major contradiction unresolved"
+        ],
+        "reopen_triggers": [
+          "design/calculation/detail change",
+          "new field evidence",
+          "material/nonconformity",
+          "load/criteria change"
+        ],
+        "downstream_handoffs": [
+          "release register",
+          "professional receipt"
+        ],
+        "independent_review_requirement": "Reviewer independence and method must be proportionate to consequence/risk and declared in the assurance plan.",
+        "does_not_prove": [
+          "construction conformity",
+          "statutory approval",
+          "Design KEEP"
+        ]
+      },
+      {
+        "object_id": "STR-OBJ-09",
+        "object_name": "Structural Change / Reanalysis / Reverification Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate structural changes to affected calculations, models, drawings, releases, checks and field evidence.",
+        "native_source_of_truth": "Controlled change event + dependency links from structural models/design packages/releases.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "changed_parameter_or_object",
+          "old_revision",
+          "new_revision",
+          "affected_load_paths",
+          "affected_analysis_models",
+          "affected_members_connections_foundations",
+          "affected_drawings_schedules",
+          "affected_interfaces",
+          "affected_checks_releases",
+          "required_reanalysis",
+          "required_reinspection_or_retest",
+          "owner",
+          "closure"
+        ],
+        "decision_owner": "Structural Engineering professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "MEP",
+          "Geotechnical",
+          "Fabricator/Contractor",
+          "Independent checker"
+        ],
+        "revision_identity": "change_id + source revision",
+        "release_or_retention_rule": "No closure until affected analytical/design/release/check scopes are re-established or explicitly retained by evidence.",
+        "required_readback": [
+          "dependency impact trace",
+          "reanalysis/recheck readback",
+          "affected submittal/field notification"
+        ],
+        "failure_or_hold_conditions": [
+          "change recorded only in drawing",
+          "calculation not reopened",
+          "released fabrication not assessed",
+          "inspection/test applicability assumed unchanged"
+        ],
+        "reopen_triggers": [
+          "any material geometry/load/material/support/connection/foundation/site change"
+        ],
+        "downstream_handoffs": [
+          "all affected structural stages/interfaces"
+        ],
+        "independent_review_requirement": "Independent checker involvement when changed scope falls within prior independent-check basis.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic adequacy after change"
+        ]
+      }
     ]
   },
   "assurance": {
     "professional_review": "Structural stage review at declared claim ceiling, preserving structural responsibility and source assumptions.",
     "evidence_review": "Verify source/geotechnical/existing/material/product/construction evidence against claimed structural use.",
-    "technical_gates": ["jurisdiction-specific structural/code gate when triggered", "construction/inspection/testing gate when claimed", "existing-condition/field gate when claimed"],
+    "technical_gates": [
+      "jurisdiction-specific structural/code gate when triggered",
+      "construction/inspection/testing gate when claimed",
+      "existing-condition/field gate when claimed"
+    ],
     "independent_review": "Risk-proportionate structural checking / independent review according to current professional guidance, jurisdiction, appointment and project complexity.",
     "receipt_contract": "professional-domain-process.v1.schema.json + current Master professional_processes[] summary",
-    "does_not_prove": ["statutory approval", "field verification", "construction conformity outside observed/accepted scope", "Design KEEP", "Promotion"]
+    "does_not_prove": [
+      "statutory approval",
+      "field verification",
+      "construction conformity outside observed/accepted scope",
+      "Design KEEP",
+      "Promotion"
+    ]
   },
   "change_contract": {
-    "reopen_triggers": ["load/use", "ground/existing condition", "grid/span/opening/transfer", "member/material/connection", "MEP/facade/equipment load", "fire strategy", "specialist/temporary works", "construction nonconformity"],
-    "stale_scope_rules": ["only affected stages/interfaces/outputs become stale unless dependency graph shows wider consequence"],
-    "upstream_impact_rules": ["a changed source/Basis of Structural Design assumption reopens all consuming structural decisions"],
-    "downstream_impact_rules": ["changed structural controlled variables propagate to consuming Architecture/MEP/Envelope/Fire/Cost/FM interfaces"],
-    "interface_reopen_rules": ["material shared-variable changes reopen affected Integration interfaces"],
-    "receipt_stale_rules": ["receipt becomes stale at affected scope when governing source, stage output, checking basis or controlled variable changes"]
+    "reopen_triggers": [
+      "load/use",
+      "ground/existing condition",
+      "grid/span/opening/transfer",
+      "member/material/connection",
+      "MEP/facade/equipment load",
+      "fire strategy",
+      "specialist/temporary works",
+      "construction nonconformity"
+    ],
+    "stale_scope_rules": [
+      "only affected stages/interfaces/outputs become stale unless dependency graph shows wider consequence"
+    ],
+    "upstream_impact_rules": [
+      "a changed source/Basis of Structural Design assumption reopens all consuming structural decisions"
+    ],
+    "downstream_impact_rules": [
+      "changed structural controlled variables propagate to consuming Architecture/MEP/Envelope/Fire/Cost/FM interfaces"
+    ],
+    "interface_reopen_rules": [
+      "material shared-variable changes reopen affected Integration interfaces"
+    ],
+    "receipt_stale_rules": [
+      "receipt becomes stale at affected scope when governing source, stage output, checking basis or controlled variable changes"
+    ]
   },
   "completion_contract": {
-    "process_exit_conditions": ["applicable stage work complete at declared claim ceiling", "required native outputs/readback exist", "required checking complete", "critical interfaces satisfy required maturity", "professional receipt current"],
-    "open_items_allowed": ["explicit later/outside-claim items that do not contradict current structural verdict"],
+    "process_exit_conditions": [
+      "applicable stage work complete at declared claim ceiling",
+      "required native outputs/readback exist",
+      "required checking complete",
+      "critical interfaces satisfy required maturity",
+      "professional receipt current"
+    ],
+    "open_items_allowed": [
+      "explicit later/outside-claim items that do not contradict current structural verdict"
+    ],
     "professional_receipt": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
     "promotion_effect": "A current PASS may satisfy the triggered Structural Engineering professional-process dependency only at its bounded claim ceiling; it does not grant Design KEEP or Promotion.",
     "claim_ceiling": "LOWEST_APPLICABLE_VALID_STRUCTURAL_CLAIM_GOVERNS",
-    "does_not_prove": ["statutory approval", "field verification", "future structural performance", "Design KEEP", "Promotion"]
+    "does_not_prove": [
+      "statutory approval",
+      "field verification",
+      "future structural performance",
+      "Design KEEP",
+      "Promotion"
+    ]
   }
 }
