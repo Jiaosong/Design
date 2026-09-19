@@ -455,3 +455,125 @@ Until then:
 `SYSTEMS ENGINEERING ≠ DOMAIN SUPER-AUTHORITY`
 
 `CURRENT PROFESSIONAL PROCESS REMAINS OPEN UNTIL EXPLICIT PROMOTION`.
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Systems Engineering professional-depth parity
+
+**Status effect:** additive candidate-depth binding only. Systems Engineering remains `CANDIDATE / NOT CURRENT / NO PROMOTION`. No universal lifecycle, MBSE product or new Systems Skill family is created.
+
+### Knowledge binding
+Consequential SE decisions resolve Current sources/methods for need/goal/requirement, trade study, interfaces, configuration, verification and validation. Applicable anchors include:
+- `KN-METHOD-DESIGN-GOAL-CONTRACT-001` — Need vs Goal vs Objective vs Requirement vs Criterion boundary;
+- `KN-METHOD-DESIGN-TRADE-STUDY-001` — alternatives / hard gates / uncertainty / sensitivity / decision corridor;
+- `SRC-NASA-STAKEHOLDER-GOALS-001` — scoped need/goal/objective/requirement source;
+- `SRC-NASA-DECISION-ANALYSIS-001` — scoped systems decision-analysis/trade-study source;
+- current requirements-engineering, interface-management, configuration/change, V&V and domain-professional sources.
+
+### `required_native_outputs[]`
+- Systems Engineering responsibility/authority matrix and System-of-Interest/context/boundary register;
+- stakeholder need / use-case / requirement trace matrix;
+- capability / function / behavior / state register and models;
+- information / human-system allocation / interface register;
+- normalized system requirements baseline and change register;
+- logical architecture alternatives, allocation and trade-study records;
+- PBS / physical architecture / controlled interface set and configuration baseline;
+- verification cross-reference matrix and integration/interface verification evidence;
+- validation scenario/evidence matrix;
+- anomaly/problem/deviation/waiver decision register with retest/reverification state;
+- transition / operations / support / retirement register and post-change V&V record.
+
+### `execution_owner_requirements[]` / `required_capabilities[]`
+- `oleander-research [INSTALLED_CORE]` — external standards/source comparison/evidence;
+- `oleander-design-process [INSTALLED_CORE]` — goal framing, function-to-concept synthesis, trade-space/design reasoning, interface coupling and change propagation; **not independent Systems Engineering approval**;
+- `oleander-data-viz [INSTALLED_CORE]` — system/trace/relationship visualization when useful; visualization does not become requirements/configuration authority;
+- `oleander-delivery-qc [INSTALLED_CORE]` — package/export integrity only.
+
+Relevant existing `oleander-design-process` extensions may be selected by the resolver when triggered: `FUNCTION_TO_CONCEPT_SYNTHESIS_EXTENSION`, `SYSTEM_INTERFACE_COUPLING_EXTENSION`, `REQUIREMENT_VERIFICATION_TRACEABILITY_EXTENSION`, `INFORMATION_REQUIREMENT_EXCHANGE_CONTRACT_EXTENSION`, and computational option-space support. They refine the current object; they are not a parallel Systems Engineering process.
+
+**Specialist execution gap / routing rule:** the Current core Skill Registry has no installed Systems Engineering / requirements / MBSE / configuration / V&V specialist Skill. Consequential SE claims must bind the actual project SE owner, domain professionals, requirements/configuration repository and verification/validation tools/evidence appropriate to the project. `MODEL / TRACE TOOL PASS ≠ SYSTEMS ENGINEERING PASS`.
+
+### `tool_adapter_requirements[]`
+- controlled requirements/need/use-case repository with stable IDs, source, version, status and change history;
+- system/context/function/behavior/interface modelling carrier appropriate to the decision;
+- configuration/baseline/change-control carrier;
+- test/analysis/simulation/inspection/runtime evidence carrier for verification as applicable;
+- user/mission/operational scenario evidence carrier for validation;
+- anomaly/problem/deviation/waiver and retest/reverification record;
+- project-authorized MBSE/requirements/test tools when used; tool syntax/product semantics cannot redefine OLEANDER or project authority.
+
+### `typed_handoff_contracts[]`
+- Project/Stakeholder Authority → SE: need/mission/outcome/constraints/decision rights;
+- HCD/Operations → SE: user/operational scenarios, human-system needs and validation context;
+- SE → Domain Professionals: requirement/interface/allocation objects with IDs, source, rationale, assumptions and acceptance owner;
+- Domain Professionals → SE: feasibility/performance/interface evidence + limits + changed assumptions;
+- SE → Implementation/Integration: configuration baseline, interface contract, verification method and required evidence;
+- Verification → SE: exact requirement/configuration/procedure/result/anomaly;
+- Validation → SE: exact use context/scenario/configuration/outcome/limitation;
+- Change Authority → SE: authorized change → affected requirements/interfaces/configuration → reverification/revalidation scope.
+
+### `actual_readback_requirements[]`
+- stakeholder need → requirement → architecture/allocation → verification → validation trace;
+- requirement quality and normalization against source intent, not merely field completeness;
+- logical/physical architecture and interface consistency at the current baseline;
+- configuration identity of every V&V result;
+- verification method/result against the exact requirement and acceptance criterion;
+- validation scenario/context/outcome against intended use and stakeholder need;
+- anomaly/deviation/waiver disposition and exact retest/reverification/revalidation closure;
+- post-change impact graph, not only edited requirement text.
+
+### `reopen_triggers[]`
+System boundary/external dependency change; stakeholder need/mission/use-case change; requirement source/interpretation change; function/allocation/interface/architecture/configuration change; domain-professional constraint change; failed verification/integration/validation; anomaly/deviation/waiver; operational evidence; transition/support/retirement assumption change.
+
+### Object-level invocation matrix
+
+#### A｜Need / Context / Operational Concept
+- Knowledge: goal-contract + stakeholder/mission/operational sources.
+- Skills: research + design-process; HCD/domain owners when human/domain evidence is consequential.
+- Tool class: controlled context/use-case/need repository and editable context/mission-thread carrier.
+- Native carrier: SOI boundary, external systems/actors/environment, needs, operational scenarios, assumptions.
+- Readback: boundary and scenario cover the claimed mission/use; need/goal/requirement distinctions remain intact.
+- Reopen: boundary/mission/stakeholder/context/external dependency change.
+
+#### B｜Capability / Function / Behavior / Human-System / Interface Architecture
+- Knowledge: function-to-concept, interface coupling and applicable domain/HCD sources.
+- Skills: design-process installed owner + domain professionals; data-viz optional for analytical relation views.
+- Tool class: editable system model/graph/table with stable IDs and typed relations.
+- Native carrier: capability/function/behavior/state, information architecture, human-system allocation, interface register.
+- Readback: solution-neutral functions are not prematurely physicalized; interface direction/data/energy/material/control/permission semantics agree across views.
+- Reopen: function/allocation/interface/state/domain constraint change.
+
+#### C｜Requirements Baseline / Normalization / Change
+- Knowledge: current requirements-engineering sources + goal/requirement boundary.
+- Skills: design-process requirement trace support; project SE/configuration owner required.
+- Tool class: requirements repository with source, rationale, verification method, owner, baseline and change history.
+- Native carrier: normalized requirement set, trace matrix, baseline/change register.
+- Readback: every material requirement has source/intent/applicability/testability and does not silently narrow the source.
+- Reopen: source/interpretation/architecture/interface/feasibility/test-method or authorized-change delta.
+
+#### D｜Logical / Physical Architecture + Trade Study
+- Knowledge: trade-study owner + function-to-concept + domain constraints.
+- Skills: design-process; computational option-space only when variables/constraints justify it; domain professionals close specialist feasibility.
+- Tool class: architecture/allocation model + trade-study ledger with uncertainty/sensitivity.
+- Native carrier: alternatives, allocation, logical architecture, PBS/physical architecture, decision record.
+- Readback: concept families materially differ; hard gates/unknowns/sensitivity visible; score does not auto-select the system.
+- Reopen: requirement/interface/domain feasibility/cost-risk/assumption/change evidence.
+
+#### E｜Verification / Integration / Anomaly
+- Knowledge: requirement-verification traceability + interface/configuration sources.
+- Skills: design-process for trace/change; actual domain/test/simulation/integration owner = `PROJECT_SPECIALIST_REQUIRED`.
+- Tool class: test/analysis/simulation/inspection/runtime evidence tied to exact configuration.
+- Native carrier: verification cross-reference, interface verification, anomaly/deviation/waiver, retest record.
+- Readback: requirement + method + configuration + result + criterion + anomaly disposition are all exact and current.
+- Reopen: configuration/method/criterion/result/anomaly/fix change.
+
+#### F｜Validation / Transition / Operations / Retirement
+- Knowledge: stakeholder need/use context + HCD/operations/support sources.
+- Skills: design-process + HCD/domain/operations owners as applicable.
+- Tool class: validation scenario/evidence + operational/support/transition records.
+- Native carrier: validation matrix, transition/support/retirement register, operational discrepancy, post-change V&V.
+- Readback: validation proves intended-use evidence for the current configuration/context, not merely requirement verification.
+- Reopen: intended use/user/mission/operational environment/configuration/support/retirement condition change.
+
+### Professional boundary
+`TRACE COMPLETE ≠ REQUIREMENTS VALID`; `MODEL COMPLETE ≠ ARCHITECTURE ACCEPTED`; `VERIFICATION PASS ≠ VALIDATION PASS`; `SYSTEMS ENGINEERING PASS ≠ DOMAIN PROFESSIONAL PASS`; `TOOL CONSISTENCY ≠ CONFIGURATION AUTHORITY`; `CI / EXPORT PASS ≠ PROFESSIONAL REVIEW`.
