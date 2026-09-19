@@ -1077,3 +1077,281 @@ CURRENT MEP CLAIM
 ```
 
 A system model that omits any applicable controlling relation may remain useful coordination evidence, but it must not be promoted as a stronger Building Services engineering claim.
+
+
+---
+
+## Practitioner object contracts｜执业对象合同层
+
+Machine carrier: `00-governance/schemas/building-services-mep-design-process.v1.json`
+
+The earlier execution-depth object lists are an index only. The objects below are the field-level practitioner contracts used to make Building Services / MEP Engineering executable at professional depth. The machine carrier is authoritative for validation; this prose mirrors the same substance for human review.
+
+A named register/schedule/model is not considered sufficient unless its source, required fields, owner, revision identity, release/readback, HOLD and reopen semantics are all resolved.
+
+### MEP-OBJ-01｜Basis of Building Services Design / Performance Criteria Record
+
+- **Parity dimension:** `PROFESSIONAL_PROBLEM_AND_JUDGMENT`
+- **Stage refs:** `BSP-STRATEGIC`, `BSP-BRIEF`
+- **Professional purpose:** Define system performance, environmental/service criteria, utilities, resilience, occupancy, controls and commissioning basis before topology/equipment lock.
+- **Native source of truth:** Current client/operational brief + utility/site data + codes/standards + architecture/use authority.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Architecture; Client/Operations; Utility provider; Fire/Life Safety; Commissioning
+- **Revision identity:** basis_id + criteria/source revision
+- **Required record fields:** `basis_id`, `system_tracks`, `occupancy_and_load_basis`, `internal_external_conditions`, `environmental_criteria`, `utility_sources_capacities`, `resilience_continuity_basis`, `energy_carbon_basis`, `water_hygiene_basis`, `controls_intent`, `commissioning_criteria`, `maintenance_access_basis`, `assumptions`, `open_items`, `owner`
+- **Release / retention rule:** Retain only with traceable criteria/sources and explicit unresolved utility/existing-system/operational assumptions.
+- **Required readback:**
+  - criteria/source readback
+  - representative peak/part-load basis check
+  - operations/maintenance consequence review
+- **Failure / HOLD conditions:**
+  - utility capacity assumed
+  - model target treated as measured performance
+  - commissioning criteria absent
+  - maintenance access ignored
+- **Reopen triggers:**
+  - brief/use change
+  - utility/existing-system update
+  - code/standard change
+  - architecture/envelope change
+  - operations change
+- **Downstream handoffs:** BSP-CONCEPT; Controls/Sequence; Commissioning Plan
+- **Independent review:** Distinct technical review of the basis proportionate to system consequence.
+- **Does not prove:** utility approval; measured performance; commissioned operation
+
+### MEP-OBJ-02｜MEP Load / Existing-System / Utility Assumption Register
+
+- **Parity dimension:** `ASSUMPTION_UNCERTAINTY`
+- **Stage refs:** `BSP-BRIEF`, `BSP-CONCEPT`, `BSP-SPATIAL`, `BSP-TECHNICAL`
+- **Professional purpose:** Keep consequential demand, diversity, existing-system, utility, occupancy, weather and control assumptions explicit with validation paths.
+- **Native source of truth:** Calculations/models + utility/existing-system evidence + operational brief.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Utility provider; Operations/FM; Architecture; Specialist vendors
+- **Revision identity:** assumption_id + source/calculation revision
+- **Required record fields:** `assumption_id`, `system`, `parameter`, `value_or_range`, `source`, `confidence_or_limit`, `diversity_or_coincidence_basis`, `affected_calcs_equipment`, `validation_needed`, `owner`, `status`, `reopen_trigger`
+- **Release / retention rule:** Assumptions may support bounded design only when their consequence and validation need are visible; missing measured data never defaults to fact.
+- **Required readback:**
+  - assumption ↔ calculation trace
+  - sensitivity check for high-consequence assumptions
+  - measured/field data comparison when available
+- **Failure / HOLD conditions:**
+  - default diversity used without basis
+  - existing plant capacity inferred
+  - weather/occupancy mismatch
+  - changed control sequence leaves load calc current
+- **Reopen triggers:**
+  - measured data
+  - utility confirmation
+  - occupancy/program change
+  - equipment/control change
+- **Downstream handoffs:** all downstream equipment/system sizing and controls
+- **Independent review:** Independent review samples the assumptions driving major plant/capacity/resilience decisions.
+- **Does not prove:** measured operational performance; utility approval
+
+### MEP-OBJ-03｜System Topology / Plant / Resilience Option Study
+
+- **Parity dimension:** `OPTION_COMPARISON`
+- **Stage refs:** `BSP-CONCEPT`
+- **Professional purpose:** Compare materially different system topologies, plant concepts, distribution, resilience and control strategies under the same performance basis.
+- **Native source of truth:** Editable schematics/calculations/space-impact diagrams tied to common BBSD baseline.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Architecture; Structural; Cost; Operations/FM; Fire/Life Safety
+- **Revision identity:** option_id + common basis revision + option model/schematic revision
+- **Required record fields:** `option_id`, `system_track`, `topology`, `plant_strategy`, `distribution_strategy`, `resilience_redundancy`, `controls_strategy`, `space_access_implications`, `energy_water_carbon_implications`, `capital_maintenance_implications`, `failure_modes`, `dependencies`, `retained_rejected_reason`, `required_test`
+- **Release / retention rule:** Do not select from single design-point efficiency or vendor preference; whole-system operation/failure/maintenance consequences remain visible.
+- **Required readback:**
+  - schematic/topology readback
+  - load/energy order-of-magnitude comparison
+  - space/access fit-back
+  - failure/degraded-state comparison
+- **Failure / HOLD conditions:**
+  - equipment-size variants called different concepts
+  - distribution/access omitted
+  - controls/failure state omitted
+  - different assumptions across options
+- **Reopen triggers:**
+  - load/brief change
+  - space/plantroom change
+  - utility change
+  - equipment market/procurement change
+  - resilience requirement change
+- **Downstream handoffs:** BSP-SPATIAL; Architecture; Operations/FM
+- **Independent review:** Independent review challenges system topology and failure/maintenance consequences, not only calculated efficiency.
+- **Does not prove:** final sizing; commissioning PASS; measured performance
+
+### MEP-OBJ-04｜Controlled MEP Calculation / Schematic / Coordination Package
+
+- **Parity dimension:** `NATIVE_WORK`
+- **Stage refs:** `BSP-SPATIAL`, `BSP-TECHNICAL`
+- **Professional purpose:** Carry engineering intent through calculations, schematics, coordinated models/drawings, equipment schedules and controls sequences with one revision identity.
+- **Native source of truth:** Owner-native MEP calculation/model/schematic/BIM/CAD/specification sources.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** BIM/CAD; Controls; Architecture; Structural; Fire protection specialist
+- **Revision identity:** package_id + exact native calculation/schematic/model revision
+- **Required record fields:** `package_id`, `system_track`, `calculation_refs`, `schematic_refs`, `model_drawing_refs`, `equipment_schedule_refs`, `controls_sequence_refs`, `points_io_refs`, `builder_work_refs`, `access_clearance_refs`, `interfaces`, `revision`, `author`, `checker`, `issue_status`
+- **Release / retention rule:** Downstream use requires calculation/schematic/model/schedule/sequence consistency; exports do not replace native source.
+- **Required readback:**
+  - calc ↔ schedule sizing trace
+  - schematic ↔ coordinated model trace
+  - access/maintenance clearance readback
+  - controls sequence ↔ points/interface readback
+- **Failure / HOLD conditions:**
+  - equipment schedule diverges from calc
+  - schematic/model mismatch
+  - access shown but not physically possible
+  - controls sequence absent or inconsistent
+- **Reopen triggers:**
+  - equipment/system/control change
+  - architecture/structure change
+  - utility change
+  - RFI/substitution
+- **Downstream handoffs:** specialist production information; procurement; commissioning
+- **Independent review:** Independent technical review on representative critical systems/configurations.
+- **Does not prove:** installation conformity; commissioned performance; statutory approval
+
+### MEP-OBJ-05｜Equipment / System Submittal / Substitution / Access Release Register
+
+- **Parity dimension:** `RELEASE_CONTROL`
+- **Stage refs:** `BSP-TECHNICAL`, `BSP-PRODUCTION`
+- **Professional purpose:** Control release of equipment, packaged systems, builder's work, access and substitutions against exact performance/interface requirements.
+- **Native source of truth:** Current MEP design package + manufacturer/submittal/shop drawing evidence.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Vendor/Specialist; Architecture; Structural; Controls; Procurement
+- **Revision identity:** release_id + design requirement revision + submitted revision
+- **Required record fields:** `release_id`, `system_equipment_tag`, `design_requirement_ref`, `submitted_product_system`, `revision`, `performance_attributes`, `dimensions_weights_services`, `controls_protocol`, `access_maintenance`, `builder_work_interface`, `deviations`, `review_disposition`, `conditions`, `release_authority`, `supersedes`
+- **Release / retention rule:** Release only covers reviewed attributes and exact submission; substitution with changed controls/size/performance/access reopens affected calculations/coordination.
+- **Required readback:**
+  - submitted data ↔ design requirement comparison
+  - space/access fit-back
+  - controls/interface compatibility readback
+- **Failure / HOLD conditions:**
+  - 'equal' accepted by model number only
+  - changed dimensions not coordinated
+  - controls protocol ignored
+  - access requirement lost
+- **Reopen triggers:**
+  - substitution
+  - manufacturer revision
+  - RFI
+  - space/interface change
+  - control/electrical change
+- **Downstream handoffs:** procurement; installation; commissioning
+- **Independent review:** Distinct technical review where substitution affects critical performance, resilience, life safety or maintainability.
+- **Does not prove:** manufacturer quality; installation conformity; commissioning success
+
+### MEP-OBJ-06｜Inspection / Test / TAB / Commissioning Witness Matrix
+
+- **Parity dimension:** `IMPLEMENTATION_FIELD`
+- **Stage refs:** `BSP-CONSTRUCTION-CX`
+- **Professional purpose:** Bind installed configuration to inspection, pressure/electrical tests, TAB, functional performance, controls and commissioning evidence.
+- **Native source of truth:** Installed equipment/system identity + current commissioning/test plans + calibrated measurement evidence.
+- **Decision owner:** Building Services / MEP professional owner / Commissioning authority per appointment
+- **Contributor / specialist refs:** Contractor; Commissioning specialist; Controls; TAB; Client/Operations
+- **Revision identity:** test_id + exact installed configuration + test procedure revision + date
+- **Required record fields:** `test_id`, `system_tag`, `installed_configuration_ref`, `test_or_witness_type`, `preconditions`, `instrument_method`, `setpoints_sequence_state`, `expected_result`, `measured_result`, `acceptance_criterion`, `witness_reviewer`, `failure`, `corrective_action`, `retest_ref`, `final_disposition`
+- **Release / retention rule:** A PASS applies only to tested configuration/state; any equipment/control/setting change stales affected commissioning evidence.
+- **Required readback:**
+  - installed tag/serial/setting readback
+  - test method/instrument check
+  - failure→repair→retest chain
+- **Failure / HOLD conditions:**
+  - test without configuration identity
+  - design setpoint assumed measured
+  - failed test administratively waived
+  - changed controls not retested
+- **Reopen triggers:**
+  - equipment replacement
+  - control sequence/setpoint change
+  - balancing change
+  - field repair
+  - failed/contradictory test
+- **Downstream handoffs:** handover/O&M; Design-to-Operational Performance Register
+- **Independent review:** Independent witness/reviewer where commissioning plan, risk or contractual/statutory basis requires.
+- **Does not prove:** future performance; untested modes; whole-system operation outside tested conditions
+
+### MEP-OBJ-07｜O&M / Asset / Training / Seasonal Closeout Register
+
+- **Parity dimension:** `HANDOVER_INUSE`
+- **Stage refs:** `BSP-HANDOVER`, `BSP-INUSE`
+- **Professional purpose:** Transfer usable asset/configuration/control/maintenance information and track seasonal/fine-tuning performance against the accepted baseline.
+- **Native source of truth:** Accepted installed configuration + O&M/asset data + training + seasonal measurement evidence.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Operations/FM; Commissioning; Controls; Contractor; Client
+- **Revision identity:** closeout_id + installed/controls/record revision
+- **Required record fields:** `closeout_id`, `asset_system_tag`, `installed_identity`, `record_refs`, `O&M_refs`, `control_sequence_and_setpoints`, `maintenance_access`, `spares_consumables`, `training_record`, `seasonal_test_or_tuning_need`, `open_defects`, `measured_performance_ref`, `owner`, `closure_state`
+- **Release / retention rule:** Handover distinguishes design target, commissioned result and in-use measured performance; unresolved seasonal items remain open.
+- **Required readback:**
+  - asset ↔ installed identity
+  - controls/setpoint readback
+  - O&M/access usability
+  - seasonal performance comparison
+- **Failure / HOLD conditions:**
+  - design schedule used as asset register
+  - training not tied to system
+  - commissioning value called annual performance
+  - seasonal issues closed without test
+- **Reopen triggers:**
+  - seasonal test
+  - control override
+  - equipment replacement
+  - operational change
+  - measured underperformance
+- **Downstream handoffs:** Operations/FM; future recommissioning; G9 bounded learning
+- **Independent review:** Independent/commissioning review of closeout completeness and material unresolved performance issues.
+- **Does not prove:** future energy use; all operating scenarios; statutory compliance outside reviewed scope
+
+### MEP-OBJ-08｜MEP Technical / Commissioning Independent Review Record
+
+- **Parity dimension:** `INDEPENDENT_REVIEW`
+- **Stage refs:** `BSP-BRIEF`, `BSP-TECHNICAL`, `BSP-CONSTRUCTION-CX`, `BSP-HANDOVER`
+- **Professional purpose:** Independently challenge critical system sizing/topology/controls/commissioning evidence on exact configurations.
+- **Native source of truth:** Current design/installed/test baseline + declared review scope.
+- **Decision owner:** Independent MEP / Commissioning reviewer
+- **Contributor / specialist refs:** Discipline specialist; Controls; Operations/FM
+- **Revision identity:** review_id + exact reviewed design/installed configuration revision
+- **Required record fields:** `review_id`, `system_scope`, `baseline_configuration`, `reviewer_role_independence`, `critical_calcs_or_schematics`, `control_sequences`, `failure_modes`, `commissioning_evidence`, `findings`, `severity`, `repair`, `retest`, `verdict`, `claim_ceiling`
+- **Release / retention rule:** Review stales when affected equipment/topology/control/setting/configuration changes.
+- **Required readback:**
+  - critical calc/schematic attack
+  - controls failure/degraded-state review
+  - commissioning evidence readback
+- **Failure / HOLD conditions:**
+  - review on generic design only
+  - tested configuration unspecified
+  - failed mode omitted
+  - post-review substitution ignored
+- **Reopen triggers:**
+  - equipment/topology/control/setting change
+  - new test failure
+  - operational evidence contradiction
+- **Downstream handoffs:** professional receipt; handover
+- **Independent review:** Reviewer must be independent/distinct to the level required by risk, appointment, regulation or commissioning plan.
+- **Does not prove:** Design KEEP; utility/statutory approval; future operation
+
+### MEP-OBJ-09｜MEP Field / Configuration Change & Retest Ledger
+
+- **Parity dimension:** `CHANGE_PROPAGATION`
+- **Stage refs:** `CROSS_STAGE`
+- **Professional purpose:** Propagate equipment, routing, control, setpoint, utility and field changes to calculations, schematics, coordination, submittals and commissioning evidence.
+- **Native source of truth:** Controlled change/RFI/defect event + dependency links from MEP design and installed configuration.
+- **Decision owner:** Building Services / MEP professional owner
+- **Contributor / specialist refs:** Controls; Commissioning; Architecture; Structural; Operations/FM; Contractor
+- **Revision identity:** change_id + source/installed configuration revision
+- **Required record fields:** `change_id`, `system_tag`, `trigger`, `old_configuration`, `new_configuration`, `affected_calculations`, `affected_schematics_models`, `affected_equipment_schedules`, `affected_controls`, `affected_interfaces`, `affected_tests_cx`, `affected_O&M_assets`, `owner`, `required_retest`, `closure`
+- **Release / retention rule:** Change closes only after affected design sources and commissioning/operational evidence are updated or explicitly retained.
+- **Required readback:**
+  - impact trace
+  - updated calc/schematic readback
+  - retest/recommissioning readback
+- **Failure / HOLD conditions:**
+  - field change only in RFI
+  - commissioning kept current after configuration change
+  - asset/O&M not updated
+  - control change not retested
+- **Reopen triggers:**
+  - any material equipment/system/control/routing/setpoint/utility change
+- **Downstream handoffs:** all affected MEP stages and cross-disciplinary interfaces
+- **Independent review:** Independent/commissioning re-review when changed scope affects prior critical review/test basis.
+- **Does not prove:** unaffected scope invalidation; automatic operational PASS
+
+The practitioner-object layer does not change this domain's Current/Candidate authority status and does not by itself prove project execution or professional PASS.
