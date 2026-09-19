@@ -242,6 +242,35 @@ Before issue:
 Track:
 `OBJECT/SYSTEM → AS-BUILT/RECORD REF → WARRANTY → O&M/CARE → CLEANING → SPARES → KEY/ACCESS/CONTROL → TRAINING → DEFECT/PUNCH STATUS → ASSET TAG/DATA → OWNER/FM ACCEPTANCE → OPEN ITEM`.
 
+### 5.14A Professional Object Identity / Revision / Release Register
+
+Every consequential Interior object that can be released, coordinated, procured, fabricated, installed, handed over or reopened must resolve a stable professional-object record.
+
+Minimum carrier:
+
+`OBJECT ID → OBJECT CLASS / LOCATION → CURRENT REVISION / CONFIGURATION → NATIVE SOURCE REF → PRODUCT / MATERIAL / FABRICATION IDENTITY → RESPONSIBLE OWNER → INTERFACE REFS → RELEASE STATE → ACTUAL READBACK REF → OPEN ITEM / REOPEN TRIGGER`.
+
+Apply as relevant to:
+- room / zone;
+- RCP zone;
+- door / opening / hardware set;
+- finish;
+- joinery / millwork;
+- FF&E / equipment;
+- detail;
+- submittal / mockup / sample;
+- installed / closeout item.
+
+Rules:
+1. A tag without revision/configuration identity is insufficient when later drawings, schedules, specifications, product data or field records may diverge.
+2. `CURRENT` means one resolved owner-native revision/configuration for the bounded object, not “latest file seen”.
+3. Release state must identify who is releasing what and to which claim boundary; `APPROVED` as unscoped prose is insufficient.
+4. Actual readback must bind the same object identity/revision/configuration that was released or explicitly record the observed deviation.
+5. A product/material/fabrication substitution creates a successor configuration; it does not silently inherit the prior release/readback.
+6. Changed owner, governing source, revision, configuration, installed identity or interface condition reopens affected consumers.
+
+This register does not create a new state system. It compiles existing Current / supersession / release / readback semantics at Interior professional-object level.
+
 ### 5.15 Interior Technical Thread Set
 
 Across stages preserve these continuous threads:

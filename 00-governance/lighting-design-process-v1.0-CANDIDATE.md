@@ -784,12 +784,16 @@ At the applicable stage, resolve the object chain below instead of closing on a 
 | Photometric model | geometry + photometric file + mounting/aiming + surfaces + calculation/view planes + state + maintenance basis |
 | Luminaire | tag + optic/distribution + output/driver/color/control + mounting/aiming + access + file/product identity |
 | Control group/scene | tag/group/address + trigger + sequence + override/failsafe + interface + acceptance test |
+| Temporal-light quality | material risk/use/camera condition + governing criterion/source + driver/control state + dimming/output + measurement/observation method + limitation |
+| Control network/interface | protocol/topology/gateway/remote-access/firmware-or-config identity + interoperability dependency + Controls/IT/Cybersecurity owner + failure/degraded state + acceptance handoff |
 | Lighting plan/RCP | tag/location/orientation/aiming + ceiling/site relation + electrical/control mapping + coordination state |
 | Detail | luminaire/trim/recess/cove/graze/mounting + heat/access + structure/ceiling/finish/service interfaces |
 | Mockup | exact product/optic/geometry/material/control/daylight state + observation/measurement + limitation |
 | Submittal | governing current + deviations + critical-attribute comparison + recalculation/remockup need + disposition |
 | Aiming | installed tag/location + target + final setting + observed conflict + scene/output + reviewer/date |
 | Commissioning criterion | criterion/source/state/test/expected/actual/result/repair/retest/final config |
+| Measurement set | instrument ID + calibration/status + method + location/plane/view + time/state + sampling/repeatability + uncertainty/limits + raw/derived result ref |
+| Commissioned baseline | final luminaire/optic/driver/control/address/firmware-or-config/scene/aim/sensor identity + accepted deviations + final settings + date/reviewer + baseline digest/ref |
 | Handover asset | installed identity + driver/control/address + O&M/warranty + spare/equivalence + final setting/config |
 | In-use finding | exact configuration/context + observation + causal uncertainty + repair/tuning + retest |
 
@@ -879,6 +883,10 @@ Reject / REVISE / HOLD when applicable:
 20. A replacement source/luminaire fits physically but changes distribution/color/control behavior without reopen.
 21. Lighting professional PASS is used as Electrical/Fire/Accessibility/Energy/Health certification.
 22. Stage-level completion lacks material decision-object/claim/native-output/readback binding for a new promotion-relevant claim.
+23. Temporal-light quality risk is material to user/task/camera/display conditions but is represented only by driver marketing text or a generic “flicker-free” claim with no governing criterion, exact dimming/control state, method or limitation.
+24. A networked lighting-control protocol or gateway is treated as interoperable/secure because devices connect, while firmware/configuration identity, remote-access path, protocol dependency, failure state or Controls/IT/Cybersecurity ownership is unresolved.
+25. Field measurements are reported without instrument identity, calibration/status, method, location/plane/view, state/time or uncertainty/repeatability sufficient for the claim.
+26. Post-occupancy tuning/replacement is compared to memory or a generic design intent rather than an exact commissioned baseline/final-configuration manifest.
 
 ---
 

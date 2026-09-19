@@ -962,13 +962,16 @@
         "acceptance-test intent",
         "Control Intent / Sequence Register",
         "luminaire/group/address/scene mapping",
-        "control acceptance-test matrix"
+        "control acceptance-test matrix",
+        "Temporal Light Quality / Driver-Control State Record when material",
+        "Control Network / Interoperability / Cybersecurity Handoff Record when networked controls are material"
       ],
       "interface_requirements": [
         "MEP / Controls",
         "HCD / Operations",
         "Architecture",
-        "Interior Design"
+        "Interior Design",
+        "IT / Cybersecurity when networked controls are material"
       ],
       "interface_binding_requirements": [
         {
@@ -1029,7 +1032,9 @@
         "read low-end dimming/temporal output for dropout/pop-on/stepping/hunting/color shift/recovery and camera/display banding/exposure/contrast where material",
         "read blind/shade and electric-lighting as coupled control state including arbitration/override/hysteresis/restart/conflicting commands and emergency/shared-state non-interference",
         "group/address/trigger/override/failsafe/sequence consistency",
-        "degraded/restart/simultaneous-input behavior readback where material"
+        "degraded/restart/simultaneous-input behavior readback where material",
+        "temporal-light quality readback binds the material user/task/camera/display condition to governing criterion/source, exact driver/control/dimming/output configuration, method and limitation; no universal metric threshold is invented",
+        "networked controls readback binds protocol/topology/gateway/remote-access/firmware-or-config identity, interoperability dependency and failure/degraded state while Controls/IT/Cybersecurity acceptance remains owner-native"
       ],
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -1047,6 +1052,7 @@
       "claim_ceiling": "LIGHTING_CONTROLS_DEFINED",
       "does_not_prove": [
         "BMS/software correctness",
+        "controls cybersecurity or IT approval",
         "energy-code compliance",
         "user satisfaction"
       ],
@@ -1804,7 +1810,9 @@
         "Commissioning Criterion / Result / Compliance Matrix",
         "measurement / performance-verification evidence",
         "defect / reprogram / re-aim / retest register",
+        "Measurement Instrument / Method / Calibration / Uncertainty Record",
         "final luminaire/product/optic/driver/control/aim configuration identity",
+        "Commissioned Baseline / Final Configuration Manifest",
         "handover / O&M / training evidence where in scope"
       ],
       "interface_requirements": [
@@ -1874,7 +1882,9 @@
         "criterion/source/state/test/expected/actual/result/retest readback",
         "final aiming/focusing identity and changed-setting capture",
         "installed product/driver/control/address ↔ final schedule/configuration readback",
-        "measurement method/location/instrument/state/configuration context"
+        "measurement method/location/instrument/state/configuration context",
+        "measurement record binds instrument identity, calibration/status, method, location/plane/view, time/state, sampling/repeatability and uncertainty/method limits appropriate to the claim",
+        "commissioned baseline binds final luminaire/optic/driver/control/address/firmware-or-config/scene/aim/sensor identity, accepted deviations and final settings before handover/in-use comparison"
       ],
       "professional_review_owner": "Lighting Design professional owner",
       "independent_review_requirement": "Independent Lighting Design professional/design/evidence review proportionate to the claim must attack unsupported assumptions, missing adverse states, wrong revision/configuration, owner leakage and presentation-only proof; specialist approvals remain owner-native.",
@@ -1887,7 +1897,9 @@
       "reopen_triggers": [
         "aim/output/control change",
         "site/material/furniture/planting change",
-        "measurement contradiction"
+        "measurement contradiction",
+        "measurement method/instrument calibration-status change material to the claim",
+        "commissioned baseline or final configuration identity change"
       ],
       "claim_ceiling": "LIGHTING_INSTALLED_READBACK",
       "does_not_prove": [
@@ -2041,6 +2053,7 @@
         "maintenance / access / cleaning register",
         "Maintenance / Replacement Equivalence Register",
         "installed asset / driver / control / address / warranty / spare references",
+        "Commissioned Baseline / Final Configuration Manifest reference",
         "post-occupancy lighting review",
         "tuning/change/retest record",
         "bounded G9 candidates"
@@ -2474,6 +2487,7 @@
       "criteria/source register",
       "Daylight Model Configuration Record",
       "Photometric Model Configuration Record",
+      "Temporal Light Quality / Driver-Control State Record when material",
       "assumption/uncertainty register"
     ],
     "option_comparison_objects": [
@@ -2492,15 +2506,19 @@
       "Luminaire / Optical / Product Register",
       "Luminaire Submittal / Substitution Release Register",
       "luminaire tag → electrical/control mapping",
+      "Control Network / Interoperability / Cybersecurity Handoff Record when material",
       "mockup/sample/calculation verification"
     ],
     "implementation_field_objects": [
       "Aiming / Focusing Record",
       "Commissioning Criterion / Result / Compliance Matrix",
+      "Measurement Instrument / Method / Calibration / Uncertainty Record",
+      "Commissioned Baseline / Final Configuration Manifest",
       "installed tag/driver/control/address/aim readback"
     ],
     "handover_inuse_objects": [
       "Maintenance / Replacement Equivalence Register",
+      "Commissioned Baseline / Final Configuration Manifest reference",
       "post-occupancy lighting review",
       "tuning/change records",
       "actual night readback"
@@ -2532,6 +2550,8 @@
       "electrical/control interface gate when implemented behavior is claimed",
       "fire/emergency-lighting gate when triggered",
       "field aiming/commissioning/measurement gate for installed-performance claims",
+      "measurement instrument/method/calibration/uncertainty gate when quantitative field evidence is material",
+      "Controls/IT/Cybersecurity handoff gate when networked control interoperability/security is material",
       "replacement equivalence gate when maintained-performance claims are made"
     ],
     "independent_review": "Attack generic checklist completion, presentation-only proof, source/revision mismatch, unresolved adverse states, hidden maintenance/construction conditions, owner leakage and project-evidence overgeneralization in Lighting Design.",
@@ -2585,7 +2605,11 @@
       "submittal/substitution/product identity change",
       "installed aiming/focusing change",
       "commissioning result or retest contradiction",
-      "maintenance/replacement product/configuration change"
+      "maintenance/replacement product/configuration change",
+      "temporal-light criterion/driver/control state change",
+      "network/protocol/gateway/firmware-or-config/interoperability change",
+      "measurement method/instrument calibration-status change",
+      "commissioned baseline/final configuration identity change"
     ],
     "stale_scope_rules": [
       "only affected stages/interfaces/evidence become stale unless dependency graph shows wider consequence",
