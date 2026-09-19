@@ -1,0 +1,136 @@
+{
+  "schema_version": "c01-interior-adoption-receipt/0.1",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "object_id": "C01-N02-DAGONG-HALL-LEARNING-MODE",
+  "process_id": "OLEANDER-INTERIOR-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "state": "CANDIDATE PROCESS PROJECT REAPPLICATION / BLOCKED-HOLD / NOT CURRENT / NO PROMOTION",
+  "lineage": {
+    "historical_source_branch": "agent/interior-remote-proxy-exercise-20260919",
+    "historical_branch_merged_directly": false,
+    "carry_forward_rule": "Only reviewed project artifacts and bounded Candidate maturity delta were carried onto the latest main successor; no old branch state/promotion claim was inherited.",
+    "successor_branch": "agent/interior-remote-proxy-adoption-successor-20260919"
+  },
+  "bindings": [
+    {
+      "path": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+      "blob_sha": "713f92f7c07a3ec306d31c07b1fd5b68b64e278e",
+      "role": "CANDIDATE_PROCESS_PROSE"
+    },
+    {
+      "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
+      "blob_sha": "181225c5da91f6eb49ce0e635d76624da372e953",
+      "role": "MACHINE_PROCESS_DEFINITION"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+      "blob_sha": "43da954cd24f200baa07bcd5db65ab6e9774c0de",
+      "role": "CURRENT_PROJECT_DESIGN_OBJECT_BASIS"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_INTERIOR_EXISTING_CONDITION_PROXY_REGISTER_v0.1.csv",
+      "blob_sha": "8bcc81969e40c80839fb5f9ab5202501ead313cc",
+      "role": "PROJECT_EXISTING_CONDITION_PROXY_REGISTER"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_INTERIOR_DAGONGHALL_SPATIAL_ENVELOPE_v0.1.svg",
+      "blob_sha": "1f158fc6701d2c28923753697842e29c4647d389",
+      "role": "EDITABLE_PROJECT_SPATIAL_ENVELOPE_CARRIER"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_INTERIOR_REMOTE_PROXY_READBACK_v0.1.json",
+      "blob_sha": "3e114b8b9c75a08de4db5687f2c7f5c42cd47bd0",
+      "role": "PROJECT_REMOTE_PROXY_READBACK"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "5e2526c7f3f00cbb7420be46fb25b2f1fc19e796",
+      "role": "INTERIOR_DOMAIN_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_validate_interior_proxy_exercise_v0_1.py",
+      "blob_sha": "6757b527b45acd184e86bc4f444422facf8c1cb8",
+      "role": "PROJECT_EXERCISE_CONSISTENCY_VALIDATOR"
+    },
+    {
+      "path": "oleander-skills/training/2026-09-18_interior-professional-process-digestion.md",
+      "blob_sha": "7d472785c3ed7bce690882e5c3d602e5ed590d63",
+      "role": "PROFESSIONAL_PROCESS_AND_REAPPLICATION_PROVENANCE"
+    }
+  ],
+  "source_evidence": {
+    "public_sources": 3,
+    "proxy_variables": 10,
+    "evidence_classes": [
+      "PUBLISHED_CONTEXT",
+      "PUBLISHED_RECENT_DESCRIPTION",
+      "MULTI_SOURCE_RELATION",
+      "QUALITATIVE_OBSERVATION",
+      "TEMPORALLY_WEAKER_RELATION",
+      "NOT_EVIDENCED"
+    ],
+    "hard_unknowns": [
+      "INT-PV-08 RCP/services = UNKNOWN / NOT_EVIDENCED",
+      "INT-PV-09 floor/threshold/accessibility = UNKNOWN / NOT_EVIDENCED",
+      "INT-PV-10 fire/egress capacity = UNKNOWN / NOT_EVIDENCED"
+    ],
+    "evidence_rule": "Every proxy retains allowed use, forbidden use and replacement evidence. Published approximate values are not converted into measured room/technical geometry."
+  },
+  "project_exercise": {
+    "counted": true,
+    "why": "The exercise is bound to a real C01 decision object, uses real project/public evidence, produces project-specific editable and machine-readable native carriers, and exercises a justified professional HOLD rather than fabricating missing technical evidence.",
+    "stage_results": {
+      "ID-PW0": "CURRENT / HOLD / strategic support",
+      "ID-PW1": "CURRENT / HOLD / preparation+brief support",
+      "ID-PW2": "CURRENT / HOLD / concept support",
+      "ID-PW3": "BLOCKED / HOLD / no spatial coordination PASS",
+      "ID-PW4": "BLOCKED / HOLD / no technical design PASS",
+      "ID-PW5": "NOT_STARTED / NOT_RUN",
+      "ID-PW6": "NOT_STARTED / NOT_RUN",
+      "ID-PW7": "NOT_STARTED / NOT_RUN"
+    }
+  },
+  "non_success_path": {
+    "exercised": true,
+    "blockers": [
+      "no measured current room geometry",
+      "no coordinated RCP/services",
+      "no fire/egress geometry or capacity",
+      "no accessibility geometry",
+      "no finish/substrate/transition technical evidence",
+      "no door/hardware coordination",
+      "no joinery/support/service detail",
+      "no Fire/Accessibility/MEP product/interface closure"
+    ],
+    "consequence": "ID-PW3 and ID-PW4 remain BLOCKED/HOLD and cannot be bypassed by the proxy envelope."
+  },
+  "cross_professional_interfaces": {
+    "material_interfaces_identified": [
+      "Architecture/Heritage",
+      "MEP",
+      "Fire/Life Safety",
+      "Accessibility",
+      "Lighting",
+      "FF&E/Operations"
+    ],
+    "exercised_to_acceptance": false,
+    "result": "OPEN / NOT ACCEPTED",
+    "reason": "The exercise identifies what must be coordinated but has no current measured/consultant evidence to close those interfaces."
+  },
+  "independent_professional_review": "NOT_RUN",
+  "field_reality_gate": "NOT_RUN",
+  "validation_plan": {
+    "professional_domain_validator": "00-governance/schemas/validate_professional_domain_process.py",
+    "project_consistency_validator": "05-cases/c01-yimai-guangdu/interior-remote-proxy-exercise/v0.1/C01_validate_interior_proxy_exercise_v0_1.py",
+    "ci_workflow": ".github/workflows/ai-governance-evals.yml",
+    "state": "PENDING_REAL_PR_CI"
+  },
+  "current_architecture_disposition": {
+    "interior_domain_process": "OPEN",
+    "changed_to_current": false,
+    "architecture_map_modified": false,
+    "reason": "Real bounded project use now exists, but ID-PW3/PW4 technical execution, material interfaces, field evidence and independent Interior professional review remain open."
+  },
+  "maturity": "CANDIDATE R-E PROCESS / REAL C01 BOUNDED PROJECT EXERCISE / PROXY→ALLOWED-FORBIDDEN-REPLACEMENT EVIDENCE CHAIN / ID-PW3+PW4 BLOCKED-HOLD / TECHNICAL+INTERFACE+FIELD EVIDENCE OPEN / NO INDEPENDENT INTERIOR REVIEW / NOT CURRENT / NO PROMOTION",
+  "claim_ceiling": "INTERIOR STRATEGIC + PREPARATION + CONCEPT PROJECT SUPPORT ONLY / NO SPATIAL COORDINATION PASS / NO TECHNICAL INTERIOR PASS / NO FIRE-ACCESSIBILITY-MEP PASS / NO FIELD PASS / NO PROMOTION"
+}
