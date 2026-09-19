@@ -73,6 +73,12 @@ jobs:
       - name: Validate Systems Engineering professional process candidate definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/systems-engineering-design-process.v1.candidate.json
 
+      - name: Validate C04 Systems Engineering candidate process HOLD instance
+        run: python 00-governance/schemas/validate_professional_domain_process.py 05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json
+
+      - name: Validate C04 Systems Engineering requirement/V&V trace
+        run: python 05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_validate_syseng_trace_v0_1.py
+
       - name: Validate Architecture professional source-stage map
         run: python 00-governance/schemas/validate_architecture_professional_source_stage_map.py
 

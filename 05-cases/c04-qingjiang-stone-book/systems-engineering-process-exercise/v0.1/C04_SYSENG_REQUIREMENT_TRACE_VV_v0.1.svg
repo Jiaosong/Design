@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="940" viewBox="0 0 1800 940">
+<style>
+.bg{fill:#f2efe7}.panel{fill:#fffdf8;stroke:#c8c4b8;stroke-width:1.2}.ink{fill:#1f2825}.muted{fill:#68716c}.ok{fill:#426f61}.hold{fill:#a05a43}.nr{fill:#7a6b57}.part{fill:#66758a}.line{stroke:#d5d0c4;stroke-width:1}.h1{font:700 32px Arial,sans-serif}.h2{font:700 15px Arial,sans-serif}.txt{font:400 14px Arial,sans-serif}.sm{font:400 12px Arial,sans-serif}.xs{font:700 11px Arial,sans-serif;letter-spacing:.8px}
+</style>
+<rect width="1800" height="940" class="bg"/>
+<text x="56" y="58" class="h1 ink">C04 · SYSTEMS ENGINEERING CANDIDATE · REQUIREMENT → VERIFICATION → VALIDATION</text>
+<text x="56" y="90" class="txt muted">Bounded adoption exercise · 6 requirements · verification ≠ validation · integrated interfaces remain open · no Systems Engineering PASS</text>
+<g transform="translate(56,128)">
+<rect width="1688" height="680" rx="14" class="panel"/>
+<text x="24" y="36" class="xs muted">REQUIREMENT</text>
+<text x="850" y="36" class="xs muted">VERIFICATION</text>
+<text x="1040" y="36" class="xs muted">VALIDATION</text>
+<text x="1230" y="36" class="xs muted">CONTROLLING INTERFACE / OWNER</text>
+<line x1="22" y1="116" x2="1690" y2="116" class="line"/>
+ <text x="24" y="92" class="h2 ink">SYSREQ-001</text>
+ <text x="170" y="92" class="txt ink">UNKNOWN fail-closed</text>
+ <text x="850" y="92" class="xs ok">PASS</text>
+ <text x="1040" y="92" class="xs nr">NOT_RUN</text>
+ <text x="1230" y="92" class="sm muted">Official status + HCD</text>
+<line x1="22" y1="202" x2="1690" y2="202" class="line"/>
+ <text x="24" y="178" class="h2 ink">SYSREQ-002</text>
+ <text x="170" y="178" class="txt ink">Digital not single point for route/safety/return</text>
+ <text x="850" y="178" class="xs hold">HOLD</text>
+ <text x="1040" y="178" class="xs nr">NOT_RUN</text>
+ <text x="1230" y="178" class="sm muted">Physical / Paper / Human / Field</text>
+<line x1="22" y1="288" x2="1690" y2="288" class="line"/>
+ <text x="24" y="264" class="h2 ink">SYSREQ-003</text>
+ <text x="170" y="264" class="txt ink">No pseudo-live status</text>
+ <text x="850" y="264" class="xs ok">PASS</text>
+ <text x="1040" y="264" class="xs part">N/A</text>
+ <text x="1230" y="264" class="sm muted">Official service interface</text>
+<line x1="22" y1="374" x2="1690" y2="374" class="line"/>
+ <text x="24" y="350" class="h2 ink">SYSREQ-004</text>
+ <text x="170" y="350" class="txt ink">Map remains relational / NTS</text>
+ <text x="850" y="350" class="xs ok">PASS</text>
+ <text x="1040" y="350" class="xs nr">NOT_RUN</text>
+ <text x="1230" y="350" class="sm muted">Survey / HCD interpretation</text>
+<line x1="22" y1="460" x2="1690" y2="460" class="line"/>
+ <text x="24" y="436" class="h2 ink">SYSREQ-005</text>
+ <text x="170" y="436" class="txt ink">My Book local-only prototype</text>
+ <text x="850" y="436" class="xs ok">PASS</text>
+ <text x="1040" y="436" class="xs nr">NOT_RUN</text>
+ <text x="1230" y="436" class="sm muted">Browser storage / Privacy</text>
+<line x1="22" y1="546" x2="1690" y2="546" class="line"/>
+ <text x="24" y="522" class="h2 ink">SYSREQ-006</text>
+ <text x="170" y="522" class="txt ink">Actual browser interaction verification</text>
+ <text x="850" y="522" class="xs hold">HOLD</text>
+ <text x="1040" y="522" class="xs nr">NOT_RUN</text>
+ <text x="1230" y="522" class="sm muted">Browser runtime / HCD</text>
+</g>
+<g transform="translate(56,830)">
+<rect width="1688" height="70" rx="12" fill="#fff4ec" stroke="#b97d68" stroke-width="1.2"/>
+<text x="20" y="27" class="xs hold">SYSTEM DISPOSITION · HOLD</text>
+<text x="20" y="50" class="txt ink">4/6 bounded verification PASS · 2/6 verification HOLD · 0 validation PASS · actual browser/runtime HOLD · physical/paper/human fallback not field verified.</text>
+</g>
+</svg>
