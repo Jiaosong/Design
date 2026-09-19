@@ -79,6 +79,9 @@ jobs:
       - name: Validate C04 Systems Engineering requirement/V&V trace
         run: python 05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_validate_syseng_trace_v0_1.py
 
+      - name: Validate open professional-domain adoption frontier
+        run: python 00-governance/runtime/validation/2026-09-19-open-professional-domain-adoption-frontier/validate_open_domain_adoption_frontier.py
+
       - name: Validate Architecture professional source-stage map
         run: python 00-governance/schemas/validate_architecture_professional_source_stage_map.py
 
