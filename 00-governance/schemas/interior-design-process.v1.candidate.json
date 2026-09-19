@@ -1506,6 +1506,616 @@
       "visual preference as professional approval",
       "same stage count as other domains",
       "field truth without site evidence"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "INT-OBJ-01",
+        "object_name": "Interior Brief / User–Activity–Experience Matrix",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "ID-PW0",
+          "ID-PW1",
+          "ID-PW2"
+        ],
+        "professional_purpose": "Translate users, activities, brand/experience, operational, accessibility and life-safety dependencies into room/interior design judgments.",
+        "native_source_of_truth": "Current project brief + user/operation evidence + Architecture room/space authority.",
+        "required_record_fields": [
+          "space_id",
+          "user_groups",
+          "activities",
+          "occupancy_and_duration",
+          "privacy_acoustic_visual_needs",
+          "storage_display_equipment",
+          "FF&E_roles",
+          "finish_performance",
+          "lighting_acoustic_MEP_dependencies",
+          "accessibility_life_safety_dependencies",
+          "experience_intent",
+          "owner",
+          "evidence_refs",
+          "open_items"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "HCD/User research where applicable",
+          "Accessibility",
+          "Acoustics",
+          "Lighting",
+          "MEP"
+        ],
+        "revision_identity": "space_id + brief revision + interior baseline",
+        "release_or_retention_rule": "Retain only where consequential activity/equipment/interface requirements are explicit; mood imagery cannot substitute for functional/performance brief.",
+        "required_readback": [
+          "brief ↔ plan/room data readback",
+          "representative activity/clearance simulation",
+          "critical user/interface scenario review"
+        ],
+        "failure_or_hold_conditions": [
+          "aesthetic concept without use requirements",
+          "FF&E/equipment omitted",
+          "accessibility/life-safety dependency inferred as closed"
+        ],
+        "reopen_triggers": [
+          "brief/user change",
+          "Architecture room change",
+          "equipment/FF&E change",
+          "code/accessibility/specialist input change"
+        ],
+        "downstream_handoffs": [
+          "ID-PW2 concept",
+          "ID-PW3 spatial coordination",
+          "Architecture",
+          "MEP",
+          "Lighting"
+        ],
+        "independent_review_requirement": "Independent interior review must attack representative high-use/high-risk rooms and the strongest functional-aesthetic conflict.",
+        "does_not_prove": [
+          "user research PASS",
+          "Architecture PASS",
+          "statutory approval"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-02",
+        "object_name": "Interior Material / Product / Sample Evidence & Assumption Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "ID-PW1",
+          "ID-PW2",
+          "ID-PW4",
+          "ID-PW5"
+        ],
+        "professional_purpose": "Keep finish, substrate, fire/slip/toxicity/durability/cleaning, product availability and sample assumptions traceable.",
+        "native_source_of_truth": "Manufacturer/product evidence + project performance requirements + sample/mockup evidence.",
+        "required_record_fields": [
+          "evidence_id",
+          "material_product_id",
+          "intended_location_use",
+          "performance_role",
+          "source_revision",
+          "substrate_system",
+          "fire_smoke_slip_hygiene_requirements",
+          "durability_cleaning",
+          "colour_texture_finish",
+          "sample_mockup_ref",
+          "availability_leadtime",
+          "assumptions",
+          "specialist_approval_needed",
+          "owner",
+          "status"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Fire specialist",
+          "Accessibility",
+          "Manufacturer",
+          "Procurement",
+          "Operations/FM"
+        ],
+        "revision_identity": "evidence_id + product/source/sample revision",
+        "release_or_retention_rule": "No finish/product may be treated approved from image/name only; consequential performance evidence and substrate/interface conditions remain explicit.",
+        "required_readback": [
+          "sample/product ↔ schedule/spec comparison",
+          "substrate/detail compatibility",
+          "cleaning/durability/maintenance readback"
+        ],
+        "failure_or_hold_conditions": [
+          "render texture used as product evidence",
+          "fire/slip/hygiene requirement missing",
+          "sample differs from specified system",
+          "discontinued product not propagated"
+        ],
+        "reopen_triggers": [
+          "product revision/discontinuation",
+          "sample rejection",
+          "substrate change",
+          "regulatory/performance requirement change"
+        ],
+        "downstream_handoffs": [
+          "Finish schedule",
+          "Joinery",
+          "Procurement",
+          "Site QA"
+        ],
+        "independent_review_requirement": "Independent/specialist review where product performance affects health/safety/accessibility or contractual acceptance.",
+        "does_not_prove": [
+          "manufacturer quality beyond evidence",
+          "installed workmanship",
+          "statutory approval"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-03",
+        "object_name": "Interior Concept / Room Strategy / FF&E Option Set",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "ID-PW2"
+        ],
+        "professional_purpose": "Compare materially different spatial, FF&E, material, joinery and experience strategies before technical lock.",
+        "native_source_of_truth": "Matched-fidelity interior plans/sections/elevations/FF&E and material strategy artifacts.",
+        "required_record_fields": [
+          "option_id",
+          "space_or_zone",
+          "concept_family",
+          "spatial_layout",
+          "FF&E_strategy",
+          "storage_joinery_strategy",
+          "material_finish_strategy",
+          "ceiling_lighting_relation",
+          "acoustic_privacy_relation",
+          "maintenance_procurement_implication",
+          "critical_tradeoffs",
+          "retained_rejected_reason",
+          "required_mockup_or_test"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Lighting",
+          "Acoustics",
+          "MEP",
+          "Cost/Procurement"
+        ],
+        "revision_identity": "option_id + common room/brief baseline + option artifact revision",
+        "release_or_retention_rule": "Do not count colour/material variants alone as concept families; compare use, circulation, storage, service, maintenance and procurement consequences.",
+        "required_readback": [
+          "matched plan/elevation/room comparison",
+          "critical body/clearance/use scenario",
+          "material/lighting/acoustic consequence review"
+        ],
+        "failure_or_hold_conditions": [
+          "render-only selection",
+          "same layout with palette changes called alternatives",
+          "FF&E/maintenance/procurement omitted"
+        ],
+        "reopen_triggers": [
+          "room/brief change",
+          "budget/procurement change",
+          "Architecture/MEP/Lighting change",
+          "sample/mockup contradiction"
+        ],
+        "downstream_handoffs": [
+          "ID-PW3 coordination",
+          "Architecture",
+          "Lighting",
+          "Procurement"
+        ],
+        "independent_review_requirement": "Independent review must challenge the selected concept against strongest rejected spatial/material strategy.",
+        "does_not_prove": [
+          "technical detail PASS",
+          "procurement approval",
+          "installed experience"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-04",
+        "object_name": "Controlled Interior Room / RCP / Elevation / Finish / Joinery / FF&E Package",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "ID-PW3",
+          "ID-PW4"
+        ],
+        "professional_purpose": "Carry the actual interior design in coordinated editable room plans, RCPs, elevations, details, schedules and specifications.",
+        "native_source_of_truth": "Owner-native CAD/BIM/vector/model/schedule/specification sources designated Current for interior scope.",
+        "required_record_fields": [
+          "package_id",
+          "room_plan_refs",
+          "RCP_refs",
+          "elevation_refs",
+          "detail_joinery_refs",
+          "finish_schedule_ref",
+          "door_hardware_ref",
+          "FF&E_schedule_ref",
+          "equipment_refs",
+          "lighting_MEP_refs",
+          "dimensions_levels",
+          "revision",
+          "author",
+          "checker",
+          "issue_status"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Lighting",
+          "MEP",
+          "Joinery specialist",
+          "FF&E"
+        ],
+        "revision_identity": "package_id + exact native artifact revisions",
+        "release_or_retention_rule": "Room plan/RCP/elevation/detail/schedule/spec must remain coordinated; presentation boards cannot replace production sources.",
+        "required_readback": [
+          "plan↔elevation↔RCP consistency",
+          "finish/tag/schedule cross-check",
+          "joinery/FF&E clearance and services readback"
+        ],
+        "failure_or_hold_conditions": [
+          "finish tag mismatch",
+          "RCP service conflict",
+          "joinery detail not reflected in plan/elevation",
+          "FF&E schedule obsolete"
+        ],
+        "reopen_triggers": [
+          "room/ceiling/service change",
+          "product/finish change",
+          "joinery/FF&E change",
+          "field RFI"
+        ],
+        "downstream_handoffs": [
+          "Architecture",
+          "Lighting",
+          "MEP",
+          "Procurement",
+          "Construction"
+        ],
+        "independent_review_requirement": "Independent interior QA/QC on exact package/revision, sampling critical rooms/details/interfaces.",
+        "does_not_prove": [
+          "construction workmanship",
+          "MEP/Lighting professional PASS",
+          "field condition"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-05",
+        "object_name": "Interior Submittal / Sample / Mockup / Procurement Release Register",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "ID-PW4",
+          "ID-PW5"
+        ],
+        "professional_purpose": "Control release of finishes, furniture, joinery, doors/hardware, mockups and substitutions against design/performance/coordination requirements.",
+        "native_source_of_truth": "Current interior package + submitted product/shop drawing/sample/mockup/procurement evidence.",
+        "required_record_fields": [
+          "release_id",
+          "item_tag",
+          "category",
+          "design_requirement_ref",
+          "submitted_identity_revision",
+          "sample_mockup_ref",
+          "finish_colour_texture",
+          "performance_attributes",
+          "dimensions_interfaces",
+          "leadtime_availability",
+          "deviations",
+          "review_disposition",
+          "conditions",
+          "release_authority",
+          "supersedes"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Procurement",
+          "Vendor/Fabricator",
+          "Architecture",
+          "Lighting",
+          "MEP",
+          "Fire/Accessibility specialists"
+        ],
+        "revision_identity": "release_id + design requirement revision + submitted/sample revision",
+        "release_or_retention_rule": "Release applies to exact submitted identity and reviewed attributes; visual similarity alone never establishes equivalence.",
+        "required_readback": [
+          "submittal ↔ schedule/spec/detail comparison",
+          "sample/mockup readback",
+          "interface/clearance fit-back"
+        ],
+        "failure_or_hold_conditions": [
+          "substitution approved from image only",
+          "changed dimensions/hardware/services ignored",
+          "sample and delivered product differ",
+          "leadtime forces unreviewed replacement"
+        ],
+        "reopen_triggers": [
+          "substitution",
+          "vendor revision",
+          "mockup rejection",
+          "procurement change",
+          "interface change"
+        ],
+        "downstream_handoffs": [
+          "procurement",
+          "site installation",
+          "asset/closeout"
+        ],
+        "independent_review_requirement": "Distinct specialist review where fire, accessibility, electrical, structural or other specialist performance is material.",
+        "does_not_prove": [
+          "supplier quality",
+          "site workmanship",
+          "statutory compliance"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-06",
+        "object_name": "Interior Site QA / RFI / Defect / Installation Record",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "ID-PW5"
+        ],
+        "professional_purpose": "Bind site conditions, installation, defects, RFIs and accepted changes to exact interior design/source items.",
+        "native_source_of_truth": "Site observation + installed product identity + current issued interior information.",
+        "required_record_fields": [
+          "field_item_id",
+          "space_location",
+          "date",
+          "issued_ref_revision",
+          "observed_condition",
+          "installed_product_or_work",
+          "RFI_defect_nonconformity",
+          "evidence_refs",
+          "design_intent_consequence",
+          "disposition",
+          "revised_artifact_ref",
+          "repair_replacement",
+          "owner",
+          "closure_evidence"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Contractor",
+          "Joinery/Furniture supplier",
+          "Architecture",
+          "MEP",
+          "Lighting"
+        ],
+        "revision_identity": "field_item_id + space/location + issue revision + observation date",
+        "release_or_retention_rule": "Observation is bounded to observed scope; material site changes require source/schedule/detail update and recoordination.",
+        "required_readback": [
+          "installed product ↔ approved submittal/sample",
+          "critical joinery/finish/ceiling interface readback",
+          "defect repair/reinspection"
+        ],
+        "failure_or_hold_conditions": [
+          "photo used as universal site PASS",
+          "unapproved substitution installed",
+          "RFI disposition not incorporated",
+          "defect closed without reinspection"
+        ],
+        "reopen_triggers": [
+          "field condition",
+          "RFI",
+          "defect",
+          "substitution",
+          "service/ceiling/door change"
+        ],
+        "downstream_handoffs": [
+          "closeout",
+          "record interior package",
+          "Operations/FM"
+        ],
+        "independent_review_requirement": "Independent/specialist witness where critical mockup, safety/performance or contractual acceptance requires it.",
+        "does_not_prove": [
+          "unobserved work",
+          "concealed construction conformity",
+          "whole-project PASS"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-07",
+        "object_name": "Interior Closeout / Asset / Warranty / POE Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "ID-PW6",
+          "ID-PW7"
+        ],
+        "professional_purpose": "Transfer installed identities, warranties, maintenance and open defects, then bind post-occupancy observations to the actual room/configuration.",
+        "native_source_of_truth": "Accepted installed/record information + asset/warranty/O&M + bounded POE evidence.",
+        "required_record_fields": [
+          "closeout_id",
+          "space_or_asset",
+          "installed_identity",
+          "record_ref",
+          "warranty_ref",
+          "maintenance_cleaning",
+          "spares_replacement",
+          "open_defect",
+          "owner",
+          "closure_state",
+          "POE_question",
+          "observed_use_issue",
+          "cause_hypothesis",
+          "reopen_or_learning_disposition"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Operations/FM",
+          "Client",
+          "Supplier",
+          "Architecture"
+        ],
+        "revision_identity": "closeout_id + installed/record baseline",
+        "release_or_retention_rule": "Installed/accepted condition remains distinct from mature use satisfaction; POE findings remain room/user/time bounded.",
+        "required_readback": [
+          "asset/install identity check",
+          "open defect closure",
+          "maintenance usability",
+          "POE observation ↔ configuration"
+        ],
+        "failure_or_hold_conditions": [
+          "design schedule relabeled asset register",
+          "warranty/maintenance missing",
+          "one POE anecdote generalized",
+          "replacement breaks design/performance without review"
+        ],
+        "reopen_triggers": [
+          "defect recurrence",
+          "asset replacement",
+          "user/operation change",
+          "POE contradiction"
+        ],
+        "downstream_handoffs": [
+          "Operations/FM",
+          "future refurbishment",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent closeout/POE review where project scope/risk requires.",
+        "does_not_prove": [
+          "future user satisfaction",
+          "all installed workmanship",
+          "unobserved defects"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-08",
+        "object_name": "Interior QA/QC / Independent Professional Review Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "ID-PW3",
+          "ID-PW4",
+          "ID-PW5"
+        ],
+        "professional_purpose": "Attack room usability, plan/RCP/elevation/detail consistency, finish/product evidence and site release on exact revisions.",
+        "native_source_of_truth": "Controlled interior package + product/submittal/site evidence.",
+        "required_record_fields": [
+          "review_id",
+          "baseline_refs",
+          "reviewer_identity",
+          "scope",
+          "critical_rooms_details",
+          "clearance_accessibility_checks",
+          "RCP_service_checks",
+          "finish_substrate_checks",
+          "door_hardware_checks",
+          "joinery_FF&E_checks",
+          "findings",
+          "severity",
+          "repair",
+          "recheck",
+          "verdict"
+        ],
+        "decision_owner": "Independent Interior Design reviewer",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Lighting",
+          "MEP",
+          "Accessibility",
+          "Fire specialist as triggered"
+        ],
+        "revision_identity": "review_id + exact reviewed package revision",
+        "release_or_retention_rule": "Review expires for affected scope after material room/RCP/detail/product/site change.",
+        "required_readback": [
+          "exact package readback",
+          "strongest room/use conflict attack",
+          "sample/detail/site contradiction attack",
+          "repair/recheck"
+        ],
+        "failure_or_hold_conditions": [
+          "self-QA presented as independent",
+          "checklist without source revision",
+          "critical schedule/detail mismatch unresolved",
+          "review not reopened after substitution"
+        ],
+        "reopen_triggers": [
+          "room/RCP/detail/product/submittal/site change"
+        ],
+        "downstream_handoffs": [
+          "Interior professional receipt",
+          "Design Review"
+        ],
+        "independent_review_requirement": "Reviewer independence and specialist participation proportionate to safety/interface/procurement consequence.",
+        "does_not_prove": [
+          "Architecture/MEP/Lighting PASS",
+          "field conformity",
+          "Design KEEP"
+        ]
+      },
+      {
+        "object_id": "INT-OBJ-09",
+        "object_name": "Interior Change / Schedule / Procurement Impact Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate room, finish, RCP, joinery, FF&E, door/hardware, procurement and site changes across all affected native objects and reviews.",
+        "native_source_of_truth": "Controlled change/RFI/substitution event + dependency links across interior package/schedules/releases.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "changed_item_space",
+          "old_revision",
+          "new_revision",
+          "affected_room_plans",
+          "affected_RCP_elevations_details",
+          "affected_finish_door_FF&E_schedules",
+          "affected_specs",
+          "affected_submittals_orders",
+          "affected_interfaces",
+          "affected_reviews",
+          "owner",
+          "required_reissue",
+          "closure"
+        ],
+        "decision_owner": "Interior Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "MEP",
+          "Lighting",
+          "Procurement",
+          "Contractor",
+          "Operations/FM"
+        ],
+        "revision_identity": "change_id + source change revision",
+        "release_or_retention_rule": "Change closes only after affected drawings/schedules/specs/procurement/interface/review records are updated or explicitly retained.",
+        "required_readback": [
+          "cross-document impact trace",
+          "procurement/submittal status readback",
+          "post-change coordination/review"
+        ],
+        "failure_or_hold_conditions": [
+          "finish changed only in schedule",
+          "RCP not updated",
+          "ordered product conflict ignored",
+          "old sample/mockup review reused"
+        ],
+        "reopen_triggers": [
+          "any material room/product/finish/ceiling/joinery/FF&E/door/procurement/site change"
+        ],
+        "downstream_handoffs": [
+          "all affected Interior stages/interfaces"
+        ],
+        "independent_review_requirement": "Independent re-review when change affects prior critical QA/QC or specialist evidence.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic site acceptance"
+        ]
+      }
     ]
   },
   "assurance": {
