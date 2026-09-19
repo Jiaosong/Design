@@ -29,7 +29,7 @@ module.exports = defineConfig({
   ],
   webServer: {
     command: 'STATIC_ROOT=.. PORT=4174 node serve-static-root.mjs',
-    url: 'http://127.0.0.1:4174/05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html',
+    url: 'http://127.0.0.1:4174/05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html',
     reuseExistingServer: true,
     timeout: 30_000
   }
