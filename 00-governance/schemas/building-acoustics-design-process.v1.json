@@ -117,201 +117,526 @@
       "stage_id": "ACO-BASIS",
       "stage_name": "Use / Source-Receiver / Criteria / Verification Basis",
       "professional_question": "What acoustic outcome is in scope for which users/tasks, sources, receiving spaces and operating states under which method and acceptance basis?",
-      "entry_conditions": ["project and acoustic decision object identified"],
-      "required_inputs": ["building/room use and operation context", "current project/authority/source context"],
-      "knowledge_inputs": ["specialty/acoustics routing knowledge", "applicable acoustic standards and professional methods"],
+      "entry_conditions": [
+        "project and acoustic decision object identified"
+      ],
+      "required_inputs": [
+        "building/room use and operation context",
+        "current project/authority/source context"
+      ],
+      "knowledge_inputs": [
+        "specialty/acoustics routing knowledge",
+        "applicable acoustic standards and professional methods"
+      ],
       "knowledge_mount_requirement": "Consequential criteria, source and method claims require task/claim-scoped Operational Mount.",
-      "required_dd_dimensions": ["DD-01", "DD-05", "DD-12"],
-      "required_native_outputs": ["ACOUSTIC_SCOPE_AUTHORITY_REGISTER", "SOURCE_RECEIVER_TASK_MATRIX", "ACOUSTIC_CRITERIA_METHOD_REGISTER", "ACOUSTIC_VERIFICATION_PLAN"],
-      "interface_requirements": ["Architecture, Interior, MEP, Structure, Facade, FLS, FM and user/task interfaces identified"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACOUSTIC_SCOPE_AUTHORITY_REGISTER",
+        "SOURCE_RECEIVER_TASK_MATRIX",
+        "ACOUSTIC_CRITERIA_METHOD_REGISTER",
+        "ACOUSTIC_VERIFICATION_PLAN"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, MEP, Structure, Facade, FLS, FM and user/task interfaces identified"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["speech, privacy, rest, concentration, music, healthcare or other acoustic task consequences are explicit where relevant"],
-      "design_language_consequences": ["architectural/material intent is an input and cannot replace acoustic criteria/method evidence"],
-      "technical_consequences": ["metric, method, frequency/state assumptions and claim ceiling are explicit"],
-      "content_projection_requirements": ["distinguish code/client/specialist criteria, prediction basis and verification route"],
-      "required_readback": ["criteria/source-receiver/method basis readback", "open assumption/source list"],
+      "human_experience_consequences": [
+        "speech, privacy, rest, concentration, music, healthcare or other acoustic task consequences are explicit where relevant"
+      ],
+      "design_language_consequences": [
+        "architectural/material intent is an input and cannot replace acoustic criteria/method evidence"
+      ],
+      "technical_consequences": [
+        "metric, method, frequency/state assumptions and claim ceiling are explicit"
+      ],
+      "content_projection_requirements": [
+        "distinguish code/client/specialist criteria, prediction basis and verification route"
+      ],
+      "required_readback": [
+        "criteria/source-receiver/method basis readback",
+        "open assumption/source list"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent Professional Domain review required for promotion-relevant adoption.",
-      "open_items_allowed": ["later detailed assemblies, modeling and field verification may remain open if outside current claim"],
-      "exit_conditions": ["use/task/source-receiver basis, criteria/method and claim ceiling are explicit"],
-      "reopen_triggers": ["use/task, criteria, source, receiver, method or authority change"],
+      "open_items_allowed": [
+        "later detailed assemblies, modeling and field verification may remain open if outside current claim"
+      ],
+      "exit_conditions": [
+        "use/task/source-receiver basis, criteria/method and claim ceiling are explicit"
+      ],
+      "reopen_triggers": [
+        "use/task, criteria, source, receiver, method or authority change"
+      ],
       "claim_ceiling": "ACOUSTIC_BASIS_RESOLVED",
-      "does_not_prove": ["ROOM_ACOUSTIC_PASS", "SOUND_INSULATION_PASS", "FIELD_ACCEPTANCE"]
+      "does_not_prove": [
+        "ROOM_ACOUSTIC_PASS",
+        "SOUND_INSULATION_PASS",
+        "FIELD_ACCEPTANCE"
+      ]
     },
     {
       "stage_id": "ACO-ROOM",
       "stage_name": "Room Acoustics / Speech / Music / Spatial Sound Field",
       "professional_question": "Does the room-acoustic strategy support the declared task without reducing performance to one reverberation number or material absorption value?",
-      "entry_conditions": ["acoustic basis sufficiently resolved for affected rooms"],
-      "required_inputs": ["room geometry/volume", "source-receiver/task basis", "surface/system and occupancy assumptions"],
-      "knowledge_inputs": ["room-acoustic methods", "material/system acoustic evidence"],
+      "entry_conditions": [
+        "acoustic basis sufficiently resolved for affected rooms"
+      ],
+      "required_inputs": [
+        "room geometry/volume",
+        "source-receiver/task basis",
+        "surface/system and occupancy assumptions"
+      ],
+      "knowledge_inputs": [
+        "room-acoustic methods",
+        "material/system acoustic evidence"
+      ],
       "knowledge_mount_requirement": "Model methods, acoustic material/system data and consequential assumptions require Operational Mount.",
-      "required_dd_dimensions": ["DD-02", "DD-03", "DD-05", "DD-12"],
-      "required_native_outputs": ["ROOM_ACOUSTIC_STRATEGY", "SOURCE_RECEIVER_POSITION_MAP", "SURFACE_ACOUSTIC_ROLE_MAP", "ROOM_ACOUSTIC_MODEL_REGISTER"],
-      "interface_requirements": ["Architecture, Interior, MEP, Lighting/AV and occupancy assumptions coordinated"],
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ROOM_ACOUSTIC_STRATEGY",
+        "SOURCE_RECEIVER_POSITION_MAP",
+        "SURFACE_ACOUSTIC_ROLE_MAP",
+        "ROOM_ACOUSTIC_MODEL_REGISTER"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, MEP, Lighting/AV and occupancy assumptions coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["speech intelligibility, privacy, music, comfort or task-specific acoustic consequences are represented where in claim"],
-      "design_language_consequences": ["surface geometry/material intent is reconciled with acoustic role without treating appearance as acoustic proof"],
-      "technical_consequences": ["frequency dependence, spatial variation and occupancy/source-state assumptions remain explicit"],
-      "content_projection_requirements": ["show source/receiver/surface roles and distinguish model prediction from target and field evidence"],
-      "required_readback": ["representative room acoustic geometry/model input readback"],
+      "human_experience_consequences": [
+        "speech intelligibility, privacy, music, comfort or task-specific acoustic consequences are represented where in claim"
+      ],
+      "design_language_consequences": [
+        "surface geometry/material intent is reconciled with acoustic role without treating appearance as acoustic proof"
+      ],
+      "technical_consequences": [
+        "frequency dependence, spatial variation and occupancy/source-state assumptions remain explicit"
+      ],
+      "content_projection_requirements": [
+        "show source/receiver/surface roles and distinguish model prediction from target and field evidence"
+      ],
+      "required_readback": [
+        "representative room acoustic geometry/model input readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for adopted consequential acoustic-process claims.",
-      "open_items_allowed": ["field measurement may remain open if current claim is design/prediction only"],
-      "exit_conditions": ["room strategy is coherent for the declared task and claim ceiling"],
-      "reopen_triggers": ["room geometry, use, occupancy/furnishing, surface, opening, MEP or AV change"],
+      "open_items_allowed": [
+        "field measurement may remain open if current claim is design/prediction only"
+      ],
+      "exit_conditions": [
+        "room strategy is coherent for the declared task and claim ceiling"
+      ],
+      "reopen_triggers": [
+        "room geometry, use, occupancy/furnishing, surface, opening, MEP or AV change"
+      ],
       "claim_ceiling": "ROOM_ACOUSTIC_STRATEGY_COORDINATED",
-      "does_not_prove": ["FIELD_ROOM_ACOUSTIC_PASS", "UNIVERSAL_USER_OUTCOME", "WHOLE_BUILDING_PASS"]
+      "does_not_prove": [
+        "FIELD_ROOM_ACOUSTIC_PASS",
+        "UNIVERSAL_USER_OUTCOME",
+        "WHOLE_BUILDING_PASS"
+      ]
     },
     {
       "stage_id": "ACO-SEPARATION",
       "stage_name": "Airborne / Impact / Facade Separation / Flanking",
       "professional_question": "Is source-to-receiver separation resolved as a complete project assembly and junction system rather than isolated element ratings?",
-      "entry_conditions": ["source-receiver/separation requirements identified"],
-      "required_inputs": ["adjacency/source-receiver matrix", "current wall/floor/ceiling/door/glazing/facade geometry"],
-      "knowledge_inputs": ["sound-insulation methods", "laboratory/system evidence", "flanking-path evidence"],
+      "entry_conditions": [
+        "source-receiver/separation requirements identified"
+      ],
+      "required_inputs": [
+        "adjacency/source-receiver matrix",
+        "current wall/floor/ceiling/door/glazing/facade geometry"
+      ],
+      "knowledge_inputs": [
+        "sound-insulation methods",
+        "laboratory/system evidence",
+        "flanking-path evidence"
+      ],
       "knowledge_mount_requirement": "Ratings, lab evidence, field methods and project assembly data require exact-scope Operational Mount.",
-      "required_dd_dimensions": ["DD-03", "DD-08", "DD-12"],
-      "required_native_outputs": ["ACOUSTIC_SEPARATION_REQUIREMENT_MATRIX", "AIRBORNE_IMPACT_ASSEMBLY_REGISTER", "FLANKING_PATH_MAP", "OPENING_DOOR_GLAZING_PENETRATION_REGISTER"],
-      "interface_requirements": ["Architecture, Interior, Structure, Facade, MEP and FLS junction/penetration interfaces coordinated"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACOUSTIC_SEPARATION_REQUIREMENT_MATRIX",
+        "AIRBORNE_IMPACT_ASSEMBLY_REGISTER",
+        "FLANKING_PATH_MAP",
+        "OPENING_DOOR_GLAZING_PENETRATION_REGISTER"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, Structure, Facade, MEP and FLS junction/penetration interfaces coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["privacy, speech transfer, sleep/rest and activity interference consequences are identified where relevant"],
-      "design_language_consequences": ["doors/glazing/ceilings/partitions and visible junctions preserve required acoustic continuity"],
-      "technical_consequences": ["lab element rating, project assembly, flanking and field performance remain distinct"],
-      "content_projection_requirements": ["plans/details identify source-receiver pair, assembly and critical flanking/penetration routes"],
-      "required_readback": ["critical separation/flanking/junction readback"],
+      "human_experience_consequences": [
+        "privacy, speech transfer, sleep/rest and activity interference consequences are identified where relevant"
+      ],
+      "design_language_consequences": [
+        "doors/glazing/ceilings/partitions and visible junctions preserve required acoustic continuity"
+      ],
+      "technical_consequences": [
+        "lab element rating, project assembly, flanking and field performance remain distinct"
+      ],
+      "content_projection_requirements": [
+        "plans/details identify source-receiver pair, assembly and critical flanking/penetration routes"
+      ],
+      "required_readback": [
+        "critical separation/flanking/junction readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant adoption.",
-      "open_items_allowed": ["field sound-insulation measurement may remain later evidence if explicit"],
-      "exit_conditions": ["in-claim separation strategy has no unresolved critical path contradiction"],
-      "reopen_triggers": ["adjacency, partition/floor/ceiling, door/glazing, facade, penetration or junction change"],
+      "open_items_allowed": [
+        "field sound-insulation measurement may remain later evidence if explicit"
+      ],
+      "exit_conditions": [
+        "in-claim separation strategy has no unresolved critical path contradiction"
+      ],
+      "reopen_triggers": [
+        "adjacency, partition/floor/ceiling, door/glazing, facade, penetration or junction change"
+      ],
       "claim_ceiling": "ACOUSTIC_SEPARATION_COORDINATED",
-      "does_not_prove": ["FIELD_ISOLATION_PASS", "PRIVACY_GUARANTEED", "LAB_TO_FIELD_EQUIVALENCE"]
+      "does_not_prove": [
+        "FIELD_ISOLATION_PASS",
+        "PRIVACY_GUARANTEED",
+        "LAB_TO_FIELD_EQUIVALENCE"
+      ]
     },
     {
       "stage_id": "ACO-NOISEVIB",
       "stage_name": "Building Services Noise / Vibration / Structure-borne Interfaces",
       "professional_question": "Are equipment and service noise/vibration sources coordinated with criteria through traceable airborne, duct-borne and structure-borne paths?",
-      "entry_conditions": ["acoustic criteria and relevant equipment/service sources identified"],
-      "required_inputs": ["MEP/equipment source data and operating states", "room/structure/duct/pipe routing context"],
-      "knowledge_inputs": ["equipment acoustic data", "noise-control and vibration-isolation methods"],
+      "entry_conditions": [
+        "acoustic criteria and relevant equipment/service sources identified"
+      ],
+      "required_inputs": [
+        "MEP/equipment source data and operating states",
+        "room/structure/duct/pipe routing context"
+      ],
+      "knowledge_inputs": [
+        "equipment acoustic data",
+        "noise-control and vibration-isolation methods"
+      ],
       "knowledge_mount_requirement": "Equipment/source and isolation evidence requires exact operating/configuration Operational Mount.",
-      "required_dd_dimensions": ["DD-03", "DD-08", "DD-12"],
-      "required_native_outputs": ["MEP_ACOUSTIC_SOURCE_REGISTER", "NOISE_PATH_CONTROL_DIAGRAM", "VIBRATION_ISOLATION_INTERFACE_REGISTER", "BACKGROUND_NOISE_PREDICTION_READBACK"],
-      "interface_requirements": ["MEP and Structural ownership retained for equipment/system/support engineering"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "MEP_ACOUSTIC_SOURCE_REGISTER",
+        "NOISE_PATH_CONTROL_DIAGRAM",
+        "VIBRATION_ISOLATION_INTERFACE_REGISTER",
+        "BACKGROUND_NOISE_PREDICTION_READBACK"
+      ],
+      "interface_requirements": [
+        "MEP and Structural ownership retained for equipment/system/support engineering"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["background noise, tonality, intermittency and vibration consequences are represented where material"],
-      "design_language_consequences": ["noise-control elements are coordinated with spatial/ceiling/finish intent without hiding technical requirements"],
-      "technical_consequences": ["source, path, receiver, control state and operating condition remain traceable"],
-      "content_projection_requirements": ["identify source/path/receiver and open MEP/structural assumptions"],
-      "required_readback": ["critical plant/duct/pipe/isolation path readback"],
+      "human_experience_consequences": [
+        "background noise, tonality, intermittency and vibration consequences are represented where material"
+      ],
+      "design_language_consequences": [
+        "noise-control elements are coordinated with spatial/ceiling/finish intent without hiding technical requirements"
+      ],
+      "technical_consequences": [
+        "source, path, receiver, control state and operating condition remain traceable"
+      ],
+      "content_projection_requirements": [
+        "identify source/path/receiver and open MEP/structural assumptions"
+      ],
+      "required_readback": [
+        "critical plant/duct/pipe/isolation path readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for adopted acoustic process; MEP/Structural authority remains separate.",
-      "open_items_allowed": ["equipment selection/field operation verification may remain open if owned and claim bounded"],
-      "exit_conditions": ["in-claim noise/vibration acoustic interfaces are coordinated without hidden critical contradiction"],
-      "reopen_triggers": ["equipment/source, routing, operating mode, support, isolator, duct/pipe or terminal change"],
+      "open_items_allowed": [
+        "equipment selection/field operation verification may remain open if owned and claim bounded"
+      ],
+      "exit_conditions": [
+        "in-claim noise/vibration acoustic interfaces are coordinated without hidden critical contradiction"
+      ],
+      "reopen_triggers": [
+        "equipment/source, routing, operating mode, support, isolator, duct/pipe or terminal change"
+      ],
       "claim_ceiling": "ACOUSTIC_NOISE_VIBRATION_COORDINATED",
-      "does_not_prove": ["MEP_PASS", "STRUCTURAL_PASS", "FIELD_BACKGROUND_NOISE_PASS"]
+      "does_not_prove": [
+        "MEP_PASS",
+        "STRUCTURAL_PASS",
+        "FIELD_BACKGROUND_NOISE_PASS"
+      ]
     },
     {
       "stage_id": "ACO-DETAIL",
       "stage_name": "Critical Acoustic Assemblies / Junctions / Penetrations / Installation Detail",
       "professional_question": "Do representative critical details preserve acoustic performance through complete assemblies, junctions, penetrations, seals and buildability conditions?",
-      "entry_conditions": ["room/separation/noise-vibration strategy sufficiently defined"],
-      "required_inputs": ["current assemblies and junction geometry", "product/system and service-penetration conditions"],
-      "knowledge_inputs": ["acoustic system/product evidence", "installation and compatibility evidence"],
+      "entry_conditions": [
+        "room/separation/noise-vibration strategy sufficiently defined"
+      ],
+      "required_inputs": [
+        "current assemblies and junction geometry",
+        "product/system and service-penetration conditions"
+      ],
+      "knowledge_inputs": [
+        "acoustic system/product evidence",
+        "installation and compatibility evidence"
+      ],
       "knowledge_mount_requirement": "Consequential product/system/detail evidence requires exact-configuration Operational Mount.",
-      "required_dd_dimensions": ["DD-03", "DD-08", "DD-09", "DD-12"],
-      "required_native_outputs": ["CRITICAL_ACOUSTIC_DETAIL_SET", "ACOUSTIC_PRODUCT_SYSTEM_CONFIG_REGISTER", "PENETRATION_SEAL_CONTINUITY_REGISTER", "ACOUSTIC_TOLERANCE_INSTALLATION_REGISTER"],
-      "interface_requirements": ["Architecture, Interior, MEP, Structure, Facade and FLS detail interfaces coordinated"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-08",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "CRITICAL_ACOUSTIC_DETAIL_SET",
+        "ACOUSTIC_PRODUCT_SYSTEM_CONFIG_REGISTER",
+        "PENETRATION_SEAL_CONTINUITY_REGISTER",
+        "ACOUSTIC_TOLERANCE_INSTALLATION_REGISTER"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, MEP, Structure, Facade and FLS detail interfaces coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["operability/access and acoustic privacy/comfort consequences remain explicit"],
-      "design_language_consequences": ["visible joint/door/ceiling/material design intent is resolved at construction-readable acoustic detail level"],
-      "technical_consequences": ["gaps, seals, resilient layers, penetrations, junctions and workmanship dependencies are traceable"],
-      "content_projection_requirements": ["native/editable project details identify complete acoustic path and unresolved evidence"],
-      "required_readback": ["critical project acoustic detail and installation readback"],
+      "human_experience_consequences": [
+        "operability/access and acoustic privacy/comfort consequences remain explicit"
+      ],
+      "design_language_consequences": [
+        "visible joint/door/ceiling/material design intent is resolved at construction-readable acoustic detail level"
+      ],
+      "technical_consequences": [
+        "gaps, seals, resilient layers, penetrations, junctions and workmanship dependencies are traceable"
+      ],
+      "content_projection_requirements": [
+        "native/editable project details identify complete acoustic path and unresolved evidence"
+      ],
+      "required_readback": [
+        "critical project acoustic detail and installation readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant process adoption.",
-      "open_items_allowed": ["later construction inspection/field measurement may remain open if current claim is design detail only"],
-      "exit_conditions": ["critical in-claim details have no unresolved acoustic-path contradiction"],
-      "reopen_triggers": ["assembly, door/glazing, penetration, seal, finish, resilient layer, service or tolerance change"],
+      "open_items_allowed": [
+        "later construction inspection/field measurement may remain open if current claim is design detail only"
+      ],
+      "exit_conditions": [
+        "critical in-claim details have no unresolved acoustic-path contradiction"
+      ],
+      "reopen_triggers": [
+        "assembly, door/glazing, penetration, seal, finish, resilient layer, service or tolerance change"
+      ],
       "claim_ceiling": "ACOUSTIC_CRITICAL_DETAILS_COORDINATED",
-      "does_not_prove": ["INSTALLATION_PASS", "FIELD_ISOLATION_PASS", "WHOLE_SYSTEM_ACCEPTANCE"]
+      "does_not_prove": [
+        "INSTALLATION_PASS",
+        "FIELD_ISOLATION_PASS",
+        "WHOLE_SYSTEM_ACCEPTANCE"
+      ]
     },
     {
       "stage_id": "ACO-TEST",
       "stage_name": "Prediction / Mock-up / Field Measurement / Commissioning",
       "professional_question": "Does verification evidence actually measure or model the declared claim under a traceable method, state and configuration?",
-      "entry_conditions": ["verification claim, configuration and method are identified"],
-      "required_inputs": ["model/test/measurement plan", "room/system configuration", "acceptance basis"],
-      "knowledge_inputs": ["applicable measurement/model methods", "instrument/system evidence where relevant"],
+      "entry_conditions": [
+        "verification claim, configuration and method are identified"
+      ],
+      "required_inputs": [
+        "model/test/measurement plan",
+        "room/system configuration",
+        "acceptance basis"
+      ],
+      "knowledge_inputs": [
+        "applicable measurement/model methods",
+        "instrument/system evidence where relevant"
+      ],
       "knowledge_mount_requirement": "Methods, inputs, calibration/instrument and configuration evidence require task/claim-scoped Operational Mount.",
-      "required_dd_dimensions": ["DD-04", "DD-08", "DD-12"],
-      "required_native_outputs": ["ACOUSTIC_TEST_MEASUREMENT_PLAN", "MODEL_METHOD_INPUT_REGISTER", "SPECIMEN_ROOM_CONFIGURATION_IDENTITY", "MEASUREMENT_RESULT_REGISTER", "FAILURE_REPAIR_RETEST_LOG", "UNCERTAINTY_TRANSFER_LIMIT_REGISTER"],
-      "interface_requirements": ["affected room/MEP/structure/facade/interior states are frozen or recorded for verification"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACOUSTIC_TEST_MEASUREMENT_PLAN",
+        "MODEL_METHOD_INPUT_REGISTER",
+        "SPECIMEN_ROOM_CONFIGURATION_IDENTITY",
+        "MEASUREMENT_RESULT_REGISTER",
+        "FAILURE_REPAIR_RETEST_LOG",
+        "UNCERTAINTY_TRANSFER_LIMIT_REGISTER"
+      ],
+      "interface_requirements": [
+        "affected room/MEP/structure/facade/interior states are frozen or recorded for verification"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["measurement/model conditions are related to the intended occupied task without equating one with the other"],
-      "design_language_consequences": ["visual mock-up or presentation quality is not treated as acoustic verification"],
-      "technical_consequences": ["method/edition, state, positions, frequency treatment, corrections, uncertainty, failure/repair/retest and transfer limits remain traceable"],
-      "content_projection_requirements": ["results distinguish prediction, lab evidence, field measurement and occupied/in-use claims"],
-      "required_readback": ["method/configuration/result/failure/retest readback"],
+      "human_experience_consequences": [
+        "measurement/model conditions are related to the intended occupied task without equating one with the other"
+      ],
+      "design_language_consequences": [
+        "visual mock-up or presentation quality is not treated as acoustic verification"
+      ],
+      "technical_consequences": [
+        "method/edition, state, positions, frequency treatment, corrections, uncertainty, failure/repair/retest and transfer limits remain traceable"
+      ],
+      "content_projection_requirements": [
+        "results distinguish prediction, lab evidence, field measurement and occupied/in-use claims"
+      ],
+      "required_readback": [
+        "method/configuration/result/failure/retest readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for adopted process; test/measurement authority remains method/appointment specific.",
-      "open_items_allowed": ["production/whole-building/in-use performance remains outside sampled evidence unless separately verified"],
-      "exit_conditions": ["required verification has bounded result and method/configuration limitations are explicit"],
-      "reopen_triggers": ["method, configuration, room/equipment state, acceptance, repair or transfer assumption change"],
+      "open_items_allowed": [
+        "production/whole-building/in-use performance remains outside sampled evidence unless separately verified"
+      ],
+      "exit_conditions": [
+        "required verification has bounded result and method/configuration limitations are explicit"
+      ],
+      "reopen_triggers": [
+        "method, configuration, room/equipment state, acceptance, repair or transfer assumption change"
+      ],
       "claim_ceiling": "ACOUSTIC_VERIFICATION_EVIDENCE_BOUNDED",
-      "does_not_prove": ["WHOLE_BUILDING_PASS", "UNMEASURED_ROOM_PASS", "OCCUPIED_OUTCOME_GUARANTEED"]
+      "does_not_prove": [
+        "WHOLE_BUILDING_PASS",
+        "UNMEASURED_ROOM_PASS",
+        "OCCUPIED_OUTCOME_GUARANTEED"
+      ]
     },
     {
       "stage_id": "ACO-DELIVERY",
       "stage_name": "Submittal / Construction QA / Field Readback",
       "professional_question": "Does delivered construction preserve the acoustic assemblies and paths actually designed and reviewed?",
-      "entry_conditions": ["bounded acoustic design/verification basis exists for current delivery claim"],
-      "required_inputs": ["current acoustic design configuration", "submittal/site records", "inspection/test evidence"],
-      "knowledge_inputs": ["construction/system evidence", "project-specific product and inspection records"],
+      "entry_conditions": [
+        "bounded acoustic design/verification basis exists for current delivery claim"
+      ],
+      "required_inputs": [
+        "current acoustic design configuration",
+        "submittal/site records",
+        "inspection/test evidence"
+      ],
+      "knowledge_inputs": [
+        "construction/system evidence",
+        "project-specific product and inspection records"
+      ],
       "knowledge_mount_requirement": "Consequential submittal/product/site evidence requires exact-scope Operational Mount.",
-      "required_dd_dimensions": ["DD-04", "DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["ACOUSTIC_SUBMITTAL_CONFIG_REGISTER", "ACOUSTIC_SITE_QA_INSPECTION_REGISTER", "CONCEALED_ACOUSTIC_WORK_READBACK", "DEFECT_REPAIR_RETEST_REGISTER", "SUBSTITUTION_DEVIATION_REGISTER"],
-      "interface_requirements": ["Architecture, Interior, MEP, Structure, Facade and FLS changes reconciled through R-F"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACOUSTIC_SUBMITTAL_CONFIG_REGISTER",
+        "ACOUSTIC_SITE_QA_INSPECTION_REGISTER",
+        "CONCEALED_ACOUSTIC_WORK_READBACK",
+        "DEFECT_REPAIR_RETEST_REGISTER",
+        "SUBSTITUTION_DEVIATION_REGISTER"
+      ],
+      "interface_requirements": [
+        "Architecture, Interior, MEP, Structure, Facade and FLS changes reconciled through R-F"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["privacy, speech, rest, background-noise and vibration defects are surfaced where observed"],
-      "design_language_consequences": ["substitution/site detail change cannot silently alter approved spatial/material intent or acoustic path"],
-      "technical_consequences": ["concealed continuity, seals, penetrations, resilient systems, source control and deviations are traceable"],
-      "content_projection_requirements": ["delivery records distinguish submittal review, site inspection, field measurement and repair/retest"],
-      "required_readback": ["construction deviation and sampled field readback"],
+      "human_experience_consequences": [
+        "privacy, speech, rest, background-noise and vibration defects are surfaced where observed"
+      ],
+      "design_language_consequences": [
+        "substitution/site detail change cannot silently alter approved spatial/material intent or acoustic path"
+      ],
+      "technical_consequences": [
+        "concealed continuity, seals, penetrations, resilient systems, source control and deviations are traceable"
+      ],
+      "content_projection_requirements": [
+        "delivery records distinguish submittal review, site inspection, field measurement and repair/retest"
+      ],
+      "required_readback": [
+        "construction deviation and sampled field readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant process adoption; unobserved field scope remains outside evidence.",
-      "open_items_allowed": ["unobserved/unmeasured areas remain outside claim and cannot inherit sample PASS"],
-      "exit_conditions": ["bounded delivery evidence and unresolved acoustic deviations are explicit"],
-      "reopen_triggers": ["submittal, substitution, workmanship deviation, late service change, failed inspection/test or repair"],
+      "open_items_allowed": [
+        "unobserved/unmeasured areas remain outside claim and cannot inherit sample PASS"
+      ],
+      "exit_conditions": [
+        "bounded delivery evidence and unresolved acoustic deviations are explicit"
+      ],
+      "reopen_triggers": [
+        "submittal, substitution, workmanship deviation, late service change, failed inspection/test or repair"
+      ],
       "claim_ceiling": "ACOUSTIC_DELIVERY_READBACK_COMPLETE",
-      "does_not_prove": ["UNOBSERVED_FIELD_PASS", "WHOLE_BUILDING_PASS", "INUSE_PERFORMANCE"]
+      "does_not_prove": [
+        "UNOBSERVED_FIELD_PASS",
+        "WHOLE_BUILDING_PASS",
+        "INUSE_PERFORMANCE"
+      ]
     },
     {
       "stage_id": "ACO-INUSE",
       "stage_name": "Occupied Performance / Complaint / Diagnostic / Change Return",
       "professional_question": "What acoustic condition is supportable in real use, and what observations require diagnosis or reopen rather than immediate causal claims?",
-      "entry_conditions": ["occupied/operating evidence, measurement or complaint exists"],
-      "required_inputs": ["current room/system operating context", "complaint/measurement/maintenance evidence"],
-      "knowledge_inputs": ["diagnostic methods", "project history and in-use evidence"],
+      "entry_conditions": [
+        "occupied/operating evidence, measurement or complaint exists"
+      ],
+      "required_inputs": [
+        "current room/system operating context",
+        "complaint/measurement/maintenance evidence"
+      ],
+      "knowledge_inputs": [
+        "diagnostic methods",
+        "project history and in-use evidence"
+      ],
       "knowledge_mount_requirement": "Consequential in-use evidence requires task/claim-scoped Operational Mount before reuse beyond the project.",
-      "required_dd_dimensions": ["DD-04", "DD-10", "DD-11", "DD-12"],
-      "required_native_outputs": ["ACOUSTIC_INUSE_STATE_REGISTER", "COMPLAINT_SOURCE_RECEIVER_LOG", "OPERATING_STATE_ACOUSTIC_READBACK", "ACOUSTIC_DIAGNOSTIC_HYPOTHESIS_REGISTER", "ACOUSTIC_CHANGE_REOPEN_LOG"],
-      "interface_requirements": ["FM and affected Architecture/Interior/MEP/Structure/Facade owners receive material acoustic change/readback"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ACOUSTIC_INUSE_STATE_REGISTER",
+        "COMPLAINT_SOURCE_RECEIVER_LOG",
+        "OPERATING_STATE_ACOUSTIC_READBACK",
+        "ACOUSTIC_DIAGNOSTIC_HYPOTHESIS_REGISTER",
+        "ACOUSTIC_CHANGE_REOPEN_LOG"
+      ],
+      "interface_requirements": [
+        "FM and affected Architecture/Interior/MEP/Structure/Facade owners receive material acoustic change/readback"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["complaints and experienced conditions are preserved as evidence without converting perception directly into causal diagnosis"],
-      "design_language_consequences": ["repair/change can preserve or revise design intent only with technical acoustic compatibility"],
-      "technical_consequences": ["observation, measurement, hypothesis, intervention and post-change verification remain separate"],
-      "content_projection_requirements": ["in-use returns distinguish symptom, measured state, candidate cause and verified outcome"],
-      "required_readback": ["operating state/complaint/diagnostic/change readback"],
+      "human_experience_consequences": [
+        "complaints and experienced conditions are preserved as evidence without converting perception directly into causal diagnosis"
+      ],
+      "design_language_consequences": [
+        "repair/change can preserve or revise design intent only with technical acoustic compatibility"
+      ],
+      "technical_consequences": [
+        "observation, measurement, hypothesis, intervention and post-change verification remain separate"
+      ],
+      "content_projection_requirements": [
+        "in-use returns distinguish symptom, measured state, candidate cause and verified outcome"
+      ],
+      "required_readback": [
+        "operating state/complaint/diagnostic/change readback"
+      ],
       "professional_review_owner": "Building Acoustics professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant adoption or reusable knowledge transfer, not for every complaint record.",
-      "open_items_allowed": ["unknown source/path/cause or unmeasured areas remain OPEN and cap the claim"],
-      "exit_conditions": ["current bounded acoustic in-use state and reopen items are explicit"],
-      "reopen_triggers": ["use, room, finish, partition, door, equipment, routing, operation, repair or measured-condition change"],
+      "open_items_allowed": [
+        "unknown source/path/cause or unmeasured areas remain OPEN and cap the claim"
+      ],
+      "exit_conditions": [
+        "current bounded acoustic in-use state and reopen items are explicit"
+      ],
+      "reopen_triggers": [
+        "use, room, finish, partition, door, equipment, routing, operation, repair or measured-condition change"
+      ],
       "claim_ceiling": "ACOUSTIC_INUSE_STATE_BOUNDED",
-      "does_not_prove": ["CAUSE_CONFIRMED_FROM_COMPLAINT_ALONE", "UNIVERSAL_USER_OUTCOME", "FULL_BUILDING_CONDITION_KNOWN"]
+      "does_not_prove": [
+        "CAUSE_CONFIRMED_FROM_COMPLAINT_ALONE",
+        "UNIVERSAL_USER_OUTCOME",
+        "FULL_BUILDING_CONDITION_KNOWN"
+      ]
     }
   ],
   "interface_contract": {
@@ -497,6 +822,70 @@
       "WHOLE_BUILDING_OR_INUSE_TRUTH",
       "CURRENT_ADOPTION",
       "PROJECT_PROMOTION"
+    ]
+  },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Building Acoustics execution depth is demonstrated through source-receiver/task criteria, room/separation/noise-vibration analysis, flanking/interface detail, prediction/measurement identity, construction QA and occupied-state diagnosis rather than absorption coefficients or product ratings alone.",
+    "professional_problem_and_judgment_objects": [
+      "Acoustic Basis / Task / Source–Path–Receiver Register",
+      "Room Acoustic Criteria / Geometry / Finish Register",
+      "Airborne / Impact Separation & Flanking Register",
+      "MEP Noise / Vibration Interface Register",
+      "Critical Acoustic Assembly / Junction Register"
+    ],
+    "assumption_uncertainty_objects": [
+      "source/occupancy/operating-state assumptions",
+      "material/product acoustic data applicability",
+      "prediction/model method and uncertainty",
+      "field measurement condition/configuration limits"
+    ],
+    "option_comparison_objects": [
+      "room geometry/finish alternatives",
+      "separation/flanking/junction alternatives",
+      "noise-control and vibration-isolation alternatives",
+      "mitigation options tied to source/path/receiver consequence"
+    ],
+    "native_work_objects": [
+      "acoustic plans/sections/details",
+      "room acoustic model/calculation",
+      "separation/flanking analysis",
+      "noise/vibration analysis",
+      "critical door/ceiling/floor/glazing/penetration details"
+    ],
+    "release_control_objects": [
+      "acoustic material/system/submittal/substitution register",
+      "critical assembly/junction release",
+      "prediction-to-criteria matrix",
+      "measurement/test plan and acceptance record"
+    ],
+    "implementation_field_objects": [
+      "site QA and sealing/junction inspection",
+      "field acoustic measurement",
+      "operating-state identity",
+      "defect/root-cause/repair/retest register"
+    ],
+    "handover_inuse_objects": [
+      "as-built acoustic configuration",
+      "occupied-state complaint/measurement log",
+      "maintenance/change record",
+      "post-repair and post-change verification"
+    ],
+    "independent_review_objects": [
+      "independent acoustics professional review at declared claim ceiling",
+      "specialist MEP/structural/facade/FLS owners retain their technical approvals",
+      "measurement result remains method/configuration scoped"
+    ],
+    "change_propagation_objects": [
+      "room/finish/partition/door/MEP/equipment change stale propagation",
+      "substitution/site deviation reopen",
+      "complaint/measurement contradiction → diagnosis/repair/retest"
+    ],
+    "does_not_require": [
+      "same stages as Architecture/Interior",
+      "lab rating as field result",
+      "one-room measurement as whole-building PASS",
+      "prediction as measurement",
+      "complaint as confirmed cause"
     ]
   }
 }

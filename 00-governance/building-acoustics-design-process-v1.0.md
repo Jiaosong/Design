@@ -448,3 +448,35 @@ Even then:
 Until eligible Independent Review and authorized owner-native adoption close:
 
 **Building Acoustics remains `DOMAIN PROCESS OPEN`.**
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Building Acoustics professional-depth parity
+
+**Candidate boundary:** additive parity repair only. v001 Independent Review remains bound to the older EV3 input and does not cover this later head.
+
+### Knowledge / owner routing
+- Existing Acoustics index/system/source objects remain knowledge authority.
+- `oleander-research` supports standards/material/system evidence; `oleander-design-process` supports option/interface/change reasoning.
+- `oleander-data-viz` may visualize source-bound results; `oleander-3d-pipeline` may carry geometry; `oleander-technical-drawing` remains candidate-only; `oleander-delivery-qc` is release/package integrity only.
+- Acoustic prediction/measurement tools, competent acoustician, calibration/field method, MEP/Structural/Facade/FLS specialist owners are `PROJECT_SPECIALIST_REQUIRED` where triggered.
+
+### Required native carriers
+Task/source-path-receiver basis；room acoustic criteria/model；airborne/impact separation and flanking；MEP noise/vibration；critical acoustic assembly/junction；submittal/substitution；measurement/test；site QA；complaint/repair/retest/in-use record。
+
+### Object-level invocation matrix
+#### A｜Task / source-path-receiver basis
+Tool: criteria/source/operating-state register. Readback: actual task, source spectrum/state, receiver and path. Reopen: use/source/receiver/criterion change.
+#### B｜Room acoustics
+Tool: room geometry/finish/model + applicable measurement carrier. Readback: geometry/volume/material data/model method ↔ predicted/measured response. Reopen: geometry/finish/furnishing/occupancy change.
+#### C｜Separation / flanking / junction
+Tool: partition/floor/door/glazing/penetration detail + lab/field evidence. Readback: full path including flanking, seals, junctions and installed condition. Reopen: assembly/product/junction/penetration/site change.
+#### D｜MEP noise / vibration
+Tool: equipment/source data + route/support/isolation/operating-state carrier. Readback: source→path/support/structure→receiver under actual operating state. Reopen: equipment/duty/control/support/isolation/routing change.
+#### E｜Prediction / measurement / diagnosis
+Tool: project-authorized acoustic model and calibrated field measurement workflow. Readback: method/version/input/location/time/operating state + uncertainty + discrepancy. Reopen: model/method/configuration/measurement contradiction.
+#### F｜Construction / occupied return
+Tool: site inspection + defect/repair/retest + complaint/POE record. Readback: symptom ≠ cause; require root-cause evidence and post-repair retest. Reopen: site deviation, complaint pattern, system/room change or failed retest.
+
+### Boundary
+`ABSORPTION COEFFICIENT ≠ ROOM PASS`；`LAB RATING ≠ FIELD ISOLATION`；`PARTITION RATING ≠ PRIVACY PASS`；`PREDICTION ≠ MEASUREMENT`；`COMPLAINT ≠ CAUSE CONFIRMED`；Acoustic coordination ≠ R-F Integration PASS.
