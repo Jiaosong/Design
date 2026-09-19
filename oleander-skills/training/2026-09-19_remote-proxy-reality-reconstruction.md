@@ -275,6 +275,38 @@ For each domain:
 
 ---
 
+# Architecture domain reapplication｜C01
+
+The first domain-distinct professional consumption replay was completed against the Current Architecture ADD process.
+
+Project outputs:
+
+- `C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json`
+- `C01_ARCH_SITE_AUTHORITY_CHANGE_REGISTER_v0.1.csv`
+- `C01_ARCH_SITE_ACCESS_EXTERNAL_FLOW_v0.1.svg`
+- `C01_ARCH_REMOTE_PROXY_CONSUMPTION_RECEIPT_v0.1.json`
+
+Architecture result:
+
+- `ADD-00 / 01 / 02 / 04 / 06 / 15` may consume bounded remote/proxy relations;
+- metric room/circulation/fire/accessibility/system/code/independent-review claims remain HOLD/NOT_RUN;
+- no pseudo-survey site plan is emitted;
+- actual site-flow artifact is explicitly NTS / relation-only;
+- P1/P2 object dimensions remain object-scale anchors only;
+- P3 missing dimension remains missing;
+- 2026 Dapiandi road work reopens only affected approach/site assumptions;
+- indoor 20–30 person capacity remains scenario-only and survives via movable/off-site/digital fallback.
+
+Sensitivity checks demonstrate four robustness moves:
+1. narrow stopping space → relocate deep reading;
+2. changed P3 road condition → reopen node position only;
+3. indoor mode unavailable → switch operating mode;
+4. actual route differs → narrative adapts to site route.
+
+This satisfies domain-distinct reapplication **1/2**, not method promotion.
+
+---
+
 # Claim ceiling
 
 `REALITY-NEAR PROXY ≠ FIELD MEASURED`
