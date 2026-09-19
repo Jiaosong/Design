@@ -1,0 +1,368 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "C04-LIGHTING-PROCESS-INSTANCE-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_object_refs": [
+    "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/assets/P01_step_light_v1_2.svg",
+    "05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/README.md"
+  ],
+  "process_definition_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+  "process_id": "OLEANDER-LIGHTING-DESIGN-PROCESS",
+  "process_version": "1.0-CANDIDATE",
+  "domain": "Lighting Design",
+  "owner": "CANDIDATE PROCESS EXERCISE / EXISTING C04 P01 DESIGN OWNER PRESERVED / NO APPOINTED LIGHTING PROFESSIONAL PASS AUTHORITY CLAIMED",
+  "current_baseline": "main@0f53d7c449b736438f78034e0ed0842d13d99b9d + Lighting Candidate 1.0",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "REAL PROJECT LIGHTING CONCEPT / BODY-FEEDBACK INTENT ONLY / SITE NEED, PHOTOMETRY, PRODUCT, CONTROLS, NIGHT-ECOLOGY, ELECTRICAL AND FIELD READBACK OPEN / NO PROFESSIONAL LIGHTING PASS",
+  "stage_instances": [
+    {
+      "stage_instance_id": "C04-LGT-00-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-00",
+      "stage_id": "LGT-00",
+      "cycle": 1,
+      "baseline_ref": "P01_STEP_LIGHT_v1.2",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "LIGHTING ROLE INTENT DEFINED / PROJECT BRIEF AND SITE NEED OPEN",
+      "inputs": [
+        "P01 local body-feedback concept",
+        "no route/safety guidance rule",
+        "DAY/OFF, fault/OFF and maintenance/OFF states",
+        "1.5–3 s fade as prototype behavior range only"
+      ],
+      "outputs": [
+        "bounded lighting-role intent: short local edge response after normal passage",
+        "explicit non-role: not route lighting / not safety indication",
+        "fail-safe intent: OFF in day/fault/maintenance",
+        "initial field-gate list"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "P01-v1.2-SVG@1e46c839040a2db1dbe18c22da9b85de4b2805ba",
+        "P01-v1.2-README@dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe",
+        "P01-v1.2-QC@3019027c806eef4571be7d97b313d300499d1e1a"
+      ],
+      "review_refs": [
+        "P01 concept KEEP/HOLD; presentation PROTOTYPE_MAIN_CANDIDATE"
+      ],
+      "open_items": [
+        "Site need is UNVERIFIED.",
+        "No Lighting appointment/responsibility matrix is established.",
+        "No actual user/task/night-adaptation context is verified at a selected site.",
+        "No current project criteria/source register exists for photometry, glare, ecology, accessibility or safety interface.",
+        "The concept must remain outside route/safety guidance."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "P01 v1.2 SVG role and failure-safe text readback",
+        "P01 v1.2 README field-gate readback"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-01-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-01",
+      "stage_id": "LGT-01",
+      "cycle": 1,
+      "baseline_ref": "P01_STEP_LIGHT_v1.2",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "LOCAL EDGE-RESPONSE CONCEPT PRINCIPLE / UNLOCATED PROJECT CONDITION",
+      "inputs": [
+        "body passes normally without stepping on a target",
+        "edge zone holds low-intensity short response",
+        "daytime passive material relation",
+        "night candidate response then fade"
+      ],
+      "outputs": [
+        "local edge-response luminous concept",
+        "day ↔ night conceptual relation",
+        "primary-walking-surface vs edge-zone spatial hierarchy",
+        "selected fail-safe concept principle"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "P01-v1.2-SVG@1e46c839040a2db1dbe18c22da9b85de4b2805ba"
+      ],
+      "review_refs": [
+        "P01 concept KEEP/HOLD"
+      ],
+      "open_items": [
+        "No actual site geometry, orientation, material, background brightness or observer/view relation is bound.",
+        "No actual daylight/night-state study exists.",
+        "No alternative luminous concept comparison at the real site exists.",
+        "No project-specific ecology/spill/maintenance context is established."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "P01 v1.2 concept SVG only"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-02-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-02",
+      "stage_id": "LGT-02",
+      "cycle": 1,
+      "baseline_ref": "NO PROJECT PHOTOMETRIC MODEL",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO PHOTOMETRIC / GLARE / COLOR-QUALITY CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No luminaire photometry/source data.",
+        "No receiving planes/viewpoints/task geometry.",
+        "No illuminance/luminance/glare calculation.",
+        "No material reflectance/spectral/color-quality evidence.",
+        "No metric criterion/source is mounted."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-03-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-03",
+      "stage_id": "LGT-03",
+      "cycle": 1,
+      "baseline_ref": "NO PRODUCT/OPTIC/DRIVER SELECTION",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO LUMINAIRE/OPTIC/DRIVER INTEGRATION CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No luminaire/product/optic/driver/control identity.",
+        "No mounting/aiming detail.",
+        "No waterproofing/IP/thermal/access/maintenance integration.",
+        "No photometric file identity."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-04-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-04",
+      "stage_id": "LGT-04",
+      "cycle": 1,
+      "baseline_ref": "P01_STEP_LIGHT_v1.2",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "CONTROL-BEHAVIOR CONCEPT ONLY / NO IMPLEMENTED CONTROL SYSTEM",
+      "inputs": [
+        "non-contact sensing intent",
+        "local control intent",
+        "1.5–3 s fade prototype candidate",
+        "DAY/OFF, fault/OFF, maintenance/OFF"
+      ],
+      "outputs": [
+        "conceptual state/failure behavior",
+        "bounded timing candidate"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "P01-v1.2-SVG@1e46c839040a2db1dbe18c22da9b85de4b2805ba",
+        "P01-v1.2-README@dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No sensor type/position/FOV or trigger threshold.",
+        "No luminaire group/address/driver mapping.",
+        "No control protocol, arbitration, transition, override or restart logic.",
+        "No acceptance tests or actual scene transition readback.",
+        "1.5–3 s is a sample-test candidate, not implementation setting."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "conceptual control text only"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-05-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-05",
+      "stage_id": "LGT-05",
+      "cycle": 1,
+      "baseline_ref": "UNLOCATED P01 EXTERIOR/NIGHT CONCEPT",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "EXTERIOR/NIGHT INTENT ONLY / SITE AND RECEPTOR EVIDENCE OPEN",
+      "inputs": [
+        "edge-zone night candidate",
+        "not route/safety guidance",
+        "field-gate list: glare, ecology, drainage, waterproofing, night operation"
+      ],
+      "outputs": [
+        "night-use questions and field-gate requirements only"
+      ],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [
+        "P01-v1.2-README@dc7209c3b5c2ede0bba8af55d8bd3fa2c3da1afe"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No actual sensitive receptor/site boundary.",
+        "No spill/source-visibility/reflection study.",
+        "No ecology/curfew/night-operation authority.",
+        "No wet/seasonal/maintenance context.",
+        "No exterior electrical/weatherproofing approval."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "field-gate list only"
+      ],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-06-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-06",
+      "stage_id": "LGT-06",
+      "cycle": 1,
+      "baseline_ref": "NO PROJECT EVIDENCE AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No physical/sample mockup, photometric correlation or observed-vs-predicted test has been run."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-07-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-07",
+      "stage_id": "LGT-07",
+      "cycle": 1,
+      "baseline_ref": "NO PROJECT EVIDENCE AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No specification/procurement/submittal/substitution/construction package exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-08-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-08",
+      "stage_id": "LGT-08",
+      "cycle": 1,
+      "baseline_ref": "NO PROJECT EVIDENCE AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No installed system, aiming, commissioning, measurement or actual night readback exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    },
+    {
+      "stage_instance_id": "C04-LGT-09-001",
+      "stage_definition_ref": "OLEANDER-LIGHTING-DESIGN-PROCESS@1.0-CANDIDATE#LGT-09",
+      "stage_id": "LGT-09",
+      "cycle": 1,
+      "baseline_ref": "NO PROJECT EVIDENCE AT THIS STAGE",
+      "execution_state": "NOT_STARTED",
+      "review_verdict": "NOT_RUN",
+      "claim_ceiling": "NO CLAIM",
+      "inputs": [],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [],
+      "interface_refs": [],
+      "evidence_refs": [],
+      "review_refs": [],
+      "open_items": [
+        "No installed baseline, maintenance/replacement or post-occupancy evidence exists."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "NOT_EVALUATED",
+      "actual_readback_refs": [],
+      "last_updated": "2026-09-19"
+    }
+  ],
+  "active_interface_refs": [],
+  "open_items": [
+    "Lighting Design Candidate remains not Current.",
+    "P01 site need remains UNVERIFIED.",
+    "The object must not be used as route or safety guidance.",
+    "No project photometric/glare/color evidence exists.",
+    "No product/optic/driver/control identity exists.",
+    "No implemented controls/scene acceptance evidence exists.",
+    "No exterior/night/ecology/spill site evidence exists.",
+    "No mockup/specification/commissioning/field evidence exists.",
+    "Independent Lighting professional project review is NOT_RUN."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-19"
+}
