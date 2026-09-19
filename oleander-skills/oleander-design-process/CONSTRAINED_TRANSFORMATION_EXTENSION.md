@@ -1,6 +1,6 @@
 # OLEANDER Constrained Transformation Extension
 
-Status: `CANDIDATE EXTENSION / EXISTING DESIGN OWNER / EXTERNAL-MECHANISM DIGESTED / EXISTING-PROJECT REPAIR COMPANION / PROJECT REPLAY REQUIRED / GOLDEN REGRESSION REQUIRED / NO PROMOTION`
+Status: `CANDIDATE EXTENSION / EXISTING DESIGN OWNER / EXTERNAL-MECHANISM DIGESTED / EXISTING-PROJECT REPAIR COMPANION / C04 PROJECT REPLAY EVIDENCE / GOLDEN REGRESSION ADDED / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`
 
 Owner: `oleander-design-process`
 
@@ -544,19 +544,55 @@ Independent Design Review should ask:
 
 ---
 
-## 19｜Maturity
+## 19｜C04 project replay evidence｜2026-09-19
 
-On creation:
+A bounded retrospective replay was run against the mature C04 digital companion.
 
-`CANDIDATE EXTENSION / EXISTING DESIGN OWNER / EXTERNAL SIT MECHANISMS DIGESTED / NO FIXED IDEA QUOTA / PROJECT REPLAY REQUIRED / GOLDEN REGRESSION REQUIRED / NO PROMOTION`.
+Current authority preserved:
+- `TODAY / ROUTE / READ / MY BOOK` plus parallel `SERVICE / RETURN`;
+- `NORMAL / DEGRADED / CLOSED / UNKNOWN`;
+- `FULL / LIGHT / OFF`;
+- Return/offline/no-phone/fail-closed boundaries;
+- field and live-browser HOLDs.
 
-Promotion requires:
-- at least one real project retrospective or live use;
-- at least one valid retained structural candidate;
-- at least one explicitly rejected transformation because it violates a protected invariant;
-- matched artifact/readback;
-- evidence that the technique adds structural option diversity without reopening unrelated design variables;
-- cross-context use before any stronger maturity claim.
+Five transformation runs were classified:
+
+- `CTR-01 REMOVE` top-level READ → retained as `READLESS_CONTEXTUAL_REVEAL` alternative / HOLD;
+- `CTR-02 DUPLICATE+DIFFERENTIATE` dedicated top-level Return → REJECT because route/return truth is duplicated and must remain synchronized;
+- `CTR-03 CREATE DEPENDENCY` reality-state → content-intensity → REJECT because Current explicitly requires those axes to remain independent;
+- `CTR-04 REASSIGN ROLE` Route carries return-purpose mode → baseline reconstruction, not a new candidate;
+- `CTR-05 BREAK DEPENDENCY` route/return independent from content completion → baseline reconstruction, not a new candidate.
+
+Deduplication result:
+
+`5 OPERATOR RUNS → 1 RETAINED NEW STRUCTURAL ALTERNATIVE + 2 REJECTED + 2 CURRENT RECONSTRUCTIONS`.
+
+Matched artifact:
+
+`C04_E_CONSTRAINED_TRANSFORMATION_MATCHED_v0.1.svg`.
+
+Actual render readback first failed because the SVG contained an unescaped `&`. The editable SVG was repaired to `&amp;` and rerendered.
+
+Second render:
+- `PASS_SUPPORT`;
+- 1800×1120;
+- Current and CTR-A shown at matched schematic fidelity;
+- rejected transformations remain directly readable;
+- no clipping/overlap observed.
+
+The replay is retrospective/non-blind and therefore does not reselect C04 E. HCD usability, accessibility, actual live browser and field evidence remain open.
+
+## 20｜Maturity
+
+Current maturity:
+
+`CANDIDATE EXTENSION / EXISTING DESIGN OWNER / EXTERNAL SIT MECHANISMS DIGESTED / ONE C04 RETROSPECTIVE REPLAY / ONE RETAINED STRUCTURAL ALTERNATIVE / TWO PROTECTED-INVARIANT REJECTIONS / MATCHED EDITABLE ARTIFACT + ACTUAL RENDER READBACK / GOLDEN REGRESSION ADDED / NO CROSS-CONTEXT EVIDENCE / NO PROMOTION`.
+
+Further promotion requires:
+- cross-context use outside the C04 digital-companion family;
+- at least one live or pre-Current use where the technique materially improves a consequential design decision;
+- evidence that constrained transformation adds useful structural diversity without causing over-redesign or protected-invariant loss;
+- continued separation from technical/professional approval and human/user validation.
 
 `STRUCTURAL TRANSFORMATION ≠ TECHNICAL FEASIBILITY`.
 
