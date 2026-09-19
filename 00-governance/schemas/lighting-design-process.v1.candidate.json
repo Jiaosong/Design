@@ -2519,6 +2519,617 @@
       "render as photometric proof",
       "Lighting Design as electrical/fire/statutory approval",
       "same document length/template as other domains"
+    ],
+    "practitioner_object_contracts": [
+      {
+        "object_id": "LGT-OBJ-01",
+        "object_name": "Lighting Basis / Visual Task / Experience / Operating-State Matrix",
+        "parity_dimensions": [
+          "PROFESSIONAL_PROBLEM_AND_JUDGMENT"
+        ],
+        "stage_refs": [
+          "LGT-00",
+          "LGT-01"
+        ],
+        "professional_purpose": "Define visual tasks, users, adaptation, time/daylight/night states, spatial hierarchy, color/material context and operating scenarios that lighting decisions must satisfy.",
+        "native_source_of_truth": "Current architectural/interior/landscape/use evidence + applicable lighting criteria/source authority.",
+        "required_record_fields": [
+          "task_or_scene_id",
+          "space_or_view",
+          "user_task",
+          "time_state",
+          "daylight_condition",
+          "adaptation_context",
+          "brightness_hierarchy_intent",
+          "source_visibility_tolerance",
+          "color_material_context",
+          "control_state",
+          "maintenance_state",
+          "criterion_refs",
+          "owner",
+          "open_items"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Interior",
+          "Landscape",
+          "HCD/User research where applicable",
+          "MEP/Controls"
+        ],
+        "revision_identity": "task_or_scene_id + source/criteria revision + lighting baseline",
+        "release_or_retention_rule": "Retain only when task/state/context and criteria are explicit; lux target alone cannot define the professional lighting problem.",
+        "required_readback": [
+          "task/view readback",
+          "representative day/night/state visualization or mockup",
+          "criteria ↔ actual task/view geometry"
+        ],
+        "failure_or_hold_conditions": [
+          "criterion copied without task context",
+          "single daytime/nighttime state used universally",
+          "brightness/glare adaptation ignored"
+        ],
+        "reopen_triggers": [
+          "user/task change",
+          "material/space change",
+          "daylight/opening change",
+          "control/operation change",
+          "criteria update"
+        ],
+        "downstream_handoffs": [
+          "LGT-02 photometric development",
+          "Controls",
+          "Architecture/Interior/Landscape"
+        ],
+        "independent_review_requirement": "Independent lighting review challenges representative visual tasks, adverse states and strongest perceptual risk.",
+        "does_not_prove": [
+          "human-subject usability PASS",
+          "electrical design PASS",
+          "statutory approval"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-02",
+        "object_name": "Daylight / Photometric / Color / Glare Model Configuration & Assumption Register",
+        "parity_dimensions": [
+          "ASSUMPTION_UNCERTAINTY"
+        ],
+        "stage_refs": [
+          "LGT-01",
+          "LGT-02",
+          "LGT-06"
+        ],
+        "professional_purpose": "Control exact geometry, sky/weather, material reflectance, photometric files, output factors, aiming, maintenance and calculation/view configurations.",
+        "native_source_of_truth": "Owner-native daylight/photometric models + current geometry/material/product/criteria sources.",
+        "required_record_fields": [
+          "model_id",
+          "purpose",
+          "geometry_revision",
+          "surface_reflectance_transmittance",
+          "weather_sky_time_basis",
+          "photometric_file_revision",
+          "output_factor",
+          "mounting_aiming",
+          "calculation_planes_views",
+          "maintenance_factor_basis",
+          "control_state",
+          "engine_version",
+          "assumptions",
+          "limitations",
+          "checker"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Interior",
+          "Façade",
+          "Landscape",
+          "Manufacturer"
+        ],
+        "revision_identity": "model_id + model/input/engine revision",
+        "release_or_retention_rule": "No quantitative/perceptual claim may be retained without exact model configuration; a changed photometric/material/aim/control input stales affected results.",
+        "required_readback": [
+          "input/config audit",
+          "representative extrema/critical view readback",
+          "model↔mockup/site comparison where available"
+        ],
+        "failure_or_hold_conditions": [
+          "wrong geometry",
+          "wrong IES/LDT revision",
+          "aim/output factor omitted",
+          "single average hides glare/extrema",
+          "engine output accepted without configuration"
+        ],
+        "reopen_triggers": [
+          "geometry/material change",
+          "luminaire/optic change",
+          "aim/control change",
+          "weather/sky basis change",
+          "site measurement contradiction"
+        ],
+        "downstream_handoffs": [
+          "LGT-02/03/06 decisions",
+          "Submittal release"
+        ],
+        "independent_review_requirement": "Independent review samples critical model inputs and governing outputs rather than only headline metrics.",
+        "does_not_prove": [
+          "field performance",
+          "product quality",
+          "whole-space experience"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-03",
+        "object_name": "Lighting Concept / Source-Distribution-Control Option Set",
+        "parity_dimensions": [
+          "OPTION_COMPARISON"
+        ],
+        "stage_refs": [
+          "LGT-01",
+          "LGT-04",
+          "LGT-05"
+        ],
+        "professional_purpose": "Compare materially different luminous/spatial hierarchies, source/distribution, daylight integration, scene/control and night-environment strategies.",
+        "native_source_of_truth": "Matched-fidelity lighting concepts tied to same visual-task/space/material baseline.",
+        "required_record_fields": [
+          "option_id",
+          "concept_family",
+          "luminous_hierarchy",
+          "source_visibility",
+          "distribution_strategy",
+          "daylight_relation",
+          "scene_control_strategy",
+          "exterior_night_relation",
+          "color_quality_strategy",
+          "architectural_detail_implication",
+          "energy_maintenance_implication",
+          "critical_risks",
+          "retained_rejected_reason",
+          "required_mockup_or_test"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Interior",
+          "Landscape",
+          "MEP/Controls",
+          "Ecology where exterior"
+        ],
+        "revision_identity": "option_id + common basis revision + option artifacts",
+        "release_or_retention_rule": "Do not count fixture brand/style swaps as concept families; compare causal luminous/spatial/control differences and adverse states.",
+        "required_readback": [
+          "matched plan/section/view comparison",
+          "representative day/night scene readback",
+          "glare/reflection/source-visibility attack"
+        ],
+        "failure_or_hold_conditions": [
+          "render polish selects concept",
+          "same distribution with different luminaire body called alternative",
+          "controls/daylight states omitted"
+        ],
+        "reopen_triggers": [
+          "space/material/opening change",
+          "task/scene change",
+          "controls/electrical constraint",
+          "exterior/ecology criterion"
+        ],
+        "downstream_handoffs": [
+          "LGT-02/03/04 technical development",
+          "Architecture/Interior/Landscape"
+        ],
+        "independent_review_requirement": "Independent review compares strongest alternative and tests adverse visual conditions.",
+        "does_not_prove": [
+          "photometric compliance",
+          "electrical/controls PASS",
+          "installed night quality"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-04",
+        "object_name": "Controlled Lighting Plan / Model / Luminaire / Control Package",
+        "parity_dimensions": [
+          "NATIVE_WORK"
+        ],
+        "stage_refs": [
+          "LGT-02",
+          "LGT-03",
+          "LGT-04",
+          "LGT-05"
+        ],
+        "professional_purpose": "Carry the actual lighting design through editable layouts, photometric/daylight models, luminaire/optic data, control scenes and integration details.",
+        "native_source_of_truth": "Owner-native lighting CAD/BIM/model/calculation/schedule/control/detail sources.",
+        "required_record_fields": [
+          "package_id",
+          "lighting_plan_refs",
+          "daylight_model_refs",
+          "photometric_model_refs",
+          "luminaire_schedule_ref",
+          "photometric_file_refs",
+          "optic_mounting_refs",
+          "control_scene_schedule",
+          "electrical_control_mapping",
+          "integration_detail_refs",
+          "exterior_aiming_refs",
+          "revision",
+          "author",
+          "checker",
+          "issue_status"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Interior",
+          "Landscape",
+          "MEP/Electrical",
+          "Controls"
+        ],
+        "revision_identity": "package_id + exact native artifact/model/schedule revision",
+        "release_or_retention_rule": "Plan/model/schedule/control/detail identity must remain aligned; rendered views and calculation PDFs cannot replace native model/configuration.",
+        "required_readback": [
+          "tag ↔ luminaire/optic/photometric file trace",
+          "plan ↔ model ↔ control scene consistency",
+          "critical detail/source visibility/maintenance access readback"
+        ],
+        "failure_or_hold_conditions": [
+          "schedule optic differs from model",
+          "aiming not represented",
+          "control scene not mapped to circuits/addresses",
+          "detail changes source position"
+        ],
+        "reopen_triggers": [
+          "luminaire/optic/product change",
+          "ceiling/material change",
+          "control/electrical change",
+          "field aiming change"
+        ],
+        "downstream_handoffs": [
+          "Procurement",
+          "Electrical/Controls",
+          "Mockup",
+          "Commissioning"
+        ],
+        "independent_review_requirement": "Independent lighting QA/QC on exact package/configuration and critical tasks/views.",
+        "does_not_prove": [
+          "electrical coordination PASS",
+          "installation conformity",
+          "commissioned performance"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-05",
+        "object_name": "Luminaire / Optic / Driver / Control / Substitution Release Register",
+        "parity_dimensions": [
+          "RELEASE_CONTROL"
+        ],
+        "stage_refs": [
+          "LGT-03",
+          "LGT-06",
+          "LGT-07"
+        ],
+        "professional_purpose": "Control release of luminaire, source, optic, driver, control gear, mounting and substitutions against modeled/mockup/design attributes.",
+        "native_source_of_truth": "Current lighting package + manufacturer/submittal/sample/mockup evidence.",
+        "required_record_fields": [
+          "release_id",
+          "luminaire_tag",
+          "design_product_ref",
+          "submitted_identity_revision",
+          "photometric_file",
+          "optic_distribution",
+          "output_power",
+          "color_CCT_CRI_TM30_or_project_metrics",
+          "driver_dimming_protocol",
+          "dimensions_mounting_access",
+          "control_compatibility",
+          "sample_mockup_ref",
+          "deviations",
+          "review_disposition",
+          "conditions",
+          "release_authority"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Manufacturer",
+          "MEP/Electrical",
+          "Controls",
+          "Architecture/Interior",
+          "Procurement"
+        ],
+        "revision_identity": "release_id + design requirement/model revision + submitted revision",
+        "release_or_retention_rule": "Physical fit or wattage similarity is insufficient equivalence; distribution/color/control/dimension/detail/maintenance changes reopen relevant evidence.",
+        "required_readback": [
+          "submitted photometric/product data ↔ model/schedule",
+          "mockup/sample comparison",
+          "control/electrical/detail compatibility"
+        ],
+        "failure_or_hold_conditions": [
+          "substitution by appearance only",
+          "IES/LDT mismatch",
+          "driver/control protocol ignored",
+          "optic changed without recalculation"
+        ],
+        "reopen_triggers": [
+          "substitution",
+          "manufacturer revision",
+          "mockup contradiction",
+          "electrical/control/detail change"
+        ],
+        "downstream_handoffs": [
+          "Procurement",
+          "Installation",
+          "Commissioning/Aiming"
+        ],
+        "independent_review_requirement": "Independent/specialist review where substitution materially affects visual task, safety, controls or exterior impact.",
+        "does_not_prove": [
+          "manufacturer quality",
+          "field aiming",
+          "commissioning PASS"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-06",
+        "object_name": "Aiming / Focusing / Commissioning / Measurement Record",
+        "parity_dimensions": [
+          "IMPLEMENTATION_FIELD"
+        ],
+        "stage_refs": [
+          "LGT-08"
+        ],
+        "professional_purpose": "Bind installed tags, aiming, scenes, controls and measured conditions to exact installed configuration and professional criteria.",
+        "native_source_of_truth": "Installed lighting/control identity + approved design + commissioning/measurement evidence.",
+        "required_record_fields": [
+          "record_id",
+          "location_tag",
+          "installed_luminaire_driver_control_identity",
+          "aim_target_setting",
+          "scene_state",
+          "daylight_external_condition",
+          "instrument_method_calibration",
+          "measurement_points_views",
+          "expected_or_criterion",
+          "measured_observed_result",
+          "glare_source_visibility_conflict",
+          "adjustment",
+          "retest",
+          "reviewer",
+          "final_disposition"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Commissioning",
+          "Electrical/Controls",
+          "Contractor",
+          "Architecture/Interior/Landscape"
+        ],
+        "revision_identity": "record_id + installed configuration + scene/aim revision + date",
+        "release_or_retention_rule": "PASS is configuration/state specific; later aiming, driver, optic, control, replacement or material change reopens affected evidence.",
+        "required_readback": [
+          "installed identity readback",
+          "aim/scene readback",
+          "measurement method/state verification",
+          "night walkthrough/critical view readback"
+        ],
+        "failure_or_hold_conditions": [
+          "measurement without state/context",
+          "wrong luminaire/optic assumed",
+          "aim changed after measurement",
+          "user override ignored"
+        ],
+        "reopen_triggers": [
+          "aim/focus change",
+          "control update",
+          "luminaire replacement",
+          "material/space change",
+          "complaint/POE finding"
+        ],
+        "downstream_handoffs": [
+          "Handover",
+          "Maintenance",
+          "Operations/FM"
+        ],
+        "independent_review_requirement": "Independent witness/reviewer where project/risk/commissioning basis requires.",
+        "does_not_prove": [
+          "future performance",
+          "unmeasured states",
+          "electrical/statutory approval"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-07",
+        "object_name": "Lighting Maintenance / Replacement Equivalence / Post-occupancy Register",
+        "parity_dimensions": [
+          "HANDOVER_INUSE"
+        ],
+        "stage_refs": [
+          "LGT-09"
+        ],
+        "professional_purpose": "Preserve luminous performance through maintenance, replacement, user overrides and in-use tuning with configuration-specific evidence.",
+        "native_source_of_truth": "Accepted installed/configuration baseline + maintenance/replacement/POE evidence.",
+        "required_record_fields": [
+          "record_id",
+          "space_system",
+          "baseline_luminaire_control",
+          "maintenance_task",
+          "cleaning_access",
+          "replacement_proposal",
+          "equivalence_attributes",
+          "user_override_or_scene_change",
+          "complaint_observation",
+          "measured_or_visual_readback",
+          "tuning_action",
+          "owner",
+          "retest_needed",
+          "closure_state"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Operations/FM",
+          "Electrical/Controls",
+          "Supplier",
+          "Interior/Architecture/Landscape"
+        ],
+        "revision_identity": "record_id + baseline/replacement/control revision + observation date",
+        "release_or_retention_rule": "Replacement equivalence requires distribution/color/control/geometry compatibility, not lamp/lumen/fit alone; POE remains context/state bounded.",
+        "required_readback": [
+          "replacement data/model comparison",
+          "post-replacement night/task readback",
+          "maintenance access/cleaning readback",
+          "user override/tuning verification"
+        ],
+        "failure_or_hold_conditions": [
+          "physical fit called equivalent",
+          "different distribution not modeled",
+          "control override becomes undocumented default",
+          "single complaint generalized"
+        ],
+        "reopen_triggers": [
+          "replacement",
+          "control change",
+          "maintenance condition",
+          "user/task/material change",
+          "POE contradiction"
+        ],
+        "downstream_handoffs": [
+          "Operations/FM",
+          "future recommissioning",
+          "G9 bounded learning"
+        ],
+        "independent_review_requirement": "Independent lighting review for material replacement or unresolved in-use failure.",
+        "does_not_prove": [
+          "future satisfaction",
+          "all operating states",
+          "electrical safety"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-08",
+        "object_name": "Independent Lighting Design Review Record",
+        "parity_dimensions": [
+          "INDEPENDENT_REVIEW"
+        ],
+        "stage_refs": [
+          "LGT-01",
+          "LGT-02",
+          "LGT-06",
+          "LGT-07",
+          "LGT-08"
+        ],
+        "professional_purpose": "Attack criteria, model configuration, glare/brightness/color, integration, substitution and installed readback on exact configurations.",
+        "native_source_of_truth": "Controlled lighting package/models + product/mockup/commissioning evidence.",
+        "required_record_fields": [
+          "review_id",
+          "baseline_refs",
+          "reviewer_identity_independence",
+          "scope",
+          "visual_tasks_states",
+          "model_input_checks",
+          "critical_views_glare",
+          "product_optic_control_checks",
+          "mockup_site_checks",
+          "adverse_states",
+          "findings",
+          "severity",
+          "repair",
+          "retest",
+          "verdict"
+        ],
+        "decision_owner": "Independent Lighting Design reviewer",
+        "contributor_or_specialist_refs": [
+          "MEP/Electrical",
+          "Controls",
+          "Architecture/Interior/Landscape as needed"
+        ],
+        "revision_identity": "review_id + exact reviewed model/product/installed configuration",
+        "release_or_retention_rule": "Review stales on material geometry/material/photometric/product/control/aim changes.",
+        "required_readback": [
+          "model configuration audit",
+          "critical task/view attack",
+          "mockup/installed contradiction attack",
+          "repair/retest"
+        ],
+        "failure_or_hold_conditions": [
+          "generic metric checklist",
+          "wrong model revision",
+          "substitution after review",
+          "measured result without state/configuration"
+        ],
+        "reopen_triggers": [
+          "geometry/material/product/optic/control/aim change",
+          "new field measurement",
+          "replacement/complaint"
+        ],
+        "downstream_handoffs": [
+          "Lighting professional receipt",
+          "Design Review"
+        ],
+        "independent_review_requirement": "Reviewer must be distinct enough to challenge the production model and site interpretation.",
+        "does_not_prove": [
+          "MEP/electrical/statutory PASS",
+          "Design KEEP",
+          "future operation"
+        ]
+      },
+      {
+        "object_id": "LGT-OBJ-09",
+        "object_name": "Lighting Configuration / Product / Control Change Impact Ledger",
+        "parity_dimensions": [
+          "CHANGE_PROPAGATION"
+        ],
+        "stage_refs": [
+          "CROSS_STAGE"
+        ],
+        "professional_purpose": "Propagate changes in geometry, materials, luminaire/optic/driver, controls, aiming and maintenance to models, schedules, releases and measurements.",
+        "native_source_of_truth": "Controlled change event + dependency links across lighting package/models/product/control/site evidence.",
+        "required_record_fields": [
+          "change_id",
+          "trigger",
+          "changed_object",
+          "old_configuration",
+          "new_configuration",
+          "affected_visual_tasks",
+          "affected_models_calculations",
+          "affected_products_schedules",
+          "affected_controls_scenes",
+          "affected_mockups_measurements",
+          "affected_interfaces",
+          "affected_reviews",
+          "owner",
+          "required_recalc_retest",
+          "closure"
+        ],
+        "decision_owner": "Lighting Design professional owner",
+        "contributor_or_specialist_refs": [
+          "Architecture",
+          "Interior",
+          "Landscape",
+          "MEP/Electrical",
+          "Controls",
+          "Operations/FM"
+        ],
+        "revision_identity": "change_id + source/configuration revision",
+        "release_or_retention_rule": "Change closes only after affected model/product/control/site evidence is re-established or explicitly retained with evidence.",
+        "required_readback": [
+          "impact trace",
+          "recalculation/remodel readback",
+          "post-change control/aim/measurement readback"
+        ],
+        "failure_or_hold_conditions": [
+          "product changed but model stays current",
+          "control scene changed without review",
+          "material reflectance change ignored",
+          "replacement inherits old PASS"
+        ],
+        "reopen_triggers": [
+          "any material geometry/material/product/optic/driver/control/aim/replacement change"
+        ],
+        "downstream_handoffs": [
+          "all affected lighting stages/interfaces"
+        ],
+        "independent_review_requirement": "Independent re-review when change affects prior critical model/mockup/site review.",
+        "does_not_prove": [
+          "unaffected scope invalidation",
+          "automatic compliance after change"
+        ]
+      }
     ]
   },
   "assurance": {
