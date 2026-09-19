@@ -114,226 +114,590 @@
       "stage_id": "ENV-BASIS",
       "stage_name": "Authority / Exposure / Performance Basis",
       "professional_question": "What envelope claim is in scope, under which authority/appointment basis, environmental exposure and performance brief?",
-      "entry_conditions": ["project and envelope decision object identified"],
-      "required_inputs": ["project geometry/use context", "current authority/source context", "climate/exposure and structural-interface status"],
-      "knowledge_inputs": ["Material-System-Interface framework", "current jurisdiction/source routes"],
+      "entry_conditions": [
+        "project and envelope decision object identified"
+      ],
+      "required_inputs": [
+        "project geometry/use context",
+        "current authority/source context",
+        "climate/exposure and structural-interface status"
+      ],
+      "knowledge_inputs": [
+        "Material-System-Interface framework",
+        "current jurisdiction/source routes"
+      ],
       "knowledge_mount_requirement": "Consequential authority, exposure and performance-source claims require task/claim-scoped Operational Mount.",
-      "required_dd_dimensions": ["DD-01", "DD-05", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_AUTHORITY_SCOPE_REGISTER", "EXPOSURE_DESIGN_BASIS", "ENVELOPE_PERFORMANCE_BRIEF"],
-      "interface_requirements": ["Architecture, Structure, MEP, FLS, Acoustics, FM and Cost triggers identified"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-05",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_AUTHORITY_SCOPE_REGISTER",
+        "EXPOSURE_DESIGN_BASIS",
+        "ENVELOPE_PERFORMANCE_BRIEF"
+      ],
+      "interface_requirements": [
+        "Architecture, Structure, MEP, FLS, Acoustics, FM and Cost triggers identified"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["thermal comfort, daylight, leakage, noise, operability and maintenance exposure are identified where material"],
-      "design_language_consequences": ["architectural appearance remains an input and cannot override performance/authority constraints"],
-      "technical_consequences": ["performance categories, source applicability, analyses/tests and claim ceiling are explicit"],
-      "content_projection_requirements": ["state appointment, sources, exposure, performance categories and unresolved assumptions"],
-      "required_readback": ["authority/exposure/performance basis readback", "open assumption/source list"],
+      "human_experience_consequences": [
+        "thermal comfort, daylight, leakage, noise, operability and maintenance exposure are identified where material"
+      ],
+      "design_language_consequences": [
+        "architectural appearance remains an input and cannot override performance/authority constraints"
+      ],
+      "technical_consequences": [
+        "performance categories, source applicability, analyses/tests and claim ceiling are explicit"
+      ],
+      "content_projection_requirements": [
+        "state appointment, sources, exposure, performance categories and unresolved assumptions"
+      ],
+      "required_readback": [
+        "authority/exposure/performance basis readback",
+        "open assumption/source list"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent Professional Domain review required for promotion-relevant adoption.",
-      "open_items_allowed": ["later system detail and testing may remain open if claim stays at performance-basis level"],
-      "exit_conditions": ["authority, appointment, exposure, performance brief and claim ceiling are explicit"],
-      "reopen_triggers": ["authority, exposure, project use, geometry or performance requirement change"],
+      "open_items_allowed": [
+        "later system detail and testing may remain open if claim stays at performance-basis level"
+      ],
+      "exit_conditions": [
+        "authority, appointment, exposure, performance brief and claim ceiling are explicit"
+      ],
+      "reopen_triggers": [
+        "authority, exposure, project use, geometry or performance requirement change"
+      ],
       "claim_ceiling": "ENVELOPE_BASIS_RESOLVED",
-      "does_not_prove": ["ENVELOPE_PERFORMANCE_PASS", "PRODUCT_SUITABILITY", "STATUTORY_APPROVAL"]
+      "does_not_prove": [
+        "ENVELOPE_PERFORMANCE_PASS",
+        "PRODUCT_SUITABILITY",
+        "STATUTORY_APPROVAL"
+      ]
     },
     {
       "stage_id": "ENV-CONCEPT",
       "stage_name": "System Zoning / Typology / Primary Control Paths",
       "professional_question": "Which envelope system families and zones can credibly satisfy the performance brief and project geometry?",
-      "entry_conditions": ["envelope basis sufficiently resolved"],
-      "required_inputs": ["performance brief", "architecture geometry", "structure/MEP/FLS interface basis"],
-      "knowledge_inputs": ["system precedent and product-family evidence", "building-envelope principles"],
+      "entry_conditions": [
+        "envelope basis sufficiently resolved"
+      ],
+      "required_inputs": [
+        "performance brief",
+        "architecture geometry",
+        "structure/MEP/FLS interface basis"
+      ],
+      "knowledge_inputs": [
+        "system precedent and product-family evidence",
+        "building-envelope principles"
+      ],
       "knowledge_mount_requirement": "Consequential system/predecessor evidence requires Operational Mount with transfer limits.",
-      "required_dd_dimensions": ["DD-01", "DD-02", "DD-03", "DD-08", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_ZONE_SYSTEM_MAP", "SYSTEM_OPTION_COMPARISON", "PRIMARY_LOAD_WATER_AIR_THERMAL_PATH_DIAGRAM"],
-      "interface_requirements": ["Architecture, Structure, MEP, FLS, Interior and FM interfaces represented"],
+      "required_dd_dimensions": [
+        "DD-01",
+        "DD-02",
+        "DD-03",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_ZONE_SYSTEM_MAP",
+        "SYSTEM_OPTION_COMPARISON",
+        "PRIMARY_LOAD_WATER_AIR_THERMAL_PATH_DIAGRAM"
+      ],
+      "interface_requirements": [
+        "Architecture, Structure, MEP, FLS, Interior and FM interfaces represented"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["views, daylight, comfort, operability and perimeter-use consequences are explicit"],
-      "design_language_consequences": ["system module/joint/opening logic is coordinated without converting aesthetic preference into engineering proof"],
-      "technical_consequences": ["system zones, primary load/water/air/thermal paths and critical transitions are explicit"],
-      "content_projection_requirements": ["system diagrams distinguish engineering assumptions from selected design intent"],
-      "required_readback": ["system-zone and critical-transition readback"],
+      "human_experience_consequences": [
+        "views, daylight, comfort, operability and perimeter-use consequences are explicit"
+      ],
+      "design_language_consequences": [
+        "system module/joint/opening logic is coordinated without converting aesthetic preference into engineering proof"
+      ],
+      "technical_consequences": [
+        "system zones, primary load/water/air/thermal paths and critical transitions are explicit"
+      ],
+      "content_projection_requirements": [
+        "system diagrams distinguish engineering assumptions from selected design intent"
+      ],
+      "required_readback": [
+        "system-zone and critical-transition readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required where candidate adoption is promotion-relevant.",
-      "open_items_allowed": ["detailed calculations and exact products may remain open with bounded claim"],
-      "exit_conditions": ["system concept and critical transition set are professionally reviewable"],
-      "reopen_triggers": ["basis, geometry, system family or adjacent-interface change"],
+      "open_items_allowed": [
+        "detailed calculations and exact products may remain open with bounded claim"
+      ],
+      "exit_conditions": [
+        "system concept and critical transition set are professionally reviewable"
+      ],
+      "reopen_triggers": [
+        "basis, geometry, system family or adjacent-interface change"
+      ],
       "claim_ceiling": "ENVELOPE_SYSTEM_CONCEPT_DEFINED",
-      "does_not_prove": ["DETAILED_ENVELOPE_DESIGN", "TEST_PASS", "FIELD_PERFORMANCE"]
+      "does_not_prove": [
+        "DETAILED_ENVELOPE_DESIGN",
+        "TEST_PASS",
+        "FIELD_PERFORMANCE"
+      ]
     },
     {
       "stage_id": "ENV-PHYSICS",
       "stage_name": "Thermal / Air / Water / Moisture / Environmental Performance",
       "professional_question": "Are declared building-physics functions translated into an internally consistent envelope system with traceable assumptions and failure paths?",
-      "entry_conditions": ["system concept defined for affected zones"],
-      "required_inputs": ["layer/system geometry", "performance targets", "climate/exposure and interior-condition assumptions"],
-      "knowledge_inputs": ["current thermal/moisture/air/water methods", "system evidence"],
+      "entry_conditions": [
+        "system concept defined for affected zones"
+      ],
+      "required_inputs": [
+        "layer/system geometry",
+        "performance targets",
+        "climate/exposure and interior-condition assumptions"
+      ],
+      "knowledge_inputs": [
+        "current thermal/moisture/air/water methods",
+        "system evidence"
+      ],
       "knowledge_mount_requirement": "Calculation methods, source values and system evidence require exact-scope Operational Mount.",
-      "required_dd_dimensions": ["DD-03", "DD-05", "DD-08", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_PHYSICS_MODEL_REGISTER", "THERMAL_BRIDGE_CONTINUITY_MAP", "AIR_WATER_MOISTURE_CONTROL_LAYER_MAP", "CONDENSATION_RISK_REGISTER"],
-      "interface_requirements": ["MEP, Architecture, Acoustics, Lighting/Daylight and FM assumptions coordinated"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_PHYSICS_MODEL_REGISTER",
+        "THERMAL_BRIDGE_CONTINUITY_MAP",
+        "AIR_WATER_MOISTURE_CONTROL_LAYER_MAP",
+        "CONDENSATION_RISK_REGISTER"
+      ],
+      "interface_requirements": [
+        "MEP, Architecture, Acoustics, Lighting/Daylight and FM assumptions coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["comfort, condensation, leakage, daylight/solar and acoustic effects are represented where in claim"],
-      "design_language_consequences": ["visible geometry/material choices are tested against control-layer continuity"],
-      "technical_consequences": ["method scope/exclusions and junction effects remain explicit"],
-      "content_projection_requirements": ["maps show control layers, junctions, assumptions and unresolved risks"],
-      "required_readback": ["critical thermal/air/water/moisture junction readback"],
+      "human_experience_consequences": [
+        "comfort, condensation, leakage, daylight/solar and acoustic effects are represented where in claim"
+      ],
+      "design_language_consequences": [
+        "visible geometry/material choices are tested against control-layer continuity"
+      ],
+      "technical_consequences": [
+        "method scope/exclusions and junction effects remain explicit"
+      ],
+      "content_projection_requirements": [
+        "maps show control layers, junctions, assumptions and unresolved risks"
+      ],
+      "required_readback": [
+        "critical thermal/air/water/moisture junction readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for adopted consequential envelope-physics claims.",
-      "open_items_allowed": ["later physical test or field proof may remain open if clearly outside current claim"],
-      "exit_conditions": ["in-claim physics strategy has no unresolved critical internal contradiction"],
-      "reopen_triggers": ["layer, product, interior condition, exposure, opening or MEP interface change"],
+      "open_items_allowed": [
+        "later physical test or field proof may remain open if clearly outside current claim"
+      ],
+      "exit_conditions": [
+        "in-claim physics strategy has no unresolved critical internal contradiction"
+      ],
+      "reopen_triggers": [
+        "layer, product, interior condition, exposure, opening or MEP interface change"
+      ],
       "claim_ceiling": "ENVELOPE_PHYSICS_COORDINATED",
-      "does_not_prove": ["FIELD_AIRTIGHTNESS", "FIELD_WATERTIGHTNESS", "INUSE_CONDENSATION_FREE"]
+      "does_not_prove": [
+        "FIELD_AIRTIGHTNESS",
+        "FIELD_WATERTIGHTNESS",
+        "INUSE_CONDENSATION_FREE"
+      ]
     },
     {
       "stage_id": "ENV-MOVEMENT",
       "stage_name": "Loads / Support / Anchors / Movement Accommodation",
       "professional_question": "Can the envelope transfer declared loads and accommodate building/component movement through a traceable support path?",
-      "entry_conditions": ["system concept and structural-interface basis available"],
-      "required_inputs": ["project load/movement basis", "support geometry", "system/component properties at current evidence ceiling"],
-      "knowledge_inputs": ["structural interface evidence", "movement/test methods and product/system evidence"],
+      "entry_conditions": [
+        "system concept and structural-interface basis available"
+      ],
+      "required_inputs": [
+        "project load/movement basis",
+        "support geometry",
+        "system/component properties at current evidence ceiling"
+      ],
+      "knowledge_inputs": [
+        "structural interface evidence",
+        "movement/test methods and product/system evidence"
+      ],
       "knowledge_mount_requirement": "Load, movement, anchor, glass/panel and test evidence requires exact-configuration Operational Mount.",
-      "required_dd_dimensions": ["DD-03", "DD-08", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_LOAD_MOVEMENT_BASIS", "SUPPORT_ANCHOR_INTERFACE_REGISTER", "MOVEMENT_ACCOMMODATION_DIAGRAM"],
-      "interface_requirements": ["Structural Engineering support/movement/tolerance interface coordinated"],
+      "required_dd_dimensions": [
+        "DD-03",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_LOAD_MOVEMENT_BASIS",
+        "SUPPORT_ANCHOR_INTERFACE_REGISTER",
+        "MOVEMENT_ACCOMMODATION_DIAGRAM"
+      ],
+      "interface_requirements": [
+        "Structural Engineering support/movement/tolerance interface coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["movement-driven leakage, breakage, operability and safety consequences are considered"],
-      "design_language_consequences": ["module/joint geometry preserves required movement and support logic"],
-      "technical_consequences": ["loads, support, anchor responsibility, drift and tolerance remain distinct and traceable"],
-      "content_projection_requirements": ["show load path, support points, movement directions and unresolved engineering items"],
-      "required_readback": ["support/movement/critical glass-panel interface readback"],
+      "human_experience_consequences": [
+        "movement-driven leakage, breakage, operability and safety consequences are considered"
+      ],
+      "design_language_consequences": [
+        "module/joint geometry preserves required movement and support logic"
+      ],
+      "technical_consequences": [
+        "loads, support, anchor responsibility, drift and tolerance remain distinct and traceable"
+      ],
+      "content_projection_requirements": [
+        "show load path, support points, movement directions and unresolved engineering items"
+      ],
+      "required_readback": [
+        "support/movement/critical glass-panel interface readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant process adoption.",
-      "open_items_allowed": ["main-structure engineering approval remains with Structural owner"],
-      "exit_conditions": ["in-claim support/movement strategy is coordinated with no hidden critical conflict"],
-      "reopen_triggers": ["load, drift, slab edge, anchor, panel/glass, joint, tolerance or structure change"],
+      "open_items_allowed": [
+        "main-structure engineering approval remains with Structural owner"
+      ],
+      "exit_conditions": [
+        "in-claim support/movement strategy is coordinated with no hidden critical conflict"
+      ],
+      "reopen_triggers": [
+        "load, drift, slab edge, anchor, panel/glass, joint, tolerance or structure change"
+      ],
       "claim_ceiling": "ENVELOPE_MOVEMENT_COORDINATED",
-      "does_not_prove": ["STRUCTURAL_ENGINEERING_PASS", "ANCHOR_FIELD_CAPACITY", "ALL_PROJECT_MOVEMENT_TESTED"]
+      "does_not_prove": [
+        "STRUCTURAL_ENGINEERING_PASS",
+        "ANCHOR_FIELD_CAPACITY",
+        "ALL_PROJECT_MOVEMENT_TESTED"
+      ]
     },
     {
       "stage_id": "ENV-FIRE",
       "stage_name": "Facade Fire / Cavity / Perimeter Interfaces",
       "professional_question": "Are triggered facade fire functions represented as complete configuration-specific assemblies and coordinated with FLS authority?",
-      "entry_conditions": ["fire-related envelope functions identified"],
-      "required_inputs": ["FLS interface requirements", "envelope/slab/opening/system configuration"],
-      "knowledge_inputs": ["fire assembly/system evidence", "perimeter/cavity/firestop source evidence"],
+      "entry_conditions": [
+        "fire-related envelope functions identified"
+      ],
+      "required_inputs": [
+        "FLS interface requirements",
+        "envelope/slab/opening/system configuration"
+      ],
+      "knowledge_inputs": [
+        "fire assembly/system evidence",
+        "perimeter/cavity/firestop source evidence"
+      ],
       "knowledge_mount_requirement": "Fire product/system/test/assessment evidence requires exact-configuration Operational Mount.",
-      "required_dd_dimensions": ["DD-05", "DD-08", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_FIRE_INTERFACE_REGISTER", "PERIMETER_CAVITY_BARRIER_MAP", "FIRE_EVIDENCE_CONFIGURATION_MATRIX"],
-      "interface_requirements": ["Fire / Life Safety, Structure, MEP and Architecture fire-interface ownership explicit"],
+      "required_dd_dimensions": [
+        "DD-05",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_FIRE_INTERFACE_REGISTER",
+        "PERIMETER_CAVITY_BARRIER_MAP",
+        "FIRE_EVIDENCE_CONFIGURATION_MATRIX"
+      ],
+      "interface_requirements": [
+        "Fire / Life Safety, Structure, MEP and Architecture fire-interface ownership explicit"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["life-safety consequences are routed to FLS rather than inferred from material properties"],
-      "design_language_consequences": ["visible/hidden envelope composition preserves required fire functions"],
-      "technical_consequences": ["material, assembly, assessed/tested configuration and installed condition remain distinct"],
-      "content_projection_requirements": ["critical fire interfaces identify exact configuration and authority status"],
-      "required_readback": ["slab-edge/cavity/opening/firestop interface readback"],
+      "human_experience_consequences": [
+        "life-safety consequences are routed to FLS rather than inferred from material properties"
+      ],
+      "design_language_consequences": [
+        "visible/hidden envelope composition preserves required fire functions"
+      ],
+      "technical_consequences": [
+        "material, assembly, assessed/tested configuration and installed condition remain distinct"
+      ],
+      "content_projection_requirements": [
+        "critical fire interfaces identify exact configuration and authority status"
+      ],
+      "required_readback": [
+        "slab-edge/cavity/opening/firestop interface readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for adopted envelope process; FLS retains life-safety/statutory review authority.",
-      "open_items_allowed": ["formal FLS/statutory acceptance may remain open and must cap the envelope claim"],
-      "exit_conditions": ["in-claim facade fire interfaces are coordinated with FLS ownership explicit"],
-      "reopen_triggers": ["assembly, cavity, opening, firestop, slab-edge, penetration or FLS requirement change"],
+      "open_items_allowed": [
+        "formal FLS/statutory acceptance may remain open and must cap the envelope claim"
+      ],
+      "exit_conditions": [
+        "in-claim facade fire interfaces are coordinated with FLS ownership explicit"
+      ],
+      "reopen_triggers": [
+        "assembly, cavity, opening, firestop, slab-edge, penetration or FLS requirement change"
+      ],
       "claim_ceiling": "ENVELOPE_FIRE_INTERFACES_COORDINATED",
-      "does_not_prove": ["FLS_PASS", "STATUTORY_APPROVAL", "INSTALLED_FIRE_CONFORMITY"]
+      "does_not_prove": [
+        "FLS_PASS",
+        "STATUTORY_APPROVAL",
+        "INSTALLED_FIRE_CONFORMITY"
+      ]
     },
     {
       "stage_id": "ENV-DETAIL",
       "stage_name": "Critical Junctions / Tolerance / Fabrication / Maintenance Detail",
       "professional_question": "Do representative critical details preserve all required control layers, movement, installation and maintenance logic simultaneously?",
-      "entry_conditions": ["system, physics, movement and fire interfaces sufficiently defined"],
-      "required_inputs": ["current system geometry", "critical transitions", "tolerance and maintenance requirements"],
-      "knowledge_inputs": ["exact system/product compatibility evidence", "detail/fabrication practice evidence"],
+      "entry_conditions": [
+        "system, physics, movement and fire interfaces sufficiently defined"
+      ],
+      "required_inputs": [
+        "current system geometry",
+        "critical transitions",
+        "tolerance and maintenance requirements"
+      ],
+      "knowledge_inputs": [
+        "exact system/product compatibility evidence",
+        "detail/fabrication practice evidence"
+      ],
       "knowledge_mount_requirement": "Consequential product/compatibility/installation evidence requires Operational Mount.",
-      "required_dd_dimensions": ["DD-02", "DD-03", "DD-08", "DD-09", "DD-12"],
-      "required_native_outputs": ["CRITICAL_ENVELOPE_DETAIL_SET", "JOINT_SEALANT_GASKET_REGISTER", "TOLERANCE_STACK_REGISTER", "MAINTENANCE_REPLACEMENT_ACCESS_MAP"],
-      "interface_requirements": ["Architecture, Structure, MEP, FLS, Interior and FM detail interfaces coordinated"],
+      "required_dd_dimensions": [
+        "DD-02",
+        "DD-03",
+        "DD-08",
+        "DD-09",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "CRITICAL_ENVELOPE_DETAIL_SET",
+        "JOINT_SEALANT_GASKET_REGISTER",
+        "TOLERANCE_STACK_REGISTER",
+        "MAINTENANCE_REPLACEMENT_ACCESS_MAP"
+      ],
+      "interface_requirements": [
+        "Architecture, Structure, MEP, FLS, Interior and FM detail interfaces coordinated"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["threshold, view, comfort, cleaning and replacement impacts are explicit"],
-      "design_language_consequences": ["joint/module/material intent is resolved at construction-readable detail level"],
-      "technical_consequences": ["control-layer continuity, drainage, fixing, tolerance and sequence are simultaneously readable"],
-      "content_projection_requirements": ["critical details remain native/editable and identify unresolved evidence rather than hiding it"],
-      "required_readback": ["critical project-detail and installation-sequence readback"],
+      "human_experience_consequences": [
+        "threshold, view, comfort, cleaning and replacement impacts are explicit"
+      ],
+      "design_language_consequences": [
+        "joint/module/material intent is resolved at construction-readable detail level"
+      ],
+      "technical_consequences": [
+        "control-layer continuity, drainage, fixing, tolerance and sequence are simultaneously readable"
+      ],
+      "content_projection_requirements": [
+        "critical details remain native/editable and identify unresolved evidence rather than hiding it"
+      ],
+      "required_readback": [
+        "critical project-detail and installation-sequence readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required where detail-process adoption is promotion-relevant.",
-      "open_items_allowed": ["later fabrication/site verification may remain open if design detail claim is bounded"],
-      "exit_conditions": ["representative critical details have no unresolved in-claim control-layer contradiction"],
-      "reopen_triggers": ["geometry, system, product, support, membrane, sealant, gasket, tolerance or access change"],
+      "open_items_allowed": [
+        "later fabrication/site verification may remain open if design detail claim is bounded"
+      ],
+      "exit_conditions": [
+        "representative critical details have no unresolved in-claim control-layer contradiction"
+      ],
+      "reopen_triggers": [
+        "geometry, system, product, support, membrane, sealant, gasket, tolerance or access change"
+      ],
       "claim_ceiling": "ENVELOPE_CRITICAL_DETAILS_COORDINATED",
-      "does_not_prove": ["FABRICATION_CONFORMITY", "INSTALLATION_PASS", "FIELD_PERFORMANCE"]
+      "does_not_prove": [
+        "FABRICATION_CONFORMITY",
+        "INSTALLATION_PASS",
+        "FIELD_PERFORMANCE"
+      ]
     },
     {
       "stage_id": "ENV-MOCKUP",
       "stage_name": "Representative Mock-up / Performance Test / Failure Readback",
       "professional_question": "Does representative physical test evidence support the exact bounded claim, and are failures/retests traceable?",
-      "entry_conditions": ["testable configuration and acceptance basis defined where testing is required"],
-      "required_inputs": ["test plan", "specimen configuration", "acceptance criteria and method/version"],
-      "knowledge_inputs": ["test methods", "configuration transfer evidence"],
+      "entry_conditions": [
+        "testable configuration and acceptance basis defined where testing is required"
+      ],
+      "required_inputs": [
+        "test plan",
+        "specimen configuration",
+        "acceptance criteria and method/version"
+      ],
+      "knowledge_inputs": [
+        "test methods",
+        "configuration transfer evidence"
+      ],
       "knowledge_mount_requirement": "Test methods, specimen/product evidence and transfer assumptions require Operational Mount.",
-      "required_dd_dimensions": ["DD-04", "DD-08", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_MOCKUP_TEST_PLAN", "SPECIMEN_CONFIGURATION_IDENTITY", "TEST_SEQUENCE_AND_ACCEPTANCE_REGISTER", "FAILURE_REPAIR_RETEST_LOG", "TRANSFER_LIMIT_REGISTER"],
-      "interface_requirements": ["affected Architecture/Structure/FLS/MEP/FM variables frozen or explicitly recorded for the test"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_MOCKUP_TEST_PLAN",
+        "SPECIMEN_CONFIGURATION_IDENTITY",
+        "TEST_SEQUENCE_AND_ACCEPTANCE_REGISTER",
+        "FAILURE_REPAIR_RETEST_LOG",
+        "TRANSFER_LIMIT_REGISTER"
+      ],
+      "interface_requirements": [
+        "affected Architecture/Structure/FLS/MEP/FM variables frozen or explicitly recorded for the test"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["visual/operability and leakage-related occupant consequences are included when relevant to mock-up scope"],
-      "design_language_consequences": ["visual mock-up approval is separated from engineering performance-test evidence"],
-      "technical_consequences": ["specimen identity, modifications, sequence and transfer limits remain traceable"],
-      "content_projection_requirements": ["test result presentation distinguishes specimen PASS from project-wide claims"],
-      "required_readback": ["failure/repair/retest and transfer-limit readback"],
+      "human_experience_consequences": [
+        "visual/operability and leakage-related occupant consequences are included when relevant to mock-up scope"
+      ],
+      "design_language_consequences": [
+        "visual mock-up approval is separated from engineering performance-test evidence"
+      ],
+      "technical_consequences": [
+        "specimen identity, modifications, sequence and transfer limits remain traceable"
+      ],
+      "content_projection_requirements": [
+        "test result presentation distinguishes specimen PASS from project-wide claims"
+      ],
+      "required_readback": [
+        "failure/repair/retest and transfer-limit readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for adopted process; test laboratory/AHJ authority remains separate where applicable.",
-      "open_items_allowed": ["production and field conformity remain later evidence"],
-      "exit_conditions": ["required representative tests have bounded result and failures/retests are traceable"],
-      "reopen_triggers": ["specimen, product, detail, test method, acceptance, repair or project-transfer change"],
+      "open_items_allowed": [
+        "production and field conformity remain later evidence"
+      ],
+      "exit_conditions": [
+        "required representative tests have bounded result and failures/retests are traceable"
+      ],
+      "reopen_triggers": [
+        "specimen, product, detail, test method, acceptance, repair or project-transfer change"
+      ],
       "claim_ceiling": "ENVELOPE_TEST_EVIDENCE_BOUNDED",
-      "does_not_prove": ["PRODUCTION_PASS", "INSTALLED_BUILDING_PASS", "UNTESTED_CONFIGURATION_PASS"]
+      "does_not_prove": [
+        "PRODUCTION_PASS",
+        "INSTALLED_BUILDING_PASS",
+        "UNTESTED_CONFIGURATION_PASS"
+      ]
     },
     {
       "stage_id": "ENV-DELIVERY",
       "stage_name": "Submittal / Fabrication / Installation / QA / Field Readback",
       "professional_question": "Does delivered work preserve the approved envelope configuration through fabrication and installation with deviations explicitly controlled?",
-      "entry_conditions": ["bounded design/test basis exists for current delivery claim"],
-      "required_inputs": ["current design configuration", "submittals/fabrication data", "site/QA records"],
-      "knowledge_inputs": ["fabrication/installation practice evidence", "project-specific product/system records"],
+      "entry_conditions": [
+        "bounded design/test basis exists for current delivery claim"
+      ],
+      "required_inputs": [
+        "current design configuration",
+        "submittals/fabrication data",
+        "site/QA records"
+      ],
+      "knowledge_inputs": [
+        "fabrication/installation practice evidence",
+        "project-specific product/system records"
+      ],
       "knowledge_mount_requirement": "Consequential submittal/product/plant/batch/site evidence requires task/claim-scoped Operational Mount.",
-      "required_dd_dimensions": ["DD-04", "DD-08", "DD-10", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_SUBMITTAL_CONFIG_REGISTER", "FABRICATION_QA_REGISTER", "INSTALLATION_INSPECTION_REGISTER", "FIELD_TEST_READBACK", "DEVIATION_SUBSTITUTION_REGISTER"],
-      "interface_requirements": ["contractor/fabricator plus Architecture, Structure, MEP, FLS and FM changes are reconciled through R-F"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-08",
+        "DD-10",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_SUBMITTAL_CONFIG_REGISTER",
+        "FABRICATION_QA_REGISTER",
+        "INSTALLATION_INSPECTION_REGISTER",
+        "FIELD_TEST_READBACK",
+        "DEVIATION_SUBSTITUTION_REGISTER"
+      ],
+      "interface_requirements": [
+        "contractor/fabricator plus Architecture, Structure, MEP, FLS and FM changes are reconciled through R-F"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["operability, comfort, leakage, safety and maintenance defects are surfaced"],
-      "design_language_consequences": ["fabrication/shop detail change cannot silently alter approved visual/system intent"],
-      "technical_consequences": ["submittal identity, QA, deviations, field tests and repairs are configuration-traceable"],
-      "content_projection_requirements": ["delivery records distinguish design approval, fabrication QA, installation inspection and field test"],
-      "required_readback": ["fabrication/site deviation and field-test readback"],
+      "human_experience_consequences": [
+        "operability, comfort, leakage, safety and maintenance defects are surfaced"
+      ],
+      "design_language_consequences": [
+        "fabrication/shop detail change cannot silently alter approved visual/system intent"
+      ],
+      "technical_consequences": [
+        "submittal identity, QA, deviations, field tests and repairs are configuration-traceable"
+      ],
+      "content_projection_requirements": [
+        "delivery records distinguish design approval, fabrication QA, installation inspection and field test"
+      ],
+      "required_readback": [
+        "fabrication/site deviation and field-test readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant process adoption; field/statutory acceptance remains separate.",
-      "open_items_allowed": ["unobserved installation areas remain outside evidence and cannot be generalized from samples"],
-      "exit_conditions": ["bounded delivery evidence and unresolved deviations are explicit"],
-      "reopen_triggers": ["submittal, fabrication, substitution, installation deviation, failed inspection/test or repair change"],
+      "open_items_allowed": [
+        "unobserved installation areas remain outside evidence and cannot be generalized from samples"
+      ],
+      "exit_conditions": [
+        "bounded delivery evidence and unresolved deviations are explicit"
+      ],
+      "reopen_triggers": [
+        "submittal, fabrication, substitution, installation deviation, failed inspection/test or repair change"
+      ],
       "claim_ceiling": "ENVELOPE_DELIVERY_READBACK_COMPLETE",
-      "does_not_prove": ["WHOLE_BUILDING_FIELD_PASS", "STATUTORY_ACCEPTANCE", "INUSE_PERFORMANCE"]
+      "does_not_prove": [
+        "WHOLE_BUILDING_FIELD_PASS",
+        "STATUTORY_ACCEPTANCE",
+        "INUSE_PERFORMANCE"
+      ]
     },
     {
       "stage_id": "ENV-INUSE",
       "stage_name": "Handover / Maintenance / Defects / In-use Return",
       "professional_question": "What envelope condition is actually supportable after handover, and what observed evidence reopens the process?",
-      "entry_conditions": ["handover/as-built or in-use evidence exists"],
-      "required_inputs": ["as-built/handover information", "maintenance/defect/observed-performance records"],
-      "knowledge_inputs": ["maintenance and failure evidence", "project operational context"],
+      "entry_conditions": [
+        "handover/as-built or in-use evidence exists"
+      ],
+      "required_inputs": [
+        "as-built/handover information",
+        "maintenance/defect/observed-performance records"
+      ],
+      "knowledge_inputs": [
+        "maintenance and failure evidence",
+        "project operational context"
+      ],
       "knowledge_mount_requirement": "Consequential in-use evidence requires task/claim-scoped Operational Mount before reuse beyond the project.",
-      "required_dd_dimensions": ["DD-04", "DD-10", "DD-11", "DD-12"],
-      "required_native_outputs": ["ENVELOPE_HANDOVER_ASBUILT_REGISTER", "MAINTENANCE_INSPECTION_PLAN", "DEFECT_WATER_AIR_THERMAL_RETURN_LOG", "ENVELOPE_CHANGE_REOPEN_LOG"],
-      "interface_requirements": ["FM, Architecture, Structure, MEP, FLS and affected owners receive material in-use change/readback"],
+      "required_dd_dimensions": [
+        "DD-04",
+        "DD-10",
+        "DD-11",
+        "DD-12"
+      ],
+      "required_native_outputs": [
+        "ENVELOPE_HANDOVER_ASBUILT_REGISTER",
+        "MAINTENANCE_INSPECTION_PLAN",
+        "DEFECT_WATER_AIR_THERMAL_RETURN_LOG",
+        "ENVELOPE_CHANGE_REOPEN_LOG"
+      ],
+      "interface_requirements": [
+        "FM, Architecture, Structure, MEP, FLS and affected owners receive material in-use change/readback"
+      ],
       "interface_bindings": [],
-      "human_experience_consequences": ["occupant-reported leakage, condensation, discomfort, noise and operability evidence remains distinct from inferred cause"],
-      "design_language_consequences": ["repair/replacement can preserve or intentionally revise design language only with technical compatibility"],
-      "technical_consequences": ["observed defect, cause hypothesis, repair and verification are separated"],
-      "content_projection_requirements": ["in-use returns distinguish observation, inference, intervention and verified outcome"],
-      "required_readback": ["as-built/maintenance/defect/change readback"],
+      "human_experience_consequences": [
+        "occupant-reported leakage, condensation, discomfort, noise and operability evidence remains distinct from inferred cause"
+      ],
+      "design_language_consequences": [
+        "repair/replacement can preserve or intentionally revise design language only with technical compatibility"
+      ],
+      "technical_consequences": [
+        "observed defect, cause hypothesis, repair and verification are separated"
+      ],
+      "content_projection_requirements": [
+        "in-use returns distinguish observation, inference, intervention and verified outcome"
+      ],
+      "required_readback": [
+        "as-built/maintenance/defect/change readback"
+      ],
       "professional_review_owner": "Facade / Building Envelope professional owner",
       "independent_review_requirement": "Independent review required for promotion-relevant adoption or reusable knowledge transfer, not for every maintenance observation.",
-      "open_items_allowed": ["unknown concealed condition or unobserved areas remain OPEN and cap the claim"],
-      "exit_conditions": ["current bounded in-use state and reopen items are explicit"],
-      "reopen_triggers": ["defect, incident, repair, replacement, operating change or adjacent-system change"],
+      "open_items_allowed": [
+        "unknown concealed condition or unobserved areas remain OPEN and cap the claim"
+      ],
+      "exit_conditions": [
+        "current bounded in-use state and reopen items are explicit"
+      ],
+      "reopen_triggers": [
+        "defect, incident, repair, replacement, operating change or adjacent-system change"
+      ],
       "claim_ceiling": "ENVELOPE_INUSE_STATE_BOUNDED",
-      "does_not_prove": ["UNIVERSAL_ENVELOPE_RULE", "CAUSE_CONFIRMED_FROM_OBSERVATION_ALONE", "FULL_BUILDING_CONDITION_KNOWN"]
+      "does_not_prove": [
+        "UNIVERSAL_ENVELOPE_RULE",
+        "CAUSE_CONFIRMED_FROM_OBSERVATION_ALONE",
+        "FULL_BUILDING_CONDITION_KNOWN"
+      ]
     }
   ],
   "interface_contract": {
@@ -515,6 +879,70 @@
       "FULL_FIELD_OR_INUSE_TRUTH",
       "CURRENT_ADOPTION",
       "PROJECT_PROMOTION"
+    ]
+  },
+  "execution_depth_contract": {
+    "parity_rule": "Equivalent Facade / Building Envelope execution depth is demonstrated through exposure/performance basis, system zoning, control-layer continuity, movement/support, analysis, mockup/test, fabrication/site QA and in-use defect evidence rather than facade appearance or component data alone.",
+    "professional_problem_and_judgment_objects": [
+      "Envelope Basis / Exposure / Performance Register",
+      "Envelope System Zoning / Typology Register",
+      "Control-Layer / Junction / Transition Register",
+      "Movement / Support / Anchor Interface Register",
+      "Mockup / Test Strategy"
+    ],
+    "assumption_uncertainty_objects": [
+      "weather/exposure/design-condition register",
+      "material/product/system applicability limits",
+      "movement/tolerance/installation assumptions",
+      "analysis/model/test uncertainty and representativeness"
+    ],
+    "option_comparison_objects": [
+      "system/typology alternatives",
+      "opening/shading/glazing/control-layer alternatives",
+      "support/joint/drainage/detail alternatives with performance and maintainability tradeoffs"
+    ],
+    "native_work_objects": [
+      "envelope plans/sections/elevations/details/models",
+      "thermal/air/water/moisture/daylight analyses as applicable",
+      "junction/control-layer diagrams",
+      "support/anchor/movement details",
+      "maintenance/access strategy"
+    ],
+    "release_control_objects": [
+      "system/product/submittal/substitution register",
+      "mockup/test matrix",
+      "critical detail/junction release",
+      "fabrication/shop drawing review",
+      "interface acceptance record"
+    ],
+    "implementation_field_objects": [
+      "installation/QA inspection",
+      "field test and failure/repair/retest",
+      "fabrication/site deviation register",
+      "sealant/gasket/membrane/joint/anchor readback"
+    ],
+    "handover_inuse_objects": [
+      "as-built envelope configuration",
+      "maintenance/replacement/cleaning access record",
+      "water/air/thermal/condensation/defect monitoring",
+      "post-repair verification"
+    ],
+    "independent_review_objects": [
+      "independent facade/envelope professional review",
+      "specialist thermal/moisture/fire/structural reviews where triggered",
+      "test laboratory evidence remains method/configuration scoped"
+    ],
+    "change_propagation_objects": [
+      "system/product/detail/substitution stale propagation",
+      "geometry/support/movement/exposure change reopen",
+      "failed mockup/test/site deviation → exact repair/retest/review"
+    ],
+    "does_not_require": [
+      "same stage sequence as Architecture",
+      "component certification as project-system PASS",
+      "simulation as field truth",
+      "one mockup as whole-building PASS",
+      "same numeric thresholds across jurisdictions"
     ]
   }
 }

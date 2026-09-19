@@ -463,3 +463,33 @@ Even then:
 Until eligible Independent Review and authorized owner-native adoption close:
 
 **Facade / Building Envelope Engineering remains `DOMAIN PROCESS OPEN`.**
+
+---
+
+## 2026-09-19｜Execution Binding Contract｜Facade / Building Envelope professional-depth parity
+
+**Candidate boundary:** additive parity repair only. v001 Independent Review remains bound to the earlier EV3 professional input and does not review this later head.
+
+### Knowledge / owner routing
+- Existing material/envelope framework + exact system/product/source objects remain knowledge owners.
+- `oleander-research` supports source/product/test evidence; `oleander-design-process` supports system options, interface/change reasoning.
+- `oleander-3d-pipeline` may support geometry/exchange; `oleander-technical-drawing` remains candidate-only; `oleander-delivery-qc` is package integrity only.
+- Facade engineer, building-physics specialist, structural/FLS domain owners, laboratory/mockup/test provider and site QA authority are `PROJECT_SPECIALIST_REQUIRED` where the claim requires them.
+
+### Required native carriers
+Exposure/performance basis；system zoning/typology；control-layer continuity；opening/junction/transition details；support/anchor/movement；thermal/air/water/moisture analysis；submittal/substitution；mockup/test；fabrication/site QA；maintenance/defect/in-use return。
+
+### Object-level invocation matrix
+#### A｜Basis / exposure / system zoning
+Tool: project climate/exposure + system register. Readback: orientation/exposure/performance target and exact system zone. Reopen: climate/exposure/geometry/performance/system change.
+#### B｜Control layers / junctions / drainage
+Tool: editable detail/control-layer carrier. Readback: wall-window-roof-base air/water/thermal/moisture continuity, drainage/weep path and transition logic. Reopen: opening/detail/membrane/seal/gasket/insulation/firestop change.
+#### C｜Support / movement / tolerance
+Tool: structural interface + anchor/joint/tolerance carrier. Readback: load path, movement accommodation, install tolerance and adjacent-system compatibility. Reopen: structure/anchor/panel/module/movement/tolerance change.
+#### D｜Analysis / mockup / testing
+Tool: project-authorized thermal/moisture/daylight/air-water analysis and mockup/test records. Readback: method/version/input/specimen/configuration + failure mode + repair/retest. Reopen: model/input/specimen/system/test failure change.
+#### E｜Fabrication / installation / in-use
+Tool: shop/fabrication/site QA + field-test + maintenance/defect records. Readback: exact installed configuration and site deviation. Reopen: substitution/fabrication/site deviation/leak/condensation/maintenance defect.
+
+### Boundary
+`COMPONENT EVIDENCE ≠ ASSEMBLY PASS`；`ASSEMBLY TEST ≠ PROJECT CONFIGURATION PASS`；`MOCKUP PASS ≠ PRODUCTION PASS`；`MODEL PASS ≠ FIELD TRUTH`；Envelope coordination ≠ R-F Integration PASS.
