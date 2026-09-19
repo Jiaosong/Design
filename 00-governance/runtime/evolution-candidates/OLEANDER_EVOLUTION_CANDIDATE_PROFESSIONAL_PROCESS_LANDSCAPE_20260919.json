@@ -6,16 +6,16 @@
   "target_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
   "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
   "baseline": {
-    "current_version_or_revision": "PROCESS_OPEN / origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
-    "authority_fingerprint": "Landscape Architecture professional process owner|CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN|current_process_ref=null|origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
-    "source_hash_or_commit": "be280aa1f42ad618f1047400b2f96312bd1eda34",
+    "current_version_or_revision": "PROCESS_OPEN / origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
+    "authority_fingerprint": "Landscape Architecture professional process owner|CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN|current_process_ref=null|origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
+    "source_hash_or_commit": "451accfa81216c3f5b094cb94cd4d50462767ce8",
     "frozen_at": "2026-09-19"
   },
   "candidate_definition_binding": {
     "prose_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
     "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
-    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
+    "source_revision_or_commit": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 8,
     "distinct_required_capability_profiles": 8,
     "mutation_manifest_ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
@@ -254,7 +254,7 @@
     "previous_pointer": null,
     "rollback_action": "RESTORE_DOMAIN_PROCESS_OPEN_AND_CURRENT_PROCESS_REF_NULL",
     "rollback_test": "ARCHITECTURE_CONTROL_GRAPH_AND_RESOLVER_READBACK",
-    "provenance_ref": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34"
+    "provenance_ref": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8"
   },
   "monitoring": {
     "monitor_window_or_condition": "AFTER_AUTHORIZED_ADOPTION_ON_FIRST_MATERIAL_PROJECT_EXERCISE_AND_ANY_TRIGGERED_REGRESSION",

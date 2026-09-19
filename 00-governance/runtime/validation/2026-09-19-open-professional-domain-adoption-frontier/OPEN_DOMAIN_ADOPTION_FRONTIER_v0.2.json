@@ -1,0 +1,544 @@
+{
+  "schema_version": "oleander-open-domain-adoption-frontier/0.2",
+  "snapshot_date": "2026-09-19",
+  "baseline_commit": "451accfa81216c3f5b094cb94cd4d50462767ce8",
+  "supersedes": {
+    "path": "00-governance/runtime/validation/2026-09-19-open-professional-domain-adoption-frontier/OPEN_DOMAIN_ADOPTION_FRONTIER_v0.1.json",
+    "reason": "Interior and Lighting gained real-project bounded HOLD reapplications after the v0.1 snapshot."
+  },
+  "authority_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+  "professional_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+  "state": "DIAGNOSTIC READBACK / NOT AN AUTHORITY STATE FAMILY / NO PROMOTION",
+  "purpose": "Refresh the five OPEN professional-domain adoption frontiers after C01 Interior and C04 Lighting real-project reapplications, and bind the diagnostic to exact Candidate/project evidence so stale adoption conclusions fail CI instead of remaining green.",
+  "common_current_status": "CONTRACT_ENVELOPE_AVAILABLE / DOMAIN PROCESS OPEN",
+  "evidence_binding_rule": "Candidate machine definitions and project/practice evidence directly supporting this frontier are bound to Git canonical blobs. A changed bound artifact requires regenerating this diagnostic before CI can pass.",
+  "dimensions": [
+    "candidate_definition",
+    "machine_definition",
+    "definition_execution_depth",
+    "bounded_practice_reapplication",
+    "real_project_process_instance",
+    "domain_native_execution_chain",
+    "actual_readback",
+    "material_interface_or_failure_path_exercised",
+    "change_reopen_exercised",
+    "independent_professional_review",
+    "professional_pass",
+    "current_promotion"
+  ],
+  "source_bindings": [
+    {
+      "path": "00-governance/schemas/interior-design-process.v1.candidate.json",
+      "blob_sha": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
+      "role": "INTERIOR_CANDIDATE_MACHINE_DEFINITION"
+    },
+    {
+      "path": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+      "blob_sha": "a9fca5ba94215374132eef6d50b888ce32051f71",
+      "role": "LANDSCAPE_CANDIDATE_MACHINE_DEFINITION"
+    },
+    {
+      "path": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+      "blob_sha": "6bef3b07b96e436264363f68b55090a5f07c0bab",
+      "role": "LIGHTING_CANDIDATE_MACHINE_DEFINITION"
+    },
+    {
+      "path": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+      "blob_sha": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
+      "role": "HCD_CANDIDATE_MACHINE_DEFINITION"
+    },
+    {
+      "path": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+      "blob_sha": "df711df8f6faf48fcf4a347de214ee5caa30584c",
+      "role": "SYSTEMS_ENGINEERING_CANDIDATE_MACHINE_DEFINITION"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "ffebd1e75792422c9f126b853fa14379b0ed0749",
+      "role": "INTERIOR_PROJECT_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_THREAD_READBACK_v0.1.json",
+      "blob_sha": "03717e586e581241e0cd32ca7803277109022db4",
+      "role": "INTERIOR_PROJECT_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob_sha": "b1f7079bd1ead8da8822bfc3d99055ef1baba78c",
+      "role": "INTERIOR_PROJECT_EXERCISE_RECEIPT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "b3630c5339188cc488e222bfd7d6c99d90b3c7f3",
+      "role": "LANDSCAPE_PROJECT_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LA_DP1_THREAD_READBACK_v0.1.json",
+      "blob_sha": "781ae33bbbab4f01a9bc1d6aeca92024c02887d2",
+      "role": "LANDSCAPE_PROJECT_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob_sha": "0fe05fa53bcfe1307df8b03a866ce63eebab2e07",
+      "role": "LANDSCAPE_PROJECT_EXERCISE_RECEIPT"
+    },
+    {
+      "path": "06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_RECEIPT_v0.1.json",
+      "blob_sha": "cdf5f46363ffa7da2e1bcae06b6834499ffffe27",
+      "role": "LIGHTING_SYNTHETIC_PRACTICE_RECEIPT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "5cf319f5242178e99b6e82b8f240e9aad25d97c6",
+      "role": "LIGHTING_PROJECT_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+      "blob_sha": "79f3762a603d7b416141fc6ec244b8f60d1331f6",
+      "role": "LIGHTING_PROJECT_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob_sha": "036cb0b04bfe6845710056bcde80f199edcc14c9",
+      "role": "LIGHTING_PROJECT_EXERCISE_RECEIPT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "6318c3a1c2a39abd8a4329e6ee780a2e1ac18811",
+      "role": "HCD_PROJECT_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_THREAD_READBACK_v0.1.json",
+      "blob_sha": "49c50460cecc0109ce9f454987744a88fde4964d",
+      "role": "HCD_PROJECT_THREAD_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+      "blob_sha": "189d50f9abeeda5d59770332a84a3c3ad476b8ab",
+      "role": "HCD_PROJECT_EXERCISE_RECEIPT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "a3465fd5ff9cd7ea634808d0e31a8b76159fba0c",
+      "role": "SYSTEMS_PROJECT_PROCESS_INSTANCE"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_REQUIREMENT_TRACE_VV_v0.1.json",
+      "blob_sha": "e4eab9a5ad1df18fe2e545e046ab90c7db239aa4",
+      "role": "SYSTEMS_REQUIREMENT_TRACE_VV"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+      "blob_sha": "1fac3fbecbf1d722dd40ac8df1abec8899bbcc63",
+      "role": "SYSTEMS_PROJECT_ADOPTION_RECEIPT"
+    }
+  ],
+  "definition_depth_readback": {
+    "shared_regression_ids": [
+      "FAIL-041",
+      "FAIL-042"
+    ],
+    "rule": "Professional execution parity is judged by domain-native judgment/uncertainty/options/native-work/release/implementation/handover/review/change objects, not equal stage count, page count or template identity.",
+    "domains": {
+      "Interior Design": {
+        "execution_depth_contract_present": true,
+        "stage_count": 8,
+        "native_output_objects": 72,
+        "readback_checks": 35,
+        "reopen_triggers": 8,
+        "does_not_prove_boundaries": 32,
+        "parity_rule": "Equivalent Interior Design execution depth is demonstrated through coordinated room/RCP/finish/joinery/door/FF&E work products, procurement release, field administration and closeout records."
+      },
+      "Landscape Architecture": {
+        "execution_depth_contract_present": true,
+        "stage_count": 8,
+        "native_output_objects": 63,
+        "readback_checks": 28,
+        "reopen_triggers": 8,
+        "does_not_prove_boundaries": 42,
+        "parity_rule": "Equivalent Landscape Architecture execution depth is demonstrated through site-authority, grading/water/soil/planting/material release, field-change, establishment and maintenance objects rather than decorative landscape representation."
+      },
+      "Lighting Design": {
+        "execution_depth_contract_present": true,
+        "stage_count": 10,
+        "native_output_objects": 79,
+        "readback_checks": 73,
+        "reopen_triggers": 33,
+        "does_not_prove_boundaries": 31,
+        "parity_rule": "Equivalent Lighting Design execution depth is demonstrated through visual-task criteria, model configuration, luminaire/control release, mockup/substitution, commissioning/aiming measurement and replacement equivalence objects."
+      },
+      "Digital Product / HCD": {
+        "execution_depth_contract_present": true,
+        "stage_count": 8,
+        "native_output_objects": 60,
+        "readback_checks": 26,
+        "reopen_triggers": 8,
+        "does_not_prove_boundaries": 39,
+        "parity_rule": "Equivalent HCD execution depth is demonstrated through research eligibility, version-bound findings, fix/build/retest evidence, release support, cross-functional handoffs and live outcome objects rather than screen completeness.",
+        "machine_domain": "Digital Product / Human-Centred Design"
+      },
+      "Systems Engineering": {
+        "execution_depth_contract_present": true,
+        "stage_count": 9,
+        "native_output_objects": 48,
+        "readback_checks": 26,
+        "reopen_triggers": 9,
+        "does_not_prove_boundaries": 37,
+        "parity_rule": "Equivalent Systems Engineering execution depth is demonstrated through controlled needs/requirements/architecture/interface/configuration/V&V/change objects, not by generic systems diagrams or process-stage labels."
+      }
+    },
+    "result": "ALL_FIVE_CANDIDATE_DEFINITIONS_MEET_THE_DEFINITION_LEVEL_EXECUTION_DEPTH_FLOOR"
+  },
+  "domains": [
+    {
+      "domain": "Interior Design",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/interior-design-process.v1.candidate.json",
+        "machine_blob_sha": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
+        "stage_ids": [
+          "ID-PW0",
+          "ID-PW1",
+          "ID-PW2",
+          "ID-PW3",
+          "ID-PW4",
+          "ID-PW5",
+          "ID-PW6",
+          "ID-PW7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION"
+      },
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C01 Yimai Guangdu / N04 八股厅 learning-room hypothesis",
+        "receipt": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "b1f7079bd1ead8da8822bfc3d99055ef1baba78c",
+        "thread_readback": "05-cases/c01-yimai-guangdu/interior-professional-process-exercise/v0.1/C01_INTERIOR_THREAD_READBACK_v0.1.json",
+        "thread_readback_blob_sha": "03717e586e581241e0cd32ca7803277109022db4",
+        "process_state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "stage_coverage": "ID-PW0..2 BLOCKED/HOLD; ID-PW3..7 NOT_STARTED/NOT_RUN",
+        "evidence_ceiling": "Programmatic/reversible-use intent only; no verified room geometry, capacity, life-safety/accessibility, RCP, FF&E, finishes, technical release or field evidence."
+      },
+      "domain_native_execution_chain": {
+        "state": "NOT_ESTABLISHED",
+        "open": "No measured room/base-building authority or coordinated Interior native plan/RCP/elevation/section + finish/joinery/door/FF&E release chain."
+      },
+      "interface_exercise": {
+        "exists": false,
+        "note": "Architecture/Heritage/Fire/Accessibility/MEP/Lighting/Acoustics/Operations owners are named as unresolved, not closed interfaces."
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "regression_ids": [
+        "FAIL-023",
+        "FAIL-024",
+        "FAIL-025",
+        "FAIL-026",
+        "FAIL-027",
+        "FAIL-028",
+        "FAIL-029",
+        "FAIL-030",
+        "FAIL-057",
+        "FAIL-058"
+      ],
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "AUTHORITATIVE ROOM/BASE-BUILDING EVIDENCE → COORDINATED INTERIOR NATIVE OBJECTS → RELEASE/INTERFACE READBACK → INDEPENDENT INTERIOR REVIEW",
+      "next_valid_evidence": [
+        "authoritative existing-condition room/base-building geometry and use authority",
+        "measured room data + coordinated plan/RCP/elevation/section or equivalent native package",
+        "at least one real finish/joinery/door/FF&E release chain",
+        "one material cross-professional contradiction/interface disposition",
+        "actual readback with HOLD/failure retained and independent Interior professional review"
+      ]
+    },
+    {
+      "domain": "Landscape Architecture",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+        "machine": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
+        "machine_blob_sha": "a9fca5ba94215374132eef6d50b888ce32051f71",
+        "stage_ids": [
+          "LA-DP0",
+          "LA-DP1",
+          "LA-DP2",
+          "LA-DP3",
+          "LA-DP4",
+          "LA-DP5",
+          "LA-DP6",
+          "LA-DP7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_BOUNDED_PROJECT_REAPPLICATION"
+      },
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Qingjiang",
+        "receipt": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.1/C04_LANDSCAPE_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "0fe05fa53bcfe1307df8b03a866ce63eebab2e07",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "evidence_ceiling": "Spatial/experience + remote environmental support only; survey/grading/drainage/soil/ecology/irrigation/maintenance professional truth remains open."
+      },
+      "domain_native_execution_chain": {
+        "state": "NOT_ESTABLISHED",
+        "open": "No real grading/drainage/soil/planting/hardscape release chain."
+      },
+      "interface_exercise": {
+        "exists": false,
+        "note": "Landscape↔Civil/Geotech/Ecology/Operations material interface not closed."
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "regression_ids": [
+        "FAIL-009",
+        "FAIL-010",
+        "FAIL-011",
+        "FAIL-012"
+      ],
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL LANDSCAPE NATIVE-OBJECT EXECUTION + MATERIAL INTERFACE + CHANGE/READBACK + INDEPENDENT REVIEW",
+      "next_valid_evidence": [
+        "survey/site authority at the next claim ceiling",
+        "one actual grading/drainage/soil/planting/hardscape decision and release chain",
+        "one material Landscape↔Civil/Geotech/Ecology/Operations interface exercised",
+        "actual readback with failure/HOLD retained",
+        "independent Landscape professional review"
+      ]
+    },
+    {
+      "domain": "Lighting Design",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/lighting-design-process.v1.candidate.json",
+        "machine_blob_sha": "6bef3b07b96e436264363f68b55090a5f07c0bab",
+        "stage_ids": [
+          "LGT-00",
+          "LGT-01",
+          "LGT-02",
+          "LGT-03",
+          "LGT-04",
+          "LGT-05",
+          "LGT-06",
+          "LGT-07",
+          "LGT-08",
+          "LGT-09"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION"
+      },
+      "practice_reapplication": {
+        "exists": true,
+        "kind": "SYNTHETIC PROFESSIONAL METHOD PRACTICE",
+        "receipt": "06-practice/2026/2026-09-18-lighting-process-reapplication/LGT_SP03_R02_CANDIDATE_REAPPLICATION_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "cdf5f46363ffa7da2e1bcae06b6834499ffffe27",
+        "project_exercise_counted": false,
+        "coverage": "Radiance/evalglare method/configuration mechanics only; no project product/control/field authority."
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Qingjiang / P01 步步生光",
+        "receipt": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "036cb0b04bfe6845710056bcde80f199edcc14c9",
+        "thread_readback": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/C04_LIGHTING_THREAD_READBACK_v0.1.json",
+        "thread_readback_blob_sha": "79f3762a603d7b416141fc6ec244b8f60d1331f6",
+        "process_state": "REAL PROJECT BOUNDED REAPPLICATION / BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "stage_coverage": "LGT-00/01/04/05 BLOCKED/HOLD; LGT-02/03/06/07/08/09 NOT_STARTED/NOT_RUN",
+        "evidence_ceiling": "Local body-feedback concept only; site need, photometric/glare/color, product/optic/driver, controls, ecology/spill, specification, commissioning and field evidence remain open."
+      },
+      "domain_native_execution_chain": {
+        "state": "NOT_ESTABLISHED",
+        "open": "No project-specific photometric + luminaire/control/specification/commissioning chain."
+      },
+      "interface_exercise": {
+        "exists": false,
+        "note": "Paving/drainage/electrical/waterproofing/ecology/accessibility/operations are unresolved field gates, not accepted interfaces."
+      },
+      "change_reopen_exercise": {
+        "exists": true,
+        "scope": "Synthetic-practice parser/schema revision only; no real project lighting configuration change/retest cycle."
+      },
+      "independent_professional_review": "NOT_RUN_FOR_REAL_PROJECT",
+      "regression_ids": [
+        "FAIL-031",
+        "FAIL-032",
+        "FAIL-033",
+        "FAIL-034",
+        "FAIL-035",
+        "FAIL-036",
+        "FAIL-037",
+        "FAIL-038",
+        "FAIL-039",
+        "FAIL-040",
+        "FAIL-059",
+        "FAIL-060",
+        "FAIL-061"
+      ],
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "CONFIRMED PROJECT LIGHTING NEED/SITE → PROJECT PHOTOMETRIC/PRODUCT/CONTROL NATIVE OBJECTS → MOCKUP/FIELD READBACK → INDEPENDENT LIGHTING REVIEW",
+      "next_valid_evidence": [
+        "confirm a real project site need/location and visual task",
+        "bind current geometry/material/orientation and criterion source",
+        "select exact luminaire/optic/driver/control candidate where applicable",
+        "run project photometric/glare/night-receptor evidence and exact control prototype/configuration",
+        "exercise specification/substitution or mockup/commissioning/measurement at the applicable stage",
+        "independent Lighting professional review"
+      ]
+    },
+    {
+      "domain": "Digital Product / HCD",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+        "machine": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+        "machine_blob_sha": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
+        "stage_ids": [
+          "HCD-DP0",
+          "HCD-DP1",
+          "HCD-DP2",
+          "HCD-DP3",
+          "HCD-DP4",
+          "HCD-DP5",
+          "HCD-DP6",
+          "HCD-DP7"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_BOUNDED_PROJECT_REAPPLICATION"
+      },
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Digital Companion",
+        "receipt": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_EXERCISE_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "189d50f9abeeda5d59770332a84a3c3ad476b8ab",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "evidence_ceiling": "IA/state/fallback/offline/editable source are real design evidence; representative-user research, usability, accessibility/AT, browser runtime, privacy/security/legal and live outcome evidence remain open."
+      },
+      "domain_native_execution_chain": {
+        "state": "PARTIAL_DESIGN_SYSTEM_ONLY",
+        "open": "No representative-user research→requirement→prototype task test→fix/build/retest→live outcome chain."
+      },
+      "interface_exercise": {
+        "exists": true,
+        "level": "PARTIAL/OPEN",
+        "note": "Engineering/runtime, accessibility, privacy/security, data and service interfaces identified but not accepted/closed."
+      },
+      "change_reopen_exercise": {
+        "exists": false
+      },
+      "independent_professional_review": "NOT_RUN",
+      "regression_ids": [
+        "FAIL-013",
+        "FAIL-014",
+        "FAIL-015",
+        "FAIL-016",
+        "FAIL-017",
+        "FAIL-018",
+        "FAIL-019"
+      ],
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL USER RESEARCH / USABILITY / ACCESSIBILITY + IMPLEMENTATION READBACK + CHANGE/RETEST + INDEPENDENT HCD REVIEW",
+      "next_valid_evidence": [
+        "representative-user research with participant/data-handling boundary",
+        "task-based usability evidence",
+        "accessibility/assistive-technology evidence appropriate to claim",
+        "actual current browser/runtime readback",
+        "privacy/security and analytics handoff where triggered",
+        "fix/build/retest evidence and independent HCD professional review"
+      ]
+    },
+    {
+      "domain": "Systems Engineering",
+      "current_status": "OPEN",
+      "candidate_definition": {
+        "prose": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+        "machine": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
+        "machine_blob_sha": "df711df8f6faf48fcf4a347de214ee5caa30584c",
+        "stage_ids": [
+          "SYSENG-DP0",
+          "SYSENG-DP1",
+          "SYSENG-DP2",
+          "SYSENG-DP3",
+          "SYSENG-DP4",
+          "SYSENG-DP5",
+          "SYSENG-DP6",
+          "SYSENG-DP7",
+          "SYSENG-DP8"
+        ],
+        "definition_side_execution_depth": "SUFFICIENT_FOR_PROJECT_REAPPLICATION"
+      },
+      "practice_reapplication": {
+        "exists": false
+      },
+      "project_adoption": {
+        "exists": true,
+        "project": "C04 Digital Companion System",
+        "receipt": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
+        "receipt_blob_sha": "1fac3fbecbf1d722dd40ac8df1abec8899bbcc63",
+        "process_state": "BLOCKED / HOLD",
+        "project_exercise_counted": true,
+        "requirements_total": 6,
+        "verification_pass": 4,
+        "verification_hold": 2,
+        "validation_pass": 0,
+        "integrated_interfaces_verified": 0
+      },
+      "domain_native_execution_chain": {
+        "state": "PARTIAL",
+        "evidence": "requirements/architecture allocation + configuration-bound verification + v1→v1.2 change/reverify path; validation and integrated-interface proof remain open."
+      },
+      "interface_exercise": {
+        "exists": true,
+        "level": "OPEN/HOLD",
+        "interfaces": [
+          "IF-STATUS-OFFICIAL = NOT_IMPLEMENTED/HOLD",
+          "IF-DIGITAL-FALLBACK = DEFINED/NOT_FIELD_VERIFIED",
+          "IF-BROWSER-RUNTIME = BLOCKED",
+          "IF-HCD-VALIDATION = NOT_RUN"
+        ]
+      },
+      "change_reopen_exercise": {
+        "exists": true,
+        "evidence": "C04 APP v1→v1.2 bounded change/reverify path affecting SYSREQ-002/005/006."
+      },
+      "independent_professional_review": "NOT_RUN",
+      "regression_ids": [
+        "FAIL-043",
+        "FAIL-044"
+      ],
+      "professional_pass": false,
+      "current_promotion": false,
+      "exact_frontier": "REAL INTEGRATED-INTERFACE VERIFICATION + APPLICABLE VALIDATION EVIDENCE + INDEPENDENT SYSTEMS ENGINEERING REVIEW",
+      "next_valid_evidence": [
+        "at least one materially integrated interface verified in actual system context",
+        "at least one applicable validation scenario with real evidence",
+        "task/claim Systems Engineering Knowledge Mount at the next material decision",
+        "independent Systems Engineering professional review"
+      ]
+    }
+  ],
+  "cross_domain_conclusion": {
+    "definition_granularity": "MEETS CURRENT EXECUTION-DEPTH FLOOR FOR ALL FIVE CANDIDATE DEFINITIONS",
+    "adoption_granularity": "NOT CLOSED",
+    "common_missing_chain": "DECISION OBJECT → ELIGIBLE KNOWLEDGE MOUNT → DOMAIN-NATIVE WORK/RELEASE → ACTUAL READBACK → MATERIAL INTERFACE/FAILURE → CHANGE/RETEST → INDEPENDENT PROFESSIONAL REVIEW → CLOSURE",
+    "rule": "Adding more stages, prose or style/prompt repositories does not close the adoption frontier."
+  }
+}

@@ -5,7 +5,7 @@
 This audit is bound to:
 
 - branch: `candidate/professional-stage-skill-composition-20260919-r5`;
-- frozen comparison baseline: `origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34`;
+- frozen comparison baseline: `origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8`;
 - target class: `PROFESSIONAL_PROCESS_DEFINITIONS`;
 - Current authority invariant: Candidate evaluation may not mutate, impersonate or silently replace Current professional-process authority.
 

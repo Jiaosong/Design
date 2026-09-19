@@ -11,7 +11,7 @@
     "machine_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
     "machine_blob": "ff69ed814ef2fc1c81c9bc767774717e47f164d8",
     "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
-    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
+    "source_revision_or_commit": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
   },
   "source_bindings": [
     {

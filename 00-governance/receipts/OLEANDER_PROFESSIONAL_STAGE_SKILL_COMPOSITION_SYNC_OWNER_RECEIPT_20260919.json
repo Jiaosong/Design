@@ -13,8 +13,8 @@
   "mutation_manifest": {
     "id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "ref": "00-governance/runtime/evolution-candidates/OLEANDER_PROFESSIONAL_STAGE_SKILL_COMPOSITION_R5_MUTATION_MANIFEST_20260919.json",
-    "fingerprint_sha256": "b468faf6a15a9fe5c597aa5834d95002f967618cbd64a015a911318b9c4277f5",
-    "material_delta_count": 50
+    "fingerprint_sha256": "33ed8b231f9c8a6c20f0bbb04fc876b0003fc2ae2489afaa3530f14838142988",
+    "material_delta_count": 53
   },
   "canonical_professional_stage_execution_chain": [
     "PROFESSIONAL_STAGE",
@@ -71,7 +71,7 @@
   ],
   "baseline_reconciliation": {
     "initial_receipt_baseline_commit": "43030cfa75e8f8576c89555bbfdc872a2b7ec287",
-    "latest_reconciled_origin_main": "be280aa1f42ad618f1047400b2f96312bd1eda34",
+    "latest_reconciled_origin_main": "451accfa81216c3f5b094cb94cd4d50462767ce8",
     "drift_detected_after_initial_remote_readback": true,
     "overlap_paths": [
       ".github/workflows/ai-governance-evals.yml",
@@ -83,6 +83,17 @@
       "05-cases/c04-qingjiang-stone-book/lighting-professional-process-exercise/v0.1/"
     ],
     "evidence_reclassification": "Interior and Lighting now have real-project HOLD source exercises consumed by current-revision bounded replays; all five OPEN domains have real-project current-revision bounded reapplication evidence, while all five remain EVH_HOLD.",
-    "chronology_rule": "Initial receipt baseline is preserved as historical fact. The exact mutation manifest is re-fingerprinted against the latest reconciled main rather than backdating the receipt."
+    "chronology_rule": "Initial receipt baseline is preserved as historical fact. The exact mutation manifest is re-fingerprinted against the latest reconciled main rather than backdating the receipt.",
+    "second_drift_reconciliation": {
+      "from": "be280aa1f42ad618f1047400b2f96312bd1eda34",
+      "to": "451accfa81216c3f5b094cb94cd4d50462767ce8",
+      "delta": "open professional-domain adoption frontier v0.2 + CI binding",
+      "overlap_paths": [
+        ".github/workflows/ai-governance-evals.yml"
+      ],
+      "merge_result": "CLEAN_NO_TEXT_CONFLICT",
+      "semantic_readback": "v0.2 independently confirms all five OPEN domains have real-project bounded exercises while adoption/execution remains NOT CLOSED.",
+      "validator_repair": "v0.2 evidence binding normalized to Git canonical blob semantics so Windows/Linux readback is consistent."
+    }
   }
 }

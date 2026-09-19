@@ -1,7 +1,7 @@
 {
   "audit_id": "OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-COMPARISON-20260919",
   "target_class": "PROFESSIONAL_PROCESS_DEFINITIONS",
-  "baseline_ref": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34",
+  "baseline_ref": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8",
   "candidate_branch": "candidate/professional-stage-skill-composition-20260919-r5",
   "comparison_scope": "Execution-mechanism quality, fail-closed reliability and bounded local resolver cost only. This comparison does not score or prove project design quality or professional domain PASS.",
   "baseline": {
@@ -157,7 +157,7 @@
     "human adoption and Current pointer mutation remain forbidden before EV5 + authorized decision",
     "Interior and Lighting now have real-project HOLD exercises and current-revision replays, but required domain-native outputs, task/claim Knowledge Mounts, authority closure and independent professional review remain open."
   ],
-  "bounded_verdict": "BASELINE_VS_CANDIDATE_EXECUTION_MECHANISM_COMPARISON_REFRESHED_ON_BE280AA1 / KNOWLEDGE_AND_SKILL_RUNTIME_ROUTING_IMPROVED / PROFESSIONAL_ADOPTION_REMAINS_HOLD",
+  "bounded_verdict": "BASELINE_VS_CANDIDATE_EXECUTION_MECHANISM_COMPARISON_REFRESHED_ON_451ACCFA / KNOWLEDGE_AND_SKILL_RUNTIME_ROUTING_IMPROVED / PROFESSIONAL_ADOPTION_REMAINS_HOLD",
   "does_not_prove": [
     "PROFESSIONAL_PASS",
     "DESIGN_KEEP",

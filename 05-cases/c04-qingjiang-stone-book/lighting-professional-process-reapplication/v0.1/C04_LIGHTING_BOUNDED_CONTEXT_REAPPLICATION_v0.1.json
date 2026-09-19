@@ -11,7 +11,7 @@
     "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
     "machine_blob": "6bef3b07b96e436264363f68b55090a5f07c0bab",
     "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
-    "source_revision_or_commit": "origin/main@be280aa1f42ad618f1047400b2f96312bd1eda34+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
+    "source_revision_or_commit": "origin/main@451accfa81216c3f5b094cb94cd4d50462767ce8+candidate-tree+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919"
   },
   "source_bindings": [
     {
