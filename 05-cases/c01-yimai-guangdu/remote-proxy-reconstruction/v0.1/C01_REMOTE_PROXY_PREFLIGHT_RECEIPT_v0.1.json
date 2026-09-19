@@ -1,0 +1,85 @@
+{
+  "schema_version": "remote-proxy-reconstruction-receipt/0.1",
+  "receipt_id": "C01-RPX-RECEIPT-001",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "method_ref": {
+    "path": "oleander-skills/oleander-research/REMOTE_PROXY_REALITY_RECONSTRUCTION_EXTENSION.md",
+    "blob_sha": "455620ff7ea5afb5b2b997246a6291c60d133e05"
+  },
+  "state": "CROSS_PROJECT PREFLIGHT / KEEP_PROVISIONAL / RG2_NOT_RUN / E2_UNCHANGED / NO_PROMOTION",
+  "source_bindings": [
+    {
+      "path": "05-cases/c01-yimai-guangdu/PRAC-C01-TRANS-ABC-001_R04_REMOTE-PREFLIGHT.md",
+      "blob_sha": "43a440f1ce55a8b40064e29b3aa652c8b7a27927"
+    },
+    {
+      "path": "05-cases/c01-yimai-guangdu/C01_NODE-DESIGN_v0.1.md",
+      "blob_sha": "43da954cd24f200baa07bcd5db65ab6e9774c0de"
+    }
+  ],
+  "output_binding": {
+    "path": "05-cases/c01-yimai-guangdu/remote-proxy-reconstruction/v0.1/C01_REMOTE_PROXY_PREFLIGHT_v0.1.json",
+    "blob_sha": "e4b3333ad3e72f6dfeb18fdaa92c10fa3875adcc"
+  },
+  "public_source_classes_consumed": [
+    "2026 public procurement/civil works",
+    "2025 local-media accompanied observation",
+    "institutional cultural-route source",
+    "regional newspaper architectural dimensions",
+    "town spatial plan",
+    "heritage lists/inventory",
+    "geotagged public photo"
+  ],
+  "reality_anchor_coverage": [
+    "P1/P2/P3 distinct object identity",
+    "P1/P2 published object dimensions",
+    "Dagong Hall macro scale/context",
+    "existing three-cultural-circle route",
+    "2026 Dapiandi road change event"
+  ],
+  "intentionally_unfilled": [
+    "P3 dimensions",
+    "current exact road widths",
+    "exact object coordinates",
+    "heritage protection boundaries",
+    "safe stopping locations",
+    "current drainage/surface condition",
+    "indoor usable geometry",
+    "fire/accessibility capacity",
+    "installation permission"
+  ],
+  "design_consequences": [
+    "physical interpretation remains movable/non-contact",
+    "P1/P2 dimensions are object/photo-scale anchors only",
+    "P3 evidence asymmetry remains visible",
+    "older Dapiandi road/surface imagery is stale-sensitive",
+    "C01 overlays existing visitor/public-cultural route rather than blank-slate wayfinding",
+    "indoor learning must survive unavailable/closed condition"
+  ],
+  "next_remote_actions": [
+    "materialize/read 2026 Dapiandi road drawings if recoverable",
+    "bind current P1/P2/P3 images and run image-scale plausibility",
+    "recover current public geospatial network",
+    "build bounded route/stopping scenarios only after stronger anchors"
+  ],
+  "next_field_actions": [
+    "RG2 approach/front/leave capture",
+    "road width + pedestrian/vehicle conflict",
+    "drainage/ground/shade/stopping",
+    "heritage/protection/permission review",
+    "local review"
+  ],
+  "review_result": "KEEP / REALITY-NEAR REMOTE BASELINE IMPROVED",
+  "evidence_state": "E2 UNCHANGED",
+  "does_not_prove": [
+    "survey geometry",
+    "formal object-ID closure",
+    "current clearance",
+    "heritage permission",
+    "field safety",
+    "fire/accessibility capacity",
+    "installation readiness",
+    "human-test outcome"
+  ],
+  "claim_ceiling": "REMOTE TRIANGULATED OBJECT + ROUTE RELATIONS / PUBLISHED SCALE ANCHORS"
+}

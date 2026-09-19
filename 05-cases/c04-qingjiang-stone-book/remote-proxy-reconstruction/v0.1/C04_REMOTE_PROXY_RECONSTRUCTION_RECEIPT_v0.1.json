@@ -1,0 +1,94 @@
+{
+  "schema_version": "remote-proxy-reconstruction-receipt/0.1",
+  "receipt_id": "C04-RPX-RECEIPT-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "method_ref": {
+    "path": "oleander-skills/oleander-research/REMOTE_PROXY_REALITY_RECONSTRUCTION_EXTENSION.md",
+    "blob_sha": "455620ff7ea5afb5b2b997246a6291c60d133e05"
+  },
+  "state": "BOUNDED_PROJECT_REAPPLICATION / KEEP_PROVISIONAL / FIELD_OPEN / NO_PROMOTION",
+  "source_bindings": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-WS-01_REMOTE-SITE-RECONSTRUCTION_v0.3.md",
+      "blob_sha": "111481f5813c2cab7d53d66fa9518e338e94f5b6"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/QJ-A-REMOTE-EVIDENCE/C04_A_REMOTE_EVIDENCE_OWNER_RECEIPT_v1.0.json",
+      "blob_sha": "3fe2126a66d2a2e8a34bc9e528cf7645401eee59"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/QJ-A-REMOTE-EVIDENCE/C04_A_EVIDENCE_REGISTER_v1.0.csv",
+      "blob_sha": "57e0f0ddda6a4f8cd0be4395e1348349f8cc386a"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/QJ-A-REMOTE-EVIDENCE/C04_A_ROUTE_SEGMENTS_REMOTE_ESTIMATE_v1.0.csv",
+      "blob_sha": "fc40a7fbc3a0df9909c25e6b178687a5df52e065"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/QJ-A-REMOTE-EVIDENCE/C04_A_CAPACITY_SCENARIOS_v1.0.csv",
+      "blob_sha": "5d7946533691deb4b03c746e5bb4204ab677c53e"
+    }
+  ],
+  "output_binding": {
+    "path": "05-cases/c04-qingjiang-stone-book/remote-proxy-reconstruction/v0.1/C04_REMOTE_PROXY_RECONSTRUCTION_READBACK_v0.1.json",
+    "blob_sha": "bc85803fc35153a8f13b5d43f6f66445696141ae"
+  },
+  "reality_anchor_coverage": [
+    "official route topology",
+    "official ~3h visit duration",
+    "official cable length/elevation difference/speed/design rating",
+    "2026 operator context"
+  ],
+  "proxy_objects": [
+    "segment time envelope",
+    "walking-grade design-test envelope",
+    "system capacity stress-test",
+    "cable chord ratio inference"
+  ],
+  "contradiction_checks": [
+    "time-total closure",
+    "component-vs-system capacity",
+    "cable-ratio-vs-terrain boundary",
+    "linear-numbering-vs-loop topology"
+  ],
+  "robust_decisions": [
+    "Return-first",
+    "optional/nonlinear Thirteen Imprints",
+    "reversible/relocatable field-open nodes",
+    "real landscape relation outranks model hero"
+  ],
+  "sensitive_decisions": [
+    "exact node position",
+    "walking width",
+    "walking slope",
+    "steps",
+    "edge/fall",
+    "drainage",
+    "power/network",
+    "structure",
+    "approved capacity"
+  ],
+  "replacement_evidence": [
+    "field route capture",
+    "width/stopping observation",
+    "operations/queue counts",
+    "structural inspection",
+    "drainage/surface field evidence"
+  ],
+  "review_result": "KEEP AS REALITY-NEAR PROVISIONAL MODEL",
+  "field_state": {
+    "observed": 0,
+    "measured": 0,
+    "g1f": "HOLD"
+  },
+  "does_not_prove": [
+    "survey geometry",
+    "field safety/accessibility",
+    "hydraulic performance",
+    "structural adequacy",
+    "approved capacity",
+    "construction readiness",
+    "promotion"
+  ],
+  "claim_ceiling": "RELATION + PROVISIONAL DESIGN + STRESS TEST ONLY"
+}
