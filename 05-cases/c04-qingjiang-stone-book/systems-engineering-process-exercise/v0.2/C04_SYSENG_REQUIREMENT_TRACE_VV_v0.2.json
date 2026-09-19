@@ -1,0 +1,520 @@
+{
+  "schema_version": "c04-syseng-trace-vv/0.2",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "system_of_interest_id": "C04-DIGITAL-COMPANION-SYSTEM",
+  "exercise_id": "C04-SYSENG-TRACE-VV-002",
+  "state": "BOUNDED_SYSTEMS_ENGINEERING_REAPPLICATION / CANDIDATE_PROCESS / ONE_INTEGRATED_RUNTIME_INTERFACE_VERIFIED / VALIDATION_HOLD / NO_PROMOTION",
+  "system_boundary": {
+    "inside": [
+      "C04 Digital Companion interaction/state logic",
+      "visitor-facing APP_GAME_MAP prototype",
+      "local-device memory behavior",
+      "digital route/read/book/service presentation",
+      "browser runtime needed to execute the prototype"
+    ],
+    "external": [
+      "physical route and landscape reality",
+      "paper map/signage",
+      "human service",
+      "official operating-status source",
+      "field safety authority",
+      "survey/GPS authority",
+      "HCD/user research and accessibility evidence"
+    ],
+    "invariant": "The digital system may support the journey but may not become the sole authority for route, safety, return, field reality or official live status."
+  },
+  "authority_sources": [
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+      "blob_sha": "6bb847ac3b8826f96f6709432e3157ce5b318a86",
+      "role": "OWNER_STATE_AND_DIGITAL_OFF_CONTRACT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/chapter-content-sync/v0.1/CH11_DIGITAL-COMPANION-SYSTEM.md",
+      "blob_sha": "4b1d982701d0230f2594cb70914d399bf862030c",
+      "role": "DIGITAL_COMPANION_DESIGN_INTENT"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/README.md",
+      "blob_sha": "c918d18c6e0b63ca06cae482c5f7a0cd314dc9d8",
+      "role": "V1_2_CONFIGURATION_AND_TRUTH_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+      "blob_sha": "636cc9024a545d792fc0a5f13f24af1be47a4593",
+      "role": "V1_2_VERIFICATION_READBACK"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html",
+      "blob_sha": "d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+      "role": "V1_2_IMPLEMENTATION_CONFIGURATION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.1/C04_HCD_PROCESS_INSTANCE_v0.1.json",
+      "blob_sha": "6318c3a1c2a39abd8a4329e6ee780a2e1ac18811",
+      "role": "HCD_VALIDATION_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/README.md",
+      "blob_sha": "8daf6a1021071f81aa2c23aa92e3f97d4160ef33",
+      "role": "V1_3_RUNTIME_REPAIR_SUCCESSOR_BOUNDARY"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html",
+      "blob_sha": "99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2",
+      "role": "V1_3_IMPLEMENTATION_CONFIGURATION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/BROWSER_RUNTIME_READBACK_v1_3.json",
+      "blob_sha": "6cdcb3be18bd4e6e31ec7ae6b2fb714ca26f3f3b",
+      "role": "V1_3_ACTUAL_BROWSER_RUNTIME_VERIFICATION"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/QC_READBACK_v1_3.json",
+      "blob_sha": "9c11b87c3dc1e05f3bfcd98cc1a1ea8c2d6b64af",
+      "role": "V1_3_QC_AND_CLAIM_BOUNDARY"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "C04-SYSREQ-001",
+      "source_need_goal": "Unknown real-world operating state must not be presented as safe/open/normal.",
+      "atomic_requirement": "When the controlling reality state is UNKNOWN, the digital companion shall render UNKNOWN/fail-closed rather than NORMAL/open.",
+      "rationale": "Prevents the prototype from fabricating field/service certainty.",
+      "priority": "CRITICAL_TRUTH_SAFETY",
+      "acceptance_failure_condition": {
+        "pass": "UNKNOWN is visibly represented as unknown/fail-closed in the current implementation and no current source path claims unknown as normal/open.",
+        "fail": "UNKNOWN is normalized to open/normal or hidden behind optimistic route/service language."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "state model",
+          "SERVICE/RETURN status",
+          "map truth copy"
+        ],
+        "interfaces": [
+          "official operating-status source",
+          "field/service authority"
+        ]
+      },
+      "verification": {
+        "method": "SOURCE_INSPECTION + STATIC_ARTIFACT_READBACK",
+        "configuration": "APP_GAME_MAP_v1.2@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+        "evidence": [
+          "Digital-Off Contract rule UNKNOWN_NEVER_RENDERED_AS_NORMAL_OR_OPEN",
+          "APP v1.2 SERVICE status renders UNKNOWN / 未确认 + FAIL-CLOSED",
+          "map truth states UNKNOWN 不显示成正常开放"
+        ],
+        "result": "PASS",
+        "limitation": "No live official-status integration is implemented or claimed."
+      },
+      "validation": {
+        "scenario": "Representative visitor uses the system during genuinely unknown/changed service conditions and correctly understands uncertainty without unsafe inference.",
+        "evidence": "NOT_RUN",
+        "result": "NOT_RUN",
+        "owner_boundary": "HCD + Operations/Official Service",
+        "limitation": "FIELD_OBSERVED=0 / no representative-user/live operational validation."
+      },
+      "status": "VERIFICATION_PASS / VALIDATION_NOT_RUN",
+      "reopen_trigger": "Any change to state vocabulary, service-status source, route availability logic or official-status integration."
+    },
+    {
+      "requirement_id": "C04-SYSREQ-002",
+      "source_need_goal": "The journey must remain viable when the digital layer is unavailable or intentionally off.",
+      "atomic_requirement": "Route, safety, return and core observation shall not depend on successful operation or completion of the digital companion.",
+      "rationale": "Digital is a companion layer, not a single point of failure for the physical journey.",
+      "priority": "CRITICAL_SYSTEM_RESILIENCE",
+      "acceptance_failure_condition": {
+        "pass": "Digital architecture allocates route/safety/return/core-observation fallback outside the app and the app exposes no-phone/offline support without claiming those external channels verified.",
+        "fail": "A critical journey function requires the app with no verified independent fallback."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "digital-off policy",
+          "SERVICE/RETURN",
+          "print fallback",
+          "physical/paper/human fallback allocation"
+        ],
+        "interfaces": [
+          "Physical",
+          "Paper",
+          "Human Service",
+          "Field Reality"
+        ]
+      },
+      "verification": {
+        "method": "CONTRACT_INSPECTION + APP_SOURCE_INSPECTION",
+        "configuration": "C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1 + APP_GAME_MAP_v1.2",
+        "evidence": [
+          "digital_required_for_route=false",
+          "digital_required_for_safety=false",
+          "digital_required_for_return=false",
+          "digital_required_for_core_observation=false",
+          "APP v1.2 presents PAPER / HUMAN / DIGITAL OFF and print fallback"
+        ],
+        "result": "HOLD",
+        "limitation": "The digital-side allocation is explicit, but the physical/paper/human fallback channels are not field-verified as an integrated system."
+      },
+      "validation": {
+        "scenario": "Complete a representative route/return task with the app unavailable, using actual paper/signage/human/landscape support.",
+        "evidence": "NOT_RUN",
+        "result": "NOT_RUN",
+        "owner_boundary": "Architecture/Operations/HCD/Field",
+        "limitation": "No field exercise."
+      },
+      "status": "DIGITAL_ALLOCATION_VERIFIED / INTEGRATED_SYSTEM_HOLD",
+      "reopen_trigger": "Any route/safety/return allocation change or any field evidence showing fallback insufficiency."
+    },
+    {
+      "requirement_id": "C04-SYSREQ-003",
+      "source_need_goal": "The prototype must not fabricate real-time operating information.",
+      "atomic_requirement": "The digital companion shall not present pseudo-live status; live service information may only be claimed when bound to an official interface.",
+      "rationale": "Separates prototype state logic from operational authority.",
+      "priority": "CRITICAL_TRUTH",
+      "acceptance_failure_condition": {
+        "pass": "Prototype explicitly labels status as unconfirmed/unknown and makes no live-operations claim.",
+        "fail": "Prototype simulates or implies live/open/closed status without official authority."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "capability policy",
+          "SERVICE status",
+          "truth boundary"
+        ],
+        "interfaces": [
+          "Official Service Interface"
+        ]
+      },
+      "verification": {
+        "method": "SOURCE_INSPECTION",
+        "configuration": "APP_GAME_MAP_v1.2",
+        "evidence": [
+          "capability_policy.live_service=OFFICIAL_INTERFACE_REQUIRED",
+          "capability_policy.pseudo_live_status=PROHIBITED",
+          "README truth boundary live_operations=NOT_CLAIMED",
+          "SERVICE copy: 不伪装实时运营"
+        ],
+        "result": "PASS",
+        "limitation": "No official live interface exists in this prototype."
+      },
+      "validation": {
+        "scenario": "Official operational status integration correctly reflects changed real conditions and failure states.",
+        "evidence": "NOT_APPLICABLE",
+        "result": "NOT_APPLICABLE",
+        "owner_boundary": "Operations/Official Service + Engineering",
+        "limitation": "Live service feature is outside current prototype claim."
+      },
+      "status": "PASS_WITHIN_NON_LIVE_PROTOTYPE_CLAIM",
+      "reopen_trigger": "Any introduction of live status, feed, API, schedule or automated availability behavior."
+    },
+    {
+      "requirement_id": "C04-SYSREQ-004",
+      "source_need_goal": "The route map must communicate relationships without being mistaken for survey/GPS geometry.",
+      "atomic_requirement": "The app map shall remain explicitly relational/NTS and shall not claim measured distance, slope, precise coordinate or GPS authority.",
+      "rationale": "Preserves spatial-evidence ceiling and prevents proxy geometry from becoming field truth.",
+      "priority": "MAJOR_TRUTH",
+      "acceptance_failure_condition": {
+        "pass": "Current implementation labels the map as relational/NTS and contains no GPS/geolocation claim.",
+        "fail": "The map is presented or consumed as measured/survey/GPS authority."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "ROUTE map",
+          "map truth note",
+          "truth boundary"
+        ],
+        "interfaces": [
+          "Survey/GIS/Field Authority"
+        ]
+      },
+      "verification": {
+        "method": "SOURCE_INSPECTION",
+        "configuration": "APP_GAME_MAP_v1.2",
+        "evidence": [
+          "README: map is relationship/NTS, not measured geometry",
+          "ROUTE copy: 关系型探索地图，不是测绘图",
+          "map card: 节点位置用于表达关系，不代表实测距离、坡度或精确坐标",
+          "no navigator.geolocation use found in reviewed source"
+        ],
+        "result": "PASS",
+        "limitation": "This verifies the prototype claim boundary, not real route geometry."
+      },
+      "validation": {
+        "scenario": "Users do not misinterpret the relational map as survey/navigation authority in realistic use.",
+        "evidence": "NOT_RUN",
+        "result": "NOT_RUN",
+        "owner_boundary": "HCD + Architecture/Field",
+        "limitation": "No representative-user study."
+      },
+      "status": "VERIFICATION_PASS / INTERPRETATION_VALIDATION_NOT_RUN",
+      "reopen_trigger": "Any GPS/location feature, measured geometry, route timing/distance or field-navigation claim."
+    },
+    {
+      "requirement_id": "C04-SYSREQ-005",
+      "source_need_goal": "Personal journey memory in the prototype should work without implying an account/cloud data service.",
+      "atomic_requirement": "The current prototype shall store My Book demonstration entries locally on-device and shall not claim login, cloud sync or GPS tracking.",
+      "rationale": "Keeps implementation aligned with the bounded prototype/privacy claim.",
+      "priority": "MATERIAL_SCOPE_PRIVACY",
+      "acceptance_failure_condition": {
+        "pass": "Current source uses localStorage and does not implement/claim account, cloud or GPS behavior.",
+        "fail": "Data is transmitted/stored remotely or account/location behavior is implied without authority."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "MY BOOK",
+          "localStorage memory editor"
+        ],
+        "interfaces": [
+          "Browser Local Storage",
+          "Privacy/Security"
+        ]
+      },
+      "verification": {
+        "method": "SOURCE_INSPECTION",
+        "configuration": "APP_GAME_MAP_v1.2",
+        "evidence": [
+          "README: local-device writing via localStorage; no login, cloud or GPS claim",
+          "source uses localStorage.getItem/setItem/removeItem",
+          "no fetch/geolocation path found in reviewed source"
+        ],
+        "result": "PASS",
+        "limitation": "Static source inspection is not a privacy/security/legal approval or runtime storage test."
+      },
+      "validation": {
+        "scenario": "Representative user understands local-only persistence and no unexpected data leaves device.",
+        "evidence": "NOT_RUN",
+        "result": "NOT_RUN",
+        "owner_boundary": "HCD + Privacy/Security/Legal",
+        "limitation": "No browser/runtime privacy or user-comprehension validation."
+      },
+      "status": "SOURCE_VERIFICATION_PASS / PRIVACY_AND_USER_VALIDATION_NOT_RUN",
+      "reopen_trigger": "Any analytics, cloud sync, login, remote storage, image upload, GPS or external service integration."
+    },
+    {
+      "requirement_id": "C04-SYSREQ-006",
+      "source_need_goal": "The implemented interaction must work in the actual target browser/runtime, not only exist as editable source.",
+      "atomic_requirement": "The current SPA interaction shall be verified in an actual browser/runtime before any interactive release PASS is claimed.",
+      "rationale": "Prevents source/static QA from substituting for integrated implementation verification.",
+      "priority": "CRITICAL_IMPLEMENTATION",
+      "acceptance_failure_condition": {
+        "pass": "Named browser/runtime configuration executes navigation, route modes/filters, dialogs, My Book/localStorage, print fallback and SERVICE/RETURN without material defect.",
+        "fail": "Only source/static checks exist, or actual runtime fails/is not run."
+      },
+      "allocation": {
+        "architecture_elements": [
+          "SPA runtime",
+          "DOM interaction",
+          "localStorage",
+          "dialog",
+          "print"
+        ],
+        "interfaces": [
+          "Browser Runtime",
+          "Device Environment"
+        ]
+      },
+      "verification": {
+        "method": "ACTUAL_BROWSER_RUNTIME / CONFIGURATION_BOUND",
+        "configuration": "APP_GAME_MAP_v1.3@99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2 / Chromium 151.0.7922.34 / Playwright chromium v1234 / desktop 1440x1000 + mobile 390x844",
+        "evidence": [
+          "BROWSER_RUNTIME_READBACK_v1_3.json: GitHub Actions run 35419536754 / run #4 / job 105834458437",
+          "12/12 Playwright runtime tests PASS",
+          "five views + SERVICE/RETURN execute",
+          "route mode/focus execute",
+          "My Book localStorage write/clear/default reset execute",
+          "print fallback switches to ROUTE and invokes browser print",
+          "tested viewports have no page-level horizontal overflow",
+          "no page JavaScript runtime errors observed on tested paths"
+        ],
+        "result": "PASS",
+        "limitation": "PASS is bounded to the tested Chromium desktop/mobile configurations. Firefox/WebKit, representative-user use, accessibility conformance and live service are not verified."
+      },
+      "validation": {
+        "scenario": "Representative users successfully complete intended tasks in the implemented target runtime/context.",
+        "evidence": "NOT_RUN",
+        "result": "NOT_RUN",
+        "owner_boundary": "HCD + Engineering",
+        "limitation": "No user evaluation."
+      },
+      "status": "VERIFICATION_PASS_CONFIGURED_CHROMIUM / VALIDATION_NOT_RUN",
+      "reopen_trigger": "Any material SPA/runtime/browser target change, state/navigation/localStorage/print-path change, browser-engine expansion, or implementation change reopens configured runtime verification."
+    }
+  ],
+  "architecture_trace": {
+    "stakeholder_outcome": "Help visitors orient, explore, read, remember and return while returning attention to the real Qingjiang landscape and preserving route/safety/field authority outside the app.",
+    "capabilities": [
+      {
+        "id": "CAP-01",
+        "name": "Orient and select journey scale",
+        "requirements": [
+          "C04-SYSREQ-004"
+        ]
+      },
+      {
+        "id": "CAP-02",
+        "name": "Support exploration without route ownership",
+        "requirements": [
+          "C04-SYSREQ-002",
+          "C04-SYSREQ-004"
+        ]
+      },
+      {
+        "id": "CAP-03",
+        "name": "Fail closed under unknown/closed conditions",
+        "requirements": [
+          "C04-SYSREQ-001",
+          "C04-SYSREQ-003"
+        ]
+      },
+      {
+        "id": "CAP-04",
+        "name": "Remain optional/offline/degradable",
+        "requirements": [
+          "C04-SYSREQ-002",
+          "C04-SYSREQ-006"
+        ]
+      },
+      {
+        "id": "CAP-05",
+        "name": "Retain bounded personal memory locally",
+        "requirements": [
+          "C04-SYSREQ-005"
+        ]
+      }
+    ],
+    "logical_elements": [
+      "TODAY",
+      "ROUTE",
+      "READ",
+      "MY BOOK",
+      "SERVICE/RETURN",
+      "State/Reality Logic",
+      "Local Memory",
+      "External Fallback Interfaces"
+    ],
+    "physical_realization": [
+      "portable HTML/SVG SPA",
+      "browser DOM/runtime",
+      "localStorage",
+      "print fallback",
+      "external paper/signage/human/field systems"
+    ]
+  },
+  "interface_verification": [
+    {
+      "interface_id": "IF-STATUS-OFFICIAL",
+      "sides": [
+        "Digital Companion",
+        "Official Service"
+      ],
+      "state": "NOT_IMPLEMENTED / HOLD",
+      "evidence": "Official interface required by contract; no live operations claim in current prototype.",
+      "system_consequence": "No live/open/closed operational PASS may be claimed."
+    },
+    {
+      "interface_id": "IF-DIGITAL-FALLBACK",
+      "sides": [
+        "Digital Companion",
+        "Physical/Paper/Human"
+      ],
+      "state": "DEFINED / NOT_FIELD_VERIFIED",
+      "evidence": "Digital-off allocation + app SERVICE/PAPER/HUMAN representation.",
+      "system_consequence": "Digital allocation is coherent; integrated journey resilience remains HOLD."
+    },
+    {
+      "interface_id": "IF-BROWSER-RUNTIME",
+      "sides": [
+        "SPA Source",
+        "Actual Browser Runtime"
+      ],
+      "state": "VERIFIED_FOR_CONFIGURED_CHROMIUM_DESKTOP_AND_MOBILE",
+      "evidence": "APP_GAME_MAP_v1.3 browser runtime readback: Chromium 151.0.7922.34 / Playwright v1234 / desktop 1440x1000 + mobile 390x844 / 12 of 12 tests PASS.",
+      "system_consequence": "The SPA Source ↔ Actual Browser Runtime interface is verified for the tested Chromium configurations only. Cross-browser parity, HCD validation, accessibility, live service and field fallback remain separate/open."
+    },
+    {
+      "interface_id": "IF-HCD-VALIDATION",
+      "sides": [
+        "Implemented Prototype",
+        "Representative Users/Use Context"
+      ],
+      "state": "NOT_RUN",
+      "evidence": "C04 HCD process instance remains HOLD on usability/accessibility/user research.",
+      "system_consequence": "System verification evidence cannot be promoted to validation."
+    }
+  ],
+  "configuration_change_reopen": {
+    "change_id": "C04-APP-CHANGE-V1_2-TO-V1_3",
+    "predecessor_refs": [
+      "app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+      "app-game-map-v1.2/QC_READBACK_v1_2.json@636cc9024a545d792fc0a5f13f24af1be47a4593"
+    ],
+    "successor_ref": "app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html@99e0b88bc6eb8bae7d9b0f4e9a77f404ebeb7bb2",
+    "documented_material_delta": [
+      "repair My Book shared-default mutation discovered in actual Chromium",
+      "repair print-button/window.print global-name collision discovered in actual Chromium",
+      "add configuration-bounded Chromium desktop/mobile runtime verification"
+    ],
+    "affected_requirements": [
+      "C04-SYSREQ-002",
+      "C04-SYSREQ-005",
+      "C04-SYSREQ-006"
+    ],
+    "reopen_actions": [
+      "retest digital print-fallback path contributing to SYSREQ-002 digital allocation",
+      "retest My Book local-only persistence/reset behavior for SYSREQ-005",
+      "rerun actual browser/runtime verification for SYSREQ-006",
+      "preserve HCD validation as NOT_RUN because runtime verification is not user validation"
+    ],
+    "evidence_of_reverification": [
+      "APP v1.3 browser runtime readback run #4 = PASS / 12 of 12",
+      "My Book localStorage write/clear/default reset = PASS desktop + mobile",
+      "print fallback route transition + print invocation = PASS desktop + mobile",
+      "route mode/focus, SERVICE fail-closed, dialog save, overflow = PASS desktop + mobile"
+    ],
+    "result": "MATERIAL_RUNTIME_DEFECTS DISCOVERED → REPAIRED IN SUCCESSOR → CONFIGURATION-BOUND RETEST PASS / HCD+FIELD VALIDATION REMAIN OPEN"
+  },
+  "coverage_summary": {
+    "requirements_total": 6,
+    "verification_pass": 5,
+    "verification_hold": 1,
+    "validation_pass": 0,
+    "validation_not_run": 5,
+    "validation_not_applicable": 1,
+    "integrated_interfaces_verified": 1,
+    "integrated_interfaces_open_or_hold": 3
+  },
+  "professional_disposition": "HOLD",
+  "claim_ceiling": "REQUIREMENT→ARCHITECTURE→VERIFICATION TRACE + ONE CONFIGURED RUNTIME INTERFACE VERIFIED / DIGITAL FALLBACK FIELD INTEGRATION + HCD VALIDATION + INDEPENDENT SE REVIEW OPEN / NO SYSTEMS ENGINEERING PASS / NO PROMOTION",
+  "configuration_change_history": [
+    {
+      "change_id": "C04-APP-CHANGE-V1-TO-V1_2",
+      "predecessor_refs": [
+        "app-game-map-v1/QC_READBACK_v1.json@f092a8d8edb52b2efcc2c936606826f2769b3bd6",
+        "app-game-map-v1/app.js@b4034d1dcc429682a55dabe1ee3f0df4c3e56706"
+      ],
+      "successor_ref": "app-game-map-v1.2@d95ddf1ed9e4cce412a1ec1c1101e9201465a1a3",
+      "documented_material_delta": [
+        "single coherent visitor-facing SPA",
+        "fixed duplicated route-filter JS binding from v1.1",
+        "separate map purpose and travel focus controls",
+        "My Book localStorage memory editor",
+        "print/no-phone service fallback"
+      ],
+      "affected_requirements": [
+        "C04-SYSREQ-002",
+        "C04-SYSREQ-005",
+        "C04-SYSREQ-006"
+      ],
+      "reopen_actions": [
+        "rerun source/static checks for affected route/filter, local-memory and fallback behavior",
+        "rerun actual browser/runtime verification for changed interaction paths",
+        "reopen HCD task/usability validation when implementation materially changes"
+      ],
+      "evidence_of_reverification": [
+        "v1.2 static_checks node_syntax/five_views/four_main_tabs/thirteen_imprints/standalone_svg/local_memory_logic = PASS",
+        "v1.2 actual_live_browser remains HOLD rather than being inherited from predecessor"
+      ],
+      "result": "CHANGE_IMPACT_AND_BOUNDED_REVERIFY_PATH_EXERCISED / RUNTIME VERIFICATION STILL HOLD"
+    }
+  ]
+}
