@@ -34,7 +34,7 @@ r3 restores these three machine files to Current main content with no routing-me
 
 Their 36 stages receive execution-composition semantics through:
 
-`00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json`
+`00-governance/runtime/OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json`
 
 This carrier is explicitly:
 

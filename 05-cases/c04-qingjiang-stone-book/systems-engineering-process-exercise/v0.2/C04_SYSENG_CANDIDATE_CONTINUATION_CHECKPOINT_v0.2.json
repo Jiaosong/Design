@@ -23,7 +23,7 @@
     "materialize a real Multi-Skill DAG and typed handoffs only after all required Current callable owners are resolved",
     "emit a successor receipt only after an actual post-release selective retest executes"
   ],
-  "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+  "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
   "successor_receipt_ref": null,
   "selective_retest_executed": false,
   "does_not_prove": [

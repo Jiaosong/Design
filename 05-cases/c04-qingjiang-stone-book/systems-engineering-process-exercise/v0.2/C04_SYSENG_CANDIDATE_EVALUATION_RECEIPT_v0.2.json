@@ -4,7 +4,7 @@
   "domain": "Systems Engineering",
   "status": "HOLD",
   "real_project_exercise_counted": true,
-  "exercise_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+  "exercise_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
   "continuation_checkpoint_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
   "candidate_binding": {
     "prose_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",

@@ -81,7 +81,7 @@
       "domain": "Systems Engineering",
       "project_id": "PRJ-C04-QINGJIANG-SHISHU",
       "main_real_project_evidence_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
-      "current_candidate_replay_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "current_candidate_replay_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
       "result": "HOLD",
       "knowledge_mount_gate": "HOLD",
       "release_condition": "UNSATISFIED"

@@ -98,7 +98,7 @@ This is a routing normalization layer inside the **existing Execution Owner Map*
 
 `PROFESSIONAL DOMAIN + STAGE + CAPABILITY ROLE + REQUIRED NATIVE OUTPUT + CURRENT PROJECT OWNER BINDINGS + CURRENT CALLABILITY + CLAIM/REVIEW BOUNDARY`.
 
-For already-Current Architecture / Structural / MEP process machines, the Owner Map references `OLEANDER_CURRENT_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json`. That carrier is an exact-machine-revision runtime compatibility projection only. It must not mutate or replace the Current professional-process machine, and becomes stale as soon as the bound Current machine blob/SHA256 changes.
+For already-Current Architecture / Structural / MEP process machines, the Owner Map references `OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json`. That carrier is an exact-machine-revision runtime compatibility projection only. It must not mutate or replace the Current professional-process machine, and becomes stale as soon as the bound Current machine blob/SHA256 changes.
 
 The ordered rules intentionally fail closed. For example:
 

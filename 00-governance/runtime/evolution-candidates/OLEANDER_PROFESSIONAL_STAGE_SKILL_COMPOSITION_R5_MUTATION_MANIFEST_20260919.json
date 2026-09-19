@@ -25,21 +25,21 @@
   "material_files": [
     {
       "path": ".github/workflows/ai-governance-evals.yml",
-      "sha256": "617dc5a7e31b9c2d70c07c67aa21429cb9d9b88d3f54fe46296fe8df5d9b1c0c",
-      "git_blob": "0b8293738d666fa1ea6b19e27a6d6be35cc4160e",
-      "bytes": 13312
+      "sha256": "3b623f2b58e7ed683c718213b9b0b1e93a992d6f3dd6bca0311d9c735b21f663",
+      "git_blob": "02a552036928344e9fb40718e7daf444d7a14a3f",
+      "bytes": 13351
     },
     {
       "path": "00-governance/audits/professional-candidate-adoption-runtime-gap-audit-20260919.md",
-      "sha256": "290282dff5af9865460a6e2b82d59ec78b9d6d6e719ac1100cf5589c5d390164",
-      "git_blob": "c807bf4062de583cd7853cec36b544dbb492452e",
-      "bytes": 18077
+      "sha256": "7de91067ffef5daf640a6088373141a6cc792df0e6d0bfde2855b3d9be78fa41",
+      "git_blob": "2f5cf11de5af91c5f82df45ca2bc96229749e39d",
+      "bytes": 18069
     },
     {
       "path": "00-governance/audits/professional-stage-skill-composition-baseline-candidate-comparison-20260919.json",
-      "sha256": "a24d247580277123a1c34d529e8fe1b280261bec862e064610ee0fddbd6e775b",
-      "git_blob": "e52035810b08c9eb3848a70c51d394dedd16a317",
-      "bytes": 9734
+      "sha256": "12a1a2eda19c15c00bb89474851e099911caf4ee9f36c7ce33110701804202bf",
+      "git_blob": "55510201850b1c4a68d433b882f763b36e1a0a1f",
+      "bytes": 9726
     },
     {
       "path": "00-governance/design-quality-and-design-development-specification-v1.0.md",
@@ -64,12 +64,6 @@
       "sha256": "d13fd8f91817b61af70fa6f5744c6832217dc323964b1e11de6d6dbb423e44aa",
       "git_blob": "0311085db7d3d964fe4dedcf9e18c14e9bbcfc46",
       "bytes": 139100
-    },
-    {
-      "path": "00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json",
-      "sha256": "8c7f42a0827b76f976910b8eae4f11c0089d484fb90c25030f5261d2f071254a",
-      "git_blob": "ff92b75be546afa5875a802477367b91fe89894d",
-      "bytes": 85749
     },
     {
       "path": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
@@ -115,21 +109,27 @@
     },
     {
       "path": "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json",
-      "sha256": "15f6dad4f0d0a4673d712f06fee849153cd80d584365aab2e6dcaa3954c174ee",
-      "git_blob": "102e6b9393b9a2ddc0146689d5d7d5baaf739c32",
-      "bytes": 24486
+      "sha256": "9ba1d3ed8a25a6fcf95a360e5397a9c86ae858cb27da2cdc4b108ecebd156081",
+      "git_blob": "af1ad66a2ae8469bd56047da155543e72326a57e",
+      "bytes": 24478
     },
     {
       "path": "00-governance/runtime/OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.md",
-      "sha256": "fbea0ddfa64bc9bdb1753778ed0fb5e5bd60b77148626289d38d5b2dbfc07c80",
-      "git_blob": "9eb39e9219f44595cc47e6a35305ebe0512ca93e",
-      "bytes": 16174
+      "sha256": "8e40c0de1646ecedf6c5e59ef7201de8a841b12c95a90840985c171b0b52dc65",
+      "git_blob": "9704a00e150a921029a92dd4e69601d9733fbe07",
+      "bytes": 16166
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json",
+      "sha256": "8c7f42a0827b76f976910b8eae4f11c0089d484fb90c25030f5261d2f071254a",
+      "git_blob": "ff92b75be546afa5875a802477367b91fe89894d",
+      "bytes": 85749
     },
     {
       "path": "00-governance/runtime/README.md",
-      "sha256": "11ebc0b78d3f7ee8f6de475b0f3c2694433cae7761112e97b9ffca2bb18dccd5",
-      "git_blob": "e0cd034c6c698b831fb75a7cbcba0b1104f00a43",
-      "bytes": 21276
+      "sha256": "666ca9b45d8dfb6668de94f8e44b8c93f65dc45b826ad66b24ecc90ff2411a02",
+      "git_blob": "2fc7575a810517b157f05315657e19f6c9089a6b",
+      "bytes": 21268
     },
     {
       "path": "00-governance/runtime/bind_chat_on_steroids_oleander.py",
@@ -163,9 +163,9 @@
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
-      "sha256": "88bddd071d229365ef561732b4e8e1a2f4c50026921d742e27200aa5a2ff61ed",
-      "git_blob": "7a3f9159c7cd872bf70b4b0f4df0d6e48cbc8d68",
-      "bytes": 16558
+      "sha256": "6a98b29f0bbacfa3129258bbeb35154eeb3c381222e487067c1a01975d184f9c",
+      "git_blob": "3bf112fd16cbb864e05ba3e92d7b25cd05f01d47",
+      "bytes": 16502
     },
     {
       "path": "00-governance/runtime/oleander_chat_resolver_adapter.py",
@@ -306,25 +306,25 @@
       "bytes": 1694
     },
     {
-      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "5cfc5a55666a907eff88c20841028ba2a230fe9776e3d4080ec128aa3b694942",
-      "git_blob": "94df22491d50982deea53b7409b0c6b092aad6e7",
-      "bytes": 2184
-    },
-    {
-      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
       "sha256": "ecd6441474618091f1db16ede1f02106358e05648882412f4f2933c14e342c4f",
       "git_blob": "d0dd603964947166c7de397fa98951aa822b46c3",
       "bytes": 24809
     },
     {
-      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
-      "sha256": "666db0a5c10fdb09521b8a7e8891a5005ca891e2a3c007701c25801ead133934",
-      "git_blob": "fd25bdde2b58e30727cd822ab0531efc1d6e0eef",
-      "bytes": 1708
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
+      "sha256": "686e57a19b73e175e11086dd5744c3a2f973b9799e58ba53eb1e1edb6888ea48",
+      "git_blob": "ef6d83aec0b5328dea96cd45bccee73afc08829d",
+      "bytes": 2176
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+      "sha256": "e130e4c30236db041ac0951fabbc57c2d6cedba5a4ffdbda44fe6a16aa13daee",
+      "git_blob": "dab5268424ccd49358ade67e445dbc38712746bd",
+      "bytes": 1700
     }
   ],
-  "manifest_content_fingerprint_sha256": "9eff8fef4fd693c00b377f60aad1f548167a8191dce491373b79085fdd6d30c8",
+  "manifest_content_fingerprint_sha256": "bdb908c7806fc1f53d2ec33d2d485b75a8ae4b32647927d14de78d2444a63d20",
   "unchanged_current_professional_machine_assertions": [
     {
       "path": "00-governance/schemas/architecture-design-development-process.v1.json",

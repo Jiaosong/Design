@@ -50,8 +50,8 @@
     ],
     "real_case_refs": [
       "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json"
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json"
     ],
     "counterexample_refs": [
       "evals/failure/failure_cases.jsonl"
@@ -85,8 +85,8 @@
     "state": "CURRENT_CANDIDATE_REVISION_BOUNDED_REAPPLICATION_HOLD",
     "real_case_refs": [
       "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.1/C04_SYSENG_ADOPTION_RECEIPT_v0.1.json",
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json"
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json"
     ],
     "current_candidate_revision_exercised": true,
     "current_candidate_stage_composition_owner_resolution_exercised": true,
@@ -109,7 +109,7 @@
     ],
     "release_condition_readback": "UNSATISFIED_ON_CURRENT_CANDIDATE_REVISION",
     "selective_retest_readback": "NOT_RUN_RELEASE_CONDITION_UNSATISFIED",
-    "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+    "evaluation_receipt_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
     "successor_receipt_ref": null,
     "continuation_checkpoint_ref": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json"
   },
@@ -138,8 +138,8 @@
     "multi_skill_dag_ref_or_single_owner_justification": "NOT_MATERIALIZED_CURRENT_OWNER_OR_KNOWLEDGE_GAPS_HOLD",
     "typed_handoff_refs": [],
     "actual_readback_refs": [
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
-      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CURRENT_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
+      "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
       "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json"
     ],
     "omitted_capability_reasoning": [
