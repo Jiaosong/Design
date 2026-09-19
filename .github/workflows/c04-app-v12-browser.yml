@@ -1,9 +1,9 @@
-name: C04 App v1.2 Browser Interface Verification
+name: C04 App v1.3 Browser Interface Verification
 
 on:
   pull_request:
     paths:
-      - '05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/**'
+      - '05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/**'
       - '05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/**'
       - 'tests/c04-app-v12-browser.spec.js'
       - 'tests/c04-app-v12.playwright.config.js'
@@ -11,7 +11,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/**'
+      - '05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/**'
       - '05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/**'
       - 'tests/c04-app-v12-browser.spec.js'
       - 'tests/c04-app-v12.playwright.config.js'
@@ -41,7 +41,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Verify C04 APP v1.2 browser interface
+      - name: Verify C04 APP v1.3 browser interface
         run: npx playwright test --config=tests/c04-app-v12.playwright.config.js
 
       - name: Upload browser evidence on failure
