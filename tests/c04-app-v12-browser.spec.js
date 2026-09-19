@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const TARGET = '/05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.2/C04_QINGJIANG_APP_GAME_MAP_v1_2_PORTABLE.html';
+const TARGET = '/05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/C04_QINGJIANG_APP_GAME_MAP_v1_3_PORTABLE.html';
 
 test.beforeEach(async ({ page }) => {
   const pageErrors = [];
@@ -38,9 +38,9 @@ test('route mode and travel focus update the rendered map state', async ({ page 
   await expect(page.locator('#mk')).toHaveText('RETURN / 返回');
   await expect(page.locator('#mt')).toContainText('任何时候都能退出探索');
 
-  await page.locator('[data-focus="walk"]').click();
+  await page.locator('.focus button[data-focus="walk"]').click();
   await expect(page.locator('#map')).toHaveAttribute('data-focus', 'walk');
-  await expect(page.locator('[data-focus="walk"]')).toHaveClass(/active/);
+  await expect(page.locator('.focus button[data-focus="walk"]')).toHaveClass(/active/);
 });
 
 test('imprint dialog can persist a page to My Book via localStorage', async ({ page }) => {
