@@ -11,7 +11,7 @@
     "prose_blob": "cc19dd76b74870becd8de80927df5760364cebc4",
     "machine_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
     "machine_blob": "88c9252e5bf40edaecfe06842fa70d258dc4b49e",
-    "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+    "machine_sha256": "adce4c239c0bf21113acf9dad019f07d8e5aaaafc0f612fc064665567de11e59",
     "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
   },
   "current_candidate_revision_exercised": true,

@@ -10,7 +10,7 @@
     "prose_blob": "55d2ace8abb7cb34314e05ffc0214845923a6290",
     "machine_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
     "machine_blob": "a9fca5ba94215374132eef6d50b888ce32051f71",
-    "machine_sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+    "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
     "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
   },
   "source_bindings": [
@@ -143,7 +143,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+          "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {
@@ -421,7 +421,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+          "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {

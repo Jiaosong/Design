@@ -14,7 +14,7 @@
   "candidate_definition_binding": {
     "prose_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
-    "machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+    "machine_sha256": "adce4c239c0bf21113acf9dad019f07d8e5aaaafc0f612fc064665567de11e59",
     "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 8,
     "distinct_required_capability_profiles": 8,
@@ -224,7 +224,7 @@
   "independent_review": {
     "reviewer_id": "NOT_ASSIGNED",
     "independence_state": "NOT_RUN",
-    "review_input_revision": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+    "review_input_revision": "adce4c239c0bf21113acf9dad019f07d8e5aaaafc0f612fc064665567de11e59",
     "verdict": "HOLD",
     "blocking_findings": [
       "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",

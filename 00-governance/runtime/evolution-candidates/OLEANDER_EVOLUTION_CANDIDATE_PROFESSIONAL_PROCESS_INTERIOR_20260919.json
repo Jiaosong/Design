@@ -14,7 +14,7 @@
   "candidate_definition_binding": {
     "prose_ref": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
-    "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+    "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
     "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 8,
     "distinct_required_capability_profiles": 8,
@@ -218,7 +218,7 @@
   "independent_review": {
     "reviewer_id": "NOT_ASSIGNED",
     "independence_state": "NOT_RUN",
-    "review_input_revision": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+    "review_input_revision": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
     "verdict": "HOLD",
     "blocking_findings": [
       "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",

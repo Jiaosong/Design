@@ -10,7 +10,7 @@
     "prose_blob": "54349c3516303a3e00f3c573e39f4950c0118659",
     "machine_ref": "00-governance/schemas/interior-design-process.v1.candidate.json",
     "machine_blob": "3776ad3cbde8478ea7b85282072301710effd763",
-    "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+    "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
     "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
   },
   "source_bindings": [
@@ -140,7 +140,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+          "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {
@@ -422,7 +422,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "d206a9c425380c329cfae4d654e58b96c35e43d5b5a8653bd752ca57bfd14a4b",
+          "machine_sha256": "b558750178caccc474816845a86d81f3c3a591479c790e5be0e984f9343e4b96",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {

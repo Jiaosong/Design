@@ -731,8 +731,20 @@ def main() -> None:
         if binding.get("machine_ref") != row.get("candidate_machine_schema_ref"):
             fail(f"{domain} candidate evolution machine binding does not match graph candidate")
         _validate_professional_candidate_mutation_manifest(candidate_record, binding)
-        machine_path = ROOT / row["candidate_machine_schema_ref"]
-        actual_machine_sha256 = hashlib.sha256(machine_path.read_bytes()).hexdigest()
+        machine_rel = row["candidate_machine_schema_ref"]
+        machine_path = ROOT / machine_rel
+        if machine_rel in set(
+            filter(None, _git_output("git", "diff", "--name-only", "--", machine_rel).splitlines())
+        ):
+            fail(f"{domain} candidate evolution machine has unstaged drift")
+        try:
+            actual_machine_git_blob = _git_output("git", "rev-parse", f":{machine_rel}")
+            canonical_machine_bytes = subprocess.check_output(
+                ["git", "cat-file", "blob", actual_machine_git_blob], cwd=ROOT
+            )
+        except subprocess.CalledProcessError:
+            fail(f"{domain} candidate evolution machine is not staged/tracked")
+        actual_machine_sha256 = hashlib.sha256(canonical_machine_bytes).hexdigest()
         if binding.get("machine_sha256") != actual_machine_sha256:
             fail(f"{domain} candidate evolution machine_sha256 is stale")
         machine_definition = json.loads(machine_path.read_text(encoding="utf-8"))
@@ -1523,6 +1535,8 @@ def main() -> None:
         fail("Evolution contract professional-process candidate mode drift")
     if professional_policy.get("current_authority_during_evaluation") != "REMAINS_OPEN_WITH_CURRENT_PROCESS_REF_NULL":
         fail("Evolution contract must preserve PROCESS_OPEN/current_process_ref=null during candidate exercise")
+    if professional_policy.get("machine_sha256_semantics") != "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT":
+        fail("Evolution contract professional-process machine_sha256 semantics drift")
     required_professional_ev5 = {
         "MATERIALLY_DIFFERENT_STAGES_DEMONSTRATE_RECOMPUTED_CAPABILITY_OWNER_SETS",
         "MULTI_OWNER_STAGE_HAS_DAG_AND_TYPED_HANDOFF_EVIDENCE",

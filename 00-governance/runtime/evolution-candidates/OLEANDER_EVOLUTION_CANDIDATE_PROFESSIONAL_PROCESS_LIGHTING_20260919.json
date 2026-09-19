@@ -14,7 +14,7 @@
   "candidate_definition_binding": {
     "prose_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
-    "machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+    "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
     "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 10,
     "distinct_required_capability_profiles": 10,
@@ -217,7 +217,7 @@
   "independent_review": {
     "reviewer_id": "NOT_ASSIGNED",
     "independence_state": "NOT_RUN",
-    "review_input_revision": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+    "review_input_revision": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
     "verdict": "HOLD",
     "blocking_findings": [
       "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",

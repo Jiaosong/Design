@@ -3,7 +3,7 @@
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "domain": "Digital Product / HCD",
   "candidate_process_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
-  "candidate_machine_sha256": "b779d02d4a014daebbe63544ea9e8120c19daed0e6d8f25b1fe655c98a175c3d",
+  "candidate_machine_sha256": "adce4c239c0bf21113acf9dad019f07d8e5aaaafc0f612fc064665567de11e59",
   "checkpoint_state": "HOLD",
   "current_node": "HCD-DP4_RELEASE_FRONTIER",
   "release_condition": "Task/claim HCD Knowledge Mount plus any stage-triggered Current execution owners/specialists become valid; representative-user usability/accessibility evidence and independent HCD review remain separate gates.",

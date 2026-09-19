@@ -10,7 +10,7 @@
     "prose_blob": "dafddd0738d00f94dec1bd25a4770a95868519c8",
     "machine_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
     "machine_blob": "df711df8f6faf48fcf4a347de214ee5caa30584c",
-    "machine_sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+    "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
     "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
   },
   "source_bindings": [
@@ -141,7 +141,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+          "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {
@@ -420,7 +420,7 @@
           "current_process_ref": null,
           "candidate_evolution_ref": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
           "candidate_evolution_state": "EVH_HOLD",
-          "machine_sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+          "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
           "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE"
         },
         "knowledge_mount_readback": {

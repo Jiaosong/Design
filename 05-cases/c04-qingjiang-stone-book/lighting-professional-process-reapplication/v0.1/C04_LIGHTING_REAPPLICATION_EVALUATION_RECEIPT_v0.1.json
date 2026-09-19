@@ -11,7 +11,7 @@
     "prose_blob": "2248942b8f281385a3c8be47dc1e02d712830119",
     "machine_ref": "00-governance/schemas/lighting-design-process.v1.candidate.json",
     "machine_blob": "20c56c17dc859806989679c9654f7b9f820e2406",
-    "machine_sha256": "c2066bbbc5c0a7002a6e224b41550784d5b6db340072d8d23eb658d35a7b7537",
+    "machine_sha256": "3ab7af172f1c5955d0bb305836dee15c071b4277fedd28c8d4e1d63d5b7c5944",
     "source_revision_or_commit": "WORKTREE_BASE@43030cfa75e8f8576c89555bbfdc872a2b7ec287"
   },
   "current_candidate_revision_exercised": true,

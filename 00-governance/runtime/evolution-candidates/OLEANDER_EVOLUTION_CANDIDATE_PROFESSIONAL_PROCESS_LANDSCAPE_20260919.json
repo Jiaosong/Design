@@ -14,7 +14,7 @@
   "candidate_definition_binding": {
     "prose_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json",
-    "machine_sha256": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+    "machine_sha256": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
     "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 8,
     "distinct_required_capability_profiles": 8,
@@ -215,7 +215,7 @@
   "independent_review": {
     "reviewer_id": "NOT_ASSIGNED",
     "independence_state": "NOT_RUN",
-    "review_input_revision": "fe908becb4d6577ac9cdf572dcd948f4ac2fc9ca2b661ede3a44b9d8e6d080e3",
+    "review_input_revision": "4fd8fd76481a596ec096f5dd004506416fadba196d668b7dd5781895b26b0d16",
     "verdict": "HOLD",
     "blocking_findings": [
       "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",

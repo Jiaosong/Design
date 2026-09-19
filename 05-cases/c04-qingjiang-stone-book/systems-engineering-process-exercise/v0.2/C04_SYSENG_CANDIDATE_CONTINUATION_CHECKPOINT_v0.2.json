@@ -3,7 +3,7 @@
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "domain": "Systems Engineering",
   "candidate_process_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
-  "candidate_machine_sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+  "candidate_machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
   "checkpoint_state": "HOLD",
   "current_node": "SYSENG-DP1_RELEASE_FRONTIER",
   "release_condition": "Task/claim Systems Engineering Knowledge Mount becomes valid and any affected operational/interface validation gaps are released; independent Systems Engineering review remains separate.",

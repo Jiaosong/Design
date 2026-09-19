@@ -137,6 +137,7 @@
     "evaluation_mode": "BOUNDED_NON_CURRENT_PROJECT_EXERCISE",
     "eligible_current_state": "CONTRACT_ENVELOPE_AVAILABLE_PROCESS_OPEN",
     "current_authority_during_evaluation": "REMAINS_OPEN_WITH_CURRENT_PROCESS_REF_NULL",
+    "machine_sha256_semantics": "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT",
     "candidate_binding_required_fields": [
       "prose_ref",
       "machine_ref",

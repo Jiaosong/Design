@@ -14,7 +14,7 @@
   "candidate_definition_binding": {
     "prose_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
     "machine_ref": "00-governance/schemas/systems-engineering-design-process.v1.candidate.json",
-    "machine_sha256": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+    "machine_sha256": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
     "source_revision_or_commit": "origin/main@43030cfa75e8f8576c89555bbfdc872a2b7ec287+manifest:OLEANDER-PROFESSIONAL-STAGE-SKILL-COMPOSITION-R5-20260919",
     "stage_count": 9,
     "distinct_required_capability_profiles": 9,
@@ -217,7 +217,7 @@
   "independent_review": {
     "reviewer_id": "NOT_ASSIGNED",
     "independence_state": "NOT_RUN",
-    "review_input_revision": "930f6de6f57834491f3361c1a60e87e8077001eeb36176542c3af8de3ee31a05",
+    "review_input_revision": "8bc7e459a18495356ae1a09a561f3e0089e2693932dcc3f0866ab850ca51ef0c",
     "verdict": "HOLD",
     "blocking_findings": [
       "TASK_CLAIM_KNOWLEDGE_MOUNT_NOT_CLOSED_ON_CURRENT_CANDIDATE_REVISION",

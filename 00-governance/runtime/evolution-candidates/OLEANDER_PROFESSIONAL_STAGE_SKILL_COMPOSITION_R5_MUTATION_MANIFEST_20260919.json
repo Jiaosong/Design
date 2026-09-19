@@ -79,9 +79,9 @@
     },
     {
       "path": "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json",
-      "sha256": "91430433da605e32438ce87b8ed332440adb853403c0859cb2d8e1f9884fa2df",
-      "git_blob": "00dd7c080cc82fc5435c26d440ba48bb56655af7",
-      "bytes": 8559
+      "sha256": "5eb3a560dc6f847ddc960b43488675627b4f04156e6bf133a5dde628303d9a13",
+      "git_blob": "6cd9a64a836e3f7f95848f4497b1464f0d7f8369",
+      "bytes": 8631
     },
     {
       "path": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
@@ -139,32 +139,32 @@
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_HCD_20260919.json",
-      "sha256": "8e4078778d44408e1f359dfabde593304d307a1efbe788e6486d6a33a8f5f6ca",
-      "git_blob": "31cb2a34280ce635630208328ac460a7f879cce6",
+      "sha256": "2eb3e45df836794177c3cab0867f4c0c8e28eb6d5d853d8cb23d5a3325635449",
+      "git_blob": "1b4c2d4d92b65628ac93034c675d1d0d55f1e112",
       "bytes": 16830
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_INTERIOR_20260919.json",
-      "sha256": "03cd02d27fa4679bfc73728ceb677fdec3ca322d167031b11c7f4e8ba88067a6",
-      "git_blob": "6d7a36b6ab50851e2764e8f3b42634b7f8d3ace8",
+      "sha256": "36f6d54549206cbc661e9378d248b1951529d2da53c340c5fd329912849e52a0",
+      "git_blob": "7f9e2c7faeb68df4ac1aa2469fb202a48366a1b5",
       "bytes": 16467
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LANDSCAPE_20260919.json",
-      "sha256": "03adda71418b30cb439892705f8c3dbab39d96c619ecec3ce37d734f36fbd22c",
-      "git_blob": "014d551e11b682035c4ace6ddd0d8a4d2d21f98b",
+      "sha256": "06164e4545a31047934d0da74811b129a029784a6ac5795d75e7fa01adfdbb05",
+      "git_blob": "dc5d6ee3d84aa60dbd85a2a0bf961cce158c0fe2",
       "bytes": 16057
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_LIGHTING_20260919.json",
-      "sha256": "541ca7b9940baac9797f7bf49f7e2a17b0867b2857b8db2b400efa6ead65e1e4",
-      "git_blob": "da0660529f295baf19d7737602652978e90ffd00",
+      "sha256": "bcacd0b9b65028aee647386a7a3fb809d136140ec8a579770472928212d6b523",
+      "git_blob": "a7cc2f0a732a44fb98638c10f8ffc5c809439774",
       "bytes": 16872
     },
     {
       "path": "00-governance/runtime/evolution-candidates/OLEANDER_EVOLUTION_CANDIDATE_PROFESSIONAL_PROCESS_SYSTEMS_20260919.json",
-      "sha256": "6a98b29f0bbacfa3129258bbeb35154eeb3c381222e487067c1a01975d184f9c",
-      "git_blob": "3bf112fd16cbb864e05ba3e92d7b25cd05f01d47",
+      "sha256": "423114e216a4852046e06a261c350d733d44fc215276a3b709e6c1cd90d67ca5",
+      "git_blob": "9b7f15ec78f188c0a5897759e6698bb2b143c4a9",
       "bytes": 16502
     },
     {
@@ -175,9 +175,9 @@
     },
     {
       "path": "00-governance/runtime/validate_architecture_control_graph.py",
-      "sha256": "437ba67455c0faeedd2f4dec38b6d322f1cdbc262180430a5cad413b969eec15",
-      "git_blob": "e42cb54576eb64d0576b656230dbac17a01d3020",
-      "bytes": 129035
+      "sha256": "9af29f7fd5fdfe6b9ac4d8fd77ed693db60ae8fdd79709c713ea814dfd1f6fd0",
+      "git_blob": "6d887d9822ceb6f0519dff3c746d338fe8fd632e",
+      "bytes": 129859
     },
     {
       "path": "00-governance/runtime/validate_execution_contracts.py",
@@ -235,96 +235,96 @@
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
-      "sha256": "243fc1680516cc0355d1cd1d8989cce1231a189ddf8599770ecc5b3d3bc735c1",
-      "git_blob": "18edf80a95086954a74bc82b92c02c5d36a21f7d",
+      "sha256": "4ac1daa999ed8469c4874b8d988b977cb1a2deb8ea87836abfe28ffd7d15f530",
+      "git_blob": "120e2092a8442ff0eb18369f509d7ebce2132180",
       "bytes": 24389
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
-      "sha256": "f13b402d87e685a7106eebf7a19626e1f660ef3cc091af0c7c5fd05f7ca4a264",
-      "git_blob": "b4fe4c6f8a43de15c7ab285d9cb3a2e70148f652",
+      "sha256": "35a67c42a14400763b192e665df536f57da5ff1d79e5a0e2f804af0836da23e3",
+      "git_blob": "974661f6404991d7b53450c53c2eb4c47fdaef3b",
       "bytes": 2086
     },
     {
       "path": "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
-      "sha256": "18b5b297ef4f54c2690d3c93f694745bb6beb0bb24b00fbcf2af77768dee8e6a",
-      "git_blob": "963174bb5a6bd8df0516a60455a5dbb2dd8ef85e",
+      "sha256": "c696ac9ca2e34726b6e54e9a41938fadd50190d400884fc3d42369ec36c303ff",
+      "git_blob": "4eae3edd0b90fd91b0b3b9eb95e83a32d10091e7",
       "bytes": 1677
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "fdd66e6a6777bb832a13ae3e5f6686b723876034f3374846ab67095323a62c8d",
-      "git_blob": "3ac07ca54314a790c54dd8865587c20d94784404",
+      "sha256": "ffb6470740711a0c2814fb2199428f31f15a5eccb390e30108cbc19db64aa1d3",
+      "git_blob": "ff15edb27c23b6b48cb2ba70431e0a89588da3a8",
       "bytes": 2214
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EVALUATION_RECEIPT_v0.2.json",
-      "sha256": "03f7f339953a5039d8f0b3c46e4681c15efb100cd417cf9889e4c751d34ddddb",
-      "git_blob": "934a86ad383cfe1a352e245d9b54b2b8945a7d67",
+      "sha256": "8278661dfc34bd790541a4fc2e8fd7b6bbe7fbba5570644d9f3dbd3b02760334",
+      "git_blob": "a690da5f874aa7bd807ee74d38055251e5d15a72",
       "bytes": 1680
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json",
-      "sha256": "d039def1eece623183e8f81d18f791b8efeb5c5ad89424478afa552cdc5eefc4",
-      "git_blob": "896da02b18ba8ee1676285c0eee67885cb54c265",
+      "sha256": "5cd1f0469c28a87bf6020bd95e75784caadd5f20c504ed134c253b39a6fce20f",
+      "git_blob": "2407f99cf8396f283374ec928e602aeae916521a",
       "bytes": 26075
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "a0b6c3f85ebc304f62c756c50e4700957bff9229002f7009c0104acf53daac54",
-      "git_blob": "d0539603ec971cd8b2f806295f70833917904498",
+      "sha256": "8316961930102fe641eee25fde1e18762f2b77d759fa63b76e3390fe0ca9093d",
+      "git_blob": "dca64fd097e686c8f027b20c05a2f88b044d3ee9",
       "bytes": 2239
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EVALUATION_RECEIPT_v0.2.json",
-      "sha256": "ac03b8c38c4837d8beae715e106e296df03f9bb74142266ecc40aba4d6bb971e",
-      "git_blob": "e1c945f4649f4acd949cd7c2b2480a4a5891e54c",
+      "sha256": "87637cb0a14c4a94d54df87b80ac315a4a2152457037201e88465b44cd677631",
+      "git_blob": "6631025db639a41a54f8733e182ab410cff233d7",
       "bytes": 1711
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/landscape-professional-process-exercise/v0.2/C04_LANDSCAPE_PROCESS_EXERCISE_v0.2.json",
-      "sha256": "9526466ad9595f1e1fef14ceaa50140aee11d23f2c725b8b6b30fdeafc162d6c",
-      "git_blob": "d55e362015f9153d27c1721a3c2fcd4cc9a1e1d2",
+      "sha256": "fc297dc266057de535ca4681c1e8c49d34238786d8d85757b010afe8a7dac371",
+      "git_blob": "f10025898cb1ae8e47b474c1403ce3e4b4e77dd6",
       "bytes": 24742
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
-      "sha256": "9839cb960d5280d6ee0d66ac8972a7ff9a82bb9da8a5b22f2c1c4554eb4fd5f0",
-      "git_blob": "5a964586d8ac24a861eae72da3e2d987de16657a",
+      "sha256": "fcbb6d8c3c3d9c7fdbd01d16b9885355d02814a82a8faf2f091bb4bf85577317",
+      "git_blob": "cd66daaf8da52a358cafd338dbc2e29fc09a74e9",
       "bytes": 28503
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_CANDIDATE_CONTINUATION_CHECKPOINT_v0.1.json",
-      "sha256": "0de595e89c9b1e77abf540c5ed28410ef9d3e9cd7a421700dd2a012ebd52dd95",
-      "git_blob": "240e09af1782fef02e66c30c9dda8d954d457d10",
+      "sha256": "1f22e7e72a343d76a8095e2cba0ac9681850733672bd61806a30180def635243",
+      "git_blob": "a9be49d54c983608daed365c463eed9cd2043f20",
       "bytes": 2048
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/lighting-professional-process-reapplication/v0.1/C04_LIGHTING_REAPPLICATION_EVALUATION_RECEIPT_v0.1.json",
-      "sha256": "8a201b622fa276937204113c4ff9d84ffd128d7d83b36a175d9b5dbdfce94161",
-      "git_blob": "48934536afb1d755b3bbd37a7d7a5174f8a4a49a",
+      "sha256": "d3b43066993ede1eca34ad9af2f07d54789fda04bda27b5f2aac06466839a2dd",
+      "git_blob": "f24f085f1f2679b3321c1c4a74d9b1a4823a59a3",
       "bytes": 1694
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_COMPOSITION_REPLAY_v0.2.json",
-      "sha256": "ecd6441474618091f1db16ede1f02106358e05648882412f4f2933c14e342c4f",
-      "git_blob": "d0dd603964947166c7de397fa98951aa822b46c3",
+      "sha256": "8394bda13e87467d072d05cb9347e227319026de0e015526a4ca1d674336367d",
+      "git_blob": "6b994996bdbd69db8b256eab45fad2f1aabc538a",
       "bytes": 24809
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_CONTINUATION_CHECKPOINT_v0.2.json",
-      "sha256": "686e57a19b73e175e11086dd5744c3a2f973b9799e58ba53eb1e1edb6888ea48",
-      "git_blob": "ef6d83aec0b5328dea96cd45bccee73afc08829d",
+      "sha256": "72cca23fae3dcac288f936209ee0c4edfefa4ca2d07299725b61af361e5fa26f",
+      "git_blob": "e9961bfa651bf681830393a6104cd4737e8379fc",
       "bytes": 2176
     },
     {
       "path": "05-cases/c04-qingjiang-stone-book/systems-engineering-process-exercise/v0.2/C04_SYSENG_CANDIDATE_EVALUATION_RECEIPT_v0.2.json",
-      "sha256": "e130e4c30236db041ac0951fabbc57c2d6cedba5a4ffdbda44fe6a16aa13daee",
-      "git_blob": "dab5268424ccd49358ade67e445dbc38712746bd",
+      "sha256": "08e32b81d993c39044deffdd746afb034bc3f931f6ae2fb48379ad55c97428d7",
+      "git_blob": "02372f1ee8c4cf8cad86e902fef177b3fdcf2cf1",
       "bytes": 1700
     }
   ],
-  "manifest_content_fingerprint_sha256": "bdb908c7806fc1f53d2ec33d2d485b75a8ae4b32647927d14de78d2444a63d20",
+  "manifest_content_fingerprint_sha256": "c42fd89c891d7c65af948796d4aa09d57655fd750e5b07dcff420a7b71025d74",
   "unchanged_current_professional_machine_assertions": [
     {
       "path": "00-governance/schemas/architecture-design-development-process.v1.json",
