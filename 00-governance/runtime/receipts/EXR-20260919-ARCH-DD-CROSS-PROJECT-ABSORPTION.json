@@ -1,0 +1,105 @@
+{
+  "receipt_id": "EXR-20260919-ARCH-DD-CROSS-PROJECT-ABSORPTION",
+  "status": "CANDIDATE_MATERIAL_DELTA_READY_FOR_PR",
+  "baseline_main": "e59b87a3698dd4f68f09dc9ed198815a46f12921",
+  "source_context": {
+    "source_worktree": "D:/Desgin",
+    "source_branch": "agent/oleander-integrated-runtime-design-quality-20260915",
+    "source_head": "744bd25c28afa9114320ab41f9a09f68cacc6fd9"
+  },
+  "canonical_spine": "Stage -> Professional Question / Decision Object -> Knowledge Inputs -> Operational Knowledge Mount -> Required Capability Roles -> Current Execution Owners / Skills -> Native Outputs -> Actual Readback -> Independent Review -> Stage Closure",
+  "absorbed": [
+    "Architecture stage-body / representation / causal-spine deepening while preserving main practitioner control objects",
+    "Design Quality body/readback/routing deepening with canonical stage order retained",
+    "Architecture receipt stage-body, CAD-plan, publication/style-effect, phase-status and fail-closed bindings",
+    "Design Quality receipt expanded maturity/readback/independent-review and fail-closed bindings",
+    "Shared receipt templates + stdlib validator + 41 regression tests",
+    "Architectural portfolio/publication extension routed under Current story-and-board owner"
+  ],
+  "explicitly_rejected": [
+    "Old whole-file oleander-3d-pipeline SKILL replacement from stale branch baseline",
+    "Old whole-file story-and-board SKILL replacement from stale branch baseline",
+    "Professional Stage -> Required Native Output -> Required Capability -> Owner routing as top-level spine",
+    "Removal/weakening of stage_execution_requirements, minimum sufficient owner set, Candidate/Current boundary or OPEN fail-closed rules",
+    "Any Candidate professional-domain promotion or Current Architecture/Structural/MEP machine mutation solely for routing"
+  ],
+  "validations": {
+    "receipt_template_design_quality": "PASS",
+    "receipt_template_architecture": "PASS",
+    "unittest_count": 41,
+    "unittest_result": "PASS",
+    "json_parse": "PASS",
+    "diff_check": "PASS_AFTER_TRAILING_WHITESPACE_NORMALIZATION",
+    "schema_no_loss": {
+      "architecture_main_only_properties": 0,
+      "design_quality_main_only_properties": 0
+    },
+    "canonical_old_route_present": false,
+    "mojibake_detected": false
+  },
+  "claim_boundary": [
+    "Artifact existence != Design quality",
+    "Traceable execution != Professional PASS",
+    "Professional PASS != Design KEEP",
+    "No statutory/specialist/field approval implied",
+    "No Candidate-domain promotion"
+  ],
+  "material_files": [
+    {
+      "path": "00-governance/architecture-design-development-process-v1.0.md",
+      "bytes": 98096,
+      "sha256": "17cc65343e0fc035842493032e73736b5881417bbd6cec9a848b423f509675f8"
+    },
+    {
+      "path": "00-governance/control-plane/tests/test_design_development_receipt_contracts.py",
+      "bytes": 29968,
+      "sha256": "ee299935f812600e6ee2bff3bd699e1ba8bbb2fe44d2fbe9e2e826deb34990be"
+    },
+    {
+      "path": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "bytes": 145317,
+      "sha256": "7632f9a82bb2c1752bf9c04fcc495889ac3a7e80c7cbbfdb2dccd6566195b2fe"
+    },
+    {
+      "path": "00-governance/schemas/architecture-design-development-receipt.v1.schema.json",
+      "bytes": 19521,
+      "sha256": "6db8cfc3ff7cc4a71d948952cce16667dd15ecde52d19173e130a4622c1990a7"
+    },
+    {
+      "path": "00-governance/schemas/architecture-design-development-receipt.v1.template.json",
+      "bytes": 5336,
+      "sha256": "b190a759980387225d8f0e9a2686c9c26dadbb402e6fd782aeab15c4841caf6f"
+    },
+    {
+      "path": "00-governance/schemas/design-quality-development-receipt.v1.schema.json",
+      "bytes": 33876,
+      "sha256": "b5f0981e539ddb18ec335019c883bf1c12e4d796c284d6a6a149316af78ec6c9"
+    },
+    {
+      "path": "00-governance/schemas/design-quality-development-receipt.v1.template.json",
+      "bytes": 4369,
+      "sha256": "fbfd9c08411721c8431efd4924737612326c8e2c091383307753b1857edbb841"
+    },
+    {
+      "path": "00-governance/schemas/validate_design_development_receipts.py",
+      "bytes": 46717,
+      "sha256": "e6401074b2e6418f5d8ba8bff0eaa8b3535b1b06ce605b9e0300122effd0404f"
+    },
+    {
+      "path": "oleander-skills/oleander-story-and-board/ARCHITECTURAL_PORTFOLIO_PUBLICATION_EXTENSION.md",
+      "bytes": 18089,
+      "sha256": "484e10c5430e9f4ebc44225651b007cc8d49550399607e92c2d321adf84013bc"
+    },
+    {
+      "path": "oleander-skills/oleander-story-and-board/PRACTICE_2026-09-19_ARCHITECTURAL_PORTFOLIO_DIGESTION.md",
+      "bytes": 17322,
+      "sha256": "6d533681f1c4bb9454a0e87bff126da2cbfca0e7b6b6568287f9b57f5bedad75"
+    },
+    {
+      "path": "oleander-skills/oleander-story-and-board/SKILL.md",
+      "bytes": 22605,
+      "sha256": "b664a3b1d289b4fbf9326db9814a3adfcb84c032665d32fb5748dc6d13fdcbe0"
+    }
+  ],
+  "material_file_count": 11
+}

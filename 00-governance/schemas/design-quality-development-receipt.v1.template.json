@@ -1,0 +1,129 @@
+{
+  "receipt_type": "DESIGN_QUALITY_DEVELOPMENT_RECEIPT",
+  "project_id": "TBD_PROJECT_ID",
+  "body_structure": {
+    "body_id": "TBD_BODY_ID",
+    "title": "PROJECT / DECISION TITLE - replace before use",
+    "section_coverage": [
+      {
+        "semantic_role": "TITLE_IDENTITY",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Replace with the real project/domain-native title."
+      },
+      {
+        "semantic_role": "DEFINITION_SCOPE",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Define what this body owns and excludes."
+      },
+      {
+        "semantic_role": "CURRENT_CONDITION_PROBLEM",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "State the current project condition or problem."
+      },
+      {
+        "semantic_role": "CANONICAL_KNOWLEDGE_EVIDENCE_INPUTS",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Resolve canonical refs and task-scoped operational eligibility."
+      },
+      {
+        "semantic_role": "DESIGN_INTENT_CRITERIA",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "State the design relation and criteria."
+      },
+      {
+        "semantic_role": "DEVELOPMENT_MECHANISM_WORKFLOW",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Record the actual design/professional development action."
+      },
+      {
+        "semantic_role": "NATIVE_ARTIFACT_READBACK",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Reference the native artifact and actual readback."
+      },
+      {
+        "semantic_role": "FAILURE_COUNTEREXAMPLE_OPEN_ITEM",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "Record failures, counterexamples or bounded OPEN items."
+      },
+      {
+        "semantic_role": "DECISION_MATURITY_CLAIM_CEILING",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "State the bounded decision, DQ maturity and claim ceiling."
+      },
+      {
+        "semantic_role": "REOPEN_TRIGGER_NEXT_ACTION",
+        "status": "MISSING",
+        "visible_heading_or_locator": null,
+        "reason": "State reopen triggers and the next development action."
+      }
+    ]
+  },
+  "design_question": "TBD_DESIGN_QUESTION",
+  "design_intent": "TBD_DESIGN_INTENT",
+  "claim_ceiling": "TBD_CLAIM_CEILING",
+  "triggered_design_dimensions": [
+    "DD-01_INTENT"
+  ],
+  "knowledge_mounts": [],
+  "professional_process_refs": [],
+  "artifact_refs": [
+    "TBD_NATIVE_ARTIFACT_REF"
+  ],
+  "design_maturity": "DQ0_UNDEFINED",
+  "resolution_scales_reviewed": [
+    "R1_WHOLE"
+  ],
+  "design_language_state": "HOLD",
+  "experience_state": "HOLD",
+  "human_relation_state": "HOLD",
+  "sensory_state": "HOLD",
+  "detail_craft_state": "HOLD",
+  "adaptation_state": "HOLD",
+  "meaning_memory_state": "HOLD",
+  "coherence_state": "HOLD",
+  "genericity_attack": {
+    "status": "HOLD",
+    "findings": [
+      "Template only; run project-specific attack before promotion."
+    ],
+    "reason": null
+  },
+  "content_projection_state": "HOLD",
+  "readback_conditions": [
+    {
+      "artifact_ref": "TBD_NATIVE_ARTIFACT_REF",
+      "condition": "TBD_TARGET_SIZE_STATE_MEDIUM_OR_USE_CONDITION",
+      "status": "HOLD"
+    }
+  ],
+  "strongest_design_decision": "TBD",
+  "weakest_or_open_design_decision": "Body structure, knowledge mounts and actual readback remain unresolved.",
+  "root_cause": null,
+  "open_items": [
+    "Replace all template placeholders with project-specific evidence."
+  ],
+  "reopened_items": [],
+  "does_not_prove": [
+    "Template completeness does not prove design quality, professional-stage PASS, technical approval, field validity or promotion."
+  ],
+  "independent_design_review": {
+    "status": "PENDING",
+    "reviewer_independent_from_producer": false,
+    "reason": "Independent design review has not yet been performed.",
+    "reviewer_id": null,
+    "review_input_bindings": []
+  },
+  "result": "HOLD",
+  "stale": true,
+  "schema_version": "1.1",
+  "in_claim_blocking_design_fail_count": 1
+}

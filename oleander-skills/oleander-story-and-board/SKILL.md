@@ -134,6 +134,16 @@ When a story uses a sequence such as `Landscape First → Relation Reveal`, `Obj
 
 **Promotion test:** `If view A is not project-readable without labels, view B cannot rescue it.` `Abstract proxy ≠ Main visual.`
 
+## Architectural portfolio / publication production
+
+When the requested artifact is an architectural portfolio, competition board, design book, review spread, or another publication surface that consumes authoritative architectural plans, sections, models, diagrams, renders, or state views, read:
+
+`oleander-skills/oleander-story-and-board/ARCHITECTURAL_PORTFOLIO_PUBLICATION_EXTENSION.md`
+
+This extension is subordinate to the Current professional-stage spine and the upstream Architecture / Design authority. It owns publication composition, representation reduction, proof-role hierarchy, style/effect budgeting, and target-medium readback only; it does not create a second architectural geometry or professional closure path.
+
+`CURRENT ARCHITECTURE → NATIVE MASTER → REVIEW / ANALYSIS DERIVATIVE → PUBLICATION VIEW → TARGET-MEDIUM READBACK`.
+
 ## VI / Brand Identity Manual production
 
 When the requested artifact is a **VI manual / visual identity handbook / logo standards page / brand guideline / brand identity Web chapter**, first resolve the Current Brand Identity METHOD and then read:

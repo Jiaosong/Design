@@ -1,0 +1,145 @@
+{
+  "receipt_type": "ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT",
+  "triggered": true,
+  "trigger_reason": [
+    "REPLACE_WITH_REAL_TRIGGER_REASON"
+  ],
+  "project_stage": "REPLACE_WITH_CURRENT_PROJECT_STAGE",
+  "claim_ceiling": "REPLACE_WITH_BOUNDED_ARCHITECTURE_CLAIM_CEILING",
+  "stage_body_records": [
+    {
+      "stage_id": "ADD-00",
+      "body_ref": "REPLACE_WITH_STAGE_BODY_REF",
+      "title": "PROJECT | ADD-00 Scope authority and claim ceiling | replace before use",
+      "section_coverage": [
+        {
+          "semantic_role": "STAGE_QUESTION_SCOPE",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Replace with the real stage question and scope heading."
+        },
+        {
+          "semantic_role": "CURRENT_CONDITION_PROBLEM",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Replace with the current project condition/problem section."
+        },
+        {
+          "semantic_role": "AUTHORITY_KNOWLEDGE_INPUTS",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Resolve current authority and task-scoped canonical knowledge/evidence mounts."
+        },
+        {
+          "semantic_role": "ARCHITECTURAL_CRITERIA_INTENT",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Replace with current architectural criteria/intent."
+        },
+        {
+          "semantic_role": "DEVELOPMENT_COMPARISON_MECHANISM",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Replace with actual development/comparison/mechanism."
+        },
+        {
+          "semantic_role": "PROFESSIONAL_INTERFACES",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Resolve triggered interfaces or mark NOT_APPLICABLE_WITH_REASON."
+        },
+        {
+          "semantic_role": "NATIVE_OUTPUT_SOURCE_OF_TRUTH",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Point to the real native/authoritative architectural carrier."
+        },
+        {
+          "semantic_role": "ACTUAL_READBACK_FINDING",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Replace with actual readback and bounded finding."
+        },
+        {
+          "semantic_role": "FAILURE_OPEN_DOES_NOT_PROVE",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Record failures, OPEN items and does-not-prove boundary."
+        },
+        {
+          "semantic_role": "VERDICT_CLAIM_REOPEN_NEXT_ACTION",
+          "status": "MISSING",
+          "visible_heading_or_locator": null,
+          "reason": "Record bounded verdict, claim ceiling, reopen trigger and next action."
+        }
+      ],
+      "knowledge_mount_refs": [],
+      "native_artifact_refs": [
+        "REPLACE_WITH_NATIVE_ARTIFACT_REF"
+      ],
+      "readback_refs": [
+        "REPLACE_WITH_ACTUAL_READBACK_REF"
+      ],
+      "claim_ceiling": "REPLACE_WITH_STAGE_CLAIM_CEILING",
+      "open_items": [
+        "TEMPLATE_UNRESOLVED"
+      ],
+      "reopen_triggers": [
+        "Replace with material authority / geometry / program / interface / knowledge-applicability change triggers."
+      ],
+      "stage_verdict": "HOLD"
+    }
+  ],
+  "jurisdiction_state": "OPEN",
+  "program_authority_state": "OPEN",
+  "occupancy_authority_state": "OPEN",
+  "site_authority_state": "OPEN",
+  "architectural_cad_plan_review_triggered": false,
+  "architecture_representation_publication_triggered": false,
+  "phase_status": {
+    "site_context": "OPEN",
+    "users_operations": "OPEN",
+    "program_room_brief": "OPEN",
+    "adjacency": "OPEN",
+    "zoning_options": "OPEN",
+    "flow_systems": "OPEN",
+    "circulation": "OPEN",
+    "life_safety_aware_planning": "OPEN",
+    "accessibility_aware_planning": "OPEN",
+    "operations_security_hygiene": "OPEN",
+    "system_fitback": "OPEN",
+    "climate_daylight_acoustics": "OPEN",
+    "ffe_room_use": "OPEN",
+    "area_cost_maintenance": "OPEN",
+    "code_matrix": "OPEN"
+  },
+  "phase_status_reasons": {},
+  "architectural_cad_plan_review": {
+    "applicable": false,
+    "reason": "Set applicable=true and provide native CAD, target-scale, machine and architect/operational readback evidence when a CAD plan is materially in claim."
+  },
+  "architecture_representation_publication_state": {
+    "applicable": false,
+    "reason": "Set applicable=true when architecture is materially handed to portfolio/board/book/web publication. Bind the Current native master, derivative refs, owner/truth boundaries, target-medium readback and reopen rules; publication must not redesign architecture."
+  },
+  "evidence": {},
+  "open_items": [
+    "TEMPLATE_UNRESOLVED"
+  ],
+  "reopened_items": [],
+  "does_not_prove": [
+    "Statutory approval",
+    "Fire compliance",
+    "Accessibility certification",
+    "Structural or MEP engineering approval",
+    "Field verification",
+    "Design KEEP"
+  ],
+  "independent_plan_review": {
+    "status": "PENDING",
+    "reviewer_independent_from_producer": false,
+    "reason": "Template is unresolved; replace with a fresh independent plan/section review."
+  },
+  "result": "HOLD",
+  "stale": false
+}
