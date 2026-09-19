@@ -233,6 +233,67 @@ Examples:
 - HCD release objects may be study freezes, finding→fix→build→retest chains, release support matrices, accessibility evidence and live experiment/rollout records.
 - Landscape release objects may be grading/drainage interfaces, soil/earthwork schedules, tree protection, planting establishment, submittal/mockup and maintenance records.
 
+The object lists above are only the **index layer**. They are insufficient by themselves.
+
+Every Current/Candidate professional definition must also compile its consequential practitioner objects into `practitioner_object_contracts[]`. Each object contract must resolve:
+
+```text
+object_id
+object_name
+parity_dimensions[]
+stage_refs[]
+professional_purpose
+native_source_of_truth
+required_record_fields[]
+decision_owner
+contributor_or_specialist_refs[]
+revision_identity
+release_or_retention_rule
+required_readback[]
+failure_or_hold_conditions[]
+reopen_triggers[]
+downstream_handoffs[]
+independent_review_requirement
+does_not_prove[]
+```
+
+The contract is intentionally object-centric:
+
+```text
+PROFESSIONAL OBJECT
+→ exact source-of-truth
+→ required record fields
+→ owner
+→ revision identity
+→ release / retention rule
+→ actual readback
+→ HOLD / failure condition
+→ reopen trigger
+→ downstream handoff
+```
+
+This means:
+
+- `RFI REGISTER` as a name is not enough; the profession must define what each consequential RFI record contains, which issued/native revision it affects, who dispositions it, what evidence closes it and what downstream artifacts/reviews reopen.
+- `CALCULATION MODEL` as a name is not enough; the profession must define the controlled geometry/input/configuration identity, assumptions, checker, result-to-design trace and stale/reanalysis conditions.
+- `RESEARCH FINDING` as a name is not enough; HCD must bind participant/study/prototype identity, finding confidence, design fix, build identity and retest.
+- `PLANTING ESTABLISHMENT` as a name is not enough; Landscape must bind installed identity, soil/irrigation/seasonal condition, maintenance owner, defect/replacement evidence and revisit/closure basis.
+- `LUMINAIRE SUBMITTAL` as a name is not enough; Lighting must bind exact optic/photometric/driver/control/dimension information, modeled relation, deviation and required recalculation/mockup/readback.
+- `BASELINE` as a name is not enough; Systems Engineering must bind exact requirement/interface/configuration contents, authority, revision and V&V consequences.
+
+The nine parity dimensions must be covered by **real structured practitioner objects** in each process definition. Coverage may be one object per dimension or fewer/more objects with multiple responsibilities; identical object counts are not required.
+
+The validator must reject:
+- missing parity-dimension coverage;
+- duplicate `object_id`;
+- stage references that do not exist in the process;
+- empty required-record/readback/failure/reopen/claim-ceiling fields;
+- object names with no executable carrier semantics.
+
+`OBJECT NAME ≠ OBJECT CONTRACT`.
+
+`STAGE DEFINITION ≠ PRACTITIONER EXECUTION DEPTH`.
+
 A process that only names stages, principles or review questions but cannot identify these domain-native execution objects is below the OLEANDER professional execution-depth floor.
 
 ### D. Authentic Professional Stages
