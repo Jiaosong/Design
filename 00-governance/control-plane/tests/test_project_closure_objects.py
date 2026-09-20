@@ -45,6 +45,7 @@ class ProjectClosureObjectTests(unittest.TestCase):
             "project-configuration-change-register.v1.template.json",
             "project-risk-hazard-register.v1.template.json",
             "project-operational-acceptance-compilation.v1.template.json",
+            "project-specialist-owner-binding.v1.template.json",
         ):
             with self.subTest(name=name):
                 self.assertEqual([], validator.validate_payload(load(name)))
@@ -177,6 +178,34 @@ class ProjectClosureObjectTests(unittest.TestCase):
         payload["operational_verdict"] = "PASS"
         self.assertTrue(validator.validate_payload(payload))
 
+    def test_specialist_binding_pass_rejects_candidate_or_generic_skill_substitution(self):
+        payload = load("project-specialist-owner-binding.v1.template.json")
+        payload.update({
+            "status": "CURRENT",
+            "owner_kind": "PROJECT_ORGANIZATION_SPECIALIST",
+            "owner_ref": "OLEANDER Technical Drawing",
+            "authorization_ref": "PROJECT-AUTH-1",
+            "authorization_state": "VERIFIED",
+            "scope_refs": ["DRAWING-SCOPE-1"],
+            "required_native_outputs": ["PLAN", "SECTION"],
+            "binding_verdict": "PASS",
+        })
+        self.assertTrue(validator.validate_payload(payload))
+
+    def test_specialist_binding_pass_valid_when_explicitly_authorized(self):
+        payload = load("project-specialist-owner-binding.v1.template.json")
+        payload.update({
+            "status": "CURRENT",
+            "owner_kind": "PROJECT_ORGANIZATION_SPECIALIST",
+            "owner_ref": "PROJECT-CAD-BIM-SPECIALIST-01",
+            "authorization_ref": "PROJECT-AUTH-1",
+            "authorization_state": "VERIFIED",
+            "scope_refs": ["DRAWING-SCOPE-1"],
+            "required_native_outputs": ["PLAN", "SECTION"],
+            "binding_verdict": "PASS",
+        })
+        self.assertEqual([], validator.validate_payload(payload))
+
     def test_project_flow_promotion_rejects_candidate_technical_drawing_owner(self):
         try:
             import jsonschema
@@ -192,6 +221,42 @@ class ProjectClosureObjectTests(unittest.TestCase):
             "hold_reason": "Candidate body is not Current callable authority."
         }
         self.assertTrue(list(jsonschema.Draft202012Validator(schema).iter_errors(payload)))
+
+    def test_project_flow_promotion_requires_binding_ref_for_project_specialist(self):
+        try:
+            import jsonschema
+        except ImportError:
+            self.skipTest("jsonschema not installed")
+        schema = load("oleander-project-flow-v0.3.schema.json")
+        payload = project_flow_base()
+        payload["technical_drawing_execution"] = {
+            "triggered": True,
+            "owner_state": "PROJECT_SPECIALIST_BOUND",
+            "owner_ref": "PROJECT-CAD-BIM-SPECIALIST-01",
+            "binding_ref": None,
+            "binding_hash": None,
+            "required_native_outputs": ["PLAN"],
+            "hold_reason": None
+        }
+        self.assertTrue(list(jsonschema.Draft202012Validator(schema).iter_errors(payload)))
+
+    def test_project_flow_promotion_accepts_explicit_project_specialist_binding(self):
+        try:
+            import jsonschema
+        except ImportError:
+            self.skipTest("jsonschema not installed")
+        schema = load("oleander-project-flow-v0.3.schema.json")
+        payload = project_flow_base()
+        payload["technical_drawing_execution"] = {
+            "triggered": True,
+            "owner_state": "PROJECT_SPECIALIST_BOUND",
+            "owner_ref": "PROJECT-CAD-BIM-SPECIALIST-01",
+            "binding_ref": "PROJECT_SPECIALIST_OWNER_BINDING:PSOB-1",
+            "binding_hash": "abc123",
+            "required_native_outputs": ["PLAN"],
+            "hold_reason": None
+        }
+        self.assertEqual([], list(jsonschema.Draft202012Validator(schema).iter_errors(payload)))
 
     def test_project_flow_promotion_rejects_open_project_controls(self):
         try:

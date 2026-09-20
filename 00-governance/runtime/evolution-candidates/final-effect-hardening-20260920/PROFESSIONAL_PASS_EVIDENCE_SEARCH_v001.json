@@ -1,0 +1,54 @@
+{
+  "object_type": "OLEANDER_BOUNDED_EVIDENCE_SEARCH_NOTE",
+  "version": "0.1",
+  "search_id": "PROFESSIONAL-PASS-EVIDENCE-SEARCH-20260920-v001",
+  "baseline_main_commit": "3f7b419bb89a2b7c67a589793b087d21ea9b178f",
+  "purpose": "Determine whether an existing real project in the current repository already contains enough authentic evidence to close a positive Structural + MEP + Cross-Disciplinary Integration professional PASS chain without lowering OLEANDER gates.",
+  "searched_scope": [
+    "05-cases/c01-yimai-guangdu",
+    "05-cases/c02-daylily",
+    "05-cases/c03-the-light-collection",
+    "05-cases/c04-qingjiang-stone-book",
+    "00-governance/runtime/evolution-candidates",
+    "current Structural / MEP / Integration receipt objects and project-control evidence"
+  ],
+  "required_evidence_classes": {
+    "structural": [
+      "professional Basis of Structural Design or equivalent current basis",
+      "native analysis/calculation/design outputs",
+      "actual readback",
+      "independent structural checking when required",
+      "closed material interfaces"
+    ],
+    "mep": [
+      "professional system design outputs",
+      "calculations / controls / coordination evidence as applicable",
+      "commissioning or validly bounded deferred-testing evidence when applicable",
+      "actual readback",
+      "professional review"
+    ],
+    "integration": [
+      "closed major/critical interfaces",
+      "resolved shared-variable authority",
+      "integrated readback",
+      "required acceptance evidence",
+      "independent integration review when required"
+    ]
+  },
+  "observed_evidence": [
+    "KH-LY46 Structural receipt remains HOLD because no professional structural basis/calculation package/independent structural check closes the current scope.",
+    "KH-LY46 MEP receipt remains HOLD because architectural service-route evidence is not a professional MEP design/review/commissioning chain.",
+    "KH-LY46 cross-disciplinary integration remains HOLD.",
+    "Open Candidate Landscape/Lighting/HCD/Systems/Interior project exercises explicitly retain missing independent professional review and/or native professional evidence.",
+    "No existing repository object found in the searched scope constitutes a current real-project Structural + MEP + Integration positive PASS chain."
+  ],
+  "decision": "NO_ELIGIBLE_POSITIVE_PROFESSIONAL_PASS_CHAIN_FOUND_IN_SEARCHED_SCOPE",
+  "required_action": "KEEP_OPEN_AND_DO_NOT_FABRICATE_PASS; a future positive chain requires authentic project-native professional outputs, readback, required checking/review and closed integration interfaces at the same current revision.",
+  "does_not_prove": [
+    "that no qualifying evidence exists outside the searched repository scope",
+    "that future project evidence cannot close the chain",
+    "professional failure of any project",
+    "Design KEEP or REJECT",
+    "Candidate promotion"
+  ]
+}

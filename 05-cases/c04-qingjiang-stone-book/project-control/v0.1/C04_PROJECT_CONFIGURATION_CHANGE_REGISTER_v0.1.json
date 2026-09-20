@@ -1,0 +1,59 @@
+{
+  "object_type": "PROJECT_CONFIGURATION_CHANGE_REGISTER",
+  "schema_version": "1.0",
+  "register_id": "PCCR-C04-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "PROJECT_ARCHITECTURE_AND_EXECUTION_CARRIER",
+  "source_revision": "C04 Project Architecture v3.2 / C04_CURRENT 2026-08-18",
+  "status": "CURRENT",
+  "baselines": [
+    {
+      "object_id": "C04-CURRENT-AUTHORITY",
+      "revision": "PROJECT_ARCHITECTURE_v3.2",
+      "authority_ref": "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+      "hash_or_commit": "54B9A548028D1163F1117BFA7B3A690AB0173BCB1BF6135038B731BAA360BB71",
+      "state": "CURRENT"
+    },
+    {
+      "object_id": "C04-PROJECT-ARCHITECTURE",
+      "revision": "v3.2",
+      "authority_ref": "05-cases/c04-qingjiang-stone-book/C04-B_PROJECT-ARCHITECTURE_v3.2.md",
+      "hash_or_commit": "55A57A3CC9EAF71BC3ACBE7E01704260E32B9278F86E83868BD5D30874592D94",
+      "state": "CURRENT"
+    },
+    {
+      "object_id": "C04-ACTIVE-EXECUTION-CARRIER",
+      "revision": "PROJECT_ARCHITECTURE_v3.2 / project-control v0.1 bound",
+      "authority_ref": "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+      "hash_or_commit": "81E2BCBDC9DF22198A897BBB56184CF90493824A410D9AAD555F92246A40A1E1",
+      "state": "CURRENT"
+    }
+  ],
+  "changes": [
+    {
+      "change_id": "CHG-C04-ARCH-v3.2-BRAND-CHAPTER",
+      "in_claim": true,
+      "source_ref": "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md#0-current-authority-chain",
+      "owner_ref": "C04_CURRENT.md / current project authority",
+      "change_class": "SYSTEM",
+      "affected_refs": [
+        "05-cases/c04-qingjiang-stone-book/C04-B_PROJECT-ARCHITECTURE_v3.2.md",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md"
+      ],
+      "approval_state": "APPROVED",
+      "propagation_state": "PASS",
+      "reacceptance_required": true,
+      "reacceptance_state": "PASS"
+    }
+  ],
+  "open_issue_ids": [],
+  "stale": false,
+  "register_verdict": "PASS",
+  "does_not_prove": [
+    "Design KEEP for any page or artifact",
+    "professional or statutory approval",
+    "field truth",
+    "system Promotion",
+    "that Project Architecture v3.2 resolves the remaining page-level design work"
+  ]
+}

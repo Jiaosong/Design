@@ -219,6 +219,8 @@
         "triggered": {"type": "boolean"},
         "owner_state": {"enum": ["NOT_TRIGGERED", "CURRENT_CALLABLE", "PROJECT_SPECIALIST_BOUND", "CANDIDATE_BODY_HOLD"]},
         "owner_ref": {"type": ["string", "null"]},
+        "binding_ref": {"type": ["string", "null"]},
+        "binding_hash": {"type": ["string", "null"]},
         "required_native_outputs": {"type": "array", "items": {"type": "string"}},
         "hold_reason": {"type": ["string", "null"]}
       },
@@ -435,7 +437,21 @@
             "properties": {
               "owner_state": {"enum": ["CURRENT_CALLABLE", "PROJECT_SPECIALIST_BOUND"]},
               "owner_ref": {"type": "string", "minLength": 1}
-            }
+            },
+            "oneOf": [
+              {
+                "properties": {
+                  "owner_state": {"const": "CURRENT_CALLABLE"}
+                }
+              },
+              {
+                "required": ["binding_ref"],
+                "properties": {
+                  "owner_state": {"const": "PROJECT_SPECIALIST_BOUND"},
+                  "binding_ref": {"type": "string", "minLength": 1}
+                }
+              }
+            ]
           }
         }
       }
