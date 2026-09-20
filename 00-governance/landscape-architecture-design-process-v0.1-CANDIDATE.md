@@ -1352,3 +1352,41 @@ Survey/datum/boundary/planning/geotech/hydrology/ecology update; building thresh
 - Native carrier: hydrozone map, water-budget basis, design flow/pressure schedule, pipe/valve/controller plan, commissioning/audit/O&M record.
 - Readback: hydrozone basis; source pressure/capacity; hydraulic critical point; emitter coverage/overspray; controller/sensor state; field audit vs design.
 - Reopen: climate/source pressure/water quality/plant zone/system/emitter/controller/field coverage change.
+## External Mature-KB Absorption Delta｜2026-09-20
+
+Status: `CANDIDATE STRENGTHENING / SOURCE-BOUND / NO PROMOTION`.
+
+### Source mounts
+- `SRC-LI-DPOW-LANDSCAPE-001` — Landscape Institute Digital Plan of Works for Landscape: https://app.notion.com/p/3e1b86be5c478178a8dcf5f4d84e4d61
+- `SRC-LI-LANDSCAPE-CARBON-001` — Landscape Carbon Overlay to the RIBA Plan of Work: https://app.notion.com/p/3e1b86be5c4781a09674c6c7c92a27c1
+
+These L6 SOURCE objects are `SUPPORT / SCOPED`. They do not replace this Candidate process, project appointment, jurisdiction, survey/civil/ecology authority, or independent Landscape review.
+
+### A｜Stage task / information envelope
+Each existing Landscape Stage now requires, inside its existing professional-stage spine, an explicit bounded envelope:
+`professional_question → task_or_responsibility → required_input_information → native_information_output → interface_owner → actual_readback → stage_close_condition`.
+
+No LI/RIBA stage numbering is imported and no new OLEANDER Stage is created.
+
+Hard attacks:
+- a package cannot close because a generic `landscape plan` exists; task-specific input and information requirement must be identifiable;
+- BIM/information completeness is not Landscape design quality or professional approval;
+- project/client information requirements take precedence over a generic template.
+
+### B｜Whole-life carbon / resource thread
+Extend the existing Landscape continuous resource thread:
+`EXISTING CARBON STORE / RETENTION → EARTHWORK + MATERIAL QUANTITY → SPECIFICATION / PROVENANCE → SOIL / VEGETATION CONSEQUENCE → CONSTRUCTION / MAINTENANCE → REPLACEMENT → END-OF-USE / REUSE / RECYCLING → READBACK`.
+
+When a carbon claim is consequential, preserve exact quantity basis, factor/EPD/tool source+version, lifecycle assumptions, claim ceiling and uncertainty.
+
+Failure attacks:
+- `MORE PLANTING ≠ CARBON PASS` without soil, establishment, maintenance, survival and time basis;
+- `LESS HARDSCAPE ≠ BETTER DESIGN` if access, durability, drainage, use or maintenance degrade;
+- final-spec carbon review is too late if landform/material quantities were already locked.
+
+### C｜Readback / reopen consequence
+Actual readback must include, when triggered: task-information completeness; retained carbon-store conflict; earthwork/material quantity identity; provenance/factor version; maintenance/replacement/end-of-use assumption.
+Reopen when those quantities, sources, lifecycle assumptions, project information requirements or interface owners materially change.
+
+### Boundary
+`LI DPoW / CARBON SOURCE ABSORBED ≠ LANDSCAPE CURRENT ≠ PROJECT CARBON RESULT ≠ PROFESSIONAL PASS ≠ FIELD TRUTH`.
