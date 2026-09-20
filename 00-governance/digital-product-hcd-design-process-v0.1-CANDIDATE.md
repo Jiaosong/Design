@@ -978,3 +978,32 @@ User/context/task/need change; new or contradictory research; prototype/build di
 
 ### Professional boundary
 `PROTOTYPE PASS ≠ USABILITY PASS`; `STATIC CHECK ≠ INTERACTION READBACK`; `ACCESSIBLE-LOOKING ≠ ACCESSIBILITY CONFORMANCE`; `EVENT FIRED ≠ USER OUTCOME`; `ANALYTICS CORRELATION ≠ CAUSAL VALIDATION`; `DELIVERY QC PASS ≠ HCD PROFESSIONAL PASS`.
+
+## External Mature-KB Absorption Delta｜GOV.UK Whole-Service｜2026-09-20
+
+Status: `CANDIDATE STRENGTHENING / SOURCE-BOUND / NO PROMOTION`.
+
+### Source mount
+- `SRC-GOVUK-SERVICE-STANDARD-HCD-001` — GOV.UK Service Standard: https://app.notion.com/p/3e1b86be5c47810da90ad11a210f13be
+
+This L6 SOURCE is `SUPPORT / SCOPED`. It strengthens whole-service and live-operation execution. GOV.UK stages, visual conventions and public-service governance are not imported as universal OLEANDER authority.
+
+### Whole-service execution thread
+Extend the existing HCD chain across the current stages:
+`USER / CONTEXT → WHOLE PROBLEM / JOURNEY → ONLINE + OFFLINE + FRONT/BACK DEPENDENCIES → PROTOTYPE / USABILITY → ACCESSIBILITY → PRIVACY / SECURITY → LIVE-LIKE RELIABILITY → USER-OUTCOME MONITORING → ITERATION`.
+
+### Required attacks
+- screen-level usability is insufficient when manual/offline/back-office/service dependencies materially affect task success;
+- initial discovery research cannot remain frozen if later evidence contradicts needs/context;
+- usability evidence must identify actual/potential users, task, prototype/build and device/channel scope;
+- reliability readback must include user outcome failure modes where relevant, not only uptime/technical health;
+- monitoring must preserve causal/measurement limitations and known bias.
+
+### Native-output consequence
+When triggered, add or strengthen: whole-journey/service dependency map; cross-channel failure/recovery states; live-like operational test record; support/incident/user-outcome evidence; explicit reopen target.
+
+### Reopen
+Reopen when channel/back-office dependency, user context, support model, security/privacy constraint, accessibility finding, runtime reliability or user-outcome evidence changes.
+
+### Boundary
+`GOV.UK SERVICE STANDARD SOURCE ABSORBED ≠ HCD CURRENT ≠ UNIVERSAL UI STYLE ≠ ACCESSIBILITY/SECURITY COMPLIANCE ≠ HUMAN VALIDATION`.
