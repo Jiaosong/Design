@@ -1,0 +1,45 @@
+{
+  "schema": "oleander.current-professional-receipt-bindings.v1",
+  "version": "1.0",
+  "status": "ACTIVE_NON_AUTHORITY_RUNTIME_PROJECTION",
+  "purpose": "Bind already-Current professional process machines to their external receipt schema/template contracts without mutating the Current machine definitions in place.",
+  "authority_boundary": {
+    "current_process_machine_remains_authority": true,
+    "projection_may_not_change_stage_semantics": true,
+    "projection_may_not_promote_candidate_processes": true,
+    "projection_may_not_widen_professional_or_statutory_authority": true
+  },
+  "bindings": [
+    {
+      "domain": "Architecture",
+      "current_process_ref": "00-governance/schemas/architecture-design-development-process.v1.json",
+      "receipt_type": "ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT",
+      "receipt_schema_ref": "00-governance/schemas/architecture-design-development-receipt.v1.schema.json",
+      "receipt_template_ref": "00-governance/schemas/architecture-design-development-receipt.v1.template.json",
+      "validator_ref": "00-governance/schemas/validate_design_development_receipts.py"
+    },
+    {
+      "domain": "Structural Engineering",
+      "current_process_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+      "receipt_schema_ref": "00-governance/schemas/structural-engineering-design-process-receipt.v1.schema.json",
+      "receipt_template_ref": "00-governance/schemas/structural-engineering-design-process-receipt.v1.template.json",
+      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py"
+    },
+    {
+      "domain": "Building Services / MEP",
+      "current_process_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
+      "receipt_schema_ref": "00-governance/schemas/building-services-mep-design-process-receipt.v1.schema.json",
+      "receipt_template_ref": "00-governance/schemas/building-services-mep-design-process-receipt.v1.template.json",
+      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py"
+    }
+  ],
+  "does_not_prove": [
+    "professional receipt PASS",
+    "Design KEEP",
+    "statutory approval",
+    "field truth",
+    "Candidate process promotion"
+  ]
+}

@@ -169,6 +169,100 @@
       },
       "additionalProperties": true
     },
+    "project_requirement_acceptance": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "baseline_ref": {"type": ["string", "null"]},
+        "baseline_hash": {"type": ["string", "null"]},
+        "blocking_requirement_ids": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "cross_disciplinary_integration": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "receipt": {"type": ["string", "null"]},
+        "receipt_hash": {"type": ["string", "null"]},
+        "open_major_critical_interfaces": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "professional_processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["domain", "triggered", "status", "stale"],
+        "properties": {
+          "domain": {"type": "string", "minLength": 1},
+          "triggered": {"type": "boolean"},
+          "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+          "receipt": {"type": ["string", "null"]},
+          "receipt_hash": {"type": ["string", "null"]},
+          "capability_holds": {"type": "array", "items": {"type": "string"}},
+          "stale": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "technical_drawing_execution": {
+      "type": "object",
+      "required": ["triggered", "owner_state"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "owner_state": {"enum": ["NOT_TRIGGERED", "CURRENT_CALLABLE", "PROJECT_SPECIALIST_BOUND", "CANDIDATE_BODY_HOLD"]},
+        "owner_ref": {"type": ["string", "null"]},
+        "required_native_outputs": {"type": "array", "items": {"type": "string"}},
+        "hold_reason": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "configuration_change_control": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "register_ref": {"type": ["string", "null"]},
+        "register_hash": {"type": ["string", "null"]},
+        "open_issue_ids": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "risk_hazard_control": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "register_ref": {"type": ["string", "null"]},
+        "register_hash": {"type": ["string", "null"]},
+        "blocking_risk_ids": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "operational_acceptance": {
+      "type": "object",
+      "required": ["triggered", "status", "stale"],
+      "properties": {
+        "triggered": {"type": "boolean"},
+        "status": {"enum": ["NOT_TRIGGERED", "PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE_AT_AFFECTED_SCOPE"]},
+        "compilation_ref": {"type": ["string", "null"]},
+        "compilation_hash": {"type": ["string", "null"]},
+        "blocking_items": {"type": "array", "items": {"type": "string"}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
     "exit_condition": {"type": "string", "minLength": 1},
     "promotion": {
       "type": "object",
@@ -278,6 +372,136 @@
           "persistence": {
             "required": ["pap_status"],
             "properties": {"pap_status": {"const": "PASS"}}
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "project_requirement_acceptance"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "project_requirement_acceptance": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "project_requirement_acceptance": {
+            "required": ["status", "baseline_ref", "stale"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "baseline_ref": {"type": "string", "minLength": 1},
+              "stale": {"const": false},
+              "blocking_requirement_ids": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "cross_disciplinary_integration"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "cross_disciplinary_integration": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "cross_disciplinary_integration": {
+            "required": ["status", "receipt", "stale"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "receipt": {"type": "string", "minLength": 1},
+              "stale": {"const": false},
+              "open_major_critical_interfaces": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "technical_drawing_execution"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "technical_drawing_execution": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "technical_drawing_execution": {
+            "required": ["owner_state", "owner_ref"],
+            "properties": {
+              "owner_state": {"enum": ["CURRENT_CALLABLE", "PROJECT_SPECIALIST_BOUND"]},
+              "owner_ref": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "configuration_change_control"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "configuration_change_control": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "configuration_change_control": {
+            "required": ["status", "register_ref", "stale"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "register_ref": {"type": "string", "minLength": 1},
+              "stale": {"const": false},
+              "open_issue_ids": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "risk_hazard_control"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "risk_hazard_control": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "risk_hazard_control": {
+            "required": ["status", "register_ref", "stale"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "register_ref": {"type": "string", "minLength": 1},
+              "stale": {"const": false},
+              "blocking_risk_ids": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["promotion", "operational_acceptance"],
+        "properties": {
+          "promotion": {"required": ["decision"], "properties": {"decision": {"const": "PROMOTE"}}},
+          "operational_acceptance": {"required": ["triggered"], "properties": {"triggered": {"const": true}}}
+        }
+      },
+      "then": {
+        "properties": {
+          "operational_acceptance": {
+            "required": ["status", "compilation_ref", "stale"],
+            "properties": {
+              "status": {"const": "PASS"},
+              "compilation_ref": {"type": "string", "minLength": 1},
+              "stale": {"const": false},
+              "blocking_items": {"maxItems": 0}
+            }
           }
         }
       }

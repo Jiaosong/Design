@@ -1,0 +1,28 @@
+{
+  "object_type": "PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION",
+  "schema_version": "1.0",
+  "compilation_id": "POAC-PROJECT-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "source_revision": "SOURCE_REVISION",
+  "status": "HOLD",
+  "handover_refs": [],
+  "commissioning_refs": [],
+  "training_refs": [],
+  "om_asset_data_refs": [],
+  "defects": [
+    {
+      "defect_id": "DEFECT-001",
+      "blocking": true,
+      "status": "HOLD",
+      "owner_ref": "DEFECT_OWNER_REQUIRED",
+      "evidence_refs": []
+    }
+  ],
+  "deferred_tests": [],
+  "operational_readback_refs": [],
+  "poe_plan_ref": null,
+  "stale": false,
+  "operational_verdict": "HOLD",
+  "does_not_prove": ["future performance", "field truth beyond recorded evidence", "statutory approval", "Design KEEP"]
+}

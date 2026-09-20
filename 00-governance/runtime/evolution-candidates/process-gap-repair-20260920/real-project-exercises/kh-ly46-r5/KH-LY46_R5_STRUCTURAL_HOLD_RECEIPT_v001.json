@@ -1,0 +1,77 @@
+{
+  "receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "process_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+  "source_revision": "KH-LY46-R5 / R5_69 independent snapshot + R5_70 ADD-08 entry",
+  "claim_ceiling": "INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL STRUCTURAL DESIGN CLOSURE",
+  "basis_of_structural_design_ref": "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md#4-Structural-reconstruction-ceiling / NOT_A_FORMAL_BASIS_OF_STRUCTURAL_DESIGN",
+  "stage_records": [
+    {
+      "stage_id": "SE-SPW0",
+      "triggered": true,
+      "status": "HOLD",
+      "knowledge_mount_refs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "native_output_refs": [],
+      "actual_readback_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "checking_state": "HOLD",
+      "interface_state": "HOLD",
+      "open_items": [
+        "No professional Basis of Structural Design is established.",
+        "Exact structural grid, member sizes, retained-member condition, residual capacity, geotechnical basis and foundation design remain open.",
+        "No structural analysis model or calculation-to-drawing trace exists for the current R5 claim.",
+        "No independent structural checker has closed the current structural basis or ADD-08 core interfaces."
+      ]
+    }
+  ],
+  "analysis_model_refs": [],
+  "calculation_drawing_trace_refs": [],
+  "field_shop_change_refs": [],
+  "interface_summary": [
+    {
+      "interface_id": "KH-LY46-IF-ARCH-STRUCT-CORE",
+      "required": true,
+      "state": "HOLD",
+      "evidence_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "independent_check": {
+    "required": true,
+    "state": "HOLD",
+    "reviewer_ref": null,
+    "review_input_refs": []
+  },
+  "blocking_open_items": [
+    "Formal structural design basis is not established.",
+    "Existing structural/damage condition and retained-member geometry are not field verified.",
+    "Geotechnical/foundation basis is unresolved.",
+    "ADD-08 core/vertical geometry has no structural specialist fit-back or independent structural check."
+  ],
+  "open_items": [
+    "R5_13 supports a reversible system-type reconstruction only and must not be treated as member-level engineering evidence."
+  ],
+  "reopened_items": [],
+  "stale": false,
+  "result": "HOLD",
+  "does_not_prove": [
+    "Structural engineering approval",
+    "Member capacity",
+    "Foundation adequacy",
+    "Existing-condition field truth",
+    "Statutory approval",
+    "Design KEEP",
+    "Promotion"
+  ]
+}
+

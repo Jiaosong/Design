@@ -1,0 +1,46 @@
+{
+  "receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "process_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+  "source_revision": "SOURCE_REVISION",
+  "claim_ceiling": "STRATEGIC_ONLY",
+  "stage_records": [
+    {
+      "stage_id": "BSP-STRATEGIC",
+      "triggered": true,
+      "status": "HOLD",
+      "knowledge_mount_refs": [],
+      "native_output_refs": [],
+      "actual_readback_refs": [],
+      "open_items": ["Project MEP basis and specialist execution remain unresolved."]
+    }
+  ],
+  "system_tracks": [
+    {
+      "system_id": "SYSTEM-001",
+      "status": "HOLD",
+      "design_refs": [],
+      "commissioning_required": true,
+      "commissioning_state": "HOLD",
+      "integrated_system_test_required": false,
+      "integrated_system_test_state": "NOT_REQUIRED",
+      "seasonal_or_deferred_test_open": false,
+      "evidence_refs": []
+    }
+  ],
+  "interface_summary": [],
+  "professional_review": {
+    "required": true,
+    "state": "HOLD",
+    "reviewer_ref": null,
+    "review_input_refs": []
+  },
+  "blocking_open_items": ["MEP professional closure not established."],
+  "open_items": [],
+  "reopened_items": [],
+  "stale": false,
+  "result": "HOLD",
+  "does_not_prove": ["statutory approval", "future operation", "field truth beyond tested evidence", "Design KEEP", "Promotion"]
+}

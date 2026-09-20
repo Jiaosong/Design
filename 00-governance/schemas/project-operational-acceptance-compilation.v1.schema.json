@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.project-operational-acceptance-compilation.v1",
+  "title": "OLEANDER Project Operational Acceptance Compilation v1",
+  "type": "object",
+  "required": ["object_type", "schema_version", "compilation_id", "project_id", "source_revision", "status", "handover_refs", "commissioning_refs", "training_refs", "om_asset_data_refs", "defects", "deferred_tests", "operational_readback_refs", "stale", "operational_verdict", "does_not_prove"],
+  "properties": {
+    "object_type": {"const": "PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION"},
+    "schema_version": {"const": "1.0"},
+    "compilation_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "workstream_id": {"type": ["string", "null"]},
+    "source_revision": {"type": "string", "minLength": 1},
+    "status": {"enum": ["WORKING", "CURRENT", "STALE", "HOLD"]},
+    "handover_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "commissioning_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "training_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "om_asset_data_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "defects": {"type": "array", "items": {"$ref": "#/$defs/defect"}},
+    "deferred_tests": {"type": "array", "items": {"$ref": "#/$defs/deferredTest"}},
+    "operational_readback_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "poe_plan_ref": {"type": ["string", "null"]},
+    "stale": {"type": "boolean"},
+    "operational_verdict": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+    "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "defect": {
+      "type": "object",
+      "required": ["defect_id", "blocking", "status", "owner_ref", "evidence_refs"],
+      "properties": {
+        "defect_id": {"type": "string", "minLength": 1},
+        "blocking": {"type": "boolean"},
+        "status": {"enum": ["OPEN", "RESOLVED", "ACCEPTED_OUTSIDE_CLAIM", "HOLD"]},
+        "owner_ref": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    },
+    "deferredTest": {
+      "type": "object",
+      "required": ["test_id", "required", "outside_current_claim", "status", "owner_ref"],
+      "properties": {
+        "test_id": {"type": "string", "minLength": 1},
+        "required": {"type": "boolean"},
+        "outside_current_claim": {"type": "boolean"},
+        "status": {"enum": ["NOT_RUN", "PASS", "FAIL", "HOLD", "DEFERRED"]},
+        "owner_ref": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

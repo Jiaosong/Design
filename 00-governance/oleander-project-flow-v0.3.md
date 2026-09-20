@@ -48,19 +48,25 @@ A Candidate may enter Canonical Production only when:
 4. it is more valuable to continue than rejected alternatives;
 5. the next step requires reproducible/measurable execution;
 6. when design-quality promotion is intended, relevant knowledge routes, review lenses, technical/evidence triggers and the current claim ceiling are resolvable through the Design Intelligence Packet;
-7. the applicable shared design-development responsibilities are resolved through `design-quality-and-design-development-specification-v1.0.md`, including whether `PROJECT_DESIGN_DNA`, multi-scale/state readback, comparison, content projection or other DD responsibilities are triggered;
-8. when a professional domain process is triggered, its authentic professional stages, required outputs and review/readback obligations are resolvable; architecture uses `architecture-design-development-process-v1.0.md` and `ADD-00?ADD-17` rather than replacing those stages with shared DD identifiers;
-9. when multiple disciplines materially couple, the critical interfaces, integration owner, coupling / criticality, shared variables, required maturity, acceptance basis and required integrated readbacks are resolvable under `cross-disciplinary-design-integration-v1.0.md`.
+7. when material project obligations affect the claim, a `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` route is resolvable so each obligation has a source/revision, owner, acceptance method, proof class, acceptance criteria, verification owner, evidence route and reopen rule;
+8. the applicable shared design-development responsibilities are resolved through `design-quality-and-design-development-specification-v1.0.md`, including whether `PROJECT_DESIGN_DNA`, multi-scale/state readback, comparison, content projection or other DD responsibilities are triggered;
+9. when a professional domain process is triggered, its authentic professional stages, required outputs and review/readback obligations are resolvable; architecture uses `architecture-design-development-process-v1.0.md` and `ADD-00—ADD-17` rather than replacing those stages with shared DD identifiers;
+10. when multiple disciplines materially couple, the critical interfaces, integration owner, coupling / criticality, shared variables, required maturity, acceptance basis and required integrated readbacks are resolvable under `cross-disciplinary-design-integration-v1.0.md`;
+11. every required native output has a Current callable owner or an explicit project-authorized specialist owner. Candidate Skill / Candidate Body presence is not sufficient.
 
 Candidate is not Canonical.
 
 ### Loop B｜Canonical Production
 
-`Candidate ? Contract Compile ? Design Intelligence Resolve ? Shared Design Quality & Development Scope Resolve ? Professional Domain Process Resolve when triggered ? Cross-Disciplinary Integration Resolve when triggered ? Authority Resolve ? Required Native Output / Capability Resolve ? Skill / Tool Adapter Resolve ? Execute ? Machine QA ? Visual QA ? Project QA ? Artifact Review ? Design Quality Actual Readback ? Professional Domain Readback when triggered ? Integration Readback when triggered ? Specialized Acceptance Gates when triggered ? Evidence / Truth Review ? Independent Design Decision ? Persistence Gate when triggered ? Promote / Revise / Reject ? Artifact Register ? Cross-System Sync`
+`Candidate → Contract Compile → Design Intelligence Resolve → Project Requirement / Acceptance Baseline when triggered → Shared Design Quality & Development Scope Resolve → Professional Domain Process Resolve when triggered → Cross-Disciplinary Integration Resolve when triggered → Authority Resolve → Required Capability Roles / Current Owner Resolve → Native Output Execute → Machine QA → Visual QA → Project QA → Artifact Review → Requirement Verification / Validation Readback → Design Quality Actual Readback → Professional Domain Readback when triggered → Integration Readback when triggered → Specialized Acceptance Gates when triggered → Evidence / Truth Review → Independent Design Decision → Persistence Gate when triggered → Promote / Revise / Reject → Artifact Register → Cross-System Sync`
 
 Execution should be deterministic wherever possible.
 
 When cross-disciplinary integration is triggered, the promotion-relevant `Integration Readback` emits or refreshes the current `CROSS_DISCIPLINARY_INTEGRATION_RECEIPT`. A material interface / system change makes affected receipt conclusions stale until the required reopen scope has been reconciled and read back.
+
+When material project obligations are promotion-relevant, the current `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` is compiled under `schemas/project-requirement-acceptance-baseline.v1.schema.json`. It does not replace domain requirements or Systems Engineering; it is the Project Plane compilation that prevents unverified obligations from disappearing between disciplines.
+
+If technical drawing is a required native output and the Current route still resolves only to the Candidate Technical Drawing body, the project remains `CANDIDATE_BODY_HOLD` unless an explicit project-authorized specialist owner is bound. The general design owner may not absorb technical-drawing authority merely to avoid HOLD.
 
 **Hard ordering:** if PAP is triggered, durable upload + independent retrieval + hash/size/open verification must PASS before AR-S09 and before `PROMOTED`. Cross-system registration/synchronization may continue after promotion, but the durable binary gate cannot be deferred until after promotion.
 
@@ -205,6 +211,14 @@ Material changes to Design Intent, Project Design DNA, primary content/asset, fo
 ### Professional Domain Process result semantics
 
 Each triggered professional process owns its own stage semantics and receipt. Shared DD state never substitutes for professional process closure. Architecture currently emits `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`; equivalent future domains must bind their own authentic process receipt rather than reuse `ADD-*` or `DD-*` as generic stage IDs.
+
+Current machine receipt bindings now include:
+
+- Architecture → `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`;
+- Structural Engineering → `STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT`;
+- Building Services / MEP → `BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT`.
+
+Their domain receipt PASS remains separate from Design KEEP, Integration PASS, statutory approval, field truth and Promotion.
 
 For Architecture, material changes to capacity, program, room location, circulation, major openings, stairs/lifts, public/private boundaries, operational states, structure/MEP/fire/accessibility interfaces, site access or retained fabric make the affected architecture receipt scope stale and require reopen/readback.
 

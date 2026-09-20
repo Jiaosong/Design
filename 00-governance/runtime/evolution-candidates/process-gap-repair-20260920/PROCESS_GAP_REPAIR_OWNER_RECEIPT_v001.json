@@ -1,0 +1,277 @@
+{
+  "object_type": "OLEANDER_MATERIAL_DELTA_OWNER_RECEIPT",
+  "schema_version": "1.0-provenance",
+  "receipt_id": "OLEANDER-PROCESS-GAP-REPAIR-20260920-v001",
+  "date": "2026-09-20",
+  "repository": "Jiaosong/Design",
+  "branch": "audit/oleander-process-gap-20260920",
+  "baseline_main_commit": "95b667ec8434b87e6152e8f3b17df26e6706993a",
+  "purpose": "Repair identified OLEANDER process-architecture closure gaps with machine contracts, fail-closed project-plane controls, protected Current-process boundaries, and one authentic bounded KH-LY46 R5 exercise.",
+  "authority_state": {
+    "system_architecture_count": 1,
+    "runtime_layer_count": 11,
+    "current_structural_machine_mutated": false,
+    "current_mep_machine_mutated": false,
+    "technical_drawing_promoted": false,
+    "technical_drawing_execution_rule": "When native technical drawing output is required, CANDIDATE_BODY_HOLD cannot satisfy owner closure; only CURRENT_CALLABLE or PROJECT_SPECIALIST_BOUND may close the owner condition.",
+    "candidate_domain_promotions": [],
+    "professional_pass_claimed_for_kh_ly46_structure": false,
+    "professional_pass_claimed_for_kh_ly46_mep": false,
+    "overall_architecture_keep_claimed_for_kh_ly46": false,
+    "notion_write_claimed": false
+  },
+  "protected_current_machine_identity": [
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "bytes": 46841,
+      "sha256": "0FE6146767C470CDF30CCF89A5BA30A1710751FE4FB1B65C25430C3E23B08D0E",
+      "diff_vs_origin_main": "UNCHANGED"
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "bytes": 46288,
+      "sha256": "7F568B8540A7EC9EE1B8A780ADF9A98A077F32AC61E553A90489021DE0E796D3",
+      "diff_vs_origin_main": "UNCHANGED"
+    }
+  ],
+  "material_files_excluding_this_receipt": [
+    {
+      "path": "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+      "bytes": 11027,
+      "sha256": "E4FA2329770AF58ACE76985F4D89EB6797025AC642B1FD2EEC30E0D34DFA29A9"
+    },
+    {
+      "path": "00-governance/building-services-mep-design-process-v1.0.md",
+      "bytes": 56943,
+      "sha256": "BA67C495030C4629FF880523E5B6D535172C8C50A0A2613CB22D9D1E0675C641"
+    },
+    {
+      "path": "00-governance/complex-project-master-runtime-v1.0.md",
+      "bytes": 25045,
+      "sha256": "8A01D4F753C265AACB0E65447DEBB22F0CA80296673B4616BCA44986F0BA288B"
+    },
+    {
+      "path": "00-governance/control-plane/tests/test_project_closure_objects.py",
+      "bytes": 11060,
+      "sha256": "4F71AA2A641AE57D5B4694B2C659DEC72FE5FFAE937D1DF8C38572F87D5E36E7"
+    },
+    {
+      "path": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "bytes": 28009,
+      "sha256": "10A0CF59B4150B0ADBA616182221704BCEB8B7662CE82E6A7C80BFDB6F5E3EFD"
+    },
+    {
+      "path": "00-governance/oleander-project-flow-v0.3.md",
+      "bytes": 20539,
+      "sha256": "CE978A6A4AF682B8AEB8BF5B424632EC27AAB24F47216628CB0097C1BBD85951"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_ARCHITECTURE_BOUNDED_RECEIPT_v001.json",
+      "bytes": 9206,
+      "sha256": "7CF13166E6D5F061BD1065E6562876E5E025E7B867E7F503392BE4F418574A1C"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_INTEGRATION_HOLD_RECEIPT_v001.json",
+      "bytes": 4934,
+      "sha256": "9E2429A1BB99DB577B57361B6167A9BBC7850DBE1894744A8A2FDBB137125B09"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_MEP_HOLD_RECEIPT_v001.json",
+      "bytes": 2912,
+      "sha256": "03FE6F1F88842FF73CD82C195FB2E9F5FAE395B33C569BD4EF7CD05DC8C22A96"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE_v001.json",
+      "bytes": 10758,
+      "sha256": "586EEDC0C5948827ADB41B1699E871ED22B6990077C0C96E1C895AB5A39BD1D0"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_HOLD_RECEIPT_v001.json",
+      "bytes": 2916,
+      "sha256": "7DCFFD804FB5C918D9EDD7AC0D8FBF9A5C82E18D3B48703C8B4866D7EB7F3BF2"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/README.md",
+      "bytes": 1396,
+      "sha256": "2897DD56ABCCAD7703F40CE0D7902E358A5C0EC4E5E1B34E8700BA4690E6A02A"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json",
+      "bytes": 2371,
+      "sha256": "D795E14AB65DA2E845252B45D593B692259A70C4076DF3C70E66D9FD9652BEC4"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md",
+      "bytes": 20308,
+      "sha256": "C55910A40AB3AA899B8C5FB118F0951FFB82DD2A3D109ECF666B42CAECE32B9A"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "bytes": 33198,
+      "sha256": "F98B5AEFA38DA1513142042E69540292FEE9950648ADA4F9C88E8713C62A82DF"
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process-receipt.v1.schema.json",
+      "bytes": 4865,
+      "sha256": "06DCC794BC8E9F5BA8E64E90D879E4FA02CD2022186EB3703EC33397760E3C2B"
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process-receipt.v1.template.json",
+      "bytes": 1433,
+      "sha256": "664C49332F9D2428F89DAB42CC18631A68E7E95ECA7F89DB89F8F272A4F7F0FC"
+    },
+    {
+      "path": "00-governance/schemas/cross-disciplinary-integration-receipt.v1.schema.json",
+      "bytes": 6670,
+      "sha256": "B52D40A27D379DFF7606FEA53F00D08D00491EEADAC9E45E140E7C611E8F91C1"
+    },
+    {
+      "path": "00-governance/schemas/cross-disciplinary-integration-receipt.v1.template.json",
+      "bytes": 1755,
+      "sha256": "F7CABE1DDA130C1B031F9825D1CAE8BCA22DB9C75B955F8544923F8EB900A7E5"
+    },
+    {
+      "path": "00-governance/schemas/oleander-project-flow-v0.3.schema.json",
+      "bytes": 19573,
+      "sha256": "32C9BF5990DBC32D29325E58347698B0770B16E2816BB3FEDF2FC6B850048DE0"
+    },
+    {
+      "path": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "bytes": 2850,
+      "sha256": "300E3653E67310C1B21C1D762038CFD0BFA6D9D6AAE1AE53870D0C787A636750"
+    },
+    {
+      "path": "00-governance/schemas/project-configuration-change-register.v1.template.json",
+      "bytes": 657,
+      "sha256": "2A776D09A5515506562CB2DB7E147887EEFA0B5B46FFA483D6952DAFD376690B"
+    },
+    {
+      "path": "00-governance/schemas/project-operational-acceptance-compilation.v1.schema.json",
+      "bytes": 2873,
+      "sha256": "5D9C3D859B73D5EFE0ABFF508E86036726E17D70C0908A99C93782880723E51E"
+    },
+    {
+      "path": "00-governance/schemas/project-operational-acceptance-compilation.v1.template.json",
+      "bytes": 788,
+      "sha256": "76729FDB1186D96ABEAF63CDE6A9420C24CAD9ECD37E43798D1183C5EE0DA1BC"
+    },
+    {
+      "path": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "bytes": 3355,
+      "sha256": "300E3322022154EAEA5107C1F153EED3954477393505882BE58E14EE93EA67F3"
+    },
+    {
+      "path": "00-governance/schemas/project-requirement-acceptance-baseline.v1.template.json",
+      "bytes": 1378,
+      "sha256": "FB94662532C4C1D53BFF71787B034D52C8864E47108D64D1CBF8E1B3FF269709"
+    },
+    {
+      "path": "00-governance/schemas/project-risk-hazard-register.v1.schema.json",
+      "bytes": 2652,
+      "sha256": "A61CA764551049007E2E95E3B0A30DB0B04157492550B0E2016EA2F5CD6DC11A"
+    },
+    {
+      "path": "00-governance/schemas/project-risk-hazard-register.v1.template.json",
+      "bytes": 1070,
+      "sha256": "EABA7AF6F7C97BA22E29B18F1BFE4DAC3A4A0E495C9D31944F7972C538A819E9"
+    },
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process-receipt.v1.schema.json",
+      "bytes": 4279,
+      "sha256": "0640ADFDE3BA7A91295CCBAD4974A4D572509EA81C3D144A007806DC8A91ECEB"
+    },
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process-receipt.v1.template.json",
+      "bytes": 1281,
+      "sha256": "39C94E905CD1505DCCD43A1921015983C5ADBF5E0761BB7F16806EAD22C929EA"
+    },
+    {
+      "path": "00-governance/schemas/validate_project_closure_objects.py",
+      "bytes": 20092,
+      "sha256": "87069281E214FE4BE113AD40BF35E960B173E21BE3612D5320F6CFF51A02BA42"
+    },
+    {
+      "path": "00-governance/structural-engineering-design-process-v1.0.md",
+      "bytes": 48437,
+      "sha256": "8221F31A255917CD628C8F317B0A76AC86B02113B444C605E198E7301CA65800"
+    }
+  ],
+  "real_project_exercise": {
+    "project_id": "KH-LY46",
+    "source_root": "D:/.claw/kharkiv_gym46/rebuild/19_ARCH_RESTART_R5_ZERO_BASE",
+    "project_state_mutated": false,
+    "project_manifest_mutated": false,
+    "architecture_result": "HOLD",
+    "architecture_bounded_stage_finding": "ADD-07 PASS_AT_CLAIM_CEILING only; current overall Architecture KEEP remains false.",
+    "structural_result": "HOLD",
+    "mep_result": "HOLD",
+    "requirement_baseline_result": "HOLD",
+    "integration_result": "HOLD",
+    "successor_receipt_claimed": false
+  },
+  "validation": [
+    {
+      "check": "KH-LY46 Architecture bounded receipt",
+      "command": "py -3 00-governance/schemas/validate_design_development_receipts.py <architecture-receipt> --project-root D:/.claw/kharkiv_gym46/rebuild/19_ARCH_RESTART_R5_ZERO_BASE",
+      "result": "PASS"
+    },
+    {
+      "check": "KH-LY46 Structural/MEP/Requirement/Integration bounded objects",
+      "command": "py -3 00-governance/schemas/validate_project_closure_objects.py <four bounded objects>",
+      "result": "PASS"
+    },
+    {
+      "check": "project closure targeted tests",
+      "command": "py -3 00-governance/control-plane/tests/test_project_closure_objects.py",
+      "result": "PASS",
+      "tests": 18
+    },
+    {
+      "check": "full control-plane tests",
+      "command": "py -3 -m unittest discover -s 00-governance/control-plane/tests -p test_*.py -q",
+      "result": "PASS",
+      "tests": 129
+    },
+    {
+      "check": "execution contracts",
+      "command": "py -3 00-governance/runtime/validate_execution_contracts.py",
+      "result": "PASS",
+      "summary": "7 installed owners; 5 candidate UI owners; 1 lifecycle promotion record; 9 real execution receipts; 79 stages / 308 unique roles / 0 unnamed fallback; 79/79 knowledge binding."
+    },
+    {
+      "check": "architecture control graph",
+      "command": "py -3 00-governance/runtime/validate_architecture_control_graph.py",
+      "result": "PASS",
+      "summary": "1 system architecture; 1 master runtime; 11 runtime layers; 6 operational planes."
+    },
+    {
+      "check": "core JSON parse",
+      "result": "PASS",
+      "objects": 3
+    },
+    {
+      "check": "git diff --check",
+      "result": "PASS_WITH_NONFATAL_LINE_ENDING_WARNINGS"
+    },
+    {
+      "check": "anti-pollution Current-named file registration",
+      "result": "FIXED_AFTER_PR_HEAD_CI_FAILURE",
+      "summary": "The non-authority OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json projection is explicitly registered in the existing anti-pollution Current-named-file allowlist; this does not change its non-authority semantics."
+    },
+    {
+      "check": "protected Current Structural/MEP process-machine diff vs origin/main",
+      "result": "UNCHANGED"
+    }
+  ],
+  "does_not_prove": [
+    "Professional or statutory approval",
+    "Design KEEP",
+    "Candidate promotion",
+    "Technical Drawing Current authority",
+    "Field truth",
+    "GitHub remote sync",
+    "Notion sync",
+    "External deployment"
+  ],
+  "self_digest_note": "This provenance receipt is intentionally excluded from material_files_excluding_this_receipt because a file cannot contain a stable digest of its own final bytes."
+}

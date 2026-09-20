@@ -457,6 +457,14 @@ Blockers cannot be closed by one side of the interface without readback from the
 
 At material integration decisions and before Promotion, compile a compact `CROSS_DISCIPLINARY_INTEGRATION_RECEIPT` as the whole-system verification object.
 
+Machine contract:
+
+- schema: `00-governance/schemas/cross-disciplinary-integration-receipt.v1.schema.json`;
+- fail-safe template: `00-governance/schemas/cross-disciplinary-integration-receipt.v1.template.json`;
+- semantic/fail-closed validator: `00-governance/schemas/validate_project_closure_objects.py`.
+
+The template intentionally starts at `HOLD`; object existence is never Integration PASS.
+
 Minimum fields:
 
 - project / candidate / artifact / version identity;
