@@ -1,0 +1,12 @@
+{
+  "schema": "oleander-automation-github-write-probe/0.1",
+  "purpose": "Verify connected GitHub write connector can create and read back a file on an isolated branch.",
+  "repository": "Jiaosong/Design",
+  "branch": "automation/cloud-write-probe-20260920",
+  "state": "WRITE_PROBE_ONLY_NOT_CURRENT",
+  "does_not_prove": [
+    "scheduled_automation_runtime_has_invoked_this_connector",
+    "design_quality",
+    "promotion"
+  ]
+}
