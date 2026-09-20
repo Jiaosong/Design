@@ -18,8 +18,7 @@
   "current_runtime_evidence": {
     "current_body_readback": ".mcp-runtime/diagnostics/OLEANDER_CURRENT_56_FINAL_FULLSUPPLEMENT_MERGED_READBACK_20260915.json",
     "support_master_inventory": ".mcp-runtime/diagnostics/OLEANDER_SUPPORT_946_MASTER_INVENTORY_20260915.json",
-    "provenance_count_evidence": ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json",
-    "reviewed_300_content_mount": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json"
+    "provenance_count_evidence": ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json"
   },
   "contracts": {
     "content_review": "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
@@ -84,35 +83,5 @@
       "Promotion",
       "G9 bounded knowledge return"
     ]
-  },
-  "content_terminal_cohorts": {
-    "reviewed_300_20260920": {
-      "receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
-      "canonical_registry": "collection://4668fc63-45a6-496e-a2cc-f9542928b9e8",
-      "selector": {
-        "batch_prefixes": [
-          "GRANULARITY-100-B",
-          "GRANULARITY-100-C",
-          "GRANULARITY-100-D"
-        ],
-        "repair_state": "已修复"
-      },
-      "readback": {
-        "total": 300,
-        "B": 100,
-        "C": 100,
-        "D": 100,
-        "core_mount_locator_gaps": 0
-      },
-      "content_terminal": true,
-      "integrity": "RESOLVE_LIVE_PER_OBJECT_AND_SCOPE",
-      "operational_eligibility": "RESOLVE_PER_TASK_CLAIM",
-      "promotion": "NONE"
-    }
-  },
-  "last_reviewed_content_sync": {
-    "date": "2026-09-20",
-    "receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
-    "note": "Reviewed cohort is mounted by canonical reference only. No bulk CURRENT/DEFAULT/KI4/OE3 promotion."
   }
 }
