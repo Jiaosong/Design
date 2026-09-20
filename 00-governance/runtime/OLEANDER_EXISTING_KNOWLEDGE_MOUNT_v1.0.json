@@ -1,87 +1,118 @@
 {
-    "schema":  "OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1",
-    "status":  "ACTIVE",
-    "effective_date":  "2026-09-15",
-    "mount_mode":  "REFERENCE_ONLY",
-    "canonical_source":  "Live OLEANDER Knowledge Registry / Current Authority",
-    "snapshot_evidence":  {
-                              "locator":  ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json",
-                              "snapshot_generated_at":  "2026-09-14T15:11:39.449Z",
-                              "total_objects":  1215,
-                              "retrieval_space_counts":  {
-                                                             "CURRENT":  56,
-                                                             "SUPPORT":  946,
-                                                             "PROVENANCE":  213
-                                                         },
-                              "note":  "Counts establish corpus mount scope only. Per-object body, integrity, freshness, authority and operational eligibility must be resolved live at use time."
-                          },
-    "current_runtime_evidence":  {
-                                     "current_body_readback":  ".mcp-runtime/diagnostics/OLEANDER_CURRENT_56_FINAL_FULLSUPPLEMENT_MERGED_READBACK_20260915.json",
-                                     "support_master_inventory":  ".mcp-runtime/diagnostics/OLEANDER_SUPPORT_946_MASTER_INVENTORY_20260915.json",
-                                     "provenance_count_evidence":  ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json"
-                                 },
-    "contracts":  {
-                      "content_review":  "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
-                      "research_content":  "oleander-skills/oleander-research/PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md",
-                      "integrity_operational_mount":  "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
-                      "design_intelligence":  "00-governance/design-intelligence-routing-and-review-v1.0.md",
-                      "shared_dd":  "00-governance/design-quality-and-design-development-specification-v1.0.md",
-                      "architecture_process":  "00-governance/architecture-design-development-process-v1.0.md"
-                  },
-    "state_families":  {
-                           "corpus_retrieval":  [
-                                                    "CURRENT",
-                                                    "SUPPORT",
-                                                    "PROVENANCE",
-                                                    "EXCLUDED"
-                                                ],
-                           "content":  "Owned by Knowledge Content Review Layer; do not infer from retrieval space.",
-                           "integrity":  [
-                                             "KI0_UNKNOWN",
-                                             "KI1_SUSPECT",
-                                             "KI2_REPAIR",
-                                             "KI3_QUARANTINED",
-                                             "KI4_VERIFIED",
-                                             "KI5_SUPERSEDED_RETIRED"
-                                         ],
-                           "operational_eligibility":  [
-                                                           "OE0_NOT_EVALUATED",
-                                                           "OE1_NOT_ELIGIBLE",
-                                                           "OE2_CONDITIONAL",
-                                                           "OE3_ELIGIBLE"
-                                                       ],
-                           "design_maturity":  "DQ0-DQ5; owned by Design Quality specification.",
-                           "professional_stage":  "Domain-owned authentic stage state; Architecture uses ADD-00..ADD-17."
-                       },
-    "admission":  {
-                      "discovery":  "Existing eligible canonical objects may be surfaced according to retrieval/search governance. Discovery grants no decision authority.",
-                      "consequential_use":  "Resolve canonical ref + current full body + applicable K1-K5/R1-R2/B1/IR + integrity + freshness/applicability + claim ceiling, then assign task-scoped OE1/OE2/OE3.",
-                      "conditional_use":  "OE2 must carry conditions, applicability, claim ceiling, freshness/revalidation trigger and does_not_prove."
-                  },
-    "hard_guards":  [
-                        "NO_COPY_INTO_DD_OR_PROFESSIONAL_PROCESS",
-                        "CURRENT_DOES_NOT_IMPLY_CLEAN",
-                        "CONTENT_COMPLETE_DOES_NOT_IMPLY_KNOWLEDGE_CLEAN",
-                        "KNOWLEDGE_CLEAN_DOES_NOT_IMPLY_UNIVERSAL_ELIGIBILITY",
-                        "OPERATIONAL_ELIGIBILITY_DOES_NOT_IMPLY_DQ_MATURITY",
-                        "DQ_MATURITY_DOES_NOT_IMPLY_PROFESSIONAL_STAGE_PASS",
-                        "KI3_QUARANTINED_CANNOT_BE_OE3_FOR_AFFECTED_CLAIM",
-                        "SUPERSEDED_RETIRED_CANNOT_BE_ACTIVE_PRIMARY_DECISION_OWNER"
-                    ],
-    "downstream_runtime":  {
-                               "sequence":  [
-                                                "Live Corpus",
-                                                "Full-body Content Review",
-                                                "Integrity Resolution",
-                                                "Task/Claim-scoped Operational Eligibility",
-                                                "Design Intelligence Knowledge Inputs",
-                                                "Shared DD Responsibilities",
-                                                "Authentic Professional Domain Stage",
-                                                "Native Execution",
-                                                "Actual Readback",
-                                                "Independent Reviews",
-                                                "Promotion",
-                                                "G9 bounded knowledge return"
-                                            ]
-                           }
+  "schema": "OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1",
+  "status": "ACTIVE",
+  "effective_date": "2026-09-15",
+  "mount_mode": "REFERENCE_ONLY",
+  "canonical_source": "Live OLEANDER Knowledge Registry / Current Authority",
+  "snapshot_evidence": {
+    "locator": ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json",
+    "snapshot_generated_at": "2026-09-14T15:11:39.449Z",
+    "total_objects": 1215,
+    "retrieval_space_counts": {
+      "CURRENT": 56,
+      "SUPPORT": 946,
+      "PROVENANCE": 213
+    },
+    "note": "Counts establish corpus mount scope only. Per-object body, integrity, freshness, authority and operational eligibility must be resolved live at use time."
+  },
+  "current_runtime_evidence": {
+    "current_body_readback": ".mcp-runtime/diagnostics/OLEANDER_CURRENT_56_FINAL_FULLSUPPLEMENT_MERGED_READBACK_20260915.json",
+    "support_master_inventory": ".mcp-runtime/diagnostics/OLEANDER_SUPPORT_946_MASTER_INVENTORY_20260915.json",
+    "provenance_count_evidence": ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json",
+    "reviewed_300_content_mount": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json"
+  },
+  "contracts": {
+    "content_review": "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
+    "research_content": "oleander-skills/oleander-research/PROFESSIONAL_KNOWLEDGE_CONTENT_RESEARCH_STANDARD_v1.0.md",
+    "integrity_operational_mount": "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+    "design_intelligence": "00-governance/design-intelligence-routing-and-review-v1.0.md",
+    "shared_dd": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+    "architecture_process": "00-governance/architecture-design-development-process-v1.0.md"
+  },
+  "state_families": {
+    "corpus_retrieval": [
+      "CURRENT",
+      "SUPPORT",
+      "PROVENANCE",
+      "EXCLUDED"
+    ],
+    "content": "Owned by Knowledge Content Review Layer; do not infer from retrieval space.",
+    "integrity": [
+      "KI0_UNKNOWN",
+      "KI1_SUSPECT",
+      "KI2_REPAIR",
+      "KI3_QUARANTINED",
+      "KI4_VERIFIED",
+      "KI5_SUPERSEDED_RETIRED"
+    ],
+    "operational_eligibility": [
+      "OE0_NOT_EVALUATED",
+      "OE1_NOT_ELIGIBLE",
+      "OE2_CONDITIONAL",
+      "OE3_ELIGIBLE"
+    ],
+    "design_maturity": "DQ0-DQ5; owned by Design Quality specification.",
+    "professional_stage": "Domain-owned authentic stage state; Architecture uses ADD-00..ADD-17."
+  },
+  "admission": {
+    "discovery": "Existing eligible canonical objects may be surfaced according to retrieval/search governance. Discovery grants no decision authority.",
+    "consequential_use": "Resolve canonical ref + current full body + applicable K1-K5/R1-R2/B1/IR + integrity + freshness/applicability + claim ceiling, then assign task-scoped OE1/OE2/OE3.",
+    "conditional_use": "OE2 must carry conditions, applicability, claim ceiling, freshness/revalidation trigger and does_not_prove."
+  },
+  "hard_guards": [
+    "NO_COPY_INTO_DD_OR_PROFESSIONAL_PROCESS",
+    "CURRENT_DOES_NOT_IMPLY_CLEAN",
+    "CONTENT_COMPLETE_DOES_NOT_IMPLY_KNOWLEDGE_CLEAN",
+    "KNOWLEDGE_CLEAN_DOES_NOT_IMPLY_UNIVERSAL_ELIGIBILITY",
+    "OPERATIONAL_ELIGIBILITY_DOES_NOT_IMPLY_DQ_MATURITY",
+    "DQ_MATURITY_DOES_NOT_IMPLY_PROFESSIONAL_STAGE_PASS",
+    "KI3_QUARANTINED_CANNOT_BE_OE3_FOR_AFFECTED_CLAIM",
+    "SUPERSEDED_RETIRED_CANNOT_BE_ACTIVE_PRIMARY_DECISION_OWNER"
+  ],
+  "downstream_runtime": {
+    "sequence": [
+      "Live Corpus",
+      "Full-body Content Review",
+      "Integrity Resolution",
+      "Task/Claim-scoped Operational Eligibility",
+      "Design Intelligence Knowledge Inputs",
+      "Shared DD Responsibilities",
+      "Authentic Professional Domain Stage",
+      "Native Execution",
+      "Actual Readback",
+      "Independent Reviews",
+      "Promotion",
+      "G9 bounded knowledge return"
+    ]
+  },
+  "content_terminal_cohorts": {
+    "reviewed_300_20260920": {
+      "receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
+      "canonical_registry": "collection://4668fc63-45a6-496e-a2cc-f9542928b9e8",
+      "selector": {
+        "batch_prefixes": [
+          "GRANULARITY-100-B",
+          "GRANULARITY-100-C",
+          "GRANULARITY-100-D"
+        ],
+        "repair_state": "已修复"
+      },
+      "readback": {
+        "total": 300,
+        "B": 100,
+        "C": 100,
+        "D": 100,
+        "core_mount_locator_gaps": 0
+      },
+      "content_terminal": true,
+      "integrity": "RESOLVE_LIVE_PER_OBJECT_AND_SCOPE",
+      "operational_eligibility": "RESOLVE_PER_TASK_CLAIM",
+      "promotion": "NONE"
+    }
+  },
+  "last_reviewed_content_sync": {
+    "date": "2026-09-20",
+    "receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
+    "note": "Reviewed cohort is mounted by canonical reference only. No bulk CURRENT/DEFAULT/KI4/OE3 promotion."
+  }
 }
