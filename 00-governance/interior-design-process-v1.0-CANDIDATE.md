@@ -737,3 +737,32 @@ Room/program/use change; Architecture geometry/datum/opening change; MEP/lightin
 - Native carrier: build-up/transition matrix, joinery/hardware/fixing package, sample/mockup benchmark, shop/substitution review, installation/punch record.
 - Readback: substrate↔finish compatibility; edge/joint/fixing/tolerance; backing/MEP/hardware access; full-scale sample criteria; installed defect pattern.
 - Reopen: substrate/moisture/build-up/material/hardware/thickness/fixing/shop/substitution/mockup/site defect change.
+
+## External Mature-KB Absorption Delta｜CIDA 2024｜2026-09-20
+
+Status: `CANDIDATE STRENGTHENING / SOURCE-BOUND / NO PROMOTION`.
+
+### Source mount
+- `SRC-CIDA-PS2024-INTERIOR-001` — CIDA Professional Standards 2024: https://app.notion.com/p/3e1b86be5c4781399cbce8df086ae812
+
+This L6 SOURCE is `SUPPORT / SCOPED`. It calibrates capability coverage only; it is not a project delivery stage, licensure authority, code source, appointment or professional PASS.
+
+### Capability-coverage attack
+Every material Interior stage/object must now be attackable across the following coverage when relevant:
+`USER / CULTURE / INCLUSION → ACCESSIBILITY → SPACE / ACTIVITY → TECHNOLOGY / COORDINATION → MATERIAL / FF&E → COMMUNICATION / DOCUMENTATION → HEALTH / SAFETY / WELFARE → EVALUATION / READBACK`.
+
+This does **not** require every project to generate one artifact per category. It requires omissions to be explicit rather than hidden behind moodboards, finish schedules or room plans.
+
+### Native-output consequence
+When triggered, the stage owner must show which native carrier closes each material capability question: room data, dimensioned plan, RCP/elevations, FF&E/product identity, finish/joinery detail, coordination register, accessibility evidence, sample/mockup, field/in-use readback.
+
+### Failure attacks
+- `VISUALLY RESOLVED ≠ ACCESSIBLE / INCLUSIVE / COORDINATED`.
+- accreditation competency language cannot substitute for project code, licensure, professional review or exact room evidence.
+- Draft CIDA 2028 material remains non-Current until separately verified/adopted.
+
+### Reopen
+Reopen the affected Interior object when user profile/inclusion need, accessibility authority, technology/system interface, product/material identity, room use, health/safety requirement or evaluation evidence materially changes.
+
+### Boundary
+`CIDA 2024 SOURCE ABSORBED ≠ INTERIOR CURRENT ≠ CODE COMPLIANCE ≠ LICENSED PRACTICE ≠ PROFESSIONAL PASS`.
