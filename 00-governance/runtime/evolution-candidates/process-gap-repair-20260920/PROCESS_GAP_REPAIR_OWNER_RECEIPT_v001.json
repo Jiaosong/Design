@@ -36,6 +36,11 @@
   ],
   "material_files_excluding_this_receipt": [
     {
+      "path": "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json",
+      "bytes": 11027,
+      "sha256": "E4FA2329770AF58ACE76985F4D89EB6797025AC642B1FD2EEC30E0D34DFA29A9"
+    },
+    {
       "path": "00-governance/building-services-mep-design-process-v1.0.md",
       "bytes": 56943,
       "sha256": "BA67C495030C4629FF880523E5B6D535172C8C50A0A2613CB22D9D1E0675C641"
@@ -247,6 +252,11 @@
     {
       "check": "git diff --check",
       "result": "PASS_WITH_NONFATAL_LINE_ENDING_WARNINGS"
+    },
+    {
+      "check": "anti-pollution Current-named file registration",
+      "result": "FIXED_AFTER_PR_HEAD_CI_FAILURE",
+      "summary": "The non-authority OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json projection is explicitly registered in the existing anti-pollution Current-named-file allowlist; this does not change its non-authority semantics."
     },
     {
       "check": "protected Current Structural/MEP process-machine diff vs origin/main",
