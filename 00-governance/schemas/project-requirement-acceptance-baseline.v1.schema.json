@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.project-requirement-acceptance-baseline.v1",
+  "title": "OLEANDER Project Requirement Acceptance Baseline v1",
+  "type": "object",
+  "required": [
+    "object_type", "schema_version", "baseline_id", "project_id", "source_revision",
+    "status", "requirements", "blocking_requirement_ids", "stale", "baseline_verdict", "does_not_prove"
+  ],
+  "properties": {
+    "object_type": {"const": "PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE"},
+    "schema_version": {"const": "1.0"},
+    "baseline_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "workstream_id": {"type": ["string", "null"]},
+    "source_revision": {"type": "string", "minLength": 1},
+    "status": {"enum": ["WORKING", "CURRENT", "STALE", "HOLD"]},
+    "requirements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/requirement"}},
+    "blocking_requirement_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "stale": {"type": "boolean"},
+    "baseline_verdict": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+    "does_not_prove": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "requirement": {
+      "type": "object",
+      "required": [
+        "requirement_id", "statement", "source_ref", "source_revision", "owner_ref",
+        "applicability", "in_claim", "acceptance_method", "proof_class", "acceptance_criteria",
+        "verification_owner_ref", "evidence_refs", "verification_state", "validation_required",
+        "validation_state", "affected_object_refs", "change_authority_ref", "reopen_triggers", "stale"
+      ],
+      "properties": {
+        "requirement_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "source_ref": {"type": "string", "minLength": 1},
+        "source_revision": {"type": "string", "minLength": 1},
+        "owner_ref": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["APPLICABLE", "NOT_APPLICABLE_WITH_REASON", "UNRESOLVED"]},
+        "applicability_reason": {"type": ["string", "null"]},
+        "in_claim": {"type": "boolean"},
+        "acceptance_method": {"enum": ["INSPECTION", "ANALYSIS", "TEST", "DEMONSTRATION", "REVIEW", "USER_VALIDATION", "FIELD_MEASUREMENT", "COMMISSIONING", "OTHER"]},
+        "proof_class": {"type": "string", "minLength": 1},
+        "acceptance_criteria": {"type": "string", "minLength": 1},
+        "verification_owner_ref": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "verification_state": {"enum": ["NOT_RUN", "PASS", "FAIL", "HOLD", "NOT_APPLICABLE"]},
+        "validation_required": {"type": "boolean"},
+        "validation_state": {"enum": ["NOT_REQUIRED", "NOT_RUN", "PASS", "FAIL", "HOLD"]},
+        "affected_object_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "change_authority_ref": {"type": "string", "minLength": 1},
+        "reopen_triggers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "stale": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

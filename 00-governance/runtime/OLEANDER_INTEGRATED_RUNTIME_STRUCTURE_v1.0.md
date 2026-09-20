@@ -85,8 +85,8 @@ Each profession owns its real professional design-development process.
 
 Current formalized professional processes:
 - Architecture → `Architecture Design Development Process v1.0` → `ADD-00 ... ADD-17` → project-exercised reference process;
-- Structural Engineering → `Structural Engineering Design Process v1.0` → `SE-SPW0 / 1 / 2 / 3 / 4 / 4.5 / 5 / 6 / 7` → machine-bound Current definition;
-- Building Services / MEP → `Building Services / MEP Design Process v1.0` → `BSP-STRATEGIC / BRIEF / CONCEPT / SPATIAL / TECHNICAL / PRODUCTION / CONSTRUCTION-CX / HANDOVER / INUSE` → machine-bound Current definition.
+- Structural Engineering → `Structural Engineering Design Process v1.0` → `SE-SPW0 / 1 / 2 / 3 / 4 / 4.5 / 5 / 6 / 7` → machine-bound Current definition + `STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT`;
+- Building Services / MEP → `Building Services / MEP Design Process v1.0` → `BSP-STRATEGIC / BRIEF / CONCEPT / SPATIAL / TECHNICAL / PRODUCTION / CONSTRUCTION-CX / HANDOVER / INUSE` → machine-bound Current definition + `BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT`.
 
 Other domains retain their own authentic stage semantics. Candidate process definitions do not become Current merely because a candidate file exists; domains without a Current process remain OPEN under the shared Professional Domain Process Contract.
 
@@ -122,6 +122,8 @@ Resolution order inside the professional-stage spine:
 `Required Capability Roles → Current Execution Owners / Skills → Native Outputs`.
 
 Tool / Adapter and runtime-availability checks are subordinate execution details inside `Current Execution Owners / Skills → Native Outputs`; they do not sit between professional-stage nodes.
+
+Candidate owner / Candidate Body presence is never callability. In particular, when a triggered professional stage requires technical plans/sections/details/schedules and the only reusable route is the Current Technical Drawing Candidate body, R-G must return `HOLD` unless an explicit project-authorized specialist owner is bound. `oleander-design-process` must not absorb that technical authority by fallback.
 
 Knowledge is mounted to the task/claim before Skill routing; it does not route directly by Skill or Tool identity. The required native output is the bridge from professional semantics into executable capability resolution.
 
@@ -159,6 +161,10 @@ Triggered review classes remain independent:
 ### R-J | Persistence, Promotion & Synchronization
 
 Promotion requires all triggered responsibilities needed by the claim to agree.
+
+When material project obligations are promotion-relevant, R-J also consumes the current `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE`. This is a Project Plane compilation object: it does not create a twelfth Runtime Layer and does not replace the originating professional/system requirement owner.
+
+The same Project Plane rule applies, when triggered, to `PROJECT_CONFIGURATION_CHANGE_REGISTER`, `PROJECT_RISK_HAZARD_REGISTER` and `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION`. They compile closure state for R-J but do not absorb professional semantics, safety authority, commissioning authority or operation ownership.
 
 When PAP is triggered, durable binary persistence closes before Promotion.
 

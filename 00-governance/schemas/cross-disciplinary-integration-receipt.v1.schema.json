@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.cross-disciplinary-integration-receipt.v1",
+  "title": "OLEANDER Cross-Disciplinary Integration Receipt v1",
+  "type": "object",
+  "required": [
+    "receipt_type",
+    "schema_version",
+    "project_id",
+    "source_revision",
+    "integration_question",
+    "system_success_conditions",
+    "participating_disciplines",
+    "critical_interfaces",
+    "unresolved_major_critical_interfaces",
+    "blocked_interfaces",
+    "unresolved_authority_conflicts",
+    "shared_variable_authority_summary",
+    "joint_decision_refs",
+    "integrated_readback_refs",
+    "acceptance_contract_results",
+    "material_changes",
+    "reopened_reviews",
+    "stale",
+    "integration_findings",
+    "integration_verdict",
+    "promotion_ceiling",
+    "does_not_prove",
+    "integration_owner",
+    "reviewer_independence_state"
+  ],
+  "properties": {
+    "receipt_type": {"const": "CROSS_DISCIPLINARY_INTEGRATION_RECEIPT"},
+    "schema_version": {"const": "1.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "workstream_id": {"type": ["string", "null"]},
+    "candidate_id": {"type": ["string", "null"]},
+    "artifact_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "source_revision": {"type": "string", "minLength": 1},
+    "integration_question": {"type": "string", "minLength": 1},
+    "system_success_conditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "participating_disciplines": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "critical_interfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/interfaceRecord"}
+    },
+    "unresolved_major_critical_interfaces": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "blocked_interfaces": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "unresolved_authority_conflicts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "shared_variable_authority_summary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["variable_id", "authority_state", "owner_ref", "consumer_refs"],
+        "properties": {
+          "variable_id": {"type": "string", "minLength": 1},
+          "authority_state": {"enum": ["RESOLVED", "CONFLICT", "UNKNOWN", "NOT_APPLICABLE"]},
+          "owner_ref": {"type": ["string", "null"]},
+          "consumer_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "joint_decision_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "integrated_readback_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "acceptance_contract_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["acceptance_id", "required", "status", "evidence_refs"],
+        "properties": {
+          "acceptance_id": {"type": "string", "minLength": 1},
+          "required": {"type": "boolean"},
+          "status": {"enum": ["NOT_RUN", "PASS", "REVISE", "FAIL", "HOLD", "NOT_APPLICABLE"]},
+          "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "material_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["change_id", "impact_class", "affected_refs", "reconciliation_state"],
+        "properties": {
+          "change_id": {"type": "string", "minLength": 1},
+          "impact_class": {"enum": ["NONE", "LOCAL", "INTERFACE", "SYSTEM", "AUTHORITY"]},
+          "affected_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "reconciliation_state": {"enum": ["NOT_REQUIRED", "OPEN", "RECONCILED", "HOLD"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "reopened_reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["review_ref", "required", "status"],
+        "properties": {
+          "review_ref": {"type": "string", "minLength": 1},
+          "required": {"type": "boolean"},
+          "status": {"enum": ["NOT_RUN", "PASS", "REVISE", "FAIL", "HOLD", "NOT_APPLICABLE"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "stale": {"type": "boolean"},
+    "integration_findings": {
+      "type": "object",
+      "required": ["strongest_resolved_relation", "weakest_or_open_relation"],
+      "properties": {
+        "strongest_resolved_relation": {"type": "string", "minLength": 1},
+        "weakest_or_open_relation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "integration_verdict": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+    "promotion_ceiling": {"type": "string", "minLength": 1},
+    "does_not_prove": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "integration_owner": {"type": "string", "minLength": 1},
+    "independent_reviewer_ref": {"type": ["string", "null"]},
+    "reviewer_independence_state": {"enum": ["NOT_REQUIRED", "PASS", "FAIL", "HOLD"]},
+    "reviewed_at": {"type": ["string", "null"], "format": "date-time"}
+  },
+  "$defs": {
+    "interfaceRecord": {
+      "type": "object",
+      "required": [
+        "interface_id",
+        "coupling",
+        "criticality",
+        "in_claim",
+        "required_maturity",
+        "actual_maturity",
+        "disposition",
+        "authority_state",
+        "readback_refs"
+      ],
+      "properties": {
+        "interface_id": {"type": "string", "minLength": 1},
+        "coupling": {"enum": ["LOOSE", "DEPENDENT", "BIDIRECTIONAL", "RECIPROCAL", "TIGHTLY_COUPLED"]},
+        "criticality": {"enum": ["MINOR", "MAJOR", "CRITICAL"]},
+        "in_claim": {"type": "boolean"},
+        "required_maturity": {"enum": ["IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+        "actual_maturity": {"enum": ["UNRESOLVED", "IDENTIFIED", "DEFINED", "COORDINATED", "EXERCISED", "VERIFIED"]},
+        "disposition": {"enum": ["OPEN", "CLOSED", "BLOCKED", "OUTSIDE_CLAIM"]},
+        "authority_state": {"enum": ["RESOLVED", "CONFLICT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "readback_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

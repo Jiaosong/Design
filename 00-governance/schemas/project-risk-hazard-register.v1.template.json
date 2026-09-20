@@ -1,0 +1,30 @@
+{
+  "object_type": "PROJECT_RISK_HAZARD_REGISTER",
+  "schema_version": "1.0",
+  "register_id": "PRHR-PROJECT-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "source_revision": "SOURCE_REVISION",
+  "status": "HOLD",
+  "risks": [
+    {
+      "risk_id": "RISK-001",
+      "in_claim": true,
+      "hazard_statement": "Replace with a project-specific hazard / failure condition.",
+      "method_ref": "DOMAIN_RISK_METHOD_REQUIRED",
+      "owner_ref": "RISK_OWNER_REQUIRED",
+      "severity_class": "DOMAIN_NATIVE_SEVERITY_REQUIRED",
+      "likelihood_basis": "EVIDENCE_BASIS_REQUIRED",
+      "mitigation_refs": [],
+      "verification_method": "VERIFICATION_METHOD_REQUIRED",
+      "evidence_refs": [],
+      "state": "HOLD",
+      "residual_risk_owner_ref": "RESIDUAL_RISK_OWNER_REQUIRED",
+      "reopen_triggers": ["hazard, use, design, evidence or operating condition changes"]
+    }
+  ],
+  "blocking_risk_ids": ["RISK-001"],
+  "stale": false,
+  "register_verdict": "HOLD",
+  "does_not_prove": ["safety approval", "zero risk", "Design KEEP", "Promotion"]
+}

@@ -1,0 +1,39 @@
+{
+  "receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "process_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+  "source_revision": "SOURCE_REVISION",
+  "claim_ceiling": "CONCEPT_ONLY",
+  "basis_of_structural_design_ref": "BASIS_OF_STRUCTURAL_DESIGN_REQUIRED",
+  "stage_records": [
+    {
+      "stage_id": "SE-SPW0",
+      "triggered": true,
+      "status": "HOLD",
+      "knowledge_mount_refs": [],
+      "native_output_refs": [],
+      "actual_readback_refs": [],
+      "checking_state": "HOLD",
+      "interface_state": "HOLD",
+      "open_items": ["Authoritative structural basis / specialist execution remains unresolved."]
+    }
+  ],
+  "analysis_model_refs": [],
+  "calculation_drawing_trace_refs": [],
+  "field_shop_change_refs": [],
+  "interface_summary": [],
+  "independent_check": {
+    "required": true,
+    "state": "HOLD",
+    "reviewer_ref": null,
+    "review_input_refs": []
+  },
+  "blocking_open_items": ["Structural professional closure not established."],
+  "open_items": [],
+  "reopened_items": [],
+  "stale": false,
+  "result": "HOLD",
+  "does_not_prove": ["engineering approval", "field verification", "Design KEEP", "Promotion"]
+}

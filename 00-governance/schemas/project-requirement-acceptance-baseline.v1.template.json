@@ -1,0 +1,37 @@
+{
+  "object_type": "PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE",
+  "schema_version": "1.0",
+  "baseline_id": "PRAB-PROJECT-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "source_revision": "SOURCE_REVISION",
+  "status": "HOLD",
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "statement": "Replace this placeholder with one atomic, verifiable project obligation.",
+      "source_ref": "SOURCE_REQUIRED",
+      "source_revision": "SOURCE_REVISION",
+      "owner_ref": "REQUIREMENT_OWNER_REQUIRED",
+      "applicability": "UNRESOLVED",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "REVIEW",
+      "proof_class": "PROOF_CLASS_REQUIRED",
+      "acceptance_criteria": "ACCEPTANCE_CRITERIA_REQUIRED",
+      "verification_owner_ref": "VERIFICATION_OWNER_REQUIRED",
+      "evidence_refs": [],
+      "verification_state": "HOLD",
+      "validation_required": false,
+      "validation_state": "NOT_REQUIRED",
+      "affected_object_refs": [],
+      "change_authority_ref": "CHANGE_AUTHORITY_REQUIRED",
+      "reopen_triggers": ["source, requirement, affected object or acceptance evidence changes"],
+      "stale": false
+    }
+  ],
+  "blocking_requirement_ids": ["REQ-001"],
+  "stale": false,
+  "baseline_verdict": "HOLD",
+  "does_not_prove": ["Design KEEP", "professional approval", "field truth", "Promotion"]
+}

@@ -785,6 +785,16 @@ Stage may close only for systems whose required commissioning evidence and criti
 
 **Does not prove:** every operational season, future performance, absence of hidden installation defects, statutory acceptance not separately evidenced, or operational-energy target achievement.
 
+### Machine professional receipt
+
+Triggered Building Services / MEP process closure compiles `BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT` through:
+
+- `00-governance/schemas/building-services-mep-design-process-receipt.v1.schema.json`;
+- `00-governance/schemas/building-services-mep-design-process-receipt.v1.template.json`;
+- `00-governance/schemas/validate_project_closure_objects.py`.
+
+The receipt is fail-closed: `PASS` requires non-stale triggered-stage closure, native outputs plus actual readback, closed required interfaces, current professional review, and every in-claim system track to close its required commissioning / integrated-test evidence. Explicit seasonal/deferred tests may remain only when marked outside the current claim and must continue to cap the claim.
+
 ---
 
 ## 14｜BSP-HANDOVER — Handover, Training and Initial Aftercare

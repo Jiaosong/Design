@@ -1,0 +1,133 @@
+{
+  "receipt_type": "CROSS_DISCIPLINARY_INTEGRATION_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "candidate_id": null,
+  "artifact_refs": [
+    "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+    "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+    "R5_70_ADD08_STAGE_BODY_v001.md"
+  ],
+  "source_revision": "KH-LY46-R5 / R5_69 independent ADD-07 closure + R5_70 ADD-08 entry",
+  "integration_question": "Can the current bounded Architecture plan/core trajectory be treated as cross-disciplinarily closed with Structure and MEP without inventing specialist authority or evidence?",
+  "system_success_conditions": [
+    "Architecture↔Structure core/vertical interfaces reach the required defined/coordinated maturity with structural specialist authority and readback.",
+    "Architecture↔MEP service/core/riser interfaces reach the required defined/coordinated maturity with MEP specialist authority and readback.",
+    "No bounded architectural readback is promoted into structural, MEP, statutory or field truth."
+  ],
+  "participating_disciplines": [
+    "Architecture",
+    "Structural Engineering",
+    "Building Services / MEP"
+  ],
+  "critical_interfaces": [
+    {
+      "interface_id": "KH-LY46-IF-ARCH-STRUCT-CORE",
+      "coupling": "TIGHTLY_COUPLED",
+      "criticality": "CRITICAL",
+      "in_claim": true,
+      "required_maturity": "DEFINED",
+      "actual_maturity": "IDENTIFIED",
+      "disposition": "BLOCKED",
+      "authority_state": "UNKNOWN",
+      "readback_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    },
+    {
+      "interface_id": "KH-LY46-IF-ARCH-MEP-SERVICE-CORE",
+      "coupling": "BIDIRECTIONAL",
+      "criticality": "MAJOR",
+      "in_claim": true,
+      "required_maturity": "DEFINED",
+      "actual_maturity": "IDENTIFIED",
+      "disposition": "BLOCKED",
+      "authority_state": "UNKNOWN",
+      "readback_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "unresolved_major_critical_interfaces": [
+    "KH-LY46-IF-ARCH-STRUCT-CORE",
+    "KH-LY46-IF-ARCH-MEP-SERVICE-CORE"
+  ],
+  "blocked_interfaces": [
+    "KH-LY46-IF-ARCH-STRUCT-CORE",
+    "KH-LY46-IF-ARCH-MEP-SERVICE-CORE"
+  ],
+  "unresolved_authority_conflicts": [
+    "Structural and MEP specialist authority is not yet bound for the shared structure-dependent and MEP-dependent variables needed beyond bounded architectural interface planning."
+  ],
+  "shared_variable_authority_summary": [
+    {
+      "variable_id": "VERTICAL_CORE_AND_STACK_INTERFACE",
+      "authority_state": "UNKNOWN",
+      "owner_ref": "Prime Architecture owns bounded architectural geometry only; Structural/MEP authority open",
+      "consumer_refs": [
+        "Structural Engineering",
+        "Building Services / MEP"
+      ]
+    },
+    {
+      "variable_id": "SERVICE_CORE_RISER_ROUTE_INTERFACE",
+      "authority_state": "UNKNOWN",
+      "owner_ref": "Prime Architecture owns bounded service topology only; MEP professional authority open",
+      "consumer_refs": [
+        "Building Services / MEP",
+        "Architecture"
+      ]
+    }
+  ],
+  "joint_decision_refs": [],
+  "integrated_readback_refs": [
+    "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+    "R5_70_ADD08_STAGE_BODY_v001.md"
+  ],
+  "acceptance_contract_results": [
+    {
+      "acceptance_id": "ACCEPT-ARCH-STRUCT-CORE",
+      "required": true,
+      "status": "HOLD",
+      "evidence_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    },
+    {
+      "acceptance_id": "ACCEPT-ARCH-MEP-SERVICE-CORE",
+      "required": true,
+      "status": "HOLD",
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "material_changes": [],
+  "reopened_reviews": [],
+  "stale": false,
+  "integration_findings": {
+    "strongest_resolved_relation": "ADD-07 architectural room-wall, service and FL11 topology were independently boundedly reviewed without granting Structure or MEP closure.",
+    "weakest_or_open_relation": "ADD-08 vertical-core geometry depends on Structural and MEP specialist fit-back that has not yet been authored, checked or independently reviewed."
+  },
+  "integration_verdict": "HOLD",
+  "promotion_ceiling": "NO_PROMOTION / BOUNDED MACHINE-CONTRACT EXERCISE ONLY",
+  "does_not_prove": [
+    "Structural PASS",
+    "MEP PASS",
+    "Overall Architecture KEEP",
+    "Statutory approval",
+    "Field validity",
+    "Cross-disciplinary release",
+    "Promotion"
+  ],
+  "integration_owner": "Prime Architecture / bounded integration evidence owner",
+  "independent_reviewer_ref": null,
+  "reviewer_independence_state": "HOLD",
+  "reviewed_at": null
+}

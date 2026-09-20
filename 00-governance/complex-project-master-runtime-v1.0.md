@@ -149,6 +149,30 @@ Each runtime decision is bound to at least:
 
 `project_id / optional workstream_id / decision_object_id / authority_snapshot_ref / knowledge_snapshot_ref`.
 
+### 6.1｜Project Requirement / Acceptance Baseline
+
+When a project contains material obligations whose closure affects Promotion, compile a current machine-readable `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` using `schemas/project-requirement-acceptance-baseline.v1.schema.json`.
+
+This is a **Project Plane control object**, not a new professional process, Runtime Layer, Knowledge taxonomy or generic systems-engineering replacement. It binds each in-claim obligation to:
+
+`requirement/source/revision → owner → applicability → acceptance method/proof class → acceptance criteria → verification owner → evidence → verification/validation state → affected objects → change authority → reopen trigger`.
+
+Professional domains retain semantic ownership of their requirements and evidence. The Master only compiles cross-project closure state. A professional receipt may satisfy a requirement only when the baseline explicitly binds that receipt/evidence to the same requirement and current revision.
+
+If an in-claim requirement is unresolved, stale, failed, unverified, or requires validation that has not passed, the baseline cannot be `PASS` and the Master cannot report Promotion readiness for a claim that depends on it.
+
+### 6.2｜Project configuration, risk and operational compilation
+
+Three additional Project Plane control objects are used only when their trigger applies:
+
+- `PROJECT_CONFIGURATION_CHANGE_REGISTER` → `schemas/project-configuration-change-register.v1.schema.json`;
+- `PROJECT_RISK_HAZARD_REGISTER` → `schemas/project-risk-hazard-register.v1.schema.json`;
+- `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION` → `schemas/project-operational-acceptance-compilation.v1.schema.json`.
+
+They do not create new project stages or replace professional owners. Configuration/change compiles current baselines, approvals, affected objects, propagation and reacceptance; Risk/Hazard compiles domain-native risk methods without imposing one universal matrix/RPN; Operational Acceptance compiles handover, commissioning, training, O&M/asset data, defects, deferred tests and actual operational readback.
+
+Each object is fail-closed only when triggered. An untriggered object adds no work. A triggered object with unresolved in-claim blockers caps Promotion readiness.
+
 ## 7｜Design Intelligence trigger
 
 Every material design Candidate resolves a current `DESIGN_INTELLIGENCE_PACKET` before promotion-relevant production.
@@ -197,6 +221,8 @@ Trigger evidence includes:
 
 No material coupling → Integration may be `NOT_REQUIRED`.  
 Material coupling → an Integration Packet and current Integration Receipt become promotion dependencies.
+
+The machine Integration Receipt contract is `schemas/cross-disciplinary-integration-receipt.v1.schema.json`; its fail-closed validator is `schemas/validate_project_closure_objects.py`. The receipt remains an R-F readback object and does not create another Gate or professional stage.
 
 ## 9｜State propagation
 
@@ -324,6 +350,10 @@ Existing logical objects should converge on stable IDs and schema versions rathe
 - `JOINT_DECISION_RECORD`
 - `CROSS_DISCIPLINARY_INTEGRATION_RECEIPT`
 - `DESIGN_REVIEW_RECEIPT`
+- `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` when material project obligations are promotion-relevant
+- `PROJECT_CONFIGURATION_CHANGE_REGISTER` when project configuration/change control is material
+- `PROJECT_RISK_HAZARD_REGISTER` when material risk/hazard closure is required
+- `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION` when operational/handover readiness is part of the claim
 
 Shared envelope where applicable:
 
@@ -353,18 +383,23 @@ Promotion eligibility requires all applicable conditions below:
 
 1. Current Authority / Project / Source identity is resolved.
 2. Design Intelligence Packet is current.
-3. If Shared Design Quality & Development is triggered, its current non-stale `DESIGN_QUALITY_DEVELOPMENT_RECEIPT` exists and verdict is `KEEP`.
-4. Every triggered Professional Domain Process has a current promotion-relevant receipt and closed process verdict at its declared claim ceiling.
-5. If integration is triggered, its packet and current receipt exist.
-6. No in-claim `MAJOR / CRITICAL` interface remains open or blocked below required maturity.
-7. No unresolved shared-variable / interface authority conflict remains.
-8. No dependency consumed by the promoted claim is stale or requires reopen.
-9. Every material change has propagated to affected downstream states.
-10. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
-11. Independent Design Review is `KEEP` for the intended claim.
-12. No open blocker contradicts the promotion claim.
-13. The intended promotion does not exceed the lowest applicable claim ceiling across Design Intelligence, Design Quality, professional processes, integration and other applicable owners.
-14. The machine evaluator returns `READY_FOR_HUMAN_DECISION` and the actual authorized human/authority transition still occurs separately.
+3. When material project requirements / acceptance obligations are promotion-relevant, the current non-stale `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` is `PASS` and every in-claim requirement is individually closed at the declared proof/validation class.
+4. When configuration/change control is triggered, its current non-stale register is `PASS`, all approved in-claim changes have propagated, and required reacceptance has passed.
+5. When project risk/hazard control is triggered, its current non-stale register is `PASS` with no in-claim blocking risk left OPEN/HOLD; the originating domain method/owner retains risk authority.
+6. If Shared Design Quality & Development is triggered, its current non-stale `DESIGN_QUALITY_DEVELOPMENT_RECEIPT` exists and verdict is `KEEP`.
+7. Every triggered Professional Domain Process has a current promotion-relevant receipt and closed process verdict at its declared claim ceiling.
+8. If integration is triggered, its packet and current receipt exist and the receipt is non-stale `PASS`.
+9. No in-claim `MAJOR / CRITICAL` interface remains open or blocked below required maturity.
+10. No unresolved shared-variable / interface authority conflict remains.
+11. No dependency consumed by the promoted claim is stale or requires reopen.
+12. Every material change has propagated to affected downstream states.
+13. Every required native output has a Current callable owner or an explicit project-authorized specialist owner. A Candidate Skill / Candidate Body such as the current Technical Drawing candidate cannot satisfy this condition by registry presence alone.
+14. When operational acceptance is part of the intended claim, its current compilation is non-stale `PASS`; blocking defects are resolved and any deferred required test is explicitly outside the current claim.
+15. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
+16. Independent Design Review is `KEEP` for the intended claim.
+17. No open blocker contradicts the promotion claim.
+18. The intended promotion does not exceed the lowest applicable claim ceiling across Design Intelligence, requirement/acceptance baseline, configuration/risk/operational control, Design Quality, professional processes, integration and other applicable owners.
+19. The machine evaluator returns `READY_FOR_HUMAN_DECISION` and the actual authorized human/authority transition still occurs separately.
 
 ## 15｜G9 re-entry
 

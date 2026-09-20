@@ -890,6 +890,16 @@ CURRENT STRUCTURAL CLAIM
 
 Anything less may still be useful design evidence, but it must not be promoted as a stronger structural-engineering claim.
 
+### Machine professional receipt
+
+Triggered Structural process closure compiles `STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT` through:
+
+- `00-governance/schemas/structural-engineering-design-process-receipt.v1.schema.json`;
+- `00-governance/schemas/structural-engineering-design-process-receipt.v1.template.json`;
+- `00-governance/schemas/validate_project_closure_objects.py`.
+
+The receipt is fail-closed: `PASS` requires non-stale triggered-stage closure, native outputs plus actual readback, required checking, material interface closure, no blocking open item and the required independent check. It does not grant engineering/statutory approval, field truth, Design KEEP or Promotion.
+
 ---
 
 ## 2026-09-19｜Execution Binding Contract｜Structural professional-depth parity

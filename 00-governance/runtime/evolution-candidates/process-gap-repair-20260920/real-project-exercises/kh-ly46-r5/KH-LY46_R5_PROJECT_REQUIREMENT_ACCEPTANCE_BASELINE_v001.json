@@ -1,0 +1,208 @@
+{
+  "object_type": "PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE",
+  "schema_version": "1.0",
+  "baseline_id": "PRAB-KH-LY46-R5-v001",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "source_revision": "R5_28 v002 + R5_00 v001 + R5_64 v002 + R5_69 v001 + R5_70 v001",
+  "status": "HOLD",
+  "requirements": [
+    {
+      "requirement_id": "KH-LY46-REQ-FL01",
+      "statement": "Pupil arrival must use the south pedestrian interface and must not cross the service route in the working open-site geometry; an equivalent accessible primary horizontal route must remain reserved while grade/profile authority is open.",
+      "source_ref": "R5_28_ADD06_FLOW_REQUIREMENT_REGISTER_v002.csv#FL01",
+      "source_revision": "v002",
+      "owner_ref": "Prime Architecture / bounded flow-design owner",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "ANALYSIS",
+      "proof_class": "BOUNDED_GEOMETRY_AND_TOPOLOGY",
+      "acceptance_criteria": "Current pupil-arrival carrier remains geometrically separate from the service carrier at the present working-site ceiling, while accessibility grade/profile remains explicitly open rather than asserted.",
+      "verification_owner_ref": "Independent Architecture reviewer",
+      "evidence_refs": [
+        "R5_62_ADD07_PERMISSION_SERVICE_PE_OVERLAY_v002.json",
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": true,
+      "validation_state": "HOLD",
+      "affected_object_refs": [
+        "R5_62_ADD07_PERMISSION_SERVICE_PE_OVERLAY_v002.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "change_authority_ref": "KH-LY46 R5 architecture stage closure / independent successor review",
+      "reopen_triggers": [
+        "Change to site interface, pupil route, service route, grade/profile authority, accessibility basis or permission topology."
+      ],
+      "stale": false
+    },
+    {
+      "requirement_id": "KH-LY46-REQ-FL05",
+      "statement": "Delivery/catering service must use the east service interface and reach receiving without front-door dependence or geometric crossing with the pupil-arrival centerline; detailed staff/service access requirements remain open.",
+      "source_ref": "R5_28_ADD06_FLOW_REQUIREMENT_REGISTER_v002.csv#FL05",
+      "source_revision": "v002",
+      "owner_ref": "Prime Architecture / bounded service-topology owner",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "ANALYSIS",
+      "proof_class": "BOUNDED_SERVICE_TOPOLOGY",
+      "acceptance_criteria": "Current geometry demonstrates east service connection to receiving/service carriers without front-door dependency and without contradicting the pupil-arrival separation rule; specialist service/MEP requirements remain open.",
+      "verification_owner_ref": "Independent Architecture reviewer",
+      "evidence_refs": [
+        "R5_62_ADD07_PERMISSION_SERVICE_PE_OVERLAY_v002.json",
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": false,
+      "validation_state": "NOT_REQUIRED",
+      "affected_object_refs": [
+        "R5_62_ADD07_PERMISSION_SERVICE_PE_OVERLAY_v002.json"
+      ],
+      "change_authority_ref": "KH-LY46 R5 architecture stage closure / independent successor review",
+      "reopen_triggers": [
+        "Change to service entry, kitchen/receiving location, pupil-arrival geometry, permission topology or MEP/service specialist requirement."
+      ],
+      "stale": false
+    },
+    {
+      "requirement_id": "KH-LY46-REQ-FL08",
+      "statement": "Alert-to-protected transition must reserve distributed protected-transition interfaces within each occupied territory without depending on public/community site entry; vertical profile and protected-space design remain open.",
+      "source_ref": "R5_28_ADD06_FLOW_REQUIREMENT_REGISTER_v002.csv#FL08",
+      "source_revision": "v002",
+      "owner_ref": "Prime Architecture / bounded protected-interface planning owner",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "REVIEW",
+      "proof_class": "FIRST_ORDER_INTERFACE_RESERVE",
+      "acceptance_criteria": "Protected-transition interfaces are present as architectural reserves in each occupied territory, with no claim that class, capacity, exact location, vertical route, MEP or statutory civil-protection criteria are closed.",
+      "verification_owner_ref": "Independent Architecture reviewer + future civil-protection specialist",
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": true,
+      "validation_state": "HOLD",
+      "affected_object_refs": [
+        "R5_62_ADD07_PERMISSION_SERVICE_PE_OVERLAY_v002.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "change_authority_ref": "KH-LY46 R5 architecture + civil-protection specialist authority when bound",
+      "reopen_triggers": [
+        "Change to occupied territories, protected-transition locations, civil-protection class/capacity, vertical circulation, structure or MEP."
+      ],
+      "stale": false
+    },
+    {
+      "requirement_id": "KH-LY46-REQ-STRUCTURE",
+      "statement": "Structure, geotechnical and foundation design basis must be established before structure-dependent R5 geometry can be treated as professionally closed rather than a reversible architectural interface assumption.",
+      "source_ref": "R5_00_RESTART_AUTHORITY_v001.md#6-Mandatory-OPEN-conditions-at-restart",
+      "source_revision": "v001",
+      "owner_ref": "Structural Engineering specialist owner / currently unbound",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "REVIEW",
+      "proof_class": "PROFESSIONAL_STRUCTURAL_CLOSURE",
+      "acceptance_criteria": "A current professional structural basis, analysis/checking evidence and architecture↔structure interface readback exist at the required claim ceiling.",
+      "verification_owner_ref": "Independent Structural checker / currently unbound",
+      "evidence_refs": [
+        "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": false,
+      "validation_state": "NOT_REQUIRED",
+      "affected_object_refs": [
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "change_authority_ref": "Current Structural Engineering process + project specialist authority",
+      "reopen_triggers": [
+        "Any change to retained/new structural system, core geometry, loads, geotechnical/foundation basis or existing-condition evidence."
+      ],
+      "stale": false
+    },
+    {
+      "requirement_id": "KH-LY46-REQ-MEP",
+      "statement": "MEP capacities and routes must be professionally established before service/core/riser-dependent R5 geometry can be treated as MEP-coordinated or professionally closed.",
+      "source_ref": "R5_00_RESTART_AUTHORITY_v001.md#6-Mandatory-OPEN-conditions-at-restart",
+      "source_revision": "v001",
+      "owner_ref": "Building Services / MEP specialist owner / currently unbound",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "REVIEW",
+      "proof_class": "PROFESSIONAL_MEP_CLOSURE",
+      "acceptance_criteria": "Current system basis, capacity/route design and architecture↔MEP interface readback exist at the required claim ceiling.",
+      "verification_owner_ref": "Independent MEP professional reviewer / currently unbound",
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": false,
+      "validation_state": "NOT_REQUIRED",
+      "affected_object_refs": [
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "change_authority_ref": "Current Building Services / MEP process + project specialist authority",
+      "reopen_triggers": [
+        "Any change to service/kitchen use, plant/service zones, core/riser geometry, utilities, system capacities or routes."
+      ],
+      "stale": false
+    },
+    {
+      "requirement_id": "KH-LY46-REQ-FIRE-ACCESS",
+      "statement": "Fire strategy, egress and accessibility compliance must remain open until the relevant specialist/statutory basis and evidence are established; architectural planning intent must not be relabeled as compliance.",
+      "source_ref": "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json#bounded_semantics",
+      "source_revision": "v001",
+      "owner_ref": "Architecture interface owner + fire/accessibility specialist authority / specialist authority currently open",
+      "applicability": "APPLICABLE",
+      "applicability_reason": null,
+      "in_claim": true,
+      "acceptance_method": "REVIEW",
+      "proof_class": "SPECIALIST_AND_STATUTORY_CLOSURE",
+      "acceptance_criteria": "Fire/egress and accessibility claims are supported by the appropriate specialist/statutory evidence; until then the project explicitly remains at planning-intent/interface ceiling.",
+      "verification_owner_ref": "Independent specialist/statutory reviewer / currently unbound",
+      "evidence_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "verification_state": "HOLD",
+      "validation_required": true,
+      "validation_state": "HOLD",
+      "affected_object_refs": [
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "change_authority_ref": "Project fire/accessibility specialist and statutory authority when bound",
+      "reopen_triggers": [
+        "Any change to occupancy, door/core/stair/lift geometry, route topology, protected transitions, floor levels or applicable code basis."
+      ],
+      "stale": false
+    }
+  ],
+  "blocking_requirement_ids": [
+    "KH-LY46-REQ-FL01",
+    "KH-LY46-REQ-FL05",
+    "KH-LY46-REQ-FL08",
+    "KH-LY46-REQ-STRUCTURE",
+    "KH-LY46-REQ-MEP",
+    "KH-LY46-REQ-FIRE-ACCESS"
+  ],
+  "stale": false,
+  "baseline_verdict": "HOLD",
+  "does_not_prove": [
+    "Complete project requirements capture",
+    "Owner/client approval",
+    "Professional approval",
+    "Statutory approval",
+    "Field truth",
+    "Design KEEP",
+    "Promotion"
+  ]
+}
+

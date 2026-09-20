@@ -1,0 +1,23 @@
+{
+  "object_type": "PROJECT_CONFIGURATION_CHANGE_REGISTER",
+  "schema_version": "1.0",
+  "register_id": "PCCR-PROJECT-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "source_revision": "SOURCE_REVISION",
+  "status": "HOLD",
+  "baselines": [
+    {
+      "object_id": "OBJECT-001",
+      "revision": "REVISION_REQUIRED",
+      "authority_ref": "AUTHORITY_REQUIRED",
+      "hash_or_commit": null,
+      "state": "HOLD"
+    }
+  ],
+  "changes": [],
+  "open_issue_ids": ["CONFIGURATION_BASELINE_UNRESOLVED"],
+  "stale": false,
+  "register_verdict": "HOLD",
+  "does_not_prove": ["Design KEEP", "professional approval", "field truth", "Promotion"]
+}

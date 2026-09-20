@@ -1,0 +1,46 @@
+{
+  "receipt_type": "CROSS_DISCIPLINARY_INTEGRATION_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "candidate_id": "CANDIDATE_ID",
+  "artifact_refs": [],
+  "source_revision": "SOURCE_REVISION",
+  "integration_question": "What material cross-disciplinary relationship must be closed for the current claim?",
+  "system_success_conditions": ["Declared in-claim interfaces reach their required maturity with accepted readback."],
+  "participating_disciplines": ["DISCIPLINE_A", "DISCIPLINE_B"],
+  "critical_interfaces": [
+    {
+      "interface_id": "IF-001",
+      "coupling": "TIGHTLY_COUPLED",
+      "criticality": "CRITICAL",
+      "in_claim": true,
+      "required_maturity": "VERIFIED",
+      "actual_maturity": "IDENTIFIED",
+      "disposition": "BLOCKED",
+      "authority_state": "UNKNOWN",
+      "readback_refs": []
+    }
+  ],
+  "unresolved_major_critical_interfaces": ["IF-001"],
+  "blocked_interfaces": ["IF-001"],
+  "unresolved_authority_conflicts": ["IF-001 authority unresolved"],
+  "shared_variable_authority_summary": [],
+  "joint_decision_refs": [],
+  "integrated_readback_refs": [],
+  "acceptance_contract_results": [],
+  "material_changes": [],
+  "reopened_reviews": [],
+  "stale": false,
+  "integration_findings": {
+    "strongest_resolved_relation": "No promotion-relevant relation has been closed yet.",
+    "weakest_or_open_relation": "IF-001 remains blocked."
+  },
+  "integration_verdict": "HOLD",
+  "promotion_ceiling": "NO_PROMOTION",
+  "does_not_prove": ["discipline PASS", "Design KEEP", "field validity", "statutory approval"],
+  "integration_owner": "INTEGRATION_OWNER_REQUIRED",
+  "independent_reviewer_ref": null,
+  "reviewer_independence_state": "HOLD",
+  "reviewed_at": null
+}

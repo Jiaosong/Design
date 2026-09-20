@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.project-configuration-change-register.v1",
+  "title": "OLEANDER Project Configuration / Change Register v1",
+  "type": "object",
+  "required": ["object_type", "schema_version", "register_id", "project_id", "source_revision", "status", "baselines", "changes", "open_issue_ids", "stale", "register_verdict", "does_not_prove"],
+  "properties": {
+    "object_type": {"const": "PROJECT_CONFIGURATION_CHANGE_REGISTER"},
+    "schema_version": {"const": "1.0"},
+    "register_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "workstream_id": {"type": ["string", "null"]},
+    "source_revision": {"type": "string", "minLength": 1},
+    "status": {"enum": ["WORKING", "CURRENT", "STALE", "HOLD"]},
+    "baselines": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/baseline"}},
+    "changes": {"type": "array", "items": {"$ref": "#/$defs/change"}},
+    "open_issue_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "stale": {"type": "boolean"},
+    "register_verdict": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+    "does_not_prove": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "baseline": {
+      "type": "object",
+      "required": ["object_id", "revision", "authority_ref", "state"],
+      "properties": {
+        "object_id": {"type": "string", "minLength": 1},
+        "revision": {"type": "string", "minLength": 1},
+        "authority_ref": {"type": "string", "minLength": 1},
+        "hash_or_commit": {"type": ["string", "null"]},
+        "state": {"enum": ["CURRENT", "SUPERSEDED", "HOLD"]}
+      },
+      "additionalProperties": false
+    },
+    "change": {
+      "type": "object",
+      "required": ["change_id", "in_claim", "source_ref", "owner_ref", "change_class", "affected_refs", "approval_state", "propagation_state", "reacceptance_required", "reacceptance_state"],
+      "properties": {
+        "change_id": {"type": "string", "minLength": 1},
+        "in_claim": {"type": "boolean"},
+        "source_ref": {"type": "string", "minLength": 1},
+        "owner_ref": {"type": "string", "minLength": 1},
+        "change_class": {"enum": ["LOCAL", "INTERFACE", "SYSTEM", "AUTHORITY"]},
+        "affected_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "approval_state": {"enum": ["PENDING", "APPROVED", "REJECTED", "HOLD"]},
+        "propagation_state": {"enum": ["NOT_REQUIRED", "PENDING", "PASS", "FAIL", "HOLD"]},
+        "reacceptance_required": {"type": "boolean"},
+        "reacceptance_state": {"enum": ["NOT_REQUIRED", "NOT_RUN", "PASS", "FAIL", "HOLD"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
