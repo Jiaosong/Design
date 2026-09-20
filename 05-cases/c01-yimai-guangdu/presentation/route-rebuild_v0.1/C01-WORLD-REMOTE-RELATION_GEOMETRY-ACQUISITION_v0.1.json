@@ -1,0 +1,26 @@
+{
+  "decision_object_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+  "artifact_id": "C01-WORLD-REMOTE-RELATION-GEOMETRY-ACQUISITION-v0.1",
+  "purpose": "Bounded evidence artifact that directly releases null relation geometry without inventing survey truth.",
+  "before_ref": "C01-WORLD-REMOTE-RELATION_v0.1.geojson@a704e1683798384c4da8197f11fc11952c7941a2",
+  "anchor": {"stable_id":"ANCHOR-DAGONGDIAN-CAMERA","lon":118.460507,"lat":28.428230,"authority":"published camera location only"},
+  "acquisition_window": {"crs":"OGC:CRS84","bbox_wsen":[118.450507,28.418230,118.470507,28.438230],"reason":"bounded ±0.01 degree window around the only coordinate-bearing authority; not a survey extent"},
+  "adapter_target": {
+    "source":"OpenStreetMap",
+    "license":"ODbL",
+    "endpoint_class":"Overpass API or equivalent OSM data export",
+    "query_template":"[out:json][timeout:25];(way[waterway](28.418230,118.450507,28.438230,118.470507);way[highway](28.418230,118.450507,28.438230,118.470507);way[building](28.418230,118.450507,28.438230,118.470507);relation[building](28.418230,118.450507,28.438230,118.470507););out body geom;",
+    "required_capture":["osm_type","osm_id","version","timestamp","tags","geometry","retrieved_at","query","license"]
+  },
+  "patch_targets": [
+    {"stable_id":"REL-WATER-01","accept_if":"candidate waterway has explicit OSM way/relation identity and geometry inside acquisition window; relation-to-village interpretation remains separate","patch":"geometry + source_id + osm_type + osm_id + version + timestamp + retrieved_at"},
+    {"stable_id":"REL-ROUTE-PRIMARY-01","accept_if":"route hierarchy can be justified from OSM tags or remains UNKNOWN; geometry alone must not assert primary status","patch":"geometry + provenance; preserve hierarchy claim as relation-only unless justified"},
+    {"stable_id":"REL-ROUTE-SECONDARY-01","accept_if":"traceable OSM highway geometry exists","patch":"geometry + provenance; no pedestrian-usability claim"},
+    {"stable_id":"REL-ROUTE-SECONDARY-02","accept_if":"traceable OSM highway geometry exists","patch":"geometry + provenance; no pedestrian-usability claim"},
+    {"stable_id":"REL-CLUSTER-01","accept_if":"building footprints can be captured as individual source features; do not dissolve into a heritage boundary","patch":"source-bound building members or keep null"}
+  ],
+  "release_condition": "At least one stable relation receives traceable source geometry with per-feature provenance and passes CRS84/source-alignment/topology readback. Unmatched relations remain geometry:null.",
+  "does_not_prove": ["survey accuracy","current pedestrian usability","heritage protection boundary","drainage performance","property rights","implementation permission"],
+  "failure_code_until_release": "GEOMETRY_AUTHORITY_MISSING",
+  "next_allowed_action": "Execute the bounded OSM acquisition query, preserve raw returned identities, then patch only matched stable relations in C01-WORLD-REMOTE-RELATION_v0.1.geojson and remote-readback the result."
+}
