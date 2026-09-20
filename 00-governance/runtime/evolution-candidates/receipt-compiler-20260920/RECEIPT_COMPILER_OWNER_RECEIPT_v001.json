@@ -1,0 +1,268 @@
+{
+  "object_type": "OLEANDER_MATERIAL_DELTA_OWNER_RECEIPT",
+  "schema_version": "1.0-provenance",
+  "receipt_id": "OLEANDER-RECEIPT-COMPILER-20260920-v001",
+  "date": "2026-09-20",
+  "repository": "Jiaosong/Design",
+  "branch": "repair/oleander-receipt-compiler-20260920",
+  "baseline_main_commit": "5a205a2d574a50a7ce336673cfeb2349bd6c2d07",
+  "purpose": "Replace manual-only Structural/MEP receipt assembly risk with a subordinate fail-closed compiler/readback projection that consumes existing DOMAIN_PROCESS_INSTANCE / DOMAIN_STAGE_INSTANCE facts, pins source hashes, preserves claim ceilings, and never auto-grants professional PASS.",
+  "authority_state": {
+    "system_architecture_count": 1,
+    "master_runtime_count": 1,
+    "runtime_layer_count": 11,
+    "operational_plane_count": 6,
+    "current_structural_machine_mutated": false,
+    "current_mep_machine_mutated": false,
+    "compiler_is_authority": false,
+    "compiler_may_auto_grant_professional_pass": false,
+    "architecture_compiler_route_added": false,
+    "structural_mep_compiler_bindings_machine_enforced": true,
+    "technical_drawing_promoted": false,
+    "candidate_domain_promotions": []
+  },
+  "protected_current_machine_identity": [
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "bytes": 46841,
+      "sha256": "0FE6146767C470CDF30CCF89A5BA30A1710751FE4FB1B65C25430C3E23B08D0E",
+      "diff_vs_origin_main": "UNCHANGED"
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "bytes": 46288,
+      "sha256": "7F568B8540A7EC9EE1B8A780ADF9A98A077F32AC61E553A90489021DE0E796D3",
+      "diff_vs_origin_main": "UNCHANGED"
+    }
+  ],
+  "compiler_contract": {
+    "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+    "compiler_sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04",
+    "contract_ref": "00-governance/schemas/project-receipt-compiler.v1.schema.json",
+    "authority_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
+    "positive_machine_ceiling": "READY_FOR_AUTHORIZED_REVIEW",
+    "persisted_requested_pass_result": "HOLD_UNTIL_AUTHORIZED_REVIEW"
+  },
+  "real_project_exercises": {
+    "kh_ly46": {
+      "structural_process_instance_validation": "PASS",
+      "mep_process_instance_validation": "PASS",
+      "structural_compiled_result": "HOLD",
+      "mep_compiled_result": "HOLD",
+      "structural_source_integrity": "PASS",
+      "mep_source_integrity": "PASS",
+      "parity_readback": "PASS_BOUNDED_SEMANTIC_PARITY_NO_SUPERSESSION",
+      "manual_receipts_superseded": false,
+      "project_state_mutated": false,
+      "current_manifest_mutated": false
+    },
+    "c04": {
+      "closure_pack_source_integrity": "PASS",
+      "closure_pack_schema_validation": "PASS",
+      "configuration_change_underlying_state": "PASS_AT_DECLARED_CONFIGURATION_CLAIM",
+      "risk_hazard_underlying_state": "PASS_AT_REMOTE_FALSE_PROMOTION_HAZARD_CLAIM",
+      "operational_acceptance_underlying_state": "HOLD",
+      "technical_drawing_specialist_binding_underlying_state": "HOLD",
+      "overall_promotion": "HOLD",
+      "truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+    }
+  },
+  "material_files_excluding_this_receipt": [
+    {
+      "path": "00-governance/control-plane/tests/test_project_receipt_compiler.py",
+      "bytes": 10956,
+      "sha256": "569E48D685D8782C7D63EDE632635D8DA6DD5160A4442783B26333744805E030"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json",
+      "bytes": 3040,
+      "sha256": "9954B0C1D503B2E53909686FF866EE07D87D35DF6E784F85380A7A965658A6BE"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md",
+      "bytes": 21317,
+      "sha256": "C205CE1CC358B72A9FF40D101468CD8F417827FEFC970580933B4F3FC6C1346B"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "bytes": 33538,
+      "sha256": "6C9AE8CD367D2593BC3CC038F31587C22751FCE1E3ACC1428E4C7970476754F7"
+    },
+    {
+      "path": "00-governance/runtime/README.md",
+      "bytes": 22037,
+      "sha256": "C2A1A59C64C5B2F7F590A878C8D8858EAE6725D2498D04F5504F4144CDEBAF4A"
+    },
+    {
+      "path": "00-governance/runtime/compile_project_receipts.py",
+      "bytes": 23495,
+      "sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_COMPILER_PARITY_READBACK_v001.json",
+      "bytes": 2879,
+      "sha256": "7D1CD5AB920D2082E99F25A389E726BA7F8480AA77138DE0F0AAEB02CFB6FF0D"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_READBACK_v001.json",
+      "bytes": 3126,
+      "sha256": "D13C9E745286124348300A973C5D91057A77AB7636A291D5A77BEDE993609394"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_REQUEST_v001.json",
+      "bytes": 2295,
+      "sha256": "DF3F5DBF756413487F553C2F55CA4CC5920299B5B8E6392EBA0475BFF606CD45"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
+      "bytes": 3547,
+      "sha256": "6A48BD6713EC0207026762904ACAC0BEA60C6605B7A28916FA8A5EE12C190137"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_PROCESS_INSTANCE_v001.json",
+      "bytes": 3541,
+      "sha256": "5EAB8B3A878DB9E4C8C87B526E71DD490E381B2312DAE9E21D2523F2E6E926DA"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_READBACK_v001.json",
+      "bytes": 3248,
+      "sha256": "A77D6124A140AC9D283F17F0EF4F9A6F288C2EB4DD7E78425170F20C83DBC709"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_REQUEST_v001.json",
+      "bytes": 1977,
+      "sha256": "6BE6A0EE738B084C4C394B9F853F0D2BB5252A974AE1E8F3ED4EB903BEF41B22"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILED_HOLD_RECEIPT_v001.json",
+      "bytes": 3685,
+      "sha256": "E165FF3126102A2D913E397FD02CE4007B8BE15129D239D911FC6647B498E890"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_PROCESS_INSTANCE_v001.json",
+      "bytes": 3674,
+      "sha256": "FEB7F8B54920B3CB3EFF90D04C048A99E442DD3A6892BF0F089C4B67B5E8C148"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/README.md",
+      "bytes": 1194,
+      "sha256": "CA47CD3C586CC56C0BEEC8DD800A499716FE4646ED4AA1651EC9B31871A2DD75"
+    },
+    {
+      "path": "00-governance/runtime/validate_execution_contracts.py",
+      "bytes": 71466,
+      "sha256": "79B76DD5E34633A255CFC8600F4E448E6972F41CC4EC10EA4873AE75FA2C7538"
+    },
+    {
+      "path": "00-governance/schemas/README.md",
+      "bytes": 4361,
+      "sha256": "7AB68BAD70146DB483F3092D50983C95991861F4EE0823E0038AF35A589CCBD5"
+    },
+    {
+      "path": "00-governance/schemas/project-receipt-compiler.v1.schema.json",
+      "bytes": 8371,
+      "sha256": "595332547FCA5F51994A01208EF029A698104DD8E9FB4A74CCB3114E5BBD5659"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_COMPILATION_READBACK_v0.1.json",
+      "bytes": 3006,
+      "sha256": "C0772D653458DA524730D7394765E19DFD5E9CCE2086A534AC1E241C14CC44A1"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_READBACK_REQUEST_v0.1.json",
+      "bytes": 1575,
+      "sha256": "332E49FAA74A40BB4A43E36B5A96400160DF62A228F157D0D5F769860EE7D47E"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/README.md",
+      "bytes": 1651,
+      "sha256": "291E17D6E8AB31092D09D01D7F6B2BBDA40B16D2C1D2DC0BF361A6E0E06D9090"
+    }
+  ],
+  "validation": [
+    {
+      "check": "receipt compiler targeted tests",
+      "result": "PASS",
+      "tests": 5
+    },
+    {
+      "check": "project closure targeted tests",
+      "result": "PASS",
+      "tests": 22
+    },
+    {
+      "check": "full control-plane tests",
+      "result": "PASS",
+      "tests": 138
+    },
+    {
+      "check": "execution contracts",
+      "result": "PASS",
+      "summary": "2 non-authority Current-domain receipt compiler bindings; 79/79 professional stages retain knowledge binding; owner/resolver/adapter coverage consistent."
+    },
+    {
+      "check": "architecture control graph",
+      "result": "PASS",
+      "summary": "1 system architecture; 1 master runtime; 11 runtime layers; 6 operational planes."
+    },
+    {
+      "check": "KH-LY46 process instances",
+      "result": "PASS",
+      "objects": 2
+    },
+    {
+      "check": "KH-LY46 compiled receipt validation",
+      "result": "PASS",
+      "objects": 2
+    },
+    {
+      "check": "C04 closure pack readback",
+      "result": "PASS",
+      "summary": "SOURCE_INTEGRITY=PASS / SCHEMA_VALIDATION=PASS; underlying verdicts unchanged."
+    },
+    {
+      "check": "compiler reproducibility",
+      "result": "PASS",
+      "files": 5
+    },
+    {
+      "check": "compiler hash embedded readback",
+      "result": "PASS"
+    },
+    {
+      "check": "protected Current Structural/MEP machine diff vs origin/main",
+      "result": "UNCHANGED"
+    },
+    {
+      "check": "changed JSON parse",
+      "result": "PASS",
+      "objects": 14
+    },
+    {
+      "check": "git diff --check",
+      "result": "PASS_WITH_NONFATAL_LINE_ENDING_WARNINGS"
+    },
+    {
+      "check": "anti-pollution consolidation unit tests",
+      "result": "PASS",
+      "tests": 2
+    }
+  ],
+  "does_not_prove": [
+    "professional PASS",
+    "authorized professional adoption",
+    "Structural engineering approval",
+    "MEP engineering approval",
+    "cross-disciplinary integration release",
+    "field truth",
+    "statutory approval",
+    "Design KEEP",
+    "Technical Drawing Current authority",
+    "Candidate promotion",
+    "system Promotion",
+    "GitHub remote sync",
+    "Notion sync",
+    "external deployment"
+  ],
+  "self_digest_note": "This provenance receipt is intentionally excluded from material_files_excluding_this_receipt because a file cannot contain a stable digest of its own final bytes."
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "DPI-KH-LY46-R5-STRUCT-001",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "decision_object_refs": [],
+  "process_definition_ref": "00-governance/schemas/structural-engineering-design-process.v1.json",
+  "process_id": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS",
+  "process_version": "1.0",
+  "domain": "Structural Engineering",
+  "owner": "Structural Engineering professional process owner / project specialist authority currently unbound",
+  "current_baseline": "KH-LY46-R5 / R5_69 independent ADD-07 snapshot + R5_70 ADD-08 entry",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL STRUCTURAL DESIGN CLOSURE",
+  "stage_instances": [
+    {
+      "stage_instance_id": "DSI-KH-LY46-R5-SE-SPW0-001",
+      "stage_definition_ref": "00-governance/schemas/structural-engineering-design-process.v1.json :: SE-SPW0",
+      "stage_id": "SE-SPW0",
+      "cycle": 1,
+      "baseline_ref": "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL STRUCTURAL DESIGN CLOSURE",
+      "inputs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "granularity_binding_state": "LEGACY_STAGE_ONLY",
+      "interface_refs": ["KH-LY46-IF-ARCH-STRUCT-CORE"],
+      "evidence_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "No professional Basis of Structural Design is established.",
+        "Exact structural grid, member sizes, retained-member condition, residual capacity, geotechnical basis and foundation design remain open.",
+        "No structural analysis model or calculation-to-drawing trace exists for the current R5 claim.",
+        "No independent structural checker has closed the current structural basis or ADD-08 core interfaces."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": ["R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"],
+      "last_updated": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "active_interface_refs": ["KH-LY46-IF-ARCH-STRUCT-CORE"],
+  "open_items": [
+    "Formal structural design basis is not established.",
+    "Existing structural/damage condition and retained-member geometry are not field verified.",
+    "Geotechnical/foundation basis is unresolved.",
+    "ADD-08 core/vertical geometry has no structural specialist fit-back or independent structural check.",
+    "R5_13 supports a reversible system-type reconstruction only and must not be treated as member-level engineering evidence."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [
+    "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_INTEGRATION_HOLD_RECEIPT_v001.json"
+  ],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-20T00:00:00Z"
+}

@@ -1,0 +1,96 @@
+{
+  "receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
+  "schema_version": "1.0",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "source_revision": "KH-LY46-R5 / R5_64 + R5_69 + R5_70",
+  "claim_ceiling": "ARCHITECTURAL MEP INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL MEP DESIGN CLOSURE",
+  "stage_records": [
+    {
+      "stage_id": "BSP-STRATEGIC",
+      "triggered": true,
+      "status": "HOLD",
+      "knowledge_mount_refs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "native_output_refs": [],
+      "actual_readback_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "open_items": [
+        "MEP capacities and routes remain open.",
+        "Service/kitchen specialist MEP is explicitly open in the ADD-07 readback.",
+        "No professional MEP system design, calculations, equipment selection, coordination model or review has been established.",
+        "ADD-08 riser and core coordination is not yet professionally designed or checked."
+      ]
+    }
+  ],
+  "interface_summary": [
+    {
+      "interface_id": "KH-LY46-IF-ARCH-MEP-SERVICE-CORE",
+      "required": true,
+      "state": "HOLD",
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "blocking_open_items": [
+    "Professional MEP basis, capacities and routes are not established.",
+    "Service/kitchen MEP remains open.",
+    "Core/riser coordination has not been designed or professionally reviewed.",
+    "Architectural service-chain geometry is interface evidence only and is not an MEP design output.",
+    "ONE_OR_MORE_TRIGGERED_STAGES_NOT_PASS",
+    "REQUIRED_INTERFACE_NOT_PASS",
+    "REQUIRED_PROFESSIONAL_REVIEW_NOT_CLOSED"
+  ],
+  "open_items": [
+    "Professional MEP basis, capacities and routes are not established.",
+    "Service/kitchen MEP remains open.",
+    "Core/riser coordination has not been designed or professionally reviewed.",
+    "Architectural service-chain geometry is interface evidence only and is not an MEP design output."
+  ],
+  "reopened_items": [],
+  "stale": false,
+  "result": "HOLD",
+  "does_not_prove": [
+    "MEP engineering approval",
+    "System sizing or capacity",
+    "Commissioning",
+    "Integrated-system testing",
+    "Statutory approval",
+    "Future operation",
+    "Design KEEP",
+    "Promotion",
+    "compiler-granted professional PASS",
+    "professional/statutory approval beyond explicit source evidence"
+  ],
+  "process_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+  "system_tracks": [
+    {
+      "system_id": "KH-LY46-MEP-BASIS-AND-ROUTES",
+      "status": "HOLD",
+      "design_refs": [],
+      "commissioning_required": false,
+      "commissioning_state": "NOT_REQUIRED",
+      "integrated_system_test_required": false,
+      "integrated_system_test_state": "NOT_REQUIRED",
+      "seasonal_or_deferred_test_open": false,
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ]
+    }
+  ],
+  "professional_review": {
+    "required": true,
+    "state": "HOLD",
+    "reviewer_ref": null,
+    "review_input_refs": []
+  }
+}

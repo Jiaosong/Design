@@ -1,0 +1,47 @@
+{
+  "object_type": "PROFESSIONAL_RECEIPT_COMPILATION_REQUEST",
+  "schema_version": "1.0",
+  "compilation_id": "COMP-KH-LY46-R5-STRUCT-001",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "target_receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+  "process_instance_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_PROCESS_INSTANCE_v001.json",
+  "process_instance_sha256": "FEB7F8B54920B3CB3EFF90D04C048A99E442DD3A6892BF0F089C4B67B5E8C148",
+  "source_revision": "KH-LY46-R5 / R5_69 independent snapshot + R5_70 ADD-08 entry",
+  "claim_ceiling": "INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL STRUCTURAL DESIGN CLOSURE",
+  "requested_result": "HOLD",
+  "source_roots": [
+    {
+      "root_id": "KH-LY46-R5-SOURCE",
+      "path": "D:/.claw/kharkiv_gym46/rebuild/19_ARCH_RESTART_R5_ZERO_BASE",
+      "required_for_pass": false
+    }
+  ],
+  "interface_records": [
+    {
+      "interface_id": "KH-LY46-IF-ARCH-STRUCT-CORE",
+      "required": true,
+      "state": "HOLD",
+      "evidence_refs": [
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "review_binding": {
+    "required": true,
+    "reviewer_ref": null
+  },
+  "basis_of_structural_design_ref": "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md#4-Structural-reconstruction-ceiling / NOT_A_FORMAL_BASIS_OF_STRUCTURAL_DESIGN",
+  "output_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILED_HOLD_RECEIPT_v001.json",
+  "readback_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_READBACK_v001.json",
+  "does_not_prove": [
+    "Structural engineering approval",
+    "Member capacity",
+    "Foundation adequacy",
+    "Existing-condition field truth",
+    "Statutory approval",
+    "Design KEEP",
+    "Promotion"
+  ]
+}
