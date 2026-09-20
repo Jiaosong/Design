@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "name": "C01-WORLD-REMOTE-RELATION-v0.1",
+  "crs": {"type":"name","properties":{"name":"urn:ogc:def:crs:OGC::CRS84"}},
+  "oleander": {
+    "decision_object_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+    "world_id": "C01-WORLD-REMOTE-RELATION",
+    "revision": "v0.1",
+    "representation": "RELATION_LEVEL_SOURCE_BOUND",
+    "field_observed": 0,
+    "field_measured": 0,
+    "claim_ceiling": "Only the published camera anchor is coordinate-bearing. Other relations are semantic carriers with null geometry until a traceable spatial source is ingested.",
+    "does_not_prove": ["survey geometry","current pedestrian usability","heritage protection boundary","drainage performance","property rights","implementation permission"],
+    "source_registry": [
+      {"source_id":"SRC-COMMONS-DAGONGDIAN-20180623","type":"published_geotagged_image","claim":"camera_location_only","coordinate":[118.460507,28.428230]},
+      {"source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","type":"public_reporting","claim":"village_relation_semantics_only"}
+    ]
+  },
+  "features": [
+    {"type":"Feature","id":"ANCHOR-DAGONGDIAN-CAMERA","geometry":{"type":"Point","coordinates":[118.460507,28.428230]},"properties":{"stable_id":"ANCHOR-DAGONGDIAN-CAMERA","role":"REMOTE_CAMERA_ANCHOR","evidence":"SOURCE","confidence":"PUBLISHED_COORDINATE_NOT_SURVEY_CONTROL","source_id":"SRC-COMMONS-DAGONGDIAN-20180623","field_observed":0,"field_measured":0}},
+    {"type":"Feature","id":"REL-WATER-01","geometry":null,"properties":{"stable_id":"REL-WATER-01","role":"WATER_RELATION","evidence":"SOURCE_RELATION","confidence":"RELATION_ONLY","source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","claim":"stream/village relation; alignment unknown","field_observed":0,"field_measured":0}},
+    {"type":"Feature","id":"REL-ROUTE-PRIMARY-01","geometry":null,"properties":{"stable_id":"REL-ROUTE-PRIMARY-01","role":"PRIMARY_ROUTE_RELATION","evidence":"SOURCE_RELATION","confidence":"RELATION_ONLY","source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","claim":"primary route relation; alignment unknown","field_observed":0,"field_measured":0}},
+    {"type":"Feature","id":"REL-ROUTE-SECONDARY-01","geometry":null,"properties":{"stable_id":"REL-ROUTE-SECONDARY-01","role":"SECONDARY_ROUTE_RELATION","evidence":"INFERENCE_CARRIER","confidence":"UNKNOWN_GEOMETRY","source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","claim":"secondary connection carrier; geometry not asserted","field_observed":0,"field_measured":0}},
+    {"type":"Feature","id":"REL-ROUTE-SECONDARY-02","geometry":null,"properties":{"stable_id":"REL-ROUTE-SECONDARY-02","role":"SECONDARY_ROUTE_RELATION","evidence":"INFERENCE_CARRIER","confidence":"UNKNOWN_GEOMETRY","source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","claim":"secondary connection carrier; geometry not asserted","field_observed":0,"field_measured":0}},
+    {"type":"Feature","id":"REL-CLUSTER-01","geometry":null,"properties":{"stable_id":"REL-CLUSTER-01","role":"HERITAGE_CLUSTER_RELATION","evidence":"SOURCE_RELATION","confidence":"RELATION_ONLY","source_id":"SRC-PUBLIC-GUANGDU-RELATIONS","claim":"heritage/village cluster relation; footprint unknown","field_observed":0,"field_measured":0}}
+  ]
+}
