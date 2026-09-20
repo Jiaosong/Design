@@ -577,3 +577,28 @@ System boundary/external dependency change; stakeholder need/mission/use-case ch
 
 ### Professional boundary
 `TRACE COMPLETE ≠ REQUIREMENTS VALID`; `MODEL COMPLETE ≠ ARCHITECTURE ACCEPTED`; `VERIFICATION PASS ≠ VALIDATION PASS`; `SYSTEMS ENGINEERING PASS ≠ DOMAIN PROFESSIONAL PASS`; `TOOL CONSISTENCY ≠ CONFIGURATION AUTHORITY`; `CI / EXPORT PASS ≠ PROFESSIONAL REVIEW`.
+## External Mature-KB Absorption Delta｜NASA IRD + V&V｜2026-09-20
+
+Status: `CANDIDATE STRENGTHENING / SOURCE-BOUND / NO PROMOTION`.
+
+### Source mount
+- `SRC-NASA-SE-APPENDIX-IRD-VV-001` — NASA Systems Engineering Handbook appendices / interface + verification + validation control artifacts: https://app.notion.com/p/3e1b86be5c4781048b6fe7b4bd23a455
+
+This L6 SOURCE is `SUPPORT / SCOPED`. NASA lifecycle/governance is not imported as a universal OLEANDER process.
+
+### Typed native control objects
+- `REQ VERIFICATION OBJECT = requirement_id + definitive_source + acceptance_criterion + verification_method + verification_level + owner + exact_configuration + result_ref + anomaly/disposition`;
+- `VALIDATION OBJECT = stakeholder_need + intended_use/context + scenario/method + exact_configuration + evidence_ref + observed_outcome + limitation + residual_risk`;
+- `INTERFACE OBJECT = interface_id + precedence + side_A/side_B responsibility + change_authority + coordinate_system + engineering_units + tolerance/limit_contract + detailed_requirements + verification_ref`.
+
+### Hard attacks
+- `TRACE COMPLETE ≠ REQUIREMENT VALID`;
+- `VERIFICATION ≠ VALIDATION`;
+- `INTERFACE DRAWING ≠ INTERFACE CONTRACT` when precedence, responsibility, coordinate/unit/tolerance or change authority is missing;
+- local subsystem PASS cannot close tightly-coupled integration.
+
+### Configuration/change consequence
+Every V&V result must bind exact configuration identity. A material requirement/interface/configuration change reopens affected verification, integration and validation scope rather than merely editing the latest document.
+
+### Boundary
+`NASA CONTROL ARTIFACT SOURCE ABSORBED ≠ NASA LIFECYCLE ADOPTION ≠ SYSTEMS CURRENT ≠ DOMAIN PROFESSIONAL PASS ≠ INTEGRATED SYSTEM TRUTH`.
