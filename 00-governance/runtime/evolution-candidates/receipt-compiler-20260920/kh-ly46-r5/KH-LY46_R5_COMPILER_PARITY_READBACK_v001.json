@@ -1,0 +1,64 @@
+{
+  "object_type": "OLEANDER_RECEIPT_COMPILER_PARITY_READBACK",
+  "version": "0.1",
+  "project_id": "KH-LY46",
+  "scope": "Historical bounded #674 Structural/MEP HOLD receipts versus compiler-derived HOLD projections",
+  "comparisons": [
+    {
+      "domain": "Structural Engineering",
+      "manual_receipt_ref": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_HOLD_RECEIPT_v001.json",
+      "manual_receipt_sha256": "7DCFFD804FB5C918D9EDD7AC0D8FBF9A5C82E18D3B48703C8B4866D7EB7F3BF2",
+      "compiled_receipt_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILED_HOLD_RECEIPT_v001.json",
+      "compiled_receipt_sha256": "E165FF3126102A2D913E397FD02CE4007B8BE15129D239D911FC6647B498E890",
+      "checks": {
+        "receipt_type_same": true,
+        "project_id_same": true,
+        "workstream_id_same": true,
+        "source_revision_same": true,
+        "claim_ceiling_same": true,
+        "result_remains_hold": true,
+        "stage_id_set_same": true,
+        "compiled_stage_status_remains_hold": true,
+        "interface_id_set_same": true,
+        "manual_does_not_prove_preserved": true
+      },
+      "verdict": "PASS_BOUNDED_SEMANTIC_PARITY_NO_SUPERSESSION"
+    },
+    {
+      "domain": "Building Services / MEP",
+      "manual_receipt_ref": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_MEP_HOLD_RECEIPT_v001.json",
+      "manual_receipt_sha256": "03FE6F1F88842FF73CD82C195FB2E9F5FAE395B33C569BD4EF7CD05DC8C22A96",
+      "compiled_receipt_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
+      "compiled_receipt_sha256": "6A48BD6713EC0207026762904ACAC0BEA60C6605B7A28916FA8A5EE12C190137",
+      "checks": {
+        "receipt_type_same": true,
+        "project_id_same": true,
+        "workstream_id_same": true,
+        "source_revision_same": true,
+        "claim_ceiling_same": true,
+        "result_remains_hold": true,
+        "stage_id_set_same": true,
+        "compiled_stage_status_remains_hold": true,
+        "interface_id_set_same": true,
+        "manual_does_not_prove_preserved": true
+      },
+      "verdict": "PASS_BOUNDED_SEMANTIC_PARITY_NO_SUPERSESSION"
+    }
+  ],
+  "authority_boundary": {
+    "manual_receipts_superseded": false,
+    "kh_ly46_project_state_mutated": false,
+    "kh_ly46_current_manifest_mutated": false,
+    "compiled_receipts_are_authority": false,
+    "compiled_receipts_are_evaluation_projection_only": true
+  },
+  "does_not_prove": [
+    "byte-identical receipt reproduction",
+    "Structural PASS",
+    "MEP PASS",
+    "cross-disciplinary release",
+    "field or statutory approval",
+    "Design KEEP",
+    "Promotion"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "kind": "DOMAIN_PROCESS_INSTANCE",
+  "instance_id": "DPI-KH-LY46-R5-MEP-001",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "decision_object_refs": [],
+  "process_definition_ref": "00-governance/schemas/building-services-mep-design-process.v1.json",
+  "process_id": "BUILDING_SERVICES_MEP_DESIGN_PROCESS",
+  "process_version": "1.0",
+  "domain": "Building Services / MEP",
+  "owner": "Building Services / MEP professional process owner / project specialist authority currently unbound",
+  "current_baseline": "KH-LY46-R5 / R5_64 + R5_69 + R5_70",
+  "execution_state": "BLOCKED",
+  "professional_verdict": "HOLD",
+  "claim_ceiling": "ARCHITECTURAL MEP INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL MEP DESIGN CLOSURE",
+  "stage_instances": [
+    {
+      "stage_instance_id": "DSI-KH-LY46-R5-BSP-STRATEGIC-001",
+      "stage_definition_ref": "00-governance/schemas/building-services-mep-design-process.v1.json :: BSP-STRATEGIC",
+      "stage_id": "BSP-STRATEGIC",
+      "cycle": 1,
+      "baseline_ref": "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+      "execution_state": "BLOCKED",
+      "review_verdict": "HOLD",
+      "claim_ceiling": "ARCHITECTURAL MEP INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL MEP DESIGN CLOSURE",
+      "inputs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "outputs": [],
+      "consequential_knowledge_mount_required": true,
+      "knowledge_mount_refs": [
+        "R5_00_RESTART_AUTHORITY_v001.md",
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "granularity_binding_state": "LEGACY_STAGE_ONLY",
+      "interface_refs": ["KH-LY46-IF-ARCH-MEP-SERVICE-CORE"],
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ],
+      "review_refs": [],
+      "open_items": [
+        "MEP capacities and routes remain open.",
+        "Service/kitchen specialist MEP is explicitly open in the ADD-07 readback.",
+        "No professional MEP system design, calculations, equipment selection, coordination model or review has been established.",
+        "ADD-08 riser and core coordination is not yet professionally designed or checked."
+      ],
+      "stale_scope": [],
+      "reopen_events": [],
+      "exit_condition_state": "BLOCKED",
+      "actual_readback_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ],
+      "last_updated": "2026-09-20T00:00:00Z"
+    }
+  ],
+  "active_interface_refs": ["KH-LY46-IF-ARCH-MEP-SERVICE-CORE"],
+  "open_items": [
+    "Professional MEP basis, capacities and routes are not established.",
+    "Service/kitchen MEP remains open.",
+    "Core/riser coordination has not been designed or professionally reviewed.",
+    "Architectural service-chain geometry is interface evidence only and is not an MEP design output."
+  ],
+  "professional_receipt_refs": [],
+  "integration_receipt_refs": [
+    "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_INTEGRATION_HOLD_RECEIPT_v001.json"
+  ],
+  "stale_scope": [],
+  "reopen_events": [],
+  "last_updated": "2026-09-20T00:00:00Z"
+}

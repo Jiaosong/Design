@@ -267,6 +267,8 @@ This is a binding view, not a replacement stage system, second runtime or second
 
 The stage-side knowledge mount preserves canonical refs and carries use role, `OE*` state, applicability, claim ceiling, freshness and `does_not_prove` where material. `KNOWLEDGE MOUNT PASS != PROFESSIONAL STAGE PASS`.
 
+For Current Structural Engineering and Building Services / MEP, `compile_project_receipts.py` may derive a **candidate receipt projection** from an existing `DOMAIN_PROCESS_INSTANCE`, its stage/output/readback facts and explicit domain supplements. The compiler validates source hashes, source availability and the existing professional receipt schema, and emits a separate `PROJECT_RECEIPT_COMPILATION_READBACK`. It is subordinate runtime glue only: it creates no new professional process, stage, owner or authority. A requested `PASS` is never emitted as professional `PASS`; at most the readback may report `READY_FOR_AUTHORIZED_REVIEW`, after which the existing professional/review authority must make the real transition.
+
 ## 7 | Design communication binding
 
 Design artifacts may trigger the following cross-cutting contracts independently:

@@ -1,0 +1,64 @@
+{
+  "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
+  "schema_version": "1.0",
+  "compilation_id": "COMP-KH-LY46-R5-MEP-001",
+  "project_id": "KH-LY46",
+  "mode": "PROFESSIONAL_COMPILE",
+  "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+  "compiler_sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04",
+  "request_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_REQUEST_v001.json",
+  "request_sha256": "DF3F5DBF756413487F553C2F55CA4CC5920299B5B8E6392EBA0475BFF606CD45",
+  "target_receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
+  "source_objects": [
+    {
+      "ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_PROCESS_INSTANCE_v001.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_PROCESS_INSTANCE_v001.json",
+      "observed_sha256": "5EAB8B3A878DB9E4C8C87B526E71DD490E381B2312DAE9E21D2523F2E6E926DA",
+      "bytes": 3541
+    },
+    {
+      "ref": "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+      "observed_sha256": "1E30D886441FB25542F643B75E07ED1241A5C4E42886A350F03169A5A11DDB21",
+      "bytes": 37616
+    },
+    {
+      "ref": "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+      "observed_sha256": "FD76454713BA83203BE96A8CE6DC02344B8849544A628F429A18298CB994CEAD",
+      "bytes": 6516
+    },
+    {
+      "ref": "R5_70_ADD08_STAGE_BODY_v001.md",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_70_ADD08_STAGE_BODY_v001.md",
+      "observed_sha256": "F0EEDE508600D281AFBD77748C990E304821381AC956CCA42BF62A887CC93245",
+      "bytes": 7771
+    }
+  ],
+  "source_integrity_state": "PASS",
+  "schema_validation_state": "PASS",
+  "requested_result": "HOLD",
+  "emitted_result": "HOLD",
+  "pass_readiness": "NOT_REQUESTED",
+  "hold_reasons": [],
+  "output_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
+  "output_sha256": "6A48BD6713EC0207026762904ACAC0BEA60C6605B7A28916FA8A5EE12C190137",
+  "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
+  "does_not_prove": [
+    "MEP engineering approval",
+    "System sizing or capacity",
+    "Commissioning",
+    "Integrated-system testing",
+    "Statutory approval",
+    "Future operation",
+    "Design KEEP",
+    "Promotion",
+    "professional PASS",
+    "authorized professional adoption",
+    "field/statutory truth beyond resolved sources"
+  ]
+}

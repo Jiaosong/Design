@@ -7,7 +7,9 @@
     "current_process_machine_remains_authority": true,
     "projection_may_not_change_stage_semantics": true,
     "projection_may_not_promote_candidate_processes": true,
-    "projection_may_not_widen_professional_or_statutory_authority": true
+    "projection_may_not_widen_professional_or_statutory_authority": true,
+    "receipt_compiler_is_derived_non_authority_projection": true,
+    "receipt_compiler_may_never_auto_grant_professional_pass": true
   },
   "bindings": [
     {
@@ -24,7 +26,10 @@
       "receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
       "receipt_schema_ref": "00-governance/schemas/structural-engineering-design-process-receipt.v1.schema.json",
       "receipt_template_ref": "00-governance/schemas/structural-engineering-design-process-receipt.v1.template.json",
-      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py"
+      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py",
+      "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+      "compiler_contract_ref": "00-governance/schemas/project-receipt-compiler.v1.schema.json",
+      "compiler_state": "ACTIVE_NON_AUTHORITY_CANDIDATE_RECEIPT_COMPILER"
     },
     {
       "domain": "Building Services / MEP",
@@ -32,7 +37,10 @@
       "receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
       "receipt_schema_ref": "00-governance/schemas/building-services-mep-design-process-receipt.v1.schema.json",
       "receipt_template_ref": "00-governance/schemas/building-services-mep-design-process-receipt.v1.template.json",
-      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py"
+      "validator_ref": "00-governance/schemas/validate_project_closure_objects.py",
+      "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+      "compiler_contract_ref": "00-governance/schemas/project-receipt-compiler.v1.schema.json",
+      "compiler_state": "ACTIVE_NON_AUTHORITY_CANDIDATE_RECEIPT_COMPILER"
     }
   ],
   "does_not_prove": [
@@ -40,6 +48,7 @@
     "Design KEEP",
     "statutory approval",
     "field truth",
-    "Candidate process promotion"
+    "Candidate process promotion",
+    "compiler-granted professional PASS"
   ]
 }

@@ -1,0 +1,61 @@
+{
+  "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
+  "schema_version": "1.0",
+  "compilation_id": "RB-C04-PROJECT-CONTROL-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "mode": "EXISTING_CLOSURE_READBACK",
+  "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+  "compiler_sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04",
+  "request_ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_READBACK_REQUEST_v0.1.json",
+  "request_sha256": "332E49FAA74A40BB4A43E36B5A96400160DF62A228F157D0D5F769860EE7D47E",
+  "target_receipt_type": null,
+  "source_objects": [
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONFIGURATION_CHANGE_REGISTER_v0.1.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONFIGURATION_CHANGE_REGISTER_v0.1.json",
+      "observed_sha256": "DBDDE2DAF9A2253EA127CAE141C553B5ECCFC3289771003E37C1CC71EBC28FF2",
+      "bytes": 2304
+    },
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_RISK_HAZARD_REGISTER_v0.1.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_RISK_HAZARD_REGISTER_v0.1.json",
+      "observed_sha256": "669DA5ED17F3B1847C8F33516D5850A43EB4F2993EEE12DBFA0743D5A1AA45B9",
+      "bytes": 2510
+    },
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION_v0.1.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION_v0.1.json",
+      "observed_sha256": "464A0CC621B4FF439C2F3B8C4444964227D2B367C2687ED5F0ED285FBF88E7AB",
+      "bytes": 1591
+    },
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_TECHNICAL_DRAWING_SPECIALIST_BINDING_v0.1.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_TECHNICAL_DRAWING_SPECIALIST_BINDING_v0.1.json",
+      "observed_sha256": "5F259F10AE8AF54B4E4223F17F3A5EBE069D9D14B3B9E0EB84DE140A183902BD",
+      "bytes": 1617
+    }
+  ],
+  "source_integrity_state": "PASS",
+  "schema_validation_state": "PASS",
+  "requested_result": null,
+  "emitted_result": null,
+  "pass_readiness": "NOT_REQUESTED",
+  "hold_reasons": [],
+  "output_ref": null,
+  "output_sha256": null,
+  "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
+  "does_not_prove": [
+    "field truth",
+    "site safety/accessibility/capacity approval",
+    "built commissioning or operation",
+    "Technical Drawing Current authority",
+    "Design KEEP",
+    "system Promotion",
+    "professional PASS",
+    "field/statutory truth beyond resolved sources"
+  ]
+}

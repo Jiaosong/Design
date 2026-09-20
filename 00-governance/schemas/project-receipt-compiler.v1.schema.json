@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.project-receipt-compiler.v1",
+  "title": "OLEANDER Project Receipt Compiler / Readback Contract v1",
+  "oneOf": [
+    {"$ref": "#/$defs/professionalCompilationRequest"},
+    {"$ref": "#/$defs/closureReadbackRequest"},
+    {"$ref": "#/$defs/compilationReadback"}
+  ],
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "stringArray": {"type": "array", "items": {"$ref": "#/$defs/nonEmptyString"}},
+    "sha256": {"type": ["string", "null"], "pattern": "^[0-9A-Fa-f]{64}$"},
+    "sourceRoot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root_id", "path", "required_for_pass"],
+      "properties": {
+        "root_id": {"$ref": "#/$defs/nonEmptyString"},
+        "path": {"$ref": "#/$defs/nonEmptyString"},
+        "required_for_pass": {"type": "boolean"}
+      }
+    },
+    "interfaceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interface_id", "required", "state", "evidence_refs"],
+      "properties": {
+        "interface_id": {"$ref": "#/$defs/nonEmptyString"},
+        "required": {"type": "boolean"},
+        "state": {"enum": ["NOT_REQUIRED", "OPEN", "PASS", "FAIL", "HOLD"]},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "reviewBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "reviewer_ref"],
+      "properties": {
+        "required": {"type": "boolean"},
+        "reviewer_ref": {"type": ["string", "null"]}
+      }
+    },
+    "mepSystemTrack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_id", "status", "design_refs", "commissioning_required", "commissioning_state", "integrated_system_test_required", "integrated_system_test_state", "seasonal_or_deferred_test_open", "evidence_refs"],
+      "properties": {
+        "system_id": {"$ref": "#/$defs/nonEmptyString"},
+        "status": {"enum": ["PENDING", "IN_PROGRESS", "PASS", "REVISE", "REJECT", "HOLD", "STALE"]},
+        "design_refs": {"$ref": "#/$defs/stringArray"},
+        "commissioning_required": {"type": "boolean"},
+        "commissioning_state": {"enum": ["NOT_REQUIRED", "NOT_RUN", "PASS", "FAIL", "HOLD", "DEFERRED_OUTSIDE_CLAIM"]},
+        "integrated_system_test_required": {"type": "boolean"},
+        "integrated_system_test_state": {"enum": ["NOT_REQUIRED", "NOT_RUN", "PASS", "FAIL", "HOLD", "DEFERRED_OUTSIDE_CLAIM"]},
+        "seasonal_or_deferred_test_open": {"type": "boolean"},
+        "evidence_refs": {"$ref": "#/$defs/stringArray"}
+      }
+    },
+    "professionalCompilationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object_type", "schema_version", "compilation_id", "project_id", "target_receipt_type", "process_instance_ref", "process_instance_sha256", "source_revision", "claim_ceiling", "requested_result", "source_roots", "interface_records", "review_binding", "output_ref", "readback_ref", "does_not_prove"],
+      "properties": {
+        "object_type": {"const": "PROFESSIONAL_RECEIPT_COMPILATION_REQUEST"},
+        "schema_version": {"const": "1.0"},
+        "compilation_id": {"$ref": "#/$defs/nonEmptyString"},
+        "project_id": {"$ref": "#/$defs/nonEmptyString"},
+        "workstream_id": {"type": ["string", "null"]},
+        "target_receipt_type": {"enum": ["STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT", "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT"]},
+        "process_instance_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "process_instance_sha256": {"$ref": "#/$defs/sha256"},
+        "source_revision": {"$ref": "#/$defs/nonEmptyString"},
+        "claim_ceiling": {"$ref": "#/$defs/nonEmptyString"},
+        "requested_result": {"enum": ["PASS", "REVISE", "REJECT", "HOLD"]},
+        "source_roots": {"type": "array", "items": {"$ref": "#/$defs/sourceRoot"}},
+        "interface_records": {"type": "array", "items": {"$ref": "#/$defs/interfaceRecord"}},
+        "review_binding": {"$ref": "#/$defs/reviewBinding"},
+        "basis_of_structural_design_ref": {"type": ["string", "null"]},
+        "mep_system_tracks": {"type": "array", "items": {"$ref": "#/$defs/mepSystemTrack"}},
+        "output_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "readback_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "does_not_prove": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmptyString"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"target_receipt_type": {"const": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT"}}},
+          "then": {"required": ["mep_system_tracks"], "properties": {"mep_system_tracks": {"minItems": 1}}}
+        }
+      ]
+    },
+    "closureObjectRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "expected_sha256"],
+      "properties": {
+        "ref": {"$ref": "#/$defs/nonEmptyString"},
+        "expected_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "closureReadbackRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object_type", "schema_version", "compilation_id", "project_id", "object_refs", "source_roots", "readback_ref", "does_not_prove"],
+      "properties": {
+        "object_type": {"const": "PROJECT_CLOSURE_READBACK_REQUEST"},
+        "schema_version": {"const": "1.0"},
+        "compilation_id": {"$ref": "#/$defs/nonEmptyString"},
+        "project_id": {"$ref": "#/$defs/nonEmptyString"},
+        "object_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/closureObjectRef"}},
+        "source_roots": {"type": "array", "items": {"$ref": "#/$defs/sourceRoot"}},
+        "readback_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "does_not_prove": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmptyString"}}
+      }
+    },
+    "sourceReadback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "resolution_state", "resolved_path", "observed_sha256", "bytes"],
+      "properties": {
+        "ref": {"$ref": "#/$defs/nonEmptyString"},
+        "resolution_state": {"enum": ["RESOLVED", "UNRESOLVED", "AMBIGUOUS"]},
+        "resolved_path": {"type": ["string", "null"]},
+        "observed_sha256": {"$ref": "#/$defs/sha256"},
+        "bytes": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "compilationReadback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object_type", "schema_version", "compilation_id", "project_id", "mode", "compiler_ref", "compiler_sha256", "request_ref", "request_sha256", "target_receipt_type", "source_objects", "source_integrity_state", "schema_validation_state", "requested_result", "emitted_result", "pass_readiness", "hold_reasons", "output_ref", "output_sha256", "compiler_boundary", "does_not_prove"],
+      "properties": {
+        "object_type": {"const": "PROJECT_RECEIPT_COMPILATION_READBACK"},
+        "schema_version": {"const": "1.0"},
+        "compilation_id": {"$ref": "#/$defs/nonEmptyString"},
+        "project_id": {"$ref": "#/$defs/nonEmptyString"},
+        "mode": {"enum": ["PROFESSIONAL_COMPILE", "EXISTING_CLOSURE_READBACK"]},
+        "compiler_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "compiler_sha256": {"$ref": "#/$defs/sha256"},
+        "request_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "request_sha256": {"$ref": "#/$defs/sha256"},
+        "target_receipt_type": {"type": ["string", "null"]},
+        "source_objects": {"type": "array", "items": {"$ref": "#/$defs/sourceReadback"}},
+        "source_integrity_state": {"enum": ["PASS", "HOLD"]},
+        "schema_validation_state": {"enum": ["PASS", "HOLD"]},
+        "requested_result": {"type": ["string", "null"]},
+        "emitted_result": {"type": ["string", "null"]},
+        "pass_readiness": {"enum": ["NOT_REQUESTED", "READY_FOR_AUTHORIZED_REVIEW", "HOLD"]},
+        "hold_reasons": {"$ref": "#/$defs/stringArray"},
+        "output_ref": {"type": ["string", "null"]},
+        "output_sha256": {"$ref": "#/$defs/sha256"},
+        "compiler_boundary": {"const": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS"},
+        "does_not_prove": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonEmptyString"}}
+      }
+    }
+  }
+}

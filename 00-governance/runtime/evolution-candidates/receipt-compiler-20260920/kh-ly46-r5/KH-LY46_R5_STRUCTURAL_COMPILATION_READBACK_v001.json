@@ -1,0 +1,63 @@
+{
+  "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
+  "schema_version": "1.0",
+  "compilation_id": "COMP-KH-LY46-R5-STRUCT-001",
+  "project_id": "KH-LY46",
+  "mode": "PROFESSIONAL_COMPILE",
+  "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
+  "compiler_sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04",
+  "request_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_REQUEST_v001.json",
+  "request_sha256": "6BE6A0EE738B084C4C394B9F853F0D2BB5252A974AE1E8F3ED4EB903BEF41B22",
+  "target_receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
+  "source_objects": [
+    {
+      "ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_PROCESS_INSTANCE_v001.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_PROCESS_INSTANCE_v001.json",
+      "observed_sha256": "FEB7F8B54920B3CB3EFF90D04C048A99E442DD3A6892BF0F089C4B67B5E8C148",
+      "bytes": 3674
+    },
+    {
+      "ref": "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
+      "observed_sha256": "FD76454713BA83203BE96A8CE6DC02344B8849544A628F429A18298CB994CEAD",
+      "bytes": 6516
+    },
+    {
+      "ref": "R5_70_ADD08_STAGE_BODY_v001.md",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_70_ADD08_STAGE_BODY_v001.md",
+      "observed_sha256": "F0EEDE508600D281AFBD77748C990E304821381AC956CCA42BF62A887CC93245",
+      "bytes": 7771
+    },
+    {
+      "ref": "R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md#4-Structural-reconstruction-ceiling / NOT_A_FORMAL_BASIS_OF_STRUCTURAL_DESIGN",
+      "resolution_state": "RESOLVED",
+      "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_13_EVIDENCE_BOUNDED_RECONSTRUCTION_BASELINE_v001.md",
+      "observed_sha256": "A9860FC27A17543B3E51EA1ED886DE7E99B294FC3A83732E22BA4769B9610C08",
+      "bytes": 4466
+    }
+  ],
+  "source_integrity_state": "PASS",
+  "schema_validation_state": "PASS",
+  "requested_result": "HOLD",
+  "emitted_result": "HOLD",
+  "pass_readiness": "NOT_REQUESTED",
+  "hold_reasons": [],
+  "output_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILED_HOLD_RECEIPT_v001.json",
+  "output_sha256": "E165FF3126102A2D913E397FD02CE4007B8BE15129D239D911FC6647B498E890",
+  "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
+  "does_not_prove": [
+    "Structural engineering approval",
+    "Member capacity",
+    "Foundation adequacy",
+    "Existing-condition field truth",
+    "Statutory approval",
+    "Design KEEP",
+    "Promotion",
+    "professional PASS",
+    "authorized professional adoption",
+    "field/statutory truth beyond resolved sources"
+  ]
+}

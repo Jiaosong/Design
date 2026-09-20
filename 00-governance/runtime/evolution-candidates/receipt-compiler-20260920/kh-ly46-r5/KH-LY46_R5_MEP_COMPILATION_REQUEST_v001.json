@@ -1,0 +1,63 @@
+{
+  "object_type": "PROFESSIONAL_RECEIPT_COMPILATION_REQUEST",
+  "schema_version": "1.0",
+  "compilation_id": "COMP-KH-LY46-R5-MEP-001",
+  "project_id": "KH-LY46",
+  "workstream_id": "R5_ARCH_RESTART",
+  "target_receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
+  "process_instance_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_PROCESS_INSTANCE_v001.json",
+  "process_instance_sha256": "5EAB8B3A878DB9E4C8C87B526E71DD490E381B2312DAE9E21D2523F2E6E926DA",
+  "source_revision": "KH-LY46-R5 / R5_64 + R5_69 + R5_70",
+  "claim_ceiling": "ARCHITECTURAL MEP INTERFACE IDENTIFICATION ONLY / NO PROFESSIONAL MEP DESIGN CLOSURE",
+  "requested_result": "HOLD",
+  "source_roots": [
+    {
+      "root_id": "KH-LY46-R5-SOURCE",
+      "path": "D:/.claw/kharkiv_gym46/rebuild/19_ARCH_RESTART_R5_ZERO_BASE",
+      "required_for_pass": false
+    }
+  ],
+  "interface_records": [
+    {
+      "interface_id": "KH-LY46-IF-ARCH-MEP-SERVICE-CORE",
+      "required": true,
+      "state": "HOLD",
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_70_ADD08_STAGE_BODY_v001.md"
+      ]
+    }
+  ],
+  "review_binding": {
+    "required": true,
+    "reviewer_ref": null
+  },
+  "mep_system_tracks": [
+    {
+      "system_id": "KH-LY46-MEP-BASIS-AND-ROUTES",
+      "status": "HOLD",
+      "design_refs": [],
+      "commissioning_required": false,
+      "commissioning_state": "NOT_REQUIRED",
+      "integrated_system_test_required": false,
+      "integrated_system_test_state": "NOT_REQUIRED",
+      "seasonal_or_deferred_test_open": false,
+      "evidence_refs": [
+        "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+        "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+      ]
+    }
+  ],
+  "output_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
+  "readback_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_READBACK_v001.json",
+  "does_not_prove": [
+    "MEP engineering approval",
+    "System sizing or capacity",
+    "Commissioning",
+    "Integrated-system testing",
+    "Statutory approval",
+    "Future operation",
+    "Design KEEP",
+    "Promotion"
+  ]
+}

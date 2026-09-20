@@ -32,6 +32,7 @@ RESOLVER_PREVIOUS = RUNTIME / "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.json"
 OWNER_MAP = RUNTIME / "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
 CONTROL_GRAPH = RUNTIME / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+PROFESSIONAL_RECEIPT_BINDINGS = RUNTIME / "OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json"
 RECEIPT_DIR = RUNTIME / "receipts"
 LIFECYCLE_BASELINE = RUNTIME / "skill-lifecycle" / "BASELINE_ADOPTION_2026-08-18.json"
 LIFECYCLE_DIR = RUNTIME / "skill-lifecycle"
@@ -444,6 +445,62 @@ def validate_owner_consistency(capability: dict, resolver: dict, owner_map: dict
         fail("Technical Drawing must remain CANDIDATE_BODY")
     if owner_map.get("owners", {}).get("OLEANDER Technical Drawing", {}).get("state") != "CANDIDATE_BODY":
         fail("Owner Map Technical Drawing state drift")
+
+
+def validate_professional_receipt_bindings() -> int:
+    projection = load_json(PROFESSIONAL_RECEIPT_BINDINGS)
+    if projection.get("status") != "ACTIVE_NON_AUTHORITY_RUNTIME_PROJECTION":
+        fail("Current professional receipt bindings must remain ACTIVE_NON_AUTHORITY_RUNTIME_PROJECTION")
+    boundary = projection.get("authority_boundary") or {}
+    for field in {
+        "current_process_machine_remains_authority",
+        "projection_may_not_change_stage_semantics",
+        "projection_may_not_promote_candidate_processes",
+        "projection_may_not_widen_professional_or_statutory_authority",
+        "receipt_compiler_is_derived_non_authority_projection",
+        "receipt_compiler_may_never_auto_grant_professional_pass",
+    }:
+        if boundary.get(field) is not True:
+            fail(f"professional receipt binding authority boundary missing {field}=true")
+
+    bindings = projection.get("bindings") or []
+    by_domain = {row.get("domain"): row for row in bindings if isinstance(row, dict)}
+    expected_domains = {"Architecture", "Structural Engineering", "Building Services / MEP"}
+    if set(by_domain) != expected_domains:
+        fail(f"professional receipt binding domain set drift: {sorted(by_domain)}")
+
+    for domain, row in by_domain.items():
+        require_fields(
+            row,
+            ["current_process_ref", "receipt_type", "receipt_schema_ref", "receipt_template_ref", "validator_ref"],
+            f"professional-receipt-binding:{domain}",
+        )
+        for field in ("current_process_ref", "receipt_schema_ref", "receipt_template_ref", "validator_ref"):
+            ref = ROOT / row[field]
+            if not ref.is_file():
+                fail(f"professional receipt binding {domain} unreadable {field}: {row[field]}")
+
+    compiler_ref = "00-governance/runtime/compile_project_receipts.py"
+    compiler_contract_ref = "00-governance/schemas/project-receipt-compiler.v1.schema.json"
+    for domain in ("Structural Engineering", "Building Services / MEP"):
+        row = by_domain[domain]
+        if row.get("compiler_ref") != compiler_ref:
+            fail(f"{domain} professional receipt compiler ref drift")
+        if row.get("compiler_contract_ref") != compiler_contract_ref:
+            fail(f"{domain} professional receipt compiler contract ref drift")
+        if row.get("compiler_state") != "ACTIVE_NON_AUTHORITY_CANDIDATE_RECEIPT_COMPILER":
+            fail(f"{domain} professional receipt compiler state drift")
+
+    architecture = by_domain["Architecture"]
+    if any(key in architecture for key in ("compiler_ref", "compiler_contract_ref", "compiler_state")):
+        fail("Architecture receipt binding must not silently gain the Structural/MEP compiler route")
+
+    for ref in (compiler_ref, compiler_contract_ref):
+        if not (ROOT / ref).is_file():
+            fail(f"professional receipt compiler dependency missing: {ref}")
+    if "compiler-granted professional PASS" not in set(projection.get("does_not_prove") or []):
+        fail("professional receipt binding projection must explicitly deny compiler-granted professional PASS")
+    return 2
 
 
 def _professional_role_matches_rule(role: str, rule: dict) -> bool:
@@ -1272,6 +1329,7 @@ def main() -> None:
     resolver, owner_map = validate_current_resolver_and_pointers()
     contracts = validate_contract_headers()
     validate_owner_consistency(contracts["capability"], resolver, owner_map)
+    professional_receipt_compiler_bindings = validate_professional_receipt_bindings()
     professional_stage_count, professional_role_count, knowledge_bound_stage_count = validate_professional_stage_capability_routing(
         owner_map, contracts["capability"]
     )
@@ -1295,6 +1353,7 @@ def main() -> None:
     print(f"real execution receipts: {len(list(RECEIPT_DIR.glob('*.json')))}")
     print(f"professional stage capability routing: {professional_stage_count} stages / {professional_role_count} unique roles / unnamed fallback=0")
     print(f"professional stage knowledge binding: {knowledge_bound_stage_count}/{professional_stage_count} stages declare knowledge inputs + mount requirement")
+    print(f"professional receipt compiler bindings: {professional_receipt_compiler_bindings} non-authority Current-domain bindings")
     print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 
 
