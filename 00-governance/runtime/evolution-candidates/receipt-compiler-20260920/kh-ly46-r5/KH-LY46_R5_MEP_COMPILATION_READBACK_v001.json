@@ -1,13 +1,15 @@
 {
   "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "compilation_id": "COMP-KH-LY46-R5-MEP-001",
   "project_id": "KH-LY46",
   "mode": "PROFESSIONAL_COMPILE",
   "compiler_ref": "00-governance/runtime/compile_project_receipts.py",
-  "compiler_sha256": "4A6993024C4B69F8CA38857501D7D8927E0F4E2965C512DA3582348BDD79AF04",
+  "compiler_sha256": "C3BD5DAB8B184122877C3720DF33C89D4DE5926EA9F607C03C40F41AF312AAA0",
+  "compiler_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
   "request_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_REQUEST_v001.json",
-  "request_sha256": "DF3F5DBF756413487F553C2F55CA4CC5920299B5B8E6392EBA0475BFF606CD45",
+  "request_sha256": "643C5FD4D6339EE9ECE37CF59E9A9A4BC29CE18693A564AA1BF9EA83D54433A1",
+  "request_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
   "target_receipt_type": "BUILDING_SERVICES_MEP_DESIGN_PROCESS_RECEIPT",
   "source_objects": [
     {
@@ -15,28 +17,32 @@
       "resolution_state": "RESOLVED",
       "resolved_path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_PROCESS_INSTANCE_v001.json",
       "observed_sha256": "5EAB8B3A878DB9E4C8C87B526E71DD490E381B2312DAE9E21D2523F2E6E926DA",
-      "bytes": 3541
+      "bytes": 3541,
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
       "resolution_state": "RESOLVED",
       "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_64_ADD07_ROOMWALL_READBACK_v002.json",
-      "observed_sha256": "1E30D886441FB25542F643B75E07ED1241A5C4E42886A350F03169A5A11DDB21",
-      "bytes": 37616
+      "observed_sha256": "5C464B012E922F1736DAAB51B27503E62B7D3679172D759C74C9AB60025AB95D",
+      "bytes": 36200,
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
       "resolution_state": "RESOLVED",
       "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json",
       "observed_sha256": "FD76454713BA83203BE96A8CE6DC02344B8849544A628F429A18298CB994CEAD",
-      "bytes": 6516
+      "bytes": 6516,
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "R5_70_ADD08_STAGE_BODY_v001.md",
       "resolution_state": "RESOLVED",
       "resolved_path": "D:\\.claw\\kharkiv_gym46\\rebuild\\19_ARCH_RESTART_R5_ZERO_BASE\\R5_70_ADD08_STAGE_BODY_v001.md",
       "observed_sha256": "F0EEDE508600D281AFBD77748C990E304821381AC956CCA42BF62A887CC93245",
-      "bytes": 7771
+      "bytes": 7771,
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     }
   ],
   "source_integrity_state": "PASS",
@@ -46,7 +52,8 @@
   "pass_readiness": "NOT_REQUESTED",
   "hold_reasons": [],
   "output_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
-  "output_sha256": "6A48BD6713EC0207026762904ACAC0BEA60C6605B7A28916FA8A5EE12C190137",
+  "output_sha256": "AE81F8B02F6B0762FA230B27832860478C36AE1157B4564AC3CB6BE0AF0A3E05",
+  "output_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
   "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
   "does_not_prove": [
     "MEP engineering approval",

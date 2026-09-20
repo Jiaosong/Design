@@ -1,0 +1,239 @@
+{
+  "object_type": "OLEANDER_MATERIAL_DELTA_OWNER_RECEIPT",
+  "schema_version": "1.1-provenance",
+  "receipt_id": "OLEANDER-RECEIPT-HASH-SEMANTICS-FIX-20260920-v001",
+  "status": "CANDIDATE_PRE_MERGE",
+  "date": "2026-09-20",
+  "repository": "Jiaosong/Design",
+  "branch": "fix/oleander-receipt-hash-semantics-20260920",
+  "baseline_main_commit": "a91138e6840674493f97c6eba8667c149edcb8cc",
+  "purpose": "Repair cross-checkout provenance drift caused by platform-dependent CRLF/LF working-tree bytes. Text digests use UTF8_TEXT_LF_CANONICAL_V1; binary/unknown formats use RAW_BYTES_V1; generated JSON is canonical UTF-8/LF and canonical-equivalent payloads are not rewritten.",
+  "hash_contract": {
+    "text_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+    "binary_hash_semantics": "RAW_BYTES_V1",
+    "text_canonicalization": "Decode UTF-8/UTF-8-BOM, remove BOM, normalize CRLF and CR to LF, encode UTF-8, SHA-256.",
+    "binary_canonicalization": "Hash exact raw bytes.",
+    "generated_json_write_semantics": "UTF8_NO_BOM_LF_BYTES",
+    "identical_payload_write_rule": "NO_WRITE_NO_MTIME_TOUCH_ON_CANONICAL_TEXT_EQUIVALENCE"
+  },
+  "historical_repair": {
+    "legacy_receipt_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/RECEIPT_COMPILER_OWNER_RECEIPT_v001.json",
+    "legacy_status": "SUPERSEDED_HASH_SEMANTICS",
+    "current_pr680_provenance_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/RECEIPT_COMPILER_OWNER_RECEIPT_v002.json",
+    "exact_snapshot_commit": "ded584b413168718a21c28c58b7632c302dcea8e",
+    "merged_main_commit": "7d3375b979b2a2be40046f943ed31424072cd960",
+    "snapshot_rows_machine_validated": 24,
+    "professional_or_project_claim_changed": false
+  },
+  "authority_state": {
+    "system_architecture_count": 1,
+    "master_runtime_count": 1,
+    "runtime_layer_count": 11,
+    "operational_plane_count": 6,
+    "current_structural_machine_mutated": false,
+    "current_mep_machine_mutated": false,
+    "compiler_is_authority": false,
+    "compiler_may_auto_grant_professional_pass": false,
+    "technical_drawing_promoted": false,
+    "candidate_domain_promotions": []
+  },
+  "protected_current_machine_identity": [
+    {
+      "path": "00-governance/schemas/structural-engineering-design-process.v1.json",
+      "bytes": 46238,
+      "sha256": "00C615FF31026BAE54BFDE9C0E2945DDC00CB0C4C6CCE167CFE416D083747667",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+      "diff_vs_origin_main": "UNCHANGED"
+    },
+    {
+      "path": "00-governance/schemas/building-services-mep-design-process.v1.json",
+      "bytes": 45712,
+      "sha256": "BA6C3A47F810A98E31DBE37A0D794F6B4C6E9C7D56DB227E39266B79BDABAD8E",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+      "diff_vs_origin_main": "UNCHANGED"
+    }
+  ],
+  "material_files_excluding_this_receipt": [
+    {
+      "path": "00-governance/control-plane/tests/test_project_receipt_compiler.py",
+      "bytes": 13453,
+      "sha256": "A39C597DC9BF0BE1E883198E6E8686CB280E5A8B09262BAE948D9674CAC9A039",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/README.md",
+      "bytes": 22285,
+      "sha256": "086279408896E9CC3E35C765F535F5D2E9D9EAB8EE0DB40DCFE931681DA56829",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/compile_project_receipts.py",
+      "bytes": 26973,
+      "sha256": "C3BD5DAB8B184122877C3720DF33C89D4DE5926EA9F607C03C40F41AF312AAA0",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/README.md",
+      "bytes": 825,
+      "sha256": "7C53224C563A48787D3E256B073CB29DF651ACA0F1B7B91BD82C80681EFE104C",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/RECEIPT_COMPILER_OWNER_RECEIPT_v001.json",
+      "bytes": 11031,
+      "sha256": "77286A25E8D503C1B77D4AEBD636B96FA5B20DE12BF210714F395669EE383F22",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/RECEIPT_COMPILER_OWNER_RECEIPT_v002.json",
+      "bytes": 15355,
+      "sha256": "3308B981185E2E06CB45BD220529D8CB809E0B0D745D1DE45E02B2051F4E5B7C",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_COMPILER_PARITY_READBACK_v001.json",
+      "bytes": 3155,
+      "sha256": "E5F4EBDF793026A0FA1E796AFBA0EDDE93D9E691B336CB0F0C57CCF6AA96809F",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_READBACK_v001.json",
+      "bytes": 3445,
+      "sha256": "F762E58D7ACE79145D220044870AB5F3D1AB0E59A79062F50DB067EE5A80AC61",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILATION_REQUEST_v001.json",
+      "bytes": 2361,
+      "sha256": "643C5FD4D6339EE9ECE37CF59E9A9A4BC29CE18693A564AA1BF9EA83D54433A1",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_READBACK_v001.json",
+      "bytes": 3568,
+      "sha256": "30C30C7AE95B8645EE66EBAC3BCD369465783BEBBAC5AC482706758D802D2CA0",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILATION_REQUEST_v001.json",
+      "bytes": 2043,
+      "sha256": "77480307C8F2AEA2D43DBB8D3B38D08F3D8E36B3D4F685FA17C97BB534D2DD3E",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/README.md",
+      "bytes": 1368,
+      "sha256": "15B17C5ACDE44E70EA1B1A10A3A8B9C628E82E704AC6A67CEA3F46EABE56681B",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/runtime/validate_execution_contracts.py",
+      "bytes": 75928,
+      "sha256": "40DB01CC46926AD9015721232F46E3C3D7C21B999A0A5E27C3E2AEB1F7654857",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/schemas/README.md",
+      "bytes": 4491,
+      "sha256": "68B857ECC63B4377CC3D3A741DE2A891DFCA6BA2B9A0C4DCEE57E0762311157D",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "00-governance/schemas/project-receipt-compiler.v1.schema.json",
+      "bytes": 9085,
+      "sha256": "5D1807F0441BF970F44C601E31AC7C2D29D96E484D412866650B7405E12D402D",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_COMPILATION_READBACK_v0.1.json",
+      "bytes": 3305,
+      "sha256": "07CBAB37612015DD4BDACAB2B8927A564FEEB85140AAF8B3C147DFB4933711FE",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_READBACK_REQUEST_v0.1.json",
+      "bytes": 1823,
+      "sha256": "1843FD81FD5F5EDDF8B7B1BB24B13D98526AB64EA148CBA5B41098F911A8015A",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    }
+  ],
+  "validation": [
+    {
+      "check": "receipt compiler targeted tests",
+      "result": "PASS",
+      "tests": 9
+    },
+    {
+      "check": "full control-plane tests",
+      "result": "PASS",
+      "tests": 142
+    },
+    {
+      "check": "execution contracts",
+      "result": "PASS",
+      "summary": "2 non-authority compiler bindings; 24 exact-snapshot canonical provenance rows validated."
+    },
+    {
+      "check": "architecture control graph",
+      "result": "PASS",
+      "summary": "1 system architecture; 1 master runtime; 11 runtime layers; 6 operational planes."
+    },
+    {
+      "check": "Current Structural/MEP machine diff",
+      "result": "UNCHANGED"
+    },
+    {
+      "check": "KH-LY46 process instances",
+      "result": "PASS",
+      "objects": 2
+    },
+    {
+      "check": "KH-LY46 compiled receipts",
+      "result": "HOLD_WITH_SOURCE_INTEGRITY_PASS",
+      "objects": 2
+    },
+    {
+      "check": "C04 closure pack",
+      "result": "SOURCE_INTEGRITY_PASS_SCHEMA_VALIDATION_PASS"
+    },
+    {
+      "check": "LF/CRLF canonical hash equivalence unit test",
+      "result": "PASS"
+    },
+    {
+      "check": "binary RAW_BYTES identity unit test",
+      "result": "PASS"
+    },
+    {
+      "check": "identical generated JSON no-rewrite unit test",
+      "result": "PASS"
+    },
+    {
+      "check": "CRLF-equivalent generated JSON no-rewrite unit test",
+      "result": "PASS"
+    },
+    {
+      "check": "fresh-checkout clean rerun",
+      "result": "PASS",
+      "tested_content_scope": "PR material tree excluding this self-referential owner receipt",
+      "core_autocrlf": true,
+      "rerun_scope": "KH-LY46 Structural compile + KH-LY46 MEP compile + C04 closure readback",
+      "post_rerun_git_status": "CLEAN"
+    }
+  ],
+  "does_not_prove": [
+    "professional PASS",
+    "Structural/MEP engineering approval",
+    "integration release",
+    "field truth",
+    "statutory approval",
+    "Design KEEP",
+    "Technical Drawing Current authority",
+    "Candidate promotion",
+    "system Promotion",
+    "GitHub remote sync",
+    "Notion sync",
+    "external deployment"
+  ],
+  "self_digest_note": "This receipt is excluded from its own digest list."
+}

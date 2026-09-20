@@ -22,6 +22,14 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEMA_DIR = ROOT / "00-governance" / "schemas"
 COMPILER_REF = "00-governance/runtime/compile_project_receipts.py"
 COMPILER_SCHEMA = SCHEMA_DIR / "project-receipt-compiler.v1.schema.json"
+TEXT_HASH_SEMANTICS = "UTF8_TEXT_LF_CANONICAL_V1"
+BINARY_HASH_SEMANTICS = "RAW_BYTES_V1"
+TEXT_EXTENSIONS = {
+    ".json", ".md", ".py", ".txt", ".yaml", ".yml", ".csv", ".tsv",
+    ".svg", ".html", ".htm", ".css", ".js", ".mjs", ".cjs", ".ts",
+    ".tsx", ".jsx", ".xml", ".toml", ".ini", ".cfg", ".gitattributes",
+    ".gitignore",
+}
 
 
 def _load_module(name: str, path: Path):
@@ -51,8 +59,39 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest().upper()
 
 
+def canonical_hash_bytes(path: Path, data: bytes | None = None) -> tuple[bytes, str]:
+    """Return checkout-stable bytes plus an explicit digest semantic.
+
+    Git text checkouts can differ only by CRLF/LF depending on platform and
+    core.autocrlf.  For known UTF-8 text formats, hash a single canonical LF
+    representation.  Binary/unknown formats retain exact raw-byte identity.
+    """
+    raw = path.read_bytes() if data is None else data
+    suffix = path.suffix.lower()
+    text_named = suffix in TEXT_EXTENSIONS or path.name.lower() in {
+        "readme", "license", ".gitattributes", ".gitignore"
+    }
+    if text_named:
+        try:
+            text = raw.decode("utf-8-sig")
+        except UnicodeDecodeError as exc:
+            raise ValueError(f"declared text file is not UTF-8: {path}") from exc
+        normalized = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+        return normalized, TEXT_HASH_SEMANTICS
+    return raw, BINARY_HASH_SEMANTICS
+
+
+def hash_file(path: Path, data: bytes | None = None) -> dict[str, Any]:
+    canonical, semantics = canonical_hash_bytes(path, data)
+    return {
+        "sha256": sha256_bytes(canonical),
+        "bytes": len(canonical),
+        "hash_semantics": semantics,
+    }
+
+
 def sha256_file(path: Path) -> str:
-    return sha256_bytes(path.read_bytes())
+    return str(hash_file(path)["sha256"])
 
 
 def display_path(path: Path) -> str:
@@ -71,6 +110,7 @@ def _validate_contract(payload: dict[str, Any]) -> list[str]:
             "PROFESSIONAL_RECEIPT_COMPILATION_REQUEST": {
                 "object_type", "schema_version", "compilation_id", "project_id",
                 "target_receipt_type", "process_instance_ref", "process_instance_sha256",
+                "process_instance_hash_semantics",
                 "source_revision", "claim_ceiling", "requested_result", "output_ref", "readback_ref",
             },
             "PROJECT_CLOSURE_READBACK_REQUEST": {
@@ -88,7 +128,21 @@ def _validate_contract(payload: dict[str, Any]) -> list[str]:
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Write canonical UTF-8/LF bytes directly.  Text-mode writes on Windows can
+    # translate LF to CRLF and make generated artifacts appear dirty after a
+    # clean checkout even though canonical digest identity is unchanged.
+    data = (json.dumps(payload, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    # Do not rewrite an identical generated artifact.  On Git for Windows,
+    # changing only mtime/stat metadata can leave a false dirty signal even
+    # when raw and filtered blob identity are exactly unchanged.
+    if path.is_file():
+        existing = path.read_bytes()
+        canonical_existing, semantics = canonical_hash_bytes(path, existing)
+        if semantics == TEXT_HASH_SEMANTICS and canonical_existing == data:
+            return
+        if semantics == BINARY_HASH_SEMANTICS and existing == data:
+            return
+    path.write_bytes(data)
 
 
 def _path_from_ref(ref: str) -> str:
@@ -147,14 +201,22 @@ def resolve_ref(ref: str, roots: list[Path]) -> tuple[str, Path | None]:
 def source_readback(ref: str, roots: list[Path]) -> dict[str, Any]:
     state, path = resolve_ref(ref, roots)
     if path is None:
-        return {"ref": ref, "resolution_state": state, "resolved_path": None, "observed_sha256": None, "bytes": None}
-    data = path.read_bytes()
+        return {
+            "ref": ref,
+            "resolution_state": state,
+            "resolved_path": None,
+            "observed_sha256": None,
+            "bytes": None,
+            "hash_semantics": None,
+        }
+    observed = hash_file(path)
     return {
         "ref": ref,
         "resolution_state": state,
         "resolved_path": display_path(path),
-        "observed_sha256": sha256_bytes(data),
-        "bytes": len(data),
+        "observed_sha256": observed["sha256"],
+        "bytes": observed["bytes"],
+        "hash_semantics": observed["hash_semantics"],
     }
 
 
@@ -374,7 +436,8 @@ def compile_professional(request_path: Path) -> tuple[Path, Path, dict[str, Any]
     if not instance_path.is_file():
         raise FileNotFoundError(instance_path)
     instance_bytes = instance_path.read_bytes()
-    observed_instance_sha = sha256_bytes(instance_bytes)
+    observed_instance = hash_file(instance_path, instance_bytes)
+    observed_instance_sha = observed_instance["sha256"]
     instance = json.loads(instance_bytes.decode("utf-8"))
     process_errors = PROCESS_VALIDATOR.validate_payload(instance)
 
@@ -383,6 +446,8 @@ def compile_professional(request_path: Path) -> tuple[Path, Path, dict[str, Any]
     hold_reasons: list[str] = []
     if observed_instance_sha.upper() != str(request["process_instance_sha256"]).upper():
         hold_reasons.append("PROCESS_INSTANCE_SHA256_MISMATCH")
+    if request.get("process_instance_hash_semantics") != observed_instance["hash_semantics"]:
+        hold_reasons.append("PROCESS_INSTANCE_HASH_SEMANTICS_MISMATCH")
     if process_errors:
         hold_reasons.extend(f"PROCESS_INSTANCE:{x}" for x in process_errors)
     unresolved = [x for x in source_objects if x["resolution_state"] != "RESOLVED"]
@@ -416,18 +481,21 @@ def compile_professional(request_path: Path) -> tuple[Path, Path, dict[str, Any]
     output_path = _resolve_request_path(str(request["output_ref"]), request_path)
     readback_path = _resolve_request_path(str(request["readback_ref"]), request_path)
     _write_json(output_path, receipt)
-    request_sha = sha256_file(request_path)
-    output_sha = sha256_file(output_path)
+    request_hash = hash_file(request_path)
+    output_hash = hash_file(output_path)
+    compiler_hash = hash_file(Path(__file__))
     readback = {
         "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "compilation_id": request["compilation_id"],
         "project_id": request["project_id"],
         "mode": "PROFESSIONAL_COMPILE",
         "compiler_ref": COMPILER_REF,
-        "compiler_sha256": sha256_file(Path(__file__)),
+        "compiler_sha256": compiler_hash["sha256"],
+        "compiler_hash_semantics": compiler_hash["hash_semantics"],
         "request_ref": display_path(request_path),
-        "request_sha256": request_sha,
+        "request_sha256": request_hash["sha256"],
+        "request_hash_semantics": request_hash["hash_semantics"],
         "target_receipt_type": request["target_receipt_type"],
         "source_objects": source_objects,
         "source_integrity_state": source_integrity,
@@ -437,7 +505,8 @@ def compile_professional(request_path: Path) -> tuple[Path, Path, dict[str, Any]
         "pass_readiness": pass_readiness,
         "hold_reasons": list(dict.fromkeys(hold_reasons)),
         "output_ref": display_path(output_path),
-        "output_sha256": output_sha,
+        "output_sha256": output_hash["sha256"],
+        "output_hash_semantics": output_hash["hash_semantics"],
         "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
         "does_not_prove": list(dict.fromkeys([
             *[str(x) for x in request.get("does_not_prove") or []],
@@ -465,6 +534,8 @@ def _closure_ref_readback(item: dict[str, Any], request_path: Path, roots: list[
     expected = item.get("expected_sha256")
     if expected and str(expected).upper() != str(rb["observed_sha256"]).upper():
         errors.append(f"CLOSURE_OBJECT_SHA256_MISMATCH:{ref}")
+    if item.get("expected_hash_semantics") != rb.get("hash_semantics"):
+        errors.append(f"CLOSURE_OBJECT_HASH_SEMANTICS_MISMATCH:{ref}")
     try:
         payload = load_json(path)
     except Exception as exc:  # pragma: no cover - defensive boundary
@@ -488,16 +559,20 @@ def readback_closure_pack(request_path: Path) -> tuple[Path, dict[str, Any]]:
         source_objects.append(rb)
         hold_reasons.extend(item_errors)
     state = "PASS" if not hold_reasons else "HOLD"
+    compiler_hash = hash_file(Path(__file__))
+    request_hash = hash_file(request_path)
     readback = {
         "object_type": "PROJECT_RECEIPT_COMPILATION_READBACK",
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "compilation_id": request["compilation_id"],
         "project_id": request["project_id"],
         "mode": "EXISTING_CLOSURE_READBACK",
         "compiler_ref": COMPILER_REF,
-        "compiler_sha256": sha256_file(Path(__file__)),
+        "compiler_sha256": compiler_hash["sha256"],
+        "compiler_hash_semantics": compiler_hash["hash_semantics"],
         "request_ref": display_path(request_path),
-        "request_sha256": sha256_file(request_path),
+        "request_sha256": request_hash["sha256"],
+        "request_hash_semantics": request_hash["hash_semantics"],
         "target_receipt_type": None,
         "source_objects": source_objects,
         "source_integrity_state": state,
@@ -508,6 +583,7 @@ def readback_closure_pack(request_path: Path) -> tuple[Path, dict[str, Any]]:
         "hold_reasons": list(dict.fromkeys(hold_reasons)),
         "output_ref": None,
         "output_sha256": None,
+        "output_hash_semantics": None,
         "compiler_boundary": "DERIVED_NON_AUTHORITY_PROJECTION_NEVER_AUTO_GRANTS_PROFESSIONAL_PASS",
         "does_not_prove": list(dict.fromkeys([
             *[str(x) for x in request.get("does_not_prove") or []],
