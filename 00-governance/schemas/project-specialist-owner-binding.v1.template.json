@@ -1,0 +1,36 @@
+{
+  "object_type": "PROJECT_SPECIALIST_OWNER_BINDING",
+  "schema_version": "1.0",
+  "binding_id": "PSOB-PROJECT-TECHDRAW-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "source_revision": "SOURCE_REVISION",
+  "capability_role": "TECHNICAL_DRAWING",
+  "status": "HOLD",
+  "owner_kind": "NOT_ASSIGNED",
+  "owner_ref": null,
+  "authorization_ref": null,
+  "authorization_state": "NOT_ASSIGNED",
+  "scope_refs": [],
+  "required_native_outputs": [],
+  "authority_ceiling": "PROJECT_TECHNICAL_DRAWING_PRODUCTION_NOT_PROFESSIONAL_APPROVAL",
+  "independent_review_required": false,
+  "review_owner_ref": null,
+  "review_state": "NOT_REQUIRED",
+  "supersedes_binding_ref": null,
+  "revocation_triggers": [
+    "project authority changes",
+    "owner authorization is revoked",
+    "scope or required native outputs materially change",
+    "professional/statutory authority is newly required"
+  ],
+  "stale": false,
+  "binding_verdict": "HOLD",
+  "does_not_prove": [
+    "professional design approval",
+    "statutory approval",
+    "construction issue authority",
+    "field truth",
+    "Technical Drawing Candidate promotion"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "object_type": "PROJECT_RISK_HAZARD_REGISTER",
+  "schema_version": "1.0",
+  "register_id": "PRHR-C04-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "REMOTE_EVIDENCE_BOUNDED_DESIGN_CLAIM",
+  "source_revision": "C04 Project Architecture v3.2 / C04_CURRENT 2026-08-18",
+  "status": "CURRENT",
+  "risks": [
+    {
+      "risk_id": "RISK-C04-FIELD-TRUTH-FALSE-PROMOTION",
+      "in_claim": true,
+      "hazard_statement": "Unverified field geometry, safety, accessibility, capacity or operational conditions could be represented as implementation-ready or approved facts during remote design development.",
+      "method_ref": "C04_CURRENT.md §5 Evidence / truth boundary + OLEANDER fail-closed claim-boundary hazard review",
+      "owner_ref": "C04_CURRENT.md / current project authority",
+      "severity_class": "CRITICAL_FOR_PROMOTION_CLAIM",
+      "likelihood_basis": "Current authority explicitly states FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD and lists exact measured geometry, approved safety/accessibility/capacity and implementation-ready claims as blocked.",
+      "mitigation_refs": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md#5-evidence-truth-boundary",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md#current-locks-do-not-reopen"
+      ],
+      "verification_method": "Read back the current authority and current execution carrier and confirm the field-open facts remain explicitly blocked from Promotion while evidence-bounded remote design remains allowed.",
+      "evidence_refs": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md"
+      ],
+      "state": "MITIGATED",
+      "residual_risk_owner_ref": "C04 project authority / future field and professional owners when appointed",
+      "reopen_triggers": [
+        "new field observation or measurement enters the claim",
+        "a construction/implementation-ready claim is proposed",
+        "safety/accessibility/capacity authority changes",
+        "current NO_PROMOTION or G1F HOLD boundary changes"
+      ]
+    }
+  ],
+  "blocking_risk_ids": [],
+  "stale": false,
+  "register_verdict": "PASS",
+  "does_not_prove": [
+    "site safety approval",
+    "accessibility compliance",
+    "capacity approval",
+    "field geometry accuracy",
+    "zero residual risk",
+    "professional or statutory approval",
+    "system Promotion"
+  ]
+}

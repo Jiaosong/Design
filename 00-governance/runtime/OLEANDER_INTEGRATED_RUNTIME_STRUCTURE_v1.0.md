@@ -164,7 +164,7 @@ Promotion requires all triggered responsibilities needed by the claim to agree.
 
 When material project obligations are promotion-relevant, R-J also consumes the current `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE`. This is a Project Plane compilation object: it does not create a twelfth Runtime Layer and does not replace the originating professional/system requirement owner.
 
-The same Project Plane rule applies, when triggered, to `PROJECT_CONFIGURATION_CHANGE_REGISTER`, `PROJECT_RISK_HAZARD_REGISTER` and `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION`. They compile closure state for R-J but do not absorb professional semantics, safety authority, commissioning authority or operation ownership.
+The same Project Plane rule applies, when triggered, to `PROJECT_CONFIGURATION_CHANGE_REGISTER`, `PROJECT_RISK_HAZARD_REGISTER` and `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION`. `PROJECT_SPECIALIST_OWNER_BINDING` is additionally consumed when a required native output is resolved through `PROJECT_SPECIALIST_BOUND`; it proves only the explicit project authorization/scope needed for that owner route. These objects compile closure/ownership state for R-J but do not absorb professional semantics, safety authority, commissioning authority, operation ownership, or Candidate-to-Current Skill promotion.
 
 When PAP is triggered, durable binary persistence closes before Promotion.
 

@@ -161,15 +161,16 @@ Professional domains retain semantic ownership of their requirements and evidenc
 
 If an in-claim requirement is unresolved, stale, failed, unverified, or requires validation that has not passed, the baseline cannot be `PASS` and the Master cannot report Promotion readiness for a claim that depends on it.
 
-### 6.2｜Project configuration, risk and operational compilation
+### 6.2｜Project configuration, risk, specialist-owner and operational compilation
 
-Three additional Project Plane control objects are used only when their trigger applies:
+Four additional Project Plane control objects are used only when their trigger applies:
 
 - `PROJECT_CONFIGURATION_CHANGE_REGISTER` → `schemas/project-configuration-change-register.v1.schema.json`;
 - `PROJECT_RISK_HAZARD_REGISTER` → `schemas/project-risk-hazard-register.v1.schema.json`;
+- `PROJECT_SPECIALIST_OWNER_BINDING` → `schemas/project-specialist-owner-binding.v1.schema.json` when an output owner route uses `PROJECT_SPECIALIST_BOUND`;
 - `PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION` → `schemas/project-operational-acceptance-compilation.v1.schema.json`.
 
-They do not create new project stages or replace professional owners. Configuration/change compiles current baselines, approvals, affected objects, propagation and reacceptance; Risk/Hazard compiles domain-native risk methods without imposing one universal matrix/RPN; Operational Acceptance compiles handover, commissioning, training, O&M/asset data, defects, deferred tests and actual operational readback.
+They do not create new project stages or replace professional owners. Configuration/change compiles current baselines, approvals, affected objects, propagation and reacceptance; Risk/Hazard compiles domain-native risk methods without imposing one universal matrix/RPN; Specialist Owner Binding proves a named project/external specialist has explicit current authorization for declared outputs at a bounded authority ceiling and never converts a Candidate/generic Skill into that specialist; Operational Acceptance compiles handover, commissioning, training, O&M/asset data, defects, deferred tests and actual operational readback.
 
 Each object is fail-closed only when triggered. An untriggered object adds no work. A triggered object with unresolved in-claim blockers caps Promotion readiness.
 
@@ -393,7 +394,7 @@ Promotion eligibility requires all applicable conditions below:
 10. No unresolved shared-variable / interface authority conflict remains.
 11. No dependency consumed by the promoted claim is stale or requires reopen.
 12. Every material change has propagated to affected downstream states.
-13. Every required native output has a Current callable owner or an explicit project-authorized specialist owner. A Candidate Skill / Candidate Body such as the current Technical Drawing candidate cannot satisfy this condition by registry presence alone.
+13. Every required native output has a Current callable owner or an explicit project-authorized specialist owner. A Candidate Skill / Candidate Body such as the current Technical Drawing candidate cannot satisfy this condition by registry presence alone. For Technical Drawing, a project specialist route must resolve to a current non-stale `PROJECT_SPECIALIST_OWNER_BINDING` with verified authorization, explicit scope and native outputs; generic OLEANDER Skills cannot self-bind as the specialist.
 14. When operational acceptance is part of the intended claim, its current compilation is non-stale `PASS`; blocking defects are resolved and any deferred required test is explicitly outside the current claim.
 15. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
 16. Independent Design Review is `KEEP` for the intended claim.

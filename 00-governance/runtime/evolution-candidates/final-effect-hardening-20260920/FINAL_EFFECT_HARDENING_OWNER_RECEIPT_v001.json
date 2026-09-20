@@ -1,0 +1,177 @@
+{
+  "object_type": "OLEANDER_MATERIAL_DELTA_OWNER_RECEIPT",
+  "schema_version": "1.0-provenance",
+  "receipt_id": "OLEANDER-FINAL-EFFECT-HARDENING-20260920-v001",
+  "date": "2026-09-20",
+  "repository": "Jiaosong/Design",
+  "branch": "repair/oleander-final-effect-hardening-20260920",
+  "baseline_main_commit": "3f7b419bb89a2b7c67a589793b087d21ea9b178f",
+  "purpose": "Continue the post-#674 final-effect hardening plan: truthfully test the positive professional-PASS path, create a machine-verifiable PROJECT_SPECIALIST_BOUND route for Technical Drawing without promotion, and run Configuration/Risk/Operational project-plane controls on live C04 evidence.",
+  "plan_results": {
+    "positive_professional_pass_chain": {
+      "state": "OPEN_EVIDENCE_INSUFFICIENT",
+      "decision": "DO_NOT_FABRICATE_PASS",
+      "evidence_ref": "00-governance/runtime/evolution-candidates/final-effect-hardening-20260920/PROFESSIONAL_PASS_EVIDENCE_SEARCH_v001.json"
+    },
+    "technical_drawing_owner_route": {
+      "machine_route": "IMPLEMENTED_PROJECT_SPECIALIST_OWNER_BINDING",
+      "candidate_promoted": false,
+      "generic_owner_substitution_allowed": false,
+      "c04_binding_state": "HOLD_NO_AUTHORIZED_SPECIALIST_ASSIGNED"
+    },
+    "c04_project_controls": {
+      "configuration_change": "PASS_AT_DECLARED_CONFIGURATION_CLAIM",
+      "risk_hazard": "PASS_AT_REMOTE_FALSE_PROMOTION_HAZARD_CLAIM",
+      "operational_acceptance": "HOLD",
+      "technical_drawing_specialist_binding": "HOLD",
+      "overall_project_promotion": "HOLD"
+    }
+  },
+  "authority_state": {
+    "system_architecture_count": 1,
+    "master_runtime_count": 1,
+    "runtime_layer_count": 11,
+    "operational_plane_count": 6,
+    "technical_drawing_candidate_promoted": false,
+    "c04_project_architecture_changed": false,
+    "c04_project_architecture_revision": "v3.2",
+    "c04_truth_boundary": "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION"
+  },
+  "material_files_excluding_this_receipt": [
+    {
+      "path": "00-governance/complex-project-master-runtime-v1.0.md",
+      "bytes": 25731,
+      "sha256": "A1F02FB25D22C2CC3DB8E549ED3EAC9A1C3D5D1DB901302A32185A493F123A10"
+    },
+    {
+      "path": "00-governance/control-plane/tests/test_project_closure_objects.py",
+      "bytes": 14207,
+      "sha256": "AE106812D29586AF3E8721E1B22BF1113EDEC8F526DE87025B6095F5793F0C67"
+    },
+    {
+      "path": "00-governance/oleander-project-flow-v0.3.md",
+      "bytes": 20886,
+      "sha256": "34EAE1CC1654B1BD260FBA934A7BFF169F633D8B7AD75851B83E13522450AFB7"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md",
+      "bytes": 20589,
+      "sha256": "99103594D05DEC976F044625D7698A7A83926C813B444C15A4D070523116F16F"
+    },
+    {
+      "path": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+      "bytes": 33421,
+      "sha256": "E322522194FC153F0C330E7ECABB736998DB825100DF99C2DD7B6AA6F12484BB"
+    },
+    {
+      "path": "00-governance/runtime/evolution-candidates/final-effect-hardening-20260920/PROFESSIONAL_PASS_EVIDENCE_SEARCH_v001.json",
+      "bytes": 2912,
+      "sha256": "0814CEC95FCCD4E06868096C3401469CBCB8DB3424A7C7F1501054F105D4289F"
+    },
+    {
+      "path": "00-governance/schemas/oleander-project-flow-v0.3.schema.json",
+      "bytes": 20354,
+      "sha256": "8CFC6F960DA24D81593E38815ADFFE1DCC08DB6400EC456213B4CD8125A2A47C"
+    },
+    {
+      "path": "00-governance/schemas/project-specialist-owner-binding.v1.schema.json",
+      "bytes": 2386,
+      "sha256": "8DFE447CBB4D594B6614CD6E90925A01F2413C04CC11E98B3BACAF301B5BEF98"
+    },
+    {
+      "path": "00-governance/schemas/project-specialist-owner-binding.v1.template.json",
+      "bytes": 1139,
+      "sha256": "C2235A0AB56A9DA92838E37A0EBCF94448871AE9844DD36A151E410020B90B90"
+    },
+    {
+      "path": "00-governance/schemas/validate_project_closure_objects.py",
+      "bytes": 22752,
+      "sha256": "14B8A8FAF296345647F0AFD6AE07E46ACEA66A5A8A6C95668AF6D9FFF1016B57"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+      "bytes": 17329,
+      "sha256": "81E2BCBDC9DF22198A897BBB56184CF90493824A410D9AAD555F92246A40A1E1"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONFIGURATION_CHANGE_REGISTER_v0.1.json",
+      "bytes": 2245,
+      "sha256": "C9FAA91ADBBF2810E03681409D6204BF4A8E7F2DBDAE23D36B835567C0677290"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONTROL_READBACK_v0.1.json",
+      "bytes": 1918,
+      "sha256": "193673CB34A4FAC36BFAF0D1A093CC5B06EADF6852A74481B15949BE901425D5"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION_v0.1.json",
+      "bytes": 1538,
+      "sha256": "B585F32F0CF0A6714B081623504DC85D04EDFE1ABDE6D05B132F329D92B17739"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_RISK_HAZARD_REGISTER_v0.1.json",
+      "bytes": 2461,
+      "sha256": "19A18C183A1EE06AEF4904A6A739298F8A3FB1AACDB30F73352CD7AD72B80C91"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_TECHNICAL_DRAWING_SPECIALIST_BINDING_v0.1.json",
+      "bytes": 1575,
+      "sha256": "01F938304B2FF75E411440100BB0A7744764AAA734BD4EE5F0DE752C4DAEBB24"
+    },
+    {
+      "path": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/README.md",
+      "bytes": 1298,
+      "sha256": "94CE9F906454EB65D79548EF3D6ACF80B2379EC676EA8D8AF4747E004B6BC1D7"
+    }
+  ],
+  "validation": [
+    {
+      "check": "project closure targeted tests",
+      "result": "PASS",
+      "tests": 22
+    },
+    {
+      "check": "full control-plane tests",
+      "result": "PASS",
+      "tests": 133
+    },
+    {
+      "check": "execution contracts",
+      "result": "PASS",
+      "summary": "7 installed owners; 5 candidate UI owners; 79/79 professional stage knowledge binding; resolver/owner map/capability/adapter/artifact/regression/drift/eval coverage consistent."
+    },
+    {
+      "check": "architecture control graph",
+      "result": "PASS",
+      "summary": "1 system architecture; 1 master runtime; 11 runtime layers; 6 operational planes."
+    },
+    {
+      "check": "C04 project-control object validation",
+      "result": "PASS",
+      "objects": 4
+    },
+    {
+      "check": "changed JSON parse",
+      "result": "PASS",
+      "objects": 10
+    },
+    {
+      "check": "git diff --check",
+      "result": "PASS_WITH_NONFATAL_LINE_ENDING_WARNINGS"
+    }
+  ],
+  "does_not_prove": [
+    "a positive Structural + MEP + Integration professional PASS chain",
+    "Technical Drawing Current authority or Candidate promotion",
+    "an actually appointed C04 Technical Drawing specialist",
+    "C04 field truth, site safety, accessibility compliance or capacity approval",
+    "C04 built handover, commissioning, training, O&M readiness or operation",
+    "professional or statutory approval",
+    "Design KEEP",
+    "system Promotion",
+    "GitHub remote sync",
+    "Notion sync",
+    "external deployment"
+  ],
+  "self_digest_note": "This provenance receipt is intentionally excluded from material_files_excluding_this_receipt because a file cannot contain a stable digest of its own final bytes."
+}

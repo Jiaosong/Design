@@ -66,7 +66,7 @@ When cross-disciplinary integration is triggered, the promotion-relevant `Integr
 
 When material project obligations are promotion-relevant, the current `PROJECT_REQUIREMENT_ACCEPTANCE_BASELINE` is compiled under `schemas/project-requirement-acceptance-baseline.v1.schema.json`. It does not replace domain requirements or Systems Engineering; it is the Project Plane compilation that prevents unverified obligations from disappearing between disciplines.
 
-If technical drawing is a required native output and the Current route still resolves only to the Candidate Technical Drawing body, the project remains `CANDIDATE_BODY_HOLD` unless an explicit project-authorized specialist owner is bound. The general design owner may not absorb technical-drawing authority merely to avoid HOLD.
+If technical drawing is a required native output and the Current route still resolves only to the Candidate Technical Drawing body, the project remains `CANDIDATE_BODY_HOLD` unless an explicit project-authorized specialist owner is bound. `PROJECT_SPECIALIST_BOUND` is valid only through a current non-stale `PROJECT_SPECIALIST_OWNER_BINDING` validated against `schemas/project-specialist-owner-binding.v1.schema.json`; free text, Candidate presence, or a generic design/3D owner is not a binding. The v1 binding ceiling is project technical-drawing production only and does not grant professional design, statutory, construction-issue or field authority.
 
 **Hard ordering:** if PAP is triggered, durable upload + independent retrieval + hash/size/open verification must PASS before AR-S09 and before `PROMOTED`. Cross-system registration/synchronization may continue after promotion, but the durable binary gate cannot be deferred until after promotion.
 

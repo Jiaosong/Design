@@ -1,0 +1,42 @@
+{
+  "object_type": "PROJECT_SPECIALIST_OWNER_BINDING",
+  "schema_version": "1.0",
+  "binding_id": "PSOB-C04-TECHDRAW-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "SPATIAL_TECHNICAL_MODEL",
+  "source_revision": "C04 Project Architecture v3.2 / C04_CURRENT 2026-08-18",
+  "capability_role": "TECHNICAL_DRAWING",
+  "status": "HOLD",
+  "owner_kind": "NOT_ASSIGNED",
+  "owner_ref": null,
+  "authorization_ref": null,
+  "authorization_state": "NOT_ASSIGNED",
+  "scope_refs": [
+    "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md#spatial-technical-model"
+  ],
+  "required_native_outputs": [
+    "C22/C23 plan-section-detail technical drawing production where formally required",
+    "dimension/note/geometry technical graphic readback where formally required"
+  ],
+  "authority_ceiling": "PROJECT_TECHNICAL_DRAWING_PRODUCTION_NOT_PROFESSIONAL_APPROVAL",
+  "independent_review_required": false,
+  "review_owner_ref": null,
+  "review_state": "NOT_REQUIRED",
+  "supersedes_binding_ref": null,
+  "revocation_triggers": [
+    "project authority changes",
+    "drawing scope or issue purpose changes",
+    "professional/statutory drawing authority becomes required",
+    "a future specialist authorization is revoked"
+  ],
+  "stale": false,
+  "binding_verdict": "HOLD",
+  "does_not_prove": [
+    "that the Technical Drawing Candidate is Current",
+    "that oleander-design-process or oleander-3d-pipeline owns Technical Drawing authority",
+    "professional design approval",
+    "construction issue authority",
+    "statutory approval",
+    "field truth"
+  ]
+}

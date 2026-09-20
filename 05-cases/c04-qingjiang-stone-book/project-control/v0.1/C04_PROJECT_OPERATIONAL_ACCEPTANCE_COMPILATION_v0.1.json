@@ -1,0 +1,53 @@
+{
+  "object_type": "PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION",
+  "schema_version": "1.0",
+  "compilation_id": "POAC-C04-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": null,
+  "source_revision": "C04 Project Architecture v3.2 / C04_CURRENT 2026-08-18",
+  "status": "HOLD",
+  "handover_refs": [],
+  "commissioning_refs": [],
+  "training_refs": [],
+  "om_asset_data_refs": [],
+  "defects": [
+    {
+      "defect_id": "DEFECT-C04-OPERATIONAL-CLOSEOUT-NOT_AVAILABLE",
+      "blocking": true,
+      "status": "HOLD",
+      "owner_ref": "PROJECT IMPLEMENTATION / OPERATOR OWNER NOT_ASSIGNED",
+      "evidence_refs": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md#5-evidence-truth-boundary"
+      ]
+    }
+  ],
+  "deferred_tests": [
+    {
+      "test_id": "TEST-C04-FIELD-COMMISSIONING",
+      "required": true,
+      "outside_current_claim": true,
+      "status": "DEFERRED",
+      "owner_ref": "FUTURE IMPLEMENTATION / COMMISSIONING OWNER NOT_ASSIGNED"
+    },
+    {
+      "test_id": "TEST-C04-OPERATIONAL-FIELD-READBACK",
+      "required": true,
+      "outside_current_claim": true,
+      "status": "DEFERRED",
+      "owner_ref": "FUTURE OPERATOR / FIELD OWNER NOT_ASSIGNED"
+    }
+  ],
+  "operational_readback_refs": [],
+  "poe_plan_ref": null,
+  "stale": false,
+  "operational_verdict": "HOLD",
+  "does_not_prove": [
+    "built implementation",
+    "commissioning completion",
+    "operator readiness",
+    "maintenance readiness",
+    "field performance",
+    "statutory approval",
+    "Design KEEP"
+  ]
+}

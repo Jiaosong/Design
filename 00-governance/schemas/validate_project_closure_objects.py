@@ -23,6 +23,7 @@ SCHEMAS = {
     "PROJECT_CONFIGURATION_CHANGE_REGISTER": ROOT / "project-configuration-change-register.v1.schema.json",
     "PROJECT_RISK_HAZARD_REGISTER": ROOT / "project-risk-hazard-register.v1.schema.json",
     "PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION": ROOT / "project-operational-acceptance-compilation.v1.schema.json",
+    "PROJECT_SPECIALIST_OWNER_BINDING": ROOT / "project-specialist-owner-binding.v1.schema.json",
 }
 
 STRUCTURAL_PROCESS = ROOT / "structural-engineering-design-process.v1.json"
@@ -363,6 +364,43 @@ def validate_operational_acceptance(payload: dict[str, Any]) -> list[str]:
     return errors
 
 
+def validate_project_specialist_owner_binding(payload: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if payload.get("binding_verdict") != "PASS":
+        return errors
+    if payload.get("status") != "CURRENT":
+        errors.append("PASS specialist owner binding must have status CURRENT")
+    if payload.get("stale"):
+        errors.append("PASS specialist owner binding cannot be stale")
+    if payload.get("owner_kind") == "NOT_ASSIGNED":
+        errors.append("PASS specialist owner binding requires an assigned specialist owner_kind")
+    owner_ref = payload.get("owner_ref")
+    if not owner_ref:
+        errors.append("PASS specialist owner binding requires owner_ref")
+    forbidden_skill_substitutions = {
+        "OLEANDER Technical Drawing",
+        "oleander-technical-drawing",
+        "oleander-design-process",
+        "oleander-3d-pipeline",
+    }
+    if owner_ref in forbidden_skill_substitutions:
+        errors.append("PASS specialist owner binding cannot substitute a Candidate/generic OLEANDER Skill for an explicitly authorized project specialist")
+    if payload.get("authorization_state") != "VERIFIED":
+        errors.append("PASS specialist owner binding requires authorization_state VERIFIED")
+    if not payload.get("authorization_ref"):
+        errors.append("PASS specialist owner binding requires authorization_ref")
+    if not payload.get("scope_refs"):
+        errors.append("PASS specialist owner binding requires scope_refs")
+    if not payload.get("required_native_outputs"):
+        errors.append("PASS specialist owner binding requires required_native_outputs")
+    if payload.get("independent_review_required"):
+        if payload.get("review_state") != "PASS":
+            errors.append("PASS specialist owner binding requires independent review PASS when independent_review_required=true")
+        if not payload.get("review_owner_ref"):
+            errors.append("PASS specialist owner binding requires review_owner_ref when independent review is required")
+    return errors
+
+
 def validate_payload(payload: dict[str, Any]) -> list[str]:
     kind = object_kind(payload)
     if kind not in SCHEMAS:
@@ -382,6 +420,8 @@ def validate_payload(payload: dict[str, Any]) -> list[str]:
         errors.extend(validate_risk_register(payload))
     elif kind == "PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION":
         errors.extend(validate_operational_acceptance(payload))
+    elif kind == "PROJECT_SPECIALIST_OWNER_BINDING":
+        errors.extend(validate_project_specialist_owner_binding(payload))
     return errors
 
 

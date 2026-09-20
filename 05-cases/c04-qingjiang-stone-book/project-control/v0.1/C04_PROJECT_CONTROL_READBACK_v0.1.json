@@ -1,0 +1,50 @@
+{
+  "object_type": "C04_PROJECT_CONTROL_READBACK",
+  "version": "0.1",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "baseline_git_commit": "3f7b419bb89a2b7c67a589793b087d21ea9b178f",
+  "source_readback": [
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+      "sha256": "54B9A548028D1163F1117BFA7B3A690AB0173BCB1BF6135038B731BAA360BB71",
+      "checks": [
+        "PROJECT_ARCHITECTURE_v3.2 is current",
+        "FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION is explicit",
+        "approved safety/accessibility/capacity, exact measured geometry and implementation-ready claims remain blocked"
+      ]
+    },
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/C04-B_PROJECT-ARCHITECTURE_v3.2.md",
+      "sha256": "55A57A3CC9EAF71BC3ACBE7E01704260E32B9278F86E83868BD5D30874592D94",
+      "checks": [
+        "v3.2 architecture carrier exists"
+      ]
+    },
+    {
+      "ref": "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+      "sha256": "81E2BCBDC9DF22198A897BBB56184CF90493824A410D9AAD555F92246A40A1E1",
+      "checks": [
+        "current execution carrier is bound to project-control/v0.1",
+        "operational acceptance remains HOLD",
+        "Technical Drawing specialist binding remains HOLD"
+      ]
+    }
+  ],
+  "control_results": {
+    "configuration_change": "PASS_AT_DECLARED_CONFIGURATION_CLAIM",
+    "risk_hazard": "PASS_AT_REMOTE_FALSE_PROMOTION_HAZARD_CLAIM",
+    "operational_acceptance": "HOLD",
+    "technical_drawing_specialist_binding": "HOLD"
+  },
+  "overall_project_promotion": "HOLD",
+  "claim_ceiling": "PROJECT CONTROL READBACK ONLY / NO FIELD, PROFESSIONAL, STATUTORY, OPERATIONAL OR DESIGN KEEP PROMOTION",
+  "does_not_prove": [
+    "field truth",
+    "site safety",
+    "professional or statutory approval",
+    "built operation",
+    "Technical Drawing Current authority",
+    "Design KEEP",
+    "system Promotion"
+  ]
+}

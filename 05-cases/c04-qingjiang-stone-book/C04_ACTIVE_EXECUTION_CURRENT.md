@@ -309,6 +309,15 @@ New feature expansion frozen. Existing App currentization, presentation and prof
 ### GOVERNANCE / QC
 Version pollution, false PASS, stale Current, source boundary, persistence/recoverability and cross-media contradiction only.
 
+### PROJECT PLANE CONTROL OBJECTS
+The live bounded project-control objects are under `project-control/v0.1/`:
+- configuration/change register = `PASS` only for the current Project Architecture v3.2 propagation claim;
+- risk/hazard register = `PASS` only for the current remote-design false-promotion hazard control; it does **not** mean field/site safety approval;
+- operational acceptance compilation = `HOLD` because implementation handover, commissioning, training, O&M/asset data and operational field readback do not exist;
+- Technical Drawing project-specialist binding = `HOLD` because no explicit authorized specialist is currently bound. Candidate Technical Drawing and generic design/3D owners remain insufficient.
+
+These Project Plane controls do not change `FIELD OBSERVED=0 / FIELD MEASURED=0 / G1F HOLD / NO_PROMOTION` and do not change Project Architecture v3.2.
+
 ## 12｜CURRENT EXECUTION PRIORITY
 
 1. **Lock P001–P052 as 52 independent pages; no merge.**
