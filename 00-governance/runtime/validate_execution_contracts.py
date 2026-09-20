@@ -33,6 +33,7 @@ OWNER_MAP = RUNTIME / "OLEANDER_NOTION_TO_GITHUB_EXECUTION_OWNER_MAP_v1.0.json"
 CONTROL_GRAPH = RUNTIME / "OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json"
 RECEIPT_CONTRACT = RUNTIME / "OLEANDER_EXECUTION_RECEIPT_v1.0.json"
 PROFESSIONAL_RECEIPT_BINDINGS = RUNTIME / "OLEANDER_CURRENT_PROFESSIONAL_RECEIPT_BINDINGS_v1.0.json"
+RECEIPT_COMPILER_PROVENANCE_DIR = RUNTIME / "evolution-candidates" / "receipt-compiler-20260920"
 RECEIPT_DIR = RUNTIME / "receipts"
 LIFECYCLE_BASELINE = RUNTIME / "skill-lifecycle" / "BASELINE_ADOPTION_2026-08-18.json"
 LIFECYCLE_DIR = RUNTIME / "skill-lifecycle"
@@ -498,9 +499,85 @@ def validate_professional_receipt_bindings() -> int:
     for ref in (compiler_ref, compiler_contract_ref):
         if not (ROOT / ref).is_file():
             fail(f"professional receipt compiler dependency missing: {ref}")
+    compiler_contract = load_json(ROOT / compiler_contract_ref)
+    semantics = (
+        compiler_contract.get("$defs", {})
+        .get("hashSemantics", {})
+        .get("enum", [])
+    )
+    if set(semantics) != {"UTF8_TEXT_LF_CANONICAL_V1", "RAW_BYTES_V1"}:
+        fail("professional receipt compiler hash semantics contract drift")
+    readme_text = README.read_text(encoding="utf-8")
+    for token in ("UTF8_TEXT_LF_CANONICAL_V1", "RAW_BYTES_V1"):
+        if token not in readme_text:
+            fail(f"runtime README missing compiler hash semantic {token}")
     if "compiler-granted professional PASS" not in set(projection.get("does_not_prove") or []):
         fail("professional receipt binding projection must explicitly deny compiler-granted professional PASS")
     return 2
+
+
+def _digest_declared_bytes(path: str, data: bytes, semantics: str) -> tuple[str, int]:
+    if semantics == "UTF8_TEXT_LF_CANONICAL_V1":
+        try:
+            text = data.decode("utf-8-sig")
+        except UnicodeDecodeError as exc:
+            fail(f"receipt compiler provenance declares non-UTF8 text: {path}: {exc}")
+        canonical = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    elif semantics == "RAW_BYTES_V1":
+        canonical = data
+    else:
+        fail(f"receipt compiler provenance uses unsupported hash semantics {semantics}: {path}")
+    return hashlib.sha256(canonical).hexdigest().upper(), len(canonical)
+
+
+def validate_receipt_compiler_provenance() -> int:
+    legacy_path = RECEIPT_COMPILER_PROVENANCE_DIR / "RECEIPT_COMPILER_OWNER_RECEIPT_v001.json"
+    current_path = RECEIPT_COMPILER_PROVENANCE_DIR / "RECEIPT_COMPILER_OWNER_RECEIPT_v002.json"
+    legacy = load_json(legacy_path)
+    current = load_json(current_path)
+    expected_current_ref = str(current_path.relative_to(ROOT)).replace("\\", "/")
+    if legacy.get("status") != "SUPERSEDED_HASH_SEMANTICS":
+        fail("receipt compiler provenance v001 must remain SUPERSEDED_HASH_SEMANTICS")
+    if legacy.get("superseded_by") != expected_current_ref:
+        fail("receipt compiler provenance v001 superseded_by drift")
+    if current.get("status") != "CURRENT_FOR_PR680_PROVENANCE_READBACK":
+        fail("receipt compiler provenance v002 must remain CURRENT_FOR_PR680_PROVENANCE_READBACK")
+
+    hash_contract = current.get("hash_contract") or {}
+    if hash_contract.get("text_hash_semantics") != "UTF8_TEXT_LF_CANONICAL_V1":
+        fail("receipt compiler provenance v002 text hash semantics drift")
+    if hash_contract.get("binary_hash_semantics") != "RAW_BYTES_V1":
+        fail("receipt compiler provenance v002 binary hash semantics drift")
+
+    snapshot = str(current.get("pr_head_snapshot_commit") or "")
+    merged = str(current.get("merged_main_commit") or "")
+    baseline = str(current.get("baseline_main_commit") or "")
+    if not all(re.fullmatch(r"[0-9a-f]{40}", x) for x in (snapshot, merged, baseline)):
+        fail("receipt compiler provenance v002 commit binding malformed")
+    parents = subprocess.check_output(
+        ["git", "show", "-s", "--format=%P", merged], cwd=ROOT, text=True, encoding="utf-8"
+    ).strip().split()
+    if set(parents) != {baseline, snapshot}:
+        fail("receipt compiler provenance v002 merge parent binding drift")
+
+    rows = list(current.get("material_files_excluding_this_receipt") or []) + list(
+        current.get("protected_current_machine_identity") or []
+    )
+    if len(current.get("material_files_excluding_this_receipt") or []) != 22:
+        fail("receipt compiler provenance v002 material file set drift")
+    for row in rows:
+        require_fields(row, ["path", "snapshot_commit", "bytes", "sha256", "hash_semantics"], "receipt-compiler-provenance-row")
+        path = str(row["path"])
+        if row.get("snapshot_commit") != snapshot:
+            fail(f"receipt compiler provenance row snapshot drift: {path}")
+        try:
+            blob = subprocess.check_output(["git", "show", f"{snapshot}:{path}"], cwd=ROOT)
+        except subprocess.CalledProcessError:
+            fail(f"receipt compiler provenance snapshot path unreadable: {path}")
+        observed_sha, observed_bytes = _digest_declared_bytes(path, blob, str(row["hash_semantics"]))
+        if observed_sha != str(row["sha256"]).upper() or observed_bytes != row["bytes"]:
+            fail(f"receipt compiler provenance digest drift: {path}")
+    return len(rows)
 
 
 def _professional_role_matches_rule(role: str, rule: dict) -> bool:
@@ -1330,6 +1407,7 @@ def main() -> None:
     contracts = validate_contract_headers()
     validate_owner_consistency(contracts["capability"], resolver, owner_map)
     professional_receipt_compiler_bindings = validate_professional_receipt_bindings()
+    receipt_compiler_provenance_rows = validate_receipt_compiler_provenance()
     professional_stage_count, professional_role_count, knowledge_bound_stage_count = validate_professional_stage_capability_routing(
         owner_map, contracts["capability"]
     )
@@ -1354,6 +1432,7 @@ def main() -> None:
     print(f"professional stage capability routing: {professional_stage_count} stages / {professional_role_count} unique roles / unnamed fallback=0")
     print(f"professional stage knowledge binding: {knowledge_bound_stage_count}/{professional_stage_count} stages declare knowledge inputs + mount requirement")
     print(f"professional receipt compiler bindings: {professional_receipt_compiler_bindings} non-authority Current-domain bindings")
+    print(f"receipt compiler provenance: {receipt_compiler_provenance_rows} exact-snapshot canonical hash rows")
     print("resolver v1.2 / owner map / local+aggregate capability / adapter / artifact / regression / drift / eval coverage: CONSISTENT")
 
 

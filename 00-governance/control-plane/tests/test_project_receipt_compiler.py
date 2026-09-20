@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -22,7 +23,7 @@ def dump(path: Path, payload: dict) -> None:
 
 
 def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+    return compiler.sha256_file(path)
 
 
 def stage(*, closed: bool, pass_review: bool, evidence_ref: str) -> dict:
@@ -83,13 +84,14 @@ def instance(stage_payload: dict, *, verdict: str = "HOLD") -> dict:
 def request(process_path: Path, output: Path, readback: Path, *, requested_result: str, reviewer_ref: str | None = None) -> dict:
     return {
         "object_type": "PROFESSIONAL_RECEIPT_COMPILATION_REQUEST",
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "compilation_id": "COMP-TEST-001",
         "project_id": "PRJ-TEST-001",
         "workstream_id": None,
         "target_receipt_type": "STRUCTURAL_ENGINEERING_DESIGN_PROCESS_RECEIPT",
         "process_instance_ref": str(process_path),
         "process_instance_sha256": digest(process_path),
+        "process_instance_hash_semantics": compiler.TEXT_HASH_SEMANTICS,
         "source_revision": "TEST-REV-1",
         "claim_ceiling": "BOUNDED_TEST",
         "requested_result": requested_result,
@@ -104,6 +106,52 @@ def request(process_path: Path, output: Path, readback: Path, *, requested_resul
 
 
 class ProjectReceiptCompilerTests(unittest.TestCase):
+    def test_write_json_skips_identical_bytes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "stable.json"
+            payload = {"a": 1, "b": ["x", "y"]}
+            compiler._write_json(path, payload)
+            fixed_ns = 1_700_000_000_000_000_000
+            os.utime(path, ns=(fixed_ns, fixed_ns))
+            before = path.stat().st_mtime_ns
+            compiler._write_json(path, payload)
+            after = path.stat().st_mtime_ns
+            self.assertEqual(before, after)
+
+    def test_write_json_skips_crlf_equivalent_text(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "stable.json"
+            payload = {"a": 1, "b": ["x", "y"]}
+            canonical = (json.dumps(payload, indent=2) + "\n").encode("utf-8")
+            path.write_bytes(canonical.replace(b"\n", b"\r\n"))
+            fixed_ns = 1_700_000_000_000_000_000
+            os.utime(path, ns=(fixed_ns, fixed_ns))
+            before_raw = path.read_bytes()
+            before_mtime = path.stat().st_mtime_ns
+            compiler._write_json(path, payload)
+            self.assertEqual(before_raw, path.read_bytes())
+            self.assertEqual(before_mtime, path.stat().st_mtime_ns)
+
+    def test_text_hash_is_checkout_eol_stable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            lf = root / "lf.json"
+            crlf = root / "crlf.json"
+            lf.write_bytes(b'{\n  "a": 1\n}\n')
+            crlf.write_bytes(b'{\r\n  "a": 1\r\n}\r\n')
+            self.assertEqual(compiler.sha256_file(lf), compiler.sha256_file(crlf))
+            self.assertEqual(compiler.TEXT_HASH_SEMANTICS, compiler.hash_file(lf)["hash_semantics"])
+            self.assertEqual(compiler.TEXT_HASH_SEMANTICS, compiler.hash_file(crlf)["hash_semantics"])
+
+    def test_binary_hash_remains_raw_bytes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            binary = root / "asset.bin"
+            binary.write_bytes(b"a\r\nb\x00c")
+            observed = compiler.hash_file(binary)
+            self.assertEqual(compiler.BINARY_HASH_SEMANTICS, observed["hash_semantics"])
+            self.assertEqual(hashlib.sha256(binary.read_bytes()).hexdigest().upper(), observed["sha256"])
+
     def test_blocked_stage_compiles_hold(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -210,10 +258,14 @@ class ProjectReceiptCompilerTests(unittest.TestCase):
             request_path = root / "request.json"
             dump(request_path, {
                 "object_type": "PROJECT_CLOSURE_READBACK_REQUEST",
-                "schema_version": "1.0",
+                "schema_version": "1.1",
                 "compilation_id": "RB-TEST-001",
                 "project_id": "PROJECT_ID",
-                "object_refs": [{"ref": str(closure), "expected_sha256": digest(closure)}],
+                "object_refs": [{
+                    "ref": str(closure),
+                    "expected_sha256": digest(closure),
+                    "expected_hash_semantics": compiler.TEXT_HASH_SEMANTICS,
+                }],
                 "source_roots": [{"root_id": "TEST", "path": str(root), "required_for_pass": True}],
                 "readback_ref": str(readback),
                 "does_not_prove": ["professional approval"]

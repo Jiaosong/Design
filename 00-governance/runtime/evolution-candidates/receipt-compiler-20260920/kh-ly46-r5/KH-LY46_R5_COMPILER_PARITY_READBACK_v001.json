@@ -8,8 +8,10 @@
       "domain": "Structural Engineering",
       "manual_receipt_ref": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_HOLD_RECEIPT_v001.json",
       "manual_receipt_sha256": "7DCFFD804FB5C918D9EDD7AC0D8FBF9A5C82E18D3B48703C8B4866D7EB7F3BF2",
+      "manual_receipt_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
       "compiled_receipt_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_STRUCTURAL_COMPILED_HOLD_RECEIPT_v001.json",
-      "compiled_receipt_sha256": "E165FF3126102A2D913E397FD02CE4007B8BE15129D239D911FC6647B498E890",
+      "compiled_receipt_sha256": "0689DC686266103D586779B31DDF5B924B9A6AA9CCB0BA7A779A2E69BE4542EF",
+      "compiled_receipt_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
       "checks": {
         "receipt_type_same": true,
         "project_id_same": true,
@@ -28,8 +30,10 @@
       "domain": "Building Services / MEP",
       "manual_receipt_ref": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_MEP_HOLD_RECEIPT_v001.json",
       "manual_receipt_sha256": "03FE6F1F88842FF73CD82C195FB2E9F5FAE395B33C569BD4EF7CD05DC8C22A96",
+      "manual_receipt_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
       "compiled_receipt_ref": "00-governance/runtime/evolution-candidates/receipt-compiler-20260920/kh-ly46-r5/KH-LY46_R5_MEP_COMPILED_HOLD_RECEIPT_v001.json",
-      "compiled_receipt_sha256": "6A48BD6713EC0207026762904ACAC0BEA60C6605B7A28916FA8A5EE12C190137",
+      "compiled_receipt_sha256": "AE81F8B02F6B0762FA230B27832860478C36AE1157B4564AC3CB6BE0AF0A3E05",
+      "compiled_receipt_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
       "checks": {
         "receipt_type_same": true,
         "project_id_same": true,

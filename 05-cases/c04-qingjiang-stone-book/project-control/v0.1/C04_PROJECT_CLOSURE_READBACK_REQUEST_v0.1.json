@@ -1,24 +1,28 @@
 {
   "object_type": "PROJECT_CLOSURE_READBACK_REQUEST",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "compilation_id": "RB-C04-PROJECT-CONTROL-001",
   "project_id": "PRJ-C04-QINGJIANG-SHISHU",
   "object_refs": [
     {
       "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONFIGURATION_CHANGE_REGISTER_v0.1.json",
-      "expected_sha256": "DBDDE2DAF9A2253EA127CAE141C553B5ECCFC3289771003E37C1CC71EBC28FF2"
+      "expected_sha256": "C9FAA91ADBBF2810E03681409D6204BF4A8E7F2DBDAE23D36B835567C0677290",
+      "expected_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_RISK_HAZARD_REGISTER_v0.1.json",
-      "expected_sha256": "669DA5ED17F3B1847C8F33516D5850A43EB4F2993EEE12DBFA0743D5A1AA45B9"
+      "expected_sha256": "19A18C183A1EE06AEF4904A6A739298F8A3FB1AACDB30F73352CD7AD72B80C91",
+      "expected_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION_v0.1.json",
-      "expected_sha256": "464A0CC621B4FF439C2F3B8C4444964227D2B367C2687ED5F0ED285FBF88E7AB"
+      "expected_sha256": "B585F32F0CF0A6714B081623504DC85D04EDFE1ABDE6D05B132F329D92B17739",
+      "expected_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "ref": "05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_TECHNICAL_DRAWING_SPECIALIST_BINDING_v0.1.json",
-      "expected_sha256": "5F259F10AE8AF54B4E4223F17F3A5EBE069D9D14B3B9E0EB84DE140A183902BD"
+      "expected_sha256": "01F938304B2FF75E411440100BB0A7744764AAA734BD4EE5F0DE752C4DAEBB24",
+      "expected_hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     }
   ],
   "source_roots": [
