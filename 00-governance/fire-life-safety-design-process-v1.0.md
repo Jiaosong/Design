@@ -429,3 +429,32 @@ Tool: inspection/test/FPT/commissioning/impairment records. Readback: exact test
 
 ### Boundary
 `CODE CHECK ≠ FLS PROFESSIONAL PASS`；`MODEL PASS ≠ AHJ APPROVAL`；`PRODUCT EVIDENCE ≠ INSTALLED SYSTEM PASS`；`ONE SYSTEM CX PASS ≠ WHOLE FLS CLOSE`；`R-F INTEGRATION PASS` remains separate.
+
+
+## 2026-09-21｜External Source Strengthening｜NFPA 3 / NFPA 4
+
+**Candidate-only additive delta. No process promotion.**
+
+New canonical Notion SOURCE:
+- `SRC-NFPA-FLS-CX-IST-2027-001` — https://app.notion.com/p/3e2b86be5c47816885fad4cf0ad5d05e
+
+Current source lifecycle readback:
+- NFPA LiNK lists both 2027 and 2024 editions of NFPA 3, *Standard for Commissioning of Fire Protection and Life Safety Systems*;
+- NFPA LiNK lists both 2027 and 2024 editions of NFPA 4, *Standard for Integrated Fire Protection and Life Safety System Testing*;
+- project use must resolve adopted jurisdiction/AHJ/contract edition; publication existence is not project adoption.
+
+### Execution delta
+
+FLS-DELIVERY / commissioning readback must explicitly distinguish:
+`INDIVIDUAL / SYSTEM ACCEPTANCE → INTEGRATED TEST PLAN → PARTICIPATING SYSTEMS + RESPONSIBILITIES → INITIATING EVENT → EXPECTED SEQUENCE → COMMANDED STATE → ACTUAL PHYSICAL END-STATE / FEEDBACK → DEVIATION → REPAIR → SAME-CONDITION RETEST → FINAL CONFIGURATION`.
+
+A controller command, point-state or one subsystem PASS cannot stand in for the physical integrated end state. Cause/effect, device/system configuration, power/control/network, strategy or interface material change reopens affected integrated testing.
+
+### Boundary
+
+`NFPA EDITION EXISTS ≠ PROJECT ADOPTION`  
+`COMPONENT / SYSTEM ACCEPTANCE ≠ INTEGRATED END-TO-END TEST`  
+`CONTROLLER COMMAND ≠ PHYSICAL END STATE`  
+`IST PASS ≠ AHJ / STATUTORY APPROVAL ≠ WHOLE FLS PROFESSIONAL PASS`
+
+This SOURCE strengthens the existing FLS Candidate only; it does not create another FLS process, another commissioning owner, or a Current claim.
