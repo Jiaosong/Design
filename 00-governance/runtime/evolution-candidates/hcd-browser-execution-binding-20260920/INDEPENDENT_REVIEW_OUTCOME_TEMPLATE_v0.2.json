@@ -1,0 +1,20 @@
+{
+  "object_type": "OLEANDER_BOUNDED_EVIDENCE_INDEPENDENT_REVIEW_OUTCOME",
+  "version": "0.2",
+  "pr": 679,
+  "review_packet_ref": "EVIDENCE_REVIEW_PACKET_v0.2.json",
+  "reviewer_id": null,
+  "reviewer_role": null,
+  "producer_distinct": null,
+  "decision": "PENDING",
+  "allowed_decisions": ["ACCEPT_BOUNDED_EVIDENCE", "REQUEST_CHANGES", "HOLD"],
+  "accepted_transition": null,
+  "accepted_claim_ceiling": null,
+  "required_repairs": [],
+  "reopen_triggers": [],
+  "decision_ref": null,
+  "effective_commit": null,
+  "forbidden_transitions": ["HCD_PROCESS_CURRENT", "UI_INTERACTION_OWNER_CURRENT", "UI_VISUAL_OWNER_CURRENT", "USER_VALIDATION_PASS", "ACCESSIBILITY_CONFORMANCE"],
+  "state": "PENDING_INDEPENDENT_REVIEW",
+  "does_not_prove": ["HCD professional PASS", "Current UI Skill status", "representative-user usability", "accessibility conformance", "Promotion"]
+}

@@ -1,0 +1,167 @@
+{
+  "object_type": "PROFESSIONAL_EXECUTION_CAPABILITY_PLAN",
+  "schema_version": "1.0",
+  "plan_id": "PECP-C04-HCD-DP4-BROWSER-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "workstream_id": "C04-DIGITAL-HCD",
+  "domain": "Digital Product / Human-Centred Design",
+  "process_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+  "stage_id": "HCD-DP4",
+  "decision_object_id": "C04-HCD-DP4-PROTOTYPE-EVALUATION-v1.3",
+  "source_revision": "main@f124939df2a46372bc7559729a1bc0062e20c0d4 HCD candidate incl. PR687 whole-service delta + PR665 candidate evidence head 3376879389dddb331f4d39d0d7eb7f1aff5fbf51",
+  "claim_ceiling": "CONFIGURED_BROWSER_RUNTIME EVIDENCE ONLY / NO REPRESENTATIVE-USER USABILITY OR ACCESSIBILITY CLAIM",
+  "runtime_observed_at": "2026-09-20",
+  "capabilities": [
+    {
+      "capability_id": "HCD-CAP-BROWSER-SURFACE",
+      "in_claim": false,
+      "required_capability_role": "BROWSER_RUNTIME_EXECUTION_SURFACE",
+      "required_native_output": "repo-native HTML/CSS/JS/SVG executed in a real browser",
+      "native_authority_required": "Current project source artifact plus exact browser/runtime configuration",
+      "execution_mode": "SHARED_RUNTIME_EXECUTABLE",
+      "authority_state": "CURRENT_OWNER",
+      "availability_state": "AVAILABLE",
+      "selected_owner_ref": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json#html_css_js_svg_browser_native",
+      "execution_surface_ref": "html_css_js_svg_browser_native",
+      "tool_adapter_ref": ".github/workflows/website-quality.yml + project-bound Playwright workflow when applicable",
+      "actual_readback_method": "Real browser execution at declared viewport/runtime with state assertions and JavaScript/runtime error readback.",
+      "independent_review_required": false,
+      "independent_review_owner_ref": null,
+      "fallback": "Static state artifact may support explanation only; it cannot replace runtime interaction evidence.",
+      "open_items": [],
+      "does_not_prove": [
+        "interaction-design owner authority",
+        "representative-user task success",
+        "usability",
+        "accessibility conformance",
+        "HCD professional PASS"
+      ]
+    },
+    {
+      "capability_id": "HCD-CAP-INTERACTION-OWNER",
+      "in_claim": true,
+      "required_capability_role": "INTERACTIVE_PROTOTYPE_EXECUTION",
+      "required_native_output": "interaction prototype with state/error/recovery behavior",
+      "native_authority_required": "HCD/product interaction owner plus current source artifact",
+      "execution_mode": "CANDIDATE_ONLY",
+      "authority_state": "CANDIDATE_OWNER",
+      "availability_state": "AVAILABLE",
+      "selected_owner_ref": "oleander-ui-interaction",
+      "execution_surface_ref": "html_css_js_svg_browser_native",
+      "tool_adapter_ref": "repo-native browser runtime",
+      "actual_readback_method": "Configured browser state-path readback; C04 PR #665 provides 12/12 Chromium desktop/mobile candidate evidence.",
+      "independent_review_required": true,
+      "independent_review_owner_ref": null,
+      "fallback": "Keep stage HOLD; do not let the active browser surface silently promote the Candidate interaction owner.",
+      "open_items": [
+        "Current callable interaction-design owner remains unresolved."
+      ],
+      "does_not_prove": [
+        "Current Skill status",
+        "HCD validation",
+        "representative-user usability",
+        "accessibility conformance",
+        "promotion"
+      ]
+    },
+    {
+      "capability_id": "HCD-CAP-VISUAL-INTERACTION-READBACK",
+      "in_claim": true,
+      "required_capability_role": "UI_VISUAL_AND_INTERACTION_READBACK",
+      "required_native_output": "visual + interaction state readback at target viewports",
+      "native_authority_required": "Current visual/interaction owner or project-authorized specialist",
+      "execution_mode": "CANDIDATE_ONLY",
+      "authority_state": "CANDIDATE_OWNER",
+      "availability_state": "AVAILABLE",
+      "selected_owner_ref": "oleander-ui-visual-composition",
+      "execution_surface_ref": "html_css_js_svg_browser_native",
+      "tool_adapter_ref": "Playwright/browser readback",
+      "actual_readback_method": "Target viewport browser readback; runtime correctness remains separate from visual/HCD professional judgment.",
+      "independent_review_required": true,
+      "independent_review_owner_ref": null,
+      "fallback": "Keep visual/HCD professional review HOLD; browser screenshots or assertions do not create visual-design authority.",
+      "open_items": [
+        "Current callable UI visual-composition owner remains unresolved."
+      ],
+      "does_not_prove": [
+        "visual Design KEEP",
+        "HCD validation",
+        "accessibility conformance",
+        "Current Skill status"
+      ]
+    },
+    {
+      "capability_id": "HCD-CAP-USABILITY-RESEARCH",
+      "in_claim": true,
+      "required_capability_role": "USABILITY_RESEARCH",
+      "required_native_output": "participant/sample boundary + task evidence + usability findings + retest chain",
+      "native_authority_required": "Project-authorized research/HCD specialist and representative participant evidence",
+      "execution_mode": "CAPABILITY_HOLD",
+      "authority_state": "NO_OWNER",
+      "availability_state": "UNKNOWN",
+      "selected_owner_ref": null,
+      "execution_surface_ref": null,
+      "tool_adapter_ref": null,
+      "actual_readback_method": null,
+      "independent_review_required": true,
+      "independent_review_owner_ref": null,
+      "fallback": "No synthetic participant evidence. Retain browser/runtime evidence only at its narrower claim ceiling.",
+      "open_items": [
+        "Representative-user research has not been executed or specialist-bound."
+      ],
+      "does_not_prove": [
+        "task success",
+        "effectiveness",
+        "efficiency",
+        "satisfaction",
+        "representative usability"
+      ]
+    },
+    {
+      "capability_id": "HCD-CAP-ACCESSIBILITY-EVALUATION",
+      "in_claim": true,
+      "required_capability_role": "ACCESSIBILITY_EVALUATION",
+      "required_native_output": "applicable accessibility inspection/AT/user evidence and disposition",
+      "native_authority_required": "Applicable accessibility standard + specialist/AT/user evidence where material",
+      "execution_mode": "CAPABILITY_HOLD",
+      "authority_state": "NO_OWNER",
+      "availability_state": "UNKNOWN",
+      "selected_owner_ref": null,
+      "execution_surface_ref": null,
+      "tool_adapter_ref": null,
+      "actual_readback_method": null,
+      "independent_review_required": true,
+      "independent_review_owner_ref": null,
+      "fallback": "Automated/browser checks may identify defects but cannot be promoted to accessibility conformance.",
+      "open_items": [
+        "Accessibility evaluation/assistive-technology evidence remains unbound."
+      ],
+      "does_not_prove": [
+        "WCAG conformance",
+        "assistive-technology compatibility",
+        "disabled-user task success",
+        "accessibility certification"
+      ]
+    }
+  ],
+  "blocking_capability_ids": [
+    "HCD-CAP-INTERACTION-OWNER",
+    "HCD-CAP-VISUAL-INTERACTION-READBACK",
+    "HCD-CAP-USABILITY-RESEARCH",
+    "HCD-CAP-ACCESSIBILITY-EVALUATION"
+  ],
+  "plan_verdict": "PARTIAL",
+  "stale": false,
+  "does_not_prove": [
+    "HCD professional stage PASS",
+    "Design KEEP",
+    "accessibility conformance",
+    "representative-user validation",
+    "field truth",
+    "Promotion",
+    "whole-service success",
+    "privacy/security compliance",
+    "live-service reliability",
+    "user-outcome validation"
+  ]
+}

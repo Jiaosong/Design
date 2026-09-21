@@ -1,0 +1,84 @@
+{
+  "object_type": "OLEANDER_BOUNDED_EVIDENCE_REVIEW_PACKET",
+  "version": "0.2",
+  "pr": 679,
+  "review_target": "bounded project evidence merge only",
+  "r2_base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "source_project_evidence": {
+    "pr": 665,
+    "current_pr_head": "3376879389dddb331f4d39d0d7eb7f1aff5fbf51",
+    "tested_head": "4d767315c435eb62e05647a6da9d3ab899440e71",
+    "browser_result": "12/12 configured Chromium desktop/mobile PASS",
+    "evidence_lifecycle": "OPEN_PR_CANDIDATE / NOT MAIN CURRENT",
+    "applicability_readback": {
+      "tested_head_is_ancestor_of_current_pr_head": true,
+      "commits_after_tested_head": 12,
+      "compare_status": "ahead",
+      "app_implementation_changed_after_tested_head": false,
+      "post_test_changes_summary": [
+        "browser workflow metadata changed",
+        "browser/QC readback artifacts added",
+        "README updated",
+        "Systems Engineering exercise/evidence added",
+        "AI governance workflow updated"
+      ],
+      "evidence_ceiling": "The 12/12 browser result is evidence for the tested app artifact/configuration at tested_head; it is not a claim that every later PR-head file was re-executed.",
+      "stale_if": [
+        "app implementation source changes",
+        "tested viewport/runtime configuration changes",
+        "browser workflow semantics materially change",
+        "the evidence is widened to unsupported browsers/viewports"
+      ]
+    }
+  },
+  "resolved_findings": [
+    "Current ACTIVE browser execution surface exists.",
+    "Browser runtime availability is not the primary HCD-DP4 blocker.",
+    "Capability plan remains PARTIAL rather than executable."
+  ],
+  "blocking_findings": [
+    "oleander-ui-interaction remains Candidate owner",
+    "oleander-ui-visual-composition remains Candidate owner",
+    "representative-user usability research remains unexecuted/unbound",
+    "accessibility/assistive-technology evaluation remains unexecuted/unbound"
+  ],
+  "stale_if": [
+    "PR665 head or tested browser artifact changes",
+    "shared browser surface lifecycle/authority changes",
+    "HCD candidate process revision changes",
+    "UI interaction/visual owner lifecycle changes",
+    "user/accessibility evidence is added"
+  ],
+  "reopen_if": [
+    "representative-user claims are introduced",
+    "accessibility-conformance claims are introduced",
+    "browser support claim widens beyond tested configuration",
+    "interaction/visual owner routing changes",
+    "whole-service or cross-channel service-success claims are introduced",
+    "privacy/security claims are introduced",
+    "live-like reliability or user-outcome monitoring claims are introduced",
+    "offline/back-office/manual support dependencies become material to task success"
+  ],
+  "allowed_transition": "CANDIDATE_EVIDENCE_BINDING -> MERGEABLE_BOUNDED_PROJECT_EVIDENCE",
+  "forbidden_transitions": [
+    "HCD_PROCESS_CURRENT",
+    "UI_INTERACTION_OWNER_CURRENT",
+    "UI_VISUAL_OWNER_CURRENT",
+    "USER_VALIDATION_PASS",
+    "ACCESSIBILITY_CONFORMANCE"
+  ],
+  "machine_readiness": "READY_FOR_INDEPENDENT_BOUNDARY_REVIEW",
+  "does_not_prove": [
+    "HCD professional PASS",
+    "Current UI Skill status",
+    "representative-user usability",
+    "accessibility conformance",
+    "Promotion"
+  ],
+  "hcd_process_delta_applicability": {
+    "source": "PR #687 / GOV.UK whole-service absorption delta",
+    "current_process_base": "main@f124939df2a46372bc7559729a1bc0062e20c0d4",
+    "disposition": "APPLICABLE_AS_REOPEN_BOUNDARY / DOES_NOT_WIDEN_CURRENT_BROWSER_CLAIM",
+    "rationale": "The current evidence claim is configured browser runtime only. Whole-service, cross-channel, privacy/security, live-like reliability and user-outcome claims remain outside this evidence ceiling unless separately triggered and evidenced."
+  }
+}

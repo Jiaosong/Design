@@ -1,0 +1,31 @@
+{
+  "schema": "oleander.hcd-browser-execution-binding-evidence.v0.1",
+  "state": "CANDIDATE_EVIDENCE_BINDING / NO HCD PROMOTION",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "current_runtime_surface": {
+    "ref": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json#html_css_js_svg_browser_native",
+    "lifecycle_state": "ACTIVE",
+    "default_production_eligible": true,
+    "runtime_readback": "REAL_BROWSER_REQUIRED"
+  },
+  "project_runtime_candidate_evidence": {
+    "pull_request": 665,
+    "pr_head": "3376879389dddb331f4d39d0d7eb7f1aff5fbf51",
+    "tested_head": "4d767315c435eb62e05647a6da9d3ab899440e71",
+    "readback_ref": "05-cases/c04-qingjiang-stone-book/digital-currentization/app-game-map-v1.3/BROWSER_RUNTIME_READBACK_v1_3.json",
+    "result": "PASS_FOR_CONFIGURED_CHROMIUM_DESKTOP_AND_MOBILE",
+    "test_count": {"passed": 12, "failed": 0},
+    "viewports": [[1440,1000],[390,844]],
+    "evidence_lifecycle": "OPEN_PR_CANDIDATE / NOT MAIN CURRENT"
+  },
+  "hcd_candidate_process_ref": "00-governance/schemas/digital-product-hcd-design-process.v0.1.candidate.json",
+  "prior_hcd_exercise_ref": "05-cases/c04-qingjiang-stone-book/hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json",
+  "material_finding": "Browser execution/readback surface is available; HCD-DP4 remains HOLD because Current interaction/visual owners plus representative-user usability and accessibility evidence are not closed.",
+  "invariants": [
+    "BROWSER_RUNTIME_PASS != INTERACTION_OWNER_CURRENT",
+    "BROWSER_RUNTIME_PASS != REPRESENTATIVE_USER_VALIDATION",
+    "BROWSER_RUNTIME_PASS != ACCESSIBILITY_CONFORMANCE",
+    "BROWSER_RUNTIME_PASS != HCD_PROFESSIONAL_PASS"
+  ],
+  "does_not_prove": ["HCD Candidate adoption", "Current UI Skill status", "user validation", "accessibility conformance", "live service truth", "Promotion"]
+}
