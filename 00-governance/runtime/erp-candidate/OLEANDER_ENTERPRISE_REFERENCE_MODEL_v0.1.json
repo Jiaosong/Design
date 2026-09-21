@@ -1,0 +1,32 @@
+{
+  "reference_model_id": "OLEANDER_ENTERPRISE_REFERENCE_MODEL_v0.1",
+  "status": "CANDIDATE_REFERENCE_NOT_AUTHORITY",
+  "purpose": "Record external architecture patterns used to pressure-test the candidate without importing their taxonomies as OLEANDER authority.",
+  "references": [
+    {
+      "pattern": "ERP_MES_BOUNDARY",
+      "source": "ISA-95 / IEC 62264 enterprise-control integration",
+      "use": "Separate business planning/logistics visibility from manufacturing operations/control and define explicit exchanged information.",
+      "not_imported_as": "OLEANDER runtime-layer numbering, physical plant truth, or mandatory manufacturing hierarchy."
+    },
+    {
+      "pattern": "BPM_PROCESS_MODEL",
+      "source": "OMG BPMN 2.0.2",
+      "use": "Process instance, activity/handoff, exception and waiting semantics.",
+      "not_imported_as": "replacement for professional stages, job state, or OLEANDER authority."
+    },
+    {
+      "pattern": "MBSE_SYSTEM_MODEL",
+      "source": "OMG SysML 2.0 / KerML / Systems Modeling API and Services",
+      "use": "Requirements, structure, interfaces, allocation, verification/validation and interoperable model identity.",
+      "not_imported_as": "automatic Systems Engineering Current authority or mandatory modeling syntax."
+    },
+    {
+      "pattern": "PROVENANCE_GRAPH",
+      "source": "W3C PROV-O / PROV data model",
+      "use": "Entity/activity/agent-inspired provenance and derived-from/attributed-to lineage.",
+      "not_imported_as": "canonical Knowledge taxonomy, decision authority, or claim truth."
+    }
+  ],
+  "candidate_rule": "External reference improves object/interface discipline only; OLEANDER Current architecture, professional owners and project truth remain controlling."
+}

@@ -1,0 +1,276 @@
+{
+  "mapping_id": "OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2",
+  "status": "EV2_CANDIDATE_NON_AUTHORITATIVE",
+  "envelope": "FEDERATED_PROJECTION_ENVELOPE",
+  "purpose": "Bind ERP + PLM + MES + BPM + QMS + MBSE + Knowledge Graph + Agent Runtime projection concepts to existing OLEANDER authority, runtime layers and operational planes without creating a parallel system of record.",
+  "global_rules": [
+    "ONE_CURRENT_OLEANDER_ARCHITECTURE_ONLY",
+    "NO_NEW_R_L_RUNTIME_LAYER",
+    "NO_REPLACEMENT_PROJECT_AXIS",
+    "NO_REPLACEMENT_KNOWLEDGE_ARCHITECTURE",
+    "NO_STATE_FAMILY_FLATTENING",
+    "NO_PERSISTENT_TRANSACTION_LEDGER",
+    "NO_DISTRIBUTED_TRANSACTION_MANAGER",
+    "CROSS_MODULE_LINK_DOES_NOT_TRANSFER_AUTHORITY",
+    "MODULE_COMPLETION_NE_PROJECT_PROMOTION",
+    "JOB_OR_AGENT_SUCCESS_NE_DESIGN_KEEP",
+    "VERIFICATION_NE_VALIDATION",
+    "RELEASE_NE_ACCEPTANCE",
+    "QMS_PASS_NE_PROFESSIONAL_PASS"
+  ],
+  "modules": [
+    {
+      "module": "ERP",
+      "intent": "portfolio/project/work demand, schedule and resource-demand projection",
+      "canonical_owners": [
+        "Project Axis P0-P4",
+        "Project Authority / Project State",
+        "Capability Contract / authorized resource owner"
+      ],
+      "runtime_layers": [
+        "R-A",
+        "R-C",
+        "R-G",
+        "R-J"
+      ],
+      "operational_planes": [
+        "Project Plane",
+        "Capability Plane",
+        "Persistence Plane"
+      ],
+      "projection_objects": [
+        "demand_records",
+        "schedule_records",
+        "resource_demand"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "ERP demand/schedule/resource visibility does not own project authority, budget truth, professional status or promotion."
+    },
+    {
+      "module": "PLM",
+      "intent": "configuration item, baseline, revision, supersession and change-impact projection",
+      "canonical_owners": [
+        "Native Artifact Contract",
+        "Project Configuration / Change Register",
+        "Git/GitHub version carriers",
+        "applicable domain professional owner"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-E",
+        "R-H",
+        "R-J"
+      ],
+      "operational_planes": [
+        "Project Plane",
+        "Artifact Plane",
+        "Persistence Plane"
+      ],
+      "projection_objects": [
+        "configuration_items",
+        "baselines",
+        "change_records"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "PLM release/baseline means configuration identity only; it does not prove technical correctness, Design KEEP, approval or promotion."
+    },
+    {
+      "module": "MES",
+      "intent": "native/physical operation execution and actual readback projection inspired by enterprise-control separation",
+      "canonical_owners": [
+        "R-H Native Execution",
+        "project/fabrication/installation/commissioning owner when explicitly bound",
+        "Actual Readback"
+      ],
+      "runtime_layers": [
+        "R-H",
+        "R-I"
+      ],
+      "operational_planes": [
+        "Execution Plane",
+        "Artifact Plane",
+        "Review Plane"
+      ],
+      "projection_objects": [
+        "operation_records",
+        "material_equipment_refs",
+        "execution_readbacks"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "MES COMPLETE is forbidden without actual readback; digital execution does not imply physical fabrication/installation/field truth."
+    },
+    {
+      "module": "BPM",
+      "intent": "process-instance, handoff, waiting/blocker and exception projection",
+      "canonical_owners": [
+        "Master Runtime",
+        "Multi-Skill Execution DAG",
+        "Continuation Checkpoint",
+        "Runtime Layer Interface Contract"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-G",
+        "R-H",
+        "R-I"
+      ],
+      "operational_planes": [
+        "Project Plane",
+        "Capability Plane",
+        "Execution Plane",
+        "Review Plane"
+      ],
+      "projection_objects": [
+        "process_instances",
+        "handoffs",
+        "exceptions"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "BPM process completion never substitutes for professional stage closure, independent review or promotion."
+    },
+    {
+      "module": "QMS",
+      "intent": "quality plan, nonconformance, CAPA, inspection/review and effectiveness readback projection",
+      "canonical_owners": [
+        "Review owners",
+        "Project Risk/Hazard and closure objects",
+        "Independent Review boundary",
+        "domain specialist acceptance owner"
+      ],
+      "runtime_layers": [
+        "R-I",
+        "R-J"
+      ],
+      "operational_planes": [
+        "Review Plane",
+        "Persistence Plane"
+      ],
+      "projection_objects": [
+        "quality_plans",
+        "nonconformances",
+        "capa_records",
+        "inspection_records"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "Quality disposition and CAPA closure require source evidence/effectiveness readback and do not award professional/statutory approval."
+    },
+    {
+      "module": "MBSE",
+      "intent": "requirements, system elements, interfaces, allocation, verification/validation and configuration-baseline projection",
+      "canonical_owners": [
+        "Project Requirement/Acceptance Baseline",
+        "Cross-Disciplinary Integration",
+        "professional process/interface owners",
+        "Systems Engineering Candidate when only in bounded evaluation"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-E",
+        "R-F",
+        "R-I"
+      ],
+      "operational_planes": [
+        "Project Plane",
+        "Review Plane"
+      ],
+      "projection_objects": [
+        "requirements",
+        "system_elements",
+        "interfaces",
+        "verification_validation",
+        "configuration_baselines"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "MBSE is a traceability/model projection; verification does not imply validation, Systems Engineering Current authority or project acceptance."
+    },
+    {
+      "module": "KNOWLEDGE_GRAPH",
+      "intent": "typed reference/provenance/query projection over canonical Knowledge and project/runtime entities",
+      "canonical_owners": [
+        "Notion canonical Knowledge Registry",
+        "Knowledge Reader",
+        "Knowledge Integrity / Operational Eligibility",
+        "Git provenance carriers"
+      ],
+      "runtime_layers": [
+        "R-B",
+        "R-J",
+        "R-K"
+      ],
+      "operational_planes": [
+        "Knowledge Plane",
+        "Persistence Plane"
+      ],
+      "projection_objects": [
+        "nodes",
+        "edges",
+        "provenance_records",
+        "query_policies"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "hard_boundary": "A graph edge, similarity or query result never creates Canonical Parent, Current, OE3, claim truth or authority."
+    },
+    {
+      "module": "AGENT_RUNTIME",
+      "intent": "agent session, lease, action, tool use, handoff, side-effect and readback projection",
+      "canonical_owners": [
+        "Skill Resolver / Capability Contract",
+        "Execution DAG",
+        "Checkpoint / lease contract",
+        "Tool Adapter Contract",
+        "Observability/Recovery Contract",
+        "authorized external mutation owner"
+      ],
+      "runtime_layers": [
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "operational_planes": [
+        "Capability Plane",
+        "Execution Plane",
+        "Review Plane",
+        "Persistence Plane"
+      ],
+      "projection_objects": [
+        "sessions",
+        "leases",
+        "actions",
+        "handoffs"
+      ],
+      "mutation_permission": "OBSERVE_EXISTING_AUTHORIZED_PATHS_ONLY",
+      "hard_boundary": "Agent success or tool success grants no authority; uncertain side effects force HOLD/reconciliation."
+    }
+  ],
+  "cross_module_invariants": [
+    {
+      "id": "XMOD-001",
+      "rule": "Every cross-module relation carries source_refs and remains projection_only."
+    },
+    {
+      "id": "XMOD-002",
+      "rule": "No module may synthesize an authority-bearing canonical ID from another module identity."
+    },
+    {
+      "id": "XMOD-003",
+      "rule": "PLM RELEASED + MES COMPLETE + BPM COMPLETED + QMS PASS may still coexist with Design REVISE / Professional HOLD / No Promotion."
+    },
+    {
+      "id": "XMOD-004",
+      "rule": "MBSE verification and validation are distinct records and cannot be collapsed."
+    },
+    {
+      "id": "XMOD-005",
+      "rule": "Knowledge Graph provenance may describe lineage but cannot create lifecycle or decision authority."
+    },
+    {
+      "id": "XMOD-006",
+      "rule": "Agent Runtime side-effect uncertainty is a reconciliation blocker; retry may not silently duplicate mutations."
+    },
+    {
+      "id": "XMOD-007",
+      "rule": "No cross-module two-phase commit or distributed transaction manager is introduced; partial effects use explicit reconciliation/compensation under existing owners."
+    }
+  ]
+}
