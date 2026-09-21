@@ -1,0 +1,19 @@
+{
+  "schema_version": "technical-drawing-successor-exercise/0.3",
+  "drawing_id": "C01-INTERIOR-NATIVE-DRAWING-HOLD-001",
+  "project_id": "PRJ-C01-YIMAI-GUANGDU",
+  "domain": "Interior Design",
+  "decision_object": "Can the current Baguting/interior reapplication truthfully produce an authority-bound room/RCP/detail drawing now?",
+  "source_refs": [
+    "05-cases/c01-yimai-guangdu/interior-professional-process-reapplication/v0.1/C01_INTERIOR_BOUNDED_CONTEXT_REAPPLICATION_v0.1.json",
+    "05-cases/c01-yimai-guangdu/architecture-remote-proxy-consumption/v0.1/C01_ARCH_REMOTE_PROXY_CONSUMPTION_v0.1.json"
+  ],
+  "required_native_output": "authority-bound interior plan/RCP/detail carrier",
+  "geometry_authority_state": "INSUFFICIENT_FOR_DRAWING_CLOSURE",
+  "dimension_authority_state": "INSUFFICIENT_FOR_DRAWING_CLOSURE",
+  "execution_decision": "CAPABILITY_HOLD",
+  "reason": "The bounded reapplication declares required interior outputs and actual-readback gaps but does not provide a current authoritative room-geometry/dimension carrier that may be converted into a technical plan/RCP/detail without invention.",
+  "forbidden_shortcut": "Do not invent room dimensions, furniture clearances, door/opening geometry or RCP geometry to demonstrate Skill capability.",
+  "release_condition": "A current authoritative/bounded room geometry source with explicit dimension truth and permitted use becomes available, then rerun the Technical Drawing execution route.",
+  "does_not_prove": ["Interior professional PASS", "technical drawing deficiency in the source project", "field truth", "Current Skill promotion"]
+}

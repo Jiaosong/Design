@@ -1,0 +1,31 @@
+{
+  "schema_version": "technical-drawing-successor-exercise/0.3",
+  "drawing_id": "TD-RT-01",
+  "project_id": "CONTROLLED_FIXTURE",
+  "decision_object": "Verify deterministic editable DXF/SVG geometry reopen and dimensional readback.",
+  "drawing_status": "TECHNICAL_EXPLANATION",
+  "claim_ceiling": "MACHINE ROUNDTRIP ONLY",
+  "source_authority": {
+    "type": "SYNTHETIC_CONTROLLED_FIXTURE",
+    "dimension_state": "AUTHORITY_VERIFIED_FOR_FIXTURE_ONLY",
+    "does_not_prove": ["project geometry", "field truth", "professional drawing adequacy"]
+  },
+  "native_outputs": {
+    "dxf_ref": "00-governance/runtime/evolution-candidates/technical-drawing-successor-20260920/fixtures/successor/TD-RT-01.dxf",
+    "svg_ref": "00-governance/runtime/evolution-candidates/technical-drawing-successor-20260920/fixtures/successor/TD-RT-01.svg"
+  },
+  "expected_geometry": [
+    {"id": "FIXTURE_PLAN", "dxf_layer": "FIXTURE_PLAN", "svg_id": "FIXTURE_PLAN", "width": 1200.0, "height": 600.0, "tolerance": 0.001}
+  ],
+  "actual_readback": {
+    "required": true,
+    "method": "Reopen ASCII DXF line entities and SVG rect geometry using stdlib validator.",
+    "result": "PENDING_VALIDATOR"
+  },
+  "independent_review": {
+    "required_for_currentization": true,
+    "state": "NOT_RUN"
+  },
+  "result": "HOLD_CURRENTIZATION",
+  "does_not_prove": ["professional drawing PASS", "engineering PASS", "field PASS", "Current Skill promotion"]
+}

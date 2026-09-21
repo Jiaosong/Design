@@ -1,0 +1,25 @@
+{
+  "schema_version": "technical-drawing-successor-exercise/0.3",
+  "drawing_id": "KH-LY46-R5-ADD07-EXTERNAL-NATIVE-BINDING-001",
+  "project_id": "KH-LY46",
+  "domain": "Architecture",
+  "decision_object": "Bind Technical Drawing execution semantics to the already-reviewed ADD-07 native room-wall plan without copying or re-authoring its project geometry.",
+  "source_receipt_ref": "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/KH-LY46_R5_ARCHITECTURE_BOUNDED_RECEIPT_v001.json",
+  "project_native_refs": [
+    "R5_59_ADD07_ROOMWALL_PLAN_GEOMETRY_v002.dxf",
+    "R5_60_ADD07_ROOMWALL_PLAN_SET_v002.svg"
+  ],
+  "project_readback_refs": [
+    "R5_64_ADD07_ROOMWALL_READBACK_v002.json",
+    "R5_69_ADD07_INDEPENDENT_SUCCESSOR_REVIEW_v001.json"
+  ],
+  "binding_mode": "EXTERNAL_PROJECT_NATIVE / NO_COPY / NO_REAUTHOR",
+  "existing_project_result": "ADD-07 PASS_AT_CLAIM_CEILING; overall Architecture HOLD",
+  "technical_drawing_successor_use": "PROVENANCE_AND_INTERFACE_EXERCISE_ONLY",
+  "currentization_evidence_state": "PARTIAL",
+  "open_items": [
+    "The authoritative project native DXF/SVG are referenced by the Current GitHub receipt but are not materialized in this repository branch for a fresh successor-parser roundtrip.",
+    "Formal target-scale architect drawing issue remains HOLD in the source receipt."
+  ],
+  "does_not_prove": ["fresh binary roundtrip in this branch", "architect professional approval", "construction documentation", "overall Architecture KEEP", "Current Skill promotion"]
+}

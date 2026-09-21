@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600mm" height="1300mm" viewBox="0 0 1600 1300" data-status="TECHNICAL_EXPLANATION" data-scale="NTS" data-authority-state="RECOMMENDED_RANGE_FIELD_OPEN">
+  <title>C04 F01 removable leaning rest board — research envelope</title>
+  <desc>Source-bound range carrier only. NOT LOCATED. FIELD / ENGINEERING REQUIRED. Not for construction.</desc>
+  <g id="PLAN_ENVELOPES">
+    <rect id="F01_MAX_PLAN" x="50" y="50" width="1400" height="180" fill="none" stroke="black"/>
+    <rect id="F01_MIN_PLAN" x="50" y="50" width="800" height="120" fill="none" stroke="black" stroke-dasharray="10 8"/>
+  </g>
+  <g id="SECTION_ENVELOPES" transform="translate(50 250)">
+    <rect id="F01_MAX_SECTION" x="0" y="0" width="180" height="1050" fill="none" stroke="black"/>
+    <rect id="F01_MIN_SECTION" x="0" y="150" width="120" height="900" fill="none" stroke="black" stroke-dasharray="10 8"/>
+  </g>
+  <text x="300" y="400">F01 RESEARCH ENVELOPE / NTS / NOT LOCATED</text>
+  <text x="300" y="450">WIDTH 800–1400 mm / SUPPORT DEPTH 120–180 mm / TOP HEIGHT 900–1050 mm</text>
+  <text x="300" y="500">FIELD + ENGINEERING REQUIRED / NOT FOR CONSTRUCTION</text>
+</svg>

@@ -1,0 +1,28 @@
+# Drawing Execution Record
+
+- Drawing ID:
+- Project / Workstream:
+- Professional Decision Object:
+- Drawing Status:
+- Claim Ceiling:
+- Native Carrier:
+- Parent / Source View:
+- Geometry Authority:
+- Dimension Authority:
+- Material/System Authority:
+- Source Revision:
+- Scale / NTS State:
+- Required Views:
+- Expected Dimensions / Ranges:
+- Field-Open Items:
+- Specialist-Open Items:
+- Native Output Refs:
+- Actual Reopen Method:
+- Measured Readback:
+- Cross-View Checks:
+- Machine Result:
+- Independent Reviewer:
+- Independent Review Result:
+- Open Items:
+- Reopen Triggers:
+- Does Not Prove:

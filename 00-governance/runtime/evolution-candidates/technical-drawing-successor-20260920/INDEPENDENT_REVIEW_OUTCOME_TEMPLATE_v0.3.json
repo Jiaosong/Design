@@ -1,0 +1,23 @@
+{
+  "object_type": "OLEANDER_INDEPENDENT_REVIEW_OUTCOME",
+  "version": "0.3",
+  "candidate_id": "oleander-technical-drawing",
+  "pr": 677,
+  "review_packet_ref": "REVIEW_DECISION_PACKET_v0.3.json",
+  "reviewer_id": null,
+  "reviewer_role": null,
+  "producer_distinct": null,
+  "decision": "PENDING",
+  "allowed_decisions": ["VALIDATE_BOUNDED", "REQUEST_CHANGES", "HOLD"],
+  "accepted_claim_ceiling": null,
+  "accepted_evidence_refs": [],
+  "required_repairs": [],
+  "remaining_blockers": ["TD-BLOCK-REAL-NATIVE-ROUNDTRIP", "TD-BLOCK-INDEPENDENT-REVIEW"],
+  "reopen_triggers": [],
+  "decision_ref": null,
+  "effective_commit": null,
+  "transition_if_validated": "CANDIDATE -> VALIDATED",
+  "installation_transition_allowed": false,
+  "state": "PENDING_INDEPENDENT_REVIEW",
+  "does_not_prove": ["INSTALLED", "Current callable Technical Drawing owner", "construction issue authority", "professional approval"]
+}
