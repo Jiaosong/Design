@@ -1,0 +1,673 @@
+{
+  "schema": "oleander.technical-drawing.successor-provenance.v0.3",
+  "skill_identity": "oleander-technical-drawing",
+  "successor_state": "CANDIDATE_SUCCESSOR / NOT_CURRENT / NO_PROMOTION",
+  "source_pr": 172,
+  "source_branch": "agent/oleander-technical-drawing-v0.1",
+  "source_head": "a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f",
+  "source_file_count": 128,
+  "accounting_rule": "EVERY_PR172_CHANGED_PATH_IS_RETAINED_AS_EXPLICIT_PROVENANCE; SUCCESSOR COPIES ONLY EXECUTION-CORE SEMANTICS. LEGACY FILE CONTENT REMAINS ADDRESSABLE AT THE EXACT SOURCE HEAD.",
+  "category_counts": {
+    "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE": 5,
+    "PROJECT_PRACTICE_PROVENANCE": 7,
+    "CROSS_SKILL_LEGACY_DELTA_PROVENANCE": 3,
+    "SUCCESSOR_CORE_SOURCE": 14,
+    "EVAL_PROVENANCE": 1,
+    "EXAMPLE_PROVENANCE": 3,
+    "LEGACY_GOLDEN_CANDIDATE_PROVENANCE": 8,
+    "RECONSTRUCTION_EXPERIMENT_PROVENANCE": 42,
+    "TECHNICAL_DRAWING_LEGACY_PROVENANCE": 1,
+    "RECIPE_PROVENANCE": 3,
+    "REFERENCE_EXPERIMENT_PROVENANCE": 22,
+    "TOOL_EXPERIMENT_PROVENANCE": 19
+  },
+  "rows": [
+    {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "status": "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:.github/workflows/ai-governance-evals.yml"
+    },
+    {
+      "path": ".github/workflows/technical-drawing-analysis-evals.yml",
+      "status": "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:.github/workflows/technical-drawing-analysis-evals.yml"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-iib-netzero-featured-reconstruction/IIB_NETZERO_FEATURED_REPLICA.svg",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-iib-netzero-featured-reconstruction/IIB_NETZERO_FEATURED_REPLICA.svg"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-iib-netzero-featured-reconstruction/README.md",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-iib-netzero-featured-reconstruction/README.md"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-quanzhou-zanhua-raster-reconstruction/README.md",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-quanzhou-zanhua-raster-reconstruction/README.md"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-water-world-reconstruction/README.md",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-water-world-reconstruction/README.md"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-water-world-reconstruction/WATER_WORLD_RECONSTRUCTION_REPORT.json",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-water-world-reconstruction/WATER_WORLD_RECONSTRUCTION_REPORT.json"
+    },
+    {
+      "path": "06-practice/2026/2026-08-17-water-world-reconstruction/WATER_WORLD_RF_C1_RECONSTRUCTION.svg",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-17-water-world-reconstruction/WATER_WORLD_RF_C1_RECONSTRUCTION.svg"
+    },
+    {
+      "path": "06-practice/2026/2026-08-19-detail-callout-registration/README.md",
+      "status": "PROJECT_PRACTICE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:06-practice/2026/2026-08-19-detail-callout-registration/README.md"
+    },
+    {
+      "path": "evals/golden/skills.jsonl",
+      "status": "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:evals/golden/skills.jsonl"
+    },
+    {
+      "path": "evals/scripts/validate_evals.py",
+      "status": "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:evals/scripts/validate_evals.py"
+    },
+    {
+      "path": "oleander-skills/REVIEW.md",
+      "status": "SHARED_GOVERNANCE_OR_EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/REVIEW.md"
+    },
+    {
+      "path": "oleander-skills/oleander-3d-pipeline/SKILL.md",
+      "status": "CROSS_SKILL_LEGACY_DELTA_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-3d-pipeline/SKILL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-delivery-qc/SKILL.md",
+      "status": "CROSS_SKILL_LEGACY_DELTA_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-delivery-qc/SKILL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-story-and-board/SKILL.md",
+      "status": "CROSS_SKILL_LEGACY_DELTA_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-story-and-board/SKILL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/README.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/README.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/SKILL.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/SKILL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/evals/evals.json",
+      "status": "EVAL_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/evals/evals.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/examples/README.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/examples/README.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/examples/base_instance_fidelity_calibration_v14.md",
+      "status": "EXAMPLE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/examples/base_instance_fidelity_calibration_v14.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/examples/rebirth_editorial_analysis_board_calibration.md",
+      "status": "EXAMPLE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/examples/rebirth_editorial_analysis_board_calibration.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/examples/technical_drawing_hierarchy_calibration.svg",
+      "status": "EXAMPLE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/examples/technical_drawing_hierarchy_calibration.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/FIXTURE_MANIFEST.json",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/FIXTURE_MANIFEST.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-01_ARCH_SECTION.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-01_ARCH_SECTION.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-02_LANDSCAPE_NODE.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-02_LANDSCAPE_NODE.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-03_PRODUCT_ASSEMBLY_CMF.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-03_PRODUCT_ASSEMBLY_CMF.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-04_CONNECTION_FOUNDATION.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-04_CONNECTION_FOUNDATION.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-05_SPATIAL_ANALYSIS_PLAN.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-05_SPATIAL_ANALYSIS_PLAN.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/GD-06_EVIDENCE_SPATIAL_CONSEQUENCE.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/README.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/README.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/golden/REVIEW_REQUEST_DETAIL_DENSITY.md",
+      "status": "LEGACY_GOLDEN_CANDIDATE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/golden/REVIEW_REQUEST_DETAIL_DENSITY.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ANALYSIS-CONTRACT-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ANALYSIS-CONTRACT-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BASE-01_INSTANCE.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BASE-01_INSTANCE.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BASE-01_INSTANCE_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BASE-01_INSTANCE_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BOARD-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/BOARD-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/EFFECT-RECIPE-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/EFFECT-RECIPE-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/EFFECT-RECIPE-02_EXTENDED_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/EFFECT-RECIPE-02_EXTENDED_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/FLOW-01_NETWORK_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_RELATION_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_RELATION_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_SEMANTIC.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/ML-REL-01_SEMANTIC.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_SEMANTICS.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-01_SEMANTICS.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/NODE-02_INTERFACE_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/PREVIEW-REVIEW-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/PREVIEW-REVIEW-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/README.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/README.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/REVIEW_REQUEST_PIXEL_SOLVER.md",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/REVIEW_REQUEST_PIXEL_SOLVER.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_CANDIDATE_BAD.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_CANDIDATE_BAD.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_CANDIDATE_MATCH.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_CANDIDATE_MATCH.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_EXPECTED.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_EXPECTED.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_REFERENCE_MASTER.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_REFERENCE_MASTER.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RF-C3_CONTRACT.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RF-C3_CONTRACT.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_ROIS.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_ROIS.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RUNTIME_READBACK.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RUNTIME_READBACK.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RUNTIME_READBACK_v0.3.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_RUNTIME_READBACK_v0.3.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_SOLVER_RESULT.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_SOLVER_RESULT.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_SOLVER_SPEC.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/RF-CAL-01_SOLVER_SPEC.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/SPATIAL-TRANSLATION-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/THEME-01_INSTANCE.svg",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/THEME-01_INSTANCE.svg"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/THEME-01_INSTANCE_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/THEME-01_INSTANCE_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/VISUAL-SURFACE-01_REGISTER.json",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/VISUAL-SURFACE-01_REGISTER.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_actual_preview_review_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_actual_preview_review_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_analysis_contract_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_analysis_contract_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_base_instance_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_base_instance_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_editorial_analysis_board_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_editorial_analysis_board_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_extension_02_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_extension_02_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_parameter_library_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_parameter_library_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_recipe_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_effect_recipe_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_flow_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_flow_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_node_mode_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_node_mode_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_spatial_translation_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_spatial_translation_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_theme_instance_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_theme_instance_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_visual_surface_treatment_regression.py",
+      "status": "RECONSTRUCTION_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/reconstruction/validate_visual_surface_treatment_regression.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/fixtures/validate_fixtures.py",
+      "status": "TECHNICAL_DRAWING_LEGACY_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/fixtures/validate_fixtures.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/recipes/CROSS_SKILL_EFFECT_ROUTES.json",
+      "status": "RECIPE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/recipes/CROSS_SKILL_EFFECT_ROUTES.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/recipes/MOTION_HANDOFF_RECIPES.json",
+      "status": "RECIPE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/recipes/MOTION_HANDOFF_RECIPES.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/recipes/SVG_PROCEDURAL_RECIPES.json",
+      "status": "RECIPE_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/recipes/SVG_PROCEDURAL_RECIPES.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/ANALYSIS_DRAWING_SYSTEM.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/ANALYSIS_DRAWING_SYSTEM.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/BASE_INSTANCE_FIDELITY.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/BASE_INSTANCE_FIDELITY.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/DETAIL_CALLOUT_REGISTRATION.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/DETAIL_CALLOUT_REGISTRATION.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/DETAIL_DENSITY_CALIBRATION.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/DETAIL_DENSITY_CALIBRATION.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/DISCIPLINE_PROFILES.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/DISCIPLINE_PROFILES.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/EDITORIAL_ANALYSIS_BOARD_RECONSTRUCTION.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/EDITORIAL_ANALYSIS_BOARD_RECONSTRUCTION.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/EDITORIAL_CALLOUT_FIDELITY.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/EDITORIAL_CALLOUT_FIDELITY.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/EFFECT_OPERATOR_ROUTER.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/EFFECT_OPERATOR_ROUTER.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/FINAL_STAGE_PIXEL_SOLVER.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/FINAL_STAGE_PIXEL_SOLVER.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/FLOW_DIRECTION_ANALYSIS.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/FLOW_DIRECTION_ANALYSIS.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/GRAPHIC_SYSTEM.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/GRAPHIC_SYSTEM.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/LANDSCAPE_ANALYSIS_DRAWING.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/LANDSCAPE_ANALYSIS_DRAWING.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/MULTILAYER_RELATION_RECONSTRUCTION.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/MULTILAYER_RELATION_RECONSTRUCTION.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/NODE_SEMANTICS_AND_EVENT.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/NODE_SEMANTICS_AND_EVENT.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/OWNER_BOUND_VISUAL_CARRIER.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/OWNER_BOUND_VISUAL_CARRIER.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/PIXEL_FORENSIC_PROTOCOL.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/PIXEL_FORENSIC_PROTOCOL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/PIXEL_SOLVER_PROTOCOL.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/PIXEL_SOLVER_PROTOCOL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/PROCEDURAL_EFFECT_MOTION_SYSTEM.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/PROCEDURAL_EFFECT_MOTION_SYSTEM.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/REALITY_CHECK.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/REALITY_CHECK.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/REFERENCE_RECONSTRUCTION_FIDELITY.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/REFERENCE_RECONSTRUCTION_FIDELITY.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/SOURCE_CARRIER_PRECEDENCE.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/SOURCE_CARRIER_PRECEDENCE.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/SPATIAL_TRANSLATION_PROTOCOL.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/SPATIAL_TRANSLATION_PROTOCOL.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/STANDARDS_ROUTING.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/STANDARDS_ROUTING.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/THEME_OVERLAY_FIDELITY.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/THEME_OVERLAY_FIDELITY.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/VISUALIZATION_DATA_RECONSTRUCTION_BRIDGE.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/VISUALIZATION_DATA_RECONSTRUCTION_BRIDGE.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/VISUAL_EFFECT_PARAMETER_EXTENSION_02.json",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/VISUAL_EFFECT_PARAMETER_EXTENSION_02.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/VISUAL_EFFECT_PARAMETER_LIBRARY.json",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/VISUAL_EFFECT_PARAMETER_LIBRARY.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/VISUAL_HIERARCHY_TRANSFER.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/VISUAL_HIERARCHY_TRANSFER.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/references/VISUAL_SURFACE_TREATMENT.md",
+      "status": "REFERENCE_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/references/VISUAL_SURFACE_TREATMENT.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/templates/DRAWING_EXECUTION_TEMPLATE.md",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/templates/DRAWING_EXECUTION_TEMPLATE.md"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/VALIDATOR_MAPPING.json",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/VALIDATOR_MAPPING.json"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/build_motion_extension_02_demo.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/build_motion_extension_02_demo.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/build_motion_recipe_demo.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/build_motion_recipe_demo.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/build_svg_effect_atlas.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/build_svg_effect_atlas.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/build_svg_effect_extension_02.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/build_svg_effect_extension_02.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/reference_fidelity.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/reference_fidelity.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/svg_parameter_solver.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/svg_parameter_solver.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_actual_preview_review.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_actual_preview_review.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_analysis_contract.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_analysis_contract.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_base_instances.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_base_instances.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_editorial_analysis_board.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_editorial_analysis_board.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_effect_extension_02.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_effect_extension_02.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_effect_parameter_library.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_effect_parameter_library.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_effect_recipe_register.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_effect_recipe_register.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_flow_network.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_flow_network.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_node_semantics.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_node_semantics.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_semantic_reconstruction.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_semantic_reconstruction.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_spatial_translation.py",
+      "status": "SUCCESSOR_CORE_SOURCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_spatial_translation.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_theme_instances.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_theme_instances.py"
+    },
+    {
+      "path": "oleander-skills/oleander-technical-drawing/tools/validate_visual_surface_treatment.py",
+      "status": "TOOL_EXPERIMENT_PROVENANCE",
+      "source_ref": "agent/oleander-technical-drawing-v0.1@a2dc2a55ec32f803fe21a9c5c1f8d5066035e68f:oleander-skills/oleander-technical-drawing/tools/validate_visual_surface_treatment.py"
+    }
+  ],
+  "does_not_prove": [
+    "successor promotion",
+    "legacy golden acceptance",
+    "professional drawing approval",
+    "field truth",
+    "construction readiness"
+  ]
+}

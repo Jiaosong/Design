@@ -1,0 +1,80 @@
+{
+  "object_type": "OLEANDER_LIFECYCLE_REVIEW_PACKET",
+  "version": "0.3",
+  "candidate_id": "oleander-technical-drawing",
+  "pr": 677,
+  "review_target": "CANDIDATE -> VALIDATED only",
+  "authority_contract": "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json",
+  "r2_base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "fresh_ci_head": "c96f8bc5d8e0dc1f2e33f3aa5cc3530a91287c96",
+  "fresh_ci": {
+    "control_plane": "PASS",
+    "anti_pollution": "PASS",
+    "ai_governance": "PASS"
+  },
+  "evidence_matrix": [
+    {
+      "evidence": "PR172 128-path provenance accounting",
+      "state": "PASS",
+      "role": "identity/no-loss"
+    },
+    {
+      "evidence": "TD-RT-01 deterministic DXF/SVG reopen",
+      "state": "PASS",
+      "role": "machine roundtrip"
+    },
+    {
+      "evidence": "C04 F01 range-bound technical explanation",
+      "state": "PASS",
+      "role": "range preservation / NTS / field-open"
+    },
+    {
+      "evidence": "C01 Interior native drawing hold",
+      "state": "PASS",
+      "role": "no-invention fail-closed"
+    },
+    {
+      "evidence": "KH-LY46 ADD-07 external native binding",
+      "state": "PARTIAL",
+      "role": "real project-native interface"
+    }
+  ],
+  "validation_blockers": [
+    {
+      "id": "TD-BLOCK-REAL-NATIVE-ROUNDTRIP",
+      "state": "OPEN",
+      "requirement": "At least one authoritative real-project native DXF/SVG or equivalent CAD carrier must be materialized or otherwise independently readable by the successor validator for a fresh geometry/dimension roundtrip.",
+      "current_evidence": "KH-LY46 references native DXF/SVG and project readback, but the native files are not present in this repository branch.",
+      "close_when": "Fresh parser/readback records cross-view/source-dimension consistency on the real project carrier without reauthoring it."
+    },
+    {
+      "id": "TD-BLOCK-INDEPENDENT-REVIEW",
+      "state": "OPEN",
+      "requirement": "Independent reviewer distinct from producer records reviewer_id and decision_ref.",
+      "close_when": "Independent review accepts the claim ceiling and currentization boundary."
+    }
+  ],
+  "stale_if": [
+    "PR172 source identity/head changes",
+    "drawing execution core changes",
+    "DXF/SVG parser or expected-geometry contract changes",
+    "r2 execution-capability contract changes materially",
+    "project-native exercise source revision changes"
+  ],
+  "reopen_if": [
+    "new native carrier class is claimed",
+    "construction/fabrication status is added",
+    "range/field-open semantics change",
+    "a regression roundtrip fails"
+  ],
+  "machine_readiness": "READY_FOR_INDEPENDENT_REVIEW_WITH_REAL_NATIVE_ROUNDTRIP_BLOCKER",
+  "authorized_transition_if_review_passes": "VALIDATED",
+  "forbidden_transition": "INSTALLED until a separate authorized installation decision/effective commit",
+  "does_not_prove": [
+    "Current callable owner",
+    "construction issue authority",
+    "engineering signoff",
+    "field truth",
+    "professional design approval"
+  ]
+}

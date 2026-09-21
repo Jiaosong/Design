@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200mm" height="600mm" viewBox="0 0 1200 600" data-status="CONTROLLED_FIXTURE" data-authority-state="SYNTHETIC_TEST_AUTHORITY">
+  <title>TD-RT-01 deterministic round-trip fixture</title>
+  <desc>Controlled machine fixture only. Not a project drawing.</desc>
+  <rect id="FIXTURE_PLAN" x="0" y="0" width="1200" height="600" fill="none" stroke="black"/>
+</svg>

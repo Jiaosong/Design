@@ -1,0 +1,46 @@
+{
+  "schema_version": "technical-drawing-successor-exercise/0.3",
+  "drawing_id": "C04-F01-RANGE-TECH-EXPLAIN-001",
+  "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_object": "Can F01's research envelope be represented as an editable technical carrier without collapsing ranges or implying field location/construction authority?",
+  "drawing_status": "TECHNICAL_EXPLANATION",
+  "claim_ceiling": "SOURCE-BOUND RESEARCH ENVELOPE / NTS / NOT LOCATED / FIELD+ENGINEERING OPEN",
+  "source_authority": {
+    "ref": "05-cases/c04-qingjiang-stone-book/QJ-C22-SPATIAL-DRAWING/QJ_C_SPATIAL_DRAWING_DATA_v3.0.json#facilities/F01",
+    "source_status": "SOURCE-GROUNDED / PROVISIONAL / FIELD OPEN / NO_PROMOTION",
+    "values": {
+      "width_mm": [800, 1400],
+      "support_depth_mm": [120, 180],
+      "top_height_mm": [900, 1050]
+    },
+    "dimension_state": "RECOMMENDED_RANGE",
+    "location_state": "NOT_LOCATED",
+    "does_not_prove": ["survey geometry", "site location", "foundation", "structure", "safety", "construction readiness"]
+  },
+  "native_outputs": {
+    "dxf_ref": "00-governance/runtime/evolution-candidates/technical-drawing-successor-20260920/fixtures/successor/C04_F01_RANGE_ENVELOPE_v0.3.dxf",
+    "svg_ref": "00-governance/runtime/evolution-candidates/technical-drawing-successor-20260920/fixtures/successor/C04_F01_RANGE_ENVELOPE_v0.3.svg"
+  },
+  "expected_geometry": [
+    {"id": "F01_MIN_PLAN", "dxf_layer": "F01_MIN_PLAN", "svg_id": "F01_MIN_PLAN", "width": 800.0, "height": 120.0, "tolerance": 0.001},
+    {"id": "F01_MAX_PLAN", "dxf_layer": "F01_MAX_PLAN", "svg_id": "F01_MAX_PLAN", "width": 1400.0, "height": 180.0, "tolerance": 0.001},
+    {"id": "F01_MIN_SECTION", "dxf_layer": "F01_MIN_SECTION", "svg_id": "F01_MIN_SECTION", "width": 120.0, "height": 900.0, "tolerance": 0.001},
+    {"id": "F01_MAX_SECTION", "dxf_layer": "F01_MAX_SECTION", "svg_id": "F01_MAX_SECTION", "width": 180.0, "height": 1050.0, "tolerance": 0.001}
+  ],
+  "actual_readback": {
+    "required": true,
+    "method": "Reopen ASCII DXF by layer and SVG by element id; compare measured extents against source ranges without midpoint substitution.",
+    "result": "PENDING_VALIDATOR"
+  },
+  "independent_review": {
+    "required_for_currentization": true,
+    "state": "NOT_RUN"
+  },
+  "open_items": [
+    "Field location is unresolved.",
+    "Foundation/support/connection design is unresolved.",
+    "Safety/accessibility/engineering acceptance is unresolved."
+  ],
+  "result": "HOLD_CURRENTIZATION",
+  "does_not_prove": ["Landscape professional PASS", "engineering approval", "field truth", "construction documentation", "Design KEEP", "Current Skill promotion"]
+}
