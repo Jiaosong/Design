@@ -110,3 +110,17 @@ Close Batch 04 only after:
 4. Notion SOURCE readback + external-assimilation index sync;
 5. merge only after authorized review;
 6. post-merge main readback and final receipt update.
+
+
+## 8｜Live transaction readback
+
+- GitHub Draft PR: **#693** `governance: absorb photometric provenance and measured M&V`.
+- PR base at creation: `main@e34ef6366b58749a7f8645f03329c8e7596caf60`.
+- Initial candidate head before this receipt update: `87c0324137eebaf3d4f5a4162c4d4f4f4dd209f8`.
+- Changed-file scope at PR creation: exactly 3 files — Current MEP owner, Lighting Candidate owner, this Batch 04 receipt.
+- Notion source readback PASS:
+  - `SRC-IES-PHOTOMETRIC-DATA-001` page `3e2b86be-5c47-8152-aa64-e2dc17fe8704`, relations to existing Lighting Criteria/Submittal and Spatial Lighting Performance owners visible;
+  - `SRC-ASHRAE-G14-MV-2023-001` page `3e2b86be-5c47-81e4-9804-fd6afe4c4603`, relation to existing MEP routing owner visible.
+- Notion external-assimilation index `IDX-KG-EXTERNAL-ASSIM-001` readback PASS with Batch 04 section and native mentions to both SOURCE pages.
+- Trust remains `UNVERIFIED`; SOURCE/index existence does not upgrade KI/OE/professional/project truth.
+- Merge remains **not authorized / not performed** at this receipt state.
