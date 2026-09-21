@@ -1,0 +1,50 @@
+{
+  "object_type": "OLEANDER_BOUNDED_EVIDENCE_CURRENTIZATION_GATE",
+  "version": "0.1",
+  "pr": 679,
+  "state": "INDEPENDENT_REVIEW_REQUIRED",
+  "r2_execution_contract_head": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
+  "current_candidate_head_after_rehang": "dc4774e53057a0c3b2fbc8cf08fa7ba2d1927302",
+  "target_transition": "CANDIDATE_EVIDENCE_BINDING -> MERGEABLE_BOUNDED_PROJECT_EVIDENCE",
+  "forbidden_transitions": [
+    "HCD_PROCESS_CURRENT",
+    "UI_INTERACTION_OWNER_CURRENT",
+    "UI_VISUAL_OWNER_CURRENT",
+    "USER_VALIDATION_PASS",
+    "ACCESSIBILITY_CONFORMANCE"
+  ],
+  "evidence_refs": [
+    "C04_HCD_BROWSER_EVIDENCE_BINDING_v0.1.json",
+    "C04_HCD_DP4_EXECUTION_CAPABILITY_PLAN_v0.1.json",
+    "INDEPENDENT_REVIEW_REQUEST_v0.1.md"
+  ],
+  "independent_review": {
+    "required": true,
+    "reviewer_id": null,
+    "decision_ref": null,
+    "state": "PENDING"
+  },
+  "currentization": "PENDING_INDEPENDENT_REVIEW",
+  "verdict": "REVIEW_REQUIRED",
+  "does_not_prove": [
+    "HCD professional PASS",
+    "Current UI Skill status",
+    "representative-user usability",
+    "accessibility conformance",
+    "Promotion"
+  ],
+  "rehang_readback": {
+    "base_ref": "candidate/professional-real-execution-capability-20260920",
+    "base_ref_resolves_to_pr681_r2": true,
+    "base_sha": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
+    "compare_status": "ahead",
+    "behind_by": 0,
+    "verification_state": "FINAL_REHANG_TO_LATEST_R2_AWAITING_FRESH_CI"
+  },
+  "canonicalization_prerequisite": {
+    "prerequisite": "PR_681_R2_MERGED_TO_MAIN",
+    "current_state": "PR681_OPEN_READY_FOR_REVIEW_LATEST_MAIN_BASE",
+    "effect": "Independent review may proceed; VALIDATED/adapter registration/bounded-evidence merge may not become canonical Current authority until #681 r2 is merged to main and the candidate is rebased/read back against that exact main.",
+    "close_when": "main contains accepted #681 r2 at or after 696ed3ba23e960e48a9178aab90cb6bde87fafc9 and fresh compare/readback shows no contract drift."
+  }
+}
