@@ -1,12 +1,13 @@
 {
-  "schema": "OLEANDER_REVIEWED_CONTENT_MOUNT_RECEIPT_v1",
-  "status": "READBACK_VERIFIED",
+  "schema": "OLEANDER_REVIEWED_CONTENT_REFERENCE_RECEIPT_v1",
+  "status": "CONTENT_REVIEW_CLOSED__NOTION_ARCHITECTURE_LIVE",
   "generated_at": "2026-09-20",
   "canonical_registry": {
     "platform": "Notion",
     "data_source": "collection://4668fc63-45a6-496e-a2cc-f9542928b9e8",
     "title": "📄 笔记库",
-    "mount_mode": "REFERENCE_ONLY"
+    "mount_mode": "REFERENCE_ONLY",
+    "authority": "NOTION_FIRST"
   },
   "authority_refs": [
     "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
@@ -55,7 +56,7 @@
       "total": 300,
       "content_terminal": true
     },
-    "core_mount_locator_readback": {
+    "core_registry_locator_readback": {
       "required": [
         "Canonical ID",
         "知识角色",
@@ -75,6 +76,21 @@
         "SRC-JTBD-HBS-MILKSHAKE-001",
         "SRC-JTBD-CHRISTENSEN-INSTITUTE-001"
       ]
+    },
+    "knowledge_architecture_placement": {
+      "authority": "Notion live registry",
+      "state": "RECONCILIATION_IN_PROGRESS",
+      "required_axes": [
+        "主领域",
+        "Canonical Parent｜层级上位",
+        "Canonical Children｜层级子级",
+        "来源文档",
+        "引用方法",
+        "主项目/关联项目",
+        "相关笔记"
+      ],
+      "rule": "L4/L5 structural placement is resolved in Notion. L6/L7 Parent is optional and only written when a real structural container exists. Dedicated semantic relations must not be replaced by Parent.",
+      "does_not_prove": "This GitHub receipt does not prove Notion hierarchy/domain closure."
     }
   },
   "mount_semantics": {
@@ -82,7 +98,8 @@
     "consequential_use": "Re-read current full body, integrity, freshness, applicability and claim ceiling, then generate a task/claim-scoped OE record.",
     "no_copy": true,
     "no_static_project_mount": true,
-    "no_parent_based_mount": true
+    "no_parent_based_mount": false,
+    "parent_boundary": "GitHub does not own or infer Canonical Parent. Parent/Children are live Notion structural relations where semantically valid."
   },
   "state_boundaries": {
     "content_terminal_does_not_imply_KI4": true,
@@ -94,14 +111,18 @@
   },
   "bulk_promotions_applied": [],
   "notion_mutations_in_this_mount": [
-    "Filled the seven previously blank 知识路径 values only.",
-    "No Retrieval Space, Search Eligibility, Trust State, CURRENT/DEFAULT, KI or OE bulk promotion was applied."
+    "Full-body reviewed content remains in original canonical Notion pages.",
+    "GitHub stores no canonical body copy.",
+    "Knowledge architecture placement is resolved and written only in Notion."
   ],
   "sync_readback": {
     "notion_path_repairs_verified": true,
     "github_receipt_required": true,
     "github_mount_carrier_required": true,
     "global_live_corpus_count_recomputed": false,
-    "global_count_note": "The legacy snapshot_evidence in the mount carrier remains a dated 2026-09-14 corpus-scope snapshot. This receipt synchronizes the reviewed 300 cohort; it does not overwrite global corpus counts without a fresh complete live-corpus count."
+    "global_count_note": "The legacy snapshot_evidence in the mount carrier remains a dated 2026-09-14 corpus-scope snapshot. This receipt synchronizes the reviewed 300 cohort; it does not overwrite global corpus counts without a fresh complete live-corpus count.",
+    "github_reference_only": true,
+    "notion_canonical_body": true,
+    "notion_architecture_closure_claimed": false
   }
 }
