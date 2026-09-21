@@ -92,3 +92,14 @@ Close this batch only after:
 3. PR #643 exact-head CI/governance readback;
 4. Batch receipt PR CI/governance readback;
 5. authorized review/merge only where separately approved.
+
+
+## 9｜Fresh transaction readback
+
+- Notion SOURCE `SRC-ASTM-ENVELOPE-FIELD-AIR-WATER-001` fresh fetch PASS; relation to existing `KN-METHOD-ARCH-FACADE-ENVIRONMENT-INTERFACE-001` visible.
+- External assimilation index Batch 05 native mention/readback PASS.
+- Facade / Envelope Candidate #643 was clean-rebased onto `main@e34ef6366b58749a7f8645f03329c8e7596caf60`.
+- #643 exact candidate head after rebase: `9f7c1095f3dcf29f50ba2240ed41306fcf39c6f6`.
+- #643 compare after rebase: `ahead 1 / behind 0`, mergeable.
+- Rebase preserved six Candidate files and rebuilt the Envelope validation step on the **current main** AI-governance workflow instead of replaying the stale historical workflow blob.
+- Fresh exact-head CI is required before Batch 05 review readiness; no old CI is inherited as proof.
