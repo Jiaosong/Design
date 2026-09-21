@@ -1360,3 +1360,69 @@ Use these states consistently: `INSTALLED_CORE` = callable OLEANDER core Skill w
 - Native carrier: opening schedule, hardware-set cross-reference, head/jamb/sill/threshold details, field-opening survey, functional adjustment record.
 - Mandatory readback: clear passage/manoeuvring after frame/finish/hardware; threshold/floor/waterproofing; hardware/control/fire release; rough-opening/floor datum vs fabrication.
 - Reopen: wall/floor/opening/hardware/fire/acoustic/security/access-control/product/field datum change.
+
+## 2026-09-21｜External Mature-KB Absorption Delta｜Plan for Use + Specification Coordination
+
+**Status effect:** additive execution-depth strengthening only. Architecture remains the Current `ADD-00…ADD-17` professional process. No new stage, no external RIBA/NBS stage adoption, no automatic professional or project PASS.
+
+### A｜In-use / post-occupancy continuity
+
+Task-scoped knowledge mounts:
+- `SRC-RIBA-PLAN-FOR-USE-001` — RIBA Plan for Use Guide;
+- `MTH-DESIGN-EVIDENCE-BASED-DESIGN-001` — existing OLEANDER Evidence-Based Design METHOD.
+
+When a project claim materially depends on realized building performance, operation, user outcome or post-occupancy evidence, preserve:
+
+`BRIEF OUTCOME / TARGET → PERFORMANCE RISK → DESIGN CONSEQUENCE → CONSTRUCTION / COMMISSIONING FIDELITY → HANDOVER / USER-OPERATOR READINESS → IN-USE MEASUREMENT → GAP / COMPETING EXPLANATIONS → FINE-TUNE / PROJECT REOPEN → G9 LEARNING CANDIDATE`.
+
+Architecture owns only the architectural relation and reopen consequence. Exact energy/comfort/system/user-performance methods and professional/statutory conclusions remain with the applicable specialist, operator, research or project authority.
+
+Hard attacks:
+- `HANDOVER COMPLETE ≠ IN-USE PERFORMANCE PASS`;
+- `POE RESULT ≠ CAUSAL PROOF`;
+- a performance gap must not be assigned to architecture alone until operation, weather, occupancy, controls, maintenance, commissioning and construction deviation are considered where relevant;
+- project correction may occur immediately while reusable Knowledge promotion remains a separate G9 route.
+
+### B｜Construction specification / cross-carrier information continuity
+
+Task-scoped knowledge mounts:
+- `KN-METHOD-CONSTRUCTION-SPECIFICATION-COORDINATION-001` — requirement / responsibility / specification / revision / issue coordination;
+- `SRC-NBS-SPECIFICATION-WRITING-2025-001` — NBS specification-writing source;
+- `SRC-NBS-UNICLASS-CURRENT-001` — versioned Uniclass information-classification source when project classification is triggered;
+- `KN-METHOD-TECHDRAW-SPATIAL-TRANSLATION-001` remains the separate Technical Drawing/graphic-carrier owner.
+
+When a requirement cannot be fully carried by geometry/drawing alone, Architecture must preserve:
+
+`DESIGN INTENT / PERFORMANCE REQUIREMENT → RESPONSIBILITY / OPEN SPECIALIST INPUT → STRUCTURED SPECIFICATION ITEM → DRAWING / MODEL / SCHEDULE REFERENCE → SOURCE / PRODUCT / SYSTEM EVIDENCE → SUBSTITUTION / CHANGE → ISSUE / PUBLISH → CROSS-CARRIER ACTUAL READBACK`.
+
+Required bounded native objects when triggered:
+- stable-ID specification requirement/section register;
+- design-responsibility / specialist-input boundary;
+- drawing-model-schedule-spec cross-reference;
+- standard/source/product refs with current applicability/version;
+- substitution / approval / acceptance record;
+- classification system/table/code/version mapping where used;
+- revision / issue history and discrepancy/reopen ledger.
+
+Hard attacks:
+- `SPECIFICATION COMPLETE ≠ DRAWING / MODEL COMPLETE`;
+- a drawing/model change with stale specification, or specification change with stale geometry/schedule, is `REVISE`;
+- manufacturer marketing text is not a project requirement without applicability/acceptance evidence;
+- external classification consistency is not technical correctness and never replaces OLEANDER Domain/L0–L7;
+- specification coordination cannot widen the domain professional claim ceiling.
+
+### C｜Actual readback / reopen additions
+
+Add to the existing Architecture readback/reopen contract when triggered:
+- compare the exact issued drawing/model/schedule/specification revisions as one coordinated state;
+- verify requirement IDs and references still resolve to the current object/system/product/interface;
+- trace every material substitution/change into geometry, finish, performance, access/maintenance, schedule and specification consequences;
+- bind in-use observations to the exact realized configuration, measurement period/method and known operating context;
+- reopen only the affected Architecture objects when a specification, product/system substitution, field deviation, operator/user evidence or in-use result contradicts the current design assumption.
+
+### Boundary
+
+`PLAN FOR USE SOURCE ABSORBED ≠ RIBA STAGE ADOPTION`  
+`SPECIFICATION COORDINATED ≠ CONTRACT INTERPRETATION ≠ CODE / PRODUCT COMPLIANCE`  
+`IN-USE READBACK ≠ CAUSAL PROOF`  
+`ARCHITECTURE CURRENT ≠ FIELD / OPERATION / PROFESSIONAL TRUTH WITHOUT THE REQUIRED OWNER EVIDENCE`.
