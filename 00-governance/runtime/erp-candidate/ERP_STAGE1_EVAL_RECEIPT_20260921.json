@@ -1,0 +1,56 @@
+{
+  "receipt_id": "OLEANDER_ERP_STAGE1_EVAL_RECEIPT_20260921",
+  "candidate_ref": "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921",
+  "observed_state": "EV2_EVAL_READY",
+  "candidate_schema_revision": "v0.2",
+  "evaluation_scope": "STRUCTURAL_AND_REFERENCE_PROJECTION_ONLY",
+  "executed_with": "C:/Users/Xianmu/AppData/Local/Programs/Python/Python313/python.exe",
+  "checks": [
+    {"check": "candidate_fixture_custom_validation", "result": "PASS"},
+    {"check": "candidate_fixture_jsonschema_draft_2020_12", "result": "PASS"},
+    {"check": "case_project_namespace_separation", "result": "PASS"},
+    {
+      "check": "example_master_runtime_projection",
+      "source_ref": "00-governance/control-plane/examples/example-master-runtime.json",
+      "result": "PASS",
+      "observed_work_package_state": "REVIEW",
+      "observed_review_count": 6,
+      "observed_advance_allowed": false
+    },
+    {"check": "open_blocker_projects_to_hold", "result": "PASS"},
+    {"check": "stale_dependency_projects_to_hold", "result": "PASS"},
+    {"check": "job_success_cannot_claim_design_keep", "result": "BLOCKED_AS_REQUIRED"},
+    {"check": "activity_observation_cannot_gain_authority", "result": "BLOCKED_AS_REQUIRED"},
+    {"check": "work_package_cannot_become_p5", "result": "BLOCKED_AS_REQUIRED"},
+    {"check": "candidate_cannot_mutate_current", "result": "BLOCKED_AS_REQUIRED"},
+    {"check": "case_identity_cannot_fake_p2_project_id", "result": "BLOCKED_AS_REQUIRED"},
+    {
+      "check": "current_architecture_control_validator",
+      "result": "PASS",
+      "observed_system_architecture_count": 1,
+      "observed_master_runtime_count": 1,
+      "observed_runtime_layer_count": 11
+    },
+    {"check": "current_execution_contract_validator", "result": "PASS"}
+  ],
+  "real_case_evaluation": {
+    "C01": "NOT_RUN_NO_MASTER_RUNTIME_STATE_FOUND",
+    "C04": "NOT_RUN_NO_MASTER_RUNTIME_STATE_FOUND",
+    "FALLINGWATER_3D": "NOT_RUN_NO_MASTER_RUNTIME_STATE_FOUND"
+  },
+  "independent_review": {
+    "state": "NOT_RUN",
+    "reason": "CoS independent review workers failed to bootstrap/report in the current run. No independent verdict is inferred."
+  },
+  "promotion": {
+    "eligible": false,
+    "reason": "EV3 real-case evaluation and EV4 independent review remain open."
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}

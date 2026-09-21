@@ -1,0 +1,63 @@
+{
+  "register_id": "OLEANDER_ENTERPRISE_CANDIDATE_GAP_REGISTER_v0.1",
+  "status": "OPEN_CANDIDATE_GAPS",
+  "claim_ceiling": "STRUCTURAL_READ_MODEL_ONLY_UNTIL_REAL_CASES_AND_INDEPENDENT_REVIEW",
+  "gaps": [
+    {
+      "gap_id": "ENT-GAP-001",
+      "area": "ERP",
+      "state": "OPEN",
+      "issue": "No authoritative finance/cost/accounting owner exists in this candidate; do not synthesize budget or earned-value truth.",
+      "release_condition": "Explicit Current financial/cost authority and source-bound readback if ever required."
+    },
+    {
+      "gap_id": "ENT-GAP-002",
+      "area": "PLM",
+      "state": "PARTIAL",
+      "issue": "Configuration/change carriers exist, but no universal product BOM/item master is Current across all design domains.",
+      "release_condition": "Use only source-bound configuration items; add project/domain item structure only where an existing owner provides it."
+    },
+    {
+      "gap_id": "ENT-GAP-003",
+      "area": "MES",
+      "state": "OPEN",
+      "issue": "No general physical production/shop-floor source is Current; many projects are design-only.",
+      "release_condition": "Explicit project fabrication/installation/commissioning owner plus actual operation readback."
+    },
+    {
+      "gap_id": "ENT-GAP-004",
+      "area": "BPM",
+      "state": "PARTIAL",
+      "issue": "Master Runtime/DAG/checkpoints exist, but not every project exposes a materialized process-instance carrier.",
+      "release_condition": "Project/runtime source must provide a current node/checkpoint before BPM process state can be more than PARTIAL."
+    },
+    {
+      "gap_id": "ENT-GAP-005",
+      "area": "QMS",
+      "state": "PARTIAL",
+      "issue": "Review and defect carriers exist, but CAPA effectiveness is not uniformly represented across projects.",
+      "release_condition": "Effectiveness readback required before CAPA CLOSED."
+    },
+    {
+      "gap_id": "ENT-GAP-006",
+      "area": "MBSE",
+      "state": "PARTIAL",
+      "issue": "Systems Engineering is still an OPEN Candidate domain; requirements/interface/V&V evidence exists only in bounded carriers.",
+      "release_condition": "Keep projection source-bound and do not claim Current Systems Engineering authority."
+    },
+    {
+      "gap_id": "ENT-GAP-007",
+      "area": "KNOWLEDGE_GRAPH",
+      "state": "PARTIAL",
+      "issue": "Notion/Reader is canonical Knowledge authority; the enterprise graph must remain a rebuildable projection, not a second graph database of truth.",
+      "release_condition": "Every node/edge source-bound; no graph-only lifecycle mutation."
+    },
+    {
+      "gap_id": "ENT-GAP-008",
+      "area": "AGENT_RUNTIME",
+      "state": "PARTIAL",
+      "issue": "Agent/tool execution may have partial side effects and connector-specific authorization; success is not equivalent to readback.",
+      "release_condition": "Bind authorization, checkpoint/lease and side-effect readback; uncertain effects force HOLD."
+    }
+  ]
+}

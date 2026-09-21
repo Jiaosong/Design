@@ -1,0 +1,123 @@
+{
+  "mapping_id": "OLEANDER_ERP_OWNER_MAPPING_v0.1",
+  "status": "EV1_CANDIDATE_NON_AUTHORITATIVE",
+  "purpose": "Bind ERP-style read/orchestration concepts to existing OLEANDER owners without creating new authority or a parallel architecture.",
+  "global_rules": [
+    "ONE_CURRENT_OLEANDER_ARCHITECTURE_ONLY",
+    "NO_NEW_R_L_RUNTIME_LAYER",
+    "NO_REPLACEMENT_PROJECT_AXIS",
+    "NO_REPLACEMENT_KNOWLEDGE_ARCHITECTURE",
+    "NO_STATE_FAMILY_FLATTENING",
+    "NO_PERSISTENT_TRANSACTION_LEDGER",
+    "NO_DISTRIBUTED_TRANSACTION_MANAGER",
+    "PROJECTION_DOES_NOT_GAIN_AUTHORITY",
+    "JOB_SUCCEEDED_NE_DESIGN_KEEP",
+    "READY_FOR_HUMAN_DECISION_NE_PROMOTED"
+  ],
+  "surfaces": [
+    {
+      "erp_concept": "PORTFOLIO_PROGRAM_PROJECT_WORKSTREAM_VALIDATION",
+      "canonical_owner": "Existing Project Axis P0-P4 plus Project Authority / Project State",
+      "runtime_layers": ["R-A", "R-C", "R-J"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["PROJECT_PROMOTION", "DESIGN_KEEP"]
+    },
+    {
+      "erp_concept": "KNOWLEDGE_EVIDENCE_METHOD_INPUT",
+      "canonical_owner": "Existing L0-L7 Knowledge Plane plus Knowledge Integrity / Operational Eligibility owners",
+      "runtime_layers": ["R-B"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["KNOWLEDGE_CURRENT", "OE3", "FIELD_TRUTH"]
+    },
+    {
+      "erp_concept": "DESIGN_DECISION_AND_REQUIREMENT",
+      "canonical_owner": "Design Intelligence, Shared Design Quality, Professional Domain Process and Integration owners",
+      "runtime_layers": ["R-C", "R-D", "R-E", "R-F"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["DESIGN_KEEP", "PROFESSIONAL_PASS", "INTEGRATION_PASS"]
+    },
+    {
+      "erp_concept": "WORK_PACKAGE",
+      "canonical_owner": "ERP candidate only as operational grouping over existing project_id/workstream_id/decision_object_id and dependencies",
+      "runtime_layers": ["R-C", "R-G", "R-H", "R-I"],
+      "projection_mode": "DERIVED_COORDINATION_OBJECT",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["NEW_PROJECT_AXIS_LEVEL", "PROJECT_STATE", "DESIGN_KEEP", "PROJECT_PROMOTION"]
+    },
+    {
+      "erp_concept": "JOB_AND_EXECUTION_QUEUE",
+      "canonical_owner": "Existing Job State family, Multi-Skill Execution DAG, Execution Receipt and runtime checkpoint owners",
+      "runtime_layers": ["R-G", "R-H"],
+      "projection_mode": "REFERENCE_OR_DERIVED_QUEUE_VIEW",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["DESIGN_KEEP", "PROFESSIONAL_PASS", "RELEASE_READINESS"]
+    },
+    {
+      "erp_concept": "RESOURCE_CAPABILITY_SKILL_TOOL",
+      "canonical_owner": "Skill Resolver, Capability Contract, Tool Adapter Contract and authorized human roles",
+      "runtime_layers": ["R-G"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["PROJECT_AUTHORITY", "DESIGN_AUTHORITY", "PROFESSIONAL_AUTHORITY"]
+    },
+    {
+      "erp_concept": "NATIVE_ARTIFACT",
+      "canonical_owner": "Native source authority plus Native Artifact Contract",
+      "runtime_layers": ["R-H"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["ARTIFACT_CORRECTNESS", "DESIGN_KEEP", "FIELD_TRUTH"]
+    },
+    {
+      "erp_concept": "QA_REVIEW_ACCEPTANCE",
+      "canonical_owner": "Actual Readback, review owners, specialist gates and independent decision owners",
+      "runtime_layers": ["R-I"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["PROMOTION", "UNTRIGGERED_REVIEW_PASS"]
+    },
+    {
+      "erp_concept": "PERSISTENCE_RELEASE_PROMOTION_SYNC",
+      "canonical_owner": "PAP / persistence owner / human promotion owner / cross-system sync contract",
+      "runtime_layers": ["R-J"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["HUMAN_PROMOTION", "LIVE_CROSS_PLATFORM_CURRENT"]
+    },
+    {
+      "erp_concept": "LEARNING_RETURN",
+      "canonical_owner": "G9 bounded Knowledge Return and Knowledge validation owners",
+      "runtime_layers": ["R-K"],
+      "projection_mode": "REFERENCE_ONLY",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["REUSABLE_KNOWLEDGE", "UNIVERSAL_TRANSFERABILITY"]
+    },
+    {
+      "erp_concept": "COS_AGENT_EXECUTION_SURFACE",
+      "canonical_owner": "CoS worker/runtime as execution transport under current capability, DAG, checkpoint and handoff contracts",
+      "runtime_layers": ["R-G", "R-H", "R-I"],
+      "projection_mode": "EXECUTION_SURFACE_REFERENCE",
+      "mutation_permission": "ONLY_EXISTING_AUTHORIZED_PATHS_AFTER_FUTURE_ADOPTION",
+      "does_not_prove": ["AUTHORITY", "DESIGN_KEEP", "PROMOTION"]
+    },
+    {
+      "erp_concept": "NOTION_READER_DASHBOARD",
+      "canonical_owner": "Read/projection surfaces over canonical Current carriers",
+      "runtime_layers": ["R-B", "R-J"],
+      "projection_mode": "READ_MODEL",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["CANONICAL_TRUTH", "SYNC_COMPLETE", "PROMOTION"]
+    },
+    {
+      "erp_concept": "GIT_GITHUB",
+      "canonical_owner": "Versioned implementation/persistence surface governed by Current authority and promotion contracts",
+      "runtime_layers": ["R-J"],
+      "projection_mode": "VERSION_AND_PERSISTENCE_REFERENCE",
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "does_not_prove": ["PROJECT_PROMOTION", "NOTION_CURRENT", "DESIGN_KEEP"]
+    }
+  ]
+}

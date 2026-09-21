@@ -1,0 +1,146 @@
+{
+  "schema_version": "0.1-candidate",
+  "kind": "OLEANDER_ERP_PROJECTION",
+  "candidate_status": "NON_AUTHORITATIVE_CANDIDATE",
+  "generated_at": "2026-09-21T23:30:00+09:00",
+  "authority": {
+    "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "master_runtime_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+    "authority_snapshot_ref": "AUTHORITY-SNAPSHOT-DEMO",
+    "knowledge_snapshot_ref": "KNOWLEDGE-SNAPSHOT-DEMO",
+    "projection_only": true,
+    "may_mutate_current": false
+  },
+  "project_axis_refs": [
+    {
+      "axis_level": "P2_PROJECT",
+      "canonical_id": "PROJECT-DEMO",
+      "canonical_ref": "PROJECT_STATE:PROJECT-DEMO"
+    },
+    {
+      "axis_level": "P3_WORKSTREAM",
+      "canonical_id": "WORKSTREAM-DEMO",
+      "canonical_ref": "PROJECT_STATE:PROJECT-DEMO/WORKSTREAM-DEMO"
+    }
+  ],
+  "work_packages": [
+    {
+      "work_package_id": "WP-DEMO-001",
+      "project_id": "PROJECT-DEMO",
+      "workstream_id": "WORKSTREAM-DEMO",
+      "decision_object_ids": ["DECISION-DEMO-01"],
+      "coordination_state": "REVIEW",
+      "required_native_outputs": ["ARTIFACT-DEMO-01"],
+      "required_capability_roles": ["LANDSCAPE_DD", "NATIVE_GEOMETRY", "INDEPENDENT_REVIEW"],
+      "depends_on": ["DESIGN_INTELLIGENCE_PACKET:DEMO"],
+      "open_blockers": [],
+      "does_not_prove": ["PROJECT_PROMOTION", "DESIGN_KEEP", "PROFESSIONAL_PASS"]
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "JOB-DEMO-001",
+      "work_package_id": "WP-DEMO-001",
+      "job_state": "SUCCEEDED",
+      "primary_owner_ref": "skill:oleander-3d-pipeline",
+      "capability_refs": ["capability:NATIVE_GEOMETRY"],
+      "tool_adapter_refs": ["adapter:blender"],
+      "input_refs": ["DESIGN_INTELLIGENCE_PACKET:DEMO", "EVIDENCE:DEMO"],
+      "output_refs": ["ARTIFACT-DEMO-01"],
+      "readback_refs": ["READBACK-DEMO-01"],
+      "claim_ceiling": "NATIVE_ARTIFACT_CREATED_AND_READ_BACK",
+      "does_not_prove": ["DESIGN_KEEP", "PROFESSIONAL_PASS", "PROJECT_PROMOTION"]
+    }
+  ],
+  "resource_refs": [
+    {
+      "resource_id": "RESOURCE-DEMO-01",
+      "resource_class": "SKILL",
+      "canonical_ref": "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
+      "availability": "AVAILABLE",
+      "authority_gain": false
+    }
+  ],
+  "artifact_refs": [
+    {
+      "artifact_id": "ARTIFACT-DEMO-01",
+      "canonical_ref": "native://demo/model.blend",
+      "native_format": "blend",
+      "editable_state": "EDITABLE",
+      "hash_or_commit": "sha256:DEMO",
+      "readback_refs": ["READBACK-DEMO-01"]
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "REVIEW-DEMO-01",
+      "review_class": "DESIGN",
+      "receipt_ref": "DESIGN_REVIEW_RECEIPT:DEMO",
+      "result": "REVISE",
+      "independence_state": "INDEPENDENT"
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "REL-DEMO-001",
+      "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+      "from_ref": "PROJECT-DEMO",
+      "to_ref": "WP-DEMO-001",
+      "projection_only": true,
+      "source_refs": ["PROJECT_STATE:PROJECT-DEMO"]
+    },
+    {
+      "relation_id": "REL-DEMO-002",
+      "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+      "from_ref": "JOB-DEMO-001",
+      "to_ref": "WP-DEMO-001",
+      "projection_only": true,
+      "source_refs": ["OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1"]
+    },
+    {
+      "relation_id": "REL-DEMO-003",
+      "relation_type": "JOB_PRODUCES_ARTIFACT",
+      "from_ref": "JOB-DEMO-001",
+      "to_ref": "ARTIFACT-DEMO-01",
+      "projection_only": true,
+      "source_refs": ["READBACK-DEMO-01"]
+    }
+  ],
+  "state_facets": {
+    "project_design": { "PROJECT-DEMO": "CANDIDATE" },
+    "job": { "JOB-DEMO-001": "SUCCEEDED" },
+    "knowledge_integrity": { "KNOWLEDGE-SNAPSHOT-DEMO": "KI4" },
+    "operational_eligibility": { "KNOWLEDGE-SNAPSHOT-DEMO": "OE2" },
+    "design_quality": { "DECISION-DEMO-01": "DQ3" },
+    "professional": { "LANDSCAPE_DD": "IN_REVIEW" },
+    "interface": { "DEMO-INTERFACE": "COORDINATED" },
+    "authority": { "DECISION-DEMO-01": "WORKING_SOURCE" },
+    "evidence": { "EVIDENCE:DEMO": "E2" }
+  },
+  "activity_observations": [
+    {
+      "observation_id": "OBS-DEMO-001",
+      "observed_at": "2026-09-21T23:29:00+09:00",
+      "observation_type": "JOB_TRANSITION_OBSERVED",
+      "subject_ref": "JOB-DEMO-001",
+      "source_refs": ["READBACK-DEMO-01"],
+      "projection_only": true,
+      "rebuildable": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "reconciliation": {
+    "projection_state": "CURRENT_PROJECTION",
+    "drift_state": "CURRENT",
+    "source_readback_refs": ["READBACK-DEMO-01"],
+    "advance_allowed": false
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "KNOWLEDGE_CURRENT",
+    "FIELD_TRUTH"
+  ]
+}

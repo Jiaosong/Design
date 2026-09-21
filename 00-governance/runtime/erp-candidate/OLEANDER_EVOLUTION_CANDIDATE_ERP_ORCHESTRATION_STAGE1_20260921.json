@@ -1,0 +1,199 @@
+{
+  "candidate_id": "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921",
+  "state": "EV2_EVAL_READY",
+  "target_class": "ARCHITECTURE_CONTROL_GRAPH",
+  "target_owner": "OLEANDER Governance",
+  "target_ref": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+  "baseline": {
+    "current_version_or_revision": "OLEANDER Current Architecture v2.1 / Master Runtime v1.0",
+    "authority_fingerprint": "sha256-set:CURRENT_ARCHITECTURE+MASTER_RUNTIME+DAG+EXECUTION_RECEIPT+CAPABILITY+EVOLUTION_CONTRACT+ANTI_POLLUTION",
+    "source_hash_or_commit": "e34ef6366b58749a7f8645f03329c8e7596caf60",
+    "frozen_at": "2026-09-22T00:00:00+09:00",
+    "source_sha256_semantics": "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT_AT_EXACT_COMMIT",
+    "source_sha256": {
+      "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md": "D13FD8F91817B61AF70FA6F5744C6832217DC323964B1E11DE6D6DBB423E44AA",
+      "00-governance/complex-project-master-runtime-v1.0.md": "05199632979EDAD4F1991DBD06284D9D973EF2555D0B3282C55FE99176C69F2B",
+      "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json": "92478E39C7F727DEC18E7FBC10EC50A8B94F9BA6A40415E1F18521E912BCCDCF",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json": "61EAAFF70E202DA5A81D32010EF61B363BE73514C433C0E2AED6607A2F97BD40",
+      "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json": "6E98D0AB7667A9657CAB257E16152541C1E0535010AE6A5B11BA15A9B7395756",
+      "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json": "18CCDF45B89A4F9052CA289A9A2FE4CAB92CD55813FC9346C90028D9ACD6AEEA",
+      "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json": "2102DE6DF2C46F96BE29E09D8EF27AA9720CE80CDCD1B47BBB4E9E341697B8CF",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json": "6C9AE8CD367D2593BC3CC038F31587C22751FCE1E3ACC1428E4C7970476754F7",
+      "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json": "C08CA4CAFA5643DA77147D6551A1AFA97C681DEC5F3F662E89DB34562DA9EB5B",
+      "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json": "B0F3BDA7122B87209E8EFB266EFB4EB89BD12DA064DBF3B9D5A511F57EE29576",
+      "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json": "5EB3A560DC6F847DDC960B43488675627B4F04156E6BF133A5DDE628303D9A13",
+      "00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json": "1EA56C55AB8BFEA69253B7D797CDD861487B60DC7360A281B4D921D7FA5F91EC"
+    }
+  },
+  "trigger_evidence": [
+    "User requested OLEANDER orchestration across ERP + PLM + MES + BPM + QMS + MBSE + Knowledge Graph + Agent Runtime.",
+    "Current OLEANDER already exposes Project Axis, Knowledge Plane, Job State, capability routing, execution DAG, native artifact, readback/review, persistence, drift/recovery and controlled evolution primitives.",
+    "ISA-95-style enterprise/operations separation, BPMN-style process semantics, SysML-v2-style requirements/interfaces/V&V and PROV-style lineage are useful reference patterns only and do not replace OLEANDER authority.",
+    "Current resilience contract forbids a persistent transaction ledger/distributed transaction manager; partial side effects therefore require explicit reconciliation under existing owners.",
+    "Case Axis identity remains independent from Project Axis identity; a Case ID may not synthesize or prove a P2 Project ID."
+  ],
+  "hypothesis": "A single federated, non-authoritative enterprise projection envelope with ERP, PLM, MES, BPM, QMS, MBSE, Knowledge Graph and Agent Runtime modules can improve planning, configuration, execution, quality, systems traceability, provenance and agent observability without creating another architecture, system of record, state machine or authority path.",
+  "mutation_scope": {
+    "stage": "CANDIDATE_ONLY",
+    "new_candidate_files_only": true,
+    "current_files_modified": false,
+    "proposed_future_carriers": [
+      "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+      "00-governance/control-plane/orchestration.schema.json",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+    ],
+    "explicitly_excluded": [
+      "new top-level architecture",
+      "new R-L runtime layer",
+      "replacement Project Axis",
+      "replacement Knowledge Architecture",
+      "universal state machine",
+      "persistent transaction ledger",
+      "distributed transaction manager",
+      "automatic human promotion",
+      "automatic Design KEEP"
+    ]
+  },
+  "evaluation": {
+    "eval_set_refs": [
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.schema.json",
+      "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.json",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_REFERENCE_MODEL_v0.1.json",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_CANDIDATE_GAP_REGISTER_v0.1.json",
+      "00-governance/runtime/erp-candidate/validate_erp_candidate.py",
+      "00-governance/runtime/erp-candidate/ENTERPRISE_CANDIDATE_MANIFEST_v0.3.json"
+    ],
+    "real_case_refs": [
+      "C01 one-project/multi-workstream execution",
+      "C04 evidence-to-native-artifact-to-review flow",
+      "Fallingwater Blender multi-artifact readback flow"
+    ],
+    "counterexample_refs": [
+      "JOB_OR_AGENT_SUCCEEDED_WITH_DESIGN_REVISE",
+      "PLM_RELEASED_USED_AS_PROJECT_PROMOTION",
+      "MES_COMPLETE_WITHOUT_ACTUAL_READBACK",
+      "BPM_COMPLETED_USED_AS_PROFESSIONAL_STAGE_PASS",
+      "QMS_CAPA_CLOSED_WITHOUT_EFFECTIVENESS_READBACK",
+      "MBSE_VERIFICATION_USED_AS_VALIDATION",
+      "KNOWLEDGE_GRAPH_EDGE_USED_AS_AUTHORITY",
+      "AGENT_MUTATION_WITHOUT_AUTHORIZATION_OR_READBACK",
+      "UNCERTAIN_SIDE_EFFECT_ALLOWED_TO_ADVANCE",
+      "CROSS_MODULE_RELATION_WITHOUT_SOURCE_PROVENANCE"
+    ],
+    "regression_refs": [
+      "OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1 state-family invariants",
+      "Master Runtime promotion eligibility",
+      "Execution Receipt persistent_transaction_ledger_forbidden"
+    ],
+    "metrics": {
+      "authority_duplication_count": 0,
+      "new_top_level_architecture_count": 0,
+      "new_runtime_layer_count": 0,
+      "state_family_flattening_count": 0,
+      "enterprise_module_count": 8,
+      "candidate_schema_validation_pass": true,
+      "federated_fixture_validation_pass": true,
+      "example_master_runtime_projection_pass": true,
+      "case_project_namespace_separation_pass": true,
+      "negative_invariant_tests_required": 14,
+      "real_case_projection_count": 0,
+      "real_case_preflight_count": 3
+    },
+    "acceptance_thresholds": {
+      "authority_duplication_count": 0,
+      "new_top_level_architecture_count": 0,
+      "new_runtime_layer_count": 0,
+      "state_family_flattening_count": 0,
+      "enterprise_module_count": 8,
+      "schema_and_fixture_validation": "PASS",
+      "negative_invariant_tests": "ALL_BLOCKED",
+      "example_master_runtime_projection": "PASS",
+      "case_project_namespace_separation": "PASS",
+      "cross_module_source_traceability": "PASS",
+      "real_case_projection_minimum_before_ev3": 3
+    },
+    "result": "EVAL_READY_FEDERATED_MODEL_PASS_REAL_CASES_PENDING",
+    "receipt_ref": "00-governance/runtime/erp-candidate/ERP_STAGE1_EVAL_RECEIPT_v0.3_20260922.json"
+  },
+  "constraints": {
+    "semantic_purpose_preserved": true,
+    "no_compression_no_loss": true,
+    "authority_boundary_preserved": true,
+    "user_constraints_preserved": true,
+    "no_direct_current_mutation": true,
+    "no_false_promotion": true
+  },
+  "comparison": {
+    "baseline_result": "Current OLEANDER exposes the required primitives but no unified ERP-style read/projection model.",
+    "candidate_result": "FEDERATED_8_MODULE_STRUCTURAL_AND_REFERENCE_PROJECTION_PASS_REAL_CASES_PENDING",
+    "regressions": [],
+    "quality_delta": "POSITIVE_CANDIDATE_SIGNAL: eight enterprise concerns are represented as source-bound modules inside one envelope, with typed digital-thread relations and explicit no-authority boundaries.",
+    "reliability_delta": "IMPROVED_FAIL_CLOSED_CROSS_MODULE_INVARIANTS: release, execution, process completion, quality closure, verification, graph lineage and agent success cannot silently upgrade Design/Professional/Promotion state.",
+    "cost_latency_delta": "PENDING_REAL_CASE_EVAL; no claim that federation reduces execution cost or latency yet.",
+    "decision_basis": "v0.3 schema + rich cross-module fixture + Master Runtime projection + 14 negative invariants + explicit gap register pass structurally. EV3 remains blocked until representative C01/C04/Fallingwater projections and source-by-source readback run."
+  },
+  "independent_review": {
+    "reviewer_id": null,
+    "independence_state": "NOT_RUN",
+    "review_input_revision": "v0.3",
+    "verdict": "NOT_RUN",
+    "blocking_findings": []
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "decision": "NOT_REQUESTED",
+    "decision_by": null,
+    "decision_at": null
+  },
+  "migration": {
+    "compatibility_class": "ADDITIVE_CANDIDATE_PROJECTION",
+    "affected_carriers": [
+      "Architecture Control Graph",
+      "Control Plane orchestration schema",
+      "Runtime Layer Interface Contract",
+      "Reader / dashboard projections",
+      "existing project/runtime readback surfaces"
+    ],
+    "affected_scope": "Future only after eval + independent review + human promotion.",
+    "migration_steps": [
+      "Validate the eight-module candidate schema, support mappings and negative invariants.",
+      "Run read-only projections against representative C01/C04/Fallingwater cases.",
+      "Measure duplicate authority, state collapse, untraceable links, stale-source and partial-side-effect failures.",
+      "Run independent strict architecture + domain review.",
+      "If accepted, prepare append-only Current integration bindings; do not create R-L.",
+      "Run full OLEANDER regression and cross-platform readback before human promotion."
+    ],
+    "readback_required": true
+  },
+  "rollback": {
+    "previous_pointer": "OLEANDER Current Architecture v2.1",
+    "rollback_action": "Delete or ignore the candidate projection package; no Current pointer changes are required at Stage 1.",
+    "rollback_test": "All existing Current validators must produce the same result with candidate directory absent.",
+    "provenance_ref": "Git diff plus baseline SHA set recorded in this candidate."
+  },
+  "monitoring": {
+    "monitor_window_or_condition": "During candidate evaluation and representative read-only projections.",
+    "regression_signals": [
+      "any module status substitutes for an existing OLEANDER state family",
+      "projection object or Knowledge Graph edge gains authority",
+      "PLM release/MES complete/BPM complete/QMS pass/MBSE verify/Agent success upgrades Design or Promotion",
+      "activity observation becomes transaction truth",
+      "work package becomes P5",
+      "distributed transaction manager or persistent event ledger appears",
+      "uncertain side effect advances without reconciliation",
+      "projection writes to Current during candidate evaluation"
+    ],
+    "reopen_rule": "Any regression signal reopens EV1 and blocks promotion.",
+    "post_adoption_readback_ref": null
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "UNIVERSAL_TRANSFERABILITY",
+    "CURRENT_ADOPTION"
+  ]
+}

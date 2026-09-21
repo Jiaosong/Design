@@ -1,0 +1,662 @@
+{
+  "schema_version": "0.3-candidate",
+  "kind": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T00:05:00+09:00",
+  "authority": {
+    "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "master_runtime_ref": "00-governance/control-plane/examples/example-master-runtime.json",
+    "authority_snapshot_ref": "authority:example-current",
+    "knowledge_snapshot_ref": "knowledge:graph:example-current",
+    "source_binding_refs": [
+      "00-governance/control-plane/examples/example-master-runtime.json"
+    ],
+    "source_binding_digests": [
+      {
+        "ref": "00-governance/control-plane/examples/example-master-runtime.json",
+        "sha256": "1192C00E55ABE09C9DA1C881AEEF03D32958544AA645963085C312E32143C6AD",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      }
+    ],
+    "source_binding_hash_semantics": "SOURCE_SPECIFIC_EXACT_REVISION_DIGESTS_WHEN_AVAILABLE",
+    "projection_only": true,
+    "may_mutate_current": false
+  },
+  "architecture_contract": {
+    "integration_model": "FEDERATED_PROJECTION_ENVELOPE",
+    "module_count": 8,
+    "no_new_runtime_layer": true,
+    "state_policy": "ORTHOGONAL_STATE_FAMILIES_NO_FLATTENING",
+    "identity_policy": "CANONICAL_REF_REQUIRED_NO_ID_SYNTHESIS_AS_AUTHORITY",
+    "write_policy": "READ_ONLY_CANDIDATE_EXISTING_AUTHORIZED_PATHS_ONLY_AFTER_ADOPTION",
+    "transaction_policy": "NO_DISTRIBUTED_TRANSACTION_MANAGER_RECONCILE_PARTIAL_SIDE_EFFECTS",
+    "digital_thread_policy": "TYPED_SOURCE_BOUND_LINKS_DO_NOT_TRANSFER_AUTHORITY"
+  },
+  "case_refs": [],
+  "project_axis_refs": [
+    {
+      "axis_level": "P2_PROJECT",
+      "canonical_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "canonical_ref": "MASTER_RUNTIME_STATE:PRJ-C04-QINGJIANG-SHISHU"
+    },
+    {
+      "axis_level": "P3_WORKSTREAM",
+      "canonical_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+      "canonical_ref": "MASTER_RUNTIME_STATE:PRJ-C04-QINGJIANG-SHISHU/PRJ-C04-EXPERIENCE-SPATIAL"
+    }
+  ],
+  "work_packages": [
+    {
+      "work_package_id": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "workstream_id": "PRJ-C04-EXPERIENCE-SPATIAL",
+      "decision_object_ids": [
+        "DECISION-R06-INTEGRATION"
+      ],
+      "coordination_state": "REVIEW",
+      "required_native_outputs": [],
+      "required_capability_roles": [],
+      "depends_on": [
+        "AUTH-R06"
+      ],
+      "open_blockers": [],
+      "does_not_prove": [
+        "PROJECT_PROMOTION",
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS"
+      ]
+    }
+  ],
+  "jobs": [],
+  "resource_refs": [],
+  "artifact_refs": [],
+  "review_refs": [
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "review_class": "ARTIFACT",
+      "receipt_ref": "receipt:artifact",
+      "result": "PASS",
+      "independence_state": "UNKNOWN"
+    },
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "review_class": "TECHNICAL",
+      "receipt_ref": "receipt:technical",
+      "result": "PASS",
+      "independence_state": "UNKNOWN"
+    },
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "review_class": "EVIDENCE",
+      "receipt_ref": "receipt:evidence",
+      "result": "PASS",
+      "independence_state": "UNKNOWN"
+    },
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "review_class": "DISCIPLINE",
+      "receipt_ref": "receipt:discipline",
+      "result": "PASS",
+      "independence_state": "UNKNOWN"
+    },
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "review_class": "DESIGN",
+      "receipt_ref": "receipt:design",
+      "result": "KEEP",
+      "independence_state": "UNKNOWN"
+    },
+    {
+      "review_id": "ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "review_class": "PERSISTENCE",
+      "receipt_ref": "receipt:persistence",
+      "result": "PASS",
+      "independence_state": "UNKNOWN"
+    }
+  ],
+  "modules": {
+    "erp": {
+      "header": {
+        "module": "ERP",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "PROJECT_PROMOTION",
+          "BUDGET_TRUTH",
+          "PROFESSIONAL_PASS"
+        ]
+      },
+      "demand_records": [
+        {
+          "demand_id": "DEMAND-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+          "demand_class": "WORK",
+          "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+          "quantity_state": "BOUNDED",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "does_not_prove": [
+            "BUDGET_TRUTH",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "schedule_records": [
+        {
+          "schedule_id": "SCHEDULE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+          "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+          "schedule_state": "ACTIVE",
+          "depends_on": [
+            "AUTH-R06"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ],
+      "resource_demand": []
+    },
+    "plm": {
+      "header": {
+        "module": "PLM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "TECHNICAL_CORRECTNESS",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "configuration_items": [
+        {
+          "item_id": "CI-DECISION-R06-INTEGRATION",
+          "item_class": "DECISION_OBJECT",
+          "canonical_ref": "DECISION-R06-INTEGRATION",
+          "revision_ref": "authority:example-current",
+          "lifecycle_state": "WORKING",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "does_not_prove": [
+            "TECHNICAL_CORRECTNESS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "baselines": [
+        {
+          "baseline_id": "BASELINE-DECISION-R06-INTEGRATION",
+          "member_refs": [
+            "DECISION-R06-INTEGRATION"
+          ],
+          "baseline_state": "PROPOSED",
+          "authority_ref": "authority:example-current",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ],
+      "change_records": [
+        {
+          "change_id": "CH-EXAMPLE-001",
+          "change_class": "REVISION",
+          "affected_refs": [
+            "IF-R06-01"
+          ],
+          "disposition": "IMPLEMENTED_READBACK_PENDING",
+          "reopen_refs": [],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ]
+    },
+    "mes": {
+      "header": {
+        "module": "MES",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "PHYSICAL_EXECUTION",
+          "FIELD_TRUTH",
+          "ACCEPTANCE"
+        ]
+      },
+      "operation_records": [],
+      "material_equipment_refs": [],
+      "execution_readbacks": []
+    },
+    "bpm": {
+      "header": {
+        "module": "BPM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_STAGE_PASS",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "process_instances": [
+        {
+          "process_instance_id": "PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+          "process_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "process_state": "ACTIVE",
+          "current_node_ref": "DECISION-R06-INTEGRATION",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "does_not_prove": [
+            "PROFESSIONAL_STAGE_PASS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "handoffs": [],
+      "exceptions": []
+    },
+    "qms": {
+      "header": {
+        "module": "QMS",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "STATUTORY_APPROVAL",
+          "DESIGN_KEEP"
+        ]
+      },
+      "quality_plans": [
+        {
+          "quality_plan_id": "QPLAN-DECISION-R06-INTEGRATION",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "acceptance_criteria_refs": [],
+          "review_refs": [
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+            "ERP-REVIEW-DECISION-R06-INTEGRATION-06"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ],
+      "nonconformances": [],
+      "capa_records": [],
+      "inspection_records": [
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "receipt:artifact"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        },
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "receipt:technical"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        },
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "receipt:evidence"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        },
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "receipt:discipline"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        },
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "KEEP",
+          "evidence_refs": [
+            "receipt:design"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        },
+        {
+          "inspection_id": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+          "subject_ref": "DECISION-R06-INTEGRATION",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "receipt:persistence"
+          ],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ]
+    },
+    "mbse": {
+      "header": {
+        "module": "MBSE",
+        "scope_state": "PARTIAL",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "SYSTEMS_ENGINEERING_CURRENT",
+          "VALIDATION_PASS",
+          "PROJECT_ACCEPTANCE"
+        ]
+      },
+      "requirements": [],
+      "system_elements": [
+        {
+          "element_id": "SYS-ELEM-DECISION-R06-INTEGRATION",
+          "element_class": "DECISION_OBJECT",
+          "canonical_ref": "DECISION-R06-INTEGRATION",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ],
+      "interfaces": [],
+      "verification_validation": [],
+      "configuration_baselines": [
+        "BASELINE-DECISION-R06-INTEGRATION"
+      ]
+    },
+    "knowledge_graph": {
+      "header": {
+        "module": "KNOWLEDGE_GRAPH",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "KNOWLEDGE_CURRENT",
+          "OE3",
+          "CLAIM_TRUTH"
+        ]
+      },
+      "nodes": [
+        {
+          "node_id": "KG-PROJECT-PRJ-C04-QINGJIANG-SHISHU",
+          "node_class": "PROJECT",
+          "canonical_ref": "PRJ-C04-QINGJIANG-SHISHU",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-DECISION-DECISION-R06-INTEGRATION",
+          "node_class": "DECISION",
+          "canonical_ref": "DECISION-R06-INTEGRATION",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-KNOWLEDGE-KNOWLEDGE-GRAPH-EXAMPLE-CURRENT",
+          "node_class": "KNOWLEDGE",
+          "canonical_ref": "knowledge:graph:example-current",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "authority_gain": false
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "KG-EDGE-DECISION-R06-INTEGRATION-KNOWLEDGE",
+          "predicate": "SUPPORTED_BY_KNOWLEDGE",
+          "from_ref": "DECISION-R06-INTEGRATION",
+          "to_ref": "knowledge:graph:example-current",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ],
+          "projection_only": true,
+          "authority_effect": "NONE"
+        }
+      ],
+      "provenance_records": [
+        {
+          "provenance_id": "PROV-DECISION-R06-INTEGRATION",
+          "entity_ref": "DECISION-R06-INTEGRATION",
+          "derived_from_refs": [
+            "knowledge:graph:example-current",
+            "authority:example-current"
+          ],
+          "generated_by_ref": "00-governance/control-plane/examples/example-master-runtime.json",
+          "attributed_to_refs": [],
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ],
+      "query_policies": [
+        {
+          "policy_id": "KG-POLICY-TASK-CLAIM",
+          "query_scope": "TASK_CLAIM_SCOPED_ONLY",
+          "eligibility_rule_ref": "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+          "claim_ceiling_rule_ref": "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+          "source_refs": [
+            "00-governance/control-plane/examples/example-master-runtime.json"
+          ]
+        }
+      ]
+    },
+    "agent_runtime": {
+      "header": {
+        "module": "AGENT_RUNTIME",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ],
+        "does_not_prove": [
+          "AUTHORITY",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "sessions": [],
+      "leases": [],
+      "actions": [],
+      "handoffs": []
+    }
+  },
+  "digital_thread": {
+    "relations": [
+      {
+        "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-PROJECT-WP",
+        "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+        "from_ref": "PRJ-C04-QINGJIANG-SHISHU",
+        "to_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+        "projection_only": true,
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ]
+      },
+      {
+        "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-WP-DECISION",
+        "relation_type": "BOUND_TO_DECISION_OBJECT",
+        "from_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+        "to_ref": "DECISION-R06-INTEGRATION",
+        "projection_only": true,
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ]
+      },
+      {
+        "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-WP-KNOWLEDGE",
+        "relation_type": "SUPPORTED_BY_KNOWLEDGE",
+        "from_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+        "to_ref": "knowledge:graph:example-current",
+        "projection_only": true,
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ]
+      },
+      {
+        "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-CONFIGURES",
+        "relation_type": "CONFIGURES",
+        "from_ref": "CI-DECISION-R06-INTEGRATION",
+        "to_ref": "DECISION-R06-INTEGRATION",
+        "projection_only": true,
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ]
+      }
+    ],
+    "trace_queries": [
+      {
+        "query_id": "TRACE-DECISION-R06-INTEGRATION-KNOWLEDGE",
+        "question": "Can the decision object be traced to its current knowledge and authority snapshots?",
+        "required_relation_types": [
+          "SUPPORTED_BY_KNOWLEDGE",
+          "CONFIGURES"
+        ],
+        "result_state": "PARTIAL",
+        "source_refs": [
+          "00-governance/control-plane/examples/example-master-runtime.json"
+        ]
+      }
+    ],
+    "unresolved_links": [
+      {
+        "link_id": "UNRES-DECISION-R06-INTEGRATION-PROFESSIONAL",
+        "from_ref": "DECISION-R06-INTEGRATION",
+        "expected_relation_type": "VERIFIES",
+        "reason": "No professional process instance is present in the source master runtime snapshot.",
+        "blocking": false
+      }
+    ]
+  },
+  "state_facets": {
+    "project_design": {},
+    "job": {},
+    "knowledge_integrity": {},
+    "operational_eligibility": {},
+    "design_quality": {
+      "DECISION-R06-INTEGRATION": {
+        "state": "CURRENT",
+        "verdict": "KEEP",
+        "maturity": "DQ3_DEVELOPED_SYSTEM",
+        "claim_ceiling": "DESIGN_DEVELOPED"
+      }
+    },
+    "professional": {},
+    "interface": {
+      "DECISION-R06-INTEGRATION": {
+        "state": "CURRENT",
+        "verdict": "PASS",
+        "open_major_critical_interfaces": 0,
+        "unresolved_authority_conflicts": 0
+      }
+    },
+    "authority": {
+      "DECISION-R06-INTEGRATION": {
+        "authority_snapshot_ref": "authority:example-current"
+      }
+    },
+    "evidence": {},
+    "configuration": {
+      "DECISION-R06-INTEGRATION": "WORKING"
+    },
+    "quality": {
+      "DECISION-R06-INTEGRATION": "REVIEW"
+    },
+    "process": {
+      "DECISION-R06-INTEGRATION": "ACTIVE"
+    },
+    "agent_runtime": {}
+  },
+  "activity_observations": [
+    {
+      "observation_id": "ENT-OBS-CH-EXAMPLE-001",
+      "observed_at": "2026-09-22T00:05:00+09:00",
+      "observation_type": "CONFIGURATION_OBSERVED",
+      "subject_ref": "CH-EXAMPLE-001",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "rebuildable": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "reconciliation": {
+    "projection_state": "CURRENT_PROJECTION",
+    "drift_state": "UNKNOWN",
+    "source_readback_refs": [
+      "00-governance/control-plane/examples/example-master-runtime.json"
+    ],
+    "partial_side_effect_state": "NONE",
+    "reconciliation_actions": [],
+    "advance_allowed": false
+  },
+  "control_metrics": {
+    "authority_duplication_count": 0,
+    "state_family_flattening_count": 0,
+    "untraceable_relation_count": 0,
+    "unresolved_blocking_link_count": 0,
+    "module_source_coverage": 1.0,
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "KNOWLEDGE_CURRENT",
+    "FIELD_TRUTH"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "manifest_id": "OLEANDER_ENTERPRISE_CANDIDATE_MANIFEST_v0.3",
+  "status": "EV2_ACTIVE_CANDIDATE_PACKAGE",
+  "baseline_main_commit": "e34ef6366b58749a7f8645f03329c8e7596caf60",
+  "active_schema": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.schema.json",
+  "active_files_excluding_this_manifest": [
+    {
+      "path": "README.md",
+      "bytes": 7105,
+      "sha256": "DA6759CCF23EB1B31FEBE8A7297FA2F00DABE469FD095209CACCF41F3128229E",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 4488,
+      "sha256": "4A00AD423623791D721CD222E1B74EABE909397372979EC52FE5DCC62D776AB8",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "build_erp_projection.py",
+      "bytes": 19225,
+      "sha256": "BA6EAA2980985B508F86964D9BCD5E7C6E9D6A30E7E0C3CDDA9A2D63AF5A064C",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "validate_erp_candidate.py",
+      "bytes": 23637,
+      "sha256": "75800051C69E02A27F0BF888BD3A041F21B7BCC4E8BA959F3D9970F9284F05F3",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.schema.json",
+      "bytes": 70095,
+      "sha256": "2EEE18C41CE66D70D9DC5FFF72237DDCE12EC945EC92775F227E38043CF6A9C4",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "example_enterprise_projection_v0.3.json",
+      "bytes": 23790,
+      "sha256": "AF157191BF44D63F12B992BB64EC2BF6120608EFFB17DAEAF93D218A77BF029A",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json",
+      "bytes": 9180,
+      "sha256": "E65E28232963A9DA5661247FDE90CABF2ED08B2E07C57B456B8B8755EF7C65FB",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_REFERENCE_MODEL_v0.1.json",
+      "bytes": 1762,
+      "sha256": "68C5AA57B06BD9065C63FDDF0C1717B1C88CBF661D6C899BB2089DCE88E25890",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_CANDIDATE_GAP_REGISTER_v0.1.json",
+      "bytes": 2976,
+      "sha256": "CD3CAE8373ADC24DDD2D483958C75C47F1F835967E2910619B4FED0B49CAD173",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921.json",
+      "bytes": 11599,
+      "sha256": "85EEB3CFF3B51CC78AE9B4B8CD9DFDC7D261E166A3545BF60A4E0EAD33C13F41",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ERP_STAGE1_EVAL_RECEIPT_v0.3_20260922.json",
+      "bytes": 4777,
+      "sha256": "5B34BD741DC368DEF253368408EC4F1D9CD8D6FF79AA687313848DFB594E3418",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "eval-output/example-master-runtime.enterprise.v0.3.json",
+      "bytes": 21300,
+      "sha256": "DD38B2F2064CAC46DA7C6BA8C75D4A96DD71CC1217E08901649995FF550865C3",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    }
+  ],
+  "legacy_provenance_files": [
+    "OLEANDER_ERP_CORE_PROJECTION_v0.1.schema.json",
+    "OLEANDER_ERP_CORE_PROJECTION_v0.2.schema.json",
+    "example_erp_projection.json",
+    "example_erp_projection_v0.2.json",
+    "OLEANDER_ERP_OWNER_MAPPING_v0.1.json",
+    "ERP_STAGE1_EVAL_RECEIPT_20260921.json",
+    "eval-output/example-master-runtime.erp.json",
+    "eval-output/example-master-runtime.erp.v0.2.json"
+  ],
+  "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+  "authority_boundary": "CANDIDATE_PACKAGE_IDENTITY_ONLY_NOT_CURRENT_AUTHORITY",
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION"
+  ]
+}

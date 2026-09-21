@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.erp-core-projection.v0.1",
+  "title": "OLEANDER ERP Core Projection Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "candidate_status",
+    "generated_at",
+    "authority",
+    "project_axis_refs",
+    "work_packages",
+    "jobs",
+    "resource_refs",
+    "artifact_refs",
+    "review_refs",
+    "relations",
+    "state_facets",
+    "activity_observations",
+    "reconciliation",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1-candidate" },
+    "kind": { "const": "OLEANDER_ERP_PROJECTION" },
+    "candidate_status": { "enum": ["NON_AUTHORITATIVE_CANDIDATE", "EVAL_ONLY"] },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["architecture_ref", "master_runtime_ref", "authority_snapshot_ref", "knowledge_snapshot_ref", "projection_only", "may_mutate_current"],
+      "properties": {
+        "architecture_ref": { "type": "string", "minLength": 1 },
+        "master_runtime_ref": { "type": "string", "minLength": 1 },
+        "authority_snapshot_ref": { "type": "string", "minLength": 1 },
+        "knowledge_snapshot_ref": { "type": "string", "minLength": 1 },
+        "projection_only": { "const": true },
+        "may_mutate_current": { "const": false }
+      }
+    },
+    "project_axis_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis_level", "canonical_id", "canonical_ref"],
+        "properties": {
+          "axis_level": { "enum": ["P0_PORTFOLIO", "P1_PROGRAM", "P2_PROJECT", "P3_WORKSTREAM", "P4_VALIDATION"] },
+          "canonical_id": { "type": "string", "minLength": 1 },
+          "canonical_ref": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "work_packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["work_package_id", "project_id", "workstream_id", "decision_object_ids", "coordination_state", "required_native_outputs", "required_capability_roles", "depends_on", "open_blockers", "does_not_prove"],
+        "properties": {
+          "work_package_id": { "type": "string", "pattern": "^WP-" },
+          "project_id": { "type": "string", "minLength": 1 },
+          "workstream_id": { "type": ["string", "null"] },
+          "decision_object_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "coordination_state": { "enum": ["PLANNED", "READY", "IN_PROGRESS", "REVIEW", "BLOCKED", "CLOSED"] },
+          "required_native_outputs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "required_capability_roles": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "depends_on": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "open_blockers": { "type": "array", "items": { "type": "string" } },
+          "does_not_prove": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["job_id", "work_package_id", "job_state", "primary_owner_ref", "capability_refs", "tool_adapter_refs", "input_refs", "output_refs", "readback_refs", "claim_ceiling", "does_not_prove"],
+        "properties": {
+          "job_id": { "type": "string", "pattern": "^JOB-" },
+          "work_package_id": { "type": "string", "pattern": "^WP-" },
+          "job_state": { "enum": ["CREATED", "RESOLVED", "QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "CANCELLED", "CACHED"] },
+          "primary_owner_ref": { "type": "string", "minLength": 1 },
+          "capability_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "tool_adapter_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "input_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "output_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "readback_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "claim_ceiling": { "type": "string", "minLength": 1 },
+          "does_not_prove": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "resource_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["resource_id", "resource_class", "canonical_ref", "availability", "authority_gain"],
+        "properties": {
+          "resource_id": { "type": "string", "minLength": 1 },
+          "resource_class": { "enum": ["HUMAN_ROLE", "CAPABILITY", "SKILL", "TOOL_ADAPTER", "RUNTIME"] },
+          "canonical_ref": { "type": "string", "minLength": 1 },
+          "availability": { "enum": ["AVAILABLE", "BUSY", "UNAVAILABLE", "UNKNOWN"] },
+          "authority_gain": { "const": false }
+        }
+      }
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact_id", "canonical_ref", "native_format", "editable_state", "hash_or_commit", "readback_refs"],
+        "properties": {
+          "artifact_id": { "type": "string", "minLength": 1 },
+          "canonical_ref": { "type": "string", "minLength": 1 },
+          "native_format": { "type": "string", "minLength": 1 },
+          "editable_state": { "enum": ["EDITABLE", "DERIVED_ONLY", "UNKNOWN"] },
+          "hash_or_commit": { "type": "string", "minLength": 1 },
+          "readback_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "review_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["review_id", "review_class", "receipt_ref", "result", "independence_state"],
+        "properties": {
+          "review_id": { "type": "string", "minLength": 1 },
+          "review_class": { "enum": ["ARTIFACT", "TECHNICAL", "EVIDENCE", "DISCIPLINE", "DESIGN", "PERSISTENCE", "INTEGRATION", "SPECIALIST"] },
+          "receipt_ref": { "type": ["string", "null"] },
+          "result": { "type": "string", "minLength": 1 },
+          "independence_state": { "enum": ["INDEPENDENT", "PARTIALLY_INDEPENDENT", "NOT_INDEPENDENT", "NOT_REQUIRED", "UNKNOWN"] }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["relation_id", "relation_type", "from_ref", "to_ref", "projection_only", "source_refs"],
+        "properties": {
+          "relation_id": { "type": "string", "minLength": 1 },
+          "relation_type": {
+            "enum": [
+              "PROJECT_CONTAINS_WORK_PACKAGE",
+              "WORK_PACKAGE_DEPENDS_ON",
+              "WORK_PACKAGE_REQUIRES_CAPABILITY",
+              "WORK_PACKAGE_REQUIRES_OUTPUT",
+              "JOB_EXECUTES_WORK_PACKAGE",
+              "JOB_DEPENDS_ON_JOB",
+              "JOB_USES_RESOURCE",
+              "JOB_PRODUCES_ARTIFACT",
+              "ARTIFACT_REVIEWED_BY",
+              "SUPPORTED_BY_KNOWLEDGE",
+              "BOUND_TO_DECISION_OBJECT",
+              "HANDOFF_TO",
+              "STALE_IF",
+              "SUPERSEDES_REF"
+            ]
+          },
+          "from_ref": { "type": "string", "minLength": 1 },
+          "to_ref": { "type": "string", "minLength": 1 },
+          "projection_only": { "const": true },
+          "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "state_facets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_design", "job", "knowledge_integrity", "operational_eligibility", "design_quality", "professional", "interface", "authority", "evidence"],
+      "properties": {
+        "project_design": { "type": "object" },
+        "job": { "type": "object" },
+        "knowledge_integrity": { "type": "object" },
+        "operational_eligibility": { "type": "object" },
+        "design_quality": { "type": "object" },
+        "professional": { "type": "object" },
+        "interface": { "type": "object" },
+        "authority": { "type": "object" },
+        "evidence": { "type": "object" }
+      }
+    },
+    "activity_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["observation_id", "observed_at", "observation_type", "subject_ref", "source_refs", "projection_only", "rebuildable", "authority_effect"],
+        "properties": {
+          "observation_id": { "type": "string", "minLength": 1 },
+          "observed_at": { "type": "string", "minLength": 1 },
+          "observation_type": { "enum": ["STATE_OBSERVED", "JOB_TRANSITION_OBSERVED", "ARTIFACT_READBACK_OBSERVED", "REVIEW_RESULT_OBSERVED", "DRIFT_OBSERVED", "RECONCILIATION_OBSERVED"] },
+          "subject_ref": { "type": "string", "minLength": 1 },
+          "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "projection_only": { "const": true },
+          "rebuildable": { "const": true },
+          "authority_effect": { "const": "NONE" }
+        }
+      }
+    },
+    "reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projection_state", "drift_state", "source_readback_refs", "advance_allowed"],
+      "properties": {
+        "projection_state": { "enum": ["CURRENT_PROJECTION", "STALE_PROJECTION", "HOLD"] },
+        "drift_state": { "enum": ["CURRENT", "STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION", "NOT_REQUIRED", "UNKNOWN"] },
+        "source_readback_refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "advance_allowed": { "type": "boolean" }
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
