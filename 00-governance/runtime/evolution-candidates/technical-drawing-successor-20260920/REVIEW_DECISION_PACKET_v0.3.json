@@ -5,7 +5,7 @@
   "pr": 677,
   "review_target": "CANDIDATE -> VALIDATED only",
   "authority_contract": "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json",
-  "r2_base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "r2_base_sha": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
   "fresh_ci_head": "c96f8bc5d8e0dc1f2e33f3aa5cc3530a91287c96",
   "fresh_ci": {
     "control_plane": "PASS",
