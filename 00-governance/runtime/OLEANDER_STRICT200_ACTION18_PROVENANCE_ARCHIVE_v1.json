@@ -1,0 +1,96 @@
+{
+  "schema": "OLEANDER_STRICT200_ACTION18_PROVENANCE_ARCHIVE_v1",
+  "generatedAt": "2026-09-21",
+  "status": "ARCHIVE_PREPARED_NOT_YET_SOURCE_COMPACTED",
+  "authority": {
+    "notion": "CANONICAL_CONTENT_AUTHORITY",
+    "githubArchive": "APPEND_ONLY_PROVENANCE_DERIVATIVE",
+    "archivePath": "00-governance/runtime/receipts/STRICT200_ACTION18_HISTORY_ARCHIVE_20260921.md"
+  },
+  "noLossRule": "SOURCE_COMPACTION_FORBIDDEN_UNTIL_ARCHIVE_IS_MERGED_TO_MAIN_AND_EXACT_READBACK_PASSES",
+  "archiveSha256": "241abe86514cad367b7366ef6767e468c6d46a661ddbd7dc66f0ee2b1ba4a59b",
+  "rows": [
+    {
+      "sequence": 6,
+      "canonicalId": "IDX-DESIGN-001",
+      "pageId": "3adb86be-5c47-81ab-a960-d3aa12f18486",
+      "role": "INDEX",
+      "sourceRevision": "2026-09-19T15:23:00.000Z",
+      "sourceFullBodySha256": "edf433e313f8713ac1da4db1601a5dd3bbec518b4d30fb41b27923236b9fc76a",
+      "archiveBlockSha256": "212cf4c40e842b45add8309f9493f1fe7198ca2f35f71b90e6da11259e8999fa",
+      "archiveBlockLength": 7210,
+      "startAnchor": "## Recovery Map｜批量整理后设计知识恢复｜2026-08-29",
+      "endAnchorExclusive": "## Professional coverage gap routing｜Product + Visual"
+    },
+    {
+      "sequence": 14,
+      "canonicalId": "FW-ARCH-MATERIAL-SYSTEM-001",
+      "pageId": "3acb86be-5c47-81c6-bf9f-e297f22a122c",
+      "role": "THEORY",
+      "sourceRevision": "2026-09-19T14:42:00.000Z",
+      "sourceFullBodySha256": "59876b717d171622a820702ed7c57f9a4f4d48c06b61bcb90e5a277fe319dc3b",
+      "archiveBlockSha256": "089fa04f322ab8860f814610047f72992e3e3c69c93eff925a00136137c0f64d",
+      "archiveBlockLength": 1873,
+      "startAnchor": "## CANDIDATE PROFESSIONAL ROUTING｜2026-09-16｜R-E Facade / Building Envelope",
+      "endAnchorExclusive": null
+    },
+    {
+      "sequence": 31,
+      "canonicalId": "IDX-ARCH-001",
+      "pageId": "3acb86be-5c47-815c-883d-c7a630317a62",
+      "role": "INDEX",
+      "sourceRevision": "2026-09-19T14:45:00.000Z",
+      "sourceFullBodySha256": "171dede9d01e98477ec2d8948fe8d2781d42d05b8b9494376819347d6609a343",
+      "archiveBlockSha256": "5d964333706b694030c0f36bf7baff568000fcebdf4bb3c12dde3d3e465d092b",
+      "archiveBlockLength": 5713,
+      "startAnchor": "## 2026-09-19｜Cross-domain Professional Granularity Parity｜Architecture / Interior / Landscape / Lighting / Structure / MEP",
+      "endAnchorExclusive": null
+    },
+    {
+      "sequence": 32,
+      "canonicalId": "IDX-ARCH-SITE-003",
+      "pageId": "3acb86be-5c47-816e-9116-cc04a006421b",
+      "role": "INDEX",
+      "sourceRevision": "2026-09-20T14:48:00.000Z",
+      "sourceFullBodySha256": "776e288f994e8146aa09fb26571143320a28943c20ee576ca8a1b5527b771640",
+      "archiveBlockSha256": "c746afd2a5688312888d86474c4847cab870471b54d6c978ec96be69207195d2",
+      "archiveBlockLength": 6311,
+      "startAnchor": "## CANDIDATE PROFESSIONAL ROUTING｜2026-09-16｜R-E Landscape Architecture",
+      "endAnchorExclusive": "## 2026-09-20｜External KB Absorption｜Landscape Institute"
+    },
+    {
+      "sequence": 43,
+      "canonicalId": "IDX-ARCH-MEP-004",
+      "pageId": "3acb86be-5c47-81dc-94c1-efc67df8eb95",
+      "role": "INDEX",
+      "sourceRevision": "2026-09-19T13:51:00.000Z",
+      "sourceFullBodySha256": "9703396dbf266111cd0185abfd47e1125d176dadfd146401d307391d59c7d86d",
+      "archiveBlockSha256": "66bf0eac7b3930beb017d0be89487e3e4f69791f7f4dade9a5ebb0044437ef3b",
+      "archiveBlockLength": 6422,
+      "startAnchor": "## 10｜Current Building Services / MEP Professional Process Binding｜2026-09-15",
+      "endAnchorExclusive": null
+    },
+    {
+      "sequence": 46,
+      "canonicalId": "IDX-ARCH-STRUCT-SAFETY-005",
+      "pageId": "3acb86be-5c47-81f1-a9f3-d5765ea4c28c",
+      "role": "INDEX",
+      "sourceRevision": "2026-09-19T13:52:00.000Z",
+      "sourceFullBodySha256": "c689aa3a897b29b0abe22ea68318619ef7960c0f079ed998f191f0a34eaebd5d",
+      "archiveBlockSha256": "5c921d57b6dd2b5ae8cc766fc2e167057b5f8542374a544a3dc303cfa153a00c",
+      "archiveBlockLength": 8523,
+      "startAnchor": "## 10｜Current Structural Engineering Professional Process Binding｜2026-09-15",
+      "endAnchorExclusive": null
+    }
+  ],
+  "doesNotProve": [
+    "CURRENT",
+    "DEFAULT",
+    "KI4",
+    "OE3",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PASS",
+    "FIELD_TRUTH"
+  ]
+}
