@@ -4,7 +4,7 @@
   "pr": 678,
   "review_target": "per-runtime adapter/surface eligibility",
   "authority_contract": "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
-  "r2_base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "r2_base_sha": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
   "fresh_runtime_workflow": {
     "run_id": 35516039856,
     "head": "23328d0e5b016cad525c3dc0f39f5ec8692623f7",
