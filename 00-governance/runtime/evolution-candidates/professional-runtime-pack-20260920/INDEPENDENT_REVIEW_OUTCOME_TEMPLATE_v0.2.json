@@ -1,0 +1,19 @@
+{
+  "object_type": "OLEANDER_RUNTIME_ADAPTER_INDEPENDENT_REVIEW_OUTCOME",
+  "version": "0.2",
+  "pr": 678,
+  "review_packet_ref": "ADAPTER_REVIEW_PACKET_v0.2.json",
+  "reviewer_id": null,
+  "reviewer_role": null,
+  "producer_distinct": null,
+  "runtime_decisions": [
+    {"id": "STRUCTURAL_ANALYSIS_OPENSEESPY_CANDIDATE", "decision": "PENDING", "accepted_authority_ceiling": null, "decision_ref": null, "effective_commit": null},
+    {"id": "BUILDING_ENERGY_ENERGYPLUS_CANDIDATE", "decision": "PENDING", "accepted_authority_ceiling": null, "decision_ref": null, "effective_commit": null},
+    {"id": "LIGHTING_RADIANCE_CANDIDATE", "decision": "PENDING", "accepted_authority_ceiling": null, "decision_ref": null, "effective_commit": null},
+    {"id": "LANDSCAPE_TERRAIN_EARTHWORK_CANDIDATE", "decision": "PENDING", "accepted_authority_ceiling": null, "decision_ref": null, "effective_commit": null}
+  ],
+  "allowed_decisions": ["REGISTER_BOUNDED_ADAPTER", "REMAIN_CANDIDATE", "REQUEST_CHANGES", "HOLD"],
+  "common_required_fields_before_registration": ["reviewer_id", "producer_distinct=true", "accepted_authority_ceiling", "decision_ref", "effective_commit"],
+  "state": "PENDING_INDEPENDENT_REVIEW",
+  "does_not_prove": ["professional owner authority", "professional process PASS", "statutory approval", "field truth", "Design KEEP"]
+}

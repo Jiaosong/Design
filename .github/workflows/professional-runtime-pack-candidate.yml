@@ -1,0 +1,118 @@
+name: OLEANDER Professional Runtime Pack Candidate
+
+on:
+  pull_request:
+    paths:
+      - '00-governance/runtime/evolution-candidates/professional-runtime-pack-20260920/**'
+      - '.github/workflows/professional-runtime-pack-candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-openseespy:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned OpenSeesPy
+        run: python -m pip install --disable-pip-version-check openseespy==3.8.0.0
+      - name: Execute structural solver smoke
+        run: python 00-governance/runtime/evolution-candidates/professional-runtime-pack-20260920/structural/opensees_truss_smoke.py
+
+  landscape-earthwork:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Execute cut-fill smoke
+        run: python 00-governance/runtime/evolution-candidates/professional-runtime-pack-20260920/landscape/terrain_cut_fill.py
+
+  lighting-radiance:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Materialize verified Radiance
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl -L --fail --retry 3 -o radiance.zip "https://github.com/LBNL-ETA/Radiance/releases/download/rad6R0P2/Radiance_c1700d56_Linux.zip"
+          echo "04ee53cafbb64b943a53616b3d0ee379dd7ef80379c83aa7a145e547d9809c28  radiance.zip" | sha256sum -c -
+          mkdir radiance_outer
+          unzip -q radiance.zip -d radiance_outer
+          RAD_TGZ="$(find radiance_outer -type f -name 'radiance-*-Linux.tar.gz' -print -quit)"
+          test -n "$RAD_TGZ"
+          mkdir radiance_pkg
+          tar -xzf "$RAD_TGZ" -C radiance_pkg
+          RAD_ROOT="$(find radiance_pkg -type d -path '*/usr/local/radiance' -print -quit)"
+          test -n "$RAD_ROOT"
+          test -x "$RAD_ROOT/bin/oconv"
+          test -x "$RAD_ROOT/bin/rtrace"
+          echo "Radiance root=$RAD_ROOT"
+          export PATH="$RAD_ROOT/bin:$PATH"
+          export RAYPATH=".:$RAD_ROOT/lib"
+          rtrace -version
+          cat > scene.rad <<'EOF'
+          void light smoke_light
+          0
+          0
+          3 100 100 100
+
+          smoke_light source smoke_sun
+          0
+          0
+          4 0 0 1 0.5
+          EOF
+          oconv scene.rad > scene.oct
+          printf '0 0 0 0 0 1\n' | rtrace -I -h scene.oct > irradiance.txt
+          cat irradiance.txt
+          python - <<'PY'
+          import math
+          from pathlib import Path
+          vals=[float(x) for x in Path("irradiance.txt").read_text().split()]
+          assert len(vals) == 3, vals
+          assert all(math.isfinite(x) and x > 0 for x in vals), vals
+          print({"rgb_irradiance": vals, "result": "PASS_RUNTIME_SMOKE"})
+          PY
+
+  mep-energyplus:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Materialize verified EnergyPlus and execute packaged example
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl -L --fail --retry 3 -o energyplus.tar.gz "https://github.com/NatLabRockies/EnergyPlus/releases/download/v26.1.0/EnergyPlus-26.1.0-6f2e40d102-Linux-Ubuntu24.04-x86_64.tar.gz"
+          echo "b651f4197bfc147a0f66dc92c58895d1748bdadb7a0288145fa9d50375edfbca  energyplus.tar.gz" | sha256sum -c -
+          mkdir eplus
+          tar -xzf energyplus.tar.gz -C eplus
+          mapfile -t EP_DIRS < <(find eplus -mindepth 1 -maxdepth 1 -type d -print)
+          test "${#EP_DIRS[@]}" -eq 1
+          EP_ROOT="${EP_DIRS[0]}"
+          EP_BIN="$EP_ROOT/energyplus"
+          EXAMPLE="$EP_ROOT/ExampleFiles/1ZoneUncontrolled.idf"
+          test -x "$EP_BIN"
+          test -f "$EXAMPLE"
+          echo "EnergyPlus root=$EP_ROOT"
+          "$EP_BIN" --version
+          OUT="$RUNNER_TEMP/eplus-output"
+          mkdir -p "$OUT"
+          "$EP_BIN" -D -d "$OUT" "$EXAMPLE"
+          test -s "$OUT/eplusout.err"
+          if grep -q 'Fatal' "$OUT/eplusout.err"; then cat "$OUT/eplusout.err"; exit 1; fi
+          tail -40 "$OUT/eplusout.err"
+          echo '{"result":"PASS_RUNTIME_SMOKE","boundary":"thermal/building-energy runtime only; not MEP professional approval"}'

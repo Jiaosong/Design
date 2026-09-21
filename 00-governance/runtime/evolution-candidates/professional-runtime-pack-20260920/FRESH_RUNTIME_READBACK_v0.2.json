@@ -1,0 +1,64 @@
+{
+  "object_type": "OLEANDER_RUNTIME_PACK_FRESH_READBACK",
+  "version": "0.2",
+  "pr": 678,
+  "candidate_head": "23328d0e5b016cad525c3dc0f39f5ec8692623f7",
+  "workflow_run_id": 35516039856,
+  "workflow_result": "PASS",
+  "observed_at": "2026-09-20T14:17Z",
+  "runtimes": [
+    {
+      "id": "STRUCTURAL_ANALYSIS_OPENSEESPY_CANDIDATE",
+      "job_id": 106092033550,
+      "result": "PASS_RUNTIME_SMOKE",
+      "readback": {
+        "actual_displacement_m": 0.00015000000000000001,
+        "closed_form_displacement_m": 0.00015
+      }
+    },
+    {
+      "id": "BUILDING_ENERGY_ENERGYPLUS_CANDIDATE",
+      "job_id": 106092033481,
+      "result": "PASS_RUNTIME_SMOKE",
+      "readback": {
+        "version": "26.1.0-6f2e40d102",
+        "example": "ExampleFiles/1ZoneUncontrolled.idf",
+        "warning_count": 0,
+        "severe_error_count": 0,
+        "completed_successfully": true
+      }
+    },
+    {
+      "id": "LIGHTING_RADIANCE_CANDIDATE",
+      "job_id": 106092033575,
+      "result": "PASS_RUNTIME_SMOKE",
+      "readback": {
+        "version": "RADIANCE 6.0.2 / c1700d56",
+        "rgb_irradiance": [
+          0.005981139,
+          0.005981139,
+          0.005981139
+        ]
+      }
+    },
+    {
+      "id": "LANDSCAPE_TERRAIN_EARTHWORK_CANDIDATE",
+      "job_id": 106092033558,
+      "result": "PASS_RUNTIME_SMOKE",
+      "readback": {
+        "cut_m3": 5.999999999999943,
+        "fill_m3": 5,
+        "net_fill_minus_cut_m3": -0.9999999999999432
+      }
+    }
+  ],
+  "authority_boundary": "RUNTIME READBACK ONLY / NO PROFESSIONAL AUTHORITY",
+  "does_not_prove": [
+    "Current adapter registration",
+    "professional owner authority",
+    "professional process PASS",
+    "statutory approval",
+    "field truth",
+    "Design KEEP"
+  ]
+}

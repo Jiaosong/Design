@@ -1,0 +1,67 @@
+{
+  "object_type": "OLEANDER_RUNTIME_CURRENTIZATION_GATE",
+  "version": "0.1",
+  "pr": 678,
+  "state": "INDEPENDENT_REVIEW_REQUIRED",
+  "r2_execution_contract_head": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "current_candidate_head_after_rehang": "54ae19cee386af05d22f6173e7f14e3c8af8bb81",
+  "authority_contract": "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+  "current_registry_target": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+  "runtimes": [
+    {
+      "id": "STRUCTURAL_ANALYSIS_OPENSEESPY_CANDIDATE",
+      "runtime_smoke": "PASS",
+      "currentization": "PENDING_INDEPENDENT_REVIEW",
+      "current_owner": false
+    },
+    {
+      "id": "BUILDING_ENERGY_ENERGYPLUS_CANDIDATE",
+      "runtime_smoke": "PASS",
+      "currentization": "PENDING_INDEPENDENT_REVIEW",
+      "current_owner": false
+    },
+    {
+      "id": "LIGHTING_RADIANCE_CANDIDATE",
+      "runtime_smoke": "PASS",
+      "currentization": "PENDING_INDEPENDENT_REVIEW",
+      "current_owner": false
+    },
+    {
+      "id": "LANDSCAPE_TERRAIN_EARTHWORK_CANDIDATE",
+      "runtime_smoke": "PASS",
+      "currentization": "PENDING_INDEPENDENT_REVIEW",
+      "current_owner": false
+    }
+  ],
+  "required_before_current_registration": [
+    "independent reviewer_id",
+    "per-runtime decision_ref",
+    "version binding",
+    "regression baseline",
+    "re-verification trigger",
+    "declared consumers and authority ceiling",
+    "effective commit"
+  ],
+  "verdict": "REVIEW_REQUIRED",
+  "does_not_prove": [
+    "professional owner authority",
+    "professional process PASS",
+    "statutory approval",
+    "field truth",
+    "Design KEEP"
+  ],
+  "rehang_readback": {
+    "base_ref": "candidate/professional-real-execution-capability-20260920",
+    "base_ref_resolves_to_pr681_r2": true,
+    "base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+    "compare_status": "ahead",
+    "behind_by": 0,
+    "verification_state": "REHUNG_TO_LATEST_R2_AWAITING_FRESH_CI"
+  },
+  "canonicalization_prerequisite": {
+    "prerequisite": "PR_681_R2_MERGED_TO_MAIN",
+    "current_state": "PR681_OPEN_READY_FOR_REVIEW",
+    "effect": "Independent review may proceed; VALIDATED/adapter registration/bounded-evidence merge may not become canonical Current authority until #681 r2 is merged to main and the candidate is rebased/read back against that exact main.",
+    "close_when": "main contains accepted #681 r2 at or after 6712a14037f4323c6cded82a8b53df353f85c9c4 and fresh compare/readback shows no contract drift."
+  }
+}
