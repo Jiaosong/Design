@@ -19,7 +19,8 @@
     "current_body_readback": ".mcp-runtime/diagnostics/OLEANDER_CURRENT_56_FINAL_FULLSUPPLEMENT_MERGED_READBACK_20260915.json",
     "support_master_inventory": ".mcp-runtime/diagnostics/OLEANDER_SUPPORT_946_MASTER_INVENTORY_20260915.json",
     "provenance_count_evidence": ".mcp-runtime/diagnostics/OLEANDER_KNOWLEDGE_GRAPH_LIVE_SNAPSHOT_POST_BATCH07D_20260914.json",
-    "reviewed_300_content_mount": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json"
+    "reviewed_300_content_mount": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
+    "strict_200_content_mount": "00-governance/runtime/OLEANDER_STRICT_200_MOUNT_RECEIPT_20260921.json"
   },
   "contracts": {
     "content_review": "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md",
@@ -111,8 +112,35 @@
     }
   },
   "last_reviewed_content_sync": {
-    "date": "2026-09-20",
-    "receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
-    "note": "Reviewed cohort is mounted by canonical reference only. No bulk CURRENT/DEFAULT/KI4/OE3 promotion."
+    "date": "2026-09-21",
+    "receipt": "00-governance/runtime/OLEANDER_STRICT_200_MOUNT_RECEIPT_20260921.json",
+    "previous_receipt": "00-governance/runtime/OLEANDER_REVIEWED_300_MOUNT_RECEIPT_20260920.json",
+    "note": "Strict SUPPORT 001-200 cohort mounted by canonical reference only. Mixed content state preserved: 168 terminal, 14 HOLD, 18 action-required. No bulk CURRENT/DEFAULT/KI4/OE3 promotion."
+  },
+  "reviewed_content_cohorts": {
+    "strict_support_001_200_20260921": {
+      "receipt": "00-governance/runtime/OLEANDER_STRICT_200_MOUNT_RECEIPT_20260921.json",
+      "canonical_registry": "collection://4668fc63-45a6-496e-a2cc-f9542928b9e8",
+      "mount_mode": "REFERENCE_ONLY",
+      "readback": {
+        "total": 200,
+        "found": 200,
+        "revision_match": 200,
+        "full_body_complete": 200
+      },
+      "content": {
+        "terminal_subset": 168,
+        "hold_subset": 14,
+        "action_required_subset": 18,
+        "whole_cohort_terminal": false
+      },
+      "action_required": {
+        "restructure": 15,
+        "enrich": 3
+      },
+      "integrity": "RESOLVE_LIVE_PER_OBJECT_AND_SCOPE",
+      "operational_eligibility": "RESOLVE_PER_TASK_CLAIM",
+      "promotion": "NONE"
+    }
   }
 }
