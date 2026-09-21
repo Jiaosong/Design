@@ -1,0 +1,40 @@
+{
+  "object_type": "PROFESSIONAL_EXECUTION_CAPABILITY_PLAN",
+  "schema_version": "1.0",
+  "plan_id": "PECP-PROJECT-DOMAIN-STAGE-001",
+  "project_id": "PROJECT_ID",
+  "workstream_id": null,
+  "domain": "DOMAIN",
+  "process_ref": "CURRENT_OR_LEGAL_CANDIDATE_PROCESS_REF",
+  "stage_id": "STAGE_ID",
+  "decision_object_id": "DECISION_OBJECT_ID",
+  "source_revision": "SOURCE_REVISION",
+  "claim_ceiling": "BOUNDED_CLAIM",
+  "runtime_observed_at": "2026-09-20T00:00:00Z",
+  "capabilities": [
+    {
+      "capability_id": "CAP-001",
+      "in_claim": true,
+      "required_capability_role": "REQUIRED_CAPABILITY_ROLE",
+      "required_native_output": "REQUIRED_NATIVE_OUTPUT",
+      "native_authority_required": "NATIVE_SOURCE_OF_TRUTH_REQUIREMENT",
+      "execution_mode": "CAPABILITY_HOLD",
+      "authority_state": "NO_OWNER",
+      "availability_state": "UNKNOWN",
+      "selected_owner_ref": null,
+      "specialist_binding_ref": null,
+      "execution_surface_ref": null,
+      "tool_adapter_ref": null,
+      "actual_readback_method": null,
+      "independent_review_required": true,
+      "independent_review_owner_ref": null,
+      "fallback": "HOLD rather than silently substitute a weaker artifact.",
+      "open_items": ["Resolve a Current callable owner or project-authorized specialist and a truthful native/readback route."],
+      "does_not_prove": ["professional stage PASS", "Design KEEP", "field truth", "Promotion"]
+    }
+  ],
+  "blocking_capability_ids": ["CAP-001"],
+  "plan_verdict": "HOLD",
+  "stale": false,
+  "does_not_prove": ["artifact existence", "professional stage PASS", "Design KEEP", "statutory approval", "field truth", "Promotion"]
+}
