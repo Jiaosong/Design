@@ -480,3 +480,35 @@ Tool: site inspection + defect/repair/retest + complaint/POE record. Readback: s
 
 ### Boundary
 `ABSORPTION COEFFICIENT ≠ ROOM PASS`；`LAB RATING ≠ FIELD ISOLATION`；`PARTITION RATING ≠ PRIVACY PASS`；`PREDICTION ≠ MEASUREMENT`；`COMPLAINT ≠ CAUSE CONFIRMED`；Acoustic coordination ≠ R-F Integration PASS.
+
+
+## 2026-09-21｜External Source Strengthening｜ISO 16283 / ISO 3382
+
+**Candidate-only additive delta. No process promotion.**
+
+New canonical Notion SOURCE:
+- `SRC-ISO-ACOUSTIC-FIELD-MEAS-001` — https://app.notion.com/p/3e2b86be5c4781079b42d9e380d7c7ae
+
+Current lifecycle readback:
+- ISO 16283-1:2014 + Amd 1:2017: published/current; 2014 edition confirmed in 2025;
+- ISO 16283-2:2020: published/current; confirmed in 2025;
+- ISO 16283-3:2016: published/current but marked to be revised; ISO/CD 16283-3 Edition 2 remains under development;
+- ISO 3382-2:2008: published/current; confirmed in 2022;
+- ISO 3382-1:2009: published/current but marked to be revised; ISO/DIS 3382-1 Edition 2 is under development and has not replaced it.
+
+### ACO-TEST readback delta
+
+Every consequential field result must retain, as applicable:
+`METHOD + PUBLISHED EDITION / AMENDMENT → INSTRUMENT / CALIBRATION → SOURCE / RECEIVER POSITIONS → ROOM / BUILDING CONFIGURATION → OPERATING / FURNISHING STATE → FREQUENCY TREATMENT → CORRECTIONS / AVERAGING → RAW / DERIVED RESULT → REPORT IDENTITY → UNCERTAINTY / LIMITATION → RETEST`.
+
+Airborne, impact, façade and room-acoustic measurements close different claims and must not be cross-promoted.
+
+### Boundary
+
+`LAB RATING ≠ FIELD RESULT`  
+`PREDICTION ≠ MEASUREMENT`  
+`ONE ROOM PASS ≠ WHOLE BUILDING PASS`  
+`DRAFT ISO ≠ CURRENT PUBLISHED ISO`  
+`MEASURED SYMPTOM ≠ CAUSE CONFIRMED`
+
+This SOURCE strengthens the existing Building Acoustics Candidate and ACO-TEST semantics only; it creates no parallel measurement METHOD or Current process claim.
