@@ -108,7 +108,11 @@
       "content_terminal": true,
       "integrity": "RESOLVE_LIVE_PER_OBJECT_AND_SCOPE",
       "operational_eligibility": "RESOLVE_PER_TASK_CLAIM",
-      "promotion": "NONE"
+      "promotion": "NONE",
+      "mount_mode": "REFERENCE_ONLY",
+      "canonical_authority": "NOTION_FIRST",
+      "knowledge_architecture_placement": "RESOLVE_LIVE_IN_NOTION",
+      "note": "This cohort proves full-body content review closure only. It does not prove Notion taxonomy/domain/Canonical Parent relation closure. Structural placement remains live Notion authority."
     }
   },
   "last_reviewed_content_sync": {
