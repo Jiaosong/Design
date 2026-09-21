@@ -3,7 +3,7 @@
   "version": "0.2",
   "pr": 679,
   "review_target": "bounded project evidence merge only",
-  "r2_base_sha": "6712a14037f4323c6cded82a8b53df353f85c9c4",
+  "r2_base_sha": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
   "source_project_evidence": {
     "pr": 665,
     "current_pr_head": "3376879389dddb331f4d39d0d7eb7f1aff5fbf51",
