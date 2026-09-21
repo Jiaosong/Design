@@ -1,0 +1,128 @@
+{
+  "object_type": "OLEANDER_RUNTIME_ADAPTER_REVIEW_PACKET",
+  "version": "0.2",
+  "pr": 678,
+  "review_target": "per-runtime adapter/surface eligibility",
+  "authority_contract": "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+  "r2_base_sha": "696ed3ba23e960e48a9178aab90cb6bde87fafc9",
+  "fresh_runtime_workflow": {
+    "run_id": 35516039856,
+    "head": "23328d0e5b016cad525c3dc0f39f5ec8692623f7",
+    "result": "PASS"
+  },
+  "runtimes": [
+    {
+      "id": "STRUCTURAL_ANALYSIS_OPENSEESPY_CANDIDATE",
+      "version_binding": "openseespy==3.8.0.0 / Python 3.12 / ubuntu-24.04 workflow",
+      "fresh_job_id": 106081303233,
+      "readback": {
+        "actual_displacement_m": 0.00015000000000000001,
+        "closed_form_displacement_m": 0.00015,
+        "result": "PASS"
+      },
+      "regression_baseline": "P*L/(A*E) exact axial-truss cross-check; abs/relative tolerance encoded in smoke script",
+      "reverify_if": [
+        "OpenSeesPy version changes",
+        "Python major/minor changes",
+        "runner OS changes",
+        "solver script changes",
+        "numeric mismatch"
+      ],
+      "candidate_consumers": [
+        "Structural Engineering bounded numerical-analysis stages"
+      ],
+      "authority_ceiling": "numerical solver runtime only",
+      "current_registration": false
+    },
+    {
+      "id": "BUILDING_ENERGY_ENERGYPLUS_CANDIDATE",
+      "version_binding": "EnergyPlus 26.1.0-6f2e40d102 / Ubuntu24.04 x86_64 release / SHA256 b651f4197bfc147a0f66dc92c58895d1748bdadb7a0288145fa9d50375edfbca",
+      "fresh_job_id": 106081303775,
+      "readback": {
+        "example": "ExampleFiles/1ZoneUncontrolled.idf",
+        "warnings": 0,
+        "severe_errors": 0,
+        "result": "PASS"
+      },
+      "regression_baseline": "verified release digest + packaged example executes to Completed Successfully with 0 Warning / 0 Severe Errors",
+      "reverify_if": [
+        "EnergyPlus release/digest changes",
+        "runner OS changes",
+        "example/model changes",
+        "fatal/severe/warning acceptance rule changes"
+      ],
+      "candidate_consumers": [
+        "Building Services / MEP building-energy and thermal questions"
+      ],
+      "authority_ceiling": "building-energy/thermal simulation runtime only",
+      "current_registration": false
+    },
+    {
+      "id": "LIGHTING_RADIANCE_CANDIDATE",
+      "version_binding": "Radiance 6.0.2 / rad6R0P2 / c1700d56 / SHA256 04ee53cafbb64b943a53616b3d0ee379dd7ef80379c83aa7a145e547d9809c28",
+      "fresh_job_id": 106081303229,
+      "readback": {
+        "rgb_irradiance": [
+          0.005981139,
+          0.005981139,
+          0.005981139
+        ],
+        "result": "PASS"
+      },
+      "regression_baseline": "official digest + oconv scene compile + rtrace -I returns finite positive RGB irradiance",
+      "reverify_if": [
+        "Radiance release/digest changes",
+        "RAYPATH/package layout changes",
+        "runner OS changes",
+        "scene/readback method changes",
+        "non-positive/non-finite irradiance"
+      ],
+      "candidate_consumers": [
+        "Lighting bounded photometric studies"
+      ],
+      "authority_ceiling": "photometric simulation runtime only",
+      "current_registration": false
+    },
+    {
+      "id": "LANDSCAPE_TERRAIN_EARTHWORK_CANDIDATE",
+      "version_binding": "Python 3.12 stdlib / deterministic cell-volume method",
+      "fresh_job_id": 106081303102,
+      "readback": {
+        "cut_m3": 5.999999999999943,
+        "fill_m3": 5,
+        "net_fill_minus_cut_m3": -0.9999999999999432,
+        "result": "PASS"
+      },
+      "regression_baseline": "per-cell elevation delta × cell area with expected cut=6, fill=5, net=-1 within encoded tolerance",
+      "reverify_if": [
+        "algorithm changes",
+        "unit convention changes",
+        "Python numerical behavior/material tolerance changes",
+        "fixture changes"
+      ],
+      "candidate_consumers": [
+        "Landscape bounded terrain quantity studies from authoritative elevation/area inputs"
+      ],
+      "authority_ceiling": "cut/fill quantity computation only",
+      "current_registration": false
+    }
+  ],
+  "common_review_requirements": [
+    "independent reviewer_id",
+    "per-runtime decision_ref",
+    "declared Current consumers",
+    "authority ceiling acceptance",
+    "regression/reverification acceptance",
+    "effective commit for any registry mutation"
+  ],
+  "machine_readiness": "READY_FOR_INDEPENDENT_ADAPTER_REVIEW",
+  "producer_self_promotion_forbidden": true,
+  "does_not_prove": [
+    "professional owner authority",
+    "professional process PASS",
+    "statutory approval",
+    "field truth",
+    "Design KEEP"
+  ],
+  "fresh_runtime_readback_ref": "FRESH_RUNTIME_READBACK_v0.2.json"
+}

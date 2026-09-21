@@ -1,0 +1,50 @@
+{
+  "schema": "oleander.runtime.professional-runtime-pack-candidate.v0.1",
+  "status": "CANDIDATE / NOT_CURRENT / NO_PROMOTION",
+  "date": "2026-09-20",
+  "parent_execution_contract": "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+  "capabilities": [
+    {
+      "capability_id": "STRUCTURAL_ANALYSIS_OPENSEESPY_CANDIDATE",
+      "domain": "Structural Engineering",
+      "runtime": "OpenSeesPy",
+      "version": "3.8.0.0",
+      "runtime_source": "https://pypi.org/project/openseespy/3.8.0.0/",
+      "smoke_ref": "structural/opensees_truss_smoke.py",
+      "claim_ceiling": "BOUNDED NUMERICAL STRUCTURAL ANALYSIS RUNTIME",
+      "does_not_prove": ["load basis correctness", "code compliance", "member design", "connection design", "independent checking", "engineering approval", "field truth"]
+    },
+    {
+      "capability_id": "BUILDING_ENERGY_ENERGYPLUS_CANDIDATE",
+      "domain": "Building Services / MEP",
+      "runtime": "EnergyPlus",
+      "version": "26.1.0",
+      "asset": "EnergyPlus-26.1.0-6f2e40d102-Linux-Ubuntu24.04-x86_64.tar.gz",
+      "sha256": "b651f4197bfc147a0f66dc92c58895d1748bdadb7a0288145fa9d50375edfbca",
+      "runtime_source": "https://github.com/NatLabRockies/EnergyPlus/releases/tag/v26.1.0",
+      "claim_ceiling": "BOUNDED BUILDING ENERGY / THERMAL SIMULATION RUNTIME",
+      "does_not_prove": ["HVAC professional sizing", "electrical design", "plumbing design", "fire systems design", "commissioning", "measured operational performance", "engineering approval"]
+    },
+    {
+      "capability_id": "LIGHTING_RADIANCE_CANDIDATE",
+      "domain": "Lighting Design",
+      "runtime": "LBNL-ETA Radiance",
+      "version": "rad6R0P2 / c1700d56",
+      "asset": "Radiance_c1700d56_Linux.zip",
+      "sha256": "04ee53cafbb64b943a53616b3d0ee379dd7ef80379c83aa7a145e547d9809c28",
+      "runtime_source": "https://github.com/LBNL-ETA/Radiance/releases/tag/rad6R0P2",
+      "claim_ceiling": "BOUNDED PHOTOMETRIC SIMULATION RUNTIME",
+      "does_not_prove": ["luminaire data authority", "lighting compliance", "glare acceptance", "field illuminance", "commissioning", "professional Lighting PASS"]
+    },
+    {
+      "capability_id": "LANDSCAPE_TERRAIN_EARTHWORK_CANDIDATE",
+      "domain": "Landscape Architecture",
+      "runtime": "Python stdlib deterministic terrain cells",
+      "version": "0.1",
+      "smoke_ref": "landscape/terrain_cut_fill.py",
+      "claim_ceiling": "BOUNDED CUT/FILL QUANTITY COMPUTATION FROM AUTHORITATIVE INPUT CELLS",
+      "does_not_prove": ["survey authority", "civil grading design", "drainage design", "soil/geotechnical suitability", "field quantities", "Landscape professional PASS"]
+    }
+  ],
+  "promotion_boundary": "Every capability remains Candidate until independent adapter review and explicit lifecycle transition. Project use must still bind source authority, actual runtime availability, native outputs/readback and specialist review at the current claim ceiling."
+}
