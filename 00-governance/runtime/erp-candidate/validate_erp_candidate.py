@@ -9,14 +9,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parents[2]
-SCHEMA_PATH = ROOT / "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.schema.json"
-FIXTURE_PATH = ROOT / "example_enterprise_projection_v0.3.json"
+SCHEMA_PATH = ROOT / "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.1.schema.json"
+FIXTURE_PATH = ROOT / "example_enterprise_projection_v0.3.1.json"
 CANDIDATE_PATH = ROOT / "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921.json"
 OWNER_MAP_PATH = ROOT / "OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json"
 REFERENCE_MODEL_PATH = ROOT / "OLEANDER_ENTERPRISE_REFERENCE_MODEL_v0.1.json"
 GAP_REGISTER_PATH = ROOT / "OLEANDER_ENTERPRISE_CANDIDATE_GAP_REGISTER_v0.1.json"
-BUILDER_OUTPUT_PATH = ROOT / "eval-output" / "example-master-runtime.enterprise.v0.3.json"
-MANIFEST_PATH = ROOT / "ENTERPRISE_CANDIDATE_MANIFEST_v0.3.json"
+BUILDER_OUTPUT_PATH = ROOT / "eval-output" / "example-master-runtime.enterprise.v0.3.1.json"
+MANIFEST_PATH = ROOT / "ENTERPRISE_CANDIDATE_MANIFEST_v0.3.1.json"
 
 CANONICAL_JOB_STATES = {"CREATED", "RESOLVED", "QUEUED", "RUNNING", "SUCCEEDED", "FAILED", "CANCELLED", "CACHED"}
 PROJECT_AXIS_LEVELS = {"P0_PORTFOLIO", "P1_PROGRAM", "P2_PROJECT", "P3_WORKSTREAM", "P4_VALIDATION"}
@@ -58,7 +58,7 @@ def require_source_refs(row: dict, context: str) -> None:
 
 def validate_projection(doc: dict) -> None:
     schema_validate(doc)
-    require(doc.get("schema_version") == "0.3-candidate", "wrong schema_version")
+    require(doc.get("schema_version") == "0.3.1-candidate", "wrong schema_version")
     require(doc.get("kind") == "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION", "wrong kind")
     require(doc.get("candidate_status") in {"NON_AUTHORITATIVE_CANDIDATE", "EVAL_ONLY"}, "projection must remain candidate/eval-only")
 
@@ -121,12 +121,18 @@ def validate_projection(doc: dict) -> None:
 
     modules = doc.get("modules", {})
     require(set(modules.keys()) == set(MODULES.keys()), "enterprise module set drift")
+    scope_counts = {"TRIGGERED": 0, "PARTIAL": 0, "NOT_TRIGGERED": 0, "HOLD": 0}
+    source_bound_count = 0
     for key, module_name in MODULES.items():
         header = modules[key].get("header", {})
         require(header.get("module") == module_name, f"{key} module header mismatch")
         require(header.get("authority_mode") == "PROJECTION_ONLY", f"{key} may not gain authority")
         require(bool(header.get("source_refs")), f"{key} module requires source_refs")
         require(bool(header.get("does_not_prove")), f"{key} module requires claim ceiling boundaries")
+        scope_state = header.get("scope_state")
+        require(scope_state in scope_counts, f"{key} invalid scope_state")
+        scope_counts[scope_state] += 1
+        source_bound_count += 1
 
     for item in modules["erp"].get("demand_records", []) + modules["erp"].get("schedule_records", []) + modules["erp"].get("resource_demand", []):
         require_source_refs(item, "ERP record")
@@ -203,8 +209,23 @@ def validate_projection(doc: dict) -> None:
         require_source_refs(observation, "activity observation")
 
     reconciliation = doc.get("reconciliation", {})
+    require(
+        reconciliation.get("projection_freshness_state")
+        in {"SOURCE_READBACK_CURRENT", "SOURCE_READBACK_STALE", "SOURCE_READBACK_UNKNOWN"},
+        "projection freshness state missing or invalid",
+    )
+    require(
+        reconciliation.get("enterprise_readiness_state")
+        in {"NOT_EVALUATED", "PARTIAL", "HOLD", "READY_FOR_EVALUATION"},
+        "enterprise readiness state missing or invalid",
+    )
+    if reconciliation.get("drift_state") in {"STALE", "MISSING", "DIVERGED", "ORPHANED_IMPLEMENTATION"}:
+        require(
+            reconciliation.get("projection_freshness_state") != "SOURCE_READBACK_CURRENT",
+            "stale/diverged source drift cannot be labeled current projection freshness",
+        )
     if uncertain_side_effect:
-        require(reconciliation.get("projection_state") == "HOLD", "uncertain side effect must HOLD projection")
+        require(reconciliation.get("enterprise_readiness_state") == "HOLD", "uncertain side effect must HOLD enterprise readiness")
         require(reconciliation.get("partial_side_effect_state") in {"OBSERVED_OPEN", "UNKNOWN"}, "uncertain side effect requires open/unknown reconciliation")
         require(reconciliation.get("advance_allowed") is False, "uncertain side effect must block advance")
 
@@ -214,11 +235,38 @@ def validate_projection(doc: dict) -> None:
     if (succeeded or agent_succeeded) and ("REVISE" in design_results or "HOLD" in design_results):
         require(reconciliation.get("advance_allowed") is False, "execution success with Design REVISE/HOLD must not advance")
 
+    expected_readiness = "READY_FOR_EVALUATION"
+    if (
+        uncertain_side_effect
+        or scope_counts["HOLD"] > 0
+        or unresolved_blocking > 0
+        or bool(design_results & {"REVISE", "REJECT", "HOLD", "FAIL"})
+    ):
+        expected_readiness = "HOLD"
+    elif scope_counts["PARTIAL"] > 0 or scope_counts["NOT_TRIGGERED"] > 0:
+        expected_readiness = "PARTIAL"
+    require(
+        reconciliation.get("enterprise_readiness_state") == expected_readiness,
+        f"enterprise readiness mismatch: expected {expected_readiness}",
+    )
+
     metrics = doc.get("control_metrics", {})
     require(metrics.get("authority_duplication_count") == 0, "authority duplication must remain zero")
     require(metrics.get("state_family_flattening_count") == 0, "state flattening must remain zero")
     require(metrics.get("untraceable_relation_count") == 0, "untraceable relation count must remain zero")
     require(metrics.get("unresolved_blocking_link_count") == unresolved_blocking, "blocking-link metric mismatch")
+    require(metrics.get("module_scope_counts") == scope_counts, "module scope counts mismatch")
+    module_count = len(MODULES)
+    expected_source_binding_coverage = source_bound_count / module_count
+    expected_triggered_coverage = scope_counts["TRIGGERED"] / module_count
+    require(
+        abs(metrics.get("module_source_binding_coverage", -1) - expected_source_binding_coverage) < 1e-12,
+        "module source-binding coverage mismatch",
+    )
+    require(
+        abs(metrics.get("module_triggered_coverage", -1) - expected_triggered_coverage) < 1e-12,
+        "module triggered coverage mismatch",
+    )
     require(metrics.get("projection_rebuildable") is True, "projection must be rebuildable")
 
     does_not_prove = set(doc.get("does_not_prove", []))
@@ -243,7 +291,8 @@ def validate_support_files() -> None:
 
     manifest = load_json(MANIFEST_PATH)
     require(manifest.get("status") == "EV2_ACTIVE_CANDIDATE_PACKAGE", "candidate manifest status drift")
-    require(manifest.get("baseline_main_commit") == "e34ef6366b58749a7f8645f03329c8e7596caf60", "candidate manifest baseline drift")
+    require(manifest.get("semantic_revision") == "0.3.1", "candidate manifest semantic revision drift")
+    require(manifest.get("baseline_main_commit") == "3b68fa3d081736d7a98f7c0affafaeb8661bf319", "candidate manifest baseline drift")
     require(manifest.get("hash_semantics") == "UTF8_TEXT_LF_CANONICAL_V1", "candidate manifest hash semantics drift")
     rows = manifest.get("active_files_excluding_this_manifest", [])
     require(len(rows) >= 12, "candidate manifest active-file coverage incomplete")
@@ -333,11 +382,13 @@ def main() -> int:
         ("MBSE_VERIFY_PASS_WITHOUT_EVIDENCE", lambda d: d["modules"]["mbse"]["verification_validation"][0].update({"evidence_refs": []})),
         ("KG_EDGE_GAINS_AUTHORITY", lambda d: d["modules"]["knowledge_graph"]["edges"][0].update({"authority_effect": "CURRENT"})),
         ("AGENT_MUTATION_WITHOUT_AUTHORIZATION", lambda d: d["modules"]["agent_runtime"]["actions"][0].update({"authorization_ref": None})),
-        ("UNCERTAIN_SIDE_EFFECT_ADVANCES", lambda d: (d["modules"]["agent_runtime"]["actions"][0].update({"side_effect_state": "OBSERVED_UNCERTAIN"}), d["reconciliation"].update({"projection_state": "CURRENT_PROJECTION", "partial_side_effect_state": "NONE", "advance_allowed": True}))),
+        ("UNCERTAIN_SIDE_EFFECT_ADVANCES", lambda d: (d["modules"]["agent_runtime"]["actions"][0].update({"side_effect_state": "OBSERVED_UNCERTAIN"}), d["reconciliation"].update({"enterprise_readiness_state": "READY_FOR_EVALUATION", "partial_side_effect_state": "NONE", "advance_allowed": True}))),
         ("DIGITAL_THREAD_WITHOUT_SOURCE", lambda d: d["digital_thread"]["relations"][0].update({"source_refs": []})),
         ("STATE_FAMILY_COLLAPSE", lambda d: d["state_facets"].pop("quality")),
         ("PLM_RELEASE_CLAIMS_PROMOTION", lambda d: d["modules"]["plm"]["configuration_items"][0].update({"does_not_prove": ["DESIGN_KEEP"]})),
         ("BPM_COMPLETION_CLAIMS_PROMOTION", lambda d: d["modules"]["bpm"]["process_instances"][0].update({"process_state": "COMPLETED", "does_not_prove": ["DESIGN_KEEP"]})),
+        ("ENTERPRISE_READINESS_IGNORES_DESIGN_HOLD", lambda d: d["reconciliation"].update({"enterprise_readiness_state": "READY_FOR_EVALUATION"})),
+        ("MODULE_TRIGGERED_COVERAGE_FAKED", lambda d: (d["modules"]["mes"]["header"].update({"scope_state": "NOT_TRIGGERED"}), d["control_metrics"].update({"module_triggered_coverage": 1.0}))),
     ]
     for name, mutate in tests:
         expect_blocked(name, mutate)

@@ -95,6 +95,41 @@ def change_disposition(change: dict) -> str:
     return "OPEN"
 
 
+def module_scope_counts(modules: dict) -> dict[str, int]:
+    states = {"TRIGGERED": 0, "PARTIAL": 0, "NOT_TRIGGERED": 0, "HOLD": 0}
+    for module in modules.values():
+        scope_state = module.get("header", {}).get("scope_state")
+        if scope_state not in states:
+            raise ValueError(f"unsupported module scope_state: {scope_state}")
+        states[scope_state] += 1
+    return states
+
+
+def enterprise_readiness_state(
+    *,
+    blocked: bool,
+    modules: dict,
+    unresolved_links: list[dict],
+    reviews: list[dict],
+) -> str:
+    counts = module_scope_counts(modules)
+    design_results = {
+        item.get("result")
+        for item in reviews
+        if item.get("review_class") == "DESIGN"
+    }
+    if (
+        blocked
+        or counts["HOLD"] > 0
+        or any(item.get("blocking") for item in unresolved_links)
+        or bool(design_results & {"REVISE", "REJECT", "HOLD", "FAIL"})
+    ):
+        return "HOLD"
+    if counts["PARTIAL"] > 0 or counts["NOT_TRIGGERED"] > 0:
+        return "PARTIAL"
+    return "READY_FOR_EVALUATION"
+
+
 def build_projection(
     master: dict,
     source_ref: str,
@@ -303,8 +338,20 @@ def build_projection(
     if not master.get("professional_processes"):
         unresolved_links.append({"link_id": f"UNRES-{safe_token(decision_object_id)}-PROFESSIONAL", "from_ref": decision_object_id, "expected_relation_type": "VERIFIES", "reason": "No professional process instance is present in the source master runtime snapshot.", "blocking": False})
 
+    counts = module_scope_counts(modules)
+    module_count = len(modules)
+    source_bound_count = sum(
+        1 for module in modules.values() if module.get("header", {}).get("source_refs")
+    )
+    readiness = enterprise_readiness_state(
+        blocked=blocked,
+        modules=modules,
+        unresolved_links=unresolved_links,
+        reviews=reviews,
+    )
+
     return {
-        "schema_version": "0.3-candidate",
+        "schema_version": "0.3.1-candidate",
         "kind": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION",
         "candidate_status": "EVAL_ONLY",
         "generated_at": generated_at,
@@ -364,7 +411,8 @@ def build_projection(
         },
         "activity_observations": observations,
         "reconciliation": {
-            "projection_state": "HOLD" if blocked else "CURRENT_PROJECTION",
+            "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+            "enterprise_readiness_state": readiness,
             "drift_state": "UNKNOWN",
             "source_readback_refs": [source_ref],
             "partial_side_effect_state": "NONE",
@@ -376,7 +424,9 @@ def build_projection(
             "state_family_flattening_count": 0,
             "untraceable_relation_count": 0,
             "unresolved_blocking_link_count": sum(1 for x in unresolved_links if x["blocking"]),
-            "module_source_coverage": 1.0,
+            "module_source_binding_coverage": source_bound_count / module_count,
+            "module_triggered_coverage": counts["TRIGGERED"] / module_count,
+            "module_scope_counts": counts,
             "projection_rebuildable": True,
         },
         "does_not_prove": DOES_NOT_PROVE,

@@ -1,0 +1,863 @@
+{
+  "schema_version": "0.3.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION",
+  "candidate_status": "NON_AUTHORITATIVE_CANDIDATE",
+  "generated_at": "2026-09-21T23:45:00+09:00",
+  "authority": {
+    "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "master_runtime_ref": "MASTER_RUNTIME:DEMO",
+    "authority_snapshot_ref": "AUTHORITY-SNAPSHOT-DEMO",
+    "knowledge_snapshot_ref": "KNOWLEDGE-SNAPSHOT-DEMO",
+    "source_binding_refs": [
+      "fixture:example_enterprise_projection_v0.3"
+    ],
+    "source_binding_hash_semantics": "SOURCE_SPECIFIC_EXACT_REVISION_DIGESTS_WHEN_AVAILABLE",
+    "projection_only": true,
+    "may_mutate_current": false,
+    "source_binding_digests": [
+      {
+        "ref": "fixture:example_enterprise_projection_v0.3",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      }
+    ]
+  },
+  "architecture_contract": {
+    "integration_model": "FEDERATED_PROJECTION_ENVELOPE",
+    "module_count": 8,
+    "no_new_runtime_layer": true,
+    "state_policy": "ORTHOGONAL_STATE_FAMILIES_NO_FLATTENING",
+    "identity_policy": "CANONICAL_REF_REQUIRED_NO_ID_SYNTHESIS_AS_AUTHORITY",
+    "write_policy": "READ_ONLY_CANDIDATE_EXISTING_AUTHORIZED_PATHS_ONLY_AFTER_ADOPTION",
+    "transaction_policy": "NO_DISTRIBUTED_TRANSACTION_MANAGER_RECONCILE_PARTIAL_SIDE_EFFECTS",
+    "digital_thread_policy": "TYPED_SOURCE_BOUND_LINKS_DO_NOT_TRANSFER_AUTHORITY"
+  },
+  "case_refs": [],
+  "project_axis_refs": [
+    {
+      "axis_level": "P2_PROJECT",
+      "canonical_id": "PROJECT-DEMO",
+      "canonical_ref": "PROJECT_STATE:PROJECT-DEMO"
+    },
+    {
+      "axis_level": "P3_WORKSTREAM",
+      "canonical_id": "WORKSTREAM-DEMO",
+      "canonical_ref": "PROJECT_STATE:PROJECT-DEMO/WORKSTREAM-DEMO"
+    }
+  ],
+  "work_packages": [
+    {
+      "work_package_id": "WP-DEMO-001",
+      "project_id": "PROJECT-DEMO",
+      "workstream_id": "WORKSTREAM-DEMO",
+      "decision_object_ids": [
+        "DECISION-DEMO-01"
+      ],
+      "coordination_state": "REVIEW",
+      "required_native_outputs": [
+        "ARTIFACT-DEMO-01"
+      ],
+      "required_capability_roles": [
+        "NATIVE_GEOMETRY",
+        "INDEPENDENT_REVIEW"
+      ],
+      "depends_on": [
+        "REQ-DEMO-01"
+      ],
+      "open_blockers": [],
+      "does_not_prove": [
+        "PROJECT_PROMOTION",
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS"
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "JOB-DEMO-001",
+      "work_package_id": "WP-DEMO-001",
+      "job_state": "SUCCEEDED",
+      "primary_owner_ref": "skill:oleander-3d-pipeline",
+      "capability_refs": [
+        "capability:NATIVE_GEOMETRY"
+      ],
+      "tool_adapter_refs": [
+        "adapter:blender"
+      ],
+      "input_refs": [
+        "REQ-DEMO-01"
+      ],
+      "output_refs": [
+        "ARTIFACT-DEMO-01"
+      ],
+      "readback_refs": [
+        "READBACK-DEMO-01"
+      ],
+      "claim_ceiling": "NATIVE_ARTIFACT_CREATED_AND_READ_BACK",
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "resource_refs": [
+    {
+      "resource_id": "RESOURCE-DEMO-01",
+      "resource_class": "SKILL",
+      "canonical_ref": "oleander-skills/oleander-3d-pipeline/CAPABILITY.json",
+      "availability": "AVAILABLE",
+      "authority_gain": false
+    }
+  ],
+  "artifact_refs": [
+    {
+      "artifact_id": "ARTIFACT-DEMO-01",
+      "canonical_ref": "native://demo/model.blend",
+      "native_format": "blend",
+      "editable_state": "EDITABLE",
+      "hash_or_commit": "sha256:DEMO",
+      "readback_refs": [
+        "READBACK-DEMO-01"
+      ]
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "REVIEW-DEMO-01",
+      "review_class": "DESIGN",
+      "receipt_ref": "DESIGN_REVIEW_RECEIPT:DEMO",
+      "result": "REVISE",
+      "independence_state": "INDEPENDENT"
+    }
+  ],
+  "modules": {
+    "erp": {
+      "header": {
+        "module": "ERP",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "PROJECT_PROMOTION",
+          "BUDGET_TRUTH",
+          "PROFESSIONAL_PASS"
+        ]
+      },
+      "demand_records": [
+        {
+          "demand_id": "DEMAND-DEMO-01",
+          "demand_class": "WORK",
+          "subject_ref": "WP-DEMO-001",
+          "quantity_state": "BOUNDED",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "BUDGET_TRUTH",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "schedule_records": [
+        {
+          "schedule_id": "SCHED-DEMO-01",
+          "subject_ref": "WP-DEMO-001",
+          "schedule_state": "ACTIVE",
+          "depends_on": [
+            "REQ-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "resource_demand": [
+        {
+          "demand_id": "RES-DEMAND-DEMO-01",
+          "work_package_id": "WP-DEMO-001",
+          "resource_ref": "RESOURCE-DEMO-01",
+          "demand_state": "ALLOCATED",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ]
+    },
+    "plm": {
+      "header": {
+        "module": "PLM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "TECHNICAL_CORRECTNESS",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "configuration_items": [
+        {
+          "item_id": "CI-DEMO-01",
+          "item_class": "MODEL",
+          "canonical_ref": "ARTIFACT-DEMO-01",
+          "revision_ref": "sha256:DEMO",
+          "lifecycle_state": "RELEASED",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "TECHNICAL_CORRECTNESS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "baselines": [
+        {
+          "baseline_id": "BASELINE-DEMO-01",
+          "member_refs": [
+            "CI-DEMO-01",
+            "REQ-DEMO-01"
+          ],
+          "baseline_state": "RELEASED",
+          "authority_ref": "AUTHORITY-SNAPSHOT-DEMO",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "change_records": [
+        {
+          "change_id": "CHANGE-DEMO-01",
+          "change_class": "REVISION",
+          "affected_refs": [
+            "CI-DEMO-01"
+          ],
+          "disposition": "IMPLEMENTED_READBACK_PENDING",
+          "reopen_refs": [
+            "REVIEW-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ]
+    },
+    "mes": {
+      "header": {
+        "module": "MES",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "PHYSICAL_EXECUTION",
+          "FIELD_TRUTH",
+          "ACCEPTANCE"
+        ]
+      },
+      "operation_records": [
+        {
+          "operation_id": "OP-DEMO-01",
+          "work_package_id": "WP-DEMO-001",
+          "operation_class": "DIGITAL_NATIVE_EXECUTION",
+          "execution_state": "COMPLETE",
+          "resource_refs": [
+            "RESOURCE-DEMO-01"
+          ],
+          "input_refs": [
+            "REQ-DEMO-01"
+          ],
+          "output_refs": [
+            "ARTIFACT-DEMO-01"
+          ],
+          "actual_readback_refs": [
+            "READBACK-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "PHYSICAL_EXECUTION",
+            "FIELD_TRUTH",
+            "ACCEPTANCE"
+          ]
+        }
+      ],
+      "material_equipment_refs": [
+        {
+          "canonical_ref": "adapter:blender",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "authority_owner": "Tool Adapter Contract",
+          "projection_only": true
+        }
+      ],
+      "execution_readbacks": [
+        {
+          "canonical_ref": "READBACK-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "authority_owner": "Actual Readback",
+          "projection_only": true
+        }
+      ]
+    },
+    "bpm": {
+      "header": {
+        "module": "BPM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_STAGE_PASS",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "process_instances": [
+        {
+          "process_instance_id": "PROC-DEMO-01",
+          "process_ref": "MASTER_RUNTIME:DEMO",
+          "subject_ref": "WP-DEMO-001",
+          "process_state": "ACTIVE",
+          "current_node_ref": "REVIEW-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "PROFESSIONAL_STAGE_PASS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "handoffs": [
+        {
+          "handoff_id": "HANDOFF-DEMO-01",
+          "from_owner_ref": "skill:oleander-3d-pipeline",
+          "to_owner_ref": "review:independent-design",
+          "payload_refs": [
+            "ARTIFACT-DEMO-01"
+          ],
+          "handoff_state": "ACCEPTED",
+          "acceptance_ref": "REVIEW-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "exceptions": []
+    },
+    "qms": {
+      "header": {
+        "module": "QMS",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "PROFESSIONAL_PASS",
+          "STATUTORY_APPROVAL",
+          "DESIGN_KEEP"
+        ]
+      },
+      "quality_plans": [
+        {
+          "quality_plan_id": "QPLAN-DEMO-01",
+          "subject_ref": "WP-DEMO-001",
+          "acceptance_criteria_refs": [
+            "REQ-DEMO-01"
+          ],
+          "review_refs": [
+            "REVIEW-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "nonconformances": [
+        {
+          "ncr_id": "NCR-DEMO-01",
+          "subject_ref": "ARTIFACT-DEMO-01",
+          "severity": "MEDIUM",
+          "state": "CLOSED",
+          "containment_ref": "CHANGE-DEMO-01",
+          "disposition_ref": "CAPA-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "capa_records": [
+        {
+          "capa_id": "CAPA-DEMO-01",
+          "source_ncr_refs": [
+            "NCR-DEMO-01"
+          ],
+          "root_cause_state": "SUPPORTED",
+          "corrective_action_refs": [
+            "CHANGE-DEMO-01"
+          ],
+          "preventive_action_refs": [],
+          "effectiveness_readback_ref": "READBACK-DEMO-02",
+          "state": "CLOSED",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "inspection_records": [
+        {
+          "inspection_id": "INSP-DEMO-01",
+          "subject_ref": "ARTIFACT-DEMO-01",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "REVISE",
+          "evidence_refs": [
+            "REVIEW-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ]
+    },
+    "mbse": {
+      "header": {
+        "module": "MBSE",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "SYSTEMS_ENGINEERING_CURRENT",
+          "VALIDATION_PASS",
+          "PROJECT_ACCEPTANCE"
+        ]
+      },
+      "requirements": [
+        {
+          "requirement_id": "REQ-DEMO-01",
+          "requirement_class": "DESIGN_REQUIREMENT",
+          "statement_ref": "REQUIREMENT:DEMO-01",
+          "status": "CURRENT_WITHIN_SOURCE",
+          "allocated_to_refs": [
+            "SYS-ELEM-DEMO-01"
+          ],
+          "verification_method": "INSPECTION",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "VALIDATION_PASS",
+            "PROJECT_ACCEPTANCE"
+          ]
+        }
+      ],
+      "system_elements": [
+        {
+          "element_id": "SYS-ELEM-DEMO-01",
+          "element_class": "WORK_PRODUCT",
+          "canonical_ref": "ARTIFACT-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "interfaces": [
+        {
+          "interface_id": "IF-DEMO-01",
+          "from_ref": "REQ-DEMO-01",
+          "to_ref": "ARTIFACT-DEMO-01",
+          "interface_state": "VERIFIED",
+          "verification_refs": [
+            "VV-DEMO-VERIFY"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "verification_validation": [
+        {
+          "vv_id": "VV-DEMO-VERIFY",
+          "subject_ref": "REQ-DEMO-01",
+          "vv_class": "VERIFICATION",
+          "method": "INSPECTION",
+          "result": "PASS",
+          "evidence_refs": [
+            "READBACK-DEMO-01"
+          ],
+          "independent_review_ref": null,
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        },
+        {
+          "vv_id": "VV-DEMO-VALIDATE",
+          "subject_ref": "REQ-DEMO-01",
+          "vv_class": "VALIDATION",
+          "method": "USER_OR_OPERATION_EVIDENCE",
+          "result": "HOLD",
+          "evidence_refs": [],
+          "independent_review_ref": null,
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "configuration_baselines": [
+        "BASELINE-DEMO-01"
+      ]
+    },
+    "knowledge_graph": {
+      "header": {
+        "module": "KNOWLEDGE_GRAPH",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "KNOWLEDGE_CURRENT",
+          "OE3",
+          "CLAIM_TRUTH"
+        ]
+      },
+      "nodes": [
+        {
+          "node_id": "KG-PROJ-DEMO",
+          "node_class": "PROJECT",
+          "canonical_ref": "PROJECT-DEMO",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-REQ-DEMO",
+          "node_class": "REQUIREMENT",
+          "canonical_ref": "REQ-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-ART-DEMO",
+          "node_class": "ARTIFACT",
+          "canonical_ref": "ARTIFACT-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "authority_gain": false
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "KG-EDGE-DEMO-01",
+          "predicate": "SATISFIES",
+          "from_ref": "ARTIFACT-DEMO-01",
+          "to_ref": "REQ-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "projection_only": true,
+          "authority_effect": "NONE"
+        }
+      ],
+      "provenance_records": [
+        {
+          "provenance_id": "PROV-DEMO-01",
+          "entity_ref": "ARTIFACT-DEMO-01",
+          "derived_from_refs": [
+            "REQ-DEMO-01"
+          ],
+          "generated_by_ref": "JOB-DEMO-001",
+          "attributed_to_refs": [
+            "skill:oleander-3d-pipeline"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "query_policies": [
+        {
+          "policy_id": "KG-POLICY-DEMO",
+          "query_scope": "TASK_CLAIM_SCOPED_ONLY",
+          "eligibility_rule_ref": "OE-policy",
+          "claim_ceiling_rule_ref": "claim-ceiling-policy",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ]
+    },
+    "agent_runtime": {
+      "header": {
+        "module": "AGENT_RUNTIME",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ],
+        "does_not_prove": [
+          "AUTHORITY",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "sessions": [
+        {
+          "session_id": "SESSION-DEMO-01",
+          "agent_ref": "agent:worker-01",
+          "task_ref": "JOB-DEMO-001",
+          "session_state": "SUCCEEDED",
+          "authority_ref": "AUTHORITY-SNAPSHOT-DEMO",
+          "checkpoint_ref": "CHECKPOINT-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "AUTHORITY",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "leases": [
+        {
+          "lease_id": "LEASE-DEMO-01",
+          "subject_ref": "ARTIFACT-DEMO-01",
+          "holder_ref": "agent:worker-01",
+          "lease_state": "RELEASED",
+          "acquired_at": "2026-09-21T23:20:00+09:00",
+          "expires_or_release_ref": "READBACK-DEMO-01",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "action_id": "ACTION-DEMO-01",
+          "session_id": "SESSION-DEMO-01",
+          "action_class": "MUTATION_OBSERVED",
+          "subject_ref": "ARTIFACT-DEMO-01",
+          "tool_adapter_ref": "adapter:blender",
+          "side_effect_state": "OBSERVED_AUTHORIZED",
+          "authorization_ref": "AUTHORITY-SNAPSHOT-DEMO",
+          "readback_refs": [
+            "READBACK-DEMO-01"
+          ],
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ],
+          "does_not_prove": [
+            "AUTHORITY",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "handoffs": [
+        {
+          "handoff_id": "AGENT-HANDOFF-DEMO-01",
+          "from_session_ref": "SESSION-DEMO-01",
+          "to_agent_or_owner_ref": "review:independent-design",
+          "payload_refs": [
+            "ARTIFACT-DEMO-01"
+          ],
+          "state": "READY",
+          "source_refs": [
+            "fixture:example_enterprise_projection_v0.3"
+          ]
+        }
+      ]
+    }
+  },
+  "digital_thread": {
+    "relations": [
+      {
+        "relation_id": "REL-DEMO-001",
+        "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+        "from_ref": "PROJECT-DEMO",
+        "to_ref": "WP-DEMO-001",
+        "projection_only": true,
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      },
+      {
+        "relation_id": "REL-DEMO-002",
+        "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+        "from_ref": "JOB-DEMO-001",
+        "to_ref": "WP-DEMO-001",
+        "projection_only": true,
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      },
+      {
+        "relation_id": "REL-DEMO-003",
+        "relation_type": "JOB_PRODUCES_ARTIFACT",
+        "from_ref": "JOB-DEMO-001",
+        "to_ref": "ARTIFACT-DEMO-01",
+        "projection_only": true,
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      },
+      {
+        "relation_id": "REL-DEMO-004",
+        "relation_type": "SATISFIES",
+        "from_ref": "ARTIFACT-DEMO-01",
+        "to_ref": "REQ-DEMO-01",
+        "projection_only": true,
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      },
+      {
+        "relation_id": "REL-DEMO-005",
+        "relation_type": "AGENT_EXECUTES_JOB",
+        "from_ref": "SESSION-DEMO-01",
+        "to_ref": "JOB-DEMO-001",
+        "projection_only": true,
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      }
+    ],
+    "trace_queries": [
+      {
+        "query_id": "TRACE-DEMO-01",
+        "question": "Can requirement -> work -> artifact -> review be traced?",
+        "required_relation_types": [
+          "SATISFIES",
+          "JOB_PRODUCES_ARTIFACT",
+          "ARTIFACT_REVIEWED_BY"
+        ],
+        "result_state": "PARTIAL",
+        "source_refs": [
+          "fixture:example_enterprise_projection_v0.3"
+        ]
+      }
+    ],
+    "unresolved_links": [
+      {
+        "link_id": "UNRES-DEMO-01",
+        "from_ref": "ARTIFACT-DEMO-01",
+        "expected_relation_type": "ARTIFACT_REVIEWED_BY",
+        "reason": "Design review is REVISE; acceptance is intentionally not inferred.",
+        "blocking": true
+      }
+    ]
+  },
+  "state_facets": {
+    "project_design": {
+      "PROJECT-DEMO": "CANDIDATE"
+    },
+    "job": {
+      "JOB-DEMO-001": "SUCCEEDED"
+    },
+    "knowledge_integrity": {
+      "KNOWLEDGE-SNAPSHOT-DEMO": "KI4"
+    },
+    "operational_eligibility": {
+      "KNOWLEDGE-SNAPSHOT-DEMO": "OE2"
+    },
+    "design_quality": {
+      "DECISION-DEMO-01": "DQ3"
+    },
+    "professional": {
+      "DEMO": "IN_REVIEW"
+    },
+    "interface": {
+      "IF-DEMO-01": "VERIFIED"
+    },
+    "authority": {
+      "DECISION-DEMO-01": "WORKING_SOURCE"
+    },
+    "evidence": {
+      "READBACK-DEMO-01": "E2"
+    },
+    "configuration": {
+      "CI-DEMO-01": "RELEASED"
+    },
+    "quality": {
+      "ARTIFACT-DEMO-01": "REVISE"
+    },
+    "process": {
+      "PROC-DEMO-01": "ACTIVE"
+    },
+    "agent_runtime": {
+      "SESSION-DEMO-01": "SUCCEEDED"
+    }
+  },
+  "activity_observations": [
+    {
+      "observation_id": "OBS-DEMO-01",
+      "observed_at": "2026-09-21T23:29:00+09:00",
+      "observation_type": "AGENT_ACTION_OBSERVED",
+      "subject_ref": "ACTION-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "rebuildable": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "reconciliation": {
+    "drift_state": "CURRENT",
+    "source_readback_refs": [
+      "READBACK-DEMO-01",
+      "READBACK-DEMO-02"
+    ],
+    "partial_side_effect_state": "NONE",
+    "reconciliation_actions": [
+      "KEEP_DESIGN_REVISE_AND_UNRESOLVED_REVIEW_LINK_VISIBLE"
+    ],
+    "advance_allowed": false,
+    "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+    "enterprise_readiness_state": "HOLD"
+  },
+  "control_metrics": {
+    "authority_duplication_count": 0,
+    "state_family_flattening_count": 0,
+    "untraceable_relation_count": 0,
+    "unresolved_blocking_link_count": 1,
+    "projection_rebuildable": true,
+    "module_source_binding_coverage": 1.0,
+    "module_triggered_coverage": 1.0,
+    "module_scope_counts": {
+      "TRIGGERED": 8,
+      "PARTIAL": 0,
+      "NOT_TRIGGERED": 0,
+      "HOLD": 0
+    }
+  },
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "KNOWLEDGE_CURRENT",
+    "FIELD_TRUTH"
+  ]
+}
