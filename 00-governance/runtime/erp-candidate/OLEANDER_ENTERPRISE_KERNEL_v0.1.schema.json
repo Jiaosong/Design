@@ -1,0 +1,848 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.enterprise-kernel.v0.1",
+  "title": "OLEANDER Enterprise Kernel Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "candidate_status",
+    "generated_at",
+    "source_projection_ref",
+    "source_projection_digest",
+    "authority_boundary",
+    "identities",
+    "authority_bindings",
+    "state_facts",
+    "relations",
+    "work_items",
+    "configuration_items",
+    "evidence_items",
+    "changes",
+    "readbacks",
+    "receipts",
+    "module_bindings",
+    "kernel_metrics",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-candidate"
+    },
+    "kind": {
+      "const": "OLEANDER_ENTERPRISE_KERNEL"
+    },
+    "candidate_status": {
+      "enum": [
+        "EV2_CANDIDATE",
+        "EVAL_ONLY"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_projection_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_projection_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "hash_semantics"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{64}$"
+        },
+        "hash_semantics": {
+          "const": "UTF8_TEXT_LF_CANONICAL_V1"
+        }
+      }
+    },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kernel_is_authority",
+        "may_mutate_current",
+        "identity_rule",
+        "state_rule",
+        "relation_rule"
+      ],
+      "properties": {
+        "kernel_is_authority": {
+          "const": false
+        },
+        "may_mutate_current": {
+          "const": false
+        },
+        "identity_rule": {
+          "const": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS"
+        },
+        "state_rule": {
+          "const": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING"
+        },
+        "relation_rule": {
+          "const": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+        }
+      }
+    },
+    "identities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identity"
+      }
+    },
+    "authority_bindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorityBinding"
+      }
+    },
+    "state_facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stateFact"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relation"
+      }
+    },
+    "work_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/workItem"
+      }
+    },
+    "configuration_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/configurationItem"
+      }
+    },
+    "evidence_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceItem"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/changeItem"
+      }
+    },
+    "readbacks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/readback"
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/receipt"
+      }
+    },
+    "module_bindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/moduleBinding"
+      }
+    },
+    "kernel_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_count",
+        "state_fact_count",
+        "relation_count",
+        "phase1_module_binding_count",
+        "unresolved_identity_ref_count",
+        "authority_gain_count",
+        "projection_rebuildable"
+      ],
+      "properties": {
+        "identity_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state_fact_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "phase1_module_binding_count": {
+          "const": 4
+        },
+        "unresolved_identity_ref_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "authority_gain_count": {
+          "const": 0
+        },
+        "projection_rebuildable": {
+          "const": true
+        }
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_id",
+        "identity_class",
+        "canonical_ref",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "identity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_class": {
+          "enum": [
+            "PORTFOLIO",
+            "PROGRAM",
+            "PROJECT",
+            "WORKSTREAM",
+            "DECISION_OBJECT",
+            "WORK_PACKAGE",
+            "JOB",
+            "ARTIFACT",
+            "REVIEW",
+            "REQUIREMENT",
+            "PROCESS_INSTANCE",
+            "QUALITY_ITEM",
+            "CHANGE",
+            "READBACK",
+            "RECEIPT",
+            "RESOURCE",
+            "OTHER"
+          ]
+        },
+        "canonical_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    },
+    "authorityBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_binding_id",
+        "subject_ref",
+        "authority_owner_ref",
+        "authority_scope",
+        "source_refs",
+        "projection_only",
+        "authority_gain"
+      ],
+      "properties": {
+        "authority_binding_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_owner_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_scope": {
+          "enum": [
+            "PROJECT",
+            "PROFESSIONAL",
+            "CONFIGURATION",
+            "QUALITY",
+            "PROCESS",
+            "EXECUTION",
+            "REVIEW",
+            "KNOWLEDGE",
+            "READBACK",
+            "OTHER"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        },
+        "authority_gain": {
+          "const": false
+        }
+      }
+    },
+    "stateFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state_fact_id",
+        "subject_ref",
+        "state_family",
+        "state_value",
+        "blocking_semantics",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "state_fact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_family": {
+          "enum": [
+            "PROJECT_DESIGN",
+            "JOB",
+            "KNOWLEDGE_INTEGRITY",
+            "OPERATIONAL_ELIGIBILITY",
+            "DESIGN_QUALITY",
+            "PROFESSIONAL",
+            "INTERFACE",
+            "AUTHORITY",
+            "EVIDENCE",
+            "CONFIGURATION",
+            "QUALITY",
+            "PROCESS",
+            "AGENT_RUNTIME",
+            "PROJECTION_FRESHNESS",
+            "ENTERPRISE_READINESS"
+          ]
+        },
+        "state_value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking_semantics": {
+          "enum": [
+            "NONE",
+            "POTENTIAL",
+            "EXPLICIT"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_id",
+        "relation_type",
+        "from_ref",
+        "to_ref",
+        "source_refs",
+        "projection_only",
+        "authority_effect"
+      ],
+      "properties": {
+        "relation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        },
+        "authority_effect": {
+          "const": "NONE"
+        }
+      }
+    },
+    "workItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "work_id",
+        "work_class",
+        "subject_ref",
+        "work_state",
+        "depends_on_refs",
+        "owner_refs",
+        "output_refs",
+        "readback_refs",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "work_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_class": {
+          "enum": [
+            "WORK_PACKAGE",
+            "JOB",
+            "PROCESS_INSTANCE",
+            "HANDOFF",
+            "EXCEPTION"
+          ]
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depends_on_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "owner_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "output_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "readback_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    },
+    "configurationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configuration_id",
+        "subject_ref",
+        "configuration_class",
+        "revision_ref",
+        "configuration_state",
+        "baseline_ref",
+        "source_refs",
+        "projection_only",
+        "does_not_prove"
+      ],
+      "properties": {
+        "configuration_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_class": {
+          "enum": [
+            "DECISION_OBJECT",
+            "ARTIFACT",
+            "SPECIFICATION",
+            "MODEL",
+            "DRAWING",
+            "PRODUCT_DATA",
+            "SYSTEM_DEFINITION",
+            "OTHER"
+          ]
+        },
+        "revision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        },
+        "does_not_prove": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "subject_ref",
+        "evidence_class",
+        "result",
+        "evidence_refs",
+        "source_refs",
+        "projection_only",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_class": {
+          "enum": [
+            "REVIEW",
+            "INSPECTION",
+            "READBACK",
+            "QUALITY_EFFECTIVENESS",
+            "OTHER"
+          ]
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        },
+        "claim_ceiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "changeItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_id",
+        "affected_refs",
+        "change_state",
+        "reopen_refs",
+        "required_readback_refs",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "change_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affected_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "change_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reopen_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required_readback_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    },
+    "readback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readback_id",
+        "subject_ref",
+        "readback_class",
+        "readback_state",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "readback_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "readback_class": {
+          "enum": [
+            "ARTIFACT",
+            "EXECUTION",
+            "QUALITY_EFFECTIVENESS",
+            "PROCESS",
+            "CONFIGURATION",
+            "OTHER"
+          ]
+        },
+        "readback_state": {
+          "enum": [
+            "OBSERVED",
+            "MISSING",
+            "STALE",
+            "UNKNOWN"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "subject_ref",
+        "receipt_class",
+        "result",
+        "independence_state",
+        "source_refs",
+        "projection_only",
+        "does_not_prove"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receipt_class": {
+          "enum": [
+            "EXECUTION",
+            "REVIEW",
+            "QUALITY",
+            "CONFIGURATION",
+            "PROCESS",
+            "OTHER"
+          ]
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independence_state": {
+          "enum": [
+            "INDEPENDENT",
+            "PARTIALLY_INDEPENDENT",
+            "NOT_INDEPENDENT",
+            "NOT_REQUIRED",
+            "UNKNOWN"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        },
+        "does_not_prove": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "moduleBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "module",
+        "kernel_object_refs",
+        "source_refs",
+        "projection_only"
+      ],
+      "properties": {
+        "module": {
+          "enum": [
+            "ERP",
+            "PLM",
+            "BPM",
+            "QMS",
+            "MES",
+            "MBSE",
+            "KNOWLEDGE_GRAPH",
+            "AGENT_RUNTIME"
+          ]
+        },
+        "kernel_object_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "projection_only": {
+          "const": true
+        }
+      }
+    }
+  }
+}

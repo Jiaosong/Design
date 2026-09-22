@@ -1,0 +1,156 @@
+{
+  "receipt_id": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_EVAL_RECEIPT_v0.1_20260922",
+  "candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_20260922",
+  "status": "LOCAL_VALIDATION_PASS_ANTI_POLLUTION_PENDING",
+  "baseline_main_commit": "179ed4a5f342e0c66babce7b1f129f557fc68918",
+  "phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "kernel_primitives": [
+    "IDENTITY",
+    "AUTHORITY_BINDING",
+    "STATE_FACT",
+    "RELATION",
+    "WORK",
+    "CONFIGURATION",
+    "EVIDENCE",
+    "CHANGE",
+    "READBACK",
+    "RECEIPT",
+    "RECONCILIATION"
+  ],
+  "fixture_hashes": {
+    "example_enterprise_kernel_v0.1.json": "3F202AD0BF4B0835B97A9B8023F9756C6DD7332F4A9E36F6654B53C5651F68CC",
+    "example_enterprise_reconciliation_v0.1.json": "54ACEC8F079562F7415DD0C213B7688FD80E4FF4F1508775BED6D19F0BB44023",
+    "eval-output/example-master-runtime.enterprise-kernel.v0.1.json": "356BC2109E4BC41A00F42E03DFE2F6AA4421699208657FE76378579C89D0A57E",
+    "eval-output/example-master-runtime.reconciliation.v0.1.json": "EAE0642E176E3E89FF994937368361F57B86185F609E5000449E800AE445D755"
+  },
+  "checks": [
+    {
+      "check": "phase1_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "v031_candidate_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "kernel_schema_validation",
+      "result": "PASS"
+    },
+    {
+      "check": "reconciliation_schema_validation",
+      "result": "PASS"
+    },
+    {
+      "check": "rich_kernel_unresolved_identity_refs",
+      "result": "PASS",
+      "observed": 0
+    },
+    {
+      "check": "master_kernel_unresolved_identity_refs",
+      "result": "PASS",
+      "observed": 0
+    },
+    {
+      "check": "authority_gain_count",
+      "result": "PASS",
+      "observed": 0
+    },
+    {
+      "check": "phase1_module_binding_set",
+      "result": "PASS",
+      "observed": [
+        "ERP",
+        "PLM",
+        "BPM",
+        "QMS"
+      ]
+    },
+    {
+      "check": "clear_chain",
+      "result": "PASS",
+      "advance_decision": "ALLOW"
+    },
+    {
+      "check": "stale_source_fail_closed",
+      "result": "PASS",
+      "advance_decision": "HOLD"
+    },
+    {
+      "check": "qms_open_fail_closed",
+      "result": "PASS",
+      "advance_decision": "HOLD"
+    },
+    {
+      "check": "bpm_blocked_fail_closed",
+      "result": "PASS",
+      "advance_decision": "HOLD"
+    },
+    {
+      "check": "plm_readback_pending_fail_closed",
+      "result": "PASS",
+      "advance_decision": "HOLD"
+    },
+    {
+      "check": "cross_system_false_clear_prevention",
+      "result": "PASS",
+      "condition": "PLM_RELEASED+BPM_COMPLETED+DESIGN_REVISE",
+      "advance_decision": "HOLD"
+    },
+    {
+      "check": "deterministic_kernel_reconciliation",
+      "result": "PASS"
+    },
+    {
+      "check": "control_plane_tests",
+      "result": "PASS",
+      "tests": 142
+    },
+    {
+      "check": "execution_contract_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "architecture_control_validator",
+      "result": "PASS",
+      "system_architecture_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "operational_plane_count": 6
+    },
+    {
+      "check": "python_compileall",
+      "result": "PASS"
+    },
+    {
+      "check": "anti_pollution",
+      "result": "PENDING_COMMIT_DELTA"
+    }
+  ],
+  "real_case_evaluation": {
+    "C01": "NOT_RUN",
+    "C04": "NOT_RUN",
+    "FALLINGWATER_3D": "NOT_RUN"
+  },
+  "independent_review": {
+    "state": "NOT_RUN",
+    "reason": "Phase 1 implementation review is producer-side only; EV4 independent review remains open."
+  },
+  "promotion": {
+    "eligible": false,
+    "reason": "Phase 1 is candidate-only; real cases and independent review remain open."
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

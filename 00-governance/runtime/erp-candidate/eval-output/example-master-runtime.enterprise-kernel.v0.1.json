@@ -1,0 +1,881 @@
+{
+  "schema_version": "0.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_KERNEL",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T13:10:00+08:00",
+  "source_projection_ref": "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json",
+  "source_projection_digest": {
+    "sha256": "D13AA5B10C69FF8262A31C5242A105EDD1856BB7F2B8B4B76FC1DEA6F79915A2",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "authority_boundary": {
+    "kernel_is_authority": false,
+    "may_mutate_current": false,
+    "identity_rule": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS",
+    "state_rule": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING",
+    "relation_rule": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+  },
+  "identities": [
+    {
+      "identity_id": "KID-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EVAL-OUTPUT-EXAMPLE-MASTER-RUNTIME-ENTERPRISE-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-AUTH-R06",
+      "identity_class": "OTHER",
+      "canonical_ref": "AUTH-R06",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-CH-EXAMPLE-001",
+      "identity_class": "CHANGE",
+      "canonical_ref": "CH-EXAMPLE-001",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-CI-DECISION-R06-INTEGRATION",
+      "identity_class": "OTHER",
+      "canonical_ref": "CI-DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-DECISION-R06-INTEGRATION",
+      "identity_class": "DECISION_OBJECT",
+      "canonical_ref": "DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "identity_class": "REVIEW",
+      "canonical_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-IF-R06-01",
+      "identity_class": "OTHER",
+      "canonical_ref": "IF-R06-01",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-KNOWLEDGE-GRAPH-EXAMPLE-CURRENT",
+      "identity_class": "OTHER",
+      "canonical_ref": "knowledge:graph:example-current",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PRJ-C04-EXPERIENCE-SPATIAL",
+      "identity_class": "WORKSTREAM",
+      "canonical_ref": "PRJ-C04-EXPERIENCE-SPATIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PRJ-C04-QINGJIANG-SHISHU",
+      "identity_class": "PROJECT",
+      "canonical_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "identity_class": "PROCESS_INSTANCE",
+      "canonical_ref": "PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "identity_class": "REVIEW",
+      "canonical_ref": "QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "identity_class": "WORK_PACKAGE",
+      "canonical_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "authority_bindings": [
+    {
+      "authority_binding_id": "KAUTH-PRJ-C04-QINGJIANG-SHISHU-PROJECT",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "authority_owner_ref": "authority:example-current",
+      "authority_scope": "PROJECT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "authority_gain": false
+    }
+  ],
+  "state_facts": [
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION-PROCESS",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "state_family": "PROCESS",
+      "state_value": "REVIEW",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-01-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "state_family": "QUALITY",
+      "state_value": "PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-02-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "state_family": "QUALITY",
+      "state_value": "PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-03-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "state_family": "QUALITY",
+      "state_value": "PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-04-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "state_family": "QUALITY",
+      "state_value": "PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-05-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "state_family": "QUALITY",
+      "state_value": "KEEP",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ERP-REVIEW-DECISION-R06-INTEGRATION-06-QUALITY-REVIEW",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "state_family": "QUALITY",
+      "state_value": "PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-DESIGN-QUALITY-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "DESIGN_QUALITY",
+      "state_value": "{\"claim_ceiling\":\"DESIGN_DEVELOPED\",\"maturity\":\"DQ3_DEVELOPED_SYSTEM\",\"state\":\"CURRENT\",\"verdict\":\"KEEP\"}",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-INTERFACE-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "INTERFACE",
+      "state_value": "{\"open_major_critical_interfaces\":0,\"state\":\"CURRENT\",\"unresolved_authority_conflicts\":0,\"verdict\":\"PASS\"}",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-AUTHORITY-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "AUTHORITY",
+      "state_value": "{\"authority_snapshot_ref\":\"authority:example-current\"}",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-CONFIGURATION-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "CONFIGURATION",
+      "state_value": "WORKING",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "REVIEW",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-PROCESS-TOP",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "PROCESS",
+      "state_value": "ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EVAL-OUTPUT-EXAMPLE-MASTER-RUNTIME-ENTERPRISE-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json",
+      "state_family": "PROJECTION_FRESHNESS",
+      "state_value": "SOURCE_READBACK_CURRENT",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EVAL-OUTPUT-EXAMPLE-MASTER-RUNTIME-ENTERPRISE-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json",
+      "state_family": "ENTERPRISE_READINESS",
+      "state_value": "PARTIAL",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION-PROCESS-SCHEDULE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "state_family": "PROCESS",
+      "state_value": "ERP_SCHEDULE:ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-CONFIGURATION-CI-DECISION-R06-INTEGRATION",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "CONFIGURATION",
+      "state_value": "WORKING",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-CH-EXAMPLE-001-CONFIGURATION-CHANGE",
+      "subject_ref": "CH-EXAMPLE-001",
+      "state_family": "CONFIGURATION",
+      "state_value": "IMPLEMENTED_READBACK_PENDING",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-PROCESS-PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "PROCESS",
+      "state_value": "BPM:ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:KEEP",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-R06-INTEGRATION-QUALITY-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-PROJECT-WP",
+      "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+      "from_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "to_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-WP-DECISION",
+      "relation_type": "BOUND_TO_DECISION_OBJECT",
+      "from_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "to_ref": "DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-WP-KNOWLEDGE",
+      "relation_type": "SUPPORTED_BY_KNOWLEDGE",
+      "from_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "to_ref": "knowledge:graph:example-current",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "ENT-REL-DECISION-R06-INTEGRATION-CONFIGURES",
+      "relation_type": "CONFIGURES",
+      "from_ref": "CI-DECISION-R06-INTEGRATION",
+      "to_ref": "DECISION-R06-INTEGRATION",
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "work_items": [
+    {
+      "work_id": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "work_class": "WORK_PACKAGE",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "work_state": "REVIEW",
+      "depends_on_refs": [
+        "AUTH-R06"
+      ],
+      "owner_refs": [],
+      "output_refs": [],
+      "readback_refs": [],
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION",
+      "work_class": "PROCESS_INSTANCE",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "work_state": "ACTIVE",
+      "depends_on_refs": [],
+      "owner_refs": [
+        "Master Runtime"
+      ],
+      "output_refs": [],
+      "readback_refs": [],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "configuration_items": [
+    {
+      "configuration_id": "KCONFIG-CI-DECISION-R06-INTEGRATION",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "configuration_class": "DECISION_OBJECT",
+      "revision_ref": "authority:example-current",
+      "configuration_state": "WORKING",
+      "baseline_ref": null,
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "TECHNICAL_CORRECTNESS",
+        "DESIGN_KEEP",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "receipt:artifact"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "receipt:technical"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "receipt:evidence"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "receipt:discipline"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "KEEP",
+      "evidence_refs": [
+        "receipt:design"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "subject_ref": "DECISION-R06-INTEGRATION",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "receipt:persistence"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    }
+  ],
+  "changes": [
+    {
+      "change_id": "CH-EXAMPLE-001",
+      "affected_refs": [
+        "IF-R06-01"
+      ],
+      "change_state": "IMPLEMENTED_READBACK_PENDING",
+      "reopen_refs": [],
+      "required_readback_refs": [],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "readbacks": [],
+  "receipts": [
+    {
+      "receipt_id": "receipt:artifact",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+      "receipt_class": "REVIEW",
+      "result": "PASS",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    },
+    {
+      "receipt_id": "receipt:technical",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+      "receipt_class": "REVIEW",
+      "result": "PASS",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    },
+    {
+      "receipt_id": "receipt:evidence",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+      "receipt_class": "REVIEW",
+      "result": "PASS",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    },
+    {
+      "receipt_id": "receipt:discipline",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+      "receipt_class": "REVIEW",
+      "result": "PASS",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    },
+    {
+      "receipt_id": "receipt:design",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+      "receipt_class": "REVIEW",
+      "result": "KEEP",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    },
+    {
+      "receipt_id": "receipt:persistence",
+      "subject_ref": "ERP-REVIEW-DECISION-R06-INTEGRATION-06",
+      "receipt_class": "REVIEW",
+      "result": "PASS",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise.v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "module_bindings": [
+    {
+      "module": "ERP",
+      "kernel_object_refs": [
+        "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION-PROCESS-SCHEDULE-WP-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "PLM",
+      "kernel_object_refs": [
+        "CH-EXAMPLE-001",
+        "KCONFIG-CI-DECISION-R06-INTEGRATION"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "BPM",
+      "kernel_object_refs": [
+        "PROC-PRJ-C04-QINGJIANG-SHISHU-DECISION-R06-INTEGRATION"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "QMS",
+      "kernel_object_refs": [
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-01",
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-02",
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-03",
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-04",
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-05",
+        "KEVID-QMS-ERP-REVIEW-DECISION-R06-INTEGRATION-06"
+      ],
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "kernel_metrics": {
+    "identity_count": 23,
+    "state_fact_count": 25,
+    "relation_count": 4,
+    "phase1_module_binding_count": 4,
+    "unresolved_identity_ref_count": 0,
+    "authority_gain_count": 0,
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

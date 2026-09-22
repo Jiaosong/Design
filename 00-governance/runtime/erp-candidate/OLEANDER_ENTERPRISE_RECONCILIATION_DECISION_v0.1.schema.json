@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.enterprise-reconciliation-decision.v0.1",
+  "title": "OLEANDER Enterprise Reconciliation Decision Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "candidate_status",
+    "generated_at",
+    "kernel_ref",
+    "kernel_digest",
+    "subject_ref",
+    "advance_decision",
+    "blocking_conditions",
+    "reopen_set",
+    "rerun_set",
+    "review_set",
+    "required_readback_set",
+    "unresolved_authority_conflicts",
+    "claim_ceiling",
+    "reason_codes",
+    "source_refs",
+    "authority_boundary",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-candidate"
+    },
+    "kind": {
+      "const": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION"
+    },
+    "candidate_status": {
+      "enum": [
+        "EV2_CANDIDATE",
+        "EVAL_ONLY"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kernel_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kernel_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "hash_semantics"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{64}$"
+        },
+        "hash_semantics": {
+          "const": "UTF8_TEXT_LF_CANONICAL_V1"
+        }
+      }
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "advance_decision": {
+      "enum": [
+        "ALLOW",
+        "HOLD",
+        "NOT_EVALUATED"
+      ]
+    },
+    "blocking_conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blocker"
+      }
+    },
+    "reopen_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rerun_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "review_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_readback_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "unresolved_authority_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "claim_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_is_authority",
+        "may_mutate_current",
+        "advance_rule"
+      ],
+      "properties": {
+        "decision_is_authority": {
+          "const": false
+        },
+        "may_mutate_current": {
+          "const": false
+        },
+        "advance_rule": {
+          "const": "ALLOW_ONLY_WHEN_NO_BLOCKERS_AND_NO_REQUIRED_REOPEN_RERUN_REVIEW_READBACK"
+        }
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blocker_id",
+        "blocker_class",
+        "subject_ref",
+        "observed_state",
+        "blocking_authority_ref",
+        "source_refs",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "blocker_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocker_class": {
+          "enum": [
+            "SOURCE_STALE",
+            "WORK_BLOCKED",
+            "PROCESS_BLOCKED",
+            "DESIGN_REVIEW",
+            "QUALITY_NONCONFORMANCE",
+            "QUALITY_REVIEW",
+            "CHANGE_READBACK_PENDING",
+            "AUTHORITY_CONFLICT",
+            "UNRESOLVED_BLOCKING_RELATION",
+            "OTHER"
+          ]
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking_authority_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_ceiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
