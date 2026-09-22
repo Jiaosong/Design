@@ -252,3 +252,21 @@ Metric rule:
 - Schörghuber Access, Knauf Cleaneo, PMB-741 SBS roof and Schüco FWS 50 canonical L5 owners normalized to CURRENT/DEFAULT after fresh source readback.
 - P76 exact Cleaneo 00071322 authority repaired to current Knauf official data.
 - Product/lab/component facts remain separated from installed system and field performance.
+
+
+## Professional Full-body Page-by-page Progress — P79–P82
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **82 pages (P01–P82)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 82**
+- P79 CurtainRock: corrected GB/T 25975-2018 scope so ETICS evidence is not misused as direct curtain-wall/firestop system approval; canonical owner normalized to CURRENT/DEFAULT.
+- P80 Structural Silicone Glazing: current DOWSIL 995 structural vs 791 weatherseal roles and current China standards retained separately; project joint/compatibility/factory/field evidence remains OPEN.
+- P81 Demountable Compact-Laminate Wall: Governance REVIEW → ACTIVE; Relation REVIEW → VALID; Role CASE → THEORY; Canonical Parent/path/index/routing repaired. Project B0/B1 mock-up, anchorage, fire and secondary-retention gates remain REVIEW/HOLD/OPEN and were not promoted.
+- P82 ALPI veneer finish: current ALPI/KLEIBERIT/Rubio anchors fresh-read; canonical owner normalized to CURRENT/DEFAULT.
+- Dedup: metal-mesh ceiling was already P38 and was not counted again.
+- B1 / IR and physical/project validation remain OPEN.
+
+Metric rule:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
