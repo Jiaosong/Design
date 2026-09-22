@@ -1,0 +1,857 @@
+{
+  "schema_version": "0.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_KERNEL",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T14:35:00+08:00",
+  "source_projection_ref": "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+  "source_projection_digest": {
+    "sha256": "BBA3BF182D1EFEAB7E1CAA77D8B6B3ADBCD8E049ED6CCB74EB54573221C21CC5",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "authority_boundary": {
+    "kernel_is_authority": false,
+    "may_mutate_current": false,
+    "identity_rule": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS",
+    "state_rule": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING",
+    "relation_rule": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+  },
+  "identities": [
+    {
+      "identity_id": "KID-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ARTIFACT-DEMO-01",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "ARTIFACT-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-CAPA-DEMO-01",
+      "identity_class": "QUALITY_ITEM",
+      "canonical_ref": "CAPA-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-CHANGE-DEMO-01",
+      "identity_class": "CHANGE",
+      "canonical_ref": "CHANGE-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-CI-DEMO-01",
+      "identity_class": "OTHER",
+      "canonical_ref": "CI-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-DECISION-DEMO-01",
+      "identity_class": "DECISION_OBJECT",
+      "canonical_ref": "DECISION-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-DEMO",
+      "identity_class": "OTHER",
+      "canonical_ref": "DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-HANDOFF-DEMO-01",
+      "identity_class": "PROCESS_INSTANCE",
+      "canonical_ref": "HANDOFF-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-IF-DEMO-01",
+      "identity_class": "OTHER",
+      "canonical_ref": "IF-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-DEMO-01",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-JOB-DEMO-001",
+      "identity_class": "JOB",
+      "canonical_ref": "JOB-DEMO-001",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-KNOWLEDGE-SNAPSHOT-DEMO",
+      "identity_class": "OTHER",
+      "canonical_ref": "KNOWLEDGE-SNAPSHOT-DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-NCR-DEMO-01",
+      "identity_class": "QUALITY_ITEM",
+      "canonical_ref": "NCR-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROC-DEMO-01",
+      "identity_class": "PROCESS_INSTANCE",
+      "canonical_ref": "PROC-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROJECT-DEMO",
+      "identity_class": "PROJECT",
+      "canonical_ref": "PROJECT-DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-READBACK-DEMO-01",
+      "identity_class": "READBACK",
+      "canonical_ref": "READBACK-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-READBACK-DEMO-02",
+      "identity_class": "READBACK",
+      "canonical_ref": "READBACK-DEMO-02",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REQ-DEMO-01",
+      "identity_class": "REQUIREMENT",
+      "canonical_ref": "REQ-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REVIEW-DEMO-01",
+      "identity_class": "REVIEW",
+      "canonical_ref": "REVIEW-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-SESSION-DEMO-01",
+      "identity_class": "OTHER",
+      "canonical_ref": "SESSION-DEMO-01",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-WORKSTREAM-DEMO",
+      "identity_class": "WORKSTREAM",
+      "canonical_ref": "WORKSTREAM-DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-WP-DEMO-001",
+      "identity_class": "WORK_PACKAGE",
+      "canonical_ref": "WP-DEMO-001",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "authority_bindings": [
+    {
+      "authority_binding_id": "KAUTH-PROJECT-DEMO-PROJECT",
+      "subject_ref": "PROJECT-DEMO",
+      "authority_owner_ref": "AUTHORITY-SNAPSHOT-DEMO",
+      "authority_scope": "PROJECT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "authority_gain": false
+    }
+  ],
+  "state_facts": [
+    {
+      "state_fact_id": "KSTATE-WP-DEMO-001-PROCESS",
+      "subject_ref": "WP-DEMO-001",
+      "state_family": "PROCESS",
+      "state_value": "REVIEW",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-DEMO-001-JOB",
+      "subject_ref": "JOB-DEMO-001",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REVIEW-DEMO-01-QUALITY-REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "state_family": "QUALITY",
+      "state_value": "REVISE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PROJECT-DEMO-PROJECT-DESIGN-TOP",
+      "subject_ref": "PROJECT-DEMO",
+      "state_family": "PROJECT_DESIGN",
+      "state_value": "CANDIDATE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-DEMO-001-JOB-TOP",
+      "subject_ref": "JOB-DEMO-001",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-KNOWLEDGE-SNAPSHOT-DEMO-KNOWLEDGE-INTEGRITY-TOP",
+      "subject_ref": "KNOWLEDGE-SNAPSHOT-DEMO",
+      "state_family": "KNOWLEDGE_INTEGRITY",
+      "state_value": "KI4",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-KNOWLEDGE-SNAPSHOT-DEMO-OPERATIONAL-ELIGIBILITY-TOP",
+      "subject_ref": "KNOWLEDGE-SNAPSHOT-DEMO",
+      "state_family": "OPERATIONAL_ELIGIBILITY",
+      "state_value": "OE2",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-DEMO-01-DESIGN-QUALITY-TOP",
+      "subject_ref": "DECISION-DEMO-01",
+      "state_family": "DESIGN_QUALITY",
+      "state_value": "DQ3",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DEMO-PROFESSIONAL-TOP",
+      "subject_ref": "DEMO",
+      "state_family": "PROFESSIONAL",
+      "state_value": "IN_REVIEW",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-IF-DEMO-01-INTERFACE-TOP",
+      "subject_ref": "IF-DEMO-01",
+      "state_family": "INTERFACE",
+      "state_value": "VERIFIED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-DECISION-DEMO-01-AUTHORITY-TOP",
+      "subject_ref": "DECISION-DEMO-01",
+      "state_family": "AUTHORITY",
+      "state_value": "WORKING_SOURCE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-READBACK-DEMO-01-EVIDENCE-TOP",
+      "subject_ref": "READBACK-DEMO-01",
+      "state_family": "EVIDENCE",
+      "state_value": "E2",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-CI-DEMO-01-CONFIGURATION-TOP",
+      "subject_ref": "CI-DEMO-01",
+      "state_family": "CONFIGURATION",
+      "state_value": "RELEASED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-DEMO-01-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "state_family": "QUALITY",
+      "state_value": "REVISE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PROC-DEMO-01-PROCESS-TOP",
+      "subject_ref": "PROC-DEMO-01",
+      "state_family": "PROCESS",
+      "state_value": "ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-SESSION-DEMO-01-AGENT-RUNTIME-TOP",
+      "subject_ref": "SESSION-DEMO-01",
+      "state_family": "AGENT_RUNTIME",
+      "state_value": "SUCCEEDED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+      "state_family": "PROJECTION_FRESHNESS",
+      "state_value": "SOURCE_READBACK_CURRENT",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+      "state_family": "ENTERPRISE_READINESS",
+      "state_value": "HOLD",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-DEMO-01-INTERFACE-UNRES-DEMO-01",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:ARTIFACT_REVIEWED_BY:Design review is REVISE; acceptance is intentionally not inferred.",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-DEMO-001-PROCESS-SCHED-DEMO-01",
+      "subject_ref": "WP-DEMO-001",
+      "state_family": "PROCESS",
+      "state_value": "ERP_SCHEDULE:ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-DEMO-001-PROCESS-RES-DEMAND-DEMO-01",
+      "subject_ref": "WP-DEMO-001",
+      "state_family": "PROCESS",
+      "state_value": "ERP_RESOURCE:ALLOCATED:RESOURCE-DEMO-01",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-DEMO-01-CONFIGURATION-CI-DEMO-01",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "state_family": "CONFIGURATION",
+      "state_value": "RELEASED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-CHANGE-DEMO-01-CONFIGURATION-CHANGE",
+      "subject_ref": "CHANGE-DEMO-01",
+      "state_family": "CONFIGURATION",
+      "state_value": "IMPLEMENTED_READBACK_PENDING",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-DEMO-001-PROCESS-PROC-DEMO-01",
+      "subject_ref": "WP-DEMO-001",
+      "state_family": "PROCESS",
+      "state_value": "BPM:ACTIVE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-HANDOFF-DEMO-01-PROCESS-HANDOFF-DEMO-01",
+      "subject_ref": "HANDOFF-DEMO-01",
+      "state_family": "PROCESS",
+      "state_value": "BPM_HANDOFF:ACCEPTED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-NCR-DEMO-01-QUALITY-NCR-DEMO-01",
+      "subject_ref": "NCR-DEMO-01",
+      "state_family": "QUALITY",
+      "state_value": "NCR:MEDIUM:CLOSED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-CAPA-DEMO-01-QUALITY-CAPA-DEMO-01",
+      "subject_ref": "CAPA-DEMO-01",
+      "state_family": "QUALITY",
+      "state_value": "CAPA:CLOSED:SUPPORTED",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-DEMO-01-QUALITY-INSP-DEMO-01",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:REVISE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "REL-DEMO-001",
+      "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+      "from_ref": "PROJECT-DEMO",
+      "to_ref": "WP-DEMO-001",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-DEMO-002",
+      "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+      "from_ref": "JOB-DEMO-001",
+      "to_ref": "WP-DEMO-001",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-DEMO-003",
+      "relation_type": "JOB_PRODUCES_ARTIFACT",
+      "from_ref": "JOB-DEMO-001",
+      "to_ref": "ARTIFACT-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-DEMO-004",
+      "relation_type": "SATISFIES",
+      "from_ref": "ARTIFACT-DEMO-01",
+      "to_ref": "REQ-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-DEMO-005",
+      "relation_type": "AGENT_EXECUTES_JOB",
+      "from_ref": "SESSION-DEMO-01",
+      "to_ref": "JOB-DEMO-001",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-NCR-DEMO-01-AFFECTS",
+      "relation_type": "NONCONFORMANCE_AFFECTS",
+      "from_ref": "NCR-DEMO-01",
+      "to_ref": "ARTIFACT-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-CAPA-DEMO-01-NCR-DEMO-01",
+      "relation_type": "CAPA_ADDRESSES",
+      "from_ref": "CAPA-DEMO-01",
+      "to_ref": "NCR-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "work_items": [
+    {
+      "work_id": "WP-DEMO-001",
+      "work_class": "WORK_PACKAGE",
+      "subject_ref": "WP-DEMO-001",
+      "work_state": "REVIEW",
+      "depends_on_refs": [
+        "REQ-DEMO-01"
+      ],
+      "owner_refs": [],
+      "output_refs": [
+        "ARTIFACT-DEMO-01"
+      ],
+      "readback_refs": [],
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "JOB-DEMO-001",
+      "work_class": "JOB",
+      "subject_ref": "JOB-DEMO-001",
+      "work_state": "SUCCEEDED",
+      "depends_on_refs": [
+        "REQ-DEMO-01"
+      ],
+      "owner_refs": [
+        "skill:oleander-3d-pipeline"
+      ],
+      "output_refs": [
+        "ARTIFACT-DEMO-01"
+      ],
+      "readback_refs": [
+        "READBACK-DEMO-01"
+      ],
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "PROC-DEMO-01",
+      "work_class": "PROCESS_INSTANCE",
+      "subject_ref": "WP-DEMO-001",
+      "work_state": "ACTIVE",
+      "depends_on_refs": [],
+      "owner_refs": [
+        "Master Runtime"
+      ],
+      "output_refs": [],
+      "readback_refs": [],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "HANDOFF-DEMO-01",
+      "work_class": "HANDOFF",
+      "subject_ref": "HANDOFF-DEMO-01",
+      "work_state": "ACCEPTED",
+      "depends_on_refs": [
+        "ARTIFACT-DEMO-01"
+      ],
+      "owner_refs": [
+        "skill:oleander-3d-pipeline",
+        "review:independent-design"
+      ],
+      "output_refs": [],
+      "readback_refs": [
+        "REVIEW-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    }
+  ],
+  "configuration_items": [
+    {
+      "configuration_id": "KCONFIG-CI-DEMO-01",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "configuration_class": "MODEL",
+      "revision_ref": "sha256:DEMO",
+      "configuration_state": "RELEASED",
+      "baseline_ref": "BASELINE-DEMO-01",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "TECHNICAL_CORRECTNESS",
+        "DESIGN_KEEP",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "KEVID-INSP-DEMO-01",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "evidence_class": "REVIEW",
+      "result": "REVISE",
+      "evidence_refs": [
+        "REVIEW-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    }
+  ],
+  "changes": [
+    {
+      "change_id": "CHANGE-DEMO-01",
+      "affected_refs": [
+        "CI-DEMO-01"
+      ],
+      "change_state": "IMPLEMENTED_READBACK_PENDING",
+      "reopen_refs": [
+        "REVIEW-DEMO-01"
+      ],
+      "required_readback_refs": [],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    }
+  ],
+  "readbacks": [
+    {
+      "readback_id": "READBACK-DEMO-01",
+      "subject_ref": "JOB-DEMO-001",
+      "readback_class": "EXECUTION",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "readback_id": "READBACK-DEMO-02",
+      "subject_ref": "CAPA-DEMO-01",
+      "readback_class": "QUALITY_EFFECTIVENESS",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "DESIGN_REVIEW_RECEIPT:DEMO",
+      "subject_ref": "REVIEW-DEMO-01",
+      "receipt_class": "REVIEW",
+      "result": "REVISE",
+      "independence_state": "INDEPENDENT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "module_bindings": [
+    {
+      "module": "ERP",
+      "kernel_object_refs": [
+        "KSTATE-WP-DEMO-001-PROCESS-RES-DEMAND-DEMO-01",
+        "KSTATE-WP-DEMO-001-PROCESS-SCHED-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "PLM",
+      "kernel_object_refs": [
+        "CHANGE-DEMO-01",
+        "KCONFIG-CI-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "BPM",
+      "kernel_object_refs": [
+        "HANDOFF-DEMO-01",
+        "PROC-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "QMS",
+      "kernel_object_refs": [
+        "KEVID-INSP-DEMO-01",
+        "KSTATE-CAPA-DEMO-01-QUALITY-CAPA-DEMO-01",
+        "KSTATE-NCR-DEMO-01-QUALITY-NCR-DEMO-01"
+      ],
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "projection_only": true
+    }
+  ],
+  "kernel_metrics": {
+    "identity_count": 22,
+    "state_fact_count": 28,
+    "relation_count": 7,
+    "phase1_module_binding_count": 4,
+    "unresolved_identity_ref_count": 0,
+    "authority_gain_count": 0,
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

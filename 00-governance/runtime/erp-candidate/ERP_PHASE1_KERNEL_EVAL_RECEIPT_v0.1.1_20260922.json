@@ -1,0 +1,129 @@
+{
+  "receipt_id": "OLEANDER_ENTERPRISE_PHASE1_RECONCILIATION_HARDENING_RECEIPT_v0.1.1_20260922",
+  "candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.1_20260922",
+  "status": "VALIDATED_ANTI_POLLUTION_PASS",
+  "baseline_main_commit": "9c8a9580626cc1505308eec6779dd4f3756e9761",
+  "phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "confirmed_defects": [
+    "EXPLICIT_STATE_FACT_FALSE_ALLOW",
+    "CROSS_CARRIER_CONTRADICTION_FALSE_ALLOW",
+    "DIRECT_ONLY_CHANGE_PROPAGATION",
+    "FREE_TEXT_OR_RECEIPT_AS_BLOCKING_AUTHORITY",
+    "UNTYPED_ACTION_SETS"
+  ],
+  "checks": [
+    {
+      "check": "phase1_validator_v011",
+      "result": "PASS"
+    },
+    {
+      "check": "v031_candidate_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "true_clear_chain",
+      "result": "PASS"
+    },
+    {
+      "check": "explicit_state_fail_closed",
+      "result": "PASS",
+      "families": [
+        "QUALITY",
+        "PROCESS",
+        "PROFESSIONAL",
+        "INTERFACE",
+        "ENTERPRISE_READINESS"
+      ]
+    },
+    {
+      "check": "cross_carrier_contradiction_gate",
+      "result": "PASS"
+    },
+    {
+      "check": "typed_change_impact_closure",
+      "result": "PASS",
+      "observed_actions": [
+        "RERUN_WORK:JOB-DEMO-001",
+        "REVIEW_SUBJECT:REQ-DEMO-01",
+        "REOPEN_REVIEW:REVIEW-DEMO-01",
+        "REQUIRE_READBACK:CHANGE-IMPACT-01"
+      ]
+    },
+    {
+      "check": "closed_change_no_false_propagation",
+      "result": "PASS"
+    },
+    {
+      "check": "multi_change_dedup_provenance",
+      "result": "PASS"
+    },
+    {
+      "check": "canonical_authority_resolution",
+      "result": "PASS"
+    },
+    {
+      "check": "typed_action_projection",
+      "result": "PASS"
+    },
+    {
+      "check": "schema_validation",
+      "result": "PASS"
+    },
+    {
+      "check": "deterministic_kernel_reconciliation",
+      "result": "PASS"
+    },
+    {
+      "check": "control_plane_tests",
+      "result": "PASS",
+      "tests": 142
+    },
+    {
+      "check": "execution_contract_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "architecture_control_validator",
+      "result": "PASS",
+      "system_architecture_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "operational_plane_count": 6
+    },
+    {
+      "check": "python_compileall",
+      "result": "PASS"
+    },
+    {
+      "check": "anti_pollution",
+      "result": "PASS",
+      "delta_files_checked": 14,
+      "implementation_commit": "9b8012c6522e5505383a8c1ff316136876347540"
+    }
+  ],
+  "real_case_evaluation": {
+    "C01": "NOT_RUN",
+    "C04": "NOT_RUN",
+    "FALLINGWATER_3D": "NOT_RUN"
+  },
+  "independent_review": {
+    "state": "NOT_RUN"
+  },
+  "promotion": {
+    "eligible": false
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}
