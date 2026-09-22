@@ -62,16 +62,13 @@ Fresh SQL readback after the batch:
 - INDEXED: **627**
 - Text fixed: **955**
 - Structural ready: **455**
-- Strict ready: **373**
+- Structural + Text Ready (legacy metric at first batch snapshot): **373**
 - Retrieval/Search/Trust lifecycle triplet filled: **426**
 
-Strict-ready definition retained:
+Legacy structural+text-ready definition used in the first batch snapshot:
 `ACTIVE + relation VALID + INDEXED + L4-L7 + role resolved + text fixed`
 
-Current strict governance rate:
-**373 / 1,312 = 28.4%**
-
-Do not substitute governance-status coverage for strict completion.
+**Metric correction:** the earlier label “strict ready / strict governance rate” is superseded. `373 / 1,312 = 28.4%` was only a Structural + Text Ready snapshot, not Professional Full-body Strict completion. Do not substitute governance-status coverage or structural/text readiness for strict completion.
 
 ## Remaining debt
 Continue overlap-efficient governance in this order:
@@ -84,3 +81,35 @@ Continue overlap-efficient governance in this order:
 
 ## Readback rule
 Every later batch must update Notion first, then write a derived receipt here or to a successor receipt. GitHub history must never overwrite or reinterpret live Notion state.
+
+
+## Professional Full-body Page-by-page Progress — P01–P15
+
+Authority remains Notion. This section mirrors the canonical Notion review state after exact-page review.
+
+- Individually reviewed: **15 pages**
+- Professional Full-body Strict Complete within this newly reviewed cohort: **0 / 15**
+- Reviewed but pending: **15 / 15**
+- Governance downgrade: **1**
+  - `CMF 趋势 2026｜待验证的材料与感官信号`: ACTIVE → REVIEW because R1 / R2 / Role-fit / B1 / IR remain open.
+- Retrieval tightening:
+  - `BJ-RESEARCH｜Knowledge Evidence Index`: `CURRENT / DEFAULT` → `CURRENT / SCOPED`.
+- Temporal-authority repairs:
+  - both 2026-08-28 external-skill digestion evidence pages now describe the routing / 11-Core state as historical closure state, not live authority.
+- Standards / corporate SOURCE P01–P07: K1–K5 pass only with source/application/reopen boundaries; B1 + IR remain open.
+- Design-history P12–P15: institutional source locators added. AFRICOBRA and Art Deco each retain one explicit provenance OPEN item. ELEMENTAL and Formafantasma have their core source chains materially closed, while B1 + IR remain open.
+
+Fresh Notes DB census after P01–P15:
+- Total: **1,312**
+- Live scope: **1,270**
+- Structural Ready: **454**
+- Structural + Text Ready: **358**
+- Page-by-page reviewed: **15**
+- Reviewed / pending: **15**
+- Reviewed / governance REVIEW: **1**
+
+Interpretation:
+- **358 is not a Professional Strict Complete count.**
+- The only defensible strict-complete count for the newly reviewed cohort is currently **0 / 15**.
+- No all-library Professional Strict Complete percentage is claimed until axis-level page-by-page review is sufficiently complete.
+- Continue P16+ without batch self-PASS.
