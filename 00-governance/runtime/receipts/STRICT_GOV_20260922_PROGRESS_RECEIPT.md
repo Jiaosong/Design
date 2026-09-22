@@ -303,3 +303,18 @@ Notion remains canonical.
 
 Metric rule:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P91–P94
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **94 pages (P01–P94)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 94**
+- P91 Structural Erection/Temporary Stability, P92 MEP Controls/Cx and P93 Landscape Grading-Water-Soil were adjudicated REVIEW → ACTIVE, PARTIAL → INDEXED, routing → CURRENT/DEFAULT after fresh current-source review and explicit method judgement/HOLD/reopen reinforcement.
+- P94 Spatial Lighting Performance was adjudicated REVIEW → ACTIVE, Relation REVIEW → VALID, INDEXED, routing → CURRENT/DEFAULT. Its stale note was repaired: knowledge-method ACTIVE does not promote the separate Lighting Skill candidate or missing solver/professional capability.
+- Method status remains ADAPTED; Trust remains UNVERIFIED; B1 / IR / real-project / field / specialist validation remain OPEN.
+
+Metric rule:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
