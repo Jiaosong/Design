@@ -201,3 +201,15 @@ Notion remains canonical.
 
 Metric rule:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P59–P62
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **62 pages (P01–P62)**
+- Strict Complete in reviewed cohort: **0 / 62**
+- P59 DST15-250P: REVIEW → ACTIVE; Relation REVIEW → VALID; Parent/Role/Path/INDEX metadata repaired.
+- P60 fire-damper owner normalized to CURRENT/DEFAULT; GB 15930-2024 current status and Belimo actuator evidence fresh-read.
+- P61 fire-pump owner normalized to CURRENT/DEFAULT; AC Fire transition retains Xylem 2026-07-01 vs Ruhrpumpen 2026-07-02 official date wording without false collapse.
+- P62 thePrema P360 KNX normalized to CURRENT/DEFAULT; seated vs walking coverage distinction retained.
+- B1 / IR and project/field acceptance remain OPEN.
