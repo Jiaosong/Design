@@ -143,3 +143,26 @@ Census state:
 
 Metric rule remains:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P31–P42
+
+Notion remains canonical.
+
+- Newly reviewed: **12 pages**
+- Cumulative reviewed: **42 pages (P01–P42)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 42**
+- No all-library strict-complete percentage is claimed because aggregate Notion Query Data Source remains unavailable.
+
+Material corrections:
+- P35 Sauermann Si-30: current exact TDS repaired stale 50 Hz-only wording to 230 V~ 50/60 Hz.
+- P38 Armstrong METALWORKS Mesh: current official PDFs disagree on 6131AM open area (76% vs 78%); conflict remains explicit.
+- P39 Viega Smartloop / Easytop 2281.7: current regional documents disagree on 40–65°C vs 45–65°C; project must bind exact supplied article + regional/current Submittal.
+- P40 Hydraloop H600: marketing dimensions differ from installation/owner-manual dimensions; installation GA/supplied identity governs project layout.
+- P41 Geberit Mapress Stainless Steel: 0–100°C / 16 bar shorthand repaired to a diameter/application-dependent envelope.
+- P42 ProMinent DULCODES LP: 406 m3/h published certified-flow ceiling is now explicitly tied to the manufacturer’s 98%/cm UVT condition.
+
+Other system pages P31–P37 retain ACTIVE Current ownership but exact regional/project configuration, China procurement, field commissioning, B1 and Independent Review remain OPEN.
+
+Metric rule remains:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
