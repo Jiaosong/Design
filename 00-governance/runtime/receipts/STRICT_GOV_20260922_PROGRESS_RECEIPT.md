@@ -166,3 +166,22 @@ Other system pages P31–P37 retain ACTIVE Current ownership but exact regional/
 
 Metric rule remains:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P43–P54
+
+Notion remains canonical.
+
+- Newly reviewed: **12 pages**
+- Cumulative reviewed: **54 pages (P01–P54)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 54**
+- P43–P52 canonical L5 owners with stale SUPPORT/SCOPED routing were normalized to CURRENT/DEFAULT where reviewed.
+- P53 MAGNA3 and P54 Carrier 30XW were adjudicated REVIEW → ACTIVE and Relation REVIEW → VALID after exact-source/object checks.
+- P53 exact product authority was moved from a third-party MyPump locator to the Grundfos official current product-number table.
+- P49 archived/current Daikin BS family identity conflict was repaired.
+- P45 phased-out Belimo EPIV legacy references were removed from Current simulation/procurement/fail-safe logic.
+- P43 Swegon current-document casing-class discrepancy remains explicit instead of being falsely collapsed.
+- No all-library strict-complete percentage is claimed because aggregate Notion query remains unavailable.
+
+Metric rule:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
