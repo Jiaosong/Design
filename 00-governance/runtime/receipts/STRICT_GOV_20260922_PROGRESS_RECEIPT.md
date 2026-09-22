@@ -213,3 +213,13 @@ Metric rule:
 - P61 fire-pump owner normalized to CURRENT/DEFAULT; AC Fire transition retains Xylem 2026-07-01 vs Ruhrpumpen 2026-07-02 official date wording without false collapse.
 - P62 thePrema P360 KNX normalized to CURRENT/DEFAULT; seated vs walking coverage distinction retained.
 - B1 / IR and project/field acceptance remain OPEN.
+
+
+## Professional Full-body Page-by-page Progress — P63–P66
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **66 pages (P01–P66)**
+- Strict Complete in reviewed cohort: **0 / 66**
+- P63 Tate ConCore 1250 current official-document panel-weight conflict remains explicit.
+- P64 Siemens 3VA2, P65 Galaxy VS, P66 TransferPacT owners normalized to CURRENT/DEFAULT; exact product/current standard evidence fresh-read.
+- Protection/selectivity, battery/bypass, source-transfer and physical commissioning remain OPEN.
