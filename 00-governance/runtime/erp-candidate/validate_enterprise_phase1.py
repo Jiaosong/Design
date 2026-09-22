@@ -69,6 +69,27 @@ def sha(path: Path) -> str:
     return hashlib.sha256(canonical_bytes(path)).hexdigest().upper()
 
 
+def git_path_exists_at_commit(commit: str, rel: str) -> bool:
+    result = subprocess.run(
+        ["git", "cat-file", "-e", f"{commit}:{rel}"],
+        cwd=REPO_ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return result.returncode == 0
+
+
+def authority_contract_ref_exists(rel: str) -> bool:
+    if (REPO_ROOT / rel).is_file():
+        return True
+    if not PHASE1_CANDIDATE.is_file():
+        return False
+    candidate = load(PHASE1_CANDIDATE)
+    commit = candidate.get("baseline", {}).get("commit")
+    return bool(commit) and git_path_exists_at_commit(commit, rel)
+
+
 def schema_validate(schema_path: Path, doc: dict, label: str) -> None:
     try:
         from jsonschema import Draft202012Validator
@@ -174,7 +195,7 @@ def validate_authority_resolution(authority: dict, kernel: dict, context: str) -
     contract = authority.get("authority_contract_ref")
     require(bool(contract), f"{context} missing authority contract ref")
     if contract.startswith("00-governance/"):
-        require((REPO_ROOT / contract).is_file(), f"{context} authority contract ref missing: {contract}")
+        require(authority_contract_ref_exists(contract), f"{context} authority contract ref missing in checkout and bound baseline: {contract}")
     owners = {row.get("authority_owner_ref") for row in kernel.get("authority_bindings", [])}
     if state == "RESOLVED_EXISTING_BINDING":
         require(bool(authority.get("owner_ref")), f"{context} resolved authority missing owner_ref")
