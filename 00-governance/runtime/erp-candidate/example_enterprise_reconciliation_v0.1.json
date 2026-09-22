@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T13:10:00+08:00",
+  "kernel_ref": "00-governance/runtime/erp-candidate/example_enterprise_kernel_v0.1.json",
+  "kernel_digest": {
+    "sha256": "3F202AD0BF4B0835B97A9B8023F9756C6DD7332F4A9E36F6654B53C5651F68CC",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "subject_ref": "PROJECT-DEMO",
+  "advance_decision": "HOLD",
+  "blocking_conditions": [
+    {
+      "blocker_id": "BLOCK-CHANGE-READBACK-PENDING-CHANGE-DEMO-01-IMPLEMENTED-READBACK-PENDING",
+      "blocker_class": "CHANGE_READBACK_PENDING",
+      "subject_ref": "CHANGE-DEMO-01",
+      "observed_state": "IMPLEMENTED_READBACK_PENDING",
+      "blocking_authority_ref": "Project Configuration / Change Register",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "claim_ceiling": "CHANGE_NOT_CLOSED_NO_ADVANCE"
+    },
+    {
+      "blocker_id": "BLOCK-DESIGN-REVIEW-REVIEW-DEMO-01-REVISE",
+      "blocker_class": "DESIGN_REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "DESIGN_REVIEW_RECEIPT:DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION"
+    },
+    {
+      "blocker_id": "BLOCK-QUALITY-REVIEW-ARTIFACT-DEMO-01-REVISE",
+      "blocker_class": "QUALITY_REVIEW",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "Review owners / domain specialist acceptance owner",
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-DEMO-01-BLOCKING-RELATION-ARTIFACT-REVIEWED-BY-DESIGN-REVIEW-IS-REVISE--ACCEPTANCE-IS-INTENTIONALLY-NOT-INFERRED",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "BLOCKING_RELATION:ARTIFACT_REVIEWED_BY:Design review is REVISE; acceptance is intentionally not inferred.",
+      "blocking_authority_ref": "AUTHORITY-SNAPSHOT-DEMO",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE"
+    }
+  ],
+  "reopen_set": [
+    "REVIEW-DEMO-01"
+  ],
+  "rerun_set": [
+    "CI-DEMO-01"
+  ],
+  "review_set": [
+    "ARTIFACT-DEMO-01",
+    "REVIEW-DEMO-01"
+  ],
+  "required_readback_set": [
+    "CHANGE-DEMO-01"
+  ],
+  "unresolved_authority_conflicts": [],
+  "claim_ceiling": "PHASE1_COORDINATION_HOLD_NO_DESIGN_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+  "reason_codes": [
+    "CHANGE_READBACK_PENDING",
+    "DESIGN_REVIEW",
+    "QUALITY_REVIEW",
+    "UNRESOLVED_BLOCKING_RELATION"
+  ],
+  "source_refs": [
+    "00-governance/runtime/erp-candidate/example_enterprise_kernel_v0.1.json"
+  ],
+  "authority_boundary": {
+    "decision_is_authority": false,
+    "may_mutate_current": false,
+    "advance_rule": "ALLOW_ONLY_WHEN_NO_BLOCKERS_AND_NO_REQUIRED_REOPEN_RERUN_REVIEW_READBACK"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}
