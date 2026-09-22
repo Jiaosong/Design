@@ -270,3 +270,20 @@ Notion remains canonical.
 
 Metric rule:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P83–P86
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **86 pages (P01–P86)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 86**
+- P83 Sarnafil S327-20 L normalized to CURRENT/DEFAULT; current Sika PDS and local-PDS boundary retained; project wind/fastening/weld/field evidence remains OPEN.
+- P84 Steelcase Leap 462 normalized to CURRENT/DEFAULT; 46216179 remains current, while U.S. list price is now explicitly configuration/price-list sensitive rather than a timeless fact.
+- P85 Somfy animeo KNX normalized to CURRENT/DEFAULT; current platform and KNX registry order number 1860114 reconfirmed; physical façade performance remains OPEN.
+- P86 Facade–Environment Interface METHOD: Governance REVIEW → ACTIVE; Index PARTIAL → INDEXED; routing → CURRENT/DEFAULT. Method status remains ADAPTED. Explicit judgement/HOLD/output/reopen contract was added; WBDG + ASTM source bindings remain bounded.
+- B1 / IR and project/field/human validation remain OPEN.
+
+Metric rule:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
