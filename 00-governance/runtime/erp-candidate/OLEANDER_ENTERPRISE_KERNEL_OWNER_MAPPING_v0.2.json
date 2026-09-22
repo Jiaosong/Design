@@ -1,0 +1,266 @@
+{
+  "mapping_id": "OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.2",
+  "status": "PHASE2_EV2_CANDIDATE_NON_AUTHORITATIVE",
+  "kernel_ref": "OLEANDER_ENTERPRISE_KERNEL_v0.2.schema.json",
+  "reconciliation_ref": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.2.schema.json",
+  "purpose": "Bind all eight Enterprise Kernel module projections to existing OLEANDER owners without creating a second system of record or runtime layer.",
+  "global_rules": [
+    "ONE_CURRENT_OLEANDER_ARCHITECTURE_ONLY",
+    "KERNEL_IS_PROJECTION_NOT_AUTHORITY",
+    "RECONCILIATION_DECISION_IS_DERIVED_NOT_AUTHORITY",
+    "NO_NEW_R_L_RUNTIME_LAYER",
+    "NO_NEW_PROJECT_AXIS",
+    "NO_NEW_KNOWLEDGE_AUTHORITY",
+    "NO_DISTRIBUTED_TRANSACTION_MANAGER",
+    "NO_AUTOMATIC_PROJECT_PROMOTION",
+    "BLOCKING_AUTHORITY_MUST_REFERENCE_EXISTING_OWNER",
+    "ALL_EXPLICIT_STATE_FACTS_FAIL_CLOSED",
+    "CROSS_CARRIER_CONTRADICTIONS_FAIL_CLOSED",
+    "TYPED_ACTION_REQUESTS_ONLY_FOR_ADVANCE_CONTROL",
+    "IMPACT_PROPAGATION_BY_DECLARED_MACHINE_POLICY_ONLY",
+    "UNRESOLVED_REQUIRED_OWNER_REMAINS_VISIBLE_AND_BLOCKING"
+  ],
+  "primitives": [
+    {
+      "primitive": "IDENTITY",
+      "canonical_owners": [
+        "Project Axis / Project State for project identities",
+        "Notion canonical Knowledge Registry for knowledge identities",
+        "Native Artifact / Git carriers for artifact identities",
+        "applicable source owner for other identities"
+      ],
+      "runtime_layers": [
+        "R-A",
+        "R-B",
+        "R-C",
+        "R-H",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Kernel identity records point to canonical refs; they do not create canonical identity or authority."
+    },
+    {
+      "primitive": "AUTHORITY_BINDING",
+      "canonical_owners": [
+        "R-A Authority",
+        "Project Authority / Project State",
+        "professional/specialist owner where applicable"
+      ],
+      "runtime_layers": [
+        "R-A"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Authority bindings describe the owner that already controls a decision; kernel rows have authority_gain=false."
+    },
+    {
+      "primitive": "STATE_FACT",
+      "canonical_owners": [
+        "owner of the originating state family"
+      ],
+      "runtime_layers": [
+        "R-A",
+        "R-B",
+        "R-C",
+        "R-D",
+        "R-E",
+        "R-F",
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "State facts are orthogonal observations; no flattening into one universal status is allowed."
+    },
+    {
+      "primitive": "RELATION",
+      "canonical_owners": [
+        "owner(s) of the source objects and relation evidence"
+      ],
+      "runtime_layers": [
+        "R-B",
+        "R-C",
+        "R-E",
+        "R-F",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Relations are typed/source-bound and authority_effect=NONE."
+    },
+    {
+      "primitive": "WORK",
+      "canonical_owners": [
+        "Project State",
+        "Master Runtime",
+        "Multi-Skill Execution DAG",
+        "authorized execution owner"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-G",
+        "R-H"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Work coordination does not own Design/Professional/Promotion state."
+    },
+    {
+      "primitive": "CONFIGURATION",
+      "canonical_owners": [
+        "Native Artifact Contract",
+        "Project Configuration / Change Register",
+        "Git/GitHub version carriers",
+        "applicable professional owner"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-E",
+        "R-H",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Configuration RELEASED identifies version/baseline only; it does not prove correctness, acceptance or promotion."
+    },
+    {
+      "primitive": "EVIDENCE",
+      "canonical_owners": [
+        "Evidence source",
+        "Review owner",
+        "Actual Readback owner"
+      ],
+      "runtime_layers": [
+        "R-I",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Evidence retains explicit claim ceiling and cannot self-promote its subject."
+    },
+    {
+      "primitive": "CHANGE",
+      "canonical_owners": [
+        "Project Configuration / Change Register",
+        "affected source owners"
+      ],
+      "runtime_layers": [
+        "R-C",
+        "R-E",
+        "R-H",
+        "R-I",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Change may derive reopen/rerun/readback requirements but does not execute them or close itself."
+    },
+    {
+      "primitive": "READBACK",
+      "canonical_owners": [
+        "R-I Actual Readback / applicable source owner"
+      ],
+      "runtime_layers": [
+        "R-I"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Readback records observation only; observed output is not professional acceptance."
+    },
+    {
+      "primitive": "RECEIPT",
+      "canonical_owners": [
+        "Execution/Review/Persistence receipt owner"
+      ],
+      "runtime_layers": [
+        "R-I",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Receipt records evidence/result at a claim ceiling; it cannot grant authority beyond the issuing owner."
+    },
+    {
+      "primitive": "RECONCILIATION",
+      "canonical_owners": [
+        "Derived candidate logic only; each blocker keeps its existing blocking_authority_ref"
+      ],
+      "runtime_layers": [
+        "R-I",
+        "R-J"
+      ],
+      "mutation_permission": "NONE_IN_CANDIDATE",
+      "boundary": "Reconciliation may output ALLOW/HOLD only as a candidate coordination recommendation. It cannot mutate Current, approve design, grant professional PASS or promote a project."
+    }
+  ],
+  "phase1_module_bindings": {
+    "ERP": [
+      "IDENTITY",
+      "STATE_FACT",
+      "WORK",
+      "RELATION"
+    ],
+    "PLM": [
+      "IDENTITY",
+      "CONFIGURATION",
+      "CHANGE",
+      "STATE_FACT",
+      "RELATION",
+      "READBACK"
+    ],
+    "BPM": [
+      "IDENTITY",
+      "WORK",
+      "STATE_FACT",
+      "RELATION",
+      "READBACK"
+    ],
+    "QMS": [
+      "IDENTITY",
+      "EVIDENCE",
+      "STATE_FACT",
+      "RELATION",
+      "READBACK",
+      "RECEIPT",
+      "CHANGE"
+    ]
+  },
+  "deferred_module_policy": {
+    "MES": "PHASE2_KERNELIZED_PROJECTION_ONLY",
+    "MBSE": "PHASE2_KERNELIZED_PROJECTION_ONLY",
+    "KNOWLEDGE_GRAPH": "PHASE2_KERNELIZED_PROJECTION_ONLY",
+    "AGENT_RUNTIME": "PHASE2_KERNELIZED_PROJECTION_ONLY"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ],
+  "reconciliation_policy_ref": "OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.2.json",
+  "phase2_module_bindings": {
+    "MES": [
+      "IDENTITY",
+      "WORK",
+      "STATE_FACT",
+      "RELATION",
+      "READBACK"
+    ],
+    "MBSE": [
+      "IDENTITY",
+      "STATE_FACT",
+      "RELATION",
+      "EVIDENCE",
+      "CONFIGURATION",
+      "READBACK"
+    ],
+    "KNOWLEDGE_GRAPH": [
+      "IDENTITY",
+      "RELATION",
+      "EVIDENCE",
+      "STATE_FACT"
+    ],
+    "AGENT_RUNTIME": [
+      "IDENTITY",
+      "WORK",
+      "STATE_FACT",
+      "RELATION",
+      "READBACK"
+    ]
+  }
+}

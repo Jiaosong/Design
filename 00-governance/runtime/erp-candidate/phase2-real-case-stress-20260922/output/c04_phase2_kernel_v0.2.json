@@ -1,0 +1,1396 @@
+{
+  "schema_version": "0.2-candidate",
+  "kind": "OLEANDER_ENTERPRISE_KERNEL",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T17:45:00+08:00",
+  "source_projection_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json",
+  "source_projection_digest": {
+    "sha256": "867B61CDFAF6A8627B39C092E02686DA59C6FAB652702D7CCD5960CACA393C04",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "authority_boundary": {
+    "kernel_is_authority": false,
+    "may_mutate_current": false,
+    "identity_rule": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS",
+    "state_rule": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING",
+    "relation_rule": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+  },
+  "identities": [
+    {
+      "identity_id": "KID-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-C04-PHASE2-PROJECTION-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-BASELINE-C04-CONTROL",
+      "identity_class": "OTHER",
+      "canonical_ref": "BASELINE-C04-CONTROL",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C04-PROJECT-CLOSURE",
+      "identity_class": "DECISION_OBJECT",
+      "canonical_ref": "C04-PROJECT-CLOSURE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C04-PROJECT-CONTROL",
+      "identity_class": "WORKSTREAM",
+      "canonical_ref": "C04-PROJECT-CONTROL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C22-C23-PLAN-SECTION-DETAIL-TECHNICAL-DRAWING-PRODUCTION-WHERE-FORMALLY-REQUIRED",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "C22/C23 plan-section-detail technical drawing production where formally required",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-DIMENSION-NOTE-GEOMETRY-TECHNICAL-GRAPHIC-READBACK-WHERE-FORMALLY-REQUIRED",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "dimension/note/geometry technical graphic readback where formally required",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3-C04-SOURCE-MANIFEST",
+      "identity_class": "OTHER",
+      "canonical_ref": "EV3:C04:SOURCE_MANIFEST",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-C04-CLOSURE",
+      "identity_class": "READBACK",
+      "canonical_ref": "EV3SRC:C04:CLOSURE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-C04-OPERATIONAL",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:C04:OPERATIONAL",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-C04-PROJECT-CONTROL",
+      "identity_class": "READBACK",
+      "canonical_ref": "EV3SRC:C04:PROJECT_CONTROL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-C04-TD-BINDING",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:C04:TD_BINDING",
+      "source_refs": [
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-IF-C04-OP-TD",
+      "identity_class": "INTERFACE",
+      "canonical_ref": "IF-C04-OP-TD",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-C04-CONFIG",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-C04-CONFIG",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-C04-OPERATIONAL",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-C04-OPERATIONAL",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-C04-TD-BINDING",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-C04-TD-BINDING",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-JOB-C04-PROJECT-CONTROL-READBACK",
+      "identity_class": "JOB",
+      "canonical_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-KG-C04-EV3",
+      "identity_class": "QUERY_POLICY",
+      "canonical_ref": "KG-C04-EV3",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-NCR-C04-OP-CLOSEOUT",
+      "identity_class": "QUALITY_ITEM",
+      "canonical_ref": "NCR-C04-OP-CLOSEOUT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PRJ-C04-QINGJIANG-SHISHU",
+      "identity_class": "PROJECT",
+      "canonical_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROC-C04-CLOSURE",
+      "identity_class": "PROCESS_INSTANCE",
+      "canonical_ref": "PROC-C04-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROJECT-CONTROL-COMPILER",
+      "identity_class": "OTHER",
+      "canonical_ref": "project-control:compiler",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "identity_class": "REQUIREMENT",
+      "canonical_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REVIEW-C04-PROJECT-CLOSURE",
+      "identity_class": "REVIEW",
+      "canonical_ref": "REVIEW-C04-PROJECT-CLOSURE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-SYS-C04-CLOSURE",
+      "identity_class": "SYSTEM_ELEMENT",
+      "canonical_ref": "SYS-C04-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-VV-C04-OP",
+      "identity_class": "REVIEW",
+      "canonical_ref": "VV-C04-OP",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-VV-C04-TD",
+      "identity_class": "REVIEW",
+      "canonical_ref": "VV-C04-TD",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "identity_class": "WORK_PACKAGE",
+      "canonical_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "authority_bindings": [
+    {
+      "authority_binding_id": "KAUTH-PRJ-C04-QINGJIANG-SHISHU-PROJECT",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "authority_owner_ref": "EV3:C04:AUTHORITY_SNAPSHOT",
+      "authority_scope": "PROJECT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "authority_gain": false
+    }
+  ],
+  "state_facts": [
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE-PROCESS",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "state_family": "PROCESS",
+      "state_value": "BLOCKED",
+      "claim_scope": "WORK_PACKAGE_COORDINATION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-C04-PROJECT-CONTROL-READBACK-JOB",
+      "subject_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "claim_scope": "JOB_RUNTIME",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REVIEW-C04-PROJECT-CLOSURE-QUALITY-REVIEW",
+      "subject_ref": "REVIEW-C04-PROJECT-CLOSURE",
+      "state_family": "QUALITY",
+      "state_value": "HOLD",
+      "claim_scope": "REVIEW:DESIGN",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PRJ-C04-QINGJIANG-SHISHU-PROJECT-DESIGN-TOP",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "state_family": "PROJECT_DESIGN",
+      "state_value": "EXPLORE_G3",
+      "claim_scope": "TOP_LEVEL:PROJECT_DESIGN",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-C04-PROJECT-CONTROL-READBACK-JOB-TOP",
+      "subject_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "claim_scope": "TOP_LEVEL:JOB",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-EV3-C04-SOURCE-MANIFEST-KNOWLEDGE-INTEGRITY-TOP",
+      "subject_ref": "EV3:C04:SOURCE_MANIFEST",
+      "state_family": "KNOWLEDGE_INTEGRITY",
+      "state_value": "SOURCE_BOUND",
+      "claim_scope": "TOP_LEVEL:KNOWLEDGE_INTEGRITY",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PRJ-C04-QINGJIANG-SHISHU-OPERATIONAL-ELIGIBILITY-TOP",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "state_family": "OPERATIONAL_ELIGIBILITY",
+      "state_value": "HOLD_G1F_FIELD_OBSERVED_0_MEASURED_0",
+      "claim_scope": "TOP_LEVEL:OPERATIONAL_ELIGIBILITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-DESIGN-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "DESIGN_QUALITY",
+      "state_value": "HOLD_PROJECT_CLOSURE",
+      "claim_scope": "TOP_LEVEL:DESIGN_QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PRJ-C04-QINGJIANG-SHISHU-PROFESSIONAL-TOP",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "state_family": "PROFESSIONAL",
+      "state_value": "HOLD_OPERATIONAL_AND_TD",
+      "claim_scope": "TOP_LEVEL:PROFESSIONAL",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-INTERFACE-TOP",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "state_family": "INTERFACE",
+      "state_value": "HOLD_OWNER_AND_FIELD_READBACK_OPEN",
+      "claim_scope": "TOP_LEVEL:INTERFACE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-AUTHORITY-TOP",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "state_family": "AUTHORITY",
+      "state_value": "HOLD_TECHNICAL_DRAWING_OWNER_NOT_ASSIGNED",
+      "claim_scope": "TOP_LEVEL:AUTHORITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-EVIDENCE-TOP",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "EVIDENCE",
+      "state_value": "CONFIG_AND_RISK_BOUNDED_PASS",
+      "claim_scope": "TOP_LEVEL:EVIDENCE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-CONFIGURATION-TOP",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "CONFIGURATION",
+      "state_value": "RELEASED_AT_CONFIGURATION_CLAIM_ONLY",
+      "claim_scope": "TOP_LEVEL:CONFIGURATION",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "QUALITY",
+      "state_value": "HOLD_OPERATIONAL_ACCEPTANCE",
+      "claim_scope": "TOP_LEVEL:QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE-PROCESS-TOP",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "state_family": "PROCESS",
+      "state_value": "HOLD",
+      "claim_scope": "TOP_LEVEL:PROCESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PRJ-C04-QINGJIANG-SHISHU-AGENT-RUNTIME-TOP",
+      "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "state_family": "AGENT_RUNTIME",
+      "state_value": "NOT_TRIGGERED",
+      "claim_scope": "TOP_LEVEL:AGENT_RUNTIME",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-C04-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json",
+      "state_family": "PROJECTION_FRESHNESS",
+      "state_value": "SOURCE_READBACK_CURRENT",
+      "claim_scope": "PROJECTION_FRESHNESS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-C04-PHASE2-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json",
+      "state_family": "ENTERPRISE_READINESS",
+      "state_value": "HOLD",
+      "claim_scope": "ENTERPRISE_READINESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-INTERFACE-UNRES-C04-OP-OWNER",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:HANDOFF_TO:Operational/implementation owner not assigned; commissioning and field readback are deferred.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-INTERFACE-UNRES-C04-TD-OWNER",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:HANDOFF_TO:Technical Drawing specialist owner and authorization are NOT_ASSIGNED.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-CONFIGURATION-CI-C04-CONTROL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "CONFIGURATION",
+      "state_value": "RELEASED",
+      "claim_scope": "PLM_CONFIGURATION_ITEM",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE-PROCESS-PROC-C04-CLOSURE",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "state_family": "PROCESS",
+      "state_value": "BPM:HOLD",
+      "claim_scope": "BPM_PROCESS_INSTANCE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-NCR-C04-OP-CLOSEOUT-QUALITY-NCR-C04-OP-CLOSEOUT",
+      "subject_ref": "NCR-C04-OP-CLOSEOUT",
+      "state_family": "QUALITY",
+      "state_value": "NCR:HIGH:OPEN",
+      "claim_scope": "QMS_NCR",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-QUALITY-INSP-C04-CONFIG",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "claim_scope": "QMS_INSPECTION:REVIEW_READBACK",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-QUALITY-INSP-C04-OPERATIONAL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:COMMISSIONING",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-QUALITY-INSP-C04-TD-BINDING",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:TECHNICAL",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-REQUIREMENT-REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "state_family": "REQUIREMENT",
+      "state_value": "REQUIREMENT:HOLD",
+      "claim_scope": "MBSE_REQUIREMENT:ACCEPTANCE_CRITERION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-IF-C04-OP-TD-INTERFACE-IF-C04-OP-TD",
+      "subject_ref": "IF-C04-OP-TD",
+      "state_family": "INTERFACE",
+      "state_value": "MBSE_INTERFACE:HOLD",
+      "claim_scope": "MBSE_INTERFACE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-VALIDATION-VV-C04-OP",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "state_family": "VALIDATION",
+      "state_value": "VALIDATION:NOT_RUN",
+      "claim_scope": "MBSE_VV:VALIDATION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-VALIDATION-VV-C04-TD",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "state_family": "VALIDATION",
+      "state_value": "VERIFICATION:HOLD",
+      "claim_scope": "MBSE_VV:VERIFICATION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-KNOWLEDGE-PROVENANCE-PROV-C04-CONTROL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "state_family": "KNOWLEDGE_PROVENANCE",
+      "state_value": "SOURCE_BOUND",
+      "claim_scope": "KG_PROVENANCE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "REL-C04-PROJECT-WP",
+      "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+      "from_ref": "PRJ-C04-QINGJIANG-SHISHU",
+      "to_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C04-JOB-WP",
+      "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+      "from_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C04-JOB-ART",
+      "relation_type": "JOB_PRODUCES_ARTIFACT",
+      "from_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C04-ART-REV",
+      "relation_type": "ARTIFACT_REVIEWED_BY",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "REVIEW-C04-PROJECT-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C04-ART-REQ",
+      "relation_type": "IMPLEMENTS",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-NCR-C04-OP-CLOSEOUT-AFFECTS",
+      "relation_type": "NONCONFORMANCE_AFFECTS",
+      "from_ref": "NCR-C04-OP-CLOSEOUT",
+      "to_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-REQ-C04-OPERATIONAL-TD-CLOSURE-ALLOC-ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "relation_type": "ALLOCATES_TO",
+      "from_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "to_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-SYS-C04-CLOSURE-REPRESENTS",
+      "relation_type": "SYSTEM_ELEMENT_REPRESENTS",
+      "from_ref": "SYS-C04-CLOSURE",
+      "to_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-IF-C04-OP-TD-FROM",
+      "relation_type": "INTERFACE_FROM",
+      "from_ref": "IF-C04-OP-TD",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-IF-C04-OP-TD-TO",
+      "relation_type": "INTERFACE_TO",
+      "from_ref": "IF-C04-OP-TD",
+      "to_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-VV-C04-OP-VALIDATES",
+      "relation_type": "VALIDATES",
+      "from_ref": "VV-C04-OP",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-VV-C04-TD-VERIFIES",
+      "relation_type": "VERIFIES",
+      "from_ref": "VV-C04-TD",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KG-C04-IMPLEMENTS",
+      "relation_type": "IMPLEMENTS",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-C04-CONTROL-DERIVED-REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "relation_type": "PROVENANCE_DERIVED_FROM",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-C04-CONTROL-GENERATED",
+      "relation_type": "PROVENANCE_GENERATED_BY",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-C04-CONTROL-ATTR-PROJECT-CONTROL-COMPILER",
+      "relation_type": "PROVENANCE_ATTRIBUTED_TO",
+      "from_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "to_ref": "project-control:compiler",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "work_items": [
+    {
+      "work_id": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "work_class": "WORK_PACKAGE",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "work_state": "BLOCKED",
+      "depends_on_refs": [
+        "REQ-C04-OPERATIONAL-TD-CLOSURE"
+      ],
+      "owner_refs": [],
+      "output_refs": [
+        "C22/C23 plan-section-detail technical drawing production where formally required",
+        "dimension/note/geometry technical graphic readback where formally required"
+      ],
+      "readback_refs": [],
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "work_class": "JOB",
+      "subject_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "work_state": "SUCCEEDED",
+      "depends_on_refs": [
+        "REQ-C04-OPERATIONAL-TD-CLOSURE"
+      ],
+      "owner_refs": [
+        "project-control:compiler"
+      ],
+      "output_refs": [
+        "ARTIFACT-C04-PROJECT-CONTROL-READBACK"
+      ],
+      "readback_refs": [
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE"
+      ],
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "PROC-C04-CLOSURE",
+      "work_class": "PROCESS_INSTANCE",
+      "subject_ref": "WP-PRJ-C04-QINGJIANG-SHISHU-CLOSURE",
+      "work_state": "HOLD",
+      "depends_on_refs": [],
+      "owner_refs": [
+        "Master Runtime"
+      ],
+      "output_refs": [],
+      "readback_refs": [],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    }
+  ],
+  "configuration_items": [
+    {
+      "configuration_id": "KCONFIG-CI-C04-CONTROL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "configuration_class": "ARTIFACT",
+      "revision_ref": "193673CB34A4FAC36BFAF0D1A093CC5B06EADF6852A74481B15949BE901425D5",
+      "configuration_state": "RELEASED",
+      "baseline_ref": "BASELINE-C04-CONTROL",
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "TECHNICAL_CORRECTNESS",
+        "DESIGN_KEEP",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "KEVID-INSP-C04-CONFIG",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "EV3SRC:C04:PROJECT_CONTROL"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-INSP-C04-OPERATIONAL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:C04:OPERATIONAL"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-INSP-C04-TD-BINDING",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-VV-C04-OP",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "evidence_class": "VALIDATION",
+      "result": "NOT_RUN",
+      "evidence_refs": [],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "MBSE_VALIDATION_ONLY_NO_PROJECT_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "evidence_id": "KEVID-VV-C04-TD",
+      "subject_ref": "REQ-C04-OPERATIONAL-TD-CLOSURE",
+      "evidence_class": "VERIFICATION",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "MBSE_VERIFICATION_ONLY_NO_PROJECT_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "evidence_id": "KEVID-PROV-C04-CONTROL",
+      "subject_ref": "ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+      "evidence_class": "KNOWLEDGE_PROVENANCE",
+      "result": "SOURCE_BOUND",
+      "evidence_refs": [
+        "REQ-C04-OPERATIONAL-TD-CLOSURE"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "PROVENANCE_ONLY_NO_CANONICAL_TRUTH_OR_AUTHORITY_GAIN"
+    }
+  ],
+  "changes": [],
+  "readbacks": [
+    {
+      "readback_id": "EV3SRC:C04:PROJECT_CONTROL",
+      "subject_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "readback_class": "EXECUTION",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "readback_id": "EV3SRC:C04:CLOSURE",
+      "subject_ref": "JOB-C04-PROJECT-CONTROL-READBACK",
+      "readback_class": "EXECUTION",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "C04_PROJECT_CONTROL_READBACK_v0.1",
+      "subject_ref": "REVIEW-C04-PROJECT-CLOSURE",
+      "receipt_class": "REVIEW",
+      "result": "HOLD",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/c04_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "module_bindings": [
+    {
+      "module": "ERP",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "PLM",
+      "kernel_object_refs": [
+        "KCONFIG-CI-C04-CONTROL"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "BPM",
+      "kernel_object_refs": [
+        "PROC-C04-CLOSURE"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "QMS",
+      "kernel_object_refs": [
+        "KEVID-INSP-C04-CONFIG",
+        "KEVID-INSP-C04-OPERATIONAL",
+        "KEVID-INSP-C04-TD-BINDING",
+        "KSTATE-NCR-C04-OP-CLOSEOUT-QUALITY-NCR-C04-OP-CLOSEOUT"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "MES",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "MBSE",
+      "kernel_object_refs": [
+        "KEVID-VV-C04-OP",
+        "KEVID-VV-C04-TD",
+        "KID-BASELINE-C04-CONTROL",
+        "KID-IF-C04-OP-TD",
+        "KID-REQ-C04-OPERATIONAL-TD-CLOSURE",
+        "KID-SYS-C04-CLOSURE",
+        "KREL-IF-C04-OP-TD-FROM",
+        "KREL-IF-C04-OP-TD-TO",
+        "KREL-REQ-C04-OPERATIONAL-TD-CLOSURE-ALLOC-ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+        "KREL-SYS-C04-CLOSURE-REPRESENTS",
+        "KREL-VV-C04-OP-VALIDATES",
+        "KREL-VV-C04-TD-VERIFIES",
+        "KSTATE-IF-C04-OP-TD-INTERFACE-IF-C04-OP-TD",
+        "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-REQUIREMENT-REQ-C04-OPERATIONAL-TD-CLOSURE",
+        "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-VALIDATION-VV-C04-OP",
+        "KSTATE-REQ-C04-OPERATIONAL-TD-CLOSURE-VALIDATION-VV-C04-TD"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "KNOWLEDGE_GRAPH",
+      "kernel_object_refs": [
+        "KEVID-PROV-C04-CONTROL",
+        "KG-C04-IMPLEMENTS",
+        "KID-ARTIFACT-C04-PROJECT-CONTROL-READBACK",
+        "KID-KG-C04-EV3",
+        "KID-PRJ-C04-QINGJIANG-SHISHU",
+        "KID-REQ-C04-OPERATIONAL-TD-CLOSURE",
+        "KREL-PROV-C04-CONTROL-ATTR-PROJECT-CONTROL-COMPILER",
+        "KREL-PROV-C04-CONTROL-DERIVED-REQ-C04-OPERATIONAL-TD-CLOSURE",
+        "KREL-PROV-C04-CONTROL-GENERATED",
+        "KSTATE-ARTIFACT-C04-PROJECT-CONTROL-READBACK-KNOWLEDGE-PROVENANCE-PROV-C04-CONTROL"
+      ],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "AGENT_RUNTIME",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:C04:CURRENT",
+        "EV3SRC:C04:PROJECT_CONTROL",
+        "EV3SRC:C04:CLOSURE",
+        "EV3SRC:C04:OPERATIONAL",
+        "EV3SRC:C04:TD_BINDING"
+      ],
+      "projection_only": true
+    }
+  ],
+  "kernel_metrics": {
+    "identity_count": 28,
+    "state_fact_count": 31,
+    "relation_count": 16,
+    "phase1_module_binding_count": 4,
+    "unresolved_identity_ref_count": 0,
+    "authority_gain_count": 0,
+    "projection_rebuildable": true,
+    "phase2_module_binding_count": 4,
+    "enterprise_module_binding_count": 8
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}
