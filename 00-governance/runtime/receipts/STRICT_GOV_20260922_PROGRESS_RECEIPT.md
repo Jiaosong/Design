@@ -242,3 +242,13 @@ Metric rule:
 - P71 AccuSine PCSn and P72 DALI-2 preserve regional lifecycle divergence instead of claiming one global product state.
 - P73 BlokSeT and P74 Canalis KS were adjudicated REVIEW → ACTIVE and Relation REVIEW → VALID after current-platform/exact-reference review.
 - Regional family ratings, exact builder/BOM, China procurement, FAT/SAT/field evidence, B1 and IR remain OPEN.
+
+
+## Professional Full-body Page-by-page Progress — P75–P78
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **78 pages (P01–P78)**
+- Strict Complete in reviewed cohort: **0 / 78**
+- Schörghuber Access, Knauf Cleaneo, PMB-741 SBS roof and Schüco FWS 50 canonical L5 owners normalized to CURRENT/DEFAULT after fresh source readback.
+- P76 exact Cleaneo 00071322 authority repaired to current Knauf official data.
+- Product/lab/component facts remain separated from installed system and field performance.
