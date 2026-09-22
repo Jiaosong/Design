@@ -223,3 +223,12 @@ Metric rule:
 - P63 Tate ConCore 1250 current official-document panel-weight conflict remains explicit.
 - P64 Siemens 3VA2, P65 Galaxy VS, P66 TransferPacT owners normalized to CURRENT/DEFAULT; exact product/current standard evidence fresh-read.
 - Protection/selectivity, battery/bypass, source-transfer and physical commissioning remain OPEN.
+
+
+## Professional Full-body Page-by-page Progress — P67–P70
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **70 pages (P01–P70)**
+- Strict Complete in reviewed cohort: **0 / 70**
+- ABB Terra AC, Siemens PAC3220, Huawei SUN2000-100KTL-M2 and DEHNventil 956405 canonical L5 owners normalized to CURRENT/DEFAULT after fresh current product/standard readback.
+- Project design, utility/PCC, CT chain, LPZ/earthing/coordination, commissioning/field readback, B1 and IR remain OPEN.
