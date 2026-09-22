@@ -1,0 +1,225 @@
+{
+  "policy_id": "OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1",
+  "status": "PHASE1_EV2_CANDIDATE_NON_AUTHORITATIVE",
+  "purpose": "Machine policy for fail-closed state consumption, authority resolution and smallest-materially-affected change propagation in Phase-1 reconciliation.",
+  "state_family_authority": {
+    "PROJECT_DESIGN": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "required_owner_kind": "PROJECT_AUTHORITY"
+    },
+    "JOB": {
+      "scope": "EXECUTION",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+      "required_owner_kind": "EXECUTION_OWNER"
+    },
+    "DESIGN_QUALITY": {
+      "scope": "REVIEW",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER"
+    },
+    "PROFESSIONAL": {
+      "scope": "REVIEW",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "PROFESSIONAL_OR_INDEPENDENT_REVIEW_OWNER"
+    },
+    "INTERFACE": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY"
+    },
+    "AUTHORITY": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "required_owner_kind": "PROJECT_AUTHORITY"
+    },
+    "CONFIGURATION": {
+      "scope": "CONFIGURATION",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER"
+    },
+    "QUALITY": {
+      "scope": "QUALITY",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER"
+    },
+    "PROCESS": {
+      "scope": "PROCESS",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER"
+    },
+    "PROJECTION_FRESHNESS": {
+      "scope": "READBACK",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "required_owner_kind": "SOURCE_READBACK_OWNER"
+    },
+    "ENTERPRISE_READINESS": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "required_owner_kind": "DERIVED_COORDINATION_ONLY"
+    }
+  },
+  "specific_blocker_authority": {
+    "CHANGE_READBACK_PENDING": {
+      "scope": "CONFIGURATION",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER"
+    },
+    "DESIGN_REVIEW": {
+      "scope": "REVIEW",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER"
+    },
+    "QUALITY_REVIEW": {
+      "scope": "QUALITY",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER"
+    },
+    "QUALITY_NONCONFORMANCE": {
+      "scope": "QUALITY",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER"
+    },
+    "PROCESS_BLOCKED": {
+      "scope": "PROCESS",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER"
+    },
+    "WORK_BLOCKED": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "required_owner_kind": "PROJECT_OR_WORK_OWNER"
+    },
+    "SOURCE_STALE": {
+      "scope": "READBACK",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "required_owner_kind": "SOURCE_READBACK_OWNER"
+    },
+    "UNRESOLVED_BLOCKING_RELATION": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY"
+    },
+    "AUTHORITY_CONFLICT": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "required_owner_kind": "PROJECT_AUTHORITY"
+    },
+    "CROSS_CARRIER_CONTRADICTION": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "required_owner_kind": "SOURCE_OWNERS_AND_PROJECT_AUTHORITY"
+    },
+    "STATE_FACET_BLOCKER": {
+      "scope": "PROJECT",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "required_owner_kind": "STATE_FAMILY_OWNER"
+    }
+  },
+  "impact_rules": [
+    {
+      "relation_type": "JOB_PRODUCES_ARTIFACT",
+      "trigger_side": "TO",
+      "action_type": "RERUN_WORK",
+      "action_target_side": "FROM",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_ARTIFACT_REQUIRES_PRODUCER_RERUN"
+    },
+    {
+      "relation_type": "ARTIFACT_REVIEWED_BY",
+      "trigger_side": "FROM",
+      "action_type": "REOPEN_REVIEW",
+      "action_target_side": "TO",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_ARTIFACT_INVALIDATES_REVIEW"
+    },
+    {
+      "relation_type": "SATISFIES",
+      "trigger_side": "FROM",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "TO",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_IMPLEMENTATION_REQUIRES_REQUIREMENT_SATISFACTION_REVIEW"
+    },
+    {
+      "relation_type": "VERIFIES",
+      "trigger_side": "FROM",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "TO",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_VERIFICATION_EVIDENCE_REQUIRES_REVIEW"
+    },
+    {
+      "relation_type": "VALIDATES",
+      "trigger_side": "FROM",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "TO",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_VALIDATION_EVIDENCE_REQUIRES_REVIEW"
+    },
+    {
+      "relation_type": "IMPLEMENTS",
+      "trigger_side": "FROM",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "TO",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_IMPLEMENTATION_REQUIRES_UPSTREAM_REVIEW"
+    },
+    {
+      "relation_type": "NONCONFORMANCE_AFFECTS",
+      "trigger_side": "TO",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "FROM",
+      "continue_impact": true,
+      "reason_code": "AFFECTED_OBJECT_REQUIRES_NCR_REVIEW"
+    },
+    {
+      "relation_type": "CAPA_ADDRESSES",
+      "trigger_side": "TO",
+      "action_type": "REVIEW_SUBJECT",
+      "action_target_side": "FROM",
+      "continue_impact": false,
+      "reason_code": "AFFECTED_NCR_REQUIRES_CAPA_EFFECTIVENESS_REVIEW"
+    }
+  ],
+  "action_authority": {
+    "RERUN_WORK": {
+      "scope": "EXECUTION",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+      "required_owner_kind": "EXECUTION_OWNER"
+    },
+    "REOPEN_REVIEW": {
+      "scope": "REVIEW",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "REVIEW_OWNER"
+    },
+    "REVIEW_SUBJECT": {
+      "scope": "REVIEW",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER"
+    },
+    "REQUIRE_READBACK": {
+      "scope": "READBACK",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "required_owner_kind": "READBACK_OWNER"
+    },
+    "REVALIDATE_CONFIGURATION": {
+      "scope": "CONFIGURATION",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER"
+    }
+  },
+  "propagation_limits": {
+    "max_depth": 4,
+    "cycle_policy": "VISITED_REF_AND_RULE_KEY",
+    "scope_rule": "SMALLEST_MATERIALLY_AFFECTED_SCOPE",
+    "unknown_relation_policy": "DO_NOT_PROPAGATE_AUTOMATICALLY"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "COMPLETE_IMPACT_ANALYSIS_OUTSIDE_DECLARED_RULES",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION"
+  ]
+}

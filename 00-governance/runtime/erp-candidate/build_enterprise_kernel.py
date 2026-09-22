@@ -96,6 +96,9 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
                 "source_refs": sources or [source_ref],
                 "projection_only": True,
             }
+        elif identities[iid]["identity_class"] == "OTHER" and identity_class != "OTHER":
+            identities[iid]["identity_class"] = identity_class
+            identities[iid]["source_refs"] = sorted(set(identities[iid]["source_refs"] + (sources or [source_ref])))
         return iid
 
     def add_state(subject_ref: str, family: str, value, sources: list[str] | None = None, sid_suffix: str | None = None) -> str:
@@ -175,9 +178,24 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
     add_state(source_ref, "PROJECTION_FRESHNESS", rec.get("projection_freshness_state", "SOURCE_READBACK_UNKNOWN"), sid_suffix="PROJECTION")
     add_state(source_ref, "ENTERPRISE_READINESS", rec.get("enterprise_readiness_state", "NOT_EVALUATED"), sid_suffix="PROJECTION")
 
+    relation_identity_hints = {
+        "JOB_PRODUCES_ARTIFACT": ("JOB", "ARTIFACT"),
+        "JOB_EXECUTES_WORK_PACKAGE": ("JOB", "WORK_PACKAGE"),
+        "PROJECT_CONTAINS_WORK_PACKAGE": ("PROJECT", "WORK_PACKAGE"),
+        "ARTIFACT_REVIEWED_BY": ("ARTIFACT", "REVIEW"),
+        "SATISFIES": ("ARTIFACT", "REQUIREMENT"),
+        "VERIFIES": ("OTHER", "REQUIREMENT"),
+        "VALIDATES": ("OTHER", "REQUIREMENT"),
+        "IMPLEMENTS": ("ARTIFACT", "REQUIREMENT"),
+        "ALLOCATES_TO": ("REQUIREMENT", "OTHER"),
+        "NONCONFORMANCE_AFFECTS": ("QUALITY_ITEM", "ARTIFACT"),
+        "CAPA_ADDRESSES": ("QUALITY_ITEM", "QUALITY_ITEM"),
+        "AGENT_EXECUTES_JOB": ("OTHER", "JOB"),
+    }
     for rel in projection.get("digital_thread", {}).get("relations", []):
-        ensure_identity(rel["from_ref"])
-        ensure_identity(rel["to_ref"])
+        from_class, to_class = relation_identity_hints.get(rel.get("relation_type"), ("OTHER", "OTHER"))
+        ensure_identity(rel["from_ref"], from_class, list(rel.get("source_refs", [source_ref])))
+        ensure_identity(rel["to_ref"], to_class, list(rel.get("source_refs", [source_ref])))
         relations.append({
             "relation_id":rel["relation_id"],"relation_type":rel["relation_type"],"from_ref":rel["from_ref"],"to_ref":rel["to_ref"],
             "source_refs":list(rel.get("source_refs", [source_ref])),"projection_only":True,"authority_effect":"NONE",
