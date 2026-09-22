@@ -1,0 +1,785 @@
+{
+  "schema_version": "0.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_KERNEL",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T16:20:00+08:00",
+  "source_projection_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+  "source_projection_digest": {
+    "sha256": "15D0C3C95348704DAED8489F9C20D9D4714D268FB07237B04727BCD7BCAF0E79",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "authority_boundary": {
+    "kernel_is_authority": false,
+    "may_mutate_current": false,
+    "identity_rule": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS",
+    "state_rule": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING",
+    "relation_rule": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+  },
+  "identities": [
+    {
+      "identity_id": "KID-ARTIFACT-C01-R17-DD-PACKAGE",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C01-R17",
+      "identity_class": "OTHER",
+      "canonical_ref": "C01-R17",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C01-R17-DETAIL-DESIGN",
+      "identity_class": "WORKSTREAM",
+      "canonical_ref": "C01-R17-DETAIL-DESIGN",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-C01-R17-DETAIL-SYSTEM",
+      "identity_class": "DECISION_OBJECT",
+      "canonical_ref": "C01-R17-DETAIL-SYSTEM",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3-C01-SOURCE-MANIFEST",
+      "identity_class": "OTHER",
+      "canonical_ref": "EV3:C01:SOURCE_MANIFEST",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-C01-FINAL-READBACK",
+      "identity_class": "READBACK",
+      "canonical_ref": "EV3SRC:C01:FINAL_READBACK",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-C01-R17-MACHINE",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-C01-R17-MACHINE",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-C01-R17-PROFESSIONAL",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-C01-R17-PROFESSIONAL",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-JOB-C01-R17-PRODUCER-READBACK",
+      "identity_class": "JOB",
+      "canonical_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PRJ-C01-YIMAI-GUANGDU",
+      "identity_class": "PROJECT",
+      "canonical_ref": "PRJ-C01-YIMAI-GUANGDU",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-PROC-C01-R17",
+      "identity_class": "PROCESS_INSTANCE",
+      "canonical_ref": "PROC-C01-R17",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "identity_class": "REQUIREMENT",
+      "canonical_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE",
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "identity_class": "REVIEW",
+      "canonical_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "identity_class": "WORK_PACKAGE",
+      "canonical_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "authority_bindings": [
+    {
+      "authority_binding_id": "KAUTH-PRJ-C01-YIMAI-GUANGDU-PROJECT",
+      "subject_ref": "PRJ-C01-YIMAI-GUANGDU",
+      "authority_owner_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+      "authority_scope": "PROJECT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "authority_gain": false
+    }
+  ],
+  "state_facts": [
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "state_family": "PROCESS",
+      "state_value": "BLOCKED",
+      "claim_scope": "WORK_PACKAGE_COORDINATION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-C01-R17-PRODUCER-READBACK-JOB",
+      "subject_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "claim_scope": "JOB_RUNTIME",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "state_family": "QUALITY",
+      "state_value": "HOLD",
+      "claim_scope": "REVIEW:DESIGN",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-PRJ-C01-YIMAI-GUANGDU-PROJECT-DESIGN-TOP",
+      "subject_ref": "PRJ-C01-YIMAI-GUANGDU",
+      "state_family": "PROJECT_DESIGN",
+      "state_value": "CANDIDATE",
+      "claim_scope": "TOP_LEVEL:PROJECT_DESIGN",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-JOB-C01-R17-PRODUCER-READBACK-JOB-TOP",
+      "subject_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "state_family": "JOB",
+      "state_value": "SUCCEEDED",
+      "claim_scope": "TOP_LEVEL:JOB",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-EV3-C01-SOURCE-MANIFEST-KNOWLEDGE-INTEGRITY-TOP",
+      "subject_ref": "EV3:C01:SOURCE_MANIFEST",
+      "state_family": "KNOWLEDGE_INTEGRITY",
+      "state_value": "SOURCE_BOUND",
+      "claim_scope": "TOP_LEVEL:KNOWLEDGE_INTEGRITY",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-OPERATIONAL-ELIGIBILITY-TOP",
+      "subject_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "state_family": "OPERATIONAL_ELIGIBILITY",
+      "state_value": "OE2_CONDITIONAL",
+      "claim_scope": "TOP_LEVEL:OPERATIONAL_ELIGIBILITY",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "DESIGN_QUALITY",
+      "state_value": "HOLD_INDEPENDENT_REVIEW_NOT_RUN",
+      "claim_scope": "TOP_LEVEL:DESIGN_QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-C01-R17-PROFESSIONAL-TOP",
+      "subject_ref": "C01-R17",
+      "state_family": "PROFESSIONAL",
+      "state_value": "HOLD_PROFESSIONAL_REVIEW_NOT_RUN",
+      "claim_scope": "TOP_LEVEL:PROFESSIONAL",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-INTERFACE-TOP",
+      "subject_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "state_family": "INTERFACE",
+      "state_value": "HOLD_FIELD_ENGINEERING_OPEN",
+      "claim_scope": "TOP_LEVEL:INTERFACE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-AUTHORITY-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "AUTHORITY",
+      "state_value": "CURRENT_POINTER_UNCHANGED",
+      "claim_scope": "TOP_LEVEL:AUTHORITY",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-EVIDENCE-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "EVIDENCE",
+      "state_value": "MACHINE_READBACK_PASS",
+      "claim_scope": "TOP_LEVEL:EVIDENCE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-CONFIGURATION-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "CONFIGURATION",
+      "state_value": "REVIEW",
+      "claim_scope": "TOP_LEVEL:CONFIGURATION",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "QUALITY",
+      "state_value": "HOLD_PROFESSIONAL_GATE",
+      "claim_scope": "TOP_LEVEL:QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "state_family": "PROCESS",
+      "state_value": "HOLD",
+      "claim_scope": "TOP_LEVEL:PROCESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-C01-R17-AGENT-RUNTIME-TOP",
+      "subject_ref": "C01-R17",
+      "state_family": "AGENT_RUNTIME",
+      "state_value": "NOT_TRIGGERED",
+      "claim_scope": "TOP_LEVEL:AGENT_RUNTIME",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "state_family": "PROJECTION_FRESHNESS",
+      "state_value": "SOURCE_READBACK_CURRENT",
+      "claim_scope": "PROJECTION_FRESHNESS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "state_family": "ENTERPRISE_READINESS",
+      "state_value": "HOLD",
+      "claim_scope": "ENTERPRISE_READINESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-INTERFACE-UNRES-C01-INDEPENDENT-REVIEW",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:ARTIFACT_REVIEWED_BY:Independent professional review is NOT_RUN; machine PASS must not become Design KEEP.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-CONFIGURATION-CI-C01-R17-DD",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "CONFIGURATION",
+      "state_value": "REVIEW",
+      "claim_scope": "PLM_CONFIGURATION_ITEM",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-PROC-C01-R17",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "state_family": "PROCESS",
+      "state_value": "BPM:HOLD",
+      "claim_scope": "BPM_PROCESS_INSTANCE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-MACHINE",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:PASS",
+      "claim_scope": "QMS_INSPECTION:REVIEW_READBACK",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "REL-C01-PROJECT-WP",
+      "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+      "from_ref": "PRJ-C01-YIMAI-GUANGDU",
+      "to_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C01-JOB-WP",
+      "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+      "from_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "to_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C01-JOB-ART",
+      "relation_type": "JOB_PRODUCES_ARTIFACT",
+      "from_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "to_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C01-ART-REV",
+      "relation_type": "ARTIFACT_REVIEWED_BY",
+      "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "to_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-C01-ART-REQ",
+      "relation_type": "SATISFIES",
+      "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "to_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "work_items": [
+    {
+      "work_id": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "work_class": "WORK_PACKAGE",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "work_state": "BLOCKED",
+      "depends_on_refs": [
+        "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+      ],
+      "owner_refs": [],
+      "output_refs": [
+        "ARTIFACT-C01-R17-DD-PACKAGE"
+      ],
+      "readback_refs": [],
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "JOB-C01-R17-PRODUCER-READBACK",
+      "work_class": "JOB",
+      "subject_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "work_state": "SUCCEEDED",
+      "depends_on_refs": [
+        "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+      ],
+      "owner_refs": [
+        "producer:C01-R17"
+      ],
+      "output_refs": [
+        "ARTIFACT-C01-R17-DD-PACKAGE"
+      ],
+      "readback_refs": [
+        "EV3SRC:C01:FINAL_READBACK"
+      ],
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "work_id": "PROC-C01-R17",
+      "work_class": "PROCESS_INSTANCE",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "work_state": "HOLD",
+      "depends_on_refs": [],
+      "owner_refs": [
+        "Master Runtime"
+      ],
+      "output_refs": [],
+      "readback_refs": [],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    }
+  ],
+  "configuration_items": [
+    {
+      "configuration_id": "KCONFIG-CI-C01-R17-DD",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "configuration_class": "ARTIFACT",
+      "revision_ref": "3A75332B52024C4714F9017828AA034A548D1C1263A738D50FFF0422FBF4DFDB",
+      "configuration_state": "REVIEW",
+      "baseline_ref": "BASELINE-C01-R17",
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "TECHNICAL_CORRECTNESS",
+        "DESIGN_KEEP",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "KEVID-INSP-C01-R17-MACHINE",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "evidence_class": "REVIEW",
+      "result": "PASS",
+      "evidence_refs": [
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-INSP-C01-R17-PROFESSIONAL",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:C01:CHECKPOINT"
+      ],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    }
+  ],
+  "changes": [],
+  "readbacks": [
+    {
+      "readback_id": "EV3SRC:C01:FINAL_READBACK",
+      "subject_ref": "JOB-C01-R17-PRODUCER-READBACK",
+      "readback_class": "EXECUTION",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "NOT_AVAILABLE:C01:R17:INDEPENDENT_PROFESSIONAL_REVIEW",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "receipt_class": "REVIEW",
+      "result": "HOLD",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "module_bindings": [
+    {
+      "module": "ERP",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "PLM",
+      "kernel_object_refs": [
+        "KCONFIG-CI-C01-R17-DD"
+      ],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "BPM",
+      "kernel_object_refs": [
+        "PROC-C01-R17"
+      ],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "QMS",
+      "kernel_object_refs": [
+        "KEVID-INSP-C01-R17-MACHINE",
+        "KEVID-INSP-C01-R17-PROFESSIONAL"
+      ],
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "projection_only": true
+    }
+  ],
+  "kernel_metrics": {
+    "identity_count": 15,
+    "state_fact_count": 23,
+    "relation_count": 5,
+    "phase1_module_binding_count": 4,
+    "unresolved_identity_ref_count": 0,
+    "authority_gain_count": 0,
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

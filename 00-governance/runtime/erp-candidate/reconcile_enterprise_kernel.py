@@ -149,23 +149,34 @@ def reconcile(
     action_map: dict[tuple[str, str], dict] = {}
     impact_traces: list[dict] = []
     authority_conflicts: set[str] = set()
-    unresolved_authority_requirements: dict[str, dict] = {}
+    unresolved_authority_requirements: dict[tuple[str, str, str, str], dict] = {}
     reasons: set[str] = set()
     consumed_state_facts: set[str] = set()
 
     def register_unresolved_authority(authority: dict, subject_ref: str, trigger_ref: str) -> None:
         if authority.get("resolution_state") != "UNRESOLVED_REQUIRED_OWNER":
             return
-        key = f"{authority['scope']}:{authority['required_owner_kind']}:{subject_ref}:{trigger_ref}"
-        rid = f"AUTHREQ-{token(key)}"
-        unresolved_authority_requirements[rid] = {
-            "requirement_id": rid,
-            "subject_ref": subject_ref,
-            "required_owner_kind": authority["required_owner_kind"],
-            "authority_contract_ref": authority["authority_contract_ref"],
-            "scope": authority["scope"],
-            "trigger_ref": trigger_ref,
-        }
+        root_key = (
+            subject_ref,
+            authority["required_owner_kind"],
+            authority["authority_contract_ref"],
+            authority["scope"],
+        )
+        if root_key not in unresolved_authority_requirements:
+            rid = f"AUTHREQ-{token(':'.join(root_key))}"
+            unresolved_authority_requirements[root_key] = {
+                "requirement_id": rid,
+                "subject_ref": subject_ref,
+                "required_owner_kind": authority["required_owner_kind"],
+                "authority_contract_ref": authority["authority_contract_ref"],
+                "scope": authority["scope"],
+                "trigger_ref": trigger_ref,
+                "trigger_refs": [trigger_ref],
+            }
+        else:
+            row = unresolved_authority_requirements[root_key]
+            row["trigger_refs"] = sorted(set(row["trigger_refs"] + [trigger_ref]))
+            row["trigger_ref"] = row["trigger_refs"][0]
 
     def add_blocker(
         blocker_class: str,
@@ -264,21 +275,23 @@ def reconcile(
             add_action("REVIEW_SUBJECT", fact["subject_ref"], fact_id, "OPEN_CAPA_REQUIRES_REVIEW", sources)
 
     # 2) Detect contradictions before generic blocking-state consumption.
-    grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    grouped: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
     for fact in kernel.get("state_facts", []):
-        grouped[(fact["subject_ref"], fact["state_family"])].append(fact)
-    for (subject_ref, family), facts in grouped.items():
+        claim_scope = str(fact.get("claim_scope") or "LEGACY_UNSCOPED")
+        grouped[(fact["subject_ref"], fact["state_family"], claim_scope)].append(fact)
+    for (subject_ref, family, claim_scope), facts in grouped.items():
         blocking = [f for f in facts if f.get("blocking_semantics") == "EXPLICIT"]
         positive = [f for f in facts if f.get("blocking_semantics") != "EXPLICIT" and state_has_positive_signal(str(f.get("state_value", "")))]
         if blocking and positive:
             fact_refs = sorted({f["state_fact_id"] for f in blocking + positive})
             observed = sorted({str(f["state_value"]) for f in blocking + positive})
             sources = sorted({src for f in blocking + positive for src in f.get("source_refs", [])})
-            cid = f"CONTRA-{token(subject_ref)}-{token(family)}"
+            cid = f"CONTRA-{token(subject_ref)}-{token(family)}-{token(claim_scope)}"
             contradictions.append({
                 "contradiction_id": cid,
                 "subject_ref": subject_ref,
                 "state_family": family,
+                "claim_scope": claim_scope,
                 "state_fact_refs": fact_refs,
                 "observed_values": observed,
                 "blocking": True,
@@ -409,7 +422,7 @@ def reconcile(
         reasons.add("NO_PHASE1_BLOCKERS_OR_TYPED_ACTIONS_OBSERVED")
 
     return {
-        "schema_version": "0.1.1-candidate",
+        "schema_version": "0.1.2-candidate",
         "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
         "candidate_status": "EVAL_ONLY",
         "generated_at": generated_at,

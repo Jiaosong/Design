@@ -1,0 +1,262 @@
+{
+  "manifest_id": "OLEANDER_ENTERPRISE_PHASE1_MANIFEST_v0.1.2",
+  "status": "PHASE1_EV2_ACTIVE_CANDIDATE_PACKAGE",
+  "semantic_revision": "0.1.2+scoped-reconciliation+ev3-stress1",
+  "baseline_main_commit": "ab83fde14d0b341f373098e789be93cd527465ef",
+  "active_files_excluding_this_manifest": [
+    {
+      "path": "OLEANDER_ENTERPRISE_KERNEL_v0.1.schema.json",
+      "bytes": 18677,
+      "sha256": "EA0FCFCF7D5058A737FB08DD1FEC15D6C0B96FFDECAFC13FE7886761C45B5DFD",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.2.schema.json",
+      "bytes": 12975,
+      "sha256": "521E39B64AD8B4749E469E15792A74D5DB0E9C218F1FE4668A57F86E9A199C86",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json",
+      "bytes": 8692,
+      "sha256": "441D9D0821C93AB80658E08F58E34C838CAA51A5DF8A2A20F418E4BCC76885CA",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.1.1.json",
+      "bytes": 7047,
+      "sha256": "480D7F59783A3AAE373C21FCBDE5D6BD58C724C5A45E0D006EBF34178AE5E071",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.2.json",
+      "bytes": 5747,
+      "sha256": "4CDC43D5146625CBE15C23A33A0E9BCF07607E2FCAF73651F3C0A064BA95983F",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "PHASE1_ENTERPRISE_SCOPED_RECONCILIATION_HARDENING_v0.1.2.md",
+      "bytes": 2800,
+      "sha256": "79190F29C21B28C5308D60B3E1017CA220C6509E4B213C145D69B0F146E46531",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "build_enterprise_kernel.py",
+      "bytes": 20465,
+      "sha256": "C95550FCF96EA10BB7E86749D92D137FC57A5DF1895884888DABE7B70108DD99",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "reconcile_enterprise_kernel.py",
+      "bytes": 24520,
+      "sha256": "1823B82A8F314FBA8471515077F27609B43852FFD34CEF49B9B19536D096E53D",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "validate_enterprise_phase1.py",
+      "bytes": 43303,
+      "sha256": "584F7E92C591765B86A0B69D867E5326360482D1EEEA88BDE8892F4D4C9FDFD0",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "example_enterprise_projection_v0.3.1.json",
+      "bytes": 24029,
+      "sha256": "BBA3BF182D1EFEAB7E1CAA77D8B6B3ADBCD8E049ED6CCB74EB54573221C21CC5",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "example_enterprise_kernel_v0.1.2.json",
+      "bytes": 27490,
+      "sha256": "6E22881EE5D614E350692FB2C7FF9100E972A6CAC47D5A6A7921567A5A665DCF",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "example_enterprise_reconciliation_v0.1.2.json",
+      "bytes": 18235,
+      "sha256": "A706B5FC195CB3049980BAF989413477DAECD8A74142184EFB5BAFBFB8D7F14B",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "eval-output/example-master-runtime.enterprise.v0.3.1.json",
+      "bytes": 21530,
+      "sha256": "D13AA5B10C69FF8262A31C5242A105EDD1856BB7F2B8B4B76FC1DEA6F79915A2",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "eval-output/example-master-runtime.enterprise-kernel.v0.1.2.json",
+      "bytes": 32567,
+      "sha256": "BE791BE9CCF51A7410BB37533F924F20208695529CD09C59FB7CEC018746A446",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "eval-output/example-master-runtime.reconciliation.v0.1.2.json",
+      "bytes": 6266,
+      "sha256": "58DB5982D6A3248DA12FB467B280B16A5678405F12DF52633D86A593F4B7D5C0",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.2_20260922.json",
+      "bytes": 4109,
+      "sha256": "4BB94B2479DC3D9FD81AF51AEDFA917C3556F4ECAA78D1A54EF4B5FF43400FC9",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json",
+      "bytes": 9180,
+      "sha256": "E65E28232963A9DA5661247FDE90CABF2ED08B2E07C57B456B8B8755EF7C65FB",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.1.schema.json",
+      "bytes": 72224,
+      "sha256": "7D6376605E41F8326F69ABBB99C112E3EDC59A95682F526DF98C1C38B0BDC436",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/case_c01.py",
+      "bytes": 11587,
+      "sha256": "8D478ABC02EB222F7E8F31781D39D0E82AC164B2E960E5B2AF7F99AB2F9AC2A8",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/case_c04.py",
+      "bytes": 12041,
+      "sha256": "32A9B0E681AA3C336A00DC9CFC5BBA1B04B0B8BC06412B21B1A3CD1959D27D4E",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/case_fallingwater.py",
+      "bytes": 11134,
+      "sha256": "2E004E5DCA2720413BCC6645367EC80C69ED28EF925A9CCA12C9D9A14CBE73FC",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/ev3_common.py",
+      "bytes": 5664,
+      "sha256": "7C343F3743E61B5C626AECCE1666AC83693A22FE1129DC37B547D33E309063A7",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/EV3_REAL_CASE_SOURCE_MANIFEST_20260922.json",
+      "bytes": 7177,
+      "sha256": "D767BD397486C629E9D082B36F90EF2CB287BF62B04890B5FCCD87376AE7A995",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/EV3_REAL_CASE_STRESS_SUMMARY_20260922.json",
+      "bytes": 2794,
+      "sha256": "23E578E750E55CB4B4701466960A933613A1150EA8134B0152AA908585FC82E4",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/FALLINGWATER_V06_NATIVE_READBACK_INVALIDATION_20260922.json",
+      "bytes": 1503,
+      "sha256": "077476A9734689E9AE0EE840BEA038C5DF484AF8D2F3397D8651AAA7DD356921",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json",
+      "bytes": 29121,
+      "sha256": "2DE4DE5C503FB0A3EEA93483541A6610B6F0D762A8CD5BEEFECE0D72451C8E94",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "bytes": 24365,
+      "sha256": "15D0C3C95348704DAED8489F9C20D9D4714D268FB07237B04727BCD7BCAF0E79",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c01_enterprise_reconciliation_v0.1.2.json",
+      "bytes": 29819,
+      "sha256": "32CC2F335E8DD52D2213EF1DFC1ED1884F195C9921A9E38BECEC094069E90D82",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c04_enterprise_kernel_v0.1.2.json",
+      "bytes": 34584,
+      "sha256": "3B7C52983E6F3511EF5F2F2F2A2CFAE006F9DD38C5D6B720392316DAE638BE47",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c04_enterprise_projection_v0.3.1.json",
+      "bytes": 25871,
+      "sha256": "867B61CDFAF6A8627B39C092E02686DA59C6FAB652702D7CCD5960CACA393C04",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/c04_enterprise_reconciliation_v0.1.2.json",
+      "bytes": 38374,
+      "sha256": "CA7D841DEA391B2343A0D31771CC45DE61CC7DA8C94DF8FB16C6D5230F209BDB",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json",
+      "bytes": 24650,
+      "sha256": "559D46B907D69906F28A42B0E254CE9662BABF49B63A675BFD8B4A89ABBF25C3",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "bytes": 22182,
+      "sha256": "C7A2102DEC40CAE83F253A7DA130A95C74988755ABF3697DE1133708405A3DC4",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/output/fallingwater_enterprise_reconciliation_v0.1.2.json",
+      "bytes": 39078,
+      "sha256": "34E5FAD2B92FF6755AAF3A2EAFE3788D52D27B39BD997517499401FCFFEAC82E",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/refresh_fallingwater_readbacks.py",
+      "bytes": 11367,
+      "sha256": "D932C83FC7CFAF3247050687C4FAF3762B3049A10907CB3A2406E183D8AA3255",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ev3-real-case-stress-20260922/run_ev3_real_case_stress.py",
+      "bytes": 9073,
+      "sha256": "370B1464B6C26938D544D6A9B67255D92AB6177B18F6CCBFC76CE8E8D53F1DC2",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    }
+  ],
+  "legacy_provenance_files": [
+    "ENTERPRISE_PHASE1_MANIFEST_v0.1.1.json",
+    "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.1_20260922.json",
+    "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.1.json",
+    "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+    "example_enterprise_kernel_v0.1.1.json",
+    "example_enterprise_reconciliation_v0.1.1.json",
+    "eval-output/example-master-runtime.enterprise-kernel.v0.1.1.json",
+    "eval-output/example-master-runtime.reconciliation.v0.1.1.json"
+  ],
+  "phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "deferred_modules": [
+    "MES",
+    "MBSE",
+    "KNOWLEDGE_GRAPH",
+    "AGENT_RUNTIME"
+  ],
+  "real_case_stress": [
+    "C01",
+    "C04",
+    "FALLINGWATER"
+  ],
+  "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+  "authority_boundary": "PHASE1_CANDIDATE_ONLY_NO_CURRENT_AUTHORITY",
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION",
+    "FRESH_FALLINGWATER_BLENDER_PASS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION"
+  ]
+}

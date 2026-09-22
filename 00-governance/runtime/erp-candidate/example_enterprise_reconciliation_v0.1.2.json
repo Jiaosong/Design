@@ -1,0 +1,424 @@
+{
+  "schema_version": "0.1.2-candidate",
+  "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T16:25:00+08:00",
+  "kernel_ref": "00-governance/runtime/erp-candidate/example_enterprise_kernel_v0.1.2.json",
+  "kernel_digest": {
+    "sha256": "6E22881EE5D614E350692FB2C7FF9100E972A6CAC47D5A6A7921567A5A665DCF",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "subject_ref": "PROJECT-DEMO",
+  "advance_decision": "HOLD",
+  "blocking_conditions": [
+    {
+      "blocker_id": "BLOCK-CHANGE-READBACK-PENDING-CHANGE-DEMO-01-IMPLEMENTED-READBACK-PENDING",
+      "blocker_class": "CHANGE_READBACK_PENDING",
+      "subject_ref": "CHANGE-DEMO-01",
+      "observed_state": "IMPLEMENTED_READBACK_PENDING",
+      "blocking_authority_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+        "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+        "scope": "CONFIGURATION"
+      },
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "claim_ceiling": "CHANGE_NOT_CLOSED_NO_ADVANCE",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-DESIGN-REVIEW-REVIEW-DEMO-01-REVISE",
+      "blocker_class": "DESIGN_REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "required_owner_kind": "DESIGN_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-QUALITY-REVIEW-ARTIFACT-DEMO-01-REVISE",
+      "blocker_class": "QUALITY_REVIEW",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "DERIVED_COORDINATION_ONLY",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EXAMPLE-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-DEMO-01-INSPECTION-REVISE-KSTATE-ARTIFACT-DEMO-01-QUALITY-INSP-DEMO-01",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "INSPECTION:REVISE",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-DEMO-01-QUALITY-INSP-DEMO-01"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-DEMO-01-REVISE-KSTATE-ARTIFACT-DEMO-01-QUALITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-DEMO-01-QUALITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REVIEW-DEMO-01-REVISE-KSTATE-REVIEW-DEMO-01-QUALITY-REVIEW",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REVIEW-DEMO-01",
+      "observed_state": "REVISE",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REVIEW-DEMO-01-QUALITY-REVIEW"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-DEMO-01-BLOCKING-RELATION-ARTIFACT-REVIEWED-BY-DESIGN-REVIEW-IS-REVISE--ACCEPTANCE-IS-INTENTIONALLY-NOT-INFERRED--KSTATE-ARTIFACT-DEMO-01-INTERFACE-UNRES-DEMO-01",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "observed_state": "BLOCKING_RELATION:ARTIFACT_REVIEWED_BY:Design review is REVISE; acceptance is intentionally not inferred.",
+      "blocking_authority_ref": "AUTHORITY-SNAPSHOT-DEMO",
+      "blocking_authority": {
+        "resolution_state": "RESOLVED_EXISTING_BINDING",
+        "owner_ref": "AUTHORITY-SNAPSHOT-DEMO",
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-DEMO-01-INTERFACE-UNRES-DEMO-01"
+    }
+  ],
+  "reopen_set": [
+    "REVIEW-DEMO-01"
+  ],
+  "rerun_set": [],
+  "review_set": [
+    "ARTIFACT-DEMO-01",
+    "CI-DEMO-01"
+  ],
+  "required_readback_set": [
+    "CHANGE-DEMO-01"
+  ],
+  "unresolved_authority_conflicts": [],
+  "policy_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json",
+  "policy_digest": {
+    "sha256": "441D9D0821C93AB80658E08F58E34C838CAA51A5DF8A2A20F418E4BCC76885CA",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "action_requests": [
+    {
+      "action_id": "ACTION-REOPEN-REVIEW-REVIEW-DEMO-01",
+      "action_type": "REOPEN_REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "subject_identity_class": "REVIEW",
+      "trigger_refs": [
+        "CHANGE-DEMO-01",
+        "DESIGN_REVIEW_RECEIPT:DEMO"
+      ],
+      "reason_codes": [
+        "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN",
+        "DECLARED_CHANGE_REOPEN_REF"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REQUIRE-READBACK-CHANGE-DEMO-01",
+      "action_type": "REQUIRE_READBACK",
+      "subject_ref": "CHANGE-DEMO-01",
+      "subject_identity_class": "CHANGE",
+      "trigger_refs": [
+        "CHANGE-DEMO-01"
+      ],
+      "reason_codes": [
+        "CHANGE_IMPLEMENTED_REQUIRES_NEW_READBACK"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+        "required_owner_kind": "READBACK_OWNER",
+        "scope": "READBACK"
+      },
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": "READBACK",
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-ARTIFACT-DEMO-01",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "subject_identity_class": "ARTIFACT",
+      "trigger_refs": [
+        "KEVID-INSP-DEMO-01",
+        "KSTATE-ARTIFACT-DEMO-01-INTERFACE-UNRES-DEMO-01"
+      ],
+      "reason_codes": [
+        "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+        "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/example_enterprise_projection_v0.3.1.json",
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-CI-DEMO-01",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "CI-DEMO-01",
+      "subject_identity_class": "OTHER",
+      "trigger_refs": [
+        "CHANGE-DEMO-01"
+      ],
+      "reason_codes": [
+        "DIRECT_CHANGE_AFFECTED_REF_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "fixture:example_enterprise_projection_v0.3"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    }
+  ],
+  "impact_traces": [],
+  "contradictions": [],
+  "unresolved_authority_requirements": [
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-DEMO-01-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-ARTIFACT-DEMO-01",
+      "trigger_refs": [
+        "ACTION-REVIEW-SUBJECT-ARTIFACT-DEMO-01"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-DEMO-01-QUALITY-OR-SPECIALIST-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-QUALITY",
+      "subject_ref": "ARTIFACT-DEMO-01",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-QUALITY-REVIEW-ARTIFACT-DEMO-01-REVISE",
+      "trigger_refs": [
+        "BLOCK-QUALITY-REVIEW-ARTIFACT-DEMO-01-REVISE",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-DEMO-01-INSPECTION-REVISE-KSTATE-ARTIFACT-DEMO-01-QUALITY-INSP-DEMO-01",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-DEMO-01-REVISE-KSTATE-ARTIFACT-DEMO-01-QUALITY-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-CHANGE-DEMO-01-CONFIGURATION-CHANGE-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-CONFIGURATION-CHANGE-REGISTER-V1-SCHEMA-JSON-CONFIGURATION",
+      "subject_ref": "CHANGE-DEMO-01",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "scope": "CONFIGURATION",
+      "trigger_ref": "BLOCK-CHANGE-READBACK-PENDING-CHANGE-DEMO-01-IMPLEMENTED-READBACK-PENDING",
+      "trigger_refs": [
+        "BLOCK-CHANGE-READBACK-PENDING-CHANGE-DEMO-01-IMPLEMENTED-READBACK-PENDING"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-CHANGE-DEMO-01-READBACK-OWNER-00-GOVERNANCE-RUNTIME-OLEANDER-OBSERVABILITY-RECOVERY-CONTRACT-V1-0-JSON-READBACK",
+      "subject_ref": "CHANGE-DEMO-01",
+      "required_owner_kind": "READBACK_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "scope": "READBACK",
+      "trigger_ref": "ACTION-REQUIRE-READBACK-CHANGE-DEMO-01",
+      "trigger_refs": [
+        "ACTION-REQUIRE-READBACK-CHANGE-DEMO-01"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-CI-DEMO-01-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "CI-DEMO-01",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-CI-DEMO-01",
+      "trigger_refs": [
+        "ACTION-REVIEW-SUBJECT-CI-DEMO-01"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-DEMO-01-DESIGN-REVIEW-OWNER-00-GOVERNANCE-DESIGN-QUALITY-AND-DESIGN-DEVELOPMENT-SPECIFICATION-V1-0-MD-REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-DESIGN-REVIEW-REVIEW-DEMO-01-REVISE",
+      "trigger_refs": [
+        "BLOCK-DESIGN-REVIEW-REVIEW-DEMO-01-REVISE"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-DEMO-01-QUALITY-OR-SPECIALIST-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-QUALITY",
+      "subject_ref": "REVIEW-DEMO-01",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REVIEW-DEMO-01-REVISE-KSTATE-REVIEW-DEMO-01-QUALITY-REVIEW",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-REVIEW-DEMO-01-REVISE-KSTATE-REVIEW-DEMO-01-QUALITY-REVIEW"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-DEMO-01-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "REVIEW-DEMO-01",
+      "required_owner_kind": "REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REOPEN-REVIEW-REVIEW-DEMO-01",
+      "trigger_refs": [
+        "ACTION-REOPEN-REVIEW-REVIEW-DEMO-01"
+      ]
+    }
+  ],
+  "claim_ceiling": "PHASE1_COORDINATION_HOLD_NO_DESIGN_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+  "reason_codes": [
+    "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN",
+    "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+    "CHANGE_IMPLEMENTED_REQUIRES_NEW_READBACK",
+    "CHANGE_READBACK_PENDING",
+    "DECLARED_CHANGE_REOPEN_REF",
+    "DESIGN_REVIEW",
+    "DIRECT_CHANGE_AFFECTED_REF_REQUIRES_REVIEW",
+    "QUALITY_REVIEW",
+    "STATE_FACET_BLOCKER",
+    "UNRESOLVED_BLOCKING_RELATION",
+    "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
+  ],
+  "source_refs": [
+    "00-governance/runtime/erp-candidate/example_enterprise_kernel_v0.1.2.json"
+  ],
+  "authority_boundary": {
+    "decision_is_authority": false,
+    "may_mutate_current": false,
+    "advance_rule": "ALLOW_ONLY_WHEN_NO_BLOCKERS_NO_TYPED_ACTIONS_NO_CONTRADICTIONS_NO_UNRESOLVED_AUTHORITY_REQUIREMENTS"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}

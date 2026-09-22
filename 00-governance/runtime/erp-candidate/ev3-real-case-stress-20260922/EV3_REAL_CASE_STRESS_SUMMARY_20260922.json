@@ -1,0 +1,100 @@
+{
+  "stress_test_id": "OLEANDER_ENTERPRISE_EV3_REAL_CASE_STRESS_20260922",
+  "generated_at": "2026-09-22T16:20:00+08:00",
+  "baseline_main_commit": "ab83fde14d0b341f373098e789be93cd527465ef",
+  "kernel_reconciliation_revision": "v0.1.2-candidate",
+  "cases": {
+    "C01": {
+      "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+      "drift_state": "CURRENT",
+      "enterprise_readiness_state": "HOLD",
+      "module_scope_counts": {
+        "TRIGGERED": 3,
+        "PARTIAL": 2,
+        "NOT_TRIGGERED": 1,
+        "HOLD": 2
+      },
+      "unresolved_blocking_link_count": 1,
+      "decision": "HOLD",
+      "blocker_count": 15,
+      "typed_action_count": 4,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 10,
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "PROCESS_BLOCKED",
+        "QUALITY_REVIEW",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION",
+        "WORK_BLOCKED"
+      ],
+      "action_types": [
+        "REOPEN_REVIEW",
+        "RERUN_WORK",
+        "REVIEW_SUBJECT"
+      ]
+    },
+    "C04": {
+      "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+      "drift_state": "CURRENT",
+      "enterprise_readiness_state": "HOLD",
+      "module_scope_counts": {
+        "TRIGGERED": 2,
+        "PARTIAL": 2,
+        "NOT_TRIGGERED": 2,
+        "HOLD": 2
+      },
+      "unresolved_blocking_link_count": 2,
+      "decision": "HOLD",
+      "blocker_count": 20,
+      "typed_action_count": 5,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 12,
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "PROCESS_BLOCKED",
+        "QUALITY_NONCONFORMANCE",
+        "QUALITY_REVIEW",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION",
+        "WORK_BLOCKED"
+      ],
+      "action_types": [
+        "REOPEN_REVIEW",
+        "RERUN_WORK",
+        "REVIEW_SUBJECT"
+      ]
+    },
+    "FALLINGWATER": {
+      "projection_freshness_state": "SOURCE_READBACK_STALE",
+      "drift_state": "DIVERGED",
+      "enterprise_readiness_state": "HOLD",
+      "module_scope_counts": {
+        "TRIGGERED": 2,
+        "PARTIAL": 1,
+        "NOT_TRIGGERED": 3,
+        "HOLD": 2
+      },
+      "unresolved_blocking_link_count": 3,
+      "decision": "HOLD",
+      "blocker_count": 19,
+      "typed_action_count": 2,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 13,
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "QUALITY_REVIEW",
+        "SOURCE_STALE",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION"
+      ],
+      "action_types": [
+        "REOPEN_REVIEW",
+        "REVIEW_SUBJECT"
+      ]
+    }
+  },
+  "overall_state": "HOLD",
+  "promotion_eligible": false,
+  "independent_review": "NOT_RUN"
+}

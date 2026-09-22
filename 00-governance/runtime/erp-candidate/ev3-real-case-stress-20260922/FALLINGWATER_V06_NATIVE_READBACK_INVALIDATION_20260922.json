@@ -1,0 +1,34 @@
+{
+  "receipt_id": "FALLINGWATER_V06_NATIVE_READBACK_INVALIDATION_20260922",
+  "status": "STALE_READBACK_INVALIDATED_FRESH_BLENDER_READBACK_REQUIRED",
+  "source_native_path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_HABS_COMPLEX_V06_ARCH_SPATIAL_CONSTRUCTIVE_20260913.blend",
+  "recorded_integrity_readback_ref": "D:\\Desgin\\.mcp-runtime\\diagnostics\\OLEANDER_V06_FINAL_MATRIX_20260914\\FINAL_NATIVE_SAVE_REOPEN_INTEGRITY.json",
+  "recorded_final_sha256": "8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B",
+  "recorded_final_bytes": 15492298,
+  "current_native_sha256": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+  "current_native_bytes": 16886289,
+  "sha_match": false,
+  "fresh_blender_runtime": {
+    "blender_executable": null,
+    "bpy_available": false,
+    "state": "NOT_AVAILABLE_IN_CURRENT_RUNTIME"
+  },
+  "invalidation": {
+    "old_native_integrity_pass_current": false,
+    "old_furniture_use_pass_current": false,
+    "required_actions": [
+      "RUN_FRESH_BLENDER_SAVE_REOPEN_AGAINST_CURRENT_NATIVE",
+      "REGENERATE_FURNITURE_USE_AUDIT_AGAINST_FRESH_REOPENED_NATIVE",
+      "REHASH_AND_REBIND_FALLINGWATER_EV3_SOURCE_MANIFEST"
+    ]
+  },
+  "claim_ceiling": "CURRENT_NATIVE_BYTES_OBSERVED_AND_OLD_READBACK_INVALIDATED_ONLY_NO_FRESH_BLENDER_PASS",
+  "does_not_prove": [
+    "FRESH_SAVE_REOPEN_PASS",
+    "FRESH_FURNITURE_USE_PASS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "ENGINEERING_APPROVAL",
+    "PROJECT_PROMOTION"
+  ]
+}
