@@ -1,0 +1,105 @@
+{
+  "candidate_id": "OLEANDER_ENTERPRISE_PHASE2_KERNELIZATION_v0.2_20260922",
+  "state": "PHASE2_EV3_STRESS_AND_FULL_REGRESSION_PASS_EV4_NOT_RUN",
+  "scope": "MES_MBSE_KNOWLEDGE_GRAPH_AGENT_RUNTIME_KERNELIZATION",
+  "supersedes_candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.2_20260922",
+  "target_class": "ENTERPRISE_RUNTIME_CANDIDATE_EXTENSION",
+  "target_owner": "EXISTING_OLEANDER_RUNTIME_ONLY",
+  "target_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_KERNEL_v0.2.schema.json",
+  "baseline": {
+    "commit": "69f73a1a0e105d6797affccc0d8c09110febb345",
+    "hash_semantics": "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT_AT_EXACT_COMMIT",
+    "source_sha256": {
+      "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md": "D13FD8F91817B61AF70FA6F5744C6832217DC323964B1E11DE6D6DBB423E44AA",
+      "00-governance/complex-project-master-runtime-v1.0.md": "05199632979EDAD4F1991DBD06284D9D973EF2555D0B3282C55FE99176C69F2B",
+      "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json": "92478E39C7F727DEC18E7FBC10EC50A8B94F9BA6A40415E1F18521E912BCCDCF",
+      "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json": "2102DE6DF2C46F96BE29E09D8EF27AA9720CE80CDCD1B47BBB4E9E341697B8CF",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json": "6C9AE8CD367D2593BC3CC038F31587C22751FCE1E3ACC1428E4C7970476754F7",
+      "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json": "C08CA4CAFA5643DA77147D6551A1AFA97C681DEC5F3F662E89DB34562DA9EB5B",
+      "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json": "B0F3BDA7122B87209E8EFB266EFB4EB89BD12DA064DBF3B9D5A511F57EE29576",
+      "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json": "300E3322022154EAEA5107C1F153EED3954477393505882BE58E14EE93EA67F3",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json": "E65E28232963A9DA5661247FDE90CABF2ED08B2E07C57B456B8B8755EF7C65FB",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.1.schema.json": "7D6376605E41F8326F69ABBB99C112E3EDC59A95682F526DF98C1C38B0BDC436",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.2.json": "622BA954DACF191116F040BF721A71EB066366FF2EF5A29E623544F421ED78EE"
+    }
+  },
+  "inherited_phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "phase2_modules": [
+    "MES",
+    "MBSE",
+    "KNOWLEDGE_GRAPH",
+    "AGENT_RUNTIME"
+  ],
+  "kernel_primitives": [
+    "IDENTITY",
+    "AUTHORITY_BINDING",
+    "STATE_FACT",
+    "RELATION",
+    "WORK",
+    "CONFIGURATION",
+    "EVIDENCE",
+    "CHANGE",
+    "READBACK",
+    "RECEIPT",
+    "RECONCILIATION"
+  ],
+  "phase2_repairs": [
+    "MES_COMPLETE_REQUIRES_OBSERVED_READBACK",
+    "MBSE_VERIFICATION_DISTINCT_FROM_VALIDATION",
+    "KNOWLEDGE_GRAPH_PROVENANCE_ZERO_AUTHORITY_EFFECT",
+    "AGENT_UNCERTAIN_SIDE_EFFECT_FAIL_CLOSED",
+    "AGENT_LEASE_CONFLICT_FAIL_CLOSED",
+    "EVIDENCE_IDENTITY_CLOSURE"
+  ],
+  "evaluation": {
+    "phase2_validator": "PASS",
+    "real_case_count": 3,
+    "real_case_results": {
+      "C01": "HOLD_CORRECT",
+      "C04": "HOLD_CORRECT",
+      "FALLINGWATER": "STALE_DIVERGED_HOLD_CORRECT"
+    },
+    "independent_review": "NOT_RUN",
+    "promotion_eligible": false,
+    "eval_refs": [
+      "00-governance/runtime/erp-candidate/validate_enterprise_phase2.py",
+      "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/PHASE2_REAL_CASE_STRESS_SUMMARY_20260922.json"
+    ],
+    "full_regression": "PASS",
+    "phase1_regression": "PASS",
+    "control_plane_tests": 142,
+    "architecture_control": "PASS_1_SYSTEM_1_MASTER_11_LAYERS_6_PLANES",
+    "deterministic_repeat": "PASS_11_FILES_ZERO_DRIFT",
+    "anti_pollution": "PASS_26_FILES",
+    "implementation_commit": "558a96eaf89cec4dd14d3bdb6fc8a4148879b23e"
+  },
+  "mutation_scope": {
+    "current_files_modified": false,
+    "candidate_directory_only": true,
+    "new_write_path": false,
+    "new_runtime_layer": false,
+    "new_authority": false
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "reason": "Phase-2 eight-module kernelization and real-case stress are complete; EV4 independent review is still NOT_RUN and Fallingwater remains source-stale/diverged."
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "PHYSICAL_EXECUTION_ACCEPTANCE",
+    "SYSTEMS_ENGINEERING_CURRENT",
+    "KNOWLEDGE_CURRENT",
+    "AGENT_MUTATION_AUTHORITY",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

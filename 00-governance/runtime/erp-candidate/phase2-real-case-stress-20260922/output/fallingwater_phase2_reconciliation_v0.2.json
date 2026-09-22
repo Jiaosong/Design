@@ -1,0 +1,843 @@
+{
+  "schema_version": "0.2-candidate",
+  "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T17:45:00+08:00",
+  "kernel_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_kernel_v0.2.json",
+  "kernel_digest": {
+    "sha256": "87515B26C453674B96F0B88F745A4BBBC431D6F32E36512AF837B0DBF592B3CB",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+  "advance_decision": "HOLD",
+  "blocking_conditions": [
+    {
+      "blocker_id": "BLOCK-DESIGN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD",
+      "blocker_class": "DESIGN_REVIEW",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "required_owner_kind": "DESIGN_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-MBSE-VALIDATION-INCOMPLETE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING",
+      "blocker_class": "MBSE_VALIDATION_INCOMPLETE",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "observed_state": "VALIDATION:NOT_RUN",
+      "blocking_authority_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+        "required_owner_kind": "VALIDATION_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "MBSE_VALIDATION_MUST_PASS_WITH_EVIDENCE_BEFORE_ADVANCE",
+      "state_fact_ref": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+    },
+    {
+      "blocker_id": "BLOCK-QUALITY-REVIEW-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD",
+      "blocker_class": "QUALITY_REVIEW",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "blocker_class": "SOURCE_STALE",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "observed_state": "SOURCE_READBACK_STALE",
+      "blocking_authority_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+        "required_owner_kind": "SOURCE_READBACK_OWNER",
+        "scope": "READBACK"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "SOURCE_FRESHNESS_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "DERIVED_COORDINATION_ONLY",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-AND-DESIGN-KEEP-NOT-PROVEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD_ENGINEERING_AND_DESIGN_KEEP_NOT_PROVEN",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-OPEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD_ENGINEERING_OPEN",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "PROFESSIONAL_OR_INDEPENDENT_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-INDEPENDENT-DESIGN-REVIEW-NOT-AVAILABLE-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD_INDEPENDENT_DESIGN_REVIEW_NOT_AVAILABLE",
+      "blocking_authority_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "required_owner_kind": "DESIGN_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CI-FW-V06-BLEND",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+        "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+        "scope": "CONFIGURATION"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CI-FW-V06-BLEND"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-P2-PROJECT-AUTHORITY-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD_P2_PROJECT_AUTHORITY_UNRESOLVED",
+      "blocking_authority_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+        "required_owner_kind": "PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-PROJECT-BINDING-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "HOLD_PROJECT_BINDING_UNRESOLVED",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "STATE_FAMILY_OWNER",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-ENGINEERING",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "INSPECTION:HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-ENGINEERING"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-FURNITURE-USE",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "INSPECTION:HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-FURNITURE-USE"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-NATIVE-INTEGRITY",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "INSPECTION:HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-NATIVE-INTEGRITY"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-STALE-NATIVE-READBACK-DIVERGED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-EVIDENCE-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "STALE_NATIVE_READBACK_DIVERGED",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "STATE_FAMILY_OWNER",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-EVIDENCE-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-IF-FW-ENGINEERING-MBSE-INTERFACE-HOLD-KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "IF-FW-ENGINEERING",
+      "observed_state": "MBSE_INTERFACE:HOLD",
+      "blocking_authority_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-HOLD-OPEN-DIMENSION-AND-ENGINEERING-AUTHORITY-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "observed_state": "HOLD_OPEN_DIMENSION_AND_ENGINEERING_AUTHORITY",
+      "blocking_authority_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-HOLD-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "observed_state": "REQUIREMENT:HOLD",
+      "blocking_authority_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+        "required_owner_kind": "REQUIREMENT_ACCEPTANCE_OWNER",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "observed_state": "VALIDATION:NOT_RUN",
+      "blocking_authority_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+        "required_owner_kind": "VERIFICATION_VALIDATION_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD-KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-BOUND-TO-DECISION-OBJECT-NO-CANONICAL-P2-PROJECT-MASTER-RUNTIME-BINDING-FOUND--CASE-NATIVE-DIAGNOSTIC-IDENTITY-CANNOT-SYNTHESIZE-PROJECT-AUTHORITY--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "BLOCKING_RELATION:BOUND_TO_DECISION_OBJECT:No canonical P2 Project/Master Runtime binding found; Case/native diagnostic identity cannot synthesize project authority.",
+      "blocking_authority_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-VALIDATES-44-AUDITED-TARGETS-HAVE-OPEN-APPROXIMATE-DIMENSION-OR-AUTHORITY-STATE--ENGINEERING-REMAINS-OPEN--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "BLOCKING_RELATION:VALIDATES:44 audited targets have open/approximate dimension or authority state; engineering remains OPEN.",
+      "blocking_authority_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-VERIFIES-RECORDED-NATIVE-INTEGRITY-SHA-8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B-DOES-NOT-MATCH-CURRENT-NATIVE-SHA-5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "observed_state": "BLOCKING_RELATION:VERIFIES:Recorded native integrity SHA 8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B does not match current native SHA 5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3.",
+      "blocking_authority_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT"
+    }
+  ],
+  "reopen_set": [
+    "REVIEW-FW-V06-INDEPENDENT-DESIGN"
+  ],
+  "rerun_set": [],
+  "review_set": [
+    "ARTIFACT-FW-V06-NATIVE-BLEND",
+    "REQ-FW-V06-ENGINEERING-AUTHORITY"
+  ],
+  "required_readback_set": [],
+  "unresolved_authority_conflicts": [],
+  "policy_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.2.json",
+  "policy_digest": {
+    "sha256": "A762BB6EE188E1609DA6CC3CC1F84E8724568C2AAC022C1398D17676488E6DAD",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "action_requests": [
+    {
+      "action_id": "ACTION-REOPEN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "action_type": "REOPEN_REVIEW",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "subject_identity_class": "REVIEW",
+      "trigger_refs": [
+        "NOT_AVAILABLE:FALLINGWATER:INDEPENDENT-DESIGN"
+      ],
+      "reason_codes": [
+        "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-ARTIFACT-FW-V06-NATIVE-BLEND",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "subject_identity_class": "ARTIFACT",
+      "trigger_refs": [
+        "KEVID-INSP-FW-ENGINEERING",
+        "KEVID-INSP-FW-FURNITURE-USE",
+        "KEVID-INSP-FW-NATIVE-INTEGRITY",
+        "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING",
+        "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT",
+        "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT"
+      ],
+      "reason_codes": [
+        "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+        "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "subject_identity_class": "REQUIREMENT",
+      "trigger_refs": [
+        "BLOCK-MBSE-VALIDATION-INCOMPLETE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+      ],
+      "reason_codes": [
+        "MBSE_VALIDATION_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    }
+  ],
+  "impact_traces": [],
+  "contradictions": [],
+  "unresolved_authority_requirements": [
+    {
+      "requirement_id": "AUTHREQ-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-OWNER-00-GOVERNANCE-RUNTIME-OLEANDER-OBSERVABILITY-RECOVERY-CONTRACT-V1-0-JSON-READBACK",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "required_owner_kind": "SOURCE_READBACK_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "scope": "READBACK",
+      "trigger_ref": "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "trigger_refs": [
+        "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-ARTIFACT-FW-V06-NATIVE-BLEND",
+      "trigger_refs": [
+        "ACTION-REVIEW-SUBJECT-ARTIFACT-FW-V06-NATIVE-BLEND"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CHANGE-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-CONFIGURATION-CHANGE-REGISTER-V1-SCHEMA-JSON-CONFIGURATION",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "scope": "CONFIGURATION",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CI-FW-V06-BLEND",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CI-FW-V06-BLEND"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-REVIEW-OWNER-00-GOVERNANCE-DESIGN-QUALITY-AND-DESIGN-DEVELOPMENT-SPECIFICATION-V1-0-MD-REVIEW",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-INDEPENDENT-DESIGN-REVIEW-NOT-AVAILABLE-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-INDEPENDENT-DESIGN-REVIEW-NOT-AVAILABLE-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-INTEGRATION-OR-PROJECT-AUTHORITY-00-GOVERNANCE-CROSS-DISCIPLINARY-DESIGN-INTEGRATION-V1-0-MD-PROJECT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+      "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-BOUND-TO-DECISION-OBJECT-NO-CANONICAL-P2-PROJECT-MASTER-RUNTIME-BINDING-FOUND--CASE-NATIVE-DIAGNOSTIC-IDENTITY-CANNOT-SYNTHESIZE-PROJECT-AUTHORITY--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT",
+      "trigger_refs": [
+        "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-BOUND-TO-DECISION-OBJECT-NO-CANONICAL-P2-PROJECT-MASTER-RUNTIME-BINDING-FOUND--CASE-NATIVE-DIAGNOSTIC-IDENTITY-CANNOT-SYNTHESIZE-PROJECT-AUTHORITY--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT",
+        "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-VALIDATES-44-AUDITED-TARGETS-HAVE-OPEN-APPROXIMATE-DIMENSION-OR-AUTHORITY-STATE--ENGINEERING-REMAINS-OPEN--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING",
+        "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-FW-V06-NATIVE-BLEND-BLOCKING-RELATION-VERIFIES-RECORDED-NATIVE-INTEGRITY-SHA-8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B-DOES-NOT-MATCH-CURRENT-NATIVE-SHA-5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3--KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-OR-INDEPENDENT-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "PROFESSIONAL_OR_INDEPENDENT_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-OPEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-OPEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-PROJECT-AUTHORITY-00-GOVERNANCE-RUNTIME-OLEANDER-CURRENT-ARCHITECTURE-MAP-V2-1-MD-PROJECT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "PROJECT_AUTHORITY",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-P2-PROJECT-AUTHORITY-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-P2-PROJECT-AUTHORITY-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-OR-SPECIALIST-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-QUALITY",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-QUALITY-REVIEW-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD",
+      "trigger_refs": [
+        "BLOCK-QUALITY-REVIEW-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-AND-DESIGN-KEEP-NOT-PROVEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-ENGINEERING",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-FURNITURE-USE",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-INSPECTION-HOLD-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-NATIVE-INTEGRITY"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-STATE-FAMILY-OWNER-00-GOVERNANCE-COMPLEX-PROJECT-MASTER-RUNTIME-V1-0-MD-PROJECT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "required_owner_kind": "STATE_FAMILY_OWNER",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-PROJECT-BINDING-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-PROJECT-BINDING-UNRESOLVED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP",
+        "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-STALE-NATIVE-READBACK-DIVERGED-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-EVIDENCE-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-IF-FW-ENGINEERING-INTEGRATION-OR-PROJECT-AUTHORITY-00-GOVERNANCE-CROSS-DISCIPLINARY-DESIGN-INTEGRATION-V1-0-MD-PROJECT",
+      "subject_ref": "IF-FW-ENGINEERING",
+      "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+      "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-IF-FW-ENGINEERING-MBSE-INTERFACE-HOLD-KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-IF-FW-ENGINEERING-MBSE-INTERFACE-HOLD-KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "trigger_refs": [
+        "ACTION-REVIEW-SUBJECT-REQ-FW-V06-ENGINEERING-AUTHORITY"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-INTEGRATION-OR-PROJECT-AUTHORITY-00-GOVERNANCE-CROSS-DISCIPLINARY-DESIGN-INTEGRATION-V1-0-MD-PROJECT",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+      "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-HOLD-OPEN-DIMENSION-AND-ENGINEERING-AUTHORITY-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-HOLD-OPEN-DIMENSION-AND-ENGINEERING-AUTHORITY-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-ACCEPTANCE-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-REQUIREMENT-ACCEPTANCE-BASELINE-V1-SCHEMA-JSON-PROJECT",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "required_owner_kind": "REQUIREMENT_ACCEPTANCE_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "scope": "PROJECT",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-HOLD-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-HOLD-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-REQUIREMENT-ACCEPTANCE-BASELINE-V1-SCHEMA-JSON-REVIEW",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "required_owner_kind": "VALIDATION_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-MBSE-VALIDATION-INCOMPLETE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING",
+      "trigger_refs": [
+        "BLOCK-MBSE-VALIDATION-INCOMPLETE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-VERIFICATION-VALIDATION-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-REQUIREMENT-ACCEPTANCE-BASELINE-V1-SCHEMA-JSON-REVIEW",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "required_owner_kind": "VERIFICATION_VALIDATION_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-requirement-acceptance-baseline.v1.schema.json",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-NOT-RUN-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-FW-V06-INDEPENDENT-DESIGN-DESIGN-REVIEW-OWNER-00-GOVERNANCE-DESIGN-QUALITY-AND-DESIGN-DEVELOPMENT-SPECIFICATION-V1-0-MD-REVIEW",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-DESIGN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD",
+      "trigger_refs": [
+        "BLOCK-DESIGN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-OR-SPECIALIST-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-QUALITY",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD-KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW",
+      "trigger_refs": [
+        "BLOCK-STATE-FACET-BLOCKER-REVIEW-FW-V06-INDEPENDENT-DESIGN-HOLD-KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-FW-V06-INDEPENDENT-DESIGN-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "required_owner_kind": "REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REOPEN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "trigger_refs": [
+        "ACTION-REOPEN-REVIEW-REVIEW-FW-V06-INDEPENDENT-DESIGN"
+      ]
+    }
+  ],
+  "claim_ceiling": "PHASE2_COORDINATION_HOLD_NO_DESIGN_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+  "reason_codes": [
+    "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN",
+    "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+    "DESIGN_REVIEW",
+    "MBSE_VALIDATION_INCOMPLETE",
+    "MBSE_VALIDATION_REQUIRES_REVIEW",
+    "QUALITY_REVIEW",
+    "SOURCE_STALE",
+    "STATE_FACET_BLOCKER",
+    "UNRESOLVED_BLOCKING_RELATION",
+    "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
+  ],
+  "source_refs": [
+    "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_kernel_v0.2.json"
+  ],
+  "authority_boundary": {
+    "decision_is_authority": false,
+    "may_mutate_current": false,
+    "advance_rule": "ALLOW_ONLY_WHEN_NO_BLOCKERS_NO_TYPED_ACTIONS_NO_CONTRADICTIONS_NO_UNRESOLVED_AUTHORITY_REQUIREMENTS"
+  },
+  "does_not_prove": [
+    "AGENT_MUTATION_AUTHORITY",
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "KNOWLEDGE_CURRENT",
+    "PHYSICAL_EXECUTION_ACCEPTANCE",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "REAL_CASE_GENERALIZATION",
+    "STATUTORY_APPROVAL",
+    "SYSTEMS_ENGINEERING_CURRENT"
+  ]
+}

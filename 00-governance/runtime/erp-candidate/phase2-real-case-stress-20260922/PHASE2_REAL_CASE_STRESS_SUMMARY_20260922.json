@@ -1,0 +1,225 @@
+{
+  "stress_test_id": "OLEANDER_ENTERPRISE_PHASE2_REAL_CASE_STRESS_20260922",
+  "baseline_main_commit": "69f73a1a0e105d6797affccc0d8c09110febb345",
+  "generated_at": "2026-09-22T17:45:00+08:00",
+  "kernel_revision": "0.2-candidate",
+  "reconciliation_revision": "0.2-candidate",
+  "cases": {
+    "C01": {
+      "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+      "drift_state": "CURRENT",
+      "enterprise_readiness_state": "HOLD",
+      "decision": "HOLD",
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "MBSE_VALIDATION_INCOMPLETE",
+        "PROCESS_BLOCKED",
+        "QUALITY_REVIEW",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION",
+        "WORK_BLOCKED"
+      ],
+      "blocker_count": 18,
+      "action_count": 5,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 13,
+      "phase2_module_object_counts": {
+        "MES": 7,
+        "MBSE": 9,
+        "KNOWLEDGE_GRAPH": 10,
+        "AGENT_RUNTIME": 0
+      },
+      "source_rows": [
+        {
+          "ref": "EV3SRC:C01:AUTHORITY",
+          "path": "D:\\Desgin\\05-cases\\c01-yimai-guangdu\\presentation\\route-rebuild_v0.1\\detail-design-successor-r1.7_v0.1\\runtime-v0.1\\C01_DD_R17_R-A_AUTHORITY_SNAPSHOT_v0.1.json",
+          "availability": "LOCAL_CURRENT_UNTRACKED",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "64B2A092AFABD78802060842AFAD87284E0FFF64DBB035D8D4E82B83C382A426",
+          "bytes": 3854
+        },
+        {
+          "ref": "EV3SRC:C01:CHECKPOINT",
+          "path": "D:\\Desgin\\05-cases\\c01-yimai-guangdu\\presentation\\route-rebuild_v0.1\\detail-design-successor-r1.7_v0.1\\C01_DD_R17_OLEANDER_CHECKPOINT_v0.1.json",
+          "availability": "LOCAL_CURRENT_UNTRACKED",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "9224B69D3815E993B8D9DE62423441264D7862670BACC3A7290D0DE29B69F629",
+          "bytes": 494
+        },
+        {
+          "ref": "EV3SRC:C01:FINAL_READBACK",
+          "path": "D:\\Desgin\\05-cases\\c01-yimai-guangdu\\presentation\\route-rebuild_v0.1\\detail-design-successor-r1.7_v0.1\\C01_DD_R17_FINAL_READBACK_v0.4.json",
+          "availability": "LOCAL_CURRENT_UNTRACKED",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "3A75332B52024C4714F9017828AA034A548D1C1263A738D50FFF0422FBF4DFDB",
+          "bytes": 9602
+        },
+        {
+          "ref": "EV3SRC:C01:DOWNSTREAM",
+          "path": "D:\\Desgin\\05-cases\\c01-yimai-guangdu\\presentation\\route-rebuild_v0.1\\presentation-successor-from-upstream_v0.3\\C01_DOWNSTREAM_SUCCESSOR_CHECKPOINT_v0.3.json",
+          "availability": "LOCAL_CURRENT_UNTRACKED",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "FC895A878F2EE76B40B4EC7EC3D5884A88532C15414DC5571C7ED11F033D425E",
+          "bytes": 1796
+        },
+        {
+          "ref": "EV3SRC:C01:FREEZE",
+          "path": "D:\\Desgin\\05-cases\\c01-yimai-guangdu\\presentation\\route-rebuild_v0.1\\presentation-successor-from-upstream_v0.3\\C01_SUCCESSOR_FREEZE_READBACK_v0.3.json",
+          "availability": "LOCAL_CURRENT_UNTRACKED",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "8F5195AD33D7EE83D90A8A7D3FAB6C29FE2D3CA59C9CC17CC9C1AE34519B97CC",
+          "bytes": 9227
+        }
+      ]
+    },
+    "C04": {
+      "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+      "drift_state": "CURRENT",
+      "enterprise_readiness_state": "HOLD",
+      "decision": "HOLD",
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "MBSE_VALIDATION_INCOMPLETE",
+        "MBSE_VERIFICATION_INCOMPLETE",
+        "PROCESS_BLOCKED",
+        "QUALITY_NONCONFORMANCE",
+        "QUALITY_REVIEW",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION",
+        "WORK_BLOCKED"
+      ],
+      "blocker_count": 26,
+      "action_count": 6,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 16,
+      "phase2_module_object_counts": {
+        "MES": 0,
+        "MBSE": 16,
+        "KNOWLEDGE_GRAPH": 10,
+        "AGENT_RUNTIME": 0
+      },
+      "source_rows": [
+        {
+          "ref": "EV3SRC:C04:CURRENT",
+          "path": "git:69f73a1a0e105d6797affccc0d8c09110febb345:05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+          "availability": "GIT_MAIN_EXACT",
+          "hash_semantics": "GIT_CANONICAL_BLOB_SHA256",
+          "sha256": "055A78CF3C6BB46EB9F7682A00A9977C38D3AF95075B692A622FFE7B83AB135B",
+          "bytes": 20314
+        },
+        {
+          "ref": "EV3SRC:C04:PROJECT_CONTROL",
+          "path": "git:69f73a1a0e105d6797affccc0d8c09110febb345:05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CONTROL_READBACK_v0.1.json",
+          "availability": "GIT_MAIN_EXACT",
+          "hash_semantics": "GIT_CANONICAL_BLOB_SHA256",
+          "sha256": "193673CB34A4FAC36BFAF0D1A093CC5B06EADF6852A74481B15949BE901425D5",
+          "bytes": 1918
+        },
+        {
+          "ref": "EV3SRC:C04:CLOSURE",
+          "path": "git:69f73a1a0e105d6797affccc0d8c09110febb345:05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_CLOSURE_COMPILATION_READBACK_v0.1.json",
+          "availability": "GIT_MAIN_EXACT",
+          "hash_semantics": "GIT_CANONICAL_BLOB_SHA256",
+          "sha256": "07CBAB37612015DD4BDACAB2B8927A564FEEB85140AAF8B3C147DFB4933711FE",
+          "bytes": 3305
+        },
+        {
+          "ref": "EV3SRC:C04:OPERATIONAL",
+          "path": "git:69f73a1a0e105d6797affccc0d8c09110febb345:05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_PROJECT_OPERATIONAL_ACCEPTANCE_COMPILATION_v0.1.json",
+          "availability": "GIT_MAIN_EXACT",
+          "hash_semantics": "GIT_CANONICAL_BLOB_SHA256",
+          "sha256": "B585F32F0CF0A6714B081623504DC85D04EDFE1ABDE6D05B132F329D92B17739",
+          "bytes": 1538
+        },
+        {
+          "ref": "EV3SRC:C04:TD_BINDING",
+          "path": "git:69f73a1a0e105d6797affccc0d8c09110febb345:05-cases/c04-qingjiang-stone-book/project-control/v0.1/C04_TECHNICAL_DRAWING_SPECIALIST_BINDING_v0.1.json",
+          "availability": "GIT_MAIN_EXACT",
+          "hash_semantics": "GIT_CANONICAL_BLOB_SHA256",
+          "sha256": "01F938304B2FF75E411440100BB0A7744764AAA734BD4EE5F0DE752C4DAEBB24",
+          "bytes": 1575
+        }
+      ]
+    },
+    "FALLINGWATER": {
+      "projection_freshness_state": "SOURCE_READBACK_STALE",
+      "drift_state": "DIVERGED",
+      "enterprise_readiness_state": "HOLD",
+      "decision": "HOLD",
+      "blocker_classes": [
+        "DESIGN_REVIEW",
+        "MBSE_VALIDATION_INCOMPLETE",
+        "QUALITY_REVIEW",
+        "SOURCE_STALE",
+        "STATE_FACET_BLOCKER",
+        "UNRESOLVED_BLOCKING_RELATION"
+      ],
+      "blocker_count": 23,
+      "action_count": 3,
+      "contradiction_count": 0,
+      "unresolved_authority_requirement_count": 18,
+      "phase2_module_object_counts": {
+        "MES": 2,
+        "MBSE": 13,
+        "KNOWLEDGE_GRAPH": 11,
+        "AGENT_RUNTIME": 0
+      },
+      "source_rows": [
+        {
+          "ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+          "path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\OLEANDER_V06_FINAL_MATRIX_20260914\\FINAL_NATIVE_SAVE_REOPEN_INTEGRITY.json",
+          "availability": "LOCAL_DIAGNOSTIC_EXACT",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "899A252355A180D5E2B9E221A9298E6F2B25F9948CAF9D6C9A7D495664FA3AD4",
+          "bytes": 6916
+        },
+        {
+          "ref": "EV3SRC:FW:FURNITURE",
+          "path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\OLEANDER_V06_FINAL_MATRIX_20260914\\FINAL_FURNITURE_USE_AUDIT.json",
+          "availability": "LOCAL_DIAGNOSTIC_EXACT",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "47AE598E99FF8C8F196383660C60CE895316EB946019BA7C8E2BC29774959C80",
+          "bytes": 11444
+        },
+        {
+          "ref": "EV3SRC:FW:ARCH_TARGETS",
+          "path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_V06_ARCH_TARGET_AUDIT.json",
+          "availability": "LOCAL_DIAGNOSTIC_EXACT",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "D2BD8F8BFB6C6F5C221C813662EDA42B7F65C20CE808462882EDC3CD26BD98F4",
+          "bytes": 39293
+        },
+        {
+          "ref": "EV3SRC:FW:CONNECTIONS",
+          "path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_V06_CONNECTION_REVIEW\\V06_CONNECTION_WIRE_MANIFEST.json",
+          "availability": "LOCAL_DIAGNOSTIC_EXACT",
+          "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+          "sha256": "357EB2DC320C79D8A60EB1D018611DFFA8923808F7694F43C7D21BE84F694163",
+          "bytes": 1577
+        },
+        {
+          "ref": "EV3SRC:FW:NATIVE_BLEND",
+          "path": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_HABS_COMPLEX_V06_ARCH_SPATIAL_CONSTRUCTIVE_20260913.blend",
+          "availability": "LOCAL_DIAGNOSTIC_EXACT",
+          "hash_semantics": "RAW_BYTES_V1",
+          "sha256": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+          "bytes": 16886289
+        }
+      ]
+    }
+  },
+  "overall_state": "HOLD",
+  "promotion_eligible": false,
+  "independent_review": "NOT_RUN",
+  "authority_gain_count": 0,
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "PHYSICAL_EXECUTION_ACCEPTANCE",
+    "SYSTEMS_ENGINEERING_CURRENT",
+    "KNOWLEDGE_CURRENT",
+    "AGENT_MUTATION_AUTHORITY"
+  ]
+}

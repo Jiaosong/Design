@@ -1,0 +1,1141 @@
+{
+  "schema_version": "0.2-candidate",
+  "kind": "OLEANDER_ENTERPRISE_KERNEL",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T17:45:00+08:00",
+  "source_projection_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+  "source_projection_digest": {
+    "sha256": "C7A2102DEC40CAE83F253A7DA130A95C74988755ABF3697DE1133708405A3DC4",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "authority_boundary": {
+    "kernel_is_authority": false,
+    "may_mutate_current": false,
+    "identity_rule": "CANONICAL_REFS_ONLY_NO_AUTHORITY_SYNTHESIS",
+    "state_rule": "ORTHOGONAL_STATE_FACTS_NO_FLATTENING",
+    "relation_rule": "SOURCE_BOUND_RELATIONS_NO_AUTHORITY_TRANSFER"
+  },
+  "identities": [
+    {
+      "identity_id": "KID-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-ARTIFACT-FW-V06-NATIVE-BLEND",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-BASELINE-FW-V06-NATIVE",
+      "identity_class": "OTHER",
+      "canonical_ref": "BASELINE-FW-V06-NATIVE",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-D--DESGIN--MCP-RUNTIME-DIAGNOSTICS-FALLINGWATER-HABS-COMPLEX-V06-ARCH-SPATIAL-CONSTRUCTIVE-20260913-BLEND",
+      "identity_class": "RESOURCE",
+      "canonical_ref": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_HABS_COMPLEX_V06_ARCH_SPATIAL_CONSTRUCTIVE_20260913.blend",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3-FW-SOURCE-MANIFEST",
+      "identity_class": "OTHER",
+      "canonical_ref": "EV3:FW:SOURCE_MANIFEST",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-FW-ARCH-TARGETS",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:FW:ARCH_TARGETS",
+      "source_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-FW-CONNECTIONS",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:FW:CONNECTIONS",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-FW-FURNITURE",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:FW:FURNITURE",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-FW-NATIVE-BLEND",
+      "identity_class": "EVIDENCE",
+      "canonical_ref": "EV3SRC:FW:NATIVE_BLEND",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-EV3SRC-FW-NATIVE-INTEGRITY",
+      "identity_class": "READBACK",
+      "canonical_ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-FALLINGWATER-HABS-V06",
+      "identity_class": "KNOWLEDGE_NODE",
+      "canonical_ref": "FALLINGWATER-HABS-V06",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-IF-FW-ENGINEERING",
+      "identity_class": "INTERFACE",
+      "canonical_ref": "IF-FW-ENGINEERING",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-FW-ENGINEERING",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-FW-ENGINEERING",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-FW-FURNITURE-USE",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-FW-FURNITURE-USE",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-INSP-FW-NATIVE-INTEGRITY",
+      "identity_class": "REVIEW",
+      "canonical_ref": "INSP-FW-NATIVE-INTEGRITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-KG-FW-EV3",
+      "identity_class": "QUERY_POLICY",
+      "canonical_ref": "KG-FW-EV3",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-LOCAL-BLENDER-EXECUTION-PROVENANCE-ONLY",
+      "identity_class": "OTHER",
+      "canonical_ref": "LOCAL_BLENDER_EXECUTION_PROVENANCE_ONLY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-LOCAL-DIAGNOSTIC-PRODUCER",
+      "identity_class": "OTHER",
+      "canonical_ref": "LOCAL_DIAGNOSTIC_PRODUCER",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "identity_class": "REQUIREMENT",
+      "canonical_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "identity_class": "REVIEW",
+      "canonical_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-SYS-FW-V06-MODEL",
+      "identity_class": "SYSTEM_ELEMENT",
+      "canonical_ref": "SYS-FW-V06-MODEL",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "identity_id": "KID-VV-FW-ENGINEERING",
+      "identity_class": "REVIEW",
+      "canonical_ref": "VV-FW-ENGINEERING",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    }
+  ],
+  "authority_bindings": [],
+  "state_facts": [
+    {
+      "state_fact_id": "KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "state_family": "QUALITY",
+      "state_value": "HOLD",
+      "claim_scope": "REVIEW:DESIGN",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-FALLINGWATER-HABS-V06-PROJECT-DESIGN-TOP",
+      "subject_ref": "FALLINGWATER-HABS-V06",
+      "state_family": "PROJECT_DESIGN",
+      "state_value": "CANDIDATE",
+      "claim_scope": "TOP_LEVEL:PROJECT_DESIGN",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-EV3-FW-SOURCE-MANIFEST-KNOWLEDGE-INTEGRITY-TOP",
+      "subject_ref": "EV3:FW:SOURCE_MANIFEST",
+      "state_family": "KNOWLEDGE_INTEGRITY",
+      "state_value": "SOURCE_BOUND",
+      "claim_scope": "TOP_LEVEL:KNOWLEDGE_INTEGRITY",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "OPERATIONAL_ELIGIBILITY",
+      "state_value": "HOLD_PROJECT_BINDING_UNRESOLVED",
+      "claim_scope": "TOP_LEVEL:OPERATIONAL_ELIGIBILITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "DESIGN_QUALITY",
+      "state_value": "HOLD_INDEPENDENT_DESIGN_REVIEW_NOT_AVAILABLE",
+      "claim_scope": "TOP_LEVEL:DESIGN_QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "PROFESSIONAL",
+      "state_value": "HOLD_ENGINEERING_OPEN",
+      "claim_scope": "TOP_LEVEL:PROFESSIONAL",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "state_family": "INTERFACE",
+      "state_value": "HOLD_OPEN_DIMENSION_AND_ENGINEERING_AUTHORITY",
+      "claim_scope": "TOP_LEVEL:INTERFACE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "AUTHORITY",
+      "state_value": "HOLD_P2_PROJECT_AUTHORITY_UNRESOLVED",
+      "claim_scope": "TOP_LEVEL:AUTHORITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-EVIDENCE-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "EVIDENCE",
+      "state_value": "STALE_NATIVE_READBACK_DIVERGED",
+      "claim_scope": "TOP_LEVEL:EVIDENCE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "CONFIGURATION",
+      "state_value": "REVIEW",
+      "claim_scope": "TOP_LEVEL:CONFIGURATION",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "QUALITY",
+      "state_value": "HOLD_ENGINEERING_AND_DESIGN_KEEP_NOT_PROVEN",
+      "claim_scope": "TOP_LEVEL:QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-FALLINGWATER-HABS-V06-PROCESS-TOP",
+      "subject_ref": "FALLINGWATER-HABS-V06",
+      "state_family": "PROCESS",
+      "state_value": "NOT_EVALUATED_NO_MASTER_RUNTIME",
+      "claim_scope": "TOP_LEVEL:PROCESS",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-FALLINGWATER-HABS-V06-AGENT-RUNTIME-TOP",
+      "subject_ref": "FALLINGWATER-HABS-V06",
+      "state_family": "AGENT_RUNTIME",
+      "state_value": "NOT_TRIGGERED",
+      "claim_scope": "TOP_LEVEL:AGENT_RUNTIME",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "state_family": "PROJECTION_FRESHNESS",
+      "state_value": "SOURCE_READBACK_STALE",
+      "claim_scope": "PROJECTION_FRESHNESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-PHASE2-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-PHASE2-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json",
+      "state_family": "ENTERPRISE_READINESS",
+      "state_value": "HOLD",
+      "claim_scope": "ENTERPRISE_READINESS",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:VERIFIES:Recorded native integrity SHA 8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B does not match current native SHA 5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:BOUND_TO_DECISION_OBJECT:No canonical P2 Project/Master Runtime binding found; Case/native diagnostic identity cannot synthesize project authority.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "INTERFACE",
+      "state_value": "BLOCKING_RELATION:VALIDATES:44 audited targets have open/approximate dimension or authority state; engineering remains OPEN.",
+      "claim_scope": "SUBJECT_OVERALL",
+      "blocking_semantics": "POTENTIAL",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-CONFIGURATION-CI-FW-V06-BLEND",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "CONFIGURATION",
+      "state_value": "HOLD",
+      "claim_scope": "PLM_CONFIGURATION_ITEM",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-NATIVE-INTEGRITY",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:ARTIFACT",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-FURNITURE-USE",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:QUALITY",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-INSP-FW-ENGINEERING",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "QUALITY",
+      "state_value": "INSPECTION:HOLD",
+      "claim_scope": "QMS_INSPECTION:TECHNICAL",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "state_family": "REQUIREMENT",
+      "state_value": "REQUIREMENT:HOLD",
+      "claim_scope": "MBSE_REQUIREMENT:CONSTRAINT",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING",
+      "subject_ref": "IF-FW-ENGINEERING",
+      "state_family": "INTERFACE",
+      "state_value": "MBSE_INTERFACE:HOLD",
+      "claim_scope": "MBSE_INTERFACE",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "state_family": "VALIDATION",
+      "state_value": "VALIDATION:NOT_RUN",
+      "claim_scope": "MBSE_VV:VALIDATION",
+      "blocking_semantics": "EXPLICIT",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "state_fact_id": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-KNOWLEDGE-PROVENANCE-PROV-FW-V06",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "state_family": "KNOWLEDGE_PROVENANCE",
+      "state_value": "SOURCE_BOUND",
+      "claim_scope": "KG_PROVENANCE",
+      "blocking_semantics": "NONE",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "REL-FW-ART-REV",
+      "relation_type": "ARTIFACT_REVIEWED_BY",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-FW-ART-REQ",
+      "relation_type": "IMPLEMENTS",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "REL-FW-PROV",
+      "relation_type": "PROVENANCE_DERIVED_FROM",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "EV3SRC:FW:ARCH_TARGETS",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-REQ-FW-V06-ENGINEERING-AUTHORITY-ALLOC-ARTIFACT-FW-V06-NATIVE-BLEND",
+      "relation_type": "ALLOCATES_TO",
+      "from_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "to_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-SYS-FW-V06-MODEL-REPRESENTS",
+      "relation_type": "SYSTEM_ELEMENT_REPRESENTS",
+      "from_ref": "SYS-FW-V06-MODEL",
+      "to_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-IF-FW-ENGINEERING-FROM",
+      "relation_type": "INTERFACE_FROM",
+      "from_ref": "IF-FW-ENGINEERING",
+      "to_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-IF-FW-ENGINEERING-TO",
+      "relation_type": "INTERFACE_TO",
+      "from_ref": "IF-FW-ENGINEERING",
+      "to_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-VV-FW-ENGINEERING-VALIDATES",
+      "relation_type": "VALIDATES",
+      "from_ref": "VV-FW-ENGINEERING",
+      "to_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KG-FW-PROV",
+      "relation_type": "PROVENANCE_DERIVED_FROM",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "EV3SRC:FW:ARCH_TARGETS",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-FW-V06-DERIVED-EV3SRC-FW-ARCH-TARGETS",
+      "relation_type": "PROVENANCE_DERIVED_FROM",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "EV3SRC:FW:ARCH_TARGETS",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-FW-V06-DERIVED-EV3SRC-FW-NATIVE-INTEGRITY",
+      "relation_type": "PROVENANCE_DERIVED_FROM",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-FW-V06-GENERATED",
+      "relation_type": "PROVENANCE_GENERATED_BY",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "LOCAL_BLENDER_EXECUTION_PROVENANCE_ONLY",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    },
+    {
+      "relation_id": "KREL-PROV-FW-V06-ATTR-LOCAL-DIAGNOSTIC-PRODUCER",
+      "relation_type": "PROVENANCE_ATTRIBUTED_TO",
+      "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "to_ref": "LOCAL_DIAGNOSTIC_PRODUCER",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "authority_effect": "NONE"
+    }
+  ],
+  "work_items": [],
+  "configuration_items": [
+    {
+      "configuration_id": "KCONFIG-CI-FW-V06-BLEND",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "configuration_class": "MODEL",
+      "revision_ref": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+      "configuration_state": "HOLD",
+      "baseline_ref": "BASELINE-FW-V06-NATIVE",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "TECHNICAL_CORRECTNESS",
+        "DESIGN_KEEP",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "evidence_items": [
+    {
+      "evidence_id": "KEVID-INSP-FW-NATIVE-INTEGRITY",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-INSP-FW-FURNITURE-USE",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-INSP-FW-ENGINEERING",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "evidence_class": "REVIEW",
+      "result": "HOLD",
+      "evidence_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"
+    },
+    {
+      "evidence_id": "KEVID-VV-FW-ENGINEERING",
+      "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+      "evidence_class": "VALIDATION",
+      "result": "NOT_RUN",
+      "evidence_refs": [],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "MBSE_VALIDATION_ONLY_NO_PROJECT_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "evidence_id": "KEVID-PROV-FW-V06",
+      "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "evidence_class": "KNOWLEDGE_PROVENANCE",
+      "result": "SOURCE_BOUND",
+      "evidence_refs": [
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:NATIVE_INTEGRITY"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true,
+      "claim_ceiling": "PROVENANCE_ONLY_NO_CANONICAL_TRUTH_OR_AUTHORITY_GAIN"
+    }
+  ],
+  "changes": [],
+  "readbacks": [
+    {
+      "readback_id": "EV3SRC:FW:NATIVE_INTEGRITY",
+      "subject_ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+      "readback_class": "MES_EXECUTION",
+      "readback_state": "OBSERVED",
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "NOT_AVAILABLE:FALLINGWATER:INDEPENDENT-DESIGN",
+      "subject_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "receipt_class": "REVIEW",
+      "result": "HOLD",
+      "independence_state": "UNKNOWN",
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/phase2-real-case-stress-20260922/output/fallingwater_phase2_projection_v0.3.1.json"
+      ],
+      "projection_only": true,
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "module_bindings": [
+    {
+      "module": "ERP",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "PLM",
+      "kernel_object_refs": [
+        "KCONFIG-CI-FW-V06-BLEND"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "BPM",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "QMS",
+      "kernel_object_refs": [
+        "KEVID-INSP-FW-ENGINEERING",
+        "KEVID-INSP-FW-FURNITURE-USE",
+        "KEVID-INSP-FW-NATIVE-INTEGRITY"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "MES",
+      "kernel_object_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "KID-D--DESGIN--MCP-RUNTIME-DIAGNOSTICS-FALLINGWATER-HABS-COMPLEX-V06-ARCH-SPATIAL-CONSTRUCTIVE-20260913-BLEND"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "MBSE",
+      "kernel_object_refs": [
+        "KEVID-VV-FW-ENGINEERING",
+        "KID-BASELINE-FW-V06-NATIVE",
+        "KID-IF-FW-ENGINEERING",
+        "KID-REQ-FW-V06-ENGINEERING-AUTHORITY",
+        "KID-SYS-FW-V06-MODEL",
+        "KREL-IF-FW-ENGINEERING-FROM",
+        "KREL-IF-FW-ENGINEERING-TO",
+        "KREL-REQ-FW-V06-ENGINEERING-AUTHORITY-ALLOC-ARTIFACT-FW-V06-NATIVE-BLEND",
+        "KREL-SYS-FW-V06-MODEL-REPRESENTS",
+        "KREL-VV-FW-ENGINEERING-VALIDATES",
+        "KSTATE-IF-FW-ENGINEERING-INTERFACE-IF-FW-ENGINEERING",
+        "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-REQUIREMENT-REQ-FW-V06-ENGINEERING-AUTHORITY",
+        "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-VALIDATION-VV-FW-ENGINEERING"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "KNOWLEDGE_GRAPH",
+      "kernel_object_refs": [
+        "KEVID-PROV-FW-V06",
+        "KG-FW-PROV",
+        "KID-ARTIFACT-FW-V06-NATIVE-BLEND",
+        "KID-FALLINGWATER-HABS-V06",
+        "KID-KG-FW-EV3",
+        "KID-REQ-FW-V06-ENGINEERING-AUTHORITY",
+        "KREL-PROV-FW-V06-ATTR-LOCAL-DIAGNOSTIC-PRODUCER",
+        "KREL-PROV-FW-V06-DERIVED-EV3SRC-FW-ARCH-TARGETS",
+        "KREL-PROV-FW-V06-DERIVED-EV3SRC-FW-NATIVE-INTEGRITY",
+        "KREL-PROV-FW-V06-GENERATED",
+        "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-KNOWLEDGE-PROVENANCE-PROV-FW-V06"
+      ],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    },
+    {
+      "module": "AGENT_RUNTIME",
+      "kernel_object_refs": [],
+      "source_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE",
+        "EV3SRC:FW:ARCH_TARGETS",
+        "EV3SRC:FW:CONNECTIONS",
+        "EV3SRC:FW:NATIVE_BLEND"
+      ],
+      "projection_only": true
+    }
+  ],
+  "kernel_metrics": {
+    "identity_count": 22,
+    "state_fact_count": 26,
+    "relation_count": 13,
+    "phase1_module_binding_count": 4,
+    "unresolved_identity_ref_count": 0,
+    "authority_gain_count": 0,
+    "projection_rebuildable": true,
+    "phase2_module_binding_count": 4,
+    "enterprise_module_binding_count": 8
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

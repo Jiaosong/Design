@@ -1,0 +1,709 @@
+{
+  "schema_version": "0.3.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T15:10:00+08:00",
+  "authority": {
+    "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "master_runtime_ref": "NOT_AVAILABLE:FALLINGWATER:MASTER_RUNTIME",
+    "authority_snapshot_ref": "UNRESOLVED:FALLINGWATER:P2_PROJECT_AUTHORITY",
+    "knowledge_snapshot_ref": "EV3:FALLINGWATER:SOURCE_MANIFEST",
+    "source_binding_refs": [
+      "EV3SRC:FW:NATIVE_INTEGRITY",
+      "EV3SRC:FW:FURNITURE",
+      "EV3SRC:FW:ARCH_TARGETS",
+      "EV3SRC:FW:CONNECTIONS",
+      "EV3SRC:FW:NATIVE_BLEND"
+    ],
+    "source_binding_hash_semantics": "SOURCE_SPECIFIC_EXACT_REVISION_DIGESTS_WHEN_AVAILABLE",
+    "projection_only": true,
+    "may_mutate_current": false,
+    "source_binding_digests": [
+      {
+        "ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+        "sha256": "899A252355A180D5E2B9E221A9298E6F2B25F9948CAF9D6C9A7D495664FA3AD4",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:FW:FURNITURE",
+        "sha256": "47AE598E99FF8C8F196383660C60CE895316EB946019BA7C8E2BC29774959C80",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:FW:ARCH_TARGETS",
+        "sha256": "D2BD8F8BFB6C6F5C221C813662EDA42B7F65C20CE808462882EDC3CD26BD98F4",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:FW:CONNECTIONS",
+        "sha256": "357EB2DC320C79D8A60EB1D018611DFFA8923808F7694F43C7D21BE84F694163",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:FW:NATIVE_BLEND",
+        "sha256": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+        "hash_semantics": "RAW_BYTES_V1"
+      }
+    ]
+  },
+  "architecture_contract": {
+    "integration_model": "FEDERATED_PROJECTION_ENVELOPE",
+    "module_count": 8,
+    "no_new_runtime_layer": true,
+    "state_policy": "ORTHOGONAL_STATE_FAMILIES_NO_FLATTENING",
+    "identity_policy": "CANONICAL_REF_REQUIRED_NO_ID_SYNTHESIS_AS_AUTHORITY",
+    "write_policy": "READ_ONLY_CANDIDATE_EXISTING_AUTHORIZED_PATHS_ONLY_AFTER_ADOPTION",
+    "transaction_policy": "NO_DISTRIBUTED_TRANSACTION_MANAGER_RECONCILE_PARTIAL_SIDE_EFFECTS",
+    "digital_thread_policy": "TYPED_SOURCE_BOUND_LINKS_DO_NOT_TRANSFER_AUTHORITY"
+  },
+  "case_refs": [
+    {
+      "canonical_case_id": "FALLINGWATER-HABS-V06",
+      "canonical_ref": "local-diagnostic:FALLINGWATER-HABS-V06",
+      "project_binding_state": "UNRESOLVED",
+      "does_not_prove": [
+        "P2_PROJECT_ID"
+      ]
+    }
+  ],
+  "project_axis_refs": [],
+  "work_packages": [],
+  "jobs": [],
+  "resource_refs": [],
+  "artifact_refs": [
+    {
+      "artifact_id": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "canonical_ref": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_HABS_COMPLEX_V06_ARCH_SPATIAL_CONSTRUCTIVE_20260913.blend",
+      "native_format": "blend",
+      "editable_state": "EDITABLE",
+      "hash_or_commit": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+      "readback_refs": [
+        "EV3SRC:FW:NATIVE_INTEGRITY",
+        "EV3SRC:FW:FURNITURE"
+      ]
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+      "review_class": "DESIGN",
+      "receipt_ref": "NOT_AVAILABLE:FALLINGWATER:INDEPENDENT-DESIGN",
+      "result": "HOLD",
+      "independence_state": "UNKNOWN"
+    }
+  ],
+  "modules": {
+    "erp": {
+      "header": {
+        "module": "ERP",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "BUDGET_TRUTH",
+          "PROFESSIONAL_PASS",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "demand_records": [],
+      "schedule_records": [],
+      "resource_demand": []
+    },
+    "plm": {
+      "header": {
+        "module": "PLM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION",
+          "TECHNICAL_CORRECTNESS"
+        ]
+      },
+      "configuration_items": [
+        {
+          "item_id": "CI-FW-V06-BLEND",
+          "item_class": "MODEL",
+          "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "revision_ref": "5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3",
+          "lifecycle_state": "HOLD",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "does_not_prove": [
+            "TECHNICAL_CORRECTNESS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "baselines": [
+        {
+          "baseline_id": "BASELINE-FW-V06-NATIVE",
+          "member_refs": [
+            "CI-FW-V06-BLEND",
+            "REQ-FW-V06-ENGINEERING-AUTHORITY"
+          ],
+          "baseline_state": "HOLD",
+          "authority_ref": "UNRESOLVED:FALLINGWATER:P2_PROJECT_AUTHORITY",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ],
+      "change_records": []
+    },
+    "mes": {
+      "header": {
+        "module": "MES",
+        "scope_state": "PARTIAL",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "ACCEPTANCE",
+          "FIELD_TRUTH",
+          "PHYSICAL_EXECUTION"
+        ]
+      },
+      "operation_records": [],
+      "material_equipment_refs": [
+        {
+          "canonical_ref": "D:\\Desgin\\.mcp-runtime\\diagnostics\\FALLINGWATER_HABS_COMPLEX_V06_ARCH_SPATIAL_CONSTRUCTIVE_20260913.blend",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "authority_owner": "Local native artifact only",
+          "projection_only": true
+        }
+      ],
+      "execution_readbacks": [
+        {
+          "canonical_ref": "EV3SRC:FW:NATIVE_INTEGRITY",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "authority_owner": "Actual Readback",
+          "projection_only": true
+        }
+      ]
+    },
+    "bpm": {
+      "header": {
+        "module": "BPM",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROFESSIONAL_STAGE_PASS",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "process_instances": [],
+      "handoffs": [],
+      "exceptions": []
+    },
+    "qms": {
+      "header": {
+        "module": "QMS",
+        "scope_state": "HOLD",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROFESSIONAL_PASS",
+          "STATUTORY_APPROVAL"
+        ]
+      },
+      "quality_plans": [],
+      "nonconformances": [],
+      "capa_records": [],
+      "inspection_records": [
+        {
+          "inspection_id": "INSP-FW-NATIVE-INTEGRITY",
+          "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "inspection_class": "ARTIFACT",
+          "result": "HOLD",
+          "evidence_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        },
+        {
+          "inspection_id": "INSP-FW-FURNITURE-USE",
+          "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "inspection_class": "QUALITY",
+          "result": "HOLD",
+          "evidence_refs": [
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        },
+        {
+          "inspection_id": "INSP-FW-ENGINEERING",
+          "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "inspection_class": "TECHNICAL",
+          "result": "HOLD",
+          "evidence_refs": [
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS"
+          ],
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ]
+    },
+    "mbse": {
+      "header": {
+        "module": "MBSE",
+        "scope_state": "HOLD",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "PROJECT_ACCEPTANCE",
+          "SYSTEMS_ENGINEERING_CURRENT",
+          "VALIDATION_PASS"
+        ]
+      },
+      "requirements": [
+        {
+          "requirement_id": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+          "requirement_class": "CONSTRAINT",
+          "statement_ref": "FALLINGWATER:OPEN_DIMENSIONS+ENGINEERING+P2_BINDING",
+          "status": "HOLD",
+          "allocated_to_refs": [
+            "ARTIFACT-FW-V06-NATIVE-BLEND"
+          ],
+          "verification_method": "REVIEW",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "does_not_prove": [
+            "VALIDATION_PASS",
+            "PROJECT_ACCEPTANCE"
+          ]
+        }
+      ],
+      "system_elements": [
+        {
+          "element_id": "SYS-FW-V06-MODEL",
+          "element_class": "WORK_PRODUCT",
+          "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ],
+      "interfaces": [
+        {
+          "interface_id": "IF-FW-ENGINEERING",
+          "from_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+          "to_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "interface_state": "HOLD",
+          "verification_refs": [
+            "VV-FW-ENGINEERING"
+          ],
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ],
+      "verification_validation": [
+        {
+          "vv_id": "VV-FW-ENGINEERING",
+          "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+          "vv_class": "VALIDATION",
+          "method": "QUALIFIED_ENGINEERING_REVIEW",
+          "result": "NOT_RUN",
+          "evidence_refs": [],
+          "independent_review_ref": null,
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ],
+      "configuration_baselines": [
+        "BASELINE-FW-V06-NATIVE"
+      ]
+    },
+    "knowledge_graph": {
+      "header": {
+        "module": "KNOWLEDGE_GRAPH",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "CLAIM_TRUTH",
+          "KNOWLEDGE_CURRENT",
+          "OE3"
+        ]
+      },
+      "nodes": [
+        {
+          "node_id": "KG-FW-CASE",
+          "node_class": "EVIDENCE",
+          "canonical_ref": "FALLINGWATER-HABS-V06",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-FW-ART",
+          "node_class": "ARTIFACT",
+          "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-FW-REQ",
+          "node_class": "REQUIREMENT",
+          "canonical_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "authority_gain": false
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "KG-FW-PROV",
+          "predicate": "PROVENANCE_DERIVED_FROM",
+          "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "to_ref": "EV3SRC:FW:ARCH_TARGETS",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ],
+          "projection_only": true,
+          "authority_effect": "NONE"
+        }
+      ],
+      "provenance_records": [
+        {
+          "provenance_id": "PROV-FW-V06",
+          "entity_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+          "derived_from_refs": [
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:NATIVE_INTEGRITY"
+          ],
+          "generated_by_ref": "LOCAL_BLENDER_EXECUTION_PROVENANCE_ONLY",
+          "attributed_to_refs": [
+            "LOCAL_DIAGNOSTIC_PRODUCER"
+          ],
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ],
+      "query_policies": [
+        {
+          "policy_id": "KG-FW-EV3",
+          "query_scope": "TASK_CLAIM_SCOPED_ONLY",
+          "eligibility_rule_ref": "OE-policy",
+          "claim_ceiling_rule_ref": "claim-ceiling-policy",
+          "source_refs": [
+            "EV3SRC:FW:NATIVE_INTEGRITY",
+            "EV3SRC:FW:FURNITURE",
+            "EV3SRC:FW:ARCH_TARGETS",
+            "EV3SRC:FW:CONNECTIONS",
+            "EV3SRC:FW:NATIVE_BLEND"
+          ]
+        }
+      ]
+    },
+    "agent_runtime": {
+      "header": {
+        "module": "AGENT_RUNTIME",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ],
+        "does_not_prove": [
+          "AUTHORITY",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "sessions": [],
+      "leases": [],
+      "actions": [],
+      "handoffs": []
+    }
+  },
+  "digital_thread": {
+    "relations": [
+      {
+        "relation_id": "REL-FW-ART-REV",
+        "relation_type": "ARTIFACT_REVIEWED_BY",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "to_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ]
+      },
+      {
+        "relation_id": "REL-FW-ART-REQ",
+        "relation_type": "IMPLEMENTS",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "to_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ]
+      },
+      {
+        "relation_id": "REL-FW-PROV",
+        "relation_type": "PROVENANCE_DERIVED_FROM",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "to_ref": "EV3SRC:FW:ARCH_TARGETS",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:FW:NATIVE_INTEGRITY",
+          "EV3SRC:FW:FURNITURE",
+          "EV3SRC:FW:ARCH_TARGETS",
+          "EV3SRC:FW:CONNECTIONS",
+          "EV3SRC:FW:NATIVE_BLEND"
+        ]
+      }
+    ],
+    "trace_queries": [],
+    "unresolved_links": [
+      {
+        "link_id": "UNRES-FW-NATIVE-READBACK-DRIFT",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "expected_relation_type": "VERIFIES",
+        "reason": "Recorded native integrity SHA 8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B does not match current native SHA 5BE6716420FF9E5026C966A7CE09F506B605186F3030BB25D09F01BE3FFC0DD3.",
+        "blocking": true
+      },
+      {
+        "link_id": "UNRES-FW-P2-PROJECT",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "expected_relation_type": "BOUND_TO_DECISION_OBJECT",
+        "reason": "No canonical P2 Project/Master Runtime binding found; Case/native diagnostic identity cannot synthesize project authority.",
+        "blocking": true
+      },
+      {
+        "link_id": "UNRES-FW-ENGINEERING",
+        "from_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+        "expected_relation_type": "VALIDATES",
+        "reason": "44 audited targets have open/approximate dimension or authority state; engineering remains OPEN.",
+        "blocking": true
+      }
+    ]
+  },
+  "state_facets": {
+    "project_design": {
+      "FALLINGWATER-HABS-V06": "CANDIDATE"
+    },
+    "job": {},
+    "knowledge_integrity": {
+      "EV3:FW:SOURCE_MANIFEST": "SOURCE_BOUND"
+    },
+    "operational_eligibility": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "HOLD_PROJECT_BINDING_UNRESOLVED"
+    },
+    "design_quality": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "HOLD_INDEPENDENT_DESIGN_REVIEW_NOT_AVAILABLE"
+    },
+    "professional": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "HOLD_ENGINEERING_OPEN"
+    },
+    "interface": {
+      "REQ-FW-V06-ENGINEERING-AUTHORITY": "HOLD_OPEN_DIMENSION_AND_ENGINEERING_AUTHORITY"
+    },
+    "authority": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "HOLD_P2_PROJECT_AUTHORITY_UNRESOLVED"
+    },
+    "evidence": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "STALE_NATIVE_READBACK_DIVERGED"
+    },
+    "configuration": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "REVIEW"
+    },
+    "quality": {
+      "ARTIFACT-FW-V06-NATIVE-BLEND": "HOLD_ENGINEERING_AND_DESIGN_KEEP_NOT_PROVEN"
+    },
+    "process": {
+      "FALLINGWATER-HABS-V06": "NOT_EVALUATED_NO_MASTER_RUNTIME"
+    },
+    "agent_runtime": {
+      "FALLINGWATER-HABS-V06": "NOT_TRIGGERED"
+    }
+  },
+  "activity_observations": [],
+  "reconciliation": {
+    "projection_freshness_state": "SOURCE_READBACK_STALE",
+    "enterprise_readiness_state": "HOLD",
+    "drift_state": "DIVERGED",
+    "source_readback_refs": [
+      "EV3SRC:FW:NATIVE_INTEGRITY",
+      "EV3SRC:FW:FURNITURE",
+      "EV3SRC:FW:ARCH_TARGETS",
+      "EV3SRC:FW:CONNECTIONS",
+      "EV3SRC:FW:NATIVE_BLEND"
+    ],
+    "partial_side_effect_state": "NONE",
+    "reconciliation_actions": [
+      "REFRESH_NATIVE_SAVE_REOPEN_INTEGRITY_AGAINST_CURRENT_BLEND",
+      "REFRESH_FURNITURE_USE_READBACK_AGAINST_CURRENT_BLEND",
+      "RESOLVE_P2_PROJECT_AUTHORITY_OR_KEEP_CASE_ONLY",
+      "QUALIFIED_ENGINEERING_REVIEW_REQUIRED"
+    ],
+    "advance_allowed": false
+  },
+  "control_metrics": {
+    "authority_duplication_count": 0,
+    "state_family_flattening_count": 0,
+    "untraceable_relation_count": 0,
+    "unresolved_blocking_link_count": 3,
+    "module_source_binding_coverage": 1.0,
+    "module_triggered_coverage": 0.25,
+    "module_scope_counts": {
+      "TRIGGERED": 2,
+      "PARTIAL": 1,
+      "NOT_TRIGGERED": 3,
+      "HOLD": 2
+    },
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "ENTERPRISE_COMPLETENESS",
+    "KNOWLEDGE_CURRENT",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "REAL_CASE_GENERALIZATION",
+    "STATUTORY_APPROVAL"
+  ]
+}

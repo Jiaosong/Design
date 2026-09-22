@@ -1,0 +1,580 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.enterprise-reconciliation-decision.v0.2",
+  "title": "OLEANDER Enterprise Reconciliation Decision Candidate v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "candidate_status",
+    "generated_at",
+    "kernel_ref",
+    "kernel_digest",
+    "subject_ref",
+    "advance_decision",
+    "blocking_conditions",
+    "reopen_set",
+    "rerun_set",
+    "review_set",
+    "required_readback_set",
+    "unresolved_authority_conflicts",
+    "policy_ref",
+    "policy_digest",
+    "action_requests",
+    "impact_traces",
+    "contradictions",
+    "unresolved_authority_requirements",
+    "claim_ceiling",
+    "reason_codes",
+    "source_refs",
+    "authority_boundary",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2-candidate"
+    },
+    "kind": {
+      "const": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION"
+    },
+    "candidate_status": {
+      "enum": [
+        "EV2_CANDIDATE",
+        "EVAL_ONLY"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kernel_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kernel_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "hash_semantics"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{64}$"
+        },
+        "hash_semantics": {
+          "const": "UTF8_TEXT_LF_CANONICAL_V1"
+        }
+      }
+    },
+    "subject_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "advance_decision": {
+      "enum": [
+        "ALLOW",
+        "HOLD",
+        "NOT_EVALUATED"
+      ]
+    },
+    "blocking_conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blocker"
+      }
+    },
+    "reopen_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rerun_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "review_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_readback_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "unresolved_authority_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "claim_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_is_authority",
+        "may_mutate_current",
+        "advance_rule"
+      ],
+      "properties": {
+        "decision_is_authority": {
+          "const": false
+        },
+        "may_mutate_current": {
+          "const": false
+        },
+        "advance_rule": {
+          "const": "ALLOW_ONLY_WHEN_NO_BLOCKERS_NO_TYPED_ACTIONS_NO_CONTRADICTIONS_NO_UNRESOLVED_AUTHORITY_REQUIREMENTS"
+        }
+      }
+    },
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "policy_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "hash_semantics"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{64}$"
+        },
+        "hash_semantics": {
+          "const": "UTF8_TEXT_LF_CANONICAL_V1"
+        }
+      }
+    },
+    "action_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actionRequest"
+      }
+    },
+    "impact_traces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/impactTrace"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/contradiction"
+      }
+    },
+    "unresolved_authority_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unresolvedAuthorityRequirement"
+      }
+    }
+  },
+  "$defs": {
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blocker_id",
+        "blocker_class",
+        "subject_ref",
+        "observed_state",
+        "blocking_authority_ref",
+        "source_refs",
+        "claim_ceiling",
+        "blocking_authority",
+        "state_fact_ref"
+      ],
+      "properties": {
+        "blocker_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocker_class": {
+          "enum": [
+            "SOURCE_STALE",
+            "WORK_BLOCKED",
+            "PROCESS_BLOCKED",
+            "DESIGN_REVIEW",
+            "QUALITY_NONCONFORMANCE",
+            "QUALITY_REVIEW",
+            "CHANGE_READBACK_PENDING",
+            "AUTHORITY_CONFLICT",
+            "UNRESOLVED_BLOCKING_RELATION",
+            "OTHER",
+            "STATE_FACET_BLOCKER",
+            "CROSS_CARRIER_CONTRADICTION",
+            "IMPACT_PROPAGATION_PENDING",
+            "BLOCKING_AUTHORITY_UNRESOLVED",
+            "MES_READBACK_MISSING",
+            "MBSE_VERIFICATION_INCOMPLETE",
+            "MBSE_VALIDATION_INCOMPLETE",
+            "AGENT_SIDE_EFFECT_UNCERTAIN",
+            "AGENT_LEASE_CONFLICT"
+          ]
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking_authority_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Compatibility effective authority reference. Equals resolved owner_ref when resolved; otherwise equals authority_contract_ref. See blocking_authority for resolution state."
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_ceiling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocking_authority": {
+          "$ref": "#/$defs/authorityResolution"
+        },
+        "state_fact_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "authorityResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolution_state",
+        "owner_ref",
+        "authority_contract_ref",
+        "required_owner_kind",
+        "scope"
+      ],
+      "properties": {
+        "resolution_state": {
+          "enum": [
+            "RESOLVED_EXISTING_BINDING",
+            "UNRESOLVED_REQUIRED_OWNER",
+            "DERIVED_COORDINATION_ONLY"
+          ]
+        },
+        "owner_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authority_contract_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_owner_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "actionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action_id",
+        "action_type",
+        "subject_ref",
+        "subject_identity_class",
+        "trigger_refs",
+        "reason_codes",
+        "authority",
+        "source_refs",
+        "relation_paths",
+        "requested_output_class",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action_type": {
+          "enum": [
+            "RERUN_WORK",
+            "REOPEN_REVIEW",
+            "REVIEW_SUBJECT",
+            "REQUIRE_READBACK",
+            "REVALIDATE_CONFIGURATION"
+          ]
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_identity_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reason_codes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "authority": {
+          "$ref": "#/$defs/authorityResolution"
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "relation_paths": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "requested_output_class": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claim_ceiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "impactTrace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "change_id",
+        "seed_ref",
+        "reached_ref",
+        "depth",
+        "relation_path",
+        "action_request_ids"
+      ],
+      "properties": {
+        "change_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reached_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "relation_path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "action_request_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "contradiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contradiction_id",
+        "subject_ref",
+        "state_family",
+        "state_fact_refs",
+        "observed_values",
+        "blocking",
+        "source_refs",
+        "claim_scope"
+      ],
+      "properties": {
+        "contradiction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_fact_refs": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "observed_values": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "blocking": {
+          "const": true
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "unresolvedAuthorityRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "subject_ref",
+        "required_owner_kind",
+        "authority_contract_ref",
+        "scope",
+        "trigger_ref",
+        "trigger_refs"
+      ],
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_owner_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_contract_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
