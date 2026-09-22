@@ -1,0 +1,124 @@
+{
+  "receipt_id": "OLEANDER_ENTERPRISE_STAGE1_EVAL_RECEIPT_v0.3.1_20260922",
+  "status": "EV2_SEMANTIC_REPAIR_VALIDATED_REAL_CASES_PENDING",
+  "candidate_ref": "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921",
+  "semantic_revision": "0.3.1",
+  "supersedes_for_active_semantics": "ERP_STAGE1_EVAL_RECEIPT_v0.3_20260922.json",
+  "baseline_main_commit": "3b68fa3d081736d7a98f7c0affafaeb8661bf319",
+  "repair_scope": [
+    "separate projection freshness from enterprise readiness",
+    "separate source-binding coverage from triggered module coverage",
+    "expose exact module scope counts",
+    "derive readiness and coverage rather than trusting asserted dashboard values"
+  ],
+  "builder_readback": {
+    "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+    "enterprise_readiness_state": "PARTIAL",
+    "module_source_binding_coverage": 1.0,
+    "module_triggered_coverage": 0.625,
+    "module_scope_counts": {
+      "TRIGGERED": 5,
+      "PARTIAL": 1,
+      "NOT_TRIGGERED": 2,
+      "HOLD": 0
+    },
+    "advance_allowed": false,
+    "deterministic_sha256": "D13AA5B10C69FF8262A31C5242A105EDD1856BB7F2B8B4B76FC1DEA6F79915A2"
+  },
+  "checks": [
+    {
+      "check": "v031_rich_fixture_custom_validation",
+      "result": "PASS"
+    },
+    {
+      "check": "v031_rich_fixture_jsonschema_draft_2020_12",
+      "result": "PASS"
+    },
+    {
+      "check": "v031_master_runtime_builder_projection_custom_validation",
+      "result": "PASS"
+    },
+    {
+      "check": "v031_master_runtime_builder_projection_jsonschema_draft_2020_12",
+      "result": "PASS"
+    },
+    {
+      "check": "projection_freshness_separated_from_enterprise_readiness",
+      "result": "PASS",
+      "builder_freshness": "SOURCE_READBACK_CURRENT",
+      "builder_readiness": "PARTIAL"
+    },
+    {
+      "check": "source_binding_coverage_separated_from_triggered_coverage",
+      "result": "PASS",
+      "source_binding_coverage": 1.0,
+      "triggered_coverage": 0.625
+    },
+    {
+      "check": "module_scope_counts_exact",
+      "result": "PASS",
+      "counts": {
+        "TRIGGERED": 5,
+        "PARTIAL": 1,
+        "NOT_TRIGGERED": 2,
+        "HOLD": 0
+      }
+    },
+    {
+      "check": "deterministic_builder_same_input_same_bytes",
+      "result": "PASS",
+      "sha256": "D13AA5B10C69FF8262A31C5242A105EDD1856BB7F2B8B4B76FC1DEA6F79915A2"
+    },
+    {
+      "check": "negative_invariants",
+      "result": "ALL_BLOCKED_AS_REQUIRED",
+      "count": 16
+    },
+    {
+      "check": "enterprise_readiness_cannot_ignore_design_hold",
+      "result": "BLOCKED_AS_REQUIRED"
+    },
+    {
+      "check": "module_triggered_coverage_cannot_fake_source_binding_coverage",
+      "result": "BLOCKED_AS_REQUIRED"
+    },
+    {
+      "check": "current_control_plane_tests",
+      "result": "PASS",
+      "tests": 142
+    },
+    {
+      "check": "current_execution_contract_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "current_architecture_control_validator",
+      "result": "PASS",
+      "system_architecture_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "operational_plane_count": 6
+    }
+  ],
+  "real_case_evaluation": {
+    "C01": "NOT_RUN",
+    "C04": "NOT_RUN",
+    "FALLINGWATER_3D": "NOT_RUN"
+  },
+  "independent_review": {
+    "state": "NOT_RUN",
+    "reason": "EV4 still requires an independent reviewer after real-case EV3 work."
+  },
+  "promotion": {
+    "eligible": false,
+    "reason": "Semantic repair does not promote the candidate; C01/C04/Fallingwater real-case projections and EV4 remain open."
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}

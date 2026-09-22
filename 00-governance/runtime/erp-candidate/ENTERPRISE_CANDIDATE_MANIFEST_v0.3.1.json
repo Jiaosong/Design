@@ -1,0 +1,105 @@
+{
+  "manifest_id": "OLEANDER_ENTERPRISE_CANDIDATE_MANIFEST_v0.3.1",
+  "status": "EV2_ACTIVE_CANDIDATE_PACKAGE",
+  "semantic_revision": "0.3.1",
+  "baseline_main_commit": "3b68fa3d081736d7a98f7c0affafaeb8661bf319",
+  "active_schema": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.1.schema.json",
+  "active_files_excluding_this_manifest": [
+    {
+      "path": "README.md",
+      "bytes": 8909,
+      "sha256": "2BC584D75E012FC8C4C73D72E56AC0432C66488A95D6F5DB0FDDFA74547A53D3",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 4946,
+      "sha256": "B7AB9CDFD16DF08328277B67B6106C22AE93C23FBB634EA248EA147C097AC9AB",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "build_erp_projection.py",
+      "bytes": 20865,
+      "sha256": "D6E6AF16650CF06780B6143F38E3B3D35F608465BD6B6C20242D988EFF9BF8F8",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "validate_erp_candidate.py",
+      "bytes": 26345,
+      "sha256": "08EA6E5E3D51110EC71263A6E84CF87600ADE82B460AE5241BF4BD2D0E6873A2",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.1.schema.json",
+      "bytes": 72224,
+      "sha256": "7D6376605E41F8326F69ABBB99C112E3EDC59A95682F526DF98C1C38B0BDC436",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "example_enterprise_projection_v0.3.1.json",
+      "bytes": 24029,
+      "sha256": "BBA3BF182D1EFEAB7E1CAA77D8B6B3ADBCD8E049ED6CCB74EB54573221C21CC5",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_MODULE_OWNER_MAPPING_v0.2.json",
+      "bytes": 9180,
+      "sha256": "E65E28232963A9DA5661247FDE90CABF2ED08B2E07C57B456B8B8755EF7C65FB",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_REFERENCE_MODEL_v0.1.json",
+      "bytes": 1762,
+      "sha256": "68C5AA57B06BD9065C63FDDF0C1717B1C88CBF661D6C899BB2089DCE88E25890",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_ENTERPRISE_CANDIDATE_GAP_REGISTER_v0.1.json",
+      "bytes": 2976,
+      "sha256": "CD3CAE8373ADC24DDD2D483958C75C47F1F835967E2910619B4FED0B49CAD173",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "OLEANDER_EVOLUTION_CANDIDATE_ERP_ORCHESTRATION_STAGE1_20260921.json",
+      "bytes": 12420,
+      "sha256": "738503C961928FF7AE78FA4F40C387830153E135CA66233A82089644E2B67008",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "ERP_STAGE1_EVAL_RECEIPT_v0.3.1_20260922.json",
+      "bytes": 3750,
+      "sha256": "2F6DA144916CE0B5526B30D67275ADE0A8679B113C64C381CCEE95707343246A",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    },
+    {
+      "path": "eval-output/example-master-runtime.enterprise.v0.3.1.json",
+      "bytes": 21530,
+      "sha256": "D13AA5B10C69FF8262A31C5242A105EDD1856BB7F2B8B4B76FC1DEA6F79915A2",
+      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+    }
+  ],
+  "legacy_provenance_files": [
+    "ENTERPRISE_CANDIDATE_MANIFEST_v0.3.json",
+    "ERP_STAGE1_EVAL_RECEIPT_v0.3_20260922.json",
+    "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION_v0.3.schema.json",
+    "example_enterprise_projection_v0.3.json",
+    "eval-output/example-master-runtime.enterprise.v0.3.json",
+    "OLEANDER_ERP_CORE_PROJECTION_v0.1.schema.json",
+    "OLEANDER_ERP_CORE_PROJECTION_v0.2.schema.json",
+    "example_erp_projection.json",
+    "example_erp_projection_v0.2.json",
+    "OLEANDER_ERP_OWNER_MAPPING_v0.1.json",
+    "ERP_STAGE1_EVAL_RECEIPT_20260921.json",
+    "eval-output/example-master-runtime.erp.json",
+    "eval-output/example-master-runtime.erp.v0.2.json"
+  ],
+  "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1",
+  "authority_boundary": "CANDIDATE_PACKAGE_IDENTITY_ONLY_NOT_CURRENT_AUTHORITY",
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "PROFESSIONAL_PASS",
+    "DESIGN_KEEP",
+    "PROJECT_PROMOTION"
+  ]
+}
