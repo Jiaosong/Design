@@ -1,0 +1,811 @@
+{
+  "schema_version": "0.3.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_ORCHESTRATION_PROJECTION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T15:10:00+08:00",
+  "authority": {
+    "architecture_ref": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "master_runtime_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+    "authority_snapshot_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+    "knowledge_snapshot_ref": "EV3:C01:SOURCE_MANIFEST",
+    "source_binding_refs": [
+      "EV3SRC:C01:AUTHORITY",
+      "EV3SRC:C01:CHECKPOINT",
+      "EV3SRC:C01:FINAL_READBACK",
+      "EV3SRC:C01:DOWNSTREAM",
+      "EV3SRC:C01:FREEZE"
+    ],
+    "source_binding_hash_semantics": "SOURCE_SPECIFIC_EXACT_REVISION_DIGESTS_WHEN_AVAILABLE",
+    "projection_only": true,
+    "may_mutate_current": false,
+    "source_binding_digests": [
+      {
+        "ref": "EV3SRC:C01:AUTHORITY",
+        "sha256": "64B2A092AFABD78802060842AFAD87284E0FFF64DBB035D8D4E82B83C382A426",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:C01:CHECKPOINT",
+        "sha256": "9224B69D3815E993B8D9DE62423441264D7862670BACC3A7290D0DE29B69F629",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:C01:FINAL_READBACK",
+        "sha256": "3A75332B52024C4714F9017828AA034A548D1C1263A738D50FFF0422FBF4DFDB",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:C01:DOWNSTREAM",
+        "sha256": "FC895A878F2EE76B40B4EC7EC3D5884A88532C15414DC5571C7ED11F033D425E",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      },
+      {
+        "ref": "EV3SRC:C01:FREEZE",
+        "sha256": "8F5195AD33D7EE83D90A8A7D3FAB6C29FE2D3CA59C9CC17CC9C1AE34519B97CC",
+        "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+      }
+    ]
+  },
+  "architecture_contract": {
+    "integration_model": "FEDERATED_PROJECTION_ENVELOPE",
+    "module_count": 8,
+    "no_new_runtime_layer": true,
+    "state_policy": "ORTHOGONAL_STATE_FAMILIES_NO_FLATTENING",
+    "identity_policy": "CANONICAL_REF_REQUIRED_NO_ID_SYNTHESIS_AS_AUTHORITY",
+    "write_policy": "READ_ONLY_CANDIDATE_EXISTING_AUTHORIZED_PATHS_ONLY_AFTER_ADOPTION",
+    "transaction_policy": "NO_DISTRIBUTED_TRANSACTION_MANAGER_RECONCILE_PARTIAL_SIDE_EFFECTS",
+    "digital_thread_policy": "TYPED_SOURCE_BOUND_LINKS_DO_NOT_TRANSFER_AUTHORITY"
+  },
+  "case_refs": [
+    {
+      "canonical_case_id": "C01",
+      "canonical_ref": "05-cases/c01-yimai-guangdu",
+      "project_binding_state": "BOUND",
+      "does_not_prove": [
+        "P2_PROJECT_ID"
+      ]
+    }
+  ],
+  "project_axis_refs": [
+    {
+      "axis_level": "P2_PROJECT",
+      "canonical_id": "PRJ-C01-YIMAI-GUANGDU",
+      "canonical_ref": "local-current:C01:R-A-authority-snapshot"
+    },
+    {
+      "axis_level": "P3_WORKSTREAM",
+      "canonical_id": "C01-R17-DETAIL-DESIGN",
+      "canonical_ref": "local-current:C01:R17"
+    }
+  ],
+  "work_packages": [
+    {
+      "work_package_id": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "workstream_id": "C01-R17-DETAIL-DESIGN",
+      "decision_object_ids": [
+        "C01-R17-DETAIL-SYSTEM"
+      ],
+      "coordination_state": "BLOCKED",
+      "required_native_outputs": [
+        "ARTIFACT-C01-R17-DD-PACKAGE"
+      ],
+      "required_capability_roles": [
+        "NATIVE_DETAIL_PRODUCTION",
+        "INDEPENDENT_PROFESSIONAL_REVIEW",
+        "FIELD_VERIFICATION"
+      ],
+      "depends_on": [
+        "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+      ],
+      "open_blockers": [
+        "field measured plan/sections/drainage",
+        "heritage/public-private permission",
+        "accessibility/code applicability",
+        "structural/overturning/load validation",
+        "electrical/battery safety",
+        "material samples/weather/fire",
+        "real N08 host authorization"
+      ],
+      "does_not_prove": [
+        "PROJECT_PROMOTION",
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS"
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "JOB-C01-R17-PRODUCER-READBACK",
+      "work_package_id": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "job_state": "SUCCEEDED",
+      "primary_owner_ref": "producer:C01-R17",
+      "capability_refs": [
+        "capability:NATIVE_DETAIL_PRODUCTION"
+      ],
+      "tool_adapter_refs": [],
+      "input_refs": [
+        "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+      ],
+      "output_refs": [
+        "ARTIFACT-C01-R17-DD-PACKAGE"
+      ],
+      "readback_refs": [
+        "EV3SRC:C01:FINAL_READBACK"
+      ],
+      "claim_ceiling": "MACHINE_READBACK_PASS_FIELD_AND_PROFESSIONAL_GATES_OPEN",
+      "does_not_prove": [
+        "DESIGN_KEEP",
+        "PROFESSIONAL_PASS",
+        "PROJECT_PROMOTION"
+      ]
+    }
+  ],
+  "resource_refs": [],
+  "artifact_refs": [
+    {
+      "artifact_id": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "canonical_ref": "local-current:C01:R17-detail-package",
+      "native_format": "SVG_CSV_JSON_PACKAGE",
+      "editable_state": "EDITABLE",
+      "hash_or_commit": "3A75332B52024C4714F9017828AA034A548D1C1263A738D50FFF0422FBF4DFDB",
+      "readback_refs": [
+        "EV3SRC:C01:FINAL_READBACK"
+      ]
+    }
+  ],
+  "review_refs": [
+    {
+      "review_id": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "review_class": "DESIGN",
+      "receipt_ref": "NOT_AVAILABLE:C01:R17:INDEPENDENT_PROFESSIONAL_REVIEW",
+      "result": "HOLD",
+      "independence_state": "UNKNOWN"
+    }
+  ],
+  "modules": {
+    "erp": {
+      "header": {
+        "module": "ERP",
+        "scope_state": "PARTIAL",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "BUDGET_TRUTH",
+          "PROFESSIONAL_PASS",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "demand_records": [],
+      "schedule_records": [],
+      "resource_demand": []
+    },
+    "plm": {
+      "header": {
+        "module": "PLM",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION",
+          "TECHNICAL_CORRECTNESS"
+        ]
+      },
+      "configuration_items": [
+        {
+          "item_id": "CI-C01-R17-DD",
+          "item_class": "ARTIFACT",
+          "canonical_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "revision_ref": "3A75332B52024C4714F9017828AA034A548D1C1263A738D50FFF0422FBF4DFDB",
+          "lifecycle_state": "REVIEW",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "does_not_prove": [
+            "TECHNICAL_CORRECTNESS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "baselines": [
+        {
+          "baseline_id": "BASELINE-C01-R17",
+          "member_refs": [
+            "CI-C01-R17-DD",
+            "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+          ],
+          "baseline_state": "HOLD",
+          "authority_ref": "EV3SRC:C01:AUTHORITY",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ],
+      "change_records": []
+    },
+    "mes": {
+      "header": {
+        "module": "MES",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "ACCEPTANCE",
+          "FIELD_TRUTH",
+          "PHYSICAL_EXECUTION"
+        ]
+      },
+      "operation_records": [
+        {
+          "operation_id": "OP-C01-R17-DIGITAL-NATIVE",
+          "work_package_id": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+          "operation_class": "DIGITAL_NATIVE_EXECUTION",
+          "execution_state": "COMPLETE",
+          "resource_refs": [],
+          "input_refs": [
+            "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+          ],
+          "output_refs": [
+            "ARTIFACT-C01-R17-DD-PACKAGE"
+          ],
+          "actual_readback_refs": [
+            "EV3SRC:C01:FINAL_READBACK"
+          ],
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "does_not_prove": [
+            "PHYSICAL_EXECUTION",
+            "FIELD_TRUTH",
+            "ACCEPTANCE"
+          ]
+        }
+      ],
+      "material_equipment_refs": [],
+      "execution_readbacks": [
+        {
+          "canonical_ref": "EV3SRC:C01:FINAL_READBACK",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "authority_owner": "Actual Readback",
+          "projection_only": true
+        }
+      ]
+    },
+    "bpm": {
+      "header": {
+        "module": "BPM",
+        "scope_state": "HOLD",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROFESSIONAL_STAGE_PASS",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "process_instances": [
+        {
+          "process_instance_id": "PROC-C01-R17",
+          "process_ref": "local-current:C01:R17-runtime",
+          "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+          "process_state": "HOLD",
+          "current_node_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "does_not_prove": [
+            "PROFESSIONAL_STAGE_PASS",
+            "DESIGN_KEEP",
+            "PROJECT_PROMOTION"
+          ]
+        }
+      ],
+      "handoffs": [],
+      "exceptions": []
+    },
+    "qms": {
+      "header": {
+        "module": "QMS",
+        "scope_state": "HOLD",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "DESIGN_KEEP",
+          "PROFESSIONAL_PASS",
+          "STATUTORY_APPROVAL"
+        ]
+      },
+      "quality_plans": [
+        {
+          "quality_plan_id": "QPLAN-C01-R17",
+          "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+          "acceptance_criteria_refs": [
+            "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+          ],
+          "review_refs": [
+            "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL"
+          ],
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ],
+      "nonconformances": [],
+      "capa_records": [],
+      "inspection_records": [
+        {
+          "inspection_id": "INSP-C01-R17-MACHINE",
+          "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "inspection_class": "REVIEW_READBACK",
+          "result": "PASS",
+          "evidence_refs": [
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        },
+        {
+          "inspection_id": "INSP-C01-R17-PROFESSIONAL",
+          "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "inspection_class": "QUALITY",
+          "result": "HOLD",
+          "evidence_refs": [
+            "EV3SRC:C01:CHECKPOINT"
+          ],
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ]
+    },
+    "mbse": {
+      "header": {
+        "module": "MBSE",
+        "scope_state": "PARTIAL",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "PROJECT_ACCEPTANCE",
+          "SYSTEMS_ENGINEERING_CURRENT",
+          "VALIDATION_PASS"
+        ]
+      },
+      "requirements": [
+        {
+          "requirement_id": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+          "requirement_class": "DESIGN_REQUIREMENT",
+          "statement_ref": "C01:R17:external_gates_not_design_gaps",
+          "status": "HOLD",
+          "allocated_to_refs": [
+            "ARTIFACT-C01-R17-DD-PACKAGE"
+          ],
+          "verification_method": "REVIEW",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "does_not_prove": [
+            "VALIDATION_PASS",
+            "PROJECT_ACCEPTANCE"
+          ]
+        }
+      ],
+      "system_elements": [
+        {
+          "element_id": "SYS-C01-R17-DD",
+          "element_class": "WORK_PRODUCT",
+          "canonical_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ],
+      "interfaces": [],
+      "verification_validation": [
+        {
+          "vv_id": "VV-C01-R17-FIELD",
+          "subject_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+          "vv_class": "VALIDATION",
+          "method": "FIELD_MEASUREMENT_AND_SPECIALIST_REVIEW",
+          "result": "NOT_RUN",
+          "evidence_refs": [],
+          "independent_review_ref": null,
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ],
+      "configuration_baselines": [
+        "BASELINE-C01-R17"
+      ]
+    },
+    "knowledge_graph": {
+      "header": {
+        "module": "KNOWLEDGE_GRAPH",
+        "scope_state": "TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "CLAIM_TRUTH",
+          "KNOWLEDGE_CURRENT",
+          "OE3"
+        ]
+      },
+      "nodes": [
+        {
+          "node_id": "KG-C01-PROJECT",
+          "node_class": "PROJECT",
+          "canonical_ref": "PRJ-C01-YIMAI-GUANGDU",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-C01-ARTIFACT",
+          "node_class": "ARTIFACT",
+          "canonical_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "authority_gain": false
+        },
+        {
+          "node_id": "KG-C01-REQ",
+          "node_class": "REQUIREMENT",
+          "canonical_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "authority_gain": false
+        }
+      ],
+      "edges": [
+        {
+          "edge_id": "KG-C01-SATISFIES",
+          "predicate": "SATISFIES",
+          "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "to_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ],
+          "projection_only": true,
+          "authority_effect": "NONE"
+        }
+      ],
+      "provenance_records": [
+        {
+          "provenance_id": "PROV-C01-R17",
+          "entity_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+          "derived_from_refs": [
+            "REQ-C01-R17-FIELD-ENGINEERING-GATES"
+          ],
+          "generated_by_ref": "JOB-C01-R17-PRODUCER-READBACK",
+          "attributed_to_refs": [
+            "producer:C01-R17"
+          ],
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ],
+      "query_policies": [
+        {
+          "policy_id": "KG-C01-EV3",
+          "query_scope": "TASK_CLAIM_SCOPED_ONLY",
+          "eligibility_rule_ref": "OE-policy",
+          "claim_ceiling_rule_ref": "claim-ceiling-policy",
+          "source_refs": [
+            "EV3SRC:C01:AUTHORITY",
+            "EV3SRC:C01:CHECKPOINT",
+            "EV3SRC:C01:FINAL_READBACK",
+            "EV3SRC:C01:DOWNSTREAM",
+            "EV3SRC:C01:FREEZE"
+          ]
+        }
+      ]
+    },
+    "agent_runtime": {
+      "header": {
+        "module": "AGENT_RUNTIME",
+        "scope_state": "NOT_TRIGGERED",
+        "authority_mode": "PROJECTION_ONLY",
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ],
+        "does_not_prove": [
+          "AUTHORITY",
+          "DESIGN_KEEP",
+          "PROJECT_PROMOTION"
+        ]
+      },
+      "sessions": [],
+      "leases": [],
+      "actions": [],
+      "handoffs": []
+    }
+  },
+  "digital_thread": {
+    "relations": [
+      {
+        "relation_id": "REL-C01-PROJECT-WP",
+        "relation_type": "PROJECT_CONTAINS_WORK_PACKAGE",
+        "from_ref": "PRJ-C01-YIMAI-GUANGDU",
+        "to_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ]
+      },
+      {
+        "relation_id": "REL-C01-JOB-WP",
+        "relation_type": "JOB_EXECUTES_WORK_PACKAGE",
+        "from_ref": "JOB-C01-R17-PRODUCER-READBACK",
+        "to_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ]
+      },
+      {
+        "relation_id": "REL-C01-JOB-ART",
+        "relation_type": "JOB_PRODUCES_ARTIFACT",
+        "from_ref": "JOB-C01-R17-PRODUCER-READBACK",
+        "to_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ]
+      },
+      {
+        "relation_id": "REL-C01-ART-REV",
+        "relation_type": "ARTIFACT_REVIEWED_BY",
+        "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+        "to_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ]
+      },
+      {
+        "relation_id": "REL-C01-ART-REQ",
+        "relation_type": "SATISFIES",
+        "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+        "to_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+        "projection_only": true,
+        "source_refs": [
+          "EV3SRC:C01:AUTHORITY",
+          "EV3SRC:C01:CHECKPOINT",
+          "EV3SRC:C01:FINAL_READBACK",
+          "EV3SRC:C01:DOWNSTREAM",
+          "EV3SRC:C01:FREEZE"
+        ]
+      }
+    ],
+    "trace_queries": [],
+    "unresolved_links": [
+      {
+        "link_id": "UNRES-C01-INDEPENDENT-REVIEW",
+        "from_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+        "expected_relation_type": "ARTIFACT_REVIEWED_BY",
+        "reason": "Independent professional review is NOT_RUN; machine PASS must not become Design KEEP.",
+        "blocking": true
+      }
+    ]
+  },
+  "state_facets": {
+    "project_design": {
+      "PRJ-C01-YIMAI-GUANGDU": "CANDIDATE"
+    },
+    "job": {
+      "JOB-C01-R17-PRODUCER-READBACK": "SUCCEEDED"
+    },
+    "knowledge_integrity": {
+      "EV3:C01:SOURCE_MANIFEST": "SOURCE_BOUND"
+    },
+    "operational_eligibility": {
+      "REQ-C01-R17-FIELD-ENGINEERING-GATES": "OE2_CONDITIONAL"
+    },
+    "design_quality": {
+      "ARTIFACT-C01-R17-DD-PACKAGE": "HOLD_INDEPENDENT_REVIEW_NOT_RUN"
+    },
+    "professional": {
+      "C01-R17": "HOLD_PROFESSIONAL_REVIEW_NOT_RUN"
+    },
+    "interface": {
+      "REQ-C01-R17-FIELD-ENGINEERING-GATES": "HOLD_FIELD_ENGINEERING_OPEN"
+    },
+    "authority": {
+      "ARTIFACT-C01-R17-DD-PACKAGE": "CURRENT_POINTER_UNCHANGED"
+    },
+    "evidence": {
+      "ARTIFACT-C01-R17-DD-PACKAGE": "MACHINE_READBACK_PASS"
+    },
+    "configuration": {
+      "ARTIFACT-C01-R17-DD-PACKAGE": "REVIEW"
+    },
+    "quality": {
+      "ARTIFACT-C01-R17-DD-PACKAGE": "HOLD_PROFESSIONAL_GATE"
+    },
+    "process": {
+      "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD": "HOLD"
+    },
+    "agent_runtime": {
+      "C01-R17": "NOT_TRIGGERED"
+    }
+  },
+  "activity_observations": [],
+  "reconciliation": {
+    "projection_freshness_state": "SOURCE_READBACK_CURRENT",
+    "enterprise_readiness_state": "HOLD",
+    "drift_state": "CURRENT",
+    "source_readback_refs": [
+      "EV3SRC:C01:AUTHORITY",
+      "EV3SRC:C01:CHECKPOINT",
+      "EV3SRC:C01:FINAL_READBACK",
+      "EV3SRC:C01:DOWNSTREAM",
+      "EV3SRC:C01:FREEZE"
+    ],
+    "partial_side_effect_state": "NONE",
+    "reconciliation_actions": [
+      "RUN_ENTERPRISE_KERNEL_V0_1_1_RECONCILIATION"
+    ],
+    "advance_allowed": false
+  },
+  "control_metrics": {
+    "authority_duplication_count": 0,
+    "state_family_flattening_count": 0,
+    "untraceable_relation_count": 0,
+    "unresolved_blocking_link_count": 1,
+    "module_source_binding_coverage": 1.0,
+    "module_triggered_coverage": 0.375,
+    "module_scope_counts": {
+      "TRIGGERED": 3,
+      "PARTIAL": 2,
+      "NOT_TRIGGERED": 1,
+      "HOLD": 2
+    },
+    "projection_rebuildable": true
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "ENTERPRISE_COMPLETENESS",
+    "KNOWLEDGE_CURRENT",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "REAL_CASE_GENERALIZATION",
+    "STATUTORY_APPROVAL"
+  ]
+}

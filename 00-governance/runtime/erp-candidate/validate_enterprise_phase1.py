@@ -13,20 +13,20 @@ from reconcile_enterprise_kernel import reconcile
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parents[2]
 KERNEL_SCHEMA = ROOT / "OLEANDER_ENTERPRISE_KERNEL_v0.1.schema.json"
-RECON_SCHEMA = ROOT / "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json"
+RECON_SCHEMA = ROOT / "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.2.schema.json"
 RECON_POLICY = ROOT / "OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json"
 RICH_PROJECTION = ROOT / "example_enterprise_projection_v0.3.1.json"
-RICH_KERNEL = ROOT / "example_enterprise_kernel_v0.1.1.json"
-RICH_RECON = ROOT / "example_enterprise_reconciliation_v0.1.1.json"
+RICH_KERNEL = ROOT / "example_enterprise_kernel_v0.1.2.json"
+RICH_RECON = ROOT / "example_enterprise_reconciliation_v0.1.2.json"
 MASTER_PROJECTION = ROOT / "eval-output" / "example-master-runtime.enterprise.v0.3.1.json"
-MASTER_KERNEL = ROOT / "eval-output" / "example-master-runtime.enterprise-kernel.v0.1.1.json"
-MASTER_RECON = ROOT / "eval-output" / "example-master-runtime.reconciliation.v0.1.1.json"
+MASTER_KERNEL = ROOT / "eval-output" / "example-master-runtime.enterprise-kernel.v0.1.2.json"
+MASTER_RECON = ROOT / "eval-output" / "example-master-runtime.reconciliation.v0.1.2.json"
 PHASE1_MODULES = {"ERP", "PLM", "BPM", "QMS"}
 KERNEL_PRIMITIVES = {"IDENTITY", "AUTHORITY_BINDING", "STATE_FACT", "RELATION", "WORK", "CONFIGURATION", "EVIDENCE", "CHANGE", "READBACK", "RECEIPT", "RECONCILIATION"}
 OWNER_MAP = ROOT / "OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.1.1.json"
-PHASE1_CANDIDATE = ROOT / "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.1.json"
-PHASE1_RECEIPT = ROOT / "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.1_20260922.json"
-PHASE1_MANIFEST = ROOT / "ENTERPRISE_PHASE1_MANIFEST_v0.1.1.json"
+PHASE1_CANDIDATE = ROOT / "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.2.json"
+PHASE1_RECEIPT = ROOT / "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.2_20260922.json"
+PHASE1_MANIFEST = ROOT / "ENTERPRISE_PHASE1_MANIFEST_v0.1.2.json"
 BLOCKING_CLASSES = {
     "SOURCE_STALE",
     "WORK_BLOCKED",
@@ -206,7 +206,7 @@ def validate_authority_resolution(authority: dict, kernel: dict, context: str) -
 
 def validate_reconciliation_common(decision: dict, kernel: dict, expected_kernel_sha: str | None = None) -> None:
     schema_validate(RECON_SCHEMA, decision, "reconciliation")
-    require(decision.get("schema_version") == "0.1.1-candidate", "reconciliation schema revision drift")
+    require(decision.get("schema_version") == "0.1.2-candidate", "reconciliation schema revision drift")
     require(decision.get("kind") == "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION", "reconciliation kind drift")
     require(decision.get("candidate_status") in {"EV2_CANDIDATE", "EVAL_ONLY"}, "reconciliation must remain candidate")
     if expected_kernel_sha:
@@ -221,7 +221,7 @@ def validate_reconciliation_common(decision: dict, kernel: dict, expected_kernel
     identity_class = {row["canonical_ref"]: row["identity_class"] for row in kernel.get("identities", [])}
     work_ids = {row["work_id"] for row in kernel.get("work_items", [])}
     authority_requirement_ids = {row["requirement_id"] for row in decision.get("unresolved_authority_requirements", [])}
-    unresolved_lookup = {(row["subject_ref"], row["required_owner_kind"], row["authority_contract_ref"]) for row in decision.get("unresolved_authority_requirements", [])}
+    unresolved_lookup = {(row["subject_ref"], row["required_owner_kind"], row["authority_contract_ref"], row["scope"]) for row in decision.get("unresolved_authority_requirements", [])}
 
     blockers = decision.get("blocking_conditions", [])
     require(len({x["blocker_id"] for x in blockers}) == len(blockers), "duplicate reconciliation blockers")
@@ -236,7 +236,7 @@ def validate_reconciliation_common(decision: dict, kernel: dict, expected_kernel
         expected_effective = authority.get("owner_ref") or authority.get("authority_contract_ref")
         require(blocker.get("blocking_authority_ref") == expected_effective, "blocker compatibility authority ref must equal resolved owner or authority contract")
         if authority.get("resolution_state") == "UNRESOLVED_REQUIRED_OWNER":
-            key = (blocker["subject_ref"], authority["required_owner_kind"], authority["authority_contract_ref"])
+            key = (blocker["subject_ref"], authority["required_owner_kind"], authority["authority_contract_ref"], authority["scope"])
             require(key in unresolved_lookup, f"blocker unresolved authority requirement not materialized: {blocker['blocker_id']}")
         if blocker.get("state_fact_ref"):
             covered_explicit_facts.add(blocker["state_fact_ref"])
@@ -256,7 +256,7 @@ def validate_reconciliation_common(decision: dict, kernel: dict, expected_kernel
         validate_authority_resolution(action.get("authority", {}), kernel, f"action {action.get('action_id')}")
         authority = action["authority"]
         if authority.get("resolution_state") == "UNRESOLVED_REQUIRED_OWNER":
-            key = (action["subject_ref"], authority["required_owner_kind"], authority["authority_contract_ref"])
+            key = (action["subject_ref"], authority["required_owner_kind"], authority["authority_contract_ref"], authority["scope"])
             require(key in unresolved_lookup, f"action unresolved authority requirement not materialized: {action['action_id']}")
         if action["action_type"] == "RERUN_WORK":
             require(action["subject_ref"] in work_ids, f"RERUN_WORK target must be a work item: {action['subject_ref']}")
@@ -284,13 +284,23 @@ def validate_reconciliation_common(decision: dict, kernel: dict, expected_kernel
         refs = contradiction.get("state_fact_refs", [])
         require(all(ref in fact_map for ref in refs), "contradiction references unknown state fact")
         require(any(fact_map[ref].get("blocking_semantics") == "EXPLICIT" for ref in refs), "contradiction must include explicit blocking fact")
+        scopes = {fact_map[ref].get("claim_scope") or "LEGACY_UNSCOPED" for ref in refs}
+        require(len(scopes) == 1, "contradiction may not mix claim scopes")
+        require(contradiction.get("claim_scope") in scopes, "contradiction claim_scope mismatch")
 
     for trace in decision.get("impact_traces", []):
         require(all(rel in relation_ids for rel in trace.get("relation_path", [])), "impact trace contains unknown relation")
         require(all(action_id in action_ids for action_id in trace.get("action_request_ids", [])), "impact trace references unknown action request")
         require(trace.get("depth", 0) <= load(RECON_POLICY).get("propagation_limits", {}).get("max_depth", 4), "impact trace exceeded policy max depth")
 
-    require(len(authority_requirement_ids) == len(decision.get("unresolved_authority_requirements", [])), "duplicate unresolved authority requirement IDs")
+    requirements = decision.get("unresolved_authority_requirements", [])
+    require(len(authority_requirement_ids) == len(requirements), "duplicate unresolved authority requirement IDs")
+    root_keys = [(row["subject_ref"], row["required_owner_kind"], row["authority_contract_ref"], row["scope"]) for row in requirements]
+    require(len(root_keys) == len(set(root_keys)), "unresolved authority requirements not root-cause deduplicated")
+    for row in requirements:
+        require(row.get("trigger_refs") == sorted(set(row.get("trigger_refs", []))), "authority trigger_refs must be sorted/unique")
+        require(bool(row.get("trigger_refs")), "authority requirement missing trigger_refs")
+        require(row.get("trigger_ref") == row["trigger_refs"][0], "authority trigger_ref must be deterministic first trigger")
     sets = [
         blockers,
         actions,
@@ -329,7 +339,7 @@ def validate_phase1_support() -> None:
     require(candidate.get("promotion", {}).get("eligible") is False, "Phase-1 candidate must remain promotion-ineligible")
     baseline = candidate.get("baseline", {})
     commit = baseline.get("commit")
-    require(commit == "9c8a9580626cc1505308eec6779dd4f3756e9761", "Phase-1 candidate exact baseline drift")
+    require(commit == "ab83fde14d0b341f373098e789be93cd527465ef", "Phase-1 candidate exact baseline drift")
     require(baseline.get("hash_semantics") == "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT_AT_EXACT_COMMIT", "Phase-1 baseline hash semantics drift")
     for rel, expected in baseline.get("source_sha256", {}).items():
         try:
@@ -346,15 +356,20 @@ def validate_phase1_support() -> None:
     require(receipt.get("status") in {"PREVALIDATION_PENDING_FULL_REGRESSION", "VALIDATED_ANTI_POLLUTION_PASS"}, "Phase-1 receipt status invalid")
     require(receipt.get("phase1_modules") == ["ERP", "PLM", "BPM", "QMS"], "Phase-1 receipt module ordering/scope drift")
     require(receipt.get("promotion", {}).get("eligible") is False, "Phase-1 receipt may not claim promotion eligibility")
-    require(receipt.get("real_case_evaluation") == {"C01":"NOT_RUN","C04":"NOT_RUN","FALLINGWATER_3D":"NOT_RUN"}, "Phase-1 receipt may not claim unrun real cases")
+    require(receipt.get("real_case_evaluation") == {
+        "C01":"STRESS_TEST_HOLD_CORRECT",
+        "C04":"STRESS_TEST_HOLD_CORRECT",
+        "FALLINGWATER_3D":"SOURCE_DIVERGED_HOLD_REFRESH_REQUIRED",
+    }, "Phase-1 real-case stress readback drift")
     if receipt.get("status") == "VALIDATED_ANTI_POLLUTION_PASS":
         check_map = {x.get("check"): x.get("result") for x in receipt.get("checks", [])}
         for required_check in [
-            "phase1_validator_v011",
+            "phase1_validator_v012",
             "v031_candidate_validator",
             "true_clear_chain",
             "explicit_state_fail_closed",
-            "cross_carrier_contradiction_gate",
+            "scoped_contradiction_gate",
+            "authority_requirement_root_dedup",
             "typed_change_impact_closure",
             "canonical_authority_resolution",
             "typed_action_projection",
@@ -367,7 +382,7 @@ def validate_phase1_support() -> None:
 
     manifest = load(PHASE1_MANIFEST)
     require(manifest.get("status") == "PHASE1_EV2_ACTIVE_CANDIDATE_PACKAGE", "Phase-1 manifest status drift")
-    require(manifest.get("baseline_main_commit") == "9c8a9580626cc1505308eec6779dd4f3756e9761", "Phase-1 manifest baseline drift")
+    require(manifest.get("baseline_main_commit") == "ab83fde14d0b341f373098e789be93cd527465ef", "Phase-1 manifest baseline drift")
     require(manifest.get("hash_semantics") == "UTF8_TEXT_LF_CANONICAL_V1", "Phase-1 manifest hash semantics drift")
     rows = manifest.get("active_files_excluding_this_manifest", [])
     require(len(rows) >= 17, "Phase-1 manifest active-file coverage incomplete")
@@ -441,7 +456,7 @@ def main() -> int:
     validate_reconciliation(rich_recon, RICH_KERNEL)
     validate_kernel(master_kernel, MASTER_PROJECTION)
     validate_reconciliation(master_recon, MASTER_KERNEL)
-    print("PHASE1 v0.1.1 stored kernel/reconciliation fixtures: PASS")
+    print("PHASE1 v0.1.2 stored kernel/reconciliation fixtures: PASS")
 
     rich_classes = {x["blocker_class"] for x in rich_recon["blocking_conditions"]}
     require({"DESIGN_REVIEW", "QUALITY_REVIEW", "CHANGE_READBACK_PENDING", "UNRESOLVED_BLOCKING_RELATION"}.issubset(rich_classes), "rich fixture missing expected blockers")
@@ -520,14 +535,29 @@ def main() -> int:
         require(explicit_ids.issubset(covered), f"EXPLICIT {label} state fact missing blocker coverage")
     print("PHASE1 all EXPLICIT state facts fail-closed: PASS")
 
-    # Cross-carrier contradiction must be explicit, not merely incidentally blocked.
+    # Different claim scopes may legitimately disagree (e.g. machine PASS vs professional HOLD).
+    scoped_projection = make_clear_projection(load(RICH_PROJECTION))
+    scoped_projection["state_facets"]["quality"] = {"ARTIFACT-DEMO-01": "HOLD_PROFESSIONAL_GATE"}
+    scoped_kernel, scoped_decision = phase1_decision_from_projection(scoped_projection, "CROSS-SCOPE-NON-CONTRADICTION")
+    validate_reconciliation_in_memory(scoped_decision, scoped_kernel)
+    require(not scoped_decision["contradictions"], "different claim scopes created false contradiction")
+
+    # Same-subject/same-family/same-claim-scope PASS vs REVISE is a real contradiction.
     contradiction_projection = make_clear_projection(load(RICH_PROJECTION))
-    contradiction_projection["state_facets"]["quality"] = {"ARTIFACT-DEMO-01": "REVISE"}
-    contradiction_kernel, contradiction_decision = phase1_decision_from_projection(contradiction_projection, "CROSS-CARRIER-CONTRADICTION")
+    contradiction_projection["modules"]["qms"]["inspection_records"].append({
+        "inspection_id":"INSP-DEMO-CONTRADICTION",
+        "subject_ref":"ARTIFACT-DEMO-01",
+        "inspection_class":"REVIEW_READBACK",
+        "result":"REVISE",
+        "evidence_refs":["REVIEW-DEMO-01"],
+        "source_refs":["fixture:contradiction"]
+    })
+    contradiction_kernel, contradiction_decision = phase1_decision_from_projection(contradiction_projection, "SAME-SCOPE-CONTRADICTION")
     validate_reconciliation_in_memory(contradiction_decision, contradiction_kernel)
     require(contradiction_decision["contradictions"], "cross-carrier contradiction was not materialized")
     require("CROSS_CARRIER_CONTRADICTION" in {b["blocker_class"] for b in contradiction_decision["blocking_conditions"]}, "cross-carrier contradiction blocker missing")
-    print("PHASE1 cross-carrier contradiction gate: PASS")
+    require({c["claim_scope"] for c in contradiction_decision["contradictions"]} == {"QMS_INSPECTION:REVIEW_READBACK"}, "contradiction scope classification drift")
+    print("PHASE1 scoped contradiction gate: PASS")
 
     # Relation-bounded impact closure: artifact change must reach producer job, requirement and review without reclassifying artifact as work.
     impact_projection = make_clear_projection(load(RICH_PROJECTION))

@@ -101,7 +101,14 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             identities[iid]["source_refs"] = sorted(set(identities[iid]["source_refs"] + (sources or [source_ref])))
         return iid
 
-    def add_state(subject_ref: str, family: str, value, sources: list[str] | None = None, sid_suffix: str | None = None) -> str:
+    def add_state(
+        subject_ref: str,
+        family: str,
+        value,
+        sources: list[str] | None = None,
+        sid_suffix: str | None = None,
+        claim_scope: str = "SUBJECT_OVERALL",
+    ) -> str:
         ensure_identity(subject_ref, sources=sources)
         rendered = state_value(value)
         sid = f"KSTATE-{token(subject_ref)}-{token(family)}"
@@ -112,6 +119,7 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             "subject_ref": subject_ref,
             "state_family": family,
             "state_value": rendered,
+            "claim_scope": claim_scope,
             "blocking_semantics": blocking_semantics(rendered),
             "source_refs": sources or [source_ref],
             "projection_only": True,
@@ -138,7 +146,7 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             "work_state":wp["coordination_state"], "depends_on_refs":list(wp.get("depends_on", [])), "owner_refs":[],
             "output_refs":list(wp.get("required_native_outputs", [])), "readback_refs":[], "source_refs":[source_ref], "projection_only":True,
         })
-        add_state(wp["work_package_id"], "PROCESS", wp["coordination_state"])
+        add_state(wp["work_package_id"], "PROCESS", wp["coordination_state"], claim_scope="WORK_PACKAGE_COORDINATION")
 
     for job in projection.get("jobs", []):
         ensure_identity(job["job_id"], "JOB")
@@ -152,7 +160,7 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             "depends_on_refs":list(job.get("input_refs", [])),"owner_refs":[job["primary_owner_ref"]],"output_refs":list(job.get("output_refs", [])),
             "readback_refs":list(job.get("readback_refs", [])),"source_refs":[source_ref],"projection_only":True,
         })
-        add_state(job["job_id"], "JOB", job["job_state"])
+        add_state(job["job_id"], "JOB", job["job_state"], claim_scope="JOB_RUNTIME")
 
     for artifact in projection.get("artifact_refs", []):
         ensure_identity(artifact["artifact_id"], "ARTIFACT")
@@ -165,18 +173,18 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             "independence_state":review["independence_state"],"source_refs":[source_ref],"projection_only":True,
             "does_not_prove":["DESIGN_KEEP","PROFESSIONAL_PASS","PROJECT_PROMOTION"],
         })
-        add_state(review["review_id"], "QUALITY", review["result"], sid_suffix="REVIEW")
+        add_state(review["review_id"], "QUALITY", review["result"], sid_suffix="REVIEW", claim_scope=f"REVIEW:{review['review_class']}")
 
     for family_key, rows in projection.get("state_facets", {}).items():
         family = STATE_FAMILY_MAP.get(family_key)
         if not family:
             continue
         for subject_ref, value in rows.items():
-            add_state(subject_ref, family, value, sid_suffix="TOP")
+            add_state(subject_ref, family, value, sid_suffix="TOP", claim_scope=f"TOP_LEVEL:{family}")
 
     rec = projection.get("reconciliation", {})
-    add_state(source_ref, "PROJECTION_FRESHNESS", rec.get("projection_freshness_state", "SOURCE_READBACK_UNKNOWN"), sid_suffix="PROJECTION")
-    add_state(source_ref, "ENTERPRISE_READINESS", rec.get("enterprise_readiness_state", "NOT_EVALUATED"), sid_suffix="PROJECTION")
+    add_state(source_ref, "PROJECTION_FRESHNESS", rec.get("projection_freshness_state", "SOURCE_READBACK_UNKNOWN"), sid_suffix="PROJECTION", claim_scope="PROJECTION_FRESHNESS")
+    add_state(source_ref, "ENTERPRISE_READINESS", rec.get("enterprise_readiness_state", "NOT_EVALUATED"), sid_suffix="PROJECTION", claim_scope="ENTERPRISE_READINESS")
 
     relation_identity_hints = {
         "JOB_PRODUCES_ARTIFACT": ("JOB", "ARTIFACT"),
@@ -216,11 +224,11 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
     erp = projection["modules"]["erp"]
     for row in erp.get("schedule_records", []):
         ensure_identity(row["subject_ref"], "WORK_PACKAGE", row["source_refs"])
-        sid=add_state(row["subject_ref"], "PROCESS", f"ERP_SCHEDULE:{row['schedule_state']}", row["source_refs"], row["schedule_id"])
+        sid=add_state(row["subject_ref"], "PROCESS", f"ERP_SCHEDULE:{row['schedule_state']}", row["source_refs"], row["schedule_id"], "ERP_SCHEDULE")
         module_refs["erp"].append(sid)
     for row in erp.get("resource_demand", []):
         ensure_identity(row["work_package_id"], "WORK_PACKAGE", row["source_refs"])
-        rid=add_state(row["work_package_id"], "PROCESS", f"ERP_RESOURCE:{row['demand_state']}:{row['resource_ref']}", row["source_refs"], row["demand_id"])
+        rid=add_state(row["work_package_id"], "PROCESS", f"ERP_RESOURCE:{row['demand_state']}:{row['resource_ref']}", row["source_refs"], row["demand_id"], "ERP_RESOURCE_DEMAND")
         module_refs["erp"].append(rid)
 
     plm = projection["modules"]["plm"]
@@ -235,39 +243,39 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
             "revision_ref":row["revision_ref"],"configuration_state":row["lifecycle_state"],"baseline_ref":baseline_by_member.get(row["item_id"]),
             "source_refs":row["source_refs"],"projection_only":True,"does_not_prove":list(row.get("does_not_prove", [])),
         })
-        add_state(row["canonical_ref"], "CONFIGURATION", row["lifecycle_state"], row["source_refs"], row["item_id"])
+        add_state(row["canonical_ref"], "CONFIGURATION", row["lifecycle_state"], row["source_refs"], row["item_id"], "PLM_CONFIGURATION_ITEM")
         module_refs["plm"].append(cid)
     for row in plm.get("change_records", []):
         ensure_identity(row["change_id"], "CHANGE", row["source_refs"])
         for affected in row.get("affected_refs", []): ensure_identity(affected, sources=row["source_refs"])
         ch={"change_id":row["change_id"],"affected_refs":list(row.get("affected_refs", [])),"change_state":row["disposition"],"reopen_refs":list(row.get("reopen_refs", [])),"required_readback_refs":[],"source_refs":row["source_refs"],"projection_only":True}
         changes.append(ch); module_refs["plm"].append(row["change_id"])
-        add_state(row["change_id"], "CONFIGURATION", row["disposition"], row["source_refs"], "CHANGE")
+        add_state(row["change_id"], "CONFIGURATION", row["disposition"], row["source_refs"], "CHANGE", "PLM_CHANGE")
 
     bpm = projection["modules"]["bpm"]
     for row in bpm.get("process_instances", []):
         ensure_identity(row["process_instance_id"], "PROCESS_INSTANCE", row["source_refs"])
         work_items.append({"work_id":row["process_instance_id"],"work_class":"PROCESS_INSTANCE","subject_ref":row["subject_ref"],"work_state":row["process_state"],"depends_on_refs":[],"owner_refs":["Master Runtime"],"output_refs":[],"readback_refs":[],"source_refs":row["source_refs"],"projection_only":True})
-        add_state(row["subject_ref"], "PROCESS", f"BPM:{row['process_state']}", row["source_refs"], row["process_instance_id"])
+        add_state(row["subject_ref"], "PROCESS", f"BPM:{row['process_state']}", row["source_refs"], row["process_instance_id"], "BPM_PROCESS_INSTANCE")
         module_refs["bpm"].append(row["process_instance_id"])
     for row in bpm.get("handoffs", []):
         hid=row["handoff_id"]; ensure_identity(hid, "PROCESS_INSTANCE", row["source_refs"])
         work_items.append({"work_id":hid,"work_class":"HANDOFF","subject_ref":hid,"work_state":row["handoff_state"],"depends_on_refs":list(row.get("payload_refs", [])),"owner_refs":[row["from_owner_ref"],row["to_owner_ref"]],"output_refs":[],"readback_refs":[row["acceptance_ref"]] if row.get("acceptance_ref") else [],"source_refs":row["source_refs"],"projection_only":True})
-        add_state(hid,"PROCESS",f"BPM_HANDOFF:{row['handoff_state']}",row["source_refs"],hid); module_refs["bpm"].append(hid)
+        add_state(hid,"PROCESS",f"BPM_HANDOFF:{row['handoff_state']}",row["source_refs"],hid,"BPM_HANDOFF"); module_refs["bpm"].append(hid)
     for row in bpm.get("exceptions", []):
         eid=row["exception_id"]; ensure_identity(eid,"PROCESS_INSTANCE",row["source_refs"])
         work_items.append({"work_id":eid,"work_class":"EXCEPTION","subject_ref":row["subject_ref"],"work_state":row["disposition"],"depends_on_refs":[],"owner_refs":["Master Runtime"],"output_refs":[],"readback_refs":[],"source_refs":row["source_refs"],"projection_only":True})
-        add_state(row["subject_ref"],"PROCESS",f"BPM_EXCEPTION:{row['exception_class']}:{row['disposition']}",row["source_refs"],eid); module_refs["bpm"].append(eid)
+        add_state(row["subject_ref"],"PROCESS",f"BPM_EXCEPTION:{row['exception_class']}:{row['disposition']}",row["source_refs"],eid,"BPM_EXCEPTION"); module_refs["bpm"].append(eid)
 
     qms = projection["modules"]["qms"]
     for row in qms.get("nonconformances", []):
         ensure_identity(row["ncr_id"], "QUALITY_ITEM", row["source_refs"]); ensure_identity(row["subject_ref"], sources=row["source_refs"])
-        sid=add_state(row["ncr_id"],"QUALITY",f"NCR:{row['severity']}:{row['state']}",row["source_refs"],row["ncr_id"])
+        sid=add_state(row["ncr_id"],"QUALITY",f"NCR:{row['severity']}:{row['state']}",row["source_refs"],row["ncr_id"],"QMS_NCR")
         relations.append({"relation_id":f"KREL-{token(row['ncr_id'])}-AFFECTS","relation_type":"NONCONFORMANCE_AFFECTS","from_ref":row["ncr_id"],"to_ref":row["subject_ref"],"source_refs":row["source_refs"],"projection_only":True,"authority_effect":"NONE"})
         module_refs["qms"].append(sid)
     for row in qms.get("capa_records", []):
         ensure_identity(row["capa_id"], "QUALITY_ITEM", row["source_refs"])
-        sid=add_state(row["capa_id"],"QUALITY",f"CAPA:{row['state']}:{row['root_cause_state']}",row["source_refs"],row["capa_id"])
+        sid=add_state(row["capa_id"],"QUALITY",f"CAPA:{row['state']}:{row['root_cause_state']}",row["source_refs"],row["capa_id"],"QMS_CAPA")
         for ncr in row.get("source_ncr_refs", []):
             ensure_identity(ncr,"QUALITY_ITEM",row["source_refs"])
             relations.append({"relation_id":f"KREL-{token(row['capa_id'])}-{token(ncr)}","relation_type":"CAPA_ADDRESSES","from_ref":row["capa_id"],"to_ref":ncr,"source_refs":row["source_refs"],"projection_only":True,"authority_effect":"NONE"})
@@ -279,7 +287,7 @@ def build_kernel(projection: dict, source_ref: str, source_sha256: str, generate
         ensure_identity(row["inspection_id"], "REVIEW", row["source_refs"]); ensure_identity(row["subject_ref"], sources=row["source_refs"])
         eid=f"KEVID-{token(row['inspection_id'])}"
         evidence_items.append({"evidence_id":eid,"subject_ref":row["subject_ref"],"evidence_class":"REVIEW","result":row["result"],"evidence_refs":list(row.get("evidence_refs", [])),"source_refs":row["source_refs"],"projection_only":True,"claim_ceiling":"QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY"})
-        add_state(row["subject_ref"],"QUALITY",f"INSPECTION:{row['result']}",row["source_refs"],row["inspection_id"]); module_refs["qms"].append(eid)
+        add_state(row["subject_ref"],"QUALITY",f"INSPECTION:{row['result']}",row["source_refs"],row["inspection_id"],f"QMS_INSPECTION:{row['inspection_class']}"); module_refs["qms"].append(eid)
 
     module_bindings=[]
     for key in PHASE1_MODULES:

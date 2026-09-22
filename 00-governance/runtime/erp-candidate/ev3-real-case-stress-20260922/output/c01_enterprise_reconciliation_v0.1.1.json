@@ -1,0 +1,657 @@
+{
+  "schema_version": "0.1.1-candidate",
+  "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T15:20:00+08:00",
+  "kernel_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.json",
+  "kernel_digest": {
+    "sha256": "46EE20FEBCB3F642E1BC2753F1E968ED8067628CB9AE7795FF70540CD1A8AFF3",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "subject_ref": "PRJ-C01-YIMAI-GUANGDU",
+  "advance_decision": "HOLD",
+  "blocking_conditions": [
+    {
+      "blocker_id": "BLOCK-CROSS-CARRIER-CONTRADICTION-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-PROFESSIONAL-GATE---INSPECTION-HOLD---INSPECTION-PASS--CONTRA-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY",
+      "blocker_class": "CROSS_CARRIER_CONTRADICTION",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "HOLD_PROFESSIONAL_GATE | INSPECTION:HOLD | INSPECTION:PASS",
+      "blocking_authority_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+      "blocking_authority": {
+        "resolution_state": "RESOLVED_EXISTING_BINDING",
+        "owner_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "SOURCE_OWNERS_AND_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "claim_ceiling": "CONTRADICTORY_CURRENT_STATE_HOLD_NO_ADVANCE",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-DESIGN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD",
+      "blocker_class": "DESIGN_REVIEW",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "required_owner_kind": "DESIGN_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-PROCESS-BLOCKED-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD--PROC-C01-R17",
+      "blocker_class": "PROCESS_BLOCKED",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+        "scope": "PROCESS"
+      },
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "claim_ceiling": "WORK_OR_PROCESS_HOLD_NO_ADVANCE",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-QUALITY-REVIEW-ARTIFACT-C01-R17-DD-PACKAGE-HOLD",
+      "blocker_class": "QUALITY_REVIEW",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "claim_ceiling": "QUALITY_REVIEW_ONLY_NO_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+      "state_fact_ref": null
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "DERIVED_COORDINATION_ONLY",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-INDEPENDENT-REVIEW-NOT-RUN-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "HOLD_INDEPENDENT_REVIEW_NOT_RUN",
+      "blocking_authority_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+        "required_owner_kind": "DESIGN_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-PROFESSIONAL-GATE-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "HOLD_PROFESSIONAL_GATE",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-INSPECTION-HOLD-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "INSPECTION:HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-C01-R17-HOLD-PROFESSIONAL-REVIEW-NOT-RUN-KSTATE-C01-R17-PROFESSIONAL-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "C01-R17",
+      "observed_state": "HOLD_PROFESSIONAL_REVIEW_NOT_RUN",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "PROFESSIONAL_OR_INDEPENDENT_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-C01-R17-PROFESSIONAL-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-C01-R17-FIELD-ENGINEERING-GATES-HOLD-FIELD-ENGINEERING-OPEN-KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-INTERFACE-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REQ-C01-R17-FIELD-ENGINEERING-GATES",
+      "observed_state": "HOLD_FIELD_ENGINEERING_OPEN",
+      "blocking_authority_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+      "blocking_authority": {
+        "resolution_state": "RESOLVED_EXISTING_BINDING",
+        "owner_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-INTERFACE-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD-KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+        "scope": "QUALITY"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCKED-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "observed_state": "BLOCKED",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+        "scope": "PROCESS"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BPM-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-PROC-C01-R17",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "observed_state": "BPM:HOLD",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+        "scope": "PROCESS"
+      },
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-PROC-C01-R17"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+        "scope": "PROCESS"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP"
+    },
+    {
+      "blocker_id": "BLOCK-UNRESOLVED-BLOCKING-RELATION-ARTIFACT-C01-R17-DD-PACKAGE-BLOCKING-RELATION-ARTIFACT-REVIEWED-BY-INDEPENDENT-PROFESSIONAL-REVIEW-IS-NOT-RUN--MACHINE-PASS-MUST-NOT-BECOME-DESIGN-KEEP--KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-INTERFACE-UNRES-C01-INDEPENDENT-REVIEW",
+      "blocker_class": "UNRESOLVED_BLOCKING_RELATION",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "observed_state": "BLOCKING_RELATION:ARTIFACT_REVIEWED_BY:Independent professional review is NOT_RUN; machine PASS must not become Design KEEP.",
+      "blocking_authority_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+      "blocking_authority": {
+        "resolution_state": "RESOLVED_EXISTING_BINDING",
+        "owner_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+        "authority_contract_ref": "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-INTERFACE-UNRES-C01-INDEPENDENT-REVIEW"
+    },
+    {
+      "blocker_id": "BLOCK-WORK-BLOCKED-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCKED--WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "blocker_class": "WORK_BLOCKED",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "observed_state": "BLOCKED",
+      "blocking_authority_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+      "blocking_authority": {
+        "resolution_state": "RESOLVED_EXISTING_BINDING",
+        "owner_ref": "EV3:C01:AUTHORITY_SNAPSHOT",
+        "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+        "required_owner_kind": "PROJECT_OR_WORK_OWNER",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "WORK_OR_PROCESS_HOLD_NO_ADVANCE",
+      "state_fact_ref": null
+    }
+  ],
+  "reopen_set": [
+    "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL"
+  ],
+  "rerun_set": [
+    "PROC-C01-R17",
+    "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD"
+  ],
+  "review_set": [
+    "ARTIFACT-C01-R17-DD-PACKAGE"
+  ],
+  "required_readback_set": [],
+  "unresolved_authority_conflicts": [],
+  "policy_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json",
+  "policy_digest": {
+    "sha256": "441D9D0821C93AB80658E08F58E34C838CAA51A5DF8A2A20F418E4BCC76885CA",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "action_requests": [
+    {
+      "action_id": "ACTION-REOPEN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "action_type": "REOPEN_REVIEW",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "subject_identity_class": "REVIEW",
+      "trigger_refs": [
+        "NOT_AVAILABLE:C01:R17:INDEPENDENT_PROFESSIONAL_REVIEW"
+      ],
+      "reason_codes": [
+        "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-RERUN-WORK-PROC-C01-R17",
+      "action_type": "RERUN_WORK",
+      "subject_ref": "PROC-C01-R17",
+      "subject_identity_class": "PROCESS_INSTANCE",
+      "trigger_refs": [
+        "PROC-C01-R17"
+      ],
+      "reason_codes": [
+        "BLOCKED_WORK_REQUIRES_RERUN_OR_RESOLUTION"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+        "required_owner_kind": "EXECUTION_OWNER",
+        "scope": "EXECUTION"
+      },
+      "source_refs": [
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-RERUN-WORK-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "action_type": "RERUN_WORK",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "subject_identity_class": "WORK_PACKAGE",
+      "trigger_refs": [
+        "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD"
+      ],
+      "reason_codes": [
+        "BLOCKED_WORK_REQUIRES_RERUN_OR_RESOLUTION"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+        "required_owner_kind": "EXECUTION_OWNER",
+        "scope": "EXECUTION"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-ARTIFACT-C01-R17-DD-PACKAGE",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "subject_identity_class": "ARTIFACT",
+      "trigger_refs": [
+        "KEVID-INSP-C01-R17-PROFESSIONAL",
+        "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-INTERFACE-UNRES-C01-INDEPENDENT-REVIEW"
+      ],
+      "reason_codes": [
+        "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+        "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    }
+  ],
+  "impact_traces": [],
+  "contradictions": [
+    {
+      "contradiction_id": "CONTRA-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "state_family": "QUALITY",
+      "state_fact_refs": [
+        "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-MACHINE",
+        "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL",
+        "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP"
+      ],
+      "observed_values": [
+        "HOLD_PROFESSIONAL_GATE",
+        "INSPECTION:HOLD",
+        "INSPECTION:PASS"
+      ],
+      "blocking": true,
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+        "EV3SRC:C01:AUTHORITY",
+        "EV3SRC:C01:CHECKPOINT",
+        "EV3SRC:C01:DOWNSTREAM",
+        "EV3SRC:C01:FINAL_READBACK",
+        "EV3SRC:C01:FREEZE"
+      ]
+    }
+  ],
+  "unresolved_authority_requirements": [
+    {
+      "requirement_id": "AUTHREQ-EXECUTION-EXECUTION-OWNER-PROC-C01-R17-ACTION-RERUN-WORK-PROC-C01-R17",
+      "subject_ref": "PROC-C01-R17",
+      "required_owner_kind": "EXECUTION_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+      "scope": "EXECUTION",
+      "trigger_ref": "ACTION-RERUN-WORK-PROC-C01-R17"
+    },
+    {
+      "requirement_id": "AUTHREQ-EXECUTION-EXECUTION-OWNER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-ACTION-RERUN-WORK-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "required_owner_kind": "EXECUTION_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_MULTI_SKILL_EXECUTION_DAG_CONTRACT_v0.1.json",
+      "scope": "EXECUTION",
+      "trigger_ref": "ACTION-RERUN-WORK-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD"
+    },
+    {
+      "requirement_id": "AUTHREQ-PROCESS-MASTER-RUNTIME-OR-PROCESS-OWNER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCK-PROCESS-BLOCKED-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD--PROC-C01-R17",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "scope": "PROCESS",
+      "trigger_ref": "BLOCK-PROCESS-BLOCKED-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD--PROC-C01-R17"
+    },
+    {
+      "requirement_id": "AUTHREQ-PROCESS-MASTER-RUNTIME-OR-PROCESS-OWNER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCKED-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "scope": "PROCESS",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCKED-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS"
+    },
+    {
+      "requirement_id": "AUTHREQ-PROCESS-MASTER-RUNTIME-OR-PROCESS-OWNER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BPM-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-PROC-C01-R17",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "scope": "PROCESS",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BPM-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-PROC-C01-R17"
+    },
+    {
+      "requirement_id": "AUTHREQ-PROCESS-MASTER-RUNTIME-OR-PROCESS-OWNER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP",
+      "subject_ref": "WP-PRJ-C01-YIMAI-GUANGDU-R17-DD",
+      "required_owner_kind": "MASTER_RUNTIME_OR_PROCESS_OWNER",
+      "authority_contract_ref": "00-governance/complex-project-master-runtime-v1.0.md",
+      "scope": "PROCESS",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-HOLD-KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP"
+    },
+    {
+      "requirement_id": "AUTHREQ-QUALITY-QUALITY-OR-SPECIALIST-REVIEW-OWNER-ARTIFACT-C01-R17-DD-PACKAGE-BLOCK-QUALITY-REVIEW-ARTIFACT-C01-R17-DD-PACKAGE-HOLD",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-QUALITY-REVIEW-ARTIFACT-C01-R17-DD-PACKAGE-HOLD"
+    },
+    {
+      "requirement_id": "AUTHREQ-QUALITY-QUALITY-OR-SPECIALIST-REVIEW-OWNER-ARTIFACT-C01-R17-DD-PACKAGE-BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-PROFESSIONAL-GATE-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-PROFESSIONAL-GATE-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP"
+    },
+    {
+      "requirement_id": "AUTHREQ-QUALITY-QUALITY-OR-SPECIALIST-REVIEW-OWNER-ARTIFACT-C01-R17-DD-PACKAGE-BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-INSPECTION-HOLD-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-INSPECTION-HOLD-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-INSP-C01-R17-PROFESSIONAL"
+    },
+    {
+      "requirement_id": "AUTHREQ-QUALITY-QUALITY-OR-SPECIALIST-REVIEW-OWNER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-BLOCK-STATE-FACET-BLOCKER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD-KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "required_owner_kind": "QUALITY_OR_SPECIALIST_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "QUALITY",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD-KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW"
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-APPLICABLE-REVIEW-OWNER-ARTIFACT-C01-R17-DD-PACKAGE-ACTION-REVIEW-SUBJECT-ARTIFACT-C01-R17-DD-PACKAGE",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-ARTIFACT-C01-R17-DD-PACKAGE"
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-DESIGN-REVIEW-OWNER-ARTIFACT-C01-R17-DD-PACKAGE-BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-INDEPENDENT-REVIEW-NOT-RUN-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP",
+      "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-INDEPENDENT-REVIEW-NOT-RUN-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP"
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-DESIGN-REVIEW-OWNER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-BLOCK-DESIGN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "required_owner_kind": "DESIGN_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/design-quality-and-design-development-specification-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-DESIGN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-HOLD"
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-PROFESSIONAL-OR-INDEPENDENT-REVIEW-OWNER-C01-R17-BLOCK-STATE-FACET-BLOCKER-C01-R17-HOLD-PROFESSIONAL-REVIEW-NOT-RUN-KSTATE-C01-R17-PROFESSIONAL-TOP",
+      "subject_ref": "C01-R17",
+      "required_owner_kind": "PROFESSIONAL_OR_INDEPENDENT_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "BLOCK-STATE-FACET-BLOCKER-C01-R17-HOLD-PROFESSIONAL-REVIEW-NOT-RUN-KSTATE-C01-R17-PROFESSIONAL-TOP"
+    },
+    {
+      "requirement_id": "AUTHREQ-REVIEW-REVIEW-OWNER-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-ACTION-REOPEN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "subject_ref": "REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL",
+      "required_owner_kind": "REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REOPEN-REVIEW-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL"
+    }
+  ],
+  "claim_ceiling": "PHASE1_COORDINATION_HOLD_NO_DESIGN_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+  "reason_codes": [
+    "BLOCKED_WORK_REQUIRES_RERUN_OR_RESOLUTION",
+    "BLOCKING_DESIGN_REVIEW_REQUIRES_REOPEN",
+    "BLOCKING_QUALITY_REVIEW_REQUIRES_REVIEW",
+    "CROSS_CARRIER_CONTRADICTION",
+    "DESIGN_REVIEW",
+    "PROCESS_BLOCKED",
+    "QUALITY_REVIEW",
+    "STATE_FACET_BLOCKER",
+    "UNRESOLVED_BLOCKING_RELATION",
+    "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW",
+    "WORK_BLOCKED"
+  ],
+  "source_refs": [
+    "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.json"
+  ],
+  "authority_boundary": {
+    "decision_is_authority": false,
+    "may_mutate_current": false,
+    "advance_rule": "ALLOW_ONLY_WHEN_NO_BLOCKERS_NO_TYPED_ACTIONS_NO_CONTRADICTIONS_NO_UNRESOLVED_AUTHORITY_REQUIREMENTS"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}

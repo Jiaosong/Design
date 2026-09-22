@@ -1,0 +1,163 @@
+{
+  "schema_version": "0.1.2-candidate",
+  "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
+  "candidate_status": "EVAL_ONLY",
+  "generated_at": "2026-09-22T16:25:00+08:00",
+  "kernel_ref": "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise-kernel.v0.1.2.json",
+  "kernel_digest": {
+    "sha256": "BE791BE9CCF51A7410BB37533F924F20208695529CD09C59FB7CEC018746A446",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "subject_ref": "PRJ-C04-QINGJIANG-SHISHU",
+  "advance_decision": "HOLD",
+  "blocking_conditions": [
+    {
+      "blocker_id": "BLOCK-CHANGE-READBACK-PENDING-CH-EXAMPLE-001-IMPLEMENTED-READBACK-PENDING",
+      "blocker_class": "CHANGE_READBACK_PENDING",
+      "subject_ref": "CH-EXAMPLE-001",
+      "observed_state": "IMPLEMENTED_READBACK_PENDING",
+      "blocking_authority_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+        "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+        "scope": "CONFIGURATION"
+      },
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "claim_ceiling": "CHANGE_NOT_CLOSED_NO_ADVANCE",
+      "state_fact_ref": null
+    }
+  ],
+  "reopen_set": [],
+  "rerun_set": [],
+  "review_set": [
+    "IF-R06-01"
+  ],
+  "required_readback_set": [
+    "CH-EXAMPLE-001"
+  ],
+  "unresolved_authority_conflicts": [],
+  "policy_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json",
+  "policy_digest": {
+    "sha256": "441D9D0821C93AB80658E08F58E34C838CAA51A5DF8A2A20F418E4BCC76885CA",
+    "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
+  },
+  "action_requests": [
+    {
+      "action_id": "ACTION-REQUIRE-READBACK-CH-EXAMPLE-001",
+      "action_type": "REQUIRE_READBACK",
+      "subject_ref": "CH-EXAMPLE-001",
+      "subject_identity_class": "CHANGE",
+      "trigger_refs": [
+        "CH-EXAMPLE-001"
+      ],
+      "reason_codes": [
+        "CHANGE_IMPLEMENTED_REQUIRES_NEW_READBACK"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+        "required_owner_kind": "READBACK_OWNER",
+        "scope": "READBACK"
+      },
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": "READBACK",
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    },
+    {
+      "action_id": "ACTION-REVIEW-SUBJECT-IF-R06-01",
+      "action_type": "REVIEW_SUBJECT",
+      "subject_ref": "IF-R06-01",
+      "subject_identity_class": "OTHER",
+      "trigger_refs": [
+        "CH-EXAMPLE-001"
+      ],
+      "reason_codes": [
+        "DIRECT_CHANGE_AFFECTED_REF_REQUIRES_REVIEW"
+      ],
+      "authority": {
+        "resolution_state": "UNRESOLVED_REQUIRED_OWNER",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+        "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+        "scope": "REVIEW"
+      },
+      "source_refs": [
+        "00-governance/control-plane/examples/example-master-runtime.json"
+      ],
+      "relation_paths": [
+        []
+      ],
+      "requested_output_class": null,
+      "claim_ceiling": "COORDINATION_ACTION_REQUIRED_ONLY_NO_AUTOMATIC_ACCEPTANCE_OR_PROMOTION"
+    }
+  ],
+  "impact_traces": [],
+  "contradictions": [],
+  "unresolved_authority_requirements": [
+    {
+      "requirement_id": "AUTHREQ-CH-EXAMPLE-001-CONFIGURATION-CHANGE-OWNER-00-GOVERNANCE-SCHEMAS-PROJECT-CONFIGURATION-CHANGE-REGISTER-V1-SCHEMA-JSON-CONFIGURATION",
+      "subject_ref": "CH-EXAMPLE-001",
+      "required_owner_kind": "CONFIGURATION_CHANGE_OWNER",
+      "authority_contract_ref": "00-governance/schemas/project-configuration-change-register.v1.schema.json",
+      "scope": "CONFIGURATION",
+      "trigger_ref": "BLOCK-CHANGE-READBACK-PENDING-CH-EXAMPLE-001-IMPLEMENTED-READBACK-PENDING",
+      "trigger_refs": [
+        "BLOCK-CHANGE-READBACK-PENDING-CH-EXAMPLE-001-IMPLEMENTED-READBACK-PENDING"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-CH-EXAMPLE-001-READBACK-OWNER-00-GOVERNANCE-RUNTIME-OLEANDER-OBSERVABILITY-RECOVERY-CONTRACT-V1-0-JSON-READBACK",
+      "subject_ref": "CH-EXAMPLE-001",
+      "required_owner_kind": "READBACK_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "scope": "READBACK",
+      "trigger_ref": "ACTION-REQUIRE-READBACK-CH-EXAMPLE-001",
+      "trigger_refs": [
+        "ACTION-REQUIRE-READBACK-CH-EXAMPLE-001"
+      ]
+    },
+    {
+      "requirement_id": "AUTHREQ-IF-R06-01-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
+      "subject_ref": "IF-R06-01",
+      "required_owner_kind": "APPLICABLE_REVIEW_OWNER",
+      "authority_contract_ref": "00-governance/professional-domain-process-contract-v1.0.md",
+      "scope": "REVIEW",
+      "trigger_ref": "ACTION-REVIEW-SUBJECT-IF-R06-01",
+      "trigger_refs": [
+        "ACTION-REVIEW-SUBJECT-IF-R06-01"
+      ]
+    }
+  ],
+  "claim_ceiling": "PHASE1_COORDINATION_HOLD_NO_DESIGN_PROFESSIONAL_OR_PROMOTION_AUTHORITY",
+  "reason_codes": [
+    "CHANGE_IMPLEMENTED_REQUIRES_NEW_READBACK",
+    "CHANGE_READBACK_PENDING",
+    "DIRECT_CHANGE_AFFECTED_REF_REQUIRES_REVIEW"
+  ],
+  "source_refs": [
+    "00-governance/runtime/erp-candidate/eval-output/example-master-runtime.enterprise-kernel.v0.1.2.json"
+  ],
+  "authority_boundary": {
+    "decision_is_authority": false,
+    "may_mutate_current": false,
+    "advance_rule": "ALLOW_ONLY_WHEN_NO_BLOCKERS_NO_TYPED_ACTIONS_NO_CONTRADICTIONS_NO_UNRESOLVED_AUTHORITY_REQUIREMENTS"
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL",
+    "REAL_CASE_GENERALIZATION"
+  ]
+}

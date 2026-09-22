@@ -1,0 +1,137 @@
+{
+  "receipt_id": "OLEANDER_ENTERPRISE_PHASE1_RECONCILIATION_HARDENING_RECEIPT_v0.1.2_20260922",
+  "candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.2_20260922",
+  "status": "PREVALIDATION_PENDING_FULL_REGRESSION",
+  "baseline_main_commit": "ab83fde14d0b341f373098e789be93cd527465ef",
+  "phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "confirmed_defects": [
+    "FALSE_CROSS_SCOPE_QUALITY_CONTRADICTION",
+    "UNRESOLVED_AUTHORITY_REQUIREMENT_INFLATION",
+    "FALLINGWATER_STALE_NATIVE_READBACK_NOT_INVALIDATED_BY_EV3_ADAPTER"
+  ],
+  "checks": [
+    {
+      "check": "phase1_validator_v012",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "v031_candidate_validator",
+      "result": "PASS"
+    },
+    {
+      "check": "true_clear_chain",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "explicit_state_fail_closed",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "scoped_contradiction_gate",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "authority_requirement_root_dedup",
+      "result": "PASS",
+      "observed_counts": {
+        "C01": 10,
+        "C04": 12,
+        "FALLINGWATER": 13
+      },
+      "previous_counts": {
+        "C01": 15,
+        "C04": 17,
+        "FALLINGWATER": 20
+      }
+    },
+    {
+      "check": "typed_change_impact_closure",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "canonical_authority_resolution",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "typed_action_projection",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "real_case_stress_c01",
+      "result": "PASS_HOLD_CORRECT",
+      "contradictions": 0
+    },
+    {
+      "check": "real_case_stress_c04",
+      "result": "PASS_HOLD_CORRECT",
+      "contradictions": 0
+    },
+    {
+      "check": "real_case_stress_fallingwater",
+      "result": "PASS_FAIL_CLOSED_DIVERGED",
+      "contradictions": 0
+    },
+    {
+      "check": "fallingwater_stale_readback_invalidation",
+      "result": "PASS",
+      "fresh_blender_readback": "NOT_RUN_RUNTIME_UNAVAILABLE"
+    },
+    {
+      "check": "deterministic_kernel_reconciliation",
+      "result": "PENDING_FULL_REGRESSION"
+    },
+    {
+      "check": "control_plane_tests",
+      "result": "PENDING"
+    },
+    {
+      "check": "execution_contract_validator",
+      "result": "PENDING"
+    },
+    {
+      "check": "architecture_control_validator",
+      "result": "PENDING"
+    },
+    {
+      "check": "python_compileall",
+      "result": "PENDING"
+    },
+    {
+      "check": "anti_pollution",
+      "result": "PENDING_COMMIT_DELTA"
+    }
+  ],
+  "real_case_evaluation": {
+    "C01": "STRESS_TEST_HOLD_CORRECT",
+    "C04": "STRESS_TEST_HOLD_CORRECT",
+    "FALLINGWATER_3D": "SOURCE_DIVERGED_HOLD_REFRESH_REQUIRED"
+  },
+  "fallingwater_refresh": {
+    "state": "BLOCKED_RUNTIME_UNAVAILABLE",
+    "old_readback_current": false,
+    "fresh_save_reopen_pass": false,
+    "fresh_furniture_use_pass": false,
+    "required_ref": "ev3-real-case-stress-20260922/FALLINGWATER_V06_NATIVE_READBACK_INVALIDATION_20260922.json"
+  },
+  "independent_review": {
+    "state": "NOT_RUN"
+  },
+  "promotion": {
+    "eligible": false
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION",
+    "FRESH_FALLINGWATER_BLENDER_PASS",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "candidate_id": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.2_20260922",
+  "state": "EV2_EVAL_READY",
+  "scope": "PHASE1_SCOPED_RECONCILIATION_AND_EV3_STRESS_HARDENING_ERP_PLM_BPM_QMS",
+  "supersedes_candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.1_20260922",
+  "target_class": "ENTERPRISE_RUNTIME_CANDIDATE_EXTENSION",
+  "target_owner": "EXISTING_OLEANDER_RUNTIME_ONLY",
+  "target_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.2.schema.json",
+  "baseline": {
+    "commit": "ab83fde14d0b341f373098e789be93cd527465ef",
+    "hash_semantics": "SHA256_OF_GIT_CANONICAL_BLOB_CONTENT_AT_EXACT_COMMIT",
+    "source_sha256": {
+      "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md": "D13FD8F91817B61AF70FA6F5744C6832217DC323964B1E11DE6D6DBB423E44AA",
+      "00-governance/complex-project-master-runtime-v1.0.md": "05199632979EDAD4F1991DBD06284D9D973EF2555D0B3282C55FE99176C69F2B",
+      "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json": "61EAAFF70E202DA5A81D32010EF61B363BE73514C433C0E2AED6607A2F97BD40",
+      "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json": "2102DE6DF2C46F96BE29E09D8EF27AA9720CE80CDCD1B47BBB4E9E341697B8CF",
+      "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json": "6C9AE8CD367D2593BC3CC038F31587C22751FCE1E3ACC1428E4C7970476754F7",
+      "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json": "C08CA4CAFA5643DA77147D6551A1AFA97C681DEC5F3F662E89DB34562DA9EB5B",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_KERNEL_v0.1.schema.json": "99813BFB085CEAEB0F6AAAE0E9BE629C26D41C2DEBB3C3583CB38F0D9B6E8E23",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.schema.json": "4336CA7DF74783087DAB6DB4090B221D9AEE4B62A5809EA4F3CB6528264F9911",
+      "00-governance/runtime/erp-candidate/reconcile_enterprise_kernel.py": "90581272C2772BB34C8CA3343741306C0CB6B9CBE3C377BE96761704331254F1",
+      "00-governance/runtime/erp-candidate/validate_enterprise_phase1.py": "74B5A02D28C1A611FB6FF8748BB2CE8886AE8D89648117BD2B56D847A3D0DCD7",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.1.json": "4101648FF242B1297EF89CD1EADF5E79E5845BABF6EF30FF4C22842DB086594A",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.json": "3A606F23707739FEC706434FEB0895EF859A209015C31EF06C2B9F3DD477BC43",
+      "00-governance/runtime/erp-candidate/ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1_20260922.json": "80811DAEF0D705954369C3E0C0D14A9F68BBB8D70AEA4E25EF8246D0AC34C4FB",
+      "00-governance/runtime/erp-candidate/ENTERPRISE_PHASE1_MANIFEST_v0.1.json": "D38952DB0ED13CEDE2BFAA1A8BD4BBDB20E00B6C47A9603981B7EE7608CFB62F"
+    }
+  },
+  "phase1_kernel_primitives": [
+    "IDENTITY",
+    "AUTHORITY_BINDING",
+    "STATE_FACT",
+    "RELATION",
+    "WORK",
+    "CONFIGURATION",
+    "EVIDENCE",
+    "CHANGE",
+    "READBACK",
+    "RECEIPT",
+    "RECONCILIATION"
+  ],
+  "phase1_modules": [
+    "ERP",
+    "PLM",
+    "BPM",
+    "QMS"
+  ],
+  "deferred_modules": {
+    "MES": "UNCHANGED_V031",
+    "MBSE": "UNCHANGED_V031",
+    "KNOWLEDGE_GRAPH": "UNCHANGED_V031",
+    "AGENT_RUNTIME": "UNCHANGED_V031"
+  },
+  "confirmed_defects_repaired": [
+    "EXPLICIT_STATE_FACT_FALSE_ALLOW",
+    "CROSS_CARRIER_CONTRADICTION_FALSE_ALLOW",
+    "DIRECT_ONLY_CHANGE_PROPAGATION",
+    "FREE_TEXT_OR_RECEIPT_AS_BLOCKING_AUTHORITY",
+    "UNTYPED_ACTION_SETS",
+    "FALSE_CROSS_SCOPE_QUALITY_CONTRADICTION",
+    "UNRESOLVED_AUTHORITY_REQUIREMENT_INFLATION"
+  ],
+  "evaluation": {
+    "result": "V012_SCOPED_RECONCILIATION_STRESS_VALIDATION_PENDING_FULL_REGRESSION",
+    "real_case_count": 3,
+    "independent_review": "NOT_RUN",
+    "promotion_eligible": false,
+    "eval_refs": [
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.2.schema.json",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_POLICY_v0.1.json",
+      "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.1.1.json",
+      "00-governance/runtime/erp-candidate/reconcile_enterprise_kernel.py",
+      "00-governance/runtime/erp-candidate/build_enterprise_kernel.py",
+      "00-governance/runtime/erp-candidate/validate_enterprise_phase1.py",
+      "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/run_ev3_real_case_stress.py"
+    ],
+    "validated_repairs": [
+      "ALL_EXPLICIT_STATE_FACTS_FAIL_CLOSED",
+      "CROSS_CARRIER_CONTRADICTION_GATE",
+      "BOUNDED_TYPED_CHANGE_IMPACT_CLOSURE",
+      "CANONICAL_AUTHORITY_RESOLUTION_WITH_UNRESOLVED_OWNER_VISIBILITY",
+      "TYPED_ACTION_REQUESTS_WITH_LEGACY_PROJECTION",
+      "AUTHORITY_CONTRACT_CURRENT_OR_BOUND_BASELINE_RESOLUTION",
+      "CLAIM_SCOPE_BOUNDED_CONTRADICTION_DETECTION",
+      "ROOT_CAUSE_AUTHORITY_REQUIREMENT_DEDUP_WITH_TRIGGER_PROVENANCE",
+      "REAL_CASE_STRESS_FAIL_CLOSED_C01_C04_FALLINGWATER"
+    ]
+  },
+  "mutation_scope": {
+    "current_files_modified": false,
+    "candidate_directory_only": true,
+    "new_write_path": false,
+    "new_runtime_layer": false,
+    "new_authority": false
+  },
+  "promotion": {
+    "eligible": false,
+    "human_decision_required": true,
+    "reason": "v0.1.2 remains EV2 candidate. Real-case stress is fail-closed but Fallingwater native readback is stale and independent EV4 review remains open."
+  },
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "ENTERPRISE_COMPLETENESS",
+    "REAL_CASE_GENERALIZATION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "PROJECT_PROMOTION",
+    "STATUTORY_APPROVAL"
+  ]
+}

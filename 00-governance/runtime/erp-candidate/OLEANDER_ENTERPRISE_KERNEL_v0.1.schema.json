@@ -377,6 +377,10 @@
         },
         "projection_only": {
           "const": true
+        },
+        "claim_scope": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
