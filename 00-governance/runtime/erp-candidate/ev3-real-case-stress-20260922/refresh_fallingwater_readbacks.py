@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import tempfile
 import sys
 from pathlib import Path
 
@@ -220,11 +221,13 @@ def main():
     pre_file_sha = sha256(source)
     pre_file_bytes = source.stat().st_size
     pre = snapshot("PRE_REFRESH_SAVE")
-    bpy.ops.wm.save_as_mainfile(filepath=str(source), check_existing=False)
-    saved_sha = sha256(source)
-    saved_bytes = source.stat().st_size
-    bpy.ops.wm.open_mainfile(filepath=str(source), load_ui=False)
-    reopened_sha = sha256(source)
+    temp_dir = Path(tempfile.mkdtemp(prefix="oleander-fw-reopen-"))
+    roundtrip = temp_dir / "FALLINGWATER_V06_ROUNDTRIP_VALIDATION.blend"
+    bpy.ops.wm.save_as_mainfile(filepath=str(roundtrip), check_existing=False)
+    saved_sha = sha256(roundtrip)
+    saved_bytes = roundtrip.stat().st_size
+    bpy.ops.wm.open_mainfile(filepath=str(roundtrip), load_ui=False)
+    reopened_sha = sha256(roundtrip)
     post = snapshot("POST_REFRESH_REOPEN")
     checks = {
         "saved_reopened_sha_stable": saved_sha == reopened_sha,
@@ -238,8 +241,11 @@ def main():
         "schema": "OLEANDER_FALLINGWATER_NATIVE_SAVE_REOPEN_INTEGRITY_v2",
         "status": "PASS" if all(checks.values()) else "HOLD",
         "source_path": str(source),
+        "source_was_mutated": False,
         "pre_refresh_sha256": pre_file_sha,
         "pre_refresh_bytes": pre_file_bytes,
+        "roundtrip_validation_path": str(roundtrip),
+        "roundtrip_validation_artifact_retained": False,
         "final_saved_reopened_sha256": reopened_sha,
         "final_bytes": saved_bytes,
         "pre": pre,
@@ -247,9 +253,17 @@ def main():
         "checks": checks,
         "does_not_prove": ["historic exactness beyond stated authority", "engineering capacity", "manufacturing readiness", "field verification", "Design KEEP"],
     }
-    furniture = furniture_audit(source)
+    furniture = furniture_audit(roundtrip)
+    furniture["source_native_sha256"] = pre_file_sha
+    furniture["source_native_bytes"] = pre_file_bytes
+    furniture["roundtrip_validation_only"] = True
     integrity_out.write_text(json.dumps(integrity, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     furniture_out.write_text(json.dumps(furniture, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    try:
+        roundtrip.unlink(missing_ok=True)
+        temp_dir.rmdir()
+    except OSError:
+        pass
     print(json.dumps({"integrity": integrity, "furniture_status": furniture["status"]}, ensure_ascii=False))
 
 

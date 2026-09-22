@@ -161,21 +161,9 @@
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
-      "path": "ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.json",
-      "bytes": 26304,
-      "sha256": "46EE20FEBCB3F642E1BC2753F1E968ED8067628CB9AE7795FF70540CD1A8AFF3",
-      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
-    },
-    {
       "path": "ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
       "bytes": 24365,
       "sha256": "15D0C3C95348704DAED8489F9C20D9D4714D268FB07237B04727BCD7BCAF0E79",
-      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
-    },
-    {
-      "path": "ev3-real-case-stress-20260922/output/c01_enterprise_reconciliation_v0.1.1.json",
-      "bytes": 32495,
-      "sha256": "7F87D6E6C17E6CCFB559DE45C795EBEE935826480C618DC56CDE4BBFD7A4CE05",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -191,21 +179,9 @@
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
-      "path": "ev3-real-case-stress-20260922/output/c04_enterprise_kernel_v0.1.json",
-      "bytes": 30002,
-      "sha256": "A0124F0484EB84B32CEA75A125B0FA02D78ABC143C133DA0FCF2A8C79F6C43CB",
-      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
-    },
-    {
       "path": "ev3-real-case-stress-20260922/output/c04_enterprise_projection_v0.3.1.json",
       "bytes": 25871,
       "sha256": "867B61CDFAF6A8627B39C092E02686DA59C6FAB652702D7CCD5960CACA393C04",
-      "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
-    },
-    {
-      "path": "ev3-real-case-stress-20260922/output/c04_enterprise_reconciliation_v0.1.1.json",
-      "bytes": 39599,
-      "sha256": "60E09AAFE30E1D09B9E479EFD430ACA82D154BEB23B55CFBCC83F7B660D4D536",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -234,8 +210,8 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/refresh_fallingwater_readbacks.py",
-      "bytes": 10779,
-      "sha256": "562224E37DBDEB0FAC6E645F885F33A36C091D6DB769AF987FD25AC471990114",
+      "bytes": 11367,
+      "sha256": "D932C83FC7CFAF3247050687C4FAF3762B3049A10907CB3A2406E183D8AA3255",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
