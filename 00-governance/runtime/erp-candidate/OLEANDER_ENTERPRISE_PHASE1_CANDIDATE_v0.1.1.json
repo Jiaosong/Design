@@ -59,7 +59,7 @@
     "UNTYPED_ACTION_SETS"
   ],
   "evaluation": {
-    "result": "LOCAL_HARDENED_VALIDATION_PASS_FULL_REGRESSION_PASS_ANTI_POLLUTION_PENDING",
+    "result": "HARDENED_VALIDATION_PASS_FULL_REGRESSION_PASS_ANTI_POLLUTION_PASS",
     "real_case_count": 0,
     "independent_review": "NOT_RUN",
     "promotion_eligible": false,

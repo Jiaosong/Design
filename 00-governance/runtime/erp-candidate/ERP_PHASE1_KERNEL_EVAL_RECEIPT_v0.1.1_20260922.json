@@ -1,7 +1,7 @@
 {
   "receipt_id": "OLEANDER_ENTERPRISE_PHASE1_RECONCILIATION_HARDENING_RECEIPT_v0.1.1_20260922",
   "candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.1_20260922",
-  "status": "PREVALIDATION_PENDING_FULL_REGRESSION",
+  "status": "VALIDATED_ANTI_POLLUTION_PASS",
   "baseline_main_commit": "9c8a9580626cc1505308eec6779dd4f3756e9761",
   "phase1_modules": [
     "ERP",
@@ -101,7 +101,9 @@
     },
     {
       "check": "anti_pollution",
-      "result": "PENDING_COMMIT_DELTA"
+      "result": "PASS",
+      "delta_files_checked": 14,
+      "implementation_commit": "9b8012c6522e5505383a8c1ff316136876347540"
     }
   ],
   "real_case_evaluation": {
