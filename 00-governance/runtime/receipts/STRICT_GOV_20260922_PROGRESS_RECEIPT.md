@@ -232,3 +232,13 @@ Metric rule:
 - Strict Complete in reviewed cohort: **0 / 70**
 - ABB Terra AC, Siemens PAC3220, Huawei SUN2000-100KTL-M2 and DEHNventil 956405 canonical L5 owners normalized to CURRENT/DEFAULT after fresh current product/standard readback.
 - Project design, utility/PCC, CT chain, LPZ/earthing/coordination, commissioning/field readback, B1 and IR remain OPEN.
+
+
+## Professional Full-body Page-by-page Progress — P71–P74
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **74 pages (P01–P74)**
+- Strict Complete in reviewed cohort: **0 / 74**
+- P71 AccuSine PCSn and P72 DALI-2 preserve regional lifecycle divergence instead of claiming one global product state.
+- P73 BlokSeT and P74 Canalis KS were adjudicated REVIEW → ACTIVE and Relation REVIEW → VALID after current-platform/exact-reference review.
+- Regional family ratings, exact builder/BOM, China procurement, FAT/SAT/field evidence, B1 and IR remain OPEN.
