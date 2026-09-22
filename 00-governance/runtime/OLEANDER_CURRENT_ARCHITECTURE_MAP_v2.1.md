@@ -1267,6 +1267,13 @@ The system is considered **architecture-control runnable** only when all of the 
 75. context switch, chat compression, worker/session change or re-rendering the same bound inputs is not an authority change; conversely a changed Source/Design Authority or native write frontier cannot be hidden by matching prose or filenames;
 76. prior receipts remain immutable evidence under the authority fingerprint/snapshot that they actually consumed; a refreshed snapshot does not rewrite history or auto-upgrade old evidence;
 77. the Authority Snapshot / Fingerprint boundary is a projection over R-A and existing runtime carriers and may not create a central authority ledger, second authority registry, universal authority history database or authority-grant mechanism.
+78. discovery/search retrieval or a bare canonical knowledge ref does not grant consequential decision authority; consequential use must resolve the existing task/claim-scoped Knowledge mount and Operational Eligibility state;
+79. `CURRENT / SUPPORT / PROVENANCE`, Content state, `KI0...KI5` and `OE0...OE3` remain independent; no downstream stage, receipt or process may reissue or infer KI/OE from its own PASS/state;
+80. `OE3` is bounded to its declared task/claim scope, applicability, claim ceiling, freshness/revalidation basis and review basis; use in a widened/different consequential claim requires the existing Knowledge owner to resolve eligibility for that use;
+81. an `OE2 CONDITIONAL` mount must preserve its conditions, applicability, claim ceiling, freshness/revalidation trigger, unresolved items where material and `does_not_prove` boundary through Design Intelligence / DD / Professional Domain consumption;
+82. a material change in mounted knowledge identity/version, authority, applicability, freshness, claim ceiling or relevant review basis stales/reopens only downstream consumers that actually consumed that mount/claim; unrelated knowledge changes do not reset the project;
+83. a downstream professional/design/runtime carrier may store mount refs and bounded consumption semantics but may not copy the canonical Knowledge object, create local KI/OE truth, or silently freeze a previously valid OE result beyond its scope/freshness;
+84. the Knowledge Mount Consumption boundary is a projection over the existing Knowledge owner and downstream consumer contracts and may not create a second Knowledge registry, copied corpus, mount database, KI/OE state family or eligibility authority.
 ```
 
 `ARCHITECTURE CONTROL VALIDATION PASS ≠ DESIGN KEEP ≠ PROJECT PROMOTION`.
@@ -2270,3 +2277,121 @@ A refreshed Current snapshot may make a prior receipt stale for a **new conseque
 `OLD RECEIPT STALE FOR NEW USE ≠ OLD RECEIPT FALSE AS HISTORY`.
 
 Machines may validate fingerprint-input consistency, snapshot/ref resolution, mismatch and affected-scope routing. They may not invent Source/Design Authority, widen authority scope, award a human/professional decision, or infer Project Promotion from a matching fingerprint.
+
+---
+
+## 37｜Knowledge Mount Consumption & Freshness Boundary
+
+`R-B Knowledge & Evidence Resolution` already owns canonical Knowledge resolution, Content / Integrity separation and task/claim-scoped Operational Eligibility under `knowledge-integrity-and-operational-mount-v1.0.md`. Design Intelligence, Shared DD and Professional Domain stages consume that result by reference.
+
+v2.1 compiles the **consumer boundary** so a discovered page, bare canonical ref or previously eligible mount cannot silently become broader professional authority downstream. It does not create a copied Knowledge corpus, second Knowledge registry, mount database, duplicate KI/OE state family or eligibility authority.
+
+### 37.1 Discovery is not admission; canonical ref is not consequential authority
+
+The existing owner distinguishes discovery from decision use:
+
+`DISCOVERY RESULT ≠ DECISION AUTHORITY`.
+
+`CANONICAL KNOWLEDGE REF ≠ TASK/CLAIM OPERATIONAL ELIGIBILITY`.
+
+`CURRENT ≠ CLEAN ≠ OE3`.
+
+For consequential use, the consumer must resolve the owner-native mount/eligibility record that binds the actual knowledge object to the actual task/claim. Folder membership, search rank, retrieval state, prose quality or a stage's desire to use the source cannot self-award eligibility.
+
+The owner-native minimum eligibility binding remains:
+
+```text
+knowledge_ref
+eligibility_state
+eligibility_scope
+claim_ceiling
+applicability
+conditions
+unresolved_items
+freshness_or_revalidation_trigger
+review_basis
+```
+
+This projection does not replace that owner-native record. It only requires consumers to preserve enough semantics to prove what was admitted and under what boundary.
+
+### 37.2 State families remain separate across the mount
+
+The Knowledge chain remains:
+
+`Corpus / Retrieval → Content Remediation → Knowledge Integrity → Task/Claim Operational Eligibility`.
+
+Downstream Design / Professional execution remains separate:
+
+`Design Intelligence → Shared DD → Professional Domain Stage → Native Execution / Review`.
+
+Therefore:
+
+`CONTENT PASS ≠ KI4`.
+
+`KI4 ≠ OE3`.
+
+`OE3 ≠ DQ MATURITY`.
+
+`OE3 ≠ PROFESSIONAL STAGE PASS`.
+
+A Professional Stage instance may hold `knowledge_mount_refs[]` to prove admission happened; it does not reissue `KI*` or `OE*` judgments. Likewise, a DQ or Professional PASS cannot retroactively upgrade a weak Knowledge mount.
+
+### 37.3 Consequential consumption preserves scope and claim boundary
+
+For a consequential downstream use, the consumer must be able to resolve at least:
+
+`knowledge_ref / operational_eligibility / eligibility_scope_or_professional_question / claim_ceiling / applicability / conditions_or_unresolved_items / freshness_or_revalidation_trigger / does_not_prove / review_basis / owner_native_mount_ref`.
+
+This is a **resolvable semantic projection**, not a second mount schema. The owner-native Knowledge contract remains authoritative for the actual record.
+
+`OE3 FOR CLAIM A ≠ OE3 FOR CLAIM B` unless the existing owner-native eligibility record actually covers both.
+
+`OE3 AT TIME/EDITION X ≠ PERMANENT ELIGIBILITY` when its freshness/revalidation trigger has fired.
+
+### 37.4 Conditional mounts carry their limits downstream
+
+`OE2 CONDITIONAL` is useful only if its boundary survives consumption. The following must travel with the mount when material:
+
+- conditions;
+- applicability / jurisdiction / context limits;
+- claim ceiling;
+- freshness / revalidation trigger;
+- unresolved items;
+- `does_not_prove`.
+
+Design Intelligence, DD or a Professional Stage may narrow those limits further. They may not silently drop them, widen the source's authority or convert conditional evidence into unconditional professional truth.
+
+`CONSUMER NARROWING IS ALLOWED`.
+
+`CONSUMER WIDENING WITHOUT OWNER REVALIDATION IS FORBIDDEN`.
+
+### 37.5 Mount freshness propagates by actual consumption relation
+
+A mount becomes stale for a downstream consequential use when a material input it consumed changes, for example:
+
+- canonical knowledge identity / owner relation changes;
+- source/version/freshness changes;
+- applicability or jurisdiction changes;
+- claim ceiling changes;
+- conditions/unresolved items change materially;
+- the review basis supporting the eligibility is withdrawn or materially superseded.
+
+The runtime then re-resolves the Knowledge mount and reopens only actual consumers of the affected mount/claim.
+
+`MOUNT STALE → RE-RESOLVE AFFECTED KNOWLEDGE USE → REOPEN ACTUAL CONSUMERS`.
+
+It does **not** mean:
+
+`ONE KNOWLEDGE CHANGE → RESET ALL DD / PROFESSIONAL / PROJECT WORK`.
+
+Unrelated Knowledge changes do not stale a stage merely because they are newer or belong to the same domain/folder.
+
+### 37.6 Historical use remains provenance; Current use must requalify
+
+A historical receipt remains truthful evidence that a given Knowledge mount was consumed under its then-current scope/freshness/claim boundary. If that mount later expires or becomes superseded, the historical receipt is not rewritten.
+
+However, that prior receipt cannot be used as a shortcut to claim Current eligibility for a new consequential decision after its revalidation trigger fires.
+
+`HISTORICAL MOUNT USE ≠ CURRENT ELIGIBILITY FOR NEW USE`.
+
+Machines may verify refs, field presence, state-family separation, stale triggers and whether conditional boundaries travel with a consumer. Machines may not award `KI4` or consequential `OE3` solely from metadata completeness, and cannot infer DQ maturity, Professional PASS, Design KEEP or statutory approval from a valid Knowledge mount.
