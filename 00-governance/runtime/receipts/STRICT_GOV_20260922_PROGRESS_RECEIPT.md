@@ -287,3 +287,19 @@ Notion remains canonical.
 
 Metric rule:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+
+## Professional Full-body Page-by-page Progress — P87–P90
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **90 pages (P01–P90)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 90**
+- P87–P90 METHOD carriers were adjudicated REVIEW → ACTIVE, Index PARTIAL → INDEXED, routing SUPPORT/SCOPED → CURRENT/DEFAULT.
+- NBS 2025 specification guidance, AISC 360-22 + 2025 errata, and current IES LP-1-24 / LP-6-25 / LP-8-20 source chains were fresh-read.
+- Explicit PASS / REVISE / HOLD / reopen rules were added before promotion.
+- Method status remains ADAPTED; Trust remains UNVERIFIED; B1 / IR / real-project professional validation remain OPEN.
+
+Metric rule:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
