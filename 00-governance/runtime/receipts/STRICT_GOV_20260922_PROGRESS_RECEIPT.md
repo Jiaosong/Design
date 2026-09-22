@@ -113,3 +113,33 @@ Interpretation:
 - The only defensible strict-complete count for the newly reviewed cohort is currently **0 / 15**.
 - No all-library Professional Strict Complete percentage is claimed until axis-level page-by-page review is sufficiently complete.
 - Continue P16+ without batch self-PASS.
+
+
+## Professional Full-body Page-by-page Progress — P16–P30
+
+Notion remains the canonical current-state authority.
+
+- Newly reviewed in this segment: **15 pages**
+- Cumulative reviewed: **30 pages (P01–P30)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 30**
+- No reviewed page self-awarded B1 or Independent Review.
+
+Material page-level findings:
+- P16–P22: design-history / METHOD objects received source-locator and source-readback repair; open claim-level or project-level provenance remains explicit where unresolved.
+- P23 C01 Practice: exact full body reviewed through Reality Gate 1/1.5, source recovery, real-photo work, simulated adversarial rounds, measurement calibration, browser dry-run, R04/R05 and Tourist RG2 acquisition. Boundary remains `Reality Gate 2 NOT RUN / Human Test NOT RUN / E2`.
+- P25 Apple/MUJI/Tesla CASE: model-level locators remain open for some generalized observable-product statements.
+- P26 Levantina: current manufacturer readback reconfirmed Crema Marfil Coto / 2 cm / Honed; bundle/certification/China-supply/project-system evidence remains open.
+- P27 SikaBond-161: current Sika China page reconfirmed product identity and bag/cartridge availability; old 2.0 MPa / 350% values remain current-source recheck items until an exact TDS is archived.
+- P28 Nedfon DPT10-24HJ: current manufacturer table reconfirmed 30 W / 170 Pa / 150 m3/h / 35 dB(A); voltage row/manual/fan curve remain open.
+- P29 Nedfon FADH-D350-38L: stale metadata conflict wording repaired; model suffix semantics remain UNKNOWN while current table value remains 36 L/day.
+- P30 Cummins C275D5: current model/rating reconfirmed; 52.5/62.5 L/h and other interface values from the older C275-D5 data sheet are explicitly version-scoped historical spec inputs, not current-order configuration proof.
+
+Census state:
+- Last successful fresh SQL was after P15: Total 1,312 / Live 1,270 / Structural Ready 454 / Structural+Text Ready 358 / Reviewed 15.
+- P16–P30 writebacks were completed page-by-page.
+- The subsequent aggregate census call hit the Notion Query Data Source usage limit.
+- Therefore **no new fresh aggregate count is claimed** in this receipt.
+- Next available aggregate query must re-read the live Notes DB before any new percentage is published.
+
+Metric rule remains:
+`Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
