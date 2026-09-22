@@ -318,3 +318,17 @@ Notion remains canonical.
 
 Metric rule:
 `Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete`.
+
+## Professional Full-body Page-by-page Progress — P95–P98
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **98 pages (P01–P98)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 98**
+- P95 Opening Schedule, P96 Program Relation and P98 Foundation–Geotechnical METHOD carriers were adjudicated REVIEW → ACTIVE, PARTIAL → INDEXED, routing → CURRENT/DEFAULT after current source review and explicit method contract reinforcement.
+- P97 Plan–Section–Core had a real provenance gap. Existing-first search found no suitable integrated-building source carrier, so one bounded L6 WBDG Whole Building Design source was created and bidirectionally linked before promotion. That source remains SUPPORT/SCOPED and does not become a duplicate method owner.
+- Method status remains ADAPTED; Trust remains UNVERIFIED; B1 / IR / project-professional validation remain OPEN.
+
+Metric rule:
+Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete.
