@@ -61,7 +61,7 @@
     "UNRESOLVED_AUTHORITY_REQUIREMENT_INFLATION"
   ],
   "evaluation": {
-    "result": "V012_SCOPED_RECONCILIATION_EV3_STRESS_PASS_PORTABILITY_PATCH_PENDING_ANTI_POLLUTION",
+    "result": "V012_SCOPED_RECONCILIATION_EV3_STRESS_PASS_WORKTREE_PATH_PORTABILITY_PASS",
     "real_case_count": 3,
     "independent_review": "NOT_RUN",
     "promotion_eligible": false,
