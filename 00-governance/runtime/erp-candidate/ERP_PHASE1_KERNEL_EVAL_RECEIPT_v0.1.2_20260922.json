@@ -1,7 +1,7 @@
 {
   "receipt_id": "OLEANDER_ENTERPRISE_PHASE1_RECONCILIATION_HARDENING_RECEIPT_v0.1.2_20260922",
   "candidate_ref": "OLEANDER_ENTERPRISE_PHASE1_KERNEL_RECONCILIATION_v0.1.2_20260922",
-  "status": "PREVALIDATION_PENDING_FULL_REGRESSION",
+  "status": "VALIDATED_ANTI_POLLUTION_PASS",
   "baseline_main_commit": "ab83fde14d0b341f373098e789be93cd527465ef",
   "phase1_modules": [
     "ERP",
@@ -17,7 +17,7 @@
   "checks": [
     {
       "check": "phase1_validator_v012",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "v031_candidate_validator",
@@ -25,15 +25,20 @@
     },
     {
       "check": "true_clear_chain",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "explicit_state_fail_closed",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "scoped_contradiction_gate",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS",
+      "real_case_false_contradictions": {
+        "C01": 0,
+        "C04": 0,
+        "FALLINGWATER": 0
+      }
     },
     {
       "check": "authority_requirement_root_dedup",
@@ -51,30 +56,33 @@
     },
     {
       "check": "typed_change_impact_closure",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "canonical_authority_resolution",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "typed_action_projection",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "real_case_stress_c01",
       "result": "PASS_HOLD_CORRECT",
-      "contradictions": 0
+      "contradictions": 0,
+      "unresolved_authority_requirements": 10
     },
     {
       "check": "real_case_stress_c04",
       "result": "PASS_HOLD_CORRECT",
-      "contradictions": 0
+      "contradictions": 0,
+      "unresolved_authority_requirements": 12
     },
     {
       "check": "real_case_stress_fallingwater",
       "result": "PASS_FAIL_CLOSED_DIVERGED",
-      "contradictions": 0
+      "contradictions": 0,
+      "unresolved_authority_requirements": 13
     },
     {
       "check": "fallingwater_stale_readback_invalidation",
@@ -83,27 +91,34 @@
     },
     {
       "check": "deterministic_kernel_reconciliation",
-      "result": "PENDING_FULL_REGRESSION"
+      "result": "PASS"
     },
     {
       "check": "control_plane_tests",
-      "result": "PENDING"
+      "result": "PASS",
+      "tests": 142
     },
     {
       "check": "execution_contract_validator",
-      "result": "PENDING"
+      "result": "PASS"
     },
     {
       "check": "architecture_control_validator",
-      "result": "PENDING"
+      "result": "PASS",
+      "system_architecture_count": 1,
+      "master_runtime_count": 1,
+      "runtime_layer_count": 11,
+      "operational_plane_count": 6
     },
     {
       "check": "python_compileall",
-      "result": "PENDING"
+      "result": "PASS"
     },
     {
       "check": "anti_pollution",
-      "result": "PENDING_COMMIT_DELTA"
+      "result": "PASS",
+      "delta_files_checked": 31,
+      "implementation_commit": "cee93b733936173403b72c69ec2855a0ee69112d"
     }
   ],
   "real_case_evaluation": {
@@ -114,8 +129,12 @@
   "fallingwater_refresh": {
     "state": "BLOCKED_RUNTIME_UNAVAILABLE",
     "old_readback_current": false,
+    "old_integrity_sha256": "8AA493897A603154568ECAEAD85B50A3394C421F1361609BF1968B2326053D9B",
+    "current_native_sha256": "9665818312055D42EA5B5D12877E3DA0DD71953A29F8EA386482E5BC58E59EF8",
     "fresh_save_reopen_pass": false,
     "fresh_furniture_use_pass": false,
+    "blender_executable_found": false,
+    "python_bpy_available": false,
     "required_ref": "ev3-real-case-stress-20260922/FALLINGWATER_V06_NATIVE_READBACK_INVALIDATION_20260922.json"
   },
   "independent_review": {

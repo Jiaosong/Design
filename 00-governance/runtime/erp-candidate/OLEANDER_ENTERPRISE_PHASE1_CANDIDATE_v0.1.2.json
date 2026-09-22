@@ -61,7 +61,7 @@
     "UNRESOLVED_AUTHORITY_REQUIREMENT_INFLATION"
   ],
   "evaluation": {
-    "result": "V012_SCOPED_RECONCILIATION_STRESS_VALIDATION_PENDING_FULL_REGRESSION",
+    "result": "V012_SCOPED_RECONCILIATION_FULL_REGRESSION_PASS_EV3_STRESS_FAIL_CLOSED",
     "real_case_count": 3,
     "independent_review": "NOT_RUN",
     "promotion_eligible": false,
@@ -96,7 +96,7 @@
   "promotion": {
     "eligible": false,
     "human_decision_required": true,
-    "reason": "v0.1.2 remains EV2 candidate. Real-case stress is fail-closed but Fallingwater native readback is stale and independent EV4 review remains open."
+    "reason": "v0.1.2 remains EV2 candidate. C01/C04/Fallingwater stress tests fail closed; Fallingwater current native invalidates old Blender readback and fresh Blender runtime verification remains open; EV4 independent review remains open."
   },
   "does_not_prove": [
     "CURRENT_ADOPTION",
