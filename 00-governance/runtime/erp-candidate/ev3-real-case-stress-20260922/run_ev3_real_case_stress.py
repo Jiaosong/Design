@@ -9,7 +9,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ERP_ROOT = HERE.parent
-REPO_ROOT = HERE.parents[4]
+REPO_ROOT = HERE.parents[3]
 OUT = HERE / "output"
 STAMP = "2026-09-22T16:20:00+08:00"
 
@@ -47,6 +47,10 @@ def root_authority_keys(decision: dict) -> list[tuple[str, str, str, str]]:
 
 def run_case(name: str, module, template: Path) -> tuple[dict, dict, dict, list[dict]]:
     rows = build_source_rows(module.SOURCE_SPECS)
+    for row in rows:
+        assert ".worktrees" not in row["path"].replace("\\", "/"), f"{name}: source manifest leaked worktree path"
+        if row["availability"] == "GIT_MAIN_EXACT":
+            assert row["path"].startswith(f"git:{MAIN_COMMIT}:"), f"{name}: Git source path is not commit-stable"
     projection = module.build_projection(rows, template)
     validate_projection(projection)
 
@@ -62,6 +66,8 @@ def run_case(name: str, module, template: Path) -> tuple[dict, dict, dict, list[
         STAMP,
     )
     validate_kernel_in_memory(kernel)
+    assert kernel["source_projection_ref"].startswith("00-governance/"), f"{name}: kernel source ref is not repo-relative"
+    assert ".worktrees" not in kernel["source_projection_ref"], f"{name}: kernel source ref leaked worktree path"
     kernel_path = OUT / f"{name.lower()}_enterprise_kernel_v0.1.2.json"
     kernel_bytes = canonical_json_bytes(kernel)
     write_json(kernel_path, kernel)
@@ -74,6 +80,8 @@ def run_case(name: str, module, template: Path) -> tuple[dict, dict, dict, list[
         STAMP,
     )
     validate_reconciliation_in_memory(decision, kernel)
+    assert decision["kernel_ref"].startswith("00-governance/"), f"{name}: reconciliation kernel ref is not repo-relative"
+    assert ".worktrees" not in decision["kernel_ref"], f"{name}: reconciliation kernel ref leaked worktree path"
     decision_path = OUT / f"{name.lower()}_enterprise_reconciliation_v0.1.2.json"
     write_json(decision_path, decision)
 
@@ -117,6 +125,7 @@ def main() -> int:
         "overall_state": "HOLD",
         "promotion_eligible": False,
         "independent_review": "NOT_RUN",
+        "worktree_path_independent_refs": True,
     }
 
     case_results = {}

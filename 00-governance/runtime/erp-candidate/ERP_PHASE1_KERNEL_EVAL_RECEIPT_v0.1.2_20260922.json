@@ -119,6 +119,19 @@
       "result": "PASS",
       "delta_files_checked": 31,
       "implementation_commit": "cee93b733936173403b72c69ec2855a0ee69112d"
+    },
+    {
+      "check": "worktree_path_independence",
+      "result": "PASS",
+      "repeat_diff_sha256": "48C8BB7291EF9C6AF0209C381CA82F6334E2E08B7BD9F52A26098C6943686A7C",
+      "repeat_runs": 2,
+      "worktree_path_leak_count": 0
+    },
+    {
+      "check": "portability_patch_anti_pollution",
+      "result": "PASS",
+      "delta_files_checked": 14,
+      "implementation_commit": "8dbca62b58468f9c6ef0a622d43702d1759a2d71"
     }
   ],
   "real_case_evaluation": {

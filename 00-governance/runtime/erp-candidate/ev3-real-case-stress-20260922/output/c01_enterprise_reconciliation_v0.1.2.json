@@ -3,9 +3,9 @@
   "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
   "candidate_status": "EVAL_ONLY",
   "generated_at": "2026-09-22T16:20:00+08:00",
-  "kernel_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json",
+  "kernel_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json",
   "kernel_digest": {
-    "sha256": "2DE4DE5C503FB0A3EEA93483541A6610B6F0D762A8CD5BEEFECE0D72451C8E94",
+    "sha256": "CE14805520CCB83DAEFF6F8E99B235ED30E50D66BA919EF43D31C8DAA62BFF08",
     "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
   },
   "subject_ref": "PRJ-C01-YIMAI-GUANGDU",
@@ -25,7 +25,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION",
       "state_fact_ref": null
@@ -77,6 +77,25 @@
       "state_fact_ref": null
     },
     {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "DERIVED_COORDINATION_ONLY",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
+    },
+    {
       "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-C01-R17-DD-PACKAGE-HOLD-INDEPENDENT-REVIEW-NOT-RUN-KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP",
       "blocker_class": "STATE_FACET_BLOCKER",
       "subject_ref": "ARTIFACT-C01-R17-DD-PACKAGE",
@@ -90,7 +109,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-DESIGN-QUALITY-TOP"
@@ -109,7 +128,7 @@
         "scope": "QUALITY"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-QUALITY-TOP"
@@ -151,29 +170,10 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-C01-R17-PROFESSIONAL-TOP"
-    },
-    {
-      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
-      "blocker_class": "STATE_FACET_BLOCKER",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
-      "observed_state": "HOLD",
-      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
-      "blocking_authority": {
-        "resolution_state": "DERIVED_COORDINATION_ONLY",
-        "owner_ref": null,
-        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
-        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
-        "scope": "PROJECT"
-      },
-      "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
-      ],
-      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
-      "state_fact_ref": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-C01-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
     },
     {
       "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-C01-R17-FIELD-ENGINEERING-GATES-HOLD-FIELD-ENGINEERING-OPEN-KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-INTERFACE-TOP",
@@ -189,7 +189,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-REQ-C01-R17-FIELD-ENGINEERING-GATES-INTERFACE-TOP"
@@ -208,7 +208,7 @@
         "scope": "QUALITY"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-REVIEW-C01-R17-INDEPENDENT-PROFESSIONAL-QUALITY-REVIEW"
@@ -227,7 +227,7 @@
         "scope": "PROCESS"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS"
@@ -269,7 +269,7 @@
         "scope": "PROCESS"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-WP-PRJ-C01-YIMAI-GUANGDU-R17-DD-PROCESS-TOP"
@@ -288,7 +288,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-C01-R17-DD-PACKAGE-INTERFACE-UNRES-C01-INDEPENDENT-REVIEW"
@@ -307,7 +307,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "WORK_OR_PROCESS_HOLD_NO_ADVANCE",
       "state_fact_ref": null
@@ -350,7 +350,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "relation_paths": [
         []
@@ -408,7 +408,7 @@
         "scope": "EXECUTION"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
       ],
       "relation_paths": [
         []
@@ -437,12 +437,12 @@
         "scope": "REVIEW"
       },
       "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json",
         "EV3SRC:C01:AUTHORITY",
         "EV3SRC:C01:CHECKPOINT",
         "EV3SRC:C01:DOWNSTREAM",
         "EV3SRC:C01:FINAL_READBACK",
-        "EV3SRC:C01:FREEZE",
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_projection_v0.3.1.json"
+        "EV3SRC:C01:FREEZE"
       ],
       "relation_paths": [
         []
@@ -584,7 +584,7 @@
     "WORK_BLOCKED"
   ],
   "source_refs": [
-    "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json"
+    "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json"
   ],
   "authority_boundary": {
     "decision_is_authority": false,

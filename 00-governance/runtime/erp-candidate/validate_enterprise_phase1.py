@@ -27,6 +27,7 @@ OWNER_MAP = ROOT / "OLEANDER_ENTERPRISE_KERNEL_OWNER_MAPPING_v0.1.1.json"
 PHASE1_CANDIDATE = ROOT / "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.2.json"
 PHASE1_RECEIPT = ROOT / "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.2_20260922.json"
 PHASE1_MANIFEST = ROOT / "ENTERPRISE_PHASE1_MANIFEST_v0.1.2.json"
+EV3_STRESS_ROOT = ROOT / "ev3-real-case-stress-20260922"
 BLOCKING_CLASSES = {
     "SOURCE_STALE",
     "WORK_BLOCKED",
@@ -377,6 +378,7 @@ def validate_phase1_support() -> None:
             "execution_contract_validator",
             "architecture_control_validator",
             "anti_pollution",
+            "worktree_path_independence",
         ]:
             require(check_map.get(required_check) == "PASS", f"Phase-1 receipt missing PASS: {required_check}")
 
@@ -399,6 +401,12 @@ def validate_phase1_support() -> None:
         require(row.get("hash_semantics") == "UTF8_TEXT_LF_CANONICAL_V1", f"Phase-1 manifest row hash semantics drift: {rel}")
         require(row.get("bytes") == len(canonical), f"Phase-1 manifest byte count drift: {rel}")
         require(row.get("sha256") == hashlib.sha256(canonical).hexdigest().upper(), f"Phase-1 manifest sha256 drift: {rel}")
+
+    ev3_summary = load(EV3_STRESS_ROOT / "EV3_REAL_CASE_STRESS_SUMMARY_20260922.json")
+    require(ev3_summary.get("worktree_path_independent_refs") is True, "EV3 stress summary missing worktree-path independence gate")
+    for path in sorted(EV3_STRESS_ROOT.rglob("*.json")):
+        raw = path.read_text(encoding="utf-8-sig").replace("\\", "/")
+        require(".worktrees" not in raw, f"EV3 evidence leaked worktree path: {path.relative_to(ROOT).as_posix()}")
 
 
 def make_clear_projection(source: dict) -> dict:
