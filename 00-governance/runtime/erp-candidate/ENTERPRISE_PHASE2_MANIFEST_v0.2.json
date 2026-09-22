@@ -1,6 +1,6 @@
 {
   "manifest_id": "OLEANDER_ENTERPRISE_PHASE2_MANIFEST_v0.2",
-  "status": "PHASE2_CANDIDATE_FULL_REGRESSION_PASS_ANTI_POLLUTION_PENDING",
+  "status": "PHASE2_CANDIDATE_VALIDATED_ANTI_POLLUTION_PASS",
   "semantic_revision": "0.2+deferred-module-kernelization+ev3-stress1",
   "baseline_main_commit": "69f73a1a0e105d6797affccc0d8c09110febb345",
   "active_files_excluding_this_manifest": [
@@ -78,14 +78,14 @@
     },
     {
       "path": "OLEANDER_ENTERPRISE_PHASE2_CANDIDATE_v0.2_20260922.json",
-      "bytes": 4563,
-      "sha256": "222927A4D737722CF9E8FFCF4BAB4991380E37AE1EB41101EB119ED8DF9F9E0B",
+      "bytes": 4675,
+      "sha256": "73E6579BDECCAE31A096ECA59BE7FED4BF581BFE5AB69024732F051F1AD8E25E",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "path": "ERP_PHASE2_KERNEL_EVAL_RECEIPT_v0.2_20260922.json",
-      "bytes": 2064,
-      "sha256": "5483668249D238182FC993D9A209EDD048A7BDB30DBC25BFBCC1412F9492A65E",
+      "bytes": 2142,
+      "sha256": "695CDF41C36971169BD547D3617DA38F7D32B08A7B002F05D348EB436F117078",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {

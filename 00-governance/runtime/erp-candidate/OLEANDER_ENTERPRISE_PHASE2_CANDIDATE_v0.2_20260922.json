@@ -74,7 +74,9 @@
     "phase1_regression": "PASS",
     "control_plane_tests": 142,
     "architecture_control": "PASS_1_SYSTEM_1_MASTER_11_LAYERS_6_PLANES",
-    "deterministic_repeat": "PASS_11_FILES_ZERO_DRIFT"
+    "deterministic_repeat": "PASS_11_FILES_ZERO_DRIFT",
+    "anti_pollution": "PASS_26_FILES",
+    "implementation_commit": "558a96eaf89cec4dd14d3bdb6fc8a4148879b23e"
   },
   "mutation_scope": {
     "current_files_modified": false,
