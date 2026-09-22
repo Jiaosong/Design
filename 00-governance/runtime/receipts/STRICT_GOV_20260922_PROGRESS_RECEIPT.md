@@ -332,3 +332,16 @@ Notion remains canonical.
 
 Metric rule:
 Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete.
+## Professional Full-body Page-by-page Progress — P99–P102
+
+Notion remains canonical.
+
+- Newly reviewed: **4 pages**
+- Cumulative reviewed: **102 pages (P01–P102)**
+- Professional Full-body Strict Complete in reviewed cohort: **0 / 102**
+- P99 Interior Room Data and P100 Ceiling/RCP were adjudicated REVIEW → ACTIVE, PARTIAL → INDEXED, routing → CURRENT/DEFAULT while retaining evidence grade C (professional synthesis). Existing WBDG sources were reused; no duplicate source authority was created.
+- P101 Landscape Irrigation and P102 Luminance–Contrast–Adaptation were adjudicated REVIEW → ACTIVE, PARTIAL → INDEXED, routing → CURRENT/DEFAULT after current EPA WaterSense / IES source readback.
+- Method status remains ADAPTED; Trust remains UNVERIFIED; B1 / IR / real-project / field / human-professional validation remain OPEN.
+
+Metric rule:
+Structural Ready / Structural+Text Ready != Professional Full-body Strict Complete.
