@@ -104,6 +104,17 @@
       "result": "PASS",
       "delta_files_checked": 14,
       "implementation_commit": "9b8012c6522e5505383a8c1ff316136876347540"
+    },
+    {
+      "check": "authority_contract_baseline_fallback",
+      "result": "PASS",
+      "bound_baseline_commit": "9c8a9580626cc1505308eec6779dd4f3756e9761"
+    },
+    {
+      "check": "portability_patch_anti_pollution",
+      "result": "PASS",
+      "delta_files_checked": 4,
+      "implementation_commit": "8935cb2a0f990960cbb41f792c2a1015f9f7a95f"
     }
   ],
   "real_case_evaluation": {
