@@ -3,7 +3,7 @@
   "kind": "OLEANDER_ENTERPRISE_KERNEL",
   "candidate_status": "EVAL_ONLY",
   "generated_at": "2026-09-22T16:20:00+08:00",
-  "source_projection_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+  "source_projection_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
   "source_projection_digest": {
     "sha256": "C7A2102DEC40CAE83F253A7DA130A95C74988755ABF3697DE1133708405A3DC4",
     "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
@@ -17,20 +17,20 @@
   },
   "identities": [
     {
-      "identity_id": "KID-ARTIFACT-FW-V06-NATIVE-BLEND",
-      "identity_class": "ARTIFACT",
-      "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
+      "identity_id": "KID-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON",
+      "identity_class": "OTHER",
+      "canonical_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
     {
-      "identity_id": "KID-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON",
-      "identity_class": "OTHER",
-      "canonical_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "identity_id": "KID-ARTIFACT-FW-V06-NATIVE-BLEND",
+      "identity_class": "ARTIFACT",
+      "canonical_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -39,7 +39,7 @@
       "identity_class": "OTHER",
       "canonical_ref": "EV3:FW:SOURCE_MANIFEST",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -61,7 +61,7 @@
       "identity_class": "OTHER",
       "canonical_ref": "FALLINGWATER-HABS-V06",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -109,12 +109,12 @@
       "identity_class": "REQUIREMENT",
       "canonical_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
       "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
         "EV3SRC:FW:ARCH_TARGETS",
         "EV3SRC:FW:CONNECTIONS",
         "EV3SRC:FW:FURNITURE",
         "EV3SRC:FW:NATIVE_BLEND",
-        "EV3SRC:FW:NATIVE_INTEGRITY",
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "EV3SRC:FW:NATIVE_INTEGRITY"
       ],
       "projection_only": true
     },
@@ -123,7 +123,7 @@
       "identity_class": "REVIEW",
       "canonical_ref": "REVIEW-FW-V06-INDEPENDENT-DESIGN",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     }
@@ -138,7 +138,7 @@
       "claim_scope": "REVIEW:DESIGN",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -150,7 +150,7 @@
       "claim_scope": "TOP_LEVEL:PROJECT_DESIGN",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -162,7 +162,7 @@
       "claim_scope": "TOP_LEVEL:KNOWLEDGE_INTEGRITY",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -174,7 +174,7 @@
       "claim_scope": "TOP_LEVEL:OPERATIONAL_ELIGIBILITY",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -186,7 +186,7 @@
       "claim_scope": "TOP_LEVEL:DESIGN_QUALITY",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -198,7 +198,7 @@
       "claim_scope": "TOP_LEVEL:PROFESSIONAL",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -210,7 +210,7 @@
       "claim_scope": "TOP_LEVEL:INTERFACE",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -222,7 +222,7 @@
       "claim_scope": "TOP_LEVEL:AUTHORITY",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -234,7 +234,7 @@
       "claim_scope": "TOP_LEVEL:EVIDENCE",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -246,7 +246,7 @@
       "claim_scope": "TOP_LEVEL:CONFIGURATION",
       "blocking_semantics": "POTENTIAL",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -258,7 +258,7 @@
       "claim_scope": "TOP_LEVEL:QUALITY",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -270,7 +270,7 @@
       "claim_scope": "TOP_LEVEL:PROCESS",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -282,31 +282,31 @@
       "claim_scope": "TOP_LEVEL:AGENT_RUNTIME",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
     {
-      "state_fact_id": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
       "state_family": "PROJECTION_FRESHNESS",
       "state_value": "SOURCE_READBACK_STALE",
       "claim_scope": "PROJECTION_FRESHNESS",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
     {
-      "state_fact_id": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "state_fact_id": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
       "state_family": "ENTERPRISE_READINESS",
       "state_value": "HOLD",
       "claim_scope": "ENTERPRISE_READINESS",
       "blocking_semantics": "EXPLICIT",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -318,7 +318,7 @@
       "claim_scope": "SUBJECT_OVERALL",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -330,7 +330,7 @@
       "claim_scope": "SUBJECT_OVERALL",
       "blocking_semantics": "NONE",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -342,7 +342,7 @@
       "claim_scope": "SUBJECT_OVERALL",
       "blocking_semantics": "POTENTIAL",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true
     },
@@ -551,7 +551,7 @@
       "result": "HOLD",
       "independence_state": "UNKNOWN",
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "projection_only": true,
       "does_not_prove": [

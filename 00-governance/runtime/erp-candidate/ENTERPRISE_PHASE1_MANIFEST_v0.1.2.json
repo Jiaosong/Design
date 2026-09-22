@@ -1,7 +1,7 @@
 {
   "manifest_id": "OLEANDER_ENTERPRISE_PHASE1_MANIFEST_v0.1.2",
   "status": "PHASE1_EV2_ACTIVE_CANDIDATE_PACKAGE",
-  "semantic_revision": "0.1.2+scoped-reconciliation+ev3-stress1",
+  "semantic_revision": "0.1.2+scoped-reconciliation+ev3-stress1+portability1",
   "baseline_main_commit": "ab83fde14d0b341f373098e789be93cd527465ef",
   "active_files_excluding_this_manifest": [
     {
@@ -30,8 +30,8 @@
     },
     {
       "path": "OLEANDER_ENTERPRISE_PHASE1_CANDIDATE_v0.1.2.json",
-      "bytes": 5747,
-      "sha256": "4CDC43D5146625CBE15C23A33A0E9BCF07607E2FCAF73651F3C0A064BA95983F",
+      "bytes": 5806,
+      "sha256": "1280EA80F9099DB6F9F92891C4A4049E4169EE3AA673F726D6906C0CF260C13E",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -54,8 +54,8 @@
     },
     {
       "path": "validate_enterprise_phase1.py",
-      "bytes": 43303,
-      "sha256": "584F7E92C591765B86A0B69D867E5326360482D1EEEA88BDE8892F4D4C9FDFD0",
+      "bytes": 43866,
+      "sha256": "E203212446A2CCEAA01B17B87ED149B1159F9AC66C509BE4EDBCC43856C06C25",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -96,8 +96,8 @@
     },
     {
       "path": "ERP_PHASE1_KERNEL_EVAL_RECEIPT_v0.1.2_20260922.json",
-      "bytes": 4109,
-      "sha256": "4BB94B2479DC3D9FD81AF51AEDFA917C3556F4ECAA78D1A54EF4B5FF43400FC9",
+      "bytes": 4458,
+      "sha256": "68C7E193DB5660A3236565AA25A3AE208BB51F71C809AE5275CF64B08B700033",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -132,20 +132,20 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/ev3_common.py",
-      "bytes": 5664,
-      "sha256": "7C343F3743E61B5C626AECCE1666AC83693A22FE1129DC37B547D33E309063A7",
+      "bytes": 5758,
+      "sha256": "CB0550A10312FCF09B2C04A356444A6AF5C6BEE95B797365E0775BE1680F9219",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "path": "ev3-real-case-stress-20260922/EV3_REAL_CASE_SOURCE_MANIFEST_20260922.json",
-      "bytes": 7177,
-      "sha256": "D767BD397486C629E9D082B36F90EF2CB287BF62B04890B5FCCD87376AE7A995",
+      "bytes": 7054,
+      "sha256": "6488E0D09F83D0564D7A285795463650414DA00F8A49F64861B74E0298122523",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "path": "ev3-real-case-stress-20260922/EV3_REAL_CASE_STRESS_SUMMARY_20260922.json",
-      "bytes": 2794,
-      "sha256": "23E578E750E55CB4B4701466960A933613A1150EA8134B0152AA908585FC82E4",
+      "bytes": 2836,
+      "sha256": "D3079D06D21918B07B3C1B501CEE312E9C9A0C1833EC1F82EC77936F495CA1D3",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -156,8 +156,8 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/output/c01_enterprise_kernel_v0.1.2.json",
-      "bytes": 29121,
-      "sha256": "2DE4DE5C503FB0A3EEA93483541A6610B6F0D762A8CD5BEEFECE0D72451C8E94",
+      "bytes": 27358,
+      "sha256": "CE14805520CCB83DAEFF6F8E99B235ED30E50D66BA919EF43D31C8DAA62BFF08",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -168,14 +168,14 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/output/c01_enterprise_reconciliation_v0.1.2.json",
-      "bytes": 29819,
-      "sha256": "32CC2F335E8DD52D2213EF1DFC1ED1884F195C9921A9E38BECEC094069E90D82",
+      "bytes": 28999,
+      "sha256": "768499EE898BC71BC9247A5F4AB8DBF2FEB262E63E1A1534171FB79685D49A76",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "path": "ev3-real-case-stress-20260922/output/c04_enterprise_kernel_v0.1.2.json",
-      "bytes": 34584,
-      "sha256": "3B7C52983E6F3511EF5F2F2F2A2CFAE006F9DD38C5D6B720392316DAE638BE47",
+      "bytes": 32657,
+      "sha256": "991F9722BAFDB6E2FDDA4DFD6F3ADAF3BB39816E9F8DF7366A8C16433D72122D",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -186,14 +186,14 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/output/c04_enterprise_reconciliation_v0.1.2.json",
-      "bytes": 38374,
-      "sha256": "CA7D841DEA391B2343A0D31771CC45DE61CC7DA8C94DF8FB16C6D5230F209BDB",
+      "bytes": 37431,
+      "sha256": "277C6F5C2C3151F8C80240AFFCC1F101A1A7FB75888E5F19DA548B85AB10F367",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
       "path": "ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json",
-      "bytes": 24650,
-      "sha256": "559D46B907D69906F28A42B0E254CE9662BABF49B63A675BFD8B4A89ABBF25C3",
+      "bytes": 23338,
+      "sha256": "A627970BE4DCED62F67B7A2D4827D95A79308C817DE44F7A25E8C89948DC2AB9",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -204,8 +204,8 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/output/fallingwater_enterprise_reconciliation_v0.1.2.json",
-      "bytes": 39078,
-      "sha256": "34E5FAD2B92FF6755AAF3A2EAFE3788D52D27B39BD997517499401FCFFEAC82E",
+      "bytes": 37725,
+      "sha256": "D97836DED796CB2A68F439DAFD25F26632487883B02365D488B0380BB5D9078A",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     },
     {
@@ -216,8 +216,8 @@
     },
     {
       "path": "ev3-real-case-stress-20260922/run_ev3_real_case_stress.py",
-      "bytes": 9073,
-      "sha256": "370B1464B6C26938D544D6A9B67255D92AB6177B18F6CCBFC76CE8E8D53F1DC2",
+      "bytes": 9895,
+      "sha256": "27DC981DEA7C5E017AE30D1C74B356C63651B21202A6943C6FFA3EED6C1D38E2",
       "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
     }
   ],

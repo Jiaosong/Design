@@ -96,5 +96,6 @@
   },
   "overall_state": "HOLD",
   "promotion_eligible": false,
-  "independent_review": "NOT_RUN"
+  "independent_review": "NOT_RUN",
+  "worktree_path_independent_refs": true
 }

@@ -49,13 +49,15 @@ def build_source_rows(source_specs: list[tuple[str, Path, str, str]]) -> list[di
             payload = subprocess.check_output(["git", "show", f"{MAIN_COMMIT}:{rel}"], cwd=REPO_ROOT)
             sha256 = hashlib.sha256(payload).hexdigest().upper()
             byte_count = len(payload)
+            display_path = f"git:{MAIN_COMMIT}:{rel}"
         else:
             sha256 = digest(path, semantics)
             byte_count = path.stat().st_size
+            display_path = str(path)
         rows.append(
             {
                 "ref": ref,
-                "path": str(path),
+                "path": display_path,
                 "availability": availability,
                 "hash_semantics": semantics,
                 "sha256": sha256,

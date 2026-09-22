@@ -3,12 +3,12 @@
   "kind": "OLEANDER_ENTERPRISE_RECONCILIATION_DECISION",
   "candidate_status": "EVAL_ONLY",
   "generated_at": "2026-09-22T16:20:00+08:00",
-  "kernel_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json",
+  "kernel_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json",
   "kernel_digest": {
-    "sha256": "559D46B907D69906F28A42B0E254CE9662BABF49B63A675BFD8B4A89ABBF25C3",
+    "sha256": "A627970BE4DCED62F67B7A2D4827D95A79308C817DE44F7A25E8C89948DC2AB9",
     "hash_semantics": "UTF8_TEXT_LF_CANONICAL_V1"
   },
-  "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+  "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
   "advance_decision": "HOLD",
   "blocking_conditions": [
     {
@@ -25,7 +25,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "REVIEW_HOLD_NO_DESIGN_KEEP_OR_PROMOTION",
       "state_fact_ref": null
@@ -54,9 +54,9 @@
       "state_fact_ref": null
     },
     {
-      "blocker_id": "BLOCK-SOURCE-STALE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "blocker_id": "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
       "blocker_class": "SOURCE_STALE",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
       "observed_state": "SOURCE_READBACK_STALE",
       "blocking_authority_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
       "blocking_authority": {
@@ -67,10 +67,29 @@
         "scope": "READBACK"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "SOURCE_FRESHNESS_HOLD_NO_ADVANCE",
-      "state_fact_ref": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
+    },
+    {
+      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
+      "blocker_class": "STATE_FACET_BLOCKER",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "observed_state": "HOLD",
+      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+      "blocking_authority": {
+        "resolution_state": "DERIVED_COORDINATION_ONLY",
+        "owner_ref": null,
+        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
+        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
+        "scope": "PROJECT"
+      },
+      "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+      ],
+      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
+      "state_fact_ref": "KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
     },
     {
       "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ARTIFACT-FW-V06-NATIVE-BLEND-HOLD-ENGINEERING-AND-DESIGN-KEEP-NOT-PROVEN-KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP",
@@ -86,7 +105,7 @@
         "scope": "QUALITY"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-QUALITY-TOP"
@@ -105,7 +124,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-PROFESSIONAL-TOP"
@@ -124,7 +143,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-DESIGN-QUALITY-TOP"
@@ -166,7 +185,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-AUTHORITY-TOP"
@@ -185,7 +204,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-OPERATIONAL-ELIGIBILITY-TOP"
@@ -273,29 +292,10 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-EVIDENCE-TOP"
-    },
-    {
-      "blocker_id": "BLOCK-STATE-FACET-BLOCKER-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-HOLD-KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION",
-      "blocker_class": "STATE_FACET_BLOCKER",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
-      "observed_state": "HOLD",
-      "blocking_authority_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
-      "blocking_authority": {
-        "resolution_state": "DERIVED_COORDINATION_ONLY",
-        "owner_ref": null,
-        "authority_contract_ref": "00-governance/runtime/erp-candidate/OLEANDER_ENTERPRISE_RECONCILIATION_DECISION_v0.1.1.schema.json",
-        "required_owner_kind": "DERIVED_COORDINATION_ONLY",
-        "scope": "PROJECT"
-      },
-      "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
-      ],
-      "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
-      "state_fact_ref": "KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-ENTERPRISE-READINESS-PROJECTION"
     },
     {
       "blocker_id": "BLOCK-STATE-FACET-BLOCKER-REQ-FW-V06-ENGINEERING-AUTHORITY-HOLD-OPEN-DIMENSION-AND-ENGINEERING-AUTHORITY-KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP",
@@ -311,7 +311,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-REQ-FW-V06-ENGINEERING-AUTHORITY-INTERFACE-TOP"
@@ -330,7 +330,7 @@
         "scope": "QUALITY"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "EXPLICIT_STATE_FACT_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-REVIEW-FW-V06-INDEPENDENT-DESIGN-QUALITY-REVIEW"
@@ -349,7 +349,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-P2-PROJECT"
@@ -368,7 +368,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-ENGINEERING"
@@ -387,7 +387,7 @@
         "scope": "PROJECT"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "claim_ceiling": "INTERFACE_HOLD_NO_ADVANCE",
       "state_fact_ref": "KSTATE-ARTIFACT-FW-V06-NATIVE-BLEND-INTERFACE-UNRES-FW-NATIVE-READBACK-DRIFT"
@@ -427,7 +427,7 @@
         "scope": "REVIEW"
       },
       "source_refs": [
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
       ],
       "relation_paths": [
         []
@@ -460,12 +460,12 @@
         "scope": "REVIEW"
       },
       "source_refs": [
+        "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
         "EV3SRC:FW:ARCH_TARGETS",
         "EV3SRC:FW:CONNECTIONS",
         "EV3SRC:FW:FURNITURE",
         "EV3SRC:FW:NATIVE_BLEND",
-        "EV3SRC:FW:NATIVE_INTEGRITY",
-        "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json"
+        "EV3SRC:FW:NATIVE_INTEGRITY"
       ],
       "relation_paths": [
         []
@@ -477,6 +477,17 @@
   "impact_traces": [],
   "contradictions": [],
   "unresolved_authority_requirements": [
+    {
+      "requirement_id": "AUTHREQ-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-OWNER-00-GOVERNANCE-RUNTIME-OLEANDER-OBSERVABILITY-RECOVERY-CONTRACT-V1-0-JSON-READBACK",
+      "subject_ref": "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
+      "required_owner_kind": "SOURCE_READBACK_OWNER",
+      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
+      "scope": "READBACK",
+      "trigger_ref": "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
+      "trigger_refs": [
+        "BLOCK-SOURCE-STALE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
+      ]
+    },
     {
       "requirement_id": "AUTHREQ-ARTIFACT-FW-V06-NATIVE-BLEND-APPLICABLE-REVIEW-OWNER-00-GOVERNANCE-PROFESSIONAL-DOMAIN-PROCESS-CONTRACT-V1-0-MD-REVIEW",
       "subject_ref": "ARTIFACT-FW-V06-NATIVE-BLEND",
@@ -573,17 +584,6 @@
       ]
     },
     {
-      "requirement_id": "AUTHREQ-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-OWNER-00-GOVERNANCE-RUNTIME-OLEANDER-OBSERVABILITY-RECOVERY-CONTRACT-V1-0-JSON-READBACK",
-      "subject_ref": "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_projection_v0.3.1.json",
-      "required_owner_kind": "SOURCE_READBACK_OWNER",
-      "authority_contract_ref": "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json",
-      "scope": "READBACK",
-      "trigger_ref": "BLOCK-SOURCE-STALE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION",
-      "trigger_refs": [
-        "BLOCK-SOURCE-STALE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-SOURCE-READBACK-STALE-KSTATE-ENTERPRISE-EV3-REAL-CASE-STRESS-20260922-00-GOVERNANCE-RUNTIME-ERP-CANDIDATE-EV3-REAL-CASE-STRESS-20260922-OUTPUT-FALLINGWATER-ENTERPRISE-PROJECTION-V0-3-1-JSON-PROJECTION-FRESHNESS-PROJECTION"
-      ]
-    },
-    {
       "requirement_id": "AUTHREQ-REQ-FW-V06-ENGINEERING-AUTHORITY-INTEGRATION-OR-PROJECT-AUTHORITY-00-GOVERNANCE-CROSS-DISCIPLINARY-DESIGN-INTEGRATION-V1-0-MD-PROJECT",
       "subject_ref": "REQ-FW-V06-ENGINEERING-AUTHORITY",
       "required_owner_kind": "INTEGRATION_OR_PROJECT_AUTHORITY",
@@ -640,7 +640,7 @@
     "UNRESOLVED_BLOCKING_RELATION_REQUIRES_REVIEW"
   ],
   "source_refs": [
-    "enterprise-ev3-real-case-stress-20260922/00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json"
+    "00-governance/runtime/erp-candidate/ev3-real-case-stress-20260922/output/fallingwater_enterprise_kernel_v0.1.2.json"
   ],
   "authority_boundary": {
     "decision_is_authority": false,
