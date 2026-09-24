@@ -1,0 +1,38 @@
+{
+  "schema": "oleander.codesign.spatial-trial-readback.v0.1",
+  "status": "LOCAL_TRIAL_READBACK",
+  "actual_artifacts_inspected": [
+    "A_EDGE_DOCK.png",
+    "B_SPLIT_SUPPORT.png",
+    "C_ZERO_STAGE_KIT.png",
+    "COMPARISON.png"
+  ],
+  "first_readback": {
+    "A_EDGE_DOCK": "PASS_RELATION_LEGIBILITY",
+    "B_SPLIT_SUPPORT": "PASS_RELATION_LEGIBILITY",
+    "C_ZERO_STAGE_KIT": "REVISE_SERVICE_RESET_TERRITORY_NOT_EXPLICIT",
+    "comparison": "PASS_COMPARABILITY"
+  },
+  "repair": {
+    "target": "C_ZERO_STAGE_KIT",
+    "change": "service-reset is now shown as its own temporary service/check/return territory rather than being implicit inside mobile-kit return",
+    "claim_ceiling_changed": false
+  },
+  "second_readback": {
+    "four_territories_distinct": "PASS_AT_RELATION_LEVEL",
+    "resident_continuity_clear": "PASS_DIAGRAMMATIC",
+    "off_return_complete": "PASS_DIAGRAMMATIC",
+    "no_fixed_stage": "PASS",
+    "no_host_selection": "PASS",
+    "measured_geometry_claim": "NONE"
+  },
+  "human_steer_required_next": true,
+  "does_not_prove": [
+    "H01_HOST_SELECTION",
+    "MEASURED_ROUTE_OR_SHELL",
+    "ACCESSIBILITY_OR_FIRE_PASS",
+    "ARCHITECTURE_KEEP",
+    "ADD07_AUTHORITY",
+    "PROJECT_WRITEBACK"
+  ]
+}

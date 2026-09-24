@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <rect width="1600" height="980" fill="#f7f7f4"/>
+  <style>text{font-family:'Segoe UI','Microsoft YaHei',Arial,sans-serif;fill:#18202b}.t{font-size:32px;font-weight:700}.st{font-size:15px;fill:#596273}.h{font-size:21px;font-weight:700}.b{font-size:14px;fill:#434c58}.s{font-size:12px;fill:#6d7580}.card{fill:#fff;stroke:#ced4dc;stroke-width:1.6}</style>
+  <text x="70" y="62" class="t">C01 · H01 Spatial Mechanism Test</text>
+  <text x="70" y="92" class="st">Same comparison world · NON_METRIC · no host selection · no ADD-07 authority</text>
+
+  <g transform="translate(70,145)">
+    <rect width="455" height="650" rx="20" class="card"/>
+    <text x="28" y="48" class="h">A · EDGE DOCK</text>
+    <text x="28" y="76" class="b">单一支撑边 + 向外借用活动场</text>
+    <rect x="35" y="125" width="85" height="340" rx="12" fill="#eaf1f7" stroke="#86a4bd"/>
+    <text x="78" y="155" text-anchor="middle" class="s">TOOL</text>
+    <text x="78" y="175" text-anchor="middle" class="s">RESET</text>
+    <rect x="155" y="180" width="205" height="210" rx="28" fill="#eef6ef" stroke="#87b18e"/>
+    <ellipse cx="257" cy="285" rx="60" ry="42" fill="#d9ecd9" stroke="#6d9a74"/>
+    <text x="257" y="290" text-anchor="middle" class="b">PERFORMER</text>
+    <path d="M378 180 C420 240 420 330 378 390" fill="none" stroke="#d6a25f" stroke-width="18" opacity=".35"/>
+    <path d="M145 445 L395 445" stroke="#775bba" stroke-width="24" opacity=".28" stroke-linecap="round"/>
+    <text x="270" y="451" text-anchor="middle" class="s">resident clear</text>
+    <text x="28" y="520" class="b">强项：开关/责任最简单</text>
+    <text x="28" y="548" class="b">风险：工具与 reset 拥堵集中</text>
+    <text x="28" y="588" class="s">OFF → support edge closes;</text>
+    <text x="28" y="610" class="s">no permanent stage remains.</text>
+  </g>
+
+  <g transform="translate(572,145)">
+    <rect width="455" height="650" rx="20" class="card"/>
+    <text x="28" y="48" class="h">B · SPLIT SUPPORT</text>
+    <text x="28" y="76" class="b">工具边 / reset 边分离，中部借用</text>
+    <rect x="32" y="185" width="72" height="210" rx="12" fill="#eaf1f7" stroke="#86a4bd"/>
+    <text x="68" y="215" text-anchor="middle" class="s">TOOL</text>
+    <rect x="351" y="185" width="72" height="210" rx="12" fill="#f2ece5" stroke="#b79b78"/>
+    <text x="387" y="215" text-anchor="middle" class="s">RESET</text>
+    <rect x="125" y="190" width="205" height="200" rx="28" fill="#eef6ef" stroke="#87b18e"/>
+    <ellipse cx="228" cy="290" rx="60" ry="42" fill="#d9ecd9" stroke="#6d9a74"/>
+    <text x="228" y="295" text-anchor="middle" class="b">PERFORMER</text>
+    <path d="M138 170 C185 130 270 130 318 170" fill="none" stroke="#d6a25f" stroke-width="18" opacity=".35"/>
+    <path d="M110 445 L345 445" stroke="#775bba" stroke-width="24" opacity=".28" stroke-linecap="round"/>
+    <text x="227" y="451" text-anchor="middle" class="s">resident clear</text>
+    <text x="28" y="520" class="b">强项：降低返还/维护冲突</text>
+    <text x="28" y="548" class="b">风险：需要两个可用支撑界面</text>
+    <text x="28" y="588" class="s">OFF → both edges close;</text>
+    <text x="28" y="610" class="s">center returns to ordinary use.</text>
+  </g>
+
+  <g transform="translate(1074,145)">
+    <rect width="455" height="650" rx="20" class="card"/>
+    <text x="28" y="48" class="h">C · ZERO-STAGE KIT</text>
+    <text x="28" y="76" class="b">移动套件 + 临时借用场，无固定舞台</text>
+    <rect x="42" y="250" width="90" height="95" rx="16" fill="#eaf1f7" stroke="#86a4bd"/>
+    <text x="87" y="286" text-anchor="middle" class="s">MOBILE</text>
+    <text x="87" y="304" text-anchor="middle" class="s">KIT</text>
+    <rect x="42" y="365" width="90" height="62" rx="14" fill="#f2ece5" stroke="#b79b78"/>
+    <text x="87" y="402" text-anchor="middle" class="s">RESET</text>
+    <path d="M140 298 L185 298" stroke="#596273" stroke-width="2" stroke-dasharray="8 7"/>
+    <rect x="185" y="185" width="215" height="230" rx="34" fill="#f4f7f1" stroke="#94a88f" stroke-dasharray="10 8"/>
+    <ellipse cx="292" cy="290" rx="60" ry="42" fill="#d9ecd9" stroke="#6d9a74"/>
+    <text x="292" y="295" text-anchor="middle" class="b">PERFORMER</text>
+    <path d="M220 385 C260 425 325 425 365 385" fill="none" stroke="#d6a25f" stroke-width="18" opacity=".35"/>
+    <path d="M150 445 L392 445" stroke="#775bba" stroke-width="24" opacity=".28" stroke-linecap="round"/>
+    <text x="271" y="451" text-anchor="middle" class="s">resident clear</text>
+    <text x="28" y="520" class="b">强项：OFF 最完整 / 最可逆</text>
+    <text x="28" y="548" class="b">风险：反复部署劳动最高</text>
+    <text x="28" y="588" class="s">OFF → reset closes + kit leaves;</text>
+    <text x="28" y="610" class="s">field returns completely.</text>
+  </g>
+
+  <text x="70" y="845" class="h">What is actually being compared?</text>
+  <text x="70" y="878" class="b">Not style. The mechanism differs in where support lives, how return/reset works, and how completely the public identity disappears in OFF.</text>
+  <text x="70" y="920" class="st">Next human steer: SELECT / MODIFY / MIX / REJECT / REOPEN. No option becomes host selection or Architecture KEEP by this comparison.</text>
+</svg>

@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.codesign.spatial-trial.v0.1",
+  "status": "LOCAL_REVERSIBLE_TRIAL",
+  "project": "PRJ-C01-YIMAI-GUANGDU",
+  "decision_object": "H01_SPATIAL_MECHANISM_TEST",
+  "source_frontier": {
+    "topology": "C01_R5_ADD06_FLOW_SYSTEM_MATRIX_v0.3.json",
+    "selection": "C01_R5_ADD05_ZONING_SELECTION_RECEIPT_v0.6.json"
+  },
+  "claim_ceiling": "ABSTRACT_ROLE_AND_SPATIAL_RELATION_TEST / NON_METRIC / NO_HOST_SELECTION / NO_MEASURED_GEOMETRY / NO_ADD07_AUTHORITY",
+  "invariants": [
+    "RESIDENT_CONTINUITY_REMAINS_CLEAR",
+    "PERFORMER_TOOL_OBSERVER_SERVICE_RESET_DISTINCT",
+    "H01_REMAINS_MOBILE_DISTRIBUTED",
+    "OFF_RETURN_IS_COMPLETE",
+    "NO_FIXED_STAGE",
+    "NO_HERITAGE_CONTACT",
+    "NO_MEASURED_DIMENSIONS"
+  ],
+  "alternatives": [
+    {
+      "id": "A_EDGE_DOCK",
+      "mechanism": "single support edge + outward borrowed field",
+      "strongest_benefit": "simple open/close responsibility and clear daily passage",
+      "strongest_risk": "tool/service congestion concentrates at one edge"
+    },
+    {
+      "id": "B_SPLIT_SUPPORT",
+      "mechanism": "tool edge and service-reset edge are separated",
+      "strongest_benefit": "reduces equipment return/reset conflict with performer territory",
+      "strongest_risk": "requires two eligible support interfaces instead of one"
+    },
+    {
+      "id": "C_ZERO_STAGE_KIT",
+      "mechanism": "mobile kit only; no dedicated stage or fixed host object",
+      "strongest_benefit": "strongest reversibility and cleanest OFF state",
+      "strongest_risk": "highest recurring setup labor and weaker weather/support infrastructure"
+    }
+  ],
+  "human_steer": "PENDING",
+  "readback_repair": {
+    "observed_defect": "C_ZERO_STAGE_KIT initially collapsed service-reset into the mobile-kit return note instead of showing it as a distinct territory, which violated the four-territory H01 invariant.",
+    "repair": "Added an explicit RESET service/check/return territory in the C prototype and comparison board while keeping it temporary and non-host-specific.",
+    "geometry_authority_delta": "NONE_NON_METRIC_RELATION_ONLY"
+  },
+  "project_writeback": false,
+  "promotion": false
+}
