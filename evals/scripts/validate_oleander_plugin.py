@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-repo = Path(__file__).resolve().parents[1]
+repo = Path(__file__).resolve().parents[2]
 plugin = repo / "plugins" / "oleander-design"
 manifest = json.loads((plugin / "plugin.json").read_text(encoding="utf-8"))
 market = json.loads((repo / ".agents" / "plugins" / "marketplace.json").read_text(encoding="utf-8"))
