@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "oleander-design",
+  "version": "0.1.0",
+  "description": "Resume and execute OLEANDER design work across spatial, interface, product and integrated projects using current authority, editable native artifacts, human steering and verified readback.",
+  "repository": "https://github.com/Jiaosong/Design",
+  "keywords": [
+    "design",
+    "human-ai",
+    "oleander"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "OLEANDER 设计协作",
+        "shortDescription": "从现行项目状态恢复并推进可编辑设计",
+        "longDescription": "按现有 OLEANDER 权威链启动和恢复跨域设计任务，展开不同机制的方向，制作原生资产，读回并吸收设计者判断。",
+        "developerName": "OLEANDER",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "用 OLEANDER 继续我当前的设计任务，先读回现行对象和上一次有效进度，再完成下一项原生设计工作。",
+          "用 OLEANDER 为这个设计问题提出不同机制的方向，制作可编辑的最小原型并检验事实边界。"
+        ]
+      }
+    }
+  }
+}
