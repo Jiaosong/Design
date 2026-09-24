@@ -13,6 +13,7 @@ assert manifest["name"] == "oleander-design"
 assert re.fullmatch(r"\d+\.\d+\.\d+", manifest["version"])
 interface = manifest["extensions"]["com.openai"]["interface"]
 assert interface["displayName"] and interface["defaultPrompt"]
+assert manifest["author"]["name"] == interface["developerName"]
 assert "apps" not in manifest["extensions"]["com.openai"], "No MCP mapping is packaged yet"
 entries = [x for x in market["plugins"] if x["name"] == manifest["name"]]
 assert len(entries) == 1
@@ -32,4 +33,8 @@ for ref in refs:
 guide = (skill.parent / "references" / "execution.md").read_text(encoding="utf-8")
 for requirement in ("task_id", "authority fingerprint", "actual readback", "claim ceiling", "Next allowed action"):
     assert requirement.lower() in guide.lower(), requirement
+trial = (skill.parent / "references" / "trial.md").read_text(encoding="utf-8")
+for requirement in ("editable", "causally distinct", "human", "actual object"):
+    assert requirement.lower() in trial.lower(), requirement
+assert "trial.md" in body and "wall of governance" in body
 print("OLEANDER plugin packaging graph: PASS (live installation and model execution not proven)")
