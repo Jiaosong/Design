@@ -21,7 +21,7 @@
 | R-I / R-J 读回、决定与持久化 | 实际打开/运行/检查原生对象；人的意见与原因进入原 Design Decision Record、Review/Execution Receipt；衍生物按依赖回读 | 自动化只能提出候选；Design KEEP、专业认可和晋升由原 Owner 决定 |
 | R-K / Evolution Plane 回学 | 从真实修复与结果形成有边界的方法候选，走现有 EV 评价、回归、人工晋升 | 单次选择不写成永久审美偏好；Candidate 不能自晋级 Current |
 
-以上为既有十一运行层与六运行平面的接入视图，不增加层数、知识树、Gate、Review 类、Skill 或可晋级的状态。
+以上为既有十一运行层与六运行平面的接入视图，不增加层数、知识树、Gate、Review 类或可晋级的状态。插件包包含一项薄的 `oleander-session` 启动/恢复 Skill，仅解决安装后的路由与跨会话接续；设计推理与状态推进继续由现有 `oleander-design-process` 持有，不形成第二个方法 Owner。
 
 ## 3. 一次设计回路的人机分工
 
@@ -54,3 +54,11 @@
 - 对一次错误的人机交互、一次全部方向被否定、一次跨域接口冲突做反例；记录失败归因、局部修复与重测。
 - 只有跨域真实结果与反例支持可迁移规则，才向现有 `oleander-design-process` 和必要的 domain adapter 提交有界变更；Evolution Candidate 依原合同评估和人工晋升。
 - 未具备真实模型执行、原生读回、独立设计评议和人类真实 steering 时，PR 保持 Draft / Candidate；CI 成功仅证明机器检查通过。
+
+## 6. GPT 插件入口与下次执行
+
+- **安装候选**：`plugins/oleander-design/plugin.json` 是 portable 插件清单；`skills/oleander-session/SKILL.md` 只实现会话入口；`.agents/plugins/marketplace.json` 提供仓库候选市场入口。当前只在 PR #705 的分支；没有声称已在 ChatGPT 安装或发布。插件不捆绑新的 MCP 服务，不获得单独的 Notion/GitHub 权限或写权。
+- **首次进入**：检查已连接 Notion、GitHub 和目标域原生工具；读取 exact Current 与真实项目状态、现有 `oleander-design-process`、上一有效 Native Artifact 与 Receipt。输出 `task_id / decision_object_id / authority fingerprint / source revision / required_native_output / owner set / checkpoint / claim ceiling / next_allowed_action` 的现有承载视图，缺项写 UNRESOLVED。
+- **续跑**：按最高已验证 checkpoint 恢复，核对 GitHub main 和 Notion 修订；若来源漂移，只重开受影响的分支。远端写入结果不确定时先核对后置条件，再决定是否重试。工具缺失时限定相应副作用，其他经授权的只读或可逆设计继续。
+- **实跑验收**：本分支新增 package graph validator 进 AI Governance CI，检查 manifest、市场路径、Skill 引用及核心恢复字段；安装后另用数字、空间、产品真实对象和重开/混合/否定用例跑当前模型与工具，保留原生读回、人类实际理由及独立评审。静态 CI 成功不等于已可在 ChatGPT 移动端安装，也不等于设计方法专业 PASS。
+- **停止与完成**：权限/身份冲突、不可逆无授权和事实越界按既有 Owner HOLD；任务完成须现有 Execution Receipt 的 `flow_completion.completion_gate = PASS` 且适用必需阶段无未完成项，插件不得单独宣称关闭。
