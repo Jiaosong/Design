@@ -2,6 +2,8 @@
 
 This file is a launch procedure for the packaged session skill. The live Notion/GitHub owners always govern the actual task.
 
+For a generic first-use test, follow [trial.md](trial.md) and keep the governance preflight behind the visible design result. A fresh bounded fixture has no prior `task_id` or receipt; mark those as not applicable until a real project task is resolved. This does not relax any rule for production mutation or project closure.
+
 ## Capability preflight
 
 Read and report for the current session:
@@ -27,7 +29,7 @@ Use the current exact source revision, not a timestamp or chat recency, to decid
 7. **Decide/repair**: route independent Design Review, triggered specialist and cross-disciplinary reviews. Repair root cause and reread the same object. Propagate affected downstream changes.
 8. **Persist/resume**: write through existing project and Execution Receipt triggers with actual readback references and checkpoint sequence. Report next allowed action; close only when the existing full-flow gate is PASS.
 
-## Exact continuation packet to display to the user
+## Exact continuation packet for a real project handoff
 
 This is a *view over existing carriers*, not a new persisted receipt:
 
