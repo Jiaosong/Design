@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.3",
+  "object": {
+    "name": "OLEANDER Human–AI Co-Design Architecture vNext",
+    "project_id": "PF-00",
+    "project_level": "P0",
+    "case_id": null,
+    "knowledge_position": null,
+    "application_mapping": [],
+    "priority": "Priority-0"
+  },
+  "mode": "CANDIDATE",
+  "decision_question": "How should OLEANDER be restructured so human and AI co-design is the visible operating core while mature authority, evidence, professional-process, native-artifact, review and persistence semantics remain intact and non-duplicated?",
+  "problem_layer": "Architecture",
+  "change_scope": {
+    "kind": "RESTRUCTURE",
+    "surfaces": ["SYSTEM_TOOLCHAIN", "INTEGRATION", "OTHER"],
+    "established_object_baseline": [
+      "OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1",
+      "complex-project-master-runtime-v1.0",
+      "design-intelligence-routing-and-review-v1.0",
+      "design-quality-and-design-development-specification-v1.0",
+      "professional-domain-process-contract-v1.0",
+      "OLEANDER_EXECUTION_RECEIPT_v1.0",
+      "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2",
+      "oleander-design-process"
+    ],
+    "baseline_source": "origin/main@6a52a5c5d9a94b71746466417404cf57e4e4b08f",
+    "greenfield_no_established_objects": false
+  },
+  "authority_source": {
+    "state": "CANONICAL_AUTHORITY",
+    "object_id": "OLEANDER-CURRENT-ARCHITECTURE-v2.1",
+    "source_id": "origin/main",
+    "location": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "sha256": null
+  },
+  "locked_variables": [
+    "ONE_CURRENT_AUTHORITY",
+    "NO_SECOND_PROJECT_STATE",
+    "NO_SECOND_CHECKPOINT_DATABASE",
+    "PROFESSIONAL_PROCESSES_REMAIN_DOMAIN_NATIVE",
+    "ARTIFACT_EXISTENCE_NE_DESIGN_PASS",
+    "PROCESS_PASS_NE_DESIGN_KEEP",
+    "AI_CANNOT_SELF_PROMOTE",
+    "PERSISTENCE_REMAINS_PAP_OWNED",
+    "NO_COMPRESSION_NO_LOSS"
+  ],
+  "open_variables": [
+    "VISIBLE_TOP_LEVEL_ARCHITECTURE",
+    "HUMAN_AI_COLLABORATION_KERNEL",
+    "DESIGN_LOOP_BOUNDARY",
+    "DESIGNER_DEVELOPMENT_ROLE",
+    "SESSION_KERNEL_PLUGIN_ROLE",
+    "R_A_TO_R_K_USER_FACING_STATUS",
+    "MIGRATION_SEQUENCE"
+  ],
+  "required_qa": ["Machine", "Visual", "Project"],
+  "artifact_type": "documentation",
+  "claim_types": [],
+  "evidence_state": {
+    "current_architecture_read": "PASS",
+    "master_runtime_read": "PASS",
+    "design_process_read": "PASS",
+    "candidate_architecture_map_visual_readback": "PASS",
+    "migration_no_loss_review": "OPEN",
+    "spatial_real_case_trial": "NOT_RUN",
+    "digital_real_case_trial": "NOT_RUN",
+    "physical_product_real_case_trial": "NOT_RUN",
+    "independent_architecture_review": "NOT_RUN"
+  },
+  "next_allowed_action": "Build and validate the candidate architecture, migration map and Co-Design Session Kernel against existing Current carriers; do not modify Current pointers or promote.",
+  "sync_persistence_trigger": "NONE",
+  "preservation_review": {
+    "global_fixed_chapter_count_applied": false,
+    "decisions": [
+      {
+        "object_id": "OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1",
+        "concept_state": "REVISE",
+        "presentation_state": "MAIN",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "REMAP",
+        "reason_code": "HIERARCHY_RESTRUCTURE_WITH_IDENTITY_PRESERVED",
+        "reason": "Keep the single-architecture authority and runtime semantics, but replace the governance-first user-facing top-level projection with the Human-AI Co-Design operating model.",
+        "target_object_ids": ["VNX-HUMAN-AI-CODESIGN-OPERATING-MODEL"],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "complex-project-master-runtime-v1.0",
+        "concept_state": "KEEP",
+        "presentation_state": "SUPPORT",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "PRESERVE",
+        "reason_code": "NOT_APPLICABLE",
+        "reason": "Master Runtime remains the thin orchestration authority beneath the new visible co-design layer.",
+        "target_object_ids": [],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "design-intelligence-routing-and-review-v1.0",
+        "concept_state": "CURRENTIZE",
+        "presentation_state": "MAIN",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "REMAP",
+        "reason_code": "CROSS_SURFACE_REMAP_WITH_IDENTITY_PRESERVED",
+        "reason": "Design Intelligence becomes a first-class visible co-design domain while retaining its existing authority/claim boundaries.",
+        "target_object_ids": ["VNX-A2-DESIGN-INTELLIGENCE-EXPLORATION"],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "design-quality-and-design-development-specification-v1.0",
+        "concept_state": "KEEP",
+        "presentation_state": "SUPPORT",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "REMAP",
+        "reason_code": "CROSS_SURFACE_REMAP_WITH_IDENTITY_PRESERVED",
+        "reason": "Shared DD responsibilities remain intact and project across exploration, professional development and critique rather than becoming a new co-design stage sequence.",
+        "target_object_ids": ["VNX-A2-DESIGN-INTELLIGENCE-EXPLORATION", "VNX-B1-PROFESSIONAL-DESIGN-DEVELOPMENT", "VNX-A3-B3-CRITIQUE-DECISION-READBACK"],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "professional-domain-process-contract-v1.0",
+        "concept_state": "KEEP",
+        "presentation_state": "SUPPORT",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "PRESERVE",
+        "reason_code": "NOT_APPLICABLE",
+        "reason": "Authentic professional processes remain domain-native and are not replaced by a universal Human-AI stage model.",
+        "target_object_ids": [],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "OLEANDER_EXECUTION_RECEIPT_v1.0",
+        "concept_state": "KEEP",
+        "presentation_state": "SUPPORT",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "PRESERVE",
+        "reason_code": "NOT_APPLICABLE",
+        "reason": "Continuation, concurrency, recovery and material execution evidence remain with the existing Execution Receipt.",
+        "target_object_ids": [],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2",
+        "concept_state": "KEEP",
+        "presentation_state": "SUPPORT",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "PRESERVE",
+        "reason_code": "NOT_APPLICABLE",
+        "reason": "Resolver remains the capability/owner routing implementation below the co-design interaction layer.",
+        "target_object_ids": [],
+        "identity_preserved": true
+      },
+      {
+        "object_id": "oleander-design-process",
+        "concept_state": "REVISE",
+        "presentation_state": "MAIN",
+        "truth_evidence_state": "CURRENT_BASELINE_PRESERVED",
+        "action": "REMAP",
+        "reason_code": "HIERARCHY_RESTRUCTURE_WITH_IDENTITY_PRESERVED",
+        "reason": "Retain its mature option-space, native prototype, critique, repair and handoff logic but project those responsibilities into the visible co-design loop instead of leaving them hidden inside one Skill.",
+        "target_object_ids": ["VNX-A2-DESIGN-INTELLIGENCE-EXPLORATION", "VNX-B2-MAKING-PROTOTYPING-SIMULATION", "VNX-A3-B3-CRITIQUE-DECISION-READBACK"],
+        "identity_preserved": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#f7f7f5"/>
+  <style>
+    .title{font:700 34px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#111827}
+    .sub{font:400 15px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#5b6472;letter-spacing:.8px}
+    .h1{font:700 21px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#111827}
+    .h2{font:650 17px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#111827}
+    .body{font:400 14px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#374151}
+    .small{font:400 12px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#6b7280}
+    .caps{font:650 12px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#5b6472;letter-spacing:1.2px}
+    .box{fill:#ffffff;stroke:#d6d9de;stroke-width:1.5}
+    .viewA{fill:#f4f2ff;stroke:#bbb3e8;stroke-width:1.6}
+    .viewB{fill:#eef7f2;stroke:#a9cfb7;stroke-width:1.6}
+    .viewC{fill:#f3f4f6;stroke:#c6cbd3;stroke-width:1.6}
+    .kernel{fill:#111827;stroke:#111827;stroke-width:1.5}
+    .kernelText{font:700 19px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#ffffff}
+    .kernelSmall{font:400 12px 'Segoe UI','Noto Sans CJK SC',Arial,sans-serif;fill:#d1d5db;letter-spacing:.6px}
+    .arrow{stroke:#596273;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    .thin{stroke:#9ca3af;stroke-width:1.25;fill:none;marker-end:url(#arrowSmall)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#596273"/></marker>
+    <marker id="arrowSmall" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="#9ca3af"/></marker>
+  </defs>
+
+  <text x="90" y="72" class="title">OLEANDER 综合人机设计系统 · vNext Candidate</text>
+  <text x="90" y="102" class="sub">HUMAN–AI CO-DESIGN OPERATING MODEL · ONE CURRENT ARCHITECTURE · THREE VIEWS</text>
+
+  <rect x="90" y="145" rx="14" ry="14" width="315" height="116" class="box"/>
+  <text x="247" y="182" text-anchor="middle" class="caps">HUMAN DESIGNER</text>
+  <text x="247" y="212" text-anchor="middle" class="h2">设计者</text>
+  <text x="247" y="238" text-anchor="middle" class="small">意图 · 价值 · 感知 · 隐性经验 · 判断 · Steering</text>
+
+  <rect x="515" y="132" rx="18" ry="18" width="570" height="142" class="kernel"/>
+  <text x="800" y="177" text-anchor="middle" class="kernelText">CO-DESIGN SESSION KERNEL</text>
+  <text x="800" y="207" text-anchor="middle" class="kernelSmall">UNDERSTAND → EXPLORE → MAKE → LOOK → CRITIQUE → STEER → LEARN</text>
+  <text x="800" y="239" text-anchor="middle" class="kernelSmall">RESOLVE · RESUME · ROUTE · GUARD · HANDOFF · REPORT 〔quiet support〕</text>
+
+  <rect x="1195" y="145" rx="14" ry="14" width="315" height="116" class="box"/>
+  <text x="1352" y="182" text-anchor="middle" class="caps">AI DESIGN PARTNER</text>
+  <text x="1352" y="212" text-anchor="middle" class="h2">AI 设计协作者</text>
+  <text x="1352" y="238" text-anchor="middle" class="small">检索 · 重构问题 · 发散 · 制作 · 模拟 · 反驳 · 解释</text>
+
+  <path d="M405 203 L505 203" class="arrow"/>
+  <path d="M515 223 L415 223" class="arrow"/>
+  <path d="M1085 203 L1185 203" class="arrow"/>
+  <path d="M1195 223 L1095 223" class="arrow"/>
+
+  <rect x="90" y="325" rx="18" ry="18" width="1420" height="210" class="viewA"/>
+  <text x="125" y="362" class="caps">VIEW A · CO-DESIGN EXPERIENCE</text>
+  <text x="125" y="391" class="h1">人机共同设计体验</text>
+  <text x="125" y="418" class="body">用户看到的是设计问题、真实候选、实际读回与关键判断；治理仅在影响动作/声明时显露。</text>
+
+  <rect x="125" y="451" rx="10" ry="10" width="305" height="58" class="box"/>
+  <text x="277" y="476" text-anchor="middle" class="h2">A1 协作与 Steering</text>
+  <text x="277" y="497" text-anchor="middle" class="small">select / modify / mix / reject / reopen / defer</text>
+  <rect x="455" y="451" rx="10" ry="10" width="305" height="58" class="box"/>
+  <text x="607" y="476" text-anchor="middle" class="h2">A2 设计智能与探索</text>
+  <text x="607" y="497" text-anchor="middle" class="small">frame · causal options · falsifiers · wildcard</text>
+  <rect x="785" y="451" rx="10" ry="10" width="305" height="58" class="box"/>
+  <text x="937" y="476" text-anchor="middle" class="h2">A3 批评与设计判断</text>
+  <text x="937" y="497" text-anchor="middle" class="small">look · critique · human steer · repair</text>
+  <rect x="1115" y="451" rx="10" ry="10" width="355" height="58" class="box"/>
+  <text x="1292" y="476" text-anchor="middle" class="h2">A4 设计者发展</text>
+  <text x="1292" y="497" text-anchor="middle" class="small">key distinction · transfer · support fades</text>
+
+  <rect x="90" y="565" rx="18" ry="18" width="1420" height="190" class="viewB"/>
+  <text x="125" y="602" class="caps">VIEW B · PROFESSIONAL &amp; MAKING</text>
+  <text x="125" y="631" class="h1">专业深化与真实制作</text>
+  <text x="125" y="658" class="body">专业流程保持 domain-native；AI 不能用通用 Co-Design 阶段替代建筑/HCD/产品/结构/MEP 等真实专业过程。</text>
+  <rect x="125" y="684" rx="10" ry="10" width="390" height="50" class="box"/>
+  <text x="320" y="714" text-anchor="middle" class="h2">B1 专业设计深化</text>
+  <rect x="605" y="684" rx="10" ry="10" width="390" height="50" class="box"/>
+  <text x="800" y="714" text-anchor="middle" class="h2">B2 Native Making / Prototype / Simulation</text>
+  <rect x="1085" y="684" rx="10" ry="10" width="385" height="50" class="box"/>
+  <text x="1277" y="714" text-anchor="middle" class="h2">B3 Actual Readback / Interfaces</text>
+
+  <rect x="90" y="785" rx="18" ry="18" width="1420" height="145" class="viewC"/>
+  <text x="125" y="822" class="caps">VIEW C · GOVERNANCE &amp; CONTINUITY</text>
+  <text x="125" y="851" class="h1">治理与连续性底座</text>
+  <text x="125" y="878" class="body">Authority · Knowledge/Evidence · Project State · Execution Receipt/Checkpoint · Resolver · Review · PAP · Promotion · Sync · G9/Evolution</text>
+  <text x="125" y="906" class="small">始终存在，但通常不主导用户界面；任何插件卸载后，Current / checkpoint / native artifact 仍必须独立存在。</text>
+
+  <path d="M800 274 L800 318" class="arrow"/>
+  <path d="M800 535 L800 558" class="arrow"/>
+  <path d="M800 755 L800 778" class="arrow"/>
+  <path d="M1460 785 C1520 720 1520 405 1470 335" class="thin"/>
+  <text x="1500" y="560" transform="rotate(-90 1500 560)" class="small">governance protects every loop without becoming the design loop</text>
+
+  <text x="90" y="972" class="small">CANDIDATE / CURRENT UNCHANGED / PROCESS PASS ≠ DESIGN KEEP ≠ PROFESSIONAL PASS ≠ PROMOTION</text>
+</svg>

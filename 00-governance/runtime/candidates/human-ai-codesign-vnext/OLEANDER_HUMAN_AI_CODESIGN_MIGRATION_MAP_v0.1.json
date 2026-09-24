@@ -1,0 +1,81 @@
+{
+  "schema": "oleander.human-ai-codesign-migration-map.v0.1",
+  "status": "CANDIDATE_NO_PROMOTION",
+  "base_commit": "6a52a5c5d9a94b71746466417404cf57e4e4b08f",
+  "decision_object_id": "OLEANDER-HUMAN-AI-CODESIGN-VNEXT",
+  "rule": "NO_LOSS_REMAP_EXISTING_OWNER_SEMANTICS_BEFORE_ANY_DEPRECATION",
+  "views": [
+    "VIEW_A_CODESIGN_EXPERIENCE",
+    "VIEW_B_PROFESSIONAL_AND_MAKING",
+    "VIEW_C_GOVERNANCE_AND_CONTINUITY"
+  ],
+  "design_arenas": [
+    "A1_COLLABORATION_AND_STEERING",
+    "A2_DESIGN_INTELLIGENCE_AND_EXPLORATION",
+    "B1_PROFESSIONAL_DESIGN_DEVELOPMENT",
+    "B2_MAKING_PROTOTYPING_AND_SIMULATION",
+    "A3_B3_CRITIQUE_DECISION_AND_READBACK",
+    "A4_C1_DESIGNER_AND_SYSTEM_LEARNING_EVOLUTION"
+  ],
+  "runtime_layer_mapping": {
+    "R-A": {"current":"Authority & Identity","vnext_role":"GOVERNANCE_SUBSTRATE","action":"PRESERVE","visible_by_default":false},
+    "R-B": {"current":"Knowledge & Evidence Resolution","vnext_role":"VIEW_C + VIEW_A/A2_INPUT","action":"PRESERVE_PROJECT","visible_by_default":false},
+    "R-C": {"current":"Design Intelligence","vnext_role":"VIEW_A / A2_DESIGN_INTELLIGENCE_AND_EXPLORATION","action":"ELEVATE_AND_REFACTOR","visible_by_default":true},
+    "R-D": {"current":"Shared Design Quality & Design Development","vnext_role":"VIEW_A+VIEW_B / SHARED_RESPONSIBILITY_KERNEL","action":"PRESERVE_SPLIT_PROJECTION","visible_by_default":false},
+    "R-E": {"current":"Professional Domain Execution Process","vnext_role":"VIEW_B / B1_PROFESSIONAL_DESIGN_DEVELOPMENT","action":"PRESERVE_ELEVATE","visible_by_default":true},
+    "R-F": {"current":"Cross-Disciplinary Integration","vnext_role":"VIEW_B+VIEW_C / INTERFACE_COORDINATION","action":"PRESERVE_PROJECT","visible_by_default":false},
+    "R-G": {"current":"Capability / Skill / Tool Runtime","vnext_role":"VIEW_B / B2_EXECUTION_SUBSTRATE","action":"PRESERVE_DEMOTE_FROM_VISIBLE_CENTER","visible_by_default":false},
+    "R-H": {"current":"Native Execution & Artifact","vnext_role":"VIEW_B / B2_MAKING_PROTOTYPING_AND_SIMULATION","action":"PRESERVE_ELEVATE","visible_by_default":true},
+    "R-I": {"current":"Actual Readback & Review","vnext_role":"VIEW_A+VIEW_B / A3_B3_CRITIQUE_DECISION_AND_READBACK","action":"PRESERVE_ELEVATE","visible_by_default":true},
+    "R-J": {"current":"Persistence / Promotion / Synchronization","vnext_role":"GOVERNANCE_SUBSTRATE","action":"PRESERVE","visible_by_default":false},
+    "R-K": {"current":"G9 / Knowledge Return","vnext_role":"VIEW_C / A4_C1_SYSTEM_EVOLUTION","action":"PRESERVE_PROJECT","visible_by_default":false}
+  },
+  "cross_cutting_plane_mapping": {
+    "Control Plane":"GOVERNANCE_SUBSTRATE_ORCHESTRATION",
+    "State Plane":"GOVERNANCE_SUBSTRATE_STATE",
+    "Acquisition / Reader Plane":"VIEW_C + VIEW_A/A2_INPUT",
+    "Execution Plane":"VIEW_B / B2",
+    "Observability Plane":"VIEW_C projection into session UI + A3/B3 input",
+    "Evolution Plane":"VIEW_C / A4_C1"
+  },
+  "preserved_contracts": [
+    "CURRENT_AUTHORITY_AND_NAMESPACE",
+    "L0_L7_KNOWLEDGE_ARCHITECTURE",
+    "KNOWLEDGE_CONTENT_REVIEW_KI_OE",
+    "P0_P4_PROJECT_AXIS_AND_PROJECT_STATE",
+    "CONTROL_CARD_AND_MASTER_RUNTIME",
+    "EXECUTION_RECEIPT_AND_CONTINUATION_CHECKPOINT",
+    "PROFESSIONAL_DOMAIN_PROCESSES",
+    "CROSS_DISCIPLINARY_INTEGRATION",
+    "SKILL_RESOLVER_CAPABILITY_TOOL_ADAPTER",
+    "NATIVE_ARTIFACT_CONTRACT",
+    "INDEPENDENT_REVIEW_SEPARATION",
+    "PAP_PERSISTENCE_PROMOTION_SYNC",
+    "G9_AND_EVOLUTION_CANDIDATE_GOVERNANCE"
+  ],
+  "dd_mapping": {
+    "rule":"DD-01..DD-12 remain shared responsibility dimensions, not a user-facing sequence or new co-design stage family.",
+    "primary_consumers": ["VIEW_A", "VIEW_B"]
+  },
+  "forbidden_new_parallel_structures": [
+    "SECOND_CURRENT_AUTHORITY",
+    "PLUGIN_PROJECT_STATE",
+    "PLUGIN_CHECKPOINT_DATABASE",
+    "PLUGIN_ARTIFACT_REGISTRY",
+    "PLUGIN_PERSISTENCE_STORE",
+    "UNIVERSAL_CODESIGN_PROFESSIONAL_STAGE_SEQUENCE",
+    "AI_OWNED_PROMOTION_AUTHORITY"
+  ],
+  "deprecation_policy": "NO_CURRENT_RUNTIME_LAYER_OR_CONTRACT_IS_DEPRECATED_IN_V0_1; V0_1 ONLY CHANGES THE CANDIDATE_TOP_LEVEL_PROJECTION_AND_IDENTIFIES_SUCCESSOR_RESPONSIBILITIES",
+  "promotion_preconditions": [
+    "MIGRATION_MAP_NO_LOSS_REVIEW",
+    "SPATIAL_REAL_CASE_TRIAL",
+    "DIGITAL_REAL_CASE_TRIAL",
+    "PHYSICAL_PRODUCT_REAL_CASE_TRIAL",
+    "HUMAN_STEERING_SECOND_ROUND_NATIVE_DELTA_VERIFIED",
+    "NO_PARALLEL_STATE_OR_AUTHORITY_VERIFIED",
+    "CURRENT_BOUNDARY_REGRESSION_PASS",
+    "INDEPENDENT_ARCHITECTURE_REVIEW",
+    "EXPLICIT_HUMAN_PROMOTION_DECISION"
+  ]
+}

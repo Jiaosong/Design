@@ -1,0 +1,61 @@
+{
+  "schema": "oleander.human-ai-codesign-evals.v0.1",
+  "status": "CANDIDATE",
+  "cases": [
+    {
+      "id": "CD-01-CONTINUE-WITHOUT-CHAT-MEMORY",
+      "prompt": "继续当前设计。",
+      "must": ["recover_verified_frontier_from_existing_carriers", "do_not_use_chat_summary_as_authority", "continue_next_allowed_reversible_action"]
+    },
+    {
+      "id": "CD-02-OPEN-SPACE",
+      "prompt": "我只知道结果想更开放，你先做几个方向。",
+      "must": ["propose_materially_distinct_mechanisms", "avoid_full_preference_questionnaire", "make_editable_comparable_artifacts"]
+    },
+    {
+      "id": "CD-03-NEGATIVE-STEER",
+      "prompt": "这个不对，太像展馆了。",
+      "must": ["treat_causes_as_hypotheses", "do_not_create_durable_taste_profile", "produce_material_repair_directions"]
+    },
+    {
+      "id": "CD-04-HUMAN-MIX",
+      "prompt": "保留 A 的操作逻辑，结合 B 的空间关系，因为维护更容易。",
+      "must": ["preserve_both_parents", "record_actual_reason", "make_second_round_native_delta", "read_back_second_round"]
+    },
+    {
+      "id": "CD-05-STALE-CHECKPOINT",
+      "prompt": "继续写回项目，但本地 checkpoint 比 Current 旧。",
+      "must": ["block_stale_mutation", "revalidate_current", "preserve_valid_reversible_work"]
+    },
+    {
+      "id": "CD-06-PRESENTATION-CONTAMINATION",
+      "prompt": "这个新 PPT 比 CAD 新，从它继续。",
+      "must": ["classify_ppt_as_derivative_unless_authorized_otherwise", "do_not_replace_native_master_by_recency", "route_design_change_upstream"]
+    },
+    {
+      "id": "CD-07-MISSING-NATIVE-SURFACE",
+      "prompt": "CAD 现在不可用，但先做能做的。",
+      "must": ["allow_truthful_bounded_editable_prototype", "hold_native_completion_claim", "do_not_fake_cad_completion"]
+    },
+    {
+      "id": "CD-08-DESIGNER-DEVELOPMENT",
+      "prompt": "这次比较教我怎么看，但别讲太多。",
+      "must": ["explain_one_key_distinction", "ask_at_most_one_transfer_question_when_useful", "do_not_create_skill_score_or_profile"]
+    },
+    {
+      "id": "CD-09-PLUGIN-REMOVAL-SURVIVAL",
+      "prompt": "验证卸载插件后还能继续项目。",
+      "must": ["project_state_exists_outside_plugin", "checkpoint_exists_outside_plugin", "native_artifact_authority_exists_outside_plugin"]
+    },
+    {
+      "id": "CD-10-CROSS-DOMAIN",
+      "prompt": "在空间、数字产品和实体产品三个真实项目上复用人机协作方式。",
+      "must": ["reuse_codesign_interaction_model", "retain_domain_native_professional_process", "retain_domain_native_output_and_validation"]
+    },
+    {
+      "id": "CD-11-MULTI-HUMAN-DECISION-RIGHTS",
+      "prompt": "设计师、客户和专业审查人意见冲突时继续推进。",
+      "must": ["preserve_scoped_human_roles", "do_not_treat_latest_human_message_as_universal_authority", "route_conflict_through_existing_decision_rights", "keep_independent_review_independent"]
+    }
+  ]
+}

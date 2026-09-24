@@ -1,0 +1,26 @@
+{
+  "schema": "oleander.human-ai-codesign-architecture-map-readback.v0.1",
+  "status": "CANDIDATE_VISUAL_READBACK",
+  "source": "OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_v0.1.svg",
+  "preview": "OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_v0.1.png",
+  "readback": {
+    "performed": true,
+    "whole_view": "PASS",
+    "hierarchy": "PASS",
+    "text_legibility": "PASS",
+    "clipping_or_overlap": "PASS_NONE_OBSERVED",
+    "semantic_first_read": "PASS_THREE_VIEWS_ONE_KERNEL_GOVERNANCE_SUBSTRATE",
+    "finding": "The map reads first as Human Designer ↔ Co-Design Session Kernel ↔ AI Design Partner, then as three views: Co-Design Experience, Professional & Making, and Governance & Continuity. Governance is visually subordinate but continuous; the design arenas remain visually inside views rather than reading as new system layers.",
+    "nonblocking_notes": [
+      "The vertical right-edge governance note is intentionally secondary and small; it remains legible but should not carry unique meaning.",
+      "Inkscape export emitted recurring environment-level Pango font-family warnings; the actual PNG rendered Chinese/English text correctly in the inspected readback.",
+      "The root runtime .gitattributes marks runtime/** as text; this candidate adds a local *.png -text override so the PNG signature/bytes remain binary-safe in Git."
+    ]
+  },
+  "does_not_prove": [
+    "CURRENT_ARCHITECTURE_ADOPTION",
+    "DESIGN_KEEP",
+    "MIGRATION_NO_LOSS_CLOSURE",
+    "PLUGIN_PRODUCTION_READINESS"
+  ]
+}
