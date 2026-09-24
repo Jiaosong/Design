@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "oleander-design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Resume and execute OLEANDER design work across spatial, interface, product and integrated projects using current authority, editable native artifacts, human steering and verified readback.",
   "repository": "https://github.com/Jiaosong/Design",
   "keywords": [
@@ -27,5 +27,8 @@
         ]
       }
     }
+  },
+  "author": {
+    "name": "OLEANDER"
   }
 }
