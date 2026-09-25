@@ -31,6 +31,9 @@ def main() -> int:
         "INSTALL_CHATGPT.md",
         "COS_LOCAL_UPLOAD.md",
         "VERCEL_DEPLOY.md",
+        "OPENAI_SECURE_TUNNEL.md",
+        "configure_openai_tunnel.ps1",
+        "run_openai_tunnel_secure.ps1",
         "DEPLOYMENT_RECEIPT_v0.1.json",
         "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
         "CANDIDATE_MANIFEST_v0.1.json",
@@ -93,8 +96,8 @@ def main() -> int:
         mcp_config = json.loads(portable_mcp.read_text(encoding="utf-8-sig"))
         serialized = json.dumps(mcp_config, ensure_ascii=False)
         lowered = serialized.lower()
-        if "localhost" in lowered or "127.0.0.1" in lowered or "<" in serialized:
-            fail("PLUGIN_MCP_NONREMOTE_OR_PLACEHOLDER", failures)
+        if "<" in serialized:
+            fail("PLUGIN_MCP_PLACEHOLDER_FORBIDDEN", failures)
         if "access_token=" in lowered or "baidu_netdisk_access_token" in lowered:
             fail("PLUGIN_MCP_SECRET_FORBIDDEN", failures)
         servers = mcp_config.get("mcpServers", {})
@@ -107,11 +110,15 @@ def main() -> int:
             if config.get("type") not in {"http", "streamable-http"}:
                 fail(f"PLUGIN_MCP_TRANSPORT_INVALID:{name}", failures)
             url = str(config.get("url", ""))
-            if not url.startswith("https://") or not url.rstrip("/").endswith("/mcp"):
+            selected_loopback = url == "http://127.0.0.1:9823/mcp"
+            selected_remote = url.startswith("https://") and url.rstrip("/").endswith("/mcp")
+            if not (selected_loopback or selected_remote):
                 fail(f"PLUGIN_MCP_URL_INVALID:{name}", failures)
             bearer_env = config.get("bearer_token_env_var")
             if bearer_env not in {None, "OLEANDER_BAIDU_APP_BEARER_TOKEN"}:
                 fail(f"PLUGIN_MCP_BEARER_ENV_INVALID:{name}", failures)
+            if selected_loopback and bearer_env is not None:
+                fail(f"PLUGIN_MCP_LOOPBACK_BEARER_UNEXPECTED:{name}", failures)
 
     schema = json.loads(
         (ROOT / "schemas/oleander-baidu-storage-binding.v0.1.schema.json").read_text(encoding="utf-8-sig")

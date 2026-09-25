@@ -1,17 +1,34 @@
 {
   "schema": "oleander.baidu-storage-deployment-receipt.v0.1",
-  "status": "CANDIDATE_LOCAL_BAIDU_AUTH_AND_VAULT_BOOTSTRAP_PASS_REMOTE_SECRET_PENDING",
-  "recorded_at": "2026-09-25T15:56:30Z",
-  "source_commit": "aedea199",
+  "status": "CANDIDATE_OPENAI_SECURE_TUNNEL_READY",
+  "recorded_at": "2026-09-25T16:34:00Z",
+  "source_commit": "f270eb6c",
   "railway": {
     "project_id": "fee4a448-d806-4a35-b643-03434ac83e29",
     "service_id": "ebcd4d6e-4acc-43a7-bfcf-aa6d6318331e",
     "environment_id": "e43b8702-8271-4a64-91b7-fe2222c9dbda",
     "deployment_id": "a58f8235-09a9-44b7-aa0c-b609845b8ee3",
-    "deployment_state": "SUCCESS",
+    "deployment_state": "SUCCESS_BUT_NOT_SELECTED_RUNTIME",
+    "sleep_application": true,
     "mcp_url": "https://oleander-baidu-storage-production.up.railway.app/mcp",
     "health_url": "https://oleander-baidu-storage-production.up.railway.app/healthz",
     "policy_url": "https://oleander-baidu-storage-production.up.railway.app/policy"
+  },
+  "openai_secure_tunnel": {
+    "selected_runtime": true,
+    "tunnel_id": "tunnel_6ab6a118dd68819192500f7519ecac77",
+    "name": "OLEANDER Baidu Storage",
+    "runtime_key_store": "WINDOWS_DPAPI_CURRENT_USER_SECRET_NOT_RECORDED",
+    "profile": "oleander-baidu-storage",
+    "profile_path": "%LOCALAPPDATA%/OLEANDER/tunnel-client/oleander-baidu-storage.yaml",
+    "mcp_target": "http://127.0.0.1:9823/mcp",
+    "tunnel_client_process": "RUNNING",
+    "healthz": "live",
+    "readyz": "ready",
+    "mcp_session_initialize": "PASS",
+    "tunnel_metadata_fetch": "PASS",
+    "control_plane_start": "PASS",
+    "authority_effect": "NONE"
   },
   "transport_readback": {
     "health_http": 200,
@@ -60,13 +77,12 @@
   },
   "authority_effect": "NONE",
   "does_not_prove": [
-    "LOCAL_BAIDU_AUTH_PASS_DOES_NOT_PROVE_REMOTE_RAILWAY_BAIDU_AUTH",
+    "SECURE_TUNNEL_READY_DOES_NOT_BY_ITSELF_PROVE_CHATGPT_WORKSPACE_APP_INSTALL",
     "LOCAL_DESKTOP_PLUGIN_INSTALL_DOES_NOT_PROVE_CHATGPT_WEB_WORKSPACE_INSTALL",
     "PLUGIN_INSTALL_DOES_NOT_CREATE_PROJECT_STATE_OR_CURRENT_AUTHORITY",
     "STORAGE_SUCCESS_DOES_NOT_PROVE_DESIGN_KEEP_OR_PROMOTION"
   ],
   "remaining_user_boundary": [
-    "INJECT_BAIDU_NETDISK_ACCESS_TOKEN_INTO_RAILWAY_SECRET_STORE_WITHOUT_PASTING_IT_IN_CHAT",
-    "RESTART_CHATGPT_DESKTOP_AFTER_LOCAL_SECRET_ENVIRONMENT_AND_PLUGIN_INSTALL"
+    "ASSOCIATE_OR_VERIFY_THE_RUNNING_TUNNEL_IN_A_SUPPORTED_CHATGPT_CONNECTOR_SURFACE"
   ]
 }

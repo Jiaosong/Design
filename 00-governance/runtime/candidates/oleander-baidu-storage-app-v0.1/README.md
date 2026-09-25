@@ -9,9 +9,13 @@ It deliberately does **not** create or own Project State, Current Authority, Pro
 ## Architecture
 
 ```text
-ChatGPT custom app / COS
+ChatGPT / supported OpenAI surface
         ↓
-OLEANDER Baidu Storage MCP
+OpenAI Secure MCP Tunnel
+        ↓
+workstation tunnel-client
+        ↓
+OLEANDER Baidu Storage MCP on 127.0.0.1:9823
         ↓  policy + path/operation guard
 Baidu Netdisk official MCP
         ↓
@@ -70,7 +74,7 @@ Writes into a `/CURRENT/` storage branch or overwrite behavior require explicit 
 
 ## ChatGPT vs local COS
 
-ChatGPT uses the remote Baidu MCP path through this Streamable HTTP app. The official Baidu server does not expose local-file upload through SSE, so arbitrary local DWG/SKP/BLEND upload remains a COS/local-stdio responsibility.
+Remote OpenAI access uses OpenAI Secure MCP Tunnel to reach this workstation-hosted Streamable HTTP app. Local Codex/COS may use the loopback MCP endpoint directly. The official Baidu server does not expose local-file upload through its remote transport, so arbitrary local DWG/SKP/BLEND upload remains a COS/local-stdio responsibility.
 
 ## Run locally
 
@@ -83,12 +87,12 @@ py -3.13 -m app.server
 
 MCP endpoint:
 
-`http://127.0.0.1:8000/mcp`
+`http://127.0.0.1:9823/mcp`
 
 Health endpoint:
 
-`http://127.0.0.1:8000/healthz`
+`http://127.0.0.1:9823/healthz`
 
-See `INSTALL_CHATGPT.md`, `OPENAI_TUNNEL.md` and `COS_LOCAL_UPLOAD.md`.
+See `INSTALL_CHATGPT.md`, `OPENAI_SECURE_TUNNEL.md` and `COS_LOCAL_UPLOAD.md`.
 
 For a no-chat/no-Git local token setup on Windows, run `configure_baidu_token.ps1` and then `run_local_secure.ps1`. The token is stored through Windows DPAPI under the current user's LocalAppData, not in this repository.

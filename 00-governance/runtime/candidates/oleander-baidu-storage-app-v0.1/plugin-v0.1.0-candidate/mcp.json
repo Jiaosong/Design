@@ -3,8 +3,7 @@
   "mcpServers": {
     "oleander_baidu_storage": {
       "type": "streamable-http",
-      "url": "https://oleander-baidu-storage-production.up.railway.app/mcp",
-      "bearer_token_env_var": "OLEANDER_BAIDU_APP_BEARER_TOKEN"
+      "url": "http://127.0.0.1:9823/mcp"
     }
   }
 }

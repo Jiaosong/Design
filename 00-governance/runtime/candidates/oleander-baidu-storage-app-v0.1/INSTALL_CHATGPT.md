@@ -1,6 +1,6 @@
 # Install / test in ChatGPT
 
-This candidate is an MCP-powered ChatGPT app server. ChatGPT connects to a **remote Streamable HTTP MCP endpoint**, not directly to this local Python process.
+This candidate is an MCP-powered storage adapter. The preferred personal-workstation route is OpenAI Secure MCP Tunnel, which keeps the Python MCP bound to loopback instead of publishing it as a generic public endpoint.
 
 ## 1. Configure Baidu access
 
@@ -20,25 +20,26 @@ Do not place the token in Git, plugin ZIP files, chat messages, screenshots or t
 
 ```powershell
 $env:BAIDU_NETDISK_ACCESS_TOKEN="..."
-$env:PORT="9817"
+$env:PORT="9823"
+$env:OLEANDER_TRUST_PRIVATE_TRANSPORT="true"
 py -3.13 -m app.server
 ```
 
 Endpoint:
 
-`http://127.0.0.1:9817/mcp`
+`http://127.0.0.1:9823/mcp`
 
 Before any external exposure, run the test suite and validator.
 
 ## 3. Expose securely
 
-Preferred for workstation testing: use OpenAI Secure MCP Tunnel or another authenticated/private transport supported by your deployment environment.
+Preferred route: use `configure_openai_tunnel.ps1` once, then `run_openai_tunnel_secure.ps1` for normal operation. The latter starts the local MCP if needed, runs `tunnel-client doctor`, and then starts the Secure MCP Tunnel.
 
 Do **not** expose this server as an unauthenticated public endpoint because the server holds a Baidu access token capable of acting on the user's storage account.
 
 The server now fails closed when Baidu credentials are configured but neither an app bearer token nor an explicitly trusted private transport is active. `OLEANDER_TRUST_PRIVATE_TRANSPORT=true` must be used only behind a verified authenticated/private transport such as a working Secure MCP Tunnel or an equivalent private gateway. It is not a shortcut for a public deployment.
 
-For a durable deployment, run the Docker image behind an authenticated reverse proxy / private gateway and inject the Baidu token through a secret store. The candidate also supports an optional `OLEANDER_APP_BEARER_TOKEN` guard for generic MCP clients that can send a static Authorization header; this is not a substitute for a proper OAuth/private-tunnel deployment when ChatGPT cannot supply that header.
+For a separate cloud-hosted deployment, run the Docker image behind an authenticated reverse proxy / private gateway and inject the Baidu token through a secret store. That is an alternate deployment model, not the selected personal-workstation path. The candidate also supports an optional `OLEANDER_APP_BEARER_TOKEN` guard for generic MCP clients that can send a static Authorization header.
 
 DNS-rebinding protection remains enabled. A remote deployment must explicitly set
 `OLEANDER_MCP_ALLOWED_HOSTS` to its exact MCP host name (comma-separated when more than one host is required). If the client sends an `Origin` header, add only the exact trusted origins through `OLEANDER_MCP_ALLOWED_ORIGINS`; do not use `*`.
@@ -49,7 +50,7 @@ When the account/workspace supports custom MCP apps:
 
 1. enable Developer Mode;
 2. create a custom app/connector;
-3. provide the remote `https://.../mcp` endpoint;
+3. select/associate the running `OLEANDER Baidu Storage` Secure MCP Tunnel;
 4. inspect the tool list before enabling write tools;
 5. test `oleander_storage_status`, then read/list/search, then bounded folder creation;
 6. enable destructive capabilities only after policy review.
