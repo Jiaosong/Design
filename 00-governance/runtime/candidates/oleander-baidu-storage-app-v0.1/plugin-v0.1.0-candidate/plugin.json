@@ -1,0 +1,34 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "oleander-baidu-storage",
+  "version": "0.1.0",
+  "description": "Bounded Baidu Netdisk storage for OLEANDER project and knowledge replicas without turning cloud storage into Project State or Current Authority.",
+  "license": "MIT",
+  "keywords": [
+    "oleander",
+    "baidu-netdisk",
+    "storage",
+    "design",
+    "knowledge"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "OLEANDER 百度网盘",
+        "shortDescription": "在 OLEANDER_VAULT 范围内查找和管理百度网盘副本",
+        "longDescription": "为 OLEANDER 提供受限的百度网盘读取、搜索和存储操作。网盘只负责字节存储，不拥有 Project State、Current Authority、Design KEEP、专业结论或 Promotion。",
+        "developerName": "OLEANDER",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "查看 OLEANDER 百度网盘存储状态。",
+          "在 OLEANDER_VAULT 中查找当前项目的远程评审文件。",
+          "检查一个 Artifact 在百度网盘是否有可用副本。"
+        ]
+      }
+    }
+  }
+}

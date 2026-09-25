@@ -24,6 +24,8 @@ APP_INCLUDE = [
     ".env.example",
     "requirements.txt",
     "Dockerfile",
+    "VERCEL_DEPLOY.md",
+    "api",
     "run_local.ps1",
     "run_local_secure.ps1",
     "configure_baidu_token.ps1",
@@ -86,7 +88,7 @@ def main() -> int:
                 "file_count": app_count,
             },
             {
-                "role": "CHATGPT_PLUGIN_SKILL_BINDING",
+                "role": "CHATGPT_PLUGIN_PACKAGE",
                 "filename": PLUGIN_ZIP.name,
                 "sha256": plugin_sha,
                 "size_bytes": plugin_size,

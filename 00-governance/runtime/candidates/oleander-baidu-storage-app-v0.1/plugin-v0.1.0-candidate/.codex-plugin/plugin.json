@@ -1,0 +1,6 @@
+{
+  "name": "oleander-baidu-storage",
+  "version": "0.1.0",
+  "description": "Bounded Baidu Netdisk storage for OLEANDER.",
+  "skills": "./skills/"
+}

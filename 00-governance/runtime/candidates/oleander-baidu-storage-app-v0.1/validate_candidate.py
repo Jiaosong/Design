@@ -30,14 +30,18 @@ def main() -> int:
         "README.md",
         "INSTALL_CHATGPT.md",
         "COS_LOCAL_UPLOAD.md",
+        "VERCEL_DEPLOY.md",
         "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
         "CANDIDATE_MANIFEST_v0.1.json",
         "app/server.py",
         "app/policy.py",
         "app/upstream.py",
+        "api/index.py",
         "schemas/oleander-baidu-storage-binding.v0.1.schema.json",
-        "plugin-v0.1.0-candidate/skill.md",
-        "plugin-v0.1.0-candidate/references/storage.md",
+        "plugin-v0.1.0-candidate/plugin.json",
+        "plugin-v0.1.0-candidate/.codex-plugin/plugin.json",
+        "plugin-v0.1.0-candidate/skills/oleander-baidu-storage/SKILL.md",
+        "plugin-v0.1.0-candidate/skills/oleander-baidu-storage/references/storage.md",
     ]
     for rel in required:
         if not (ROOT / rel).exists():
@@ -64,6 +68,46 @@ def main() -> int:
     overlap = sorted(owns & forbidden_owns)
     if overlap:
         fail(f"SHADOW_AUTHORITY_OWNERSHIP:{overlap}", failures)
+
+    plugin_root = ROOT / "plugin-v0.1.0-candidate"
+    plugin_manifest = json.loads((plugin_root / "plugin.json").read_text(encoding="utf-8-sig"))
+    if plugin_manifest.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
+        fail("PLUGIN_PORTABLE_SCHEMA_DRIFT", failures)
+    if plugin_manifest.get("name") != "oleander-baidu-storage":
+        fail("PLUGIN_NAME_DRIFT", failures)
+    if plugin_manifest.get("version") != "0.1.0":
+        fail("PLUGIN_VERSION_DRIFT", failures)
+
+    skill_text = (
+        plugin_root / "skills/oleander-baidu-storage/SKILL.md"
+    ).read_text(encoding="utf-8-sig")
+    if "name: oleander-baidu-storage" not in skill_text:
+        fail("PLUGIN_SKILL_IDENTITY_DRIFT", failures)
+
+    # A portable MCP binding is added only after a real stable HTTPS endpoint
+    # exists. Never package localhost, placeholders, or access tokens as if the
+    # ChatGPT connection were complete.
+    portable_mcp = plugin_root / "mcp.json"
+    if portable_mcp.exists():
+        mcp_config = json.loads(portable_mcp.read_text(encoding="utf-8-sig"))
+        serialized = json.dumps(mcp_config, ensure_ascii=False)
+        lowered = serialized.lower()
+        if "localhost" in lowered or "127.0.0.1" in lowered or "<" in serialized:
+            fail("PLUGIN_MCP_NONREMOTE_OR_PLACEHOLDER", failures)
+        if "access_token=" in lowered or "baidu_netdisk_access_token" in lowered:
+            fail("PLUGIN_MCP_SECRET_FORBIDDEN", failures)
+        servers = mcp_config.get("mcpServers", {})
+        if not isinstance(servers, dict) or not servers:
+            fail("PLUGIN_MCP_SERVER_MISSING", failures)
+        for name, config in servers.items():
+            if not isinstance(config, dict):
+                fail(f"PLUGIN_MCP_SERVER_INVALID:{name}", failures)
+                continue
+            if config.get("type") != "streamable-http":
+                fail(f"PLUGIN_MCP_TRANSPORT_INVALID:{name}", failures)
+            url = str(config.get("url", ""))
+            if not url.startswith("https://") or not url.rstrip("/").endswith("/mcp"):
+                fail(f"PLUGIN_MCP_URL_INVALID:{name}", failures)
 
     schema = json.loads(
         (ROOT / "schemas/oleander-baidu-storage-binding.v0.1.schema.json").read_text(encoding="utf-8-sig")
@@ -114,6 +158,16 @@ def main() -> int:
                 names = zf.namelist()
                 if any("__pycache__" in n or n.endswith(".pyc") or n.endswith("/.env") or n == ".env" for n in names):
                     fail(f"PACKAGE_FORBIDDEN_CONTENT:{package['filename']}", failures)
+                if package.get("role") == "CHATGPT_PLUGIN_PACKAGE":
+                    required_plugin_entries = {
+                        "plugin.json",
+                        ".codex-plugin/plugin.json",
+                        "skills/oleander-baidu-storage/SKILL.md",
+                        "skills/oleander-baidu-storage/references/storage.md",
+                    }
+                    missing = sorted(required_plugin_entries - set(names))
+                    if missing:
+                        fail(f"PLUGIN_PACKAGE_STRUCTURE_MISSING:{missing}", failures)
 
     # Guard against accidental direct Current/Project State write integration.
     code_text = "\n".join(
