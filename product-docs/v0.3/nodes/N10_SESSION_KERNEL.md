@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N10 |
-| Children | [N10A](N10A_RESUME_RECOVER.md), [N10B](N10B_HUMAN_STEER.md), [N10C](N10C_AUTONOMY_HUMAN_STOP.md), [N10D](N10D_MUTATION_GUARD.md), [N10E](N10E_CONTINUITY_CLOSURE.md) |
+| Children | N10F, N10G, N10H, N10I — see [Atomic Children](#atomic-children) |
 | Type | Cross-product Interaction Kernel |
 | Product job | 解析用户意图、恢复上下文、路由工作、保护 mutation 与 Human authority |
 | Inputs | Human message + owner-native project locators + product context |
@@ -64,4 +64,18 @@ DESIGN_KEEP ≠ PROMOTION_DECISION
 
 ## Parent Rule
 
-This doc defines Kernel responsibilities only. Resume, steer, autonomy, mutation, continuity details live in child nodes.
+This doc defines Kernel responsibilities only. Resume, steer, autonomy, mutation, continuity details live in child nodes.\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N10 SESSION KERNEL]
+    P --> N10F[N10F WORK INTENT]
+    P --> N10G[N10G MUTATION DIRECTIVE]
+    P --> N10H[N10H SUPPORT MODE]
+    P --> N10I[N10I HUMAN ACTION LEVEL]
+```
+
+- [N10F｜WORK INTENT](atomic/N10F_WORK_INTENT.md)
+- [N10G｜MUTATION DIRECTIVE](atomic/N10G_MUTATION_DIRECTIVE.md)
+- [N10H｜SUPPORT MODE](atomic/N10H_SUPPORT_MODE.md)
+- [N10I｜HUMAN ACTION LEVEL](atomic/N10I_HUMAN_ACTION_LEVEL.md)

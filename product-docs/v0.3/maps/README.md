@@ -1,195 +1,31 @@
-# OLEANDER Visual Product Maps v0.3
+# OLEANDER Visual Product Maps v0.3.1
 
-[← v0.3 Package](../README.md) · [Node Graph](../nodes/README.md)
+[← v0.3 Package](../README.md) · [← Node Graph](../nodes/README.md)
 
-> Maps are **views of nodes and relations**, not new product authorities.
+> **One core map → one map document.** Maps are editable Mermaid views, not product authorities.
 
----
+| Map | Purpose |
+|---|---|
+| [M01｜Product Mindmap](M01_PRODUCT_MINDMAP.md) | 产品总体结构与价值层 |
+| [M02｜Core Human–AI Loop](M02_CORE_HUMAN_AI_LOOP.md) | 恢复→设计→artifact→readback→continuation |
+| [M03｜Autonomy × Control](M03_AUTONOMY_CONTROL.md) | AI 自动推进与 Human boundary |
+| [M04｜Artifact Truth Chain](M04_ARTIFACT_TRUTH_CHAIN.md) | Artifact / revision / readback 证据链 |
+| [M05｜Verification vs Validation](M05_VERIFICATION_VALIDATION.md) | 两类 assurance 问题分离 |
+| [M06｜Decision Chain](M06_DECISION_CHAIN.md) | Trade-off → Human decision → reopen |
+| [M07｜Product Operating Loop](M07_PRODUCT_OPERATING_LOOP.md) | 产品经营闭环 |
+| [M08｜Release Gates](M08_RELEASE_GATES.md) | Pilot / longitudinal / beta 门 |
+| [M09｜Node Dependency Backbone](M09_NODE_DEPENDENCY_BACKBONE.md) | 一级节点依赖 |
+| [M10｜HOME + FOCUS Detail](M10_HOME_FOCUS_DETAIL.md) | Resume / Question / Frontier 原子层 |
+| [M11｜STUDIO + COMPARE Detail](M11_STUDIO_COMPARE_DETAIL.md) | Explore / Develop / Synthesize / Decision |
+| [M12｜MAP + ARTIFACT + REVIEW Detail](M12_REALITY_REVIEW_DETAIL.md) | Reality / review 原子层 |
+| [M13｜Knowledge + History Detail](M13_KNOWLEDGE_CONTINUITY_DETAIL.md) | Evidence / continuity 原子层 |
+| [M14｜Kernel + Authority Detail](M14_KERNEL_AUTHORITY_DETAIL.md) | Interaction / guard / rights |
+| [M15｜Integration + Settings + Health Detail](M15_INTEGRATION_HEALTH_DETAIL.md) | 外部工具 / degradation / health |
 
-# Map 01｜Product Mindmap
+## Recommended paths
 
-```mermaid
-mindmap
-  root((OLEANDER))
-    Customer_Value
-      Continue_correctly
-      Explore_meaningfully
-      Make_real_artifact
-      Human_controls_key_decisions
-      Recover_locally
-    Product_Surfaces
-      HOME
-      FOCUS
-      STUDIO
-        EXPLORE
-        DEVELOP
-        SYNTHESIZE
-      COMPARE
-      MAP
-      ARTIFACTS
-      REVIEW
-      KNOWLEDGE
-      HISTORY
-    Cross_Product
-      SESSION_KERNEL
-      PEOPLE_AUTHORITY
-      INTEGRATIONS
-      SETTINGS
-      SYSTEM_HEALTH
-```
-
----
-
-# Map 02｜Core Human–AI Loop
-
-```mermaid
-flowchart LR
-    U[Human intent] --> RES[Resume / Resolve]
-    RES --> Q[Current Design Question]
-    Q --> EX[Explore]
-    EX --> MK[Make real artifact]
-    MK --> RB[Readback]
-    RB --> CR[Critique]
-    CR --> CH{Human decision needed?}
-    CH -- No --> DV[Develop / Repair]
-    CH -- Yes --> ST[Human Steer]
-    ST --> DV
-    DV --> MK
-    RB --> UP[Update owner-native project state via existing owner]
-    UP --> NX[Continue]
-```
-
----
-
-# Map 03｜Autonomy × Control
-
-```mermaid
-flowchart TD
-    A[Next action] --> R{Reversible?}
-    R -- No --> H[Human authorization / authority route]
-    R -- Yes --> S{Scope + Current fresh?}
-    S -- No --> G[Mutation Guard / Re-resolve]
-    S -- Yes --> V{Human-only value decision?}
-    V -- Yes --> H
-    V -- No --> X[Auto-advance allowed]
-    X --> B[Actual result]
-    B --> C[Readback]
-```
-
----
-
-# Map 04｜Artifact Truth Chain
-
-```mermaid
-flowchart LR
-    Q[Design Question] --> REL[Design Relation]
-    REL --> ART[Artifact]
-    ART --> REV[Revision]
-    REV --> RB[Readback]
-    RB --> FIND[Finding]
-    FIND --> ACT[Design Action]
-    ACT --> REV2[New Revision]
-    REV2 --> RB2[Re-readback]
-    EVID[Evidence] --> Q
-    EVID --> FIND
-```
-
----
-
-# Map 05｜Verification vs Validation
-
-```mermaid
-flowchart TD
-    CLAIM[Design / Product Claim] --> X{What are we asking?}
-    X -->|Implemented as specified?| VFY[Verification]
-    X -->|Works for real user/context?| VAL[Validation]
-    VFY --> E1[Requirement-matched evidence]
-    VAL --> E2[Scenario / behaviour / outcome]
-    E1 --> D[Design decision]
-    E2 --> D
-    D -->|Contradiction| R[Reframe / Revise]
-```
-
----
-
-# Map 06｜Decision Chain
-
-```mermaid
-flowchart LR
-    P[Problem] --> Q[Question]
-    Q --> O[Options]
-    O --> C[Compare]
-    C --> T[Trade-offs]
-    T --> H[Human decision]
-    H --> R[Rationale]
-    R --> RC[Reopen condition]
-    H --> A[Artifact change]
-    A --> RB[Readback]
-```
-
----
-
-# Map 07｜Product Operating Loop
-
-```mermaid
-flowchart LR
-    C[Customer problem] --> S[Strategy / PRFAQ]
-    S --> P[Master PRD]
-    P --> N[Node Specs]
-    N --> B[Build]
-    B --> E[Eval / Pilot]
-    E --> M[Metrics]
-    M --> L[Launch Readiness]
-    L --> D{Decision}
-    D -->|Continue| R[Roadmap]
-    D -->|Iterate| P
-    D -->|Reframe| S
-    D -->|Stop| X[Close / Preserve Learning]
-```
-
----
-
-# Map 08｜Release Gates
-
-```mermaid
-flowchart TD
-    A[Internal Reference] --> B{Core semantics pass?}
-    B -- No --> A
-    B -- Yes --> C[Closed External Pilot]
-    C --> D{Value + guardrails?}
-    D -- No --> E[Iterate / Reframe]
-    D -- Yes --> F[Longitudinal Pilot]
-    F --> G{Continuity sustained?}
-    G -- No --> E
-    G -- Yes --> H[Multi-human Pilot]
-    H --> I{Security / Privacy / Ops ready?}
-    I -- No --> J[HOLD]
-    I -- Yes --> K[Productized Beta]
-```
-
----
-
-# Map 09｜Node Dependency Backbone
-
-```mermaid
-flowchart TB
-    HOME --> FOCUS
-    FOCUS --> STUDIO
-    STUDIO --> ARTIFACTS
-    ARTIFACTS --> REVIEW
-    REVIEW --> STUDIO
-    REVIEW --> MAP
-    MAP --> STUDIO
-    KNOWLEDGE --> FOCUS
-    KNOWLEDGE --> REVIEW
-    COMPARE --> STUDIO
-    COMPARE --> HISTORY
-    ARTIFACTS --> HISTORY
-    REVIEW --> HISTORY
-    SESSION[SESSION KERNEL] -.orchestrates.-> HOME
-    SESSION -.orchestrates.-> STUDIO
-    SESSION -.orchestrates.-> ARTIFACTS
-    PEOPLE[PEOPLE / AUTHORITY] --> SESSION
-    INTEGRATIONS --> ARTIFACTS
-    HEALTH[SYSTEM HEALTH] --> SESSION
-```
+- **PM / Strategy:** M01 → M07 → M08
+- **UX / Product Design:** M02 → M10 → M11 → M12
+- **AI / Agent:** M03 → M14 → M12
+- **Design / Professional Workflow:** M11 → M12 → M13
+- **Engineering / Reliability:** M14 → M15 → M08

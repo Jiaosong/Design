@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N03B |
+| Children | N03B1, N03B2, N03B3, N03B4 — see [Atomic Children](#atomic-children) |
 | Parent | N03 |
 | Type | Studio Mode |
 | Product job | 把选定方向推进到更高真实专业分辨率 |
@@ -59,4 +60,18 @@ A development action specifies target relation, intended improvement, artifact t
 
 ## Guardrail
 
-Professional depth cannot be inferred from document count or visual finish.
+Professional depth cannot be inferred from document count or visual finish.\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N03B DEVELOP]
+    P --> N03B1[N03B1 MATURITY GAP]
+    P --> N03B2[N03B2 DEVELOPMENT FRONTIER]
+    P --> N03B3[N03B3 DOMAIN ADAPTER]
+    P --> N03B4[N03B4 INTENT CHECK]
+```
+
+- [N03B1｜MATURITY GAP](atomic/N03B1_MATURITY_GAP.md)
+- [N03B2｜DEVELOPMENT FRONTIER](atomic/N03B2_DEVELOPMENT_FRONTIER.md)
+- [N03B3｜DOMAIN ADAPTER](atomic/N03B3_DOMAIN_ADAPTER.md)
+- [N03B4｜INTENT CHECK](atomic/N03B4_INTENT_CHECK.md)

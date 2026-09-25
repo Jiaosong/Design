@@ -2,12 +2,12 @@
 
 [← v0.3 Package](README.md)
 
-**Product:** OLEANDER Human–AI Design Operating System  
-**Status:** `WORKING PRD / PRE-EXTERNAL-PILOT / NON-AUTHORITY`  
-**Product Owner:** Jiaosong  
-**Target release:** External Pilot — date TBD  
-**Last updated:** 2026-09-26  
-**Detailed functional baseline:** [PRD v0.2.0](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)  
+**Product:** OLEANDER Human–AI Design Operating System
+**Status:** `WORKING PRD / PRE-EXTERNAL-PILOT / NON-AUTHORITY`
+**Product Owner:** Jiaosong
+**Target release:** External Pilot — date TBD
+**Last updated:** 2026-09-26
+**Detailed functional baseline:** [PRD v0.2.0](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
 **Traceability:** [v0.2 Matrix](../OLEANDER_PRD_TRACEABILITY_MATRIX_v0.2.0.md)
 
 ---
@@ -17,6 +17,9 @@
 Detailed product-node definitions now live in the node graph:
 
 - [Product Node Graph](nodes/README.md)
+- [Atomic Node Index](nodes/ATOMIC_NODE_INDEX.md)
+- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.1.md)
+- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.1.md)
 - [Visual Product Maps](maps/README.md)
 
 ```mermaid

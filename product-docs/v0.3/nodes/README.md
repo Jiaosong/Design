@@ -1,8 +1,28 @@
-# OLEANDER Product Node Graph v0.3
+# OLEANDER Product Node Graph v0.3.1
 
 [← Product Operating Package](../README.md) · [Node Contract](NODE_DOCUMENTATION_CONTRACT.md) · [Visual Maps](../maps/README.md)
 
 > **Graph-first / Node-first rule:** 一个逻辑产品节点只维护一份主文档；父文档负责关系和导航，不重复子节点正文。
+
+---
+
+## v0.3.1 Deep Node Layer
+
+- [Atomic Node Index](ATOMIC_NODE_INDEX.md)
+- [Node Registry](NODE_REGISTRY.md)
+- [Node Traceability Matrix](NODE_TRACEABILITY_MATRIX_v0.3.1.md)
+- [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.1.md)
+- [Visual Maps](../maps/README.md)
+
+```mermaid
+flowchart LR
+    P[23 Primary Node Docs] --> A[69 Atomic Node Docs]
+    A --> R[Requirement IDs]
+    R --> AC[Acceptance / Failure]
+    AC --> M[Metrics / Eval]
+```
+
+**Total product node documents: 92**
 
 ---
 

@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N04 |
+| Children | N04A, N04B, N04C, N04D — see [Atomic Children](#atomic-children) |
 | Type | Cross-surface Decision Mode |
 | Product job | 把候选差异、trade-off、uncertainty 和 consequence 放进同一判断世界 |
 | Inputs | Options/revisions + decision object + locked invariants |
@@ -57,4 +58,18 @@ CMP-F01–F11: Side-by-side, Relation Difference, Consequence Difference, Trade-
 
 ## Events
 
-`comparison_opened` · `tradeoff_exposed` · `human_steer_bound`
+`comparison_opened` · `tradeoff_exposed` · `human_steer_bound`\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N04 COMPARE]
+    P --> N04A[N04A COMPARISON WORLD]
+    P --> N04B[N04B TRADE-OFF]
+    P --> N04C[N04C DECISION RATIONALE]
+    P --> N04D[N04D REOPEN CONDITION]
+```
+
+- [N04A｜COMPARISON WORLD](atomic/N04A_COMPARISON_WORLD.md)
+- [N04B｜TRADE-OFF](atomic/N04B_TRADEOFF.md)
+- [N04C｜DECISION RATIONALE](atomic/N04C_DECISION_RATIONALE.md)
+- [N04D｜REOPEN CONDITION](atomic/N04D_REOPEN_CONDITION.md)

@@ -26,9 +26,9 @@ USER / CONTEXT
 
 # Current Product Operating Package
 
-## [OLEANDER Product Operating Package v0.3.0](v0.3/README.md)
+## [OLEANDER Product Operating Package v0.3.1](v0.3/README.md)
 
-**推荐第一入口：** [Product Node Graph](v0.3/nodes/README.md) · [Visual Maps](v0.3/maps/README.md)
+**推荐第一入口：** [Product Node Graph](v0.3/nodes/README.md) · [Atomic Node Index](v0.3/nodes/ATOMIC_NODE_INDEX.md) · [Visual Maps](v0.3/maps/README.md)
 
 这是当前建议从产品经理 / 大型产品团队视角阅读的入口。
 
@@ -137,16 +137,16 @@ v0.2.0 不是从当前插件实现反推需求，而是重新吸收之前已形�
 
 # 推荐阅读
 
-**产品经理 / 面试官**  
+**产品经理 / 面试官**
 PRD v0.2.0 → Feature Specs → Cases → Evals
 
-**AI / Agent 产品**  
+**AI / Agent 产品**
 Session Kernel Spec → Studio / Compare → Artifact / Readback → Trace Matrix → Evals
 
-**设计 / 专业软件方向**  
+**设计 / 专业软件方向**
 Product Structure → Studio → Map → Artifacts → Review → Cases
 
-**系统架构方向**  
+**系统架构方向**
 PRD → Governance → Candidate implementation；不要把 PRD 当 Current Architecture。
 
 ---
