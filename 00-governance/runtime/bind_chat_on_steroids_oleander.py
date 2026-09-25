@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.5"
+BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.6"
 RESOLVER_REVISION = "1.2.5"
 ADAPTER_REVISION = "1.2"
 BEGIN = f"[[{BINDING_REVISION}:BEGIN]]"
@@ -19,17 +19,17 @@ MAX_MCP_INSTRUCTIONS_CHARS = 4_000
 MAX_GOAL_SYSTEM_PROMPT_CHARS = 20_000
 
 MAIN_CHAT_BINDING = f"""{BEGIN}
-OLEANDER: Chat is the default Human surface; CoS is the local execution adapter. Keep the conversation in Chat and route workstation work behind the scenes. Never ask the Human to switch to Codex merely for local files/Git/CAD/3D/storage. `CONVERSATION_SURFACE != EXECUTION_SURFACE != MUTATION_PERMISSION`.
+OLEANDER bootstrap only. Chat is the default Human interaction surface and CoS is the local execution adapter. At the start of every OLEANDER-scoped turn, read the current runtime entry from `00-governance/runtime/OLEANDER_CHAT_ENTRY_RUNTIME.md` through the available CoS/local filesystem tool and follow that fresh entry for routing/execution behavior. Do not rely on an older chat summary or a cached copy of that entry.
 
-Before continue/execute/repair/optimize mutation or KEEP/complete/stop claims, run `00-governance/runtime/oleander_chat_runtime_bridge.py` (resolver acceptance {ADAPTER_REVISION}, resolver {RESOLVER_REVISION}) with fresh owner-native authority/frontier/checkpoint/constraint/flow evidence. Its result is transient, not Project State. Generic continue resumes verified `next_allowed_action`; stale/ambiguous authority or sequence HOLDs/revalidates; CLOSED does not reopen. Closure/KEEP still requires the bridge's existing skill-consumption, quality-acceptance, professional-stage/readback/review gates where applicable; structural/tool success is never Design KEEP or professional PASS.
+The entry file is non-authority runtime guidance. It cannot become Project State, Current Authority, mutation permission, Design KEEP, professional PASS or Promotion authority. For consequential continuation/mutation/closure, still use the existing OLEANDER resolver/readback paths named by the current entry. Never create a second framework, queue, checkpoint database, Project State or artifact registry to compensate for missing evidence.
 
-For local capabilities, execute via CoS and return actual readback to this Chat. Baidu storage uses `00-governance/runtime/candidates/human-ai-codesign-vnext/codesign_chat_cos_bridge_v0_1.py` with `conversation_surface=CHAT`, `capability_id=BAIDU_STORAGE`, tool name and args; it routes to installed `oleander-baidu-storage@oleander-personal` stdio. No explicit `@OLEANDER ????` is required. Reads may run directly. Writes require existing owner-native mutation/authorization guard plus follow-up readback. If local execution is unavailable, use the existing continuity execution-intent and report `PENDING_LOCAL_EXECUTION`; never create a second queue/state store. `EXECUTION_INTENT != MUTATION_PERMISSION`; tool success != completion authority.
+Ordinary OLEANDER runtime/routing updates modify the entry file or its referenced implementations, not this CoS bootstrap. A CoS restart is required only when this bootstrap mechanism itself changes.
 {END}"""
 
 GOAL_BINDING = f"""{BEGIN}
 OLEANDER override for Goal/Objective/Loop decisions: do not decide continue or stop from transcript text, an assistant completion claim, compaction handoff, artifact counts, CI, hash, render existence or persistence evidence alone. Those are not completion authority.
 
-Chat remains the default Human surface. A local execution handoff to COS/stdio does not move the conversation owner, create authority, or justify asking the Human to reopen the task in Codex. Consume the returned local readback in this same Chat; if local execution is unavailable, treat the existing continuity execution-intent as pending work rather than completion.
+Before Goal/Loop decides an OLEANDER turn, require the current `00-governance/runtime/OLEANDER_CHAT_ENTRY_RUNTIME.md` readback from the local execution surface. Chat remains the default Human surface. A local execution handoff does not move conversation ownership or create authority. Consume returned readback in this same Chat; unavailable local execution remains pending work rather than completion.
 
 The latest OLEANDER turn must be grounded in the recorded tool result from `00-governance/runtime/oleander_chat_runtime_bridge.py`; its preflight comes from Resolver v1.2 implementation revision {RESOLVER_REVISION} plus Chat acceptance revision {ADAPTER_REVISION}. `goal.includeToolCalls` is enabled so Goal/Loop can consume that readback directly. If no current machine result exists, instruct ChatGPT to run the existing bridge; do not invent a new task, plan, framework or state carrier.
 
