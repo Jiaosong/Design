@@ -8,6 +8,25 @@
 
 ---
 
+# Dependency / Risk Map
+
+```mermaid
+flowchart TD
+    RES[Current Resolver] --> CORE[Core Product Loop]
+    ART[Artifact Identity] --> CORE
+    RB[Readback] --> CORE
+    MG[Mutation Guard] --> CORE
+    TEL[Telemetry] --> PILOT[External Pilot]
+    COHORT[Pilot Cohort] --> PILOT
+    PRIV[Security / Privacy] --> PILOT
+    CORE --> PILOT
+    PILOT --> BETA[Productized Beta]
+    OPS[Support / Ops] --> BETA
+    COST[Cost Observability] --> BETA
+```
+
+---
+
 # 1｜RACI Roles
 
 | Role | Current assignment |
