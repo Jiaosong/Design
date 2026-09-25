@@ -10,6 +10,27 @@
 
 ---
 
+# Launch Gate Map
+
+```mermaid
+flowchart TD
+    P[Product / Scope] --> G{Pilot Gate}
+    U[UX] --> G
+    F[Functional] --> G
+    AI[AI Quality] --> G
+    AN[Analytics] --> G
+    SP[Security / Privacy] --> G
+    RR[Reliability / Rollback] --> G
+    G -- incomplete --> H[HOLD]
+    G -- complete --> E[External Pilot]
+    E --> B{Beta Gate}
+    O[Ops / Support] --> B
+    C[Cost] --> B
+    B -- complete --> PB[Productized Beta]
+```
+
+---
+
 # 1｜Readiness Summary
 
 | Area | Status | Why |
