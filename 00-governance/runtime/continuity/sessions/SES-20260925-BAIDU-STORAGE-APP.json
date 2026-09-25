@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "receipt_id": "SES-20260925-BAIDU-STORAGE-APP",
+  "created_at": "2026-09-25T11:45:00.6149505Z",
+  "source_surface": "CHATGPT_WEB",
+  "session_scope": {
+    "system": true,
+    "project_ids": [],
+    "workspace_keys": [
+      "OLEANDER-BAIDU-STORAGE-APP-V0.1"
+    ]
+  },
+  "user_intents": [
+    {
+      "raw": "可以，执行吧",
+      "classified_as": "SYSTEM_MAINTENANCE / BUILD_BAIDU_NETDISK_CHATGPT_APP"
+    }
+  ],
+  "owner_native_reads": [
+    {
+      "ref": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "purpose": "Preserve Current runtime and authority boundaries"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/README.md",
+      "purpose": "Bind the new storage surface into the existing non-authority continuity layer"
+    },
+    {
+      "ref": "00-governance/cross-platform-sync-contract-v1.1.md",
+      "purpose": "Preserve one-CURRENT and Project State writeback rules"
+    }
+  ],
+  "material_outputs": [
+    {
+      "ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/README.md",
+      "kind": "CANDIDATE_CHATGPT_STORAGE_APP"
+    },
+    {
+      "ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
+      "kind": "CANDIDATE_STORAGE_PROTOCOL"
+    },
+    {
+      "ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/OLEANDER-Baidu-Storage-App-0.1.0-CANDIDATE.zip",
+      "kind": "CHATGPT_MCP_APP_PACKAGE"
+    },
+    {
+      "ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/OLEANDER-Baidu-Storage-Plugin-0.1.0-CANDIDATE.zip",
+      "kind": "PLUGIN_SKILL_PACKAGE"
+    },
+    {
+      "ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/PACKAGE_MANIFEST_v0.1.json",
+      "kind": "PACKAGE_HASH_MANIFEST"
+    }
+  ],
+  "owner_native_writes": [],
+  "execution_intents_created": [
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-BAIDU-STORAGE-APP.json"
+  ],
+  "execution_intents_consumed": [
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-BAIDU-STORAGE-APP.json"
+  ],
+  "human_stops": [
+    "BAIDU_OAUTH_USER_LOGIN_REQUIRED_BEFORE_REAL_UPSTREAM_READ_WRITE_TEST",
+    "CHATGPT_CUSTOM_MCP_APP_INSTALL_REQUIRES_ACCOUNT_WORKSPACE_FEATURE_AND_REMOTE_ENDPOINT"
+  ],
+  "unresolved": [
+    "No Baidu access token is stored on this workstation yet; real Baidu tool discovery and /OLEANDER_VAULT bootstrap remain unexecuted.",
+    "The current ChatGPT account/workspace has not yet proven that it can install the full read/write custom MCP app."
+  ],
+  "authority_effect": "NONE",
+  "continuation_hint": "Run configure_baidu_token.ps1 locally for one-time Baidu authorization without sharing the token in chat; then run the upstream probe, bootstrap /OLEANDER_VAULT, deploy/expose the MCP endpoint securely, and test installation in ChatGPT Developer Mode where supported.",
+  "does_not_prove": [
+    "CANDIDATE PACKAGE IS NOT CURRENT ADOPTION",
+    "LOCAL MCP SMOKE IS NOT BAIDU AUTHENTICATED INTEGRATION",
+    "NO PROJECT STATE WAS MODIFIED",
+    "NO DESIGN KEEP OR PROMOTION OCCURRED",
+    "CHATGPT ACCOUNT INSTALLATION HAS NOT YET BEEN PROVEN"
+  ]
+}

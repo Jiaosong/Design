@@ -98,6 +98,15 @@
       "candidate_ref": "00-governance/runtime/candidates/human-ai-codesign-vnext/README.md",
       "current_authority_ref": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
       "authority_mode": "CANDIDATE_CANNOT_REWRITE_CURRENT"
+    },
+    {
+      "workspace_key": "OLEANDER-BAIDU-STORAGE-APP-V0.1",
+      "display_name": "OLEANDER 百度网盘 v0.1",
+      "attention_state": "ACTIVE",
+      "kind": "SYSTEM_EVOLUTION",
+      "candidate_ref": "00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1/README.md",
+      "current_authority_ref": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "authority_mode": "CANDIDATE_CANNOT_REWRITE_CURRENT"
     }
   ],
   "surfaces": [
@@ -140,10 +149,12 @@
     "execution_intent_dir": "00-governance/runtime/continuity/execution-intents"
   },
   "session_receipt_refs": [
-    "00-governance/runtime/continuity/sessions/SES-20260925-MANAGEMENT-BOOTSTRAP.json"
+    "00-governance/runtime/continuity/sessions/SES-20260925-MANAGEMENT-BOOTSTRAP.json",
+    "00-governance/runtime/continuity/sessions/SES-20260925-BAIDU-STORAGE-APP.json"
   ],
   "execution_intent_refs": [
-    "00-governance/runtime/continuity/execution-intents/INT-20260925-MANAGEMENT-BOOTSTRAP.json"
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-MANAGEMENT-BOOTSTRAP.json",
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-BAIDU-STORAGE-APP.json"
   ],
   "does_not_prove": [
     "HOME INDEX DOES NOT ESTABLISH PROJECT CURRENT STATE",

@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "intent_id": "INT-20260925-BAIDU-STORAGE-APP",
+  "captured_at": "2026-09-25T11:45:00.6149505Z",
+  "source_surface": "CHATGPT_WEB",
+  "target_surface": "EITHER",
+  "scope": {
+    "project_id": null,
+    "workspace_key": "OLEANDER-BAIDU-STORAGE-APP-V0.1",
+    "object_ref": "OLEANDER_BAIDU_STORAGE_APP_v0.1"
+  },
+  "intent_class": "SYSTEM_MAINTENANCE",
+  "raw_human_input": "可以，执行吧",
+  "normalized_instruction": "Build and prepare the OLEANDER Baidu Netdisk ChatGPT app/plugin using the official Baidu Netdisk MCP, with OLEANDER storage/authority guards and installable candidate packages.",
+  "human_action_level": "WORK_INTENT",
+  "status": "CONSUMED",
+  "owner_native_precondition": {
+    "reread_required": true,
+    "authority_refs": [
+      "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "00-governance/runtime/continuity/README.md",
+      "00-governance/cross-platform-sync-contract-v1.1.md"
+    ],
+    "drift_policy": "FAIL_CLOSED_REREAD_OWNER_NATIVE_BEFORE_MATERIAL_PROJECT_WRITE"
+  },
+  "material_write_authorized": true,
+  "authority_ceiling": "CANDIDATE_STORAGE_APP_AND_CONTINUITY_INDEX_FILES_ONLY_NO_PROJECT_STATE_CURRENT_DESIGN_KEEP_OR_PROMOTION",
+  "consumed_by_session_receipt": "00-governance/runtime/continuity/sessions/SES-20260925-BAIDU-STORAGE-APP.json",
+  "does_not_prove": [
+    "THIS INTENT DOES NOT AUTHORIZE BAIDU ACCOUNT LOGIN ON BEHALF OF THE USER",
+    "THIS INTENT DOES NOT CHANGE PROJECT STATE OR CURRENT AUTHORITY",
+    "THIS INTENT DOES NOT PROMOTE THE STORAGE APP TO CURRENT"
+  ]
+}

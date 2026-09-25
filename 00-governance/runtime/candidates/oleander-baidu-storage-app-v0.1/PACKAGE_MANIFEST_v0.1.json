@@ -1,0 +1,25 @@
+{
+  "schema": "oleander.baidu-storage-package-manifest.v0.1",
+  "status": "CANDIDATE_PACKAGED",
+  "packages": [
+    {
+      "role": "CHATGPT_MCP_APP_SERVER",
+      "filename": "OLEANDER-Baidu-Storage-App-0.1.0-CANDIDATE.zip",
+      "sha256": "8da9d73d265d809c69e65f73d925c204dc707958475b7b13d919dfe781f64a30",
+      "size_bytes": 26365,
+      "file_count": 25
+    },
+    {
+      "role": "CHATGPT_PLUGIN_SKILL_BINDING",
+      "filename": "OLEANDER-Baidu-Storage-Plugin-0.1.0-CANDIDATE.zip",
+      "sha256": "49fb960a38a661411932ee62a2b745d5af0cd2cda8899b1adbb254dc08f8c6a7",
+      "size_bytes": 1721,
+      "file_count": 2
+    }
+  ],
+  "does_not_prove": [
+    "PACKAGE_EXISTS_NOT_ACCOUNT_INSTALLATION",
+    "PACKAGE_EXISTS_NOT_BAIDU_AUTH",
+    "PACKAGE_EXISTS_NOT_CURRENT_PROMOTION"
+  ]
+}

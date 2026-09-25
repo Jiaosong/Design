@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/baidu-storage-binding.v0.1.schema.json",
+  "title": "OLEANDER Baidu Storage Binding v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_revision",
+    "owner_native_sha256",
+    "provider",
+    "replica",
+    "availability",
+    "readback_state",
+    "authority_effect",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": ["string", "null"]},
+    "artifact_revision": {"type": "string", "minLength": 1},
+    "owner_native_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "provider": {"const": "BAIDU_NETDISK"},
+    "replica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fsid", "path", "provider_md5", "size_bytes", "storage_class"],
+      "properties": {
+        "fsid": {"type": ["integer", "string"]},
+        "path": {"type": "string", "pattern": "^/OLEANDER_VAULT(?:/|$)"},
+        "provider_md5": {"type": ["string", "null"], "pattern": "^(?:[A-Fa-f0-9]{32})?$"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "storage_class": {"enum": ["CURRENT_COPY", "MILESTONE", "REVIEW", "ARCHIVE", "KNOWLEDGE_BODY", "SHARED_ASSET"]}
+      }
+    },
+    "availability": {"enum": ["REMOTE_READY", "REMOTE_PREVIEW_ONLY", "LOCAL_REQUIRED", "OFFLINE_ARCHIVE"]},
+    "readback_state": {"enum": ["NOT_RUN", "PROVIDER_META_PASS", "BYTE_HASH_PASS", "FAIL", "HOLD"]},
+    "authority_effect": {"const": "NONE"},
+    "does_not_prove": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}
