@@ -47,6 +47,7 @@ Current IES professional-practice evidence reviewed for this Candidate includes:
 - `ANSI/IES LP-1-20` — designing quality lighting for people/buildings;
 - `ANSI/IES LP-2-20` — quality outdoor lighting;
 - `ANSI/IES LP-3-20` — daylighting;
+- `ANSI/IES LM-83-23` — approved annual climate-based daylight method for sDA / ASE; used here for method identity and model/report provenance, not as a universal project target;
 - `ANSI/IES LP-4-20(R2026)` — electric light source properties, selection and specification;
 - `ANSI/IES LP-6-25` — lighting-control systems, including design, documentation, construction, commissioning and functional testing;
 - `ANSI/IES LP-7-20` — lighting design and construction process;
@@ -115,10 +116,12 @@ When daylight evidence is consequential, bind:
 - model geometry revision including neighboring obstruction;
 - glazing optical/visible-transmission basis;
 - surface reflectance/specularity;
-- shading/blind state;
+- shading/blind state, including materially distinct window-group / automated-shading behavior when the selected method requires it;
+- analysis area / grid and, for annual climate-based claims, analysis period / occupancy-analysis schedule;
 - sensor grid / eye/view positions;
 - occupied/task zone;
 - engine/version and settings;
+- result/report identity sufficient to reopen the exact run;
 - sensitivity variables that could reverse the decision.
 
 ### 1A.4 Photometric Model Configuration Record
@@ -224,6 +227,7 @@ The following sections are the professional substance. They are not replaced by 
 - When simulation drives a decision, freeze a daylight-model configuration record: location/time convention; weather/sky basis; north/orientation; geometry revision including reveals, frames, shading and neighboring obstructions; glazing visible-transmission/optical model; surface reflectance/specularity assumptions; blind/shade state; sensor grid or eye/view positions; occupied/task zone; calculation engine/version and settings that can change the result.
 - Do not mix annual climate-based evidence with one critical date/time/sky claim. State which temporal model answers which risk, and separately test direct-sun or glare-critical conditions when an annual summary can conceal them.
 - Run sensitivity checks on uncertain inputs that could reverse the design decision—such as obstruction, glazing/transmission basis, surface reflectance, shade position or geometry—and retain the input range plus consequence rather than one apparently precise output.
+- When an annual climate-based claim invokes LM-83-23 semantics, keep method applicability, weather/time convention, analysis area/grid, facade/window-group/shading behavior, engine/settings and result/report identity together. sDA / ASE evidence remains bounded to the annual daylight question actually analyzed; it does not by itself close glare, thermal, view, control-in-use or field-performance claims.
 - Reopen only the affected daylight conclusions when a controlling geometry/material/weather-sky/control/sensor definition changes.
 
 **Decision attack:** if the current daylight as geometry, time and material can only be defended by labels, a hero render, generic precedent or a report saying it was reviewed, the relation remains `REVISE / HOLD` until the native/readback evidence appropriate to the claim exists.
