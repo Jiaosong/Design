@@ -54,6 +54,8 @@ Final workstation acceptance:
 
 Expected final marker: `PASS_LOCAL_COS_CODEX_BAIDU_STORAGE`.
 
+The legacy `0.1.0` ZIPs are retained only as historical evidence because an indexed continuity session receipt points to those exact outputs. They are **not** selected runtime packages and must not be installed in preference to `0.1.1`.
+
 For manual HTTP debugging:
 
 ```powershell
