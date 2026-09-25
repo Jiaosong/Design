@@ -86,6 +86,110 @@ def check_continue_without_chat_memory() -> dict[str, Any]:
     )
 
 
+def check_open_space_real_trial() -> dict[str, Any]:
+    trial_root = REPO / (
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/"
+        "c01-spatial-golden-v0.1"
+    )
+    trial = load_json(trial_root / "trial.json")
+    mechanisms = [item["mechanism"] for item in trial.get("alternatives", [])]
+    editable = [
+        trial_root / "A_EDGE_DOCK.svg",
+        trial_root / "B_SPLIT_SUPPORT.svg",
+        trial_root / "C_ZERO_STAGE_KIT.svg",
+    ]
+    ok = len(mechanisms) >= 3 and len(set(mechanisms)) == len(mechanisms) and all(p.exists() for p in editable)
+
+    return record(
+        "CD-02-OPEN-SPACE",
+        "REAL_C01_TRIAL",
+        "PASS" if ok else "FAIL",
+        [
+            "propose_materially_distinct_mechanisms",
+            "avoid_full_preference_questionnaire",
+            "make_editable_comparable_artifacts",
+        ],
+        [
+            f"alternative_count={len(mechanisms)}",
+            f"distinct_mechanism_count={len(set(mechanisms))}",
+            f"editable_svg_count={sum(1 for p in editable if p.exists())}",
+            "interaction_started_with_bounded_design_question_and_artifact_making",
+        ],
+        [rel(trial_root / "trial.json"), *[rel(p) for p in editable]],
+        limitations=[
+            "This proves the candidate trial produced materially distinct editable mechanisms; it does not infer a durable user preference."
+        ],
+    )
+
+
+def check_negative_steer_contract() -> dict[str, Any]:
+    architecture = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_v0.1_CANDIDATE.md"
+    kernel = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md"
+    text = architecture.read_text(encoding="utf-8") + "\n" + kernel.read_text(encoding="utf-8")
+    ok = (
+        "propose plausible causal interpretations as hypotheses" in text
+        and "do not write them as permanent preferences" in text
+        and "diagnose plausible causal failure and show materially different repair directions" in text
+    )
+    return record(
+        "CD-03-NEGATIVE-STEER",
+        "CONTRACT_STATIC_CHECK",
+        "PARTIAL" if ok else "FAIL",
+        ["treat_causes_as_hypotheses", "do_not_create_durable_taste_profile", "produce_material_repair_directions"],
+        [
+            f"negative-steer causal-hypothesis rule present={ok}",
+            "live human negative-steer trial=NOT_RUN",
+        ],
+        [rel(architecture), rel(kernel)],
+        limitations=["Contract semantics are present, but no real human negative-steer round was executed in this candidate validation run."],
+    )
+
+
+def check_human_mix_trial() -> dict[str, Any]:
+    trial_root = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1"
+    trial = load_json(trial_root / "trial.json")
+    pending = trial.get("human_steer") == "PENDING"
+    return record(
+        "CD-04-HUMAN-MIX",
+        "REAL_TRIAL_PENDING_HUMAN_INPUT",
+        "PARTIAL" if pending else "FAIL",
+        ["preserve_both_parents", "record_actual_reason", "make_second_round_native_delta", "read_back_second_round"],
+        [
+            f"c01_human_steer={trial.get('human_steer')}",
+            "pre_steer_probe_exists=" + str((trial_root / "PRE_STEER_SEQUENCE_PROBE.svg").exists()),
+            "second_round_human_feedback_delta=NOT_RUN",
+        ],
+        [rel(trial_root / "trial.json"), rel(trial_root / "READBACK_PRE_STEER_PROBE_v0.1.json")],
+        limitations=["No actual human MIX instruction referencing two C01 options has been received; the candidate must not synthesize one."],
+    )
+
+
+def check_designer_development_contract() -> dict[str, Any]:
+    architecture = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_v0.1_CANDIDATE.md"
+    kernel = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md"
+    text = architecture.read_text(encoding="utf-8") + "\n" + kernel.read_text(encoding="utf-8")
+    required = [
+        "designer development",
+        "ONE KEY DISTINCTION",
+        "ONE TRANSFER QUESTION",
+        "not a psychological profile",
+    ]
+    present = [item for item in required if item.lower() in text.lower()]
+    ok = len(present) == len(required)
+    return record(
+        "CD-08-DESIGNER-DEVELOPMENT",
+        "CONTRACT_STATIC_CHECK",
+        "PARTIAL" if ok else "FAIL",
+        ["explain_one_key_distinction", "ask_at_most_one_transfer_question_when_useful", "do_not_create_skill_score_or_profile"],
+        [
+            f"designer-development contract markers={len(present)}/{len(required)}",
+            "real designer-development interaction/readback=NOT_RUN",
+        ],
+        [rel(architecture), rel(kernel)],
+        limitations=["The designer-development layer is structurally specified but has not yet been demonstrated in a real human steering round."],
+    )
+
+
 def check_stale_checkpoint(fixtures: dict[str, Any]) -> dict[str, Any]:
     fx = fixtures["stale_checkpoint"]
     stale = fx["executor_checkpoint_sequence"] < fx["current_checkpoint_sequence"]
@@ -342,19 +446,111 @@ def check_multi_human_rights(fixtures: dict[str, Any]) -> dict[str, Any]:
     )
 
 
+def check_cross_domain_trials() -> dict[str, Any]:
+    root = REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/trials"
+    spatial = root / "c01-spatial-golden-v0.1"
+    digital = root / "c04-digital-golden-v0.1"
+    physical = root / "c04-physical-golden-v0.1"
+
+    spatial_trial = load_json(spatial / "trial.json")
+    spatial_probe = load_json(spatial / "READBACK_PRE_STEER_PROBE_v0.1.json")
+    digital_trial = load_json(digital / "trial.json")
+    digital_readback = load_json(digital / "BROWSER_READBACK_v0.1.json")
+    physical_trial = load_json(physical / "trial.json")
+    physical_readback = load_json(physical / "READBACK_v0.1.json")
+
+    spatial_native = (spatial / "PRE_STEER_SEQUENCE_PROBE.svg").exists()
+    digital_native = all((digital / name).exists() for name in [
+        "A_RETURN_RAIL.html", "B_CONTEXT_BEACON.html", "C_RETURN_MODE.html", "trial.css", "trial.js"
+    ])
+    physical_native = all((physical / name).exists() for name in [
+        "A_TWIN_SADDLE_PODS.svg", "B_SERVICE_BRIDGE.svg", "C_SPLIT_POST_COLLARS.svg"
+    ])
+
+    def resolve_process(trial: dict[str, Any]) -> tuple[bool, str]:
+        ref = trial.get("professional_process_ref")
+        if not ref:
+            return False, trial.get("professional_process_state", "OPEN")
+        path = REPO / ref
+        if not path.exists():
+            return False, f"MISSING:{ref}"
+        content = path.read_text(encoding="utf-8", errors="replace")
+        process_like = "process" in content.lower() and len(content) > 200
+        return process_like, f"RESOLVED:{ref}" if process_like else f"UNREADABLE_PROCESS:{ref}"
+
+    spatial_process_native, spatial_process_note = resolve_process(spatial_trial)
+    digital_process_native, digital_process_note = resolve_process(digital_trial)
+    physical_process_native, physical_process_note = resolve_process(physical_trial)
+
+    readback_ok = (
+        spatial_probe.get("status") == "PASS_AFTER_LAYOUT_REPAIR"
+        and digital_readback.get("trial_verdict", {}).get("mechanism_comparability") == "PASS"
+        and str(physical_readback.get("status", "")).startswith("PASS")
+    )
+    artifact_readback_ok = (
+        spatial_native and digital_native and physical_native
+        and readback_ok
+    )
+    all_domain_processes_resolved = spatial_process_native and digital_process_native and physical_process_native
+
+    return record(
+        "CD-10-CROSS-DOMAIN",
+        "REAL_CROSS_DOMAIN_PRE_STEER_TRIAL_SET",
+        "PARTIAL" if artifact_readback_ok else "FAIL",
+        [
+            "reuse_codesign_interaction_model",
+            "retain_domain_native_professional_process",
+            "retain_domain_native_output_and_validation",
+        ],
+        [
+            f"spatial_editable_native={spatial_native} pre_steer_readback={spatial_probe.get('status')}",
+            f"digital_editable_html_css_js={digital_native} browser_comparability={digital_readback.get('trial_verdict', {}).get('mechanism_comparability')}",
+            f"physical_editable_svg={physical_native} readback={physical_readback.get('status')}",
+            f"spatial_process={spatial_process_note}",
+            f"digital_process={digital_process_note}",
+            f"physical_process={physical_process_note}",
+            f"all_domain_processes_resolved={all_domain_processes_resolved}",
+        ],
+        [
+            rel(spatial / "trial.json"), rel(spatial / "READBACK_PRE_STEER_PROBE_v0.1.json"),
+            rel(REPO / spatial_trial["professional_process_ref"]),
+            rel(digital / "trial.json"), rel(digital / "BROWSER_READBACK_v0.1.json"),
+            rel(REPO / digital_trial["professional_process_ref"]),
+            rel(physical / "trial.json"), rel(physical / "READBACK_v0.1.json"),
+        ],
+        limitations=[
+            "All three domains have real editable artifacts and actual readback, but their consequential A/B/C human design steering remains pending.",
+            "Physical-product domain-native professional process is intentionally OPEN rather than inferred from a physical currentization/source carrier.",
+            "C01 generic continue/finish instruction is continuation intent only and is not counted as ITERATION_STEER.",
+            "This proves cross-domain interaction/native-output feasibility before human steering; it is not yet a complete cross-domain co-design trial, professional pass or Design KEEP."
+        ],
+    )
+
 def main() -> None:
     fixtures = load_json(HERE / "fixtures.json")
+    eval_spec = load_json(REPO / "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_HUMAN_AI_CODESIGN_EVALS_v0.1.json")
     results = [
         check_continue_without_chat_memory(),
+        check_open_space_real_trial(),
+        check_negative_steer_contract(),
+        check_human_mix_trial(),
         check_stale_checkpoint(fixtures),
         check_authority_drift(fixtures),
         check_presentation_contamination(fixtures),
         check_missing_native_surface(),
+        check_designer_development_contract(),
         check_plugin_removal_survival(),
         check_multi_human_rights(fixtures),
+        check_cross_domain_trials(),
     ]
 
+    specified_eval_ids = {case["id"] for case in eval_spec["cases"]}
+    observed_ids = {r["id"] for r in results}
+    missing_eval_ids = sorted(specified_eval_ids - observed_ids)
+    extra_eval_ids = sorted(observed_ids - specified_eval_ids)
     hard_failures = [r["id"] for r in results if r["status"] == "FAIL"]
+    if missing_eval_ids:
+        hard_failures.append("EVAL_COVERAGE_MISSING:" + ",".join(missing_eval_ids))
     partials = [r["id"] for r in results if r["status"] == "PARTIAL"]
     overall = "PASS_WITH_PARTIALS" if not hard_failures and partials else ("PASS" if not hard_failures else "FAIL")
 
@@ -366,6 +562,12 @@ def main() -> None:
         "overall": overall,
         "hard_failures": hard_failures,
         "partials": partials,
+        "eval_coverage": {
+            "specified_count": len(specified_eval_ids),
+            "observed_result_count": len(results),
+            "missing_specified_ids": missing_eval_ids,
+            "extra_extension_ids": extra_eval_ids
+        },
         "results": results,
         "does_not_prove": [
             "DESIGN_KEEP",

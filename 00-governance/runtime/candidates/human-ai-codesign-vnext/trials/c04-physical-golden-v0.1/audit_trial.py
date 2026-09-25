@@ -34,19 +34,24 @@ def main() -> None:
         boundary_ok = "FIELD OPEN" in text and (
             "NOT ENGINEERING" in text or "NO STRUCTURAL ADEQUACY" in text
         )
+        no_floor_leg = (
+            "不画落地支腿" in text
+            or "无落地支腿" in text
+            or "无独立落地支腿" in text
+        )
         rows.append(
             {
                 "file": name,
                 "svg_parse": "PASS" if parsed else "FAIL",
                 "truth_boundary": "PASS" if boundary_ok else "FAIL",
-                "no_floor_leg_claim": "PASS" if ("不画落地支腿" in text or "无落地支腿" in text or name == "B_SERVICE_BRIDGE.svg") else "CHECK",
+                "no_floor_leg_claim": "PASS" if no_floor_leg else "FAIL",
             }
         )
 
     failures = [
         row["file"]
         for row in rows
-        if row["svg_parse"] != "PASS" or row["truth_boundary"] != "PASS"
+        if row["svg_parse"] != "PASS" or row["truth_boundary"] != "PASS" or row["no_floor_leg_claim"] != "PASS"
     ]
     pngs = sorted(p.name for p in (ROOT / "readback").glob("*.png")) if (ROOT / "readback").exists() else []
     result = {

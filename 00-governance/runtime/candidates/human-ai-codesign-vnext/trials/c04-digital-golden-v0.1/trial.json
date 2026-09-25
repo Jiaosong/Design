@@ -3,6 +3,8 @@
   "status": "LOCAL_REVERSIBLE_TRIAL",
   "project": "PRJ-C04-QINGJIANG-SHISHU",
   "decision_object": "RETURN_SERVICE_RECOVERY_MECHANISM",
+  "professional_process_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+  "professional_process_state": "CANDIDATE_DOMAIN_PROCESS_NO_CURRENT_PROMOTION",
   "source_frontier": [
     "C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
     "game-ui/cocos4-source/assets/resources/c04/ws07a/runtime-manifest.json",

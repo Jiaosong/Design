@@ -3,6 +3,8 @@
   "status": "LOCAL_REVERSIBLE_TRIAL",
   "project": "PRJ-C01-YIMAI-GUANGDU",
   "decision_object": "H01_SPATIAL_MECHANISM_TEST",
+  "professional_process_ref": "00-governance/architecture-design-development-process-v1.0.md",
+  "professional_process_state": "CURRENT_DOMAIN_NATIVE_PROCESS",
   "source_frontier": {
     "topology": "C01_R5_ADD06_FLOW_SYSTEM_MATRIX_v0.3.json",
     "selection": "C01_R5_ADD05_ZONING_SELECTION_RECEIPT_v0.6.json"
@@ -38,10 +40,30 @@
     }
   ],
   "human_steer": "PENDING",
+  "continuation_intent": {
+    "type": "AUTO_ADVANCE_REVERSIBLE_UNTIL_REAL_HUMAN_STOP",
+    "raw_user_instruction": "Please continue and finish the whole task.",
+    "recorded_meaning": "Generic execution/continuation instruction only. It does not reference A/B/C and is not Human–AI design steering.",
+    "design_action_level": "NOT_ITERATION_STEER"
+  },
   "readback_repair": {
     "observed_defect": "C_ZERO_STAGE_KIT initially collapsed service-reset into the mobile-kit return note instead of showing it as a distinct territory, which violated the four-territory H01 invariant.",
     "repair": "Added an explicit RESET service/check/return territory in the C prototype and comparison board while keeping it temporary and non-host-specific.",
     "geometry_authority_delta": "NONE_NON_METRIC_RELATION_ONLY"
+  },
+  "pre_steer_probe": {
+    "artifact": "PRE_STEER_SEQUENCE_PROBE.svg",
+    "artifact_role": "EDITABLE_BRANCH_PRESERVING_OPERATING_SEQUENCE_PROBE_BEFORE_HUMAN_STEER",
+    "parent_lineage": ["A_EDGE_DOCK", "B_SPLIT_SUPPORT", "C_ZERO_STAGE_KIT"],
+    "delta": "Preserve all three parents and expose each mechanism through the same OFF / SETUP / ACTIVE / RESET→OFF sequence so the pending human steer can concern a causal burden rather than style.",
+    "sensitive_unknowns": {
+      "A_EDGE_DOCK": "single-edge tool/reset congestion",
+      "B_SPLIT_SUPPORT": "availability of two eligible support interfaces",
+      "C_ZERO_STAGE_KIT": "repeated setup/reset labor"
+    },
+    "selection_made": false,
+    "claim_ceiling_delta": "NONE",
+    "second_round_human_feedback_delta": "NOT_YET_ALLOWED_HUMAN_STEER_PENDING"
   },
   "project_writeback": false,
   "promotion": false

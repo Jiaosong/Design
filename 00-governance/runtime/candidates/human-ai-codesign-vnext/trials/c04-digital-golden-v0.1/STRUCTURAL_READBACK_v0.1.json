@@ -8,7 +8,7 @@
       "editable_html_exists": true,
       "required_boundary_missing": [],
       "forbidden_claim_hits": [],
-      "mechanism_specific_marker": false,
+      "mechanism_specific_marker": true,
       "status": "PASS"
     },
     {
@@ -16,7 +16,7 @@
       "editable_html_exists": true,
       "required_boundary_missing": [],
       "forbidden_claim_hits": [],
-      "mechanism_specific_marker": false,
+      "mechanism_specific_marker": true,
       "status": "PASS"
     },
     {
@@ -24,7 +24,7 @@
       "editable_html_exists": true,
       "required_boundary_missing": [],
       "forbidden_claim_hits": [],
-      "mechanism_specific_marker": false,
+      "mechanism_specific_marker": true,
       "status": "PASS"
     }
   ],

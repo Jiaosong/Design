@@ -33,14 +33,15 @@ def main() -> None:
         text = path.read_text(encoding="utf-8")
         missing = [item for item in REQUIRED_TEXT if item not in text]
         forbidden_hits = [item for item in FORBIDDEN if item in text]
+        mechanism_specific_marker = name.split("_", 1)[1].replace("_", " ") in text
         results.append(
             {
                 "id": name,
                 "editable_html_exists": path.exists(),
                 "required_boundary_missing": missing,
                 "forbidden_claim_hits": forbidden_hits,
-                "mechanism_specific_marker": name.split("_", 1)[1] in text,
-                "status": "PASS" if not missing and not forbidden_hits else "FAIL",
+                "mechanism_specific_marker": mechanism_specific_marker,
+                "status": "PASS" if not missing and not forbidden_hits and mechanism_specific_marker else "FAIL",
             }
         )
 

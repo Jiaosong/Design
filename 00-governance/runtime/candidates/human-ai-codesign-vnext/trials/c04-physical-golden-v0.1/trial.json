@@ -3,6 +3,8 @@
   "status": "LOCAL_REVERSIBLE_TRIAL",
   "project": "PRJ-C04-QINGJIANG-SHISHU",
   "decision_object": "P02_REVERSIBLE_ATTACHMENT_MAINTENANCE_INTERFACE",
+  "professional_process_ref": null,
+  "professional_process_state": "OPEN_NO_DOMAIN_NATIVE_PHYSICAL_PRODUCT_PROCESS_RESOLVED_DO_NOT_INVENT",
   "source_frontier": [
     "physical-memory-currentization-v1.2/README.md",
     "physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",

@@ -22,3 +22,8 @@ How can the current H01 hand-lion topology become a spatially testable, reversib
 
 These are **editable relation prototypes**, not survey drawings, not host selection, not architecture KEEP.
 
+## Pre-steer reversible probe
+
+The user instructed the system to continue the overall task without selecting, modifying, mixing, rejecting, reopening or explicitly deferring A/B/C. That instruction is recorded only as continuation intent. `human_steer` remains `PENDING`.
+
+`PRE_STEER_SEQUENCE_PROBE.svg` preserves all three parent branches and changes the comparison from static topology to a shared `OFF → SETUP → ACTIVE → RESET → OFF` operating-sequence probe. It is autonomous reversible exploration before human steering, not a second-round delta based on human design feedback. The next consequential choice is narrowed to the actual burden each mechanism introduces: A concentrates return congestion, B depends on two eligible support interfaces, and C repeats setup/reset labor. No option is selected or promoted by this probe.

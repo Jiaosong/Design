@@ -63,11 +63,11 @@
     "master_runtime_read": "PASS",
     "design_process_read": "PASS",
     "candidate_architecture_map_visual_readback": "PASS",
-    "migration_no_loss_review": "OPEN",
-    "spatial_real_case_trial": "NOT_RUN",
-    "digital_real_case_trial": "NOT_RUN",
-    "physical_product_real_case_trial": "NOT_RUN",
-    "independent_architecture_review": "NOT_RUN"
+    "migration_no_loss_review": "PASS",
+    "spatial_real_case_trial": "OPEN",
+    "digital_real_case_trial": "OPEN",
+    "physical_product_real_case_trial": "OPEN",
+    "independent_architecture_review": "PASS"
   },
   "next_allowed_action": "Build and validate the candidate architecture, migration map and Co-Design Session Kernel against existing Current carriers; do not modify Current pointers or promote.",
   "sync_persistence_trigger": "NONE",

@@ -1,0 +1,39 @@
+{
+  "schema": "oleander.codesign.spatial-trial-pre-steer-readback.v0.1",
+  "status": "PASS_AFTER_LAYOUT_REPAIR",
+  "human_steer": "PENDING",
+  "continuation_intent": "AUTO_ADVANCE_REVERSIBLE_UNTIL_REAL_HUMAN_STOP",
+  "editable_artifact": "PRE_STEER_SEQUENCE_PROBE.svg",
+  "readback_derivative": "PRE_STEER_SEQUENCE_PROBE.png",
+  "parent_lineage": [
+    "A_EDGE_DOCK.svg",
+    "B_SPLIT_SUPPORT.svg",
+    "C_ZERO_STAGE_KIT.svg"
+  ],
+  "checks": {
+    "all_three_parents_preserved": "PASS",
+    "shared_operating_sequence_comparable": "PASS",
+    "next_choice_narrowed_without_selection": "PASS",
+    "locked_invariants_visible": "PASS",
+    "no_measured_geometry_or_host_claim": "PASS"
+  },
+  "first_render_defect": {
+    "status": "REVISE",
+    "observation": "Lane mechanism descriptions overlapped the operating-sequence cards, reducing legibility even though the semantics were intact."
+  },
+  "repair": {
+    "delta": "Increased the canvas height and moved each four-step sequence below its lane title/description so text and cards no longer collide.",
+    "claim_ceiling_delta": "NONE"
+  },
+  "second_render_readback": {
+    "lane_text_overlap": "PASS_NONE_OBSERVED",
+    "A_sensitive_burden": "single-edge tool/reset congestion is explicit",
+    "B_sensitive_burden": "two-support-interface eligibility is explicit",
+    "C_sensitive_burden": "repeated setup/reset labor is explicit",
+    "human_choice_preserved": "PASS_NO_OPTION_SELECTED"
+  },
+  "interpretation_boundary": "This is pre-steer reversible exploration, not a second-round delta reflecting human design feedback.",
+  "design_keep": "NO",
+  "project_writeback": false,
+  "promotion": false
+}

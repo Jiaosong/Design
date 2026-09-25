@@ -16,6 +16,7 @@ This directory is an isolated candidate workface. It does **not** replace `OLEAN
 - `OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json` — package identity and ownership boundary for the installable reference implementation.
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_v0.1.svg/.png` — editable candidate architecture map + visual readback derivative.
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_READBACK_v0.1.json` — actual visual inspection of the candidate map.
+- `OLEANDER_HUMAN_AI_CODESIGN_VALIDATION_STATUS_v0.1.md` — evidence ledger, partials and the exact real-human stop before any promotion claim.
 - `validate_candidate.py` — structural anti-duplication checks for this candidate.
 - `regressions/v0.1/` — executable continuation/authority/presentation/native-surface/human-rights boundary regressions using real carriers where available and explicit fixtures otherwise.
 - `trials/c04-digital-golden-v0.1/` — C04 Return/Service digital/HCD interaction-mechanism trial with editable HTML/CSS/JS and browser readback.

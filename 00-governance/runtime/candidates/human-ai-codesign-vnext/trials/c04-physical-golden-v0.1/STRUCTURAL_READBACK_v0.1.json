@@ -19,7 +19,7 @@
       "file": "C_SPLIT_POST_COLLARS.svg",
       "svg_parse": "PASS",
       "truth_boundary": "PASS",
-      "no_floor_leg_claim": "CHECK"
+      "no_floor_leg_claim": "PASS"
     },
     {
       "file": "COMPARISON.svg",

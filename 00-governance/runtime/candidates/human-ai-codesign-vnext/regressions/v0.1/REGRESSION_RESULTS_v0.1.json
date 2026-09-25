@@ -1,13 +1,25 @@
 {
   "schema": "oleander.human-ai-codesign-regression-results.v0.1",
   "status": "CANDIDATE_LOCAL_REGRESSION",
-  "executed_at_utc": "2026-09-25T02:44:45.182324+00:00",
+  "executed_at_utc": "2026-09-25T03:16:23.470081+00:00",
   "repo_head_note": "Runner does not grant Current or Promotion authority.",
   "overall": "PASS_WITH_PARTIALS",
   "hard_failures": [],
   "partials": [
-    "CD-09-PLUGIN-REMOVAL-SURVIVAL"
+    "CD-03-NEGATIVE-STEER",
+    "CD-04-HUMAN-MIX",
+    "CD-08-DESIGNER-DEVELOPMENT",
+    "CD-09-PLUGIN-REMOVAL-SURVIVAL",
+    "CD-10-CROSS-DOMAIN"
   ],
+  "eval_coverage": {
+    "specified_count": 11,
+    "observed_result_count": 12,
+    "missing_specified_ids": [],
+    "extra_extension_ids": [
+      "CD-05B-AUTHORITY-SOURCE-DRIFT"
+    ]
+  },
   "results": [
     {
       "id": "CD-01-CONTINUE-WITHOUT-CHAT-MEMORY",
@@ -29,6 +41,75 @@
         "05-cases/c04-qingjiang-stone-book/orchestration/runtime-state.json"
       ],
       "limitations": []
+    },
+    {
+      "id": "CD-02-OPEN-SPACE",
+      "mode": "REAL_C01_TRIAL",
+      "status": "PASS",
+      "expected": [
+        "propose_materially_distinct_mechanisms",
+        "avoid_full_preference_questionnaire",
+        "make_editable_comparable_artifacts"
+      ],
+      "observed": [
+        "alternative_count=3",
+        "distinct_mechanism_count=3",
+        "editable_svg_count=3",
+        "interaction_started_with_bounded_design_question_and_artifact_making"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/trial.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.svg",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/B_SPLIT_SUPPORT.svg",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/C_ZERO_STAGE_KIT.svg"
+      ],
+      "limitations": [
+        "This proves the candidate trial produced materially distinct editable mechanisms; it does not infer a durable user preference."
+      ]
+    },
+    {
+      "id": "CD-03-NEGATIVE-STEER",
+      "mode": "CONTRACT_STATIC_CHECK",
+      "status": "PARTIAL",
+      "expected": [
+        "treat_causes_as_hypotheses",
+        "do_not_create_durable_taste_profile",
+        "produce_material_repair_directions"
+      ],
+      "observed": [
+        "negative-steer causal-hypothesis rule present=True",
+        "live human negative-steer trial=NOT_RUN"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_v0.1_CANDIDATE.md",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md"
+      ],
+      "limitations": [
+        "Contract semantics are present, but no real human negative-steer round was executed in this candidate validation run."
+      ]
+    },
+    {
+      "id": "CD-04-HUMAN-MIX",
+      "mode": "REAL_TRIAL_PENDING_HUMAN_INPUT",
+      "status": "PARTIAL",
+      "expected": [
+        "preserve_both_parents",
+        "record_actual_reason",
+        "make_second_round_native_delta",
+        "read_back_second_round"
+      ],
+      "observed": [
+        "c01_human_steer=PENDING",
+        "pre_steer_probe_exists=True",
+        "second_round_human_feedback_delta=NOT_RUN"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/trial.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/READBACK_PRE_STEER_PROBE_v0.1.json"
+      ],
+      "limitations": [
+        "No actual human MIX instruction referencing two C01 options has been received; the candidate must not synthesize one."
+      ]
     },
     {
       "id": "CD-05-STALE-CHECKPOINT",
@@ -130,6 +211,27 @@
       ]
     },
     {
+      "id": "CD-08-DESIGNER-DEVELOPMENT",
+      "mode": "CONTRACT_STATIC_CHECK",
+      "status": "PARTIAL",
+      "expected": [
+        "explain_one_key_distinction",
+        "ask_at_most_one_transfer_question_when_useful",
+        "do_not_create_skill_score_or_profile"
+      ],
+      "observed": [
+        "designer-development contract markers=4/4",
+        "real designer-development interaction/readback=NOT_RUN"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_v0.1_CANDIDATE.md",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md"
+      ],
+      "limitations": [
+        "The designer-development layer is structurally specified but has not yet been demonstrated in a real human steering round."
+      ]
+    },
+    {
       "id": "CD-09-PLUGIN-REMOVAL-SURVIVAL",
       "mode": "REAL_CARRIER",
       "status": "PARTIAL",
@@ -179,6 +281,41 @@
       ],
       "limitations": [
         "Synthetic role-conflict fixture; no real stakeholder instruction is reinterpreted."
+      ]
+    },
+    {
+      "id": "CD-10-CROSS-DOMAIN",
+      "mode": "REAL_CROSS_DOMAIN_PRE_STEER_TRIAL_SET",
+      "status": "PARTIAL",
+      "expected": [
+        "reuse_codesign_interaction_model",
+        "retain_domain_native_professional_process",
+        "retain_domain_native_output_and_validation"
+      ],
+      "observed": [
+        "spatial_editable_native=True pre_steer_readback=PASS_AFTER_LAYOUT_REPAIR",
+        "digital_editable_html_css_js=True browser_comparability=PASS",
+        "physical_editable_svg=True readback=PASS_AFTER_ONE_RELATION_REPAIR",
+        "spatial_process=RESOLVED:00-governance/architecture-design-development-process-v1.0.md",
+        "digital_process=RESOLVED:00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+        "physical_process=OPEN_NO_DOMAIN_NATIVE_PHYSICAL_PRODUCT_PROCESS_RESOLVED_DO_NOT_INVENT",
+        "all_domain_processes_resolved=False"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/trial.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/READBACK_PRE_STEER_PROBE_v0.1.json",
+        "00-governance/architecture-design-development-process-v1.0.md",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c04-digital-golden-v0.1/trial.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c04-digital-golden-v0.1/BROWSER_READBACK_v0.1.json",
+        "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c04-physical-golden-v0.1/trial.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c04-physical-golden-v0.1/READBACK_v0.1.json"
+      ],
+      "limitations": [
+        "All three domains have real editable artifacts and actual readback, but their consequential A/B/C human design steering remains pending.",
+        "Physical-product domain-native professional process is intentionally OPEN rather than inferred from a physical currentization/source carrier.",
+        "C01 generic continue/finish instruction is continuation intent only and is not counted as ITERATION_STEER.",
+        "This proves cross-domain interaction/native-output feasibility before human steering; it is not yet a complete cross-domain co-design trial, professional pass or Design KEEP."
       ]
     }
   ],
