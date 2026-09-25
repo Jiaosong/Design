@@ -24,7 +24,28 @@ USER / CONTEXT
 
 ---
 
-# Current Product Baseline
+# Current Product Operating Package
+
+## [OLEANDER Product Operating Package v0.3.0](v0.3/README.md)
+
+这是当前建议从产品经理 / 大型产品团队视角阅读的入口。
+
+v0.3 不取代 v0.2 的 141 个 Feature / Traceability 细节，而是在其上补齐：
+- Working Backwards / PRFAQ；
+- decision-ready Master PRD；
+- Metrics / Experiment contract；
+- outcome-based Roadmap；
+- RACI / Dependency / Risk；
+- Customer / Market Validation；
+- Launch Readiness / Rollback；
+- Product Decision Log；
+- Product Review Bar。
+
+这样产品文档从“需求完整”升级为“可以支持投资、研发、验证、上线和复盘决策”。
+
+---
+
+# Detailed Product Baseline
 
 ## [OLEANDER 设计协作系统 PRD v0.2.0](OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
 
