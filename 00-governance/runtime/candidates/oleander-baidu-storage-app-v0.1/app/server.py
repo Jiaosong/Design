@@ -227,13 +227,28 @@ def _redact_text(text: str) -> str:
     return _safe_error_message(RuntimeError(text))
 
 
-def _redact_value(value: Any) -> Any:
+_SENSITIVE_RESULT_KEYS = {
+    "access_token",
+    "refresh_token",
+    "authorization",
+    "cookie",
+    "set-cookie",
+    "client_secret",
+}
+
+
+def _redact_value(value: Any, key: str | None = None) -> Any:
+    if key is not None and key.lower() in _SENSITIVE_RESULT_KEYS:
+        return "<redacted>"
     if isinstance(value, str):
         return _redact_text(value)
     if isinstance(value, list):
         return [_redact_value(item) for item in value]
     if isinstance(value, dict):
-        return {str(key): _redact_value(child) for key, child in value.items()}
+        return {
+            str(child_key): _redact_value(child, str(child_key))
+            for child_key, child in value.items()
+        }
     return value
 
 
@@ -320,7 +335,7 @@ async def _bootstrap_storage() -> types.ServerResult:
     try:
         async with BaiduMcpSession() as upstream:
             for path in targets:
-                prepared = POLICY.prepare_arguments("make_dir", {"path": path, "rtype": 1})
+                prepared = POLICY.prepare_arguments("make_dir", {"path": path, "rtype": 0})
                 result = await upstream.call_tool("make_dir", prepared)
                 results.append({"path": path, "is_error": bool(result.isError)})
     except Exception as exc:

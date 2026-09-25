@@ -5,9 +5,9 @@
     {
       "role": "CHATGPT_MCP_APP_SERVER",
       "filename": "OLEANDER-Baidu-Storage-App-0.1.0-CANDIDATE.zip",
-      "sha256": "b89bd4453464086d20fd53bff86ee8c9b1e59cea77e9e77418ce605b7d7df869",
-      "size_bytes": 29194,
-      "file_count": 25
+      "sha256": "cc4c804b237e1c73c58787cbdc712c0cf1f3daa4a02f6a1cb79b46be820b4433",
+      "size_bytes": 31486,
+      "file_count": 27
     },
     {
       "role": "CHATGPT_PLUGIN_PACKAGE",

@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import base64
 import unittest
+from unittest.mock import patch
 
 import mcp.types as types
 
@@ -119,6 +120,48 @@ class ServerContractTests(unittest.TestCase):
         self.assertNotIn("SECRET123", filtered.content[0].text)
         self.assertEqual(len(filtered.structuredContent["list"]), 1)
         self.assertNotIn("SECRET123", filtered.structuredContent["list"][0]["note"])
+
+    def test_structured_secret_keys_are_redacted(self) -> None:
+        upstream = types.CallToolResult(
+            content=[types.TextContent(type="text", text='{"status":"ok"}')],
+            structuredContent={
+                "path": "/OLEANDER_VAULT/ok.pdf",
+                "access_token": "STRUCTURED-SECRET",
+                "nested": {
+                    "refresh_token": "REFRESH-SECRET",
+                    "authorization": "Bearer SECRET",
+                },
+            },
+        )
+        filtered = server._filter_upstream_result(upstream, "file_meta")
+        self.assertEqual(filtered.structuredContent["access_token"], "<redacted>")
+        self.assertEqual(filtered.structuredContent["nested"]["refresh_token"], "<redacted>")
+        self.assertEqual(filtered.structuredContent["nested"]["authorization"], "<redacted>")
+        self.assertNotIn("STRUCTURED-SECRET", str(filtered.structuredContent))
+
+    def test_bootstrap_uses_conflict_fail_closed_rtype_zero(self) -> None:
+        calls = []
+
+        class FakeSession:
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, exc_type, exc, tb):
+                return None
+
+            async def call_tool(self, name, arguments):
+                calls.append((name, dict(arguments)))
+                return types.CallToolResult(
+                    content=[types.TextContent(type="text", text='{"errno":0}')]
+                )
+
+        with patch.object(server, "BaiduMcpSession", FakeSession):
+            result = asyncio.run(server._bootstrap_storage()).root
+
+        self.assertFalse(result.isError)
+        self.assertEqual(len(calls), 5)
+        self.assertTrue(all(name == "make_dir" for name, _ in calls))
+        self.assertTrue(all(args.get("rtype") == 0 for _, args in calls))
 
 
 if __name__ == "__main__":

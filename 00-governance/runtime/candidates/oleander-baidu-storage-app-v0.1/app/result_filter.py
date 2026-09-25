@@ -20,9 +20,10 @@ def filter_object(value: Any, root: str) -> Any:
                 out.append(filtered)
         return out
     if isinstance(value, dict):
-        path = value.get("path") or value.get("remote_path")
-        if isinstance(path, str) and not is_within_root(path, root):
-            return _DROP
+        for key in ("path", "remote_path"):
+            path = value.get(key)
+            if isinstance(path, str) and not is_within_root(path, root):
+                return _DROP
         out = {}
         for key, child in value.items():
             filtered = filter_object(child, root)
