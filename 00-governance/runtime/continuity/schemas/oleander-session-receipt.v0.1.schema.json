@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/session-receipt.v0.1.schema.json",
+  "title": "OLEANDER Session Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "created_at",
+    "source_surface",
+    "session_scope",
+    "user_intents",
+    "owner_native_reads",
+    "material_outputs",
+    "owner_native_writes",
+    "execution_intents_created",
+    "execution_intents_consumed",
+    "human_stops",
+    "unresolved",
+    "authority_effect",
+    "continuation_hint",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "receipt_id": {"type": "string", "pattern": "^SES-"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "source_surface": {"enum": ["COS", "CHATGPT_WEB", "CHATGPT_DESKTOP", "KNOWLEDGE_ADMIN", "OTHER"]},
+    "session_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "project_ids", "workspace_keys"],
+      "properties": {
+        "system": {"type": "boolean"},
+        "project_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^PRJ-"}},
+        "workspace_keys": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "user_intents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["raw", "classified_as"],
+        "properties": {
+          "raw": {"type": "string", "minLength": 1},
+          "classified_as": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "owner_native_reads": {"type": "array", "items": {"$ref": "#/$defs/refRecord"}},
+    "material_outputs": {"type": "array", "items": {"$ref": "#/$defs/outputRecord"}},
+    "owner_native_writes": {"type": "array", "items": {"$ref": "#/$defs/refRecord"}},
+    "execution_intents_created": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "execution_intents_consumed": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "human_stops": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "unresolved": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "authority_effect": {"enum": ["NONE", "OWNER_NATIVE_WRITE_REFERENCED"]},
+    "continuation_hint": {"type": "string", "minLength": 1},
+    "does_not_prove": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "refRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "purpose"],
+      "properties": {
+        "ref": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "outputRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "kind"],
+      "properties": {
+        "ref": {"type": "string", "minLength": 1},
+        "kind": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

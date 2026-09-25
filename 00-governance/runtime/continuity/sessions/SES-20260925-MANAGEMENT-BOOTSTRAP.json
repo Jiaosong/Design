@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1",
+  "receipt_id": "SES-20260925-MANAGEMENT-BOOTSTRAP",
+  "created_at": "2026-09-25T09:47:45.0057002Z",
+  "source_surface": "CHATGPT_WEB",
+  "session_scope": {
+    "system": true,
+    "project_ids": [],
+    "workspace_keys": [
+      "OLEANDER-HUMAN-AI-CODESIGN-VNEXT"
+    ]
+  },
+  "user_intents": [
+    {
+      "raw": "先把这个管理协议和真实目录/状态载体落地",
+      "classified_as": "SYSTEM_MAINTENANCE / CONTINUITY_MANAGEMENT_IMPLEMENTATION"
+    }
+  ],
+  "owner_native_reads": [
+    {
+      "ref": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "purpose": "Resolve Current runtime architecture and authority boundary"
+    },
+    {
+      "ref": "00-governance/OLEANDER_WORK_COORDINATION_CONTRACT_v1.0.md",
+      "purpose": "Reuse existing Project Priority Queue and Control Card semantics instead of creating parallel owners"
+    },
+    {
+      "ref": "00-governance/cross-platform-sync-contract-v1.1.md",
+      "purpose": "Preserve Project State / Current Task receipt and one-CURRENT rules"
+    },
+    {
+      "ref": "00-governance/control-plane/README.md",
+      "purpose": "Preserve Control Plane and repository discovery as existing owners"
+    },
+    {
+      "ref": "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json",
+      "purpose": "Derive operator attention without duplicating the automated production queue"
+    },
+    {
+      "ref": "00-governance/case-map.md",
+      "purpose": "Resolve formal C01-C04 Project IDs"
+    }
+  ],
+  "material_outputs": [
+    {
+      "ref": "00-governance/runtime/continuity/README.md",
+      "kind": "CANDIDATE_MANAGEMENT_PROTOCOL"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/OLEANDER_HOME_INDEX_v0.1.json",
+      "kind": "NON_AUTHORITY_HOME_INDEX"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/schemas/oleander-home-index.v0.1.schema.json",
+      "kind": "SCHEMA"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/schemas/oleander-session-receipt.v0.1.schema.json",
+      "kind": "SCHEMA"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/schemas/oleander-execution-intent.v0.1.schema.json",
+      "kind": "SCHEMA"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/validate_continuity.py",
+      "kind": "VALIDATOR"
+    },
+    {
+      "ref": "00-governance/runtime/continuity/show_home.py",
+      "kind": "OPERATOR_READBACK"
+    }
+  ],
+  "owner_native_writes": [],
+  "execution_intents_created": [
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-MANAGEMENT-BOOTSTRAP.json"
+  ],
+  "execution_intents_consumed": [
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-MANAGEMENT-BOOTSTRAP.json"
+  ],
+  "human_stops": [],
+  "unresolved": [
+    "KH-LY46 has no canonical formal Project ID / Project State carrier resolved by this repository bootstrap; HOME therefore preserves it as an unregistered workspace and forbids ID inference.",
+    "Cross-device persistence still requires an actual synchronized carrier such as GitHub/Drive/another approved owner; local repository existence alone does not make a remote ChatGPT surface current."
+  ],
+  "authority_effect": "NONE",
+  "continuation_hint": "Any surface should read OLEANDER_HOME_INDEX_v0.1.json, then reopen the selected project's owner-native authority refs before consequential work. Remote instructions requiring workstation tools should be captured as execution intents for later local consumption.",
+  "does_not_prove": [
+    "CANDIDATE FILES ARE NOT CURRENT ADOPTION",
+    "NO PROJECT STATE WAS MODIFIED",
+    "NO PROJECT PRIORITY WAS REORDERED",
+    "NO DESIGN KEEP OR PROMOTION OCCURRED",
+    "REMOTE CROSS-DEVICE SYNC HAS NOT YET BEEN PROVEN"
+  ]
+}

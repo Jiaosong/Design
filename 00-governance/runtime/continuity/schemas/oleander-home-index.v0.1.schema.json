@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oleander.design/schemas/home-index.v0.1.schema.json",
+  "title": "OLEANDER HOME Index v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "authority_mode",
+    "source_refs",
+    "attention_policy",
+    "formal_projects",
+    "unregistered_workspaces",
+    "system_workspaces",
+    "surfaces",
+    "knowledge",
+    "transport",
+    "session_receipt_refs",
+    "execution_intent_refs",
+    "does_not_prove"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "status": {"const": "CANDIDATE_NON_AUTHORITY_HOME_INDEX"},
+    "authority_mode": {"const": "POINTERS_AND_OPERATOR_ATTENTION_ONLY"},
+    "source_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_current", "project_identity", "project_priority_queue", "work_coordination", "cross_platform_sync", "control_plane"],
+      "properties": {
+        "runtime_current": {"type": "string", "minLength": 1},
+        "project_identity": {"type": "string", "minLength": 1},
+        "project_priority_queue": {"type": "string", "minLength": 1},
+        "work_coordination": {"type": "string", "minLength": 1},
+        "cross_platform_sync": {"type": "string", "minLength": 1},
+        "control_plane": {"type": "string", "minLength": 1}
+      }
+    },
+    "attention_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantics", "formal_active_soft_limit"],
+      "properties": {
+        "semantics": {"const": "OPERATOR_ATTENTION_ONLY_NOT_PROJECT_STATE"},
+        "formal_active_soft_limit": {"type": "integer", "minimum": 1, "maximum": 3}
+      }
+    },
+    "formal_projects": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/formalProject"}
+    },
+    "unregistered_workspaces": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/unregisteredWorkspace"}
+    },
+    "system_workspaces": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/systemWorkspace"}
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/surface"}
+    },
+    "knowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["admin_surface_role", "runtime_mount_ref", "content_review_ref"],
+      "properties": {
+        "admin_surface_role": {"const": "MAINTENANCE_ONLY_NOT_PROJECT_STATE"},
+        "runtime_mount_ref": {"type": "string", "minLength": 1},
+        "content_review_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_receipt_dir", "execution_intent_dir"],
+      "properties": {
+        "session_receipt_dir": {"type": "string", "minLength": 1},
+        "execution_intent_dir": {"type": "string", "minLength": 1}
+      }
+    },
+    "session_receipt_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "execution_intent_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "does_not_prove": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "formalProject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_id", "case_id", "display_name", "attention_state", "attention_basis", "workspace_ref", "authority_refs", "control_card_ref", "authority_mode"],
+      "properties": {
+        "project_id": {"type": "string", "pattern": "^PRJ-"},
+        "case_id": {"type": "string", "pattern": "^C[0-9]{2,}$"},
+        "display_name": {"type": "string", "minLength": 1},
+        "attention_state": {"enum": ["ACTIVE", "PARKED", "ARCHIVED"]},
+        "attention_basis": {"type": "string", "minLength": 1},
+        "workspace_ref": {"type": "string", "minLength": 1},
+        "authority_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "control_card_ref": {"type": ["string", "null"]},
+        "authority_mode": {"const": "POINTERS_ONLY_REREAD_OWNER_BEFORE_USE"}
+      }
+    },
+    "unregisteredWorkspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workspace_key", "display_name", "attention_state", "registration_state", "canonical_project_state_ref", "evidence_refs", "do_not_infer_project_id"],
+      "properties": {
+        "workspace_key": {"type": "string", "minLength": 1},
+        "display_name": {"type": "string", "minLength": 1},
+        "attention_state": {"enum": ["ACTIVE", "PARKED", "ARCHIVED"]},
+        "registration_state": {"enum": ["CANONICAL_PROJECT_CARRIER_UNRESOLVED", "EXTERNAL_PROJECT_CARRIER", "REGISTRATION_REQUIRED"]},
+        "canonical_project_state_ref": {"type": ["string", "null"]},
+        "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "do_not_infer_project_id": {"const": true}
+      }
+    },
+    "systemWorkspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workspace_key", "display_name", "attention_state", "kind", "candidate_ref", "current_authority_ref", "authority_mode"],
+      "properties": {
+        "workspace_key": {"type": "string", "minLength": 1},
+        "display_name": {"type": "string", "minLength": 1},
+        "attention_state": {"enum": ["ACTIVE", "PARKED", "ARCHIVED"]},
+        "kind": {"enum": ["SYSTEM_EVOLUTION", "GOVERNANCE", "KNOWLEDGE_MAINTENANCE"]},
+        "candidate_ref": {"type": ["string", "null"]},
+        "current_authority_ref": {"type": "string", "minLength": 1},
+        "authority_mode": {"const": "CANDIDATE_CANNOT_REWRITE_CURRENT"}
+      }
+    },
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface_id", "role", "can_capture_intent", "can_execute_local_tools", "can_admin_knowledge"],
+      "properties": {
+        "surface_id": {"enum": ["COS", "CHATGPT_WEB", "CHATGPT_DESKTOP", "KNOWLEDGE_ADMIN"]},
+        "role": {"type": "string", "minLength": 1},
+        "can_capture_intent": {"type": "boolean"},
+        "can_execute_local_tools": {"type": "boolean"},
+        "can_admin_knowledge": {"type": "boolean"}
+      }
+    }
+  }
+}

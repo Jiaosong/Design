@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "intent_id": "INT-20260925-MANAGEMENT-BOOTSTRAP",
+  "captured_at": "2026-09-25T09:47:45.0057002Z",
+  "source_surface": "CHATGPT_WEB",
+  "target_surface": "LOCAL_COS",
+  "scope": {
+    "project_id": null,
+    "workspace_key": "OLEANDER-HUMAN-AI-CODESIGN-VNEXT",
+    "object_ref": "OLEANDER_CONTINUITY_MANAGEMENT_LAYER_v0.1"
+  },
+  "intent_class": "SYSTEM_MAINTENANCE",
+  "raw_human_input": "先把这个管理协议和真实目录/状态载体落地",
+  "normalized_instruction": "Implement a real OLEANDER management/continuity protocol and repository-backed state carriers without creating a second Project State, registry, queue or authority.",
+  "human_action_level": "WORK_INTENT",
+  "status": "CONSUMED",
+  "owner_native_precondition": {
+    "reread_required": true,
+    "authority_refs": [
+      "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "00-governance/OLEANDER_WORK_COORDINATION_CONTRACT_v1.0.md",
+      "00-governance/cross-platform-sync-contract-v1.1.md",
+      "00-governance/control-plane/README.md",
+      "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
+    ],
+    "drift_policy": "FAIL_CLOSED_REREAD_OWNER_NATIVE_BEFORE_MATERIAL_PROJECT_WRITE"
+  },
+  "material_write_authorized": true,
+  "authority_ceiling": "CANDIDATE_CONTINUITY_LAYER_FILES_ONLY_NO_PROJECT_STATE_CURRENT_DESIGN_KEEP_OR_PROMOTION",
+  "consumed_by_session_receipt": "00-governance/runtime/continuity/sessions/SES-20260925-MANAGEMENT-BOOTSTRAP.json",
+  "does_not_prove": [
+    "THIS INTENT DOES NOT CHANGE ANY PROJECT STATE",
+    "THIS INTENT DOES NOT REORDER THE CURRENT PROJECT PRIORITY QUEUE",
+    "THIS INTENT DOES NOT PROMOTE THE CONTINUITY LAYER TO CURRENT"
+  ]
+}

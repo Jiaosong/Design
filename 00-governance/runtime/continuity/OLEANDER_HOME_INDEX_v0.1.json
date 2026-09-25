@@ -1,0 +1,155 @@
+{
+  "schema_version": "0.1",
+  "status": "CANDIDATE_NON_AUTHORITY_HOME_INDEX",
+  "authority_mode": "POINTERS_AND_OPERATOR_ATTENTION_ONLY",
+  "source_refs": {
+    "runtime_current": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+    "project_identity": "00-governance/case-map.md",
+    "project_priority_queue": "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json",
+    "work_coordination": "00-governance/OLEANDER_WORK_COORDINATION_CONTRACT_v1.0.md",
+    "cross_platform_sync": "00-governance/cross-platform-sync-contract-v1.1.md",
+    "control_plane": "00-governance/control-plane/README.md"
+  },
+  "attention_policy": {
+    "semantics": "OPERATOR_ATTENTION_ONLY_NOT_PROJECT_STATE",
+    "formal_active_soft_limit": 3
+  },
+  "formal_projects": [
+    {
+      "project_id": "PRJ-C01-YIMAI-GUANGDU",
+      "case_id": "C01",
+      "display_name": "一脉广渡",
+      "attention_state": "ACTIVE",
+      "attention_basis": "PRESENT_IN_CURRENT_PROJECT_PRIORITY_QUEUE; HOME DOES NOT COPY THE QUEUE'S PROJECT STATE",
+      "workspace_ref": "05-cases/c01-yimai-guangdu",
+      "authority_refs": [
+        "05-cases/c01-yimai-guangdu/README.md",
+        "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
+      ],
+      "control_card_ref": null,
+      "authority_mode": "POINTERS_ONLY_REREAD_OWNER_BEFORE_USE"
+    },
+    {
+      "project_id": "PRJ-C02-DAYLILY",
+      "case_id": "C02",
+      "display_name": "忘也 Daylily",
+      "attention_state": "PARKED",
+      "attention_basis": "NOT_PRESENT_IN_CURRENT_PROJECT_PRIORITY_QUEUE_AT_BOOTSTRAP; PROJECT STATUS REMAINS OWNER-NATIVE",
+      "workspace_ref": "05-cases/c02-daylily",
+      "authority_refs": [
+        "05-cases/c02-daylily/README.md",
+        "00-governance/case-map.md"
+      ],
+      "control_card_ref": null,
+      "authority_mode": "POINTERS_ONLY_REREAD_OWNER_BEFORE_USE"
+    },
+    {
+      "project_id": "PRJ-C03-LIGHT-COLLECTION",
+      "case_id": "C03",
+      "display_name": "The Light Collection",
+      "attention_state": "PARKED",
+      "attention_basis": "NOT_PRESENT_IN_CURRENT_PROJECT_PRIORITY_QUEUE_AT_BOOTSTRAP; PROJECT STATUS REMAINS OWNER-NATIVE",
+      "workspace_ref": "05-cases/c03-the-light-collection",
+      "authority_refs": [
+        "05-cases/c03-the-light-collection/README.md",
+        "00-governance/case-map.md"
+      ],
+      "control_card_ref": null,
+      "authority_mode": "POINTERS_ONLY_REREAD_OWNER_BEFORE_USE"
+    },
+    {
+      "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+      "case_id": "C04",
+      "display_name": "清江石书｜红花峰林十三印",
+      "attention_state": "ACTIVE",
+      "attention_basis": "PRESENT_IN_CURRENT_PROJECT_PRIORITY_QUEUE; HOME DOES NOT COPY THE QUEUE'S PROJECT STATE",
+      "workspace_ref": "05-cases/c04-qingjiang-stone-book",
+      "authority_refs": [
+        "05-cases/c04-qingjiang-stone-book/C04_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_ACTIVE_EXECUTION_CURRENT.md",
+        "05-cases/c04-qingjiang-stone-book/C04_EXISTING_DESIGN_ASSET_ATLAS_v1.0.md",
+        "00-governance/OLEANDER_PROJECT_PRIORITY_QUEUE_CURRENT.json"
+      ],
+      "control_card_ref": "05-cases/c04-qingjiang-stone-book/C04_PROJECT_CONTROL_CARD_CURRENT.md",
+      "authority_mode": "POINTERS_ONLY_REREAD_OWNER_BEFORE_USE"
+    }
+  ],
+  "unregistered_workspaces": [
+    {
+      "workspace_key": "KH-LY46",
+      "display_name": "Kharkiv Lyceum No.46",
+      "attention_state": "ACTIVE",
+      "registration_state": "CANONICAL_PROJECT_CARRIER_UNRESOLVED",
+      "canonical_project_state_ref": null,
+      "evidence_refs": [
+        "00-governance/architecture-design-development-process-v1.0.md",
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/runtime/evolution-candidates/process-gap-repair-20260920/real-project-exercises/kh-ly46-r5/README.md"
+      ],
+      "do_not_infer_project_id": true
+    }
+  ],
+  "system_workspaces": [
+    {
+      "workspace_key": "OLEANDER-HUMAN-AI-CODESIGN-VNEXT",
+      "display_name": "OLEANDER Human–AI Co-Design vNext",
+      "attention_state": "ACTIVE",
+      "kind": "SYSTEM_EVOLUTION",
+      "candidate_ref": "00-governance/runtime/candidates/human-ai-codesign-vnext/README.md",
+      "current_authority_ref": "00-governance/runtime/OLEANDER_RUNTIME_LATEST.md",
+      "authority_mode": "CANDIDATE_CANNOT_REWRITE_CURRENT"
+    }
+  ],
+  "surfaces": [
+    {
+      "surface_id": "COS",
+      "role": "PRIMARY_LOCAL_EXECUTION_AND_NATIVE_TOOL_SURFACE",
+      "can_capture_intent": true,
+      "can_execute_local_tools": true,
+      "can_admin_knowledge": false
+    },
+    {
+      "surface_id": "CHATGPT_WEB",
+      "role": "REMOTE_CONVERSATION_REVIEW_STEER_AND_INTENT_CAPTURE",
+      "can_capture_intent": true,
+      "can_execute_local_tools": false,
+      "can_admin_knowledge": false
+    },
+    {
+      "surface_id": "CHATGPT_DESKTOP",
+      "role": "REMOTE_OR_LOCAL_CONVERSATION_SURFACE_WITH_CAPABILITY_RESOLVED_AT_RUNTIME",
+      "can_capture_intent": true,
+      "can_execute_local_tools": false,
+      "can_admin_knowledge": false
+    },
+    {
+      "surface_id": "KNOWLEDGE_ADMIN",
+      "role": "KNOWLEDGE_IMPORT_DEDUP_PROVENANCE_CLASSIFICATION_AND_MAINTENANCE",
+      "can_capture_intent": false,
+      "can_execute_local_tools": false,
+      "can_admin_knowledge": true
+    }
+  ],
+  "knowledge": {
+    "admin_surface_role": "MAINTENANCE_ONLY_NOT_PROJECT_STATE",
+    "runtime_mount_ref": "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+    "content_review_ref": "00-governance/runtime/OLEANDER_KNOWLEDGE_CONTENT_REVIEW_LAYER_v1.0.md"
+  },
+  "transport": {
+    "session_receipt_dir": "00-governance/runtime/continuity/sessions",
+    "execution_intent_dir": "00-governance/runtime/continuity/execution-intents"
+  },
+  "session_receipt_refs": [
+    "00-governance/runtime/continuity/sessions/SES-20260925-MANAGEMENT-BOOTSTRAP.json"
+  ],
+  "execution_intent_refs": [
+    "00-governance/runtime/continuity/execution-intents/INT-20260925-MANAGEMENT-BOOTSTRAP.json"
+  ],
+  "does_not_prove": [
+    "HOME INDEX DOES NOT ESTABLISH PROJECT CURRENT STATE",
+    "ATTENTION STATE DOES NOT CHANGE PROJECT PRIORITY QUEUE OR PROJECT STATUS",
+    "POINTER EXISTENCE DOES NOT PROVE OWNER-NATIVE FRESHNESS",
+    "SESSION OR EXECUTION INTENT DOES NOT GRANT DESIGN KEEP OR PROMOTION",
+    "KH-LY46 ENTRY DOES NOT CREATE OR INFER A FORMAL PROJECT ID"
+  ]
+}
