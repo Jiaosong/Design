@@ -2,6 +2,8 @@
 
 [← Master PRD](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
 
+> **v0.3 node-first update:** 本目录保留为详细 Feature composite specification / provenance view。第一层产品节点的 primary definition 现位于 [v0.3 Product Node Graph](../v0.3/nodes/README.md)。不要在本目录与 Node Docs 同时维护两套节点定义；节点关系、责任和主行为以 Node Doc 为入口，本目录继续承载细粒度 Feature requirement / acceptance 细节。
+
 本目录把 Master PRD 细化到**Product Area / Feature / Interaction / Acceptance Scenario / Failure Behaviour / Event** 层。
 
 它不是软件详细设计，不规定数据库、API、Agent topology 或具体前端技术。
