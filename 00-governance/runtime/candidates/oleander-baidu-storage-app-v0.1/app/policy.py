@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import posixpath
 from dataclasses import dataclass
 from typing import Any
 from urllib.parse import unquote
@@ -20,15 +21,19 @@ READ_TOOLS = {
     "get_quota",
 }
 
+REMOTE_UPLOAD_TOOLS = {
+    "file_upload_by_url",
+    "file_upload_by_text",
+    "file_upload_text",
+    "file_upload_from_text",
+}
+
 WRITE_TOOLS = {
     "make_dir",
     "file_copy",
     "file_move",
     "file_rename",
-    "file_upload_by_url",
-    "file_upload_by_text",
-    "file_upload_text",
-}
+} | REMOTE_UPLOAD_TOOLS
 
 DELETE_TOOLS = {"file_del"}
 SHARE_TOOLS = {"file_sharelink_set"}
@@ -134,34 +139,31 @@ def _loads_raw_filelist(value: Any) -> list[Any]:
 class StoragePolicy:
     root: str = "/OLEANDER_VAULT"
     allow_delete: bool = False
-    allow_share: bool = False
 
     @classmethod
     def from_env(cls) -> "StoragePolicy":
         return cls(
             root=normalize_root(os.getenv("OLEANDER_BAIDU_ROOT", "/OLEANDER_VAULT")),
             allow_delete=env_bool("OLEANDER_ALLOW_DELETE", False),
-            allow_share=env_bool("OLEANDER_ALLOW_SHARE", False),
         )
 
     def tool_allowed(self, name: str) -> bool:
         if name in READ_TOOLS or name in WRITE_TOOLS:
             return True
-        if name.startswith("file_upload_") and name != "file_upload_stdio":
-            return True
         if name in DELETE_TOOLS:
             return self.allow_delete
         if name in SHARE_TOOLS:
-            return self.allow_share
+            # v0.1 intentionally keeps fsid-only sharing unsupported because
+            # proving every fsid belongs to /OLEANDER_VAULT requires an
+            # authenticated metadata preflight that has not yet been validated.
+            return False
         return False
 
     def augment_schema(self, tool_name: str, schema: dict[str, Any]) -> dict[str, Any]:
         out = copy.deepcopy(schema or {"type": "object", "properties": {}})
         out.setdefault("type", "object")
         props = out.setdefault("properties", {})
-        if tool_name in WRITE_TOOLS | DELETE_TOOLS or (
-            tool_name.startswith("file_upload_") and tool_name != "file_upload_stdio"
-        ):
+        if tool_name in WRITE_TOOLS | DELETE_TOOLS:
             props["oleander_current_ack"] = {
                 "type": "string",
                 "description": (
@@ -197,7 +199,7 @@ class StoragePolicy:
         if tool_name in {"file_list", "file_doc_list", "file_image_list", "file_video_list", "file_keyword_search", "file_semantics_search"}:
             args["dir"] = args.get("dir") or self.root
 
-        if tool_name.startswith("file_upload_") and tool_name != "file_upload_stdio":
+        if tool_name in REMOTE_UPLOAD_TOOLS:
             args["dir"] = args.get("dir") or self.root
 
         path_roles = self._path_roles(tool_name, args)
@@ -254,6 +256,9 @@ class StoragePolicy:
                     out.append((True, f"filelist[{i}].dest", item["dest"]))
                 if isinstance(item.get("path"), str):
                     out.append((False, f"filelist[{i}].path", item["path"]))
+                target = self._effective_target(tool_name, item)
+                if target:
+                    out.append((True, f"filelist[{i}].effective_target", target))
             return out
 
         if tool_name in {"file_move", "file_rename", "file_del"}:
@@ -266,13 +271,47 @@ class StoragePolicy:
                     out.append((True, f"filelist[{i}].path", item["path"]))
                 if isinstance(item.get("dest"), str):
                     out.append((True, f"filelist[{i}].dest", item["dest"]))
+                target = self._effective_target(tool_name, item)
+                if target:
+                    out.append((True, f"filelist[{i}].effective_target", target))
             return out
 
         if tool_name == "make_dir" and isinstance(args.get("path"), str):
             out.append((True, "path", args["path"]))
-        elif tool_name.startswith("file_upload_") and tool_name != "file_upload_stdio" and isinstance(args.get("dir"), str):
+        elif tool_name in REMOTE_UPLOAD_TOOLS and isinstance(args.get("dir"), str):
             out.append((True, "dir", args["dir"]))
+            filename = args.get("filename")
+            if isinstance(filename, str) and filename:
+                out.append((True, "effective_target", self._join_target(args["dir"], filename)))
         return out
+
+    @staticmethod
+    def _join_target(directory: str, leaf: str) -> str:
+        validate_leaf_name(leaf, "target name")
+        normalized_dir = normalize_cloud_path(directory)
+        return normalize_cloud_path(normalized_dir.rstrip("/") + "/" + leaf)
+
+    @classmethod
+    def _effective_target(cls, tool_name: str, item: dict[str, Any]) -> str | None:
+        source = item.get("path")
+        newname = item.get("newname")
+        if tool_name in {"file_copy", "file_move"}:
+            dest = item.get("dest")
+            if not isinstance(dest, str) or not dest:
+                return None
+            if isinstance(newname, str) and newname:
+                leaf = newname
+            elif isinstance(source, str) and source:
+                leaf = posixpath.basename(normalize_cloud_path(source))
+            else:
+                return None
+            return cls._join_target(dest, leaf)
+        if tool_name == "file_rename":
+            if not isinstance(source, str) or not source or not isinstance(newname, str) or not newname:
+                return None
+            parent = posixpath.dirname(normalize_cloud_path(source)) or "/"
+            return cls._join_target(parent, newname)
+        return None
 
     @staticmethod
     def _requests_overwrite(tool_name: str, args: dict[str, Any]) -> bool:

@@ -63,7 +63,8 @@ Bounded write operations by default:
 High-risk operations are disabled unless explicitly enabled by environment policy:
 
 - delete
-- share-link creation
+
+Share-link creation is **unsupported in v0.1** rather than merely hidden behind a switch. The upstream share tool accepts fsids without a path, so OLEANDER will not expose it until authenticated metadata preflight can prove every fsid belongs to `/OLEANDER_VAULT` before the share side effect occurs.
 
 Writes into a `/CURRENT/` storage branch or overwrite behavior require explicit OLEANDER acknowledgements in the tool input.
 

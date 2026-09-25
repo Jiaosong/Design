@@ -23,7 +23,7 @@ from .policy import (
     PolicyError,
     StoragePolicy,
 )
-from .result_filter import _DROP, filter_json_text, filter_object
+from .result_filter import _DROP, filter_object
 from .upstream import BaiduMcpSession, UpstreamError
 
 
@@ -77,12 +77,12 @@ def _tool_annotations(name: str) -> types.ToolAnnotations:
             idempotentHint=True,
             openWorldHint=False,
         )
-    if name in DELETE_TOOLS:
+    if name in WRITE_TOOLS | DELETE_TOOLS | SHARE_TOOLS:
         return types.ToolAnnotations(
             readOnlyHint=False,
             destructiveHint=True,
             idempotentHint=False,
-            openWorldHint=False,
+            openWorldHint=(name == "file_upload_by_url" or name in SHARE_TOOLS),
         )
     return types.ToolAnnotations(
         readOnlyHint=False,
@@ -223,43 +223,83 @@ def _error_result(message: str, code: str = "OLEANDER_STORAGE_ERROR") -> types.S
     )
 
 
-def _filter_upstream_result(result: types.CallToolResult) -> types.CallToolResult:
+def _redact_text(text: str) -> str:
+    return _safe_error_message(RuntimeError(text))
+
+
+def _redact_value(value: Any) -> Any:
+    if isinstance(value, str):
+        return _redact_text(value)
+    if isinstance(value, list):
+        return [_redact_value(item) for item in value]
+    if isinstance(value, dict):
+        return {str(key): _redact_value(child) for key, child in value.items()}
+    return value
+
+
+def _sanitize_structured(value: Any) -> Any:
+    filtered = filter_object(value, POLICY.root)
+    if filtered is _DROP:
+        return {"status": "filtered", "reason": "outside OLEANDER storage root"}
+    return _redact_value(filtered)
+
+
+def _safe_text_content(text: str, tool_name: str, is_error: bool) -> str:
+    redacted = _redact_text(text)
+    try:
+        parsed = json.loads(redacted)
+    except Exception:
+        if not is_error and tool_name in {"user_info", "get_quota"}:
+            return redacted
+        return (
+            f"OLEANDER_UPSTREAM_TEXT_SUPPRESSED: non-JSON response from {tool_name}; "
+            "raw text was not forwarded across the storage boundary."
+        )
+    return json.dumps(_sanitize_structured(parsed), ensure_ascii=False)
+
+
+def _filter_upstream_result(result: types.CallToolResult, tool_name: str) -> types.CallToolResult:
     content: list[Any] = []
+    suppressed_non_text = 0
     for item in result.content:
         if isinstance(item, types.TextContent):
             content.append(
                 types.TextContent(
                     type="text",
-                    text=filter_json_text(item.text, POLICY.root),
-                    annotations=item.annotations,
-                    _meta=item._meta,
+                    text=_safe_text_content(item.text, tool_name, bool(result.isError)),
                 )
             )
         else:
-            content.append(item)
+            suppressed_non_text += 1
+
+    if suppressed_non_text:
+        content.append(
+            types.TextContent(
+                type="text",
+                text=(
+                    f"OLEANDER_UPSTREAM_CONTENT_SUPPRESSED: {suppressed_non_text} non-text content block(s) "
+                    "were not forwarded because their storage-root/secret boundary could not be proven."
+                ),
+            )
+        )
 
     structured = result.structuredContent
     if structured is not None:
-        filtered = filter_object(structured, POLICY.root)
-        if filtered is _DROP:
-            structured = {"status": "filtered", "reason": "outside OLEANDER storage root"}
-        elif isinstance(filtered, dict):
-            structured = filtered
-        else:
-            structured = {"result": filtered}
+        filtered = _sanitize_structured(structured)
+        structured = filtered if isinstance(filtered, dict) else {"result": filtered}
 
-    meta = dict(result._meta or {})
-    meta.update(
-        {
-            "oleander/storageRoot": POLICY.root,
-            "oleander/authorityEffect": "NONE",
-            "oleander/doesNotProve": [
-                "storage success does not prove Project State change",
-                "storage success does not prove Design KEEP",
-                "storage success does not prove Promotion",
-            ],
-        }
-    )
+    # Never forward upstream result/item metadata. Upstream metadata is an
+    # unbounded channel that can carry URLs, paths or credentials not covered by
+    # the OLEANDER storage-root policy.
+    meta = {
+        "oleander/storageRoot": POLICY.root,
+        "oleander/authorityEffect": "NONE",
+        "oleander/doesNotProve": [
+            "storage success does not prove Project State change",
+            "storage success does not prove Design KEEP",
+            "storage success does not prove Promotion",
+        ],
+    }
     return types.CallToolResult(
         content=content,
         structuredContent=structured,
@@ -311,7 +351,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
                         type="text",
                         text=(
                             f"OLEANDER Baidu Storage candidate {APP_VERSION}; root={POLICY.root}; "
-                            f"token_configured={_token_configured()}; delete={POLICY.allow_delete}; share={POLICY.allow_share}."
+                            f"token_configured={_token_configured()}; delete={POLICY.allow_delete}; share=False."
                         ),
                     )
                 ],
@@ -322,7 +362,8 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
                     "storage_root": POLICY.root,
                     "token_configured": _token_configured(),
                     "delete_enabled": POLICY.allow_delete,
-                    "share_enabled": POLICY.allow_share,
+                    "share_enabled": False,
+                    "share_policy": "UNSUPPORTED_V0_1_UNTIL_FSID_OWNERSHIP_PREFLIGHT_IS_VALIDATED",
                     "authority_effect": "NONE",
                 },
                 _meta={"oleander/authorityEffect": "NONE"},
@@ -385,7 +426,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
     try:
         async with BaiduMcpSession() as upstream:
             result = await upstream.call_tool(upstream_name, prepared)
-        return types.ServerResult(_filter_upstream_result(result))
+        return types.ServerResult(_filter_upstream_result(result, upstream_name))
     except UpstreamError as exc:
         return _error_result(_safe_error_message(exc), "BAIDU_CONFIGURATION_ERROR")
     except Exception as exc:
@@ -419,7 +460,8 @@ async def policy_route(request: Request) -> Response:
         {
             "storage_root": POLICY.root,
             "delete_enabled": POLICY.allow_delete,
-            "share_enabled": POLICY.allow_share,
+            "share_enabled": False,
+            "share_policy": "UNSUPPORTED_V0_1_UNTIL_FSID_OWNERSHIP_PREFLIGHT_IS_VALIDATED",
             "authority_effect": "NONE",
             "current_semantics": "REMOTE_BYTE_COPY_CLASS_ONLY_NOT_OLEANDER_CURRENT_AUTHORITY",
         }

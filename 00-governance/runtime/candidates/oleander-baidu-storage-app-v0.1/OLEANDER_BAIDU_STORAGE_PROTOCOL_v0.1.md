@@ -57,7 +57,7 @@ Default:
 - operation mutating a `/CURRENT/` storage path — requires explicit `ACK_STORAGE_CURRENT_MUTATION`;
 - overwrite semantics — require `ACK_STORAGE_OVERWRITE`;
 - delete — disabled by default, and when enabled still requires `ACK_STORAGE_DELETE`;
-- share-link creation — disabled by default.
+- share-link creation — unsupported in v0.1 until every fsid can be owner-preflighted to `/OLEANDER_VAULT` before sharing.
 
 These acknowledgements authorize only the named storage operation. They do not satisfy project mutation permission, Design KEEP or Promotion.
 

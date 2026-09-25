@@ -33,8 +33,10 @@
     "PROMOTION_SYNC"
   ],
   "default_disabled": [
-    "DELETE",
-    "SHARE_LINK"
+    "DELETE"
+  ],
+  "unsupported_v0_1": [
+    "SHARE_LINK_UNTIL_FSID_ROOT_OWNERSHIP_PREFLIGHT_IS_VALIDATED"
   ],
   "local_upload_boundary": "OFFICIAL_BAIDU_STDIO_LOCAL_ONLY_ROUTED_THROUGH_COS",
   "does_not_prove": [

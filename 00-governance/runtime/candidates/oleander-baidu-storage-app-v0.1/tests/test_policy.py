@@ -17,7 +17,7 @@ from app.policy import (
 
 class StoragePolicyTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=False, allow_share=False)
+        self.policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=False)
 
     def test_normalize_and_root_boundary(self) -> None:
         self.assertEqual(normalize_cloud_path("/OLEANDER_VAULT/PROJECTS"), "/OLEANDER_VAULT/PROJECTS")
@@ -103,7 +103,7 @@ class StoragePolicyTests(unittest.TestCase):
             )
 
     def test_delete_string_filelist_path_guard(self) -> None:
-        policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=True, allow_share=False)
+        policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=True)
         with self.assertRaises(PolicyError):
             policy.prepare_arguments(
                 "file_del",
@@ -111,7 +111,7 @@ class StoragePolicyTests(unittest.TestCase):
             )
 
     def test_delete_current_needs_both_acks(self) -> None:
-        policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=True, allow_share=False)
+        policy = StoragePolicy(root="/OLEANDER_VAULT", allow_delete=True)
         args = {
             "filelist": ["/OLEANDER_VAULT/PROJECTS/C01/CURRENT/a.pdf"],
             "oleander_delete_ack": DELETE_ACK,
@@ -125,6 +125,15 @@ class StoragePolicyTests(unittest.TestCase):
         args = self.policy.prepare_arguments("file_upload_from_text", {"content": "hello"})
         self.assertEqual(args["dir"], "/OLEANDER_VAULT")
         self.assertFalse(self.policy.tool_allowed("file_upload_stdio"))
+
+    def test_future_upload_prefix_does_not_expand_allowlist(self) -> None:
+        self.assertFalse(self.policy.tool_allowed("file_upload_local_secret"))
+        self.assertFalse(self.policy.tool_allowed("file_upload_future_unreviewed"))
+
+    def test_share_is_unsupported_v0_1(self) -> None:
+        self.assertFalse(self.policy.tool_allowed("file_sharelink_set"))
+        with self.assertRaises(PolicyError):
+            self.policy.prepare_arguments("file_sharelink_set", {"fsid_list": '["999999"]'})
 
     def test_current_is_path_segment_not_substring(self) -> None:
         self.assertTrue(has_current_segment("/OLEANDER_VAULT/P/CURRENT/a.dwg"))
@@ -158,6 +167,61 @@ class StoragePolicyTests(unittest.TestCase):
                     "filename": "../CURRENT/a.pdf",
                 },
             )
+
+    def test_rename_to_current_requires_current_ack(self) -> None:
+        args = {
+            "filelist": [
+                {
+                    "path": "/OLEANDER_VAULT/PROJECTS/C01/REVIEW/old-folder",
+                    "newname": "CURRENT",
+                }
+            ]
+        }
+        with self.assertRaises(PolicyError):
+            self.policy.prepare_arguments("file_rename", args)
+        args["oleander_current_ack"] = CURRENT_ACK
+        self.policy.prepare_arguments("file_rename", args)
+
+    def test_move_newname_current_requires_current_ack(self) -> None:
+        args = {
+            "filelist": [
+                {
+                    "path": "/OLEANDER_VAULT/PROJECTS/C01/REVIEW/candidate",
+                    "dest": "/OLEANDER_VAULT/PROJECTS/C01",
+                    "newname": "CURRENT",
+                }
+            ]
+        }
+        with self.assertRaises(PolicyError):
+            self.policy.prepare_arguments("file_move", args)
+        args["oleander_current_ack"] = CURRENT_ACK
+        self.policy.prepare_arguments("file_move", args)
+
+    def test_copy_newname_current_requires_current_ack(self) -> None:
+        args = {
+            "filelist": [
+                {
+                    "path": "/OLEANDER_VAULT/PROJECTS/C01/REVIEW/candidate",
+                    "dest": "/OLEANDER_VAULT/PROJECTS/C01",
+                    "newname": "CURRENT",
+                }
+            ]
+        }
+        with self.assertRaises(PolicyError):
+            self.policy.prepare_arguments("file_copy", args)
+        args["oleander_current_ack"] = CURRENT_ACK
+        self.policy.prepare_arguments("file_copy", args)
+
+    def test_upload_filename_current_requires_current_ack(self) -> None:
+        args = {
+            "url": "https://example.invalid/file",
+            "dir": "/OLEANDER_VAULT/PROJECTS/C01",
+            "filename": "CURRENT",
+        }
+        with self.assertRaises(PolicyError):
+            self.policy.prepare_arguments("file_upload_by_url", args)
+        args["oleander_current_ack"] = CURRENT_ACK
+        self.policy.prepare_arguments("file_upload_by_url", args)
 
 
 if __name__ == "__main__":

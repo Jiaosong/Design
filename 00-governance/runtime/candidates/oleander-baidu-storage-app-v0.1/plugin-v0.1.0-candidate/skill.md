@@ -29,4 +29,4 @@ Never infer:
 
 For local DWG/SKP/BLEND upload, route to the local COS/stdio uploader. Remote ChatGPT must not claim it read an arbitrary local workstation file.
 
-Deletion and share-link creation remain disabled unless the installed MCP server explicitly enables them. `/CURRENT/` storage mutation and overwrite require the adapter's explicit acknowledgement fields.
+Deletion is disabled by default. Share-link creation is unsupported in v0.1 until fsid ownership can be preflighted inside `/OLEANDER_VAULT`. `/CURRENT/` storage mutation and overwrite require the adapter's explicit acknowledgement fields.

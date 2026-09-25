@@ -38,4 +38,5 @@ Native masters can remain `LOCAL_REQUIRED` while the remote session continues de
 - move/rename: verify source/destination and affected storage class;
 - overwrite: explicit acknowledgement;
 - `/CURRENT/` mutation: explicit acknowledgement and owner-native project reread when project semantics are affected;
-- delete/share: disabled by default.
+- delete: disabled by default;
+- share: unsupported in v0.1 until fsid ownership can be proven inside the configured storage root before the side effect.
