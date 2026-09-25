@@ -13,6 +13,14 @@ This status note reports what the isolated candidate has actually demonstrated. 
 - `@OLEANDER 设计协作` 0.2.1 remains a Human–AI Co-Design Session Kernel reference implementation and consumes, rather than owns, Current Authority, Project State, Execution Receipt/checkpoint, native artifact identity, independent review, PAP and Promotion.
 - Human action levels remain separate: `FEEDBACK_SIGNAL ≠ ITERATION_STEER ≠ DESIGN_DECISION ≠ DESIGN_KEEP ≠ PROMOTION_DECISION`.
 
+## Session Kernel v0.2 implementation status
+
+- Active candidate contract is now `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.2.md`, backed by `OLEANDER_CODESIGN_SESSION_KERNEL_SPEC_v0.2.json` and the explicitly ephemeral `OLEANDER_CODESIGN_SESSION_CONTEXT_EPHEMERAL_v0.4.schema.json`.
+- The main interaction correction is independent classification of `WORK INTENT × MUTATION DIRECTIVE × SUPPORT MODE × HUMAN ACTION LEVEL`, preventing generic continuation/read-only/support instructions from being silently promoted into design steering.
+- `codesign_session_kernel_v0_2.py` implements a deterministic reference classifier plus option graph/branch transition, second-round, domain-adapter, mutation/Human-stop, defer-dependency and designer-support guards. The generated `OLEANDER_CODESIGN_SESSION_KERNEL_VALIDATION_v0.2.json` currently reports 84/84 reference cases PASS, including alias-collision, compound-action conflict and owner-native pre-write freshness negatives.
+- A portable eight-file `plugin-v0.3.0-candidate/` package is frozen as `OLEANDER-Design-Plugin-0.3.0-CANDIDATE.zip`; package existence/hash does not prove successful installation or Current adoption.
+- v0.2 adds explicit branch lineage, clause-scoped `human_actions[]`, typed/revisioned referent binding, computed Human-stop conditions, multi-Human decision-rights HOLD, domain adapter OPEN semantics, revision/hash-bound option readback, and the invariant that a Human-steered second round requires explicit Human source + owner-rule-backed decision rights + revisioned decision/referent binding + made artifact + same-revision actual readback + invariant readback.
+
 ## Real making / readback status
 
 ### Spatial — C01 H01

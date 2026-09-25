@@ -349,7 +349,7 @@ def check_missing_native_surface() -> dict[str, Any]:
 def check_plugin_removal_survival() -> dict[str, Any]:
     plugin_ref_path = REPO / (
         "00-governance/runtime/candidates/human-ai-codesign-vnext/"
-        "OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json"
+        "OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.3.0_CANDIDATE.json"
     )
     plugin_ref = load_json(plugin_ref_path)
 

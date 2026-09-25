@@ -1,0 +1,3150 @@
+{
+  "schema": "oleander.codesign-session-kernel-fixtures.v0.2",
+  "classification_cases": [
+    {
+      "id": "K02-CONTINUE-NOT-STEER",
+      "text": "Please continue and finish the whole task.",
+      "context": {},
+      "expect": {
+        "work_intent": "RESUME",
+        "mutation_directive": "NORMAL",
+        "human_action": null
+      }
+    },
+    {
+      "id": "K02-READONLY-RESUME-MULTIAXIS",
+      "text": "只读继续检查，不要改。",
+      "context": {},
+      "expect": {
+        "work_intent": "RESUME",
+        "mutation_directive": "READ_ONLY",
+        "human_action": null
+      }
+    },
+    {
+      "id": "K02-AUTOADVANCE-NOT-STEER",
+      "text": "直接做，真正需要我决定时再问。",
+      "context": {},
+      "expect": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "human_action": null
+      }
+    },
+    {
+      "id": "K02-AFFECTIVE-NEGATIVE",
+      "text": "这个不对，太像展馆了。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "NEGATIVE_STEER",
+        "durable_preference": false
+      }
+    },
+    {
+      "id": "K02-MIX-EXPLICIT-PARENTS",
+      "text": "保留 A，结合 B，因为维护更容易。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "pending_decision_ref": "H01",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK",
+            "decision_object_ref": "H01"
+          },
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b1",
+            "lineage_ref": "B_SPLIT_SUPPORT",
+            "decision_object_ref": "H01"
+          },
+          "C_ZERO_STAGE_KIT": {
+            "kind": "OPTION",
+            "revision": "c1",
+            "lineage_ref": "C_ZERO_STAGE_KIT",
+            "decision_object_ref": "H01"
+          },
+          "H01": {
+            "kind": "DECISION_OBJECT",
+            "revision": "d1",
+            "lineage_ref": "H01"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "MIX",
+        "referents": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ],
+        "human_action_reason": "维护更容易",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-MIX-MISSING-PARENT",
+      "text": "把 A 和另一个结合一下。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "pending_decision_ref": "H01"
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "MIX",
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-SELECT-EXPLICIT",
+      "text": "选 B。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK"
+          },
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b1",
+            "lineage_ref": "B_SPLIT_SUPPORT"
+          },
+          "C_ZERO_STAGE_KIT": {
+            "kind": "OPTION",
+            "revision": "c1",
+            "lineage_ref": "C_ZERO_STAGE_KIT"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "SELECT",
+        "referents": [
+          "B_SPLIT_SUPPORT"
+        ]
+      }
+    },
+    {
+      "id": "K02-SELECT-UNAMBIGUOUS-THIS",
+      "text": "就按这个。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK"
+        ],
+        "unambiguous_active_ref": "A_EDGE_DOCK",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "SELECT",
+        "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT"
+      }
+    },
+    {
+      "id": "K02-SELECT-AMBIGUOUS-THIS",
+      "text": "就按这个。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-DEFER-PENDING-DECISION",
+      "text": "这个决定先暂缓，继续做不依赖它的部分。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ],
+        "pending_decision_ref": "H01_SPATIAL_MECHANISM_TEST",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK",
+            "decision_object_ref": "H01_SPATIAL_MECHANISM_TEST"
+          },
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b1",
+            "lineage_ref": "B_SPLIT_SUPPORT",
+            "decision_object_ref": "H01_SPATIAL_MECHANISM_TEST"
+          },
+          "H01_SPATIAL_MECHANISM_TEST": {
+            "kind": "DECISION_OBJECT",
+            "revision": "d1",
+            "lineage_ref": "H01_SPATIAL_MECHANISM_TEST"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "DEFER",
+        "referents": [
+          "H01_SPATIAL_MECHANISM_TEST"
+        ]
+      }
+    },
+    {
+      "id": "K02-DEFER-WITHOUT-PENDING-DECISION",
+      "text": "先暂缓。",
+      "context": {},
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "DEFER",
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-DESIGNER-DEVELOPMENT-COMPACT",
+      "text": "这次比较教我怎么看，但别讲太多。",
+      "context": {},
+      "expect": {
+        "work_intent": "EXPLAIN",
+        "support_mode": "COMPACT",
+        "human_action": null
+      }
+    },
+    {
+      "id": "K02-REJECT-EXPLICIT",
+      "text": "不要 C。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK"
+          },
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b1",
+            "lineage_ref": "B_SPLIT_SUPPORT"
+          },
+          "C_ZERO_STAGE_KIT": {
+            "kind": "OPTION",
+            "revision": "c1",
+            "lineage_ref": "C_ZERO_STAGE_KIT"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "REJECT",
+        "referents": [
+          "C_ZERO_STAGE_KIT"
+        ]
+      }
+    },
+    {
+      "id": "K02-REFRAME-NOT-REJECT",
+      "text": "重做，这次答错题了。",
+      "context": {},
+      "expect": {
+        "work_intent": "REFRAME",
+        "human_action": null
+      }
+    },
+    {
+      "id": "K02-ENGLISH-ARTICLE-A-NOT-OPTION",
+      "text": "Choose a different one.",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "minimum_clarification_required": true,
+        "referents": []
+      }
+    },
+    {
+      "id": "K02-COMPOUND-TWO-ACTIONS",
+      "text": "不要 A，保留 B，结合 C，因为维护更容易。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "revision": "a1",
+            "lineage_ref": "A0",
+            "kind": "OPTION"
+          },
+          "B_SPLIT_SUPPORT": {
+            "revision": "b1",
+            "lineage_ref": "B0",
+            "kind": "OPTION"
+          },
+          "C_ZERO_STAGE_KIT": {
+            "revision": "c1",
+            "lineage_ref": "C0",
+            "kind": "OPTION"
+          }
+        }
+      },
+      "expect": {
+        "human_action_count": 2,
+        "human_actions_actions": [
+          "REJECT",
+          "MIX"
+        ],
+        "human_actions_referents": [
+          [
+            "A_EDGE_DOCK"
+          ],
+          [
+            "B_SPLIT_SUPPORT",
+            "C_ZERO_STAGE_KIT"
+          ]
+        ],
+        "second_action_reason": "维护更容易"
+      }
+    },
+    {
+      "id": "K02-TYPED-REFERENT-BINDING",
+      "text": "选 B。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ],
+        "referent_metadata": {
+          "B_SPLIT_SUPPORT": {
+            "revision": "b7",
+            "lineage_ref": "B_PARENT",
+            "kind": "OPTION"
+          }
+        }
+      },
+      "expect": {
+        "bound_referent_revision": "b7",
+        "bound_referent_lineage": "B_PARENT"
+      }
+    },
+    {
+      "id": "K02-FULL-ID-SUFFIX-NOT-REFERENT",
+      "text": "select A_EDGE_DOCKERY",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "referents": [],
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-FULL-ID-PREFIX-NOT-REFERENT",
+      "text": "select xA_EDGE_DOCK",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "referents": [],
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-DEICTIC-CROSS-PARENT-MIX",
+      "text": "这个用 B 的入口。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ],
+        "unambiguous_active_ref": "A_EDGE_DOCK",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "revision": "a2",
+            "lineage_ref": "A0",
+            "kind": "OPTION"
+          },
+          "B_SPLIT_SUPPORT": {
+            "revision": "b3",
+            "lineage_ref": "B0",
+            "kind": "OPTION"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "MIX",
+        "referents": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ],
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-COMPOUND-ENGLISH-REJECT-MIX",
+      "text": "reject A, keep B, combine C because maintenance is easier",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT",
+          "C_ZERO_STAGE_KIT"
+        ],
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A_EDGE_DOCK"
+          },
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b1",
+            "lineage_ref": "B_SPLIT_SUPPORT"
+          },
+          "C_ZERO_STAGE_KIT": {
+            "kind": "OPTION",
+            "revision": "c1",
+            "lineage_ref": "C_ZERO_STAGE_KIT"
+          }
+        }
+      },
+      "expect": {
+        "human_action_count": 2,
+        "human_actions_actions": [
+          "REJECT",
+          "MIX"
+        ],
+        "human_actions_referents": [
+          [
+            "A_EDGE_DOCK"
+          ],
+          [
+            "B_SPLIT_SUPPORT",
+            "C_ZERO_STAGE_KIT"
+          ]
+        ],
+        "second_action_reason": "maintenance is easier"
+      }
+    },
+    {
+      "id": "K02-MODIFY-UNAMBIGUOUS-ACTIVE",
+      "text": "调整这个。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK"
+        ],
+        "unambiguous_active_ref": "A_EDGE_DOCK",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a2",
+            "lineage_ref": "A0"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "MODIFY",
+        "referents": [
+          "A_EDGE_DOCK"
+        ],
+        "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-REJECT-UNAMBIGUOUS-ACTIVE",
+      "text": "不要这个。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK"
+        ],
+        "unambiguous_active_ref": "A_EDGE_DOCK",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a2",
+            "lineage_ref": "A0"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "REJECT",
+        "referents": [
+          "A_EDGE_DOCK"
+        ],
+        "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-REOPEN-UNAMBIGUOUS-ACTIVE",
+      "text": "重开这个。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK"
+        ],
+        "unambiguous_active_ref": "A_EDGE_DOCK",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a2",
+            "lineage_ref": "A0"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "ITERATION_STEER",
+        "human_action_action": "REOPEN",
+        "referents": [
+          "A_EDGE_DOCK"
+        ],
+        "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-UNRESOLVED-TYPED-REFERENT-FAIL-CLOSED",
+      "text": "选 B。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "B_SPLIT_SUPPORT"
+        ]
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "binding_issue": "UNRESOLVED_TYPED_REFERENT",
+        "stop_reason": "UNRESOLVED_TYPED_REFERENT_BEFORE_CONSEQUENTIAL_STEER",
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-DEFER-OUTSIDE-PENDING-DECISION-FAIL-CLOSED",
+      "text": "先暂缓 A。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK"
+        ],
+        "pending_decision_ref": "H01",
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A0",
+            "decision_object_ref": "H02"
+          },
+          "H01": {
+            "kind": "DECISION_OBJECT",
+            "revision": "d1",
+            "lineage_ref": "H01"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "DEFER",
+        "binding_issue": "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION",
+        "stop_reason": "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION",
+        "minimum_clarification_required": true
+      }
+    },
+    {
+      "id": "K02-DESIGN-DECISION-ROUTES-ONLY",
+      "text": "Design decision: select B.",
+      "context": {
+        "active_option_refs": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "referent_metadata": {
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b4",
+            "lineage_ref": "B0"
+          }
+        },
+        "actor_role": "DESIGNER"
+      },
+      "expect": {
+        "human_action_level": "DESIGN_DECISION",
+        "human_action_action": "SELECT",
+        "referents": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "human_action_route": "EXISTING_PROJECT_DECISION_AUTHORITY",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-DESIGN-KEEP-ROUTES-ONLY",
+      "text": "DESIGN KEEP B.",
+      "context": {
+        "active_option_refs": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "referent_metadata": {
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b4",
+            "lineage_ref": "B0"
+          }
+        },
+        "actor_role": "DESIGNER"
+      },
+      "expect": {
+        "human_action_level": "DESIGN_KEEP",
+        "human_action_action": "NONE",
+        "referents": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "human_action_route": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-PROMOTION-DECISION-ROUTES-ONLY",
+      "text": "Promote B to Current.",
+      "context": {
+        "active_option_refs": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "referent_metadata": {
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b4",
+            "lineage_ref": "B0"
+          }
+        },
+        "actor_role": "PROMOTION_AUTHORITY"
+      },
+      "expect": {
+        "human_action_level": "PROMOTION_DECISION",
+        "human_action_action": "NONE",
+        "referents": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "human_action_route": "EXISTING_PROMOTION_AUTHORITY",
+        "minimum_clarification_required": false
+      }
+    },
+    {
+      "id": "K02-COLLIDING-SHORT-ALIAS-FAIL-CLOSED",
+      "text": "选 A。",
+      "context": {
+        "active_option_refs": [
+          "A_EDGE_DOCK",
+          "A_ALT_DOCK"
+        ],
+        "referent_metadata": {
+          "A_EDGE_DOCK": {
+            "kind": "OPTION",
+            "revision": "a1",
+            "lineage_ref": "A0"
+          },
+          "A_ALT_DOCK": {
+            "kind": "OPTION",
+            "revision": "a2",
+            "lineage_ref": "A1"
+          }
+        }
+      },
+      "expect": {
+        "human_action_level": "FEEDBACK_SIGNAL",
+        "human_action_action": "SELECT",
+        "referents": [],
+        "referent_binding": "AMBIGUOUS",
+        "binding_issue": "AMBIGUOUS_REFERENT",
+        "minimum_clarification_required": true
+      }
+    }
+  ],
+  "second_round_cases": [
+    {
+      "id": "K02-ROUND2-MIX-PASS",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "K02-ROUND2-NO-HUMAN-STEER-FAIL",
+      "trace": {
+        "steering_event": null,
+        "decision_rights_status": "NOT_APPLICABLE",
+        "parent_option_refs": [],
+        "made_artifacts": [
+          {
+            "artifact_ref": "PROBE.svg",
+            "revision": "p1",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "PROBE.svg",
+            "artifact_revision": "p1",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": []
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_ACTUAL_ITERATION_STEER"
+    },
+    {
+      "id": "K02-ROUND2-NO-READBACK-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "support_edge"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [],
+        "invariant_readback_refs": [],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": []
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_ACTUAL_READBACK"
+    },
+    {
+      "id": "K02-ROUND2-MIX-DROPS-PARENT-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "MIX_SECOND_ROUND_MUST_PRESERVE_ALL_REFERENCED_PARENT_OPTIONS"
+    },
+    {
+      "id": "K02-ROUND2-INCOMPLETE-STEER-FAIL",
+      "trace": {
+        "steering_event": {
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "changed_variables": [
+            "x"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "UNRESOLVED",
+          "actor_role": "UNRESOLVED",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": []
+      },
+      "expect_error_contains": "STEERING_EVENT_MISSING:decision_object_ref"
+    },
+    {
+      "id": "K02-ROUND2-NONHUMAN-SOURCE-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "reason": null,
+          "source": "AI_INFERRED",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "x"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_EXPLICIT_HUMAN_SOURCE"
+    },
+    {
+      "id": "K02-ROUND2-UNRESOLVED-REF-REVISION-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "UNRESOLVED",
+              "lineage_ref": "A"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "x"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "STEER_BOUND_REFERENT_REVISION_UNRESOLVED:A"
+    },
+    {
+      "id": "K02-ROUND2-READBACK-REVISION-MISMATCH-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "x"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r1",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r1",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_prefix": "SECOND_ROUND_READBACK_REVISION_MISMATCH:"
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-HOLD-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "x"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "HOLD_CONFLICT",
+        "parent_option_refs": [
+          "A"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "SELECT"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_ALLOWED_DECISION_RIGHTS"
+    },
+    {
+      "id": "K02-ROUND2-NO-DECISION-BINDING-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_TYPED_DECISION_OBJECT_BINDING"
+    },
+    {
+      "id": "K02-ROUND2-READBACK-NOT-ACTUAL-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "DECLARED_ONLY",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "DECLARED_ONLY"
+          }
+        ]
+      },
+      "expect_error_contains": "READBACK_NOT_ACTUAL:ROUND2_READBACK.json"
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-RULE-MISSING-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "SECOND_ROUND_REQUIRES_DECISION_RIGHTS_OWNER_RULE_REF"
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-PROOF-ACTOR-MISMATCH-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "CLIENT_OR_STAKEHOLDER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "DECISION_RIGHTS_PROOF_ACTOR_ROLE_MISMATCH"
+    },
+    {
+      "id": "K02-ROUND2-INVARIANT-UNRELATED-READBACK-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "invariant_readback_refs": [
+          "OTHER_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "OTHER_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "INVARIANT_READBACK_REF_NOT_ACTUAL:OTHER_READBACK.json"
+    },
+    {
+      "id": "K02-ROUND2-READBACK-ARTIFACT-HASH-MISMATCH-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "READBACK_ARTIFACT_HASH_MISMATCH:ROUND2_READBACK.json"
+    }
+  ],
+  "option_set_cases": [
+    {
+      "id": "K02-OPTIONS-DISTINCT-PASS",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "single-edge",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "simple",
+          "strongest_risk": "congestion",
+          "sensitive_unknowns": [
+            "edge capacity"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "split-edge",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "separation",
+          "strongest_risk": "two interfaces",
+          "sensitive_unknowns": [
+            "interface eligibility"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_errors": []
+    },
+    {
+      "id": "K02-OPTIONS-COSMETIC-DUPLICATE-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "same-mechanism",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "x",
+          "strongest_risk": "y",
+          "sensitive_unknowns": [
+            "u"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "same-mechanism",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "x2",
+          "strongest_risk": "y2",
+          "sensitive_unknowns": [
+            "u2"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_contains": "MECHANISM_SIGNATURES_MUST_BE_PRESENT_AND_DISTINCT"
+    },
+    {
+      "id": "K02-OPTIONS-READBACK-REVISION-MISMATCH-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "m1",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a2",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "strongest_benefit": "x",
+          "strongest_risk": "y",
+          "sensitive_unknowns": [
+            "u"
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "m2",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "strongest_benefit": "x2",
+          "strongest_risk": "y2",
+          "sensitive_unknowns": [
+            "u2"
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_prefix": "OPTION_READBACK_REVISION_MISMATCH:A:"
+    },
+    {
+      "id": "K02-OPTIONS-NO-HASH-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "single-edge",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "simple",
+          "strongest_risk": "congestion",
+          "sensitive_unknowns": [
+            "edge capacity"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "split-edge",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "separation",
+          "strongest_risk": "two interfaces",
+          "sensitive_unknowns": [
+            "interface eligibility"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_contains": "OPTION_ARTIFACT_HASH_REQUIRED:A"
+    },
+    {
+      "id": "K02-OPTIONS-MISSING-BRANCH-STATUS-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "single-edge",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "simple",
+          "strongest_risk": "congestion",
+          "sensitive_unknowns": [
+            "edge capacity"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": []
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "split-edge",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "separation",
+          "strongest_risk": "two interfaces",
+          "sensitive_unknowns": [
+            "interface eligibility"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_contains": "OPTION_MISSING:A:branch_status"
+    },
+    {
+      "id": "K02-OPTIONS-READBACK-ARTIFACT-HASH-MISMATCH-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "single-edge",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "simple",
+          "strongest_risk": "congestion",
+          "sensitive_unknowns": [
+            "edge capacity"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "split-edge",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "separation",
+          "strongest_risk": "two interfaces",
+          "sensitive_unknowns": [
+            "interface eligibility"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_contains": "OPTION_READBACK_ARTIFACT_HASH_MISMATCH:A"
+    }
+  ],
+  "phase_transition_cases": [
+    {
+      "id": "K02-PHASE-MAKE-READBACK",
+      "current": "MAKING",
+      "next": "READBACK_REQUIRED",
+      "expect_errors": []
+    },
+    {
+      "id": "K02-PHASE-MAKE-COMPLETE-FAIL",
+      "current": "MAKING",
+      "next": "SESSION_COMPLETE",
+      "expect_error_contains": "ILLEGAL_PHASE_TRANSITION:MAKING->SESSION_COMPLETE"
+    },
+    {
+      "id": "K02-PHASE-HOLD-REVALIDATE",
+      "current": "HOLD_AUTHORITY",
+      "next": "RESOLVING",
+      "expect_errors": []
+    }
+  ],
+  "auto_advance_cases": [
+    {
+      "id": "K02-AA-REVERSIBLE-PASS",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "REVERSIBLE_LOCAL",
+        "guard_facts": {},
+        "stop_facts": {}
+      },
+      "expect_decision": "CONTINUE"
+    },
+    {
+      "id": "K02-AA-HUMAN-STOP",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "REVERSIBLE_LOCAL",
+        "guard_facts": {},
+        "stop_facts": {
+          "value_choice_open": true,
+          "comparable_actual_artifacts_ready": true
+        }
+      },
+      "expect_decision": "STOP_FOR_HUMAN"
+    },
+    {
+      "id": "K02-AA-VALUE-NO-COMPARISON-CONTINUE",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "REVERSIBLE_LOCAL",
+        "guard_facts": {},
+        "stop_facts": {
+          "value_choice_open": true,
+          "comparable_actual_artifacts_ready": false
+        }
+      },
+      "expect_decision": "CONTINUE"
+    },
+    {
+      "id": "K02-AA-PUBLISH-STOP",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING",
+        "guard_facts": {
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED",
+          "existing_authorization": false,
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "STOP_FOR_AUTHORIZATION"
+    },
+    {
+      "id": "K02-AA-PUBLISH-EXISTING-AUTH-CONTINUE",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING",
+        "guard_facts": {
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED",
+          "existing_authorization": true,
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "CONTINUE"
+    },
+    {
+      "id": "K02-READONLY-BLOCKS-WRITE",
+      "input": {
+        "mutation_directive": "READ_ONLY",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "BLOCK_MUTATION"
+    },
+    {
+      "id": "K02-AA-RIGHTS-CONFLICT-STOP",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "REVERSIBLE_LOCAL",
+        "guard_facts": {},
+        "stop_facts": {
+          "decision_rights_conflict": true
+        }
+      },
+      "expect_decision": "STOP_FOR_HUMAN"
+    },
+    {
+      "id": "K02-AA-STALE-CHECKPOINT-HOLD",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED",
+          "checkpoint_stale": true,
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_CHECKPOINT"
+    },
+    {
+      "id": "K02-AA-AUTHORITY-DRIFT-HOLD",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED",
+          "authority_drift": true,
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_AUTHORITY"
+    },
+    {
+      "id": "K02-AA-PROJECT-FRESH-CARRIER-PASS",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "CONTINUE",
+      "expect_reason": "AUTHORIZED_PROJECT_REVERSIBLE"
+    },
+    {
+      "id": "K02-AA-MISSING-CARRIER-READBACK-HOLD",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_CHECKPOINT"
+    },
+    {
+      "id": "K02-AA-SEQUENCE-MISMATCH-HOLD",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 8,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_CHECKPOINT"
+    },
+    {
+      "id": "K02-AA-UNTRUSTED-RESOLVER-HOLD",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "CALLER_ASSERTED",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_AUTHORITY"
+    },
+    {
+      "id": "K02-AA-CALLER-GUARD-VERDICT-IGNORED",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "guard_verdict": "ALLOW",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_CHECKPOINT"
+    }
+  ],
+  "domain_adapter_cases": [
+    {
+      "id": "K02-DOMAIN-OPEN-NO-PASS",
+      "adapter": {
+        "domain_id": "PHYSICAL_PRODUCT",
+        "professional_process_status": "OPEN",
+        "professional_process_ref": null,
+        "domain_question": "reversible attachment mechanism",
+        "native_output_roles": [
+          "EDITABLE_SVG"
+        ],
+        "readback_methods": [
+          "VECTOR_AND_PNG_READBACK"
+        ],
+        "claim_ceiling": "PRE_PROFESSIONAL_RELATION_PROTOTYPE_ONLY",
+        "hold_conditions": [
+          "NO_DOMAIN_NATIVE_PROCESS"
+        ],
+        "professional_pass": false
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "K02-DOMAIN-OPEN-FALSE-PASS",
+      "adapter": {
+        "domain_id": "PHYSICAL_PRODUCT",
+        "professional_process_status": "OPEN",
+        "professional_process_ref": null,
+        "domain_question": "reversible attachment mechanism",
+        "native_output_roles": [
+          "EDITABLE_SVG"
+        ],
+        "readback_methods": [
+          "VECTOR_AND_PNG_READBACK"
+        ],
+        "claim_ceiling": "PRE_PROFESSIONAL_RELATION_PROTOTYPE_ONLY",
+        "hold_conditions": [
+          "NO_DOMAIN_NATIVE_PROCESS"
+        ],
+        "professional_pass": true
+      },
+      "expect_error_contains": "OPEN_DOMAIN_PROCESS_CANNOT_AWARD_PROFESSIONAL_PASS"
+    },
+    {
+      "id": "K02-DOMAIN-BOGUS-STATUS-FAIL",
+      "adapter": {
+        "domain_id": "X",
+        "professional_process_status": "BOGUS",
+        "professional_process_ref": null,
+        "domain_question": "x",
+        "native_output_roles": [
+          "EDITABLE"
+        ],
+        "readback_methods": [
+          "READBACK"
+        ],
+        "claim_ceiling": "TEST",
+        "hold_conditions": [],
+        "professional_pass": false
+      },
+      "expect_error_contains": "INVALID_PROFESSIONAL_PROCESS_STATUS:BOGUS"
+    }
+  ],
+  "defer_partition_cases": [
+    {
+      "id": "K02-DEFER-ONLY-BLOCKS-DEPENDENTS",
+      "work_items": [
+        {
+          "id": "W1",
+          "dependency_decision_refs": [
+            "H01"
+          ],
+          "side_effect_class": "REVERSIBLE_LOCAL"
+        },
+        {
+          "id": "W2",
+          "dependency_decision_refs": [],
+          "side_effect_class": "REVERSIBLE_LOCAL"
+        },
+        {
+          "id": "W3",
+          "dependency_decision_refs": [
+            "OTHER"
+          ],
+          "side_effect_class": "REVERSIBLE_LOCAL"
+        }
+      ],
+      "deferred": [
+        "H01"
+      ],
+      "expect": {
+        "eligible": [
+          "W2",
+          "W3"
+        ],
+        "held": [
+          "W1"
+        ]
+      }
+    }
+  ],
+  "branch_transition_cases": [
+    {
+      "id": "K02-BRANCH-MIX-PRESERVES-PARENTS",
+      "status": {
+        "A": "ACTIVE",
+        "B": "ACTIVE",
+        "C": "ACTIVE"
+      },
+      "action": "MIX",
+      "referents": [
+        "A",
+        "B"
+      ],
+      "expect": {
+        "A": "SELECTED_FOR_NEXT_ROUND",
+        "B": "SELECTED_FOR_NEXT_ROUND",
+        "C": "DEFERRED_PRESERVED"
+      }
+    },
+    {
+      "id": "K02-BRANCH-REJECT-PRESERVED",
+      "status": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      },
+      "action": "REJECT",
+      "referents": [
+        "A"
+      ],
+      "expect": {
+        "A": "REJECTED_PRESERVED",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-BRANCH-REOPEN",
+      "status": {
+        "A": "REJECTED_PRESERVED",
+        "B": "ACTIVE"
+      },
+      "action": "REOPEN",
+      "referents": [
+        "A"
+      ],
+      "expect": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-BRANCH-DEFER-NO-DELETE",
+      "status": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      },
+      "action": "DEFER",
+      "referents": [
+        "A"
+      ],
+      "expect": {
+        "A": "DEFERRED_PRESERVED",
+        "B": "ACTIVE"
+      }
+    }
+  ],
+  "designer_support_cases": [
+    {
+      "id": "K02-SUPPORT-AUTO-INITIAL",
+      "input": {
+        "explicit_mode": "AUTO",
+        "current_session_clear_judgments": 0
+      },
+      "expect_mode": "AUTO",
+      "expect_fade_basis": "NONE"
+    },
+    {
+      "id": "K02-SUPPORT-AUTO-FADE-CURRENT-SESSION",
+      "input": {
+        "explicit_mode": "AUTO",
+        "current_session_clear_judgments": 2
+      },
+      "expect_mode": "COMPACT",
+      "expect_fade_basis": "CURRENT_SESSION_REPEATED_CLEAR_JUDGMENT"
+    },
+    {
+      "id": "K02-SUPPORT-EXPLICIT-OFF",
+      "input": {
+        "explicit_mode": "OFF",
+        "current_session_clear_judgments": 0
+      },
+      "expect_mode": "OFF",
+      "expect_fade_basis": "EXPLICIT_USER_REQUEST"
+    }
+  ],
+  "human_action_validation_cases": [
+    {
+      "id": "K02-ACTIONS-CONFLICT-REJECT-SELECT",
+      "actions": [
+        {
+          "level": "ITERATION_STEER",
+          "action": "REJECT",
+          "referents": [
+            "A"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 0,
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        },
+        {
+          "level": "ITERATION_STEER",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 1,
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        }
+      ],
+      "expect_error_prefix": "CONFLICTING_HUMAN_ACTIONS_REQUIRE_CLARIFICATION:A:"
+    },
+    {
+      "id": "K02-ACTIONS-NONCONFLICT-COMPOUND",
+      "actions": [
+        {
+          "level": "ITERATION_STEER",
+          "action": "REJECT",
+          "referents": [
+            "A"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 0,
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        },
+        {
+          "level": "ITERATION_STEER",
+          "action": "MIX",
+          "referents": [
+            "B",
+            "C"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 1,
+          "bound_referents": [
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            },
+            {
+              "ref": "C",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "C"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        }
+      ],
+      "expect_errors": []
+    },
+    {
+      "id": "K02-ACTIONS-CONFLICT-DEFER-SELECT",
+      "actions": [
+        {
+          "level": "ITERATION_STEER",
+          "action": "DEFER",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A0"
+            }
+          ],
+          "referent_binding": "EXPLICIT",
+          "route_target": "SESSION_ITERATION",
+          "clause_index": 0
+        },
+        {
+          "level": "ITERATION_STEER",
+          "action": "SELECT",
+          "referents": [
+            "A"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A0"
+            }
+          ],
+          "referent_binding": "EXPLICIT",
+          "route_target": "SESSION_ITERATION",
+          "clause_index": 1
+        }
+      ],
+      "expect_error_prefix": "CONFLICTING_HUMAN_ACTIONS_REQUIRE_CLARIFICATION:A:"
+    }
+  ],
+  "compound_transition_cases": [
+    {
+      "id": "K02-COMPOUND-TRANSITION-PRESERVES-REJECTION",
+      "status": {
+        "A": "ACTIVE",
+        "B": "ACTIVE",
+        "C": "ACTIVE"
+      },
+      "actions": [
+        {
+          "level": "ITERATION_STEER",
+          "action": "REJECT",
+          "referents": [
+            "A"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 0,
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        },
+        {
+          "level": "ITERATION_STEER",
+          "action": "MIX",
+          "referents": [
+            "B",
+            "C"
+          ],
+          "referent_binding": "EXPLICIT",
+          "clause_index": 1,
+          "bound_referents": [
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            },
+            {
+              "ref": "C",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "C"
+            }
+          ],
+          "route_target": "SESSION_ITERATION"
+        }
+      ],
+      "expect": {
+        "A": "REJECTED_PRESERVED",
+        "B": "SELECTED_FOR_NEXT_ROUND",
+        "C": "SELECTED_FOR_NEXT_ROUND"
+      }
+    },
+    {
+      "id": "K02-AUTHORITY-ROUTE-DOES-NOT-MUTATE-BRANCH",
+      "status": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      },
+      "actions": [
+        {
+          "level": "DESIGN_KEEP",
+          "action": "NONE",
+          "referents": [
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "referent_binding": "EXPLICIT",
+          "route_target": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+          "clause_index": 0
+        }
+      ],
+      "expect": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      }
+    }
+  ]
+}

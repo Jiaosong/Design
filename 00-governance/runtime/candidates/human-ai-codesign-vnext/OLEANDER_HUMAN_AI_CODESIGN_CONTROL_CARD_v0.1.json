@@ -69,7 +69,7 @@
     "physical_product_real_case_trial": "OPEN",
     "independent_architecture_review": "PASS"
   },
-  "next_allowed_action": "Build and validate the candidate architecture, migration map and Co-Design Session Kernel against existing Current carriers; do not modify Current pointers or promote.",
+  "next_allowed_action": "Independently review and trial the Session Kernel v0.2 / plugin 0.3.0 candidate against real Human steering and Current carriers; keep Current pointers and Promotion unchanged.",
   "sync_persistence_trigger": "NONE",
   "preservation_review": {
     "global_fixed_chapter_count_applied": false,

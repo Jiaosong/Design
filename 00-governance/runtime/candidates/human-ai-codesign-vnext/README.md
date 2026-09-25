@@ -10,10 +10,17 @@ This directory is an isolated candidate workface. It does **not** replace `OLEAN
 
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_v0.1_CANDIDATE.md` — proposed top-level operating model.
 - `OLEANDER_HUMAN_AI_CODESIGN_MIGRATION_MAP_v0.1.json` — no-loss mapping from the current architecture.
-- `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md` — reference interaction/runtime contract for `@OLEANDER 设计协作`.
+- `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.1.md` — first skeleton/provenance interaction contract.
+- `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.2.md` — active candidate Session Kernel contract with independent interaction axes, branch lineage, Human-stop policy, domain adapter protocol and second-round delta rules.
+- `OLEANDER_CODESIGN_SESSION_KERNEL_SPEC_v0.2.json` — machine-readable Session Kernel invariants.
+- `OLEANDER_CODESIGN_SESSION_CONTEXT_EPHEMERAL_v0.4.schema.json` — non-authoritative session projection schema; explicitly not Project State.
+- `codesign_session_kernel_v0_2.py` + `codesign_session_kernel_fixtures_v0.2.json` + `validate_codesign_session_kernel_v0_2.py` — executable reference classifier/guard/delta/domain-adapter validation harness.
+- `OLEANDER_CODESIGN_SESSION_KERNEL_VALIDATION_v0.2.json` — generated validation result for the executable reference kernel.
 - `OLEANDER_HUMAN_AI_CODESIGN_CONTROL_CARD_v0.1.json` — current restructuring decision object.
 - `OLEANDER_HUMAN_AI_CODESIGN_EVALS_v0.1.json` — co-design/continuation regression cases.
-- `OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json` — package identity and ownership boundary for the installable reference implementation.
+- `OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json` — prior installed/reference package provenance.
+- `OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.3.0_CANDIDATE.json` — active v0.2 Session Kernel package identity/ownership boundary.
+- `plugin-v0.3.0-candidate/` + `OLEANDER-Design-Plugin-0.3.0-CANDIDATE.zip` — portable eight-file Skill package candidate; package existence does not prove installation on the user account.
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_v0.1.svg/.png` — editable candidate architecture map + visual readback derivative.
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_READBACK_v0.1.json` — actual visual inspection of the candidate map.
 - `OLEANDER_HUMAN_AI_CODESIGN_VALIDATION_STATUS_v0.1.md` — evidence ledger, partials and the exact real-human stop before any promotion claim.

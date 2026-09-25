@@ -1,0 +1,1463 @@
+{
+  "schema": "oleander.codesign-session-kernel-validation.v0.2",
+  "status": "PASS",
+  "case_count": 84,
+  "failures": [],
+  "results": [
+    {
+      "id": "K02-CONTINUE-NOT-STEER",
+      "status": "PASS",
+      "actual": {
+        "raw": "Please continue and finish the whole task.",
+        "work_intent": "RESUME",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-READONLY-RESUME-MULTIAXIS",
+      "status": "PASS",
+      "actual": {
+        "raw": "只读继续检查，不要改。",
+        "work_intent": "RESUME",
+        "mutation_directive": "READ_ONLY",
+        "support_mode": "AUTO",
+        "human_actions": [],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-AUTOADVANCE-NOT-STEER",
+      "status": "PASS",
+      "actual": {
+        "raw": "直接做，真正需要我决定时再问。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "support_mode": "COMPACT",
+        "human_actions": [],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-AFFECTIVE-NEGATIVE",
+      "status": "PASS",
+      "actual": {
+        "raw": "这个不对，太像展馆了。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "NEGATIVE_STEER",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "NOT_APPLICABLE",
+            "binding_issue": null,
+            "reason": "这个不对，太像展馆了",
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "这个不对，太像展馆了"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-MIX-EXPLICIT-PARENTS",
+      "status": "PASS",
+      "actual": {
+        "raw": "保留 A，结合 B，因为维护更容易。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "MIX",
+            "referents": [
+              "A_EDGE_DOCK",
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a1",
+                "lineage_ref": "A_EDGE_DOCK",
+                "decision_object_ref": "H01"
+              },
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b1",
+                "lineage_ref": "B_SPLIT_SUPPORT",
+                "decision_object_ref": "H01"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": "维护更容易",
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "保留 A，结合 B，因为维护更容易"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-MIX-MISSING-PARENT",
+      "status": "PASS",
+      "actual": {
+        "raw": "把 A 和另一个结合一下。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "MIX",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "UNRESOLVED",
+                "lineage_ref": "A_EDGE_DOCK"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "把 A 和另一个结合一下"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-SELECT-EXPLICIT",
+      "status": "PASS",
+      "actual": {
+        "raw": "选 B。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "SELECT",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b1",
+                "lineage_ref": "B_SPLIT_SUPPORT"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "选 B"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-SELECT-UNAMBIGUOUS-THIS",
+      "status": "PASS",
+      "actual": {
+        "raw": "就按这个。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "SELECT",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a1",
+                "lineage_ref": "A_EDGE_DOCK"
+              }
+            ],
+            "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "就按这个"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-SELECT-AMBIGUOUS-THIS",
+      "status": "PASS",
+      "actual": {
+        "raw": "就按这个。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "AMBIGUOUS_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "就按这个"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-DEFER-PENDING-DECISION",
+      "status": "PASS",
+      "actual": {
+        "raw": "这个决定先暂缓，继续做不依赖它的部分。",
+        "work_intent": "RESUME",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "DEFER",
+            "referents": [
+              "H01_SPATIAL_MECHANISM_TEST"
+            ],
+            "bound_referents": [
+              {
+                "ref": "H01_SPATIAL_MECHANISM_TEST",
+                "kind": "DECISION_OBJECT",
+                "revision": "d1",
+                "lineage_ref": "H01_SPATIAL_MECHANISM_TEST"
+              }
+            ],
+            "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "这个决定先暂缓，继续做不依赖它的部分"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-DEFER-WITHOUT-PENDING-DECISION",
+      "status": "PASS",
+      "actual": {
+        "raw": "先暂缓。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "DEFER",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "PENDING_DECISION_UNRESOLVED",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "先暂缓"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "PENDING_DECISION_UNRESOLVED_BEFORE_DEFER"
+      }
+    },
+    {
+      "id": "K02-DESIGNER-DEVELOPMENT-COMPACT",
+      "status": "PASS",
+      "actual": {
+        "raw": "这次比较教我怎么看，但别讲太多。",
+        "work_intent": "EXPLAIN",
+        "mutation_directive": "NORMAL",
+        "support_mode": "COMPACT",
+        "human_actions": [],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-REJECT-EXPLICIT",
+      "status": "PASS",
+      "actual": {
+        "raw": "不要 C。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "REJECT",
+            "referents": [
+              "C_ZERO_STAGE_KIT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "C_ZERO_STAGE_KIT",
+                "kind": "OPTION",
+                "revision": "c1",
+                "lineage_ref": "C_ZERO_STAGE_KIT"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "不要 C"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-REFRAME-NOT-REJECT",
+      "status": "PASS",
+      "actual": {
+        "raw": "重做，这次答错题了。",
+        "work_intent": "REFRAME",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-ENGLISH-ARTICLE-A-NOT-OPTION",
+      "status": "PASS",
+      "actual": {
+        "raw": "Choose a different one.",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "AMBIGUOUS_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "Choose a different one."
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-COMPOUND-TWO-ACTIONS",
+      "status": "PASS",
+      "actual": {
+        "raw": "不要 A，保留 B，结合 C，因为维护更容易。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "REJECT",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a1",
+                "lineage_ref": "A0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "不要 A"
+          },
+          {
+            "level": "ITERATION_STEER",
+            "action": "MIX",
+            "referents": [
+              "B_SPLIT_SUPPORT",
+              "C_ZERO_STAGE_KIT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b1",
+                "lineage_ref": "B0"
+              },
+              {
+                "ref": "C_ZERO_STAGE_KIT",
+                "kind": "OPTION",
+                "revision": "c1",
+                "lineage_ref": "C0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": "维护更容易",
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 1,
+            "clause_text": "保留 B，结合 C，因为维护更容易"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-TYPED-REFERENT-BINDING",
+      "status": "PASS",
+      "actual": {
+        "raw": "选 B。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "SELECT",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b7",
+                "lineage_ref": "B_PARENT"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "选 B"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-FULL-ID-SUFFIX-NOT-REFERENT",
+      "status": "PASS",
+      "actual": {
+        "raw": "select A_EDGE_DOCKERY",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "AMBIGUOUS_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "select A_EDGE_DOCKERY"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-FULL-ID-PREFIX-NOT-REFERENT",
+      "status": "PASS",
+      "actual": {
+        "raw": "select xA_EDGE_DOCK",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "AMBIGUOUS_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "select xA_EDGE_DOCK"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-DEICTIC-CROSS-PARENT-MIX",
+      "status": "PASS",
+      "actual": {
+        "raw": "这个用 B 的入口。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "MIX",
+            "referents": [
+              "A_EDGE_DOCK",
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a2",
+                "lineage_ref": "A0"
+              },
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b3",
+                "lineage_ref": "B0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "这个用 B 的入口"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-COMPOUND-ENGLISH-REJECT-MIX",
+      "status": "PASS",
+      "actual": {
+        "raw": "reject A, keep B, combine C because maintenance is easier",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "REJECT",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a1",
+                "lineage_ref": "A_EDGE_DOCK"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "reject A"
+          },
+          {
+            "level": "ITERATION_STEER",
+            "action": "MIX",
+            "referents": [
+              "B_SPLIT_SUPPORT",
+              "C_ZERO_STAGE_KIT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b1",
+                "lineage_ref": "B_SPLIT_SUPPORT"
+              },
+              {
+                "ref": "C_ZERO_STAGE_KIT",
+                "kind": "OPTION",
+                "revision": "c1",
+                "lineage_ref": "C_ZERO_STAGE_KIT"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": "maintenance is easier",
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 1,
+            "clause_text": "keep B，combine C because maintenance is easier"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-MODIFY-UNAMBIGUOUS-ACTIVE",
+      "status": "PASS",
+      "actual": {
+        "raw": "调整这个。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "MODIFY",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a2",
+                "lineage_ref": "A0"
+              }
+            ],
+            "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "调整这个"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-REJECT-UNAMBIGUOUS-ACTIVE",
+      "status": "PASS",
+      "actual": {
+        "raw": "不要这个。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "REJECT",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a2",
+                "lineage_ref": "A0"
+              }
+            ],
+            "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "不要这个"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-REOPEN-UNAMBIGUOUS-ACTIVE",
+      "status": "PASS",
+      "actual": {
+        "raw": "重开这个。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "ITERATION_STEER",
+            "action": "REOPEN",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a2",
+                "lineage_ref": "A0"
+              }
+            ],
+            "referent_binding": "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "SESSION_ITERATION",
+            "clause_index": 0,
+            "clause_text": "重开这个"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-UNRESOLVED-TYPED-REFERENT-FAIL-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "raw": "选 B。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "UNRESOLVED",
+                "lineage_ref": "B_SPLIT_SUPPORT"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": "UNRESOLVED_TYPED_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "选 B"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "UNRESOLVED_TYPED_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-DEFER-OUTSIDE-PENDING-DECISION-FAIL-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "raw": "先暂缓 A。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "DEFER",
+            "referents": [
+              "A_EDGE_DOCK"
+            ],
+            "bound_referents": [
+              {
+                "ref": "A_EDGE_DOCK",
+                "kind": "OPTION",
+                "revision": "a1",
+                "lineage_ref": "A0",
+                "decision_object_ref": "H02"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "先暂缓 A"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION"
+      }
+    },
+    {
+      "id": "K02-DESIGN-DECISION-ROUTES-ONLY",
+      "status": "PASS",
+      "actual": {
+        "raw": "Design decision: select B.",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "DESIGN_DECISION",
+            "action": "SELECT",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b4",
+                "lineage_ref": "B0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "EXISTING_PROJECT_DECISION_AUTHORITY",
+            "clause_index": 0,
+            "clause_text": "Design decision: select B."
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-DESIGN-KEEP-ROUTES-ONLY",
+      "status": "PASS",
+      "actual": {
+        "raw": "DESIGN KEEP B.",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "DESIGN_KEEP",
+            "action": "NONE",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b4",
+                "lineage_ref": "B0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+            "clause_index": 0,
+            "clause_text": "DESIGN KEEP B."
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-PROMOTION-DECISION-ROUTES-ONLY",
+      "status": "PASS",
+      "actual": {
+        "raw": "Promote B to Current.",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "PROMOTION_DECISION",
+            "action": "NONE",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b4",
+                "lineage_ref": "B0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "PROMOTION_AUTHORITY",
+            "route_target": "EXISTING_PROMOTION_AUTHORITY",
+            "clause_index": 0,
+            "clause_text": "Promote B to Current."
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
+      "id": "K02-COLLIDING-SHORT-ALIAS-FAIL-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "raw": "选 A。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "FEEDBACK_SIGNAL",
+            "action": "SELECT",
+            "referents": [],
+            "bound_referents": [],
+            "referent_binding": "AMBIGUOUS",
+            "binding_issue": "AMBIGUOUS_REFERENT",
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "NONE",
+            "clause_index": 0,
+            "clause_text": "选 A"
+          }
+        ],
+        "minimum_clarification_required": true,
+        "stop_reason": "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER"
+      }
+    },
+    {
+      "id": "K02-ROUND2-MIX-PASS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-ROUND2-NO-HUMAN-STEER-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_ACTUAL_ITERATION_STEER"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-NO-READBACK-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_ACTUAL_READBACK",
+        "SECOND_ROUND_READBACK_REVISION_MISMATCH:[('ROUND2_NATIVE.svg', 'r2')]",
+        "SECOND_ROUND_REQUIRES_BOUND_INVARIANT_READBACK",
+        "SECOND_ROUND_INVARIANTS_NOT_PROVEN:['INV-1']"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-MIX-DROPS-PARENT-FAIL",
+      "status": "PASS",
+      "errors": [
+        "MIX_SECOND_ROUND_MUST_PRESERVE_ALL_REFERENCED_PARENT_OPTIONS"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-INCOMPLETE-STEER-FAIL",
+      "status": "PASS",
+      "errors": [
+        "STEERING_EVENT_MISSING:decision_object_ref",
+        "STEERING_EVENT_MISSING:bound_referents",
+        "STEERING_EVENT_MISSING:source",
+        "STEERING_EVENT_MISSING:actor_role",
+        "STEERING_EVENT_MISSING:preserved_invariants",
+        "SECOND_ROUND_REQUIRES_EXPLICIT_HUMAN_SOURCE",
+        "SECOND_ROUND_REQUIRES_RESOLVED_HUMAN_ACTOR_ROLE",
+        "DECISION_RIGHTS_PROOF_DECISION_OBJECT_MISMATCH",
+        "DECISION_RIGHTS_PROOF_ACTOR_ROLE_MISMATCH",
+        "DECISION_RIGHTS_STATUS_NOT_SUPPORTED_BY_BOUND_PROOF",
+        "DECISION_OBJECT_BINDING_REF_MISMATCH",
+        "STEER_REFERENTS_MUST_MATCH_TYPED_BOUND_REFERENTS",
+        "INVARIANT_READBACK_REFS_MUST_MATCH_BOUND_READBACKS"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-NONHUMAN-SOURCE-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_EXPLICIT_HUMAN_SOURCE"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-UNRESOLVED-REF-REVISION-FAIL",
+      "status": "PASS",
+      "errors": [
+        "STEER_BOUND_REFERENT_REVISION_UNRESOLVED:A"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-READBACK-REVISION-MISMATCH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_READBACK_REVISION_MISMATCH:[('ROUND2_NATIVE.svg', 'r2')]"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-HOLD-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_ALLOWED_DECISION_RIGHTS"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-NO-DECISION-BINDING-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_TYPED_DECISION_OBJECT_BINDING"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-READBACK-NOT-ACTUAL-FAIL",
+      "status": "PASS",
+      "errors": [
+        "READBACK_NOT_ACTUAL:ROUND2_READBACK.json",
+        "INVARIANT_READBACK_NOT_ACTUAL:INV-1"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-RULE-MISSING-FAIL",
+      "status": "PASS",
+      "errors": [
+        "SECOND_ROUND_REQUIRES_DECISION_RIGHTS_OWNER_RULE_REF",
+        "DECISION_RIGHTS_PROOF_OWNER_RULE_REF_MISMATCH",
+        "DECISION_RIGHTS_STATUS_NOT_SUPPORTED_BY_BOUND_PROOF"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-RIGHTS-PROOF-ACTOR-MISMATCH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "DECISION_RIGHTS_PROOF_ACTOR_ROLE_MISMATCH",
+        "DECISION_RIGHTS_STATUS_NOT_SUPPORTED_BY_BOUND_PROOF"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-INVARIANT-UNRELATED-READBACK-FAIL",
+      "status": "PASS",
+      "errors": [
+        "INVARIANT_READBACK_REF_NOT_ACTUAL:OTHER_READBACK.json",
+        "SECOND_ROUND_INVARIANTS_NOT_PROVEN:['INV-1']",
+        "INVARIANT_READBACK_REFS_MUST_MATCH_BOUND_READBACKS"
+      ]
+    },
+    {
+      "id": "K02-ROUND2-READBACK-ARTIFACT-HASH-MISMATCH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "READBACK_ARTIFACT_HASH_MISMATCH:ROUND2_READBACK.json"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-DISTINCT-PASS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-OPTIONS-COSMETIC-DUPLICATE-FAIL",
+      "status": "PASS",
+      "errors": [
+        "MECHANISM_SIGNATURES_MUST_BE_PRESENT_AND_DISTINCT"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-READBACK-REVISION-MISMATCH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "OPTION_READBACK_REVISION_MISMATCH:A:[('A.svg', 'a2')]"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-NO-HASH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "OPTION_ARTIFACT_HASH_REQUIRED:A",
+        "OPTION_READBACK_ARTIFACT_HASH_MISMATCH:A"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-MISSING-BRANCH-STATUS-FAIL",
+      "status": "PASS",
+      "errors": [
+        "OPTION_MISSING:A:branch_status",
+        "OPTION_BRANCH_STATUS_INVALID:A:None"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-READBACK-ARTIFACT-HASH-MISMATCH-FAIL",
+      "status": "PASS",
+      "errors": [
+        "OPTION_READBACK_ARTIFACT_HASH_MISMATCH:A"
+      ]
+    },
+    {
+      "id": "K02-PHASE-MAKE-READBACK",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-PHASE-MAKE-COMPLETE-FAIL",
+      "status": "PASS",
+      "errors": [
+        "ILLEGAL_PHASE_TRANSITION:MAKING->SESSION_COMPLETE"
+      ]
+    },
+    {
+      "id": "K02-PHASE-HOLD-REVALIDATE",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-AA-REVERSIBLE-PASS",
+      "status": "PASS",
+      "actual": {
+        "decision": "CONTINUE",
+        "reason": "REVERSIBLE_AND_GUARDED"
+      }
+    },
+    {
+      "id": "K02-AA-HUMAN-STOP",
+      "status": "PASS",
+      "actual": {
+        "decision": "STOP_FOR_HUMAN",
+        "reason": "VALUE_DEPENDENT_CHOICE_AFTER_COMPARABLE_ACTUAL_ARTIFACTS_EXIST"
+      }
+    },
+    {
+      "id": "K02-AA-VALUE-NO-COMPARISON-CONTINUE",
+      "status": "PASS",
+      "actual": {
+        "decision": "CONTINUE",
+        "reason": "REVERSIBLE_AND_GUARDED"
+      }
+    },
+    {
+      "id": "K02-AA-PUBLISH-STOP",
+      "status": "PASS",
+      "actual": {
+        "decision": "STOP_FOR_AUTHORIZATION",
+        "reason": "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"
+      }
+    },
+    {
+      "id": "K02-AA-PUBLISH-EXISTING-AUTH-CONTINUE",
+      "status": "PASS",
+      "actual": {
+        "decision": "CONTINUE",
+        "reason": "EXISTING_AUTHORIZATION_VALIDATED"
+      }
+    },
+    {
+      "id": "K02-READONLY-BLOCKS-WRITE",
+      "status": "PASS",
+      "actual": {
+        "decision": "BLOCK_MUTATION",
+        "reason": "READ_ONLY"
+      }
+    },
+    {
+      "id": "K02-AA-RIGHTS-CONFLICT-STOP",
+      "status": "PASS",
+      "actual": {
+        "decision": "STOP_FOR_HUMAN",
+        "reason": "UNRESOLVED_MULTI_HUMAN_DECISION_RIGHTS_CONFLICT"
+      }
+    },
+    {
+      "id": "K02-AA-STALE-CHECKPOINT-HOLD",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_CHECKPOINT"
+      }
+    },
+    {
+      "id": "K02-AA-AUTHORITY-DRIFT-HOLD",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_AUTHORITY"
+      }
+    },
+    {
+      "id": "K02-AA-PROJECT-FRESH-CARRIER-PASS",
+      "status": "PASS",
+      "actual": {
+        "decision": "CONTINUE",
+        "reason": "AUTHORIZED_PROJECT_REVERSIBLE"
+      }
+    },
+    {
+      "id": "K02-AA-MISSING-CARRIER-READBACK-HOLD",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_CHECKPOINT"
+      }
+    },
+    {
+      "id": "K02-AA-SEQUENCE-MISMATCH-HOLD",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_CHECKPOINT"
+      }
+    },
+    {
+      "id": "K02-AA-UNTRUSTED-RESOLVER-HOLD",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_AUTHORITY"
+      }
+    },
+    {
+      "id": "K02-AA-CALLER-GUARD-VERDICT-IGNORED",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_CHECKPOINT"
+      }
+    },
+    {
+      "id": "K02-DOMAIN-OPEN-NO-PASS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-DOMAIN-OPEN-FALSE-PASS",
+      "status": "PASS",
+      "errors": [
+        "OPEN_DOMAIN_PROCESS_CANNOT_AWARD_PROFESSIONAL_PASS"
+      ]
+    },
+    {
+      "id": "K02-DOMAIN-BOGUS-STATUS-FAIL",
+      "status": "PASS",
+      "errors": [
+        "INVALID_PROFESSIONAL_PROCESS_STATUS:BOGUS"
+      ]
+    },
+    {
+      "id": "K02-DEFER-ONLY-BLOCKS-DEPENDENTS",
+      "status": "PASS",
+      "actual": {
+        "eligible": [
+          "W2",
+          "W3"
+        ],
+        "held": [
+          "W1"
+        ]
+      }
+    },
+    {
+      "id": "K02-BRANCH-MIX-PRESERVES-PARENTS",
+      "status": "PASS",
+      "actual": {
+        "A": "SELECTED_FOR_NEXT_ROUND",
+        "B": "SELECTED_FOR_NEXT_ROUND",
+        "C": "DEFERRED_PRESERVED"
+      }
+    },
+    {
+      "id": "K02-BRANCH-REJECT-PRESERVED",
+      "status": "PASS",
+      "actual": {
+        "A": "REJECTED_PRESERVED",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-BRANCH-REOPEN",
+      "status": "PASS",
+      "actual": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-BRANCH-DEFER-NO-DELETE",
+      "status": "PASS",
+      "actual": {
+        "A": "DEFERRED_PRESERVED",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-ACTIONS-CONFLICT-REJECT-SELECT",
+      "status": "PASS",
+      "errors": [
+        "CONFLICTING_HUMAN_ACTIONS_REQUIRE_CLARIFICATION:A:['REJECT', 'SELECT']"
+      ]
+    },
+    {
+      "id": "K02-ACTIONS-NONCONFLICT-COMPOUND",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": "K02-ACTIONS-CONFLICT-DEFER-SELECT",
+      "status": "PASS",
+      "errors": [
+        "CONFLICTING_HUMAN_ACTIONS_REQUIRE_CLARIFICATION:A:['DEFER', 'SELECT']"
+      ]
+    },
+    {
+      "id": "K02-COMPOUND-TRANSITION-PRESERVES-REJECTION",
+      "status": "PASS",
+      "actual": {
+        "A": "REJECTED_PRESERVED",
+        "B": "SELECTED_FOR_NEXT_ROUND",
+        "C": "SELECTED_FOR_NEXT_ROUND"
+      }
+    },
+    {
+      "id": "K02-AUTHORITY-ROUTE-DOES-NOT-MUTATE-BRANCH",
+      "status": "PASS",
+      "actual": {
+        "A": "ACTIVE",
+        "B": "ACTIVE"
+      }
+    },
+    {
+      "id": "K02-SUPPORT-AUTO-INITIAL",
+      "status": "PASS",
+      "actual": {
+        "mode": "AUTO",
+        "fade_basis": "NONE",
+        "durable_skill_score": null
+      }
+    },
+    {
+      "id": "K02-SUPPORT-AUTO-FADE-CURRENT-SESSION",
+      "status": "PASS",
+      "actual": {
+        "mode": "COMPACT",
+        "fade_basis": "CURRENT_SESSION_REPEATED_CLEAR_JUDGMENT",
+        "durable_skill_score": null
+      }
+    },
+    {
+      "id": "K02-SUPPORT-EXPLICIT-OFF",
+      "status": "PASS",
+      "actual": {
+        "mode": "OFF",
+        "fade_basis": "EXPLICIT_USER_REQUEST",
+        "durable_skill_score": null
+      }
+    }
+  ],
+  "claim_ceiling": "REFERENCE_KERNEL_LOGIC_AND_INVARIANT_VALIDATION_ONLY / NOT CURRENT / NOT PROFESSIONAL PASS / NOT HUMAN TRIAL"
+}

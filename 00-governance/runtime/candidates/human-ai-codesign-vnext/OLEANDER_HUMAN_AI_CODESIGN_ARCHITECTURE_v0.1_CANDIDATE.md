@@ -256,6 +256,8 @@ The vNext views and design responsibility arenas are projections over existing o
 
 The session kernel is the persistent interaction concept, but not a persistent state store.
 
+The executable candidate binding is now `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.2.md` + `OLEANDER_CODESIGN_SESSION_KERNEL_SPEC_v0.2.json` + `OLEANDER_CODESIGN_SESSION_CONTEXT_EPHEMERAL_v0.4.schema.json`. The earlier v0.1 contract remains provenance for the first skeleton; v0.2 is the active candidate interaction contract.
+
 Kernel verbs:
 
 `UNDERSTAND → EXPLORE → MAKE → LOOK → CRITIQUE → STEER → LEARN`
@@ -267,6 +269,14 @@ Runtime support verbs:
 The first line is what makes it a design partner. The second line keeps it safe and continuous.
 
 It consumes Current project state, Execution Receipt/checkpoint, artifact identity and persistence owners; it does not duplicate them.
+
+### 9.1 Interaction axes are independent
+
+The session kernel does not force one user message into one monolithic mode. It separates:
+
+`WORK INTENT × MUTATION DIRECTIVE × SUPPORT MODE × HUMAN ACTION LEVEL`.
+
+For example, `只读继续检查` is `RESUME + READ_ONLY`; generic `继续并完成` is execution intent only and cannot silently become `DEFER` or another design steer. This separation is required to prevent the action-level collapse found during the first candidate trial review.
 
 ## 10. Human steering contract
 

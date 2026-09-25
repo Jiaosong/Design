@@ -1,0 +1,276 @@
+{
+  "schema": "oleander.codesign-session-kernel-spec.v0.2",
+  "status": "CANDIDATE_EXECUTABLE_REFERENCE",
+  "kernel_id": "OLEANDER-HUMAN-AI-CODESIGN-SESSION-KERNEL",
+  "version": "0.2.0",
+  "authority_position": "EPHEMERAL_INTERACTION_ORCHESTRATOR_ONLY",
+  "forbidden_authority_roles": [
+    "CURRENT_AUTHORITY",
+    "PROJECT_STATE_OWNER",
+    "EXECUTION_RECEIPT_OWNER",
+    "PROFESSIONAL_PROCESS_OWNER",
+    "NATIVE_ARTIFACT_REGISTRY",
+    "INDEPENDENT_REVIEW_OWNER",
+    "PERSISTENCE_OWNER",
+    "PROMOTION_OWNER"
+  ],
+  "design_kernel": ["UNDERSTAND", "EXPLORE", "MAKE", "LOOK", "CRITIQUE", "STEER", "LEARN"],
+  "runtime_kernel": ["RESOLVE", "RESUME", "ROUTE", "GUARD", "HANDOFF", "REPORT"],
+  "interaction_axes": {
+    "work_intent": [
+      "START",
+      "RESUME",
+      "RECOVER",
+      "EXPLORE",
+      "WILDCARD",
+      "REVIEW",
+      "REFRAME",
+      "SAVE_ROUTE",
+      "EXPLAIN",
+      "SHOW_WORK",
+      "UNRESOLVED"
+    ],
+    "mutation_directive": ["NORMAL", "READ_ONLY", "AUTO_ADVANCE_REVERSIBLE"],
+    "support_mode": ["AUTO", "COMPACT", "EXPLAIN", "OFF"],
+    "human_action_level": [
+      "NONE",
+      "FEEDBACK_SIGNAL",
+      "ITERATION_STEER",
+      "DESIGN_DECISION",
+      "DESIGN_KEEP",
+      "PROMOTION_DECISION"
+    ],
+    "iteration_action": ["SELECT", "MODIFY", "MIX", "REJECT", "REOPEN", "DEFER"]
+  },
+  "classification_precedence": [
+    "EXPLICIT_READ_ONLY_CONSTRAINT",
+    "EXPLICIT_AUTO_ADVANCE_CONSTRAINT",
+    "EXPLICIT_OPTION_REFERENCED_ITERATION_STEER",
+    "AFFECTIVE_OR_NON_SPECIFIC_FEEDBACK_SIGNAL",
+    "WORK_INTENT",
+    "SUPPORT_MODE"
+  ],
+  "classification_invariants": [
+    "GENERIC_CONTINUE_OR_FINISH_IS_EXECUTION_INTENT_NOT_ITERATION_STEER",
+    "ONE_MESSAGE_MAY_CONTAIN_MULTIPLE_CLAUSE_SCOPED_HUMAN_ACTIONS_WITHOUT_COLLAPSING_THEM",
+    "SILENCE_OR_NON_REJECTION_IS_NOT_SELECTION",
+    "DEFER_REQUIRES_AN_EXPLICIT_DEFER_SIGNAL_AND_A_RESOLVABLE_PENDING_DECISION",
+    "MIX_REQUIRES_AT_LEAST_TWO_PARENT_REFERENTS",
+    "SELECT_MODIFY_REJECT_REOPEN_REQUIRE_A_RESOLVABLE_REFERENT_OR_MINIMUM_CLARIFICATION",
+    "AFFECTIVE_NEGATIVE_FEEDBACK_MAY_CREATE_CAUSAL_HYPOTHESES_BUT_NOT_DURABLE_PREFERENCE",
+    "ONE_PROJECT_CHOICE_NEVER_CREATES_A_GLOBAL_TASTE_PROFILE",
+    "SINGLE_LETTER_OPTION_ALIASES_MUST_NOT_MATCH_LOWERCASE_ENGLISH_ARTICLES_OR_INCIDENTAL_TEXT",
+    "CONSEQUENTIAL_ITERATION_STEER_REQUIRES_TYPED_REVISIONED_REFERENT_BINDING_BEFORE_APPLICATION",
+    "DESIGN_DECISION_DESIGN_KEEP_AND_PROMOTION_DECISION_ARE_CLASSIFIED_AND_ROUTED_TO_EXISTING_AUTHORITY_BUT_NEVER_APPLIED_AS_SESSION_ITERATION_STEER",
+    "DEFERRED_BRANCH_REFERENTS_MUST_BELONG_TO_THE_CURRENT_PENDING_DECISION_OBJECT"
+  ],
+  "authority_routes": {
+    "DESIGN_DECISION": "EXISTING_PROJECT_DECISION_AUTHORITY",
+    "DESIGN_KEEP": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+    "PROMOTION_DECISION": "EXISTING_PROMOTION_AUTHORITY"
+  },
+  "ephemeral_session_phases": [
+    "RESOLVING",
+    "WORKING_REVERSIBLE",
+    "COMPARISON_BUILDING",
+    "COMPARISON_READY",
+    "AWAITING_HUMAN_STEER",
+    "STEER_BOUND",
+    "MUTATION_GUARD",
+    "MAKING",
+    "READBACK_REQUIRED",
+    "REVIEW_REQUIRED",
+    "HANDOFF_READY",
+    "SESSION_COMPLETE",
+    "HOLD_AUTHORITY",
+    "HOLD_CHECKPOINT",
+    "HOLD_PERMISSION",
+    "HOLD_NATIVE_SURFACE",
+    "HOLD_DECISION_RIGHTS"
+  ],
+  "phase_rule": "SESSION_PHASE_IS_EPHEMERAL_EXECUTION_POSITION_NOT_PROJECT_STATE",
+  "phase_transitions": {
+    "RESOLVING": ["WORKING_REVERSIBLE", "HOLD_AUTHORITY", "HOLD_CHECKPOINT", "HOLD_PERMISSION", "HOLD_NATIVE_SURFACE", "HOLD_DECISION_RIGHTS"],
+    "WORKING_REVERSIBLE": ["COMPARISON_BUILDING", "MAKING", "REVIEW_REQUIRED", "HANDOFF_READY", "SESSION_COMPLETE", "HOLD_AUTHORITY", "HOLD_CHECKPOINT", "HOLD_PERMISSION", "HOLD_NATIVE_SURFACE", "HOLD_DECISION_RIGHTS"],
+    "COMPARISON_BUILDING": ["COMPARISON_READY", "HOLD_NATIVE_SURFACE", "WORKING_REVERSIBLE"],
+    "COMPARISON_READY": ["AWAITING_HUMAN_STEER", "WORKING_REVERSIBLE", "REVIEW_REQUIRED"],
+    "AWAITING_HUMAN_STEER": ["STEER_BOUND", "WORKING_REVERSIBLE", "SESSION_COMPLETE"],
+    "STEER_BOUND": ["MUTATION_GUARD"],
+    "MUTATION_GUARD": ["MAKING", "HOLD_AUTHORITY", "HOLD_CHECKPOINT", "HOLD_PERMISSION", "HOLD_NATIVE_SURFACE", "HOLD_DECISION_RIGHTS"],
+    "MAKING": ["READBACK_REQUIRED"],
+    "READBACK_REQUIRED": ["WORKING_REVERSIBLE", "AWAITING_HUMAN_STEER", "REVIEW_REQUIRED", "HANDOFF_READY"],
+    "REVIEW_REQUIRED": ["WORKING_REVERSIBLE", "HANDOFF_READY", "HOLD_AUTHORITY", "HOLD_PERMISSION", "HOLD_DECISION_RIGHTS"],
+    "HANDOFF_READY": ["SESSION_COMPLETE", "WORKING_REVERSIBLE"],
+    "SESSION_COMPLETE": [],
+    "HOLD_AUTHORITY": ["RESOLVING"],
+    "HOLD_CHECKPOINT": ["RESOLVING"],
+    "HOLD_PERMISSION": ["RESOLVING"],
+    "HOLD_NATIVE_SURFACE": ["WORKING_REVERSIBLE", "RESOLVING"],
+    "HOLD_DECISION_RIGHTS": ["RESOLVING", "WORKING_REVERSIBLE"]
+  },
+  "side_effect_classes": [
+    "NONE",
+    "REVERSIBLE_LOCAL",
+    "PROJECT_MUTATION_REVERSIBLE",
+    "PROJECT_MUTATION_AUTHORITY_SENSITIVE",
+    "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"
+  ],
+  "auto_advance": {
+    "allowed_side_effect_classes": ["NONE", "REVERSIBLE_LOCAL"],
+    "conditional_side_effect_classes": ["PROJECT_MUTATION_REVERSIBLE"],
+    "blocked_without_existing_authorization": [
+      "PROJECT_MUTATION_AUTHORITY_SENSITIVE",
+      "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"
+    ],
+    "human_stop_computation": "COMPUTE_FROM_PROJECTED_FACTS_NOT_CALLER_SUPPLIED_VERDICT",
+    "mutation_permission_computation": "COMPUTE_FROM_READ_ONLY_DIRECTIVE_PLUS_SIDE_EFFECT_CLASS_PLUS_PROJECTED_OWNER_PERMISSION_AUTHORITY_SOURCE_CHECKPOINT_NATIVE_TARGET_DECISION_RIGHTS_AND_EXISTING_AUTHORIZATION_FACTS",
+    "required_guard_facts": [
+      "logical_object_identity",
+      "authority_revision",
+      "source_revision",
+      "expected_checkpoint_sequence",
+      "observed_checkpoint_sequence",
+      "carrier_readback_status=ACTUAL_READBACK",
+      "resolver_provenance=EXISTING_OWNER_RESOLVER",
+      "owner_permission",
+      "native_target_or_truthful_substitute",
+      "active_user_constraints"
+    ],
+    "project_mutation_freshness_rule": "PROJECT_OR_EXTERNAL_MUTATION_FAILS_CLOSED_UNLESS_THE_EXISTING_OWNER_NATIVE_CARRIER_WAS_ACTUALLY_REREAD_AND_EXPECTED_CHECKPOINT_SEQUENCE_EQUALS_OBSERVED_CHECKPOINT_SEQUENCE",
+    "caller_vouch_rule": "CALLER_SUPPLIED_GUARD_VERDICT_OR_PERMISSION_SUMMARY_IS_NOT_AUTHORITY_AND_CANNOT_REPLACE_OWNER_NATIVE_READBACK"
+  },
+  "human_stop_conditions": [
+    "AMBIGUOUS_REFERENT_BEFORE_CONSEQUENTIAL_STEER",
+    "VALUE_DEPENDENT_CHOICE_AFTER_COMPARABLE_ACTUAL_ARTIFACTS_EXIST",
+    "AUTHORITY_OR_SCOPE_ESCALATION_REQUIRING_HUMAN_AUTHORIZATION",
+    "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING_SIDE_EFFECT",
+    "REQUIRED_SPECIALIST_OR_INDEPENDENT_REVIEW",
+    "UNRESOLVED_MULTI_HUMAN_DECISION_RIGHTS_CONFLICT",
+    "NO_TRUTHFUL_NATIVE_OR_EDITABLE_SUBSTITUTE_FOR_THE_KEY_UNKNOWN",
+    "USER_REQUESTED_STOP_OR_SCOPE_COMPLETE"
+  ],
+  "branch_model": {
+    "required_option_fields": [
+      "option_id",
+      "comparison_world_id",
+      "mechanism_signature",
+      "parent_refs",
+      "artifact_refs",
+      "artifact_bindings",
+      "readback_bindings",
+      "preserved_invariants",
+      "strongest_benefit",
+      "strongest_risk",
+      "sensitive_unknowns",
+      "branch_status"
+    ],
+    "rules": [
+      "MECHANISM_SIGNATURES_MUST_BE_MATERIALLY_DISTINCT_WITHIN_ONE_COMPARISON_WORLD",
+      "COSMETIC_DUPLICATES_DO_NOT_COUNT_AS_OPTION_SPACE_DIVERGENCE",
+      "EVERY_COMPARISON_OPTION_MUST_BIND_A_HASHED_ACTUAL_ARTIFACT_REVISION_AND_A_HASHED_ACTUAL_READBACK_OF_THAT_SAME_REVISION_AND_ARTIFACT_CONTENT_HASH",
+      "ARTIFACT_REFS_MUST_MATCH_ARTIFACT_BINDINGS",
+      "REJECTED_OR_DEFERRED_BRANCHES_KEEP_LINEAGE_AND_DO_NOT_BECOME_CURRENT_BY_RECENCY",
+      "MIX_PRESERVES_ALL_REFERENCED_PARENTS",
+      "BASELINE_NO_CHANGE_OR_OFF_IS_INCLUDED_WHEN_CAUSALLY_RELEVANT"
+    ],
+    "transition_semantics": {
+      "SELECT_MODIFY_MIX": "REFERENCED_PARENTS_TO_SELECTED_FOR_NEXT_ROUND_AND_OTHER_ACTIVE_BRANCHES_TO_DEFERRED_PRESERVED",
+      "REJECT": "REFERENCED_BRANCHES_TO_REJECTED_PRESERVED",
+      "REOPEN": "REFERENCED_BRANCHES_TO_ACTIVE",
+      "DEFER": "REFERENCED_BRANCHES_OR_DECISION_TO_DEFERRED_PRESERVED_WITHOUT_IMPLYING_DESIGN_DELTA"
+    }
+  },
+  "steering_event_required_fields": [
+    "decision_object_ref",
+    "action",
+    "referents",
+    "bound_referents",
+    "source",
+    "actor_role",
+    "changed_variables",
+    "preserved_invariants"
+  ],
+  "referent_binding_required_fields": ["ref", "kind", "revision", "lineage_ref"],
+  "second_round_required_fields": [
+    "steering_event",
+    "decision_object_binding",
+    "decision_rights_status",
+    "decision_rights_owner_rule_ref",
+    "decision_rights_revision",
+    "decision_rights_proof",
+    "made_artifacts",
+    "readbacks",
+    "invariant_readback_refs",
+    "invariant_readback_bindings"
+  ],
+  "artifact_evidence_required_fields": ["artifact_ref", "revision", "role", "content_sha256"],
+  "readback_evidence_required_fields": ["readback_ref", "artifact_ref", "artifact_revision", "artifact_content_sha256", "content_sha256", "inspection_status=ACTUAL_READBACK"],
+  "decision_rights_proof_required_fields": ["source=OWNER_NATIVE_PROJECTION", "owner_rule_ref", "owner_rule_revision", "decision_object_ref", "actor_role", "effect_scope=ITERATION_STEER", "allowed_actions", "proof_ref", "proof_revision", "proof_sha256", "inspection_status=ACTUAL_READBACK", "authority_ceiling=ITERATION_STEER_ONLY"],
+  "invariant_readback_binding_required_fields": ["invariant_ref", "readback_ref", "artifact_ref", "artifact_revision", "artifact_content_sha256", "readback_content_sha256", "inspection_status=ACTUAL_READBACK"],
+  "second_round_delta_invariant": "SECOND_ROUND_HUMAN_FEEDBACK_DELTA_REQUIRES_EXPLICIT_HUMAN_SOURCE_PLUS_OWNER_NATIVE_HASH_BOUND_DECISION_RIGHTS_PROOF_PLUS_TYPED_REVISIONED_REFERENT_BINDING_PLUS_HASH_BOUND_EDITABLE_OR_NATIVE_ARTIFACT_REVISION_PLUS_ACTUAL_READBACK_OF_THAT_SAME_REVISION_AND_ARTIFACT_HASH_PLUS_INVARIANT_SPECIFIC_BOUND_READBACK",
+  "readback_obligation": {
+    "after_material_make": true,
+    "after_root_cause_repair": true,
+    "after_human_steered_second_round": true,
+    "presentation_only_is_insufficient": true,
+    "successful_tool_call_is_insufficient": true
+  },
+  "multi_human": {
+    "roles": ["DESIGNER", "CLIENT_OR_STAKEHOLDER", "SPECIALIST", "INDEPENDENT_REVIEWER", "PROJECT_AUTHORITY", "PROMOTION_AUTHORITY", "UNRESOLVED"],
+    "rule": "LATEST_MESSAGE_IS_NOT_UNIVERSAL_AUTHORITY",
+    "conflict_result": "HOLD_DECISION_RIGHTS_UNTIL_EXISTING_OWNER_RULE_RESOLVES_SCOPE"
+  },
+  "designer_development": {
+    "default_support_mode": "AUTO",
+    "max_unsolicited_insertions_per_material_round": 1,
+    "pattern": ["ONE_KEY_DISTINCTION", "WHY_IT_CHANGES_THE_DESIGN", "AT_MOST_ONE_TRANSFER_QUESTION"],
+    "fade_rule": "FADE_FROM_CURRENT_SESSION_REPEATED_CLEAR_JUDGMENT_OR_EXPLICIT_USER_REQUEST_ONLY",
+    "fade_scope": "CURRENT_SESSION_ONLY_NO_DURABLE_COMPETENCE_INFERENCE",
+    "forbidden": ["PSYCHOLOGICAL_PROFILE", "HIDDEN_ABILITY_SCORE", "DURABLE_TASTE_PROFILE", "AUTHORITY_EFFECT"]
+  },
+  "domain_adapter_protocol": {
+    "purpose": "BIND_THE_SHARED_INTERACTION_KERNEL_TO_AN_AUTHENTIC_DOMAIN_PROCESS_WITHOUT_CREATING_A_UNIVERSAL_CODESIGN_STAGE_TAXONOMY",
+    "required_fields": [
+      "domain_id",
+      "professional_process_status",
+      "professional_process_ref",
+      "domain_question",
+      "native_output_roles",
+      "readback_methods",
+      "claim_ceiling",
+      "hold_conditions"
+    ],
+    "professional_process_status": ["CURRENT", "CANDIDATE", "OPEN", "NOT_APPLICABLE"],
+    "open_rule": "OPEN_MEANS_BOUNDED_PRE_PROFESSIONAL_EXPLORATION_ONLY_NO_PROFESSIONAL_PASS"
+  },
+  "continuity": {
+    "resume_source_precedence": [
+      "EXPLICIT_PROJECT_TASK_OBJECT_KEY",
+      "CURRENT_PROJECT_OR_TASK",
+      "CONTROL_CARD",
+      "ACTIVE_EXECUTION_RECEIPT_OR_CHECKPOINT",
+      "ACTUAL_NATIVE_ARTIFACT_AND_READBACK"
+    ],
+    "chat_memory_authority": "FORBIDDEN",
+    "session_context_persistence": "FORBIDDEN_AS_PROJECT_TRUTH",
+    "plugin_uninstall_rule": "CURRENT_PROJECT_STATE_CHECKPOINTS_NATIVE_ARTIFACTS_AND_AUTHORITY_MUST_SURVIVE"
+  },
+  "defer_dependency_rule": "DEFER_HOLDS_ONLY_WORK_DEPENDENT_ON_THE_DEFERRED_DECISION;UNRELATED_REVERSIBLE_WORK_MAY_CONTINUE",
+  "closure_dimensions": [
+    "SESSION_RESULT",
+    "DESIGN_CANDIDATE",
+    "PROFESSIONAL_STATE",
+    "REVIEW_STATE",
+    "PERSISTENCE_STATE",
+    "PROMOTION_STATE"
+  ],
+  "forbidden_collapses": [
+    "SESSION_RESULT_EQUALS_DESIGN_KEEP",
+    "TOOL_SUCCESS_EQUALS_PROFESSIONAL_PASS",
+    "PRESENTATION_RECENCY_EQUALS_NATIVE_AUTHORITY",
+    "ITERATION_STEER_EQUALS_DESIGN_DECISION",
+    "DESIGN_DECISION_EQUALS_DESIGN_KEEP",
+    "DESIGN_KEEP_EQUALS_PROMOTION_DECISION",
+    "SESSION_CONTEXT_EQUALS_PROJECT_STATE"
+  ]
+}

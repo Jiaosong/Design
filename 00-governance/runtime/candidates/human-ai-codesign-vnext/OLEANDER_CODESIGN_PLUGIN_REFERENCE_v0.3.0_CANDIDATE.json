@@ -1,0 +1,85 @@
+{
+  "schema": "oleander.codesign-plugin-reference.v0.2",
+  "status": "CANDIDATE_REFERENCE_IMPLEMENTATION",
+  "plugin_name": "oleander-design",
+  "plugin_version": "0.3.0",
+  "display_name": "OLEANDER 设计协作",
+  "role": "HUMAN_AI_CODESIGN_SESSION_KERNEL_REFERENCE_IMPLEMENTATION",
+  "kernel_contract": "OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.2.md",
+  "kernel_machine_spec": "OLEANDER_CODESIGN_SESSION_KERNEL_SPEC_v0.2.json",
+  "session_context_schema": "OLEANDER_CODESIGN_SESSION_CONTEXT_EPHEMERAL_v0.4.schema.json",
+  "reference_runtime": "codesign_session_kernel_v0_2.py",
+  "package_source": "plugin-v0.3.0-candidate",
+  "package_filename": "OLEANDER-Design-Plugin-0.3.0-CANDIDATE.zip",
+  "package_sha256": "a43b8d7dbb34b338c3a3b4df787bc2d3b34c49c5dfcc8db3aeb261fe072fc2af",
+  "package_file_count": 8,
+  "package_size_bytes": 19849,
+  "design_kernel": [
+    "UNDERSTAND",
+    "EXPLORE",
+    "MAKE",
+    "LOOK",
+    "CRITIQUE",
+    "STEER",
+    "LEARN"
+  ],
+  "runtime_kernel": [
+    "RESOLVE",
+    "RESUME",
+    "ROUTE",
+    "GUARD",
+    "HANDOFF",
+    "REPORT"
+  ],
+  "interaction_axes": [
+    "WORK_INTENT",
+    "MUTATION_DIRECTIVE",
+    "SUPPORT_MODE",
+    "HUMAN_ACTION_LEVEL"
+  ],
+  "owns": [
+    "NATURAL_LANGUAGE_CODESIGN_INTERACTION",
+    "EPHEMERAL_SESSION_PROJECTION",
+    "OPTION_SPACE_ORCHESTRATION_WITH_EXISTING_OWNERS",
+    "HUMAN_STEERING_CAPTURE",
+    "HUMAN_ACTION_LEVEL_DISAMBIGUATION",
+    "REFERENT_BINDING",
+    "BRANCH_LINEAGE_ORCHESTRATION",
+    "MULTI_HUMAN_DECISION_RIGHTS_ROUTING",
+    "SECOND_ROUND_DESIGN_DELTA_ORCHESTRATION",
+    "AUTO_ADVANCE_STOP_POLICY",
+    "PROGRESSIVE_DISCLOSURE",
+    "BOUNDED_DESIGNER_DEVELOPMENT_SUPPORT",
+    "DOMAIN_ADAPTER_ORCHESTRATION"
+  ],
+  "consumes_not_owns": [
+    "CURRENT_AUTHORITY",
+    "PROJECT_STATE",
+    "EXECUTION_RECEIPT_CHECKPOINT",
+    "KNOWLEDGE_KI_OE",
+    "PROFESSIONAL_PROCESS_STATE",
+    "NATIVE_ARTIFACT_IDENTITY",
+    "INDEPENDENT_REVIEW_VERDICTS",
+    "PAP_PERSISTENCE",
+    "PROMOTION_SYNC"
+  ],
+  "forbidden_parallel_structures": [
+    "PLUGIN_PROJECT_STATE",
+    "PLUGIN_CHECKPOINT_DATABASE",
+    "PLUGIN_ARTIFACT_REGISTRY",
+    "PLUGIN_PREFERENCE_PROFILE_AUTHORITY",
+    "UNIVERSAL_CODESIGN_PROFESSIONAL_STAGE_SEQUENCE",
+    "AI_OWNED_DESIGN_KEEP",
+    "AI_OWNED_PROMOTION_AUTHORITY"
+  ],
+  "does_not_prove": [
+    "CURRENT_ADOPTION",
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "FIELD_TRUTH",
+    "HUMAN_COMPETENCE",
+    "UNIVERSAL_HUMAN_AUTHORITY",
+    "PLUGIN_INSTALLATION_SUCCESS_ON_USER_ACCOUNT",
+    "FULL_REAL_HUMAN_CODESIGN_TRIAL_CLOSURE"
+  ]
+}
