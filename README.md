@@ -10,7 +10,7 @@ OLEANDER 是我持续设计、实现与验证的一套 **Human–AI Co-Design Sy
 
 > **如何把能力很强、但存在不确定性与上下文限制的 AI，设计成一个用户可以长期、连续、可控地协作的产品。**
 
-[个人主页](https://github.com/Jiaosong) · [产品 PRD](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.1.md) · [案例目录](05-cases/) · [评估体系](evals/) · [Governance](00-governance/README.md)
+[个人主页](https://github.com/Jiaosong) · [产品 PRD](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md) · [案例目录](05-cases/) · [评估体系](evals/) · [Governance](00-governance/README.md)
 
 ---
 
@@ -251,7 +251,7 @@ Project State
 
 其他能力——知识库、云端文件、更多 Skill、多工具、多端协作——只有在这条链成立之后才有意义。
 
-完整的产品需求、功能优先级、用户旅程、验收标准与指标体系见：[OLEANDER 设计协作系统 PRD v0.1](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.1.md)。
+完整的产品需求、功能优先级、用户旅程、验收标准与指标体系见：[OLEANDER 设计协作系统 PRD v0.2.0](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)。
 
 ---
 

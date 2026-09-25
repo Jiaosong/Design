@@ -1,5 +1,8 @@
 # OLEANDER 设计协作系统｜Product Requirements Document v0.1
 
+> **Superseded for public product-definition use by [PRD v0.2.0](OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md).**  
+> 本文件保留为第一版产品经理 framing / provenance；v0.2.0 恢复了早期 Product Discovery、Experience Requirements、Product Maps、Functional / Information / Interface Architecture 与 System Requirements 的细颗粒度。
+
 **Product:** OLEANDER Human–AI Co-Design System
 **Document type:** Product Requirements Document / 产品需求文档
 **Status:** `PRODUCT CANDIDATE DEFINITION / NON-AUTHORITY / NO PROMOTION`
