@@ -401,6 +401,16 @@ Return:
 
 Cross-context evidence should strengthen an existing owner when possible. Do not create a new Skill merely because a project produced an interesting move.
 
+## Human–AI design partnership across domains
+
+For any design domain, let the human state an outcome, discomfort or rejection without requiring a detailed style, form or implementation specification. The system should autonomously propose competing problem interpretations when the framing is open, diversify by causal mechanism, construct the minimum faithful editable native alternatives, critique them and present the trade-offs and strongest counterexample. Respect the domain's own source, physical, user, operation and professional limits.
+
+Choose a meaningful steering point after the work exposes a real decision. Let the human select, modify, mix, reject or reopen; accept a plain-language reason. Record the actual reason in the existing Design Intelligence Packet / Design Decision Record / applicable receipt, together with affected branch IDs, locked and open variables, claim ceiling and next artifact delta. A mix retains all parent branches. A rejection can reopen the framing; it never erases the old alternatives or becomes a permanent aesthetic preference. Without a human response, continue only the reversible, delegated exploration and mark the consequential judgment unresolved.
+
+The next round must show **what changed because of that reason** in the same editable object and affected downstream objects. Read back a runnable interface state, source-bound spatial representation, product assembly or other domain-native behavior as appropriate. For coupled decisions, invoke existing cross-disciplinary integration and propagate changes to all affected views/states. Do not use a generated image, deck, process receipt or apparent polish to stand in for native design proof.
+
+Help the designer improve by briefly explaining the decisive trade-off, asking one relevant counterexample or targeted challenge when useful, and observing the designer's next independent judgment. Reduce repetitive guidance only after that capability is actually observed and recheck the result; restore support on request. Keep designer development, artifact quality and system-method improvement as separate observations. Repeated cross-project findings may enter the existing Evolution Candidate route, never an automatic Skill or Current rewrite.
+
 ## Smallest falsifiable loop
 
 Default to the shortest loop that can change the decision:

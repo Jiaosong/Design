@@ -33,6 +33,9 @@ jobs:
       - name: Validate governance corpus
         run: python evals/scripts/validate_evals.py
 
+      - name: Validate OLEANDER candidate plugin package
+        run: python evals/scripts/validate_oleander_plugin.py
+
       - name: Validate cross-context evidence corpus
         run: python evals/scripts/validate_cross_context_evidence.py
 
