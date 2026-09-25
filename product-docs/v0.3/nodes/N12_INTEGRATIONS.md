@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N12 |
+| Children | N12A, N12B, N12C — see [Atomic Children](#atomic-children) |
 | Type | Integration Node |
 | Product job | 连接专业 authoring / analysis / storage / external systems，同时保持 artifact role、authority 与 degraded behaviour |
 | Inputs | integration capability + scoped permission |
@@ -65,4 +66,16 @@ sequenceDiagram
 
 ## Open
 
-Security/privacy permission architecture remains required before broad external beta.
+Security/privacy permission architecture remains required before broad external beta.\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N12 INTEGRATIONS]
+    P --> N12A[N12A INTEGRATION CONTRACT]
+    P --> N12B[N12B EXTERNAL WRITE]
+    P --> N12C[N12C DEGRADED INTEGRATION]
+```
+
+- [N12A｜INTEGRATION CONTRACT](atomic/N12A_INTEGRATION_CONTRACT.md)
+- [N12B｜EXTERNAL WRITE](atomic/N12B_EXTERNAL_WRITE.md)
+- [N12C｜DEGRADED INTEGRATION](atomic/N12C_DEGRADED_INTEGRATION.md)

@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N03A |
+| Children | N03A1, N03A2, N03A3, N03A4, N03A5 — see [Atomic Children](#atomic-children) |
 | Parent | N03 |
 | Type | Studio Mode |
 | Product job | 形成少量 materially distinct design directions |
@@ -70,4 +71,20 @@ branch_status
 
 ## Events / Metrics
 
-`option_space_created` · `cosmetic_duplicate_detected` · Material Divergence · Baseline Consideration
+`option_space_created` · `cosmetic_duplicate_detected` · Material Divergence · Baseline Consideration\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N03A EXPLORE]
+    P --> N03A1[N03A1 DESIGN DIRECTION]
+    P --> N03A2[N03A2 ALTERNATIVE SET]
+    P --> N03A3[N03A3 MATERIAL DISTINCTNESS]
+    P --> N03A4[N03A4 BASELINE / OFF]
+    P --> N03A5[N03A5 REFERENCE TRANSFORMATION]
+```
+
+- [N03A1｜DESIGN DIRECTION](atomic/N03A1_DESIGN_DIRECTION.md)
+- [N03A2｜ALTERNATIVE SET](atomic/N03A2_ALTERNATIVE_SET.md)
+- [N03A3｜MATERIAL DISTINCTNESS](atomic/N03A3_MATERIAL_DISTINCTNESS.md)
+- [N03A4｜BASELINE / OFF](atomic/N03A4_BASELINE_OFF.md)
+- [N03A5｜REFERENCE TRANSFORMATION](atomic/N03A5_REFERENCE_TRANSFORMATION.md)

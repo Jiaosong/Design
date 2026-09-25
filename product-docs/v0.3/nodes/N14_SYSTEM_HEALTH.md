@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N14 |
+| Children | N14A, N14B, N14C — see [Atomic Children](#atomic-children) |
 | Type | Supporting Product Surface |
 | Product job | 让用户/运营者知道影响当前工作的真实系统能力、降级和风险 |
 | Inputs | integration/model/runtime/readback/telemetry health |
@@ -54,4 +55,16 @@ It should not expose raw infrastructure logs as the primary UX.
 
 ## Acceptance
 
-A dependency outage cannot silently turn into false product success or global project failure.
+A dependency outage cannot silently turn into false product success or global project failure.\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N14 SYSTEM HEALTH]
+    P --> N14A[N14A HEALTH SIGNAL]
+    P --> N14B[N14B DEGRADED ROUTE]
+    P --> N14C[N14C INCIDENT / RECOVERY]
+```
+
+- [N14A｜HEALTH SIGNAL](atomic/N14A_HEALTH_SIGNAL.md)
+- [N14B｜DEGRADED ROUTE](atomic/N14B_DEGRADED_ROUTE.md)
+- [N14C｜INCIDENT / RECOVERY](atomic/N14C_INCIDENT_RECOVERY.md)

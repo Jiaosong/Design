@@ -1,4 +1,4 @@
-# OLEANDER Node Documentation Contract v0.3
+# OLEANDER Node Documentation Contract v0.3.1
 
 [← Node Index](README.md)
 
@@ -33,6 +33,30 @@ N03A
 ```
 
 Node ID 是**产品文档 locator**，不是 OLEANDER Project ID、runtime object ID 或 authority ID。
+
+---
+
+## 2A｜Node Levels
+
+Node 粒度不是按文件数量机械拆分，而是按**独立产品责任**拆分：
+
+| Level | Example | Meaning |
+|---|---|---|
+| Root | N00 | 整体产品边界 / graph root |
+| Primary | N01 HOME / N06 ARTIFACTS / N10 SESSION KERNEL | first-class surface / kernel / control |
+| Mode / Subsystem | N03A EXPLORE / N10A RESUME | 有独立 product job 的子系统 |
+| Atomic | N01A Resume Snapshot / N06D Readback / N11B Scoped Rights | 可独立定义输入、输出、authority、failure、acceptance、metric 的最小产品能力 |
+
+Feature 只有同时满足以下条件才提升为 Atomic Node：
+
+1. 有独立的 product job；
+2. 有明确 inputs / outputs；
+3. 有独立 Human/System authority boundary；
+4. 有自己的 failure / degraded behaviour；
+5. 有独立 acceptance / metric / evaluation value；
+6. 被多个 flow、surface 或 downstream object 引用，值得拥有稳定 identity。
+
+否则继续保留为 Requirement，不为“一个功能点一个文件”而碎片化。
 
 ---
 
@@ -90,6 +114,18 @@ Node ID 是**产品文档 locator**，不是 OLEANDER Project ID、runtime objec
 
 ---
 
+## 5A｜One Map One Document
+
+产品图遵守：
+
+> **ONE CORE MAP → ONE MAP DOCUMENT**
+
+总览 README 只做地图索引。复杂关系分别维护为 Product Mindmap、Human–AI Loop、Autonomy × Control、Artifact Truth Chain、Decision Chain、Release Gates、Atomic Detail Maps 等独立 Mermaid 文档。
+
+地图是关系视图，不是 authority。边类型必须遵守 [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.1.md)。
+
+---
+
 ## 6｜No Duplication Rule
 
 Parent doc：
@@ -121,6 +157,25 @@ USER NEED
 ```
 
 Node 文档不是需求的终点。
+
+---
+
+## 7A｜Atomic Node Minimum Contract
+
+每个 Atomic Node 至少必须具有：
+
+```text
+NODE CARD
+CONTEXT GRAPH
+PRODUCT CONTRACT
+REQUIREMENT LINKS
+ACCEPTANCE
+FAILURE / DEGRADED BEHAVIOUR
+EVENTS / METRICS
+RELATIONS
+```
+
+Build-ready 之前再补齐真实 owner、依赖、test/eval evidence 和 release gate；不存在的 owner 或尚未执行的实验必须显式写 OPEN / UNASSIGNED / NOT_RUN。
 
 ---
 

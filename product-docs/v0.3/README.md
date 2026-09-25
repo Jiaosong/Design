@@ -1,9 +1,9 @@
-# OLEANDER Product Operating Package v0.3.0
+# OLEANDER Product Operating Package v0.3.1
 
 [← Product Docs](../README.md) · [← OLEANDER](../../README.md)
 
-**State:** `WORKING PRODUCT PACKAGE / NON-AUTHORITY / PRE-EXTERNAL-USER-VALIDATION`  
-**Date:** 2026-09-26  
+**State:** `WORKING PRODUCT PACKAGE / NON-AUTHORITY / PRE-EXTERNAL-USER-VALIDATION`
+**Date:** 2026-09-26
 **Product Owner:** Jiaosong
 
 > 本目录不是新的 OLEANDER Current / Project State / Governance / Artifact Registry / Professional Process / Promotion Authority。它是面向产品决策、跨职能协作、研发交付、验证和发布准备的产品工作层。
@@ -13,10 +13,17 @@
 # 0｜Graph-first Reading Layer
 
 ## [Product Node Graph](nodes/README.md)
+- [Atomic Node Index](nodes/ATOMIC_NODE_INDEX.md)
+- [Node Registry](nodes/NODE_REGISTRY.md)
+- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.1.md)
+- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.1.md)
+- [Visual Maps — one core map per document](maps/README.md)
 
-v0.3 内部产品定义现在采用：
+v0.3.1 内部产品定义现在采用：
 
 > **ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT**
+
+**92 product node documents（23 primary + 69 atomic） · 15 independent Mermaid map docs · 1 node registry · 1 node traceability matrix**
 
 先看总图，再点节点进入单节点文档：
 

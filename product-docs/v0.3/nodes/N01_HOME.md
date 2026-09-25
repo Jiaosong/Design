@@ -6,7 +6,7 @@
 |---|---|
 | Node ID | N01 |
 | Parent | N00 |
-| Children | none |
+| Children | N01A, N01B, N01C, N01D, N01E — see [Atomic Children](#atomic-children) |
 | Type | Product Surface |
 | User | Returning designer / lead |
 | Product job | 在最短路径内恢复当前真实设计状态 |
@@ -85,4 +85,20 @@ A returning user can identify the current design question, active artifact and n
 
 ## Events
 
-`project_resume_started` · `frontier_resolved` · `resume_corrected_by_user` · `resume_degraded`
+`project_resume_started` · `frontier_resolved` · `resume_corrected_by_user` · `resume_degraded`\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N01 HOME]
+    P --> N01A[N01A RESUME SNAPSHOT]
+    P --> N01B[N01B FRONTIER]
+    P --> N01C[N01C CRITICAL OPEN]
+    P --> N01D[N01D ACTIVE ARTIFACT]
+    P --> N01E[N01E NEXT ACTION]
+```
+
+- [N01A｜RESUME SNAPSHOT](atomic/N01A_RESUME_SNAPSHOT.md)
+- [N01B｜FRONTIER](atomic/N01B_FRONTIER.md)
+- [N01C｜CRITICAL OPEN](atomic/N01C_CRITICAL_OPEN.md)
+- [N01D｜ACTIVE ARTIFACT](atomic/N01D_ACTIVE_ARTIFACT.md)
+- [N01E｜NEXT ACTION](atomic/N01E_NEXT_ACTION.md)

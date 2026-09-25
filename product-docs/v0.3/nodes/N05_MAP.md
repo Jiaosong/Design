@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N05 |
+| Children | N05A, N05B, N05C, N05D — see [Atomic Children](#atomic-children) |
 | Type | Product Surface |
 | Product job | 表达 materially important Design Relation、dependency 与 change impact |
 | Inputs | Relations, decisions, artifacts, findings, domain interfaces |
@@ -56,4 +57,18 @@ MAP-F01–F11: Relation Create/Link/Importance/Stability, Change Impact, Whole/L
 - only material relations become first-class;
 - change does not imply global reopen;
 - unknown dependency remains UNKNOWN;
-- unaffected valid work is explicitly preserved.
+- unaffected valid work is explicitly preserved.\n\n## Atomic Children
+
+```mermaid
+flowchart TB
+    P[N05 MAP]
+    P --> N05A[N05A DESIGN RELATION]
+    P --> N05B[N05B CHANGE IMPACT]
+    P --> N05C[N05C REVISION SCOPE]
+    P --> N05D[N05D PROFESSIONAL BINDING]
+```
+
+- [N05A｜DESIGN RELATION](atomic/N05A_DESIGN_RELATION.md)
+- [N05B｜CHANGE IMPACT](atomic/N05B_CHANGE_IMPACT.md)
+- [N05C｜REVISION SCOPE](atomic/N05C_REVISION_SCOPE.md)
+- [N05D｜PROFESSIONAL BINDING](atomic/N05D_PROFESSIONAL_BINDING.md)
