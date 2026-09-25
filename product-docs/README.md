@@ -48,4 +48,6 @@ PRD 中的 Interaction Model / Requirements / Metrics → [Evals](../evals/) →
 
 候选实现位于独立 Candidate 工作流中；它仍是 `CANDIDATE / NO PROMOTION`，不是 Current。
 
+[查看 Human–AI Co-Design vNext Candidate](https://github.com/Jiaosong/Design/tree/candidate/oleander-human-ai-codesign-vnext-20260924/00-governance/runtime/candidates/human-ai-codesign-vnext)
+
 PRD 只描述产品需求与验收口径，不通过文档文字把候选实现升级成正式产品状态。
