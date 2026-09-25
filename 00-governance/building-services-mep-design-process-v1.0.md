@@ -3,7 +3,7 @@
 **Status:** CURRENT PROFESSIONAL DOMAIN PROCESS
 **Domain:** Building Services / MEP Engineering
 **Authority position:** subordinate to `complex-project-master-runtime-v1.0.md`, `professional-domain-process-contract-v1.0.md`, Current Knowledge Authority and applicable jurisdiction / responsible building-services engineering authority.
-**External professional basis:** BSRIA BG 6/2018 *Design framework for building services* as a current responsibility/deliverable framework aligned to building-project stages; CIBSE Commissioning Code M (2022) for commissioning management from preparation/briefing through in-use; CIBSE TM54 (2022) for design-stage operational-energy evaluation and design-to-measured-performance boundaries.
+**External professional basis:** BSRIA BG 6/2018 *Design framework for building services* as a current responsibility/deliverable framework aligned to building-project stages; CIBSE Commissioning Code M (2022) for commissioning management from preparation/briefing through in-use; CIBSE TM54 (2022) for design-stage operational-energy evaluation and design-to-measured-performance boundaries; ASHRAE Guideline 14-2023 for bounded measurement and verification of energy, demand and water savings from measured pre/post data.
 **Existing OLEANDER knowledge mount owner:** `IDX-ARCH-MEP-004｜机电系统｜需求—设备—控制—调试—运维` plus the Current `MEP & Energy` domain and applicable L5/L6 sources/evidence.
 
 ---
@@ -42,6 +42,8 @@ SCHEMATIC COMPLETE ≠ DISTRIBUTION COORDINATED
 CLASH-FREE ≠ COMMISSIONED
 CONTROLS POINTS LIST ≠ CONTROL SEQUENCE VERIFIED
 DESIGN ENERGY MODEL ≠ IN-USE ENERGY PERFORMANCE
+ENERGYPLUS / DESIGN SIMULATION ≠ MEASURED SAVINGS
+UTILITY-BILL OR METER DELTA ≠ CAUSAL SAVINGS PROOF
 TECHNICAL DESIGN ≠ INSTALLATION / SPECIALIST PRODUCTION INFORMATION
 MEP PROCESS PASS ≠ FIRE / ELECTRICAL / STATUTORY APPROVAL
 MEP PROCESS PASS ≠ DESIGN KEEP
@@ -290,21 +292,29 @@ Every material control sequence identifies:
 - trending / metering;
 - acceptance test.
 
-### 6.5 Design-to-Operational Performance Register
+### 6.5 Design-to-Operational Performance / M&V Register
 
-When operational energy / performance is claimed, preserve:
+When operational energy / performance or measured savings is claimed, preserve:
 
-- design model / methodology;
+- design model / methodology and exact model revision;
 - occupancy and operating-hour assumptions;
 - systems / controls representation;
 - regulated and unregulated energy uses as applicable;
 - sensitivity / scenario cases;
 - targets / benchmarks;
+- measurement boundary and meter/data identity;
+- baseline and reporting/post period;
+- independent variables / normalization or adjustment method where applicable;
+- instrument/data-quality state;
 - uncertainty / exclusions;
-- measured-performance comparison plan;
+- calculated measured-performance or savings result;
+- design-vs-measured discrepancy;
+- tuning/repair/retest or re-measure action;
 - post-occupancy / G9 readback.
 
-A design estimate remains a modelled estimate until measured evidence exists.
+Task-scoped measured-savings source: Notion `SRC-ASHRAE-G14-MV-2023-001` (`3e2b86be-5c47-81e4-9804-fd6afe4c4603`).
+
+A design estimate remains a modelled estimate until measured evidence exists. A measured pre/post difference is not automatically attributable savings unless the declared M&V boundary, normalization/model, data quality and uncertainty support that bounded claim.
 
 ---
 
@@ -887,6 +897,27 @@ DESIGN ESTIMATE
 → CAUSE / UNCERTAINTY
 → TUNING / REPAIR / DESIGN LESSON
 ```
+
+### Measured savings / M&V boundary
+
+Where an in-use claim concerns measured energy, demand or water **savings**, bind the actual M&V object:
+
+```text
+M&V OBJECT / BOUNDARY
+→ METER / DATA IDENTITY
+→ BASELINE PERIOD
+→ POST / REPORTING PERIOD
+→ INDEPENDENT VARIABLES / NORMALIZATION
+→ MODEL / ADJUSTMENT METHOD
+→ DATA QUALITY / UNCERTAINTY
+→ SAVINGS RESULT
+→ EXCEPTIONS / CHANGE
+→ RE-MEASURE / REOPEN
+```
+
+ASHRAE Guideline 14-2023 is process evidence for measured-savings M&V; it does not turn a design EnergyPlus/TM54 model into measured savings, and it does not prove the cause of a utility change without the declared boundary/model/data evidence.
+
+If occupancy, operating hours, weather exposure, system boundary, meter mapping, major equipment, controls strategy or other materially independent variables change beyond the accepted M&V basis, reopen the affected comparison rather than preserving the old savings claim by default.
 
 ### Native outputs
 
