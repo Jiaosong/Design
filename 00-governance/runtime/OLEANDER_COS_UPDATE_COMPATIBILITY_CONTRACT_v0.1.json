@@ -1,0 +1,63 @@
+{
+  "contract_id": "OLEANDER_COS_UPDATE_COMPATIBILITY_CONTRACT_v0.1",
+  "status": "ACTIVE_NON_AUTHORITY_RUNTIME_COMPATIBILITY_CONTRACT",
+  "authority_ceiling": "COMPATIBILITY_OBSERVATION_AND_BOUNDED_REBIND_ONLY",
+  "lifecycle_rule": {
+    "cos_owned_by_oleander": false,
+    "cos_version_pinned_by_oleander": false,
+    "cos_update_may_proceed_independently": true,
+    "force_downgrade_allowed": false,
+    "patch_cos_binary_allowed": false,
+    "patch_cos_updater_allowed": false
+  },
+  "stable_bootstrap": {
+    "binder": "00-governance/runtime/bind_chat_on_steroids_oleander.py",
+    "dynamic_entry": "00-governance/runtime/OLEANDER_CHAT_ENTRY_RUNTIME.md",
+    "binding_revision_source": "binder.BINDING_REVISION",
+    "forbid_capability_implementation_pins": true,
+    "forbid_installed_cos_version_pin": true
+  },
+  "required_checks": [
+    "COMPATIBILITY_CONTRACT_VALID",
+    "COS_EXECUTABLE_PRESENT",
+    "COS_VERSION_OBSERVED",
+    "COS_UPDATER_PRESENT",
+    "COS_CONFIG_PRESENT_AND_PARSEABLE",
+    "COS_BOOTSTRAP_MARKER_PRESENT",
+    "COS_TOOL_CALL_FEEDBACK_ENABLED",
+    "COS_BOOTSTRAP_DYNAMIC_ENTRY_ONLY",
+    "COS_NO_INSTALLED_VERSION_PIN",
+    "CHAT_RUNTIME_ENTRY_VALID",
+    "RESOLVER_ADAPTER_SELF_TEST_PASS",
+    "RUNTIME_BRIDGE_SELF_TEST_PASS",
+    "CHAT_COS_BRIDGE_SELF_TEST_PASS",
+    "BAIDU_LOCAL_RUNTIME_PASS"
+  ],
+  "compatibility_states": {
+    "compatible": "PASS_COS_UPDATE_COMPATIBILITY",
+    "drift": "HOLD_COS_UPDATE_COMPATIBILITY"
+  },
+  "drift_policy": {
+    "effect": "HOLD_AFFECTED_OLEANDER_INTEGRATION_ONLY",
+    "block_cos_update": false,
+    "disable_cos_updater": false,
+    "require_cos_downgrade": false,
+    "create_parallel_state_store": false
+  },
+  "repair_policy": {
+    "default_mode": "READ_ONLY",
+    "explicit_flag": "--repair-bootstrap",
+    "allowed_action": "REAPPLY_EXISTING_STABLE_BOOTSTRAP_TO_COMPATIBLE_USER_CONFIG",
+    "backup_required": true,
+    "required_existing_field_types": {
+      "mcp.instructions": "string",
+      "goal.prompt": "nonempty_string",
+      "goal.objectivePrompt": "nonempty_string",
+      "goal.loopPrompt": "nonempty_string",
+      "goal.includeToolCalls": "boolean"
+    },
+    "schema_drift_behavior": "FAIL_CLOSED_WITHOUT_TOUCHING_COS_BINARIES_OR_UPDATER"
+  },
+  "proof_boundary": "CURRENT_INSTALLED_AND_OBSERVED_COS_SURFACE_ONLY",
+  "authority_effect": "NONE"
+}

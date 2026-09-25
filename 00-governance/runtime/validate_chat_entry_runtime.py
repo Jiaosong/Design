@@ -34,6 +34,8 @@ def main() -> int:
         "oleander-baidu-storage@oleander-personal 0.1.1",
         "EXECUTION INTENT != MUTATION PERMISSION",
         "Do not rewrite the CoS config or require a CoS restart for ordinary OLEANDER runtime updates.",
+        "validate_cos_update_compatibility.py",
+        "must not block the CoS updater",
     ]
     for text in required_entry_text:
         if text not in entry:

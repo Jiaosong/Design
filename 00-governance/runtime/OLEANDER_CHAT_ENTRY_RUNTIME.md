@@ -68,3 +68,5 @@ The CoS configuration contains only a stable bootstrap instruction pointing to *
 **Do not rewrite the CoS config or require a CoS restart for ordinary OLEANDER runtime updates.**
 
 Only a change to the bootstrap mechanism itself requires rebinding/restarting CoS.
+
+CoS itself has an independent application lifecycle and may update without OLEANDER owning, pinning, freezing or downgrading it. After a material CoS update, use `00-governance/runtime/validate_cos_update_compatibility.py`. Compatibility drift HOLDs only the affected OLEANDER integration; it must not block the CoS updater. The compatibility probe is non-authority readback and does not grant mutation, Project State, Current, Design KEEP, professional PASS or Promotion.
