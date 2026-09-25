@@ -345,6 +345,7 @@ Existing logical objects should converge on stable IDs and schema versions rathe
 - `PROJECT_DESIGN_DNA` when applicable
 - `DESIGN_QUALITY_DEVELOPMENT_RECEIPT`
 - domain-specific Professional Process receipts such as `ARCHITECTURE_DESIGN_DEVELOPMENT_RECEIPT`
+- `PROFESSIONAL_EXECUTION_CAPABILITY_PLAN` when material native-output execution requires explicit runtime/specialist resolution
 - `CROSS_DISCIPLINARY_INTEGRATION_PACKET`
 - `INTERFACE_REGISTER`
 - `INTERFACE_ACCEPTANCE_CONTRACT`
@@ -394,7 +395,7 @@ Promotion eligibility requires all applicable conditions below:
 10. No unresolved shared-variable / interface authority conflict remains.
 11. No dependency consumed by the promoted claim is stale or requires reopen.
 12. Every material change has propagated to affected downstream states.
-13. Every required native output has a Current callable owner or an explicit project-authorized specialist owner. A Candidate Skill / Candidate Body such as the current Technical Drawing candidate cannot satisfy this condition by registry presence alone. For Technical Drawing, a project specialist route must resolve to a current non-stale `PROJECT_SPECIALIST_OWNER_BINDING` with verified authorization, explicit scope and native outputs; generic OLEANDER Skills cannot self-bind as the specialist.
+13. Every required native output has a Current callable owner or an explicit project-authorized specialist owner. When a `PROFESSIONAL_EXECUTION_CAPABILITY_PLAN` is triggered, it is current/non-stale and `EXECUTABLE` with no in-claim blocking capability. A Candidate Skill / Candidate Body such as the current Technical Drawing candidate cannot satisfy this condition by registry presence alone. For any `PROJECT_SPECIALIST_BOUND` route, the capability plan must reference the applicable current non-stale `PROJECT_SPECIALIST_OWNER_BINDING`; for Technical Drawing that binding must carry verified authorization, explicit scope and native outputs, and generic OLEANDER Skills cannot self-bind as the specialist.
 14. When operational acceptance is part of the intended claim, its current compilation is non-stale `PASS`; blocking defects are resolved and any deferred required test is explicitly outside the current claim.
 15. All triggered Artifact / Technical / Evidence / Discipline / Persistence reviews meet their applicable PASS requirement.
 16. Independent Design Review is `KEEP` for the intended claim.
@@ -456,5 +457,5 @@ Project-specific dimensions, client facts, one-off field conditions and unresolv
 
 ## 18｜Current execution formula
 
-**Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Resolve Capability / Skill / Tool -> Execute / Prototype Native Artifacts -> Actual Readback -> Close Triggered Reviews / Receipts -> Read Back Integration when triggered -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> Deliver / Observe -> G9 bounded re-entry.**
+**Resolve Authority -> Route Current Knowledge -> Compile Design Intelligence -> Compile Shared Design Quality & Design Development Scope -> Run Authentic Professional Domain Process -> Resolve Integration when coupled -> Resolve Capability / Skill / Tool -> Compile Professional Execution Capability Plan when triggered -> Execute / Prototype Native Artifacts -> Actual Readback -> Close Triggered Reviews / Receipts -> Read Back Integration when triggered -> Independent Whole-System Design Decision -> Persist when required -> Human Promotion Decision -> Deliver / Observe -> G9 bounded re-entry.**
 
