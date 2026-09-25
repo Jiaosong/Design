@@ -10,7 +10,6 @@ from typing import Any
 import mcp.types as types
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
-from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
@@ -486,27 +485,45 @@ async def policy_route(request: Request) -> Response:
 app = mcp.streamable_http_app()
 
 
+def _mcp_auth_failure(observed_authorization: str) -> tuple[int, str, str] | None:
+    """Return an inbound MCP auth failure, or None when the request may proceed."""
+    expected = os.getenv("OLEANDER_APP_BEARER_TOKEN", "").strip()
+    trusted_private_transport = os.getenv(
+        "OLEANDER_TRUST_PRIVATE_TRANSPORT", ""
+    ).strip().lower() in {"1", "true", "yes", "on"}
+
+    if expected:
+        if observed_authorization != f"Bearer {expected}":
+            return 401, "unauthorized", "Valid OLEANDER app bearer token required."
+        return None
+
+    if _token_configured() and not trusted_private_transport:
+        return (
+            503,
+            "mcp_auth_required",
+            (
+                "Baidu credentials are configured but no inbound MCP authentication is active. "
+                "Configure OLEANDER_APP_BEARER_TOKEN for a compatible client, or set "
+                "OLEANDER_TRUST_PRIVATE_TRANSPORT=true only behind a verified private/authenticated transport."
+            ),
+        )
+    return None
+
+
 class _OptionalBearerGuard(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
-        expected = os.getenv("OLEANDER_APP_BEARER_TOKEN", "").strip()
-        if expected and request.url.path.startswith("/mcp"):
-            observed = request.headers.get("authorization", "")
-            if observed != f"Bearer {expected}":
+        if request.url.path.startswith("/mcp"):
+            failure = _mcp_auth_failure(request.headers.get("authorization", ""))
+            if failure:
+                status_code, code, message = failure
                 return JSONResponse(
-                    {"error": "unauthorized", "message": "Valid OLEANDER app bearer token required."},
-                    status_code=401,
+                    {"error": code, "message": message},
+                    status_code=status_code,
                 )
         return await call_next(request)
 
 
 app.add_middleware(_OptionalBearerGuard)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["GET", "POST", "OPTIONS"],
-    allow_headers=["*"],
-    allow_credentials=False,
-)
 
 
 if __name__ == "__main__":

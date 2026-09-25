@@ -36,6 +36,8 @@ Preferred for workstation testing: use OpenAI Secure MCP Tunnel or another authe
 
 Do **not** expose this server as an unauthenticated public endpoint because the server holds a Baidu access token capable of acting on the user's storage account.
 
+The server now fails closed when Baidu credentials are configured but neither an app bearer token nor an explicitly trusted private transport is active. `OLEANDER_TRUST_PRIVATE_TRANSPORT=true` must be used only behind a verified authenticated/private transport such as a working Secure MCP Tunnel or an equivalent private gateway. It is not a shortcut for a public deployment.
+
 For a durable deployment, run the Docker image behind an authenticated reverse proxy / private gateway and inject the Baidu token through a secret store. The candidate also supports an optional `OLEANDER_APP_BEARER_TOKEN` guard for generic MCP clients that can send a static Authorization header; this is not a substitute for a proper OAuth/private-tunnel deployment when ChatGPT cannot supply that header.
 
 ## 4. ChatGPT app connection

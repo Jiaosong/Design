@@ -32,5 +32,6 @@ A deployment without `BAIDU_NETDISK_ACCESS_TOKEN` is intentionally useful for tr
 
 No provider file/search/write tools are advertised until the upstream Baidu MCP connection can be authenticated.
 
-`DEPLOYMENT READY != BAIDU AUTH != CHATGPT INSTALL != CURRENT PROMOTION`.
+Do not add `BAIDU_NETDISK_ACCESS_TOKEN` to a public Vercel deployment until inbound user/client authentication is in place. When Baidu credentials are present, the app itself returns `mcp_auth_required` unless either `OLEANDER_APP_BEARER_TOKEN` is configured or `OLEANDER_TRUST_PRIVATE_TRANSPORT=true` is explicitly set behind a verified private transport.
 
+`DEPLOYMENT READY != BAIDU AUTH != CHATGPT INSTALL != CURRENT PROMOTION`.

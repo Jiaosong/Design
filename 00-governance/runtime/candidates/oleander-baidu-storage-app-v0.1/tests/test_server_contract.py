@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import base64
+import os
 import unittest
 from unittest.mock import patch
 
@@ -162,6 +163,54 @@ class ServerContractTests(unittest.TestCase):
         self.assertEqual(len(calls), 5)
         self.assertTrue(all(name == "make_dir" for name, _ in calls))
         self.assertTrue(all(args.get("rtype") == 0 for _, args in calls))
+
+    def test_server_source_has_no_wildcard_cors(self) -> None:
+        with open(server.__file__, "r", encoding="utf-8") as handle:
+            source = handle.read()
+        self.assertNotIn("CORSMiddleware", source)
+        self.assertNotIn('allow_origins=["*"]', source)
+
+    def test_token_backed_mcp_requires_inbound_auth_or_private_transport(self) -> None:
+        with patch.dict(
+            os.environ,
+            {
+                "BAIDU_NETDISK_ACCESS_TOKEN": "TEST-BAIDU-TOKEN",
+                "OLEANDER_APP_BEARER_TOKEN": "",
+                "OLEANDER_TRUST_PRIVATE_TRANSPORT": "false",
+            },
+            clear=False,
+        ):
+            failure = server._mcp_auth_failure("")
+            self.assertIsNotNone(failure)
+            self.assertEqual(failure[0], 503)
+            self.assertEqual(failure[1], "mcp_auth_required")
+
+    def test_bearer_guard_blocks_wrong_token_before_mcp(self) -> None:
+        with patch.dict(
+            os.environ,
+            {
+                "BAIDU_NETDISK_ACCESS_TOKEN": "TEST-BAIDU-TOKEN",
+                "OLEANDER_APP_BEARER_TOKEN": "INBOUND-SECRET",
+                "OLEANDER_TRUST_PRIVATE_TRANSPORT": "false",
+            },
+            clear=False,
+        ):
+            failure = server._mcp_auth_failure("Bearer WRONG")
+            self.assertIsNotNone(failure)
+            self.assertEqual(failure[0], 401)
+            self.assertEqual(failure[1], "unauthorized")
+
+    def test_trusted_private_transport_allows_token_backed_mcp(self) -> None:
+        with patch.dict(
+            os.environ,
+            {
+                "BAIDU_NETDISK_ACCESS_TOKEN": "TEST-BAIDU-TOKEN",
+                "OLEANDER_APP_BEARER_TOKEN": "",
+                "OLEANDER_TRUST_PRIVATE_TRANSPORT": "true",
+            },
+            clear=False,
+        ):
+            self.assertIsNone(server._mcp_auth_failure(""))
 
 
 if __name__ == "__main__":
