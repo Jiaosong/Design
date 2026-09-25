@@ -1,12 +1,34 @@
 {
   "schema": "oleander.baidu-storage-local-runtime-receipt.v0.1",
-  "status": "CANDIDATE_LOCAL_STDIO_SELECTED",
+  "status": "PASS_LOCAL_COS_CODEX_BAIDU_STORAGE",
+  "recorded_at": "2026-09-25T18:09:29Z",
   "runtime": "COS_CODEX_LOCAL_PLUGIN",
   "plugin_version": "0.1.1",
   "transport": "STDIO",
+  "codex_plugin": {
+    "plugin_id": "oleander-baidu-storage@oleander-personal",
+    "installed": true,
+    "enabled": true,
+    "mcp_server": "oleander_baidu_storage",
+    "mcp_enabled": true,
+    "resolved_transport": "stdio"
+  },
   "credential_store": "WINDOWS_DPAPI_CURRENT_USER_SECRET_NOT_RECORDED",
   "storage_root": "/OLEANDER_VAULT",
   "vault_bootstrap": "PASS_PREVIOUSLY_READ_BACK",
+  "installed_runtime_readback": {
+    "tool_count": 17,
+    "required_tools_present": true,
+    "provider_connection": "connected",
+    "provider_probe_error": false,
+    "quota_error": false,
+    "quota_errno": 0
+  },
+  "verification": {
+    "unit_tests": "43_PASS",
+    "candidate_validator": "PASS",
+    "workstation_acceptance": "PASS_LOCAL_COS_CODEX_BAIDU_STORAGE"
+  },
   "authority_effect": "NONE",
   "does_not_prove": [
     "PROJECT_STATE",

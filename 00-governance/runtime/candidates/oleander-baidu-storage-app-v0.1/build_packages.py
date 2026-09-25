@@ -23,8 +23,8 @@ APP_INCLUDE = [
     ".env.example",
     "requirements.txt",
     "LOCAL_RUNTIME_RECEIPT_v0.1.json",
-    "run_local.ps1",
     "run_local_secure.ps1",
+    "verify_local_runtime.ps1",
     "configure_baidu_token.ps1",
     "app",
     "scripts",
@@ -93,7 +93,7 @@ def main() -> int:
                 "file_count": app_count,
             },
             {
-                "role": "CHATGPT_PLUGIN_PACKAGE",
+                "role": "LOCAL_CODEX_PLUGIN_PACKAGE",
                 "filename": PLUGIN_ZIP.name,
                 "sha256": plugin_sha,
                 "size_bytes": plugin_size,
@@ -101,7 +101,7 @@ def main() -> int:
             },
         ],
         "does_not_prove": [
-            "PACKAGE_EXISTS_NOT_ACCOUNT_INSTALLATION",
+            "PACKAGE_EXISTS_NOT_LOCAL_INSTALLATION",
             "PACKAGE_EXISTS_NOT_BAIDU_AUTH",
             "PACKAGE_EXISTS_NOT_CURRENT_PROMOTION",
         ],

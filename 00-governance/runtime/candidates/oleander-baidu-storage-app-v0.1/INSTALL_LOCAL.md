@@ -44,9 +44,12 @@ Run:
 py -3.13 -m unittest discover -s tests -q
 py -3.13 validate_candidate.py
 py -3.13 build_packages.py
+.\verify_local_runtime.ps1
 ```
 
 The expected plugin package is `OLEANDER-Baidu-Storage-Plugin-0.1.1-CANDIDATE.zip`.
+
+`verify_local_runtime.ps1` is the final workstation acceptance check. It verifies the installed/enabled Codex plugin, the resolved stdio MCP binding, the actual installed wrapper, provider connectivity, `/OLEANDER_VAULT`, and a real quota readback. It does not print the Baidu access token.
 
 ## Boundary
 

@@ -46,6 +46,14 @@ Delete is disabled by default. Share-link creation remains unsupported in v0.1.1
 
 See `INSTALL_LOCAL.md`.
 
+Final workstation acceptance:
+
+```powershell
+.\verify_local_runtime.ps1
+```
+
+Expected final marker: `PASS_LOCAL_COS_CODEX_BAIDU_STORAGE`.
+
 For manual HTTP debugging:
 
 ```powershell

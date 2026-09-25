@@ -5,12 +5,12 @@
     {
       "role": "LOCAL_MCP_RUNTIME",
       "filename": "OLEANDER-Baidu-Storage-Local-0.1.1-CANDIDATE.zip",
-      "sha256": "f4d1740580286898ff1b39802700460ddafa5d7fe4506213271b25d9c621b1ec",
-      "size_bytes": 29359,
-      "file_count": 23
+      "sha256": "7b4631be7d097e82a980e2cf81fdf8457c1cf4d12201dc37617ae2f269c38dd9",
+      "size_bytes": 31663,
+      "file_count": 24
     },
     {
-      "role": "CHATGPT_PLUGIN_PACKAGE",
+      "role": "LOCAL_CODEX_PLUGIN_PACKAGE",
       "filename": "OLEANDER-Baidu-Storage-Plugin-0.1.1-CANDIDATE.zip",
       "sha256": "d7ad2ad368ff95999dc1e90056f8d48eb35cfc5e598d156f78b8b24e0945a13c",
       "size_bytes": 15221,
@@ -18,7 +18,7 @@
     }
   ],
   "does_not_prove": [
-    "PACKAGE_EXISTS_NOT_ACCOUNT_INSTALLATION",
+    "PACKAGE_EXISTS_NOT_LOCAL_INSTALLATION",
     "PACKAGE_EXISTS_NOT_BAIDU_AUTH",
     "PACKAGE_EXISTS_NOT_CURRENT_PROMOTION"
   ]

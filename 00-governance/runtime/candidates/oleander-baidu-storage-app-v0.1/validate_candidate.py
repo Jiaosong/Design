@@ -31,6 +31,8 @@ def main() -> int:
         "INSTALL_LOCAL.md",
         "COS_LOCAL_UPLOAD.md",
         "LOCAL_RUNTIME_RECEIPT_v0.1.json",
+        "verify_local_runtime.ps1",
+        "scripts/verify_installed_local_runtime.py",
         "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
         "CANDIDATE_MANIFEST_v0.1.json",
         "app/server.py",
@@ -168,7 +170,7 @@ def main() -> int:
                 names = zf.namelist()
                 if any("__pycache__" in n or n.endswith(".pyc") or n.endswith("/.env") or n == ".env" for n in names):
                     fail(f"PACKAGE_FORBIDDEN_CONTENT:{package['filename']}", failures)
-                if package.get("role") == "CHATGPT_PLUGIN_PACKAGE":
+                if package.get("role") == "LOCAL_CODEX_PLUGIN_PACKAGE":
                     required_plugin_entries = {
                         "plugin.json",
                         "mcp.json",
