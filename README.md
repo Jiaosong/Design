@@ -2,689 +2,754 @@
 
 **AI Product · Human–AI Collaboration · Product & Design Systems**
 
-这里既是我的个人设计作品与研究成果公开档案，也是 **OLEANDER Human–AI Co-Design System** 的主要公开项目仓库。
+OLEANDER 是我持续设计、实现与验证的一套 **Human–AI Co-Design System**。  
+它既是一项 0→1 AI 产品实践，也是我用真实设计项目验证长期人机协作机制的工作仓库。
 
-我的正式背景是 **产品设计**，实践覆盖交互、视觉、CMF、三维／空间设计与 AI 协同工作流。我目前重点关注一个产品问题：
+我的正式背景是 **产品设计**，实践覆盖交互、视觉、CMF、三维、空间／建筑研究与 AI 协同工作流。  
+我长期关注的不是“AI 能不能再多生成一个结果”，而是：
 
-> **如何把“能力很强但不稳定的 AI 模型”，设计成一个用户可以长期、连续、可控地协作的产品。**
+> **如何把能力很强、但存在不确定性与上下文限制的 AI，设计成一个用户可以长期、连续、可控地协作的产品。**
 
-GitHub 在这个项目中的作用不是单纯存代码，而是承担三件事：
-
-1. **产品证据**：记录 OLEANDER 的产品机制、交互规则、验证与迭代；
-2. **设计证据**：公开作品、研究、原型、视觉／空间／CMF 等设计成果；
-3. **可追溯证据**：保留来源、状态、测试、失败、版本与治理边界，避免把“存在”误写成“已经验证”。
-
-仓库不是内部任务管理首页。治理版本、迁移状态、Legacy 映射和底层机器记录存在于仓库中，但不作为外部访客的第一阅读层。
+[个人主页](https://github.com/Jiaosong) · [案例目录](05-cases/) · [评估体系](evals/) · [Governance](00-governance/README.md)
 
 ---
 
-# 先看这里｜3 分钟理解这个仓库
+## TL;DR｜先用 1 分钟理解
 
-如果你第一次进入，不需要从 00-governance 开始阅读。
+**OLEANDER 要解决的问题**
 
-建议先理解下面四件事：
+传统 AI Chat 擅长单次回答，但复杂项目需要长期状态、知识、决策、版本、文件、验证和人工控制。OLEANDER 尝试把这些能力组织成一个持续协作系统。
 
-### 1. 我在做什么
+**它不是**
 
-我在探索 **AI Product + Human–AI Collaboration + Professional Workflow**。
+- 单纯的 Prompt 集合
+- 只负责生成图片或文本的工具
+- 完全自动化替代设计师的 Agent
+- 把聊天记录直接当项目状态的系统
 
-重点不是“让 AI 生成更多内容”，而是解决长期专业项目中的：
+**它更接近**
 
-- 上下文连续性
-- 正式项目状态
-- AI 自主性与用户控制
-- 决策权
-- 知识与证据可信度
-- 多方案探索
-- 执行后的验证
-- 长期系统学习
+> AI Chat → AI Workflow → AI Workspace → Long-term Human–AI Collaboration
 
-### 2. OLEANDER 是什么
+**核心产品原则**
 
-OLEANDER 是一个持续演进的 **Human–AI Co-Design System**。
+> **Conversation is an interface. Project State is the product reality.**
 
-它将传统：
-
-**Prompt → Output**
-
-重新组织为：
-
-**Understand → Explore → Compare → Decide → Execute → Readback → Update State → Continue**
-
-### 3. 仓库里有什么
-
-这里同时包含：
-
-- OLEANDER 产品与治理体系
-- AI 产品机制与测试
-- 可复用设计工作流／Skills
-- 真实设计案例
-- 设计研究与练习
-- 视觉、品牌、CMF、空间、建筑与交互方向成果
-- 评估、回归与失败证据
-
-### 4. 如何判断内容成熟度
-
-本仓库不会把“文件存在”“AI 生成”“原型完成”自动等同于“已经验证”。
-
-你会看到 **RESEARCH、CONCEPT、PROTOTYPED、VISUALIZED、TEST PLANNED、NOT RUN、VALIDATION PENDING、PASS** 等状态。它们用于明确区分：
-
-**研究 → 判断 → 原型 → 测试计划 → 实际验证 → 当前有效结果**
+> **Trustworthy Automation + Meaningful Human Control**
 
 ---
 
-# 推荐阅读路线
+# 01｜项目背景：为什么做 OLEANDER
 
-不同读者不需要按照同一个顺序阅读。
+长期使用通用 AI 进行建筑、视觉、空间、研究和复杂知识工作时，我发现很多失败并不来自“模型不够聪明”，而来自产品层。
 
-## A｜如果你是招聘者 / 产品经理面试官
+典型问题包括：
 
-建议阅读顺序：
+| 现象 | 更底层的产品问题 |
+|---|---|
+| 新会话里 AI 不知道项目做到哪里 | Project Continuity |
+| 聊天记忆、事实、旧版本混在一起 | Project State |
+| AI 太被动，需要一步步提示 | Agent Autonomy |
+| AI 太主动，会擅自推进关键决定 | Human Control / Decision Rights |
+| 文件、来源、判断、推断混在一起 | Knowledge & Evidence |
+| 多方案只是同一个方案的表面变体 | Design Exploration |
+| 工具执行结束就默认任务成功 | Readback / Validation |
+| 项目经验难以进入下一项目 | System Evolution |
 
-**README → OLEANDER 产品问题 → Selected Works → evals → 00-governance**
+因此，我把最初的问题：
 
-重点看：
+> “怎样让 AI 回答得更好？”
 
-1. 我如何定义问题；
-2. 如何把模糊 AI 问题拆成产品机制；
-3. 如何处理 Agent Autonomy × Human Control；
-4. 如何通过真实项目与测试验证产品；
-5. 如何从失败反推下一轮产品迭代。
+逐步重新定义成：
 
-推荐入口：
+> **怎样设计一个能够在长期项目里维持状态、权限、知识、验证和人类决策权的 AI 产品？**
 
-- 本 README：产品定位与整体结构
-- [05-cases/](05-cases/)：真实项目如何承载产品验证
-- [evals/](evals/)：产品机制如何被测试
-- [00-governance/README.md](00-governance/README.md)：需要进一步理解系统架构时再进入
-
-**不建议第一步直接阅读大量治理协议。**
-
-这些文件是系统可靠性的底层证据，但不是理解产品价值的最短路径。
+这成为 OLEANDER 的产品起点。
 
 ---
 
-## B｜如果你是 AI / Agent 产品方向读者
+# 02｜目标用户与使用场景
 
-建议阅读：
+OLEANDER 第一阶段并不面向所有用户，而是聚焦于：
 
-**产品问题 → evals → governance → skills → cases**
+> **需要和 AI 长期协作完成复杂专业项目的知识工作者。**
 
-重点关注：
+目前主要通过以下真实场景验证：
 
-- Project State
-- Context Recovery
-- Human Decision Rights
-- Agent Autonomy
-- Readback
-- Provenance
-- Cross-context continuity
-- Failure handling
-- Runtime / Trust / Change Control
+- 产品与服务设计
+- 视觉与品牌设计
+- CMF 与材料研究
+- 空间与建筑设计
+- 文化与设计研究
+- 数字界面与网页
+- 多文件、多版本、长周期专业项目
 
-推荐入口：
+这些场景共同具有几个特征：
 
-- [evals/README.md](evals/README.md)
+- 项目不会在一个 Prompt 内完成
+- 用户本身拥有专业判断
+- 需要处理多个版本与多个对象
+- AI 可以承担大量工作，但不能拥有所有决策权
+- 输出是否“存在”与是否“正确”是两回事
+- 项目价值往往来自长期积累，而不是一次生成
+
+---
+
+# 03｜核心产品假设
+
+OLEANDER 当前围绕七个核心假设持续验证。
+
+### H1｜Project Continuity
+一个长期 AI 产品必须知道“项目现在在哪里”，而不是只记得“用户以前说过什么”。
+
+### H2｜Project State
+聊天历史不能直接承担正式项目状态。Current、Candidate、Evidence、Decision、Artifact 等对象需要有明确身份与关系。
+
+### H3｜Autonomy × Control
+Agent 产品不能只做“全自动 / 全手动”二分。不同动作需要不同权限等级。
+
+### H4｜Knowledge & Evidence
+事实、来源、推断、设计判断与开放问题必须保持可区分，否则 AI 很容易把“可能”变成“已经确认”。
+
+### H5｜Design Exploration
+真正有价值的多方案不是数量更多，而是候选方案之间存在实质差异，并能被比较、批评和淘汰。
+
+### H6｜Validation
+工具调用成功、文件生成成功、脚本通过，都不能独立证明任务完成。执行之后必须存在 Readback。
+
+### H7｜System Evolution
+系统演进应优先复用、组合、参数化与重构现有能力，而不是每遇到问题就创建新的 Skill。
+
+---
+
+# 04｜Human–AI 协作闭环
+
+~~~mermaid
+flowchart TD
+    A[Understand Current Project] --> B[Recover State / Knowledge / Evidence]
+    B --> C[Explore Alternatives]
+    C --> D[Compare / Critique / Filter]
+    D --> E{Human decision required?}
+    E -- Yes --> F[Human Decision]
+    E -- No --> G[Authorized AI Action]
+    F --> G
+    G --> H[Execute / Produce Artifact]
+    H --> I[Readback / Validate]
+    I --> J{Result valid?}
+    J -- No --> K[Repair / Re-enter]
+    K --> C
+    J -- Yes --> L[Update Project State]
+    L --> M[Continue]
+~~~
+
+这套闭环强调三个差异：
+
+**不是 Generate → Done**  
+而是 **Generate → Validate → State Update**
+
+**不是 AI 决定一切**  
+而是 **AI autonomy 受任务风险、可逆性、影响范围和决策权约束**
+
+**不是聊天越长越“懂项目”**  
+而是 **正式状态独立于对话历史**
+
+---
+
+# 05｜产品对象模型
+
+OLEANDER 将长期协作拆成一组相互独立但可关联的产品对象。
+
+~~~mermaid
+flowchart LR
+    U[Human] --> D[Decision]
+    A[AI / Agent] --> T[Task]
+    T --> X[Execution]
+    X --> R[Readback]
+    R --> S[Project State]
+
+    K[Knowledge] --> T
+    E[Evidence] --> K
+    E --> D
+
+    D --> S
+    S --> T
+    X --> AR[Artifact]
+    AR --> R
+
+    R --> V[Validation]
+    V --> S
+~~~
+
+### Project State
+描述项目“当前真实状态”，包括当前阶段、有效版本、开放问题、阻塞项和下一步。
+
+### Knowledge
+可以被项目调用的结构化知识，但不等于事实本身。
+
+### Evidence
+来源、证据、测试、现场信息或可追溯依据，用来限制 Claim Ceiling。
+
+### Decision
+明确谁做了什么决定、针对哪个对象、在哪个版本上生效。
+
+### Task
+系统当前需要完成的工作，不等同于项目阶段。
+
+### Artifact
+图纸、模型、网页、视觉、文档、数据、代码等实际产物。
+
+### Validation
+判断执行结果是否满足相应质量、证据或流程要求。
+
+这些对象的核心价值是：
+
+> **避免把整个产品状态压缩进聊天记录。**
+
+---
+
+# 06｜Human-in-the-loop 权限设计
+
+OLEANDER 不把“AI 是否自动执行”看成单一开关，而是区分不同层级。
+
+| 层级 | 典型行为 | AI 权限 |
+|---|---|---|
+| Explore | 搜索、发散、建立候选 | 可自主 |
+| Analyze | 对比、批评、风险识别 | 可自主 |
+| Recommend | 给出推荐与 trade-off | 可提出，不直接改变关键状态 |
+| Reversible Execute | 可撤销、低风险执行 | 满足条件时可执行 |
+| Confirmed Execute | 影响正式状态或外部系统 | 需要明确授权 |
+| Human-only Decision | 设计取舍、专业责任、最终发布等 | AI 不得替代 |
+
+这套设计针对的是 Agent 产品中一个很实际的问题：
+
+> AI 太被动，用户会承担全部过程管理；  
+> AI 太主动，产品又不可控。
+
+所以目标不是“最大化自动化率”，而是：
+
+> **把人类保留在真正有价值的决策位置。**
+
+---
+
+# 07｜MVP 是什么
+
+OLEANDER 的第一性 MVP 不是完整知识库、完整多 Agent 平台，也不是所有设计工具都接入。
+
+它验证的是一个更窄的问题：
+
+> **AI 能否在长期项目中恢复正确状态，在不越权的情况下继续工作，并把执行结果可靠地写回项目状态？**
+
+因此 MVP 的核心链条可以压缩成：
+
+~~~text
+Project State
++ Context Recovery
++ Human Decision
++ AI Action
++ Readback
+~~~
+
+其他能力——知识库、云端文件、更多 Skill、多工具、多端协作——只有在这条链成立之后才有意义。
+
+---
+
+# 08｜产品架构：公开仓库如何对应系统能力
+
+~~~mermaid
+flowchart TB
+    A[Public Entry / README] --> B[Cases]
+    A --> C[Evals]
+    A --> D[Governance]
+    A --> E[Skills]
+    A --> F[Practice]
+
+    B --> G[Real Project Evidence]
+    C --> H[Behavior Validation]
+    D --> I[Authority / State / Quality Rules]
+    E --> J[Reusable Capabilities]
+    F --> K[Small-scale Experiments]
+
+    G --> L[OLEANDER Product Learning]
+    H --> L
+    I --> L
+    J --> L
+    K --> L
+~~~
+
+仓库中的不同目录并不是“文件分类习惯”，而是承担不同证据角色。
+
+---
+
+# 09｜仓库地图｜Repository Map
+
+| 路径 | 作用 | 建议什么时候读 |
+|---|---|---|
+| [00-governance/](00-governance/) | 系统架构、状态、权威、质量、晋级、审计与专业流程 | 想深入理解 OLEANDER 如何保持可靠性 |
+| [01-business/](01-business/) | 商业定位、价值、模式、运营、指标与治理 | 想看设计如何进入商业语境 |
+| [02-culture/](02-culture/) | 来源、文化、设计史、解释、参与与延续 | 想看文化研究如何进入设计 |
+| [03-ip/](03-ip/) | Identity、Narrative、Visual / Verbal、Application / Licensing | 想看品牌与视觉系统 |
+| [04-spatial/](04-spatial/) | Site、Program、Space、Construction / Operation | 想看空间与建筑工作流 |
+| [05-cases/](05-cases/) | C01–C04 真实案例 | 想最快看真实项目 |
+| [06-practice/](06-practice/) | 练习、训练、小尺度实验 | 想看新机制怎样低成本验证 |
+| [evals/](evals/) | AI workflow 的结构化评估与回归 | 想判断系统是否只有概念 |
+| [oleander-skills/](oleander-skills/) | 可复用工作流与能力模块 | 想看能力如何封装与复用 |
+| [tests/](tests/) | 自动化／结构化实现测试 | 想看实现层回归 |
+| [tools/](tools/) | runtime、Blender surface 等工具 | 想看执行与工具层 |
+| [website/](website/) | Web 呈现、Release Gate、可访问性等 | 想看公开数字体验 |
+| [90-shared/](90-shared/) | 跨项目共享协议、资产与工具链 | 想看公共支撑层 |
+| [99-archive/](99-archive/) | 历史、Legacy、非 Current 内容 | 追溯旧版本时阅读 |
+
+---
+
+# 10｜推荐阅读路线
+
+## 路线 A｜招聘者 / 产品经理面试官
+
+建议先看：
+
+**本 README → 05-cases → evals → 00-governance**
+
+你可以重点观察：
+
+- 我如何把模糊问题重新定义为产品问题
+- 如何定义 MVP 和核心产品对象
+- 如何设计 Agent Autonomy × Human Control
+- 如何把失败案例转成产品规则
+- 如何通过真实项目而不是纯 Demo 验证假设
+
+如果时间只有 10 分钟，不需要先读治理协议。
+
+---
+
+## 路线 B｜AI / Agent 产品方向
+
+建议：
+
+**核心产品假设 → evals → 00-governance → oleander-skills → cases**
+
+重点入口：
+
 - [evals/runtime/](evals/runtime/)
 - [evals/trust/](evals/trust/)
 - [evals/cross-context/](evals/cross-context/)
 - [evals/failure/](evals/failure/)
+- [evals/provenance/](evals/provenance/)
 - [evals/change-control/](evals/change-control/)
-- [00-governance/](00-governance/)
+
+这里更适合观察：
+
+**state / authority / trust / provenance / failure / regression**
 
 ---
 
-## C｜如果你是设计师 / 建筑 / 空间 / 视觉方向读者
+## 路线 C｜产品、视觉、CMF、空间与建筑设计
 
-建议阅读：
+建议：
 
-**Selected Works → 04-spatial → 02-culture / 03-ip → 06-practice**
+**05-cases → 04-spatial / 03-ip / 02-culture → 06-practice**
 
-重点看：
+重点观察：
 
-- 设计问题如何被定义
-- 方案如何发散、比较和收敛
-- 设计证据与开放问题如何区分
-- 图纸、空间、视觉、CMF、文化研究如何进入同一工作流
-- AI 如何辅助设计，而不是替代设计判断
-
-推荐入口：
-
-- [05-cases/](05-cases/)
-- [04-spatial/](04-spatial/)
-- [03-ip/](03-ip/)
-- [02-culture/](02-culture/)
-- [06-practice/](06-practice/)
+- 研究如何进入设计判断
+- 设计对象之间如何建立关系
+- 方案如何发散、比较与收敛
+- AI 如何承担研究与执行，而不替代专业判断
+- 真实设计资产如何经过 Post-Generation Review
 
 ---
 
-## D｜如果你想看 OLEANDER 的系统与治理
+## 路线 D｜系统架构与治理
 
-建议阅读：
+建议：
 
-**00-governance README → 核心协议 → 专业流程 → 审计 / runtime**
+**00-governance/README → canonical policies → runtime → audits**
 
-00-governance 是 OLEANDER 的“系统控制层”。
+优先入口：
 
-这里不是普通文档归档，而是用于约束：
-
-- Current / Candidate / Evidence / Provenance
-- 项目状态与权威来源
-- Human / AI 决策权
-- 设计质量与流程通过的区别
-- 变更、晋级、readback
-- No Compression / No Loss
-- 多专业工作流
-- 成品审查
-- 系统演进
-
-推荐从：
-
-- [00-governance/README.md](00-governance/README.md)
-- [OLEANDER Anti-Pollution Protocol](00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md)
+- [Governance README](00-governance/README.md)
+- [Anti-Pollution Protocol](00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md)
+- [No Compression / No Loss](00-governance/OLEANDER_NO_COMPRESSION_NO_LOSS_POLICY_v1.0.md)
 - [Post-Generation Review Gate](00-governance/post-generation-review-gate.md)
 - [Architecture Design Development Process](00-governance/architecture-design-development-process-v1.0.md)
 
-开始，而不是随机打开单个机器记录。
+这部分不是对外产品叙事的第一层，但它解释了系统为什么不会把一次运行、一次生成或一个新文件直接晋级为正式结论。
 
 ---
 
-## E｜如果你想看“系统是不是只有文档，没有验证”
+# 11｜Evals：如何验证 OLEANDER
 
-直接进入：
+[evals/](evals/) 的目标不是评估“模型是否聪明”，而是：
 
-- [evals/](evals/)
-- [tests/](tests/)
-- [06-practice/](06-practice/)
-- [05-cases/](05-cases/)
+> **评估 OLEANDER AI workflow 作为系统是否保持正确行为。**
 
-evals 当前按不同风险与验证目的拆分，包括：
+当前评估方向包括：
 
-- change-control
-- cross-context
-- failure
-- golden
-- provenance
-- retrieval
-- runtime
-- trust
+| 目录 | 主要关注 |
+|---|---|
+| change-control | 变更是否受到正确约束 |
+| cross-context | 跨会话／跨上下文是否保持正确状态 |
+| failure | 失败、异常与恢复路径 |
+| golden | 稳定基准案例 |
+| provenance | 来源、证据与追溯 |
+| retrieval | 是否调用正确知识与权威来源 |
+| runtime | 运行行为是否符合契约 |
+| trust | 权限、控制与可信执行 |
 
-这些目录用于验证产品机制与系统行为，而不是做展示型 Demo。
+当前 Eval philosophy 明确要求：
 
----
+- 真实 OLEANDER 任务优先于抽象 benchmark
+- blocker failure 可以覆盖高平均分
+- 证据权威、truth state、版本与 scope 与语言流畅度同样重要
+- “写得很好但捏造证据”属于失败
+- 模型、Prompt、Skill、Retrieval、Parser、Tool 变化都应做回归比较
+- 安全、权利、文化权威和最终设计决策仍需要 Human Review
 
-# OLEANDER｜Human–AI Co-Design System
-
-**角色：独立产品负责人 / Product Designer｜0→1 产品设计与验证**
-
-OLEANDER 是我持续设计与验证的一套 Human–AI 协作系统。它不把 AI 仅作为一次性生成工具，而是研究如何让 AI 在复杂、长期、跨会话的专业项目中成为一个**持续协作者**。
-
-## 项目起点
-
-长期使用通用 AI 做复杂项目时，我反复遇到：
-
-- 对话结束后项目上下文断裂；
-- “聊天记忆”与正式项目状态混在一起；
-- 文件、知识、证据和决策分散；
-- AI 太被动，需要用户不断告诉它下一步；
-- AI 太主动，又容易越权；
-- 多方案经常只是同一方案的表面变化；
-- AI 执行结束后容易默认“任务已经完成”；
-- 一次项目的经验难以沉淀成下一次可复用能力。
-
-因此，我将问题从：
-
-> “模型回答得好不好？”
-
-重新定义为：
-
-> **项目连续性、状态、权限、知识可信度、执行验证与长期协作的产品问题。**
+详细说明见 [evals/README.md](evals/README.md)。
 
 ---
 
-# 核心产品问题
+# 12｜Selected Works｜真实案例
 
-## 1｜Project Continuity
+## C01｜一脉广渡
+[进入案例](05-cases/c01-yimai-guangdu/)
 
-AI 如何在新会话中正确恢复项目当前状态，而不是依赖用户重新讲述全部历史？
+**方向：Culture + Spatial**
 
-## 2｜Autonomy × Control
-
-什么可以由 AI 自主探索、建议或执行；什么必须由人类确认；什么必须保留为 Human-only Decision？
-
-## 3｜Project State
-
-如何把正式项目状态从聊天历史中独立出来，并保证当前性、版本与可追溯性？
-
-## 4｜Knowledge & Evidence
-
-如何区分事实、来源、推断、设计判断和开放问题，避免未经验证的信息被当成既定事实？
-
-## 5｜Design Exploration
-
-如何让 AI 生成实质差异的候选方案，而不是多个表面变体，并形成探索—比较—批评—筛选—深化的设计过程？
-
-## 6｜Validation
-
-如何通过 Readback、Consistency Check 与 Regression Testing 验证执行结果，而不是假设“做了 = 做对了”？
-
-## 7｜System Evolution
-
-如何通过复用、组合、参数化、Benchmark、重构和证据积累提升系统，而不是每遇到一个问题就新增一个 Skill？
-
----
-
-# Human–AI 协作闭环
-
-~~~text
-Understand Current Project
-        ↓
-Recover State / Knowledge / Evidence
-        ↓
-Explore Alternatives
-        ↓
-Compare / Critique / Filter
-        ↓
-Human Decision when needed
-        ↓
-Execute
-        ↓
-Readback / Validate
-        ↓
-Update Project State
-        ↓
-Continue
-~~~
-
-OLEANDER 的目标不是“最大化自动化”，而是：
-
-> **Trustworthy Automation + Meaningful Human Control**
-
-另一个核心原则是：
-
-> **Conversation is an interface. Project State is the product reality.**
-
----
-
-# 产品经理能力映射
-
-## 复杂问题抽象
-
-从“AI 长期不好用”继续拆解为项目连续性、状态管理、决策权、知识可信度、执行风险等可设计问题。
-
-## 0→1 产品定义
-
-从真实工作流出发定义用户问题、核心产品对象、MVP、交互规则和验证路径，而不是直接堆功能。
-
-## Agentic UX / Human-in-the-loop
-
-根据任务风险、可逆性、影响范围和决策权，区分 AI 的自主探索、建议、可逆执行、人工确认和禁止自动执行。
-
-## 复杂工作流产品架构
-
-将 Project State、Knowledge、Decision、Task、Artifact、Validation 等对象组织成连续系统。
-
-## 验证驱动迭代
-
-通过真实项目、异常路径、Fixtures、Readback 与回归测试持续暴露问题并修正产品机制。
-
----
-
-# 设计背景如何进入产品工作
-
-我的正式背景是**产品设计**，设计实践横跨产品、交互、CMF、视觉、三维和空间／建筑研究。
-
-这些能力并不是与产品经理分开的附加技能，而是我处理复杂产品问题的方法来源。
-
-设计训练让我长期处理：
-
-- 模糊和不完整需求
-- 用户行为与体验
-- 多重约束之间的取舍
-- 功能与空间关系
-- 多方案生成与比较
-- 信息层级和视觉表达
-- 材料、工艺和实现约束
-- 从概念到落地的连续迭代
-
-我将同样的方法迁移到数字产品：
-
-> **User Need + System Constraint + Interaction + Implementation + Validation**
-
----
-
-# Selected Works｜案例入口
-
-## [C01｜一脉广渡](05-cases/c01-yimai-guangdu/)
-
-以 **Culture + Spatial** 为主要研究维度的个人设计研究与提案。
-
-当前状态：**RESEARCH + PROPOSAL / EVIDENCE REVIEW**
+当前公开状态：**RESEARCH + PROPOSAL / EVIDENCE REVIEW**
 
 适合观察：
 
-- 文化研究如何进入设计判断
-- 证据边界如何被保留
-- 空间、叙事、视觉如何形成统一系统
-- AI 如何参与长期复杂设计而不是只生成效果图
-
-## [C02｜忘也 Daylily](05-cases/c02-daylily/)
-
-品牌／IP、空间与体验关系的独立作品集项目。
-
-当前状态：**INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN**
-
-这里明确区分“原型已经存在”和“计划中的真实测试尚未执行”。
-
-## [C03｜The Light Collection](05-cases/c03-the-light-collection/)
-
-以 Reno 产品语境为背景的独立 CMF 概念提案。
-
-当前状态：**PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING**
-
-这是个人概念研究，不代表 OPPO 委托、采用、量产或背书。
-
-## [C04｜Qingjiang Stone Book](05-cases/c04-qingjiang-stone-book/)
-
-包含更复杂的数字呈现、三维／网页资产与持续重构过程，可作为观察 OLEANDER 如何处理设计资产、实现与验证之间关系的案例入口。
+- 文化证据如何影响设计
+- 空间、叙事、视觉如何组织
+- 设计判断与证据边界如何区分
+- Human–AI 长流程如何处理复杂设计对象
 
 ---
 
-# 仓库地图｜Repository Map
+## C02｜忘也 Daylily
+[进入案例](05-cases/c02-daylily/)
 
-## [00-governance/](00-governance/)
+**方向：Business + IP + Spatial**
 
-**OLEANDER 的治理与系统控制层。**
+当前公开状态：**INDEPENDENT PORTFOLIO / PROTOTYPED / TEST PLANNED / NOT RUN**
 
-主要负责：
+该状态刻意区分：
 
-- 系统架构
-- 项目状态
-- Current / Candidate / Evidence / Provenance
-- 权威来源与晋级
-- Human / AI 决策边界
-- 专业流程
-- 设计质量
-- 变更控制
-- 审计
-- 成品复核
-- 系统演进
-
-这里是理解“为什么系统不会把一次 AI 输出自动当成事实或正式结果”的关键目录。
+> 原型已经存在 ≠ 用户测试已经执行
 
 ---
 
-## [01-business/](01-business/)
+## C03｜The Light Collection
+[进入案例](05-cases/c03-the-light-collection/)
 
-**商业与项目语境。**
+**方向：CMF / IP / Visual**
 
-用于保存与设计项目有关的商业背景、市场、产品语境及项目级约束。它回答的是：
+当前公开状态：**PORTFOLIO CONCEPT / VISUALIZED / SAMPLE TEST PENDING**
 
-> 为什么做、为谁做、处于什么商业或项目环境中。
-
----
-
-## [02-culture/](02-culture/)
-
-**文化、历史、理论与解释框架研究。**
-
-用于支持文化类、地方性、叙事性设计项目，避免文化内容只停留在装饰性引用。
+这是个人独立概念研究，不代表 OPPO 的委托、采用、量产或背书。
 
 ---
 
-## [03-ip/](03-ip/)
+## C04｜Qingjiang Stone Book
+[进入案例](05-cases/c04-qingjiang-stone-book/)
 
-**品牌、身份、视觉语言与 IP 研究。**
+**方向：Culture + Spatial + Digital Interaction**
 
-覆盖身份系统、视觉语言、品牌表达等方向，并与实际案例互相引用。
+这是一个更复杂的多资产长期项目，可用于观察：
 
----
-
-## [04-spatial/](04-spatial/)
-
-**空间、建筑、构造与环境设计研究。**
-
-包含空间／建筑方向的方法、研究和专业能力扩展。对于希望理解 OLEANDER 如何进入建筑和空间工作流的读者，这是重要入口。
-
----
-
-## [05-cases/](05-cases/)
-
-**真实案例与作品主目录。**
-
-当前包括：
-
-- C01 — 一脉广渡
-- C02 — 忘也 Daylily
-- C03 — The Light Collection
-- C04 — Qingjiang Stone Book
-
-这里不是简单作品图片集合，而是用真实项目承载：
-
-- 研究
-- 设计决策
-- 版本演进
-- 原型
-- 证据
-- 测试
-- OLEANDER 工作流验证
+- 空间与文化研究
+- 数字交互与网页
+- 视觉阅读
+- 三维资产
+- runtime / responsive workstream
+- 多工作流之间的状态与证据管理
 
 ---
 
-## [06-practice/](06-practice/)
+# 13｜设计能力如何进入产品能力
 
-**练习、实验、训练与小尺度验证。**
+我的正式背景是**产品设计**，同时长期进行交互、视觉、CMF、三维和空间／建筑方向实践。
 
-这里用于放置尚不需要进入大型项目，但值得被独立验证的设计练习、交互实验、训练任务和方法测试。
+这些并不是产品经理之外的“额外技能”，而是我处理复杂产品问题的方法来源。
 
-适合观察系统如何在低成本场景中验证新机制。
+设计训练让我持续处理：
 
----
+- 模糊需求
+- 用户行为
+- 功能关系
+- 空间关系
+- 材料与工艺
+- 多重约束
+- 多方案比较
+- 信息层级
+- 视觉表达
+- 从概念到实施的连续迭代
 
-## [evals/](evals/)
+因此，我在产品工作中更倾向于同时考虑：
 
-**OLEANDER 的评估与回归验证层。**
+> **User Need + System Constraint + Interaction + Implementation + Validation**
 
-当前包含：
-
-- **change-control** — 变更控制
-- **cross-context** — 跨上下文连续性
-- **failure** — 失败与异常路径
-- **golden** — 基准／Golden Cases
-- **provenance** — 来源与证据链
-- **retrieval** — 检索与知识调用
-- **runtime** — 运行行为
-- **trust** — 信任、权限与可信执行
-
-如果你想判断 OLEANDER 是否只是一套概念框架，应优先查看这里。
+而不是只处理 Feature List。
 
 ---
 
-## [oleander-skills/](oleander-skills/)
+# 14｜我的产品经理能力在仓库中的对应证据
 
-**可复用能力与工作流模块。**
-
-目前可见能力方向包括：
-
-- 3D pipeline
-- data visualization
-- delivery QC
-- design process
-- image art direction
-- motion
-- research
-- story & board
-- visual design
-- web UI
-
-OLEANDER 当前的方向不是无限新增 Skill，而是优先：
-
-**Reuse → Compose → Parameterize → Benchmark → Refactor**
-
-只有在重复证据证明现有能力无法合理表达某种稳定需求时，才值得形成新的可复用能力。
+| 能力 | 仓库中的对应表现 |
+|---|---|
+| Problem Discovery | 从 AI “不好用”拆解到 continuity / state / authority / trust |
+| Product Definition | OLEANDER 的系统对象、边界与核心原则 |
+| MVP | Project State + Context Recovery + Human Decision + AI Action + Readback |
+| Interaction Design | Human-in-the-loop 与分级 autonomy |
+| Workflow Design | 长周期、多状态、多对象协作 |
+| Product Architecture | Governance / Cases / Evals / Skills / Practice 的职责分层 |
+| Validation | evals、tests、Readback、Post-Generation Review |
+| Iteration | failure-driven repair、regression、版本与 migration |
+| Domain Understanding | 产品、视觉、CMF、空间、建筑与研究案例 |
 
 ---
 
-## [tests/](tests/)
+# 15｜OLEANDER 的设计探索机制
 
-**自动化或结构化测试。**
+传统 AI 使用经常是：
 
-用于检查系统实现与已有行为是否发生回归。它与 evals 不完全相同：
+**用户给一个方向 → AI 沿该方向继续优化**
 
-- tests 更接近实现层和可重复检查；
-- evals 更关注产品／系统行为是否满足预期。
+OLEANDER 更希望形成：
 
----
+~~~text
+Constraint Understanding
+→ Divergent Exploration
+→ Materially Distinct Alternatives
+→ Critique
+→ Compare Trade-offs
+→ Filter Weak / Redundant Options
+→ Human Decision
+→ Development
+~~~
 
-## [tools/](tools/)
+这里的重点不是“多生成几张图”，而是：
 
-**支持 OLEANDER 工作流的工具与脚本。**
+> **候选方案之间是否真的代表不同的设计判断。**
 
-它们服务于设计、验证、数据处理和自动化，不等于产品本身。
-
----
-
-## [website/](website/)
-
-**数字呈现与 Web 输出。**
-
-用于承载公开网页、项目展示或相关数字体验实现。
-
----
-
-## [90-shared/](90-shared/)
-
-**跨项目共享资产与公共组件。**
-
-只有真正具有跨项目复用价值的内容才应进入这里。
+因此，生成数量本身不是评价指标。
 
 ---
 
-## [99-archive/](99-archive/)
+# 16｜Skills：能力如何复用，而不是无限增殖
 
-**历史、旧版本与归档。**
+[oleander-skills/](oleander-skills/) 当前包含 3D pipeline、data visualization、delivery QC、design process、image art direction、motion、research、story & board、visual design、web UI 等能力方向。
 
-归档不代表内容“没用”，而是表示它不再是当前权威版本。
+但 OLEANDER 当前并不把“Skill 数量更多”视为系统进步。
 
-OLEANDER 强调：
+优先顺序是：
 
-> **No Compression / No Loss**
+> **Reuse → Compose → Parameterize → Benchmark → Refactor**
 
-历史价值应被保存，但不能继续冒充 Current。
+只有当重复证据证明现有能力无法在不失真的情况下表达某个稳定需求时，才应形成新的能力模块。
+
+这也是为了避免 Agent 系统最终变成不可维护的工具碎片集合。
 
 ---
 
-# 如何理解状态与证据
+# 17｜如何理解状态、证据和质量
 
-这个仓库里最重要的阅读规则之一是：
+OLEANDER 中几个非常重要的区分是：
 
+> **CURRENT ≠ CLEAN**  
 > **Artifact existence ≠ Design quality**  
-> **Process PASS ≠ Design KEEP**
+> **Traceability ≠ Professional finish**  
+> **Evidence correctness ≠ Visual excellence**  
+> **Process PASS ≠ MAIN KEEP**  
+> **Machine PASS ≠ Design PASS**  
+> **Executed ≠ Validated**
 
 也就是说：
 
-- 文件生成了，不代表设计好；
-- 自动化测试通过，不代表专业设计判断通过；
-- 有图、有网页、有模型，不代表事实已经验证；
-- AI 总结过，不代表它成为正式知识；
-- Candidate 存在，不代表它已经晋级为 Current。
+文件存在，不代表设计成立。  
+自动测试通过，不代表专业判断通过。  
+AI 找到来源，不代表结论已经充分证明。  
+一个 Candidate 产生，不代表它自动成为 Current。
 
-因此阅读时建议始终区分：
+### 常见证据状态
 
-### FACT / VERIFIED
+**VERIFIED / FACT**  
+已有明确可验证依据。
 
-已有明确依据或验证。
+**SUPPORTED**  
+有证据支持，但强度或覆盖范围有限。
 
-### SUPPORTED
-
-有证据支持，但证据强度或覆盖范围有限。
-
-### INFERRED
-
+**INFERRED**  
 合理推断，但不能伪装成事实。
 
-### OPEN
-
-尚未解决或仍需验证。
-
-这种区分是 OLEANDER 长期协作可靠性的基础之一。
+**OPEN**  
+尚未解决或需要进一步验证。
 
 ---
 
-# Mandatory Post-Generation Review
+# 18｜Post-Generation Review
 
-OLEANDER／织作的设计与技术输出执行统一成品审查门槛。
+OLEANDER 的设计输出不会因为“生成完成”自动被视为完成。
 
-生成、导出、自动 QA 或可复现运行之后，必须实际打开最终成品复核：
+基本闭环是：
+
+~~~text
+Generate
+→ Automated QA
+→ Open Final Artifact
+→ Post-Generation Review
+→ Fix
+→ Re-review
+→ Persist / Archive
+~~~
+
+根据产物类型，会继续检查：
 
 - 视觉质量
-- 图文边界
-- 比例
-- 几何—标注一致性
-- 构造逻辑
-- 信息完整性
-- 证据状态
+- 遮挡与信息可读性
+- 比例与尺度
+- 几何与标注一致性
+- Cross-view consistency
+- 构造／功能逻辑
+- 数据与来源
+- 可访问性
+- 发布边界
 
-只有完成适用的后验审查，才允许进入相应的 DONE / PASS / Candidate 状态。
+Canonical rule：
 
-Canonical rule: [post-generation-review-gate.md](00-governance/post-generation-review-gate.md)
-
----
-
-# Project-wide Anti-Pollution Rule
-
-整个 OLEANDER 项目统一执行：
-
-**One Logical Object → One Current Authority → traceable Candidate / Evidence / Provenance children**
-
-核心含义：
-
-- 已有逻辑对象优先原位扩展／修复，不默认新建平行页面、数据库、Skill、workflow、框架或 Current；
-- EXPERIMENTAL_UNVERIFIED / VALIDATION_PENDING 不得直接进入 Current；
-- CI、文件存在、AI Summary、单次 bounded probe 不能自行晋级；
-- Candidate 不得 self-promote；
-- Authority 变化必须完成适用的 receipt、promotion decision 与 downstream readback；
-- 清理遵循 **NO COMPRESSION / NO LOSS**；
-- GitHub、Notion、Drive、Deployment、Native Master 可以存在不同表示，但同步副本不是共同 Source Authority。
-
-Canonical policy: [OLEANDER Anti-Pollution Protocol](00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md)
-
-Machine contract: [OLEANDER Anti-Pollution Contract](00-governance/OLEANDER_ANTI_POLLUTION_CONTRACT_CURRENT.json)
+[Post-Generation Review Gate](00-governance/post-generation-review-gate.md)
 
 ---
 
-# 最短阅读总结
+# 19｜One Current Authority
 
-如果只想快速理解 OLEANDER：
+OLEANDER 执行：
 
-**README**
-→ 看产品问题
-→ 看 Human–AI 协作闭环
-→ 看 05-cases 里的真实案例
-→ 看 evals 里的验证
-→ 最后进入 00-governance 理解为什么系统这样设计
+> **One Logical Object → One Current Authority → traceable Candidate / Evidence / Provenance children**
 
-如果想理解我的产品经理能力：
+它解决的是复杂系统中一个非常实际的问题：
 
-**问题定义**
-→ **MVP / 产品对象**
-→ **Autonomy × Control**
-→ **真实项目**
-→ **验证与失败**
-→ **系统迭代**
+当 Notion、GitHub、Drive、本地文件、部署环境和 AI 对话都存在副本时，哪个才是当前权威？
 
-如果想理解我的设计能力：
+核心规则包括：
 
-**05-cases**
-→ **04-spatial / 03-ip / 02-culture**
-→ **06-practice**
-→ 再回到 OLEANDER 看这些专业流程如何被组织进 Human–AI 系统。
+- 不因为方便就创建平行 Current
+- Candidate 不得 self-promote
+- 实验状态不能直接冒充正式能力
+- Authority 变化必须经过适用的 decision / receipt / readback
+- 历史信息进入 provenance / legacy / archive，而不是静默删除
+- 同步副本不自动获得共同 Source Authority
+
+详细规则：
+
+[Anti-Pollution Protocol](00-governance/OLEANDER_ANTI_POLLUTION_PROTOCOL_v1.0.md)
 
 ---
 
-## Profile
+# 20｜NO COMPRESSION / NO LOSS
 
-个人定位与更精简的介绍见：
+复杂项目在“整理”“重构”“做得更简洁”时，很容易把有效信息一起删掉。
 
-**[Jiaosong GitHub Profile](https://github.com/Jiaosong)**
+OLEANDER 的默认原则是：
 
+> **NO COMPRESSION / NO LOSS / RESTRUCTURE WITHOUT INFORMATION LOSS**
+
+允许：
+
+- 重排
+- 拆分
+- 合并展示
+- 改变视觉权重
+- 重新绘制
+- 改变导航
+
+但真正删除一个独立有效层级或信息对象时，应明确说明为什么删除，而不能仅以“更简洁”为理由。
+
+这条原则也用于保护复杂设计项目中的：
+
+- 专业逻辑
+- 研究证据
+- 方案差异
+- 历史判断
+- 未解决问题
+
+---
+
+# 21｜当前阶段与边界
+
+OLEANDER 目前更准确的描述是：
+
+> **持续研发与真实项目验证中的独立 Human–AI Co-Design 产品／系统。**
+
+它不是一个已经证明大规模商业化的 SaaS，也不应通过 GitHub 文件数量推断用户规模、商业成熟度或生产级可靠性。
+
+当前仓库更能证明的是：
+
+- 产品问题定义
+- 系统架构设计
+- Human–AI 交互机制
+- 长周期真实项目实践
+- 治理与状态设计
+- 验证与回归意识
+- 设计与 AI 工作流整合
+
+尚需进一步通过外部用户验证的内容包括：
+
+- 更广泛用户群的可用性
+- 跨用户泛化
+- 稳定的产品指标基线
+- 商业模式与规模化运营
+- 多人协作体验
+
+这也是后续产品化真正需要验证的部分。
+
+---
+
+# 22｜如果把它当成产品经理 Case Study
+
+可以用下面这条主线阅读：
+
+~~~text
+Problem
+→ User / Scenario
+→ Product Hypothesis
+→ MVP
+→ Product Objects
+→ Agentic Interaction
+→ Workflow
+→ Real Project
+→ Eval / Failure
+→ Iteration
+→ Governance
+~~~
+
+这比从文件树逐层阅读更接近 OLEANDER 的产品逻辑。
+
+---
+
+# 23｜最短阅读路径
+
+**只想快速判断我在做什么：**  
+README → 核心产品假设 → Human–AI 协作闭环 → Selected Works
+
+**想判断我的产品经理能力：**  
+项目背景 → MVP → Human-in-the-loop → 产品对象 → Evals → 当前阶段与边界
+
+**想判断系统有没有真实验证：**  
+05-cases → evals → tests → 06-practice
+
+**想判断我的设计能力：**  
+05-cases → 04-spatial → 03-ip → 02-culture → 06-practice
+
+**想研究 OLEANDER 系统本身：**  
+00-governance/README → runtime → canonical policies → evals
+
+---
+
+## About
+
+**Jiaosong / 刘旋**
+
+Product Design background · AI Product · Human–AI Collaboration · Complex Professional Workflows
+
+[GitHub Profile](https://github.com/Jiaosong)
