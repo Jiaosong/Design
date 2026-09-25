@@ -51,5 +51,3 @@ flowchart LR
 
 - Uses N08B/N08C
 - Feeds N03A1
-
-

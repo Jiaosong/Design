@@ -53,5 +53,3 @@ flowchart LR
 
 - Feeds N02B Current Question
 - Consumes N08 Evidence
-
-

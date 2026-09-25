@@ -52,5 +52,3 @@ flowchart LR
 
 - Feeds N04
 - May trigger N03A1 new direction
-
-

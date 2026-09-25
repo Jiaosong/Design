@@ -58,5 +58,3 @@ flowchart LR
 - Consumes N01B Frontier
 - Routes N03/N06/N07
 - Checked by N10C Autonomy/Human Stop
-
-

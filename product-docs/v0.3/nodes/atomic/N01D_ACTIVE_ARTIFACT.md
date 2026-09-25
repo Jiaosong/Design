@@ -56,5 +56,3 @@ flowchart LR
 
 - Consumes N06A Artifact Identity
 - Feeds N01A Resume Snapshot
-
-

@@ -62,4 +62,3 @@ Snapshot 必须先回答“现在是什么”，再允许用户展开 provenance
 ## Open Questions
 
 - Resume Snapshot 最小字段是否因 domain 不同而变化？
-

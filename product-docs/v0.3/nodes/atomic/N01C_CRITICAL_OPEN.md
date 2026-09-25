@@ -56,5 +56,3 @@ OPEN 必须说明 reason、impact、what it blocks、what it does not block、cl
 
 - Feeds N10C Human Stop only when effect is truly blocked
 - May link N08 Knowledge or N07 Review
-
-

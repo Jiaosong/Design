@@ -53,5 +53,3 @@ flowchart LR
 
 - Consumes N03A1/N06
 - Feeds N03A3/N04A
-
-

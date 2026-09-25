@@ -55,5 +55,3 @@ VALUE 是 why it matters；RELATION 是 how value is carried；IMPLEMENTATION �
 
 - Feeds N02B/N03/N04/N05
 - Checked by N03B4 Intent Check
-
-

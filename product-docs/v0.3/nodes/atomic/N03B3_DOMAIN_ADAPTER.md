@@ -52,5 +52,3 @@ OPEN domain process 可以探索，但不能产生 professional PASS。
 ## Relations
 
 - Feeds N03B2/N06/N07D
-
-
