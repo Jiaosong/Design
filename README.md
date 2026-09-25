@@ -251,7 +251,7 @@ Project State
 
 其他能力——知识库、云端文件、更多 Skill、多工具、多端协作——只有在这条链成立之后才有意义。
 
-完整的产品需求、功能优先级、用户旅程、验收标准与指标体系见：[OLEANDER 设计协作系统 PRD v0.2.0](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.1.md)。
+完整的产品需求、功能优先级、用户旅程、验收标准与指标体系见：[OLEANDER 设计协作系统 PRD v0.2.0](product-docs/OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)。
 
 ---
 
