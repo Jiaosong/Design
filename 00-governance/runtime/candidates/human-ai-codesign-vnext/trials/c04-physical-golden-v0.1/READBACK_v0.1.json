@@ -1,0 +1,58 @@
+{
+  "schema": "oleander.codesign.physical-product-readback.v0.1",
+  "status": "PASS_AFTER_ONE_RELATION_REPAIR",
+  "actual_artifacts_inspected": [
+    "readback/A_TWIN_SADDLE_PODS.png",
+    "readback/B_SERVICE_BRIDGE.png",
+    "readback/C_SPLIT_POST_COLLARS.png",
+    "readback/COMPARISON.png"
+  ],
+  "initial_readback": {
+    "A_TWIN_SADDLE_PODS": "PASS_RELATION_LEGIBILITY",
+    "B_SERVICE_BRIDGE": "REVISE_REVERSIBLE_CLAMP_RETURN_NOT_LEGIBLE_IN_PRIMARY_BODY_RELATION",
+    "C_SPLIT_POST_COLLARS": "PASS_RELATION_LEGIBILITY",
+    "COMPARISON": "PASS_COMPARABILITY_WITH_B_CONNECTION_AMBIGUITY"
+  },
+  "observed_defect": {
+    "alternative": "B_SERVICE_BRIDGE",
+    "description": "The continuous service bridge was visually legible as a component, but the primary body/rail view did not explicitly show how the bridge returned to and reversibly clamped the existing rail. It could be read as a floating backing plate.",
+    "why_material": "P02 source authority states that attachment relation must be legible before form and must not imply an unsupported independent structure."
+  },
+  "repair": {
+    "delta": [
+      "Added two explicit clamp-return loops from the service bridge toward the existing rail in the primary relation view.",
+      "Added the same clamp-return logic to the interface-stack view.",
+      "Added clamp-return markers to B on the comparison board.",
+      "Changed the main label to explicitly read two clamp returns → continuous service bridge."
+    ],
+    "claim_ceiling_delta": "NONE",
+    "engineering_claim_added": false,
+    "field_claim_added": false
+  },
+  "second_readback": {
+    "B_SERVICE_BRIDGE": "PASS_RELATION_LEGIBILITY_AFTER_CLAMP_RETURN_REPAIR",
+    "COMPARISON": "PASS_COMPARABILITY_AFTER_REPAIR",
+    "four_core_reads": {
+      "body_relation": "PASS_DIAGRAMMATIC",
+      "reversible_attachment": "PASS_DIAGRAMMATIC",
+      "service_replaceability": "PASS_DIAGRAMMATIC",
+      "field_and_engineering_hold": "PASS_EXPLICIT"
+    },
+    "claim_ceiling_delta": "NONE"
+  },
+  "second_readback_required": false,
+  "locked_invariants_preserved": [
+    "standing/half-lean with both feet grounded",
+    "no independent floor legs",
+    "existing rail remains unverified base",
+    "reversible attachment",
+    "serviceable buffer / fastener logic",
+    "passage priority",
+    "cleaning / drainage visibility",
+    "FIELD OPEN / no structural adequacy"
+  ],
+  "human_steer": "PENDING",
+  "design_keep": "NO",
+  "project_writeback": false,
+  "promotion": false
+}

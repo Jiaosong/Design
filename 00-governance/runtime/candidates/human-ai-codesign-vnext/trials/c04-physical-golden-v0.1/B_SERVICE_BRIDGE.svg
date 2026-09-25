@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <style>
+    .bg{fill:#f4f0e5}.paper{fill:#fbf9f3;stroke:#c9c7bc;stroke-width:1.5}.ink{fill:#17332c}.muted{fill:#687870}.q{fill:#548b7e}.r{fill:#a54539}.wood{fill:#a98655}.steel{fill:#29433b}.pad{fill:#7c8e86}.bridge{fill:#d8ddd7;stroke:#29433b;stroke-width:2}.line{fill:none;stroke:#17332c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#7f8c85;stroke-width:1.5}.dash{fill:none;stroke:#a54539;stroke-width:2;stroke-dasharray:8 7}.t1{font:700 38px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.t2{font:700 21px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.txt{font:400 15px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+  </style>
+  <rect class="bg" width="1400" height="900"/>
+  <text x="60" y="58" class="xs q">P02 / CO-DESIGN PHYSICAL TRIAL · B / SERVICE BRIDGE</text>
+  <text x="60" y="110" class="t1 ink">用一块可拆服务桥统一两处夹持与检修</text>
+  <text x="60" y="146" class="txt muted">装配逻辑最集中 · 连续清洁缝 · 少量主件 · 不等于结构背板</text>
+  <text x="60" y="180" class="xs r">NTS / DESIGN ESTIMATE / FIELD OPEN / NOT ENGINEERING / NOT FOR INSTALLATION</text>
+  <line x1="60" y1="205" x2="1340" y2="205" class="thin"/>
+
+  <g transform="translate(60 245)">
+    <rect width="820" height="450" rx="22" class="paper"/>
+    <text x="30" y="42" class="xs q">01 / BODY + RAIL RELATION</text>
+    <line x1="78" y1="355" x2="755" y2="355" class="thin"/>
+    <rect x="135" y="118" width="20" height="237" rx="5" class="steel"/>
+    <rect x="640" y="118" width="20" height="237" rx="5" class="steel"/>
+    <rect x="135" y="126" width="525" height="22" rx="5" class="steel"/>
+    <rect x="135" y="236" width="525" height="16" rx="5" class="steel"/>
+    <rect x="225" y="188" width="350" height="64" rx="12" class="wood"/>
+    <rect x="245" y="252" width="310" height="11" rx="5" class="pad"/>
+    <rect x="244" y="270" width="312" height="52" rx="9" class="bridge"/>
+    <path d="M286 270v-28h36v28M478 270v-28h36v28" class="line"/>
+    <path d="M258 286h284M258 307h284" class="dash"/>
+    <path d="M270 322v24M530 322v24" class="line"/>
+    <circle cx="270" cy="335" r="10" class="r"/><circle cx="530" cy="335" r="10" class="r"/>
+    <text x="225" y="176" class="sm r">身体接触板</text>
+    <text x="250" y="365" class="sm ink">两处夹持回扣 → 连续 service bridge / 后侧可拆</text>
+    <circle cx="710" cy="118" r="22" class="line"/>
+    <path d="M699 140l-27 76 18 82M674 190l-68 35M690 298l-18 24M691 298l35 24" class="line"/>
+    <text x="642" y="388" class="sm muted">站立 / 半倚 / 双脚落地</text>
+  </g>
+
+  <g transform="translate(920 245)">
+    <rect width="420" height="450" rx="22" class="paper"/>
+    <text x="28" y="42" class="xs q">02 / INTERFACE STACK</text>
+    <text x="28" y="82" class="t2 ink">一处拆开，看见全部</text>
+    <rect x="65" y="126" width="50" height="214" rx="7" class="steel"/>
+    <rect x="115" y="172" width="170" height="56" rx="10" class="wood"/>
+    <rect x="120" y="228" width="158" height="12" rx="6" class="pad"/>
+    <rect x="118" y="252" width="188" height="66" rx="8" class="bridge"/>
+    <path d="M150 252v-24h32v24M242 252v-24h32v24" class="line"/>
+    <path d="M136 270h150M136 298h150" class="dash"/>
+    <circle cx="142" cy="285" r="9" class="r"/><circle cx="282" cy="285" r="9" class="r"/>
+    <text x="326" y="150" class="sm ink">A 栏杆</text>
+    <text x="326" y="185" class="sm ink">B 接触板</text>
+    <text x="326" y="220" class="sm ink">C 缓冲</text>
+    <text x="326" y="255" class="sm ink">D bridge</text>
+    <text x="326" y="290" class="sm ink">E 检修件</text>
+    <text x="28" y="370" class="sm r">清洁 / 排水风险：</text>
+    <text x="28" y="394" class="sm muted">连续背板必须保持清洁缝，否则更易藏污积水。</text>
+  </g>
+
+  <g transform="translate(60 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">BENEFIT</text><text x="20" y="58" class="t2 ink">装配关系最容易读</text><text x="20" y="82" class="sm muted">两接口与检修集中在一个可拆件。</text>
+  </g>
+  <g transform="translate(475 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">RISK</text><text x="20" y="58" class="t2 ink">接触面积更大</text><text x="20" y="82" class="sm muted">视觉更重，也更依赖排水/清洁细节。</text>
+  </g>
+  <g transform="translate(890 735)">
+    <rect width="450" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">HOLD</text><text x="20" y="58" class="t2 ink">不是“结构背板”证明</text><text x="20" y="82" class="sm muted">图面只能表达维护/拆装，不证明荷载。</text>
+  </g>
+</svg>

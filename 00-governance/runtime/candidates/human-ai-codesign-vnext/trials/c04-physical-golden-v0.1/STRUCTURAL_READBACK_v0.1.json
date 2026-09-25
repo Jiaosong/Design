@@ -1,0 +1,38 @@
+{
+  "schema": "oleander.codesign.physical-product-trial-audit.v0.1",
+  "status": "PASS",
+  "failures": [],
+  "files": [
+    {
+      "file": "A_TWIN_SADDLE_PODS.svg",
+      "svg_parse": "PASS",
+      "truth_boundary": "PASS",
+      "no_floor_leg_claim": "PASS"
+    },
+    {
+      "file": "B_SERVICE_BRIDGE.svg",
+      "svg_parse": "PASS",
+      "truth_boundary": "PASS",
+      "no_floor_leg_claim": "PASS"
+    },
+    {
+      "file": "C_SPLIT_POST_COLLARS.svg",
+      "svg_parse": "PASS",
+      "truth_boundary": "PASS",
+      "no_floor_leg_claim": "CHECK"
+    },
+    {
+      "file": "COMPARISON.svg",
+      "svg_parse": "PASS",
+      "truth_boundary": "PASS",
+      "no_floor_leg_claim": "PASS"
+    }
+  ],
+  "readback_pngs": [
+    "A_TWIN_SADDLE_PODS.png",
+    "B_SERVICE_BRIDGE.png",
+    "COMPARISON.png",
+    "C_SPLIT_POST_COLLARS.png"
+  ],
+  "claim_ceiling": "EDITABLE PRODUCT-INTERFACE RELATION PROTOTYPES / NTS / FIELD OPEN / NO STRUCTURAL OR INSTALLATION PASS / NO DESIGN KEEP / NO PROJECT WRITEBACK / NO PROMOTION"
+}

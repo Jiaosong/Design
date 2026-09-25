@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <style>
+    .bg{fill:#f4f0e5}.paper{fill:#fbf9f3;stroke:#c9c7bc;stroke-width:1.5}.ink{fill:#17332c}.muted{fill:#687870}.q{fill:#548b7e}.r{fill:#a54539}.wood{fill:#a98655}.steel{fill:#29433b}.pad{fill:#7c8e86}.collar{fill:#d9dfda;stroke:#29433b;stroke-width:3}.line{fill:none;stroke:#17332c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#7f8c85;stroke-width:1.5}.dash{fill:none;stroke:#a54539;stroke-width:2;stroke-dasharray:8 7}.t1{font:700 38px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.t2{font:700 21px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.txt{font:400 15px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+  </style>
+  <rect class="bg" width="1400" height="900"/>
+  <text x="60" y="58" class="xs q">P02 / CO-DESIGN PHYSICAL TRIAL · C / SPLIT POST COLLARS</text>
+  <text x="60" y="110" class="t1 ink">把可拆接口定位到两根既有立柱，而不是连续横杆</text>
+  <text x="60" y="146" class="txt muted">配对分体 collar · 独立缓冲 · 短托臂 · 强依赖实际立柱间距</text>
+  <text x="60" y="180" class="xs r">NTS / DESIGN ESTIMATE / FIELD OPEN / NOT ENGINEERING / NOT FOR INSTALLATION</text>
+  <line x1="60" y1="205" x2="1340" y2="205" class="thin"/>
+
+  <g transform="translate(60 245)">
+    <rect width="820" height="450" rx="22" class="paper"/>
+    <text x="30" y="42" class="xs q">01 / BODY + RAIL RELATION</text>
+    <line x1="78" y1="355" x2="755" y2="355" class="thin"/>
+    <rect x="145" y="112" width="24" height="243" rx="6" class="steel"/>
+    <rect x="626" y="112" width="24" height="243" rx="6" class="steel"/>
+    <rect x="145" y="126" width="505" height="22" rx="5" class="steel"/>
+    <rect x="145" y="236" width="505" height="16" rx="5" class="steel"/>
+    <rect x="245" y="190" width="310" height="58" rx="12" class="wood"/>
+    <rect x="258" y="248" width="284" height="11" rx="5" class="pad"/>
+    <rect x="136" y="188" width="42" height="82" rx="16" class="collar"/>
+    <rect x="617" y="188" width="42" height="82" rx="16" class="collar"/>
+    <path d="M176 224h74M550 224h69" class="line"/>
+    <path d="M185 238l53 44M610 238l-48 44" class="line"/>
+    <circle cx="157" cy="228" r="8" class="r"/><circle cx="638" cy="228" r="8" class="r"/>
+    <text x="242" y="177" class="sm r">身体接触板</text>
+    <text x="232" y="310" class="sm ink">两根立柱成为位置依赖条件</text>
+    <circle cx="710" cy="118" r="22" class="line"/>
+    <path d="M699 140l-27 76 18 82M674 190l-68 35M690 298l-18 24M691 298l35 24" class="line"/>
+    <path d="M555 175v165" class="dash"/>
+    <text x="566" y="338" class="sm r">投影/净宽 HOLD</text>
+    <text x="642" y="388" class="sm muted">站立 / 半倚 / 双脚落地</text>
+  </g>
+
+  <g transform="translate(920 245)">
+    <rect width="420" height="450" rx="22" class="paper"/>
+    <text x="28" y="42" class="xs q">02 / COLLAR SERVICE</text>
+    <text x="28" y="82" class="t2 ink">分体开合，服务点清楚</text>
+    <rect x="78" y="120" width="48" height="230" rx="8" class="steel"/>
+    <rect x="66" y="176" width="72" height="88" rx="25" class="collar"/>
+    <path d="M102 176v88" class="dash"/>
+    <circle cx="102" cy="220" r="10" class="r"/>
+    <path d="M138 220h90l34-35" class="line"/>
+    <rect x="255" y="150" width="105" height="54" rx="10" class="wood"/>
+    <rect x="258" y="204" width="99" height="11" rx="5" class="pad"/>
+    <text x="28" y="322" class="sm r">FIELD DEPENDENCY：</text>
+    <text x="28" y="348" class="sm muted">若实际立柱位置、截面、许可或净宽不匹配，</text>
+    <text x="28" y="370" class="sm muted">此机制直接失效，不通过造型“补救”。</text>
+    <text x="28" y="407" class="sm muted">collar 开缝 / liner / 紧固件均需可检修。</text>
+  </g>
+
+  <g transform="translate(60 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">BENEFIT</text><text x="20" y="58" class="t2 ink">服务点最明确</text><text x="20" y="82" class="sm muted">两个 collar 直接对应两处拆装位置。</text>
+  </g>
+  <g transform="translate(475 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">RISK</text><text x="20" y="58" class="t2 ink">位置依赖最高</text><text x="20" y="82" class="sm muted">立柱间距与托臂投影可能直接否决方案。</text>
+  </g>
+  <g transform="translate(890 735)">
+    <rect width="450" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">HOLD</text><text x="20" y="58" class="t2 ink">不能推定现场栏杆可用</text><text x="20" y="82" class="sm muted">当前只比较接口机制，不选择安装位置。</text>
+  </g>
+</svg>

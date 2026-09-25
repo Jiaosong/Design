@@ -17,6 +17,9 @@ This directory is an isolated candidate workface. It does **not** replace `OLEAN
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_v0.1.svg/.png` — editable candidate architecture map + visual readback derivative.
 - `OLEANDER_HUMAN_AI_CODESIGN_ARCHITECTURE_MAP_READBACK_v0.1.json` — actual visual inspection of the candidate map.
 - `validate_candidate.py` — structural anti-duplication checks for this candidate.
+- `regressions/v0.1/` — executable continuation/authority/presentation/native-surface/human-rights boundary regressions using real carriers where available and explicit fixtures otherwise.
+- `trials/c04-digital-golden-v0.1/` — C04 Return/Service digital/HCD interaction-mechanism trial with editable HTML/CSS/JS and browser readback.
+- `trials/c04-physical-golden-v0.1/` — C04 P02 reversible attachment/service-interface physical-product trial with editable SVG and actual render/readback.
 
 ## Non-negotiable boundary
 

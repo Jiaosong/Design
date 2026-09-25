@@ -1,0 +1,62 @@
+{
+  "schema": "oleander.codesign-regression-fixtures.v0.1",
+  "status": "CANDIDATE_TEST_ONLY",
+  "stale_checkpoint": {
+    "task_id": "FIXTURE-SAME-TASK",
+    "logical_object": "FIXTURE-OBJECT-01",
+    "executor_checkpoint_sequence": 41,
+    "current_checkpoint_sequence": 42,
+    "executor_authority_fingerprint": "AUTH-A",
+    "current_authority_fingerprint": "AUTH-A",
+    "requested_action": "AUTHORITY_SENSITIVE_PROJECT_WRITE",
+    "reversible_local_work_available": true
+  },
+  "authority_drift": {
+    "task_id": "FIXTURE-SAME-TASK",
+    "logical_object": "FIXTURE-OBJECT-02",
+    "executor_checkpoint_sequence": 17,
+    "current_checkpoint_sequence": 17,
+    "executor_authority_fingerprint": "AUTH-OLD",
+    "current_authority_fingerprint": "AUTH-NEW",
+    "executor_source_revision": "SRC-OLD",
+    "current_source_revision": "SRC-NEW",
+    "requested_action": "AUTHORITY_SENSITIVE_PROJECT_WRITE",
+    "reversible_local_work_available": true
+  },
+  "presentation_recency": {
+    "native_role": "EDITABLE_RELATION_PROTOTYPE",
+    "derivative_role": "READBACK_DERIVATIVE",
+    "derivative_observed_later": true,
+    "requested_resume_basis": "LATEST_FILE_BY_RECENCY"
+  },
+  "multi_human_decision_rights": {
+    "logical_object": "FIXTURE-DESIGN-OBJECT-01",
+    "messages": [
+      {
+        "order": 1,
+        "role": "DESIGNER",
+        "scope": "ITERATION_STEER",
+        "instruction": "Keep mechanism A but simplify the service path."
+      },
+      {
+        "order": 2,
+        "role": "SPECIALIST",
+        "scope": "TECHNICAL_LIMIT",
+        "instruction": "Do not cross the protected service clearance."
+      },
+      {
+        "order": 3,
+        "role": "INDEPENDENT_REVIEWER",
+        "scope": "INDEPENDENT_REVIEW",
+        "instruction": "HOLD until the protected service clearance is demonstrated."
+      },
+      {
+        "order": 4,
+        "role": "CLIENT",
+        "scope": "VALUE_PRIORITY",
+        "instruction": "Ship the latest-looking option now."
+      }
+    ],
+    "promotion_authority_present": false
+  }
+}

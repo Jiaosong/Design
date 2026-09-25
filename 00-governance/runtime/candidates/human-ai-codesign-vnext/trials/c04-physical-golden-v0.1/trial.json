@@ -1,0 +1,50 @@
+{
+  "schema": "oleander.codesign.physical-product-trial.v0.1",
+  "status": "LOCAL_REVERSIBLE_TRIAL",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_object": "P02_REVERSIBLE_ATTACHMENT_MAINTENANCE_INTERFACE",
+  "source_frontier": [
+    "physical-memory-currentization-v1.2/README.md",
+    "physical-memory-currentization-v1.2/QC_READBACK_v1_2.json",
+    "physical-memory-currentization-v1.2/assets/P02_railing_lean_rest_v1_2.svg",
+    "physical-memory-currentization-v1/README.md"
+  ],
+  "bounded_question": "Which reversible attachment + maintenance interface mechanism best preserves P02's standing/half-lean relation while making removal, buffer replacement, drainage/cleaning and passage priority legible?",
+  "locked_invariants": [
+    "STANDING_HALF_LEAN_SHORT_RECOVERY",
+    "BOTH_FEET_GROUND",
+    "NO_INDEPENDENT_FLOOR_LEGS",
+    "EXISTING_RAIL_BASE_UNVERIFIED",
+    "REVERSIBLE_ATTACHMENT",
+    "SEPARATE_BUFFER_CLAMP_FASTENER_CONTACT_SURFACE",
+    "PASSAGE_PRIORITY",
+    "CLEANING_DRAINAGE_REPLACEABILITY",
+    "C23_DIMENSIONS_DESIGN_ESTIMATE_ONLY",
+    "FIELD_OPEN_NO_STRUCTURAL_OR_INSTALLATION_CLAIM"
+  ],
+  "alternatives": [
+    {
+      "id": "A_TWIN_SADDLE_PODS",
+      "mechanism": "two independent compact clamp pods with replaceable isolation liners and outward service fasteners",
+      "benefit": "small affected rail area and local part replacement",
+      "risk": "higher part count and more discrete point interfaces"
+    },
+    {
+      "id": "B_SERVICE_BRIDGE",
+      "mechanism": "single removable rear bridge/backplate spanning two rail interfaces with continuous clean-out gap",
+      "benefit": "strong assembly/readability and centralized service access",
+      "risk": "broad contact zone may collect dirt/water and read visually heavy"
+    },
+    {
+      "id": "C_SPLIT_POST_COLLARS",
+      "mechanism": "paired split collars on existing vertical rail posts with short brackets to contact surface",
+      "benefit": "clear paired service points without a continuous rear plate",
+      "risk": "depends on post spacing and may increase passage-side projection"
+    }
+  ],
+  "human_steer": "PENDING",
+  "engineering_pass": false,
+  "field_pass": false,
+  "project_writeback": false,
+  "promotion": false
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "oleander.codesign.digital-hcd-trial.v0.1",
+  "status": "LOCAL_REVERSIBLE_TRIAL",
+  "project": "PRJ-C04-QINGJIANG-SHISHU",
+  "decision_object": "RETURN_SERVICE_RECOVERY_MECHANISM",
+  "source_frontier": [
+    "C04-E_STATE-DIGITAL-OFF-CONTRACT_v0.1.json",
+    "game-ui/cocos4-source/assets/resources/c04/ws07a/runtime-manifest.json",
+    "digital-currentization/app-game-map-v1.2/README.md",
+    "digital-currentization/app-game-map-v1.2/QC_READBACK_v1_2.json",
+    "hcd-professional-process-exercise/v0.2/C04_HCD_PROCESS_EXERCISE_v0.2.json"
+  ],
+  "bounded_question": "How can Return / Service remain continuously recoverable without making the phone dominate the landscape?",
+  "invariants": [
+    "SERVICE_RETURN_GT_ROUTE_GT_OBSERVATION_GT_EXPLANATION_GT_MEMORY_GT_SHARE",
+    "UNKNOWN_NEVER_RENDERED_AS_NORMAL_OR_OPEN",
+    "OFFLINE_DOES_NOT_EQUAL_DEGRADED",
+    "OPTIONAL_DEPTH_CLOSES_BEFORE_ROUTE_SAFETY_RETURN",
+    "DIGITAL_NOT_REQUIRED_FOR_ROUTE_SAFETY_RETURN_CORE_OBSERVATION",
+    "REAL_STIMULUS_REMAINS_PRIMARY",
+    "NO_PSEUDO_LIVE_STATUS"
+  ],
+  "alternatives": [
+    {
+      "id": "A_RETURN_RAIL",
+      "mechanism": "persistent low-emphasis return/service rail with expandable recovery sheet",
+      "benefit": "one-step recovery from every content state",
+      "risk": "persistent chrome may compete with landscape-first attention"
+    },
+    {
+      "id": "B_CONTEXT_BEACON",
+      "mechanism": "compact state-aware return beacon with service drawer",
+      "benefit": "minimal screen occupation while keeping recovery reachable",
+      "risk": "small control may be less discoverable under stress or low attention"
+    },
+    {
+      "id": "C_RETURN_MODE",
+      "mechanism": "explicit explore-to-return mode transition that suppresses optional content",
+      "benefit": "strongest semantic separation between exploration and recovery",
+      "risk": "adds a mode transition and may make users wonder how to leave return mode"
+    }
+  ],
+  "human_steer": "PENDING",
+  "professional_hcd_pass": false,
+  "representative_user_validation": false,
+  "project_writeback": false,
+  "promotion": false
+}

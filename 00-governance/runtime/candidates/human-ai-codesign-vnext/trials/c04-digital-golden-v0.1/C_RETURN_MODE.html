@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>C04 Co-Design C｜Return Mode</title>
+  <link rel="stylesheet" href="trial.css">
+</head>
+<body data-variant="C">
+  <div class="phone">
+    <header class="topbar">
+      <div class="brand"><span class="seal">清</span><span><b>清江石书</b><small>C / RETURN MODE</small></span></div>
+      <button class="mode-toggle" type="button" aria-pressed="false" data-active="false">切到回程</button>
+    </header>
+    <main>
+      <section class="landscape" aria-label="景观主阅读区，关系示意">
+        <div class="scene-copy"><span class="eyebrow">EXPLORE MODE / R06</span><h1>探索时让手机退后，<br>回程时再彻底换挡。</h1><p>不是在同一屏叠更多警示，而是把探索与恢复变成两个明确界面状态。</p></div>
+        <div class="scene-boundary">探索态仍不拥有路线主权；任何现场关闭、未知或低体力条件都可触发回程优先。</div>
+      </section>
+      <div class="mechanism-note"><b>C 机制：</b>显式“探索 ↔ 回程”状态切换。进入回程后可选内容整体退场，语义最清楚；代价是多一个模式和退出模式的认知成本。</div>
+      <section class="task"><span class="label">EXPLORE MODE</span><h2>只保留当前观察，不提前展开服务层</h2><p>需要返回时切换到回程态；可选内容会被整体压下。</p></section>
+      <section class="optional"><article><span>OPTIONAL</span><b>剖面解释</b><p>只在探索态出现。</p></article><article><span>OPTIONAL</span><b>记录 / 回看</b><p>回程态先关闭。</p></article></section>
+
+      <section class="return-mode" aria-label="回程优先模式">
+        <span class="eyebrow">RETURN MODE</span><h1>先回到可确认的路径。</h1><p>可选解释、记忆与分享已退场。数字界面只保留“返回 / 现场服务 / 数字退场”关系。</p>
+        <div class="unknown" data-status="UNKNOWN"><div><span>当前演示状态</span><b>UNKNOWN / 未确认</b></div><em>FAIL-CLOSED</em></div>
+        <div class="service-grid"><article><span>01 / RETURN</span><b>返回优先</b><p>不依赖任务完成。</p></article><article><span>02 / PAPER</span><b>切到纸图</b><p data-digital-off-fallback>数字关闭时基础返回继续成立。</p></article><article><span>03 / HUMAN</span><b>现场服务</b><p>真实情况由现场确认。</p></article><article><span>04 / EXIT MODE</span><b>恢复探索</b><p>确认无需回程后才能重新打开可选深度。</p></article></div>
+        <p class="off-rule" data-no-live-claim>本地试验不提供实时路线、天气、班次、开放或安全状态。</p>
+      </section>
+    </main>
+  </div>
+  <script src="trial.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "schema": "oleander.codesign.digital-hcd-trial-audit.v0.1",
+  "status": "PASS",
+  "hard_failures": [],
+  "alternatives": [
+    {
+      "id": "A_RETURN_RAIL",
+      "editable_html_exists": true,
+      "required_boundary_missing": [],
+      "forbidden_claim_hits": [],
+      "mechanism_specific_marker": false,
+      "status": "PASS"
+    },
+    {
+      "id": "B_CONTEXT_BEACON",
+      "editable_html_exists": true,
+      "required_boundary_missing": [],
+      "forbidden_claim_hits": [],
+      "mechanism_specific_marker": false,
+      "status": "PASS"
+    },
+    {
+      "id": "C_RETURN_MODE",
+      "editable_html_exists": true,
+      "required_boundary_missing": [],
+      "forbidden_claim_hits": [],
+      "mechanism_specific_marker": false,
+      "status": "PASS"
+    }
+  ],
+  "browser_screenshots_present": [
+    "A_NORMAL_390x844_DSF1.png",
+    "A_NORMAL_520x844.png",
+    "A_RETURN_520x844.png",
+    "B_NORMAL_520x844.png",
+    "B_RETURN_520x844.png",
+    "C_NORMAL_520x844.png",
+    "C_RETURN_520x844.png",
+    "C_RETURN_844x390.png"
+  ],
+  "claim_ceiling": "LOCAL_BROWSER_AND_STRUCTURE_READBACK_ONLY / NO USER VALIDATION / NO PROFESSIONAL HCD PASS / NO PROJECT WRITEBACK / NO PROMOTION"
+}

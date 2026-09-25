@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>C04 Co-Design B｜Context Beacon</title>
+  <link rel="stylesheet" href="trial.css">
+</head>
+<body data-variant="B">
+  <div class="phone">
+    <header class="topbar">
+      <div class="brand"><span class="seal">清</span><span><b>清江石书</b><small>B / CONTEXT BEACON</small></span></div>
+      <button class="beacon" type="button" data-open-recovery><i></i><span>返回 / 服务</span></button>
+    </header>
+    <main>
+      <section class="landscape" aria-label="景观主阅读区，关系示意">
+        <div class="scene-copy"><span class="eyebrow">R06 / 河谷观察</span><h1>景观占满注意力，<br>恢复只留一个信标。</h1><p>返回入口保持可见，但不形成持续底栏；点击后才打开服务抽屉。</p></div>
+        <div class="scene-boundary">状态点只表示“恢复入口存在”，不表示现场开放；UNKNOWN 必须进入 fail-closed 信息。</div>
+      </section>
+      <div class="mechanism-note"><b>B 机制：</b>顶部小型状态信标在所有内容态持续存在，点击后进入恢复面。占屏最少，但需要验证压力情境下是否足够可发现。</div>
+      <section class="task"><span class="label">ONE PRIMARY ACTION</span><h2>先比较江与两岸的相对位置</h2><p>不需要完成节点，不把“继续探索”置于返回之前。</p></section>
+      <section class="optional"><article><span>OPTIONAL</span><b>展开科学解释</b><p>精确几何与成因保持现场/专业复核开放。</p></article><article><span>OPTIONAL</span><b>保存这一页</b><p>可跳过，不阻塞路线与返回。</p></article></section>
+    </main>
+  </div>
+  <section class="sheet" hidden aria-label="返回与服务恢复面">
+    <div class="sheet-head"><div><span class="eyebrow">RECOVERY BEACON</span><h2>这里不伪装实时服务。</h2></div><button class="close" data-close-recovery aria-label="关闭返回面">×</button></div>
+    <div class="unknown" data-status="UNKNOWN"><div><span>当前演示状态</span><b>UNKNOWN / 未确认</b></div><em>FAIL-CLOSED</em></div>
+    <div class="service-grid"><article><span>01 / RETURN</span><b>退出探索</b><p>优先回到路线/返回判断。</p></article><article><span>02 / PAPER</span><b>无手机继续</b><p data-digital-off-fallback>纸图、现场标识、人工服务接管。</p></article><article><span>03 / HUMAN</span><b>询问现场</b><p>真实运营变化由现场信息更新。</p></article><article><span>04 / DEPTH OFF</span><b>关闭可选层</b><p>先撤解释、记忆和分享。</p></article></div>
+    <p class="off-rule" data-no-live-claim>红点不是“异常实时告警”；它只表示返回/服务入口，不携带未经官方接口确认的运营状态。</p>
+  </section>
+  <script src="trial.js"></script>
+</body>
+</html>

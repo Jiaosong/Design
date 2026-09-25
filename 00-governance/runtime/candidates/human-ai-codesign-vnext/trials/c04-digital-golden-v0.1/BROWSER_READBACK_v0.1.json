@@ -1,0 +1,73 @@
+{
+  "schema": "oleander.codesign.digital-hcd-browser-readback.v0.1",
+  "status": "PASS_AT_MECHANISM_AND_520_LAYOUT_LEVEL_WITH_TRUE_MOBILE_HOLD",
+  "renderer": {
+    "application": "Microsoft Edge Chromium headless",
+    "path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "successful_capture_set": [
+      "readback/A_NORMAL_520x844.png",
+      "readback/A_RETURN_520x844.png",
+      "readback/B_NORMAL_520x844.png",
+      "readback/B_RETURN_520x844.png",
+      "readback/C_NORMAL_520x844.png",
+      "readback/C_RETURN_520x844.png",
+      "readback/C_RETURN_844x390.png"
+    ],
+    "calibration_capture": "readback/A_NORMAL_390x844_DSF1.png",
+    "520_recapture": "PASS_AFTER_ALLOWING_ASYNCHRONOUS_EDGE_SCREENSHOT_WRITE"
+  },
+  "actual_visual_observations": {
+    "shared": [
+      "Landscape-first visual region remains the dominant first read.",
+      "UNKNOWN / 未确认 is explicit on the recovery surface and is not rendered as NORMAL or OPEN.",
+      "The recovery surface states that live operation / route / weather / safety claims are not provided by this prototype.",
+      "Paper / human / digital-off fallback remains visible in recovery states.",
+      "A, B and C are materially different interaction mechanisms rather than style-only variants."
+    ],
+    "A_RETURN_RAIL": {
+      "normal": "At 520x844 the persistent rail is visually subordinate to landscape/content and its Return / Service action remains fully visible.",
+      "return": "Recovery sheet renders with UNKNOWN fail-closed status and four fallback/service blocks.",
+      "mechanism_risk": "Persistent chrome competes with landscape-first attention."
+    },
+    "B_CONTEXT_BEACON": {
+      "normal": "At 520x844 the compact beacon remains visible while leaving more content area than A.",
+      "return": "Recovery drawer renders with explicit no-pseudo-live wording and digital-off fallback.",
+      "mechanism_risk": "Discoverability under stress/low attention requires representative-user evidence."
+    },
+    "C_RETURN_MODE": {
+      "normal": "Explore state keeps optional content separate from return semantics.",
+      "return_portrait": "Return mode suppresses exploration content and renders UNKNOWN plus fallback/service relationships as the primary state.",
+      "return_landscape": "844x390 capture is coherent; mode control, UNKNOWN state and four service/fallback blocks are simultaneously legible.",
+      "mechanism_risk": "Explicit mode switching adds a mode-entry/exit cognitive cost."
+    }
+  },
+  "defect_and_repair": {
+    "initial_observation": "390x844 screenshots appeared to crop right-side controls and initially suggested a mobile overflow defect.",
+    "diagnosis": "The Windows headless Chromium invocation does not provide trustworthy true-390-CSS-pixel mobile emulation in this environment. A later 520x844 run with unique profiles and a write delay produced stable complete captures for all A/B/C normal and recovery states.",
+    "defensive_code_repair": [
+      "phone changed to width:100%; max-width:520px",
+      "sheet changed to width:100%; max-width:520px",
+      "return rail changed to width:100%; max-width:520px",
+      "horizontal body overflow disabled",
+      "flex shrink / min-width behavior hardened"
+    ],
+    "repair_interpretation": "The CSS hardening is retained because it is robust layout practice, but the original narrow screenshot crop is not counted as a proven product defect.",
+    "remaining_hold": "TRUE_390_CSS_PX_MOBILE_EMULATION_NOT_VERIFIED"
+  },
+  "trial_verdict": {
+    "mechanism_comparability": "PASS",
+    "editable_native_surface": "PASS_HTML_CSS_JS",
+    "actual_browser_render_observed": "PASS_FOR_520x844_A_B_C_NORMAL_AND_RECOVERY_PLUS_844x390_C_RETURN",
+    "520_layout_readback": "PASS",
+    "truth_boundary_preserved": "PASS_AT_LOCAL_TRIAL_LEVEL",
+    "true_mobile_390_layout": "HOLD_ENVIRONMENT_VIEWPORT_EMULATION_NOT_TRUSTWORTHY",
+    "representative_user_usability": "NOT_RUN",
+    "accessibility_conformance": "NOT_RUN",
+    "professional_hcd_pass": "NO",
+    "design_keep": "NO",
+    "project_writeback": false,
+    "promotion": false
+  },
+  "next_required_codesign_step": "REAL_HUMAN_STEER_A_B_C_MIX_REJECT_OR_REFRAME",
+  "claim_ceiling": "LOCAL EDITABLE INTERACTION MECHANISM + ACTUAL 520x844/844x390 BROWSER READBACK / NO TRUE-390-MOBILE PASS / NO REPRESENTATIVE USER EVIDENCE / NO ACCESSIBILITY CONFORMANCE / NO LIVE OPERATIONS / FIELD=0 / G1F HOLD / NO DESIGN KEEP / NO PROJECT WRITEBACK / NO PROMOTION"
+}

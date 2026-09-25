@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <style>
+    .bg{fill:#f4f0e5}.paper{fill:#fbf9f3;stroke:#c9c7bc;stroke-width:1.5}.ink{fill:#17332c}.muted{fill:#687870}.q{fill:#548b7e}.r{fill:#a54539}.wood{fill:#a98655}.steel{fill:#29433b}.pad{fill:#7c8e86}.line{fill:none;stroke:#17332c;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.thin{fill:none;stroke:#7f8c85;stroke-width:1.5}.dash{fill:none;stroke:#a54539;stroke-width:2;stroke-dasharray:8 7}.t1{font:700 38px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.t2{font:700 21px 'Noto Serif CJK SC','Noto Serif SC','Songti SC',serif}.txt{font:400 15px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 12px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 10px 'Noto Sans CJK SC','Noto Sans SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+  </style>
+  <rect class="bg" width="1400" height="900"/>
+  <text x="60" y="58" class="xs q">P02 / CO-DESIGN PHYSICAL TRIAL · A / TWIN SADDLE PODS</text>
+  <text x="60" y="110" class="t1 ink">把夹持拆成两个可独立维护的小接口</text>
+  <text x="60" y="146" class="txt muted">小接触区 · 可更换缓冲 · 外向检修紧固件 · 不画落地支腿</text>
+  <text x="60" y="180" class="xs r">NTS / DESIGN ESTIMATE / FIELD OPEN / NOT ENGINEERING / NOT FOR INSTALLATION</text>
+  <line x1="60" y1="205" x2="1340" y2="205" class="thin"/>
+
+  <g transform="translate(60 245)">
+    <rect width="820" height="450" rx="22" class="paper"/>
+    <text x="30" y="42" class="xs q">01 / BODY + RAIL RELATION</text>
+    <line x1="78" y1="355" x2="755" y2="355" class="thin"/>
+    <rect x="135" y="118" width="20" height="237" rx="5" class="steel"/>
+    <rect x="640" y="118" width="20" height="237" rx="5" class="steel"/>
+    <rect x="135" y="126" width="525" height="22" rx="5" class="steel"/>
+    <rect x="135" y="236" width="525" height="16" rx="5" class="steel"/>
+    <rect x="235" y="194" width="330" height="58" rx="12" class="wood"/>
+    <rect x="250" y="250" width="300" height="12" rx="6" class="pad"/>
+    <path d="M270 262v54h54v-54M486 262v54h54v-54" class="line"/>
+    <path d="M278 273h38M494 273h38" class="dash"/>
+    <circle cx="297" cy="296" r="10" class="r"/><circle cx="513" cy="296" r="10" class="r"/>
+    <text x="225" y="182" class="sm r">身体接触板</text>
+    <text x="260" y="338" class="sm ink">A1 / A2 两个独立夹持 pod</text>
+    <text x="255" y="377" class="sm muted">缓冲件可单独拆换；紧固件朝检修侧</text>
+    <circle cx="710" cy="118" r="22" class="line"/>
+    <path d="M699 140l-27 76 18 82M674 190l-68 35M690 298l-18 24M691 298l35 24" class="line"/>
+    <text x="642" y="388" class="sm muted">站立 / 半倚 / 双脚落地</text>
+  </g>
+
+  <g transform="translate(920 245)">
+    <rect width="420" height="450" rx="22" class="paper"/>
+    <text x="28" y="42" class="xs q">02 / INTERFACE STACK</text>
+    <text x="28" y="82" class="t2 ink">局部坏，局部换</text>
+    <rect x="70" y="130" width="46" height="210" rx="7" class="steel"/>
+    <rect x="116" y="176" width="155" height="54" rx="10" class="wood"/>
+    <rect x="120" y="230" width="145" height="12" rx="6" class="pad"/>
+    <path d="M135 242v62h42v-35h76v35h42v-62" class="line"/>
+    <circle cx="156" cy="282" r="10" class="r"/>
+    <circle cx="274" cy="282" r="10" class="r"/>
+    <path d="M136 318h158" class="dash"/>
+    <text x="315" y="153" class="sm ink">A 既有栏杆</text>
+    <text x="315" y="188" class="sm ink">B 接触板</text>
+    <text x="315" y="223" class="sm ink">C 缓冲</text>
+    <text x="315" y="258" class="sm ink">D pod</text>
+    <text x="315" y="293" class="sm ink">E 紧固件</text>
+    <text x="28" y="374" class="sm r">清洁 / 排水：</text>
+    <text x="28" y="398" class="sm muted">pod 间保持开放，不形成连续积水背板。</text>
+  </g>
+
+  <g transform="translate(60 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">BENEFIT</text><text x="20" y="58" class="t2 ink">维修最局部</text><text x="20" y="82" class="sm muted">单个 liner / fastener / pod 可独立处理。</text>
+  </g>
+  <g transform="translate(475 735)">
+    <rect width="390" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">RISK</text><text x="20" y="58" class="t2 ink">零件数量更高</text><text x="20" y="82" class="sm muted">更多点接口，不代表更高结构能力。</text>
+  </g>
+  <g transform="translate(890 735)">
+    <rect width="450" height="105" rx="16" class="paper"/><text x="20" y="28" class="xs r">HOLD</text><text x="20" y="58" class="t2 ink">承载 / 净宽 / 许可未验证</text><text x="20" y="82" class="sm muted">现场任一条件不成立，安装讨论停止。</text>
+  </g>
+</svg>

@@ -1,0 +1,193 @@
+{
+  "schema": "oleander.human-ai-codesign-regression-results.v0.1",
+  "status": "CANDIDATE_LOCAL_REGRESSION",
+  "executed_at_utc": "2026-09-25T02:44:45.182324+00:00",
+  "repo_head_note": "Runner does not grant Current or Promotion authority.",
+  "overall": "PASS_WITH_PARTIALS",
+  "hard_failures": [],
+  "partials": [
+    "CD-09-PLUGIN-REMOVAL-SURVIVAL"
+  ],
+  "results": [
+    {
+      "id": "CD-01-CONTINUE-WITHOUT-CHAT-MEMORY",
+      "mode": "REAL_CARRIER",
+      "status": "PASS",
+      "expected": [
+        "recover_verified_frontier_from_existing_carriers",
+        "do_not_use_chat_summary_as_authority",
+        "continue_next_allowed_reversible_action"
+      ],
+      "observed": [
+        "project=PRJ-C04-QINGJIANG-SHISHU design_state=EXPLORE gate=G3",
+        "project_state_source=05-cases/c04-qingjiang-stone-book/C04_REMOTE-CLOSURE-FRONTIER_2026-08-14.md",
+        "source_revision=672cd61bbac02dd6686c297567a16a5afd81a8fa",
+        "current_task=C04_SIX_LANE_ORCHESTRATION_CONTROLS_V1",
+        "frontier_rule=ONE_CURRENT_FRONTIER_PER_LANE"
+      ],
+      "evidence": [
+        "05-cases/c04-qingjiang-stone-book/orchestration/runtime-state.json"
+      ],
+      "limitations": []
+    },
+    {
+      "id": "CD-05-STALE-CHECKPOINT",
+      "mode": "FIXTURE",
+      "status": "PASS",
+      "expected": [
+        "block_stale_mutation",
+        "revalidate_current",
+        "preserve_valid_reversible_work"
+      ],
+      "observed": [
+        "executor_sequence=41",
+        "current_sequence=42",
+        "decision=BLOCK_AUTHORITY_SENSITIVE_MUTATION_AND_REVALIDATE_CURRENT",
+        "reversible_local_work=PRESERVED"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/regressions/v0.1/fixtures.json"
+      ],
+      "limitations": [
+        "Synthetic concurrency fixture; no live project checkpoint was mutated."
+      ]
+    },
+    {
+      "id": "CD-05B-AUTHORITY-SOURCE-DRIFT",
+      "mode": "FIXTURE",
+      "status": "PASS",
+      "expected": [
+        "hold_authority_sensitive_mutation_on_fingerprint_or_source_drift",
+        "revalidate_current_authority_and_source",
+        "preserve_bounded_reversible_local_work"
+      ],
+      "observed": [
+        "sequence_same=True",
+        "authority_fingerprint_drift=True",
+        "source_revision_drift=True",
+        "decision=HOLD_AUTHORITY_SENSITIVE_MUTATION_REVALIDATE_CURRENT"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/regressions/v0.1/fixtures.json"
+      ],
+      "limitations": [
+        "Synthetic drift fixture; does not claim a real C04/C01 Current drift event."
+      ]
+    },
+    {
+      "id": "CD-06-PRESENTATION-CONTAMINATION",
+      "mode": "HYBRID_REAL_CARRIER_PLUS_FIXTURE",
+      "status": "PASS",
+      "expected": [
+        "classify_presentation_as_derivative_unless_authorized_otherwise",
+        "do_not_replace_native_master_by_recency",
+        "route_design_change_upstream"
+      ],
+      "observed": [
+        "native_owner_carrier=00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.svg",
+        "actual_readback_derivative=00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.png",
+        "derivative_listed_in_readback=True",
+        "recency_attack_derivative_observed_later=True",
+        "selected_resume_source=00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.svg",
+        "recency_override=DENIED"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.svg",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/A_EDGE_DOCK.png",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/trials/c01-spatial-golden-v0.1/READBACK_v0.1.json",
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/regressions/v0.1/fixtures.json"
+      ],
+      "limitations": [
+        "The editable SVG and inspected PNG are real C01 candidate-trial carriers.",
+        "The newer-by-recency condition is a fixture because the original project presentation binaries are not tracked into this isolated worktree.",
+        "This does not assert a single production-native master for the entire C01 project."
+      ]
+    },
+    {
+      "id": "CD-07-MISSING-NATIVE-SURFACE",
+      "mode": "REAL_CARRIER",
+      "status": "PASS",
+      "expected": [
+        "allow_truthful_bounded_editable_prototype",
+        "hold_native_completion_claim",
+        "do_not_fake_cad_completion"
+      ],
+      "observed": [
+        "fusion_native_f3d_count=0",
+        "bounded_editable_sources=['06-practice/2026/2026-08-07-timer-light-basin/build/OLEANDER_TimerLightBasin_AutoBuild_v0.4.py', '06-practice/2026/2026-08-07-timer-light-basin/parameters/01_parameters_reference.csv', '06-practice/2026/2026-08-07-timer-light-basin/parameters/OLEANDER_TimerLightBasin_v0.3_parameter_dependency.csv']",
+        "decision=CONTINUE_BOUNDED_EDITABLE_PROTOTYPE",
+        "native_completion=HOLD"
+      ],
+      "evidence": [
+        "06-practice/2026/2026-08-07-timer-light-basin/README.md",
+        "06-practice/2026/2026-08-07-timer-light-basin/build/OLEANDER_TimerLightBasin_AutoBuild_v0.4.py",
+        "06-practice/2026/2026-08-07-timer-light-basin/parameters/01_parameters_reference.csv",
+        "06-practice/2026/2026-08-07-timer-light-basin/parameters/OLEANDER_TimerLightBasin_v0.3_parameter_dependency.csv"
+      ],
+      "limitations": [
+        "Timer Light Basin is a Practice/product-design carrier, not a production manufacturing claim.",
+        "Fusion execution and .f3d readback remain genuinely unrun."
+      ]
+    },
+    {
+      "id": "CD-09-PLUGIN-REMOVAL-SURVIVAL",
+      "mode": "REAL_CARRIER",
+      "status": "PARTIAL",
+      "expected": [
+        "project_state_exists_outside_plugin",
+        "checkpoint_exists_outside_plugin",
+        "native_artifact_authority_exists_outside_plugin"
+      ],
+      "observed": [
+        "project_state_carrier=05-cases/c04-qingjiang-stone-book/orchestration/runtime-state.json",
+        "checkpoint_carrier=00-governance/runtime/receipts/EXR-20260909-P5-CROSS-PROJECT-SURFACE-ADOPTION.json state=CLOSED sequence=2",
+        "native_carrier=05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/assets/resources/c04/ws07a/runtime-manifest.json",
+        "plugin_consumes_not_owns_boundary=True",
+        "actual_installed_plugin_uninstall=NOT_RUN"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json",
+        "05-cases/c04-qingjiang-stone-book/orchestration/runtime-state.json",
+        "00-governance/runtime/receipts/EXR-20260909-P5-CROSS-PROJECT-SURFACE-ADOPTION.json",
+        "05-cases/c04-qingjiang-stone-book/game-ui/cocos4-source/assets/resources/c04/ws07a/runtime-manifest.json"
+      ],
+      "limitations": [
+        "Carrier independence is verified from the repository.",
+        "Actual uninstall/reinstall of the installed ChatGPT plugin was not performed, so this is not a full runtime uninstall PASS."
+      ]
+    },
+    {
+      "id": "CD-11-MULTI-HUMAN-DECISION-RIGHTS",
+      "mode": "FIXTURE",
+      "status": "PASS",
+      "expected": [
+        "preserve_scoped_human_roles",
+        "do_not_treat_latest_human_message_as_universal_authority",
+        "route_conflict_through_existing_decision_rights",
+        "keep_independent_review_independent"
+      ],
+      "observed": [
+        "designer_iteration_steer=Keep mechanism A but simplify the service path.",
+        "specialist_technical_limit=Do not cross the protected service clearance.",
+        "independent_review_state=HOLD",
+        "latest_message_role=CLIENT scope=VALUE_PRIORITY",
+        "promotion_allowed=False",
+        "latest_message_universal_override=DENIED"
+      ],
+      "evidence": [
+        "00-governance/runtime/candidates/human-ai-codesign-vnext/regressions/v0.1/fixtures.json"
+      ],
+      "limitations": [
+        "Synthetic role-conflict fixture; no real stakeholder instruction is reinterpreted."
+      ]
+    }
+  ],
+  "does_not_prove": [
+    "DESIGN_KEEP",
+    "PROFESSIONAL_PASS",
+    "FIELD_TRUTH",
+    "PLUGIN_PRODUCTION_READINESS",
+    "CURRENT_PROMOTION",
+    "PROJECT_PROMOTION"
+  ]
+}
