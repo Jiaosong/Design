@@ -208,7 +208,264 @@ Memory / IP 与 Brand 分开。
 
 ---
 
-# 7｜Human–AI 协作为什么在 C04 中重要
+# 7｜两种阅读同时成立：Experience + Professional Depth
+
+C04 当前明确拒绝把整个项目压缩成一条漂亮的作品集故事。
+
+项目需要同时支持两种阅读：
+
+### Reading A｜Experience / Story
+
+面向第一次阅读项目的人：
+
+~~~text
+ENTER
+→ CHOOSE HOW TO MOVE
+→ CROSS / OPEN
+→ WALK / DISCOVER
+→ STOP / OBSERVE / RECOVER
+→ PASS / WITHDRAW
+→ RETURN
+→ REMEMBER
+~~~
+
+第一阅读命题是：
+
+> **先游清江，再读清江。**  
+> **水上看，空中看，山中走；需要时，再打开一页清江。**
+
+它回答：**游客到底经历了什么？**
+
+### Reading B｜Professional Depth
+
+面向专业评审、设计师和产品读者：
+
+~~~text
+CONTEXT / ANALYSIS
+→ DESIGN PRINCIPLES
+→ DESIGN METHODS
+→ SYSTEM DESIGN
+→ SCENE DESIGN
+→ USER DEPTH
+→ PHYSICAL / DIGITAL / MEMORY
+→ DETAILS
+→ TECHNICAL PROOF
+→ PROCESS JUDGMENT
+→ OPEN ITEMS
+~~~
+
+它回答：**为什么这样设计、为谁设计、怎么设计、怎么工作、什么仍未证明？**
+
+两种阅读不能互相删除。
+
+---
+
+# 8｜当前设计原则
+
+当前 Public Narrative Authority 明确记录十条设计原则：
+
+1. **Real Qingjiang First**  
+   先建立真实山水与身体关系，再进入解释。
+
+2. **Service / Return before content completion**  
+   路线确定性、恢复和回程优先于游戏或内容完成率。
+
+3. **Three scales of experience**  
+   BOAT / CABLE / WALK 是阅读同一清江的三种尺度。
+
+4. **Optional content, not mandatory stations**  
+   十三印是可开启内容，而不是强制路线权威。
+
+5. **Scene-specific attention density**  
+   不同场景不应该拥有同样多的 UI、文字、互动和装置。
+
+6. **Digital retreatability**  
+   数字系统在有价值时出现，在山水、身体或 Return 更重要时主动退场。
+
+7. **Minimum necessary physical intervention**  
+   实体设计只在身体、恢复、阅读或回程真正需要时介入。
+
+8. **Same scene, different depth**  
+   不为不同人群复制多个产品，而是在同一场景中改变深度、支持和负担。
+
+9. **Landscape → relation → explanation**  
+   尤其在关键场景中，先看完整山水，再进入关系与解释。
+
+10. **Return + memory, not completion score**  
+    项目通过再识别和记忆闭合，而不是用 `13/13` 完成度结束。
+
+这些原则是具体设计约束，不是宣传语。
+
+---
+
+# 9｜当前设计方法
+
+项目当前采用的方法必须能绑定到真实 C04 对象，而不是泛化成方法论图。
+
+### Evidence → Spatial Finding → Design Consequence
+
+证据必须改变空间或体验判断，否则它只是资料堆积。
+
+### Visitor Situation → Action → Mode → Carrier → Value → Fallback
+
+每个体验对象都要解释：谁在什么状态下做什么，通过什么载体获得什么，并在载体失效时如何退化。
+
+### Landscape First → Relation Reveal
+
+尤其用于 R06 等场景：先让真实山水成立，再逐步揭示解释关系。
+
+### Scene × Attention Density × Audience Depth
+
+同一场景根据身体负担、注意力和用户类型控制信息密度，而不是统一套 UI。
+
+### Concept State ≠ Pixel State
+
+旧视觉像素失败，不代表设计概念必须删除。可以出现：
+
+- `CONCEPT KEEP / PIXELS KEEP`
+- `CONCEPT KEEP / PIXELS REDRAW`
+- `CONCEPT COMPETE / SHOW PROCESS`
+- `CONCEPT HOLD / FIELD OPEN`
+- `CONCEPT DROP`
+
+### Existing / Minimal / Hero Intervention
+
+对实体与场景介入做强度比较，而不是默认“做得越多越好”。
+
+### Operational State Method
+
+`NORMAL / DEGRADED / CLOSED / UNKNOWN × FULL / LIGHT / OFF` 用来设计行为与退化，不作为面向游客的后台仪表盘。
+
+### Redundant Carrier / Retreatability
+
+`Physical + Digital + Paper + Human Service` 形成冗余；任何一个数字通道失效时，基础体验与 Return 仍应成立。
+
+---
+
+# 10｜三条内容轴：清江有什么、怎么游、到了这里做什么
+
+为了把复杂内容转成可读体验，C04 当前使用三条公共叙事轴。
+
+## Axis 1｜地域文化：Qingjiang Content Engine
+
+问题是：
+
+> **清江到底有什么值得游客认识、参与和记住？**
+
+内容库可包含：
+
+- 地域历史、河流与聚落、交通历史；
+- 地方故事与地名；
+- 有来源支持的工艺／非遗内容；
+- 河流、峰林、裂隙、植物、天气／季节等景观知识；
+- 作为文化解释的传统山水观；
+- 路线识别、天气感知、观察与身体节奏等地方／日常智慧；
+- page / line / mist / wind / personal mark 等记忆语言。
+
+硬规则：
+
+> **文化必须改变游客注意什么、做什么，而不是变成长篇历史说明。**
+
+## Axis 2｜游线与交通：How to Play Qingjiang
+
+当前 journey：
+
+~~~text
+到达
+→ 确认路线 / 回程
+→ BOAT
+→ CABLE
+→ WALK
+→ 场景选择
+→ 休息 / 互动 / 阅读
+→ RETURN
+→ MEMORY
+~~~
+
+三种 travel lens：
+
+| Mode | 体验尺度 | 数字介入原则 |
+|---|---|---|
+| BOAT | 河流 / 长距离山水 | 实景强时保持低注意力，可用短音频／地图背景 |
+| CABLE | 移动中的空间关系 | 交通优先、UI 轻量，不强制触发任务 |
+| WALK | 身体、地形、分支、近距离观察 | 十三印、实体互动与家庭机制主要发生层 |
+
+Game Map 可以使用：map reveal、discovery marker、optional collection、scene icon、light puzzle、personal trace。
+
+但不能使用：
+
+- quest 锁死路线；
+- `13/13` 强制完成；
+- 把安全与 Return 藏在游戏进度后；
+- battle / coin / loot-box / rarity 语法；
+- 伪造 GPS 或实时运营状态。
+
+## Axis 3｜场景与不同人群：What Happens Here
+
+四类内容模式是 tag，不是四个独立项目：
+
+- `CULTURE` — story / name / history / intangible culture；
+- `WISDOM` — observe → guess → compare → explain；
+- `PLAY` — find / match / trace / listen / frame / step / collaborate；
+- `WELLBEING` — rest / pace / shade-water prompt / quiet looking / recovery / return。
+
+`WELLBEING` 是体验／服务，不是医疗治疗或健康营销。
+
+---
+
+# 11｜Audience Depth：同一个清江，不同的行动深度
+
+当前 audience basis：
+
+| ID | Audience mode | 设计重点 |
+|---|---|---|
+| A1 | ordinary / first-time visitor | 基础方向、理解和回程确定性 |
+| A2 | family / learning | 共同发现、低门槛互动、成人协同 |
+| A3 | deep reader / geology-culture-photo | 更深证据、解释和观察 |
+| A4 | older / low-digital | 低数字负担、清晰路线、纸质／人工 fallback |
+| A5 | short-time / limited stamina | 更短路径、更早 Return、更低身体负担 |
+| A6 | local / returning | 重访、记忆和不同层级内容 |
+
+系统不通过“六套 persona 页面”解决差异，而是改变同一场景中的：
+
+- action depth；
+- content depth；
+- physical support；
+- digital burden；
+- Return priority。
+
+当前核心 interaction verbs 保持：
+
+`LOOK / COMPARE / TRACE / LISTEN / WAIT / FRAME / STEP / REMEMBER`
+
+---
+
+# 12｜关键场景如何工作
+
+| Scene | 主要体验 | 当前设计角色 |
+|---|---|---|
+| Arrival | 认路、交通选择、回程确认 | Game Map + Service + Journal |
+| BOAT | 长距离山水、声音、倒影 | 低屏幕负担，轻量文化背景 |
+| CABLE / R01 | 移动视角与空间比较 | 真实视野优先，数字提示退让 |
+| R05 Peak Forest | 形态识别、家庭共发现 | App discovery + family layer |
+| WALK / body segment | 身体反馈、步行观察 | `步步生光` 等候选介入 |
+| Rest segment | 倚靠、坐、观察、恢复 | rail-rest / fluid-rest 等不同状态候选 |
+| R06 Valley | 山水整体 → 相对关系 → 解释 | landscape pair + section/model + optional rest |
+| R07 / R09 / R12 | 地方故事与文化阅读 | image / voice / source / deep read |
+| Sensory wind place | 听、等、写、安静停留 | `清风吟` spatial + memory variant |
+| R13 | 高注意力通过与安全优先 | PLAY OFF / Digital Silence / Return first |
+| Return | 路线回收与记忆形成 | Journal + My Book + selected memory objects |
+
+这里的重要判断是：
+
+> **Physical design is a scene mechanic, not decoration.**
+
+实体设计必须回答身体、阅读、恢复或 Return 的具体需要。
+
+
+---
+
+# 13｜Human–AI 协作为什么在 C04 中重要
 
 C04 的复杂度意味着 AI 如果只依赖聊天上下文，很容易出现：
 
@@ -236,7 +493,7 @@ C04 的复杂度意味着 AI 如果只依赖聊天上下文，很容易出现：
 
 ---
 
-# 8｜当前五类工作流
+# 14｜当前五类工作流
 
 当前 Project Control Card 将项目拆成五个主要 active workstreams。
 
@@ -299,7 +556,7 @@ Web 是重要载体，但不是整个项目。
 
 ---
 
-# 9｜Evidence / Truth Boundary
+# 15｜Evidence / Truth Boundary
 
 这是 C04 当前最重要的边界之一。
 
@@ -324,7 +581,7 @@ Wellbeing 仅用于休息、节奏、饮水／遮阴提示、安静观察、疲�
 
 ---
 
-# 10｜当前状态到底是什么意思
+# 16｜当前状态到底是什么意思
 
 这里有两个容易混淆的状态层：
 
@@ -350,7 +607,7 @@ Wellbeing 仅用于休息、节奏、饮水／遮阴提示、安静观察、疲�
 
 ---
 
-# 11｜页面与资产数量怎么理解
+# 17｜页面与资产数量怎么理解
 
 C04 曾出现大量页面、chapter、authoring units、Web surfaces 和资产。
 
@@ -382,7 +639,7 @@ C04 曾出现大量页面、chapter、authoring units、Web surfaces 和资产�
 
 ---
 
-# 12｜推荐阅读入口
+# 18｜推荐阅读入口
 
 如果第一次进入 C04，不建议随机打开几十个版本文件。
 
@@ -441,7 +698,7 @@ C04 曾出现大量页面、chapter、authoring units、Web surfaces 和资产�
 
 ---
 
-# 13｜如果你从产品经理视角阅读
+# 19｜如果你从产品经理视角阅读
 
 C04 最值得看的不是“项目文件很多”，而是如何处理复杂度。
 
@@ -469,7 +726,7 @@ C04 最值得看的不是“项目文件很多”，而是如何处理复杂度�
 
 ---
 
-# 14｜当前开放项
+# 20｜当前开放项
 
 当前公开阅读时应保留以下开放状态：
 
@@ -492,7 +749,7 @@ C04 最值得看的不是“项目文件很多”，而是如何处理复杂度�
 
 ---
 
-# 15｜一句话理解 C04
+# 21｜一句话理解 C04
 
 > **C04 是一个用真实复杂设计项目验证 OLEANDER“状态、权限、证据、设计质量和多工作流协作”能力的长期案例，而不是一个用大量文件证明完成度的项目。**
 
