@@ -10,6 +10,36 @@
 
 ---
 
+# Product Strategy Map
+
+```mermaid
+mindmap
+  root((OLEANDER Product Bet))
+    Customer
+      long_running_design
+      professional_judgment
+      multi_artifact
+    Pain
+      continuity
+      authority
+      false_completion
+      shallow_variation
+    Promise
+      resume_correctly
+      explore_materially
+      make_real_artifact
+      human_controls_key_choices
+    Wedge
+      verified_continuity
+      human_steered_artifact_loop
+    Proof
+      VPCR
+      guardrails
+      external_pilot
+```
+
+---
+
 # 1｜One-page Product Brief
 
 ## Customer

@@ -12,6 +12,44 @@
 
 ---
 
+## Graph-first product model
+
+Detailed product-node definitions now live in the node graph:
+
+- [Product Node Graph](nodes/README.md)
+- [Visual Product Maps](maps/README.md)
+
+```mermaid
+mindmap
+  root((OLEANDER))
+    HOME
+    FOCUS
+    STUDIO
+      EXPLORE
+      DEVELOP
+      SYNTHESIZE
+    COMPARE
+    MAP
+    ARTIFACTS
+    REVIEW
+    KNOWLEDGE
+    HISTORY
+    SESSION_KERNEL
+      RESUME_RECOVER
+      HUMAN_STEER
+      AUTONOMY_HUMAN_STOP
+      MUTATION_GUARD
+      CONTINUITY_CLOSURE
+    PEOPLE_AUTHORITY
+    INTEGRATIONS
+    SETTINGS
+    SYSTEM_HEALTH
+```
+
+**Document rule:** Master PRD owns scope, decisions, priorities and release contract. Each first-class product node owns its own behaviour document. Feature specs and traceability are downstream detail/provenance views.
+
+---
+
 # 0｜Document Control
 
 | Item | Current state |

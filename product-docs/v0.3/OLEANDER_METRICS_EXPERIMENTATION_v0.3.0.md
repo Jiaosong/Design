@@ -9,6 +9,26 @@
 
 ---
 
+# Metric Relationship Map
+
+```mermaid
+flowchart LR
+    NS[VPCR] --> C[Continuity]
+    NS --> A[Useful Autonomy]
+    NS --> R[Reality / Readback]
+    C --> RC[Resume Correction]
+    C --> CI[Repeated Context]
+    A --> US[Unnecessary Stops]
+    A --> UA[Unauthorized Actions]
+    R --> RI[Revision Integrity]
+    R --> FC[False Completion]
+    G[Guardrails] --> UA
+    G --> RO[READ_ONLY Mutation = 0]
+    G --> AP[AI Promotion = 0]
+```
+
+---
+
 # 1｜Metric Tree
 
 ```text

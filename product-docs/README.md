@@ -28,6 +28,8 @@ USER / CONTEXT
 
 ## [OLEANDER Product Operating Package v0.3.0](v0.3/README.md)
 
+**推荐第一入口：** [Product Node Graph](v0.3/nodes/README.md) · [Visual Maps](v0.3/maps/README.md)
+
 这是当前建议从产品经理 / 大型产品团队视角阅读的入口。
 
 v0.3 不取代 v0.2 的 141 个 Feature / Traceability 细节，而是在其上补齐：

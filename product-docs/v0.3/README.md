@@ -10,6 +10,52 @@
 
 ---
 
+# 0｜Graph-first Reading Layer
+
+## [Product Node Graph](nodes/README.md)
+
+v0.3 内部产品定义现在采用：
+
+> **ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT**
+
+先看总图，再点节点进入单节点文档：
+
+```mermaid
+flowchart LR
+    MAPS[Visual Maps] --> GRAPH[Product Node Graph]
+    GRAPH --> HOME[HOME]
+    GRAPH --> FOCUS[FOCUS]
+    GRAPH --> STUDIO[STUDIO]
+    GRAPH --> COMPARE[COMPARE]
+    GRAPH --> MAP[MAP]
+    GRAPH --> ART[ARTIFACTS]
+    GRAPH --> REVIEW[REVIEW]
+    GRAPH --> KNOW[KNOWLEDGE]
+    GRAPH --> HIST[HISTORY]
+    GRAPH --> KERNEL[SESSION KERNEL]
+```
+
+- [Node Documentation Contract](nodes/NODE_DOCUMENTATION_CONTRACT.md)
+- [Visual Product Maps](maps/README.md)
+
+### 文档层级
+
+```text
+STRATEGY / DECISION DOC
+        ↓
+PRODUCT NODE GRAPH
+        ↓
+ONE NODE = ONE PRIMARY DOC
+        ↓
+FEATURE / REQUIREMENT IDs
+        ↓
+ACCEPTANCE / TRACE / EVAL
+```
+
+原 v0.2 Feature Specs 继续作为**跨多个 Feature 的详细 composite specification / provenance view**，但不再承担“每个产品节点的唯一正文”。具体节点定义以 `v0.3/nodes/` 为主。
+
+---
+
 # 1｜为什么需要这一层
 
 OLEANDER v0.2 已经把需求细化到 User Need、Product Area、Feature、Flow、Object、Interface、Acceptance 和 Traceability。
