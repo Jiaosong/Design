@@ -308,6 +308,136 @@ Agent is confident ≠ Human authorization
 
 ---
 
+# 6A｜Design Activity → Decision Moment → Product Surface
+
+OLEANDER 不把产品组织成一次性线性流程，但必须覆盖设计过程中反复出现的判断活动。
+
+| Design Activity | 关键判断 | Typical Decision Moment | Primary Product Surface |
+|---|---|---|---|
+| DISCOVER | 实际发生了什么？真正受影响的是谁？ | 是否值得把异常提升为设计问题 | KNOWLEDGE / FOCUS |
+| INTERPRET | 资料意味着什么？ | 是否形成 design consequence / risk / hypothesis | KNOWLEDGE / FOCUS |
+| FRAME | 真正的问题是什么？ | 当前 Design Question 是否成立 | FOCUS |
+| GENERATE | 有哪些根本不同的解决策略？ | exploration 是否值得继续 | STUDIO / COMPARE |
+| JUDGE | 好/坏在哪里？根因是什么？ | concern 是否形成 Finding | REVIEW / MAP |
+| CHOOSE | 哪个 trade-off 值得接受？ | SELECT / HOLD / REJECT / DEFER | COMPARE |
+| DEVELOP | 下一层应深化什么？ | 当前 development frontier | STUDIO / ARTIFACTS |
+| INTEGRATE | 局部变化如何影响整体？ | integrated decision / conflict routing | MAP / REVIEW |
+| MATERIALIZE | 判断如何进入真实 artifact？ | prototype / native target / fidelity | ARTIFACTS |
+| READBACK | 实际结果和预期一致吗？ | repair / continue / reopen | ARTIFACTS / REVIEW |
+| VERIFY | 是否按声明 requirement 实现？ | supported / unsupported claim | REVIEW |
+| VALIDATE | 在真实用户/情境中是否有效？ | problem solved / reframe / revise | REVIEW / FOCUS |
+| REVISE | 该修哪里？哪些保持？ | Revision Scope | REVIEW / MAP / STUDIO |
+| CONVERGE | 继续探索还是足够成熟？ | advance / hold / reopen | HOME / COMPARE |
+
+这些 Activity 是反复出现的设计活动类型，不是统一 project stage。
+
+---
+
+# 6B｜User Story Baseline
+
+## US-01｜Design Owner：恢复真实前沿
+作为设计负责人，我希望进入项目时立刻看到 Current Question、Current Direction、Frontier、Critical Open 和 Active Artifact，从而不重新拼接聊天、文件和旧版本。
+
+**Acceptance link:** HOME-F01 / HOME-F02 / HOME-F04.
+
+## US-02｜Design Owner：保持设计意图
+作为设计负责人，我希望 Design Value、锁定关系和已拒绝方向在后续工作中保持可追踪，从而避免“执行正确但方向错误”。
+
+**Acceptance link:** FOCUS-F03 / MAP-F01 / HIS-F02 / HIS-F03.
+
+## US-03｜Design Owner：带着边界做决定
+作为设计负责人，我希望候选同时显示 trade-off、uncertainty、evidence gap、downstream consequence 和 reopen condition，从而由我承担重要决定。
+
+**Acceptance link:** CMP-F03–F07.
+
+## US-04｜Designer：先做设计，不维护系统
+作为设计师，我希望系统把模糊目标转成下一步真实 design action，并自动处理能安全自动处理的连续性/追踪工作。
+
+**Acceptance link:** HOME-F06 / FOCUS-F09 / INT-F16.
+
+## US-05｜Designer：比较真正不同的方案
+作为设计师，我希望看到机制和关系真正不同的候选，而不是表面 style variation。
+
+**Acceptance link:** EXP-F03 / EXP-F09 / CMP-F02.
+
+## US-06｜Designer：从“感觉不对”进入修复
+作为设计师，我希望先保留“这个不对”的判断，再通过真实 artifact、关系和 cause hypotheses 找到可行动问题，而不是被迫立即打分。
+
+**Acceptance link:** REV-F02 / REV-F05 / REV-F06 / INT-F05.
+
+## US-07｜Designer：始终回到 Native
+作为设计师，我希望可继续发展的工作最终回到真实 editable/native artifact，而不是根据截图或 AI visual 重做。
+
+**Acceptance link:** ART-F02 / ART-F03 / ART-F07.
+
+## US-08｜Designer：局部失败不全局重做
+作为设计师，我希望一个局部失败只重开真实依赖范围，并保护已成立关系。
+
+**Acceptance link:** MAP-F05 / MAP-F11 / REV-F13.
+
+## US-09｜Domain Professional：获取可信输入
+作为专业负责人，我希望输入 geometry / parameter / assumption / requirement 都明确 revision 和 evidence boundary，从而避免基于 stale information 作判断。
+
+**Acceptance link:** ART-F10 / ART-F11 / KNW-F02–F06.
+
+## US-10｜Domain Professional：保持专业过程
+作为专业负责人，我希望 OLEANDER 协调我的工作，但不以通用 CoDesign stage 取代本专业方法、工具和责任。
+
+**Acceptance link:** DEV-F08 / INT-F28.
+
+## US-11｜Integrator：看清 change impact
+作为 Integrator，我希望一个 shared variable 变化后能看到真实受影响 relation / profession / artifact / decision，从而只协调必要范围。
+
+**Acceptance link:** MAP-F05 / MAP-F09 / MAP-F10.
+
+## US-12｜Reviewer：审查准确版本
+作为 reviewer，我希望 review task 绑定 exact artifact / revision / readback，从而确认我看的就是后续引用对象。
+
+**Acceptance link:** REV-F01 / ART-F10.
+
+## US-13｜Reviewer：保留重大分歧
+作为 reviewer，我希望重大 disagreement 不被平均分或最新 reviewer comment 覆盖。
+
+**Acceptance link:** REV-F04 / REV-F09 / KNW-F07.
+
+## US-14｜Knowledge Steward：知识可用但不过度泛化
+作为知识维护者，我希望来源带着 applicability、limitation、freshness 和 counterevidence，从而避免一个项目经验变成伪规则。
+
+**Acceptance link:** KNW-F02–F11 / HIS-F09.
+
+## US-15｜Producer：执行成功不冒充设计成功
+作为制作/运行操作者，我希望系统清楚区分 tool operation、artifact existence、readback、review 和 design verdict，从而不对下游制造假完成。
+
+**Acceptance link:** ART-F07 / REV-F01 / INT-F29.
+
+## US-16｜External Collaborator：不懂内部架构也能看懂
+作为客户或有限协作者，我希望只看到与当前决定有关的设计内容和边界，需要时再展开 evidence / authority，而不学习内部 namespace。
+
+**Acceptance link:** XP-12 / HOME-F07 / NFR-04.
+
+## US-17｜Human：可自动推进但关键时刻仍由我决定
+作为设计者，我希望低风险可逆动作自动推进，而 value / authority / publish / irreversible 决定明确停下。
+
+**Acceptance link:** INT-F16 / INT-F17 / PEO-F02.
+
+## US-18｜Human：我的反馈不变成永久人格画像
+作为设计者，我希望系统能学习当前项目中的 steering，但不会因为一次选择就宣布我的审美、能力或人格。
+
+**Acceptance link:** INT-F05 / INT-F23 / INT-F24.
+
+## US-19｜Team：插件或会话消失后还能继续
+作为长期项目团队，我希望 interaction layer 被替换或卸载后，Project State、checkpoint、native artifact 和 authority 仍能恢复。
+
+**Acceptance link:** INT-F25 / INT-F26 / INT-F27.
+
+## US-20｜Product Owner：能知道产品是否真的改善设计工作
+作为产品负责人，我希望 telemetry 能连接到后续 continuation / design outcome，而不是只统计生成量、Agent 调用和 session activity。
+
+**Acceptance link:** §20 Metrics / §21 Event Instrumentation.
+
+
+---
+
 # 7｜产品结构
 
 v0.2.0 恢复并保留既有 Design Operating System 产品骨架，同时把 Human–AI Session Kernel 作为跨 surface interaction layer。
