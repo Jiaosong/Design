@@ -10,6 +10,7 @@ from typing import Any
 import mcp.types as types
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
@@ -36,6 +37,26 @@ CACHE_TTL_SECONDS = 60
 
 POLICY = StoragePolicy.from_env()
 
+
+def _csv_env(name: str, default: list[str]) -> list[str]:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return list(default)
+    return [part.strip() for part in raw.split(",") if part.strip()]
+
+
+TRANSPORT_SECURITY = TransportSecuritySettings(
+    enable_dns_rebinding_protection=True,
+    allowed_hosts=_csv_env(
+        "OLEANDER_MCP_ALLOWED_HOSTS",
+        ["127.0.0.1:*", "localhost:*"],
+    ),
+    allowed_origins=_csv_env(
+        "OLEANDER_MCP_ALLOWED_ORIGINS",
+        ["http://127.0.0.1:*", "http://localhost:*"],
+    ),
+)
+
 mcp = FastMCP(
     APP_NAME,
     instructions=(
@@ -46,6 +67,7 @@ mcp = FastMCP(
     stateless_http=True,
     json_response=True,
     streamable_http_path="/mcp",
+    transport_security=TRANSPORT_SECURITY,
 )
 
 _tool_cache: tuple[float, list[Any]] | None = None

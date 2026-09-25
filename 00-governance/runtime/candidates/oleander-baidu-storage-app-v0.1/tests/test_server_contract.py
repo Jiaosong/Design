@@ -21,6 +21,14 @@ class FakeTool:
 
 
 class ServerContractTests(unittest.TestCase):
+    def test_transport_security_is_fail_closed_and_local_by_default(self) -> None:
+        settings = server.TRANSPORT_SECURITY
+        self.assertTrue(settings.enable_dns_rebinding_protection)
+        self.assertIn("127.0.0.1:*", settings.allowed_hosts)
+        self.assertIn("localhost:*", settings.allowed_hosts)
+        self.assertNotIn("*", settings.allowed_hosts)
+        self.assertNotIn("*", settings.allowed_origins)
+
     def test_local_status_tools_exist_without_baidu_token(self) -> None:
         names = {t.name for t in server._local_tools()}
         self.assertEqual(

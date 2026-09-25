@@ -40,6 +40,9 @@ The server now fails closed when Baidu credentials are configured but neither an
 
 For a durable deployment, run the Docker image behind an authenticated reverse proxy / private gateway and inject the Baidu token through a secret store. The candidate also supports an optional `OLEANDER_APP_BEARER_TOKEN` guard for generic MCP clients that can send a static Authorization header; this is not a substitute for a proper OAuth/private-tunnel deployment when ChatGPT cannot supply that header.
 
+DNS-rebinding protection remains enabled. A remote deployment must explicitly set
+`OLEANDER_MCP_ALLOWED_HOSTS` to its exact MCP host name (comma-separated when more than one host is required). If the client sends an `Origin` header, add only the exact trusted origins through `OLEANDER_MCP_ALLOWED_ORIGINS`; do not use `*`.
+
 ## 4. ChatGPT app connection
 
 When the account/workspace supports custom MCP apps:
