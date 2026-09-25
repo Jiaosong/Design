@@ -6,6 +6,23 @@
 
 ---
 
+# Roadmap Node Map
+
+```mermaid
+flowchart LR
+    M0[M0 Internal Reference] --> M1[M1 Single-designer Pilot]
+    M1 --> M2[M2 Cross-domain Transfer]
+    M2 --> M3[M3 Longitudinal Continuity]
+    M3 --> M4[M4 Multi-human]
+    M4 --> M5[M5 Productized Beta]
+    M5 --> M6[M6 Business Validation]
+    M1 -.evidence fail.-> R[Iterate / Reframe]
+    M2 -.transfer fail.-> R
+    M3 -.continuity fail.-> R
+```
+
+---
+
 # 1｜Roadmap Principle
 
 Roadmap is not a feature calendar.
