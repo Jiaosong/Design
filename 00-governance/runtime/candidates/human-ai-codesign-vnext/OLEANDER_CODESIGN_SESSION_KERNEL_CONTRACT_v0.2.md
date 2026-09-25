@@ -126,7 +126,7 @@ Comparable alternatives must share one `comparison_world_id`. Each option record
 - materially distinct `mechanism_signature`;
 - `parent_refs`;
 - actual editable/native `artifact_refs` plus revision/hash-bound `artifact_bindings`;
-- `readback_bindings` that point back to the same artifact revision **and artifact content hash** and carry actual-readback evidence;
+- `readback_bindings` that point back to the same artifact revision **and artifact content hash**, carry actual-readback evidence, and explicitly enumerate any `preserved_invariants` that readback actually verified;
 - `preserved_invariants`;
 - strongest benefit;
 - strongest failure risk;
@@ -171,7 +171,7 @@ Therefore:
 - `DEFER` preserves the decision and branches but normally authorizes no design delta by itself;
 - `MIX` preserves all selected parents in lineage.
 - a readback of revision `r1` cannot prove a made artifact revision `r2`; a readback must also carry the exact made artifact content hash, so matching filenames/revision strings alone are insufficient;
-- `invariant_readback_refs` are only an index: each preserved invariant must have a binding to an actual readback of the same artifact revision/content hash; an unrelated readback ref cannot prove invariant preservation;
+- `invariant_readback_refs` are only an index: each preserved invariant must have a binding to an actual readback of the same artifact revision/content hash, and that readback must itself enumerate the invariant under `verified_invariant_refs`; an unrelated or merely same-revision readback cannot prove invariant preservation;
 - an AI-inferred or incomplete steering event cannot satisfy Human-feedback round-two proof.
 
 The steering event records:
@@ -221,7 +221,7 @@ Before each material write, project—not duplicate—the applicable Current fac
 
 `logical object / authority revision + fingerprint / source revision / checkpoint sequence / owner permission / native target / side-effect class / active user constraints`.
 
-For project or external mutation, the guard MUST reread the existing owner-native carrier immediately before the write and bind `logical_object_identity + authority_revision + source_revision + expected_checkpoint_sequence + observed_checkpoint_sequence + carrier_readback_status + resolver_provenance`. The write is eligible only when the carrier readback is `ACTUAL_READBACK`, the resolver provenance is the existing owner resolver, and expected/observed checkpoint sequence are equal. A caller-supplied `ALLOW`, `guard_verdict`, stale projection, or cached permission summary is never authority.
+For project or external mutation, the guard MUST reread the existing owner-native carrier immediately before the write and bind `logical_object_identity + authority_revision + source_revision + expected_checkpoint_sequence + observed_checkpoint_sequence + carrier_readback_status + resolver_provenance + decision_rights_status + active_user_constraints`. The write is eligible only when the carrier readback is `ACTUAL_READBACK`, the resolver provenance is the existing owner resolver, expected/observed checkpoint sequence are equal, decision rights are explicitly `CLEAR_BY_EXISTING_OWNER_RULE / NOT_APPLICABLE`, and the current user-constraint projection is present even when it is an empty list. Missing decision-rights or user-constraint facts fail closed. A caller-supplied `ALLOW`, `guard_verdict`, stale projection, or cached permission summary is never authority.
 
 Outcomes:
 
@@ -358,3 +358,31 @@ v0.2 is structurally acceptable only if it improves interaction determinism **wi
 - AI-owned Design KEEP or Promotion authority.
 
 The intended outcome is a stronger design partner, not a larger governance stack.
+
+## 17. Chat-default execution-surface routing
+
+The default Human interaction surface is **Chat**. Local execution is an implementation detail and must not force the Human to move the conversation into Codex/COS merely because a workstation capability is required.
+
+Keep these axes separate:
+
+`CONVERSATION SURFACE != EXECUTION SURFACE != MUTATION PERMISSION`.
+
+The Session Kernel may project an ephemeral execution route after work intent has already been classified. The route answers only **where/how the requested work can execute**; it must not rewrite work intent, Human action level, mutation permission, Project State, Current, professional state or decision rights.
+
+Selected local flow:
+
+`CHAT -> SESSION KERNEL ROUTE -> COS LOCAL EXECUTION BRIDGE -> LOCAL CAPABILITY ADAPTER -> ACTUAL READBACK -> CHAT`.
+
+For `BAIDU_STORAGE`, the selected adapter is `oleander-baidu-storage@oleander-personal` v0.1.1 over local MCP stdio. Storage routing has `authority_effect=NONE`.
+
+When the workstation and COS bridge are available, use `INLINE_COS_BRIDGE`; do not require the Human to invoke `@OLEANDER 百度网盘` or manually switch to Codex. When the workstation/bridge is unavailable, fall back to the **existing** continuity `execution-intent` carrier and mark the work `PENDING_LOCAL_EXECUTION`; do not invent a second queue, session database or shadow Project State.
+
+Read operations may execute through the local bridge once capability readiness is verified. Write operations must still pass the existing mutation/authorization guard; an execution route or execution intent is never mutation permission. Successful tool return is not sufficient closure for a write: actual provider/native readback remains required before claiming completion.
+
+Hard rules:
+
+- `CHAT DEFAULT != CHAT-ONLY EXECUTION`;
+- `LOCAL CAPABILITY ROUTE != AUTHORITY`;
+- `EXECUTION INTENT != MUTATION PERMISSION`;
+- `TOOL CALL SUCCESS != ACTUAL READBACK`;
+- plugin removal or local adapter outage must degrade execution availability, not corrupt owner-native project truth.

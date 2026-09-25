@@ -14,8 +14,10 @@ This directory is an isolated candidate workface. It does **not** replace `OLEAN
 - `OLEANDER_CODESIGN_SESSION_KERNEL_CONTRACT_v0.2.md` — active candidate Session Kernel contract with independent interaction axes, branch lineage, Human-stop policy, domain adapter protocol and second-round delta rules.
 - `OLEANDER_CODESIGN_SESSION_KERNEL_SPEC_v0.2.json` — machine-readable Session Kernel invariants.
 - `OLEANDER_CODESIGN_SESSION_CONTEXT_EPHEMERAL_v0.4.schema.json` — non-authoritative session projection schema; explicitly not Project State.
-- `codesign_session_kernel_v0_2.py` + `codesign_session_kernel_fixtures_v0.2.json` + `validate_codesign_session_kernel_v0_2.py` — executable reference classifier/guard/delta/domain-adapter validation harness.
-- `OLEANDER_CODESIGN_SESSION_KERNEL_VALIDATION_v0.2.json` — generated validation result for the executable reference kernel.
+- `codesign_session_kernel_v0_2.py` + `codesign_session_kernel_fixtures_v0.2.json` + `validate_codesign_session_kernel_v0_2.py` — executable reference classifier/guard/delta/domain-adapter validation harness, including route-only authority levels, typed/revisioned steer binding, pending-decision-scoped DEFER, owner-native mutation freshness and second-round proof binding.
+- `codesign_chat_cos_bridge_v0_1.py` — executable **Chat-default → COS-local** capability bridge. It is an execution adapter only: it routes `BAIDU_STORAGE` to the installed local stdio adapter, fails closed on guarded writes, and falls back to the existing continuity execution-intent carrier when local execution is unavailable.
+- `OLEANDER_CHAT_COS_LOCAL_EXECUTION_READBACK_v0.1.json` — actual same-session readback proving `CHAT → COS_LOCAL → oleander-baidu-storage 0.1.1 → Baidu provider` with `probe_status=connected`, `/OLEANDER_VAULT`, and `quota_errno=0`; authority effect remains `NONE`.
+- `OLEANDER_CODESIGN_SESSION_KERNEL_VALIDATION_v0.2.json` — generated validation result for the executable reference kernel; current local result is `98/98 PASS` at the reference-kernel claim ceiling.
 - `OLEANDER_HUMAN_AI_CODESIGN_CONTROL_CARD_v0.1.json` — current restructuring decision object.
 - `OLEANDER_HUMAN_AI_CODESIGN_EVALS_v0.1.json` — co-design/continuation regression cases.
 - `OLEANDER_CODESIGN_PLUGIN_REFERENCE_v0.2.1_CANDIDATE.json` — prior installed/reference package provenance.

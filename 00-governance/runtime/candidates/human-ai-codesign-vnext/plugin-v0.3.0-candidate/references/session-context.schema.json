@@ -19,22 +19,60 @@
     "implementation_bindings"
   ],
   "properties": {
-    "schema": {"const": "oleander.codesign-session-context.ephemeral.v0.4"},
-    "ephemeral_only": {"const": true},
-    "kernel_version": {"const": "0.2.0"},
+    "schema": {
+      "const": "oleander.codesign-session-context.ephemeral.v0.4"
+    },
+    "ephemeral_only": {
+      "const": true
+    },
+    "kernel_version": {
+      "const": "0.2.0"
+    },
     "interaction": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["work_intent", "mutation_directive", "support_mode", "human_actions"],
+      "required": [
+        "work_intent",
+        "mutation_directive",
+        "support_mode",
+        "human_actions"
+      ],
       "properties": {
         "work_intent": {
-          "enum": ["START", "RESUME", "RECOVER", "EXPLORE", "WILDCARD", "REVIEW", "REFRAME", "SAVE_ROUTE", "EXPLAIN", "SHOW_WORK", "UNRESOLVED"]
+          "enum": [
+            "START",
+            "RESUME",
+            "RECOVER",
+            "EXPLORE",
+            "WILDCARD",
+            "REVIEW",
+            "REFRAME",
+            "SAVE_ROUTE",
+            "EXPLAIN",
+            "SHOW_WORK",
+            "UNRESOLVED"
+          ]
         },
-        "mutation_directive": {"enum": ["NORMAL", "READ_ONLY", "AUTO_ADVANCE_REVERSIBLE"]},
-        "support_mode": {"enum": ["AUTO", "COMPACT", "EXPLAIN", "OFF"]},
+        "mutation_directive": {
+          "enum": [
+            "NORMAL",
+            "READ_ONLY",
+            "AUTO_ADVANCE_REVERSIBLE"
+          ]
+        },
+        "support_mode": {
+          "enum": [
+            "AUTO",
+            "COMPACT",
+            "EXPLAIN",
+            "OFF"
+          ]
+        },
         "human_actions": {
           "type": "array",
-          "items": {"$ref": "#/$defs/humanAction"},
+          "items": {
+            "$ref": "#/$defs/humanAction"
+          },
           "default": []
         }
       }
@@ -42,44 +80,125 @@
     "design_focus": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["decision_object_ref", "decision_question", "key_unknown", "comparison_world_id", "active_options", "target_artifact_refs", "unknowns"],
+      "required": [
+        "decision_object_ref",
+        "decision_question",
+        "key_unknown",
+        "comparison_world_id",
+        "active_options",
+        "target_artifact_refs",
+        "unknowns"
+      ],
       "properties": {
-        "decision_object_ref": {"$ref": "#/$defs/resolvedString"},
-        "decision_question": {"$ref": "#/$defs/resolvedString"},
-        "key_unknown": {"$ref": "#/$defs/resolvedString"},
-        "comparison_world_id": {"$ref": "#/$defs/resolvedString"},
+        "decision_object_ref": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "decision_question": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "key_unknown": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "comparison_world_id": {
+          "$ref": "#/$defs/resolvedString"
+        },
         "active_options": {
           "type": "array",
-          "items": {"$ref": "#/$defs/option"},
+          "items": {
+            "$ref": "#/$defs/option"
+          },
           "default": []
         },
-        "target_artifact_refs": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "target_artifact_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
         "unknowns": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "status", "sensitivity", "blocks"],
+            "required": [
+              "id",
+              "status",
+              "sensitivity",
+              "blocks"
+            ],
             "properties": {
-              "id": {"type": "string", "minLength": 1},
-              "status": {"enum": ["KNOWN", "SUPPORTED", "INFERRED", "UNKNOWN", "OPEN"]},
-              "sensitivity": {"enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL", "UNRESOLVED"]},
-              "blocks": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "KNOWN",
+                  "SUPPORTED",
+                  "INFERRED",
+                  "UNKNOWN",
+                  "OPEN"
+                ]
+              },
+              "sensitivity": {
+                "enum": [
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH",
+                  "CRITICAL",
+                  "UNRESOLVED"
+                ]
+              },
+              "blocks": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
             }
           }
         },
         "pending_human_choice": {
           "oneOf": [
-            {"type": "null"},
+            {
+              "type": "null"
+            },
             {
               "type": "object",
               "additionalProperties": false,
-              "required": ["type", "decision_object_ref", "eligible_referents", "why_human_required"],
+              "required": [
+                "type",
+                "decision_object_ref",
+                "eligible_referents",
+                "why_human_required"
+              ],
               "properties": {
-                "type": {"enum": ["VALUE_CHOICE", "SCOPE_CHOICE", "AUTHORITY_CHOICE", "REFERENT_CLARIFICATION"]},
-                "decision_object_ref": {"type": "string", "minLength": 1},
-                "eligible_referents": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-                "why_human_required": {"type": "string", "minLength": 1}
+                "type": {
+                  "enum": [
+                    "VALUE_CHOICE",
+                    "SCOPE_CHOICE",
+                    "AUTHORITY_CHOICE",
+                    "REFERENT_CLARIFICATION"
+                  ]
+                },
+                "decision_object_ref": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "eligible_referents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "why_human_required": {
+                  "type": "string",
+                  "minLength": 1
+                }
               }
             }
           ],
@@ -107,37 +226,113 @@
         "context_routing"
       ],
       "properties": {
-        "project_id": {"$ref": "#/$defs/resolvedString"},
-        "task_id": {"$ref": "#/$defs/resolvedString"},
-        "logical_object_id": {"$ref": "#/$defs/resolvedString"},
-        "authority_revision": {"$ref": "#/$defs/resolvedString"},
-        "authority_fingerprint": {"$ref": "#/$defs/resolvedString"},
-        "source_revision": {"$ref": "#/$defs/resolvedString"},
-        "checkpoint_sequence": {"oneOf": [{"type": "integer", "minimum": 0}, {"enum": ["UNRESOLVED", "NOT_APPLICABLE"]}]},
-        "primary_owner": {"$ref": "#/$defs/resolvedString"},
-        "supporting_owners": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []},
-        "professional_process_status": {"enum": ["CURRENT", "CANDIDATE", "OPEN", "NOT_APPLICABLE", "UNRESOLVED"]},
-        "professional_process_ref": {"$ref": "#/$defs/resolvedString"},
-        "required_native_output": {
+        "project_id": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "task_id": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "logical_object_id": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "authority_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "authority_fingerprint": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "source_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "checkpoint_sequence": {
           "oneOf": [
-            {"type": "string", "minLength": 1},
-            {"type": "array", "items": {"type": "string", "minLength": 1}},
-            {"enum": ["UNRESOLVED", "NOT_APPLICABLE"]}
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "enum": [
+                "UNRESOLVED",
+                "NOT_APPLICABLE"
+              ]
+            }
           ]
         },
-        "claim_ceiling": {"$ref": "#/$defs/resolvedString"},
-        "current_native_master_ref": {"$ref": "#/$defs/resolvedString"},
+        "primary_owner": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "supporting_owners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "professional_process_status": {
+          "enum": [
+            "CURRENT",
+            "CANDIDATE",
+            "OPEN",
+            "NOT_APPLICABLE",
+            "UNRESOLVED"
+          ]
+        },
+        "professional_process_ref": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "required_native_output": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            {
+              "enum": [
+                "UNRESOLVED",
+                "NOT_APPLICABLE"
+              ]
+            }
+          ]
+        },
+        "claim_ceiling": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "current_native_master_ref": {
+          "$ref": "#/$defs/resolvedString"
+        },
         "context_routing": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "project_root": {"$ref": "#/$defs/locator"},
-            "active_workface": {"$ref": "#/$defs/locator"},
-            "native_master": {"$ref": "#/$defs/locator"},
-            "readback_root": {"$ref": "#/$defs/locator"},
-            "receipt_root": {"$ref": "#/$defs/locator"},
-            "presentation_root": {"$ref": "#/$defs/locator"},
-            "durable_persistence_root": {"$ref": "#/$defs/locator"}
+            "project_root": {
+              "$ref": "#/$defs/locator"
+            },
+            "active_workface": {
+              "$ref": "#/$defs/locator"
+            },
+            "native_master": {
+              "$ref": "#/$defs/locator"
+            },
+            "readback_root": {
+              "$ref": "#/$defs/locator"
+            },
+            "receipt_root": {
+              "$ref": "#/$defs/locator"
+            },
+            "presentation_root": {
+              "$ref": "#/$defs/locator"
+            },
+            "durable_persistence_root": {
+              "$ref": "#/$defs/locator"
+            }
           }
         }
       }
@@ -145,57 +340,305 @@
     "decision_rights_projection": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["active_actor_role", "owner_rule_ref", "owner_rule_revision", "conflict_state"],
+      "required": [
+        "active_actor_role",
+        "owner_rule_ref",
+        "owner_rule_revision",
+        "conflict_state"
+      ],
       "properties": {
-        "active_actor_role": {"enum": ["DESIGNER", "CLIENT_OR_STAKEHOLDER", "SPECIALIST", "INDEPENDENT_REVIEWER", "PROJECT_AUTHORITY", "PROMOTION_AUTHORITY", "UNRESOLVED"]},
-        "owner_rule_ref": {"$ref": "#/$defs/resolvedString"},
-        "owner_rule_revision": {"$ref": "#/$defs/resolvedString"},
-        "conflict_state": {"enum": ["NONE", "CONFLICT_OPEN", "RESOLVED_BY_EXISTING_OWNER_RULE", "UNRESOLVED"]},
-        "allowed_effects": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []}
+        "active_actor_role": {
+          "enum": [
+            "DESIGNER",
+            "CLIENT_OR_STAKEHOLDER",
+            "SPECIALIST",
+            "INDEPENDENT_REVIEWER",
+            "PROJECT_AUTHORITY",
+            "PROMOTION_AUTHORITY",
+            "UNRESOLVED"
+          ]
+        },
+        "owner_rule_ref": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "owner_rule_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "conflict_state": {
+          "enum": [
+            "NONE",
+            "CONFLICT_OPEN",
+            "RESOLVED_BY_EXISTING_OWNER_RULE",
+            "UNRESOLVED"
+          ]
+        },
+        "allowed_effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        }
       }
     },
     "guard": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["side_effect_class", "mutation_permission", "facts_checked", "blocking_reasons"],
+      "required": [
+        "side_effect_class",
+        "mutation_permission",
+        "facts_checked",
+        "blocking_reasons"
+      ],
       "properties": {
-        "side_effect_class": {"enum": ["NONE", "REVERSIBLE_LOCAL", "PROJECT_MUTATION_REVERSIBLE", "PROJECT_MUTATION_AUTHORITY_SENSITIVE", "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"]},
-        "mutation_permission": {"enum": ["ALLOW", "ALLOW_REVERSIBLE_LOCAL_ONLY", "READ_ONLY", "AUTHORIZATION_REQUIRED", "HOLD_AUTHORITY", "HOLD_CHECKPOINT", "HOLD_NATIVE_SURFACE", "HOLD_PERMISSION", "HOLD_DECISION_RIGHTS", "UNRESOLVED"]},
-        "logical_object_identity": {"type": "string", "minLength": 1},
-        "authority_revision": {"type": "string", "minLength": 1},
-        "source_revision": {"type": "string", "minLength": 1},
-        "expected_checkpoint_sequence": {"oneOf": [{"type": "integer", "minimum": 0}, {"const": "NOT_APPLICABLE"}]},
-        "observed_checkpoint_sequence": {"oneOf": [{"type": "integer", "minimum": 0}, {"const": "NOT_APPLICABLE"}]},
-        "carrier_readback_status": {"enum": ["ACTUAL_READBACK", "UNRESOLVED", "NOT_APPLICABLE"]},
-        "resolver_provenance": {"enum": ["EXISTING_OWNER_RESOLVER", "UNRESOLVED", "NOT_APPLICABLE"]},
-        "facts_checked": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "blocking_reasons": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
-      }
+        "side_effect_class": {
+          "enum": [
+            "NONE",
+            "REVERSIBLE_LOCAL",
+            "PROJECT_MUTATION_REVERSIBLE",
+            "PROJECT_MUTATION_AUTHORITY_SENSITIVE",
+            "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"
+          ]
+        },
+        "mutation_permission": {
+          "enum": [
+            "ALLOW",
+            "ALLOW_REVERSIBLE_LOCAL_ONLY",
+            "READ_ONLY",
+            "AUTHORIZATION_REQUIRED",
+            "HOLD_AUTHORITY",
+            "HOLD_CHECKPOINT",
+            "HOLD_NATIVE_SURFACE",
+            "HOLD_PERMISSION",
+            "HOLD_DECISION_RIGHTS",
+            "UNRESOLVED"
+          ]
+        },
+        "logical_object_identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_checkpoint_sequence": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "const": "NOT_APPLICABLE"
+            }
+          ]
+        },
+        "observed_checkpoint_sequence": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "const": "NOT_APPLICABLE"
+            }
+          ]
+        },
+        "carrier_readback_status": {
+          "enum": [
+            "ACTUAL_READBACK",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "resolver_provenance": {
+          "enum": [
+            "EXISTING_OWNER_RESOLVER",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "decision_rights_status": {
+          "enum": [
+            "CLEAR_BY_EXISTING_OWNER_RULE",
+            "NOT_APPLICABLE",
+            "HOLD_CONFLICT",
+            "UNRESOLVED"
+          ]
+        },
+        "active_user_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "owner_permission": {
+          "enum": [
+            "ALLOW",
+            "DENY",
+            "UNRESOLVED"
+          ]
+        },
+        "native_target_state": {
+          "enum": [
+            "RESOLVED",
+            "TRUTHFUL_SUBSTITUTE",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "existing_authorization": {
+          "type": "boolean"
+        },
+        "decision_rights_conflict": {
+          "type": "boolean"
+        },
+        "authority_drift": {
+          "type": "boolean"
+        },
+        "source_drift": {
+          "type": "boolean"
+        },
+        "checkpoint_stale": {
+          "type": "boolean"
+        },
+        "facts_checked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "blocking_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "side_effect_class": {
+                "enum": [
+                  "PROJECT_MUTATION_REVERSIBLE",
+                  "PROJECT_MUTATION_AUTHORITY_SENSITIVE",
+                  "EXTERNAL_IRREVERSIBLE_OR_PUBLISHING"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "logical_object_identity",
+              "authority_revision",
+              "source_revision",
+              "expected_checkpoint_sequence",
+              "observed_checkpoint_sequence",
+              "carrier_readback_status",
+              "resolver_provenance",
+              "decision_rights_status",
+              "active_user_constraints",
+              "owner_permission",
+              "native_target_state"
+            ]
+          }
+        }
+      ]
     },
     "round_trace": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "round_id": {"type": "string", "minLength": 1},
-        "parent_round_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "parent_option_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "steering_event": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/steeringEvent"}]},
-        "decision_object_binding": {"$ref": "#/$defs/referent"},
-        "decision_rights_status": {"enum": ["ALLOWED_BY_EXISTING_OWNER_RULE", "HOLD_CONFLICT", "UNRESOLVED", "NOT_APPLICABLE"]},
-        "decision_rights_owner_rule_ref": {"type": "string", "minLength": 1},
-        "decision_rights_revision": {"type": "string", "minLength": 1},
-        "decision_rights_proof": {"$ref": "#/$defs/decisionRightsProof"},
+        "round_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_round_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "parent_option_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "steering_event": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/steeringEvent"
+            }
+          ]
+        },
+        "decision_object_binding": {
+          "$ref": "#/$defs/referent"
+        },
+        "decision_rights_status": {
+          "enum": [
+            "ALLOWED_BY_EXISTING_OWNER_RULE",
+            "HOLD_CONFLICT",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "decision_rights_owner_rule_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_rights_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_rights_proof": {
+          "$ref": "#/$defs/decisionRightsProof"
+        },
         "made_artifacts": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["artifact_ref", "revision", "role", "content_sha256"],
+            "required": [
+              "artifact_ref",
+              "revision",
+              "role",
+              "content_sha256"
+            ],
             "properties": {
-              "artifact_ref": {"type": "string", "minLength": 1},
-              "revision": {"type": "string", "minLength": 1},
-              "role": {"enum": ["NATIVE", "EDITABLE_CANDIDATE", "TEMP_TEST"]},
-              "content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "NATIVE",
+                  "EDITABLE_CANDIDATE",
+                  "TEMP_TEST"
+                ]
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              }
             }
           }
         },
@@ -204,31 +647,125 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["readback_ref", "artifact_ref", "artifact_revision", "artifact_content_sha256", "content_sha256", "inspection_status"],
+            "required": [
+              "readback_ref",
+              "artifact_ref",
+              "artifact_revision",
+              "artifact_content_sha256",
+              "content_sha256",
+              "inspection_status",
+              "verified_invariant_refs"
+            ],
             "properties": {
-              "readback_ref": {"type": "string", "minLength": 1},
-              "artifact_ref": {"type": "string", "minLength": 1},
-              "artifact_revision": {"type": "string", "minLength": 1},
-              "artifact_content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-              "content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-              "inspection_status": {"const": "ACTUAL_READBACK"}
+              "readback_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              },
+              "inspection_status": {
+                "const": "ACTUAL_READBACK"
+              },
+              "verified_invariant_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
             }
           }
         },
-        "invariant_readback_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "invariant_readback_bindings": {"type": "array", "items": {"$ref": "#/$defs/invariantReadbackBinding"}},
-        "second_round_human_feedback_delta_verified": {"type": "boolean"}
-      }
+        "invariant_readback_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "invariant_readback_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/invariantReadbackBinding"
+          }
+        },
+        "second_round_human_feedback_delta_verified": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "second_round_human_feedback_delta_verified"
+            ],
+            "properties": {
+              "second_round_human_feedback_delta_verified": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "steering_event",
+              "decision_object_binding",
+              "decision_rights_status",
+              "decision_rights_owner_rule_ref",
+              "decision_rights_revision",
+              "decision_rights_proof",
+              "parent_option_refs",
+              "made_artifacts",
+              "readbacks",
+              "invariant_readback_refs",
+              "invariant_readback_bindings"
+            ]
+          }
+        }
+      ]
     },
     "designer_support": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "insertion_budget_remaining": {"type": "integer", "minimum": 0, "maximum": 1},
-        "last_distinction": {"type": ["string", "null"]},
-        "transfer_question_used": {"type": "boolean"},
-        "fade_basis": {"enum": ["NONE", "EXPLICIT_USER_REQUEST", "CURRENT_SESSION_REPEATED_CLEAR_JUDGMENT"]},
-        "durable_skill_score": {"const": null}
+        "insertion_budget_remaining": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "last_distinction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transfer_question_used": {
+          "type": "boolean"
+        },
+        "fade_basis": {
+          "enum": [
+            "NONE",
+            "EXPLICIT_USER_REQUEST",
+            "CURRENT_SESSION_REPEATED_CLEAR_JUDGMENT"
+          ]
+        },
+        "durable_skill_score": {
+          "const": null
+        }
       }
     },
     "session_phase": {
@@ -252,62 +789,186 @@
         "HOLD_DECISION_RIGHTS"
       ]
     },
-    "session_health": {"enum": ["READY", "DEGRADED", "AWAITING_HUMAN", "REVIEW_REQUIRED", "HOLD", "UNRESOLVED"]},
+    "session_health": {
+      "enum": [
+        "READY",
+        "DEGRADED",
+        "AWAITING_HUMAN",
+        "REVIEW_REQUIRED",
+        "HOLD",
+        "UNRESOLVED"
+      ]
+    },
     "implementation_bindings": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["architecture_revision", "kernel_spec_revision", "resolver_revision", "execution_receipt_revision", "design_process_revision"],
+      "required": [
+        "architecture_revision",
+        "kernel_spec_revision",
+        "resolver_revision",
+        "execution_receipt_revision",
+        "design_process_revision"
+      ],
       "properties": {
-        "architecture_revision": {"$ref": "#/$defs/resolvedString"},
-        "kernel_spec_revision": {"$ref": "#/$defs/resolvedString"},
-        "resolver_revision": {"$ref": "#/$defs/resolvedString"},
-        "execution_receipt_revision": {"$ref": "#/$defs/resolvedString"},
-        "design_process_revision": {"$ref": "#/$defs/resolvedString"},
-        "professional_process_revision": {"$ref": "#/$defs/resolvedString"},
-        "native_runtime_revision": {"$ref": "#/$defs/resolvedString"},
-        "candidate_commit": {"$ref": "#/$defs/resolvedString"}
+        "architecture_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "kernel_spec_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "resolver_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "execution_receipt_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "design_process_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "professional_process_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "native_runtime_revision": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "candidate_commit": {
+          "$ref": "#/$defs/resolvedString"
+        }
       }
+    },
+    "execution_route": {
+      "$ref": "#/$defs/executionRoute"
     }
   },
   "$defs": {
     "resolvedString": {
       "oneOf": [
-        {"type": "string", "minLength": 1, "not": {"enum": ["UNRESOLVED", "NOT_APPLICABLE"]}},
-        {"enum": ["UNRESOLVED", "NOT_APPLICABLE"]}
+        {
+          "type": "string",
+          "minLength": 1,
+          "not": {
+            "enum": [
+              "UNRESOLVED",
+              "NOT_APPLICABLE"
+            ]
+          }
+        },
+        {
+          "enum": [
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        }
       ]
     },
     "locator": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["state", "permission"],
+      "required": [
+        "state",
+        "permission"
+      ],
       "properties": {
-        "state": {"enum": ["RESOLVED", "UNRESOLVED", "NOT_APPLICABLE"]},
-        "ref": {"type": ["string", "null"]},
-        "permission": {"enum": ["READ_ONLY", "WRITE_IF_AUTHORIZED", "TEMP_ONLY", "PAP_GATED", "HOLD"]}
+        "state": {
+          "enum": [
+            "RESOLVED",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "permission": {
+          "enum": [
+            "READ_ONLY",
+            "WRITE_IF_AUTHORIZED",
+            "TEMP_ONLY",
+            "PAP_GATED",
+            "HOLD"
+          ]
+        }
       }
     },
     "option": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["option_id", "comparison_world_id", "mechanism_signature", "parent_refs", "artifact_refs", "artifact_bindings", "readback_bindings", "preserved_invariants", "strongest_benefit", "strongest_risk", "sensitive_unknowns", "branch_status"],
+      "required": [
+        "option_id",
+        "comparison_world_id",
+        "mechanism_signature",
+        "parent_refs",
+        "artifact_refs",
+        "artifact_bindings",
+        "readback_bindings",
+        "preserved_invariants",
+        "strongest_benefit",
+        "strongest_risk",
+        "sensitive_unknowns",
+        "branch_status"
+      ],
       "properties": {
-        "option_id": {"type": "string", "minLength": 1},
-        "comparison_world_id": {"type": "string", "minLength": 1},
-        "mechanism_signature": {"type": "string", "minLength": 1},
-        "parent_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "artifact_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "option_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparison_world_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mechanism_signature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
         "artifact_bindings": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["artifact_ref", "revision", "role", "content_sha256"],
+            "required": [
+              "artifact_ref",
+              "revision",
+              "role",
+              "content_sha256"
+            ],
             "properties": {
-              "artifact_ref": {"type": "string", "minLength": 1},
-              "revision": {"type": "string", "minLength": 1},
-              "role": {"enum": ["NATIVE", "EDITABLE_CANDIDATE", "TEMP_TEST"]},
-              "content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "NATIVE",
+                  "EDITABLE_CANDIDATE",
+                  "TEMP_TEST"
+                ]
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              }
             }
           }
         },
@@ -317,104 +978,572 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["readback_ref", "artifact_ref", "artifact_revision", "artifact_content_sha256", "content_sha256", "inspection_status"],
+            "required": [
+              "readback_ref",
+              "artifact_ref",
+              "artifact_revision",
+              "artifact_content_sha256",
+              "content_sha256",
+              "inspection_status",
+              "verified_invariant_refs"
+            ],
             "properties": {
-              "readback_ref": {"type": "string", "minLength": 1},
-              "artifact_ref": {"type": "string", "minLength": 1},
-              "artifact_revision": {"type": "string", "minLength": 1},
-              "artifact_content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-              "content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-              "inspection_status": {"const": "ACTUAL_READBACK"}
+              "readback_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              },
+              "content_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-fA-F]{64}$"
+              },
+              "inspection_status": {
+                "const": "ACTUAL_READBACK"
+              },
+              "verified_invariant_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
             }
           }
         },
-        "preserved_invariants": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "strongest_benefit": {"type": "string", "minLength": 1},
-        "strongest_risk": {"type": "string", "minLength": 1},
-        "sensitive_unknowns": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "branch_status": {"enum": ["ACTIVE", "SELECTED_FOR_NEXT_ROUND", "REJECTED_PRESERVED", "DEFERRED_PRESERVED", "SUPERSEDED_BY_CHILD", "BASELINE"]}
+        "preserved_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "strongest_benefit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strongest_risk": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sensitive_unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "branch_status": {
+          "enum": [
+            "ACTIVE",
+            "SELECTED_FOR_NEXT_ROUND",
+            "REJECTED_PRESERVED",
+            "DEFERRED_PRESERVED",
+            "SUPERSEDED_BY_CHILD",
+            "BASELINE"
+          ]
+        }
       }
     },
     "referent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ref", "kind", "revision", "lineage_ref"],
+      "required": [
+        "ref",
+        "kind",
+        "revision",
+        "lineage_ref"
+      ],
       "properties": {
-        "ref": {"type": "string", "minLength": 1},
-        "kind": {"enum": ["OPTION", "ARTIFACT", "DECISION_OBJECT", "VARIABLE", "ROUND", "UNRESOLVED"]},
-        "revision": {"type": "string", "minLength": 1},
-        "lineage_ref": {"type": "string", "minLength": 1},
-        "decision_object_ref": {"type": "string", "minLength": 1}
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "OPTION",
+            "ARTIFACT",
+            "DECISION_OBJECT",
+            "VARIABLE",
+            "ROUND",
+            "UNRESOLVED"
+          ]
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lineage_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_object_ref": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "humanAction": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["level", "action", "source", "referent_binding", "bound_referents", "binding_issue", "route_target", "clause_index"],
+      "required": [
+        "level",
+        "action",
+        "source",
+        "referent_binding",
+        "bound_referents",
+        "binding_issue",
+        "route_target",
+        "clause_index"
+      ],
       "properties": {
-        "level": {"enum": ["FEEDBACK_SIGNAL", "ITERATION_STEER", "DESIGN_DECISION", "DESIGN_KEEP", "PROMOTION_DECISION"]},
-        "action": {"enum": ["SELECT", "MODIFY", "MIX", "REJECT", "REOPEN", "DEFER", "NEGATIVE_STEER", "NONE"]},
-        "referents": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true, "default": []},
-        "bound_referents": {"type": "array", "items": {"$ref": "#/$defs/referent"}},
-        "referent_binding": {"enum": ["EXPLICIT", "UNAMBIGUOUS_ACTIVE_OBJECT", "AMBIGUOUS", "NOT_APPLICABLE"]},
-        "binding_issue": {"enum": [null, "AMBIGUOUS_REFERENT", "UNRESOLVED_TYPED_REFERENT", "PENDING_DECISION_UNRESOLVED", "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION"]},
-        "reason": {"type": ["string", "null"]},
-        "source": {"const": "EXPLICIT_USER_INPUT"},
-        "durable_preference": {"const": false},
-        "actor_role": {"enum": ["DESIGNER", "CLIENT_OR_STAKEHOLDER", "SPECIALIST", "INDEPENDENT_REVIEWER", "PROJECT_AUTHORITY", "PROMOTION_AUTHORITY", "UNRESOLVED"]},
-        "route_target": {"enum": ["NONE", "SESSION_ITERATION", "EXISTING_PROJECT_DECISION_AUTHORITY", "EXISTING_DESIGN_REVIEW_AUTHORITY", "EXISTING_PROMOTION_AUTHORITY"]},
-        "clause_index": {"type": "integer", "minimum": 0},
-        "clause_text": {"type": "string"}
+        "level": {
+          "enum": [
+            "FEEDBACK_SIGNAL",
+            "ITERATION_STEER",
+            "DESIGN_DECISION",
+            "DESIGN_KEEP",
+            "PROMOTION_DECISION"
+          ]
+        },
+        "action": {
+          "enum": [
+            "SELECT",
+            "MODIFY",
+            "MIX",
+            "REJECT",
+            "REOPEN",
+            "DEFER",
+            "NEGATIVE_STEER",
+            "NONE"
+          ]
+        },
+        "referents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "bound_referents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/referent"
+          }
+        },
+        "referent_binding": {
+          "enum": [
+            "EXPLICIT",
+            "UNAMBIGUOUS_ACTIVE_OBJECT",
+            "AMBIGUOUS",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "binding_issue": {
+          "enum": [
+            null,
+            "AMBIGUOUS_REFERENT",
+            "UNRESOLVED_TYPED_REFERENT",
+            "PENDING_DECISION_UNRESOLVED",
+            "DEFER_REFERENT_NOT_BOUND_TO_PENDING_DECISION"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "const": "EXPLICIT_USER_INPUT"
+        },
+        "durable_preference": {
+          "const": false
+        },
+        "actor_role": {
+          "enum": [
+            "DESIGNER",
+            "CLIENT_OR_STAKEHOLDER",
+            "SPECIALIST",
+            "INDEPENDENT_REVIEWER",
+            "PROJECT_AUTHORITY",
+            "PROMOTION_AUTHORITY",
+            "UNRESOLVED"
+          ]
+        },
+        "route_target": {
+          "enum": [
+            "NONE",
+            "SESSION_ITERATION",
+            "EXISTING_PROJECT_DECISION_AUTHORITY",
+            "EXISTING_DESIGN_REVIEW_AUTHORITY",
+            "EXISTING_PROMOTION_AUTHORITY"
+          ]
+        },
+        "clause_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "clause_text": {
+          "type": "string"
+        }
       }
     },
     "steeringEvent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["decision_object_ref", "action", "referents", "bound_referents", "source", "actor_role", "changed_variables", "preserved_invariants"],
+      "required": [
+        "decision_object_ref",
+        "action",
+        "referents",
+        "bound_referents",
+        "source",
+        "actor_role",
+        "changed_variables",
+        "preserved_invariants"
+      ],
       "properties": {
-        "decision_object_ref": {"type": "string", "minLength": 1},
-        "action": {"enum": ["SELECT", "MODIFY", "MIX", "REJECT", "REOPEN", "DEFER"]},
-        "referents": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
-        "bound_referents": {"type": "array", "items": {"$ref": "#/$defs/referent"}},
-        "reason": {"type": ["string", "null"]},
-        "source": {"const": "EXPLICIT_USER_INPUT"},
-        "actor_role": {"enum": ["DESIGNER", "CLIENT_OR_STAKEHOLDER", "SPECIALIST", "INDEPENDENT_REVIEWER", "PROJECT_AUTHORITY", "PROMOTION_AUTHORITY", "UNRESOLVED"]},
-        "changed_variables": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-        "preserved_invariants": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        "decision_object_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "enum": [
+            "SELECT",
+            "MODIFY",
+            "MIX",
+            "REJECT",
+            "REOPEN",
+            "DEFER"
+          ]
+        },
+        "referents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "bound_referents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/referent"
+          }
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "const": "EXPLICIT_USER_INPUT"
+        },
+        "actor_role": {
+          "enum": [
+            "DESIGNER",
+            "CLIENT_OR_STAKEHOLDER",
+            "SPECIALIST",
+            "INDEPENDENT_REVIEWER",
+            "PROJECT_AUTHORITY",
+            "PROMOTION_AUTHORITY",
+            "UNRESOLVED"
+          ]
+        },
+        "changed_variables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "preserved_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
       }
     },
     "decisionRightsProof": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source", "owner_rule_ref", "owner_rule_revision", "decision_object_ref", "actor_role", "effect_scope", "allowed_actions", "proof_ref", "proof_revision", "proof_sha256", "inspection_status", "authority_ceiling"],
+      "required": [
+        "source",
+        "owner_rule_ref",
+        "owner_rule_revision",
+        "decision_object_ref",
+        "actor_role",
+        "effect_scope",
+        "allowed_actions",
+        "proof_ref",
+        "proof_revision",
+        "proof_sha256",
+        "inspection_status",
+        "authority_ceiling"
+      ],
       "properties": {
-        "source": {"const": "OWNER_NATIVE_PROJECTION"},
-        "owner_rule_ref": {"type": "string", "minLength": 1},
-        "owner_rule_revision": {"type": "string", "minLength": 1},
-        "decision_object_ref": {"type": "string", "minLength": 1},
-        "actor_role": {"enum": ["DESIGNER", "CLIENT_OR_STAKEHOLDER", "SPECIALIST", "INDEPENDENT_REVIEWER", "PROJECT_AUTHORITY", "PROMOTION_AUTHORITY", "UNRESOLVED"]},
-        "effect_scope": {"const": "ITERATION_STEER"},
-        "allowed_actions": {"type": "array", "items": {"enum": ["SELECT", "MODIFY", "MIX", "REJECT", "REOPEN", "DEFER"]}, "minItems": 1, "uniqueItems": true},
-        "proof_ref": {"type": "string", "minLength": 1},
-        "proof_revision": {"type": "string", "minLength": 1},
-        "proof_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-        "inspection_status": {"const": "ACTUAL_READBACK"},
-        "authority_ceiling": {"const": "ITERATION_STEER_ONLY"}
+        "source": {
+          "const": "OWNER_NATIVE_PROJECTION"
+        },
+        "owner_rule_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_rule_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_object_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_role": {
+          "enum": [
+            "DESIGNER",
+            "CLIENT_OR_STAKEHOLDER",
+            "SPECIALIST",
+            "INDEPENDENT_REVIEWER",
+            "PROJECT_AUTHORITY",
+            "PROMOTION_AUTHORITY",
+            "UNRESOLVED"
+          ]
+        },
+        "effect_scope": {
+          "const": "ITERATION_STEER"
+        },
+        "allowed_actions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "SELECT",
+              "MODIFY",
+              "MIX",
+              "REJECT",
+              "REOPEN",
+              "DEFER"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "proof_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proof_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proof_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "inspection_status": {
+          "const": "ACTUAL_READBACK"
+        },
+        "authority_ceiling": {
+          "const": "ITERATION_STEER_ONLY"
+        }
       }
     },
     "invariantReadbackBinding": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["invariant_ref", "readback_ref", "artifact_ref", "artifact_revision", "artifact_content_sha256", "readback_content_sha256", "inspection_status"],
+      "required": [
+        "invariant_ref",
+        "readback_ref",
+        "artifact_ref",
+        "artifact_revision",
+        "artifact_content_sha256",
+        "readback_content_sha256",
+        "inspection_status"
+      ],
       "properties": {
-        "invariant_ref": {"type": "string", "minLength": 1},
-        "readback_ref": {"type": "string", "minLength": 1},
-        "artifact_ref": {"type": "string", "minLength": 1},
-        "artifact_revision": {"type": "string", "minLength": 1},
-        "artifact_content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-        "readback_content_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
-        "inspection_status": {"const": "ACTUAL_READBACK"}
+        "invariant_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "readback_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "readback_content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "inspection_status": {
+          "const": "ACTUAL_READBACK"
+        }
       }
+    },
+    "executionRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversation_surface",
+        "execution_surface",
+        "capability_id",
+        "operation_class",
+        "adapter_ref",
+        "adapter_version",
+        "transport",
+        "handoff_mode",
+        "route_state",
+        "route_reason",
+        "authority_effect",
+        "changes_work_intent",
+        "changes_mutation_permission",
+        "readback_required",
+        "requires_execution_intent"
+      ],
+      "properties": {
+        "conversation_surface": {
+          "enum": [
+            "CHAT",
+            "COS",
+            "OTHER"
+          ]
+        },
+        "execution_surface": {
+          "enum": [
+            "CHAT",
+            "COS_LOCAL",
+            "PENDING_LOCAL_EXECUTION",
+            "HOLD_LOCAL_CAPABILITY"
+          ]
+        },
+        "capability_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation_class": {
+          "enum": [
+            "NONE",
+            "READ",
+            "WRITE"
+          ]
+        },
+        "adapter_ref": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "adapter_version": {
+          "$ref": "#/$defs/resolvedString"
+        },
+        "transport": {
+          "enum": [
+            "stdio",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "handoff_mode": {
+          "enum": [
+            "NONE",
+            "INLINE_COS_BRIDGE",
+            "CONTINUITY_EXECUTION_INTENT"
+          ]
+        },
+        "route_state": {
+          "enum": [
+            "READY",
+            "PENDING",
+            "HOLD"
+          ]
+        },
+        "route_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_effect": {
+          "const": "NONE"
+        },
+        "changes_work_intent": {
+          "const": false
+        },
+        "changes_mutation_permission": {
+          "const": false
+        },
+        "readback_required": {
+          "type": "boolean"
+        },
+        "requires_execution_intent": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution_surface": {
+                "const": "COS_LOCAL"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "handoff_mode": {
+                "const": "INLINE_COS_BRIDGE"
+              },
+              "readback_required": {
+                "const": true
+              },
+              "requires_execution_intent": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "execution_surface": {
+                "const": "PENDING_LOCAL_EXECUTION"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "handoff_mode": {
+                "const": "CONTINUITY_EXECUTION_INTENT"
+              },
+              "readback_required": {
+                "const": true
+              },
+              "requires_execution_intent": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

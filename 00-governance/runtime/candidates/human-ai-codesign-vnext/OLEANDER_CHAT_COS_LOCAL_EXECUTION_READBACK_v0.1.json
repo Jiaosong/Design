@@ -1,0 +1,46 @@
+{
+  "schema": "oleander.chat-cos-local-execution-readback.v0.1",
+  "status": "PASS_CHAT_DEFAULT_TO_LOCAL_BAIDU_STORAGE",
+  "recorded_at": "2026-09-25T18:36:28Z",
+  "source_surface": "CHAT",
+  "execution_surface": "COS_LOCAL",
+  "handoff_mode": "INLINE_COS_BRIDGE",
+  "bridge_id": "OLEANDER_CHAT_COS_LOCAL_EXECUTION_BRIDGE_v0.1",
+  "authority_ceiling": "EXECUTION_ROUTING_AND_TOOL_HANDOFF_ONLY",
+  "capability_id": "BAIDU_STORAGE",
+  "adapter": {
+    "ref": "oleander-baidu-storage@oleander-personal",
+    "version": "0.1.1",
+    "transport": "stdio"
+  },
+  "provider_readback": {
+    "probe_status": "connected",
+    "storage_root": "/OLEANDER_VAULT",
+    "exposed_upstream_tool_count": 14,
+    "hidden_upstream_tools": [
+      "file_sharelink_set",
+      "file_upload_by_content"
+    ],
+    "quota_errno": 0
+  },
+  "write_path": {
+    "live_write_not_exercised": true,
+    "guard_rule": "WRITE_REQUIRES_EXISTING_MUTATION_AND_AUTHORIZATION_GUARD;EXECUTION_ROUTE_OR_EXECUTION_INTENT_ALONE_IS_NOT_PERMISSION",
+    "readback_rule": "SUCCESSFUL_WRITE_TOOL_CALL_REQUIRES_FOLLOWUP_PROVIDER_OR_NATIVE_READBACK_BEFORE_COMPLETION_CLAIM",
+    "negative_write_probe": {
+      "tool": "baidu_make_dir",
+      "execution_state": "NOT_EXECUTED",
+      "guard_decision": "HOLD",
+      "reason": "WRITE_REQUIRES_MUTATION_CONTEXT",
+      "provider_side_effect": "NONE"
+    }
+  },
+  "authority_effect": "NONE",
+  "does_not_prove": [
+    "CHAT_TO_COS_EXECUTION_ROUTE_DOES_NOT_CHANGE_PROJECT_STATE",
+    "LOCAL_TOOL_SUCCESS_DOES_NOT_PROVE_DESIGN_KEEP",
+    "LOCAL_TOOL_SUCCESS_DOES_NOT_PROVE_PROFESSIONAL_PASS",
+    "LOCAL_TOOL_SUCCESS_DOES_NOT_PROVE_PROMOTION",
+    "THIS_CANDIDATE_READBACK_DOES_NOT_PROMOTE_THE_SESSION_KERNEL_TO_CURRENT"
+  ]
+}

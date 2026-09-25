@@ -652,6 +652,32 @@
       }
     },
     {
+      "id": "K02-DESIGN-KEEP-CHINESE-ROUTES-ONLY",
+      "text": "设计保留 B。",
+      "context": {
+        "active_option_refs": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "referent_metadata": {
+          "B_SPLIT_SUPPORT": {
+            "kind": "OPTION",
+            "revision": "b4",
+            "lineage_ref": "B0"
+          }
+        },
+        "actor_role": "DESIGNER"
+      },
+      "expect": {
+        "human_action_level": "DESIGN_KEEP",
+        "human_action_action": "NONE",
+        "referents": [
+          "B_SPLIT_SUPPORT"
+        ],
+        "human_action_route": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+        "minimum_clarification_required": false
+      }
+    },
+    {
       "id": "K02-PROMOTION-DECISION-ROUTES-ONLY",
       "text": "Promote B to Current.",
       "context": {
@@ -764,7 +790,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -829,7 +858,8 @@
             "artifact_revision": "p1",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": []
           }
         ],
         "invariant_readback_refs": []
@@ -958,7 +988,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1033,7 +1066,8 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": []
           }
         ],
         "invariant_readback_refs": [
@@ -1113,7 +1147,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1203,7 +1240,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1293,7 +1333,10 @@
             "artifact_revision": "r1",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1383,7 +1426,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1482,7 +1528,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1575,7 +1624,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "DECLARED_ONLY",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1674,7 +1726,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1772,7 +1827,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1871,7 +1929,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -1970,7 +2031,10 @@
             "artifact_revision": "r2",
             "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "inspection_status": "ACTUAL_READBACK",
-            "artifact_content_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+            "artifact_content_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "verified_invariant_refs": [
+              "INV-1"
+            ]
           }
         ],
         "invariant_readback_refs": [
@@ -2013,6 +2077,106 @@
         ]
       },
       "expect_error_contains": "READBACK_ARTIFACT_HASH_MISMATCH:ROUND2_READBACK.json"
+    },
+    {
+      "id": "K02-ROUND2-INVARIANT-NOT-VERIFIED-BY-READBACK-FAIL",
+      "trace": {
+        "steering_event": {
+          "decision_object_ref": "H01",
+          "action": "MIX",
+          "referents": [
+            "A",
+            "B"
+          ],
+          "bound_referents": [
+            {
+              "ref": "A",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "A"
+            },
+            {
+              "ref": "B",
+              "kind": "OPTION",
+              "revision": "r1",
+              "lineage_ref": "B"
+            }
+          ],
+          "reason": null,
+          "source": "EXPLICIT_USER_INPUT",
+          "actor_role": "DESIGNER",
+          "changed_variables": [
+            "service_path",
+            "spatial_relation"
+          ],
+          "preserved_invariants": [
+            "INV-1"
+          ]
+        },
+        "decision_rights_status": "ALLOWED_BY_EXISTING_OWNER_RULE",
+        "parent_option_refs": [
+          "A",
+          "B"
+        ],
+        "made_artifacts": [
+          {
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "revision": "r2",
+            "role": "EDITABLE_CANDIDATE",
+            "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "readbacks": [
+          {
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "verified_invariant_refs": []
+          }
+        ],
+        "invariant_readback_refs": [
+          "ROUND2_READBACK.json"
+        ],
+        "decision_object_binding": {
+          "ref": "H01",
+          "kind": "DECISION_OBJECT",
+          "revision": "d1",
+          "lineage_ref": "H01"
+        },
+        "decision_rights_owner_rule_ref": "OWNER-RULE-1",
+        "decision_rights_revision": "rights-r1",
+        "decision_rights_proof": {
+          "source": "OWNER_NATIVE_PROJECTION",
+          "owner_rule_ref": "OWNER-RULE-1",
+          "owner_rule_revision": "rights-r1",
+          "decision_object_ref": "H01",
+          "actor_role": "DESIGNER",
+          "effect_scope": "ITERATION_STEER",
+          "allowed_actions": [
+            "MIX"
+          ],
+          "proof_ref": "OWNER-RULE-READBACK.json",
+          "proof_revision": "rights-proof-r1",
+          "proof_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "inspection_status": "ACTUAL_READBACK",
+          "authority_ceiling": "ITERATION_STEER_ONLY"
+        },
+        "invariant_readback_bindings": [
+          {
+            "invariant_ref": "INV-1",
+            "readback_ref": "ROUND2_READBACK.json",
+            "artifact_ref": "ROUND2_NATIVE.svg",
+            "artifact_revision": "r2",
+            "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "readback_content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "inspection_status": "ACTUAL_READBACK"
+          }
+        ]
+      },
+      "expect_error_contains": "READBACK_DOES_NOT_VERIFY_INVARIANT:INV-1"
     }
   ],
   "option_set_cases": [
@@ -2046,7 +2210,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2080,7 +2245,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2120,7 +2286,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2154,7 +2321,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2189,7 +2357,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "strongest_benefit": "x",
@@ -2223,7 +2392,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "strongest_benefit": "x2",
@@ -2267,7 +2437,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2301,7 +2472,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2341,7 +2513,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2374,7 +2547,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2414,7 +2588,8 @@
               "artifact_revision": "a1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+              "artifact_content_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2448,7 +2623,8 @@
               "artifact_revision": "b1",
               "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
               "inspection_status": "ACTUAL_READBACK",
-              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
             }
           ],
           "parent_refs": [],
@@ -2457,6 +2633,84 @@
         }
       ],
       "expect_error_contains": "OPTION_READBACK_ARTIFACT_HASH_MISMATCH:A"
+    },
+    {
+      "id": "K02-OPTIONS-INVARIANT-NOT-VERIFIED-FAIL",
+      "options": [
+        {
+          "option_id": "A",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "single-edge",
+          "artifact_refs": [
+            "A.svg"
+          ],
+          "strongest_benefit": "simple",
+          "strongest_risk": "congestion",
+          "sensitive_unknowns": [
+            "edge capacity"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "A.svg",
+              "revision": "a1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "A_READBACK.json",
+              "artifact_ref": "A.svg",
+              "artifact_revision": "a1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [
+            "INV-A"
+          ],
+          "branch_status": "ACTIVE"
+        },
+        {
+          "option_id": "B",
+          "comparison_world_id": "W1",
+          "mechanism_signature": "split-edge",
+          "artifact_refs": [
+            "B.svg"
+          ],
+          "strongest_benefit": "separation",
+          "strongest_risk": "two interfaces",
+          "sensitive_unknowns": [
+            "interface eligibility"
+          ],
+          "artifact_bindings": [
+            {
+              "artifact_ref": "B.svg",
+              "revision": "b1",
+              "role": "EDITABLE_CANDIDATE",
+              "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ],
+          "readback_bindings": [
+            {
+              "readback_ref": "B_READBACK.json",
+              "artifact_ref": "B.svg",
+              "artifact_revision": "b1",
+              "content_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "inspection_status": "ACTUAL_READBACK",
+              "artifact_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "verified_invariant_refs": []
+            }
+          ],
+          "parent_refs": [],
+          "preserved_invariants": [],
+          "branch_status": "ACTIVE"
+        }
+      ],
+      "expect_error_prefix": "OPTION_INVARIANTS_NOT_PROVEN:A:"
     }
   ],
   "phase_transition_cases": [
@@ -2531,7 +2785,9 @@
           "expected_checkpoint_sequence": 7,
           "observed_checkpoint_sequence": 7,
           "carrier_readback_status": "ACTUAL_READBACK",
-          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "active_user_constraints": []
         },
         "stop_facts": {}
       },
@@ -2552,7 +2808,9 @@
           "expected_checkpoint_sequence": 7,
           "observed_checkpoint_sequence": 7,
           "carrier_readback_status": "ACTUAL_READBACK",
-          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "active_user_constraints": []
         },
         "stop_facts": {}
       },
@@ -2598,7 +2856,9 @@
           "expected_checkpoint_sequence": 7,
           "observed_checkpoint_sequence": 7,
           "carrier_readback_status": "ACTUAL_READBACK",
-          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "active_user_constraints": []
         },
         "stop_facts": {}
       },
@@ -2620,7 +2880,9 @@
           "expected_checkpoint_sequence": 7,
           "observed_checkpoint_sequence": 7,
           "carrier_readback_status": "ACTUAL_READBACK",
-          "resolver_provenance": "EXISTING_OWNER_RESOLVER"
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "active_user_constraints": []
         },
         "stop_facts": {}
       },
@@ -2640,6 +2902,8 @@
           "observed_checkpoint_sequence": 7,
           "carrier_readback_status": "ACTUAL_READBACK",
           "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "active_user_constraints": [],
           "owner_permission": "ALLOW",
           "native_target_state": "RESOLVED"
         },
@@ -2724,6 +2988,50 @@
       },
       "expect_decision": "HOLD",
       "expect_reason": "HOLD_CHECKPOINT"
+    },
+    {
+      "id": "K02-AA-MISSING-DECISION-RIGHTS-FAIL-CLOSED",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "active_user_constraints": [],
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_DECISION_RIGHTS"
+    },
+    {
+      "id": "K02-AA-MISSING-USER-CONSTRAINTS-FAIL-CLOSED",
+      "input": {
+        "mutation_directive": "AUTO_ADVANCE_REVERSIBLE",
+        "side_effect_class": "PROJECT_MUTATION_REVERSIBLE",
+        "guard_facts": {
+          "logical_object_identity": "PROJECT-OBJECT-1",
+          "authority_revision": "auth-r1",
+          "source_revision": "source-r1",
+          "expected_checkpoint_sequence": 7,
+          "observed_checkpoint_sequence": 7,
+          "carrier_readback_status": "ACTUAL_READBACK",
+          "resolver_provenance": "EXISTING_OWNER_RESOLVER",
+          "decision_rights_status": "CLEAR_BY_EXISTING_OWNER_RULE",
+          "owner_permission": "ALLOW",
+          "native_target_state": "RESOLVED"
+        },
+        "stop_facts": {}
+      },
+      "expect_decision": "HOLD",
+      "expect_reason": "HOLD_PERMISSION"
     }
   ],
   "domain_adapter_cases": [
@@ -3145,6 +3453,269 @@
         "A": "ACTIVE",
         "B": "ACTIVE"
       }
+    }
+  ],
+  "context_projection_cases": [
+    {
+      "id": "K02-CONTEXT-PROGRESSIVE-READY",
+      "projection": {
+        "storage_semantics": "EPHEMERAL_SESSION_PROJECTION",
+        "load_policy": "PROGRESSIVE_DISCLOSURE",
+        "active_scope": "/project/c04/session",
+        "token_budget": 500,
+        "items": [
+          {
+            "ref": "ROUTER-1",
+            "logical_key": "router",
+            "source_kind": "ROUTER_CONTEXT",
+            "scope": "*",
+            "load_reason": "route session",
+            "disclosure_level": "ROUTER",
+            "estimated_tokens": 60,
+            "authority_use": "NON_AUTHORITY_REFERENCE"
+          },
+          {
+            "ref": "RULE-1",
+            "logical_key": "scoped-rule",
+            "source_kind": "SCOPED_INSTRUCTION",
+            "scope": "/project/c04",
+            "load_reason": "active project rule",
+            "disclosure_level": "TASK_REQUIRED",
+            "estimated_tokens": 90,
+            "authority_use": "REREAD_REQUIRED_BEFORE_MUTATION",
+            "required": true
+          }
+        ]
+      },
+      "expect_errors": [],
+      "expect_decision": "READY",
+      "expect_selected_refs": [
+        "RULE-1",
+        "ROUTER-1"
+      ],
+      "expect_required_over_budget": []
+    },
+    {
+      "id": "K02-CONTEXT-BULK-REQUIRES-EXPLICIT-LOAD",
+      "projection": {
+        "storage_semantics": "EPHEMERAL_SESSION_PROJECTION",
+        "load_policy": "PROGRESSIVE_DISCLOSURE",
+        "active_scope": "/project/c04",
+        "token_budget": 500,
+        "items": [
+          {
+            "ref": "BULK-1",
+            "logical_key": "bulk-reference",
+            "source_kind": "REFERENCE_CORPUS",
+            "scope": "/project/c04",
+            "load_reason": "optional deep context",
+            "disclosure_level": "BULK",
+            "estimated_tokens": 300,
+            "authority_use": "NON_AUTHORITY_REFERENCE"
+          }
+        ]
+      },
+      "expect_errors": [],
+      "expect_decision": "READY",
+      "expect_selected_refs": [],
+      "expect_required_over_budget": []
+    },
+    {
+      "id": "K02-CONTEXT-REQUIRED-OVER-BUDGET-NARROW",
+      "projection": {
+        "storage_semantics": "EPHEMERAL_SESSION_PROJECTION",
+        "load_policy": "PROGRESSIVE_DISCLOSURE",
+        "active_scope": "/project/c04",
+        "token_budget": 50,
+        "items": [
+          {
+            "ref": "REQ-1",
+            "logical_key": "required-context",
+            "source_kind": "SCOPED_INSTRUCTION",
+            "scope": "/project/c04",
+            "load_reason": "required project constraint",
+            "disclosure_level": "TASK_REQUIRED",
+            "estimated_tokens": 90,
+            "authority_use": "REREAD_REQUIRED_BEFORE_MUTATION",
+            "required": true
+          }
+        ]
+      },
+      "expect_errors": [],
+      "expect_decision": "COMPACT_OR_NARROW_REQUIRED",
+      "expect_selected_refs": [],
+      "expect_required_over_budget": [
+        "REQ-1"
+      ]
+    },
+    {
+      "id": "K02-CONTEXT-COMPACTED-CANNOT-BE-AUTHORITY",
+      "projection": {
+        "storage_semantics": "EPHEMERAL_SESSION_PROJECTION",
+        "load_policy": "PROGRESSIVE_DISCLOSURE",
+        "active_scope": "/project/c04",
+        "token_budget": 500,
+        "items": [
+          {
+            "ref": "COMPACT-1",
+            "logical_key": "compacted",
+            "source_kind": "COMPACTED_CONTEXT",
+            "scope": "/project/c04",
+            "load_reason": "resume helper",
+            "disclosure_level": "TASK_SUPPORTING",
+            "estimated_tokens": 120,
+            "authority_use": "NON_AUTHORITY_REFERENCE",
+            "rehydrate_before_consequential_mutation": true
+          }
+        ]
+      },
+      "expect_error_contains": "COMPACTED_CONTEXT_CANNOT_BE_AUTHORITY:COMPACT-1",
+      "expect_decision": "HOLD_INVALID_CONTEXT_PROJECTION"
+    }
+  ],
+  "file_placement_cases": [
+    {
+      "id": "K02-FILE-REUSE-EXACT-LIBRARY-CONTENT",
+      "file_fact": {
+        "role": "REFERENCE",
+        "lifecycle": "WORKING",
+        "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "existing_library_content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expect_placement": "REUSE_EXISTING_LIBRARY_REF",
+      "expect_library_binary_write": false
+    },
+    {
+      "id": "K02-FILE-KEEP-EXTERNAL-OWNER-REFERENCE",
+      "file_fact": {
+        "owner_kind": "EXTERNAL_OWNER",
+        "external_reference_available": true,
+        "materialize_required": false,
+        "role": "REFERENCE",
+        "lifecycle": "WORKING"
+      },
+      "expect_placement": "EXTERNAL_REFERENCE_ONLY",
+      "expect_library_binary_write": false
+    },
+    {
+      "id": "K02-FILE-LARGE-EXPLICIT-LIBRARY-INDEX-ONLY",
+      "file_fact": {
+        "explicit_library_request": true,
+        "explicit_full_binary_library_request": false,
+        "size_bytes": 60000000,
+        "role": "REFERENCE",
+        "lifecycle": "MILESTONE"
+      },
+      "expect_placement": "LIBRARY_INDEX_ONLY",
+      "expect_library_binary_write": false
+    },
+    {
+      "id": "K02-FILE-SMALL-EXPLICIT-LIBRARY-UPLOAD",
+      "file_fact": {
+        "explicit_library_request": true,
+        "explicit_full_binary_library_request": false,
+        "size_bytes": 2048,
+        "role": "REFERENCE",
+        "lifecycle": "MILESTONE"
+      },
+      "expect_placement": "LIBRARY_UPLOAD_ALLOWED",
+      "expect_library_binary_write": true
+    },
+    {
+      "id": "K02-FILE-READBACK-STAYS-DERIVATIVE-CACHE",
+      "file_fact": {
+        "role": "READBACK",
+        "lifecycle": "WORKING",
+        "size_bytes": 4096
+      },
+      "expect_placement": "SESSION_OR_PROJECT_DERIVATIVE_CACHE",
+      "expect_library_binary_write": false
+    }
+  ],
+  "execution_route_cases": [
+    {
+      "id": "ER01-CHAT-NATIVE-STAYS-IN-CHAT",
+      "input": {},
+      "expect": {
+        "conversation_surface": "CHAT",
+        "execution_surface": "CHAT",
+        "handoff_mode": "NONE",
+        "route_state": "READY",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "ER02-CHAT-BAIDU-INLINE-COS",
+      "input": {
+        "capability_id": "BAIDU_STORAGE",
+        "operation_class": "READ",
+        "workstation_online": true,
+        "cos_bridge_available": true,
+        "adapter_state": "INSTALLED_READY"
+      },
+      "expect": {
+        "conversation_surface": "CHAT",
+        "execution_surface": "COS_LOCAL",
+        "handoff_mode": "INLINE_COS_BRIDGE",
+        "requires_execution_intent": false,
+        "readback_required": true,
+        "adapter_ref": "oleander-baidu-storage@oleander-personal",
+        "adapter_version": "0.1.1",
+        "route_state": "READY",
+        "authority_effect": "NONE"
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "ER03-OFFLINE-FALLS-BACK-TO-CONTINUITY-INTENT",
+      "input": {
+        "capability_id": "BAIDU_STORAGE",
+        "workstation_online": false
+      },
+      "expect": {
+        "conversation_surface": "CHAT",
+        "execution_surface": "PENDING_LOCAL_EXECUTION",
+        "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+        "requires_execution_intent": true,
+        "route_state": "PENDING",
+        "route_reason": "LOCAL_GATEWAY_OFFLINE",
+        "authority_effect": "NONE"
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "ER04-ADAPTER-NOT-READY-HOLDS",
+      "input": {
+        "capability_id": "BAIDU_STORAGE",
+        "adapter_state": "UNAVAILABLE"
+      },
+      "expect": {
+        "execution_surface": "HOLD_LOCAL_CAPABILITY",
+        "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+        "requires_execution_intent": true,
+        "route_state": "HOLD",
+        "route_reason": "LOCAL_ADAPTER_NOT_READY",
+        "authority_effect": "NONE"
+      },
+      "expect_errors": []
+    },
+    {
+      "id": "ER05-UNKNOWN-CAPABILITY-FAILS-CLOSED",
+      "input": {
+        "capability_id": "UNREGISTERED_TEST_CAPABILITY"
+      },
+      "expect": {
+        "conversation_surface": "CHAT",
+        "execution_surface": "HOLD_LOCAL_CAPABILITY",
+        "handoff_mode": "NONE",
+        "route_state": "HOLD",
+        "route_reason": "UNREGISTERED_LOCAL_CAPABILITY",
+        "authority_effect": "NONE"
+      },
+      "expect_errors": []
     }
   ]
 }

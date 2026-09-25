@@ -1,7 +1,7 @@
 {
   "schema": "oleander.codesign-session-kernel-validation.v0.2",
   "status": "PASS",
-  "case_count": 84,
+  "case_count": 103,
   "failures": [],
   "results": [
     {
@@ -969,6 +969,44 @@
       }
     },
     {
+      "id": "K02-DESIGN-KEEP-CHINESE-ROUTES-ONLY",
+      "status": "PASS",
+      "actual": {
+        "raw": "设计保留 B。",
+        "work_intent": "UNRESOLVED",
+        "mutation_directive": "NORMAL",
+        "support_mode": "AUTO",
+        "human_actions": [
+          {
+            "level": "DESIGN_KEEP",
+            "action": "NONE",
+            "referents": [
+              "B_SPLIT_SUPPORT"
+            ],
+            "bound_referents": [
+              {
+                "ref": "B_SPLIT_SUPPORT",
+                "kind": "OPTION",
+                "revision": "b4",
+                "lineage_ref": "B0"
+              }
+            ],
+            "referent_binding": "EXPLICIT",
+            "binding_issue": null,
+            "reason": null,
+            "source": "EXPLICIT_USER_INPUT",
+            "durable_preference": false,
+            "actor_role": "DESIGNER",
+            "route_target": "EXISTING_DESIGN_REVIEW_AUTHORITY",
+            "clause_index": 0,
+            "clause_text": "设计保留 B"
+          }
+        ],
+        "minimum_clarification_required": false,
+        "stop_reason": null
+      }
+    },
+    {
       "id": "K02-PROMOTION-DECISION-ROUTES-ONLY",
       "status": "PASS",
       "actual": {
@@ -1160,6 +1198,15 @@
       ]
     },
     {
+      "id": "K02-ROUND2-INVARIANT-NOT-VERIFIED-BY-READBACK-FAIL",
+      "status": "PASS",
+      "errors": [
+        "READBACK_DOES_NOT_VERIFY_INVARIANT:INV-1",
+        "SECOND_ROUND_INVARIANTS_NOT_PROVEN:['INV-1']",
+        "INVARIANT_READBACK_REFS_MUST_MATCH_BOUND_READBACKS"
+      ]
+    },
+    {
       "id": "K02-OPTIONS-DISTINCT-PASS",
       "status": "PASS",
       "errors": []
@@ -1199,6 +1246,13 @@
       "status": "PASS",
       "errors": [
         "OPTION_READBACK_ARTIFACT_HASH_MISMATCH:A"
+      ]
+    },
+    {
+      "id": "K02-OPTIONS-INVARIANT-NOT-VERIFIED-FAIL",
+      "status": "PASS",
+      "errors": [
+        "OPTION_INVARIANTS_NOT_PROVEN:A:['INV-A']"
       ]
     },
     {
@@ -1331,6 +1385,22 @@
       }
     },
     {
+      "id": "K02-AA-MISSING-DECISION-RIGHTS-FAIL-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_DECISION_RIGHTS"
+      }
+    },
+    {
+      "id": "K02-AA-MISSING-USER-CONSTRAINTS-FAIL-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "decision": "HOLD",
+        "reason": "HOLD_PERMISSION"
+      }
+    },
+    {
       "id": "K02-DOMAIN-OPEN-NO-PASS",
       "status": "PASS",
       "errors": []
@@ -1457,6 +1527,262 @@
         "fade_basis": "EXPLICIT_USER_REQUEST",
         "durable_skill_score": null
       }
+    },
+    {
+      "id": "K02-CONTEXT-PROGRESSIVE-READY",
+      "status": "PASS",
+      "errors": [],
+      "actual": {
+        "decision": "READY",
+        "selected_refs": [
+          "RULE-1",
+          "ROUTER-1"
+        ],
+        "selected_items": [
+          {
+            "ref": "RULE-1",
+            "logical_key": "scoped-rule",
+            "source_kind": "SCOPED_INSTRUCTION",
+            "scope": "/project/c04",
+            "load_reason": "active project rule",
+            "disclosure_level": "TASK_REQUIRED",
+            "estimated_tokens": 90,
+            "authority_use": "REREAD_REQUIRED_BEFORE_MUTATION",
+            "required": true
+          },
+          {
+            "ref": "ROUTER-1",
+            "logical_key": "router",
+            "source_kind": "ROUTER_CONTEXT",
+            "scope": "*",
+            "load_reason": "route session",
+            "disclosure_level": "ROUTER",
+            "estimated_tokens": 60,
+            "authority_use": "NON_AUTHORITY_REFERENCE"
+          }
+        ],
+        "omitted": [],
+        "estimated_tokens": 150,
+        "token_budget": 500,
+        "required_over_budget": [],
+        "authority": "NONE_EPHEMERAL_READ_PLAN_ONLY"
+      }
+    },
+    {
+      "id": "K02-CONTEXT-BULK-REQUIRES-EXPLICIT-LOAD",
+      "status": "PASS",
+      "errors": [],
+      "actual": {
+        "decision": "READY",
+        "selected_refs": [],
+        "selected_items": [],
+        "omitted": [
+          {
+            "ref": "BULK-1",
+            "reason": "PROGRESSIVE_DISCLOSURE_NOT_REQUESTED"
+          }
+        ],
+        "estimated_tokens": 0,
+        "token_budget": 500,
+        "required_over_budget": [],
+        "authority": "NONE_EPHEMERAL_READ_PLAN_ONLY"
+      }
+    },
+    {
+      "id": "K02-CONTEXT-REQUIRED-OVER-BUDGET-NARROW",
+      "status": "PASS",
+      "errors": [],
+      "actual": {
+        "decision": "COMPACT_OR_NARROW_REQUIRED",
+        "selected_refs": [],
+        "selected_items": [],
+        "omitted": [
+          {
+            "ref": "REQ-1",
+            "reason": "TOKEN_BUDGET"
+          }
+        ],
+        "estimated_tokens": 0,
+        "token_budget": 50,
+        "required_over_budget": [
+          "REQ-1"
+        ],
+        "authority": "NONE_EPHEMERAL_READ_PLAN_ONLY"
+      }
+    },
+    {
+      "id": "K02-CONTEXT-COMPACTED-CANNOT-BE-AUTHORITY",
+      "status": "PASS",
+      "errors": [
+        "COMPACTED_CONTEXT_CANNOT_BE_AUTHORITY:COMPACT-1"
+      ],
+      "actual": {
+        "decision": "HOLD_INVALID_CONTEXT_PROJECTION",
+        "errors": [
+          "COMPACTED_CONTEXT_CANNOT_BE_AUTHORITY:COMPACT-1"
+        ]
+      }
+    },
+    {
+      "id": "K02-FILE-REUSE-EXACT-LIBRARY-CONTENT",
+      "status": "PASS",
+      "actual": {
+        "placement": "REUSE_EXISTING_LIBRARY_REF",
+        "library_binary_write": false,
+        "reason": "EXACT_CONTENT_ALREADY_PRESENT",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY"
+      }
+    },
+    {
+      "id": "K02-FILE-KEEP-EXTERNAL-OWNER-REFERENCE",
+      "status": "PASS",
+      "actual": {
+        "placement": "EXTERNAL_REFERENCE_ONLY",
+        "library_binary_write": false,
+        "reason": "KEEP_WITH_EXISTING_EXTERNAL_OWNER",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY"
+      }
+    },
+    {
+      "id": "K02-FILE-LARGE-EXPLICIT-LIBRARY-INDEX-ONLY",
+      "status": "PASS",
+      "actual": {
+        "placement": "LIBRARY_INDEX_ONLY",
+        "library_binary_write": false,
+        "library_index_write_allowed": true,
+        "reason": "LARGE_OR_INTERMEDIATE_BINARY_REQUIRES_EXPLICIT_FULL_BINARY_REQUEST",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY"
+      }
+    },
+    {
+      "id": "K02-FILE-SMALL-EXPLICIT-LIBRARY-UPLOAD",
+      "status": "PASS",
+      "actual": {
+        "placement": "LIBRARY_UPLOAD_ALLOWED",
+        "library_binary_write": true,
+        "reason": "EXPLICIT_LIBRARY_REQUEST",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY"
+      }
+    },
+    {
+      "id": "K02-FILE-READBACK-STAYS-DERIVATIVE-CACHE",
+      "status": "PASS",
+      "actual": {
+        "placement": "SESSION_OR_PROJECT_DERIVATIVE_CACHE",
+        "library_binary_write": false,
+        "reason": "DERIVATIVE_OR_TEMP_DEFAULTS_OUT_OF_LIBRARY",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY"
+      }
+    },
+    {
+      "id": "ER01-CHAT-NATIVE-STAYS-IN-CHAT",
+      "status": "PASS",
+      "actual": {
+        "conversation_surface": "CHAT",
+        "capability_id": "NONE",
+        "operation_class": "NONE",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false,
+        "readback_required": false,
+        "requires_execution_intent": false,
+        "execution_surface": "CHAT",
+        "handoff_mode": "NONE",
+        "adapter_ref": "NOT_APPLICABLE",
+        "adapter_version": "NOT_APPLICABLE",
+        "transport": "NOT_APPLICABLE",
+        "route_state": "READY",
+        "route_reason": "NO_LOCAL_CAPABILITY_REQUIRED"
+      },
+      "errors": []
+    },
+    {
+      "id": "ER02-CHAT-BAIDU-INLINE-COS",
+      "status": "PASS",
+      "actual": {
+        "conversation_surface": "CHAT",
+        "capability_id": "BAIDU_STORAGE",
+        "operation_class": "READ",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false,
+        "readback_required": true,
+        "requires_execution_intent": false,
+        "execution_surface": "COS_LOCAL",
+        "adapter_ref": "oleander-baidu-storage@oleander-personal",
+        "adapter_version": "0.1.1",
+        "transport": "stdio",
+        "handoff_mode": "INLINE_COS_BRIDGE",
+        "route_state": "READY",
+        "route_reason": "LOCAL_CAPABILITY_READY"
+      },
+      "errors": []
+    },
+    {
+      "id": "ER03-OFFLINE-FALLS-BACK-TO-CONTINUITY-INTENT",
+      "status": "PASS",
+      "actual": {
+        "conversation_surface": "CHAT",
+        "capability_id": "BAIDU_STORAGE",
+        "operation_class": "NONE",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false,
+        "readback_required": true,
+        "requires_execution_intent": true,
+        "execution_surface": "PENDING_LOCAL_EXECUTION",
+        "adapter_ref": "oleander-baidu-storage@oleander-personal",
+        "adapter_version": "0.1.1",
+        "transport": "stdio",
+        "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+        "route_state": "PENDING",
+        "route_reason": "LOCAL_GATEWAY_OFFLINE"
+      },
+      "errors": []
+    },
+    {
+      "id": "ER04-ADAPTER-NOT-READY-HOLDS",
+      "status": "PASS",
+      "actual": {
+        "conversation_surface": "CHAT",
+        "capability_id": "BAIDU_STORAGE",
+        "operation_class": "NONE",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false,
+        "readback_required": true,
+        "requires_execution_intent": true,
+        "execution_surface": "HOLD_LOCAL_CAPABILITY",
+        "adapter_ref": "oleander-baidu-storage@oleander-personal",
+        "adapter_version": "0.1.1",
+        "transport": "stdio",
+        "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+        "route_state": "HOLD",
+        "route_reason": "LOCAL_ADAPTER_NOT_READY"
+      },
+      "errors": []
+    },
+    {
+      "id": "ER05-UNKNOWN-CAPABILITY-FAILS-CLOSED",
+      "status": "PASS",
+      "actual": {
+        "conversation_surface": "CHAT",
+        "capability_id": "UNREGISTERED_TEST_CAPABILITY",
+        "operation_class": "NONE",
+        "authority_effect": "NONE",
+        "changes_work_intent": false,
+        "changes_mutation_permission": false,
+        "readback_required": false,
+        "requires_execution_intent": false,
+        "execution_surface": "HOLD_LOCAL_CAPABILITY",
+        "handoff_mode": "NONE",
+        "adapter_ref": "UNRESOLVED",
+        "adapter_version": "UNRESOLVED",
+        "transport": "UNRESOLVED",
+        "route_state": "HOLD",
+        "route_reason": "UNREGISTERED_LOCAL_CAPABILITY"
+      },
+      "errors": []
     }
   ],
   "claim_ceiling": "REFERENCE_KERNEL_LOGIC_AND_INVARIANT_VALIDATION_ONLY / NOT CURRENT / NOT PROFESSIONAL PASS / NOT HUMAN TRIAL"

@@ -17,6 +17,14 @@ Quiet runtime kernel:
 
 `RESOLVE → RESUME → ROUTE → GUARD → HANDOFF → REPORT`
 
+## Default interaction surface
+
+**Chat is the default Human environment.** Keep the conversation in Chat unless the Human explicitly chooses another surface. When work requires a workstation capability, route execution behind the scenes through the existing COS local execution surface and return actual readback to the same Chat. Do not tell the Human to switch to Codex just to use local files, Git, CAD, 3D, or OLEANDER storage.
+
+Execution routing is separate from interaction classification and authority. For `BAIDU_STORAGE`, use the installed local `oleander-baidu-storage@oleander-personal` adapter through the Chat→COS bridge. If the workstation/bridge is unavailable, create/use the existing continuity execution-intent carrier and report `PENDING_LOCAL_EXECUTION`. Never treat an execution intent as mutation permission.
+
+If a COS/local execution connector is available in the current Chat, use it directly and return the bridge readback in the same conversation. Do **not** require explicit `@OLEANDER 百度网盘` invocation for ordinary storage requests and do not tell the Human to open a separate Codex task.
+
 ## Core interaction rule
 
 Never collapse a user message into one monolithic intent. Resolve four independent axes and preserve multiple clause-scoped Human actions when the same message contains more than one act:

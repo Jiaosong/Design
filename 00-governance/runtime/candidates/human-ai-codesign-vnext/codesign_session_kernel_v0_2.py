@@ -16,6 +16,24 @@ AUTHORITY_ROUTE_BY_LEVEL = {
     "DESIGN_KEEP": "EXISTING_DESIGN_REVIEW_AUTHORITY",
     "PROMOTION_DECISION": "EXISTING_PROMOTION_AUTHORITY",
 }
+REFERENCE_LARGE_FILE_THRESHOLD_BYTES = 50 * 1024 * 1024
+CONTEXT_DISCLOSURE_RANK = {
+    "ROUTER": 0,
+    "TASK_REQUIRED": 1,
+    "TASK_SUPPORTING": 2,
+    "BULK": 3,
+}
+
+DEFAULT_CONVERSATION_SURFACE = "CHAT"
+LOCAL_CAPABILITY_ROUTES = {
+    "BAIDU_STORAGE": {
+        "execution_surface": "COS_LOCAL",
+        "adapter_ref": "oleander-baidu-storage@oleander-personal",
+        "adapter_version": "0.1.1",
+        "transport": "stdio",
+        "authority_effect": "NONE",
+    },
+}
 
 
 @dataclass(frozen=True)
@@ -25,6 +43,121 @@ class ClassificationContext:
     unambiguous_active_ref: str | None = None
     actor_role: str = "DESIGNER"
     referent_metadata: dict[str, dict[str, str]] = field(default_factory=dict)
+
+
+def resolve_execution_route(request: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Resolve where work executes without changing what the Human asked or who owns authority.
+
+    Chat is the default conversation surface. A local capability may route execution to COS,
+    but that route is only an ephemeral projection. When an inline COS bridge is unavailable,
+    the existing continuity execution-intent carrier is used rather than inventing a second queue.
+    """
+    facts = request or {}
+    conversation_surface = str(facts.get("conversation_surface") or DEFAULT_CONVERSATION_SURFACE)
+    capability_id = str(facts.get("capability_id") or "NONE")
+    operation_class = str(facts.get("operation_class") or "NONE")
+    workstation_online = facts.get("workstation_online", True) is True
+    cos_bridge_available = facts.get("cos_bridge_available", True) is True
+    adapter_state = str(facts.get("adapter_state") or "INSTALLED_READY")
+
+    base = {
+        "conversation_surface": conversation_surface,
+        "capability_id": capability_id,
+        "operation_class": operation_class,
+        "authority_effect": "NONE",
+        "changes_work_intent": False,
+        "changes_mutation_permission": False,
+        "readback_required": False,
+        "requires_execution_intent": False,
+    }
+
+    if capability_id in {"", "NONE", "CHAT_NATIVE"}:
+        return {
+            **base,
+            "execution_surface": "CHAT",
+            "handoff_mode": "NONE",
+            "adapter_ref": "NOT_APPLICABLE",
+            "adapter_version": "NOT_APPLICABLE",
+            "transport": "NOT_APPLICABLE",
+            "route_state": "READY",
+            "route_reason": "NO_LOCAL_CAPABILITY_REQUIRED",
+        }
+
+    route = LOCAL_CAPABILITY_ROUTES.get(capability_id)
+    if route is None:
+        return {
+            **base,
+            "execution_surface": "HOLD_LOCAL_CAPABILITY",
+            "handoff_mode": "NONE",
+            "adapter_ref": "UNRESOLVED",
+            "adapter_version": "UNRESOLVED",
+            "transport": "UNRESOLVED",
+            "route_state": "HOLD",
+            "route_reason": "UNREGISTERED_LOCAL_CAPABILITY",
+        }
+
+    routed = {**base, **route, "readback_required": True}
+    if adapter_state != "INSTALLED_READY":
+        return {
+            **routed,
+            "execution_surface": "HOLD_LOCAL_CAPABILITY",
+            "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+            "requires_execution_intent": True,
+            "route_state": "HOLD",
+            "route_reason": "LOCAL_ADAPTER_NOT_READY",
+        }
+    if not workstation_online:
+        return {
+            **routed,
+            "execution_surface": "PENDING_LOCAL_EXECUTION",
+            "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+            "requires_execution_intent": True,
+            "route_state": "PENDING",
+            "route_reason": "LOCAL_GATEWAY_OFFLINE",
+        }
+    if not cos_bridge_available:
+        return {
+            **routed,
+            "execution_surface": "PENDING_LOCAL_EXECUTION",
+            "handoff_mode": "CONTINUITY_EXECUTION_INTENT",
+            "requires_execution_intent": True,
+            "route_state": "PENDING",
+            "route_reason": "COS_BRIDGE_UNAVAILABLE",
+        }
+    return {
+        **routed,
+        "execution_surface": "COS_LOCAL",
+        "handoff_mode": "INLINE_COS_BRIDGE",
+        "route_state": "READY",
+        "route_reason": "LOCAL_CAPABILITY_READY",
+    }
+
+
+def validate_execution_route(route: dict[str, Any]) -> list[str]:
+    """Validate the routing projection without treating it as authority or persistent state."""
+    errors: list[str] = []
+    if route.get("conversation_surface") not in {"CHAT", "COS", "OTHER"}:
+        errors.append("EXECUTION_ROUTE_CONVERSATION_SURFACE_INVALID")
+    if route.get("execution_surface") not in {
+        "CHAT",
+        "COS_LOCAL",
+        "PENDING_LOCAL_EXECUTION",
+        "HOLD_LOCAL_CAPABILITY",
+    }:
+        errors.append("EXECUTION_ROUTE_SURFACE_INVALID")
+    if route.get("authority_effect") != "NONE":
+        errors.append("EXECUTION_ROUTE_CANNOT_OWN_AUTHORITY")
+    if route.get("changes_work_intent") is not False:
+        errors.append("EXECUTION_ROUTE_CANNOT_CHANGE_WORK_INTENT")
+    if route.get("changes_mutation_permission") is not False:
+        errors.append("EXECUTION_ROUTE_CANNOT_CHANGE_MUTATION_PERMISSION")
+    if route.get("execution_surface") in {"COS_LOCAL", "PENDING_LOCAL_EXECUTION"} and route.get("readback_required") is not True:
+        errors.append("LOCAL_EXECUTION_ROUTE_REQUIRES_READBACK")
+    if route.get("handoff_mode") == "CONTINUITY_EXECUTION_INTENT" and route.get("requires_execution_intent") is not True:
+        errors.append("CONTINUITY_HANDOFF_REQUIRES_EXECUTION_INTENT")
+    if route.get("execution_surface") == "COS_LOCAL" and route.get("handoff_mode") != "INLINE_COS_BRIDGE":
+        errors.append("COS_LOCAL_ROUTE_REQUIRES_INLINE_BRIDGE")
+    return errors
 
 
 def _contains_any(text: str, patterns: Iterable[str]) -> bool:
@@ -103,6 +236,7 @@ def _authority_level(text: str) -> str | None:
         [
             r"\bdesign[ -]?keep\b",
             r"设计\s*keep",
+            r"设计(?:方案)?\s*(?:保留|定稿)",
             r"设计保留决定",
             r"设计定稿决定",
         ],
@@ -387,6 +521,7 @@ def validate_option_set(options: list[dict[str, Any]]) -> list[str]:
         "BASELINE",
     }
     for option in options:
+        preserved_invariants = set(option.get("preserved_invariants") or [])
         for key in (
             "option_id",
             "parent_refs",
@@ -443,6 +578,11 @@ def validate_option_set(options: list[dict[str, Any]]) -> list[str]:
                 errors.append(f"OPTION_READBACK_HASH_REQUIRED:{option.get('option_id', 'UNRESOLVED')}")
             if not isinstance(x, dict) or x.get("inspection_status") != "ACTUAL_READBACK":
                 errors.append(f"OPTION_READBACK_MUST_BE_ACTUAL:{option.get('option_id', 'UNRESOLVED')}")
+            verified_invariants = set(x.get("verified_invariant_refs") or []) if isinstance(x, dict) else set()
+            if not preserved_invariants <= verified_invariants:
+                errors.append(
+                    f"OPTION_INVARIANTS_NOT_PROVEN:{option.get('option_id', 'UNRESOLVED')}:{sorted(preserved_invariants - verified_invariants)!r}"
+                )
             pair = (x.get("artifact_ref"), x.get("artifact_revision")) if isinstance(x, dict) else (None, None)
             artifact_content_sha256 = x.get("artifact_content_sha256") if isinstance(x, dict) else None
             if not SHA256_RE.fullmatch(str(artifact_content_sha256 or "")):
@@ -611,6 +751,8 @@ def validate_second_round_delta(round_trace: dict[str, Any]) -> list[str]:
             errors.append(f"READBACK_ARTIFACT_HASH_INVALID:{readback.get('readback_ref')}")
         if readback.get("inspection_status") != "ACTUAL_READBACK":
             errors.append(f"READBACK_NOT_ACTUAL:{readback.get('readback_ref')}")
+        if not isinstance(readback.get("verified_invariant_refs"), list):
+            errors.append(f"READBACK_VERIFIED_INVARIANTS_REQUIRED:{readback.get('readback_ref')}")
         pair = (readback["artifact_ref"], readback["artifact_revision"])
         if pair in made_hash_by_pair and made_hash_by_pair[pair] != readback.get("artifact_content_sha256"):
             errors.append(f"READBACK_ARTIFACT_HASH_MISMATCH:{readback.get('readback_ref')}")
@@ -646,6 +788,9 @@ def validate_second_round_delta(round_trace: dict[str, Any]) -> list[str]:
             continue
         if binding.get("inspection_status") != "ACTUAL_READBACK":
             errors.append(f"INVARIANT_READBACK_NOT_ACTUAL:{binding['invariant_ref']}")
+        if binding.get("invariant_ref") not in set(readback.get("verified_invariant_refs") or []):
+            errors.append(f"READBACK_DOES_NOT_VERIFY_INVARIANT:{binding['invariant_ref']}")
+            continue
         if (
             binding.get("artifact_ref") != readback.get("artifact_ref")
             or binding.get("artifact_revision") != readback.get("artifact_revision")
@@ -775,6 +920,11 @@ def compute_mutation_permission(
         return "HOLD_AUTHORITY"
     if facts.get("expected_checkpoint_sequence") != facts.get("observed_checkpoint_sequence"):
         return "HOLD_CHECKPOINT"
+    decision_rights_status = facts.get("decision_rights_status")
+    if decision_rights_status not in {"CLEAR_BY_EXISTING_OWNER_RULE", "NOT_APPLICABLE"}:
+        return "HOLD_DECISION_RIGHTS"
+    if "active_user_constraints" not in facts or not isinstance(facts.get("active_user_constraints"), list):
+        return "HOLD_PERMISSION"
     if facts.get("decision_rights_conflict"):
         return "HOLD_DECISION_RIGHTS"
     if facts.get("authority_drift") or facts.get("source_drift"):
@@ -935,6 +1085,238 @@ def decide_designer_support(
             "durable_skill_score": None,
         }
     return {"mode": "AUTO", "fade_basis": "NONE", "durable_skill_score": None}
+
+
+def _normalize_scope(scope: str) -> str:
+    if scope == "*":
+        return scope
+    normalized = re.sub(r"[\\/]+", "/", scope.strip())
+    if not normalized.startswith("/"):
+        normalized = "/" + normalized
+    return normalized.rstrip("/") or "/"
+
+
+def _scope_applies(item_scope: str, active_scope: str) -> bool:
+    item = _normalize_scope(item_scope)
+    active = _normalize_scope(active_scope)
+    if item == "*" or item == "/":
+        return True
+    return active == item or active.startswith(item + "/")
+
+
+def validate_context_projection(projection: dict[str, Any]) -> list[str]:
+    """Validate a per-session context view without turning it into Project State."""
+    errors: list[str] = []
+    if projection.get("storage_semantics") != "EPHEMERAL_SESSION_PROJECTION":
+        errors.append("CONTEXT_STORAGE_MUST_BE_EPHEMERAL_SESSION_PROJECTION")
+    if projection.get("load_policy") != "PROGRESSIVE_DISCLOSURE":
+        errors.append("CONTEXT_LOAD_POLICY_MUST_BE_PROGRESSIVE_DISCLOSURE")
+    if not projection.get("active_scope"):
+        errors.append("CONTEXT_ACTIVE_SCOPE_REQUIRED")
+    token_budget = projection.get("token_budget")
+    if not isinstance(token_budget, int) or token_budget <= 0:
+        errors.append("CONTEXT_TOKEN_BUDGET_MUST_BE_POSITIVE_INTEGER")
+    items = projection.get("items")
+    if not isinstance(items, list):
+        errors.append("CONTEXT_ITEMS_MUST_BE_LIST")
+        return errors
+
+    seen_refs: set[str] = set()
+    allowed_authority_use = {
+        "NON_AUTHORITY_REFERENCE",
+        "LOCATOR_ONLY",
+        "REREAD_REQUIRED_BEFORE_MUTATION",
+        "FORBIDDEN_AS_AUTHORITY",
+    }
+    for item in items:
+        if not isinstance(item, dict):
+            errors.append("CONTEXT_ITEM_MUST_BE_OBJECT")
+            continue
+        missing = [
+            key
+            for key in (
+                "ref",
+                "logical_key",
+                "source_kind",
+                "scope",
+                "load_reason",
+                "disclosure_level",
+                "estimated_tokens",
+                "authority_use",
+            )
+            if item.get(key) in {None, ""}
+        ]
+        if missing:
+            errors.append("CONTEXT_ITEM_MISSING:" + ",".join(missing))
+            continue
+        ref = str(item["ref"])
+        if ref in seen_refs:
+            errors.append(f"CONTEXT_DUPLICATE_REF:{ref}")
+        seen_refs.add(ref)
+        if item.get("disclosure_level") not in CONTEXT_DISCLOSURE_RANK:
+            errors.append(f"CONTEXT_DISCLOSURE_LEVEL_INVALID:{ref}:{item.get('disclosure_level')}")
+        if not isinstance(item.get("estimated_tokens"), int) or item.get("estimated_tokens", 0) <= 0:
+            errors.append(f"CONTEXT_ESTIMATED_TOKENS_INVALID:{ref}")
+        if item.get("authority_use") not in allowed_authority_use:
+            errors.append(f"CONTEXT_AUTHORITY_USE_INVALID:{ref}:{item.get('authority_use')}")
+        if item.get("persistence_target") not in {None, "NONE"}:
+            errors.append(f"CONTEXT_ITEM_CANNOT_DEFINE_PERSISTENCE_TARGET:{ref}")
+        if item.get("source_kind") == "COMPACTED_CONTEXT":
+            if item.get("authority_use") != "FORBIDDEN_AS_AUTHORITY":
+                errors.append(f"COMPACTED_CONTEXT_CANNOT_BE_AUTHORITY:{ref}")
+            if item.get("rehydrate_before_consequential_mutation") is not True:
+                errors.append(f"COMPACTED_CONTEXT_REQUIRES_REHYDRATION_BEFORE_MUTATION:{ref}")
+        if item.get("disclosure_level") == "BULK" and item.get("explicit_load") is not True:
+            # BULK may exist in the candidate set but is not eligible for automatic loading.
+            continue
+    return errors
+
+
+def plan_context_load(projection: dict[str, Any]) -> dict[str, Any]:
+    """Select a minimal scoped context pack using progressive disclosure.
+
+    The result is an ephemeral read plan. It is never a persistence carrier or an
+    authority decision; compacted items must be rehydrated from owner-native sources
+    before consequential mutation.
+    """
+    errors = validate_context_projection(projection)
+    if errors:
+        return {"decision": "HOLD_INVALID_CONTEXT_PROJECTION", "errors": errors}
+
+    active_scope = str(projection["active_scope"])
+    token_budget = int(projection["token_budget"])
+    applicable = [item for item in projection["items"] if _scope_applies(str(item["scope"]), active_scope)]
+
+    # Exact content duplicates do not consume context twice. Prefer the more local
+    # scoped copy, then the lower-disclosure-level copy.
+    by_content: dict[str, dict[str, Any]] = {}
+    without_hash: list[dict[str, Any]] = []
+    for item in applicable:
+        content_hash = item.get("content_sha256")
+        if not content_hash:
+            without_hash.append(item)
+            continue
+        current = by_content.get(str(content_hash))
+        if current is None:
+            by_content[str(content_hash)] = item
+            continue
+        item_depth = _normalize_scope(str(item["scope"])).count("/")
+        current_depth = _normalize_scope(str(current["scope"])).count("/")
+        if item_depth > current_depth:
+            by_content[str(content_hash)] = item
+    candidates = list(by_content.values()) + without_hash
+
+    def _sort_key(item: dict[str, Any]) -> tuple[int, int, int, str]:
+        disclosure = CONTEXT_DISCLOSURE_RANK[str(item["disclosure_level"])]
+        required = 0 if item.get("required") is True else 1
+        scope_depth = _normalize_scope(str(item["scope"])).count("/")
+        return (required, disclosure, scope_depth, str(item["ref"]))
+
+    selected: list[dict[str, Any]] = []
+    omitted: list[dict[str, str]] = []
+    used = 0
+    required_over_budget: list[str] = []
+    for item in sorted(candidates, key=_sort_key):
+        ref = str(item["ref"])
+        if item.get("disclosure_level") == "BULK" and item.get("explicit_load") is not True:
+            omitted.append({"ref": ref, "reason": "PROGRESSIVE_DISCLOSURE_NOT_REQUESTED"})
+            continue
+        cost = int(item["estimated_tokens"])
+        if used + cost > token_budget:
+            omitted.append({"ref": ref, "reason": "TOKEN_BUDGET"})
+            if item.get("required") is True:
+                required_over_budget.append(ref)
+            continue
+        selected.append(item)
+        used += cost
+
+    # Scoped instruction fragments are presented root-to-leaf, matching the useful
+    # part of Codex's directory-scoped instruction behavior without making them authority.
+    selected.sort(
+        key=lambda item: (
+            0 if item.get("source_kind") == "SCOPED_INSTRUCTION" else 1,
+            _normalize_scope(str(item["scope"])).count("/"),
+            CONTEXT_DISCLOSURE_RANK[str(item["disclosure_level"])],
+            str(item["ref"]),
+        )
+    )
+    return {
+        "decision": "COMPACT_OR_NARROW_REQUIRED" if required_over_budget else "READY",
+        "selected_refs": [str(item["ref"]) for item in selected],
+        "selected_items": selected,
+        "omitted": omitted,
+        "estimated_tokens": used,
+        "token_budget": token_budget,
+        "required_over_budget": required_over_budget,
+        "authority": "NONE_EPHEMERAL_READ_PLAN_ONLY",
+    }
+
+
+def decide_file_placement(file_fact: dict[str, Any]) -> dict[str, Any]:
+    """Choose storage placement without creating a Session-Kernel artifact registry."""
+    role = str(file_fact.get("role", "UNRESOLVED"))
+    lifecycle = str(file_fact.get("lifecycle", "WORKING"))
+    owner_kind = str(file_fact.get("owner_kind", "PROJECT_WORKTREE"))
+    size_bytes = int(file_fact.get("size_bytes") or 0)
+    threshold = int(file_fact.get("large_binary_threshold_bytes") or REFERENCE_LARGE_FILE_THRESHOLD_BYTES)
+    explicit_library = file_fact.get("explicit_library_request") is True
+    explicit_full_binary = file_fact.get("explicit_full_binary_library_request") is True
+    generated_intermediate = file_fact.get("model_generated") is True and lifecycle in {"TEMPORARY", "WORKING", "INTERMEDIATE"}
+    content_sha256 = file_fact.get("content_sha256")
+    existing_sha256 = file_fact.get("existing_library_content_sha256")
+
+    if content_sha256 and existing_sha256 and str(content_sha256).lower() == str(existing_sha256).lower():
+        return {
+            "placement": "REUSE_EXISTING_LIBRARY_REF",
+            "library_binary_write": False,
+            "reason": "EXACT_CONTENT_ALREADY_PRESENT",
+            "authority": "NONE_PLACEMENT_DECISION_ONLY",
+        }
+
+    if owner_kind == "EXTERNAL_OWNER" and file_fact.get("external_reference_available") is True and not file_fact.get("materialize_required"):
+        return {
+            "placement": "EXTERNAL_REFERENCE_ONLY",
+            "library_binary_write": False,
+            "reason": "KEEP_WITH_EXISTING_EXTERNAL_OWNER",
+            "authority": "NONE_PLACEMENT_DECISION_ONLY",
+        }
+
+    if explicit_library:
+        if (size_bytes > threshold or generated_intermediate) and not explicit_full_binary:
+            return {
+                "placement": "LIBRARY_INDEX_ONLY",
+                "library_binary_write": False,
+                "library_index_write_allowed": True,
+                "reason": "LARGE_OR_INTERMEDIATE_BINARY_REQUIRES_EXPLICIT_FULL_BINARY_REQUEST",
+                "authority": "NONE_PLACEMENT_DECISION_ONLY",
+            }
+        return {
+            "placement": "LIBRARY_UPLOAD_ALLOWED",
+            "library_binary_write": True,
+            "reason": "EXPLICIT_LIBRARY_REQUEST",
+            "authority": "NONE_PLACEMENT_DECISION_ONLY",
+        }
+
+    if lifecycle == "TEMPORARY" or role in {"PREVIEW", "READBACK", "TEMP_TEST"}:
+        return {
+            "placement": "SESSION_OR_PROJECT_DERIVATIVE_CACHE",
+            "library_binary_write": False,
+            "reason": "DERIVATIVE_OR_TEMP_DEFAULTS_OUT_OF_LIBRARY",
+            "authority": "NONE_PLACEMENT_DECISION_ONLY",
+        }
+    if lifecycle in {"DELIVERABLE", "MILESTONE"} or role in {"PACKAGE", "PRESENTATION"}:
+        return {
+            "placement": "HANDOFF_EXPORT_WITH_EXISTING_OWNER",
+            "library_binary_write": False,
+            "reason": "KEEP_HANDOFF_WITH_OWNER_UNLESS_LIBRARY_EXPLICITLY_REQUESTED",
+            "authority": "NONE_PLACEMENT_DECISION_ONLY",
+        }
+    return {
+        "placement": "KEEP_WITH_EXISTING_OWNER",
+        "library_binary_write": False,
+        "reason": "LOCAL_OR_OWNER_NATIVE_IS_DEFAULT",
+        "authority": "NONE_PLACEMENT_DECISION_ONLY",
+    }
 
 
 def _cli() -> int:

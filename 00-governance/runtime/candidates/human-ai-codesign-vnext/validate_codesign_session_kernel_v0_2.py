@@ -10,8 +10,13 @@ from codesign_session_kernel_v0_2 import (
     classify_message,
     decide_auto_advance,
     decide_designer_support,
+    decide_file_placement,
     partition_work_after_defer,
+    plan_context_load,
+    resolve_execution_route,
+    validate_context_projection,
     validate_domain_adapter,
+    validate_execution_route,
     validate_human_actions,
     validate_option_set,
     validate_phase_transition,
@@ -182,6 +187,54 @@ def main() -> int:
             case_failures.append(f"{case['id']}:durable_skill_score_must_be_null")
         failures.extend(case_failures)
         results.append({"id": case["id"], "status": "PASS" if not case_failures else "FAIL", "actual": actual})
+
+    for case in FIXTURES["context_projection_cases"]:
+        errors = validate_context_projection(case["projection"])
+        actual = plan_context_load(case["projection"])
+        case_failures = []
+        if "expect_errors" in case and errors != case["expect_errors"]:
+            case_failures.append(f"{case['id']}:expected_errors={case['expect_errors']!r}:actual={errors!r}")
+        if "expect_error_contains" in case and case["expect_error_contains"] not in errors:
+            case_failures.append(f"{case['id']}:missing_error={case['expect_error_contains']!r}:actual={errors!r}")
+        if "expect_decision" in case and actual.get("decision") != case["expect_decision"]:
+            case_failures.append(f"{case['id']}:decision:expected={case['expect_decision']}:actual={actual.get('decision')}")
+        if "expect_selected_refs" in case and actual.get("selected_refs") != case["expect_selected_refs"]:
+            case_failures.append(f"{case['id']}:selected_refs:expected={case['expect_selected_refs']!r}:actual={actual.get('selected_refs')!r}")
+        if "expect_required_over_budget" in case and actual.get("required_over_budget") != case["expect_required_over_budget"]:
+            case_failures.append(f"{case['id']}:required_over_budget:expected={case['expect_required_over_budget']!r}:actual={actual.get('required_over_budget')!r}")
+        failures.extend(case_failures)
+        results.append({"id": case["id"], "status": "PASS" if not case_failures else "FAIL", "errors": errors, "actual": actual})
+
+    for case in FIXTURES["file_placement_cases"]:
+        actual = decide_file_placement(case["file_fact"])
+        case_failures = []
+        if actual.get("placement") != case["expect_placement"]:
+            case_failures.append(f"{case['id']}:placement:expected={case['expect_placement']}:actual={actual.get('placement')}")
+        if actual.get("library_binary_write") != case["expect_library_binary_write"]:
+            case_failures.append(f"{case['id']}:library_binary_write:expected={case['expect_library_binary_write']}:actual={actual.get('library_binary_write')}")
+        failures.extend(case_failures)
+        results.append({"id": case["id"], "status": "PASS" if not case_failures else "FAIL", "actual": actual})
+
+    for case in FIXTURES.get("execution_route_cases", []):
+        actual = resolve_execution_route(case.get("input") or {})
+        errors = validate_execution_route(actual)
+        case_failures = []
+        for key, expected in (case.get("expect") or {}).items():
+            if actual.get(key) != expected:
+                case_failures.append(
+                    f"{case['id']}:{key}:expected={expected!r}:actual={actual.get(key)!r}"
+                )
+        if "expect_errors" in case and errors != case["expect_errors"]:
+            case_failures.append(
+                f"{case['id']}:expected_errors={case['expect_errors']!r}:actual={errors!r}"
+            )
+        failures.extend(case_failures)
+        results.append({
+            "id": case["id"],
+            "status": "PASS" if not case_failures else "FAIL",
+            "actual": actual,
+            "errors": errors,
+        })
 
     output = {
         "schema": "oleander.codesign-session-kernel-validation.v0.2",
