@@ -120,7 +120,19 @@ CUSTOMER PROBLEM
 
 ---
 
-## 2.6 Launch Readiness
+## 2.6 Customer / Market Validation
+
+### [Customer & Market Validation Plan](OLEANDER_CUSTOMER_MARKET_VALIDATION_PLAN_v0.3.0.md)
+
+回答：
+- 外部用户如何招募；
+- problem interview / workflow observation / longitudinal pilot 怎么做；
+- 哪些市场结论当前不能声称；
+- 什么时候才进入 TAM / pricing / business-model 验证。
+
+---
+
+## 2.7 Launch Readiness
 
 ### [Launch Readiness Review](OLEANDER_LAUNCH_READINESS_REVIEW_v0.3.0.md)
 
@@ -132,7 +144,7 @@ CUSTOMER PROBLEM
 
 ---
 
-## 2.7 Decision Governance
+## 2.8 Decision Governance
 
 ### [Product Decision Log](OLEANDER_PRODUCT_DECISION_LOG_v0.3.0.md)
 
@@ -142,6 +154,14 @@ CUSTOMER PROBLEM
 - 哪些 alternative 被放弃；
 - 什么变化会触发 reopen；
 - 谁拥有该 decision。
+
+---
+
+## 2.9 Product Review Bar
+
+### [Product Review Bar](OLEANDER_PRODUCT_REVIEW_BAR_v0.3.0.md)
+
+用于 PM / Design / Eng / AI / Domain Reviewer 统一判断：这是不是一个真正 decision-ready / build-ready / pilot-ready / launch-ready 的产品要求，而不是“文档写得很长”。
 
 ---
 
