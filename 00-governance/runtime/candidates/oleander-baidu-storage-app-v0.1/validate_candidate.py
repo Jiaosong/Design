@@ -31,6 +31,7 @@ def main() -> int:
         "INSTALL_CHATGPT.md",
         "COS_LOCAL_UPLOAD.md",
         "VERCEL_DEPLOY.md",
+        "DEPLOYMENT_RECEIPT_v0.1.json",
         "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
         "CANDIDATE_MANIFEST_v0.1.json",
         "app/server.py",
@@ -103,11 +104,14 @@ def main() -> int:
             if not isinstance(config, dict):
                 fail(f"PLUGIN_MCP_SERVER_INVALID:{name}", failures)
                 continue
-            if config.get("type") != "streamable-http":
+            if config.get("type") not in {"http", "streamable-http"}:
                 fail(f"PLUGIN_MCP_TRANSPORT_INVALID:{name}", failures)
             url = str(config.get("url", ""))
             if not url.startswith("https://") or not url.rstrip("/").endswith("/mcp"):
                 fail(f"PLUGIN_MCP_URL_INVALID:{name}", failures)
+            bearer_env = config.get("bearer_token_env_var")
+            if bearer_env not in {None, "OLEANDER_BAIDU_APP_BEARER_TOKEN"}:
+                fail(f"PLUGIN_MCP_BEARER_ENV_INVALID:{name}", failures)
 
     schema = json.loads(
         (ROOT / "schemas/oleander-baidu-storage-binding.v0.1.schema.json").read_text(encoding="utf-8-sig")
@@ -161,6 +165,7 @@ def main() -> int:
                 if package.get("role") == "CHATGPT_PLUGIN_PACKAGE":
                     required_plugin_entries = {
                         "plugin.json",
+                        "mcp.json",
                         ".codex-plugin/plugin.json",
                         "skills/oleander-baidu-storage/SKILL.md",
                         "skills/oleander-baidu-storage/references/storage.md",

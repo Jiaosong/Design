@@ -1,0 +1,49 @@
+{
+  "schema": "oleander.baidu-storage-deployment-receipt.v0.1",
+  "status": "CANDIDATE_REMOTE_TRANSPORT_DEPLOYED_LOCAL_PLUGIN_INSTALLED",
+  "recorded_at": "2026-09-25T15:18:00Z",
+  "source_commit": "2c49b636",
+  "railway": {
+    "project_id": "fee4a448-d806-4a35-b643-03434ac83e29",
+    "service_id": "ebcd4d6e-4acc-43a7-bfcf-aa6d6318331e",
+    "environment_id": "e43b8702-8271-4a64-91b7-fe2222c9dbda",
+    "deployment_id": "a58f8235-09a9-44b7-aa0c-b609845b8ee3",
+    "deployment_state": "SUCCESS",
+    "mcp_url": "https://oleander-baidu-storage-production.up.railway.app/mcp",
+    "health_url": "https://oleander-baidu-storage-production.up.railway.app/healthz",
+    "policy_url": "https://oleander-baidu-storage-production.up.railway.app/policy"
+  },
+  "transport_readback": {
+    "health_http": 200,
+    "policy_http": 200,
+    "external_streamable_http_initialize_before_ingress_auth": "PASS",
+    "external_tool_list_before_ingress_auth": [
+      "oleander_storage_status",
+      "oleander_storage_probe",
+      "oleander_storage_bootstrap"
+    ],
+    "dns_rebinding_host_binding": "PASS_AFTER_EXPLICIT_HOST_ALLOWLIST",
+    "anonymous_mcp_after_ingress_auth": "HTTP_401_BLOCKED_AS_REQUIRED",
+    "ingress_bearer": "CONFIGURED_SECRET_NOT_RECORDED",
+    "baidu_access_token": "NOT_CONFIGURED"
+  },
+  "desktop_plugin": {
+    "marketplace": "oleander-personal",
+    "plugin_id": "oleander-baidu-storage@oleander-personal",
+    "version": "0.1.0",
+    "cli_install_state": "INSTALLED_ENABLED",
+    "marketplace_root": "D:/Desgin/.mcp-runtime/plugin-marketplaces/oleander-personal",
+    "restart_required_for_desktop_process_to_reload_user_environment": true
+  },
+  "authority_effect": "NONE",
+  "does_not_prove": [
+    "REMOTE_TRANSPORT_PASS_DOES_NOT_PROVE_BAIDU_ACCOUNT_AUTHORIZATION",
+    "LOCAL_DESKTOP_PLUGIN_INSTALL_DOES_NOT_PROVE_CHATGPT_WEB_WORKSPACE_INSTALL",
+    "PLUGIN_INSTALL_DOES_NOT_CREATE_PROJECT_STATE_OR_CURRENT_AUTHORITY",
+    "STORAGE_SUCCESS_DOES_NOT_PROVE_DESIGN_KEEP_OR_PROMOTION"
+  ],
+  "remaining_user_boundary": [
+    "AUTHORIZE_BAIDU_NETDISK_ACCOUNT_WITHOUT_PASTING_THE_ACCESS_TOKEN_IN_CHAT",
+    "RESTART_CHATGPT_DESKTOP_AFTER_LOCAL_SECRET_ENVIRONMENT_AND_PLUGIN_INSTALL"
+  ]
+}

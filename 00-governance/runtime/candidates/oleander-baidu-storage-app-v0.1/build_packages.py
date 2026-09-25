@@ -25,6 +25,7 @@ APP_INCLUDE = [
     "requirements.txt",
     "Dockerfile",
     "VERCEL_DEPLOY.md",
+    "DEPLOYMENT_RECEIPT_v0.1.json",
     "api",
     "run_local.ps1",
     "run_local_secure.ps1",
