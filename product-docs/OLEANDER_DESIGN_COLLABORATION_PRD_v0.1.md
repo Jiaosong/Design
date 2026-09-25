@@ -905,6 +905,10 @@ Human action
 
 当前 Human–AI Co-Design 实现仍是 Candidate，不是 Current。
 
+候选实现入口：
+
+[Human–AI Co-Design vNext Candidate](https://github.com/Jiaosong/Design/tree/candidate/oleander-human-ai-codesign-vnext-20260924/00-governance/runtime/candidates/human-ai-codesign-vnext)
+
 已存在的候选能力包括：
 
 - 三个 view 的单一架构投影；
