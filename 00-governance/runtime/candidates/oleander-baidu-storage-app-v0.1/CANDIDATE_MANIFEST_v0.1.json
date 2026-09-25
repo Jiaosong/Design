@@ -2,18 +2,14 @@
   "schema": "oleander.baidu-storage-app-candidate.v0.1",
   "status": "CANDIDATE_NOT_CURRENT_NOT_PROMOTED",
   "display_name": "OLEANDER 百度网盘",
-  "version": "0.1.0-candidate",
-  "role": "BOUNDED_STORAGE_ADAPTER_AND_CHATGPT_MCP_APP",
+  "version": "0.1.1-candidate",
+  "role": "BOUNDED_STORAGE_ADAPTER_AND_LOCAL_MCP_PLUGIN",
+  "selected_runtime": "LOCAL_STDIO_PLUGIN",
   "upstream": {
     "project": "baidu-netdisk/mcp",
     "observed_commit": "b3983d330fea79c7b72e6b7014803e1830148d2c",
     "remote_sse": "https://mcp-pan.baidu.com/sse",
     "license": "MIT"
-  },
-  "openai_reference": {
-    "project": "openai/openai-apps-sdk-examples",
-    "observed_commit": "18cc38e78a968712c357bacdc3c79fead5bfc6b4",
-    "transport": "STREAMABLE_HTTP"
   },
   "storage_root_default": "/OLEANDER_VAULT",
   "owns": [
@@ -32,16 +28,12 @@
     "PROFESSIONAL_REVIEW",
     "PROMOTION_SYNC"
   ],
-  "default_disabled": [
-    "DELETE"
-  ],
-  "unsupported_v0_1": [
-    "SHARE_LINK_UNTIL_FSID_ROOT_OWNERSHIP_PREFLIGHT_IS_VALIDATED"
-  ],
+  "default_disabled": ["DELETE"],
+  "unsupported_v0_1": ["SHARE_LINK_UNTIL_FSID_ROOT_OWNERSHIP_PREFLIGHT_IS_VALIDATED"],
+  "credential_store": "WINDOWS_DPAPI_CURRENT_USER",
   "local_upload_boundary": "OFFICIAL_BAIDU_STDIO_LOCAL_ONLY_ROUTED_THROUGH_COS",
   "does_not_prove": [
-    "CHATGPT_ACCOUNT_INSTALLATION_SUCCESS",
-    "BAIDU_ACCESS_TOKEN_AVAILABILITY",
+    "LOCAL_PLUGIN_INSTALLATION_SUCCESS",
     "CURRENT_ADOPTION",
     "PROJECT_STATE_MUTATION",
     "DESIGN_KEEP",

@@ -1,36 +1,28 @@
-# @OLEANDER 百度网盘 v0.1 — Candidate
+# @OLEANDER 百度网盘 v0.1.1 — Candidate
 
 **Status:** `CANDIDATE / NOT CURRENT / NOT PROMOTED`
 
-This package turns the official Baidu Netdisk MCP server into a bounded OLEANDER storage surface for ChatGPT and COS.
+This candidate is the bounded local Baidu Netdisk storage adapter for OLEANDER. The selected runtime is local COS/Codex on the workstation; no cloud relay is required.
 
-It deliberately does **not** create or own Project State, Current Authority, Project Registry, Artifact Registry, Design KEEP, professional verdicts, Promotion, KI/OE or Knowledge authority.
+It does **not** own Project State, Current Authority, Artifact Registry, Design KEEP, professional verdicts, Promotion, KI/OE or Knowledge authority.
 
-## Architecture
+## Selected architecture
 
 ```text
-ChatGPT / supported OpenAI surface
+COS / Codex local plugin
+        ↓ stdio
+OLEANDER Baidu Storage
+        ↓ policy + path/operation guard
+Baidu official MCP / API
         ↓
-OpenAI Secure MCP Tunnel
-        ↓
-workstation tunnel-client
-        ↓
-OLEANDER Baidu Storage MCP on 127.0.0.1:9823
-        ↓  policy + path/operation guard
-Baidu Netdisk official MCP
-        ↓
-User's Baidu Netdisk
+/OLEANDER_VAULT
 ```
 
-The upstream implementation is the official `baidu-netdisk/mcp` server. This package proxies its tools rather than reimplementing the Baidu storage API.
+The plugin uses `stdio` and starts its own local MCP process. It reads the Baidu access token from the current Windows user's DPAPI store. A separate localhost HTTP server is retained only for debugging/manual inspection.
 
-## Default storage root
+## Storage root
 
-All path-addressable operations are restricted to:
-
-`/OLEANDER_VAULT`
-
-Recommended layout:
+All path-addressable operations are restricted to `/OLEANDER_VAULT`.
 
 ```text
 /OLEANDER_VAULT
@@ -40,59 +32,26 @@ Recommended layout:
 └─ ARCHIVE/
 ```
 
-`CURRENT` inside that storage layout means **remote byte-copy class only**. It never becomes OLEANDER Current Authority.
+`CURRENT` in storage means remote byte-copy class only. It never grants OLEANDER Current Authority.
 
-## Exposed upstream capabilities
+## Capabilities
 
-Read/search by default:
+Read/search: `file_list`, `file_doc_list`, `file_image_list`, `file_video_list`, `file_meta`, `file_keyword_search`, `file_semantics_search`, `user_info`, `get_quota`.
 
-- `file_list`
-- `file_doc_list`
-- `file_image_list`
-- `file_video_list`
-- `file_meta`
-- `file_keyword_search`
-- `file_semantics_search`
-- `user_info`
-- `get_quota`
+Bounded writes: `make_dir`, `file_copy`, `file_move`, `file_rename`, plus upstream URL/text upload tools allowed by policy.
 
-Bounded write operations by default:
+Delete is disabled by default. Share-link creation remains unsupported in v0.1.1 until fsid ownership can be preflighted under `/OLEANDER_VAULT` before the side effect occurs. `/CURRENT/` mutation and overwrite require explicit adapter acknowledgements.
 
-- `make_dir`
-- `file_copy`
-- `file_move`
-- `file_rename`
-- URL/text upload tools reported by the upstream server
+## Local install
 
-High-risk operations are disabled unless explicitly enabled by environment policy:
+See `INSTALL_LOCAL.md`.
 
-- delete
-
-Share-link creation is **unsupported in v0.1** rather than merely hidden behind a switch. The upstream share tool accepts fsids without a path, so OLEANDER will not expose it until authenticated metadata preflight can prove every fsid belongs to `/OLEANDER_VAULT` before the share side effect occurs.
-
-Writes into a `/CURRENT/` storage branch or overwrite behavior require explicit OLEANDER acknowledgements in the tool input.
-
-## ChatGPT vs local COS
-
-Remote OpenAI access uses OpenAI Secure MCP Tunnel to reach this workstation-hosted Streamable HTTP app. Local Codex/COS may use the loopback MCP endpoint directly. The official Baidu server does not expose local-file upload through its remote transport, so arbitrary local DWG/SKP/BLEND upload remains a COS/local-stdio responsibility.
-
-## Run locally
+For manual HTTP debugging:
 
 ```powershell
-cd 00-governance/runtime/candidates/oleander-baidu-storage-app-v0.1
-py -3.13 -m pip install -r requirements.txt
-$env:BAIDU_NETDISK_ACCESS_TOKEN="<token>"
-py -3.13 -m app.server
+.\run_local_secure.ps1
 ```
 
-MCP endpoint:
+This binds only to `127.0.0.1:9823` and uses the DPAPI token store.
 
-`http://127.0.0.1:9823/mcp`
-
-Health endpoint:
-
-`http://127.0.0.1:9823/healthz`
-
-See `INSTALL_CHATGPT.md`, `OPENAI_SECURE_TUNNEL.md` and `COS_LOCAL_UPLOAD.md`.
-
-For a no-chat/no-Git local token setup on Windows, run `configure_baidu_token.ps1` and then `run_local_secure.ps1`. The token is stored through Windows DPAPI under the current user's LocalAppData, not in this repository.
+Storage success still does not prove Project State mutation, Design KEEP, professional PASS or Promotion.

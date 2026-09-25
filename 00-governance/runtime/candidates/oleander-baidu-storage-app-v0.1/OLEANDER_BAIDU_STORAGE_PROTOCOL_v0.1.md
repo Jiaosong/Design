@@ -61,17 +61,13 @@ Default:
 
 These acknowledgements authorize only the named storage operation. They do not satisfy project mutation permission, Design KEEP or Promotion.
 
-## 5. Cross-device use
+## 5. Selected local runtime
 
-Remote ChatGPT:
+COS / Codex:
 
-`search/browse/review/manage remote copies → storage receipt`
+`owner-native reread → native execution → local readback → bounded Baidu storage operation → provider readback → project owner writeback when authorized`
 
-Local COS:
-
-`owner-native reread → native execution → local readback → optional official stdio upload → provider readback → project owner writeback when authorized`
-
-The official Baidu MCP exposes local-file upload only through its stdio/local implementation. This adapter therefore does not pretend that a remote ChatGPT session can read arbitrary local workstation files.
+The plugin uses MCP stdio and is launched locally by the client. It may access only the workstation resources explicitly available to that local execution path. Storage connectivity does not imply arbitrary local-file read authority.
 
 ## 6. Knowledge bodies
 

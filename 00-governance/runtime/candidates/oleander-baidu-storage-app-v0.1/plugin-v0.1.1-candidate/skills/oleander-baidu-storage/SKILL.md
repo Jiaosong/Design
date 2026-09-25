@@ -3,7 +3,7 @@ name: oleander-baidu-storage
 description: Use OLEANDER's bounded Baidu Netdisk storage surface to browse, search, review and manage remote OLEANDER project/knowledge replicas without turning cloud storage into Project State or Current Authority.
 ---
 
-# OLEANDER 百度网盘 v0.1 candidate
+# OLEANDER 百度网盘 v0.1.1 candidate
 
 This Skill is the workflow binding for the `OLEANDER 百度网盘` MCP app. It contains no Baidu access token and does not create storage connectivity by itself.
 
@@ -27,7 +27,7 @@ Never infer:
 
 `REMOTE FILE = CURRENT PROJECT ARTIFACT`
 
-For local DWG/SKP/BLEND upload, route to the local COS/stdio uploader. Remote ChatGPT must not claim it read an arbitrary local workstation file.
+For local DWG/SKP/BLEND upload, route through the owner-native COS/local execution path. Do not claim a workstation file was read unless the local execution path actually read it.
 
 Deletion is disabled by default. Share-link creation is unsupported in v0.1 until fsid ownership can be preflighted inside `/OLEANDER_VAULT`. `/CURRENT/` storage mutation and overwrite require the adapter's explicit acknowledgement fields.
 
@@ -39,4 +39,3 @@ Deletion is disabled by default. Share-link creation is unsupported in v0.1 unti
 4. Prefer `REVIEW` carriers for remote human review and keep native masters `LOCAL_REQUIRED` where appropriate.
 5. Before a write, state the exact storage target and whether it touches `CURRENT_COPY` or overwrite semantics.
 6. After a write, read back provider metadata. Storage readback proves only the remote byte-copy state.
-

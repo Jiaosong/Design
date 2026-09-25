@@ -19,9 +19,9 @@ Default allowed root: `/OLEANDER_VAULT`.
 
 Do not browse or mutate outside it through this Skill.
 
-## Remote review
+## Review carriers
 
-Prefer lightweight review carriers for remote conversation:
+Prefer lightweight review carriers where native masters are unnecessary:
 
 - PDF;
 - PNG/JPEG preview;
@@ -29,7 +29,7 @@ Prefer lightweight review carriers for remote conversation:
 - small JSON/text;
 - bounded model export where needed.
 
-Native masters can remain `LOCAL_REQUIRED` while the remote session continues design review and steering.
+Native masters can remain `LOCAL_REQUIRED` while COS/Codex continues design review and steering from approved carriers.
 
 ## Risk controls
 
@@ -43,5 +43,4 @@ Native masters can remain `LOCAL_REQUIRED` while the remote session continues de
 
 ## Authentication boundary
 
-Never put a Baidu access token in this plugin package, a chat message, a manifest committed to Git, or an MCP URL stored in the ZIP. Authentication is supplied by the deployed server's secret store or by a future standards-compliant OAuth connection.
-
+Never put a Baidu access token in this plugin package, a chat message, a manifest committed to Git, or an MCP URL stored in the ZIP. The selected local runtime reads the token from the current Windows user's DPAPI store.

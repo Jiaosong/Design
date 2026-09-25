@@ -8,32 +8,24 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-APP_ZIP = ROOT / "OLEANDER-Baidu-Storage-App-0.1.0-CANDIDATE.zip"
-PLUGIN_ZIP = ROOT / "OLEANDER-Baidu-Storage-Plugin-0.1.0-CANDIDATE.zip"
+APP_ZIP = ROOT / "OLEANDER-Baidu-Storage-Local-0.1.1-CANDIDATE.zip"
+PLUGIN_ZIP = ROOT / "OLEANDER-Baidu-Storage-Plugin-0.1.1-CANDIDATE.zip"
 PACKAGE_MANIFEST = ROOT / "PACKAGE_MANIFEST_v0.1.json"
 
 
 APP_INCLUDE = [
     "README.md",
-    "INSTALL_CHATGPT.md",
-    "OPENAI_TUNNEL.md",
+    "INSTALL_LOCAL.md",
     "COS_LOCAL_UPLOAD.md",
     "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
     "CANDIDATE_MANIFEST_v0.1.json",
     "THIRD_PARTY_NOTICES.md",
     ".env.example",
     "requirements.txt",
-    "Dockerfile",
-    "VERCEL_DEPLOY.md",
-    "OPENAI_SECURE_TUNNEL.md",
-    "configure_openai_tunnel.ps1",
-    "run_openai_tunnel_secure.ps1",
-    "DEPLOYMENT_RECEIPT_v0.1.json",
-    "api",
+    "LOCAL_RUNTIME_RECEIPT_v0.1.json",
     "run_local.ps1",
     "run_local_secure.ps1",
     "configure_baidu_token.ps1",
-    "setup_openai_tunnel.ps1",
     "app",
     "scripts",
     "schemas",
@@ -73,9 +65,18 @@ def build_zip(target: Path, entries: list[str], strip_prefix: Path | None = None
 
 
 def main() -> int:
+    plugin_root = ROOT / "plugin-v0.1.1-candidate"
+    runtime_app = plugin_root / "runtime" / "app"
+    runtime_app.mkdir(parents=True, exist_ok=True)
+    for source in (ROOT / "app").glob("*.py"):
+        shutil.copy2(source, runtime_app / source.name)
+
     app_count, app_size, app_sha = build_zip(APP_ZIP, APP_INCLUDE)
-    plugin_root = ROOT / "plugin-v0.1.0-candidate"
-    plugin_files = [str(p.relative_to(ROOT)) for p in sorted(plugin_root.rglob("*")) if p.is_file()]
+    plugin_files = [
+        str(p.relative_to(ROOT))
+        for p in sorted(plugin_root.rglob("*"))
+        if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"
+    ]
     plugin_count, plugin_size, plugin_sha = build_zip(
         PLUGIN_ZIP, plugin_files, strip_prefix=plugin_root
     )
@@ -85,7 +86,7 @@ def main() -> int:
         "status": "CANDIDATE_PACKAGED",
         "packages": [
             {
-                "role": "CHATGPT_MCP_APP_SERVER",
+                "role": "LOCAL_MCP_RUNTIME",
                 "filename": APP_ZIP.name,
                 "sha256": app_sha,
                 "size_bytes": app_size,

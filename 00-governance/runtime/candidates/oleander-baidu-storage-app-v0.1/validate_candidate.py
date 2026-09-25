@@ -28,24 +28,22 @@ def main() -> int:
 
     required = [
         "README.md",
-        "INSTALL_CHATGPT.md",
+        "INSTALL_LOCAL.md",
         "COS_LOCAL_UPLOAD.md",
-        "VERCEL_DEPLOY.md",
-        "OPENAI_SECURE_TUNNEL.md",
-        "configure_openai_tunnel.ps1",
-        "run_openai_tunnel_secure.ps1",
-        "DEPLOYMENT_RECEIPT_v0.1.json",
+        "LOCAL_RUNTIME_RECEIPT_v0.1.json",
         "OLEANDER_BAIDU_STORAGE_PROTOCOL_v0.1.md",
         "CANDIDATE_MANIFEST_v0.1.json",
         "app/server.py",
         "app/policy.py",
         "app/upstream.py",
-        "api/index.py",
         "schemas/oleander-baidu-storage-binding.v0.1.schema.json",
-        "plugin-v0.1.0-candidate/plugin.json",
-        "plugin-v0.1.0-candidate/.codex-plugin/plugin.json",
-        "plugin-v0.1.0-candidate/skills/oleander-baidu-storage/SKILL.md",
-        "plugin-v0.1.0-candidate/skills/oleander-baidu-storage/references/storage.md",
+        "plugin-v0.1.1-candidate/plugin.json",
+        "plugin-v0.1.1-candidate/.codex-plugin/plugin.json",
+        "plugin-v0.1.1-candidate/mcp.json",
+        "plugin-v0.1.1-candidate/runtime/stdio_entry.py",
+        "plugin-v0.1.1-candidate/runtime/run_stdio_secure.ps1",
+        "plugin-v0.1.1-candidate/skills/oleander-baidu-storage/SKILL.md",
+        "plugin-v0.1.1-candidate/skills/oleander-baidu-storage/references/storage.md",
     ]
     for rel in required:
         if not (ROOT / rel).exists():
@@ -73,13 +71,13 @@ def main() -> int:
     if overlap:
         fail(f"SHADOW_AUTHORITY_OWNERSHIP:{overlap}", failures)
 
-    plugin_root = ROOT / "plugin-v0.1.0-candidate"
+    plugin_root = ROOT / "plugin-v0.1.1-candidate"
     plugin_manifest = json.loads((plugin_root / "plugin.json").read_text(encoding="utf-8-sig"))
     if plugin_manifest.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
         fail("PLUGIN_PORTABLE_SCHEMA_DRIFT", failures)
     if plugin_manifest.get("name") != "oleander-baidu-storage":
         fail("PLUGIN_NAME_DRIFT", failures)
-    if plugin_manifest.get("version") != "0.1.0":
+    if plugin_manifest.get("version") != "0.1.1":
         fail("PLUGIN_VERSION_DRIFT", failures)
 
     skill_text = (
@@ -88,9 +86,8 @@ def main() -> int:
     if "name: oleander-baidu-storage" not in skill_text:
         fail("PLUGIN_SKILL_IDENTITY_DRIFT", failures)
 
-    # A portable MCP binding is added only after a real stable HTTPS endpoint
-    # exists. Never package localhost, placeholders, or access tokens as if the
-    # ChatGPT connection were complete.
+    # The selected local binding is stdio. Never package access tokens or
+    # placeholder secrets into the portable plugin.
     portable_mcp = plugin_root / "mcp.json"
     if portable_mcp.exists():
         mcp_config = json.loads(portable_mcp.read_text(encoding="utf-8-sig"))
@@ -107,18 +104,20 @@ def main() -> int:
             if not isinstance(config, dict):
                 fail(f"PLUGIN_MCP_SERVER_INVALID:{name}", failures)
                 continue
-            if config.get("type") not in {"http", "streamable-http"}:
+            if config.get("type") not in {"stdio", "http", "streamable-http"}:
                 fail(f"PLUGIN_MCP_TRANSPORT_INVALID:{name}", failures)
-            url = str(config.get("url", ""))
-            selected_loopback = url == "http://127.0.0.1:9823/mcp"
-            selected_remote = url.startswith("https://") and url.rstrip("/").endswith("/mcp")
-            if not (selected_loopback or selected_remote):
-                fail(f"PLUGIN_MCP_URL_INVALID:{name}", failures)
-            bearer_env = config.get("bearer_token_env_var")
-            if bearer_env not in {None, "OLEANDER_BAIDU_APP_BEARER_TOKEN"}:
-                fail(f"PLUGIN_MCP_BEARER_ENV_INVALID:{name}", failures)
-            if selected_loopback and bearer_env is not None:
-                fail(f"PLUGIN_MCP_LOOPBACK_BEARER_UNEXPECTED:{name}", failures)
+            if config.get("type") == "stdio":
+                if config.get("command") != "powershell.exe":
+                    fail(f"PLUGIN_MCP_STDIO_COMMAND_INVALID:{name}", failures)
+                args = config.get("args", [])
+                if "${PLUGIN_ROOT}/runtime/run_stdio_secure.ps1" not in args:
+                    fail(f"PLUGIN_MCP_STDIO_WRAPPER_MISSING:{name}", failures)
+            else:
+                url = str(config.get("url", ""))
+                selected_loopback = url == "http://127.0.0.1:9823/mcp"
+                selected_remote = url.startswith("https://") and url.rstrip("/").endswith("/mcp")
+                if not (selected_loopback or selected_remote):
+                    fail(f"PLUGIN_MCP_URL_INVALID:{name}", failures)
 
     schema = json.loads(
         (ROOT / "schemas/oleander-baidu-storage-binding.v0.1.schema.json").read_text(encoding="utf-8-sig")
@@ -174,6 +173,12 @@ def main() -> int:
                         "plugin.json",
                         "mcp.json",
                         ".codex-plugin/plugin.json",
+                        "runtime/stdio_entry.py",
+                        "runtime/run_stdio_secure.ps1",
+                        "runtime/app/server.py",
+                        "runtime/app/policy.py",
+                        "runtime/app/upstream.py",
+                        "runtime/app/result_filter.py",
                         "skills/oleander-baidu-storage/SKILL.md",
                         "skills/oleander-baidu-storage/references/storage.md",
                     }
@@ -202,7 +207,7 @@ def main() -> int:
         return 1
 
     print("PASS: OLEANDER Baidu Storage candidate structural/policy validation")
-    print("does_not_prove: BAIDU_AUTH / CHATGPT_ACCOUNT_INSTALL / CURRENT / DESIGN_KEEP / PROMOTION")
+    print("does_not_prove: CURRENT / PROJECT_STATE / DESIGN_KEEP / PROMOTION")
     return 0
 
 

@@ -1,0 +1,17 @@
+{
+  "schema": "oleander.baidu-storage-local-runtime-receipt.v0.1",
+  "status": "CANDIDATE_LOCAL_STDIO_SELECTED",
+  "runtime": "COS_CODEX_LOCAL_PLUGIN",
+  "plugin_version": "0.1.1",
+  "transport": "STDIO",
+  "credential_store": "WINDOWS_DPAPI_CURRENT_USER_SECRET_NOT_RECORDED",
+  "storage_root": "/OLEANDER_VAULT",
+  "vault_bootstrap": "PASS_PREVIOUSLY_READ_BACK",
+  "authority_effect": "NONE",
+  "does_not_prove": [
+    "PROJECT_STATE",
+    "CURRENT_AUTHORITY",
+    "DESIGN_KEEP",
+    "PROMOTION"
+  ]
+}
