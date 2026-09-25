@@ -1,8 +1,8 @@
 {
   "schema": "oleander.baidu-storage-deployment-receipt.v0.1",
-  "status": "CANDIDATE_REMOTE_TRANSPORT_DEPLOYED_LOCAL_PLUGIN_INSTALLED",
-  "recorded_at": "2026-09-25T15:18:00Z",
-  "source_commit": "2c49b636",
+  "status": "CANDIDATE_LOCAL_BAIDU_AUTH_AND_VAULT_BOOTSTRAP_PASS_REMOTE_SECRET_PENDING",
+  "recorded_at": "2026-09-25T15:56:30Z",
+  "source_commit": "aedea199",
   "railway": {
     "project_id": "fee4a448-d806-4a35-b643-03434ac83e29",
     "service_id": "ebcd4d6e-4acc-43a7-bfcf-aa6d6318331e",
@@ -25,7 +25,30 @@
     "dns_rebinding_host_binding": "PASS_AFTER_EXPLICIT_HOST_ALLOWLIST",
     "anonymous_mcp_after_ingress_auth": "HTTP_401_BLOCKED_AS_REQUIRED",
     "ingress_bearer": "CONFIGURED_SECRET_NOT_RECORDED",
-    "baidu_access_token": "NOT_CONFIGURED"
+    "baidu_access_token": "NOT_CONFIGURED_ON_RAILWAY"
+  },
+  "local_baidu_readback": {
+    "credential_store": "WINDOWS_DPAPI_CURRENT_USER_SECRET_NOT_RECORDED",
+    "local_secure_mcp": "PASS",
+    "local_transport": "127.0.0.1_PRIVATE_ONLY",
+    "upstream_probe": "PASS",
+    "exposed_upstream_tool_count": 14,
+    "hidden_upstream_tools": [
+      "file_upload_by_content",
+      "file_sharelink_set"
+    ],
+    "user_info_errno": 0,
+    "quota_errno": 0,
+    "quota_total_bytes": 11000484986880,
+    "quota_used_bytes": 4000902275306,
+    "vault_bootstrap": "PASS",
+    "vault_folders": [
+      "/OLEANDER_VAULT",
+      "/OLEANDER_VAULT/PROJECTS",
+      "/OLEANDER_VAULT/KNOWLEDGE",
+      "/OLEANDER_VAULT/SHARED-ASSETS",
+      "/OLEANDER_VAULT/ARCHIVE"
+    ]
   },
   "desktop_plugin": {
     "marketplace": "oleander-personal",
@@ -37,13 +60,13 @@
   },
   "authority_effect": "NONE",
   "does_not_prove": [
-    "REMOTE_TRANSPORT_PASS_DOES_NOT_PROVE_BAIDU_ACCOUNT_AUTHORIZATION",
+    "LOCAL_BAIDU_AUTH_PASS_DOES_NOT_PROVE_REMOTE_RAILWAY_BAIDU_AUTH",
     "LOCAL_DESKTOP_PLUGIN_INSTALL_DOES_NOT_PROVE_CHATGPT_WEB_WORKSPACE_INSTALL",
     "PLUGIN_INSTALL_DOES_NOT_CREATE_PROJECT_STATE_OR_CURRENT_AUTHORITY",
     "STORAGE_SUCCESS_DOES_NOT_PROVE_DESIGN_KEEP_OR_PROMOTION"
   ],
   "remaining_user_boundary": [
-    "AUTHORIZE_BAIDU_NETDISK_ACCOUNT_WITHOUT_PASTING_THE_ACCESS_TOKEN_IN_CHAT",
+    "INJECT_BAIDU_NETDISK_ACCESS_TOKEN_INTO_RAILWAY_SECRET_STORE_WITHOUT_PASTING_IT_IN_CHAT",
     "RESTART_CHATGPT_DESKTOP_AFTER_LOCAL_SECRET_ENVIRONMENT_AND_PLUGIN_INSTALL"
   ]
 }

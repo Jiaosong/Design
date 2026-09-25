@@ -6,7 +6,7 @@ if (-not (Test-Path -LiteralPath $secretFile)) {
     throw "Encrypted Baidu token not found. Run configure_baidu_token.ps1 first."
 }
 
-$encrypted = Get-Content -LiteralPath $secretFile -Raw
+$encrypted = (Get-Content -LiteralPath $secretFile -Raw).Trim()
 $secure = ConvertTo-SecureString $encrypted
 $ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
 try {
