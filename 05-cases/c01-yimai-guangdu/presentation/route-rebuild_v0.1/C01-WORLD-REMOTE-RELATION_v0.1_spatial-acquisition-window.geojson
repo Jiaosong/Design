@@ -16,7 +16,10 @@
     "metric_scale_asserted": 0,
     "site_boundary_asserted": 0,
     "source_geometry_asserted": 0,
-    "claim_ceiling": "Search extent only. It is not a site, village, parcel, heritage, road or water boundary and proves no alignment, width, survey geometry, rights or implementation permission."
+    "claim_ceiling": "Search extent only. It is not a site, village, parcel, heritage, road or water boundary and proves no alignment, width, survey geometry, rights or implementation permission.",
+    "revision": "v0.2",
+    "redraw_operation": "SUBDIVIDE_ACQ_WINDOW_INTO_FOUR_SEARCH_TILES",
+    "tile_geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY"
   },
   "features": [
     {
@@ -75,6 +78,174 @@
           "coordinate-bearing water source"
         ],
         "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-SW",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.450507,
+              28.41823
+            ],
+            [
+              118.460507,
+              28.41823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.450507,
+              28.42823
+            ],
+            [
+              118.450507,
+              28.41823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-SW",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-SE",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.460507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.41823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-SE",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-NW",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.450507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.42823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-NW",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-NE",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.470507,
+              28.42823
+            ],
+            [
+              118.470507,
+              28.43823
+            ],
+            [
+              118.460507,
+              28.43823
+            ],
+            [
+              118.460507,
+              28.42823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-NE",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
       }
     }
   ]
