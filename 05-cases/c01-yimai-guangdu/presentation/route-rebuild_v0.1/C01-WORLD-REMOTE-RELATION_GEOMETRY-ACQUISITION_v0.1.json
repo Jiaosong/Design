@@ -1,0 +1,14 @@
+{
+  "decision_object_id":"C01-WORLD-REMOTE-RELATION-v0.1",
+  "artifact_id":"C01-WORLD-REMOTE-RELATION-GEOMETRY-ACQUISITION-v0.1",
+  "before_ref":"C01-WORLD-REMOTE-RELATION_v0.1.geojson@a704e1683798384c4da8197f11fc11952c7941a2",
+  "anchor":{"stable_id":"ANCHOR-DAGONGDIAN-CAMERA","lon":118.460507,"lat":28.428230,"authority":"published camera location only"},
+  "acquisition_window":{"crs":"OGC:CRS84","bbox_wsen":[118.450507,28.418230,118.470507,28.438230],"status":"BOUNDED_NOT_SURVEY_EXTENT"},
+  "attempt_2026-09-21T0530+08":{"action":"execute exact bounded Overpass GET","result":"ADAPTER_ACCESS_FAILED_VERIFIED","detail":"fresh web open of the encoded overpass-api.de interpreter request returned inaccessible/Internal Error before any OSM response; no feature identity or geometry ingested","safe_effect":"all relation geometries remain null","do_not_retry_same_adapter":true},
+  "exact_release_action":{"owner":"research+data-viz","query":"[out:json][timeout:25];(way[waterway](28.418230,118.450507,28.438230,118.470507);way[highway](28.418230,118.450507,28.438230,118.470507);way[building](28.418230,118.450507,28.438230,118.470507);relation[building](28.418230,118.450507,28.438230,118.470507););out meta geom;","required_capture":["osm_type","osm_id","version","timestamp","tags","geometry","retrieved_at","query","license"],"raw_target":"05-cases/c01-yimai-guangdu/presentation/route-rebuild_v0.1/evidence/C01-WORLD-REMOTE-RELATION_OSM_RAW_v0.1.json","adapter_requirement":"HTTP/browser/Overpass export capability that can return raw JSON; current web-open adapter is excluded by verified failure"},
+  "patch_targets":[{"stable_id":"REL-WATER-01","accept_if":"traceable OSM waterway identity+geometry intersects bounded window"},{"stable_id":"REL-ROUTE-PRIMARY-01","accept_if":"traceable highway geometry exists; PRIMARY remains relation-only unless tags independently justify hierarchy"},{"stable_id":"REL-ROUTE-SECONDARY-01","accept_if":"traceable highway geometry exists; no usability claim"},{"stable_id":"REL-ROUTE-SECONDARY-02","accept_if":"traceable highway geometry exists; no usability claim"},{"stable_id":"REL-CLUSTER-01","accept_if":"individual traceable building footprints exist; never dissolve into heritage boundary"}],
+  "release_condition":"Persist unmodified raw OSM response at raw_target; at least one stable relation then receives traceable geometry with per-feature provenance and passes CRS84/source-alignment/topology readback. Unmatched relations remain geometry:null.",
+  "failure_code":"GEOMETRY_AUTHORITY_MISSING",
+  "does_not_prove":["survey accuracy","current pedestrian usability","heritage protection boundary","drainage performance","property rights","implementation permission"],
+  "next_allowed_action":"Use a different Overpass-capable adapter; persist raw response first; patch only accepted stable relations; remote-readback raw and mother-world files."
+}
