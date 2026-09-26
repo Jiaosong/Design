@@ -121,6 +121,12 @@ Legend: R Responsible / A Accountable / C Consulted / I Informed.
 **Owner:** Product + Eng + AI/Eval.
 **Status:** OPEN — next system revision workstream.
 
+## D-10 Runtime Contract / Harness Abstraction
+**Why:** OLEANDER should gain stronger runtime/session/tool/sandbox infrastructure without coupling product semantics to one framework.
+**Failure:** DeepSeek Harness, Dify or another provider becomes a second Project State/authority system or creates unportable product behaviour.
+**Owner:** Product + Eng + AI/Eval.
+**Status:** OPEN — define against current COS/native path before external harness adoption.
+
 ---
 
 # 4｜Risk Register
@@ -142,10 +148,13 @@ Legend: R Responsible / A Accountable / C Consulted / I Informed.
 | R-13 | Product metrics optimize activity, not value | M | H | session/file count drives roadmap | VPCR + DRPR + outcome-linked metrics | Product | CONTROL |
 | R-14 | False professional confidence | M | H | AI language exceeds evidence | domain claim ceiling + authority labels | Domain/Product | HARD GUARD |
 | R-15 | Cost-to-serve too high | UNKNOWN | H | pilot tool/model cost high | cost telemetry before scale | Product/Eng | OPEN |
-| R-16 | AI triage removes a valuable novel branch | M | H | Human repeatedly reopens auto-retired options | only auto-retire on explicit invalid/redundant basis; preserve lineage; keep value trade-offs Human-visible | Product/AI | OPEN FOR EVAL |
+| R-16 | AI triage hides a valuable novel branch | M | H | Human repeatedly restores triaged-out options | only triage on explicit invalid/redundant basis; preserve lineage; keep value trade-offs Human-visible | Product/AI | OPEN FOR EVAL |
 | R-17 | Synthesis creates persuasive but incoherent collage | M | H | synthesis fails whole-design / domain review | inheritance map + unresolved-conflict trace + whole-design check | Product/AI/Domain | OPEN FOR EVAL |
 | R-18 | Artifact action actual delta differs from intended delta | M | H | collateral artifact changes / wrong target | exact target/revision + intended/actual delta + readback + rollback where possible | Eng/Product | HARD GUARD TARGET |
 | R-19 | Action Guard is either incomplete or too blocking | M | H | sensitive disclosure slips through or reversible work repeatedly stops | separate risk dimensions; scoped HOLD; guardrail tests for write/read/disclosure/cost/blast radius | Eng/AI/Sec | OPEN FOR SYSTEM ALIGNMENT |
+| R-20 | Runtime provider becomes shadow Project State / authority | M | H | provider session/log is used as canonical Current or provider approval is treated as design authorization | Runtime Contract + Execution Ledger separation + provider conformance suite | Product/Eng/AI | OPEN / HARD BOUNDARY |
+| R-21 | DeepSeek Harness API churn couples core product to preview APIs | H during preview | M/H | upstream breaking change blocks OLEANDER core path | adapter boundary + version pin + conformance tests + native fallback | Eng | OPEN |
+| R-22 | Dify workflow graph hardens dynamic design work into fixed orchestration | M | M/H | product logic migrates into visual workflow nodes and loses project semantics | bounded-workflow-only policy; typed request/result; no canonical state ownership | Product/Eng | OPEN |
 
 ---
 

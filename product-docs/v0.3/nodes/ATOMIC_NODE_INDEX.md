@@ -1,8 +1,8 @@
-# OLEANDER Atomic Product Node Index v0.3.2
+# OLEANDER Atomic Product Node Index v0.3.3
 
 [← Product Node Graph](README.md) · [Node Registry](NODE_REGISTRY.md) · [Visual Maps](../maps/README.md)
 
-> v0.3.2 保持 ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT，并补齐内容审查后的 co-design atomic capabilities。
+> v0.3.3 保持 ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT，并在 v0.3.2 co-design atomic capabilities 之上补充 provider-neutral Harness / Runtime Adapter。
 
 ## Node Depth
 
@@ -16,8 +16,8 @@ flowchart LR
 ```
 
 **Primary node docs:** 23
-**Atomic node docs:** 77
-**Total product node docs:** 100
+**Atomic node docs:** 78
+**Total product node docs:** 101
 
 ## N01｜HOME
 
@@ -187,6 +187,7 @@ Parent: [N12 INTEGRATIONS](N12_INTEGRATIONS.md)
 | N12A | [INTEGRATION CONTRACT](atomic/N12A_INTEGRATION_CONTRACT.md) | P1 | Integration Success / Misroute |
 | N12B | [EXTERNAL WRITE](atomic/N12B_EXTERNAL_WRITE.md) | P0 | Unauthorized External Write |
 | N12C | [DEGRADED INTEGRATION](atomic/N12C_DEGRADED_INTEGRATION.md) | P1 | Degraded Route Success |
+| N12D | [HARNESS / RUNTIME ADAPTER](atomic/N12D_HARNESS_RUNTIME_ADAPTER.md) | P0 | Provider Conformance / Authority Leakage / Runtime Portability |
 
 ## N13｜SETTINGS
 

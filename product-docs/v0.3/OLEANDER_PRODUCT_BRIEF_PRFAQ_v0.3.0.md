@@ -321,6 +321,38 @@ OLEANDER 应维护：
 
 阈值在外部 pilot 前冻结，当前不伪造具体百分比。
 
+## Q9｜为什么不直接用 Dify 或 DeepSeek Harness 重做 OLEANDER？
+
+因为它们解决的是不同层级的问题。
+
+OLEANDER 的核心差异不在“有没有 Agent loop / workflow canvas / RAG / tools”，而在：
+- Design Situation / Search Space / Synthesis；
+- persistent Design Decision；
+- Project State / Current semantics；
+- Human authority；
+- Artifact identity / intended vs actual delta；
+- Action Guard；
+- Evidence / Claim Ceiling；
+- Whole-design Check；
+- Design Quality / Design KEEP separation。
+
+这些是 **product/domain semantics**，不能外包给某个 runtime framework。
+
+更合适的架构是：
+
+```text
+OLEANDER Product Kernel
+→ Provider-neutral Runtime Contract
+→ DeepSeek Harness / COS / future harness
+→ Tools / Sandbox / Models / MCP
+```
+
+Dify 可作为 bounded Workflow / RAG / external-pilot provider，但不拥有 Project State、Design Decision 或 Artifact Current。
+
+DeepSeek Harness 更适合作为第一 runtime adapter candidate，但只在 adapter / conformance boundary 下使用；provider session/log/approval 不自动升级成 OLEANDER project truth/authority。
+
+详见 [Execution Fabric / Harness Architecture v0.3.3](OLEANDER_EXECUTION_FABRIC_ARCHITECTURE_v0.3.3.md)。
+
 ---
 
 # 6｜Top Assumptions to Validate

@@ -8,7 +8,7 @@
 **Target release:** External Pilot — date TBD
 **Last updated:** 2026-09-26
 **Detailed functional baseline:** [PRD v0.2.0](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
-**Current content delta:** [Requirement Delta v0.3.2](OLEANDER_REQUIREMENT_DELTA_v0.3.2.md)
+**Current content deltas:** [v0.3.2 Co-design Delta](OLEANDER_REQUIREMENT_DELTA_v0.3.2.md) · [v0.3.3 Execution Fabric Delta](OLEANDER_REQUIREMENT_DELTA_v0.3.3.md)
 **Traceability:** [v0.2 Matrix](../OLEANDER_PRD_TRACEABILITY_MATRIX_v0.2.0.md)
 
 ---
@@ -19,9 +19,10 @@ Detailed product-node definitions now live in the node graph:
 
 - [Product Node Graph](nodes/README.md)
 - [Atomic Node Index](nodes/ATOMIC_NODE_INDEX.md)
-- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.2.md)
+- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.3.md)
 - [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.2.md)
 - [Visual Product Maps](maps/README.md)
+- [Execution Fabric / Harness Architecture](OLEANDER_EXECUTION_FABRIC_ARCHITECTURE_v0.3.3.md)
 
 ```mermaid
 mindmap
@@ -47,11 +48,14 @@ mindmap
       DESIGNER_DEVELOPMENT
     PEOPLE_AUTHORITY
     INTEGRATIONS
+      HARNESS_RUNTIME_ADAPTER
     SETTINGS
     SYSTEM_HEALTH
 ```
 
 **Document rule:** Master PRD owns scope, decisions, priorities and release contract. Each first-class product node owns its own behaviour document. Feature specs and traceability are downstream detail/provenance views.
+
+**Runtime architecture rule:** OLEANDER product semantics remain harness-agnostic. Agent harness / workflow platforms are replaceable execution providers under the OLEANDER Runtime Contract; they do not own Project State, Design Decision, Artifact Current or product authority.
 
 ---
 

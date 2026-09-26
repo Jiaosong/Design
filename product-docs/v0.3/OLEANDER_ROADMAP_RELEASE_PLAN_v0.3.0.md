@@ -76,6 +76,9 @@ Prove interaction semantics, owner-native continuity and the v0.3.2 co-design co
 - whole-design check
 - domain adapters
 - deterministic regression
+- define provider-neutral Runtime Contract against current COS/native execution
+- Execution Ledger normalization contract
+- provider conformance suite
 
 **Exit**
 - no known action-level collapse
@@ -88,9 +91,41 @@ Prove interaction semantics, owner-native continuity and the v0.3.2 co-design co
 - reference fixtures pass
 - real-artifact reference cases exist
 - known partials explicitly recorded
+- Runtime Contract exists without changing Project State / Decision / Artifact authority
+- provider-native approval cannot bypass OLEANDER Action Guard in reference tests
 
 **Current state**
-Substantial candidate evidence exists for the pre-v0.3.2 interaction/runtime baseline. v0.3.2 content-delta system parity—especially Search-space Map, AI Option Triage, persistent Design Decision, generative Synthesis, Artifact Action intended/actual delta, broader Action Guard and Whole-design Check—remains **OPEN** until the system is revised and rereviewed. None of this is equivalent to external product validation.
+Substantial candidate evidence exists for the pre-v0.3.2 interaction/runtime baseline. v0.3.2 co-design parity remains **OPEN**. v0.3.3 additionally requires a provider-neutral Runtime Contract / Execution Fabric before adopting an external harness as core infrastructure. None of this is equivalent to external product validation.
+
+## M0.5 — Runtime Provider Spike
+
+Run only after the Runtime Contract is defined against current COS/native execution.
+
+**First candidate:** DeepSeek Harness.
+
+**Narrow spike scope**
+- session identity / resume;
+- tool execution;
+- user approval;
+- sandbox;
+- execution trace.
+
+**Do not migrate**
+- Project State / Current;
+- Design Decision;
+- artifact identity/current;
+- knowledge/evidence authority;
+- Design KEEP / Promotion.
+
+**Exit**
+- same OLEANDER fixture can run through native/COS and DeepSeek Harness provider paths;
+- provider session loss/replay does not mutate project truth;
+- provider Action Guard/approval ordering is proven;
+- version/API drift is isolated behind adapter;
+- removal of the provider leaves project continuity intact.
+
+**Dify**
+Do not place Dify on the core-runtime critical path at M0/M0.5. Consider one bounded workflow/RAG spike only after core provider conformance is stable.
 
 ---
 

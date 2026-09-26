@@ -1,4 +1,4 @@
-# OLEANDER Product Node Graph v0.3.2
+# OLEANDER Product Node Graph v0.3.3
 
 [← Product Operating Package](../README.md) · [Node Contract](NODE_DOCUMENTATION_CONTRACT.md) · [Visual Maps](../maps/README.md)
 
@@ -6,23 +6,23 @@
 
 ---
 
-## v0.3.2 Deep Node Layer
+## v0.3.3 Deep Node Layer
 
 - [Atomic Node Index](ATOMIC_NODE_INDEX.md)
 - [Node Registry](NODE_REGISTRY.md)
-- [Node Traceability Matrix](NODE_TRACEABILITY_MATRIX_v0.3.2.md)
+- [Node Traceability Matrix](NODE_TRACEABILITY_MATRIX_v0.3.3.md)
 - [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.2.md)
 - [Visual Maps](../maps/README.md)
 
 ```mermaid
 flowchart LR
-    P[23 Primary Node Docs] --> A[77 Atomic Node Docs]
+    P[23 Primary Node Docs] --> A[78 Atomic Node Docs]
     A --> R[Requirement IDs]
     R --> AC[Acceptance / Failure]
     AC --> M[Metrics / Eval]
 ```
 
-**Total product node documents: 100**
+**Total product node documents: 101**
 
 ---
 
@@ -56,6 +56,7 @@ mindmap
         DESIGNER_DEVELOPMENT
       PEOPLE_AUTHORITY
       INTEGRATIONS
+        HARNESS_RUNTIME_ADAPTER
       SETTINGS
       SYSTEM_HEALTH
 ```
@@ -86,7 +87,7 @@ mindmap
 | N10D | [ACTION GUARD](N10D_MUTATION_GUARD.md) | write/read/disclosure/cost/blast-radius guard |
 | N10E | [CONTINUITY / CLOSURE](N10E_CONTINUITY_CLOSURE.md) | session-off survival / separated closure |
 | N11 | [PEOPLE / AUTHORITY](N11_PEOPLE_AUTHORITY.md) | scoped decision rights |
-| N12 | [INTEGRATIONS](N12_INTEGRATIONS.md) | authoring / external systems |
+| N12 | [INTEGRATIONS](N12_INTEGRATIONS.md) | authoring / external systems / harness runtime adapters |
 | N13 | [SETTINGS](N13_SETTINGS.md) | user-facing product controls only |
 | N14 | [SYSTEM HEALTH](N14_SYSTEM_HEALTH.md) | product health / degraded operation |
 

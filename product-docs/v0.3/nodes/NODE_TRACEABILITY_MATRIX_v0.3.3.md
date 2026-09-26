@@ -1,8 +1,8 @@
-# OLEANDER Node Traceability Matrix v0.3.2
+# OLEANDER Node Traceability Matrix v0.3.3
 
-[← Node Graph](README.md) · [← Atomic Node Index](ATOMIC_NODE_INDEX.md) · [Requirement Delta](../OLEANDER_REQUIREMENT_DELTA_v0.3.2.md)
+[← Node Graph](README.md) · [← Atomic Node Index](ATOMIC_NODE_INDEX.md) · [v0.3.2 Delta](../OLEANDER_REQUIREMENT_DELTA_v0.3.2.md) · [v0.3.3 Delta](../OLEANDER_REQUIREMENT_DELTA_v0.3.3.md)
 
-> 这一层回答 Node → Requirement → Metric。v0.2 traceability 是历史 baseline；v0.3.2 新 requirement 由 Requirement Delta 承担。
+> 这一层回答 Node → Requirement → Metric。v0.2 traceability 是历史 baseline；v0.3.2 / v0.3.3 新 requirement 由对应 Requirement Delta 承担。
 
 ```mermaid
 flowchart LR
@@ -85,6 +85,7 @@ flowchart LR
 | [N12A INTEGRATION CONTRACT](atomic/N12A_INTEGRATION_CONTRACT.md) | N12 INTEGRATIONS | SR-IF<br>NFR-10 | P1 | Integration Success / Misroute |
 | [N12B EXTERNAL WRITE](atomic/N12B_EXTERNAL_WRITE.md) | N12 INTEGRATIONS | INT-F16<br>INT-F17<br>PEO-F02 | P0 | Unauthorized External Write |
 | [N12C DEGRADED INTEGRATION](atomic/N12C_DEGRADED_INTEGRATION.md) | N12 INTEGRATIONS | ART-F12<br>NFR-10 | P1 | Degraded Route Success |
+| [N12D HARNESS / RUNTIME ADAPTER](atomic/N12D_HARNESS_RUNTIME_ADAPTER.md) | N12 INTEGRATIONS | HAR-F01<br>HAR-F02<br>HAR-F03<br>HAR-F04<br>HAR-F05<br>HAR-F06 | P0 | Provider Conformance / Authority Leakage / Runtime Portability |
 | [N13A DATA / PRIVACY SETTINGS](atomic/N13A_DATA_PRIVACY_SETTINGS.md) | N13 SETTINGS | NFR-12 | P2 | Privacy Setting Comprehension |
 | [N13B CONNECTOR PERMISSIONS](atomic/N13B_CONNECTOR_PERMISSIONS.md) | N13 SETTINGS | NFR-05<br>N12A | P2 | Overbroad Permission Rate |
 | [N13C ACCESSIBILITY SETTINGS](atomic/N13C_ACCESSIBILITY_SETTINGS.md) | N13 SETTINGS | NFR-07 | P2 | Accessibility Task Success |

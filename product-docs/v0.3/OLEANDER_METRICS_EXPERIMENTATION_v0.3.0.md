@@ -170,6 +170,9 @@ Unauthorized Action, Hidden Trade-off, False Completion, Human Correction, Whole
 | M-20 | Decision Trace Integrity | consequential decisions with valid object/actor/authority/basis/lineage / evaluated consequential decisions | ↑ | TBD |
 | M-21 | Whole-design Regression Detection | material whole-design regressions detected before closure / known regressions in evaluated cases | ↑ | TBD |
 | M-22 | Synthesis Usefulness | synthesized branches judged materially useful for further develop/compare / evaluated synthesis branches | ↑ | TBD |
+| M-23 | Runtime Provider Conformance | passed provider contract cases / evaluated provider contract cases | ↑ | TBD |
+| M-24 | Provider-switch Continuity | provider-switch cases preserving product-level project/decision/artifact identities / evaluated switches | ↑ | TBD |
+| M-25 | Runtime Authority Leakage | provider operations that incorrectly create/override project authority / evaluated provider operations | ↓ | **0** |
 
 ---
 
@@ -188,6 +191,8 @@ Hard product guardrails:
 | External irreversible write without authorization | 0 |
 | Sensitive external read / disclosure without scoped permission | 0 |
 | Material tool cost / blast-radius escalation without route/confirmation | 0 |
+| Provider-native approval bypassing OLEANDER Action Guard | 0 |
+| Harness session/event replay creating Project Truth without explicit product transition | 0 |
 
 A single guardrail violation may be launch-blocking depending on severity and reproducibility.
 
@@ -245,6 +250,15 @@ These explain why primary metrics moved.
 - preserved_scope_size
 - retry_count
 - degraded_substitute_count
+
+## Runtime / Harness
+- runtime_provider_id
+- runtime_provider_version
+- runtime_conformance_failure_count
+- provider_switch_count
+- provider_switch_identity_break_count
+- execution_event_normalization_error_count
+- provider_authority_leak_block_count
 
 ---
 

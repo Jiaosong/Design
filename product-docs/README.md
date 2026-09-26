@@ -26,7 +26,7 @@ USER / CONTEXT
 
 # Current Product Operating Package
 
-## [OLEANDER Product Operating Package v0.3.2](v0.3/README.md)
+## [OLEANDER Product Operating Package v0.3.3](v0.3/README.md)
 
 **推荐第一入口：** [Product Node Graph](v0.3/nodes/README.md) · [Atomic Node Index](v0.3/nodes/ATOMIC_NODE_INDEX.md) · [Visual Maps](v0.3/maps/README.md)
 
@@ -51,7 +51,7 @@ v0.3 不取代 v0.2 的 141 个 Feature / Traceability 细节，而是在其上�
 
 ## [OLEANDER 设计协作系统 PRD v0.2.0](OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
 
-这是 v0.2 的详细产品需求 / Feature / Traceability baseline，继续作为历史详细基线和 provenance layer；当前产品行为定义优先从 v0.3.2 Node Graph / Atomic Node Docs 阅读。
+这是 v0.2 的详细产品需求 / Feature / Traceability baseline，继续作为历史详细基线和 provenance layer；当前产品行为定义优先从 v0.3.3 Node Graph / Atomic Node Docs 与 v0.3.x Requirement Delta 阅读。
 
 它恢复了之前 OLEANDER Product Discovery / Experience Requirements / Functional Architecture / Information Architecture / Human-System Allocation / Interface Architecture / System Requirements 的颗粒度，并把 Human–AI Co-Design Session Kernel 作为跨产品 interaction layer 合并回来。
 

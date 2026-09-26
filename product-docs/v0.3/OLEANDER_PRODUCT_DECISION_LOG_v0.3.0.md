@@ -370,3 +370,36 @@ OLEANDER may expose reasoning, trade-offs, failure learning, evidence consequenc
 
 **Hard boundary**
 Ordinary steering does not create a durable taste, competence, psychological or professional-qualification profile.
+
+---
+
+# PD-022｜OLEANDER is harness-agnostic; runtime providers are replaceable
+
+**Status:** ACCEPTED PRODUCT ARCHITECTURE DIRECTION / SYSTEM ALIGNMENT OPEN
+
+**Decision**
+OLEANDER keeps product semantics, Project State/Current semantics, Human authority, Design Decision, Artifact identity, Action Guard policy, Claim Ceiling and Design Quality semantics in its own product kernel.
+
+Agent harnesses and workflow platforms sit below a provider-neutral Runtime Contract and are replaceable execution providers.
+
+**Reference provider strategy**
+- DeepSeek Harness: preferred first runtime-adapter spike because its plugin/session/tool/sandbox/approval seams map well to OLEANDER runtime needs;
+- Dify: optional bounded workflow/RAG/pilot provider, not core Project State or Session Kernel;
+- COS/native execution: current reference path used to define the Runtime Contract before external provider adoption.
+
+**Hard boundaries**
+- provider session/event log ≠ Project State；
+- provider approval ≠ Human Design Decision；
+- provider tool permission ≠ OLEANDER Action Guard；
+- provider completion ≠ Design / Artifact completion；
+- provider removal must not make Project State unrecoverable；
+- harness plugin granularity does not authorize OLEANDER Skill proliferation；
+- workflow DAG does not become a universal professional process。
+
+**Rejected alternatives**
+1. Rewrite OLEANDER as one Dify workflow graph.
+2. Make DeepSeek Harness session storage the canonical Project State.
+3. Couple product semantics directly to one harness's plugin/event APIs.
+
+**Reopen if**
+A provider-neutral contract creates more maintenance cost than it removes, or a future runtime proves it can own the required semantics without creating a second authority/state system.
