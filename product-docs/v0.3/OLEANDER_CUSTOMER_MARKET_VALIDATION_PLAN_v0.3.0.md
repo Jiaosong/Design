@@ -20,25 +20,36 @@
 ## Product value
 6. Resume Snapshot 是否显著减少重新解释？
 7. Human stop 是否发生在用户认为“该停”的位置？
-8. Material alternatives 是否比普通 AI variations 更有决策价值？
-9. Readback 是否提高信任，还是只增加延迟？
-10. Design Map / relation semantics 是否产生价值还是维护负担？
+8. Search-space Map 是否帮助用户发现原本不会主动探索的重要机制区域？
+9. AI Option Triage 是否减少 Human review burden，同时没有隐藏真实 value trade-off？
+10. Material alternatives 是否比普通 AI variations 更有决策价值？
+11. Design Synthesis 是否形成了新的 coherent direction，还是只是把两个方案拼在一起？
+12. Persistent Design Decision 是否让跨 session 的 rationale / reopen 更可靠？
+13. Intended delta → actual delta 是否提高用户对真实 artifact execution 的可控感？
+14. Whole-design Check 是否能发现“局部优化、整体变差”的问题？
+15. Readback 是否提高信任，还是只增加延迟？
+16. Designer Development / reasoning exposure 是否帮助用户理解设计判断，还是成为解释噪声？
+17. Design Map / relation semantics 是否产生价值还是维护负担？
 
 ## Adoption
-11. 用户愿意把 OLEANDER 放到哪个现有工作流旁边？
-12. Chat-first、desktop workspace、browser workspace 哪个最自然？
-13. 用户愿意导入哪些项目数据？
-14. 哪些数据绝不愿交给系统？
+18. 用户愿意把 OLEANDER 放到哪个现有工作流旁边？
+19. Chat-first、desktop workspace、browser workspace 哪个最自然？
+20. 用户愿意导入哪些项目数据？
+21. 哪些数据绝不愿交给系统？
 
 ## Business
-15. 谁是 user、buyer、approver？
-16. 价值更像 individual productivity、design quality、risk reduction 还是 team continuity？
-17. 付费单位更可能是 seat、project、usage 还是 organization？
-18. 哪类项目具有最高 willingness-to-pay？
+22. 谁是 user、buyer、approver？
+23. 价值更像 individual productivity、design resolution、risk reduction 还是 team continuity？
+24. 付费单位更可能是 seat、project、usage 还是 organization？
+25. 哪类项目具有最高 willingness-to-pay？
 
 ---
 
 # 2｜Segmentation Hypotheses
+
+**User-segment choice and professional-domain beachhead are separate decisions.**
+
+The first user-segment hypothesis is Independent / Lead Designer. The single professional-domain beachhead for the first external pilot remains **OPEN / TO SELECT** among candidate domains such as Architecture / Spatial, Digital Product / HCD and Physical Product. Do not recruit three domains simultaneously and call them one beachhead.
 
 ## Segment A — Independent / Lead Designer
 High-frequency AI use, multi-day project, self-owned decision process.
@@ -46,7 +57,7 @@ High-frequency AI use, multi-day project, self-owned decision process.
 **Why first**
 - access to complete workflow；
 - fewer organization dependencies；
-- can test continuity quickly。
+- can test continuity + end-to-end co-design loop quickly。
 
 ## Segment B — Small Design Team
 Designer + reviewer / collaborator.
@@ -127,8 +138,15 @@ Evidence:
 ## R3 Concept Test
 Show:
 - Resume Snapshot
+- Design Situation / Brief
 - Current Question
 - Next Action
+- Search-space Map
+- AI Option Triage example
+- Design Synthesis example
+- Persistent Design Decision
+- Artifact Action intended/actual delta
+- Whole-design Check
 - Human stop example
 - Readback example
 
@@ -141,18 +159,24 @@ Ask:
 ## R4 Task-based Prototype
 User performs:
 - resume
+- frame / inspect Design Situation
+- map search space
 - explore
+- review AI-triaged alternatives
 - compare
-- steer
+- steer / make a consequential Design Decision
+- develop or synthesize
+- make/edit a real artifact
 - readback
+- whole-design check
 - continue
 
-Measure metrics defined in Metrics Plan.
+Measure VPCR + DRPR components and guardrails defined in Metrics Plan. Do not substitute an AI-generated “design quality score.”
 
 ## R5 Longitudinal Pilot
 Same user / same project across multiple days.
 
-This is required before claiming continuity value.
+This is required before claiming continuity value. Longitudinal runs should also test whether Decision lineage, rejected branches, artifact deltas and whole-design coherence survive repeated re-entry.
 
 ---
 
@@ -168,9 +192,14 @@ Ask:
 5. When did AI do too much?
 6. Tell me about a time AI said something was done but you still had to check.
 7. How do you compare alternatives today?
-8. What happens to rejected ideas?
-9. How do you work with real CAD/Figma/code/model artifacts?
-10. What would make you stop trusting an AI collaborator?
+8. How do you know whether you have explored enough of the design space?
+9. When AI gives many options, which ones waste your attention?
+10. Have you ever combined two directions into a genuinely new direction? What made that synthesis coherent?
+11. What happens to rejected ideas and past decisions?
+12. How do you work with real CAD/Figma/code/model artifacts, and how do you know an AI edit changed only what you intended?
+13. Tell me about a local improvement that damaged the overall design.
+14. When is AI explanation useful for your own design reasoning, and when does it get in the way?
+15. What would make you stop trusting an AI collaborator?
 
 Then test product concept.
 

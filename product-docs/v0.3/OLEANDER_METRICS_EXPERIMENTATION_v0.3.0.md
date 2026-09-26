@@ -2,7 +2,7 @@
 
 [← v0.3 Package](README.md)
 
-**State:** `WORKING METRIC CONTRACT / PRE-EXTERNAL-PILOT`  
+**State:** `WORKING METRIC CONTRACT / PRE-EXTERNAL-PILOT`
 **Date:** 2026-09-26
 
 > 本文定义“如何知道产品真的变好”。未运行的实验保持 `NOT_RUN`；未冻结的阈值保持 `TBD`。不把内部 fixture pass rate 冒充外部用户价值。
@@ -16,6 +16,9 @@ flowchart LR
     NS[VPCR] --> C[Continuity]
     NS --> A[Useful Autonomy]
     NS --> R[Reality / Readback]
+    DR[DRPR] --> E[Exploration / Decision]
+    DR --> R
+    DR --> W[Whole-design Coherence]
     C --> RC[Resume Correction]
     C --> CI[Repeated Context]
     A --> US[Unnecessary Stops]
@@ -46,12 +49,18 @@ PRODUCT VALUE
 │   └── Unauthorized Actions
 │
 ├── Design Decision Quality
+│   ├── DRPR
+│   ├── Search-space Gap Discovery
+│   ├── Useful Option Ratio / Human Review Burden
+│   ├── Synthesis Usefulness
 │   ├── Material Divergence
 │   ├── Cosmetic Duplicate Rate
 │   ├── Human Steer Fidelity
+│   ├── Decision Trace Integrity
 │   └── Reopen / Correction
 │
 ├── Reality / Trust
+│   ├── Intended-to-Actual Delta Match
 │   ├── Readback Completion
 │   ├── Revision Match
 │   ├── False Completion
@@ -69,7 +78,7 @@ PRODUCT VALUE
 
 ## M-NS-01｜Verified Productive Continuation Rate (VPCR)
 
-**Question**  
+**Question**
 用户重新进入长期项目后，系统是否真正帮助其继续正确工作？
 
 **Eligible session**
@@ -100,6 +109,39 @@ TBD — must be frozen before external pilot.
 **Guardrails**
 Unauthorized Action Rate, False Steering Rate, Readback Integrity.
 
+## M-NS-02｜Design Resolution Progress Rate (DRPR)
+
+**Question**
+Human–AI session 是否真实推进了设计问题，而不仅是“顺利继续了流程”？
+
+**Eligible session**
+- there is an active Design Question / unknown / decision object；
+- session is not pure explanation / admin / unrelated query。
+
+**Numerator**
+Eligible session 至少发生一个可追踪的 resolution move：
+1. important search-space gap identified and explored；
+2. weak/redundant candidates triaged without hiding a real value trade-off；
+3. persistent Design Decision created / updated / reopened；
+4. artifact intended delta → actual delta → readback completed；
+5. whole-design contradiction detected and scoped；
+6. synthesis creates a new coherent branch with inheritance/conflict trace。
+
+**Denominator**
+All eligible design sessions with sufficient evidence to evaluate progress.
+
+**Exclusions**
+- simple file/admin action with no design consequence；
+- synthetic “quality score” with no observable design movement；
+- activity count without Question/Relation/Decision/Artifact linkage；
+- a correct HOLD / DEFER / Human Stop where progressing would violate authority, evidence, privacy or safety. Safe non-progress is not product failure.
+
+**Target**
+TBD — freeze before external pilot.
+
+**Guardrails**
+Unauthorized Action, Hidden Trade-off, False Completion, Human Correction, Whole-design Regression.
+
 ---
 
 # 3｜Primary Metric Dictionary
@@ -122,6 +164,12 @@ Unauthorized Action Rate, False Steering Rate, Readback Integrity.
 | M-14 | Local Recovery Rate | failures resolved without reopening unaffected work / recoverable failures | ↑ | TBD |
 | M-15 | Full-reset Avoidance | affected failures not causing unnecessary global reset / affected failures | ↑ | TBD |
 | M-16 | Plugin-off Resume Success | successful owner-native reconstruction / tested plugin/session removal cases | ↑ | TBD |
+| M-17 | Search-space Gap Discovery | material exploration gaps discovered before convergence / evaluated exploration rounds | ↑ | TBD |
+| M-18 | Useful Option Ratio | retained materially useful options / options presented for Human review | ↑ | TBD |
+| M-19 | Intended-to-Actual Delta Match | artifact actions whose observed delta matches intended delta + invariants / evaluated artifact actions | ↑ | TBD |
+| M-20 | Decision Trace Integrity | consequential decisions with valid object/actor/authority/basis/lineage / evaluated consequential decisions | ↑ | TBD |
+| M-21 | Whole-design Regression Detection | material whole-design regressions detected before closure / known regressions in evaluated cases | ↑ | TBD |
+| M-22 | Synthesis Usefulness | synthesized branches judged materially useful for further develop/compare / evaluated synthesis branches | ↑ | TBD |
 
 ---
 
@@ -138,6 +186,8 @@ Hard product guardrails:
 | Unread artifact completion claim | 0 |
 | Silent authority transfer | 0 |
 | External irreversible write without authorization | 0 |
+| Sensitive external read / disclosure without scoped permission | 0 |
+| Material tool cost / blast-radius escalation without route/confirmation | 0 |
 
 A single guardrail violation may be launch-blocking depending on severity and reproducibility.
 
@@ -164,12 +214,28 @@ These explain why primary metrics moved.
 ## Design exploration
 - candidate_count
 - mechanism_signature_count
+- search_space_dimension_count
+- search_space_gap_count
+- auto_triaged_out_branch_count
+- human_review_option_count
 - baseline_present
 - option_fidelity_mismatch_count
 - user_reopen_count
+- synthesis_branch_count
+- synthesis_conflict_count
+
+## Decision
+- decision_object_count
+- pending_decision_count
+- reopened_decision_count
+- decision_without_rationale_count
+- decision_rights_hold_count
 
 ## Reality
 - artifact_mutation_count
+- artifact_action_count
+- intended_actual_delta_mismatch_count
+- rollback_used_count
 - readback_latency
 - unread_revision_count
 - representation/native-role conflict_count
@@ -206,8 +272,13 @@ project_resume_started
 → frontier_resolved
 → [resume_corrected_by_user?]
 → next_action_started
+→ [search_space_gap_detected?]
+→ [option_triaged?]
+→ [design_decision_updated?]
 → [artifact_made?]
+→ [artifact_delta_observed?]
 → [readback_completed?]
+→ [whole_design_check_completed?]
 → [human_steer_bound?]
 → continuation_outcome_evaluated
 ```
@@ -233,10 +304,10 @@ project_resume_started
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 Owner-native frontier resolution reduces repeated context and material correction compared with ordinary chat-history reconstruction.
 
-**Population**  
+**Population**
 External target users with multi-session design projects.
 
 **Baseline**
@@ -266,7 +337,7 @@ TBD and freeze before run.
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 Reversible auto-advance lowers interaction burden without increasing unauthorized material actions.
 
 **Primary**
@@ -284,7 +355,7 @@ Unauthorized Action Rate = 0.
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 Mechanism-signature prompting + dedup generates fewer cosmetic variants and improves Human comparison quality.
 
 **Primary**
@@ -302,7 +373,7 @@ Option overload / increased decision time.
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 When user says “不对/太重/太像…”, causal hypotheses + repair alternatives outperform immediate preference inference or direct regeneration.
 
 **Primary**
@@ -320,7 +391,7 @@ No durable taste inference.
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 Actual artifact readback reduces false completion and downstream rework enough to justify additional latency/cost.
 
 **Primary**
@@ -338,7 +409,7 @@ Latency and model/tool cost.
 
 **Status:** `NOT_RUN`
 
-**Hypothesis**  
+**Hypothesis**
 Dependency-scoped revision preserves more valid work and reduces rework.
 
 **Primary**
@@ -353,7 +424,7 @@ Time to recovered valid state.
 
 **Status:** `NOT_RUN / DESTRUCTIVE REAL TEST REQUIRED`
 
-**Hypothesis**  
+**Hypothesis**
 Session UI / plugin replacement does not destroy project continuity.
 
 **Primary**

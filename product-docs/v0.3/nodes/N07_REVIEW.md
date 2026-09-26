@@ -61,7 +61,9 @@ REV-F01–F13.
 - major failure cannot be averaged away;
 - does-not-prove is explicit;
 - important repair requires re-readback;
-- independent review remains independent.\n\n## Atomic Children
+- independent review remains independent.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

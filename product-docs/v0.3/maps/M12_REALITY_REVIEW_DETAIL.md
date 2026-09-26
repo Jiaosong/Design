@@ -15,7 +15,9 @@ flowchart LR
     A --> AR[N06B Artifact Role]
     A --> RV[N06C Revision Identity]
     RV --> RB[N06D Readback]
-    AR --> FC[N06E Fidelity / Claim Ceiling]
+    AR --> FC[N06E Artifact Fidelity Ceiling]
+    A --> ACT[N06G Artifact Action / Make]
+    ACT --> RV
     RB --> RT[N07A Review Target]
     RT --> F[N07B Finding]
     F --> RC[N07C Root Cause]
@@ -28,4 +30,4 @@ flowchart LR
 
 ## Reading Rule
 
-沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.1.md)。
+沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.2.md)。

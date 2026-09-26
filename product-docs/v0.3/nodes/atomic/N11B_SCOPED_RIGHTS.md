@@ -36,8 +36,9 @@ latest Human message never becomes universal authority。
 ## Acceptance
 
 1. rights 绑定 scope/effect
-2. Client 不制造 specialist compliance
-3. Specialist 不拥有 whole-design authority
+2. client / stakeholder value priority only applies where current project rights explicitly grant it
+3. Client 不制造 specialist compliance
+4. Specialist 不拥有 whole-design authority
 
 ## Failure / Degraded Behaviour
 

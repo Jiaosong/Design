@@ -38,7 +38,7 @@ Do not expose as casual toggles:
 - Design KEEP;
 - Promotion;
 - professional compliance;
-- bypass Mutation Guard;
+- bypass Action Guard;
 - “AI can do anything”;
 - Project Current authority.
 
@@ -46,7 +46,9 @@ Do not expose as casual toggles:
 
 > **If the product can infer safely from current context, do not make the user configure it permanently.**
 
-Settings should remain small until real user evidence proves a persistent preference deserves a control.\n\n## Atomic Children
+Settings should remain small until real user evidence proves a persistent preference deserves a control.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

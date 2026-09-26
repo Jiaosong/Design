@@ -1,8 +1,8 @@
-# OLEANDER Atomic Product Node Index v0.3.1
+# OLEANDER Atomic Product Node Index v0.3.2
 
 [← Product Node Graph](README.md) · [Node Registry](NODE_REGISTRY.md) · [Visual Maps](../maps/README.md)
 
-> v0.3.1 把 first-class product node 继续拆到可单独定义、验收、追踪和变更的原子能力。每个原子节点只有一份 primary document。
+> v0.3.2 保持 ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT，并补齐内容审查后的 co-design atomic capabilities。
 
 ## Node Depth
 
@@ -16,8 +16,8 @@ flowchart LR
 ```
 
 **Primary node docs:** 23
-**Atomic node docs:** 69
-**Total product node docs:** 92
+**Atomic node docs:** 77
+**Total product node docs:** 100
 
 ## N01｜HOME
 
@@ -43,6 +43,7 @@ Parent: [N02 FOCUS](N02_FOCUS.md)
 | N02D | [CONSTRAINT / ASSUMPTION](atomic/N02D_CONSTRAINT_ASSUMPTION.md) | P0 | Stale Assumption Detection |
 | N02E | [SUCCESS CONDITION](atomic/N02E_SUCCESS_CONDITION.md) | P1 | Success-condition Rework |
 | N02F | [REFRAME](atomic/N02F_REFRAME.md) | P0 | Reframe-to-Recovery Time |
+| N02G | [DESIGN SITUATION / BRIEF](atomic/N02G_DESIGN_SITUATION_BRIEF.md) | P0 | Brief Reframe / Missing-context Correction |
 
 ## N03A｜EXPLORE
 
@@ -55,6 +56,8 @@ Parent: [N03A EXPLORE](N03A_EXPLORE.md)
 | N03A3 | [MATERIAL DISTINCTNESS](atomic/N03A3_MATERIAL_DISTINCTNESS.md) | P0 | Material Divergence / Cosmetic Duplicate |
 | N03A4 | [BASELINE / OFF](atomic/N03A4_BASELINE_OFF.md) | P1 | Baseline Consideration Rate |
 | N03A5 | [REFERENCE TRANSFORMATION](atomic/N03A5_REFERENCE_TRANSFORMATION.md) | P1 | Precedent Transfer Correction |
+| N03A6 | [SEARCH-SPACE MAP](atomic/N03A6_SEARCH_SPACE_MAP.md) | P0 | Search-space Coverage Usefulness |
+| N03A7 | [AI OPTION TRIAGE](atomic/N03A7_AI_OPTION_TRIAGE.md) | P0 | Human Review Burden / Useful Option Ratio |
 
 ## N03B｜DEVELOP
 
@@ -66,6 +69,7 @@ Parent: [N03B DEVELOP](N03B_DEVELOP.md)
 | N03B2 | [DEVELOPMENT FRONTIER](atomic/N03B2_DEVELOPMENT_FRONTIER.md) | P0 | Development Frontier Correction |
 | N03B3 | [DOMAIN ADAPTER](atomic/N03B3_DOMAIN_ADAPTER.md) | P0 | Cross-domain Transfer Success |
 | N03B4 | [INTENT CHECK](atomic/N03B4_INTENT_CHECK.md) | P1 | Intent Drift Detection |
+| N03B5 | [WHOLE-DESIGN CHECK](atomic/N03B5_WHOLE_DESIGN_CHECK.md) | P0 | Whole-design Regression Detection |
 
 ## N03C｜SYNTHESIZE
 
@@ -75,6 +79,7 @@ Parent: [N03C SYNTHESIZE](N03C_SYNTHESIZE.md)
 |---|---|---|---|
 | N03C1 | [COMPLEXITY REVIEW](atomic/N03C1_COMPLEXITY_REVIEW.md) | P1 | Accepted Simplification |
 | N03C2 | [SIMPLIFICATION / LOSS CHECK](atomic/N03C2_SIMPLIFICATION_LOSS_CHECK.md) | P0 | Simplification Loss Rejection |
+| N03C3 | [DESIGN SYNTHESIS](atomic/N03C3_DESIGN_SYNTHESIS.md) | P0 | Synthesis Usefulness / Coherence |
 
 ## N04｜COMPARE
 
@@ -86,6 +91,7 @@ Parent: [N04 COMPARE](N04_COMPARE.md)
 | N04B | [TRADE-OFF](atomic/N04B_TRADEOFF.md) | P0 | Decision Usefulness |
 | N04C | [DECISION RATIONALE](atomic/N04C_DECISION_RATIONALE.md) | P0 | Rationale Coverage |
 | N04D | [REOPEN CONDITION](atomic/N04D_REOPEN_CONDITION.md) | P1 | Appropriate Reopen Rate |
+| N04E | [DESIGN DECISION](atomic/N04E_DESIGN_DECISION.md) | P0 | Decision Trace / Reopen Integrity |
 
 ## N05｜MAP
 
@@ -108,8 +114,9 @@ Parent: [N06 ARTIFACTS](N06_ARTIFACTS.md)
 | N06B | [ARTIFACT ROLE](atomic/N06B_ARTIFACT_ROLE.md) | P0 | Role Misclassification Rate |
 | N06C | [REVISION IDENTITY](atomic/N06C_REVISION_IDENTITY.md) | P0 | Revision Mismatch Rate |
 | N06D | [READBACK](atomic/N06D_READBACK.md) | P0 | Readback Completion / Revision Integrity |
-| N06E | [FIDELITY / CLAIM CEILING](atomic/N06E_FIDELITY_CLAIM_CEILING.md) | P0 | Claim-ceiling Violation Rate |
+| N06E | [ARTIFACT FIDELITY CEILING](atomic/N06E_FIDELITY_CLAIM_CEILING.md) | P0 | Claim-ceiling Violation Rate |
 | N06F | [DEGRADED SUBSTITUTE](atomic/N06F_DEGRADED_SUBSTITUTE.md) | P1 | Degraded-workflow Success |
+| N06G | [ARTIFACT ACTION / MAKE](atomic/N06G_ARTIFACT_ACTION_MAKE.md) | P0 | Intended-to-Actual Delta Match |
 
 ## N07｜REVIEW
 
@@ -135,7 +142,7 @@ Parent: [N08 KNOWLEDGE](N08_KNOWLEDGE.md)
 | N08B | [SOURCE / EVIDENCE](atomic/N08B_SOURCE_EVIDENCE.md) | P0 | Evidence Provenance Completeness |
 | N08C | [APPLICABILITY / LIMITATION](atomic/N08C_APPLICABILITY_LIMITATION.md) | P0 | Applicability Correction Rate |
 | N08D | [EVIDENCE CONTRADICTION](atomic/N08D_EVIDENCE_CONTRADICTION.md) | P1 | Contradiction Resolution Quality |
-| N08E | [CLAIM CEILING](atomic/N08E_CLAIM_CEILING.md) | P0 | Overclaim Rate |
+| N08E | [EVIDENCE CLAIM CEILING](atomic/N08E_CLAIM_CEILING.md) | P0 | Overclaim Rate |
 
 ## N09｜HISTORY
 
@@ -159,6 +166,7 @@ Parent: [N10 SESSION KERNEL](N10_SESSION_KERNEL.md)
 | N10G | [MUTATION DIRECTIVE](atomic/N10G_MUTATION_DIRECTIVE.md) | P0 | Directive Violation Rate |
 | N10H | [SUPPORT MODE](atomic/N10H_SUPPORT_MODE.md) | P1 | Explanation Interruption Rate |
 | N10I | [HUMAN ACTION LEVEL](atomic/N10I_HUMAN_ACTION_LEVEL.md) | P0 | Action-level Collapse Rate |
+| N10J | [DESIGNER DEVELOPMENT](atomic/N10J_DESIGNER_DEVELOPMENT.md) | P1 | Explanation Usefulness / Interruption / Learning Transfer |
 
 ## N11｜PEOPLE / AUTHORITY
 

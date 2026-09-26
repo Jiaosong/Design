@@ -1,4 +1,4 @@
-# OLEANDER Product Node Graph v0.3.1
+# OLEANDER Product Node Graph v0.3.2
 
 [← Product Operating Package](../README.md) · [Node Contract](NODE_DOCUMENTATION_CONTRACT.md) · [Visual Maps](../maps/README.md)
 
@@ -6,23 +6,23 @@
 
 ---
 
-## v0.3.1 Deep Node Layer
+## v0.3.2 Deep Node Layer
 
 - [Atomic Node Index](ATOMIC_NODE_INDEX.md)
 - [Node Registry](NODE_REGISTRY.md)
-- [Node Traceability Matrix](NODE_TRACEABILITY_MATRIX_v0.3.1.md)
-- [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.1.md)
+- [Node Traceability Matrix](NODE_TRACEABILITY_MATRIX_v0.3.2.md)
+- [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.2.md)
 - [Visual Maps](../maps/README.md)
 
 ```mermaid
 flowchart LR
-    P[23 Primary Node Docs] --> A[69 Atomic Node Docs]
+    P[23 Primary Node Docs] --> A[77 Atomic Node Docs]
     A --> R[Requirement IDs]
     R --> AC[Acceptance / Failure]
     AC --> M[Metrics / Eval]
 ```
 
-**Total product node documents: 92**
+**Total product node documents: 100**
 
 ---
 
@@ -51,8 +51,9 @@ mindmap
         RESUME_RECOVER
         HUMAN_STEER
         AUTONOMY_HUMAN_STOP
-        MUTATION_GUARD
+        ACTION_GUARD
         CONTINUITY_CLOSURE
+        DESIGNER_DEVELOPMENT
       PEOPLE_AUTHORITY
       INTEGRATIONS
       SETTINGS
@@ -71,10 +72,10 @@ mindmap
 | N03 | [STUDIO](N03_STUDIO.md) | 设计工作容器 |
 | N03A | [EXPLORE](N03A_EXPLORE.md) | materially distinct alternatives |
 | N03B | [DEVELOP](N03B_DEVELOP.md) | 设计深化 / maturity frontier |
-| N03C | [SYNTHESIZE](N03C_SYNTHESIZE.md) | 复杂度整合 / no-loss simplification |
+| N03C | [SYNTHESIZE](N03C_SYNTHESIZE.md) | generative synthesis / coherent integration / no-loss simplification |
 | N04 | [COMPARE](N04_COMPARE.md) | trade-off / decision surface |
 | N05 | [MAP](N05_MAP.md) | Design Relation / dependency / change impact |
-| N06 | [ARTIFACTS](N06_ARTIFACTS.md) | native artifact / revision / readback |
+| N06 | [ARTIFACTS](N06_ARTIFACTS.md) | native artifact / action delta / revision / readback |
 | N07 | [REVIEW](N07_REVIEW.md) | critique / verification / validation |
 | N08 | [KNOWLEDGE](N08_KNOWLEDGE.md) | evidence / applicability / claim ceiling |
 | N09 | [HISTORY](N09_HISTORY.md) | continuity / rationale / handoff |
@@ -82,7 +83,7 @@ mindmap
 | N10A | [RESUME / RECOVER](N10A_RESUME_RECOVER.md) | verified frontier reconstruction |
 | N10B | [HUMAN STEER](N10B_HUMAN_STEER.md) | SELECT / MODIFY / MIX / REJECT / REOPEN / DEFER |
 | N10C | [AUTONOMY / HUMAN STOP](N10C_AUTONOMY_HUMAN_STOP.md) | safe auto-advance / stop boundary |
-| N10D | [MUTATION GUARD](N10D_MUTATION_GUARD.md) | pre-write freshness / fail closed |
+| N10D | [ACTION GUARD](N10D_MUTATION_GUARD.md) | write/read/disclosure/cost/blast-radius guard |
 | N10E | [CONTINUITY / CLOSURE](N10E_CONTINUITY_CLOSURE.md) | session-off survival / separated closure |
 | N11 | [PEOPLE / AUTHORITY](N11_PEOPLE_AUTHORITY.md) | scoped decision rights |
 | N12 | [INTEGRATIONS](N12_INTEGRATIONS.md) | authoring / external systems |

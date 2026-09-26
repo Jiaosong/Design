@@ -1,6 +1,8 @@
-# OLEANDER Product Operating Package v0.3.1
+# OLEANDER Product Operating Package v0.3.2
 
 [← Product Docs](../README.md) · [← OLEANDER](../../README.md)
+
+**Package content revision:** v0.3.2. Some stable component filenames still contain `v0.3.0` to avoid unnecessary path churn; current behavioural deltas are explicit in [Requirement Delta v0.3.2](OLEANDER_REQUIREMENT_DELTA_v0.3.2.md) and the v0.3.2 Node/Trace layer.
 
 **State:** `WORKING PRODUCT PACKAGE / NON-AUTHORITY / PRE-EXTERNAL-USER-VALIDATION`
 **Date:** 2026-09-26
@@ -13,17 +15,18 @@
 # 0｜Graph-first Reading Layer
 
 ## [Product Node Graph](nodes/README.md)
+- [Requirement Delta v0.3.2](OLEANDER_REQUIREMENT_DELTA_v0.3.2.md)
 - [Atomic Node Index](nodes/ATOMIC_NODE_INDEX.md)
 - [Node Registry](nodes/NODE_REGISTRY.md)
-- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.1.md)
-- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.1.md)
+- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.2.md)
+- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.2.md)
 - [Visual Maps — one core map per document](maps/README.md)
 
-v0.3.1 内部产品定义现在采用：
+v0.3.2 内部产品定义现在采用：
 
 > **ONE LOGICAL PRODUCT NODE → ONE PRIMARY NODE DOCUMENT**
 
-**92 product node documents（23 primary + 69 atomic） · 15 independent Mermaid map docs · 1 node registry · 1 node traceability matrix**
+**100 product node documents（23 primary + 77 atomic） · 15 independent Mermaid map docs · 1 node registry · 1 node traceability matrix**
 
 先看总图，再点节点进入单节点文档：
 

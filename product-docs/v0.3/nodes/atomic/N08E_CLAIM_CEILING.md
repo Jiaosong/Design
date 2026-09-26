@@ -1,4 +1,4 @@
-# N08E｜CLAIM CEILING
+# N08E｜EVIDENCE CLAIM CEILING
 
 [← Parent](../N08_KNOWLEDGE.md) · [← Atomic Node Index](../ATOMIC_NODE_INDEX.md)
 
@@ -7,8 +7,8 @@
 | Node ID | N08E |
 | Parent | N08 KNOWLEDGE |
 | Type | Atomic Knowledge Node |
-| Product job | 把 evidence/fidelity 的强度上限转成允许的产品/设计声明范围 |
-| Inputs | Evidence strength; Applicability; Artifact fidelity |
+| Product job | 把 evidence strength + applicability 转成 evidence-side claim ceiling，并与 artifact-side fidelity ceiling 组合 |
+| Inputs | Evidence strength; Applicability; N06E Artifact Fidelity Ceiling |
 | Outputs | Claim ceiling |
 | Authority | Cannot be relaxed without stronger basis |
 | Primary metric | Overclaim Rate |
@@ -21,13 +21,13 @@
 flowchart LR
     I0[Evidence strength] --> N[N08E CLAIM CEILING]
     I1[Applicability] --> N[N08E CLAIM CEILING]
-    I2[Artifact fidelity] --> N[N08E CLAIM CEILING]
+    I2[N06E Artifact Fidelity Ceiling] --> N[N08E EVIDENCE CLAIM CEILING]
     N --> O0[Claim ceiling]
 ```
 
 ## Product Contract
 
-证据不足时降低 claim，不冻结无关 reversible design。
+有效 Claim Ceiling = evidence-side ceiling 与 artifact-side fidelity ceiling 中更严格的相关限制；两者不再各自声称拥有最终 ceiling。证据不足时降低 claim，不冻结无关 reversible design。
 
 ## Requirement Links
 

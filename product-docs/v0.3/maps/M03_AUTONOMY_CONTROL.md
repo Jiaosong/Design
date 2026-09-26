@@ -11,7 +11,7 @@ flowchart TD
     A[Next action] --> R{Reversible?}
     R -- No --> H[Human authorization / authority route]
     R -- Yes --> S{Scope + Current fresh?}
-    S -- No --> G[Mutation Guard / Re-resolve]
+    S -- No --> G[Action Guard / Re-resolve]
     S -- Yes --> V{Human-only value decision?}
     V -- Yes --> H
     V -- No --> P{External irreversible / publish?}
@@ -23,4 +23,4 @@ flowchart TD
 
 ## Reading Rule
 
-沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.1.md)。
+沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.2.md)。

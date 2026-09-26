@@ -5,11 +5,11 @@
 | Field | Value |
 |---|---|
 | Node ID | N02 |
-| Children | N02A, N02B, N02C, N02D, N02E, N02F — see [Atomic Children](#atomic-children) |
+| Children | N02A, N02B, N02C, N02D, N02E, N02F, N02G — see [Atomic Children](#atomic-children) |
 | Type | Product Surface |
-| Product job | 把模糊处境转成当前可设计、可判断的问题 |
-| Inputs | situation, evidence, constraints, assumptions, feedback |
-| Outputs | Problem, Current Question, Value, Scope, Success Condition, Frontier |
+| Product job | 把模糊设计处境或项目 brief 转成当前可设计、可判断的问题 |
+| Inputs | design situation, project brief, evidence, constraints, assumptions, feedback |
+| Outputs | Design Situation, Problem/Opportunity, Current Question, Value, Scope, Success Condition, Frontier |
 | Authority | Design Value / consequential reframe remain Human-led |
 | Primary metric | Question clarity / Frontier correction |
 | Release priority | P0 |
@@ -20,10 +20,13 @@
 ```mermaid
 mindmap
   root((FOCUS))
-    Problem
-      observed_condition
-      affected_actor
-      impact
+    Design_Situation
+      problem
+      opportunity
+      ambition
+      requirement
+      conflict
+      unknown
     Question
       current_decision_object
       unknown
@@ -43,10 +46,11 @@ mindmap
 
 ```mermaid
 flowchart LR
-    S[Situation] --> P[Problem]
+    S[Design Situation / Brief] --> P[Problem / Opportunity / Ambition]
     P --> V[Value / Intent]
-    P --> C[Constraint / Assumption]
+    S --> C[Constraint / Assumption]
     V --> Q[Current Design Question]
+    P --> Q
     C --> Q
     Q --> SC[Success Condition]
     SC --> F[Frontier]
@@ -64,6 +68,7 @@ flowchart LR
 - FOCUS-F07 Reframe
 - FOCUS-F08 Reframe Impact
 - FOCUS-F09 Frontier Definition
+- FOCUS-F10 Design Situation / Brief Framing
 
 ## Local Question Lifecycle
 
@@ -85,6 +90,7 @@ This is Question-local semantics, not Project State.
 ## Acceptance
 
 - Question is not a task;
+- Problem is not mandatory: a Question may originate from opportunity, ambition, requirement, conflict or unknown;
 - Value is not implementation;
 - Assumption never silently becomes Fact;
 - Reframe produces impact map rather than global reset;
@@ -92,7 +98,9 @@ This is Question-local semantics, not Project State.
 
 ## Events
 
-`question_created` · `question_reframed` · `assumption_challenged` · `frontier_confirmed`\n\n## Atomic Children
+`question_created` · `question_reframed` · `assumption_challenged` · `frontier_confirmed`
+
+## Atomic Children
 
 ```mermaid
 flowchart TB
@@ -103,6 +111,7 @@ flowchart TB
     P --> N02D[N02D CONSTRAINT / ASSUMPTION]
     P --> N02E[N02E SUCCESS CONDITION]
     P --> N02F[N02F REFRAME]
+    P --> N02G[N02G DESIGN SITUATION / BRIEF]
 ```
 
 - [N02A｜PROBLEM STATEMENT](atomic/N02A_PROBLEM_STATEMENT.md)
@@ -111,3 +120,4 @@ flowchart TB
 - [N02D｜CONSTRAINT / ASSUMPTION](atomic/N02D_CONSTRAINT_ASSUMPTION.md)
 - [N02E｜SUCCESS CONDITION](atomic/N02E_SUCCESS_CONDITION.md)
 - [N02F｜REFRAME](atomic/N02F_REFRAME.md)
+- [N02G｜DESIGN SITUATION / BRIEF](atomic/N02G_DESIGN_SITUATION_BRIEF.md)

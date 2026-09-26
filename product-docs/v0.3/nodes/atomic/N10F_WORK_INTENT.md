@@ -26,7 +26,27 @@ flowchart LR
 
 ## Product Contract
 
-START/RESUME/RECOVER/EXPLORE/WILDCARD/REVIEW/REFRAME/SAVE_ROUTE/EXPLAIN/SHOW_WORK/UNRESOLVED。
+START / RESUME / CONTINUE / RECOVER / EXPLORE / DEVELOP / SYNTHESIZE / COMPARE / REVIEW / REFRAME / EXPLAIN / DELEGATE / STOP / UNRESOLVED。
+
+`WILDCARD` and `SAVE_ROUTE` are runtime/execution concepts, not Human work intents.
+
+## Intent Semantics
+
+| Intent | Meaning |
+|---|---|
+| START | 开始一个新的 bounded work context |
+| RESUME | 新 session / interaction context 已丢失后，从 owner-native carriers 恢复 |
+| CONTINUE | 当前 session / frontier / 已授权路径继续推进 |
+| RECOVER | 工具中断、失败、state conflict 或 partial completion 后恢复 |
+| EXPLORE | 扩展 search space / alternatives |
+| DEVELOP | 深化已选或当前方向 |
+| SYNTHESIZE | 综合多个方向/反馈形成新 coherent direction |
+| COMPARE | 比较 options / revisions / outcomes |
+| REVIEW | critique / verification / validation / readback review |
+| REFRAME | 改变问题定义或 decision object |
+| EXPLAIN | 要求解释 reasoning / evidence / trade-off |
+| DELEGATE | 将明确工作交给 AI 执行，仍受 action/authority guard |
+| STOP | 停止当前推进 |
 
 ## Requirement Links
 
@@ -34,8 +54,11 @@ START/RESUME/RECOVER/EXPLORE/WILDCARD/REVIEW/REFRAME/SAVE_ROUTE/EXPLAIN/SHOW_WOR
 
 ## Acceptance
 
-1. ‘继续’=RESUME，不变成 steer
-2. intent 可与 READ_ONLY/AUTO_ADVANCE 独立组合
+1. 新 session 中“继续”在需要恢复 context 时可解析为 RESUME
+2. 当前 session 已有有效 frontier 时“继续”优先解析为 CONTINUE
+3. 工具失败/partial completion 后“继续”可解析为 RECOVER
+4. CONTINUE 仍不自动等于 Human steer / Design Decision
+5. intent 可与 READ_ONLY/AUTO_ADVANCE 独立组合
 
 ## Failure / Degraded Behaviour
 
@@ -47,4 +70,4 @@ START/RESUME/RECOVER/EXPLORE/WILDCARD/REVIEW/REFRAME/SAVE_ROUTE/EXPLAIN/SHOW_WOR
 
 ## Relations
 
-- Sibling N10G/N10H/N10I
+- Sibling N10G/N10H/N10I/N10J

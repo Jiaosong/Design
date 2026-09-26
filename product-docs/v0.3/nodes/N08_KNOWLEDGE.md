@@ -37,6 +37,7 @@ mindmap
     freshness
     jurisdiction_context
     strength
+    source_class
     applicability
     limitation
     contradiction
@@ -52,7 +53,10 @@ KNW-F01–F11.
 - source summary without design meaning does not dominate main workflow;
 - contradiction remains visible;
 - stale source affects relevant claims, not all work;
-- missing evidence narrows claim ceiling rather than manufacturing certainty.\n\n## Atomic Children
+- precedent does not become Project Fact merely because it is visually or professionally persuasive;
+- missing evidence narrows claim ceiling rather than manufacturing certainty.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

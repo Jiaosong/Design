@@ -1,4 +1,4 @@
-# OLEANDER Product Node Relation Schema v0.3.1
+# OLEANDER Product Node Relation Schema v0.3.2
 
 [← Node Graph](README.md) · [Node Registry](NODE_REGISTRY.md)
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | CONSUMES | Node 读取另一节点的输出 | Question consumes Problem / Value |
 | FEEDS | Node 产出成为下游输入 | Readback feeds Review |
-| GATES | 条件不满足时阻止特定 effect | Mutation Guard gates write |
+| GATES | 条件不满足时阻止特定 effect | Action Guard gates consequential action |
 | ROUTES_TO | 根据判断把工作转到另一节点 | HOME routes to FOCUS |
 | BINDS | 把两个对象建立可追踪绑定 | Artifact binds Relation |
 | PRESERVES | 失败/修改后明确保护仍有效范围 | Revision Scope preserves unaffected work |
@@ -42,6 +42,6 @@ flowchart LR
     A -->|FEEDS| R[Readback]
     R -->|FEEDS| F[Finding]
     F -->|ROUTES_TO| S[Revision Scope]
-    G[Mutation Guard] -->|GATES| W[Material Write]
+    G[Action Guard] -->|GATES| W[Material Action]
     P[Scoped Rights] -->|AUTHORIZES| W
 ```

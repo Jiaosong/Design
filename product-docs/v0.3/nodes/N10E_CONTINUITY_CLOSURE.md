@@ -5,6 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N10E |
+| Parent | N10 |
 | Type | Kernel Continuity Node |
 | Product job | 让 session 可丢弃、项目可继续；并分离报告不同 closure dimensions |
 | Inputs | session work, owner-native carriers, artifacts/readbacks |

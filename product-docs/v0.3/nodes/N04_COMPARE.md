@@ -5,11 +5,11 @@
 | Field | Value |
 |---|---|
 | Node ID | N04 |
-| Children | N04A, N04B, N04C, N04D — see [Atomic Children](#atomic-children) |
+| Children | N04A, N04B, N04C, N04D, N04E — see [Atomic Children](#atomic-children) |
 | Type | Cross-surface Decision Mode |
 | Product job | 把候选差异、trade-off、uncertainty 和 consequence 放进同一判断世界 |
 | Inputs | Options/revisions + decision object + locked invariants |
-| Outputs | Human steer + rationale + reopen condition |
+| Outputs | Design Decision / Human steer + rationale + reopen condition |
 | Authority | System compares; Human owns consequential choice |
 | Primary metric | steer clarity / correction / decision usefulness |
 | Release priority | P0 |
@@ -42,11 +42,16 @@ flowchart LR
     H -->|MIX| X[Multi-parent branch]
     H -->|REJECT| R[Rejected-preserved]
     H -->|DEFER| F[Dependent HOLD]
+    S --> DEC[N04E Design Decision]
+    M --> DEC
+    X --> DEC
+    R --> DEC
+    F --> DEC
 ```
 
 ## Feature Nodes
 
-CMP-F01–F11: Side-by-side, Relation Difference, Consequence Difference, Trade-off, Uncertainty, Rationale, Reopen Condition, Retained Alternative, Same Comparison World, Revision Binding, Human Steer Capture.
+CMP-F01–F12: Side-by-side, Relation Difference, Consequence Difference, Trade-off, Uncertainty, Rationale, Reopen Condition, Retained Alternative, Same Comparison World, Revision Binding, Human Steer Capture, Persistent Design Decision.
 
 ## Acceptance
 
@@ -55,10 +60,13 @@ CMP-F01–F11: Side-by-side, Relation Difference, Consequence Difference, Trade-
 - no synthetic winner score;
 - Human reason not fabricated;
 - branch lineage preserved.
+- consequential steer produces or updates a persistent Design Decision object; it is not only a session event.
 
 ## Events
 
-`comparison_opened` · `tradeoff_exposed` · `human_steer_bound`\n\n## Atomic Children
+`comparison_opened` · `tradeoff_exposed` · `human_steer_bound` · `design_decision_updated`
+
+## Atomic Children
 
 ```mermaid
 flowchart TB
@@ -67,9 +75,11 @@ flowchart TB
     P --> N04B[N04B TRADE-OFF]
     P --> N04C[N04C DECISION RATIONALE]
     P --> N04D[N04D REOPEN CONDITION]
+    P --> N04E[N04E DESIGN DECISION]
 ```
 
 - [N04A｜COMPARISON WORLD](atomic/N04A_COMPARISON_WORLD.md)
 - [N04B｜TRADE-OFF](atomic/N04B_TRADEOFF.md)
 - [N04C｜DECISION RATIONALE](atomic/N04C_DECISION_RATIONALE.md)
 - [N04D｜REOPEN CONDITION](atomic/N04D_REOPEN_CONDITION.md)
+- [N04E｜DESIGN DECISION](atomic/N04E_DESIGN_DECISION.md)

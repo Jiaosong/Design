@@ -38,7 +38,7 @@ Snapshot 必须先回答“现在是什么”，再允许用户展开 provenance
 
 ## Acceptance
 
-1. Current Question、Direction、Frontier、Active Artifact 与 owner-native source 一致
+1. Current Question、Current Direction / Active Direction Set、Frontier、Active Artifact 与 owner-native source 一致
 2. Chat memory 与 Current 冲突时 Current 胜出
 3. source conflict 未闭合时显示 provisional/conflict，而不是制造 certainty
 

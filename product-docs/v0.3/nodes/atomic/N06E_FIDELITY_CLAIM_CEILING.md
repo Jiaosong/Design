@@ -1,4 +1,4 @@
-# N06E｜FIDELITY / CLAIM CEILING
+# N06E｜ARTIFACT FIDELITY CEILING
 
 [← Parent](../N06_ARTIFACTS.md) · [← Atomic Node Index](../ATOMIC_NODE_INDEX.md)
 
@@ -7,9 +7,9 @@
 | Node ID | N06E |
 | Parent | N06 ARTIFACTS |
 | Type | Atomic Evidence Node |
-| Product job | 定义当前 artifact fidelity 能证明什么、不能证明什么 |
+| Product job | 定义当前 artifact / prototype fidelity 在表示与测试层面能支持什么、不能支持什么 |
 | Inputs | Artifact role; Prototype/test method; Evidence strength |
-| Outputs | Fidelity label; Claim ceiling |
+| Outputs | Fidelity label; Artifact-side claim ceiling |
 | Authority | System/domain can constrain claims; cannot inflate them |
 | Primary metric | Claim-ceiling Violation Rate |
 | Release priority | P0 |
@@ -19,16 +19,16 @@
 
 ```mermaid
 flowchart LR
-    I0[Artifact role] --> N[N06E FIDELITY / CLAIM CEILING]
-    I1[Prototype/test method] --> N[N06E FIDELITY / CLAIM CEILING]
-    I2[Evidence strength] --> N[N06E FIDELITY / CLAIM CEILING]
+    I0[Artifact role] --> N[N06E ARTIFACT FIDELITY CEILING]
+    I1[Prototype/test method] --> N[N06E ARTIFACT FIDELITY CEILING]
+    I2[Evidence strength] --> N[N06E ARTIFACT FIDELITY CEILING]
     N --> O0[Fidelity label]
     N --> O1[Claim ceiling]
 ```
 
 ## Product Contract
 
-低 fidelity 可以支持探索，但不能支持更高强度 professional/validation claim。
+低 fidelity 可以支持探索，但不能支持更高强度 professional/validation claim。最终 claim ceiling 还必须与 N08E 的 evidence/applicability ceiling 组合，不能由 artifact fidelity 单独决定。
 
 ## Requirement Links
 

@@ -44,7 +44,7 @@ mindmap
 ```mermaid
 sequenceDiagram
     participant K as Kernel
-    participant G as Mutation Guard
+    participant G as Action Guard
     participant I as Integration
     participant A as Native Artifact
     participant R as Readback
@@ -66,7 +66,9 @@ sequenceDiagram
 
 ## Open
 
-Security/privacy permission architecture remains required before broad external beta.\n\n## Atomic Children
+Security/privacy permission architecture remains required before broad external beta.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

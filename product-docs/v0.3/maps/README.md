@@ -1,4 +1,4 @@
-# OLEANDER Visual Product Maps v0.3.1
+# OLEANDER Visual Product Maps v0.3.2
 
 [← v0.3 Package](../README.md) · [← Node Graph](../nodes/README.md)
 

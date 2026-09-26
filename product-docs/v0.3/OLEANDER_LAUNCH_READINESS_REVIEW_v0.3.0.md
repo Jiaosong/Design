@@ -2,8 +2,8 @@
 
 [← v0.3 Package](README.md)
 
-**Current recommendation:** `HOLD FOR EXTERNAL PILOT PREPARATION`  
-**Not production launch-ready.**  
+**Current recommendation:** `HOLD FOR EXTERNAL PILOT PREPARATION`
+**Not production launch-ready.**
 **Date:** 2026-09-26
 
 > 本文是产品发布准备检查，不是 Governance Promotion Gate。当前 HOLD 是产品化状态判断，不改变 OLEANDER Current。
@@ -37,8 +37,10 @@ flowchart TD
 |---|---|---|
 | Product problem definition | PASS_WORKING | strong internal evidence, external evidence incomplete |
 | P0 scope | PASS_WORKING | cutline defined |
-| Detailed functional requirements | PASS_WORKING | v0.2 Feature Specs |
-| Traceability | PASS_WORKING | 141/141 feature mapping |
+| Detailed functional requirements | PASS_WORKING | v0.2 Feature Specs + v0.3.2 Requirement Delta |
+| Traceability | PASS_WORKING | 141/141 v0.2 feature mapping + v0.3.2 atomic-node delta trace |
+| v0.3.2 co-design content delta | PASS_WORKING_SPEC | Search-space / Triage / Synthesis / Decision / Artifact Action / Action Guard / Designer Development specified |
+| v0.3.2 system implementation parity | OPEN | Markdown requirements revised first; runtime/system alignment not yet claimed |
 | Internal interaction semantics | PASS_CANDIDATE | fixture/regression evidence exists |
 | Real artifact loop | PARTIAL | candidate trials exist; external users not closed |
 | External user validation | OPEN | not yet run |
@@ -96,17 +98,24 @@ flowchart TD
 
 P0 capabilities:
 - Resume
+- Continue / Recover semantic separation
+- Design Situation / Brief
 - Current Question
-- Explore
+- Search-space Map
+- Explore + AI Triage
 - Compare
+- persistent Design Decision
 - Human steer
+- Design Synthesis
 - Artifact identity
+- Artifact Action / intended vs actual delta
 - Readback
+- Whole-design Check
 - Local recovery
-- Mutation guard
+- Action Guard
 - Continuation
 
-**Current:** candidate coverage exists but productized integrated path requires final external-pilot surface.
+**Current:** legacy/candidate mechanisms cover substantial v0.3.1 behaviour. The newly specified v0.3.2 co-design semantics are **not yet claimed system-complete** and require explicit runtime/system alignment before the integrated P0 path can be called implemented.
 
 **Status:** PARTIAL
 
@@ -120,10 +129,17 @@ P0 capabilities:
 - referent accuracy
 - compound action preservation
 - material distinctness
+- search-space coverage / gap detection
+- AI option triage without hiding real value trade-offs
+- synthesis lineage / conflict preservation
+- persistent Design Decision reconstruction
+- intended-vs-actual artifact delta integrity
+- whole-design regression detection
 - hallucinated authority
 - false completion
 - state recovery
-- stale mutation prevention
+- stale / unauthorized action prevention
+- sensitive external read / disclosure control
 - Human stop precision
 - domain claim ceiling
 
@@ -270,7 +286,7 @@ Rollback must not require deleting valid project truth.
 - [ ] success thresholds frozen
 - [ ] P0 end-to-end path passes
 - [ ] real artifact readback works
-- [ ] mutation guard tested
+- [ ] action guard tested across write + external read/disclosure + irreversible/cost escalation paths
 - [ ] no unresolved launch-blocking security issue
 - [ ] rollback path tested
 - [ ] support owner assigned
