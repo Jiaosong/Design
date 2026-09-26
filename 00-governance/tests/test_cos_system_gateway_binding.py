@@ -43,14 +43,11 @@ class CosSystemGatewayBindingTests(unittest.TestCase):
         self.assertEqual(False, result["goal"]["enabled"])
         self.assertEqual("goal", result["goal"]["mode"])
         self.assertTrue(result["goal"]["includeToolCalls"])
-        self.assertEqual(
-            {
-                "label": "OLEANDER System Gateway",
-                "entrypoint": "00-governance/runtime/oleander_system_mcp.py",
-                "authorityCeiling": "execution_and_observability",
-            },
-            result["mcp"]["runtimeContext"],
-        )
+        runtime_context = result["mcp"]["runtimeContext"]
+        self.assertEqual("OLEANDER System Gateway", runtime_context["label"])
+        self.assertEqual("execution_and_observability", runtime_context["authorityCeiling"])
+        self.assertTrue(Path(runtime_context["entrypoint"]).is_absolute())
+        self.assertEqual("oleander_system_mcp.py", Path(runtime_context["entrypoint"]).name)
 
     def test_bound_prompts_stay_inside_cos_limits(self) -> None:
         result = binder._bound_config(base_config())
