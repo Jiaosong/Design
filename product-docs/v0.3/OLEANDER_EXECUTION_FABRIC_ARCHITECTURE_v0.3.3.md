@@ -235,6 +235,26 @@ flowchart TB
 
 This keeps OLEANDER portable while allowing a stronger runtime to replace bespoke low-level plumbing.
 
+## Candidate system-management implementation?2026-09-26
+
+The repository now contains a candidate implementation of this separation:
+
+```text
+OLEANDER_SYSTEM_MANIFEST_v0.1
+        ?
+OLEANDER System Context Envelope
+        ?
+oleander_system_gateway.py
+        ?
+existing Resolver / Runtime Bridge
+        ?
+OLEANDER_COS_HARNESS_ADAPTER_v0.1
+        ?
+CoS session / workers / plugins / tools
+```
+
+The same gateway is exposed through `oleander_system_mcp.py` and has been connected successfully with the same MCP Client SDK used by CoS. This is candidate implementation evidence only: it proves the seam can be consumed without giving CoS Project/Knowledge/Promotion authority; it does not close real provider-switch, real-artifact or production-readiness evidence.
+
 ---
 
 # 7｜Runtime Contract

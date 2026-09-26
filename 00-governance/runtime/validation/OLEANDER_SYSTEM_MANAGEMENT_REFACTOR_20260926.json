@@ -1,0 +1,139 @@
+{
+  "schema": "oleander.system-management-refactor-validation.v0.1",
+  "validation_id": "OLEANDER-SYSTEM-MGMT-REFACTOR-20260926",
+  "observed_at": "2026-09-26",
+  "status": "PASS_CANDIDATE_REFACTOR_WITH_BASELINE_RED",
+  "authority_ceiling": "VALIDATION_EVIDENCE_ONLY",
+  "scope": [
+    "OLEANDER_SYSTEM_MANIFEST",
+    "OLEANDER_SYSTEM_CONTEXT_ENVELOPE",
+    "OLEANDER_SYSTEM_GATEWAY",
+    "OLEANDER_SYSTEM_MCP",
+    "OLEANDER_COS_HARNESS_ADAPTER",
+    "COS_EXTERNAL_RUNTIME_CONTEXT_SEAM"
+  ],
+  "oleander": {
+    "branch": "refactor/oleander-cos-system-20260926",
+    "tests": {
+      "system_management_and_mcp_and_binding": {
+        "passed": 9,
+        "failed": 0,
+        "state": "PASS"
+      },
+      "system_management_validator": "PASS",
+      "runtime_provider_contract_validator": "PASS",
+      "mcp_client_sdk_integration": {
+        "state": "PASS",
+        "client": "@modelcontextprotocol/client (same SDK family used by CoS)",
+        "discovered_tools": [
+          "oleander_system_manifest",
+          "oleander_system_context",
+          "oleander_environment",
+          "oleander_preflight",
+          "oleander_system_self_test"
+        ],
+        "self_test": "PASS"
+      }
+    }
+  },
+  "cos": {
+    "branch": "refactor/oleander-runtime-context-seam",
+    "changed_areas": [
+      "src/shared/types.ts",
+      "src/main/config.ts",
+      "src/main/ipc.ts",
+      "src/main/mcp/instructions.ts",
+      "test/mcp-user-instructions.test.ts"
+    ],
+    "checks": {
+      "typecheck": "PASS",
+      "build": "PASS",
+      "targeted_runtime_context_tests": {
+        "passed": 20,
+        "failed": 0,
+        "state": "PASS"
+      },
+      "targeted_runtime_context_plus_ipc": {
+        "passed": 99,
+        "failed": 0,
+        "state": "PASS"
+      },
+      "diff_check": "PASS",
+      "full_verify": {
+        "state": "BASELINE_RED",
+        "passed_tests": 5643,
+        "failed_tests": 24,
+        "skipped_tests": 45,
+        "passed_files": 209,
+        "failed_files": 7,
+        "skipped_files": 4,
+        "note": "Full-suite concurrency/load exposed additional timing flakes; compare the isolated failing-file rerun below."
+      },
+      "isolated_failing_file_baseline_comparison": {
+        "original_cos_source": {
+          "worktree": "cos-source-2.1.14",
+          "passed": 391,
+          "failed": 15,
+          "skipped": 7,
+          "failed_files": 5
+        },
+        "refactor_worktree": {
+          "worktree": "oleander-harness-boundary-20260926",
+          "passed": 391,
+          "failed": 15,
+          "skipped": 7,
+          "failed_files": 5
+        },
+        "stable_failure_set_equal": true,
+        "conclusion": "NO_STABLE_NEW_FAILURES_IN_APPLES_TO_APPLES_RERUN"
+      }
+    },
+    "local_commit": "92757f45577dbdbbba364de5b629ebc661d49d6a",
+    "upstream_push": {
+      "state": "BLOCKED_REMOTE_PERMISSION_403",
+      "remote": "totec448-spec/chat-on-steroids",
+      "authenticated_identity": "Jiaosong",
+      "effect": "LOCAL_COMMIT_AND_DEPLOYMENT_REMAIN_AVAILABLE; NO_UPSTREAM_PR_CLAIM"
+    }
+  },
+  "baseline_failures": [
+    "background-window.test.ts / paceChatOpening undefined",
+    "desktop-input-maintenance.test.ts / 3 pre-existing assertions",
+    "mcp.test.ts / PowerShell parser recovery diagnostic expectation",
+    "model-startup-wake.test.ts / timeoutForBridgePath undefined",
+    "windows-keys.test.ts / Windows PowerShell encoding/parser failure"
+  ],
+  "invariants_verified": [
+    "COS_SESSION_IS_NOT_PROJECT_STATE",
+    "COS_COMPACT_RESUME_IS_PROVIDER_SESSION_CONTINUITY_ONLY",
+    "PLUGIN_READY_DOES_NOT_GRANT_MUTATION_AUTHORITY",
+    "SYSTEM_CONTEXT_IS_NON_AUTHORITATIVE",
+    "MISSING_PROJECT_IDENTITY_IS_NOT_INVENTED",
+    "EXISTING_RESOLVER_DECISION_IS_PRESERVED",
+    "MACHINE_LOCAL_ENVIRONMENT_SNAPSHOT_IS_OBSERVATION_ONLY",
+    "ONE_CURRENT_SYSTEM_ARCHITECTURE_REMAINS",
+    "NO_SECOND_PROJECT_STATE",
+    "NO_SECOND_KNOWLEDGE_REGISTRY",
+    "NO_SECOND_CONTROL_PLANE",
+    "NO_SECOND_PROMOTION_PATH"
+  ],
+  "open_items": [
+    "SA-15 real reload/replay proof across owner-native Project State remains OPEN",
+    "SA-16 external DeepSeek Harness adapter remains a candidate spike",
+    "SA-18 real provider-switch artifact continuity remains OPEN",
+    "live CoS deployment and live plugin registration are separate deployment steps",
+    "machine-local execution-surface registry snapshot is stale and requires live reprobe before it is used as current runtime evidence",
+    "CoS upstream push is blocked by remote permission (403); local validated commit exists and may be deployed independently"
+  ],
+  "does_not_prove": [
+    "production readiness",
+    "runtime provider promotion",
+    "project state current",
+    "knowledge correctness",
+    "real CAD/Figma/Blender artifact parity",
+    "design quality",
+    "professional pass",
+    "design keep",
+    "promotion"
+  ]
+}

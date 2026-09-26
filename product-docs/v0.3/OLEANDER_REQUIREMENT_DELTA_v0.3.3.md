@@ -25,8 +25,8 @@ v0.3.3 extends v0.3.2 with a provider-neutral execution architecture.
 
 | Alignment ID | Required proof | Status |
 |---|---|---|
-| SA-14 | define Runtime Contract against current COS/native execution before adding external harness | `CANDIDATE_CONTRACT_PASS / NO_PROMOTION` |
-| SA-15 | provider session/event stream survives reload/replay while Project State remains separately owner-native | `OPEN_SYSTEM_ALIGNMENT` |
+| SA-14 | define Runtime Contract against current COS/native execution before adding external harness | `CANDIDATE_CONTRACT + SYSTEM_GATEWAY PASS / NO_PROMOTION` |
+| SA-15 | provider session/event stream survives reload/replay while Project State remains separately owner-native | `COS SESSION AUTHORITY-SEPARATION PASS / RELOAD-REPLAY PROJECT PROOF OPEN` |
 | SA-16 | DeepSeek Harness narrow adapter spike passes session/tool/approval/sandbox/trace conformance | `OPEN_SYSTEM_ALIGNMENT` |
 | SA-17 | provider-native approval cannot execute an action denied by OLEANDER Action Guard | `CONTRACT_ORDERING_PASS / REAL_PROVIDER_PATH_OPEN` |
 | SA-18 | provider switch preserves design decision / artifact / project identities | `SYNTHETIC_IDENTITY_PASS / REAL_SWITCH_OPEN` |

@@ -1,0 +1,76 @@
+{
+  "schema": "oleander.cos-harness-adapter.v0.1",
+  "version": "0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "provider_id": "native_cos",
+  "provider_name": "Chat On Steroids",
+  "role": "EXECUTION_HARNESS_AND_LOCAL_TOOL_SURFACE",
+  "authority_ceiling": "EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY",
+  "owns": [
+    "chat_session_recording",
+    "compact_and_resume_transport_continuity",
+    "worker_and_swarm_lifecycle",
+    "local_tool_invocation",
+    "plugin_mcp_transport",
+    "browser_and_desktop_execution_transport",
+    "execution_activity_recording",
+    "runtime_health_observation"
+  ],
+  "does_not_own": [
+    "project_state",
+    "project_current",
+    "source_authority",
+    "knowledge_authority",
+    "design_decision",
+    "design_keep",
+    "professional_pass",
+    "artifact_current",
+    "promotion",
+    "release_authority"
+  ],
+  "mappings": {
+    "cos_session": "PROVIDER_RUNTIME_SESSION_ONLY",
+    "cos_compact_resume": "PROVIDER_SESSION_CONTINUITY_ONLY",
+    "cos_tool_call_record": "EXECUTION_LEDGER_EVENT_CANDIDATE",
+    "cos_plugin_registry": "LIVE_EXECUTION_SURFACE_DISCOVERY_ONLY",
+    "cos_worker_state": "EXECUTION_ORCHESTRATION_STATE_ONLY",
+    "cos_goal_loop": "EXECUTION_CONTINUATION_POLICY_CONSUMER_NOT_PROJECT_COMPLETION_AUTHORITY"
+  },
+  "oleander_entrypoint": "00-governance/runtime/oleander_system_gateway.py",
+  "oleander_mcp_server": "00-governance/runtime/oleander_system_mcp.py",
+  "compatibility_entrypoints": [
+    "00-governance/runtime/oleander_chat_runtime_bridge.py",
+    "00-governance/runtime/oleander_chat_resolver_adapter.py",
+    "00-governance/runtime/bind_chat_on_steroids_oleander.py"
+  ],
+  "guard_order": [
+    "OLEANDER_SYSTEM_CONTEXT_RESOLUTION",
+    "OLEANDER_ACTION_GUARD_OR_EXISTING_RESOLVER_DECISION",
+    "COS_TOOL_OR_PLUGIN_PERMISSION",
+    "PROVIDER_OR_EXTERNAL_SERVICE_APPROVAL",
+    "EXECUTION",
+    "ACTUAL_READBACK",
+    "OWNER_NATIVE_STATE_TRANSITION_IF_JUSTIFIED"
+  ],
+  "session_rules": [
+    "COS_SESSION_ID_MAY_BE_RECORDED_AS_RUNTIME_TRACE_LOCATOR_ONLY",
+    "COMPACT_RESUME_MAY_MOVE_A_PROVIDER_SESSION_WITHOUT_MOVING_PROJECT_AUTHORITY",
+    "SESSION_SUMMARY_HANDOFF_OR_TRANSCRIPT_MAY_NOT_CREATE_PROJECT_CURRENT",
+    "PROVIDER_SESSION_LOSS_MUST_DEGRADE_EXECUTION_CONTINUITY_NOT_DELETE_OWNER_NATIVE_PROJECT_STATE"
+  ],
+  "plugin_rules": [
+    "PLUGIN_INSTALLED_DOES_NOT_MEAN_CURRENT_EXECUTION_SURFACE",
+    "PLUGIN_READY_DOES_NOT_GRANT_MUTATION_AUTHORITY",
+    "PLUGIN_TOOL_SUCCESS_DOES_NOT_PROVE_ARTIFACT_OR_DESIGN_COMPLETION",
+    "PLUGIN_SPECIFIC_STATE_MUST_NOT_BECOME_A_SECOND_OLEANDER_REGISTRY",
+    "ROUTE_BY_CAPABILITY_ROLE_AND_REQUIRED_NATIVE_OUTPUT_NOT_VENDOR_NAME"
+  ],
+  "does_not_prove": [
+    "cos_is_project_authority",
+    "cos_is_knowledge_authority",
+    "cos_session_is_project_state",
+    "provider_readiness",
+    "design_quality",
+    "promotion"
+  ]
+}

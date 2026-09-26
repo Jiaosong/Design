@@ -1,0 +1,187 @@
+{
+  "schema": "oleander.system-manifest.v0.1",
+  "version": "0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "decision_date": "2026-09-26",
+  "purpose": "Provide one machine-readable entry map for the existing OLEANDER architecture without creating a second Project State, Knowledge Registry, Control Plane, runtime layer family, professional process or Promotion path.",
+  "authority_ceiling": "REFERENCE_AND_RESOLUTION_ONLY",
+  "architecture": {
+    "root_governance": "00-governance/README.md",
+    "master_runtime": "00-governance/complex-project-master-runtime-v1.0.md",
+    "current_architecture_map": "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "control_graph": "00-governance/runtime/OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json",
+    "runtime_layer_interface": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+    "counting_rule": {
+      "current_system_architecture": 1,
+      "complex_project_master_runtime": 1,
+      "stable_runtime_layers": 11,
+      "runtime_layer_ids": [
+        "R-A",
+        "R-B",
+        "R-C",
+        "R-D",
+        "R-E",
+        "R-F",
+        "R-G",
+        "R-H",
+        "R-I",
+        "R-J",
+        "R-K"
+      ]
+    }
+  },
+  "management_domains": {
+    "authority_identity": {
+      "runtime_layer": "R-A",
+      "owners": [
+        "00-governance/README.md",
+        "00-governance/runtime/OLEANDER_NOTION_CURRENT_ARCHITECTURE_BINDING_v1.0.json"
+      ]
+    },
+    "project_state": {
+      "runtime_layer": "R-A",
+      "owners": [
+        "00-governance/control-plane/orchestration.schema.json",
+        "00-governance/complex-project-master-runtime-v1.0.md"
+      ],
+      "rule": "PROJECT_STATE_IS_OWNER_NATIVE_AND_MUST_NOT_BE_INFERRED_FROM_CHAT_SESSION_OR_EXECUTION_LOGS"
+    },
+    "knowledge_evidence": {
+      "runtime_layer": "R-B",
+      "owners": [
+        "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+        "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+        "90-shared/oleander-core-framework/runtime/notion_canonical_knowledge/ARCHITECTURE.md"
+      ],
+      "rule": "CANONICAL_KNOWLEDGE_IS_REFERENCED_NOT_COPIED_INTO_RUNTIME"
+    },
+    "design_intelligence": {
+      "runtime_layer": "R-C",
+      "owners": [
+        "00-governance/design-intelligence-routing-and-review-v1.0.md"
+      ]
+    },
+    "design_development": {
+      "runtime_layer": "R-D",
+      "owners": [
+        "00-governance/design-quality-and-design-development-specification-v1.0.md"
+      ]
+    },
+    "professional_process": {
+      "runtime_layer": "R-E",
+      "owners": [
+        "00-governance/professional-domain-process-contract-v1.0.md"
+      ]
+    },
+    "integration_interfaces": {
+      "runtime_layer": "R-F",
+      "owners": [
+        "00-governance/cross-disciplinary-design-integration-v1.0.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+      ]
+    },
+    "capability_runtime": {
+      "runtime_layer": "R-G",
+      "owners": [
+        "00-governance/runtime/OLEANDER_DEFAULT_SKILL_RESOLVER_v1.2.json",
+        "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json",
+        "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+        "00-governance/runtime/OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.1.json"
+      ]
+    },
+    "native_execution_artifact": {
+      "runtime_layer": "R-H",
+      "owners": [
+        "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json"
+      ]
+    },
+    "readback_review": {
+      "runtime_layer": "R-I",
+      "owners": [
+        "00-governance/artifact-review-system-v1.0.md",
+        "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
+      ]
+    },
+    "persistence_promotion_sync": {
+      "runtime_layer": "R-J",
+      "owners": [
+        "00-governance/cross-platform-sync-contract-v1.1.md",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ]
+    },
+    "knowledge_return_evolution": {
+      "runtime_layer": "R-K",
+      "owners": [
+        "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json"
+      ]
+    },
+    "environment": {
+      "owners": [
+        "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+        "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json"
+      ],
+      "rule": "NO_SINGLE_APP_IS_THE_OLEANDER_ENVIRONMENT"
+    }
+  },
+  "system_interfaces": {
+    "runtime_layer": "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+    "skill_capability": "00-governance/runtime/OLEANDER_SKILL_CAPABILITY_CONTRACT_v0.1.json",
+    "tool_adapter": "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+    "native_artifact": "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json",
+    "execution_receipt": "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json",
+    "runtime_provider": "00-governance/runtime/OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.1.json",
+    "cross_platform_sync": "00-governance/cross-platform-sync-contract-v1.1.md",
+    "system_context_envelope": "00-governance/runtime/OLEANDER_SYSTEM_CONTEXT_ENVELOPE_v0.1.schema.json"
+  },
+  "execution_environment": {
+    "static_environment_contract": "00-governance/runtime/OLEANDER_UNIVERSAL_PRODUCTION_ENVIRONMENT_v1.0.json",
+    "static_surface_registry": "00-governance/runtime/OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json",
+    "machine_local_runtime_readback": ".mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json",
+    "machine_local_readback_authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+    "current_view_rule": "CANONICAL_STATIC_REGISTRY_PLUS_LIVE_CAPABILITY_PROBE; LOCAL_SNAPSHOT_ALONE_IS_NOT_CURRENT_AUTHORITY"
+  },
+  "runtime_providers": {
+    "provider_contract": "00-governance/runtime/OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.1.json",
+    "cos_adapter": "00-governance/runtime/OLEANDER_COS_HARNESS_ADAPTER_v0.1.json",
+    "default_reference_provider": "native_cos",
+    "provider_session_is_project_state": false,
+    "provider_event_log_is_project_state": false
+  },
+  "gateway": {
+    "implementation": "00-governance/runtime/oleander_system_gateway.py",
+    "mcp_server": "00-governance/runtime/oleander_system_mcp.py",
+    "operations": [
+      "manifest",
+      "context",
+      "environment",
+      "preflight",
+      "self-test"
+    ],
+    "semantic_class": "RESOLUTION_AND_EXECUTION_ENTRYPOINT_NOT_AUTHORITY"
+  },
+  "hard_invariants": [
+    "ONE_CURRENT_SYSTEM_ARCHITECTURE",
+    "ONE_COMPLEX_PROJECT_MASTER_RUNTIME",
+    "NO_SECOND_PROJECT_STATE",
+    "NO_SECOND_KNOWLEDGE_REGISTRY",
+    "NO_SECOND_CONTROL_PLANE",
+    "NO_SECOND_PROMOTION_PATH",
+    "CHAT_SESSION_IS_NOT_PROJECT_STATE",
+    "COS_SESSION_IS_NOT_PROJECT_STATE",
+    "PLUGIN_REGISTRY_IS_NOT_CAPABILITY_AUTHORITY",
+    "TOOL_AVAILABILITY_IS_NOT_MUTATION_PERMISSION",
+    "ENVIRONMENT_DISCOVERY_IS_NOT_PROJECT_AUTHORITY",
+    "EXECUTION_EVENT_IS_NOT_PROJECT_TRUTH",
+    "ARTIFACT_EXISTENCE_IS_NOT_DESIGN_QUALITY",
+    "PROCESS_PASS_IS_NOT_DESIGN_KEEP"
+  ],
+  "does_not_prove": [
+    "implementation_complete",
+    "runtime_provider_promotion",
+    "project_state_current",
+    "knowledge_correctness",
+    "design_quality",
+    "professional_pass",
+    "promotion"
+  ]
+}
