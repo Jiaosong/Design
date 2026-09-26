@@ -23,6 +23,23 @@ The executable spike lives in `runtime_provider_spikes/` and runs the same contr
 
 The first machine/readable benchmark is `runtime_provider_spikes/results/OLEANDER_RUNTIME_PROVIDER_BENCHMARK_20260926.json` with a human review companion `.md`. It intentionally stays outside `runtime/receipts/` because it is candidate benchmark evidence, not an Execution Receipt. `PASS_CANDIDATE_SPIKE` means only that the provider-neutral seam + bounded native smokes passed. It does **not** select/promote a provider or prove real artifact parity.
 
+## Candidate unified system-management gateway?2026-09-26
+
+`OLEANDER_SYSTEM_MANIFEST_v0.1.json` is a **candidate, non-authority** machine-readable entry map over the existing Current architecture. It does not create another Master Runtime, Project State, Knowledge Registry, Control Plane, professional process, runtime-layer family or Promotion path. It resolves the existing owners for Authority/Project/Knowledge/Interfaces/Environment/Execution/Artifact/Readback/Persistence/Evolution.
+
+`oleander_system_gateway.py` composes a disposable `oleander.system-context-envelope.v0.1` and delegates continuation/mutation/closure policy to the existing `oleander_chat_runtime_bridge.py` / Resolver. `oleander_system_mcp.py` exposes the same boundary as five MCP tools (`manifest`, `context`, `environment`, `preflight`, `self-test`) so CoS or another compliant harness can consume one stable entrypoint instead of embedding OLEANDER state semantics inside its own session.
+
+`OLEANDER_COS_HARNESS_ADAPTER_v0.1.json` classifies CoS as `EXECUTION_HARNESS_AND_LOCAL_TOOL_SURFACE` with authority ceiling `EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY`: CoS Session / Compact & Resume / workers / Goal-Loop / plugins / MCP remain provider-runtime facilities and never become Project State, Knowledge Authority, Design Decision, Artifact Current, Design KEEP, professional PASS or Promotion.
+
+The environment view intentionally separates `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json` (canonical static registry) from `.mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json` (machine-local runtime observation). A stale local snapshot triggers reprobe/degradation handling; it cannot override the canonical registry or project authority.
+
+Validation:
+
+- `python 00-governance/runtime/validate_system_management.py`
+- `python -m unittest 00-governance.tests.test_system_management_gateway 00-governance.tests.test_system_mcp_gateway`
+
+Passing this candidate validation proves the management seam and authority separation only. It does not make the candidate gateway a second Current architecture or promote a runtime provider.
+
 ## Current default capability resolution
 
 Use:
@@ -153,7 +170,7 @@ Current Notion structural routing uses the live Registry and `Canonical Parentï½
 
 `OLEANDER_DEFAULT_SKILL_RESOLVER_v1.1.md/.json` is superseded implementation provenance. Current execution uses v1.2 implementation revision 1.2.5; the runtime hardening compiles existing Resolver/Practice/Naming/Persistence rules and does not create a parallel METHOD or Skill.
 
-Chat / Chat On Steroids entry enforcement reuses that Current Resolver through `oleander_chat_resolver_adapter.py`. The adapter remains side-effect-free execution glue only: it owns no Project State, checkpoint database, Method, Skill or Control Plane. `oleander_chat_runtime_bridge.py` is the normal CoS-facing wrapper: it delegates the decision to that adapter and, only when caller/source evidence already supplies `task_id`, raw execution `status` and checkpoint/receipt fields, performs a best-effort live observability projection. `bind_chat_on_steroids_oleander.py` can persist the corresponding CoS prompt/connector binding without replacing the user's existing prompts or changing the Goal enabled/mode setting.
+Chat / Chat On Steroids entry enforcement now has a candidate unified entry above the existing bridge: `oleander_system_gateway.py` resolves the non-authoritative System Context Envelope, then delegates the actual continuation/mutation/closure decision to `oleander_chat_runtime_bridge.py` ? side-effect-free `oleander_chat_resolver_adapter.py`. The bridge remains the compatibility/execution-policy owner beneath the gateway and still owns no Project State, checkpoint database, Method, Skill or Control Plane. `oleander_system_mcp.py` exposes the candidate gateway to harnesses; `bind_chat_on_steroids_oleander.py` can persist the corresponding CoS runtime-context binding while preserving existing prompts and Goal enabled/mode state.
 
 For material professional-domain work, adapter acceptance revision 1.2 also resolves `professional_stage_execution` through the existing professional machine definition + Execution Owner Map. Five OPEN Candidate process machines carry stage execution requirements directly; already-Current Architecture/Structural/MEP machines remain unchanged and use the exact-revision non-authority `OLEANDER_PROFESSIONAL_STAGE_EXECUTION_PROJECTION_v0.1.json` runtime carrier. The transient `professional_stage_composition` requires both task/claim Knowledge Mount coverage and legal Current execution-owner coverage. Missing/uncovered/OE1/stale knowledge HOLDs; Candidate Skills and Candidate Bodies do not count as Current callable owners; missing project/specialist/reviewer bindings HOLD. Owner identities are deduplicated only after complete capability coverage, and multiple Current owners require an actually materialized existing Multi-Skill DAG/typed handoff path before execution/closure. Candidate professional processes require explicit `BOUNDED_NON_CURRENT_PROJECT_EXERCISE` and retain `current_process_ref=null` until authorized adoption.
 

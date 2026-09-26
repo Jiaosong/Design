@@ -6,6 +6,8 @@
   "purpose": "Define a provider-neutral execution seam below the OLEANDER product/runtime semantics so agent harnesses can be compared or replaced without creating another Project State, Current, decision authority, artifact authority, professional-stage family or Promotion path.",
   "architecture_refs": [
     "product-docs/v0.3/OLEANDER_EXECUTION_FABRIC_ARCHITECTURE_v0.3.3.md",
+    "00-governance/runtime/OLEANDER_COS_HARNESS_ADAPTER_v0.1.json",
+    "00-governance/runtime/OLEANDER_SYSTEM_MANIFEST_v0.1.json",
     "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
     "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
     "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
@@ -143,5 +145,21 @@
     "field_truth",
     "promotion",
     "external_pilot_value"
-  ]
+  ],
+  "system_management_entry": {
+    "gateway": "00-governance/runtime/oleander_system_gateway.py",
+    "mcp_server": "00-governance/runtime/oleander_system_mcp.py",
+    "context_schema": "00-governance/runtime/OLEANDER_SYSTEM_CONTEXT_ENVELOPE_v0.1.schema.json",
+    "semantic_class": "CANDIDATE_RESOLUTION_AND_EXECUTION_ENTRYPOINT_NOT_AUTHORITY",
+    "provider_context_may_not_become_project_state": true
+  },
+  "native_cos_mapping": {
+    "adapter": "00-governance/runtime/OLEANDER_COS_HARNESS_ADAPTER_v0.1.json",
+    "session_semantics": "EXECUTION_SESSION_ONLY",
+    "compact_resume_semantics": "PROVIDER_SESSION_CONTINUITY_ONLY",
+    "plugin_semantics": "EXECUTION_SURFACE_DISCOVERY_ONLY",
+    "goal_loop_semantics": "CONTINUATION_POLICY_CONSUMER_ONLY",
+    "project_state_owner": "OWNER_NATIVE_OLEANDER",
+    "knowledge_owner": "OWNER_NATIVE_OLEANDER"
+  }
 }
