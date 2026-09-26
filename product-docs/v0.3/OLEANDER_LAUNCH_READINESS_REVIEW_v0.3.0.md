@@ -37,10 +37,12 @@ flowchart TD
 |---|---|---|
 | Product problem definition | PASS_WORKING | strong internal evidence, external evidence incomplete |
 | P0 scope | PASS_WORKING | cutline defined |
-| Detailed functional requirements | PASS_WORKING | v0.2 Feature Specs + v0.3.2 Requirement Delta |
-| Traceability | PASS_WORKING | 141/141 v0.2 feature mapping + v0.3.2 atomic-node delta trace |
+| Detailed functional requirements | PASS_WORKING | v0.2 Feature Specs + v0.3.2/v0.3.3 Requirement Deltas |
+| Traceability | PASS_WORKING | 141/141 v0.2 feature mapping + v0.3.x atomic-node delta trace |
 | v0.3.2 co-design content delta | PASS_WORKING_SPEC | Search-space / Triage / Synthesis / Decision / Artifact Action / Action Guard / Designer Development specified |
 | v0.3.2 system implementation parity | OPEN | Markdown requirements revised first; runtime/system alignment not yet claimed |
+| v0.3.3 Execution Fabric architecture | PASS_WORKING_SPEC | provider-neutral Runtime Contract + N12D Harness Adapter specified |
+| v0.3.3 runtime provider conformance | OPEN | native/COS contract baseline and external harness spike not yet run |
 | Internal interaction semantics | PASS_CANDIDATE | fixture/regression evidence exists |
 | Real artifact loop | PARTIAL | candidate trials exist; external users not closed |
 | External user validation | OPEN | not yet run |
@@ -114,8 +116,10 @@ P0 capabilities:
 - Local recovery
 - Action Guard
 - Continuation
+- Harness / Runtime Adapter contract
+- Execution Ledger normalization
 
-**Current:** legacy/candidate mechanisms cover substantial v0.3.1 behaviour. The newly specified v0.3.2 co-design semantics are **not yet claimed system-complete** and require explicit runtime/system alignment before the integrated P0 path can be called implemented.
+**Current:** legacy/candidate mechanisms cover substantial v0.3.1 behaviour. The newly specified v0.3.2 co-design semantics are **not yet claimed system-complete**. v0.3.3 adds an additional implementation requirement: runtime execution must be separated behind a provider-neutral contract before DeepSeek Harness, Dify or another provider can be treated as core infrastructure.
 
 **Status:** PARTIAL
 
@@ -140,6 +144,10 @@ P0 capabilities:
 - state recovery
 - stale / unauthorized action prevention
 - sensitive external read / disclosure control
+- harness session ≠ Project State invariant
+- provider approval cannot bypass Action Guard
+- provider switch preserves product identities
+- execution replay cannot manufacture Project Truth
 - Human stop precision
 - domain claim ceiling
 

@@ -22,6 +22,7 @@ mindmap
   root((SYSTEM HEALTH))
     Project_Resolution
     Model_Provider
+    Harness_Runtime
     Tools_Integrations
     Artifact_Access
     Readback
@@ -50,6 +51,7 @@ System Health must answer:
 - what is blocked;
 - what fallback exists;
 - what user action is required, if any.
+- whether the issue is product-state, runtime-provider, tool-provider or artifact-readback specific.
 
 It should not expose raw infrastructure logs as the primary UX.
 

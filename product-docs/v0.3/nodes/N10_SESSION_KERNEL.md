@@ -7,7 +7,7 @@
 | Node ID | N10 |
 | Children | N10A, N10B, N10C, N10D, N10E, N10F, N10G, N10H, N10I, N10J |
 | Type | Cross-product Interaction Kernel |
-| Product job | 解析用户意图、恢复上下文、路由工作、保护 mutation 与 Human authority |
+| Product job | 解析用户意图、恢复上下文、路由工作、保护 material action 与 Human authority，并把执行委托给可替换 Runtime Contract |
 | Inputs | Human message + owner-native project locators + product context |
 | Outputs | interaction projection / route / guard / stop / closure |
 | Authority | Does not own Project State / Design KEEP / Promotion |
@@ -39,7 +39,8 @@ mindmap
 flowchart LR
     U[Human] --> V[Visible Design Kernel<br/>Understand → Explore → Make → Look → Critique → Steer]
     V --> Q[Quiet Runtime Kernel<br/>Resolve → Resume/Continue/Recover → Route → Guard → Handoff → Report]
-    Q --> P[Product Surfaces]
+    Q --> R[N12D Runtime Contract / Harness Adapter]
+    R --> P[Execution Surfaces]
 ```
 
 ## Four-axis Contract

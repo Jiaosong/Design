@@ -3,7 +3,7 @@
 [← Master PRD](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
 
 > **v0.3 node-first update:** 本目录保留为详细 Feature composite specification / provenance view。第一层产品节点的 primary definition 现位于 [v0.3 Product Node Graph](../v0.3/nodes/README.md)。不要在本目录与 Node Docs 同时维护两套节点定义；节点关系、责任和主行为以 Node Doc 为入口，本目录继续承载细粒度 Feature requirement / acceptance 细节。
-> v0.3.2 further refines first-class capabilities in the [Atomic Node Index](../v0.3/nodes/ATOMIC_NODE_INDEX.md) and [Requirement Delta](../v0.3/OLEANDER_REQUIREMENT_DELTA_v0.3.2.md); this feature directory remains the detailed v0.2 composite requirement/provenance layer.
+> v0.3.3 further refines first-class capabilities in the [Atomic Node Index](../v0.3/nodes/ATOMIC_NODE_INDEX.md), [v0.3.2 Co-design Delta](../v0.3/OLEANDER_REQUIREMENT_DELTA_v0.3.2.md), and [v0.3.3 Execution Fabric Delta](../v0.3/OLEANDER_REQUIREMENT_DELTA_v0.3.3.md); this feature directory remains the detailed v0.2 composite requirement/provenance layer.
 
 本目录把 Master PRD 细化到**Product Area / Feature / Interaction / Acceptance Scenario / Failure Behaviour / Event** 层。
 

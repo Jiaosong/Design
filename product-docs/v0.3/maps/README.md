@@ -1,4 +1,4 @@
-# OLEANDER Visual Product Maps v0.3.2
+# OLEANDER Visual Product Maps v0.3.3
 
 [← v0.3 Package](../README.md) · [← Node Graph](../nodes/README.md)
 
@@ -20,7 +20,7 @@
 | [M12｜MAP + ARTIFACT + REVIEW Detail](M12_REALITY_REVIEW_DETAIL.md) | Reality / review 原子层 |
 | [M13｜Knowledge + History Detail](M13_KNOWLEDGE_CONTINUITY_DETAIL.md) | Evidence / continuity 原子层 |
 | [M14｜Kernel + Authority Detail](M14_KERNEL_AUTHORITY_DETAIL.md) | Interaction / guard / rights |
-| [M15｜Integration + Settings + Health Detail](M15_INTEGRATION_HEALTH_DETAIL.md) | 外部工具 / degradation / health |
+| [M15｜Integration + Settings + Health Detail](M15_INTEGRATION_HEALTH_DETAIL.md) | 外部工具 / harness runtime / degradation / health |
 
 ## Recommended paths
 

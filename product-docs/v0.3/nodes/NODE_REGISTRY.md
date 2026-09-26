@@ -1,4 +1,4 @@
-# OLEANDER Product Node Registry v0.3.2
+# OLEANDER Product Node Registry v0.3.3
 
 [← Node Graph](README.md) · [Atomic Node Index](ATOMIC_NODE_INDEX.md)
 
@@ -110,6 +110,7 @@ flowchart LR
 | N12A | N12 INTEGRATIONS | Atomic Integration Node | P1 | [INTEGRATION CONTRACT](atomic/N12A_INTEGRATION_CONTRACT.md) |
 | N12B | N12 INTEGRATIONS | Atomic Integration Node | P0 | [EXTERNAL WRITE](atomic/N12B_EXTERNAL_WRITE.md) |
 | N12C | N12 INTEGRATIONS | Atomic Integration Node | P1 | [DEGRADED INTEGRATION](atomic/N12C_DEGRADED_INTEGRATION.md) |
+| N12D | N12 INTEGRATIONS | Atomic Runtime Integration Node | P0 | [HARNESS / RUNTIME ADAPTER](atomic/N12D_HARNESS_RUNTIME_ADAPTER.md) |
 | N13A | N13 SETTINGS | Atomic Settings Node | P2 | [DATA / PRIVACY SETTINGS](atomic/N13A_DATA_PRIVACY_SETTINGS.md) |
 | N13B | N13 SETTINGS | Atomic Settings Node | P2 | [CONNECTOR PERMISSIONS](atomic/N13B_CONNECTOR_PERMISSIONS.md) |
 | N13C | N13 SETTINGS | Atomic Settings Node | P2 | [ACCESSIBILITY SETTINGS](atomic/N13C_ACCESSIBILITY_SETTINGS.md) |

@@ -5,9 +5,9 @@
 | Field | Value |
 |---|---|
 | Node ID | N12 |
-| Children | N12A, N12B, N12C — see [Atomic Children](#atomic-children) |
+| Children | N12A, N12B, N12C, N12D — see [Atomic Children](#atomic-children) |
 | Type | Integration Node |
-| Product job | 连接专业 authoring / analysis / storage / external systems，同时保持 artifact role、authority 与 degraded behaviour |
+| Product job | 连接专业 authoring / analysis / storage / external systems，并通过可替换 Harness / Runtime Adapter 连接 agent execution infrastructure，同时保持 artifact role、authority 与 degraded behaviour |
 | Inputs | integration capability + scoped permission |
 | Outputs | tool action / imported result / native locator |
 | Authority | Connector availability does not grant project authority |
@@ -37,6 +37,10 @@ mindmap
       Publish
       Collaboration
       Delivery
+    Runtime_Providers
+      Native_COS
+      Agent_Harness
+      Workflow_Platform
 ```
 
 ## Interaction Contract
@@ -63,6 +67,8 @@ sequenceDiagram
 - integration failure must report partial success truthfully;
 - unavailable tool may use bounded substitute only when current question remains answerable;
 - integration output role is explicit.
+- runtime provider is replaceable and cannot become Project State / Decision / Artifact authority;
+- provider-native session/event/workflow concepts require explicit mapping before they can affect OLEANDER product semantics.
 
 ## Open
 
@@ -76,8 +82,10 @@ flowchart TB
     P --> N12A[N12A INTEGRATION CONTRACT]
     P --> N12B[N12B EXTERNAL WRITE]
     P --> N12C[N12C DEGRADED INTEGRATION]
+    P --> N12D[N12D HARNESS / RUNTIME ADAPTER]
 ```
 
 - [N12A｜INTEGRATION CONTRACT](atomic/N12A_INTEGRATION_CONTRACT.md)
 - [N12B｜EXTERNAL WRITE](atomic/N12B_EXTERNAL_WRITE.md)
 - [N12C｜DEGRADED INTEGRATION](atomic/N12C_DEGRADED_INTEGRATION.md)
+- [N12D｜HARNESS / RUNTIME ADAPTER](atomic/N12D_HARNESS_RUNTIME_ADAPTER.md)

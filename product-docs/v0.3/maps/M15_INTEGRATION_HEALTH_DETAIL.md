@@ -2,20 +2,23 @@
 
 [← Visual Maps](README.md) · [← Node Graph](../nodes/README.md)
 
-**Purpose:** 工具连接、权限 / data boundary、外部 action、降级与产品健康
+**Purpose:** 工具连接、Harness Runtime、权限 / data boundary、外部 action、降级与产品健康
 
 > This map is a view of product nodes and relations. It does not create a new authority or state.
 
 ```mermaid
 flowchart LR
     IC[N12A Integration Contract] --> EW[N12B External Write]
+    IC --> HA[N12D Harness / Runtime Adapter]
     AG[N10D Action Guard] --> EW
+    AG --> HA
     IC --> DI[N12C Degraded Integration]
     CP[N13B Connector Permissions] --> IC
     DP[N13A Data / Privacy Settings] --> IC
     DP --> AG
     CP --> AG
     HS[N14A Health Signal] --> DR[N14B Degraded Route]
+    HA --> HS
     DI --> DR
     DR --> IR[N14C Incident / Recovery]
     AC[N13C Accessibility Settings] --> UI[Visible Product Surfaces]
