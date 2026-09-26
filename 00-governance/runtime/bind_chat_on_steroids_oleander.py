@@ -14,14 +14,14 @@ BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.7"
 RESOLVER_REVISION = "1.2.5"
 ADAPTER_REVISION = "1.2"
 SYSTEM_GATEWAY_REVISION = "0.1"
-MCP_SERVER_REF = "00-governance/runtime/oleander_system_mcp.py"
+MCP_SERVER_REF = str(Path(__file__).resolve().with_name("oleander_system_mcp.py"))
 BEGIN = f"[[{BINDING_REVISION}:BEGIN]]"
 END = f"[[{BINDING_REVISION}:END]]"
 MAX_MCP_INSTRUCTIONS_CHARS = 4_000
 MAX_GOAL_SYSTEM_PROMPT_CHARS = 20_000
 
 MAIN_CHAT_BINDING = f"""{BEGIN}
-For OLEANDER-scoped work, Chat On Steroids is an execution harness only. Resolve system context and execution permission through the OLEANDER System Gateway revision {SYSTEM_GATEWAY_REVISION}. Prefer the exposed OLEANDER System Gateway MCP tools when available; otherwise run `00-governance/runtime/oleander_system_gateway.py`. Do not infer Project State, Current, Knowledge Authority, Design Decision, Artifact Current, professional PASS or Promotion from chat text, CoS sessions, workers, plugins, tool logs, compaction handoffs or local file presence.
+For OLEANDER-scoped work, Chat On Steroids is an execution harness only. Resolve system context and execution permission through the OLEANDER System Gateway revision {SYSTEM_GATEWAY_REVISION}. Prefer the exposed OLEANDER System Gateway MCP tools when available; otherwise run `oleander_system_gateway.py` from the same canonical runtime directory as the configured System Gateway entrypoint. Do not infer Project State, Current, Knowledge Authority, Design Decision, Artifact Current, professional PASS or Promotion from chat text, CoS sessions, workers, plugins, tool logs, compaction handoffs or local file presence.
 
 Before a material continue/resume/recover/execute/repair/optimize mutation or any KEEP/complete/finalize/stop claim, obtain a current gateway preflight from owner-native authority/frontier/checkpoint/constraint/readback evidence. The gateway composes the System Context Envelope, delegates execution policy to Resolver v1.2 implementation revision {RESOLVER_REVISION} / adapter acceptance revision {ADAPTER_REVISION}, and keeps CoS below the OLEANDER authority boundary.
 
