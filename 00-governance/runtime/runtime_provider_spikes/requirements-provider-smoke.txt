@@ -1,0 +1,4 @@
+# Isolated smoke/benchmark environment only. These packages do not become OLEANDER Current dependencies.
+agent-framework-core==1.19.0
+pydantic-ai-slim[temporal]==2.51.0
+temporalio==1.33.0

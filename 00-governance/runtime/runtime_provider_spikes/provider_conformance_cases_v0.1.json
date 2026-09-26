@@ -1,0 +1,229 @@
+{
+  "schema": "oleander.runtime-provider-conformance-cases.v0.1",
+  "cases": [
+    {
+      "case_id": "RPC-01-CONTINUE-NOT-RESUME",
+      "action": {
+        "action_id": "A-CONTINUE-1",
+        "intent": "CONTINUE",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "READ_ONLY",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "COMPLETED",
+        "provider_invoked": true,
+        "intent_preserved": "CONTINUE",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-02-RESUME-SESSION-NOT-STATE",
+      "action": {
+        "action_id": "A-RESUME-1",
+        "intent": "RESUME",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "READ_ONLY",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "COMPLETED",
+        "provider_invoked": true,
+        "intent_preserved": "RESUME",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-03-RECOVER-PARTIAL",
+      "action": {
+        "action_id": "A-RECOVER-1",
+        "intent": "RECOVER",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "LOCAL_MUTATION",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "PARTIAL"
+      },
+      "expected": {
+        "normalized_outcome": "PARTIAL",
+        "provider_invoked": true,
+        "intent_preserved": "RECOVER",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-04-OLEANDER-DENY-WINS",
+      "action": {
+        "action_id": "A-DENY-1",
+        "intent": "DELEGATE",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "REMOTE_MUTATION",
+        "oleander_guard_decision": "DENY",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "BLOCKED_BY_OLEANDER",
+        "provider_invoked": false,
+        "intent_preserved": "DELEGATE",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-05-READONLY-DISCLOSURE-DENY",
+      "action": {
+        "action_id": "A-DISCLOSE-1",
+        "intent": "REVIEW",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "SECRET-SOURCE-1",
+        "side_effect_class": "READ_ONLY",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": true,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "BLOCKED_BY_OLEANDER",
+        "provider_invoked": false,
+        "intent_preserved": "REVIEW",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-06-COST-BLAST-RADIUS-DENY",
+      "action": {
+        "action_id": "A-COST-1",
+        "intent": "DELEGATE",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "HEAVY-EXECUTOR-1",
+        "side_effect_class": "LOCAL_MUTATION",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": true,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "BLOCKED_BY_OLEANDER",
+        "provider_invoked": false,
+        "intent_preserved": "DELEGATE",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-07-PROVIDER-FAILURE-SCOPED",
+      "action": {
+        "action_id": "A-FAIL-1",
+        "intent": "DEVELOP",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "LOCAL_MUTATION",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "FAILED"
+      },
+      "expected": {
+        "normalized_outcome": "FAILED",
+        "provider_invoked": true,
+        "intent_preserved": "DEVELOP",
+        "project_state_unchanged": true
+      }
+    },
+    {
+      "case_id": "RPC-08-FORBIDDEN-AUTHORITY-FIELDS-STRIPPED",
+      "action": {
+        "action_id": "A-FORGE-1",
+        "intent": "REVIEW",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "READ_ONLY",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": true,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED",
+        "provider_extra_payload": {
+          "project_current": "FORGED",
+          "design_decision": "FORGED",
+          "promotion": "PASS",
+          "benign_provider_note": "preserve me"
+        }
+      },
+      "expected": {
+        "normalized_outcome": "COMPLETED",
+        "provider_invoked": true,
+        "intent_preserved": "REVIEW",
+        "project_state_unchanged": true,
+        "forbidden_authority_fields_absent": true,
+        "benign_provider_note_preserved": true
+      }
+    },
+    {
+      "case_id": "RPC-09-PROVIDER-MAY-NARROW",
+      "action": {
+        "action_id": "A-PROVIDER-BLOCK-1",
+        "intent": "DELEGATE",
+        "project_state_ref": "PS-LOCK-1",
+        "decision_object_id": "DEC-LOCK-1",
+        "target_ref": "ART-LOCK-1@R7",
+        "side_effect_class": "LOCAL_MUTATION",
+        "oleander_guard_decision": "ALLOW",
+        "provider_approval": false,
+        "external_disclosure": false,
+        "scoped_external_permission": false,
+        "material_cost_or_blast_radius": false,
+        "cost_or_blast_radius_authorized": false,
+        "simulated_provider_outcome": "COMPLETED"
+      },
+      "expected": {
+        "normalized_outcome": "BLOCKED_BY_PROVIDER",
+        "provider_invoked": false,
+        "intent_preserved": "DELEGATE",
+        "project_state_unchanged": true
+      }
+    }
+  ]
+}

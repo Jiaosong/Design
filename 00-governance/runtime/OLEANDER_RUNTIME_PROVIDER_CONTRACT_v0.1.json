@@ -1,0 +1,147 @@
+{
+  "contract_id": "OLEANDER_RUNTIME_PROVIDER_CONTRACT",
+  "version": "0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "decision_date": "2026-09-26",
+  "purpose": "Define a provider-neutral execution seam below the OLEANDER product/runtime semantics so agent harnesses can be compared or replaced without creating another Project State, Current, decision authority, artifact authority, professional-stage family or Promotion path.",
+  "architecture_refs": [
+    "product-docs/v0.3/OLEANDER_EXECUTION_FABRIC_ARCHITECTURE_v0.3.3.md",
+    "00-governance/runtime/OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1.md",
+    "00-governance/runtime/OLEANDER_TOOL_ADAPTER_CONTRACT_v0.1.json",
+    "00-governance/runtime/OLEANDER_OBSERVABILITY_RECOVERY_CONTRACT_v1.0.json"
+  ],
+  "authority_ceiling": "EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY",
+  "providers_under_spike": [
+    "native_cos",
+    "deepseek_harness",
+    "microsoft_agent_framework",
+    "pydantic_ai_temporal"
+  ],
+  "required_provider_operations": [
+    "probe",
+    "open_runtime_session",
+    "execute_bounded_action",
+    "normalize_execution_event",
+    "report_health"
+  ],
+  "runtime_session_rules": [
+    "PROVIDER_SESSION_IS_NOT_PROJECT_STATE",
+    "PROVIDER_SESSION_IS_NOT_CURRENT_AUTHORITY",
+    "PROVIDER_RESUME_REPLAY_OR_FORK_MAY_NOT_CREATE_PROJECT_TRUTH",
+    "PROVIDER_REMOVAL_MUST_NOT_MAKE_OWNER_NATIVE_PROJECT_STATE_UNRECOVERABLE"
+  ],
+  "guard_rules": [
+    "OLEANDER_ACTION_GUARD_PRECEDES_PROVIDER_NATIVE_APPROVAL",
+    "PROVIDER_APPROVAL_MAY_NARROW_BUT_NEVER_WIDEN_OLEANDER_PERMISSION",
+    "READ_ONLY_DOES_NOT_AUTO_AUTHORIZE_SENSITIVE_EXTERNAL_DISCLOSURE",
+    "MATERIAL_COST_OR_BLAST_RADIUS_ESCALATION_REQUIRES_EXISTING_SCOPED_PERMISSION_OR_HOLD",
+    "DENIED_OLEANDER_ACTION_MUST_NOT_REACH_PROVIDER_EXECUTION"
+  ],
+  "execution_ledger": {
+    "semantic_class": "APPEND_ONLY_RUNTIME_EVIDENCE_PROJECTION_NOT_PROJECT_STATE",
+    "required_fields": [
+      "event_id",
+      "provider_id",
+      "provider_session_id",
+      "action_id",
+      "event_type",
+      "outcome",
+      "observed_at",
+      "does_not_prove"
+    ],
+    "allowed_event_types": [
+      "RUNTIME_SESSION_OPENED",
+      "ACTION_GUARD_BLOCKED",
+      "PROVIDER_APPROVAL_BLOCKED",
+      "PROVIDER_EXECUTION_STARTED",
+      "PROVIDER_EXECUTION_PARTIAL",
+      "PROVIDER_EXECUTION_COMPLETED",
+      "PROVIDER_EXECUTION_FAILED",
+      "PROVIDER_DEGRADED",
+      "PROVIDER_SWITCHED"
+    ],
+    "forbidden_authority_fields": [
+      "project_state",
+      "project_current",
+      "current",
+      "design_decision",
+      "design_keep",
+      "professional_pass",
+      "promotion",
+      "statutory_approval"
+    ],
+    "promotion_rule": "EXECUTION_EVENT_MAY_SUPPORT_READBACK_OR_AUDIT_BUT_ONLY_AN_EXISTING_OWNER_NATIVE_PRODUCT_OR_RUNTIME_TRANSITION_MAY_UPDATE_PROJECT_OR_ARTIFACT_AUTHORITY"
+  },
+  "action_envelope_required_fields": [
+    "action_id",
+    "intent",
+    "project_state_ref",
+    "decision_object_id",
+    "target_ref",
+    "side_effect_class",
+    "oleander_guard_decision",
+    "provider_approval",
+    "external_disclosure",
+    "scoped_external_permission",
+    "material_cost_or_blast_radius",
+    "cost_or_blast_radius_authorized",
+    "simulated_provider_outcome"
+  ],
+  "intent_values": [
+    "START",
+    "RESUME",
+    "CONTINUE",
+    "RECOVER",
+    "EXPLORE",
+    "DEVELOP",
+    "SYNTHESIZE",
+    "COMPARE",
+    "REVIEW",
+    "REFRAME",
+    "EXPLAIN",
+    "DELEGATE",
+    "STOP"
+  ],
+  "side_effect_classes": [
+    "READ_ONLY",
+    "LOCAL_MUTATION",
+    "REMOTE_MUTATION",
+    "AUTHORITY_MUTATION",
+    "RELEASE_MUTATION"
+  ],
+  "normalized_outcomes": [
+    "BLOCKED_BY_OLEANDER",
+    "BLOCKED_BY_PROVIDER",
+    "COMPLETED",
+    "PARTIAL",
+    "FAILED",
+    "DEGRADED"
+  ],
+  "benchmark_result_states": [
+    "CONTRACT_PASS",
+    "CONTRACT_FAIL",
+    "NATIVE_PROVIDER_SMOKE_PASS",
+    "HOLD_MISSING_DEPENDENCY",
+    "HOLD_MISSING_CREDENTIAL",
+    "HOLD_MISSING_SERVER",
+    "HOLD_PROVIDER_API_DRIFT"
+  ],
+  "hard_invariants": [
+    "CONTINUE_DOES_NOT_IMPLY_RESUME",
+    "RECOVER_PRESERVES_PARTIAL_RESULT_AS_PARTIAL",
+    "PROVIDER_APPROVAL_CANNOT_OVERRIDE_OLEANDER_DENY",
+    "PROVIDER_APPROVAL_MAY_NARROW_AN_OLEANDER_ALLOW",
+    "PROVIDER_EVENTS_CANNOT_MUTATE_PROJECT_AUTHORITY",
+    "PROVIDER_SWITCH_PRESERVES_PROJECT_DECISION_AND_ARTIFACT_IDENTITIES",
+    "PROVIDER_OUTAGE_DEGRADES_ONLY_AFFECTED_EXECUTION_CAPABILITY",
+    "TOOL_OR_PROVIDER_SUCCESS_DOES_NOT_PROVE_DESIGN_COMPLETION"
+  ],
+  "does_not_prove": [
+    "provider_production_readiness",
+    "design_quality",
+    "professional_pass",
+    "field_truth",
+    "promotion",
+    "external_pilot_value"
+  ]
+}
