@@ -25,12 +25,15 @@ v0.3.3 extends v0.3.2 with a provider-neutral execution architecture.
 
 | Alignment ID | Required proof | Status |
 |---|---|---|
-| SA-14 | define Runtime Contract against current COS/native execution before adding external harness | `OPEN_SYSTEM_ALIGNMENT` |
+| SA-14 | define Runtime Contract against current COS/native execution before adding external harness | `CANDIDATE_CONTRACT_PASS / NO_PROMOTION` |
 | SA-15 | provider session/event stream survives reload/replay while Project State remains separately owner-native | `OPEN_SYSTEM_ALIGNMENT` |
 | SA-16 | DeepSeek Harness narrow adapter spike passes session/tool/approval/sandbox/trace conformance | `OPEN_SYSTEM_ALIGNMENT` |
-| SA-17 | provider-native approval cannot execute an action denied by OLEANDER Action Guard | `OPEN_SYSTEM_ALIGNMENT` |
-| SA-18 | provider switch preserves design decision / artifact / project identities | `OPEN_SYSTEM_ALIGNMENT` |
+| SA-17 | provider-native approval cannot execute an action denied by OLEANDER Action Guard | `CONTRACT_ORDERING_PASS / REAL_PROVIDER_PATH_OPEN` |
+| SA-18 | provider switch preserves design decision / artifact / project identities | `SYNTHETIC_IDENTITY_PASS / REAL_SWITCH_OPEN` |
 | SA-19 | one bounded Dify workflow can round-trip typed input/result without acquiring project authority | `OPTIONAL_AFTER_CORE_PARITY` |
+
+Candidate evidence for SA-14 / SA-17 / SA-18: [Runtime Provider Benchmark — 2026-09-26](../../00-governance/runtime/runtime_provider_spikes/results/OLEANDER_RUNTIME_PROVIDER_BENCHMARK_20260926.md).
+This evidence does not close SA-15 / SA-16 / SA-18 real-switch semantics and does not promote a provider.
 
 ---
 

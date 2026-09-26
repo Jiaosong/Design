@@ -10,6 +10,19 @@ The executable companion is `OLEANDER_ARCHITECTURE_CONTROL_GRAPH_v2.1.json`, val
 
 `OLEANDER_INTEGRATED_RUNTIME_STRUCTURE_v1.0.md` is the Current operator/integration view under that Master. It expands the path through Design Intelligence ? Shared Design Quality & Design Development ? authentic Professional Domain Process ? Integration when coupled ? Skill/Tool execution ? native artifact ? actual readback ? independent reviews, without creating another orchestration authority.
 
+## Candidate provider-neutral runtime spike｜2026-09-26
+
+`OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.1.md/.json` is a **candidate, non-authority** Runtime Provider Contract below the existing R-G/R-H capability/execution boundary. It does not create another Runtime Layer, Project State, Current, Control Plane, Skill ontology, professional process or Promotion path.
+
+The executable spike lives in `runtime_provider_spikes/` and runs the same contract fixtures against:
+
+- existing COS/native bridge;
+- pinned DeepSeek Harness;
+- Microsoft Agent Framework;
+- PydanticAI + Temporal.
+
+The first machine/readable benchmark is `runtime_provider_spikes/results/OLEANDER_RUNTIME_PROVIDER_BENCHMARK_20260926.json` with a human review companion `.md`. It intentionally stays outside `runtime/receipts/` because it is candidate benchmark evidence, not an Execution Receipt. `PASS_CANDIDATE_SPIKE` means only that the provider-neutral seam + bounded native smokes passed. It does **not** select/promote a provider or prove real artifact parity.
+
 ## Current default capability resolution
 
 Use:
@@ -174,6 +187,8 @@ Validation entrypoints:
 - `python 00-governance/runtime/validate_execution_contracts.py`
 - `python 00-governance/runtime/validate_execution_locks.py`
 - `python 00-governance/runtime/validate_image_consumption.py`
+- `python 00-governance/runtime/validate_runtime_provider_contract.py` — candidate provider-neutral seam only; no Current promotion.
+- `python -m unittest 00-governance/tests/test_runtime_provider_contract.py`
 
 Runtime regression corpus:
 

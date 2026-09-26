@@ -1,0 +1,1673 @@
+{
+  "authority_ceiling": "EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY",
+  "benchmark_scope": "CONTRACT_SHIM_PLUS_BOUNDED_NATIVE_SMOKE",
+  "cases_ref": "00-governance/runtime/runtime_provider_spikes/provider_conformance_cases_v0.1.json",
+  "contract_ref": "00-governance/runtime/OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.1.json",
+  "cross_provider_checks": {
+    "all_contracts_pass": true,
+    "all_native_smokes_pass": true,
+    "contract_shim_identity_fingerprint_stable_across_providers": true
+  },
+  "does_not_prove": [
+    "provider_production_readiness",
+    "provider_performance_superiority",
+    "real_model_quality",
+    "real_artifact_authoring_parity",
+    "external_pilot_value",
+    "design_quality",
+    "professional_pass",
+    "promotion"
+  ],
+  "environment": {
+    "benchmark_python": "python.exe",
+    "benchmark_python_version": "Python 3.13.3",
+    "node_version": "v24.18.0",
+    "npm_version": "11.16.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "runner_python": "python.exe",
+    "runner_python_version": "Python 3.13.3"
+  },
+  "generated_at": "2026-09-26T05:43:00Z",
+  "next_required_evidence": [
+    "REAL_NATIVE_ARTIFACT_ACTION_PER_PROVIDER",
+    "PROVIDER_REMOVAL_AND_RESUME_TEST",
+    "ACTION_GUARD_WITH_REAL_PROVIDER_APPROVAL_PATH",
+    "FAILURE_RECOVERY_WITH_ACTUAL_PROVIDER_INTERRUPTION",
+    "LATENCY_AND_IMPLEMENTATION_COMPLEXITY_MEASUREMENT"
+  ],
+  "providers": [
+    {
+      "case_results": [
+        {
+          "case_id": "RPC-01-CONTINUE-NOT-RESUME",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-CONTINUE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-CONTINUE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "CONTINUE",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "COMPLETED",
+            "provider_id": "native_cos",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "CONTINUE",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "native_cos:A-CONTINUE-1:operation",
+              "provider_session_id": "native_cos:A-CONTINUE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "native_cos:A-CONTINUE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-02-RESUME-SESSION-NOT-STATE",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RESUME-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-RESUME-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "RESUME",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "COMPLETED",
+            "provider_id": "native_cos",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "RESUME",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "native_cos:A-RESUME-1:operation",
+              "provider_session_id": "native_cos:A-RESUME-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "native_cos:A-RESUME-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-03-RECOVER-PARTIAL",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RECOVER-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-RECOVER-1-PROVIDER_EXECUTION_PARTIAL",
+            "event_type": "PROVIDER_EXECUTION_PARTIAL",
+            "intent": "RECOVER",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "PARTIAL",
+            "provider_id": "native_cos",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "RECOVER",
+              "outcome": "PARTIAL",
+              "provider_operation_id": "native_cos:A-RECOVER-1:operation",
+              "provider_session_id": "native_cos:A-RECOVER-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "native_cos:A-RECOVER-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-04-OLEANDER-DENY-WINS",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DENY-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-DENY-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "native_cos",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "OLEANDER_ACTION_GUARD_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-05-READONLY-DISCLOSURE-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DISCLOSE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-DISCLOSE-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "native_cos",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "EXTERNAL_DISCLOSURE_NOT_AUTHORIZED",
+            "target_ref": "SECRET-SOURCE-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "project_state_fingerprint_before": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "provider_id": "native_cos",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-06-COST-BLAST-RADIUS-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-COST-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-COST-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "native_cos",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "COST_OR_BLAST_RADIUS_NOT_AUTHORIZED",
+            "target_ref": "HEAVY-EXECUTOR-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "project_state_fingerprint_before": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "provider_id": "native_cos",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-07-PROVIDER-FAILURE-SCOPED",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FAIL-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-FAIL-1-PROVIDER_EXECUTION_FAILED",
+            "event_type": "PROVIDER_EXECUTION_FAILED",
+            "intent": "DEVELOP",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "FAILED",
+            "provider_id": "native_cos",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "DEVELOP",
+              "outcome": "FAILED",
+              "provider_operation_id": "native_cos:A-FAIL-1:operation",
+              "provider_session_id": "native_cos:A-FAIL-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "native_cos:A-FAIL-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-08-FORBIDDEN-AUTHORITY-FIELDS-STRIPPED",
+          "checks": {
+            "benign_provider_note_preserved": true,
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FORGE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-FORGE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "COMPLETED",
+            "provider_id": "native_cos",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "benign_provider_note": "preserve me",
+              "intent": "REVIEW",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "native_cos:A-FORGE-1:operation",
+              "provider_session_id": "native_cos:A-FORGE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "native_cos:A-FORGE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-09-PROVIDER-MAY-NARROW",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-PROVIDER-BLOCK-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-native_cos-A-PROVIDER-BLOCK-1-PROVIDER_APPROVAL_BLOCKED",
+            "event_type": "PROVIDER_APPROVAL_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:51Z",
+            "outcome": "BLOCKED_BY_PROVIDER",
+            "provider_id": "native_cos",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "PROVIDER_NATIVE_APPROVAL_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "native_cos",
+          "provider_invoked": false,
+          "state": "PASS"
+        }
+      ],
+      "contract_state": "CONTRACT_PASS",
+      "native_probe": {
+        "detail": "Existing COS/native bridge self-test executed with no network publication.",
+        "provider_id": "native_cos",
+        "raw": {
+          "bridge_id": "chat_on_steroids_oleander_runtime_bridge",
+          "checks": [
+            "RESOLVER_DECISION_PRESERVED",
+            "SOURCE_OBSERVED_PROJECTION_ONLY",
+            "PUBLISH_FAILURE_OBSERVABILITY_ONLY",
+            "EXECUTION_RECEIPT_OWNER_CONTEXT_ONLY",
+            "DIRECT_TELEMETRY_CANNOT_INJECT_OWNER_CONTEXT"
+          ],
+          "status": "PASS"
+        },
+        "smoke_scope": [
+          "resolver_bridge",
+          "source_observed_projection",
+          "observability_degradation_boundary"
+        ],
+        "state": "NATIVE_PROVIDER_SMOKE_PASS",
+        "version": "current-repo"
+      },
+      "passed_cases": 9,
+      "provider_id": "native_cos",
+      "total_cases": 9
+    },
+    {
+      "case_results": [
+        {
+          "case_id": "RPC-01-CONTINUE-NOT-RESUME",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-CONTINUE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-CONTINUE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "CONTINUE",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "COMPLETED",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "CONTINUE",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "deepseek_harness:A-CONTINUE-1:operation",
+              "provider_session_id": "deepseek_harness:A-CONTINUE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "deepseek_harness:A-CONTINUE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-02-RESUME-SESSION-NOT-STATE",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RESUME-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-RESUME-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "RESUME",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "COMPLETED",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "RESUME",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "deepseek_harness:A-RESUME-1:operation",
+              "provider_session_id": "deepseek_harness:A-RESUME-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "deepseek_harness:A-RESUME-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-03-RECOVER-PARTIAL",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RECOVER-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-RECOVER-1-PROVIDER_EXECUTION_PARTIAL",
+            "event_type": "PROVIDER_EXECUTION_PARTIAL",
+            "intent": "RECOVER",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "PARTIAL",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "RECOVER",
+              "outcome": "PARTIAL",
+              "provider_operation_id": "deepseek_harness:A-RECOVER-1:operation",
+              "provider_session_id": "deepseek_harness:A-RECOVER-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "deepseek_harness:A-RECOVER-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-04-OLEANDER-DENY-WINS",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DENY-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-DENY-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "OLEANDER_ACTION_GUARD_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-05-READONLY-DISCLOSURE-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DISCLOSE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-DISCLOSE-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "EXTERNAL_DISCLOSURE_NOT_AUTHORIZED",
+            "target_ref": "SECRET-SOURCE-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "project_state_fingerprint_before": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-06-COST-BLAST-RADIUS-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-COST-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-COST-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "COST_OR_BLAST_RADIUS_NOT_AUTHORIZED",
+            "target_ref": "HEAVY-EXECUTOR-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "project_state_fingerprint_before": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-07-PROVIDER-FAILURE-SCOPED",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FAIL-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-FAIL-1-PROVIDER_EXECUTION_FAILED",
+            "event_type": "PROVIDER_EXECUTION_FAILED",
+            "intent": "DEVELOP",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "FAILED",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "DEVELOP",
+              "outcome": "FAILED",
+              "provider_operation_id": "deepseek_harness:A-FAIL-1:operation",
+              "provider_session_id": "deepseek_harness:A-FAIL-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "deepseek_harness:A-FAIL-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-08-FORBIDDEN-AUTHORITY-FIELDS-STRIPPED",
+          "checks": {
+            "benign_provider_note_preserved": true,
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FORGE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-FORGE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "COMPLETED",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "benign_provider_note": "preserve me",
+              "intent": "REVIEW",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "deepseek_harness:A-FORGE-1:operation",
+              "provider_session_id": "deepseek_harness:A-FORGE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "deepseek_harness:A-FORGE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-09-PROVIDER-MAY-NARROW",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-PROVIDER-BLOCK-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-deepseek_harness-A-PROVIDER-BLOCK-1-PROVIDER_APPROVAL_BLOCKED",
+            "event_type": "PROVIDER_APPROVAL_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:57Z",
+            "outcome": "BLOCKED_BY_PROVIDER",
+            "provider_id": "deepseek_harness",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "PROVIDER_NATIVE_APPROVAL_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "deepseek_harness",
+          "provider_invoked": false,
+          "state": "PASS"
+        }
+      ],
+      "contract_state": "CONTRACT_PASS",
+      "native_probe": {
+        "detail": "CLI version and shipped headless profile composition were executed; no model credential or project authority was used.",
+        "provider_id": "deepseek_harness",
+        "raw": {
+          "headless_config_probe": {
+            "returncode": 0,
+            "stderr": "",
+            "stdout_bytes": 11041
+          },
+          "version_probe": {
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "0.1.5-rc.3\n"
+          }
+        },
+        "smoke_scope": [
+          "cli_bootstrap",
+          "headless_profile_composition"
+        ],
+        "state": "NATIVE_PROVIDER_SMOKE_PASS",
+        "version": "0.1.5-rc.3"
+      },
+      "passed_cases": 9,
+      "provider_id": "deepseek_harness",
+      "total_cases": 9
+    },
+    {
+      "case_results": [
+        {
+          "case_id": "RPC-01-CONTINUE-NOT-RESUME",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-CONTINUE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-CONTINUE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "CONTINUE",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "COMPLETED",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "CONTINUE",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "microsoft_agent_framework:A-CONTINUE-1:operation",
+              "provider_session_id": "microsoft_agent_framework:A-CONTINUE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "microsoft_agent_framework:A-CONTINUE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-02-RESUME-SESSION-NOT-STATE",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RESUME-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-RESUME-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "RESUME",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "COMPLETED",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "RESUME",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "microsoft_agent_framework:A-RESUME-1:operation",
+              "provider_session_id": "microsoft_agent_framework:A-RESUME-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "microsoft_agent_framework:A-RESUME-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-03-RECOVER-PARTIAL",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RECOVER-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-RECOVER-1-PROVIDER_EXECUTION_PARTIAL",
+            "event_type": "PROVIDER_EXECUTION_PARTIAL",
+            "intent": "RECOVER",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "PARTIAL",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "RECOVER",
+              "outcome": "PARTIAL",
+              "provider_operation_id": "microsoft_agent_framework:A-RECOVER-1:operation",
+              "provider_session_id": "microsoft_agent_framework:A-RECOVER-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "microsoft_agent_framework:A-RECOVER-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-04-OLEANDER-DENY-WINS",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DENY-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-DENY-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "OLEANDER_ACTION_GUARD_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-05-READONLY-DISCLOSURE-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DISCLOSE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-DISCLOSE-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "EXTERNAL_DISCLOSURE_NOT_AUTHORIZED",
+            "target_ref": "SECRET-SOURCE-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "project_state_fingerprint_before": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-06-COST-BLAST-RADIUS-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-COST-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-COST-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "COST_OR_BLAST_RADIUS_NOT_AUTHORIZED",
+            "target_ref": "HEAVY-EXECUTOR-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "project_state_fingerprint_before": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-07-PROVIDER-FAILURE-SCOPED",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FAIL-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-FAIL-1-PROVIDER_EXECUTION_FAILED",
+            "event_type": "PROVIDER_EXECUTION_FAILED",
+            "intent": "DEVELOP",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "FAILED",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "DEVELOP",
+              "outcome": "FAILED",
+              "provider_operation_id": "microsoft_agent_framework:A-FAIL-1:operation",
+              "provider_session_id": "microsoft_agent_framework:A-FAIL-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "microsoft_agent_framework:A-FAIL-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-08-FORBIDDEN-AUTHORITY-FIELDS-STRIPPED",
+          "checks": {
+            "benign_provider_note_preserved": true,
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FORGE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-FORGE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "COMPLETED",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "benign_provider_note": "preserve me",
+              "intent": "REVIEW",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "microsoft_agent_framework:A-FORGE-1:operation",
+              "provider_session_id": "microsoft_agent_framework:A-FORGE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "microsoft_agent_framework:A-FORGE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-09-PROVIDER-MAY-NARROW",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-PROVIDER-BLOCK-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-microsoft_agent_framework-A-PROVIDER-BLOCK-1-PROVIDER_APPROVAL_BLOCKED",
+            "event_type": "PROVIDER_APPROVAL_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:42:58Z",
+            "outcome": "BLOCKED_BY_PROVIDER",
+            "provider_id": "microsoft_agent_framework",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "PROVIDER_NATIVE_APPROVAL_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "microsoft_agent_framework",
+          "provider_invoked": false,
+          "state": "PASS"
+        }
+      ],
+      "contract_state": "CONTRACT_PASS",
+      "native_probe": {
+        "detail": "AgentSession was instantiated and workflow/harness API seams were verified without calling a model.",
+        "provider_id": "microsoft_agent_framework",
+        "raw": {
+          "required_symbols": [
+            "AgentSession",
+            "WorkflowBuilder",
+            "create_harness_agent"
+          ],
+          "session_id": "oleander-msaf-native-smoke",
+          "session_type": "AgentSession",
+          "version": "1.19.0"
+        },
+        "smoke_scope": [
+          "agent_session",
+          "workflow_surface",
+          "harness_factory_surface"
+        ],
+        "state": "NATIVE_PROVIDER_SMOKE_PASS",
+        "version": "1.19.0"
+      },
+      "passed_cases": 9,
+      "provider_id": "microsoft_agent_framework",
+      "total_cases": 9
+    },
+    {
+      "case_results": [
+        {
+          "case_id": "RPC-01-CONTINUE-NOT-RESUME",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-CONTINUE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-CONTINUE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "CONTINUE",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "COMPLETED",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "CONTINUE",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "pydantic_ai_temporal:A-CONTINUE-1:operation",
+              "provider_session_id": "pydantic_ai_temporal:A-CONTINUE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "pydantic_ai_temporal:A-CONTINUE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-02-RESUME-SESSION-NOT-STATE",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RESUME-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-RESUME-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "RESUME",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "COMPLETED",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "intent": "RESUME",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "pydantic_ai_temporal:A-RESUME-1:operation",
+              "provider_session_id": "pydantic_ai_temporal:A-RESUME-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "pydantic_ai_temporal:A-RESUME-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-03-RECOVER-PARTIAL",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-RECOVER-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-RECOVER-1-PROVIDER_EXECUTION_PARTIAL",
+            "event_type": "PROVIDER_EXECUTION_PARTIAL",
+            "intent": "RECOVER",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "PARTIAL",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "RECOVER",
+              "outcome": "PARTIAL",
+              "provider_operation_id": "pydantic_ai_temporal:A-RECOVER-1:operation",
+              "provider_session_id": "pydantic_ai_temporal:A-RECOVER-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "pydantic_ai_temporal:A-RECOVER-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-04-OLEANDER-DENY-WINS",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DENY-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-DENY-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "OLEANDER_ACTION_GUARD_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-05-READONLY-DISCLOSURE-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-DISCLOSE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-DISCLOSE-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "EXTERNAL_DISCLOSURE_NOT_AUTHORIZED",
+            "target_ref": "SECRET-SOURCE-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "project_state_fingerprint_before": "41bed6e3c2c37cc8a82e71891255f7a7ad88e7445b5d29c06edf4f33a9acc5df",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-06-COST-BLAST-RADIUS-DENY",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-COST-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-COST-1-ACTION_GUARD_BLOCKED",
+            "event_type": "ACTION_GUARD_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "BLOCKED_BY_OLEANDER",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "COST_OR_BLAST_RADIUS_NOT_AUTHORIZED",
+            "target_ref": "HEAVY-EXECUTOR-1"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "project_state_fingerprint_before": "f1951863ac96d7aac97d02ecb0f2b136296caa9099e1255e93df140f4d59f2a1",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": false,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-07-PROVIDER-FAILURE-SCOPED",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FAIL-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-FAIL-1-PROVIDER_EXECUTION_FAILED",
+            "event_type": "PROVIDER_EXECUTION_FAILED",
+            "intent": "DEVELOP",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "FAILED",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {
+              "actual_delta": "SIMULATED_BOUNDED_DELTA",
+              "intent": "DEVELOP",
+              "outcome": "FAILED",
+              "provider_operation_id": "pydantic_ai_temporal:A-FAIL-1:operation",
+              "provider_session_id": "pydantic_ai_temporal:A-FAIL-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "pydantic_ai_temporal:A-FAIL-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-08-FORBIDDEN-AUTHORITY-FIELDS-STRIPPED",
+          "checks": {
+            "benign_provider_note_preserved": true,
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-FORGE-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-FORGE-1-PROVIDER_EXECUTION_COMPLETED",
+            "event_type": "PROVIDER_EXECUTION_COMPLETED",
+            "intent": "REVIEW",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "COMPLETED",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {
+              "actual_delta": "NO_MATERIAL_DELTA",
+              "benign_provider_note": "preserve me",
+              "intent": "REVIEW",
+              "outcome": "COMPLETED",
+              "provider_operation_id": "pydantic_ai_temporal:A-FORGE-1:operation",
+              "provider_session_id": "pydantic_ai_temporal:A-FORGE-1:session",
+              "target_ref": "ART-LOCK-1@R7"
+            },
+            "provider_session_id": "pydantic_ai_temporal:A-FORGE-1:session",
+            "reason": null,
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": true,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": true,
+          "state": "PASS"
+        },
+        {
+          "case_id": "RPC-09-PROVIDER-MAY-NARROW",
+          "checks": {
+            "forbidden_authority_fields_absent": true,
+            "intent_preserved": true,
+            "normalized_outcome": true,
+            "project_state_unchanged": true,
+            "provider_invocation_matches_expected": true
+          },
+          "event": {
+            "action_id": "A-PROVIDER-BLOCK-1",
+            "does_not_prove": [
+              "project_state",
+              "project_current",
+              "design_decision",
+              "design_keep",
+              "professional_pass",
+              "promotion",
+              "design_completion"
+            ],
+            "event_id": "EV-pydantic_ai_temporal-A-PROVIDER-BLOCK-1-PROVIDER_APPROVAL_BLOCKED",
+            "event_type": "PROVIDER_APPROVAL_BLOCKED",
+            "intent": "DELEGATE",
+            "observed_at": "2026-09-26T05:43:00Z",
+            "outcome": "BLOCKED_BY_PROVIDER",
+            "provider_id": "pydantic_ai_temporal",
+            "provider_payload": {},
+            "provider_session_id": null,
+            "reason": "PROVIDER_NATIVE_APPROVAL_DENY",
+            "target_ref": "ART-LOCK-1@R7"
+          },
+          "expected_provider_invoked": false,
+          "project_state_fingerprint_after": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "project_state_fingerprint_before": "ef497930ff651e8906cb9036410898bba14348a086b7c5d94b1325806d7c3837",
+          "provider_id": "pydantic_ai_temporal",
+          "provider_invoked": false,
+          "state": "PASS"
+        }
+      ],
+      "contract_state": "CONTRACT_PASS",
+      "native_probe": {
+        "detail": "A deterministic PydanticAI TestModel run and a Temporal ephemeral test environment were executed; no external model credential was used.",
+        "provider_id": "pydantic_ai_temporal",
+        "raw": {
+          "agent_output": "success (no tool calls)",
+          "durability_type": "TemporalDurability",
+          "pydantic_ai_version": "2.51.0",
+          "temporal_environment_type": "_EphemeralServerWorkflowEnvironment",
+          "temporalio_version": "1.33.0"
+        },
+        "smoke_scope": [
+          "deterministic_agent_run",
+          "temporal_durability_capability",
+          "temporal_ephemeral_test_server"
+        ],
+        "state": "NATIVE_PROVIDER_SMOKE_PASS",
+        "version": "pydantic-ai 2.51.0 / temporalio 1.33.0"
+      },
+      "passed_cases": 9,
+      "provider_id": "pydantic_ai_temporal",
+      "total_cases": 9
+    }
+  ],
+  "schema": "oleander.runtime-provider-benchmark.v0.1",
+  "status": "PASS_CANDIDATE_SPIKE"
+}
