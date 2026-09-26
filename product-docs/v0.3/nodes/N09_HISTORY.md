@@ -60,7 +60,9 @@ HIS-F01–F09.
 
 ## Acceptance
 
-History tells a future collaborator **why the design is here**, not merely **what the system did**.\n\n## Atomic Children
+History tells a future collaborator **why the design is here**, not merely **what the system did**.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

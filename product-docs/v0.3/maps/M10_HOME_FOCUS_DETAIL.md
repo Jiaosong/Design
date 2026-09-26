@@ -8,11 +8,13 @@
 
 ```mermaid
 flowchart LR
+    N02G[Design Situation / Brief] --> N02A[Problem when relevant]
+    N02G --> N02B[Current Question]
     N01A[Resume Snapshot] --> N01B[Frontier]
     N01C[Critical Open] --> N01B
     N01D[Active Artifact] --> N01A
     N01B --> N01E[Next Action]
-    N02A[Problem] --> N02B[Current Question]
+    N02A --> N02B
     N02C[Design Value] --> N02B
     N02D[Constraint / Assumption] --> N02B
     N02B --> N02E[Success Condition]
@@ -22,4 +24,4 @@ flowchart LR
 
 ## Reading Rule
 
-沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.1.md)。
+沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.2.md)。

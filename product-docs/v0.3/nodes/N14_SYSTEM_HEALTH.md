@@ -55,7 +55,9 @@ It should not expose raw infrastructure logs as the primary UX.
 
 ## Acceptance
 
-A dependency outage cannot silently turn into false product success or global project failure.\n\n## Atomic Children
+A dependency outage cannot silently turn into false product success or global project failure.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

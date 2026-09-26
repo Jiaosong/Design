@@ -57,7 +57,9 @@ MAP-F01–F11: Relation Create/Link/Importance/Stability, Change Impact, Whole/L
 - only material relations become first-class;
 - change does not imply global reopen;
 - unknown dependency remains UNKNOWN;
-- unaffected valid work is explicitly preserved.\n\n## Atomic Children
+- unaffected valid work is explicitly preserved.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

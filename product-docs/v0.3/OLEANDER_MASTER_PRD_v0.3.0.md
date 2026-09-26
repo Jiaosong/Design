@@ -8,6 +8,7 @@
 **Target release:** External Pilot — date TBD
 **Last updated:** 2026-09-26
 **Detailed functional baseline:** [PRD v0.2.0](../OLEANDER_DESIGN_COLLABORATION_PRD_v0.2.0.md)
+**Current content delta:** [Requirement Delta v0.3.2](OLEANDER_REQUIREMENT_DELTA_v0.3.2.md)
 **Traceability:** [v0.2 Matrix](../OLEANDER_PRD_TRACEABILITY_MATRIX_v0.2.0.md)
 
 ---
@@ -18,8 +19,8 @@ Detailed product-node definitions now live in the node graph:
 
 - [Product Node Graph](nodes/README.md)
 - [Atomic Node Index](nodes/ATOMIC_NODE_INDEX.md)
-- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.1.md)
-- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.1.md)
+- [Node Traceability Matrix](nodes/NODE_TRACEABILITY_MATRIX_v0.3.2.md)
+- [Node Relation Schema](nodes/NODE_RELATION_SCHEMA_v0.3.2.md)
 - [Visual Product Maps](maps/README.md)
 
 ```mermaid
@@ -41,8 +42,9 @@ mindmap
       RESUME_RECOVER
       HUMAN_STEER
       AUTONOMY_HUMAN_STOP
-      MUTATION_GUARD
+      ACTION_GUARD
       CONTINUITY_CLOSURE
+      DESIGNER_DEVELOPMENT
     PEOPLE_AUTHORITY
     INTEGRATIONS
     SETTINGS
@@ -88,15 +90,16 @@ mindmap
 是否以以下 P0 loop 作为 OLEANDER v1 的唯一 launch-critical core：
 
 ```text
-RESUME VERIFIED FRONTIER
-→ FRAME / RECOVER CURRENT QUESTION
-→ EXPLORE MATERIAL ALTERNATIVES
-→ MAKE REAL EDITABLE ARTIFACT
-→ READBACK
-→ HUMAN STEER WHEN CONSEQUENTIAL
-→ SECOND-ROUND DELTA
-→ READBACK
-→ CONTINUE NEXT SESSION
+RESUME / FRAME DESIGN SITUATION
+→ RESOLVE CURRENT QUESTION / ACTIVE DIRECTION SET
+→ MAP SEARCH SPACE
+→ EXPLORE + AI TRIAGE MATERIAL ALTERNATIVES
+→ COMPARE / HUMAN DECISION WHEN CONSEQUENTIAL
+→ DEVELOP OR SYNTHESIZE
+→ MAKE REAL EDITABLE ARTIFACT WITH INTENDED DELTA
+→ OBSERVE ACTUAL DELTA + READBACK
+→ WHOLE-DESIGN CHECK / LOCAL RECOVERY
+→ CONTINUE CURRENT SESSION OR RESUME NEXT SESSION
 ```
 
 ## Why this cut
@@ -106,6 +109,7 @@ RESUME VERIFIED FRONTIER
 2. AI autonomy 可以在 Human authority 内提高效率；
 3. design decision 需要真实 artifact，而不是文本建议；
 4. readback / lineage 可以提升长期信任。
+5. AI co-design 的价值不仅是 continuity，还包括 search-space coverage、option triage、synthesis 和 real artifact action。
 
 ## Explicitly deferred
 
@@ -157,7 +161,7 @@ RESUME VERIFIED FRONTIER
 高影响 value / authority / irreversible decision 保留给 Human。
 
 ## G4 Material exploration
-候选真正改变 mechanism / relation / consequence。
+AI 先识别关键 search-space dimensions / gaps，再形成真正改变 mechanism / relation / consequence 的候选，并在 Human 判断前去除明显弱/重复分支。
 
 ## G5 Reality loop
 重要 design claim 绑定真实 artifact / revision / readback。
@@ -168,13 +172,19 @@ RESUME VERIFIED FRONTIER
 ## G7 Cross-domain portability
 同一 interaction kernel 至少在两个不同专业领域成立，同时保留 domain-native process。
 
+## G8 Co-design progression
+AI 不只维持项目状态，还能通过 synthesis、persistent Design Decision、real artifact action 和 whole-design check 推动真实设计 resolution。
+
+## G9 Designer development without profiling
+在需要时解释 reasoning / trade-off / failure / evidence consequence，但不从普通 steering 建立永久 competence / psychological profile。
+
 ---
 
 # 4｜Success Criteria
 
 所有数值阈值在外部 pilot 前冻结。当前只定义 metric contract，不伪造目标。
 
-## Launch-critical outcome
+## Launch-critical outcome pair
 
 **VPCR — Verified Productive Continuation Rate**
 
@@ -184,6 +194,18 @@ RESUME VERIFIED FRONTIER
 3. 至少一个 frontier-aligned next action 完成；
 4. material artifact mutation 有 actual readback；
 5. session 无 unauthorized action。
+
+**DRPR — Design Resolution Progress Rate**
+
+Eligible design session 至少推进一个 materially important Design Question / unknown / decision object，并且推进证据来自以下一种或多种：
+- search-space gap → materially distinct direction；
+- AI triage → Human attention 聚焦真实 trade-off；
+- persistent Design Decision created / updated / reopened；
+- intended artifact delta → actual delta → readback；
+- whole-design contradiction detected and scoped；
+- synthesis 形成新的 coherent direction，并保留 inheritance/conflict trace。
+
+DRPR 不评价“设计好不好”的单一分数；它只判断是否发生了**可追踪的设计 resolution progress**。
 
 ## Launch-blocking guardrails
 
@@ -229,11 +251,15 @@ Domain professional / integrator participating in a shared design project.
 | Rank | Use Case | Why launch-critical | Scope |
 |---|---|---|---|
 | UC-01 | Resume long-running project | Core differentiation | P0 |
+| UC-01B | Frame new project / major brief as Design Situation | Prevents forced problem framing | P0 |
 | UC-02 | Continue reversible work | Tests autonomy | P0 |
-| UC-03 | Explore distinct directions | Tests design value | P0 |
+| UC-03 | Map search space, explore and triage distinct directions | Tests AI co-design value | P0 |
 | UC-04 | Human SELECT / MODIFY / MIX / REJECT / DEFER | Tests control | P0 |
-| UC-05 | Real artifact + readback | Tests trust | P0 |
+| UC-04B | Persist Design Decision across sessions | Tests decision continuity | P0 |
+| UC-05 | Real artifact action + actual delta + readback | Tests trust and execution truth | P0 |
 | UC-06 | Repair without reset | Tests continuity | P0 |
+| UC-06B | Whole-design check after local development | Tests coherence | P0 |
+| UC-06C | Synthesize promising branches into a new direction | Tests generative collaboration | P0 |
 | UC-07 | Reframe problem | Tests design intelligence | P1 |
 | UC-08 | Multi-domain change impact | Tests integration | P1 |
 | UC-09 | Independent review | Tests quality system | P1 |
@@ -248,18 +274,24 @@ Domain professional / integrator participating in a shared design project.
 ## IN
 
 - Project Resume
+- Design Situation / Brief framing
 - Current Design Question / Frontier
 - Design Value / Constraint / Assumption distinction
-- Material option exploration
+- Search-space map / gap detection
+- Material option exploration + AI triage
 - Compare mode
+- persistent Design Decision object
+- Design Synthesis
 - typed/revisioned Human steering
 - Native/editable artifact binding
+- Artifact Action / intended delta / actual delta / diff
 - revision identity
 - actual readback
+- whole-design check
 - critique → action
 - local revision scope
 - reversible auto-advance
-- mutation guard
+- Action Guard covering write + external read/disclosure + cost/blast-radius boundaries
 - session reconstruction
 - separated closure
 
@@ -292,7 +324,7 @@ A feature enters P0 only if removing it makes one of these impossible:
 
 User should understand:
 - Current Question
-- Current Direction
+- Current Direction / Active Direction Set
 - Frontier
 - Active Artifact
 - Critical Open
@@ -308,9 +340,11 @@ User should not need:
 
 Act automatically when:
 - action is reversible；
+- action is recoverable or has an acceptable bounded failure mode；
 - scope is known；
 - owner rule permits；
 - current carrier is fresh；
+- no sensitive external disclosure / material cost or blast-radius escalation is crossed；
 - no Human-only decision is crossed。
 
 ## 8.3 When AI should stop
@@ -320,6 +354,8 @@ Stop when:
 - Human-only value decision exposed；
 - authority escalation；
 - irreversible / external publish；
+- sensitive external read / disclosure requiring explicit permission；
+- material cost / blast-radius escalation；
 - specialist review required；
 - multi-human rights conflict；
 - no truthful artifact substitute；
@@ -369,20 +405,35 @@ Multiple viable directions may remain open.
 ## AI-10 Domain humility
 OPEN professional process cannot produce professional PASS.
 
+## AI-11 Search-space awareness
+AI should identify important unexplored mechanism/relation regions before declaring exploration sufficient.
+
+## AI-12 Option triage
+AI should remove obvious duplicates / hard-constraint failures / unsupported weak branches before Human review, while preserving lineage and real value trade-offs.
+
+## AI-13 Synthesis
+AI may generate a new coherent direction from multiple valid branches/evidence/constraints, but must show inherited / transformed / new / discarded elements and unresolved conflicts.
+
+## AI-14 Artifact action truth
+Before a material artifact change, intended delta is explicit; after execution, actual delta + revision + readback are observed.
+
+## AI-15 Whole-design return
+Local success cannot become whole-design success without checking affected relations, requirements, domain impacts and new contradictions.
+
 ---
 
 # 10｜Functional Requirement Baseline
 
-The detailed 141 feature-level requirements remain in v0.2 Feature Specs.
+The detailed 141 feature-level requirements remain as the v0.2 baseline. New/changed v0.3.2 behaviours are added through the Requirement Delta and Atomic Node Docs rather than rewriting historical v0.2 evidence.
 
 For v0.3 release management they are grouped into release Epics:
 
 | Epic | Product areas | Release priority |
 |---|---|---|
 | EP-01 Resume & Current | HOME / FOCUS / HISTORY / Session | P0 |
-| EP-02 Explore & Compare | STUDIO / COMPARE | P0 |
-| EP-03 Artifact Reality Loop | ARTIFACTS / REVIEW | P0 |
-| EP-04 Human Control | Session Kernel / PEOPLE | P0 |
+| EP-02 Explore / Triage / Synthesize / Compare | STUDIO / COMPARE | P0 |
+| EP-03 Artifact Action & Reality Loop | ARTIFACTS / REVIEW / INTEGRATIONS | P0 |
+| EP-04 Human Control & Action Guard | Session Kernel / PEOPLE | P0 |
 | EP-05 Local Recovery | MAP / REVIEW / HISTORY | P0 |
 | EP-06 Knowledge Boundaries | KNOWLEDGE / FOCUS | P1 |
 | EP-07 Domain Integration | MAP / Domain Adapter | P1 |
@@ -428,7 +479,7 @@ Required launch telemetry:
 - resume start / resolve / correction
 - action classification
 - Human stop
-- mutation guard
+- action guard
 - artifact revision
 - readback
 - Human steer
@@ -481,7 +532,7 @@ Launch-critical:
 - artifact identity / revision
 - readback surface
 - Human action parser
-- mutation guard
+- action guard
 - telemetry
 - at least one authentic domain workflow
 - external pilot recruitment
@@ -556,6 +607,8 @@ Detailed status: [Launch Readiness Review](OLEANDER_LAUNCH_READINESS_REVIEW_v0.3
 | OD-07 | Pilot success thresholds | Product / Analytics | pilot start |
 | OD-08 | Support / incident model | Product / Ops | beta |
 | OD-09 | Pricing / business model | Product / Business | post-value validation |
+| OD-10 | v0.3.2 content → runtime/system alignment order and owner | Product / Eng / AI | next system revision |
+| OD-11 | DRPR evaluation protocol that avoids synthetic design-quality scoring | Product / Research / Domain | pilot metric freeze |
 
 ---
 
@@ -566,11 +619,16 @@ Product definition hierarchy:
 ```text
 Working Backwards Brief
 → Master PRD
-→ v0.2 Feature Specs
-→ Traceability Matrix
+→ Product Node Graph
+→ Atomic Node Docs
+→ v0.3.2 Requirement Delta
+→ v0.2 Feature Specs / historical detailed baseline
+→ v0.3.2 Node Traceability Matrix
 → Metrics / Experiments
 → Roadmap
 → Launch Readiness
 ```
 
 Architecture / Project Truth hierarchy remains owned by OLEANDER governance/runtime and is not changed by this PRD.
+
+**Implementation parity note:** v0.3.2 content changes are product requirements first. They do not imply the current runtime/system already implements Search-space Map, AI Option Triage, Design Synthesis, persistent Design Decision, Artifact Action, expanded Action Guard, Validation Levels or Designer Development. System alignment must be reviewed and implemented separately.

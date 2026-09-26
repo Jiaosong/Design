@@ -9,7 +9,7 @@
 | Type | Kernel Node |
 | Product job | 把 Human design steering 绑定到精确对象、revision 与 lineage |
 | Inputs | raw Human message + active decision object/options |
-| Outputs | clause-scoped steer acts |
+| Outputs | clause-scoped steer acts + route to persistent Design Decision when consequential |
 | Authority | Human source required; higher authority routes remain external |
 | Primary metric | False Steering / Second-round Fidelity |
 | Release priority | P0 |
@@ -47,6 +47,8 @@ flowchart LR
     P --> M[MIX B + C]
     R --> L[Preserve A lineage]
     M --> N[New multi-parent branch]
+    R --> D[N04E Design Decision]
+    N --> D
 ```
 
 ## Second-round Proof
@@ -67,6 +69,7 @@ flowchart LR
 - MIX requires ≥2 resolvable parents;
 - REJECT preserves branch;
 - DEFER requires a pending decision and normally creates no design delta;
+- consequential SELECT / MODIFY / MIX / REJECT / DEFER creates or updates N04E Design Decision rather than remaining only a session steer event;
 - ambiguous consequential referent = zero mutation + one minimum clarification.
 
 ## Events

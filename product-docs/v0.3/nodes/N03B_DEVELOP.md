@@ -5,7 +5,7 @@
 | Field | Value |
 |---|---|
 | Node ID | N03B |
-| Children | N03B1, N03B2, N03B3, N03B4 — see [Atomic Children](#atomic-children) |
+| Children | N03B1, N03B2, N03B3, N03B4, N03B5 — see [Atomic Children](#atomic-children) |
 | Parent | N03 |
 | Type | Studio Mode |
 | Product job | 把选定方向推进到更高真实专业分辨率 |
@@ -16,19 +16,20 @@
 | Release priority | P0 |
 | Doc state | WORKING |
 
-## Development Ladder
+## Shared Development Loop
 
 ```mermaid
 flowchart LR
-    C[Concept] --> R[Relation]
-    R --> G[Geometry / Behaviour]
-    G --> D[Dimension / State]
-    D --> T[Detail / Implementation]
-    T --> P[Performance / Operation]
-    P --> V[Verification / Validation]
+    C[Current maturity] --> G[Maturity gap]
+    G --> A[Domain adapter]
+    A --> F[Next resolution move]
+    F --> N[Native / editable artifact delta]
+    N --> R[Readback]
+    R --> W[Whole-design check]
+    W --> C
 ```
 
-Not every domain follows the same literal ladder; this is a resolution view, not a universal stage model.
+The shared layer does **not** prescribe Concept → Geometry → Dimension → Detail as a universal ladder. Architecture, physical product, digital product, brand, visual and CMF use domain-native resolution models through N03B3.
 
 ## Feature Nodes
 
@@ -58,9 +59,13 @@ flowchart TD
 
 A development action specifies target relation, intended improvement, artifact target, readback method and domain owner when relevant.
 
+Every material development cycle must return to the whole design before the change is treated as coherent progress.
+
 ## Guardrail
 
-Professional depth cannot be inferred from document count or visual finish.\n\n## Atomic Children
+Professional depth cannot be inferred from document count or visual finish.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB
@@ -69,9 +74,11 @@ flowchart TB
     P --> N03B2[N03B2 DEVELOPMENT FRONTIER]
     P --> N03B3[N03B3 DOMAIN ADAPTER]
     P --> N03B4[N03B4 INTENT CHECK]
+    P --> N03B5[N03B5 WHOLE-DESIGN CHECK]
 ```
 
 - [N03B1｜MATURITY GAP](atomic/N03B1_MATURITY_GAP.md)
 - [N03B2｜DEVELOPMENT FRONTIER](atomic/N03B2_DEVELOPMENT_FRONTIER.md)
 - [N03B3｜DOMAIN ADAPTER](atomic/N03B3_DOMAIN_ADAPTER.md)
 - [N03B4｜INTENT CHECK](atomic/N03B4_INTENT_CHECK.md)
+- [N03B5｜WHOLE-DESIGN CHECK](atomic/N03B5_WHOLE_DESIGN_CHECK.md)

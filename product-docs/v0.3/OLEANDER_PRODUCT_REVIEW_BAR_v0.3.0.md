@@ -99,12 +99,20 @@ PASS_WORKING when:
 - model uncertainty is bounded；
 - authoritative sources are explicit；
 - actions bind exact referents；
+- exploration checks meaningful search-space gaps rather than only option count；
+- AI triage preserves real Human value trade-offs；
+- synthesis preserves lineage and unresolved conflict；
+- artifact execution can compare intended delta with actual delta；
+- Action Guard covers sensitive external read/disclosure as well as writes；
 - eval dimensions are defined；
 - fallback exists；
 - model/provider changes trigger regression。
 
 RED FLAGS:
 - “model confidence” used as authority；
+- many generated alternatives treated as exploration coverage；
+- AI silently removes a branch whose weakness depends on Human value judgment；
+- synthesis is only copy/paste MIX with no coherent mechanism；
 - LLM evaluator is only source of truth；
 - no false-completion test；
 - no stale-state test。
@@ -114,7 +122,7 @@ RED FLAGS:
 # 7｜Bar 6 — Metrics
 
 PASS_WORKING when:
-- North Star measures user outcome；
+- outcome metric(s) measure user value rather than model activity；
 - formula has numerator/denominator；
 - eligibility/exclusion defined；
 - guardrails exist；
@@ -125,7 +133,9 @@ RED FLAGS:
 - generated output count；
 - token count；
 - session length；
-- internal test pass presented as customer value。
+- internal test pass presented as customer value；
+- VPCR used as if continuity alone proves better design progress；
+- DRPR converted into a synthetic design-quality score。
 
 ---
 
@@ -210,8 +220,10 @@ This is descriptive, not a score.
 - artifact/readback thinking
 - failure / degraded semantics
 - candidate interaction testing
+- v0.3.2 co-design content model: Search-space / Triage / Synthesis / Decision / Artifact Action / Whole-design Check
 
 **Material gaps before large-company product bar**
+- v0.3.2 product-content → runtime/system parity
 - external customer evidence
 - market/competitive evidence
 - frozen pilot thresholds

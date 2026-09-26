@@ -56,44 +56,59 @@ The sequence deliberately avoids building team/cloud/platform breadth before cor
 
 # 3｜Milestone M0 — Internal Reference Kernel
 
-**Objective**  
-Prove interaction semantics and owner-native continuity in controlled conditions.
+**Objective**
+Prove interaction semantics, owner-native continuity and the v0.3.2 co-design content model in controlled conditions.
 
 **In scope**
 - four-axis input model
+- CONTINUE / RESUME / RECOVER separation
+- Design Situation / Brief framing
+- search-space mapping
+- AI option triage
 - typed/revisioned referents
 - compound Human actions
 - branch lineage
-- mutation guard
+- persistent Design Decision
+- generative Design Synthesis
+- action guard
 - computed Human stop
-- artifact/readback proof
+- Artifact Action intended/actual delta + readback proof
+- whole-design check
 - domain adapters
 - deterministic regression
 
 **Exit**
 - no known action-level collapse
-- stale mutation path blocked
+- stale/unauthorized consequential action path blocked
+- current-session CONTINUE does not unnecessarily trigger full RESUME
+- search-space / triage / synthesis reference cases exist
+- persistent Decision survives session reconstruction in reference cases
+- Artifact Action can prove intended delta → actual delta → readback
+- whole-design regression reference case exists
 - reference fixtures pass
 - real-artifact reference cases exist
 - known partials explicitly recorded
 
 **Current state**
-Substantial candidate evidence exists; not equivalent to external product validation.
+Substantial candidate evidence exists for the pre-v0.3.2 interaction/runtime baseline. v0.3.2 content-delta system parity—especially Search-space Map, AI Option Triage, persistent Design Decision, generative Synthesis, Artifact Action intended/actual delta, broader Action Guard and Whole-design Check—remains **OPEN** until the system is revised and rereviewed. None of this is equivalent to external product validation.
 
 ---
 
 # 4｜Milestone M1 — Single-designer Closed Pilot
 
-**Objective**  
-Prove VPCR and reality loop with external designers.
+**Objective**
+Prove VPCR + DRPR and the Human–AI co-design/reality loop with external designers.
 
 **P0 scope**
 - HOME Resume
-- FOCUS Current Question
-- STUDIO Explore
+- FOCUS Design Situation + Current Question
+- STUDIO Search-space / Explore / AI Triage
 - COMPARE
+- persistent Design Decision
 - Human steer
-- Artifact + Readback
+- Develop / Synthesize
+- Artifact Action + Readback
+- Whole-design Check
 - Local revision
 - Session resume
 - telemetry
@@ -108,7 +123,10 @@ Prove VPCR and reality loop with external designers.
 - frozen pilot metrics evaluated
 - no launch-blocking guardrail violation
 - at least one user successfully completes cross-session Human-steered artifact loop
+- at least one user completes a search-space → triage → decision/develop/synthesis → artifact/readback loop
+- DRPR can be evaluated without using a synthetic design-quality score
 - qualitative evidence that Resume provides value
+- qualitative evidence that triage/synthesis reduces orchestration or improves design progress rather than adding ceremony
 - major UX friction documented
 
 **Decision after M1**
@@ -118,7 +136,7 @@ Continue / iterate / reframe.
 
 # 5｜Milestone M2 — Cross-domain Transfer
 
-**Objective**  
+**Objective**
 Prove interaction kernel transfers without flattening professional process.
 
 **Scope**
@@ -137,7 +155,7 @@ Prove interaction kernel transfers without flattening professional process.
 
 # 6｜Milestone M3 — Longitudinal Continuity
 
-**Objective**  
+**Objective**
 Prove value persists over time, not just demo sessions.
 
 **Scope**
@@ -157,7 +175,7 @@ Prove value persists over time, not just demo sessions.
 
 # 7｜Milestone M4 — Multi-human Collaboration
 
-**Objective**  
+**Objective**
 Test scoped decision rights across Designer / Client / Specialist / Reviewer.
 
 **Scope**
@@ -177,7 +195,7 @@ Test scoped decision rights across Designer / Client / Specialist / Reviewer.
 
 # 8｜Milestone M5 — Productized Beta
 
-**Objective**  
+**Objective**
 Make product safe and supportable for broader use.
 
 **Required before entry**
@@ -230,7 +248,7 @@ No pricing is specified before value validation.
 - readback
 - local recovery
 - safe auto-advance
-- mutation guard
+- action guard
 - telemetry
 
 ## P1 — Strong Product Value

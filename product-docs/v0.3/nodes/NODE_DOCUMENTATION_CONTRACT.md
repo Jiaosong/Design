@@ -1,4 +1,4 @@
-# OLEANDER Node Documentation Contract v0.3.1
+# OLEANDER Node Documentation Contract v0.3.2
 
 [← Node Index](README.md)
 
@@ -122,7 +122,7 @@ Feature 只有同时满足以下条件才提升为 Atomic Node：
 
 总览 README 只做地图索引。复杂关系分别维护为 Product Mindmap、Human–AI Loop、Autonomy × Control、Artifact Truth Chain、Decision Chain、Release Gates、Atomic Detail Maps 等独立 Mermaid 文档。
 
-地图是关系视图，不是 authority。边类型必须遵守 [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.1.md)。
+地图是关系视图，不是 authority。边类型必须遵守 [Node Relation Schema](NODE_RELATION_SCHEMA_v0.3.2.md)。
 
 ---
 

@@ -2,8 +2,8 @@
 
 [← v0.3 Package](README.md)
 
-**State:** `WORKING BACKWARDS / INTERNAL PRODUCT DEFINITION / NON-LAUNCH CLAIM`  
-**Date:** 2026-09-26  
+**State:** `WORKING BACKWARDS / INTERNAL PRODUCT DEFINITION / NON-LAUNCH CLAIM`
+**Date:** 2026-09-26
 **Product Owner:** Jiaosong
 
 > 本文是 Working Backwards 产品定义材料，不是对外发布公告，不表示产品已经商业上线。
@@ -48,10 +48,12 @@ mindmap
 
 > **需要持续数天、数周或数月，与 AI 一起完成复杂专业设计工作的设计负责人 / 设计师。**
 
-首批验证领域：
+候选验证领域：
 - Architecture / Spatial
 - Digital Product / HCD
 - Physical Product
+
+External Pilot 的单一 beachhead domain 仍为 **OPEN / TO SELECT**；不能把三个候选领域同时写成已经确定的首发市场切口。
 
 后续扩展：
 - Visual / Brand / CMF
@@ -66,16 +68,17 @@ mindmap
 2. 项目状态散落在聊天、文件、工具、模型记忆中；
 3. AI 要么太被动，要么越权；
 4. 方案多但 mechanism 差异弱；
-5. 真实 editable artifact 与讨论脱节；
-6. tool success 被误认为 design success；
-7. 事实、推断、假设、设计判断混淆；
-8. 多专业 change impact 不透明；
-9. 失败后容易全局重做；
-10. 用户必须承担大量 orchestration / context reconstruction。
+5. AI 往往直接生成候选，却不会判断 search space 是否覆盖关键机制，也不会先替 Human 去除明显弱/重复方案；
+6. 真实 editable artifact 与讨论脱节，设计意图与实际 artifact delta 之间缺少可核对的 make/edit contract；
+7. tool success 被误认为 design success；
+8. 事实、推断、假设、设计判断混淆；
+9. 多专业 change impact 不透明；
+10. 失败后容易全局重做；
+11. 用户必须承担大量 orchestration / context reconstruction。
 
 ## Customer Promise
 
-> **重新进入项目时不用重新解释；需要探索时 AI 主动形成真正不同的方向；需要制作时进入真实 artifact；需要决定时把 trade-off 交给人；执行之后必须 read back；下一次还能准确继续。**
+> **重新进入项目时不用重新解释；面对新 brief 时能形成真实 Design Situation；探索时 AI 先理解 search space、主动形成并筛选真正不同的方向；需要时能综合出新的 coherent direction；制作时进入真实 artifact 并核对 intended/actual delta；需要决定时把真实 trade-off 交给人；执行之后必须 read back；下一次还能准确继续。**
 
 ## Product Bet
 
@@ -85,7 +88,10 @@ mindmap
 Design Question
 + Design Value
 + Design Relation
++ Search Space
++ Design Decision
 + Native Artifact
++ Artifact Action / Delta
 + Human Decision Boundary
 + Readback
 + Continuity
@@ -108,7 +114,7 @@ OLEANDER 不与 CAD / BIM / Figma / IDE 争夺 authoring surface。
 
 > **把设计判断、关系、真实产物、Human authority、证据和长期 continuity 连成一个协作系统。**
 
-## North Star
+## Product Outcome Pair
 
 **Verified Productive Continuation Rate (VPCR)**
 
@@ -118,10 +124,23 @@ OLEANDER 不与 CAD / BIM / Figma / IDE 争夺 authoring surface。
 3. 本次 session 至少完成一个与 frontier 一致的 material next step；
 4. 如果产生 artifact change，存在有效 readback。
 
+VPCR 回答“**能不能正确继续**”，但不能单独代表 Human–AI Co-Design 的产品价值。
+
+**Design Resolution Progress Rate (DRPR)**
+
+eligible design session 中，至少一个 materially important Design Question / unknown / decision object 获得可追踪的真实推进，例如：
+1. search-space gap 被发现并形成新的 materially distinct direction；
+2. weak/redundant option 被合理 triage，Human attention 聚焦到真实 trade-off；
+3. consequential Design Decision 被建立/更新；
+4. real artifact intended delta → actual delta → readback 形成闭环；
+5. whole-design check 发现并处理局部优化造成的新矛盾。
+
+DRPR **不是 Design Quality Score**，也不允许 AI 用单一分数宣称设计“更好”。
+
 ## Current Stage
 
-- Product definition: advanced working baseline
-- Candidate implementation: available
+- Product definition: v0.3.2 working content baseline
+- Candidate implementation: v0.3.1-era candidate available; **v0.3.2 content → system alignment OPEN**
 - Internal deterministic evaluation: substantial
 - Real artifact trials: available
 - External user validation: insufficient / OPEN
@@ -184,23 +203,23 @@ Chat memory 可以辅助，不拥有项目 truth。
 
 ## Customer before
 
-一个设计师使用通用 AI 做复杂项目。第一天效果很好；几天后，新会话不知道哪个方案有效、哪个文件是 Current。设计师反复解释背景。AI 根据最后一句话错误理解“继续”，或过早选择方向。生成结果看起来完成，但没有进入 CAD / HTML / model 的真实 editable source。工具调用成功后，系统说“完成”，设计师仍必须自己重新检查。
+一个设计师使用通用 AI 做复杂项目。第一天效果很好；几天后，新会话不知道哪个方案有效、哪个文件是 Current。设计师反复解释背景。AI 根据最后一句话错误理解“继续”，或过早选择方向。它给出多个看似不同的方案，却没有判断 search space 是否真的被覆盖，也不会先淘汰弱/重复方向。生成结果看起来完成，但没有进入 CAD / HTML / model 的真实 editable source，或者没有说明 intended delta 与 actual delta。工具调用成功后，系统说“完成”，设计师仍必须自己重新检查。
 
 ## Customer after
 
 设计师进入 OLEANDER，只看到：
 - Current Design Question；
-- Current Direction；
+- Current Direction / Active Direction Set；
 - Current Frontier；
 - Active Artifact；
 - Critical Open；
 - Next High-value Action。
 
-AI 在低风险、可逆范围继续探索和制作；当出现真正需要价值判断的 trade-off 时才停止。用户可以说“选 B”“不要 A，结合 B/C”“这个不对”。系统把这些话绑定到明确 revision / lineage。修改后重新打开真实 artifact 做 readback。第二天重新进入时，项目从 owner-native frontier 继续，而不是从聊天历史猜。
+AI 在低风险、可逆范围继续探索和制作；它先检查重要 search-space gap、去除明显弱/重复候选，需要时从多个方向形成新的 synthesis。当出现真正需要价值判断的 trade-off 时才停止。用户可以说“选 B”“不要 A，结合 B/C”“这个不对”。系统把这些话绑定到持续存在的 Design Decision 与明确 revision / lineage。修改时记录 intended delta，执行后核对 actual delta，再重新打开真实 artifact 做 readback，并回到 whole-design check。第二天重新进入时，项目从 owner-native frontier 继续，而不是从聊天历史猜。
 
 ## Delight Moment
 
-> 用户第一次在新的会话里只说“继续”，系统准确恢复项目并完成正确的下一步，而不需要用户重新解释“我们上次做到哪里”。
+> 用户第一次在新的会话里只说“继续”，系统先准确 RESUME 项目，再沿恢复后的 frontier CONTINUE 正确下一步，而不需要用户重新解释“我们上次做到哪里”。
 
 ---
 
@@ -246,7 +265,7 @@ OLEANDER 应维护：
 
 ## Q4｜产品最重要的 MVP 假设是什么？
 
-> **如果系统能正确恢复 Design Question / Relation / Artifact frontier，并在不越权的前提下完成 Human-steered second round，用户是否明显减少 context reconstruction 并提高长期协作信任？**
+> **如果系统能正确恢复 Design Question / Relation / Artifact frontier，并能主动发现探索空白、筛掉弱方案、形成真实 Design Decision、完成 Human-steered artifact delta + readback，用户是否明显减少 orchestration/context reconstruction，同时获得更有效的设计推进？**
 
 ## Q5｜为什么现在不能宣称已经 Product-Market Fit？
 
@@ -295,6 +314,8 @@ OLEANDER 应维护：
 - Human corrections 明显低于 baseline workflow；
 - 至少两个 domain 证明同一 interaction model 可复用；
 - Human-steered second round 可稳定形成真实 delta + readback；
+- Search Space / AI Triage 不把 Human attention 浪费在明显重复或无效候选上；
+- 至少一类真实项目能证明 synthesis / whole-design check 对设计推进有实际价值；
 - plugin/session replacement 不破坏 Current；
 - pilot 用户愿意在下一项目继续使用。
 
@@ -310,6 +331,8 @@ OLEANDER 应维护：
 | A-02 | Users accept explicit Current/Frontier semantics | UX burden too high | prototype test |
 | A-03 | Auto-advance reversible work increases value | AI feels unsafe / annoying | controlled workflow test |
 | A-04 | Material alternatives improve design decisions | More work, no better decisions | compare study |
+| A-04B | Search-space mapping + AI triage reduces Human review burden without hiding real trade-offs | AI overfilters / misses novelty | blinded option review |
+| A-04C | Synthesis creates useful emergent directions beyond simple MIX | added complexity, no design value | synthesis compare study |
 | A-05 | Mandatory readback increases trust enough to justify latency | UX becomes slow | task completion study |
 | A-06 | Relation/dependency semantics can be mostly system-maintained | Map becomes admin burden | longitudinal pilot |
 | A-07 | Cross-domain kernel transfers without flattening domains | universalism failure | ≥2 domain exercise |

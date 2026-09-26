@@ -11,7 +11,7 @@ flowchart LR
     KN[N08A Knowledge Need] --> SE[N08B Source / Evidence]
     SE --> AL[N08C Applicability / Limitation]
     SE --> EC[N08D Contradiction]
-    AL --> CC[N08E Claim Ceiling]
+    AL --> CC[N08E Evidence Claim Ceiling]
     EC --> CC
     DH[N09A Decision History] --> RP[N09C Resume Point]
     RD[N09B Rejected Direction Memory] --> RP
@@ -22,4 +22,4 @@ flowchart LR
 
 ## Reading Rule
 
-沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.1.md)。
+沿图进入 Node Docs 阅读 behaviour、acceptance、authority、metric 和 open questions；不要把图中的箭头解释成 ownership，边语义见 [Node Relation Schema](../nodes/NODE_RELATION_SCHEMA_v0.3.2.md)。

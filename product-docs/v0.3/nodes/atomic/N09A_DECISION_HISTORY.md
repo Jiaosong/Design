@@ -8,7 +8,7 @@
 | Parent | N09 HISTORY |
 | Type | Atomic Continuity Node |
 | Product job | 保存 consequential decision 的 actor、basis、accepted cost 与 reopen condition |
-| Inputs | Human decision; Rationale; Reopen condition |
+| Inputs | N04E Design Decision; Rationale; Reopen condition |
 | Outputs | Decision history entry |
 | Authority | History preserves; does not alter original authority |
 | Primary metric | Decision Trace Completeness |
@@ -19,7 +19,7 @@
 
 ```mermaid
 flowchart LR
-    I0[Human decision] --> N[N09A DECISION HISTORY]
+    I0[N04E Design Decision] --> N[N09A DECISION HISTORY]
     I1[Rationale] --> N[N09A DECISION HISTORY]
     I2[Reopen condition] --> N[N09A DECISION HISTORY]
     N --> O0[Decision history entry]
@@ -27,7 +27,7 @@ flowchart LR
 
 ## Product Contract
 
-历史记录为什么这样走，而不是只记录‘选了 B’。
+History is a durable explanatory view of the Design Decision. It preserves why the project moved this way, but does not own or recreate the Decision object.
 
 ## Requirement Links
 
@@ -50,5 +50,5 @@ flowchart LR
 
 ## Relations
 
-- Consumes N04C/N04D
+- Consumes N04E/N04C/N04D
 - Feeds N10A

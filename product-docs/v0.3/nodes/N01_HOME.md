@@ -10,7 +10,7 @@
 | Type | Product Surface |
 | User | Returning designer / lead |
 | Product job | 在最短路径内恢复当前真实设计状态 |
-| Inputs | Current Question, Direction, Frontier, Artifact, Critical Open, recent material changes |
+| Inputs | Current Question, Current Direction / Active Direction Set, Frontier, Artifact, Critical Open, recent material changes |
 | Outputs | Resume Snapshot, Next Action |
 | Authority | Read/projection; mutation via Session Kernel + owner rules |
 | Primary metric | Resume Accuracy / VPCR |
@@ -36,7 +36,7 @@ flowchart LR
 
 ```text
 Current Question
-Current Direction
+Current Direction / Active Direction Set
 Current Frontier
 Critical Open
 Active Artifact
@@ -65,7 +65,7 @@ sequenceDiagram
     participant C as Owner-native Current
     U->>K: 继续
     K->>C: resolve current frontier
-    C-->>K: question/direction/artifact/checkpoint
+    C-->>K: question/direction-set/artifact/checkpoint
     K->>H: project resume projection
     H-->>U: Now + Frontier + Next Action
     U->>K: continue
@@ -85,7 +85,9 @@ A returning user can identify the current design question, active artifact and n
 
 ## Events
 
-`project_resume_started` · `frontier_resolved` · `resume_corrected_by_user` · `resume_degraded`\n\n## Atomic Children
+`project_resume_started` · `frontier_resolved` · `resume_corrected_by_user` · `resume_degraded`
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

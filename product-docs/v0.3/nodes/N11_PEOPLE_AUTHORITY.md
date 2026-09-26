@@ -43,14 +43,16 @@ flowchart LR
 ## Rules
 
 - Designer cannot waive statutory truth;
-- Client can change value priority but not manufacture specialist compliance;
+- Client / stakeholder value authority is determined by current scoped project rights; the role name alone does not grant final value priority;
 - Specialist owns domain claim, not whole design;
 - reviewer independence does not make reviewer project authority;
 - Promotion remains explicit authority.
 
 ## Acceptance
 
-Conflicting rights block only the affected effect where possible.\n\n## Atomic Children
+Conflicting rights block only the affected effect where possible.
+
+## Atomic Children
 
 ```mermaid
 flowchart TB

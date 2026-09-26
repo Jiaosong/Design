@@ -2,7 +2,7 @@
 
 [← v0.3 Package](README.md)
 
-**Purpose:** 保留重要产品选择的 rationale、alternatives 和 reopen condition。  
+**Purpose:** 保留重要产品选择的 rationale、alternatives 和 reopen condition。
 **Boundary:** Product Decision Log 不拥有 OLEANDER Architecture / Project / Professional / Promotion authority。
 
 ---
@@ -28,11 +28,11 @@ Each consequential product decision should include:
 
 # PD-001｜Conversation is not Project State
 
-**Date:** 2026-09-26  
-**Status:** ACCEPTED PRODUCT TENET  
+**Date:** 2026-09-26
+**Status:** ACCEPTED PRODUCT TENET
 **Owner:** Product
 
-**Decision**  
+**Decision**
 Do not treat conversation history or model memory as authoritative project state.
 
 **Alternatives**
@@ -188,7 +188,7 @@ Only at level of genuinely universal interaction semantics, never by erasing dom
 
 # PD-010｜v1 wedge = Verified Project Continuity + Human-steered Real Artifact Loop
 
-**Status:** WORKING PRODUCT HYPOTHESIS
+**Status:** REFINED BY PD-015 / PD-016 / PD-017 / PD-018 / PD-020
 
 **Decision**
 Prioritize:
@@ -202,6 +202,9 @@ Resume
 → Continue
 ```
 before Team / Marketplace / broad cloud integrations.
+
+**v0.3.2 refinement**
+The wedge remains continuity + real artifact collaboration, but the launch-critical loop now explicitly includes Search-space Map, AI Option Triage, persistent Design Decision, Design Synthesis where useful, Artifact Action intended/actual delta, and Whole-design Check. This refinement prevents the product from becoming only a continuity/governance layer.
 
 **Rationale**
 This tests the highest-leverage differentiated value with the least platform breadth.
@@ -238,3 +241,132 @@ Avoid shadow governance created for portfolio/readability purposes.
 
 **Reopen**
 No planned reopen; any change requires formal architecture/governance path.
+
+---
+
+# PD-013｜CONTINUE is not RESUME
+
+**Status:** ACCEPTED PRODUCT SEMANTIC
+
+**Decision**
+Separate:
+- RESUME — reconstruct after session/context loss；
+- CONTINUE — advance the current valid frontier / authorized path；
+- RECOVER — resume after failure / partial completion / state conflict。
+
+The Human word “继续” is resolved from current interaction context; it is not permanently mapped to RESUME.
+
+**Rationale**
+Treating every continuation as project reconstruction adds friction and can recompute an already stable frontier.
+
+**Guardrail**
+CONTINUE never automatically becomes consequential Human steer or Design Decision.
+
+---
+
+# PD-014｜Design Situation before forced Problem framing
+
+**Status:** ACCEPTED PRODUCT SEMANTIC
+
+**Decision**
+FOCUS may begin from problem, opportunity, ambition, requirement, conflict or unknown. Problem Statement remains available when it is the correct framing, but is not a universal gateway.
+
+**Rationale**
+Architecture, spatial, brand, CMF and exploratory design are not always problem-removal exercises.
+
+---
+
+# PD-015｜Explore owns search-space awareness and AI triage
+
+**Status:** WORKING P0 DECISION
+
+**Decision**
+EXPLORE must:
+1. identify materially meaningful search dimensions / mechanism families；
+2. expose important coverage gaps；
+3. generate materially distinct directions；
+4. triage obvious duplicates / hard-constraint failures / unsupported weak branches out of the presented set before Human review；
+5. preserve lineage and genuine value trade-offs。
+
+**Rejected alternative**
+“Generate N options” is sufficient exploration.
+
+**Reopen if**
+External design studies show search-space mapping or triage adds review burden without improving decision usefulness.
+
+---
+
+# PD-016｜SYNTHESIZE is generative, not only simplification
+
+**Status:** WORKING P0 DECISION
+
+**Decision**
+SYNTHESIZE may create a new coherent direction from multiple valid branches, findings, evidence and constraints. It must distinguish inherited, transformed, newly introduced, intentionally discarded and unresolved elements.
+
+**Hard boundary**
+Human MIX steer and AI Design Synthesis are related but not the same operation.
+
+---
+
+# PD-017｜Design Decision is a first-class persistent object
+
+**Status:** ACCEPTED PRODUCT MODEL CHANGE
+
+**Decision**
+Consequential SELECT / MODIFY / MIX / REJECT / DEFER produces or updates a persistent Design Decision object with actor, authority basis, options considered, rationale when supplied, trade-offs, affected relations/artifacts, status, reopen condition and supersession lineage.
+
+A Design Decision may originate from Compare, Focus, Review, People/Authority or a direct valid Human instruction. Compare is a common decision context, not a mandatory prerequisite.
+
+**Rationale**
+Human steer is an interaction event; Decision is durable project meaning. History records it but does not own it.
+
+---
+
+# PD-018｜Artifact action owns intended vs actual delta
+
+**Status:** ACCEPTED P0 PRODUCT CONTRACT
+
+**Decision**
+Before material making/editing, OLEANDER identifies target artifact/revision and intended delta. After tool execution, it captures actual delta/new revision and performs readback. Rollback/recovery is recorded where the authoring surface supports it.
+
+**Boundary**
+OLEANDER owns the design-action contract; CAD/BIM/Figma/IDE/3D integrations own native tool execution.
+
+---
+
+# PD-019｜Action Guard supersedes write-only product semantics
+
+**Status:** ACCEPTED PRODUCT SEMANTIC / RUNTIME MIGRATION PENDING
+
+**Decision**
+The product-level guard covers consequential reads/writes, sensitive data disclosure, external publish, provider boundaries, material cost, recoverability and blast radius.
+
+The existing “Mutation Guard” term may remain as a write-specific runtime implementation/subcheck until the system is revised.
+
+**Rationale**
+A read-only tool call can still create confidentiality, cost or external-disclosure risk.
+
+---
+
+# PD-020｜VPCR + DRPR form the outcome pair
+
+**Status:** WORKING METRIC DECISION
+
+**Decision**
+- VPCR measures whether long-running work can continue correctly.
+- DRPR measures whether a materially important Design Question / unknown / decision object made traceable resolution progress.
+
+**Hard boundary**
+DRPR is not a synthetic Design Quality Score and does not allow AI to declare a design “better” from one aggregate score.
+
+---
+
+# PD-021｜Designer development is contextual, not profiling
+
+**Status:** ACCEPTED P1 DIRECTION
+
+**Decision**
+OLEANDER may expose reasoning, trade-offs, failure learning, evidence consequences and optional reflection in the context of current work. Support may fade within a session when repeated explanation is unnecessary.
+
+**Hard boundary**
+Ordinary steering does not create a durable taste, competence, psychological or professional-qualification profile.
