@@ -1,0 +1,77 @@
+{
+  "schema": "oleander.dsh-host-adapter.v0.1",
+  "status": "CANDIDATE_REFERENCE_ADAPTER",
+  "authority_ceiling": "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
+  "host_runtime_contract": "00-governance/runtime/OLEANDER_HOST_RUNTIME_CONTRACT_v0.1.json",
+  "upstream_reference": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "observed_commit": "477b4f420553e8a52c2fbccc464d7561b239c443",
+    "observed_generation": "0.1.7-rc.2",
+    "note": "Source-audit reference only; benchmark evidence remains pinned separately and must not be silently relabelled."
+  },
+  "mapping": {
+    "workspace_registry": {
+      "dsh_surface": "workspace / workspace-controller",
+      "oleander_role": "RUNTIME_WORKSPACE_MATERIALIZATION",
+      "boundary": "DSH_WORKSPACE_NE_OLEANDER_PROJECT"
+    },
+    "session_persistence": {
+      "dsh_surface": "session-persistence / append-only session log",
+      "oleander_role": "EXECUTION_SESSION_DURABILITY",
+      "boundary": "SESSION_LOG_NE_PROJECT_STATE"
+    },
+    "projection_cache": {
+      "dsh_surface": "session-projection-cache",
+      "oleander_role": "DISPOSABLE_RUNTIME_UI_PROJECTION",
+      "boundary": "LOG_LEADS_CACHE_FOLLOWS_AND_CACHE_NE_AUTHORITY"
+    },
+    "plugin_manager": {
+      "dsh_surface": "plugin-manager",
+      "oleander_role": "SURFACE_PROVIDER_LIFECYCLE",
+      "boundary": "SELECTED_OR_ENABLED_NE_LOADED_OR_RELIABLE"
+    },
+    "browser_use": {
+      "dsh_surface": "browser-use provider seam",
+      "oleander_role": "BROWSER_SURFACE_HOST",
+      "boundary": "BROWSER_PROVIDER_NE_BROWSER_PROFILE_OR_PROJECT_AUTHORITY"
+    },
+    "file_upload": {
+      "dsh_surface": "file-upload transport / receipts",
+      "oleander_role": "SOURCE_TRANSPORT_REFERENCE",
+      "boundary": "UPLOAD_RECEIPT_NE_SOURCE_OR_KNOWLEDGE_CURRENT"
+    },
+    "office_conversion": {
+      "dsh_surface": "office-to-pdf",
+      "oleander_role": "SOURCE_EXTRACTION_HELPER",
+      "boundary": "CONVERSION_OUTPUT_NE_STRUCTURED_KNOWLEDGE_CURRENT"
+    },
+    "approval": {
+      "dsh_surface": "user-approval / permission presets",
+      "oleander_role": "PROVIDER_APPROVAL_BELOW_ACTION_GUARD",
+      "boundary": "DSH_APPROVAL_MAY_NARROW_BUT_NEVER_WIDEN_OLEANDER_AUTHORITY"
+    }
+  },
+  "required_adapter_behaviors": [
+    "OPENING_BASELINE_BEFORE_INCREMENTAL_EVENTS",
+    "DURABILITY_BARRIER_BEFORE_DURABLE_COMPLETION_CLAIM",
+    "PLUGIN_LOAD_FAILURE_REMAINS_VISIBLE_WITH_DIAGNOSTIC",
+    "PROVIDER_UNLOAD_STOPS_NEW_CALLS_AND_CLEANS_OWNED_RESOURCES",
+    "STALE_PROJECTION_NE_CURRENT_FACT",
+    "ACTUAL_READBACK_REQUIRED_FOR_MATERIAL_MUTATION"
+  ],
+  "third_party_provider_reference": {
+    "repository": "amlyczz/dsh-agy-link",
+    "observed_commit": "3ee8416a4433fa3e8032f4832b217da0c4ab0e71",
+    "observed_version": "0.4.38",
+    "borrow_patterns": [
+      "IDENTITY_BOUND_PROVIDER_STATE",
+      "PROVIDER_POOL",
+      "CATALOG_VALIDATION_AND_FALLBACK_DISCOVERY",
+      "HARD_VS_SOFT_FAILURE_CLASSIFICATION",
+      "BOUNDED_RETRY",
+      "UI_VISIBLE_QUOTA_AND_HEALTH"
+    ],
+    "boundary": "THIRD_PARTY_PROVIDER_STATE_NE_OLEANDER_RELIABILITY_OR_AUTHORITY_TRUTH"
+  },
+  "does_not_prove": ["DSH_ADOPTED", "DSH_PRODUCTION_READY", "PROVIDER_WINNER", "PROJECT_CURRENT", "PROMOTION"]
+}

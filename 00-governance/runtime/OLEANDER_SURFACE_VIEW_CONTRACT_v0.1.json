@@ -1,0 +1,60 @@
+{
+  "schema": "oleander.surface-view-contract.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "UI_PROJECTION_ONLY",
+  "purpose": "Project current ExecutionSurface facts into stable Human-facing Design System views without creating a second surface registry or provider state store.",
+  "required_fields": [
+    "surface_view_id",
+    "surface_definition_id",
+    "display_name",
+    "view_kind",
+    "availability",
+    "reliability_preflight",
+    "product_actions",
+    "authority_ceiling"
+  ],
+  "view_kinds": [
+    "HOST_RUNTIME",
+    "REPOSITORY",
+    "KNOWLEDGE",
+    "FILE_STORE",
+    "BROWSER",
+    "DESIGN_NATIVE",
+    "DEPLOYMENT",
+    "MODEL_PROVIDER",
+    "GENERIC_INTEGRATION"
+  ],
+  "definitions": [
+    {"surface_definition_id": "design_system_local_host", "display_name": "Design System Local Host", "view_kind": "HOST_RUNTIME", "product_actions": ["OBSERVE", "INGEST", "READBACK"]},
+    {"surface_definition_id": "github_connector", "display_name": "GitHub", "view_kind": "REPOSITORY", "product_actions": ["BROWSE_REPOSITORY", "COMPARE", "REVIEW", "SYNC"]},
+    {"surface_definition_id": "notion_connector", "display_name": "Notion", "view_kind": "KNOWLEDGE", "product_actions": ["BROWSE", "SEARCH", "INGEST", "SYNC"]},
+    {"surface_definition_id": "google_drive_connector", "display_name": "Google Drive", "view_kind": "FILE_STORE", "product_actions": ["BROWSE", "PREVIEW", "INGEST", "SYNC"]},
+    {"surface_definition_id": "baidu_storage", "display_name": "Baidu", "view_kind": "FILE_STORE", "product_actions": ["BROWSE", "PREVIEW", "INGEST", "SYNC"]},
+    {"surface_definition_id": "figma_connector", "display_name": "Figma", "view_kind": "DESIGN_NATIVE", "product_actions": ["OPEN", "READBACK", "SYNC"]},
+    {"surface_definition_id": "chat_on_steroids_local_execution_bridge", "display_name": "COS_NATIVE", "view_kind": "HOST_RUNTIME", "product_actions": ["EXECUTE", "OBSERVE", "READBACK", "RECOVER"]},
+    {"surface_definition_id": "oleander_browser_design_workbench", "display_name": "Browser / Design Workbench", "view_kind": "BROWSER", "product_actions": ["BROWSE", "RESEARCH", "COMPARE", "CAPTURE", "INGEST"]},
+    {"surface_definition_id": "html_css_js_svg_browser_native", "display_name": "Native Browser Runtime", "view_kind": "BROWSER", "product_actions": ["OPEN", "READBACK", "CAPTURE"]},
+    {"surface_definition_id": "blender_shared_runtime", "display_name": "Blender", "view_kind": "DESIGN_NATIVE", "product_actions": ["OPEN", "MODIFY", "READBACK"]},
+    {"surface_definition_id": "oleander_pro_design_toolchain", "display_name": "Pro Design Toolchain", "view_kind": "DESIGN_NATIVE", "product_actions": ["OPEN", "MODIFY", "READBACK"]},
+    {"surface_definition_id": "vercel_connector", "display_name": "Vercel", "view_kind": "DEPLOYMENT", "product_actions": ["DEPLOY", "READBACK"]}
+  ],
+  "browser_profile": {
+    "semantic_class": "BROWSER_CONTEXT_PROJECTION_NOT_PROJECT_STATE",
+    "required_fields": ["browser_profile_id", "scope", "credential_boundary", "download_target", "capture_target"],
+    "scopes": ["PROJECT", "RESEARCH", "PERSONAL", "RESTRICTED"],
+    "rules": [
+      "BROWSER_PROFILE_NE_PROJECT_STATE",
+      "PAGE_LOADED_NE_SOURCE_CAPTURED",
+      "SOURCE_CAPTURED_NE_KNOWLEDGE_INGESTED",
+      "PERSISTENT_CAPTURE_MUST_ENTER_SOURCE_INBOX"
+    ]
+  },
+  "hard_invariants": [
+    "SURFACE_VIEW_IS_PROJECTION_NOT_REGISTRY",
+    "SURFACE_VIEW_MUST_NOT_INVENT_AVAILABILITY",
+    "SURFACE_VIEW_MUST_NOT_INVENT_RELIABILITY",
+    "SURFACE_VIEW_MUTATION_MUST_ROUTE_THROUGH_PRODUCT_ACTION_AND_ACTION_RUNTIME",
+    "UNIFIED_VIEW_NE_UNIFIED_OWNERSHIP"
+  ],
+  "does_not_prove": ["SURFACE_READINESS", "PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"]
+}

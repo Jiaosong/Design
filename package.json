@@ -7,6 +7,8 @@
     "test:e1": "node --check website/script.js && node tests/e1-static.mjs",
     "test:e2": "playwright test",
     "test:e2:headed": "playwright test --headed",
+    "test:design-system": "node --check apps/oleander-design-system/app.js && node apps/oleander-design-system/test_product_shell.mjs",
+    "test:design-system-host": "node apps/oleander-design-system/run_python_tests.mjs",
     "test": "npm run test:e1 && npm run test:e2"
   },
   "devDependencies": {

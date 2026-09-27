@@ -1,0 +1,72 @@
+{
+  "schema": "oleander.host-runtime-contract.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
+  "purpose": "Provide one Host Runtime seam behind the OLEANDER Design System so DSH, COS_NATIVE and other hosts do not create parallel Project/Knowledge/Design authority stacks.",
+  "required_operations": [
+    "host_probe",
+    "workspace_open",
+    "workspace_close",
+    "session_start",
+    "session_resume",
+    "session_recover",
+    "plugin_inventory",
+    "surface_register",
+    "surface_unregister",
+    "upload_init",
+    "upload_chunk",
+    "upload_commit",
+    "browser_open",
+    "process_execute",
+    "provider_approval",
+    "runtime_observe",
+    "actual_readback"
+  ],
+  "required_host_fields": [
+    "host_runtime_id",
+    "host_class",
+    "version",
+    "capabilities",
+    "authority_ceiling",
+    "observed_at"
+  ],
+  "host_classes": ["DSH_HOST", "COS_NATIVE", "DESIGN_SYSTEM_LOCAL_HOST", "NATIVE_APP_HOST", "CLOUD_HOST"],
+  "hard_invariants": [
+    "HOST_WORKSPACE_NE_PROJECT",
+    "HOST_SESSION_NE_PROJECT_STATE",
+    "HOST_EVENT_LOG_NE_PROJECT_CURRENT",
+    "HOST_PROJECTION_NE_PROJECT_STATE",
+    "HOST_APPROVAL_NE_HUMAN_DESIGN_DECISION",
+    "HOST_PLUGIN_ENABLED_NE_SURFACE_RELIABLE",
+    "HOST_TOOL_SUCCESS_NE_READBACK_PASS",
+    "HOST_REPLAY_NE_PROJECT_TRUTH",
+    "HOST_FAILURE_MUST_NOT_DELETE_OWNER_NATIVE_PROJECT_STATE"
+  ],
+  "state_ownership": {
+    "may_own": [
+      "RUNTIME_WORKSPACE",
+      "EXECUTION_SESSION",
+      "RUNTIME_EVENT_LOG",
+      "RUNTIME_PROJECTION_CACHE",
+      "PLUGIN_LIFECYCLE",
+      "SURFACE_PROVIDER_RESOURCES",
+      "UPLOAD_TRANSPORT_STATE",
+      "PROCESS_STATE",
+      "RUNTIME_HEALTH"
+    ],
+    "must_not_own": [
+      "PROJECT_STATE",
+      "PROJECT_CURRENT",
+      "KNOWLEDGE_AUTHORITY",
+      "KNOWLEDGE_CURRENT",
+      "DESIGN_DECISION_AUTHORITY",
+      "DESIGN_KEEP",
+      "ARTIFACT_CURRENT",
+      "PROFESSIONAL_PASS",
+      "PROMOTION"
+    ]
+  },
+  "surface_reliability_contract": "00-governance/runtime/OLEANDER_SURFACE_RELIABILITY_BOUNDARY_v0.1.json",
+  "execution_runtime_contract": "00-governance/runtime/OLEANDER_EXECUTION_RUNTIME_PRIMITIVES_v0.1.json",
+  "does_not_prove": ["PROVIDER_SELECTION", "PRODUCTION_READINESS", "PROJECT_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"]
+}

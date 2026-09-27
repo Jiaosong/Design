@@ -56,9 +56,15 @@ Passing this candidate validation proves the management seam, runtime primitive 
 
 `OLEANDER_PROJECT_WORKSPACE_BINDING_v0.1.json` + `oleander_design_system_runtime.py` implement the first Project materialization boundary: one owner-native Project may bind a primary repository, satellite repositories and multiple runtime workspaces, but Git/worktree fields are rejected if they claim Project Current, Design KEEP, professional PASS or Promotion. `.oleander/project.json` is only a bootstrap locator.
 
+`generate_project_repository_migration_inventory.py` reads actual history-preserving `migration/<project>` split branches for the legacy `05-cases` monorepo layout and emits `OLEANDER_PROJECT_REPOSITORY_MIGRATION_INVENTORY_20260927.json`. The inventory records split commit/history/tree readback while keeping `remote_repo_created=false`, `project_state_ref=null` and `old_duplicate_retained=true` until external repository creation, push and owner-native Project/Artifact/Knowledge binding are independently verified.
+
 `OLEANDER_SOURCE_INGESTION_PIPELINE_v0.1.json` defines Source Inbox progression from source identity/fingerprint through original preservation, native extraction, structured body, citation binding, Knowledge Draft, Content Review, KI, OE and mount eligibility. Browser captures enter the same Source Inbox. The reference runtime rejects authority injection, source-version drift and skipped ingestion states.
 
 The Design System uses explicit `SurfaceDefinition / SurfaceInstance / SurfaceIdentity / CapabilityCatalog / ProviderPool / RoutingPolicy / SurfaceView` objects. DSH capability seams, durability barriers, projection-cache discipline, plugin/browser lifecycle and upload transport are implementation references. `dsh-agy-link` is a reference for provider-pool/identity/catalog/quota/retry reliability patterns; neither reference owns OLEANDER state.
+
+`OLEANDER_SURFACE_VIEW_CONTRACT_v0.1.json` + `oleander_surface_view.py` make `SurfaceView` an explicit UI projection over the Current Execution View. Unavailable integrations remain visible, but the projection may not invent availability or reliability. `BrowserProfile` is likewise a project/research context projection whose downloads and persistent captures enter Source Inbox; it is not Project State and does not prove that a browser provider is currently bound.
+
+`oleander_host_runtime_probe.py` performs current host-runtime discovery without promoting historical evidence. DSH stays `UNAVAILABLE` until a real binary/version probe succeeds. COS_NATIVE consumes the machine-local runtime readback only when it is fresh; a stale snapshot is reported as `STALE/UNKNOWN` and requires reprobe rather than being treated as current capability.
 
 Additional validation:
 

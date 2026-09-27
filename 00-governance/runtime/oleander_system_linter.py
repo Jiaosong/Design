@@ -27,6 +27,13 @@ DESIGN_SYSTEM_OBJECTS = ROOT / "00-governance" / "runtime" / "OLEANDER_DESIGN_SY
 SURFACE_RELIABILITY = ROOT / "00-governance" / "runtime" / "OLEANDER_SURFACE_RELIABILITY_BOUNDARY_v0.1.json"
 PROJECT_WORKSPACE = ROOT / "00-governance" / "runtime" / "OLEANDER_PROJECT_WORKSPACE_BINDING_v0.1.json"
 SOURCE_INGESTION = ROOT / "00-governance" / "runtime" / "OLEANDER_SOURCE_INGESTION_PIPELINE_v0.1.json"
+HOST_RUNTIME = ROOT / "00-governance" / "runtime" / "OLEANDER_HOST_RUNTIME_CONTRACT_v0.1.json"
+DSH_ADAPTER = ROOT / "00-governance" / "runtime" / "OLEANDER_DSH_HOST_ADAPTER_v0.1.json"
+PRODUCT_SHELL = ROOT / "apps" / "oleander-design-system" / "index.html"
+PRODUCT_HOST = ROOT / "apps" / "oleander-design-system" / "host.py"
+PROJECT_MIGRATION = ROOT / "00-governance" / "runtime" / "OLEANDER_PROJECT_REPOSITORY_MIGRATION_INVENTORY_20260927.json"
+SURFACE_VIEW = ROOT / "00-governance" / "runtime" / "OLEANDER_SURFACE_VIEW_CONTRACT_v0.1.json"
+HOST_RUNTIME_PROBE = ROOT / "00-governance" / "runtime" / "oleander_host_runtime_probe.py"
 
 FORBIDDEN_AUTHORITY = {
     "project_state",
@@ -71,6 +78,10 @@ def run_lint() -> dict[str, Any]:
     surface_reliability = _load(SURFACE_RELIABILITY)
     project_workspace = _load(PROJECT_WORKSPACE)
     source_ingestion = _load(SOURCE_INGESTION)
+    host_runtime = _load(HOST_RUNTIME)
+    dsh_adapter = _load(DSH_ADAPTER)
+    project_migration = _load(PROJECT_MIGRATION)
+    surface_view = _load(SURFACE_VIEW)
 
     manifest_validation = validate_system_manifest()
     components = [x for x in disposition.get("components") or [] if isinstance(x, dict)]
@@ -150,6 +161,7 @@ def run_lint() -> dict[str, Any]:
     reference_patterns = surface_reliability.get("reference_patterns") or {}
     dsh_reference = reference_patterns.get("deepseek_harness") or {}
     agy_reference = reference_patterns.get("dsh_agy_link") or {}
+    migration_projects = [x for x in project_migration.get("projects") or [] if isinstance(x, dict)]
 
     checks = {
         "phase1_manifest_validation_pass": manifest_validation.get("status") == "PASS",
@@ -222,6 +234,43 @@ def run_lint() -> dict[str, Any]:
             "PRESERVE_ORIGINAL", "BIND_CITATIONS", "CREATE_KNOWLEDGE_DRAFT"
         }.issubset(set(source_ingestion.get("pipeline") or [])),
         "source_ingestion_never_sets_knowledge_current": "knowledge_current" in set(source_ingestion.get("forbidden_output_authority_fields") or []),
+        "host_runtime_contract_is_execution_only": host_runtime.get("authority_ceiling") == "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
+        "host_runtime_forbids_project_knowledge_design_authority": {
+            "PROJECT_STATE", "PROJECT_CURRENT", "KNOWLEDGE_AUTHORITY", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"
+        }.issubset(set((host_runtime.get("state_ownership") or {}).get("must_not_own") or [])),
+        "dsh_adapter_is_reference_not_authority": (
+            dsh_adapter.get("status") == "CANDIDATE_REFERENCE_ADAPTER"
+            and dsh_adapter.get("authority_ceiling") == "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY"
+            and dsh_adapter.get("host_runtime_contract") == "00-governance/runtime/OLEANDER_HOST_RUNTIME_CONTRACT_v0.1.json"
+        ),
+        "design_system_product_shell_exists": PRODUCT_SHELL.is_file(),
+        "design_system_local_host_exists": PRODUCT_HOST.is_file(),
+        "host_runtime_probe_exists": HOST_RUNTIME_PROBE.is_file(),
+        "surface_view_is_projection_only": (
+            surface_view.get("authority_ceiling") == "UI_PROJECTION_ONLY"
+            and "SURFACE_VIEW_IS_PROJECTION_NOT_REGISTRY" in set(surface_view.get("hard_invariants") or [])
+            and "SURFACE_VIEW_MUST_NOT_INVENT_RELIABILITY" in set(surface_view.get("hard_invariants") or [])
+        ),
+        "browser_profile_is_not_project_state": (
+            (surface_view.get("browser_profile") or {}).get("semantic_class") == "BROWSER_CONTEXT_PROJECTION_NOT_PROJECT_STATE"
+            and "BROWSER_PROFILE_NE_PROJECT_STATE" in set((surface_view.get("browser_profile") or {}).get("rules") or [])
+        ),
+        "project_repository_migration_is_non_authority": project_migration.get("authority_ceiling") == "MIGRATION_READBACK_ONLY",
+        "project_repository_migration_local_repos_ready": (
+            project_migration.get("status") == "LOCAL_REPOSITORIES_READY"
+            and len(migration_projects) == 4
+            and all(row.get("migration_state") == "SPLIT_BRANCH_READY" for row in migration_projects)
+            and all(row.get("local_repository_ready") is True for row in migration_projects)
+            and all(row.get("local_repository_matches_split") is True for row in migration_projects)
+            and all(row.get("split_is_subdirectory_rooted") is True for row in migration_projects)
+        ),
+        "project_repository_migration_does_not_fake_remote_or_project_state": all(
+            row.get("remote_repo_created") is False
+            and row.get("remote_repo_pushed") is False
+            and row.get("old_duplicate_retained") is True
+            and row.get("project_state_ref") is None
+            for row in migration_projects
+        ),
     }
 
     details = {
@@ -238,6 +287,9 @@ def run_lint() -> dict[str, Any]:
         "design_system_project_non_equivalences": sorted(project_non_equivalences),
         "project_workspace_authority_ceiling": project_workspace.get("authority_ceiling"),
         "source_ingestion_authority_ceiling": source_ingestion.get("authority_ceiling"),
+        "host_runtime_authority_ceiling": host_runtime.get("authority_ceiling"),
+        "surface_view_authority_ceiling": surface_view.get("authority_ceiling"),
+        "project_repository_migration_status": project_migration.get("status"),
     }
     return {
         "status": "PASS" if all(checks.values()) else "FAIL",

@@ -3,7 +3,7 @@
   "status": "CANDIDATE_NON_AUTHORITY",
   "authority_ceiling": "SOURCE_EXTRACTION_AND_KNOWLEDGE_DRAFT_ONLY",
   "purpose": "Turn dropped documents, media, URLs and folders into source-bound structured Knowledge Drafts while preserving originals, provenance, revisions and citations.",
-  "source_classes": ["PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
+  "source_classes": ["TEXT", "PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
   "admission_required": ["source_id", "source_kind", "original_ref", "fingerprint", "source_revision", "provenance"],
   "states": [
     "ADMITTED",

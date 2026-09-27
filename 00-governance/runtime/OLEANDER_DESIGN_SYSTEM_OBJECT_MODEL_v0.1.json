@@ -61,7 +61,7 @@
     }
   },
   "source_ingestion": {
-    "accepted_classes": ["PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
+    "accepted_classes": ["TEXT", "PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
     "pipeline": ["SOURCE_IDENTITY", "FINGERPRINT", "PRESERVE_ORIGINAL", "NATIVE_EXTRACT", "STRUCTURE_BODY", "EXTRACT_VISUAL_MEDIA", "BIND_CITATIONS", "KNOWLEDGE_DRAFT", "REVIEW", "KI", "OE", "MOUNT"],
     "large_binary_requirements": ["CHUNKABLE_TRANSPORT", "RESUMABLE_WHEN_PROVIDER_SUPPORTS", "CONTENT_DIGEST", "DEDUPLICATION", "PARTIAL_RECOVERY"],
     "video_requirements": ["TRANSCRIPT", "TIMESTAMP_BINDING", "KEY_FRAMES", "STRUCTURED_BODY", "SOURCE_JUMP_BACK"],

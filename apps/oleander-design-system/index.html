@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>OLEANDER Design System</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">O</div>
+        <div>
+          <div class="brand-title">OLEANDER Design System</div>
+          <div class="brand-subtitle">Human–AI Design OS · Candidate Shell</div>
+        </div>
+      </div>
+      <button id="commandButton" class="command-button" type="button" aria-haspopup="dialog">
+        <span>命令 / Search & Action</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <div id="hostStatus" class="topbar-status" aria-label="system status">
+        <span class="status-dot unknown"></span>
+        <span>Host Runtime 未绑定</span>
+      </div>
+    </header>
+
+    <aside class="sidebar" aria-label="主导航">
+      <nav id="primaryNav" class="primary-nav"></nav>
+      <div class="sidebar-foot">
+        <div class="boundary-chip">Authority-first</div>
+        <div class="boundary-chip">Reliability R1–R5</div>
+      </div>
+    </aside>
+
+    <main class="workspace" id="workspace" tabindex="-1"></main>
+
+    <aside class="inspector" aria-label="Context Inspector">
+      <div class="inspector-heading">
+        <span>Context</span>
+        <span class="muted">非权威投影</span>
+      </div>
+      <section class="inspector-section">
+        <h2>Project</h2>
+        <dl class="facts">
+          <div><dt>Project</dt><dd>未选择</dd></div>
+          <div><dt>Current</dt><dd>未解析</dd></div>
+          <div><dt>Repository</dt><dd>未绑定</dd></div>
+          <div><dt>Workspace</dt><dd>未绑定</dd></div>
+        </dl>
+      </section>
+      <section class="inspector-section">
+        <h2>Reliability Boundary</h2>
+        <div id="compactReliability" class="reliability-mini"></div>
+      </section>
+      <section class="inspector-section">
+        <h2>Hard boundaries</h2>
+        <p class="boundary-text">Git branch ≠ Design Direction</p>
+        <p class="boundary-text">Imported ≠ Knowledge Current</p>
+        <p class="boundary-text">Executed ≠ Verified</p>
+      </section>
+    </aside>
+  </div>
+
+  <dialog id="commandDialog" class="command-dialog">
+    <form method="dialog" class="command-panel">
+      <div class="command-head">
+        <input id="commandInput" autocomplete="off" placeholder="输入设计动作，例如：打开 Sources、Review、继续当前设计…">
+        <button type="submit" class="icon-button" aria-label="关闭">×</button>
+      </div>
+      <div id="commandResults" class="command-results"></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
