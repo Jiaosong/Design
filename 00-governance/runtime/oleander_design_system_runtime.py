@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import urllib.parse
 from pathlib import Path
 from typing import Any
 
@@ -197,6 +199,83 @@ def resolve_bounded_product_action_guard(
         "source_id": source_id,
         "source_revision": source_revision,
         "target_ref": target_ref,
+    }
+
+
+def resolve_browser_capture_ingress_guard(
+    *,
+    url: str,
+    browser_profile: dict[str, Any],
+    capture_digest: str,
+    external_disclosure: bool,
+) -> dict[str, Any]:
+    """Guard local persistence of already-captured browser bytes.
+
+    This policy does not fetch the URL and does not prove a Browser provider
+    was live. It only permits a bounded local Source Inbox mutation when the
+    capture envelope is well-scoped.
+    """
+    reasons: list[str] = []
+    parsed = urllib.parse.urlsplit(str(url or "").strip())
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname:
+        reasons.append("BROWSER_CAPTURE_URL_NOT_ALLOWED")
+    if parsed.username or parsed.password:
+        reasons.append("BROWSER_CAPTURE_URL_EMBEDDED_CREDENTIALS_NOT_ALLOWED")
+    scope = str(browser_profile.get("scope") or "")
+    if scope not in {"PROJECT", "RESEARCH", "PERSONAL", "RESTRICTED"}:
+        reasons.append("BROWSER_PROFILE_SCOPE_INVALID")
+    if scope == "PROJECT" and not browser_profile.get("project_id"):
+        reasons.append("PROJECT_BROWSER_PROFILE_REQUIRES_PROJECT_ID")
+    if browser_profile.get("capture_target") != "SOURCE_INBOX":
+        reasons.append("BROWSER_CAPTURE_TARGET_NOT_SOURCE_INBOX")
+    digest = str(capture_digest or "").lower()
+    if re.fullmatch(r"sha256:[0-9a-f]{64}", digest) is None:
+        reasons.append("BROWSER_CAPTURE_DIGEST_INVALID")
+    if not browser_profile.get("browser_profile_id"):
+        reasons.append("BROWSER_PROFILE_ID_MISSING")
+    if external_disclosure:
+        reasons.append("CAPTURE_INGRESS_MUST_NOT_FETCH_OR_DISCLOSE_EXTERNALLY")
+
+    base = {
+        "semantic_class": "BROWSER_CAPTURE_INGRESS_GUARD_NOT_AUTHORITY_GRANT",
+        "authority_ceiling": "BOUNDED_EXECUTION_POLICY_ONLY",
+        "does_not_prove": [
+            "BROWSER_PROVIDER_BOUND",
+            "PAGE_LOADED",
+            "PROJECT_CURRENT",
+            "KNOWLEDGE_CURRENT",
+            "DESIGN_KEEP",
+            "PROMOTION",
+        ],
+    }
+    if reasons:
+        return {
+            **base,
+            "status": "HOLD",
+            "decision": "HOLD",
+            "reason": reasons[0],
+            "reasons": reasons,
+        }
+
+    policy_material = json.dumps(
+        {
+            "policy": "BROWSER_CAPTURE_INGRESS_TO_SOURCE_INBOX",
+            "url": urllib.parse.urlunsplit(parsed),
+            "browser_profile_id": browser_profile.get("browser_profile_id"),
+            "scope": scope,
+            "capture_digest": digest,
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    fingerprint = "sha256:" + hashlib.sha256(policy_material).hexdigest()
+    return {
+        **base,
+        "status": "PASS",
+        "decision": "ALLOW",
+        "decision_ref": f"action-guard:browser-capture-ingress:{fingerprint[7:31]}",
+        "policy_id": "BROWSER_CAPTURE_INGRESS_TO_SOURCE_INBOX",
+        "policy_fingerprint": fingerprint,
     }
 
 

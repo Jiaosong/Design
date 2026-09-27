@@ -14,7 +14,7 @@ It is intentionally **not** a second Project State, Knowledge Registry, Git auth
 - Surface Reliability R1-R5 visualization without a misleading single `Connected` status;
 - integration surfaces remain visible when unavailable;
 - Host Runtime probes report the Design System local host, DSH binary availability and COS_NATIVE machine-local snapshot freshness separately; stale CoS evidence never becomes current readiness;
-- browser and native design surfaces are placeholders until a Host Runtime binds them;
+- browser and native design surfaces remain provider-unbound until a Host Runtime binds them; the Local Host exposes a bounded browser-capture ingress (/api/browser/capture/init → chunk upload → /api/browser/capture/commit) so already-captured bytes can enter Source Inbox through action-scoped reliability preflight, ActionRuntime, source/derived readback and R5 verification without claiming that a browser provider is bound;
 - command palette for product actions; no provider mutation is issued directly from the UI.
 
 ## Run locally
@@ -42,4 +42,4 @@ Product Shell
 → actual readback
 ```
 
-The current local host implements project discovery, Source Inbox transport/preservation/basic structured-body extraction and current capability-view readback. Persistent Source transcription-request creation is the first bounded local Product Action that runs through action-scoped R1-R4 preflight → `ActionRuntime` → actual readback → R5 result verification. It persists only the request/receipt while the provider remains unbound. Native design mutations and controls that need DSH/COS_NATIVE/CAD/connector execution remain explicitly unbound.
+The current local host implements project discovery, Source Inbox transport/preservation/basic structured-body extraction and current capability-view readback. Persistent Source transcription-request creation and browser-capture ingress are bounded local Product Actions that run through action-scoped R1-R4 preflight → ActionRuntime → actual readback → R5 result verification. Transcription persists only the request/receipt while its provider remains unbound; browser capture accepts already-captured bytes but does not itself fetch a page or prove a Browser provider. Native design mutations and controls that need DSH/COS_NATIVE/CAD/connector execution remain explicitly unbound.

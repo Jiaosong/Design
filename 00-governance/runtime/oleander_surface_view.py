@@ -121,17 +121,22 @@ def build_surface_views(current_execution_view: dict[str, Any]) -> dict[str, Any
     }
 
 
-def project_browser_profile(*, project_id: str | None = None) -> dict[str, Any]:
-    scope = "PROJECT" if project_id else "RESEARCH"
-    suffix = project_id or "unbound-research"
+def project_browser_profile(*, project_id: str | None = None, scope: str | None = None) -> dict[str, Any]:
+    resolved_scope = str(scope or ("PROJECT" if project_id else "RESEARCH")).upper()
+    if resolved_scope not in {"PROJECT", "RESEARCH", "PERSONAL", "RESTRICTED"}:
+        raise ValueError("INVALID_BROWSER_PROFILE_SCOPE")
+    if resolved_scope == "PROJECT" and not project_id:
+        raise ValueError("PROJECT_BROWSER_PROFILE_REQUIRES_PROJECT_ID")
+    suffix = project_id if resolved_scope == "PROJECT" else resolved_scope.lower()
     return {
         "browser_profile_id": f"browser-profile:{suffix}",
-        "scope": scope,
+        "scope": resolved_scope,
         "project_id": project_id,
         "credential_boundary": "PROFILE_SCOPED_NOT_PROJECT_AUTHORITY",
         "download_target": "SOURCE_INBOX",
         "capture_target": "SOURCE_INBOX",
         "status": "UNBOUND_PROVIDER",
+        "provider_binding": "UNBOUND",
         "semantic_class": "BROWSER_CONTEXT_PROJECTION_NOT_PROJECT_STATE",
         "does_not_prove": ["PROJECT_STATE", "SOURCE_CAPTURED", "KNOWLEDGE_CURRENT"],
     }

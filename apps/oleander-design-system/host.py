@@ -29,6 +29,7 @@ sys.path.insert(0, str(RUNTIME_DIR))
 from oleander_design_system_runtime import (  # noqa: E402
     admit_source,
     next_ingestion_state,
+    resolve_browser_capture_ingress_guard,
     resolve_bounded_product_action_guard,
     validate_source_revision,
 )
@@ -635,6 +636,7 @@ class DesignSystemHost:
             "SOURCE_PRESERVATION",
             "STRUCTURED_BODY_EXTRACTION",
             "SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+            "BROWSER_CAPTURE_INGRESS",
             "SURFACE_CAPABILITY_VIEW",
         ]
         if shutil.which("ffprobe"):
@@ -689,8 +691,8 @@ class DesignSystemHost:
         current = self.current_execution_view()["view"]
         return build_surface_views(current)
 
-    def browser_profile(self, project_id: str | None = None) -> dict[str, Any]:
-        return project_browser_profile(project_id=project_id)
+    def browser_profile(self, project_id: str | None = None, scope: str | None = None) -> dict[str, Any]:
+        return project_browser_profile(project_id=project_id, scope=scope)
 
     def host_runtime_view(self) -> dict[str, Any]:
         health = self.health()
@@ -1161,6 +1163,63 @@ class DesignSystemHost:
         _write_json(upload_dir / "upload.json", metadata)
         return metadata
 
+    def init_browser_capture(self, payload: dict[str, Any]) -> dict[str, Any]:
+        url = str(payload.get("url") or "").strip()
+        project_id = str(payload.get("project_id") or "").strip() or None
+        scope = str(payload.get("scope") or "").strip() or None
+        profile = project_browser_profile(project_id=project_id, scope=scope)
+        captured_at = str(payload.get("captured_at") or datetime.now(timezone.utc).isoformat()).strip()
+        try:
+            parsed_capture_time = datetime.fromisoformat(captured_at.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ValueError("INVALID_CAPTURE_TIME") from exc
+        if parsed_capture_time.tzinfo is None:
+            raise ValueError("CAPTURE_TIME_REQUIRES_TIMEZONE")
+
+        provisional_guard = resolve_browser_capture_ingress_guard(
+            url=url,
+            browser_profile=profile,
+            capture_digest="sha256:" + ("0" * 64),
+            external_disclosure=False,
+        )
+        if provisional_guard.get("decision") != "ALLOW":
+            raise ValueError(str(provisional_guard.get("reason") or "BROWSER_CAPTURE_INGRESS_NOT_ALLOWED"))
+
+        host = urlparse(url).hostname or "page"
+        default_name = _safe_filename(f"{host}-capture.html")
+        upload = self.init_upload({
+            "name": payload.get("name") or default_name,
+            "size": payload.get("size"),
+            "type": payload.get("type") or "text/html",
+        })
+        upload_dir = self.uploads_root / str(upload["upload_id"])
+        metadata = _read_json(upload_dir / "upload.json")
+        metadata.update({
+            "ingress_kind": "BROWSER_CAPTURE",
+            "browser_capture": {
+                "url": url,
+                "captured_at": captured_at,
+                "capture_time_source": "CALLER_CAPTURE_RECEIPT",
+                "browser_profile": profile,
+            },
+        })
+        _write_json(upload_dir / "upload.json", metadata)
+        return {
+            **upload,
+            "ingress_kind": "BROWSER_CAPTURE",
+            "url": url,
+            "captured_at": captured_at,
+            "browser_profile": profile,
+            "authority_ceiling": "UPLOAD_TRANSPORT_ONLY",
+            "does_not_prove": [
+                "BROWSER_PROVIDER_BOUND",
+                "PAGE_LOADED",
+                "SOURCE_CAPTURED",
+                "KNOWLEDGE_CURRENT",
+                "PROJECT_CURRENT",
+            ],
+        }
+
     def put_chunk(self, upload_id: str, index: int, data: bytes) -> dict[str, Any]:
         if not re.fullmatch(r"[0-9a-f]{32}", upload_id or ""):
             raise ValueError("INVALID_UPLOAD_ID")
@@ -1177,6 +1236,8 @@ class DesignSystemHost:
 
     def commit_upload(self, payload: dict[str, Any]) -> dict[str, Any]:
         upload_id = str(payload.get("upload_id") or "")
+        if not re.fullmatch(r"[0-9a-f]{32}", upload_id):
+            raise ValueError("INVALID_UPLOAD_ID")
         try:
             chunk_count = int(payload.get("chunk_count"))
         except (TypeError, ValueError):
@@ -1284,6 +1345,256 @@ class DesignSystemHost:
             "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "DESIGN_KEEP"],
         }
 
+    def commit_browser_capture(self, payload: dict[str, Any]) -> dict[str, Any]:
+        upload_id = str(payload.get("upload_id") or "")
+        if not re.fullmatch(r"[0-9a-f]{32}", upload_id):
+            raise ValueError("INVALID_UPLOAD_ID")
+        try:
+            chunk_count = int(payload.get("chunk_count"))
+        except (TypeError, ValueError) as exc:
+            raise ValueError("INVALID_CHUNK_COUNT") from exc
+        if chunk_count < 0:
+            raise ValueError("INVALID_CHUNK_COUNT")
+
+        upload_dir = self.uploads_root / upload_id
+        if not upload_dir.is_dir():
+            raise FileNotFoundError("UPLOAD_NOT_FOUND")
+        metadata = _read_json(upload_dir / "upload.json")
+        if metadata.get("ingress_kind") != "BROWSER_CAPTURE":
+            raise ValueError("UPLOAD_IS_NOT_BROWSER_CAPTURE")
+        capture = metadata.get("browser_capture")
+        if not isinstance(capture, dict):
+            raise ValueError("BROWSER_CAPTURE_METADATA_MISSING")
+        profile = capture.get("browser_profile")
+        if not isinstance(profile, dict):
+            raise ValueError("BROWSER_PROFILE_METADATA_MISSING")
+
+        expected_paths = [upload_dir / "chunks" / f"{index:08d}.part" for index in range(chunk_count)]
+        if any(not path.is_file() for path in expected_paths):
+            raise ValueError("MISSING_CHUNK")
+
+        assembled_path = upload_dir / "browser-capture.assembled.partial"
+        digest = hashlib.sha256()
+        total = 0
+        with assembled_path.open("wb") as target:
+            for chunk_path in expected_paths:
+                with chunk_path.open("rb") as source:
+                    while True:
+                        block = source.read(1024 * 1024)
+                        if not block:
+                            break
+                        target.write(block)
+                        digest.update(block)
+                        total += len(block)
+        if total != int(metadata["size"]):
+            assembled_path.unlink(missing_ok=True)
+            raise ValueError("SOURCE_SIZE_MISMATCH")
+        fingerprint = "sha256:" + digest.hexdigest()
+        client_fingerprint = str(payload.get("client_fingerprint") or "")
+        if client_fingerprint and client_fingerprint != fingerprint:
+            assembled_path.unlink(missing_ok=True)
+            raise ValueError("SOURCE_DIGEST_MISMATCH")
+
+        action_guard = resolve_browser_capture_ingress_guard(
+            url=str(capture.get("url") or ""),
+            browser_profile=profile,
+            capture_digest=fingerprint,
+            external_disclosure=False,
+        )
+        if action_guard.get("decision") != "ALLOW":
+            return {
+                "status": "BLOCKED_BY_OLEANDER",
+                "guard_decision": action_guard,
+                "authority_ceiling": "SOURCE_CAPTURE_INGRESS_ONLY",
+                "does_not_prove": ["SOURCE_CAPTURED", "KNOWLEDGE_CURRENT", "PROJECT_CURRENT"],
+            }
+
+        source_id = str(metadata["source_id"])
+        source_dir = self.sources_root / source_id
+        if source_dir.exists():
+            return {
+                "status": "HOLD_EXISTING_SOURCE_REQUIRES_READBACK",
+                "source_id": source_id,
+                "authority_ceiling": "SOURCE_CAPTURE_INGRESS_ONLY",
+                "does_not_prove": ["RETRY_SAFE", "SOURCE_CAPTURED", "KNOWLEDGE_CURRENT"],
+            }
+
+        observed_at = datetime.now(timezone.utc).isoformat()
+        reliability_preflight = build_preflight_reliability({
+            "surface_id": "design_system_local_host",
+            "reliability_observations": _local_action_reliability_observations(
+                "BROWSER_CAPTURE_INGRESS",
+                observed_at,
+            ),
+        })
+        if not routing_allowed(reliability_preflight):
+            return {
+                "status": "BLOCKED_BY_SURFACE_RELIABILITY",
+                "reliability_preflight": reliability_preflight,
+                "authority_ceiling": "SOURCE_CAPTURE_INGRESS_ONLY",
+            }
+
+        action_id = "ACT-BROWSER-" + hashlib.sha256(
+            f"{source_id}:{fingerprint}".encode("utf-8")
+        ).hexdigest()[:24]
+        target_ref = f"source:{source_id}"
+        action_request = ActionRequest.from_dict({
+            "action_id": action_id,
+            "intent": "CAPTURE_BROWSER_SOURCE",
+            "target_ref": target_ref,
+            "side_effect_class": "LOCAL_MUTATION",
+            "oleander_guard_decision": action_guard["decision"],
+            "provider_id": "design_system_local_host",
+            "provider_approval": "NOT_REQUIRED",
+            "metadata": {
+                "capability": "BROWSER_CAPTURE_INGRESS",
+                "source_id": source_id,
+                "source_revision": fingerprint,
+                "browser_profile_id": profile.get("browser_profile_id"),
+                "browser_profile_scope": profile.get("scope"),
+                "action_guard_decision_ref": action_guard["decision_ref"],
+                "action_guard_policy_fingerprint": action_guard["policy_fingerprint"],
+            },
+        })
+
+        filename = _safe_filename(str(metadata["name"]))
+        captured_url = str(capture.get("url") or "")
+        captured_at = str(capture.get("captured_at") or "")
+
+        def executor(_: ActionRequest) -> dict[str, Any]:
+            source_dir.mkdir(parents=True, exist_ok=False)
+            original_dir = source_dir / "original"
+            original_dir.mkdir()
+            final_path = original_dir / filename
+            assembled_path.replace(final_path)
+            admitted = admit_source({
+                "source_id": source_id,
+                "source_kind": "URL",
+                "original_ref": captured_url,
+                "fingerprint": fingerprint,
+                "source_revision": fingerprint,
+                "provenance": {
+                    "origin": "DESIGN_BROWSER_CAPTURE_INGRESS",
+                    "capture_transport": "LOCAL_HOST_CHUNK_UPLOAD",
+                    "captured_at": captured_at,
+                    "browser_profile_id": profile.get("browser_profile_id"),
+                    "browser_profile_scope": profile.get("scope"),
+                    "project_id": profile.get("project_id"),
+                    "provider_binding": profile.get("provider_binding"),
+                },
+            })
+            if admitted.get("status") != "ADMITTED":
+                raise RuntimeError("SOURCE_ADMISSION_FAILED")
+            source = dict(admitted["source"])
+            transition = next_ingestion_state("ADMITTED", "ORIGINAL_PRESERVED")
+            if transition.get("status") != "PASS":
+                raise RuntimeError("SOURCE_STATE_TRANSITION_FAILED")
+            source.update({
+                "name": filename,
+                "size": total,
+                "content_type": metadata.get("content_type"),
+                "storage_relpath": f"original/{filename}",
+                "ingestion_state": "ORIGINAL_PRESERVED",
+                "browser_capture": {
+                    "url": captured_url,
+                    "captured_at": captured_at,
+                    "browser_profile_id": profile.get("browser_profile_id"),
+                    "scope": profile.get("scope"),
+                    "project_id": profile.get("project_id"),
+                    "provider_binding": profile.get("provider_binding"),
+                    "semantic_class": "CAPTURE_RECEIPT_NOT_BROWSER_PROVIDER_PROOF",
+                },
+            })
+            extraction = extract_structured_body(source_dir, source)
+            if extraction.get("status") == "KNOWLEDGE_DRAFT_READY":
+                current_state = "ORIGINAL_PRESERVED"
+                for next_state in ("EXTRACTED", "CITATION_BOUND", "KNOWLEDGE_DRAFT_READY"):
+                    transition = next_ingestion_state(current_state, next_state)
+                    if transition.get("status") != "PASS":
+                        raise RuntimeError(f"SOURCE_STATE_TRANSITION_FAILED:{current_state}->{next_state}")
+                    current_state = next_state
+                source["ingestion_state"] = current_state
+            source["extraction"] = extraction
+            manifest = write_manifest(source_dir, source)
+            manifest_revision = sha256_file(source_dir / MANIFEST_NAME)
+            if manifest_revision is None:
+                raise RuntimeError("DERIVED_MANIFEST_WRITEBACK_FAILED")
+            source["derived_manifest_ref"] = MANIFEST_NAME
+            source["derived_manifest_revision"] = manifest_revision
+            source["derived_artifact_count"] = len(manifest.get("artifacts") or [])
+            _write_json(source_dir / "source.json", source)
+            shutil.rmtree(upload_dir, ignore_errors=True)
+            return {
+                "source_id": source_id,
+                "source_revision": fingerprint,
+                "storage_relpath": source["storage_relpath"],
+                "ingestion_state": source["ingestion_state"],
+                "source_kind": "URL",
+                "extraction_status": extraction.get("status"),
+            }
+
+        def readback(_: ActionRequest, provider_result: dict[str, Any]) -> dict[str, Any]:
+            source_path = source_dir / "source.json"
+            if not source_path.is_file():
+                return {"status": "FAIL", "reason": "SOURCE_METADATA_NOT_FOUND_AFTER_CAPTURE"}
+            source = _read_json(source_path)
+            revision = _source_revision_readback(source_dir, source)
+            derived = validate_manifest(source_dir, source) if revision.get("status") == "PASS" else {
+                "status": "BLOCKED_BY_SOURCE_INTEGRITY"
+            }
+            capture_readback = source.get("browser_capture") if isinstance(source.get("browser_capture"), dict) else {}
+            passed = bool(
+                source.get("source_id") == source_id
+                and source.get("source_kind") == "URL"
+                and source.get("original_ref") == captured_url
+                and source.get("source_revision") == fingerprint
+                and provider_result.get("source_revision") == fingerprint
+                and capture_readback.get("captured_at") == captured_at
+                and capture_readback.get("browser_profile_id") == profile.get("browser_profile_id")
+                and revision.get("status") == "PASS"
+                and derived.get("status") == "PASS"
+            )
+            return {
+                "status": "PASS" if passed else "FAIL",
+                "source_id": source_id,
+                "source_revision": fingerprint,
+                "source_revision_consistency": "PASS" if revision.get("status") == "PASS" else "FAIL",
+                "derived_integrity": derived.get("status"),
+                "semantic_fidelity": "PASS" if passed else "FAIL",
+                "capture_ref": target_ref,
+            }
+
+        execution = self.action_runtime.execute(action_request, executor, readback=readback)
+        self.action_runtime.ledger.flush()
+        readback_passed = (
+            execution.get("status") == "COMPLETED"
+            and isinstance(execution.get("readback"), dict)
+            and execution["readback"].get("status") == "PASS"
+        )
+        result_reliability = assess_result_reliability(
+            _result_reliability_observations(action_id, readback_passed),
+            material_mutation=True,
+        )
+        source = _read_json(source_dir / "source.json") if readback_passed and (source_dir / "source.json").is_file() else None
+        return {
+            "status": "PASS" if readback_passed and result_reliability.get("status") == "VERIFIED" else "ACTION_PARTIAL",
+            "action_runtime_status": execution.get("status"),
+            "action_id": action_id,
+            "guard_decision": action_guard,
+            "reliability_preflight": reliability_preflight,
+            "result_reliability": result_reliability,
+            "source": source,
+            "readback": execution.get("readback"),
+            "authority_ceiling": "SOURCE_CAPTURE_INGRESS_ONLY",
+            "does_not_prove": [
+                "BROWSER_PROVIDER_BOUND",
+                "PAGE_LOADED",
+                "KNOWLEDGE_CURRENT",
+                "PROJECT_CURRENT",
+                "DESIGN_KEEP",
+            ],
+        }
+
 
 def classify_source_kind(filename: str, content_type: str) -> str:
     suffix = Path(filename).suffix.lower()
@@ -1365,7 +1676,11 @@ class Handler(SimpleHTTPRequestHandler):
         if parsed.path == "/api/browser/profile":
             query = parse_qs(parsed.query)
             project_id = str((query.get("project_id") or [""])[0]).strip() or None
-            self._json(self.host.browser_profile(project_id))
+            scope = str((query.get("scope") or [""])[0]).strip() or None
+            try:
+                self._json(self.host.browser_profile(project_id, scope))
+            except ValueError as exc:
+                self._json({"status": "FAIL", "error": str(exc)}, HTTPStatus.BAD_REQUEST)
             return
         match = re.fullmatch(r"/api/source/(SRC-[0-9a-f]{32})/transcription-plan", parsed.path)
         if match:
@@ -1399,8 +1714,14 @@ class Handler(SimpleHTTPRequestHandler):
             if parsed.path == "/api/source/init":
                 self._json({"status": "PASS", "upload": self.host.init_upload(self._read_json_body())})
                 return
+            if parsed.path == "/api/browser/capture/init":
+                self._json({"status": "PASS", "upload": self.host.init_browser_capture(self._read_json_body())})
+                return
             if parsed.path == "/api/source/commit":
                 self._json(self.host.commit_upload(self._read_json_body()))
+                return
+            if parsed.path == "/api/browser/capture/commit":
+                self._json(self.host.commit_browser_capture(self._read_json_body()))
                 return
             match = re.fullmatch(r"/api/source/(SRC-[0-9a-f]{32})/transcription-request", parsed.path)
             if match:

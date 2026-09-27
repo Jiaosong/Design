@@ -365,6 +365,7 @@ function browserView() {
     <div class="grid">
       <section class="card span-8"><h2>Browser SurfaceViews</h2><div class="object-list">${browserRows}</div></section>
       <section class="card span-4"><h2>Browser Profile</h2><div class="object-list"><div class="object-row"><div><div class="object-title">${escapeHtml(profile?.browser_profile_id || 'UNRESOLVED')}</div><div class="object-meta">Scope: ${escapeHtml(profile?.scope || 'UNKNOWN')}<br>Downloads → ${escapeHtml(profile?.download_target || 'UNKNOWN')}<br>Captures → ${escapeHtml(profile?.capture_target || 'UNKNOWN')}</div></div><span class="state-label unknown">${escapeHtml(profile?.status || 'NOT_BOUND')}</span></div></div></section>
+      <section class="card span-8"><h2>Capture ingress</h2><div class="object-row"><div><div class="object-title">Captured bytes → Source Inbox</div><div class="object-meta">Local Host 可接收 Browser provider 已捕获的 bytes，并经 Product Action → ActionRuntime → R1–R5 readback 持久化为 URL Source。Local Host 本身不导航/抓取网页，因此这不证明 Browser provider 已绑定。</div></div><span class="state-label ${state.hostBound ? 'staged' : 'unknown'}">${state.hostBound ? 'INGRESS ONLY' : 'HOST NOT BOUND'}</span></div></section>
       <section class="card span-4"><h2>Capture semantics</h2><p>PAGE_LOADED ≠ SOURCE_CAPTURED<br>SOURCE_CAPTURED ≠ KNOWLEDGE_INGESTED<br>KNOWLEDGE_INGESTED ≠ KNOWLEDGE_CURRENT</p></section>
     </div>`
 }

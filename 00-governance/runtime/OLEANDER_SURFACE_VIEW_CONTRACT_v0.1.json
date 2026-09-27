@@ -25,7 +25,7 @@
     "GENERIC_INTEGRATION"
   ],
   "definitions": [
-    {"surface_definition_id": "design_system_local_host", "display_name": "Design System Local Host", "view_kind": "HOST_RUNTIME", "product_actions": ["OBSERVE", "INGEST", "READBACK"]},
+    {"surface_definition_id": "design_system_local_host", "display_name": "Design System Local Host", "view_kind": "HOST_RUNTIME", "product_actions": ["OBSERVE", "INGEST", "CAPTURE_SOURCE", "READBACK"]},
     {"surface_definition_id": "github_connector", "display_name": "GitHub", "view_kind": "REPOSITORY", "product_actions": ["BROWSE_REPOSITORY", "COMPARE", "REVIEW", "SYNC"]},
     {"surface_definition_id": "notion_connector", "display_name": "Notion", "view_kind": "KNOWLEDGE", "product_actions": ["BROWSE", "SEARCH", "INGEST", "SYNC"]},
     {"surface_definition_id": "google_drive_connector", "display_name": "Google Drive", "view_kind": "FILE_STORE", "product_actions": ["BROWSE", "PREVIEW", "INGEST", "SYNC"]},
@@ -40,13 +40,15 @@
   ],
   "browser_profile": {
     "semantic_class": "BROWSER_CONTEXT_PROJECTION_NOT_PROJECT_STATE",
-    "required_fields": ["browser_profile_id", "scope", "credential_boundary", "download_target", "capture_target"],
+    "required_fields": ["browser_profile_id", "scope", "credential_boundary", "download_target", "capture_target", "provider_binding", "status"],
     "scopes": ["PROJECT", "RESEARCH", "PERSONAL", "RESTRICTED"],
     "rules": [
       "BROWSER_PROFILE_NE_PROJECT_STATE",
       "PAGE_LOADED_NE_SOURCE_CAPTURED",
       "SOURCE_CAPTURED_NE_KNOWLEDGE_INGESTED",
-      "PERSISTENT_CAPTURE_MUST_ENTER_SOURCE_INBOX"
+      "PERSISTENT_CAPTURE_MUST_ENTER_SOURCE_INBOX",
+      "CAPTURE_RECEIPT_NE_BROWSER_PROVIDER_BOUND",
+      "CAPTURE_INGRESS_MUST_ROUTE_THROUGH_ACTION_RUNTIME_AND_R5_READBACK"
     ]
   },
   "hard_invariants": [

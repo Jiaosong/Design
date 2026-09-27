@@ -14,6 +14,7 @@ from oleander_design_system_runtime import (  # noqa: E402
     browser_capture_source,
     content_fingerprint,
     next_ingestion_state,
+    resolve_browser_capture_ingress_guard,
     resolve_bounded_product_action_guard,
     validate_project_workspace_binding,
     validate_source_revision,
@@ -116,6 +117,42 @@ class DesignSystemRuntimeV01Tests(unittest.TestCase):
         self.assertEqual("URL", result["source"]["source_kind"])
         self.assertNotIn("knowledge_current", result["source"])
         self.assertIn("KNOWLEDGE_CURRENT", result["does_not_prove"])
+
+    def test_browser_capture_ingress_guard_is_bounded_and_digest_strict(self) -> None:
+        profile = {
+            "browser_profile_id": "browser-profile:C01",
+            "scope": "PROJECT",
+            "project_id": "C01",
+            "capture_target": "SOURCE_INBOX",
+        }
+        allowed = resolve_browser_capture_ingress_guard(
+            url="https://example.com/article",
+            browser_profile=profile,
+            capture_digest="sha256:" + ("a" * 64),
+            external_disclosure=False,
+        )
+        self.assertEqual("ALLOW", allowed["decision"])
+        self.assertEqual("BOUNDED_EXECUTION_POLICY_ONLY", allowed["authority_ceiling"])
+        self.assertIn("KNOWLEDGE_CURRENT", allowed["does_not_prove"])
+
+        for bad_digest in ("sha256:web1", "sha256:" + ("z" * 64), "md5:" + ("a" * 64)):
+            held = resolve_browser_capture_ingress_guard(
+                url="https://example.com/article",
+                browser_profile=profile,
+                capture_digest=bad_digest,
+                external_disclosure=False,
+            )
+            self.assertEqual("HOLD", held["decision"])
+            self.assertIn("BROWSER_CAPTURE_DIGEST_INVALID", held["reasons"])
+
+        embedded_credentials = resolve_browser_capture_ingress_guard(
+            url="https://user:secret@example.com/private",
+            browser_profile=profile,
+            capture_digest="sha256:" + ("b" * 64),
+            external_disclosure=False,
+        )
+        self.assertEqual("HOLD", embedded_credentials["decision"])
+        self.assertIn("BROWSER_CAPTURE_URL_EMBEDDED_CREDENTIALS_NOT_ALLOWED", embedded_credentials["reasons"])
 
     def test_bounded_product_action_guard_allows_only_exact_local_source_derivative_scope(self) -> None:
         allowed = resolve_bounded_product_action_guard(

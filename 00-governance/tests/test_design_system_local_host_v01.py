@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import json
 import shutil
@@ -91,6 +92,65 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("C01", project["project_id"])
         self.assertEqual("SOURCE_INBOX", project["capture_target"])
         self.assertIn("PROJECT_STATE", project["does_not_prove"])
+
+        restricted = self.host.browser_profile(scope="RESTRICTED")
+        self.assertEqual("RESTRICTED", restricted["scope"])
+        self.assertEqual("UNBOUND", restricted["provider_binding"])
+        with self.assertRaisesRegex(ValueError, "INVALID_BROWSER_PROFILE_SCOPE"):
+            self.host.browser_profile(scope="INVALID")
+
+    def test_browser_capture_ingress_runs_action_runtime_and_enters_source_inbox(self) -> None:
+        data = b"<html><body><h1>Captured reference</h1></body></html>"
+        upload = self.host.init_browser_capture({
+            "url": "https://example.com/reference",
+            "project_id": "C01",
+            "scope": "PROJECT",
+            "name": "reference.html",
+            "size": len(data),
+            "type": "text/html",
+            "captured_at": "2026-09-27T05:00:00+00:00",
+        })
+        self.assertEqual("BROWSER_CAPTURE", upload["ingress_kind"])
+        self.assertEqual("UNBOUND", upload["browser_profile"]["provider_binding"])
+        self.host.put_chunk(upload["upload_id"], 0, data)
+        result = self.host.commit_browser_capture({
+            "upload_id": upload["upload_id"],
+            "chunk_count": 1,
+            "client_fingerprint": "sha256:" + hashlib.sha256(data).hexdigest(),
+        })
+        self.assertEqual("PASS", result["status"])
+        self.assertEqual("COMPLETED", result["action_runtime_status"])
+        self.assertEqual("ALLOW", result["guard_decision"]["decision"])
+        self.assertEqual("READY", result["reliability_preflight"]["status"])
+        self.assertEqual("VERIFIED", result["result_reliability"]["status"])
+        source = result["source"]
+        self.assertEqual("URL", source["source_kind"])
+        self.assertEqual("https://example.com/reference", source["original_ref"])
+        self.assertEqual("KNOWLEDGE_DRAFT_READY", source["ingestion_state"])
+        self.assertEqual("CAPTURE_RECEIPT_NOT_BROWSER_PROVIDER_PROOF", source["browser_capture"]["semantic_class"])
+        self.assertEqual("UNBOUND", source["browser_capture"]["provider_binding"])
+        self.assertNotIn("knowledge_current", source)
+        self.assertIn("BROWSER_PROVIDER_BOUND", result["does_not_prove"])
+
+        readback = self.host.read_knowledge_draft(source["source_id"])
+        self.assertEqual("PASS", readback["status"])
+        self.assertIn("Captured reference", readback["body"]["sections"][0]["text"])
+        self.assertEqual("OPEN", readback["knowledge_draft"]["review_state"])
+        self.assertIn("KNOWLEDGE_CURRENT", readback["does_not_prove"])
+
+    def test_browser_capture_invalid_url_fails_before_upload_or_source_persistence(self) -> None:
+        before_uploads = {p.name for p in self.host.uploads_root.iterdir()}
+        before_sources = {p.name for p in self.host.sources_root.iterdir()}
+        with self.assertRaisesRegex(ValueError, "BROWSER_CAPTURE_URL_NOT_ALLOWED"):
+            self.host.init_browser_capture({
+                "url": "file:///C:/secret.txt",
+                "scope": "RESEARCH",
+                "name": "capture.html",
+                "size": 3,
+                "type": "text/html",
+            })
+        self.assertEqual(before_uploads, {p.name for p in self.host.uploads_root.iterdir()})
+        self.assertEqual(before_sources, {p.name for p in self.host.sources_root.iterdir()})
 
     def test_text_upload_preserves_original_and_builds_knowledge_draft(self) -> None:
         result = self._upload("notes.md", b"# Site\nCourtyard relation to well.\n", "text/markdown")
