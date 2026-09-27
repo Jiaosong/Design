@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">P01 步步生光｜侧缘齐平嵌入与身体路径关系</title>
+  <desc id="desc">从当前 P01 v1.2 行为逻辑与 v1.3 B 候选推导的 Web Development 表达：主要踏面保持连续，反馈退到侧缘；身体正常经过，不需要踩中目标。所有位置、尺寸、材料、排水、电气、防滑、眩光、生态、检修和无障碍参数保持开放。</desc>
+  <defs>
+    <style>
+      .bg{fill:#edf0e9}.paper{fill:#f8f7f1;stroke:#bdc7c1;stroke-width:1}.ink{fill:#173c37}.muted{fill:#687870}.qing{fill:#548b7e}.seal{fill:#a54539}.stone{fill:#d9d8cf}.edge{fill:#789d92}.service{fill:#243b35}.glow{fill:#9cc8bc}.line{stroke:#173c37;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#7c8983;stroke-width:1.15;fill:none}.dash{stroke:#97a19c;stroke-width:1.2;fill:none;stroke-dasharray:6 6}.body{stroke:#173c37;stroke-width:2.6;fill:none;stroke-linecap:round}.h1{font:700 38px Arial,'Noto Sans SC','Microsoft YaHei',sans-serif}.h2{font:700 20px Arial,'Noto Sans SC','Microsoft YaHei',sans-serif}.b{font:400 14px Arial,'Noto Sans SC','Microsoft YaHei',sans-serif}.sm{font:400 11.5px Arial,'Noto Sans SC','Microsoft YaHei',sans-serif}.xs{font:700 9.5px Arial,'Noto Sans SC','Microsoft YaHei',sans-serif;letter-spacing:1.2px}
+    </style>
+  </defs>
+  <rect width="1200" height="760" class="bg"/>
+  <text x="54" y="52" class="xs qing">P01 / 步步生光 · CURRENT PHYSICAL DEVELOPMENT BINDING</text>
+  <text x="54" y="98" class="h1 ink">路仍然首先是一条路，反馈退到侧缘。</text>
+  <text x="54" y="132" class="b muted">SELECTED FOR DEVELOPMENT READBACK：B / FLUSH LATERAL EDGE CASSETTE。项目对象被具体化，但不授予 FINAL_KEEP 或工程结论。</text>
+  <text x="54" y="160" class="xs seal">CONCEPT / NTS / FIELD OPEN / NOT FOR CONSTRUCTION / NO ROUTE-GUIDANCE CLAIM</text>
+
+  <g transform="translate(54 205)">
+    <rect width="1092" height="244" rx="14" class="paper"/>
+    <text x="22" y="32" class="xs qing">PLAN + BODY / PATH RELATION</text>
+    <rect x="22" y="60" width="852" height="118" rx="4" class="stone"/>
+    <rect x="874" y="60" width="70" height="118" class="edge"/>
+    <rect x="944" y="60" width="28" height="118" class="service"/>
+    <path d="M70 118 H780" class="thin"/>
+    <path d="M742 104 l38 14 -38 14" class="line"/>
+    <path d="M168 178 V198 M402 178 V198 M636 178 V198" class="dash"/>
+    <g transform="translate(178 69)" class="body">
+      <circle cx="20" cy="14" r="9"/><path d="M20 24V60M20 36L4 48M20 36L37 46M20 60L8 82M20 60L36 82"/>
+    </g>
+    <g transform="translate(412 69)" class="body">
+      <circle cx="20" cy="14" r="9"/><path d="M20 24V60M20 36L4 48M20 36L37 46M20 60L8 82M20 60L36 82"/>
+    </g>
+    <g transform="translate(646 69)" class="body">
+      <circle cx="20" cy="14" r="9"/><path d="M20 24V60M20 36L4 48M20 36L37 46M20 60L8 82M20 60L36 82"/>
+    </g>
+    <rect x="866" y="88" width="16" height="60" rx="8" class="glow" opacity=".72"/>
+    <text x="22" y="217" class="xs qing">PRIMARY WALKING FIELD / CONTINUOUS</text>
+    <text x="735" y="217" class="xs qing">EDGE RESPONSE</text>
+    <text x="924" y="217" class="xs seal">SERVICE SIDE</text>
+    <text x="994" y="84" class="sm ink">身体正常通过</text>
+    <text x="994" y="107" class="sm muted">不需要踩中目标</text>
+    <text x="994" y="130" class="sm muted">不改变路线权威</text>
+    <text x="994" y="153" class="sm muted">短段回应后退暗</text>
+  </g>
+
+  <g transform="translate(54 474)">
+    <rect width="522" height="206" rx="14" class="paper"/>
+    <text x="22" y="32" class="xs qing">SECTION RELATION / EDITABLE GEOMETRY</text>
+    <rect x="22" y="78" width="330" height="46" class="stone"/>
+    <rect x="352" y="78" width="68" height="46" class="edge"/>
+    <rect x="420" y="78" width="28" height="46" class="service"/>
+    <line x1="22" y1="124" x2="482" y2="124" class="line"/>
+    <path d="M358 92h48" stroke="#9cc8bc" stroke-width="7" opacity=".7"/>
+    <text x="22" y="156" class="sm ink">主踏面连续 / 侧缘接口可读 / 检修从侧缘组织</text>
+    <text x="22" y="181" class="sm seal">actual fixing / sealing / drainage / electrical = OPEN</text>
+  </g>
+
+  <g transform="translate(600 474)">
+    <rect width="546" height="206" rx="14" class="paper"/>
+    <text x="22" y="32" class="xs qing">BEHAVIOR + FAILURE-SAFE RELATION</text>
+    <g transform="translate(22 62)">
+      <circle cx="34" cy="34" r="27" fill="#e3e8e4"/><text x="17" y="39" class="sm ink">经过</text>
+      <path d="M72 34h66" class="thin"/><path d="M128 28l12 6-12 6" fill="#788780"/>
+      <circle cx="178" cy="34" r="27" fill="#d8e7e1"/><text x="157" y="39" class="sm ink">局部亮</text>
+      <path d="M216 34h66" class="thin"/><path d="M272 28l12 6-12 6" fill="#788780"/>
+      <circle cx="322" cy="34" r="27" fill="#e3e8e4"/><text x="304" y="39" class="sm ink">退暗</text>
+      <path d="M360 34h66" class="thin"/><path d="M416 28l12 6-12 6" fill="#788780"/>
+      <circle cx="466" cy="34" r="27" fill="#efe7dc"/><text x="452" y="39" class="sm ink">OFF</text>
+    </g>
+    <text x="22" y="142" class="sm ink">白天 / 故障 / 维护默认 OFF；不积分、不计数、不提示“下一盏”。</text>
+    <text x="22" y="170" class="sm muted">响应时间只保留样件测试方向；不迁移为项目工程数值。</text>
+  </g>
+
+  <line x1="54" y1="710" x2="1146" y2="710" stroke="#173c37" stroke-width="1" opacity=".22"/>
+  <text x="54" y="738" class="sm muted">SOURCE BOUNDARY：P01 v1.2 行为逻辑 + v1.3 B 侧缘齐平嵌入候选；位置、材料、尺寸、公差、排水、电气、防滑、眩光、生态、检修、无障碍全部保持 FIELD OPEN。</text>
+</svg>

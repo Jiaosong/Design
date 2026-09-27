@@ -1,0 +1,116 @@
+name: C04 Web Static Integrity
+
+on:
+  pull_request:
+    paths:
+      - '05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/**'
+      - '05-cases/c04-qingjiang-stone-book/physical-memory-currentization-v1.2/**'
+      - '.github/workflows/c04-web-static-integrity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  c04-web-static-integrity:
+    name: C04 Web v1.12 repo-local dependency integrity
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout Current PR head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Run C04 Web static verifier
+        run: node 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/verify_game_line.mjs
+
+      - name: Publish C04 static readback
+        if: always()
+        run: |
+          echo '## C04 Web v1.12 Static Integrity' >> "$GITHUB_STEP_SUMMARY"
+          READBACK='05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/C04_WEB_v1_12_R2_STATIC_READBACK.json'
+          if [ -f "$READBACK" ]; then
+            cat "$READBACK" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Static readback was not produced.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Boundary: repo-local source/runtime dependency integrity only. Google Drive materialization is tracked separately and is never attempted anonymously inside this check.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Static integrity PASS is not browser PASS, Design KEEP, FIELD, engineering, accessibility, or release proof.' >> "$GITHUB_STEP_SUMMARY"
+
+  c04-browser-presentation-readback:
+    name: C04 Web v1.12 Chromium presentation readback
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Current PR head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Install pinned project browser dependencies
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          node -e "const p=require('@playwright/test/package.json'); console.log({playwrightTest:p.version})" | tee C04_BROWSER_RUNTIME.txt
+
+      - name: Execute repo-local Chromium presentation readback
+        working-directory: 05-cases/c04-qingjiang-stone-book/web-v1.12-game-line
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$GITHUB_WORKSPACE/C04_BROWSER_SERVER.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          C04_BROWSER_URL='http://127.0.0.1:4173/index.html' node verify_browser.mjs
+          test -s browser-readback/report.json
+
+      - name: Validate browser report boundary
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/browser-readback/report.json')
+          if not p.exists():
+              raise SystemExit('browser report missing')
+          r=json.loads(p.read_text())
+          assert r['status']=='PASS', json.dumps(r.get('failures',[]),ensure_ascii=False,indent=2)
+          assert {c['name'] for c in r['cases']}=={'desktop-1920x1080','desktop-1366x768','mobile-390x844'}
+          assert r['reduced_motion']['mediaQueryMatches'] is True
+          print(json.dumps({
+              'status':r['status'],
+              'cases':[c['name'] for c in r['cases']],
+              'failures':r['failures'],
+              'reduced_motion':r['reduced_motion']
+          },ensure_ascii=False,indent=2))
+          PY
+
+      - name: Publish browser readback summary
+        if: always()
+        run: |
+          echo '## C04 Web v1.12 Chromium Presentation Readback' >> "$GITHUB_STEP_SUMMARY"
+          REPORT='05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/browser-readback/report.json'
+          if [ -f "$REPORT" ]; then
+            cat "$REPORT" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Browser report was not produced.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Boundary: this is real Chromium readback of the repository-native Current PR artifact on localhost. It does not prove the protected Vercel deployment path, external network behavior, Design KEEP, FIELD, engineering, or release.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: c04-web-browser-readback-${{ github.run_id }}
+          path: |
+            C04_BROWSER_RUNTIME.txt
+            C04_BROWSER_SERVER.log
+            05-cases/c04-qingjiang-stone-book/web-v1.12-game-line/browser-readback/
+          if-no-files-found: warn
+          retention-days: 14

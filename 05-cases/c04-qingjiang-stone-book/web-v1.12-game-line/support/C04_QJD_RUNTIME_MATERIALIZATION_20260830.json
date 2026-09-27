@@ -1,0 +1,43 @@
+{
+  "schema": "C04_QJD_RUNTIME_MATERIALIZATION_V1",
+  "status": "SOURCE_VERIFIED__REPO_LOCAL_MATERIALIZATION_OPEN",
+  "purpose": "Track the three locked QJ-D v1.1 landscape source files and their exact web derivatives without making repo-local integrity depend on anonymous Google Drive downloads.",
+  "sources": [
+    {
+      "role": "hero",
+      "drive_file_id": "151BBYqWMK7yHyxyAoCWMsOP2i3zEg3lh",
+      "source_name": "01_HERO_KEEP_QJ-D_v1.1_1920x1080.png",
+      "source_sha256": "8e54b7e58c745c6c43b528befdb3bc1d2c30f3dd62ab165d3921620c0069475c",
+      "runtime_path": "assets/hero_qingjiang.jpg",
+      "runtime_sha256": "e08be99fe84e55c77c782601f9fb0ab59bab826fdf532218b290a3fb357c1bdf",
+      "runtime_bytes": 626323,
+      "conversion": "Pillow 12.3.0; RGB JPEG quality=95 subsampling=0 optimize=false progressive=false",
+      "source_verified_2026_08_30": true
+    },
+    {
+      "role": "r06_landscape",
+      "drive_file_id": "1Md7iDG0pzweLhjZKuMylgP5x8SIe1DwQ",
+      "source_name": "02_R06_LANDSCAPE_FIRST_KEEP_WITH_HOLD_1920x1080.png",
+      "source_sha256": "013bf1e17230a7201a70b1421f3f30fec62022ff8bd1d4b2e623e9c13edd48b0",
+      "runtime_path": "assets/r06_qingjiang.jpg",
+      "runtime_sha256": "6de729bf90be671a05f054333e5cd6b56aed7f416eda44a9eea0d7c7c57422d3",
+      "runtime_bytes": 794827,
+      "conversion": "Pillow 12.3.0; alpha composite onto white; RGB JPEG quality=95 subsampling=0 optimize=false progressive=false",
+      "source_verified_2026_08_30": true
+    },
+    {
+      "role": "r13_remote_concept",
+      "drive_file_id": "18PST2KVoARuc9Kfr23MIjv7vDhC3v1Ka",
+      "source_name": "04_R13_REMOTE_CONCEPT_NOT_SITE_PHOTO_4FRAME_1920x1080.png",
+      "source_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "runtime_path": "assets/r13_passage_sequence.png",
+      "runtime_sha256": "583e6d87d47c97e2b79bd4f01298de78ef2cb2469179294baaabf2967354e666",
+      "runtime_bytes": 481744,
+      "conversion": "byte-identical copy",
+      "source_verified_2026_08_30": true,
+      "truth_boundary": "REMOTE CONCEPT / NOT SITE PHOTO"
+    }
+  ],
+  "ci_rule": "Repo-local static integrity MUST NOT anonymously download Google Drive. Missing runtime derivatives remain an explicit materialization blocker until committed or generated from an authenticated delivery path.",
+  "promotion_boundary": "SOURCE VERIFIED != REPO-LOCAL MATERIALIZED != BROWSER PASS != DESIGN KEEP != FIELD PASS"
+}

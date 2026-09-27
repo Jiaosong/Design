@@ -1,0 +1,38 @@
+{
+  "schema": "C04_CLEAN_LANDSCAPE_RUNTIME_V1",
+  "status": "CURRENT_EXTERNAL_SOURCE_BINDING__BROWSER_READBACK_OPEN",
+  "purpose": "Replace QJ-D raster presentation composites that contain baked project copy with clean source photography while keeping all project copy in editable HTML/SVG.",
+  "bindings": [
+    {
+      "role": "hero_and_return",
+      "fallback_repo_ref": "assets/hero_qingjiang.jpg",
+      "current_runtime_url": "https://www.eslygroup.com/uploadfile/image/20230718/v0ii0wjlhe.jpg",
+      "source_page": "https://www.eslygroup.com/media_focus/2830.html",
+      "source_owner_context": "恩施旅游集团 / 湖北日报转载摄影",
+      "visual_subject": "跨清江索道吊厢、清江水面与两岸山地",
+      "reason": "Clean authoritative landscape/cableway photography; no C04 baked title or process text.",
+      "browser_readback": "OPEN"
+    },
+    {
+      "role": "r06_landscape",
+      "fallback_repo_ref": "assets/r06_qingjiang.jpg",
+      "current_runtime_url": "https://www.eslygroup.com/uploadfile/image/20240522/1cce70abb.jpg",
+      "source_page": "https://www.eslygroup.com/media_focus/3229.html",
+      "source_owner_context": "恩施旅游集团 / 湖北日报转载摄影",
+      "visual_subject": "云雾、弯曲清江河谷、村落与田地",
+      "reason": "Clean authoritative R06-compatible valley view; supports landscape-first reading without baked project copy.",
+      "browser_readback": "OPEN"
+    },
+    {
+      "role": "r13_passage_attention",
+      "fallback_repo_ref": "assets/r13_passage_sequence.png",
+      "current_runtime_ref": "assets/r13_passage_sequence_current.svg",
+      "reason": "The old four-frame raster concept is superseded by an editable vector attention sequence. It remains REMOTE CONCEPT / NOT SITE PHOTO / NTS / FIELD OPEN.",
+      "pixel_readback": "PASS_1600x900_20260830"
+    }
+  ],
+  "superseded_presentation_note": "QJ-D v1.1 composites remain lineage/source evidence. Their baked C04 typography and process labels are not reused as final public landscape pixels.",
+  "text_rule": "Public headings, captions, truth boundaries and project copy remain HTML/SVG vector/editable text; source photography contains no new project copy.",
+  "runtime_boundary": "REPO-LOCAL STATIC PASS DOES NOT PROVE EXTERNAL IMAGE DELIVERY OR BROWSER CROP. Browser readback remains required before Design KEEP.",
+  "rights_boundary": "Source references are retained for attribution/traceability; no commercial-rights claim is made here."
+}
