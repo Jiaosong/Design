@@ -295,10 +295,12 @@ def _read_project_locator(local_path: Path | None) -> dict[str, Any]:
     project_id = str(payload.get("project_id") or "").strip()
     project_state_ref = str(payload.get("project_state_ref") or "").strip()
     authority_ref = str(payload.get("authority_ref") or "").strip()
-    if not project_id or not project_state_ref.startswith("file:") or not authority_ref.startswith("file:"):
+    if not project_id or not project_state_ref.startswith("file:") or not (
+        authority_ref.startswith("file:") or authority_ref.startswith("platform-file:")
+    ):
         return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
 
-    def resolve_file_ref(ref: str) -> Path | None:
+    def resolve_local_file_ref(ref: str) -> Path | None:
         rel = Path(ref[5:])
         if rel.is_absolute() or ".." in rel.parts:
             return None
@@ -309,8 +311,33 @@ def _read_project_locator(local_path: Path | None) -> dict[str, Any]:
             return None
         return candidate if candidate.is_file() else None
 
-    state_path = resolve_file_ref(project_state_ref)
-    authority_path = resolve_file_ref(authority_ref)
+    def resolve_platform_file_ref(ref: str) -> Path | None:
+        raw = ref[len("platform-file:"):]
+        path_text, _, fragment = raw.partition("#")
+        rel = Path(path_text)
+        if rel.is_absolute() or ".." in rel.parts:
+            return None
+        candidate = (ROOT / rel).resolve()
+        try:
+            candidate.relative_to(ROOT.resolve())
+        except ValueError:
+            return None
+        if not candidate.is_file():
+            return None
+        if fragment:
+            try:
+                if fragment not in candidate.read_text(encoding="utf-8"):
+                    return None
+            except OSError:
+                return None
+        return candidate
+
+    state_path = resolve_local_file_ref(project_state_ref)
+    authority_path = (
+        resolve_local_file_ref(authority_ref)
+        if authority_ref.startswith("file:")
+        else resolve_platform_file_ref(authority_ref)
+    )
     if state_path is None or authority_path is None:
         return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
     return {
@@ -322,6 +349,62 @@ def _read_project_locator(local_path: Path | None) -> dict[str, Any]:
         "semantic_class": "PROJECT_LOCATOR_BOUND_NOT_PROJECT_CURRENT",
         "authority_ceiling": "LOCATOR_ONLY",
         "does_not_prove": ["PROJECT_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"],
+    }
+
+
+def _read_project_materialization(local_path: Path | None, project_id: str | None) -> dict[str, Any]:
+    unresolved = {
+        "status": "UNRESOLVED",
+        "artifact_store_binding": "UNRESOLVED",
+        "knowledge_mount_binding": "UNRESOLVED",
+        "authority_ceiling": "PROJECT_MATERIALIZATION_BINDING_ONLY",
+    }
+    if local_path is None or not project_id:
+        return unresolved
+    path = local_path / ".oleander" / "bindings.json"
+    if not path.is_file():
+        return unresolved
+    try:
+        payload = _read_json(path)
+    except (OSError, ValueError, json.JSONDecodeError):
+        return {**unresolved, "status": "HOLD_INVALID_BINDINGS"}
+    if payload.get("project_id") != project_id or payload.get("authority_ceiling") != "PROJECT_MATERIALIZATION_BINDING_ONLY":
+        return {**unresolved, "status": "HOLD_INVALID_BINDINGS"}
+
+    def repo_ref_exists(ref: str) -> bool:
+        if not ref.startswith("repo:"):
+            return False
+        rel = Path(ref[5:])
+        if rel.is_absolute() or ".." in rel.parts:
+            return False
+        candidate = (local_path / rel).resolve()
+        try:
+            candidate.relative_to(local_path.resolve())
+        except ValueError:
+            return False
+        return candidate.exists()
+
+    artifact_refs = [str(row.get("ref") or "") for row in payload.get("artifact_stores") or [] if isinstance(row, dict)]
+    knowledge_refs = [str(row.get("ref") or "") for row in payload.get("knowledge_mounts") or [] if isinstance(row, dict)]
+    artifact_state = str(payload.get("artifact_store_state") or "")
+    knowledge_state = str(payload.get("knowledge_mount_state") or "")
+    artifact_ok = (
+        artifact_state == "VERIFIED_LOCAL_PATHS" and bool(artifact_refs) and all(repo_ref_exists(ref) for ref in artifact_refs)
+    ) or (artifact_state == "NONE_DECLARED" and not artifact_refs)
+    knowledge_ok = (
+        knowledge_state == "VERIFIED_SOURCE_REFS" and bool(knowledge_refs) and all(repo_ref_exists(ref) for ref in knowledge_refs)
+    ) or (knowledge_state == "NONE_DECLARED_FOR_CURRENT_PUBLIC_STATE" and not knowledge_refs)
+    if not artifact_ok or not knowledge_ok:
+        return {**unresolved, "status": "HOLD_INVALID_BINDINGS"}
+    return {
+        "status": "BOUND",
+        "artifact_store_binding": artifact_state,
+        "artifact_store_refs": artifact_refs,
+        "knowledge_mount_binding": knowledge_state,
+        "knowledge_mount_refs": knowledge_refs,
+        "remote_identity": (payload.get("repository") or {}).get("remote_identity"),
+        "authority_ceiling": "PROJECT_MATERIALIZATION_BINDING_ONLY",
+        "does_not_prove": ["PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"],
     }
 
 
@@ -347,6 +430,7 @@ def discover_project_candidates() -> dict[str, Any]:
             local_branch = _git_at(local_path, "branch", "--show-current") if local_git_ready and local_path else None
             local_remotes = _git_at(local_path, "remote") if local_git_ready and local_path else None
             locator = _read_project_locator(local_path if local_git_ready else None)
+            materialization = _read_project_materialization(local_path if local_git_ready else None, locator.get("project_id"))
             state = "PROJECT_LOCATOR_BOUND" if locator["status"] == "BOUND" else ("LOCAL_REPOSITORY_READY" if local_git_ready else ("NESTED_REPOSITORY" if nested_git else "EMBEDDED_IN_PLATFORM_REPO"))
             rows.append({
                 "project_candidate_id": slug.split("-", 1)[0].upper(),
@@ -375,6 +459,9 @@ def discover_project_candidates() -> dict[str, Any]:
                 "authority_ref": locator.get("authority_ref"),
                 "project_locator_status": locator.get("status"),
                 "project_locator_ref": locator.get("manifest_ref"),
+                "materialization_binding_status": materialization.get("status"),
+                "artifact_store_binding": materialization.get("artifact_store_binding"),
+                "knowledge_mount_binding": materialization.get("knowledge_mount_binding"),
                 "semantic_class": locator.get("semantic_class"),
                 "next_action": (
                     "VERIFY_ARTIFACT_KNOWLEDGE_AND_REMOTE_BINDINGS"

@@ -41,7 +41,9 @@
     "BIND_PROJECT_ID_AND_OWNER_NATIVE_STATE_REF",
     "BIND_ARTIFACT_AND_KNOWLEDGE_LOCATIONS",
     "READBACK_IN_DESIGN_SYSTEM",
-    "REMOVE_OLD_DUPLICATE_ONLY_AFTER_VERIFIED_BINDING"
+    "DOWNGRADE_OLD_PATH_TO_COMPATIBILITY_MOUNT_WHILE_PLATFORM_REFERENCES_REMAIN",
+    "REMOVE_COMPATIBILITY_MOUNT_ONLY_AFTER_PLATFORM_REFERENCE_REWRITE_AND_VERIFIED_BINDING"
   ],
+  "compatibility_mount_rule": "A verified independent Project repository may coexist with a legacy in-platform path only as a non-authoritative compatibility mount while live workflows/runtime references still address that path. The compatibility mount does not own Project State or Project Current and is removed only after those references are rewritten and read back.",
   "does_not_prove": ["PROJECT_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"]
 }

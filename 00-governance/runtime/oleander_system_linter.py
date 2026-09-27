@@ -395,7 +395,7 @@ def run_lint() -> dict[str, Any]:
         ),
         "project_repository_migration_is_non_authority": project_migration.get("authority_ceiling") == "MIGRATION_READBACK_ONLY",
         "project_repository_migration_local_repos_ready": (
-            project_migration.get("status") == "LOCAL_REPOSITORIES_READY"
+            project_migration.get("status") == "MIGRATION_COMPLETE_COMPATIBILITY_MOUNT"
             and len(migration_projects) == 4
             and all(row.get("migration_state") == "SPLIT_BRANCH_READY" for row in migration_projects)
             and all(row.get("local_repository_ready") is True for row in migration_projects)
@@ -403,26 +403,31 @@ def run_lint() -> dict[str, Any]:
             and all(row.get("split_is_subdirectory_rooted") is True for row in migration_projects)
         ),
         "project_repository_migration_project_state_resolution_is_fail_closed": (
-            (project_migration.get("binding_progress") or {}).get("owner_native_project_state_verified") == 1
-            and (project_migration.get("binding_progress") or {}).get("project_state_unresolved") == 3
-            and "PUBLIC_STATUS_SUMMARY_NE_OWNER_NATIVE_PROJECT_STATE" in set(project_migration.get("hard_invariants") or [])
+            (project_migration.get("binding_progress") or {}).get("owner_native_project_state_verified") == 4
+            and (project_migration.get("binding_progress") or {}).get("project_state_unresolved") == 0
+            and "PROJECT_STATE_REF_NE_PROJECT_CURRENT" in set(project_migration.get("hard_invariants") or [])
+            and "PUBLIC_PROJECT_STATE_NE_PROJECT_CURRENT" in set(project_migration.get("hard_invariants") or [])
             and "BOOTSTRAP_MANIFEST_IS_LOCATOR_ONLY_NOT_PROJECT_STATE" in set(project_migration.get("hard_invariants") or [])
+            and "COMPATIBILITY_MOUNT_NE_PROJECT_AUTHORITY" in set(project_migration.get("hard_invariants") or [])
         ),
-        "project_repository_migration_does_not_fake_remote_or_project_state": all(
-            row.get("remote_repo_created") is None
-            and row.get("remote_repo_pushed") is None
-            and row.get("remote_repository_verification") == "UNVERIFIED"
-            and row.get("remote_history_verification") == "UNVERIFIED"
-            and "VERIFY_TARGET_REMOTE_EXISTENCE_AND_HISTORY" in set(row.get("next_actions") or [])
+        "project_repository_migration_remote_and_materialization_readback_is_bounded": all(
+            row.get("remote_repo_created") is True
+            and row.get("remote_repo_pushed") is True
+            and row.get("remote_repository_verification") == "VERIFIED"
+            and row.get("remote_history_verification") == "VERIFIED_HEAD_MATCH"
+            and row.get("remote_main_revision") == row.get("local_repository_revision")
+            and (row.get("bootstrap_manifest") or {}).get("status") == "VERIFIED_LOCATOR_ONLY"
+            and (row.get("materialization_bindings") or {}).get("status") == "VERIFIED_MATERIALIZATION_BINDINGS"
+            and row.get("artifact_store_binding") != "UNRESOLVED"
+            and row.get("knowledge_mount_binding") != "UNRESOLVED"
+            and row.get("migration_binding_closed") is True
             and row.get("old_duplicate_retained") is True
-            and (
-                row.get("project_state_ref") is None
-                or (
-                    (row.get("project_state_evidence") or {}).get("owner_native_project_state_verified") is True
-                    and isinstance(row.get("authority_ref"), str)
-                    and bool(row.get("authority_ref"))
-                )
-            )
+            and row.get("old_source_role") == "COMPATIBILITY_MOUNT"
+            and int(row.get("compatibility_reference_count") or 0) > 0
+            and "RETAIN_COMPATIBILITY_MOUNT_UNTIL_PLATFORM_REFERENCE_REWRITE" in set(row.get("next_actions") or [])
+            and (row.get("project_state_evidence") or {}).get("owner_native_project_state_verified") is True
+            and isinstance(row.get("authority_ref"), str)
+            and bool(row.get("authority_ref"))
             for row in migration_projects
         ),
     }

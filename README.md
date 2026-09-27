@@ -413,7 +413,7 @@ flowchart TB
 # 12｜Selected Works｜真实案例
 
 ## C01｜一脉广渡
-[进入案例](05-cases/c01-yimai-guangdu/)
+[进入独立项目仓库](https://github.com/Jiaosong/c01-yimai-guangdu)
 
 **方向：Culture + Spatial**
 
@@ -429,7 +429,7 @@ flowchart TB
 ---
 
 ## C02｜忘也 Daylily
-[进入案例](05-cases/c02-daylily/)
+[进入独立项目仓库](https://github.com/Jiaosong/c02-daylily)
 
 **方向：Business + IP + Spatial**
 
@@ -442,7 +442,7 @@ flowchart TB
 ---
 
 ## C03｜The Light Collection
-[进入案例](05-cases/c03-the-light-collection/)
+[进入独立项目仓库](https://github.com/Jiaosong/c03-the-light-collection)
 
 **方向：CMF / IP / Visual**
 
@@ -453,7 +453,7 @@ flowchart TB
 ---
 
 ## C04｜Qingjiang Stone Book
-[进入案例](05-cases/c04-qingjiang-stone-book/)
+[进入独立项目仓库](https://github.com/Jiaosong/c04-qingjiang-stone-book)
 
 **方向：Culture + Spatial + Digital Interaction**
 

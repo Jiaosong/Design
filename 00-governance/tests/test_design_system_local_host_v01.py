@@ -418,28 +418,40 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", request["state"])
         self.assertIn("PROVIDER_BOUND", request["does_not_prove"])
 
-    def test_project_discovery_reports_embedded_cases_as_candidates_only(self) -> None:
+    def test_project_discovery_reads_bound_independent_projects_without_promoting_current(self) -> None:
         result = host_module.discover_project_candidates()
         names = {row["directory_name"] for row in result["projects"]}
         self.assertTrue({"c01-yimai-guangdu", "c02-daylily", "c03-the-light-collection", "c04-qingjiang-stone-book"}.issubset(names))
         rows = {row["directory_name"]: row for row in result["projects"]}
-        c04 = rows["c04-qingjiang-stone-book"]
-        if c04["project_locator_status"] == "BOUND":
-            self.assertEqual("PRJ-C04-QINGJIANG-SHISHU", c04["project_id"])
-            self.assertEqual("file:C04_CURRENT.md", c04["project_state_ref"])
-            self.assertEqual("file:C04_CURRENT.md", c04["authority_ref"])
-            self.assertEqual("PROJECT_LOCATOR_BOUND", c04["state"])
-            self.assertEqual("PROJECT_LOCATOR_BOUND_NOT_PROJECT_CURRENT", c04["semantic_class"])
-        for row in result["projects"]:
-            if row["project_locator_status"] != "BOUND":
-                self.assertIsNone(row["project_state_ref"])
-                self.assertEqual("DISCOVERED_PROJECT_CANDIDATE_NOT_PROJECT_STATE", row["semantic_class"])
+        expected_ids = {
+            "c01-yimai-guangdu": "PRJ-C01-YIMAI-GUANGDU",
+            "c02-daylily": "PRJ-C02-DAYLILY",
+            "c03-the-light-collection": "PRJ-C03-LIGHT-COLLECTION",
+            "c04-qingjiang-stone-book": "PRJ-C04-QINGJIANG-SHISHU",
+        }
+        for slug, project_id in expected_ids.items():
+            row = rows[slug]
+            self.assertEqual("BOUND", row["project_locator_status"])
+            self.assertEqual(project_id, row["project_id"])
+            self.assertEqual("PROJECT_LOCATOR_BOUND", row["state"])
+            self.assertEqual("PROJECT_LOCATOR_BOUND_NOT_PROJECT_CURRENT", row["semantic_class"])
+            self.assertEqual("BOUND", row["materialization_binding_status"])
+            self.assertNotEqual("UNRESOLVED", row["artifact_store_binding"])
+            self.assertNotEqual("UNRESOLVED", row["knowledge_mount_binding"])
             self.assertIn(row["migration_state"], {"NOT_SPLIT", "SPLIT_BRANCH_READY"})
             self.assertTrue(str(row["migration_branch"]).startswith("migration/"))
-            if row["local_repository_ready"]:
-                self.assertIn(row["state"], {"LOCAL_REPOSITORY_READY", "PROJECT_LOCATOR_BOUND"})
-                self.assertEqual("main", row["local_repository_branch"])
-                self.assertEqual([], row["local_repository_remotes"])
+            self.assertTrue(row["local_repository_ready"])
+            self.assertEqual("main", row["local_repository_branch"])
+            self.assertEqual(["origin"], row["local_repository_remotes"])
+        c04 = rows["c04-qingjiang-stone-book"]
+        self.assertEqual("file:C04_CURRENT.md", c04["project_state_ref"])
+        self.assertEqual("file:C04_CURRENT.md", c04["authority_ref"])
+        for slug in ("c01-yimai-guangdu", "c02-daylily", "c03-the-light-collection"):
+            self.assertEqual("file:README.md", rows[slug]["project_state_ref"])
+            self.assertTrue(str(rows[slug]["authority_ref"]).startswith("platform-file:"))
+        for row in result["projects"]:
+            self.assertIn(row["migration_state"], {"NOT_SPLIT", "SPLIT_BRANCH_READY"})
+            self.assertIn("PROJECT_CURRENT", result["does_not_prove"])
 
 
 if __name__ == "__main__":
