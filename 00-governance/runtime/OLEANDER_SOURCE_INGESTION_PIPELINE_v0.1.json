@@ -1,0 +1,55 @@
+{
+  "schema": "oleander.source-ingestion-pipeline.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "SOURCE_EXTRACTION_AND_KNOWLEDGE_DRAFT_ONLY",
+  "purpose": "Turn dropped documents, media, URLs and folders into source-bound structured Knowledge Drafts while preserving originals, provenance, revisions and citations.",
+  "source_classes": ["PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
+  "admission_required": ["source_id", "source_kind", "original_ref", "fingerprint", "source_revision", "provenance"],
+  "states": [
+    "ADMITTED",
+    "ORIGINAL_PRESERVED",
+    "EXTRACTED",
+    "CITATION_BOUND",
+    "KNOWLEDGE_DRAFT_READY",
+    "REVIEWED",
+    "KI_GRADED",
+    "OE_GRADED",
+    "MOUNT_ELIGIBLE"
+  ],
+  "pipeline": [
+    "SOURCE_IDENTITY",
+    "FINGERPRINT_AND_DEDUPE",
+    "PRESERVE_ORIGINAL",
+    "NATIVE_EXTRACT",
+    "STRUCTURE_BODY",
+    "EXTRACT_VISUAL_MEDIA",
+    "BIND_CITATIONS",
+    "CREATE_KNOWLEDGE_DRAFT",
+    "CONTENT_REVIEW",
+    "KI",
+    "OE",
+    "MOUNT"
+  ],
+  "structured_body_required": ["body_id", "source_id", "source_revision", "body_revision", "sections", "citation_bindings"],
+  "media_requirements": {
+    "VIDEO": ["TRANSCRIPT", "TIMESTAMP_BINDING", "KEY_FRAMES", "STRUCTURED_BODY", "SOURCE_JUMP_BACK"],
+    "AUDIO": ["TRANSCRIPT", "TIMESTAMP_BINDING", "STRUCTURED_BODY", "SOURCE_JUMP_BACK"],
+    "OFFICE": ["SOURCE_VERSION_RECHECK", "LAYOUT_OR_TABLE_PRESERVATION_WHERE_AVAILABLE", "MISSING_FONT_OR_CONVERSION_WARNING_CAPTURE"],
+    "PDF": ["TEXT_LAYOUT_BINDING", "FIGURE_TABLE_BINDING_WHERE_AVAILABLE", "PAGE_CITATION"],
+    "URL": ["URL_IDENTITY", "CAPTURE_TIME", "CONTENT_SNAPSHOT_OR_HASH", "ORIGINAL_LINK"]
+  },
+  "large_binary_transport": ["CHUNKABLE", "RESUMABLE_WHEN_SUPPORTED", "CONTENT_DIGEST", "DEDUPLICATION", "PARTIAL_RECOVERY"],
+  "browser_capture_rule": "PERSISTENT_BROWSER_CAPTURE_MUST_ENTER_SOURCE_INBOX_BEFORE_KNOWLEDGE_USE",
+  "source_revision_rule": "DERIVED_BODY_CANNOT_SILENTLY_REMAIN_CURRENT_WHEN_SOURCE_REVISION_OR_DIGEST_CHANGES",
+  "hard_invariants": [
+    "ORIGINAL_SOURCE_NE_EXTRACTED_BODY",
+    "EXTRACTED_NE_VALIDATED",
+    "IMPORTED_NE_KNOWLEDGE_CURRENT",
+    "VECTOR_INDEX_NE_KNOWLEDGE",
+    "TRANSCRIPT_NE_STRUCTURED_KNOWLEDGE_BODY",
+    "BROWSER_PAGE_LOADED_NE_SOURCE_CAPTURED",
+    "SOURCE_CAPTURED_NE_KNOWLEDGE_INGESTED"
+  ],
+  "forbidden_output_authority_fields": ["knowledge_current", "source_authority", "design_keep", "project_current", "promotion"],
+  "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "DESIGN_KEEP", "PROJECT_CURRENT", "PROMOTION"]
+}

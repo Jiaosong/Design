@@ -7,7 +7,9 @@ from typing import Any, Callable
 
 from oleander_system_gateway import (
     build_system_context,
+    current_capability_view,
     environment_snapshot,
+    resolve_capability_route,
     run_gateway,
     run_self_test,
     validate_system_manifest,
@@ -15,7 +17,7 @@ from oleander_system_gateway import (
 
 
 SERVER_NAME = "oleander-system-gateway"
-SERVER_VERSION = "0.1.0"
+SERVER_VERSION = "0.2.0"
 
 
 TOOLS: list[dict[str, Any]] = [
@@ -40,6 +42,30 @@ TOOLS: list[dict[str, Any]] = [
         "name": "oleander_environment",
         "description": "Read the canonical execution-surface registry together with bounded machine-local runtime observation. A stale local snapshot is reported as stale and never becomes authority.",
         "inputSchema": {"type": "object", "properties": {}, "additionalProperties": False},
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
+    {
+        "name": "oleander_capabilities",
+        "description": "Build the normalized current ExecutionSurface view from the canonical registry plus relevant live observations. Availability is runtime evidence only and never mutation permission or Project authority.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {"live_observations": {"type": "object"}},
+            "additionalProperties": False,
+        },
+        "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+    },
+    {
+        "name": "oleander_resolve_surface",
+        "description": "Resolve a currently verified execution surface for a capability/native-output/side-effect request. The route is ephemeral and does not grant OLEANDER mutation or design authority.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "request": {"type": "object"},
+                "live_observations": {"type": "object"}
+            },
+            "required": ["request"],
+            "additionalProperties": False,
+        },
         "annotations": {"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
     },
     {
@@ -78,6 +104,11 @@ def _call_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         "oleander_system_manifest": lambda: {"validation": validate_system_manifest()},
         "oleander_system_context": lambda: build_system_context(dict(args.get("payload") or {})),
         "oleander_environment": environment_snapshot,
+        "oleander_capabilities": lambda: current_capability_view({"live_observations": args.get("live_observations") or {}}),
+        "oleander_resolve_surface": lambda: resolve_capability_route({
+            "request": dict(args.get("request") or {}),
+            "live_observations": args.get("live_observations") or {},
+        }),
         "oleander_preflight": lambda: run_gateway(
             dict(args.get("payload") or {}), publish_live=bool(args.get("publish_live", False))
         ),
@@ -87,6 +118,8 @@ def _call_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         raise ValueError(f"unknown tool: {name}")
     if name in {"oleander_system_context", "oleander_preflight"} and not isinstance(args.get("payload"), dict):
         raise ValueError("payload must be one object")
+    if name == "oleander_resolve_surface" and not isinstance(args.get("request"), dict):
+        raise ValueError("request must be one object")
     return _tool_result(dispatch[name]())
 
 

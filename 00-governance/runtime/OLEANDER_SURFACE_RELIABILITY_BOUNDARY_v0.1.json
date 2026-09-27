@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.surface-reliability-boundary.v0.1",
+  "title": "OLEANDER Surface Reliability Boundary v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "EXECUTION_RELIABILITY_EVIDENCE_ONLY",
+  "purpose": "Separate surface admission, identity, capability, execution and result reliability from authority and from one another.",
+  "hard_invariants": [
+    "OBSERVATION_IS_NOT_INTERPRETATION",
+    "INTERPRETATION_IS_NOT_DERIVED_RELIABILITY_STATE",
+    "DERIVED_RELIABILITY_STATE_IS_NOT_AUTHORITY_STATE",
+    "SURFACE_VISIBLE_IS_NOT_SURFACE_READY",
+    "SURFACE_ENABLED_IS_NOT_SURFACE_LOADED",
+    "SURFACE_READY_IS_NOT_EXECUTED",
+    "EXECUTED_IS_NOT_READBACK_VERIFIED",
+    "READBACK_VERIFIED_IS_NOT_DESIGN_KEEP",
+    "SYNCED_IS_NOT_PROJECT_CURRENT",
+    "IMPORTED_IS_NOT_KNOWLEDGE_CURRENT",
+    "IDENTITY_CHANGE_INVALIDATES_IDENTITY_BOUND_RELIABILITY",
+    "R5_RESULT_MUST_NOT_BE_FABRICATED_DURING_PREFLIGHT",
+    "UNCERTAIN_MUTATION_SIDE_EFFECT_REQUIRES_READBACK_BEFORE_RETRY_OR_FALLBACK"
+  ],
+  "stages": {
+    "R1_ADMISSION": {
+      "phase": "PREFLIGHT",
+      "required_dimensions": ["registered", "configured", "version_compatible", "loaded"],
+      "ready_values": ["PASS"]
+    },
+    "R2_IDENTITY": {
+      "phase": "PREFLIGHT",
+      "required_dimensions": ["authenticated", "identity_bound", "permission_scope_verified", "credential_freshness"],
+      "ready_values": ["PASS"]
+    },
+    "R3_CAPABILITY": {
+      "phase": "PREFLIGHT",
+      "required_dimensions": ["catalog_valid", "capability_verified", "required_feature_present"],
+      "ready_values": ["PASS"]
+    },
+    "R4_EXECUTION": {
+      "phase": "PREFLIGHT_AND_EXECUTION",
+      "required_dimensions": ["provider_health", "capacity_state", "request_admission", "side_effect_certainty"],
+      "ready_values": ["PASS", "DEGRADED_ALLOWED"]
+    },
+    "R5_RESULT": {
+      "phase": "POST_EXECUTION",
+      "required_dimensions": ["native_output", "actual_delta", "readback", "semantic_fidelity", "source_version_consistency"],
+      "ready_values": ["PASS"],
+      "rule": "MATERIAL_MUTATION_CANNOT_CLOSE_VERIFIED_WITHOUT_R5_READBACK_EVIDENCE"
+    }
+  },
+  "observation_schema": {
+    "required": ["observation_id", "surface_instance_id", "stage", "dimension", "fact", "source_kind", "observed_at"],
+    "source_kinds": [
+      "UPSTREAM_RESPONSE",
+      "LIVE_PROBE",
+      "HOST_RUNTIME",
+      "LOCAL_PROCESS",
+      "OWNER_NATIVE_READBACK",
+      "STATIC_REGISTRY",
+      "USER_CONFIRMED"
+    ],
+    "fact_values": ["PASS", "FAIL", "DEGRADED", "UNKNOWN", "STALE", "BLOCKED", "NOT_APPLICABLE"],
+    "rules": [
+      "STATIC_REGISTRY_MAY_PROVE_VISIBILITY_BUT_NOT_CURRENT_READINESS",
+      "STALE_OBSERVATION_MUST_NOT_PRODUCE_READY",
+      "LOCAL_HEURISTIC_MUST_NOT_REWRITE_UPSTREAM_FACT",
+      "OBSERVATION_MUST_PRESERVE_SOURCE_AND_TIMESTAMP"
+    ]
+  },
+  "interpretation_schema": {
+    "required": ["interpretation_id", "observation_refs", "classifier", "classification", "confidence"],
+    "rule": "INTERPRETATION_IS_DERIVED_AND_MUST_RETAIN_REFERENCES_TO_SOURCE_OBSERVATIONS"
+  },
+  "derived_state_schema": {
+    "allowed": ["UNKNOWN", "VISIBLE", "NOT_READY", "READY", "DEGRADED", "BLOCKED", "PARTIAL", "FAILED", "QUARANTINED", "VERIFIED"],
+    "preflight_ready_requires": ["R1_ADMISSION", "R2_IDENTITY", "R3_CAPABILITY", "R4_EXECUTION"],
+    "verified_requires": ["R1_ADMISSION", "R2_IDENTITY", "R3_CAPABILITY", "R4_EXECUTION", "R5_RESULT"]
+  },
+  "surface_objects": {
+    "SurfaceDefinition": {
+      "required": ["surface_definition_id", "surface_class", "authority_ceiling"],
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY"
+    },
+    "SurfaceInstance": {
+      "required": ["surface_instance_id", "surface_definition_id", "provider_id", "host_class"]
+    },
+    "SurfaceIdentity": {
+      "required": ["surface_identity_id", "surface_instance_id", "identity_revision", "auth_state", "permission_scope"],
+      "identity_change_rule": "REVALIDATE_IDENTITY_BOUND_RELIABILITY_AND_CATALOG"
+    },
+    "CapabilityCatalog": {
+      "required": ["catalog_id", "surface_instance_id", "source", "catalog_revision", "observed_at", "capabilities"],
+      "rule": "CATALOG_AVAILABILITY_IS_NOT_SURFACE_READINESS"
+    },
+    "ProviderPool": {
+      "required": ["provider_pool_id", "purpose", "instance_refs", "routing_policy_ref"],
+      "rule": "REDUNDANCY_AND_ROUTING_ONLY_NEVER_POLICY_OR_LIMIT_CIRCUMVENTION"
+    },
+    "RoutingPolicy": {
+      "precedence": ["AUTHORITY_SECURITY", "CAPABILITY_FIT", "DATA_BOUNDARY", "NATIVE_FORMAT_READBACK", "RELIABILITY", "COST_CONVENIENCE"]
+    },
+    "SurfaceView": {
+      "required": ["surface_view_id", "surface_definition_id", "product_actions"],
+      "rule": "MUST_ROUTE_MUTATIONS_THROUGH_PRODUCT_ACTION_AND_ACTION_RUNTIME"
+    }
+  },
+  "failure_classes": {
+    "AUTH": "REAUTHENTICATE_NO_BLIND_RETRY",
+    "TIMEOUT": "BOUNDED_RETRY_IF_IDEMPOTENT_OR_NO_SIDE_EFFECT",
+    "RATE_LIMIT": "USE_ELIGIBLE_ROUTE_OR_WAIT_WITHOUT_REWRITING_UPSTREAM_QUOTA_FACTS",
+    "CAPABILITY_MISSING": "RESOLVE_ALTERNATE_SURFACE",
+    "PROCESS_CRASH": "RECOVER_OR_RESTART_PROVIDER",
+    "OUTPUT_INVALID": "RETRY_OR_ALTERNATE_IF_SIDE_EFFECT_SAFE",
+    "READBACK_FAIL": "INSPECT_ACTUAL_STATE_BEFORE_ANY_MUTATING_RETRY",
+    "AUTHORITY_DENIED": "NO_PROVIDER_FALLBACK_CAN_WIDEN_AUTHORITY",
+    "SIDE_EFFECT_UNKNOWN": "HOLD_AND_READBACK_BEFORE_RETRY_OR_FALLBACK"
+  },
+  "reference_patterns": {
+    "deepseek_harness": {
+      "role": "HOST_RUNTIME_REFERENCE",
+      "observed_commit": "477b4f420553e8a52c2fbccc464d7561b239c443",
+      "borrow": ["CAPABILITY_SEAMS", "SESSION_DURABILITY_BARRIER", "PROJECTION_CACHE_FOLLOWS_LOG", "WORKSPACE_BASELINE_PLUS_INCREMENT", "PLUGIN_LIFECYCLE", "BROWSER_PROVIDER_LIFECYCLE", "UPLOAD_RECEIPTS", "APPROVAL_FAIL_CLOSED"]
+    },
+    "dsh_agy_link": {
+      "role": "PROVIDER_ADAPTER_RELIABILITY_REFERENCE",
+      "observed_commit": "3ee8416a4433fa3e8032f4832b217da0c4ab0e71",
+      "observed_version": "0.4.38",
+      "borrow": ["IDENTITY_BOUND_STATE", "PROVIDER_POOL", "CATALOG_SANITIZATION", "HARD_VS_SOFT_FAILURE_CLASSIFICATION", "BOUNDED_RETRY", "UI_VISIBLE_QUOTA_AND_HEALTH"],
+      "do_not_copy_as_authority": true
+    }
+  },
+  "does_not_prove": ["PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"]
+}

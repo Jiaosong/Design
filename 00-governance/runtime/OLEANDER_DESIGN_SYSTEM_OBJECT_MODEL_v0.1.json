@@ -1,0 +1,95 @@
+{
+  "schema": "oleander.design-system-object-model.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "REFERENCE_OBJECT_RELATIONS_ONLY",
+  "kernels": {
+    "AuthorityKernel": {"owns": ["SCOPED_HUMAN_RIGHTS", "DECISION_AUTHORITY_REFS", "KEEP_GATE_REFS", "PROMOTION_GATE_REFS"]},
+    "ProjectKernel": {"owns": ["PROJECT_IDENTITY", "PROJECT_STATE_REFS", "REPOSITORY_BINDINGS", "WORKSPACE_BINDINGS", "ARTIFACT_STORE_BINDINGS"]},
+    "DesignKernel": {"owns": ["DESIGN_DIRECTIONS", "DESIGN_ACTIONS", "SYNTHESIS_RELATIONS", "REVIEW_RELATIONS"]},
+    "KnowledgeKernel": {"owns": ["SOURCE_REFS", "STRUCTURED_BODY_REFS", "PROVENANCE", "KI_REFS", "OE_REFS", "KNOWLEDGE_MOUNTS"]},
+    "SurfaceKernel": {"owns": ["SURFACE_DEFINITIONS", "SURFACE_INSTANCES", "SURFACE_IDENTITIES", "CAPABILITY_CATALOGS", "RELIABILITY_EVIDENCE", "SURFACE_VIEWS", "ROUTING_POLICIES"]},
+    "ExecutionKernel": {"owns": ["EXECUTION_LEDGER", "ACTION_RUNTIME", "DURABLE_JOB"]}
+  },
+  "project_model": {
+    "hard_non_equivalences": [
+      "PROJECT_NE_REPOSITORY",
+      "PROJECT_NE_RUNTIME_WORKSPACE",
+      "PROJECT_NE_ARTIFACT_STORE",
+      "PROJECT_NE_KNOWLEDGE_STORE",
+      "GIT_COMMIT_NE_PROJECT_CURRENT",
+      "GIT_BRANCH_NE_DESIGN_DIRECTION",
+      "GIT_MERGE_NE_DESIGN_KEEP",
+      "GIT_CLEAN_NE_DESIGN_VALID"
+    ],
+    "Project": {
+      "required": ["project_id", "project_state_ref", "authority_ref"],
+      "optional": ["primary_repository_ref", "satellite_repository_refs", "workspace_refs", "artifact_store_refs", "knowledge_mount_refs", "surface_binding_refs"]
+    },
+    "RepositoryBinding": {
+      "required": ["repository_ref", "role", "remote_identity"],
+      "roles": ["PRIMARY", "SATELLITE", "DELIVERY", "ARCHIVE"],
+      "rule": "REPOSITORY_MATERIALIZES_PROJECT_CONTENT_BUT_DOES_NOT_OWN_PROJECT_CURRENT"
+    },
+    "WorkspaceBinding": {
+      "required": ["workspace_ref", "workspace_class", "repository_ref", "observed_revision"],
+      "workspace_classes": ["MAIN", "DESIGN_DIRECTION", "PRESENTATION", "RESEARCH", "TEMPORARY_RUNTIME"],
+      "rule": "WORKSPACE_IS_RUNTIME_MATERIALIZATION_NOT_PROJECT_STATE"
+    },
+    "BootstrapManifest": {
+      "recommended_path": ".oleander/project.json",
+      "rule": "LOCATOR_ONLY_NOT_PROJECT_STATE",
+      "required": ["project_id", "project_state_ref"]
+    }
+  },
+  "knowledge_model": {
+    "hard_non_equivalences": ["VECTOR_INDEX_NE_KNOWLEDGE", "ORIGINAL_SOURCE_NE_EXTRACTED_BODY", "EXTRACTED_NE_VALIDATED", "IMPORTED_NE_KNOWLEDGE_CURRENT"],
+    "Source": {
+      "required": ["source_id", "source_kind", "original_ref", "fingerprint", "provenance", "source_revision"],
+      "optional": ["rights", "figures", "tables", "timeline", "frames", "claims", "entities", "relations", "citations", "index_refs"]
+    },
+    "StructuredBody": {
+      "required": ["body_id", "source_id", "source_revision", "body_revision", "sections", "citation_bindings"],
+      "rule": "BODY_MUST_RETAIN_EXACT_SOURCE_REVISION_OR_DIGEST"
+    },
+    "KnowledgeDraft": {
+      "required": ["draft_id", "source_refs", "body_refs", "review_state"],
+      "rule": "DRAFT_IS_NOT_KNOWLEDGE_CURRENT"
+    },
+    "KnowledgeMount": {
+      "owner_contract": "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json",
+      "rule": "MOUNT_IS_TASK_PROJECTION_NOT_CANONICAL_KNOWLEDGE_OWNER"
+    }
+  },
+  "source_ingestion": {
+    "accepted_classes": ["PDF", "DOC", "DOCX", "PPT", "PPTX", "XLS", "XLSX", "VIDEO", "AUDIO", "IMAGE", "URL", "FOLDER", "ARCHIVE", "CAD", "BIM", "GIS"],
+    "pipeline": ["SOURCE_IDENTITY", "FINGERPRINT", "PRESERVE_ORIGINAL", "NATIVE_EXTRACT", "STRUCTURE_BODY", "EXTRACT_VISUAL_MEDIA", "BIND_CITATIONS", "KNOWLEDGE_DRAFT", "REVIEW", "KI", "OE", "MOUNT"],
+    "large_binary_requirements": ["CHUNKABLE_TRANSPORT", "RESUMABLE_WHEN_PROVIDER_SUPPORTS", "CONTENT_DIGEST", "DEDUPLICATION", "PARTIAL_RECOVERY"],
+    "video_requirements": ["TRANSCRIPT", "TIMESTAMP_BINDING", "KEY_FRAMES", "STRUCTURED_BODY", "SOURCE_JUMP_BACK"],
+    "source_version_rule": "CHANGED_SOURCE_VERSION_MUST_INVALIDATE_OR_REVALIDATE_DERIVED_BODY_BEFORE_CURRENT_USE"
+  },
+  "browser_model": {
+    "BrowserProfile": {
+      "required": ["browser_profile_id", "scope", "credential_boundary", "download_target", "capture_target"],
+      "scopes": ["PROJECT", "RESEARCH", "PERSONAL", "RESTRICTED"]
+    },
+    "actions": ["BROWSE", "RESEARCH", "COMPARE", "CAPTURE", "CLIP", "INGEST", "ADD_TO_PROJECT", "ADD_TO_KNOWLEDGE"],
+    "hard_non_equivalences": ["PAGE_LOADED_NE_SOURCE_CAPTURED", "SOURCE_CAPTURED_NE_KNOWLEDGE_INGESTED", "KNOWLEDGE_INGESTED_NE_KNOWLEDGE_CURRENT"]
+  },
+  "surface_view_model": {
+    "rule": "SURFACE_VIEW_IS_UI_PROJECTION_AND_MUST_NOT_CALL_PROVIDER_MUTATION_OUTSIDE_PRODUCT_ACTION_AND_ACTION_RUNTIME",
+    "examples": {
+      "GitHub": ["REPOSITORY", "DIFF", "PULL_REQUEST", "HISTORY"],
+      "Notion": ["PAGE", "DATABASE", "SEARCH"],
+      "Drive": ["FILE_BROWSER", "PREVIEW"],
+      "Browser": ["TABS", "CAPTURE", "RESEARCH"],
+      "Figma": ["FILE", "PAGE", "FRAME"],
+      "CAD": ["MODEL", "LAYERS", "VIEWPORT"],
+      "COS_NATIVE": ["RUNTIME", "WORKERS", "TERMINAL"]
+    }
+  },
+  "external_source_binding": {
+    "required": ["source_owner", "source_provider", "source_identity", "source_revision", "permission_scope", "sync_state", "materialization_state", "observed_at"],
+    "rule": "UNIFIED_VIEW_NE_UNIFIED_OWNERSHIP"
+  },
+  "does_not_prove": ["PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"]
+}

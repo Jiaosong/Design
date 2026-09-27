@@ -29,11 +29,11 @@ def base_config() -> dict:
 
 
 class CosSystemGatewayBindingTests(unittest.TestCase):
-    def test_v17_supersedes_v16_without_losing_user_text(self) -> None:
+    def test_v18_supersedes_v16_without_losing_user_text(self) -> None:
         result = binder._bound_config(base_config())
         self.assertIn("user prefix", result["mcp"]["instructions"])
         self.assertNotIn("v1.6", result["mcp"]["instructions"])
-        self.assertIn("OLEANDER_CHAT_RESOLVER_BINDING_v1.7", result["mcp"]["instructions"])
+        self.assertIn("OLEANDER_CHAT_RESOLVER_BINDING_v1.8", result["mcp"]["instructions"])
         self.assertNotIn("old bootstrap", result["goal"]["prompt"])
         self.assertIn("base prompt", result["goal"]["prompt"])
 
@@ -48,6 +48,8 @@ class CosSystemGatewayBindingTests(unittest.TestCase):
         self.assertEqual("execution_and_observability", runtime_context["authorityCeiling"])
         self.assertTrue(Path(runtime_context["entrypoint"]).is_absolute())
         self.assertEqual("oleander_system_mcp.py", Path(runtime_context["entrypoint"]).name)
+        self.assertIn("oleander_capabilities", result["mcp"]["instructions"])
+        self.assertIn("oleander_resolve_surface", result["mcp"]["instructions"])
 
     def test_bound_prompts_stay_inside_cos_limits(self) -> None:
         result = binder._bound_config(base_config())

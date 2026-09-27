@@ -23,22 +23,46 @@ The executable spike lives in `runtime_provider_spikes/` and runs the same contr
 
 The first machine/readable benchmark is `runtime_provider_spikes/results/OLEANDER_RUNTIME_PROVIDER_BENCHMARK_20260926.json` with a human review companion `.md`. It intentionally stays outside `runtime/receipts/` because it is candidate benchmark evidence, not an Execution Receipt. `PASS_CANDIDATE_SPIKE` means only that the provider-neutral seam + bounded native smokes passed. It does **not** select/promote a provider or prove real artifact parity.
 
-## Candidate unified system-management gateway?2026-09-26
+## Candidate unified system-management gateway｜Phase 2｜2026-09-27
 
-`OLEANDER_SYSTEM_MANIFEST_v0.1.json` is a **candidate, non-authority** machine-readable entry map over the existing Current architecture. It does not create another Master Runtime, Project State, Knowledge Registry, Control Plane, professional process, runtime-layer family or Promotion path. It resolves the existing owners for Authority/Project/Knowledge/Interfaces/Environment/Execution/Artifact/Readback/Persistence/Evolution.
+`OLEANDER_SYSTEM_MANIFEST_v0.2.json` is the **candidate, non-authority** successor management entry over the existing Current architecture. It keeps the canonical count at `1 Current system architecture / 1 Complex Project Master Runtime / 11 stable Runtime Layers`; it does not create another Project State, Knowledge Registry, Control Plane, professional process, runtime-layer family or Promotion path. `OLEANDER_SYSTEM_COMPONENT_DISPOSITION_v0.2.json` records the explicit `KEEP / REFINE / MERGE / DECOUPLE / REPLACE / REMOVE` disposition of major system responsibilities without changing their owner-native authority.
 
-`oleander_system_gateway.py` composes a disposable `oleander.system-context-envelope.v0.1` and delegates continuation/mutation/closure policy to the existing `oleander_chat_runtime_bridge.py` / Resolver. `oleander_system_mcp.py` exposes the same boundary as five MCP tools (`manifest`, `context`, `environment`, `preflight`, `self-test`) so CoS or another compliant harness can consume one stable entrypoint instead of embedding OLEANDER state semantics inside its own session.
+`OLEANDER_SYSTEM_MANAGEMENT_ARCHITECTURE_v0.2.md` adds a G0–G11 **management view**, not a new runtime-layer family. It makes Governance/Authority, Project/Decision, Knowledge/Evidence, professional design, contracts, Master Runtime, Execution Fabric, Environment/Capability resolution, execution surfaces, artifacts/persistence, observability/recovery and evolution/designer development legible as one system while retaining the existing R-A...R-K owners.
 
-`OLEANDER_COS_HARNESS_ADAPTER_v0.1.json` classifies CoS as `EXECUTION_HARNESS_AND_LOCAL_TOOL_SURFACE` with authority ceiling `EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY`: CoS Session / Compact & Resume / workers / Goal-Loop / plugins / MCP remain provider-runtime facilities and never become Project State, Knowledge Authority, Design Decision, Artifact Current, Design KEEP, professional PASS or Promotion.
+`OLEANDER_CORE_INTERFACE_PRIMITIVES_v0.1.json` is the G4 interface vocabulary for `AuthorityRef / ProjectRef / KnowledgeMount / DecisionObject / ProfessionalStageRef / ActionRequest / ExecutionRoute / ArtifactRef / ReadbackResult / ReviewResult / PersistenceReceipt / LearningCandidate`. These are reference/handoff envelopes over existing owner-native contracts, not a new Project/Knowledge/Artifact store.
 
-The environment view intentionally separates `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json` (canonical static registry) from `.mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json` (machine-local runtime observation). A stale local snapshot triggers reprobe/degradation handling; it cannot override the canonical registry or project authority.
+`oleander_system_gateway.py` composes a disposable `oleander.system-context-envelope.v0.1` and still delegates continuation/mutation/closure policy to the existing `oleander_chat_runtime_bridge.py` / Resolver. `oleander_system_mcp.py` now exposes seven MCP tools (`manifest`, `context`, `environment`, `capabilities`, `resolve`, `preflight`, `self-test`) so CoS or another compliant harness can consume one stable entrypoint. Capability resolution is read-only routing evidence; a selected execution surface still does not grant mutation or design authority.
+
+`OLEANDER_COS_HARNESS_ADAPTER_v0.2.json` keeps CoS as `EXECUTION_HARNESS_AND_LOCAL_TOOL_SURFACE` with authority ceiling `EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY`. CoS Session / Compact & Resume / workers / Goal-Loop / plugins / MCP remain provider-runtime facilities and never become Project State, Knowledge Authority, Design Decision, Artifact Current, Design KEEP, professional PASS or Promotion.
+
+`OLEANDER_EXECUTION_RUNTIME_PRIMITIVES_v0.1.json` + `oleander_execution_runtime.py` implement three provider-neutral primitives: append-only `ExecutionLedger`, typed `ActionRuntime`, and execution-only `DurableJob`. `ActionRuntime` enforces `OLEANDER Action Guard > provider approval`; provider approval may narrow but never widen permission, and material mutation without actual readback is `PARTIAL`, not complete. `OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.2.json` binds these primitives while preserving the v0.1 contract/benchmark as historical conformance evidence rather than silently relabeling that benchmark as v0.2 proof.
+
+The environment path now uses `OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json` as canonical static surface policy plus `oleander_environment_resolver.py` for normalized `ExecutionSurface` and current capability resolution. `.mcp-runtime/registry/OLEANDER_INTEGRATION_REGISTRY_CURRENT.json` remains machine-local runtime observation only. A stale snapshot can trigger reprobe, but it cannot produce an `AVAILABLE` route, override the canonical registry or change project authority. Connector access to an owner-native Current source is transport, not connector-owned Current.
 
 Validation:
 
 - `python 00-governance/runtime/validate_system_management.py`
-- `python -m unittest 00-governance.tests.test_system_management_gateway 00-governance.tests.test_system_mcp_gateway`
+- `python -m unittest 00-governance.tests.test_execution_runtime_primitives 00-governance.tests.test_environment_capability_resolver 00-governance.tests.test_system_management_v02 00-governance.tests.test_system_management_gateway 00-governance.tests.test_system_mcp_gateway 00-governance.tests.test_cos_system_gateway_binding`
 
-Passing this candidate validation proves the management seam and authority separation only. It does not make the candidate gateway a second Current architecture or promote a runtime provider.
+Passing this candidate validation proves the management seam, runtime primitive invariants, stale-environment handling and authority separation only. It does not prove all historical runtime code migrated, make the gateway a second Current architecture, promote a runtime provider, or prove design/professional quality.
+
+## Candidate OLEANDER Design System successor｜2026-09-27
+
+`OLEANDER_DESIGN_SYSTEM_ARCHITECTURE_v0.1.md` defines the next Human-facing product shell above the Phase-2 system-management/runtime work. The product center becomes Projects / Design / Knowledge / Sources / Browser / Integrations / Review rather than Chat or CoS runtime mechanics. CoS is retained as `COS_NATIVE`; DeepSeek Harness is treated as a Host Runtime reference/candidate, not Project/Knowledge/Design authority.
+
+`OLEANDER_DESIGN_SYSTEM_OBJECT_MODEL_v0.1.json` defines the six ownership kernels (`Authority / Project / Design / Knowledge / Surface / Execution`) and hard-separates `Project ≠ Repository ≠ Runtime Workspace ≠ Artifact Store ≠ Knowledge Store`. Git remains versioned materialization: branch/merge/clean state does not become Design Direction/KEEP/validity. Source Inbox preserves original files and creates structured, citation-bound Knowledge Drafts; vector indexes remain retrieval indexes rather than Knowledge bodies.
+
+`OLEANDER_SURFACE_RELIABILITY_BOUNDARY_v0.1.json` makes surface reliability first-class across R1 Admission, R2 Identity, R3 Capability, R4 Execution and R5 Result. `oleander_surface_reliability.py` provides the reference evaluator. R1-R4 may route an execution; R5 exists only after execution and material mutation cannot close as verified without actual readback. Observation, interpretation, derived reliability and authority state are separate semantic levels. `Enabled / Connected / Loaded / Ready / Executed / Verified` are not synonyms.
+
+`OLEANDER_PROJECT_WORKSPACE_BINDING_v0.1.json` + `oleander_design_system_runtime.py` implement the first Project materialization boundary: one owner-native Project may bind a primary repository, satellite repositories and multiple runtime workspaces, but Git/worktree fields are rejected if they claim Project Current, Design KEEP, professional PASS or Promotion. `.oleander/project.json` is only a bootstrap locator.
+
+`OLEANDER_SOURCE_INGESTION_PIPELINE_v0.1.json` defines Source Inbox progression from source identity/fingerprint through original preservation, native extraction, structured body, citation binding, Knowledge Draft, Content Review, KI, OE and mount eligibility. Browser captures enter the same Source Inbox. The reference runtime rejects authority injection, source-version drift and skipped ingestion states.
+
+The Design System uses explicit `SurfaceDefinition / SurfaceInstance / SurfaceIdentity / CapabilityCatalog / ProviderPool / RoutingPolicy / SurfaceView` objects. DSH capability seams, durability barriers, projection-cache discipline, plugin/browser lifecycle and upload transport are implementation references. `dsh-agy-link` is a reference for provider-pool/identity/catalog/quota/retry reliability patterns; neither reference owns OLEANDER state.
+
+Additional validation:
+
+- `python -m unittest 00-governance.tests.test_surface_reliability_boundary 00-governance.tests.test_design_system_architecture_v01 00-governance.tests.test_design_system_runtime_v01`
 
 ## Current default capability resolution
 

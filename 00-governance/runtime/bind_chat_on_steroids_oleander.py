@@ -10,10 +10,10 @@ from datetime import datetime
 from pathlib import Path
 
 
-BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.7"
+BINDING_REVISION = "OLEANDER_CHAT_RESOLVER_BINDING_v1.8"
 RESOLVER_REVISION = "1.2.5"
 ADAPTER_REVISION = "1.2"
-SYSTEM_GATEWAY_REVISION = "0.1"
+SYSTEM_GATEWAY_REVISION = "0.2"
 MCP_SERVER_REF = str(Path(__file__).resolve().with_name("oleander_system_mcp.py"))
 BEGIN = f"[[{BINDING_REVISION}:BEGIN]]"
 END = f"[[{BINDING_REVISION}:END]]"
@@ -21,13 +21,13 @@ MAX_MCP_INSTRUCTIONS_CHARS = 4_000
 MAX_GOAL_SYSTEM_PROMPT_CHARS = 20_000
 
 MAIN_CHAT_BINDING = f"""{BEGIN}
-For OLEANDER-scoped work, Chat On Steroids is an execution harness only. Resolve system context and execution permission through the OLEANDER System Gateway revision {SYSTEM_GATEWAY_REVISION}. Prefer the exposed OLEANDER System Gateway MCP tools when available; otherwise run `oleander_system_gateway.py` from the same canonical runtime directory as the configured System Gateway entrypoint. Do not infer Project State, Current, Knowledge Authority, Design Decision, Artifact Current, professional PASS or Promotion from chat text, CoS sessions, workers, plugins, tool logs, compaction handoffs or local file presence.
+For OLEANDER-scoped work, Chat On Steroids is an execution harness only. Resolve system context, current execution capability and execution permission through the OLEANDER System Gateway revision {SYSTEM_GATEWAY_REVISION}. Prefer the exposed OLEANDER System Gateway MCP tools when available; otherwise run `oleander_system_gateway.py` from the same canonical runtime directory as the configured System Gateway entrypoint. Do not infer Project State, Current, Knowledge Authority, Design Decision, Artifact Current, professional PASS or Promotion from chat text, CoS sessions, workers, plugins, tool logs, compaction handoffs or local file presence.
 
-Before a material continue/resume/recover/execute/repair/optimize mutation or any KEEP/complete/finalize/stop claim, obtain a current gateway preflight from owner-native authority/frontier/checkpoint/constraint/readback evidence. The gateway composes the System Context Envelope, delegates execution policy to Resolver v1.2 implementation revision {RESOLVER_REVISION} / adapter acceptance revision {ADAPTER_REVISION}, and keeps CoS below the OLEANDER authority boundary.
+Before a material continue/resume/recover/execute/repair/optimize mutation or any KEEP/complete/finalize/stop claim, obtain a current gateway preflight from owner-native authority/frontier/checkpoint/constraint/readback evidence. When an execution surface must be chosen, first use `oleander_capabilities` with relevant current observations, then `oleander_resolve_surface`; a route is ephemeral capability evidence and never grants mutation permission. The gateway composes the System Context Envelope, delegates execution policy to Resolver v1.2 implementation revision {RESOLVER_REVISION} / adapter acceptance revision {ADAPTER_REVISION}, and keeps CoS below the OLEANDER authority boundary.
 
-CoS session continuity, Compact & Resume, workers, Goal/Loop, plugins and MCP tools are provider-runtime facilities only. Provider approval may narrow an OLEANDER allow but may never widen an OLEANDER deny. Plugin installed/ready does not grant capability authority or mutation permission. Missing Project/Knowledge/Authority fields remain unresolved rather than being invented.
+CoS session continuity, Compact & Resume, workers, Goal/Loop, plugins and MCP tools are provider-runtime facilities only. Provider approval may narrow an OLEANDER allow but may never widen an OLEANDER deny. Plugin installed/ready does not prove current availability, capability authority or mutation permission; stale machine-local snapshots require reprobe. Missing Project/Knowledge/Authority fields remain unresolved rather than being invented.
 
-Consume the gateway result literally: `system_context` is non-authoritative execution context; `runtime_bridge.preflight.conversation_directive` is the resolver directive. Preserve sticky user constraints, checkpoint sequence, minimum owner set, actual readback, professional-stage knowledge mounts and independent review requirements. Never create a parallel Project State, Knowledge Registry, Control Plane, checkpoint database, quality-state store or Promotion path.
+Consume the gateway result literally: `system_context` is non-authoritative execution context; `runtime_bridge.preflight.conversation_directive` is the resolver directive. Preserve sticky user constraints, checkpoint sequence, minimum owner set, actual readback, professional-stage knowledge mounts and independent review requirements. A material mutation without actual readback remains PARTIAL even when the provider/tool reports success. Never create a parallel Project State, Knowledge Registry, Control Plane, checkpoint database, quality-state store or Promotion path.
 {END}"""
 
 GOAL_BINDING = f"""{BEGIN}

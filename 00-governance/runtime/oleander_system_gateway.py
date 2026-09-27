@@ -10,11 +10,12 @@ from pathlib import Path
 from typing import Any
 
 from oleander_chat_runtime_bridge import run_bridge
+from oleander_environment_resolver import build_current_execution_view, resolve_execution_surface
 
 
 ROOT = Path(__file__).resolve().parents[2]
-MANIFEST_PATH = ROOT / "00-governance" / "runtime" / "OLEANDER_SYSTEM_MANIFEST_v0.1.json"
-COS_ADAPTER_PATH = ROOT / "00-governance" / "runtime" / "OLEANDER_COS_HARNESS_ADAPTER_v0.1.json"
+MANIFEST_PATH = ROOT / "00-governance" / "runtime" / "OLEANDER_SYSTEM_MANIFEST_v0.2.json"
+COS_ADAPTER_PATH = ROOT / "00-governance" / "runtime" / "OLEANDER_COS_HARNESS_ADAPTER_v0.2.json"
 STATIC_SURFACES_PATH = ROOT / "00-governance" / "runtime" / "OLEANDER_SHARED_EXECUTION_SURFACES_v0.1.json"
 SYSTEM_CONTEXT_SCHEMA = "oleander.system-context-envelope.v0.1"
 AUTHORITY_CEILING = "RESOLUTION_CONTEXT_ONLY"
@@ -88,7 +89,13 @@ def validate_system_manifest() -> dict[str, Any]:
                     "native_artifact",
                     "execution_receipt",
                     "runtime_provider",
+                    "core_interface_primitives",
                     "cross_platform_sync",
+                    "execution_runtime_primitives",
+                    "execution_surface_schema",
+                    "resolver",
+                    "system_management_architecture",
+                    "component_disposition",
                 } and isinstance(item, str) and ("/" in item or item.startswith(".")):
                     refs.add(item)
                 elif key == "owners" and isinstance(item, list):
@@ -155,6 +162,7 @@ def _parse_snapshot_time(raw: Any) -> datetime | None:
 
 def environment_snapshot() -> dict[str, Any]:
     static = _load_json(STATIC_SURFACES_PATH)
+    current_view = build_current_execution_view()
     local_path = _workspace_root() / ".mcp-runtime" / "registry" / "OLEANDER_INTEGRATION_REGISTRY_CURRENT.json"
     local: dict[str, Any] | None = None
     local_state = "MISSING"
@@ -181,6 +189,7 @@ def environment_snapshot() -> dict[str, Any]:
                 "tool_count": row.get("tool_count"),
             })
 
+    local_normalized = list((current_view.get("local_snapshot") or {}).get("surfaces") or [])
     return {
         "semantic_class": "EXECUTION_ENVIRONMENT_OBSERVATION_NOT_AUTHORITY",
         "static_registry_ref": str(STATIC_SURFACES_PATH.relative_to(ROOT)).replace("\\", "/"),
@@ -193,9 +202,36 @@ def environment_snapshot() -> dict[str, Any]:
         "machine_local_authority_ceiling": None if local is None else (local.get("registry_identity") or {}).get("authority_ceiling"),
         "machine_local_inventory_summary": {} if local is None else local.get("inventory_summary", {}),
         "machine_local_cos_surfaces": local_surface_summary,
+        "normalized_surface_count": len(current_view.get("surfaces") or []),
+        "verified_available_surface_ids": sorted(
+            str(row.get("surface_id"))
+            for row in current_view.get("surfaces") or []
+            if isinstance(row, dict) and row.get("availability") == "AVAILABLE"
+        ),
+        "machine_local_normalized_availability": [
+            {"surface_id": row.get("surface_id"), "availability": row.get("availability")}
+            for row in local_normalized
+        ],
+        "baseline_live_probe": current_view.get("baseline_live_probe", {}),
         "selection_rule": "CANONICAL_STATIC_REGISTRY_PLUS_CURRENT_LIVE_PROBE",
         "stale_snapshot_rule": "STALE_MACHINE_LOCAL_READBACK_MAY_INFORM_REPROBE_BUT_MAY_NOT_OVERRIDE_CANONICAL_REGISTRY_OR_PROJECT_AUTHORITY",
     }
+
+
+def current_capability_view(payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    payload = payload or {}
+    live_observations = payload.get("live_observations")
+    if live_observations is not None and not isinstance(live_observations, dict):
+        raise ValueError("live_observations must be an object keyed by surface_id")
+    return build_current_execution_view(live_observations=live_observations)
+
+
+def resolve_capability_route(payload: dict[str, Any]) -> dict[str, Any]:
+    request = payload.get("request")
+    if not isinstance(request, dict):
+        raise ValueError("resolve requires request object")
+    view = current_capability_view(payload)
+    return resolve_execution_surface(request, view)
 
 
 def _knowledge_mount_records(payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -270,6 +306,8 @@ def build_system_context(payload: dict[str, Any]) -> dict[str, Any]:
             "provider_id": runtime_provider_id,
             "provider_contract": manifest["runtime_providers"]["provider_contract"],
             "cos_adapter": manifest["runtime_providers"]["cos_adapter"] if runtime_provider_id == "native_cos" else None,
+            "execution_runtime_primitives": manifest["system_interfaces"]["execution_runtime_primitives"],
+            "execution_surface_schema": manifest["system_interfaces"]["execution_surface_schema"],
             "provider_session_is_project_state": False,
             "provider_event_log_is_project_state": False,
         },
@@ -307,7 +345,7 @@ def run_gateway(payload: dict[str, Any], *, publish_live: bool = True) -> dict[s
     return {
         "gateway": {
             "status": "PASS",
-            "gateway_id": "oleander_system_gateway_v0.1",
+            "gateway_id": "oleander_system_gateway_v0.2",
             "authority_ceiling": AUTHORITY_CEILING,
             "changes_project_state": False,
             "changes_knowledge_authority": False,
@@ -355,6 +393,16 @@ def run_self_test() -> dict[str, Any]:
         raise RuntimeError("gateway self-test: native_cos default provider missing")
     if context["runtime"]["provider_session_is_project_state"] is not False:
         raise RuntimeError("gateway self-test: provider/session boundary drifted")
+    environment = current_capability_view()
+    local_state = (environment.get("local_snapshot") or {}).get("state")
+    if local_state == "STALE":
+        leaked_available = [
+            row.get("surface_id")
+            for row in (environment.get("local_snapshot") or {}).get("surfaces") or []
+            if row.get("availability") == "AVAILABLE"
+        ]
+        if leaked_available:
+            raise RuntimeError(f"gateway self-test: stale local snapshot leaked AVAILABLE surfaces: {leaked_available}")
     preflight = result["runtime_bridge"]["preflight"]
     if preflight["conversation_directive"]["action"] != "EXECUTE_NEXT_ALLOWED_ACTION":
         raise RuntimeError("gateway self-test: existing resolver decision drifted")
@@ -365,7 +413,8 @@ def run_self_test() -> dict[str, Any]:
             "NO_PROJECT_ID_INVENTION",
             "COS_SESSION_NOT_PROJECT_STATE",
             "EXISTING_RESOLVER_DECISION_PRESERVED",
-            "ENVIRONMENT_READBACK_IS_NON_AUTHORITY"
+            "ENVIRONMENT_READBACK_IS_NON_AUTHORITY",
+            "STALE_LOCAL_SNAPSHOT_CANNOT_CLAIM_AVAILABLE"
         ],
         "environment_snapshot_state": context["environment"]["machine_local_runtime_state"]
     }
@@ -383,7 +432,7 @@ def _read_payload(path: str | None) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="OLEANDER unified system-management and CoS execution gateway.")
-    parser.add_argument("operation", choices=["manifest", "context", "environment", "preflight", "self-test"])
+    parser.add_argument("operation", choices=["manifest", "context", "environment", "capabilities", "resolve", "preflight", "self-test"])
     parser.add_argument("input", nargs="?", help="JSON input file for context/preflight; omit/use '-' for stdin")
     parser.add_argument("--pretty", action="store_true")
     parser.add_argument("--no-publish", action="store_true", help="Disable live observability publication for preflight")
@@ -397,6 +446,10 @@ def main() -> None:
             }
         elif args.operation == "environment":
             result = environment_snapshot()
+        elif args.operation == "capabilities":
+            result = current_capability_view({} if args.input is None else _read_payload(args.input))
+        elif args.operation == "resolve":
+            result = resolve_capability_route(_read_payload(args.input))
         elif args.operation == "self-test":
             result = run_self_test()
         elif args.operation == "context":

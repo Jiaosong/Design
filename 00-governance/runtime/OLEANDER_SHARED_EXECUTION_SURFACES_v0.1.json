@@ -7,21 +7,28 @@
   "surfaces": {
     "github_connector": {
       "class": "AGENT_EXECUTABLE",
-      "role": "SOURCE_AND_RUNTIME_MUTATION",
+      "role": "OWNER_NATIVE_SOURCE_AND_RUNTIME_MUTATION_TRANSPORT",
       "cross_conversation": true,
-      "default_production_eligible": true
+      "default_production_eligible": true,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false
     },
     "notion_connector": {
       "class": "AGENT_EXECUTABLE",
-      "role": "CURRENT_KNOWLEDGE_AND_PROJECT_STATE",
+      "role": "OWNER_NATIVE_KNOWLEDGE_AND_PROJECT_STATE_TRANSPORT",
       "cross_conversation": true,
-      "default_production_eligible": true
+      "default_production_eligible": true,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false,
+      "boundary": "The connector may access an owner-native Current source, but connector/session state is not Project State or Knowledge Authority."
     },
     "google_drive_connector": {
       "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
       "role": "ASSET_ARCHIVE_DELIVERY",
       "cross_conversation": true,
       "default_production_eligible": true,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false,
       "boundary": "Canonical Path and remote readback required"
     },
     "chat_on_steroids_local_execution_bridge": {
@@ -178,6 +185,8 @@
       "class": "AGENT_EXECUTABLE_WHEN_EXPOSED",
       "role": "OPTIONAL_DEPLOY_AND_DEPLOY_READBACK",
       "policy": "FREE_OR_EXISTING_PLAN_ONLY_NO_UPGRADE_REQUIREMENT",
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
+      "global_current_store": false,
       "boundary": "deploy success does not equal browser or design pass"
     },
     "figma_connector": {
@@ -185,6 +194,7 @@
       "role": "EXPLICIT_REQUEST_ONLY_EDITABLE_FIGMA_HANDOFF_ADAPTER",
       "lifecycle_state": "EXPLICIT_ONLY",
       "default_production_eligible": false,
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY",
       "generic_ui_probe_eligible": false,
       "explicit_project_eligible": true,
       "activation_gate_any": [

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.execution-surface.v0.1",
+  "title": "OLEANDER normalized ExecutionSurface",
+  "type": "object",
+  "required": [
+    "surface_id",
+    "provider_id",
+    "surface_class",
+    "capability_roles",
+    "availability",
+    "authority_ceiling",
+    "mutation_classes",
+    "native_outputs",
+    "readback_support",
+    "default_production_eligible",
+    "canonical_registry_entry",
+    "observation_source"
+  ],
+  "properties": {
+    "surface_id": {"type": "string", "minLength": 1},
+    "provider_id": {"type": "string", "minLength": 1},
+    "surface_class": {"type": "string", "minLength": 1},
+    "capability_roles": {"type": "array", "items": {"type": "string"}},
+    "availability": {"enum": ["AVAILABLE", "UNAVAILABLE", "DEGRADED", "UNKNOWN"]},
+    "authority_ceiling": {"const": "EXECUTION_CAPABILITY_ONLY"},
+    "mutation_classes": {"type": "array", "items": {"type": "string"}},
+    "external_disclosure": {"type": "boolean"},
+    "native_outputs": {"type": "array", "items": {"type": "string"}},
+    "readback_support": {"type": "string"},
+    "reliability": {"type": "string"},
+    "fallback_surface": {"type": ["string", "null"]},
+    "version": {"type": ["string", "null"]},
+    "observed_at": {"type": ["string", "null"]},
+    "default_production_eligible": {"type": "boolean"},
+    "canonical_registry_entry": {"type": "boolean"},
+    "observation_source": {"type": "string"},
+    "does_not_prove": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

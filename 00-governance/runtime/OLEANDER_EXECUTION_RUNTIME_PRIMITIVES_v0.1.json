@@ -1,0 +1,79 @@
+{
+  "schema": "oleander.execution-runtime-primitives.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "decision_date": "2026-09-27",
+  "purpose": "Provide OLEANDER-owned provider-neutral runtime primitives below Project, Knowledge, Decision, Artifact and Promotion authority.",
+  "authority_ceiling": "EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY",
+  "implementation": "00-governance/runtime/oleander_execution_runtime.py",
+  "primitives": {
+    "ExecutionLedger": {
+      "semantic_class": "APPEND_ONLY_RUNTIME_EVIDENCE_NOT_PROJECT_STATE",
+      "operations": ["append", "flush", "replay", "project"],
+      "project_is_disposable": true,
+      "durability_barrier": "flush",
+      "forbidden_authority_fields": [
+        "project_state",
+        "project_current",
+        "current",
+        "design_decision",
+        "design_keep",
+        "professional_pass",
+        "artifact_current",
+        "knowledge_authority",
+        "source_authority",
+        "promotion",
+        "release_authority",
+        "statutory_approval"
+      ]
+    },
+    "ActionRuntime": {
+      "semantic_class": "TYPED_EXECUTION_PIPELINE_NOT_DECISION_AUTHORITY",
+      "operations": ["validate", "authorize", "defer", "resume", "execute", "observe_delta", "readback"],
+      "guard_order": [
+        "OLEANDER_ACTION_GUARD",
+        "PROVIDER_APPROVAL",
+        "EXECUTION",
+        "ACTUAL_READBACK",
+        "OWNER_NATIVE_TRANSITION_IF_SEPARATELY_JUSTIFIED"
+      ],
+      "rules": [
+        "PROVIDER_APPROVAL_MAY_NARROW_BUT_NEVER_WIDEN_OLEANDER_PERMISSION",
+        "MATERIAL_MUTATION_WITHOUT_ACTUAL_READBACK_IS_PARTIAL_NOT_COMPLETE",
+        "EXECUTION_RESULT_MAY_NOT_WRITE_PROJECT_OR_PROMOTION_AUTHORITY"
+      ]
+    },
+    "DurableJob": {
+      "semantic_class": "DURABLE_EXECUTION_STATE_NOT_PROJECT_STATE",
+      "operations": ["start", "status", "wait", "heartbeat", "retry", "cancel", "recover"],
+      "native_backend": "SYNCHRONOUS_REFERENCE_BACKEND",
+      "optional_provider_backends": ["temporal", "provider_native_job_runtime"],
+      "rules": [
+        "JOB_HISTORY_IS_NOT_PROJECT_STATE",
+        "PROVIDER_REMOVAL_MUST_NOT_DELETE_OWNER_NATIVE_PROJECT_STATE",
+        "RETRY_MUST_PRESERVE_EXISTING_IDEMPOTENCY_AND_READBACK_RULES"
+      ]
+    }
+  },
+  "event_types": [
+    "ACTION_REQUESTED",
+    "ACTION_GUARD_BLOCKED",
+    "ACTION_DEFERRED",
+    "ACTION_RESUMED",
+    "PROVIDER_APPROVAL_BLOCKED",
+    "EXECUTION_STARTED",
+    "EXECUTION_OBSERVED",
+    "EXECUTION_FAILED",
+    "READBACK_REQUIRED",
+    "READBACK_COMPLETED",
+    "EXECUTION_COMPLETED"
+  ],
+  "does_not_prove": [
+    "project_current",
+    "knowledge_correctness",
+    "design_decision",
+    "artifact_current",
+    "design_keep",
+    "professional_pass",
+    "promotion"
+  ]
+}

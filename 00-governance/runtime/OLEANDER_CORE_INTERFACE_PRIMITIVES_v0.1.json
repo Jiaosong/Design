@@ -1,0 +1,142 @@
+{
+  "schema": "oleander.core-interface-primitives.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "decision_date": "2026-09-27",
+  "purpose": "Provide one stable OLEANDER-native interface vocabulary across Product Kernel, Master Runtime, Runtime Layers and replaceable execution providers without creating a second state store or authority model.",
+  "authority_ceiling": "REFERENCE_ENVELOPE_AND_HANDOFF_ONLY",
+  "rules": [
+    "PRIMITIVE_IS_NOT_A_DATABASE_OR_AUTHORITY_OWNER",
+    "OWNER_NATIVE_CONTRACT_REMAINS_SEMANTIC_AUTHORITY",
+    "PROVIDER_ADAPTERS_MAY_TRANSLATE_TO_FROM_THESE_PRIMITIVES_BUT_MAY_NOT_REDEFINE_THEIR_AUTHORITY",
+    "MISSING_OWNER_NATIVE_IDENTITY_OR_REVISION_REMAINS_UNRESOLVED",
+    "RUNTIME_OR_CHAT_CONTEXT_MAY_CARRY_A_REF_BUT_MAY_NOT_PROMOTE_IT",
+    "FEEDBACK_NE_STEER_NE_DECISION_NE_KEEP_NE_PROMOTION"
+  ],
+  "primitives": {
+    "AuthorityRef": {
+      "semantic_class": "POINTER_TO_OWNER_NATIVE_AUTHORITY_NOT_AUTHORITY_ITSELF",
+      "required_fields": ["authority_ref", "authority_scope", "authority_fingerprint"],
+      "optional_fields": ["revision", "actor_ref", "rights_ref", "resolved_at"],
+      "owner_contracts": [
+        "00-governance/README.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+      ]
+    },
+    "ProjectRef": {
+      "semantic_class": "OWNER_NATIVE_PROJECT_IDENTITY_AND_STATE_POINTER",
+      "required_fields": ["project_id", "project_state_ref"],
+      "optional_fields": ["revision", "task_ref", "authority_ref", "case_id"],
+      "owner_contracts": [
+        "00-governance/control-plane/orchestration.schema.json",
+        "00-governance/complex-project-master-runtime-v1.0.md"
+      ],
+      "hard_rule": "HARNESS_SESSION_OR_LOCAL_FILE_EXISTENCE_MUST_NOT_INFER_PROJECT_CURRENT"
+    },
+    "KnowledgeMount": {
+      "semantic_class": "TASK_SCOPED_KNOWLEDGE_PROJECTION_BY_REFERENCE",
+      "required_fields": ["knowledge_snapshot_ref", "mount_record_ref"],
+      "optional_fields": ["integrity_state", "operational_eligibility", "claim_ceiling", "provenance_refs", "freshness"],
+      "owner_contracts": [
+        "00-governance/knowledge-integrity-and-operational-mount-v1.0.md",
+        "00-governance/runtime/OLEANDER_EXISTING_KNOWLEDGE_MOUNT_v1.0.json"
+      ],
+      "hard_rule": "RUNTIME_MEMORY_OR_VECTOR_INDEX_IS_A_PROJECTION_NOT_KNOWLEDGE_AUTHORITY"
+    },
+    "DecisionObject": {
+      "semantic_class": "DURABLE_OWNER_NATIVE_DESIGN_DECISION_REFERENCE",
+      "required_fields": ["decision_object_id", "status", "authority_basis"],
+      "optional_fields": ["revision", "options_considered", "actor", "rationale", "tradeoffs", "accepted_cost", "uncertainty", "affected_relations", "affected_artifacts", "reopen_condition", "superseded_by"],
+      "owner_contracts": [
+        "product-docs/v0.3/nodes/atomic/N04E_DESIGN_DECISION.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+      ],
+      "implementation_status": "PRODUCT_SEMANTIC_DEFINED_SYSTEM_PARITY_PARTIAL"
+    },
+    "ProfessionalStageRef": {
+      "semantic_class": "DOMAIN_NATIVE_PROFESSIONAL_PROCESS_REFERENCE",
+      "required_fields": ["domain", "stage_ref"],
+      "optional_fields": ["revision", "owner_ref", "claim_scope", "receipt_ref"],
+      "owner_contracts": [
+        "00-governance/professional-domain-process-contract-v1.0.md",
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json"
+      ],
+      "hard_rule": "WORKFLOW_DAG_OR_VALIDATION_LEVEL_MUST_NOT_REPLACE_PROFESSIONAL_STAGE"
+    },
+    "ActionRequest": {
+      "semantic_class": "TYPED_BOUNDED_EXECUTION_REQUEST_BELOW_OLEANDER_ACTION_GUARD",
+      "required_fields": ["action_id", "intent", "target_ref", "side_effect_class", "oleander_guard_decision", "provider_id"],
+      "optional_fields": ["project_state_ref", "decision_object_id", "provider_session_id", "provider_approval", "external_disclosure", "scoped_external_permission", "material_cost_or_blast_radius", "cost_or_blast_radius_authorized", "metadata"],
+      "owner_contracts": [
+        "00-governance/runtime/OLEANDER_RUNTIME_PROVIDER_CONTRACT_v0.2.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RUNTIME_PRIMITIVES_v0.1.json"
+      ]
+    },
+    "ExecutionRoute": {
+      "semantic_class": "EPHEMERAL_CAPABILITY_ROUTE_NOT_MUTATION_PERMISSION",
+      "required_fields": ["status", "selected_surface", "authority_ceiling", "route_is_ephemeral"],
+      "optional_fields": ["candidate_summary", "reason", "observed_at"],
+      "owner_contracts": [
+        "00-governance/runtime/OLEANDER_EXECUTION_SURFACE_SCHEMA_v0.1.json",
+        "00-governance/runtime/oleander_environment_resolver.py"
+      ]
+    },
+    "ArtifactRef": {
+      "semantic_class": "NATIVE_ARTIFACT_IDENTITY_AND_REVISION_REFERENCE",
+      "required_fields": ["artifact_id", "revision"],
+      "optional_fields": ["native_format", "content_hash", "provenance_ref", "canonical_path", "editability", "owner_ref"],
+      "owner_contracts": [
+        "00-governance/runtime/OLEANDER_NATIVE_ARTIFACT_CONTRACT_v0.1.json"
+      ],
+      "hard_rule": "ARTIFACT_EXISTENCE_NE_DESIGN_QUALITY"
+    },
+    "ReadbackResult": {
+      "semantic_class": "ACTUAL_OBSERVATION_OF_EXECUTED_OR_MATERIALIZED_STATE",
+      "required_fields": ["status", "observed_ref"],
+      "optional_fields": ["observed_revision", "evidence_refs", "actual_delta", "claim_ceiling", "failure_refs"],
+      "owner_contracts": [
+        "00-governance/runtime/OLEANDER_RUNTIME_LAYER_INTERFACE_CONTRACT_v1.0.json",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ],
+      "hard_rule": "MACHINE_OR_TOOL_PASS_NE_DESIGN_OR_PROFESSIONAL_PASS"
+    },
+    "ReviewResult": {
+      "semantic_class": "SCOPED_REVIEW_EVIDENCE_NOT_KEEP_OR_PROMOTION",
+      "required_fields": ["review_scope", "outcome", "reviewer_ref"],
+      "optional_fields": ["independence_state", "criteria_refs", "findings", "reopen_refs", "claim_ceiling"],
+      "owner_contracts": [
+        "00-governance/artifact-review-system-v1.0.md",
+        "00-governance/design-intelligence-routing-and-review-v1.0.md"
+      ],
+      "hard_rule": "PROCESS_PASS_NE_DESIGN_KEEP"
+    },
+    "PersistenceReceipt": {
+      "semantic_class": "EVIDENCE_OF_OWNER_NATIVE_PERSISTENCE_OR_SYNC_TRANSITION",
+      "required_fields": ["owner_ref", "persisted_ref", "status"],
+      "optional_fields": ["from_revision", "to_revision", "readback_ref", "promotion_ref", "sync_ref"],
+      "owner_contracts": [
+        "00-governance/production-asset-persistence-gate-v1.0.md",
+        "00-governance/cross-platform-sync-contract-v1.1.md",
+        "00-governance/runtime/OLEANDER_EXECUTION_RECEIPT_v1.0.json"
+      ],
+      "hard_rule": "PERSISTENCE_EVIDENCE_DOES_NOT_CREATE_PROMOTION_AUTHORITY"
+    },
+    "LearningCandidate": {
+      "semantic_class": "REVIEWABLE_EVOLUTION_CANDIDATE_NOT_AUTOMATIC_LEARNING_AUTHORITY",
+      "required_fields": ["candidate_id", "source_refs", "status"],
+      "optional_fields": ["rationale", "evidence_refs", "affected_contracts", "review_ref", "promotion_ref"],
+      "owner_contracts": [
+        "00-governance/runtime/OLEANDER_EVOLUTION_CANDIDATE_CONTRACT_v1.0.json"
+      ],
+      "hard_rule": "RUNTIME_ADAPTATION_OR_DESIGNER_FEEDBACK_MUST_NOT_SELF_PROMOTE_TO_PERMANENT_SYSTEM_OR_PERSON_PROFILE"
+    }
+  },
+  "does_not_prove": [
+    "project_current",
+    "knowledge_correctness",
+    "design_decision_validity",
+    "artifact_current",
+    "design_keep",
+    "professional_pass",
+    "promotion"
+  ]
+}

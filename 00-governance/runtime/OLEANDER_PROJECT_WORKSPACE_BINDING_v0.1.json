@@ -1,0 +1,47 @@
+{
+  "schema": "oleander.project-workspace-binding.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "PROJECT_MATERIALIZATION_BINDING_ONLY",
+  "purpose": "Bind an owner-native OLEANDER Project to Git repositories, runtime workspaces/worktrees, artifact stores, knowledge mounts and external surfaces without making any materialization Project Current.",
+  "required_project_fields": ["project_id", "project_state_ref", "authority_ref"],
+  "repository_roles": ["PRIMARY", "SATELLITE", "DELIVERY", "ARCHIVE"],
+  "workspace_classes": ["MAIN", "DESIGN_DIRECTION", "PRESENTATION", "RESEARCH", "TEMPORARY_RUNTIME"],
+  "repository_binding_required": ["repository_ref", "role", "remote_identity"],
+  "workspace_binding_required": ["workspace_ref", "workspace_class", "repository_ref", "observed_revision"],
+  "forbidden_materialization_authority_fields": [
+    "project_current",
+    "current_project_state",
+    "design_keep",
+    "professional_pass",
+    "promotion",
+    "release_authority"
+  ],
+  "hard_invariants": [
+    "PROJECT_NE_REPOSITORY",
+    "PROJECT_NE_RUNTIME_WORKSPACE",
+    "PROJECT_NE_ARTIFACT_STORE",
+    "PROJECT_NE_KNOWLEDGE_STORE",
+    "GIT_COMMIT_NE_PROJECT_CURRENT",
+    "GIT_BRANCH_NE_DESIGN_DIRECTION",
+    "GIT_MERGE_NE_DESIGN_KEEP",
+    "GIT_CLEAN_NE_DESIGN_VALID",
+    "WORKTREE_EXISTS_NE_PROJECT_CURRENT"
+  ],
+  "bootstrap_manifest": {
+    "recommended_path": ".oleander/project.json",
+    "authority_ceiling": "LOCATOR_ONLY",
+    "required": ["project_id", "project_state_ref"],
+    "forbidden": ["project_current_payload", "design_keep", "promotion"]
+  },
+  "migration_rule": [
+    "INVENTORY_EXISTING_PROJECT_BOUNDARY",
+    "PRESERVE_GIT_HISTORY",
+    "CREATE_OR_BIND_TARGET_REPOSITORY",
+    "VERIFY_HISTORY_AND_REMOTE",
+    "BIND_PROJECT_ID_AND_OWNER_NATIVE_STATE_REF",
+    "BIND_ARTIFACT_AND_KNOWLEDGE_LOCATIONS",
+    "READBACK_IN_DESIGN_SYSTEM",
+    "REMOVE_OLD_DUPLICATE_ONLY_AFTER_VERIFIED_BINDING"
+  ],
+  "does_not_prove": ["PROJECT_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"]
+}
