@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from oleander_environment_resolver import build_current_execution_view
+from oleander_design_system_runtime import admit_source, resolve_bounded_product_action_guard
 from oleander_execution_runtime import ExecutionLedger
 from oleander_system_gateway import validate_system_manifest
 
@@ -27,6 +28,8 @@ DESIGN_SYSTEM_OBJECTS = ROOT / "00-governance" / "runtime" / "OLEANDER_DESIGN_SY
 SURFACE_RELIABILITY = ROOT / "00-governance" / "runtime" / "OLEANDER_SURFACE_RELIABILITY_BOUNDARY_v0.1.json"
 PROJECT_WORKSPACE = ROOT / "00-governance" / "runtime" / "OLEANDER_PROJECT_WORKSPACE_BINDING_v0.1.json"
 SOURCE_INGESTION = ROOT / "00-governance" / "runtime" / "OLEANDER_SOURCE_INGESTION_PIPELINE_v0.1.json"
+DERIVED_INTEGRITY = ROOT / "00-governance" / "runtime" / "OLEANDER_DERIVED_ARTIFACT_INTEGRITY_v0.1.json"
+SOURCE_TRANSCRIPTION = ROOT / "00-governance" / "runtime" / "OLEANDER_SOURCE_TRANSCRIPTION_CONTRACT_v0.1.json"
 HOST_RUNTIME = ROOT / "00-governance" / "runtime" / "OLEANDER_HOST_RUNTIME_CONTRACT_v0.1.json"
 DSH_ADAPTER = ROOT / "00-governance" / "runtime" / "OLEANDER_DSH_HOST_ADAPTER_v0.1.json"
 PRODUCT_SHELL = ROOT / "apps" / "oleander-design-system" / "index.html"
@@ -64,6 +67,20 @@ def _owner_exists(ref: str) -> bool:
     return (ROOT / ref).exists()
 
 
+def _find_forbidden_keys(value: Any, forbidden: set[str], path: str = "$") -> list[str]:
+    hits: list[str] = []
+    if isinstance(value, dict):
+        for key, item in value.items():
+            child = f"{path}.{key}"
+            if str(key).lower() in forbidden:
+                hits.append(child)
+            hits.extend(_find_forbidden_keys(item, forbidden, child))
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            hits.extend(_find_forbidden_keys(item, forbidden, f"{path}[{index}]"))
+    return hits
+
+
 def run_lint() -> dict[str, Any]:
     manifest = _load(MANIFEST)
     adapter = _load(ADAPTER)
@@ -78,10 +95,43 @@ def run_lint() -> dict[str, Any]:
     surface_reliability = _load(SURFACE_RELIABILITY)
     project_workspace = _load(PROJECT_WORKSPACE)
     source_ingestion = _load(SOURCE_INGESTION)
+    derived_integrity = _load(DERIVED_INTEGRITY)
+    source_transcription = _load(SOURCE_TRANSCRIPTION)
     host_runtime = _load(HOST_RUNTIME)
     dsh_adapter = _load(DSH_ADAPTER)
     project_migration = _load(PROJECT_MIGRATION)
     surface_view = _load(SURFACE_VIEW)
+    source_admission_probe = admit_source({
+        "source_id": "LINT-SOURCE",
+        "source_kind": "TEXT",
+        "original_ref": "lint:source",
+        "fingerprint": "sha256:lint",
+        "source_revision": "sha256:lint",
+        "provenance": {"origin": "linter"},
+    })
+    source_forbidden_fields = {
+        str(x).lower() for x in source_ingestion.get("forbidden_output_authority_fields") or []
+    }
+    source_output_authority_hits = _find_forbidden_keys(
+        source_admission_probe.get("source") or {},
+        source_forbidden_fields,
+    )
+    action_guard_allow_probe = resolve_bounded_product_action_guard(
+        intent="CREATE_TRANSCRIPTION_REQUEST",
+        target_ref="source:LINT-SOURCE/transcription/requests/TRQ-lint",
+        side_effect_class="LOCAL_MUTATION",
+        source_context={"source_id": "LINT-SOURCE", "source_revision": "sha256:lint"},
+        action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+        external_disclosure=False,
+    )
+    action_guard_hold_probe = resolve_bounded_product_action_guard(
+        intent="CREATE_TRANSCRIPTION_REQUEST",
+        target_ref="source:LINT-SOURCE/transcription/requests/TRQ-lint",
+        side_effect_class="LOCAL_MUTATION",
+        source_context={"source_id": "LINT-SOURCE", "source_revision": "sha256:lint"},
+        action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+        external_disclosure=True,
+    )
 
     manifest_validation = validate_system_manifest()
     components = [x for x in disposition.get("components") or [] if isinstance(x, dict)]
@@ -233,7 +283,57 @@ def run_lint() -> dict[str, Any]:
         "source_ingestion_preserves_original_and_citations": {
             "PRESERVE_ORIGINAL", "BIND_CITATIONS", "CREATE_KNOWLEDGE_DRAFT"
         }.issubset(set(source_ingestion.get("pipeline") or [])),
-        "source_ingestion_never_sets_knowledge_current": "knowledge_current" in set(source_ingestion.get("forbidden_output_authority_fields") or []),
+        "source_ingestion_never_sets_knowledge_current": (
+            "knowledge_current" in source_forbidden_fields
+            and source_admission_probe.get("status") == "ADMITTED"
+            and not source_output_authority_hits
+        ),
+        "source_ingestion_binds_derived_integrity_and_transcription_contracts": (
+            source_ingestion.get("derived_integrity_contract") == "00-governance/runtime/OLEANDER_DERIVED_ARTIFACT_INTEGRITY_v0.1.json"
+            and source_ingestion.get("transcription_contract") == "00-governance/runtime/OLEANDER_SOURCE_TRANSCRIPTION_CONTRACT_v0.1.json"
+        ),
+        "derived_integrity_is_readback_only_and_source_bound": (
+            derived_integrity.get("authority_ceiling") == "DERIVED_ARTIFACT_READBACK_ONLY"
+            and {
+                "SOURCE_INTEGRITY_NE_DERIVED_INTEGRITY",
+                "DERIVED_FILE_PRESENT_NE_DERIVED_VERIFIED",
+                "DERIVED_VERIFIED_NE_KNOWLEDGE_CURRENT",
+            }.issubset(set(derived_integrity.get("hard_invariants") or []))
+        ),
+        "source_transcription_is_derivative_only_and_persistent_not_provider_bound": (
+            source_transcription.get("authority_ceiling") == "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY"
+            and {
+                "TRANSCRIPTION_REQUEST_NE_TRANSCRIPT",
+                "REQUEST_PERSISTED_NE_PROVIDER_BOUND",
+                "PRODUCT_ACTION_NE_ACTION_GUARD_DECISION",
+                "REQUEST_REUSE_REQUIRES_READBACK_BEFORE_MUTATION",
+                "TRANSCRIPT_NE_STRUCTURED_KNOWLEDGE_BODY",
+                "SOURCE_TRANSCRIPTION_NE_KNOWLEDGE_CURRENT",
+            }.issubset(set(source_transcription.get("hard_invariants") or []))
+            and (source_transcription.get("dsh_reference") or {}).get("role") == "TRANSIENT_SPEECH_PROVIDER_SEAM_REFERENCE_ONLY"
+        ),
+        "bounded_product_action_guard_is_non_authority_and_fail_closed": (
+            action_guard_allow_probe.get("status") == "PASS"
+            and action_guard_allow_probe.get("decision") == "ALLOW"
+            and action_guard_allow_probe.get("authority_ceiling") == "BOUNDED_EXECUTION_POLICY_ONLY"
+            and "KNOWLEDGE_CURRENT" in set(action_guard_allow_probe.get("does_not_prove") or [])
+            and action_guard_hold_probe.get("status") == "HOLD"
+            and action_guard_hold_probe.get("decision") == "HOLD"
+        ),
+        "transcription_request_reuse_contract_requires_readback_before_mutation": (
+            "REQUEST_DIGEST_AND_SOURCE_REVISION_MUST_MATCH_RECEIPT_BEFORE_REQUEST_IS_REUSED"
+            == str((source_transcription.get("persistence") or {}).get("request_readback") or "")
+            and "BEFORE_ANY_MUTATION"
+            in str((source_transcription.get("persistence") or {}).get("reuse_rule") or "")
+            and "MUST_NOT_MANUFACTURE_ALLOW"
+            in str((source_transcription.get("persistence") or {}).get("action_guard_rule") or "")
+        ),
+        "system_manifest_registers_derived_integrity_and_transcription": (
+            (manifest.get("system_interfaces") or {}).get("derived_artifact_integrity") == "00-governance/runtime/OLEANDER_DERIVED_ARTIFACT_INTEGRITY_v0.1.json"
+            and (manifest.get("system_interfaces") or {}).get("source_transcription_contract") == "00-governance/runtime/OLEANDER_SOURCE_TRANSCRIPTION_CONTRACT_v0.1.json"
+            and (manifest.get("design_system_successor") or {}).get("derived_artifact_integrity") == "00-governance/runtime/OLEANDER_DERIVED_ARTIFACT_INTEGRITY_v0.1.json"
+            and (manifest.get("design_system_successor") or {}).get("source_transcription_contract") == "00-governance/runtime/OLEANDER_SOURCE_TRANSCRIPTION_CONTRACT_v0.1.json"
+        ),
         "host_runtime_contract_is_execution_only": host_runtime.get("authority_ceiling") == "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
         "host_runtime_forbids_project_knowledge_design_authority": {
             "PROJECT_STATE", "PROJECT_CURRENT", "KNOWLEDGE_AUTHORITY", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"
@@ -290,6 +390,11 @@ def run_lint() -> dict[str, Any]:
         "design_system_project_non_equivalences": sorted(project_non_equivalences),
         "project_workspace_authority_ceiling": project_workspace.get("authority_ceiling"),
         "source_ingestion_authority_ceiling": source_ingestion.get("authority_ceiling"),
+        "source_ingestion_output_authority_hits": source_output_authority_hits,
+        "bounded_product_action_guard_allow_probe": action_guard_allow_probe,
+        "bounded_product_action_guard_hold_probe": action_guard_hold_probe,
+        "derived_integrity_authority_ceiling": derived_integrity.get("authority_ceiling"),
+        "source_transcription_authority_ceiling": source_transcription.get("authority_ceiling"),
         "host_runtime_authority_ceiling": host_runtime.get("authority_ceiling"),
         "surface_view_authority_ceiling": surface_view.get("authority_ceiling"),
         "project_repository_migration_status": project_migration.get("status"),

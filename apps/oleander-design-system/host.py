@@ -26,9 +26,22 @@ ROOT = APP_DIR.parents[1]
 RUNTIME_DIR = ROOT / "00-governance" / "runtime"
 sys.path.insert(0, str(RUNTIME_DIR))
 
-from oleander_design_system_runtime import admit_source, next_ingestion_state, validate_source_revision  # noqa: E402
+from oleander_design_system_runtime import (  # noqa: E402
+    admit_source,
+    next_ingestion_state,
+    resolve_bounded_product_action_guard,
+    validate_source_revision,
+)
+from oleander_derived_integrity import MANIFEST_NAME, sha256_file, validate_manifest, write_manifest  # noqa: E402
 from oleander_environment_resolver import build_current_execution_view  # noqa: E402
+from oleander_execution_runtime import ActionRequest, ActionRuntime, ExecutionLedger  # noqa: E402
 from oleander_host_runtime_probe import build_host_runtime_view  # noqa: E402
+from oleander_source_transcription import (  # noqa: E402
+    build_persistent_transcription_request,
+    build_transcription_plan,
+    validate_persistent_transcription_request,
+)
+from oleander_surface_reliability import assess_result_reliability, build_preflight_reliability, routing_allowed  # noqa: E402
 from oleander_surface_view import build_surface_views, project_browser_profile  # noqa: E402
 
 
@@ -88,6 +101,75 @@ def _local_host_reliability_observations(health: dict[str, Any], observed_at: st
                 "evidence": "IN_PROCESS_LOCAL_HOST_PROBE",
             })
     return rows
+
+
+def _local_action_reliability_observations(capability: str, observed_at: str | None = None) -> list[dict[str, Any]]:
+    """Action-scoped readiness evidence for a bounded in-process capability.
+
+    This does not upgrade the Local Host's general SurfaceView readiness. It is
+    emitted only for a concrete capability whose implementation and local
+    mutation target are already known before ActionRuntime admission.
+    """
+    stamp = observed_at or datetime.now(timezone.utc).isoformat()
+    surface_id = "design_system_local_host"
+    dimensions = {
+        "R1_ADMISSION": {
+            "registered": "PASS",
+            "configured": "PASS",
+            "version_compatible": "NOT_APPLICABLE",
+            "loaded": "PASS",
+        },
+        "R2_IDENTITY": {
+            "authenticated": "NOT_APPLICABLE",
+            "identity_bound": "NOT_APPLICABLE",
+            "permission_scope_verified": "NOT_APPLICABLE",
+            "credential_freshness": "NOT_APPLICABLE",
+        },
+        "R3_CAPABILITY": {
+            "catalog_valid": "PASS",
+            "capability_verified": "PASS",
+            "required_feature_present": "PASS",
+        },
+        "R4_EXECUTION": {
+            "provider_health": "PASS",
+            "capacity_state": "PASS",
+            "request_admission": "PASS",
+            "side_effect_certainty": "PASS",
+        },
+    }
+    rows: list[dict[str, Any]] = []
+    for stage, stage_dimensions in dimensions.items():
+        for dimension, fact in stage_dimensions.items():
+            rows.append({
+                "observation_id": f"local-action:{capability}:{stage}:{dimension}:{stamp}",
+                "surface_instance_id": surface_id,
+                "stage": stage,
+                "dimension": dimension,
+                "fact": fact,
+                "source_kind": "HOST_RUNTIME",
+                "observed_at": stamp,
+                "capability": capability,
+                "scope": "ACTION_SPECIFIC_NOT_GENERAL_SURFACE_READINESS",
+            })
+    return rows
+
+
+def _result_reliability_observations(action_id: str, passed: bool, observed_at: str | None = None) -> list[dict[str, Any]]:
+    stamp = observed_at or datetime.now(timezone.utc).isoformat()
+    fact = "PASS" if passed else "FAIL"
+    return [
+        {
+            "observation_id": f"{action_id}:R5_RESULT:{dimension}:{stamp}",
+            "surface_instance_id": "design_system_local_host",
+            "stage": "R5_RESULT",
+            "dimension": dimension,
+            "fact": fact,
+            "source_kind": "OWNER_NATIVE_READBACK",
+            "observed_at": stamp,
+            "scope": "ACTION_RESULT_ONLY",
+        }
+        for dimension in ("native_output", "actual_delta", "readback", "semantic_fidelity", "source_version_consistency")
+    ]
 
 
 def default_data_root() -> Path:
@@ -440,6 +522,9 @@ def extract_media_support(source_dir: Path, source: dict[str, Any]) -> dict[str,
 
     media = {
         "status": "MEDIA_SUPPORT_READY",
+        "source_id": source.get("source_id"),
+        "source_revision": source.get("source_revision"),
+        "media_ref": "media.json",
         "extractor": "FFPROBE_FFMPEG",
         "format": format_info,
         "streams": streams,
@@ -510,6 +595,8 @@ def extract_structured_body(source_dir: Path, source: dict[str, Any]) -> dict[st
     _write_json(source_dir / "body.json", body)
     draft = {
         "draft_id": f"KD-{source['source_id']}",
+        "source_id": source["source_id"],
+        "source_revision": source["source_revision"],
         "source_refs": [source["source_id"]],
         "body_refs": [body["body_id"]],
         "review_state": "OPEN",
@@ -535,11 +622,21 @@ class DesignSystemHost:
         self.data_root = data_root
         self.uploads_root = data_root / "uploads"
         self.sources_root = data_root / "sources"
+        self.runtime_root = data_root / "runtime"
         self.uploads_root.mkdir(parents=True, exist_ok=True)
         self.sources_root.mkdir(parents=True, exist_ok=True)
+        self.runtime_root.mkdir(parents=True, exist_ok=True)
+        self.action_runtime = ActionRuntime(ExecutionLedger(self.runtime_root / "execution.jsonl"))
 
     def health(self) -> dict[str, Any]:
-        capabilities = ["PROJECT_DISCOVERY", "SOURCE_CHUNK_UPLOAD", "SOURCE_PRESERVATION", "STRUCTURED_BODY_EXTRACTION", "SURFACE_CAPABILITY_VIEW"]
+        capabilities = [
+            "PROJECT_DISCOVERY",
+            "SOURCE_CHUNK_UPLOAD",
+            "SOURCE_PRESERVATION",
+            "STRUCTURED_BODY_EXTRACTION",
+            "SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+            "SURFACE_CAPABILITY_VIEW",
+        ]
         if shutil.which("ffprobe"):
             capabilities.append("MEDIA_METADATA_EXTRACTION")
         if shutil.which("ffmpeg"):
@@ -622,9 +719,14 @@ class DesignSystemHost:
             draft_path = source_dir / "knowledge_draft.json"
             media_path = source_dir / "media.json"
             revision_readback = _source_revision_readback(source_dir, source)
-            derived_eligible = revision_readback.get("status") == "PASS"
+            derived_integrity = validate_manifest(source_dir, source) if revision_readback.get("status") == "PASS" else {
+                "status": "BLOCKED_BY_SOURCE_INTEGRITY",
+                "derived_content_may_be_exposed": False,
+            }
+            derived_eligible = revision_readback.get("status") == "PASS" and derived_integrity.get("status") == "PASS"
             row = dict(source)
             row["source_revision_readback"] = revision_readback
+            row["derived_integrity_readback"] = derived_integrity
             row["derived_content_eligible"] = derived_eligible
             row["body_file_present"] = body_path.is_file()
             row["knowledge_draft_file_present"] = draft_path.is_file()
@@ -639,8 +741,10 @@ class DesignSystemHost:
                     row["body_preview"] = next((str(section.get("text") or "")[:240] for section in body.get("sections") or [] if section.get("text")), "")
                 except (OSError, ValueError, json.JSONDecodeError):
                     row["body_readback"] = "INVALID"
-            elif not derived_eligible:
+            elif revision_readback.get("status") != "PASS":
                 row["ingestion_readback_state"] = "HOLD_SOURCE_CHANGED"
+            elif derived_integrity.get("status") != "PASS":
+                row["ingestion_readback_state"] = "HOLD_DERIVED_CHANGED"
             rows.append(row)
         return {
             "schema": "oleander.design-system.sources-view.v0.1",
@@ -672,6 +776,19 @@ class DesignSystemHost:
                 "authority_ceiling": "KNOWLEDGE_DRAFT_READBACK_ONLY",
                 "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS"],
             }
+        derived_integrity = validate_manifest(source_dir, source)
+        if derived_integrity.get("status") != "PASS":
+            return {
+                "status": "HOLD_DERIVED_CHANGED",
+                "source": source,
+                "source_revision_readback": revision_readback,
+                "derived_integrity_readback": derived_integrity,
+                "body": None,
+                "knowledge_draft": None,
+                "media": None,
+                "authority_ceiling": "KNOWLEDGE_DRAFT_READBACK_ONLY",
+                "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS"],
+            }
         body = _read_json(body_path) if body_path.is_file() else None
         draft = _read_json(draft_path) if draft_path.is_file() else None
         media_path = source_dir / "media.json"
@@ -680,11 +797,344 @@ class DesignSystemHost:
             "status": "PASS",
             "source": source,
             "source_revision_readback": revision_readback,
+            "derived_integrity_readback": derived_integrity,
             "body": body,
             "knowledge_draft": draft,
             "media": media,
             "authority_ceiling": "KNOWLEDGE_DRAFT_READBACK_ONLY",
             "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS"],
+        }
+
+    def transcription_plan(
+        self,
+        source_id: str,
+        language: str = "auto",
+        timestamp_requirement: str = "CHUNK_INTERVAL",
+    ) -> dict[str, Any]:
+        if not re.fullmatch(r"SRC-[0-9a-f]{32}", source_id or ""):
+            raise ValueError("INVALID_SOURCE_ID")
+        source_dir = self.sources_root / source_id
+        source_path = source_dir / "source.json"
+        if not source_path.is_file():
+            raise FileNotFoundError("SOURCE_NOT_FOUND")
+        source = _read_json(source_path)
+        revision_readback = _source_revision_readback(source_dir, source)
+        if revision_readback.get("status") != "PASS":
+            return {"status": "HOLD_SOURCE_CHANGED", "source_revision_readback": revision_readback}
+        derived_integrity = validate_manifest(source_dir, source)
+        if derived_integrity.get("status") != "PASS":
+            return {"status": "HOLD_DERIVED_CHANGED", "derived_integrity_readback": derived_integrity}
+        media_path = source_dir / "media.json"
+        media = _read_json(media_path) if media_path.is_file() else None
+        return build_transcription_plan(
+            source=source,
+            media=media,
+            provider=None,
+            language=language,
+            timestamp_requirement=timestamp_requirement,
+        )
+
+    def create_transcription_request(self, source_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+        language = str(payload.get("language") or "auto").strip() or "auto"
+        timestamp_requirement = str(payload.get("timestamp_requirement") or "CHUNK_INTERVAL").strip() or "CHUNK_INTERVAL"
+        plan = self.transcription_plan(source_id, language, timestamp_requirement)
+        if plan.get("status") not in {"TRANSCRIPT_PROVIDER_NOT_BOUND", "PROVIDER_PREPARATION_REQUIRED", "READY"}:
+            return plan
+
+        source_dir = self.sources_root / source_id
+        requests_dir = source_dir / "transcription" / "requests"
+        request_id = str(plan["request_id"])
+        request_path = requests_dir / f"{request_id}.json"
+        receipt_path = request_path.with_suffix(".receipt.json")
+        target_ref = f"source:{source_id}/transcription/requests/{request_id}"
+        action_guard = resolve_bounded_product_action_guard(
+            intent="CREATE_TRANSCRIPTION_REQUEST",
+            target_ref=target_ref,
+            side_effect_class="LOCAL_MUTATION",
+            source_context={
+                "source_id": source_id,
+                "source_revision": plan.get("source_revision"),
+            },
+            action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            external_disclosure=False,
+        )
+        if action_guard.get("decision") != "ALLOW":
+            return {
+                "status": "BLOCKED_BY_OLEANDER",
+                "guard_decision": action_guard,
+                "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            }
+
+        # Deterministic request IDs may be reused only after the persisted
+        # request and receipt pass actual readback. A partial or tampered prior
+        # side effect is a HOLD, never an overwrite/retry trigger.
+        if request_path.exists() or receipt_path.exists():
+            persisted = self.list_transcription_requests(source_id)
+            row = next(
+                (item for item in persisted.get("requests") or [] if item.get("request_id") == request_id),
+                None,
+            )
+            expected = {
+                "source_id": source_id,
+                "source_revision": plan.get("source_revision"),
+                "media_ref": plan.get("media_ref"),
+                "language": plan.get("language"),
+                "timestamp_requirement": plan.get("timestamp_requirement"),
+                "state": plan.get("status"),
+                "provider_id": plan.get("provider_id"),
+                "provider_location": plan.get("provider_location"),
+            }
+            mismatches = [
+                field
+                for field, expected_value in expected.items()
+                if row is None or row.get(field) != expected_value
+            ]
+            if (
+                persisted.get("status") != "PASS"
+                or row is None
+                or row.get("status") != "PASS"
+                or mismatches
+                or not receipt_path.is_file()
+            ):
+                return {
+                    "status": "HOLD_EXISTING_REQUEST_CHANGED",
+                    "request_id": request_id,
+                    "reuse_readback": persisted,
+                    "mismatched_fields": mismatches,
+                    "readback_errors": list(row.get("errors") or []) if isinstance(row, dict) else [],
+                    "guard_decision": action_guard,
+                    "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+                    "does_not_prove": ["RETRY_SAFE", "PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT"],
+                }
+            existing_request = _read_json(request_path)
+            existing_receipt = _read_json(receipt_path)
+            expected_action_id = "ACT-" + request_id[4:]
+            receipt_mismatches: list[str] = []
+            if existing_receipt.get("action_id") != expected_action_id:
+                receipt_mismatches.append("action_id")
+            if existing_receipt.get("action_guard_decision_ref") != action_guard.get("decision_ref"):
+                receipt_mismatches.append("action_guard_decision_ref")
+            if receipt_mismatches:
+                return {
+                    "status": "HOLD_EXISTING_REQUEST_CHANGED",
+                    "request_id": request_id,
+                    "reuse_readback": persisted,
+                    "mismatched_fields": receipt_mismatches,
+                    "guard_decision": action_guard,
+                    "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+                    "does_not_prove": ["RETRY_SAFE", "PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT"],
+                }
+            return {
+                "status": existing_request["state"],
+                "action_runtime_status": "REUSED_VERIFIED",
+                "action_id": existing_receipt.get("action_id"),
+                "transcription_request": existing_request,
+                "request_receipt": existing_receipt,
+                "guard_decision": action_guard,
+                "reuse_readback": {
+                    "status": "PASS",
+                    "request_id": request_id,
+                    "request_revision": row.get("request_revision_readback"),
+                    "source_revision": existing_request.get("source_revision"),
+                },
+                "result_reliability": {
+                    "status": "NOT_APPLICABLE_NO_NEW_EXECUTION",
+                    "reason": "VERIFIED_EXISTING_REQUEST_REUSED_WITHOUT_MUTATION",
+                },
+                "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+                "does_not_prove": ["PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS"],
+            }
+
+        requested_at = datetime.now(timezone.utc).isoformat()
+        request = build_persistent_transcription_request(plan, requested_at=requested_at)
+        action_id = "ACT-" + request_id[4:]
+        reliability_preflight = build_preflight_reliability({
+            "surface_id": "design_system_local_host",
+            "reliability_observations": _local_action_reliability_observations(
+                "SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+                requested_at,
+            ),
+        })
+        if not routing_allowed(reliability_preflight):
+            return {
+                "status": "BLOCKED_BY_SURFACE_RELIABILITY",
+                "transcription_state": request["state"],
+                "reliability_preflight": reliability_preflight,
+                "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            }
+
+        action_request = ActionRequest.from_dict({
+            "action_id": action_id,
+            "intent": "CREATE_TRANSCRIPTION_REQUEST",
+            "target_ref": target_ref,
+            "side_effect_class": "LOCAL_MUTATION",
+            "oleander_guard_decision": action_guard["decision"],
+            "provider_id": "design_system_local_host",
+            "provider_approval": "NOT_REQUIRED",
+            "metadata": {
+                "capability": "SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+                "source_id": source_id,
+                "source_revision": request["source_revision"],
+                "request_id": request["request_id"],
+                "action_guard_decision_ref": action_guard["decision_ref"],
+                "action_guard_policy_fingerprint": action_guard["policy_fingerprint"],
+            },
+        })
+
+        def executor(_: ActionRequest) -> dict[str, Any]:
+            requests_dir.mkdir(parents=True, exist_ok=True)
+            _write_json(request_path, request)
+            request_revision = sha256_file(request_path)
+            if request_revision is None:
+                raise RuntimeError("TRANSCRIPTION_REQUEST_WRITEBACK_FAILED")
+            receipt = {
+                "schema": "oleander.source-transcription-request-receipt.v0.1",
+                "request_id": request["request_id"],
+                "action_id": action_id,
+                "action_guard_decision_ref": action_guard["decision_ref"],
+                "source_id": request["source_id"],
+                "source_revision": request["source_revision"],
+                "request_ref": str(request_path.relative_to(source_dir)).replace("\\", "/"),
+                "request_revision": request_revision,
+                "observed_at": requested_at,
+                "authority_ceiling": "EXECUTION_RECEIPT_ONLY",
+                "does_not_prove": ["PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS"],
+            }
+            _write_json(receipt_path, receipt)
+            return {
+                "request_id": request["request_id"],
+                "request_ref": receipt["request_ref"],
+                "request_revision": request_revision,
+                "receipt_ref": str(receipt_path.relative_to(source_dir)).replace("\\", "/"),
+                "transcription_state": request["state"],
+            }
+
+        def readback(_: ActionRequest, provider_result: dict[str, Any]) -> dict[str, Any]:
+            persisted = self.list_transcription_requests(source_id)
+            row = next(
+                (item for item in persisted.get("requests") or [] if item.get("request_id") == request["request_id"]),
+                None,
+            )
+            passed = bool(
+                persisted.get("status") == "PASS"
+                and row
+                and row.get("status") == "PASS"
+                and row.get("state") == request["state"]
+                and row.get("source_revision") == request["source_revision"]
+                and row.get("request_revision_readback") == provider_result.get("request_revision")
+            )
+            return {
+                "status": "PASS" if passed else "FAIL",
+                "request_id": request["request_id"],
+                "request_revision": provider_result.get("request_revision"),
+                "source_revision": request["source_revision"],
+                "source_revision_consistency": "PASS" if passed else "FAIL",
+                "semantic_fidelity": "PASS" if passed else "FAIL",
+            }
+
+        execution = self.action_runtime.execute(action_request, executor, readback=readback)
+        self.action_runtime.ledger.flush()
+        readback_passed = (
+            execution.get("status") == "COMPLETED"
+            and isinstance(execution.get("readback"), dict)
+            and execution["readback"].get("status") == "PASS"
+        )
+        result_reliability = assess_result_reliability(
+            _result_reliability_observations(action_id, readback_passed),
+            material_mutation=True,
+        )
+        provider_result = execution.get("provider_result") if isinstance(execution.get("provider_result"), dict) else {}
+        receipt = _read_json(receipt_path) if receipt_path.is_file() and readback_passed else None
+        return {
+            "status": request["state"] if readback_passed and result_reliability.get("status") == "VERIFIED" else "ACTION_PARTIAL",
+            "action_runtime_status": execution.get("status"),
+            "action_id": action_id,
+            "guard_decision": action_guard,
+            "transcription_request": request,
+            "request_receipt": receipt,
+            "provider_result": provider_result,
+            "reliability_preflight": reliability_preflight,
+            "result_reliability": result_reliability,
+            "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            "does_not_prove": ["PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS"],
+        }
+
+    def list_transcription_requests(self, source_id: str) -> dict[str, Any]:
+        if not re.fullmatch(r"SRC-[0-9a-f]{32}", source_id or ""):
+            raise ValueError("INVALID_SOURCE_ID")
+        source_dir = self.sources_root / source_id
+        source_path = source_dir / "source.json"
+        if not source_path.is_file():
+            raise FileNotFoundError("SOURCE_NOT_FOUND")
+        source = _read_json(source_path)
+        revision_readback = _source_revision_readback(source_dir, source)
+        if revision_readback.get("status") != "PASS":
+            return {
+                "status": "HOLD_SOURCE_CHANGED",
+                "requests": [],
+                "source_revision_readback": revision_readback,
+                "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            }
+
+        rows: list[dict[str, Any]] = []
+        requests_dir = source_dir / "transcription" / "requests"
+        if requests_dir.is_dir():
+            for request_path in sorted(requests_dir.glob("TRQ-*.json")):
+                if request_path.name.endswith(".receipt.json"):
+                    continue
+                receipt_path = request_path.with_suffix(".receipt.json")
+                try:
+                    request = _read_json(request_path)
+                    receipt = _read_json(receipt_path) if receipt_path.is_file() else None
+                except (OSError, ValueError, json.JSONDecodeError):
+                    rows.append({"request_id": request_path.stem, "status": "HOLD_REQUEST_CHANGED", "reason": "REQUEST_OR_RECEIPT_INVALID"})
+                    continue
+                errors = validate_persistent_transcription_request(request, source)
+                observed_revision = sha256_file(request_path)
+                if not receipt:
+                    errors.append("REQUEST_RECEIPT_MISSING")
+                else:
+                    expected_action_id = "ACT-" + str(request.get("request_id") or "")[4:]
+                    expected_target_ref = f"source:{source_id}/transcription/requests/{request.get('request_id')}"
+                    expected_guard = resolve_bounded_product_action_guard(
+                        intent="CREATE_TRANSCRIPTION_REQUEST",
+                        target_ref=expected_target_ref,
+                        side_effect_class="LOCAL_MUTATION",
+                        source_context={
+                            "source_id": source_id,
+                            "source_revision": source.get("source_revision"),
+                        },
+                        action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+                        external_disclosure=False,
+                    )
+                    if receipt.get("schema") != "oleander.source-transcription-request-receipt.v0.1":
+                        errors.append("REQUEST_RECEIPT_SCHEMA_MISMATCH")
+                    if receipt.get("authority_ceiling") != "EXECUTION_RECEIPT_ONLY":
+                        errors.append("REQUEST_RECEIPT_AUTHORITY_CEILING_MISMATCH")
+                    if receipt.get("source_id") != source_id or receipt.get("source_revision") != source.get("source_revision"):
+                        errors.append("REQUEST_RECEIPT_SOURCE_BINDING_MISMATCH")
+                    if receipt.get("request_id") != request.get("request_id"):
+                        errors.append("REQUEST_RECEIPT_ID_MISMATCH")
+                    if receipt.get("action_id") != expected_action_id:
+                        errors.append("REQUEST_RECEIPT_ACTION_ID_MISMATCH")
+                    if receipt.get("action_guard_decision_ref") != expected_guard.get("decision_ref"):
+                        errors.append("REQUEST_RECEIPT_ACTION_GUARD_MISMATCH")
+                    if receipt.get("request_revision") != observed_revision:
+                        errors.append("REQUEST_RECEIPT_DIGEST_MISMATCH")
+                rows.append({
+                    **request,
+                    "status": "PASS" if not errors else "HOLD_REQUEST_CHANGED",
+                    "request_revision_readback": observed_revision,
+                    "errors": sorted(set(errors)),
+                })
+        return {
+            "status": "PASS" if all(row.get("status") == "PASS" for row in rows) else "HOLD_REQUEST_CHANGED",
+            "source_id": source_id,
+            "source_revision": source.get("source_revision"),
+            "requests": rows,
+            "count": len(rows),
+            "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            "does_not_prove": ["PROVIDER_BOUND", "TRANSCRIPT_AVAILABLE", "KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS"],
         }
 
     def init_upload(self, payload: dict[str, Any]) -> dict[str, Any]:
@@ -818,6 +1268,13 @@ class DesignSystemHost:
                 current_state = next_state
             source["ingestion_state"] = current_state
         source["extraction"] = extraction
+        manifest = write_manifest(source_dir, source)
+        manifest_revision = sha256_file(source_dir / MANIFEST_NAME)
+        if manifest_revision is None:
+            raise RuntimeError("DERIVED_MANIFEST_WRITEBACK_FAILED")
+        source["derived_manifest_ref"] = MANIFEST_NAME
+        source["derived_manifest_revision"] = manifest_revision
+        source["derived_artifact_count"] = len(manifest.get("artifacts") or [])
         _write_json(source_dir / "source.json", source)
         shutil.rmtree(upload_dir, ignore_errors=True)
         return {
@@ -910,6 +1367,27 @@ class Handler(SimpleHTTPRequestHandler):
             project_id = str((query.get("project_id") or [""])[0]).strip() or None
             self._json(self.host.browser_profile(project_id))
             return
+        match = re.fullmatch(r"/api/source/(SRC-[0-9a-f]{32})/transcription-plan", parsed.path)
+        if match:
+            try:
+                query = parse_qs(parsed.query)
+                language = str((query.get("language") or ["auto"])[0]).strip() or "auto"
+                timestamp_requirement = str((query.get("timestamp_requirement") or ["CHUNK_INTERVAL"])[0]).strip() or "CHUNK_INTERVAL"
+                self._json(self.host.transcription_plan(match.group(1), language, timestamp_requirement))
+            except FileNotFoundError as exc:
+                self._json({"status": "FAIL", "error": str(exc)}, HTTPStatus.NOT_FOUND)
+            except ValueError as exc:
+                self._json({"status": "FAIL", "error": str(exc)}, HTTPStatus.BAD_REQUEST)
+            return
+        match = re.fullmatch(r"/api/source/(SRC-[0-9a-f]{32})/transcription-requests", parsed.path)
+        if match:
+            try:
+                self._json(self.host.list_transcription_requests(match.group(1)))
+            except FileNotFoundError as exc:
+                self._json({"status": "FAIL", "error": str(exc)}, HTTPStatus.NOT_FOUND)
+            except ValueError as exc:
+                self._json({"status": "FAIL", "error": str(exc)}, HTTPStatus.BAD_REQUEST)
+            return
         if parsed.path == "/api/hosts":
             self._json(self.host.host_runtime_view())
             return
@@ -923,6 +1401,10 @@ class Handler(SimpleHTTPRequestHandler):
                 return
             if parsed.path == "/api/source/commit":
                 self._json(self.host.commit_upload(self._read_json_body()))
+                return
+            match = re.fullmatch(r"/api/source/(SRC-[0-9a-f]{32})/transcription-request", parsed.path)
+            if match:
+                self._json(self.host.create_transcription_request(match.group(1), self._read_json_body()))
                 return
             self._json({"status": "NOT_FOUND"}, HTTPStatus.NOT_FOUND)
         except FileNotFoundError as exc:

@@ -14,6 +14,7 @@ from oleander_design_system_runtime import (  # noqa: E402
     browser_capture_source,
     content_fingerprint,
     next_ingestion_state,
+    resolve_bounded_product_action_guard,
     validate_project_workspace_binding,
     validate_source_revision,
 )
@@ -75,7 +76,8 @@ class DesignSystemRuntimeV01Tests(unittest.TestCase):
             "provenance": {"origin": "user-drop"},
         })
         self.assertEqual("ADMITTED", result["status"])
-        self.assertFalse(result["source"]["knowledge_current"])
+        self.assertNotIn("knowledge_current", result["source"])
+        self.assertIn("KNOWLEDGE_CURRENT", result["does_not_prove"])
         self.assertEqual("PRESERVE_ORIGINAL", result["next_action"])
 
     def test_source_admission_rejects_authority_injection(self) -> None:
@@ -112,7 +114,42 @@ class DesignSystemRuntimeV01Tests(unittest.TestCase):
         )
         self.assertEqual("ADMITTED", result["status"])
         self.assertEqual("URL", result["source"]["source_kind"])
-        self.assertFalse(result["source"]["knowledge_current"])
+        self.assertNotIn("knowledge_current", result["source"])
+        self.assertIn("KNOWLEDGE_CURRENT", result["does_not_prove"])
+
+    def test_bounded_product_action_guard_allows_only_exact_local_source_derivative_scope(self) -> None:
+        allowed = resolve_bounded_product_action_guard(
+            intent="CREATE_TRANSCRIPTION_REQUEST",
+            target_ref="source:SRC-001/transcription/requests/TRQ-001",
+            side_effect_class="LOCAL_MUTATION",
+            source_context={"source_id": "SRC-001", "source_revision": "sha256:abc"},
+            action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+            external_disclosure=False,
+        )
+        self.assertEqual("PASS", allowed["status"])
+        self.assertEqual("ALLOW", allowed["decision"])
+        self.assertEqual("BOUNDED_EXECUTION_POLICY_ONLY", allowed["authority_ceiling"])
+        self.assertIn("KNOWLEDGE_CURRENT", allowed["does_not_prove"])
+        self.assertTrue(str(allowed["decision_ref"]).startswith("action-guard:bounded-source-derivative:"))
+
+        for override in (
+            {"intent": "PUBLISH"},
+            {"side_effect_class": "REMOTE_MUTATION"},
+            {"target_ref": "source:SRC-OTHER/transcription/requests/TRQ-001"},
+            {"external_disclosure": True},
+        ):
+            args = {
+                "intent": "CREATE_TRANSCRIPTION_REQUEST",
+                "target_ref": "source:SRC-001/transcription/requests/TRQ-001",
+                "side_effect_class": "LOCAL_MUTATION",
+                "source_context": {"source_id": "SRC-001", "source_revision": "sha256:abc"},
+                "action_authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+                "external_disclosure": False,
+            }
+            args.update(override)
+            held = resolve_bounded_product_action_guard(**args)
+            self.assertEqual("HOLD", held["status"])
+            self.assertEqual("HOLD", held["decision"])
 
     def test_content_fingerprint_is_stable(self) -> None:
         self.assertEqual(content_fingerprint(b"abc"), content_fingerprint(b"abc"))

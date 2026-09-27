@@ -111,11 +111,92 @@ def admit_source(payload: dict[str, Any]) -> dict[str, Any]:
         "source": {
             **source,
             "ingestion_state": "ADMITTED",
-            "knowledge_current": False,
             "authority_ceiling": contract["authority_ceiling"],
         },
         "next_action": "PRESERVE_ORIGINAL",
         "does_not_prove": contract["does_not_prove"],
+    }
+
+
+def resolve_bounded_product_action_guard(
+    *,
+    intent: str,
+    target_ref: str,
+    side_effect_class: str,
+    source_context: dict[str, Any],
+    action_authority_ceiling: str,
+    external_disclosure: bool,
+) -> dict[str, Any]:
+    """Resolve one bounded execution-policy decision below owner authority.
+
+    This resolver cannot grant Project, Knowledge, Design, professional,
+    release, or promotion authority. It may ALLOW only local persistence of a
+    Source-owned transcription request after the exact Source revision has
+    already been resolved and read back by the caller.
+    """
+    source_id = str(source_context.get("source_id") or "")
+    source_revision = str(source_context.get("source_revision") or "")
+    expected_prefix = f"source:{source_id}/transcription/requests/"
+    reasons: list[str] = []
+    if intent != "CREATE_TRANSCRIPTION_REQUEST":
+        reasons.append("INTENT_NOT_BOUNDED_BY_POLICY")
+    if side_effect_class != "LOCAL_MUTATION":
+        reasons.append("SIDE_EFFECT_CLASS_NOT_LOCAL_MUTATION")
+    if not source_id or not source_revision:
+        reasons.append("SOURCE_CONTEXT_UNRESOLVED")
+    if not target_ref.startswith(expected_prefix):
+        reasons.append("TARGET_OUTSIDE_SOURCE_TRANSCRIPTION_SCOPE")
+    if action_authority_ceiling != "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY":
+        reasons.append("AUTHORITY_CEILING_OUTSIDE_SOURCE_DERIVATIVE_SCOPE")
+    if external_disclosure:
+        reasons.append("EXTERNAL_DISCLOSURE_REQUIRES_SEPARATE_GUARD")
+
+    base = {
+        "semantic_class": "ACTION_GUARD_DECISION_NOT_AUTHORITY_GRANT",
+        "authority_ceiling": "BOUNDED_EXECUTION_POLICY_ONLY",
+        "does_not_prove": [
+            "PROJECT_CURRENT",
+            "KNOWLEDGE_CURRENT",
+            "DESIGN_DECISION",
+            "DESIGN_KEEP",
+            "PROFESSIONAL_PASS",
+            "PROMOTION",
+        ],
+    }
+    if reasons:
+        return {
+            **base,
+            "status": "HOLD",
+            "decision": "HOLD",
+            "reason": reasons[0],
+            "reasons": reasons,
+        }
+
+    policy_material = json.dumps(
+        {
+            "policy": "BOUNDED_LOCAL_SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+            "intent": intent,
+            "target_ref": target_ref,
+            "source_id": source_id,
+            "source_revision": source_revision,
+            "side_effect_class": side_effect_class,
+            "action_authority_ceiling": action_authority_ceiling,
+            "external_disclosure": external_disclosure,
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    policy_fingerprint = "sha256:" + hashlib.sha256(policy_material).hexdigest()
+    return {
+        **base,
+        "status": "PASS",
+        "decision": "ALLOW",
+        "decision_ref": f"action-guard:bounded-source-derivative:{policy_fingerprint[7:31]}",
+        "policy_id": "BOUNDED_LOCAL_SOURCE_TRANSCRIPTION_REQUEST_PERSISTENCE",
+        "policy_fingerprint": policy_fingerprint,
+        "source_id": source_id,
+        "source_revision": source_revision,
+        "target_ref": target_ref,
     }
 
 

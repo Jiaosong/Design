@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import shutil
 import subprocess
 import tempfile
@@ -97,7 +98,7 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         source = result["source"]
         self.assertEqual("TEXT", source["source_kind"])
         self.assertEqual("KNOWLEDGE_DRAFT_READY", source["ingestion_state"])
-        self.assertFalse(source["knowledge_current"])
+        self.assertNotIn("knowledge_current", source)
         source_dir = self.host.sources_root / source["source_id"]
         self.assertTrue((source_dir / "original" / "notes.md").is_file())
         self.assertTrue((source_dir / "body.json").is_file())
@@ -111,7 +112,7 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("VIDEO", source["source_kind"])
         self.assertEqual("ORIGINAL_PRESERVED", source["ingestion_state"])
         self.assertEqual("EXTRACTOR_NOT_BOUND", result["extraction"]["status"])
-        self.assertFalse(source["knowledge_current"])
+        self.assertNotIn("knowledge_current", source)
 
     @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "ffmpeg/ffprobe not available")
     def test_valid_video_gets_metadata_and_keyframes_but_no_false_transcript(self) -> None:
@@ -144,6 +145,92 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertGreater(media["duration_seconds"], 0)
         self.assertGreaterEqual(media["keyframe_count"], 1)
         self.assertFalse((self.host.sources_root / source["source_id"] / "body.json").exists())
+
+        plan = self.host.transcription_plan(source["source_id"], "auto", "SEGMENT")
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", plan["status"])
+        self.assertEqual(source["source_revision"], plan["source_revision"])
+        self.assertEqual("media.json", plan["media_ref"])
+
+        request = self.host.create_transcription_request(
+            source["source_id"],
+            {"language": "auto", "timestamp_requirement": "SEGMENT"},
+        )
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", request["status"])
+        self.assertEqual("COMPLETED", request["action_runtime_status"])
+        self.assertEqual("ALLOW", request["guard_decision"]["decision"])
+        self.assertEqual("BOUNDED_EXECUTION_POLICY_ONLY", request["guard_decision"]["authority_ceiling"])
+        self.assertIn("KNOWLEDGE_CURRENT", request["guard_decision"]["does_not_prove"])
+        self.assertEqual("READY", request["reliability_preflight"]["status"])
+        self.assertEqual("VERIFIED", request["result_reliability"]["status"])
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", request["transcription_request"]["state"])
+        ledger_path = self.data_root / "runtime" / "execution.jsonl"
+        self.assertTrue(ledger_path.is_file())
+        ledger_before_reuse = ledger_path.read_bytes()
+        self.assertFalse((self.host.sources_root / source["source_id"] / "transcript.json").exists())
+
+        global_view = self.host.current_execution_view()["view"]
+        local = next(row for row in global_view["surfaces"] if row["surface_id"] == "design_system_local_host")
+        self.assertEqual("UNKNOWN", local["reliability_preflight"]["status"])
+
+        reused = self.host.create_transcription_request(
+            source["source_id"],
+            {"language": "auto", "timestamp_requirement": "SEGMENT"},
+        )
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", reused["status"])
+        self.assertEqual("REUSED_VERIFIED", reused["action_runtime_status"])
+        self.assertEqual("PASS", reused["reuse_readback"]["status"])
+        self.assertEqual(
+            request["transcription_request"]["requested_at"],
+            reused["transcription_request"]["requested_at"],
+        )
+        self.assertEqual(
+            request["request_receipt"]["request_revision"],
+            reused["request_receipt"]["request_revision"],
+        )
+        self.assertEqual("NOT_APPLICABLE_NO_NEW_EXECUTION", reused["result_reliability"]["status"])
+        self.assertEqual(ledger_before_reuse, ledger_path.read_bytes())
+
+        restarted = host_module.DesignSystemHost(self.data_root)
+        persisted = restarted.list_transcription_requests(source["source_id"])
+        self.assertEqual("PASS", persisted["status"])
+        self.assertEqual(1, persisted["count"])
+        self.assertEqual(request["transcription_request"]["request_id"], persisted["requests"][0]["request_id"])
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", persisted["requests"][0]["state"])
+
+        request_id = request["transcription_request"]["request_id"]
+        request_path = self.host.sources_root / source["source_id"] / "transcription" / "requests" / f"{request_id}.json"
+        receipt_path = request_path.with_suffix(".receipt.json")
+        receipt_original_bytes = receipt_path.read_bytes()
+        tampered_receipt = json.loads(receipt_original_bytes.decode("utf-8"))
+        tampered_receipt["action_guard_decision_ref"] = "action-guard:tampered"
+        receipt_path.write_text(json.dumps(tampered_receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        tampered_receipt_bytes = receipt_path.read_bytes()
+        retry_after_receipt_tamper = self.host.create_transcription_request(
+            source["source_id"],
+            {"language": "auto", "timestamp_requirement": "SEGMENT"},
+        )
+        self.assertEqual("HOLD_EXISTING_REQUEST_CHANGED", retry_after_receipt_tamper["status"])
+        self.assertIn("REQUEST_RECEIPT_ACTION_GUARD_MISMATCH", retry_after_receipt_tamper["readback_errors"])
+        self.assertEqual(tampered_receipt_bytes, receipt_path.read_bytes())
+        self.assertEqual(ledger_before_reuse, ledger_path.read_bytes())
+        receipt_path.write_bytes(receipt_original_bytes)
+
+        tampered = json.loads(request_path.read_text(encoding="utf-8"))
+        tampered["language"] = "tampered"
+        request_path.write_text(json.dumps(tampered, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        tampered_bytes = request_path.read_bytes()
+        tampered_readback = self.host.list_transcription_requests(source["source_id"])
+        self.assertEqual("HOLD_REQUEST_CHANGED", tampered_readback["status"])
+        self.assertIn("REQUEST_RECEIPT_DIGEST_MISMATCH", tampered_readback["requests"][0]["errors"])
+
+        retry_after_tamper = self.host.create_transcription_request(
+            source["source_id"],
+            {"language": "auto", "timestamp_requirement": "SEGMENT"},
+        )
+        self.assertEqual("HOLD_EXISTING_REQUEST_CHANGED", retry_after_tamper["status"])
+        self.assertIn("RETRY_SAFE", retry_after_tamper["does_not_prove"])
+        self.assertEqual(tampered_bytes, request_path.read_bytes())
+        self.assertEqual(ledger_before_reuse, ledger_path.read_bytes())
 
     def test_xlsx_upload_builds_sheet_bound_structured_body(self) -> None:
         from openpyxl import Workbook
@@ -206,6 +293,70 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertIsNone(readback["body"])
         self.assertIsNone(readback["knowledge_draft"])
         self.assertIsNone(readback["media"])
+
+    def test_derived_body_tamper_holds_readback_without_source_drift(self) -> None:
+        uploaded = self._upload("facts.txt", b"Source-bound body", "text/plain")
+        source = uploaded["source"]
+        source_dir = self.host.sources_root / source["source_id"]
+        body_path = source_dir / "body.json"
+        body = json.loads(body_path.read_text(encoding="utf-8"))
+        body["sections"][0]["text"] = "tampered derived body"
+        body_path.write_text(json.dumps(body, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+        listing = self.host.list_sources()
+        row = next(item for item in listing["sources"] if item["source_id"] == source["source_id"])
+        self.assertEqual("PASS", row["source_revision_readback"]["status"])
+        self.assertEqual("HOLD_DERIVED_CHANGED", row["derived_integrity_readback"]["status"])
+        self.assertFalse(row["derived_content_eligible"])
+        self.assertFalse(row["body_available"])
+        self.assertEqual("HOLD_DERIVED_CHANGED", row["ingestion_readback_state"])
+
+        readback = self.host.read_knowledge_draft(source["source_id"])
+        self.assertEqual("HOLD_DERIVED_CHANGED", readback["status"])
+        self.assertEqual("PASS", readback["source_revision_readback"]["status"])
+        self.assertIsNone(readback["body"])
+        self.assertIsNone(readback["knowledge_draft"])
+        self.assertIsNone(readback["media"])
+
+    def test_derived_manifest_tamper_holds_readback(self) -> None:
+        uploaded = self._upload("facts.txt", b"Source-bound body", "text/plain")
+        source = uploaded["source"]
+        source_dir = self.host.sources_root / source["source_id"]
+        manifest_path = source_dir / host_module.MANIFEST_NAME
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["artifacts"][0]["sha256"] = "sha256:" + ("0" * 64)
+        manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+        readback = self.host.read_knowledge_draft(source["source_id"])
+        self.assertEqual("HOLD_DERIVED_CHANGED", readback["status"])
+        self.assertEqual("DERIVED_MANIFEST_DIGEST_MISMATCH", readback["derived_integrity_readback"]["reason"])
+
+    def test_transcription_contract_plan_is_source_bound_without_provider(self) -> None:
+        source = {
+            "source_id": "SRC-" + ("1" * 32),
+            "source_revision": "sha256:" + ("2" * 64),
+            "source_kind": "VIDEO",
+        }
+        media = {
+            "status": "MEDIA_SUPPORT_READY",
+            "source_id": source["source_id"],
+            "source_revision": source["source_revision"],
+            "media_ref": "media.json",
+            "duration_seconds": 30.0,
+        }
+        plan = host_module.build_transcription_plan(
+            source=source,
+            media=media,
+            provider=None,
+            language="auto",
+            timestamp_requirement="SEGMENT",
+        )
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", plan["status"])
+        self.assertEqual(source["source_revision"], plan["source_revision"])
+        self.assertEqual("media.json", plan["media_ref"])
+        request = host_module.build_persistent_transcription_request(plan, requested_at="2026-09-27T00:00:00+00:00")
+        self.assertEqual("TRANSCRIPT_PROVIDER_NOT_BOUND", request["state"])
+        self.assertIn("PROVIDER_BOUND", request["does_not_prove"])
 
     def test_project_discovery_reports_embedded_cases_as_candidates_only(self) -> None:
         result = host_module.discover_project_candidates()

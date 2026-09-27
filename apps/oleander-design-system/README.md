@@ -10,7 +10,7 @@ It is intentionally **not** a second Project State, Knowledge Registry, Git auth
 - project workspace shell with Project / Git / Workspace separation visible in UI;
 - Source Inbox drag/drop with chunked local-host upload, server-side SHA-256, original preservation and truthful ingestion state;
 - structured-body extraction for text/Markdown/JSON/CSV, OOXML DOCX/PPTX/XLSX, plus PDF text extraction through available `pypdf` or `pdfplumber` providers;
-- video/audio binaries are preserved as Sources; when FFprobe/FFmpeg are available the host extracts media metadata and real source keyframes, but leaves transcription explicitly `TRANSCRIPT_PROVIDER_NOT_BOUND` and does not create a Structured Knowledge Body until a transcript provider is actually bound;
+- video/audio binaries are preserved as Sources; when FFprobe/FFmpeg are available the host extracts media metadata and real source keyframes, but leaves transcription explicitly `TRANSCRIPT_PROVIDER_NOT_BOUND`. Source-owned transcription requests may be persisted and read back without claiming that a provider or transcript exists;
 - Surface Reliability R1-R5 visualization without a misleading single `Connected` status;
 - integration surfaces remain visible when unavailable;
 - Host Runtime probes report the Design System local host, DSH binary availability and COS_NATIVE machine-local snapshot freshness separately; stale CoS evidence never becomes current readiness;
@@ -42,4 +42,4 @@ Product Shell
 → actual readback
 ```
 
-The current local host implements project discovery, Source Inbox transport/preservation/basic structured-body extraction and current capability-view readback. Design mutations still stop before `ActionRuntime`; controls that need DSH/COS_NATIVE/CAD/connector execution remain explicitly unbound.
+The current local host implements project discovery, Source Inbox transport/preservation/basic structured-body extraction and current capability-view readback. Persistent Source transcription-request creation is the first bounded local Product Action that runs through action-scoped R1-R4 preflight → `ActionRuntime` → actual readback → R5 result verification. It persists only the request/receipt while the provider remains unbound. Native design mutations and controls that need DSH/COS_NATIVE/CAD/connector execution remain explicitly unbound.

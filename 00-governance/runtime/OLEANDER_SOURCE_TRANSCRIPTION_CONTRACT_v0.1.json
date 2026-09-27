@@ -1,0 +1,81 @@
+{
+  "schema": "oleander.source-transcription-contract.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
+  "purpose": "Bind persistent media Sources to provider-neutral transcription work while preserving source revision, privacy/routing boundaries, timestamp precision and derived-artifact integrity.",
+  "objects": {
+    "SourceTranscriptionRequest": {
+      "required": ["request_id", "source_id", "source_revision", "media_ref", "language", "timestamp_requirement", "state", "requested_at"],
+      "timestamp_requirements": ["NONE", "CHUNK_INTERVAL", "SEGMENT", "WORD"]
+    },
+    "SourceTranscriptionProvider": {
+      "required": ["provider_id", "location", "languages", "max_audio_seconds", "timestamp_capabilities", "preparation_state", "authority_ceiling"],
+      "locations": ["HOST_LOCAL", "CLOUD"],
+      "authority_ceiling": "EXECUTION_CAPABILITY_ONLY"
+    },
+    "TranscriptionAudioDerivative": {
+      "required": ["audio_derivative_id", "source_id", "source_revision", "format", "sample_rate_hz", "channels", "segments"],
+      "format": "PCM16_WAV",
+      "sample_rate_hz": 16000,
+      "channels": 1
+    },
+    "TranscriptArtifact": {
+      "required": ["transcript_id", "source_id", "source_revision", "provider_id", "provider_observation", "language", "segments", "transcript_revision", "timestamp_precision"],
+      "timestamp_precision": ["NONE", "CHUNK_INTERVAL", "SEGMENT", "WORD"],
+      "rule": "TRANSCRIPT_MUST_RETAIN_SOURCE_REVISION_PROVIDER_OBSERVATION_AND_TIMESTAMP_PRECISION"
+    },
+    "TimestampSegment": {
+      "required": ["segment_id", "start_seconds", "end_seconds", "text", "audio_segment_revision"],
+      "rule": "TIMESTAMP_RANGE_MUST_DESCRIBE_ACTUAL_AUDIO_INPUT_RANGE_NOT_INFERRED_WORD_TIMING"
+    }
+  },
+  "states": [
+    "TRANSCRIPT_PROVIDER_NOT_BOUND",
+    "PROVIDER_PREPARATION_REQUIRED",
+    "READY",
+    "AUDIO_PREPARED",
+    "TRANSCRIBING",
+    "TRANSCRIPT_READY",
+    "CANCELLED",
+    "FAILED",
+    "HOLD_SOURCE_CHANGED",
+    "HOLD_DERIVED_CHANGED"
+  ],
+  "persistence": {
+    "request_path": "transcription/requests/{request_id}.json",
+    "request_receipt_path": "transcription/requests/{request_id}.receipt.json",
+    "rule": "REQUEST_AND_RECEIPT_ARE_SOURCE_OWNED_PERSISTENT_OPERATION_RECORDS; THEY_ARE_NOT_TRANSCRIPT_OR_KNOWLEDGE_ARTIFACTS",
+    "request_readback": "REQUEST_DIGEST_AND_SOURCE_REVISION_MUST_MATCH_RECEIPT_BEFORE_REQUEST_IS_REUSED",
+    "reuse_rule": "DETERMINISTIC_REQUEST_ID_REUSE_MUST_READ_EXISTING_REQUEST_AND_RECEIPT_BEFORE_ANY_MUTATION; INVALID_OR_PARTIAL_PRIOR_SIDE_EFFECT_FAILS_CLOSED",
+    "action_guard_rule": "PRODUCT_ACTION_CONSUMES_OLEANDER_ACTION_GUARD_DECISION_BEFORE_SURFACE_RELIABILITY_AND_ACTION_RUNTIME; PRODUCT_ACTION_MUST_NOT_MANUFACTURE_ALLOW"
+  },
+  "execution_rules": [
+    "SOURCE_REVISION_MUST_PASS_BEFORE_AUDIO_PREPARATION",
+    "SOURCE_REVISION_MUST_PASS_AGAIN_BEFORE_TRANSCRIPT_COMMIT",
+    "PROVIDER_SELECTION_MUST_BE_EXPLICIT_OR_POLICY_BOUND_BEFORE_AUDIO_DISCLOSURE",
+    "NO_FALLBACK_MAY_CHANGE_LOCAL_TO_CLOUD_DISCLOSURE_WITHOUT_REAUTHORIZATION",
+    "PROVIDER_WITHOUT_TIMESTAMPS_MAY_ONLY_PRODUCE_CHUNK_INTERVAL_BINDINGS_WHEN_INPUT_WAS_EXPLICITLY_CHUNKED",
+    "TRANSCRIPT_ARTIFACT_MUST_ENTER_DERIVED_INTEGRITY_MANIFEST",
+    "TRANSCRIPT_READY_DOES_NOT_ADVANCE_KNOWLEDGE_CURRENT"
+  ],
+  "dsh_reference": {
+    "role": "TRANSIENT_SPEECH_PROVIDER_SEAM_REFERENCE_ONLY",
+    "observed_commit": "477b4f420553e8a52c2fbccc464d7561b239c443",
+    "capabilities": ["NAMED_PROVIDER_REGISTRY", "PREPARATION", "CANCELLATION", "COMPLETE_RECORDING_TRANSCRIPTION", "FAIL_CLOSED_PROVIDER_LIFETIME"],
+    "limitations": ["REMOTE_IS_TRANSIENT", "NO_PERSISTENT_TRANSCRIPT_HISTORY", "NO_STREAMING_RECOGNITION", "BASE_TRANSCRIPT_TYPE_HAS_NO_TIMESTAMPS"],
+    "rule": "DSH_SPEECH_REMOTE_NE_PERSISTENT_SOURCE_TRANSCRIPTION_PIPELINE"
+  },
+  "hard_invariants": [
+    "TRANSCRIPT_NE_STRUCTURED_KNOWLEDGE_BODY",
+    "TRANSCRIPT_PROVIDER_SUCCESS_NE_CLAIM_CORRECTNESS",
+    "AUDIO_DERIVATIVE_NE_SOURCE_AUTHORITY",
+    "TIMESTAMP_PRECISION_MUST_NOT_BE_OVERSTATED",
+    "SOURCE_TRANSCRIPTION_NE_KNOWLEDGE_CURRENT",
+    "PROVIDER_PREPARATION_NE_PROVIDER_READY_FOR_THIS_SOURCE",
+    "TRANSCRIPTION_REQUEST_NE_TRANSCRIPT",
+    "REQUEST_PERSISTED_NE_PROVIDER_BOUND",
+    "PRODUCT_ACTION_NE_ACTION_GUARD_DECISION",
+    "REQUEST_REUSE_REQUIRES_READBACK_BEFORE_MUTATION"
+  ],
+  "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS", "DESIGN_KEEP", "PROJECT_CURRENT", "PROMOTION"]
+}

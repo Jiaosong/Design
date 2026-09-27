@@ -1,0 +1,34 @@
+{
+  "schema": "oleander.derived-artifact-integrity.v0.1",
+  "status": "CANDIDATE_NON_AUTHORITY",
+  "authority_ceiling": "DERIVED_ARTIFACT_READBACK_ONLY",
+  "purpose": "Bind Structured Body, Knowledge Draft, media metadata, keyframes, transcription audio and transcript artifacts to exact Source revisions and content digests.",
+  "manifest": {
+    "recommended_path": "derived_manifest.json",
+    "required": ["source_id", "source_revision", "artifacts"],
+    "artifact_required": ["artifact_id", "kind", "ref", "sha256", "source_revision"]
+  },
+  "artifact_kinds": [
+    "STRUCTURED_BODY",
+    "KNOWLEDGE_DRAFT",
+    "MEDIA_METADATA",
+    "KEYFRAME",
+    "TRANSCRIPTION_AUDIO",
+    "TRANSCRIPT"
+  ],
+  "readback_rules": [
+    "SOURCE_REVISION_MUST_PASS_FIRST",
+    "MANIFEST_SOURCE_ID_AND_REVISION_MUST_MATCH_SOURCE",
+    "EACH_PRESENT_DERIVED_ARTIFACT_MUST_MATCH_MANIFEST_DIGEST_BEFORE_EXPOSURE",
+    "MISSING_OR_CHANGED_DERIVED_ARTIFACT_MUST_HOLD_DERIVED_READBACK",
+    "MANIFEST_ABSENCE_MUST_NOT_BE_TREATED_AS_VERIFIED_DERIVED_CONTENT"
+  ],
+  "hard_invariants": [
+    "SOURCE_INTEGRITY_NE_DERIVED_INTEGRITY",
+    "DERIVED_FILE_PRESENT_NE_DERIVED_VERIFIED",
+    "DERIVED_VERIFIED_NE_KNOWLEDGE_CURRENT",
+    "KEYFRAME_NE_GENERATED_IMAGE",
+    "TRANSCRIPT_NE_STRUCTURED_KNOWLEDGE_BODY"
+  ],
+  "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS", "DESIGN_KEEP", "PROMOTION"]
+}
