@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import Any
 
 from oleander_environment_resolver import build_current_execution_view
-from oleander_design_system_runtime import admit_source, resolve_bounded_product_action_guard
+from oleander_design_system_runtime import (
+    admit_source,
+    resolve_bounded_product_action_guard,
+    resolve_browser_capture_ingress_guard,
+)
 from oleander_execution_runtime import ExecutionLedger
 from oleander_system_gateway import validate_system_manifest
 
@@ -131,6 +135,28 @@ def run_lint() -> dict[str, Any]:
         source_context={"source_id": "LINT-SOURCE", "source_revision": "sha256:lint"},
         action_authority_ceiling="SOURCE_TRANSCRIPTION_DERIVATIVE_ONLY",
         external_disclosure=True,
+    )
+    browser_capture_allow_probe = resolve_browser_capture_ingress_guard(
+        url="https://example.com/lint",
+        browser_profile={
+            "browser_profile_id": "browser-profile:lint",
+            "scope": "RESEARCH",
+            "project_id": None,
+            "capture_target": "SOURCE_INBOX",
+        },
+        capture_digest="sha256:" + ("a" * 64),
+        external_disclosure=False,
+    )
+    browser_capture_hold_probe = resolve_browser_capture_ingress_guard(
+        url="file:///C:/private.txt",
+        browser_profile={
+            "browser_profile_id": "browser-profile:lint",
+            "scope": "RESEARCH",
+            "project_id": None,
+            "capture_target": "SOURCE_INBOX",
+        },
+        capture_digest="sha256:" + ("b" * 64),
+        external_disclosure=False,
     )
 
     manifest_validation = validate_system_manifest()
@@ -292,6 +318,18 @@ def run_lint() -> dict[str, Any]:
             source_ingestion.get("derived_integrity_contract") == "00-governance/runtime/OLEANDER_DERIVED_ARTIFACT_INTEGRITY_v0.1.json"
             and source_ingestion.get("transcription_contract") == "00-governance/runtime/OLEANDER_SOURCE_TRANSCRIPTION_CONTRACT_v0.1.json"
         ),
+        "browser_capture_ingress_is_source_first_bounded_and_not_provider_proof": (
+            {
+                "BROWSER_PAGE_LOADED_NE_SOURCE_CAPTURED",
+                "SOURCE_CAPTURED_NE_KNOWLEDGE_INGESTED",
+                "BROWSER_CAPTURE_RECEIPT_NE_BROWSER_PROVIDER_BOUND",
+                "BROWSER_CAPTURE_INGRESS_REQUIRES_ACTION_RUNTIME_AND_R5_READBACK",
+            }.issubset(set(source_ingestion.get("hard_invariants") or []))
+            and browser_capture_allow_probe.get("decision") == "ALLOW"
+            and browser_capture_allow_probe.get("authority_ceiling") == "BOUNDED_EXECUTION_POLICY_ONLY"
+            and "BROWSER_PROVIDER_BOUND" in set(browser_capture_allow_probe.get("does_not_prove") or [])
+            and browser_capture_hold_probe.get("decision") == "HOLD"
+        ),
         "derived_integrity_is_readback_only_and_source_bound": (
             derived_integrity.get("authority_ceiling") == "DERIVED_ARTIFACT_READBACK_ONLY"
             and {
@@ -361,8 +399,14 @@ def run_lint() -> dict[str, Any]:
             and len(migration_projects) == 4
             and all(row.get("migration_state") == "SPLIT_BRANCH_READY" for row in migration_projects)
             and all(row.get("local_repository_ready") is True for row in migration_projects)
-            and all(row.get("local_repository_matches_split") is True for row in migration_projects)
+            and all(row.get("local_repository_contains_split_history") is True for row in migration_projects)
             and all(row.get("split_is_subdirectory_rooted") is True for row in migration_projects)
+        ),
+        "project_repository_migration_project_state_resolution_is_fail_closed": (
+            (project_migration.get("binding_progress") or {}).get("owner_native_project_state_verified") == 1
+            and (project_migration.get("binding_progress") or {}).get("project_state_unresolved") == 3
+            and "PUBLIC_STATUS_SUMMARY_NE_OWNER_NATIVE_PROJECT_STATE" in set(project_migration.get("hard_invariants") or [])
+            and "BOOTSTRAP_MANIFEST_IS_LOCATOR_ONLY_NOT_PROJECT_STATE" in set(project_migration.get("hard_invariants") or [])
         ),
         "project_repository_migration_does_not_fake_remote_or_project_state": all(
             row.get("remote_repo_created") is None
@@ -371,7 +415,14 @@ def run_lint() -> dict[str, Any]:
             and row.get("remote_history_verification") == "UNVERIFIED"
             and "VERIFY_TARGET_REMOTE_EXISTENCE_AND_HISTORY" in set(row.get("next_actions") or [])
             and row.get("old_duplicate_retained") is True
-            and row.get("project_state_ref") is None
+            and (
+                row.get("project_state_ref") is None
+                or (
+                    (row.get("project_state_evidence") or {}).get("owner_native_project_state_verified") is True
+                    and isinstance(row.get("authority_ref"), str)
+                    and bool(row.get("authority_ref"))
+                )
+            )
             for row in migration_projects
         ),
     }
