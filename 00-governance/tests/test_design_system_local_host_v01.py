@@ -422,13 +422,22 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         result = host_module.discover_project_candidates()
         names = {row["directory_name"] for row in result["projects"]}
         self.assertTrue({"c01-yimai-guangdu", "c02-daylily", "c03-the-light-collection", "c04-qingjiang-stone-book"}.issubset(names))
+        rows = {row["directory_name"]: row for row in result["projects"]}
+        c04 = rows["c04-qingjiang-stone-book"]
+        if c04["project_locator_status"] == "BOUND":
+            self.assertEqual("PRJ-C04-QINGJIANG-SHISHU", c04["project_id"])
+            self.assertEqual("file:C04_CURRENT.md", c04["project_state_ref"])
+            self.assertEqual("file:C04_CURRENT.md", c04["authority_ref"])
+            self.assertEqual("PROJECT_LOCATOR_BOUND", c04["state"])
+            self.assertEqual("PROJECT_LOCATOR_BOUND_NOT_PROJECT_CURRENT", c04["semantic_class"])
         for row in result["projects"]:
-            self.assertIsNone(row["project_state_ref"])
-            self.assertEqual("DISCOVERED_PROJECT_CANDIDATE_NOT_PROJECT_STATE", row["semantic_class"])
+            if row["project_locator_status"] != "BOUND":
+                self.assertIsNone(row["project_state_ref"])
+                self.assertEqual("DISCOVERED_PROJECT_CANDIDATE_NOT_PROJECT_STATE", row["semantic_class"])
             self.assertIn(row["migration_state"], {"NOT_SPLIT", "SPLIT_BRANCH_READY"})
             self.assertTrue(str(row["migration_branch"]).startswith("migration/"))
             if row["local_repository_ready"]:
-                self.assertEqual("LOCAL_REPOSITORY_READY", row["state"])
+                self.assertIn(row["state"], {"LOCAL_REPOSITORY_READY", "PROJECT_LOCATOR_BOUND"})
                 self.assertEqual("main", row["local_repository_branch"])
                 self.assertEqual([], row["local_repository_remotes"])
 

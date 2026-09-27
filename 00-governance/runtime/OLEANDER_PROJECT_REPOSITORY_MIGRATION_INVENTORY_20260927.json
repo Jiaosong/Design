@@ -1,15 +1,15 @@
 {
   "schema": "oleander.project-repository-migration-inventory.v0.1",
   "status": "LOCAL_REPOSITORIES_READY",
-  "generated_at": "2026-09-27T06:57:25.076799+00:00",
+  "generated_at": "2026-09-27T07:17:56.142070+00:00",
   "authority_ceiling": "MIGRATION_READBACK_ONLY",
   "container_repository": "https://github.com/Jiaosong/Design.git",
   "container_branch": "refactor/oleander-system-management-v0.2-20260927",
-  "container_revision": "f4db16a713d067b99ea0b754857e57e9236d33fb",
+  "container_revision": "5e0cde924fd811ff6ddc76793f734b629f711246",
   "migration_strategy": "HISTORY_PRESERVING_SUBTREE_SPLIT_WITH_OLD_DUPLICATE_RETAINED_UNTIL_REMOTE_AND_PROJECT_BINDING_READBACK",
   "binding_progress": {
     "owner_native_project_state_verified": 1,
-    "bootstrap_locator_verified": 0,
+    "bootstrap_locator_verified": 1,
     "project_state_unresolved": 3,
     "artifact_store_unresolved": 4,
     "knowledge_mount_unresolved": 4
@@ -340,8 +340,8 @@
       "local_repository_path": "D:\\OLEANDER\\projects\\c04-qingjiang-stone-book",
       "local_repository_ready": true,
       "local_repository_branch": "main",
-      "local_repository_revision": "7801c325e8aa6f581b88e945de80bf6b16531239",
-      "local_repository_matches_split": true,
+      "local_repository_revision": "1da10fb6dca0c84180741d6a74c87b6db7a2fe4b",
+      "local_repository_matches_split": false,
       "local_repository_contains_split_history": true,
       "local_repository_dirty": false,
       "local_repository_remotes": [],
@@ -364,10 +364,15 @@
       "project_state_ref": "file:C04_CURRENT.md",
       "authority_ref": "file:C04_CURRENT.md",
       "bootstrap_manifest": {
-        "status": "MISSING",
+        "status": "VERIFIED_LOCATOR_ONLY",
         "ref": ".oleander/project.json",
-        "tracked": false,
-        "locator_only_verified": false
+        "tracked": true,
+        "locator_only_verified": true,
+        "errors": [],
+        "project_id": "PRJ-C04-QINGJIANG-SHISHU",
+        "project_state_ref": "file:C04_CURRENT.md",
+        "authority_ref": "file:C04_CURRENT.md",
+        "authority_ceiling": "LOCATOR_ONLY"
       },
       "artifact_store_binding": "UNRESOLVED",
       "knowledge_mount_binding": "UNRESOLVED",
@@ -378,7 +383,6 @@
         "CREATE_TARGET_REMOTE_REPOSITORY_IF_VERIFIED_ABSENT_AND_EXPLICITLY_AUTHORIZED",
         "PUSH_SPLIT_HISTORY_IF_REMOTE_ROUTE_VERIFIED_AND_EXPLICITLY_AUTHORIZED",
         "READBACK_REMOTE_HISTORY_AFTER_ANY_REMOTE_MUTATION",
-        "BIND_PROJECT_MANIFEST",
         "REMOVE_OLD_MONOREPO_DUPLICATE_ONLY_AFTER_VERIFIED_BINDING"
       ]
     }

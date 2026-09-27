@@ -269,6 +269,62 @@ def _git(*args: str) -> str | None:
     return _git_at(ROOT, *args)
 
 
+def _read_project_locator(local_path: Path | None) -> dict[str, Any]:
+    unresolved = {
+        "status": "UNRESOLVED",
+        "project_id": None,
+        "project_state_ref": None,
+        "authority_ref": None,
+        "semantic_class": "DISCOVERED_PROJECT_CANDIDATE_NOT_PROJECT_STATE",
+        "authority_ceiling": "LOCATOR_ONLY",
+    }
+    if local_path is None:
+        return unresolved
+    manifest_path = local_path / ".oleander" / "project.json"
+    if not manifest_path.is_file():
+        return unresolved
+    try:
+        payload = _read_json(manifest_path)
+    except (OSError, ValueError, json.JSONDecodeError):
+        return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
+    forbidden = {"project_current_payload", "design_keep", "professional_pass", "promotion", "release_authority"}
+    if any(str(key).lower() in forbidden for key in payload):
+        return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
+    if payload.get("authority_ceiling") != "LOCATOR_ONLY":
+        return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
+    project_id = str(payload.get("project_id") or "").strip()
+    project_state_ref = str(payload.get("project_state_ref") or "").strip()
+    authority_ref = str(payload.get("authority_ref") or "").strip()
+    if not project_id or not project_state_ref.startswith("file:") or not authority_ref.startswith("file:"):
+        return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
+
+    def resolve_file_ref(ref: str) -> Path | None:
+        rel = Path(ref[5:])
+        if rel.is_absolute() or ".." in rel.parts:
+            return None
+        candidate = (local_path / rel).resolve()
+        try:
+            candidate.relative_to(local_path.resolve())
+        except ValueError:
+            return None
+        return candidate if candidate.is_file() else None
+
+    state_path = resolve_file_ref(project_state_ref)
+    authority_path = resolve_file_ref(authority_ref)
+    if state_path is None or authority_path is None:
+        return {**unresolved, "status": "HOLD_INVALID_LOCATOR"}
+    return {
+        "status": "BOUND",
+        "project_id": project_id,
+        "project_state_ref": project_state_ref,
+        "authority_ref": authority_ref,
+        "manifest_ref": ".oleander/project.json",
+        "semantic_class": "PROJECT_LOCATOR_BOUND_NOT_PROJECT_CURRENT",
+        "authority_ceiling": "LOCATOR_ONLY",
+        "does_not_prove": ["PROJECT_CURRENT", "DESIGN_KEEP", "PROFESSIONAL_PASS", "PROMOTION"],
+    }
+
+
 def discover_project_candidates() -> dict[str, Any]:
     cases = ROOT / "05-cases"
     projects_root = default_projects_root()
@@ -290,7 +346,8 @@ def discover_project_candidates() -> dict[str, Any]:
             local_head = _git_at(local_path, "rev-parse", "HEAD") if local_git_ready and local_path else None
             local_branch = _git_at(local_path, "branch", "--show-current") if local_git_ready and local_path else None
             local_remotes = _git_at(local_path, "remote") if local_git_ready and local_path else None
-            state = "LOCAL_REPOSITORY_READY" if local_git_ready else ("NESTED_REPOSITORY" if nested_git else "EMBEDDED_IN_PLATFORM_REPO")
+            locator = _read_project_locator(local_path if local_git_ready else None)
+            state = "PROJECT_LOCATOR_BOUND" if locator["status"] == "BOUND" else ("LOCAL_REPOSITORY_READY" if local_git_ready else ("NESTED_REPOSITORY" if nested_git else "EMBEDDED_IN_PLATFORM_REPO"))
             rows.append({
                 "project_candidate_id": slug.split("-", 1)[0].upper(),
                 "directory_name": slug,
@@ -313,9 +370,17 @@ def discover_project_candidates() -> dict[str, Any]:
                 "migration_branch": migration_branch,
                 "migration_split_commit": migration_split_commit,
                 "migration_state": "SPLIT_BRANCH_READY" if migration_split_commit else "NOT_SPLIT",
-                "project_state_ref": None,
-                "semantic_class": "DISCOVERED_PROJECT_CANDIDATE_NOT_PROJECT_STATE",
-                "next_action": "VERIFY_OWNER_NATIVE_PROJECT_STATE_AND_REMOTE_BINDING" if local_git_ready else "PREPARE_HISTORY_PRESERVING_LOCAL_REPOSITORY",
+                "project_id": locator.get("project_id"),
+                "project_state_ref": locator.get("project_state_ref"),
+                "authority_ref": locator.get("authority_ref"),
+                "project_locator_status": locator.get("status"),
+                "project_locator_ref": locator.get("manifest_ref"),
+                "semantic_class": locator.get("semantic_class"),
+                "next_action": (
+                    "VERIFY_ARTIFACT_KNOWLEDGE_AND_REMOTE_BINDINGS"
+                    if locator.get("status") == "BOUND"
+                    else ("VERIFY_OWNER_NATIVE_PROJECT_STATE_AND_REMOTE_BINDING" if local_git_ready else "PREPARE_HISTORY_PRESERVING_LOCAL_REPOSITORY")
+                ),
             })
     return {
         "schema": "oleander.design-system.project-discovery.v0.1",
