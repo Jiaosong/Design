@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -13,6 +14,8 @@ PREFLIGHT_STAGES = ("R1_ADMISSION", "R2_IDENTITY", "R3_CAPABILITY", "R4_EXECUTIO
 POST_EXECUTION_STAGE = "R5_RESULT"
 TERMINAL_BLOCKING_FACTS = {"FAIL", "BLOCKED", "STALE"}
 PASS_FACTS = {"PASS", "NOT_APPLICABLE"}
+MAX_OBSERVATION_AGE = timedelta(hours=24)
+MAX_FUTURE_SKEW = timedelta(minutes=5)
 
 
 def _load_contract() -> dict[str, Any]:
@@ -20,6 +23,31 @@ def _load_contract() -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError("surface reliability contract must contain one object")
     return value
+
+
+def _parse_observed_at(raw: Any) -> datetime | None:
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    try:
+        value = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
+
+
+def _timestamp_freshness(raw: Any) -> tuple[str, float | None]:
+    observed = _parse_observed_at(raw)
+    if observed is None:
+        return "INVALID", None
+    now = datetime.now(timezone.utc)
+    delta = now - observed
+    if delta < -MAX_FUTURE_SKEW:
+        return "FUTURE", round(delta.total_seconds() / 3600.0, 3)
+    if delta > MAX_OBSERVATION_AGE:
+        return "STALE", round(delta.total_seconds() / 3600.0, 3)
+    return "FRESH", round(max(0.0, delta.total_seconds()) / 3600.0, 3)
 
 
 def validate_reliability_observation(observation: dict[str, Any]) -> list[str]:
@@ -42,6 +70,13 @@ def validate_reliability_observation(observation: dict[str, Any]) -> list[str]:
         errors.append("UNKNOWN_SOURCE_KIND")
     if str(observation.get("fact") or "") not in set(schema.get("fact_values") or []):
         errors.append("UNKNOWN_FACT")
+    freshness, _age_hours = _timestamp_freshness(observation.get("observed_at"))
+    if freshness == "INVALID":
+        errors.append("INVALID_OBSERVED_AT")
+    elif freshness == "FUTURE":
+        errors.append("FUTURE_OBSERVATION")
+    elif freshness == "STALE":
+        errors.append("STALE_OBSERVATION")
     return errors
 
 
@@ -101,11 +136,27 @@ def _compatibility_preflight(surface: dict[str, Any]) -> dict[str, Any] | None:
         return None
     if source in {"STATIC_CANONICAL_REGISTRY_NOT_LIVENESS", ""}:
         return None
+    freshness, age_hours = _timestamp_freshness(observed_at)
+    if freshness != "FRESH":
+        return {
+            "status": "STALE" if freshness == "STALE" else "UNKNOWN",
+            "strict_vector": False,
+            "source": source,
+            "observed_at": observed_at,
+            "observation_freshness": freshness,
+            "observation_age_hours": age_hours,
+            "stages": {},
+            "missing_stages": list(PREFLIGHT_STAGES),
+            "rule": "COMPATIBILITY_EVIDENCE_MUST_BE_CURRENT_BEFORE_ROUTING",
+            "does_not_prove": ["R5_RESULT", "PROJECT_CURRENT", "DESIGN_KEEP", "KNOWLEDGE_CURRENT", "PROMOTION"],
+        }
     return {
         "status": "COMPATIBILITY_READY" if availability == "AVAILABLE" else "COMPATIBILITY_DEGRADED",
         "strict_vector": False,
         "source": source,
         "observed_at": observed_at,
+        "observation_freshness": freshness,
+        "observation_age_hours": age_hours,
         "stages": {},
         "missing_stages": list(PREFLIGHT_STAGES),
         "rule": "CURRENT_PHASE2_PROBE_BRIDGE_ONLY_MIGRATE_TO_R1_R4_OBSERVATIONS",

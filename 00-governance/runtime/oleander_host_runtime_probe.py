@@ -84,10 +84,15 @@ def probe_cos_native(local_snapshot: dict[str, Any] | None = None) -> dict[str, 
     state = str(local.get("state") or "MISSING")
     surfaces = [row for row in local.get("surfaces") or [] if isinstance(row, dict)]
     available_count = sum(1 for row in surfaces if row.get("availability") == "AVAILABLE")
+    declared_ready_count = sum(1 for row in surfaces if row.get("declared_ready") is True)
     if state == "FRESH":
-        availability = "AVAILABLE" if available_count else "DEGRADED"
-        status = availability
-        reason = None if available_count else "FRESH_SNAPSHOT_WITHOUT_AVAILABLE_COS_MCP_SURFACE"
+        availability = "UNKNOWN" if declared_ready_count else "UNAVAILABLE"
+        status = "DISCOVERED_REPROBE_REQUIRED" if declared_ready_count else "UNAVAILABLE"
+        reason = (
+            "FRESH_REGISTRY_METADATA_REQUIRES_LIVE_CALLABILITY_PROBE"
+            if declared_ready_count
+            else "FRESH_REGISTRY_WITHOUT_DECLARED_READY_COS_MCP_SURFACE"
+        )
     elif state == "STALE":
         availability = "UNKNOWN"
         status = "STALE"
@@ -110,8 +115,9 @@ def probe_cos_native(local_snapshot: dict[str, Any] | None = None) -> dict[str, 
         "snapshot_age_hours": local.get("age_hours"),
         "discovered_surface_count": len(surfaces),
         "available_surface_count": available_count,
+        "declared_ready_surface_count": declared_ready_count,
         "capabilities": ["LOCAL_FILES", "LOCAL_PROCESS", "MCP_TRANSPORT", "RUNTIME_READBACK"],
-        "capabilities_runtime_verified": state == "FRESH" and available_count > 0,
+        "capabilities_runtime_verified": False,
         "observation_source": "MACHINE_LOCAL_RUNTIME_READBACK",
         "authority_ceiling": "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
         "reason": reason,

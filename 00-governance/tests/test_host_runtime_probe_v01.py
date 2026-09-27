@@ -32,6 +32,18 @@ class HostRuntimeProbeV01Tests(unittest.TestCase):
         self.assertEqual("UNKNOWN", result["availability"])
         self.assertFalse(result["capabilities_runtime_verified"])
 
+    def test_fresh_cos_registry_ready_still_requires_live_callability_probe(self) -> None:
+        fresh = {
+            "snapshot_at": datetime.now(timezone.utc).isoformat(),
+            "registry_identity": {"authority_ceiling": "EXECUTION_CAPABILITY_ONLY"},
+            "cos_mcp_registry": [{"name": "Example", "enabled": True, "status": "ready", "source_kind": "local"}],
+        }
+        result = probe_cos_native(fresh)
+        self.assertEqual("DISCOVERED_REPROBE_REQUIRED", result["status"])
+        self.assertEqual("UNKNOWN", result["availability"])
+        self.assertEqual(1, result["declared_ready_surface_count"])
+        self.assertFalse(result["capabilities_runtime_verified"])
+
     def test_host_runtime_view_keeps_host_state_below_project_authority(self) -> None:
         stale = {
             "snapshot_at": (datetime.now(timezone.utc) - timedelta(days=3)).isoformat(),

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 import unittest
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 
@@ -17,7 +18,7 @@ from oleander_surface_reliability import (  # noqa: E402
 )
 
 
-def observation(stage: str, dimension: str, fact: str = "PASS", n: int = 1) -> dict:
+def observation(stage: str, dimension: str, fact: str = "PASS", n: int = 1, observed_at: str | None = None) -> dict:
     return {
         "observation_id": f"obs-{stage}-{dimension}-{n}",
         "surface_instance_id": "github:jiaosong",
@@ -25,7 +26,7 @@ def observation(stage: str, dimension: str, fact: str = "PASS", n: int = 1) -> d
         "dimension": dimension,
         "fact": fact,
         "source_kind": "LIVE_PROBE",
-        "observed_at": "2026-09-27T02:00:00+09:00",
+        "observed_at": observed_at or datetime.now(timezone.utc).isoformat(),
     }
 
 
@@ -52,6 +53,19 @@ class SurfaceReliabilityBoundaryTests(unittest.TestCase):
         result = build_preflight_reliability({"reliability_observations": rows})
         self.assertEqual("UNKNOWN", result["status"])
         self.assertIn("credential_freshness", result["stages"]["R2_IDENTITY"]["missing_dimensions"])
+
+    def test_stale_strict_observations_cannot_become_ready(self) -> None:
+        stale = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
+        rows = complete_preflight()
+        for row in rows:
+            row["observed_at"] = stale
+        result = build_preflight_reliability({"reliability_observations": rows})
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertTrue(any(
+            "STALE_OBSERVATION" in invalid["errors"]
+            for stage in result["stages"].values()
+            for invalid in stage["invalid_observations"]
+        ))
 
     def test_identity_revision_change_invalidates_identity_bound_state(self) -> None:
         self.assertTrue(identity_revision_changed(
@@ -118,6 +132,24 @@ class SurfaceReliabilityBoundaryTests(unittest.TestCase):
         }, view)
         self.assertEqual("ROUTED", route["status"])
         self.assertEqual("READY", route["selected_surface"]["reliability_preflight"]["status"])
+
+    def test_stale_compatibility_observation_cannot_route(self) -> None:
+        stale = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
+        view = build_current_execution_view(live_observations={
+            "github_connector": {
+                "availability": "AVAILABLE",
+                "observed_at": stale,
+                "observation_source": "LIVE_PROBE",
+            }
+        })
+        surface = next(row for row in view["surfaces"] if row["surface_id"] == "github_connector")
+        self.assertEqual("STALE", surface["reliability_preflight"]["status"])
+        route = resolve_execution_surface({
+            "required_capability_roles": ["REPO_SOURCE_MUTATION"],
+            "side_effect_class": "REMOTE_MUTATION",
+            "candidate_surface_ids": ["github_connector"],
+        }, view)
+        self.assertEqual("HOLD_NO_VERIFIED_SURFACE", route["status"])
 
 
 if __name__ == "__main__":

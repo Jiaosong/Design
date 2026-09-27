@@ -25,11 +25,32 @@ class EnvironmentCapabilityResolverTests(unittest.TestCase):
         self.assertEqual("STALE", observed["state"])
         self.assertEqual("UNKNOWN", observed["surfaces"][0]["availability"])
 
+    def test_fresh_cos_registry_ready_is_metadata_not_live_callability(self) -> None:
+        fresh = datetime.now(timezone.utc).isoformat()
+        snapshot = {
+            "snapshot_at": fresh,
+            "registry_identity": {"authority_ceiling": "EXECUTION_CAPABILITY_ONLY"},
+            "cos_mcp_registry": [{"name": "Example MCP", "enabled": True, "status": "ready", "version": "1"}],
+        }
+        observed = machine_local_observations(snapshot)
+        self.assertEqual("FRESH", observed["state"])
+        surface = observed["surfaces"][0]
+        self.assertEqual("UNKNOWN", surface["availability"])
+        self.assertTrue(surface["declared_ready"])
+        self.assertTrue(surface["requires_live_callability_probe"])
+        view = build_current_execution_view(local_snapshot=snapshot)
+        route = resolve_execution_surface({
+            "required_capability_roles": ["MCP_TOOL_EXECUTION"],
+            "side_effect_class": "READ_ONLY",
+            "candidate_surface_ids": [surface["surface_id"]],
+        }, view)
+        self.assertEqual("HOLD_NO_VERIFIED_SURFACE", route["status"])
+
     def test_live_observation_can_route_verified_surface(self) -> None:
         view = build_current_execution_view(live_observations={
             "github_connector": {
                 "availability": "AVAILABLE",
-                "observed_at": "2026-09-27T00:00:00Z",
+                "observed_at": datetime.now(timezone.utc).isoformat(),
                 "reliability": "LIVE_TOOL_EXPOSURE",
             }
         })

@@ -31,8 +31,11 @@ class ProjectRepositoryMigrationV01Tests(unittest.TestCase):
         self.assertIn("PROJECT_CURRENT", inventory["does_not_prove"])
         self.assertIn("REMOTE_REPOSITORY_CREATED", inventory["does_not_prove"])
         for row in inventory["projects"]:
-            self.assertFalse(row["remote_repo_created"])
-            self.assertFalse(row["remote_repo_pushed"])
+            self.assertIsNone(row["remote_repo_created"])
+            self.assertIsNone(row["remote_repo_pushed"])
+            self.assertEqual("UNVERIFIED", row["remote_repository_verification"])
+            self.assertEqual("UNVERIFIED", row["remote_history_verification"])
+            self.assertIn("VERIFY_TARGET_REMOTE_EXISTENCE_AND_HISTORY", row["next_actions"])
             self.assertEqual("UNRESOLVED", row["artifact_store_binding"])
             self.assertEqual("UNRESOLVED", row["knowledge_mount_binding"])
 

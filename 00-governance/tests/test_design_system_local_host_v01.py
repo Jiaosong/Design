@@ -46,10 +46,11 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("PASS", result["status"])
         surfaces = {row["surface_id"]: row for row in result["view"]["surfaces"]}
         local = surfaces["design_system_local_host"]
-        self.assertEqual("READY", local["reliability_preflight"]["status"])
+        self.assertEqual("UNKNOWN", local["reliability_preflight"]["status"])
         self.assertTrue(local["reliability_preflight"]["strict_vector"])
         self.assertEqual("PASS", local["reliability_preflight"]["stages"]["R1_ADMISSION"]["state"])
-        self.assertEqual("PASS", local["reliability_preflight"]["stages"]["R4_EXECUTION"]["state"])
+        self.assertEqual("UNKNOWN", local["reliability_preflight"]["stages"]["R3_CAPABILITY"]["state"])
+        self.assertEqual("UNKNOWN", local["reliability_preflight"]["stages"]["R4_EXECUTION"]["state"])
         self.assertNotIn("R5_RESULT", local["reliability_preflight"]["stages"])
         self.assertIn("PROJECT_CURRENT", result["view"]["does_not_prove"])
 
@@ -58,7 +59,7 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("UI_PROJECTION_ONLY", result["authority_ceiling"])
         views = {row["surface_definition_id"]: row for row in result["surface_views"]}
         self.assertEqual("AVAILABLE", views["design_system_local_host"]["availability"])
-        self.assertEqual("READY", views["design_system_local_host"]["reliability_preflight"]["status"])
+        self.assertEqual("UNKNOWN", views["design_system_local_host"]["reliability_preflight"]["status"])
         self.assertIn("github_connector", views)
         self.assertIn(views["github_connector"]["availability"], {"UNKNOWN", "UNREGISTERED"})
         self.assertEqual("UI_PROJECTION_ONLY", views["github_connector"]["authority_ceiling"])
@@ -167,6 +168,27 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertEqual("OPEN", body["knowledge_draft"]["review_state"])
         self.assertEqual("UNGRADED", body["knowledge_draft"]["ki_state"])
         self.assertIn("KNOWLEDGE_CURRENT", body["does_not_prove"])
+
+    def test_preserved_original_revision_drift_holds_derived_body_and_draft(self) -> None:
+        uploaded = self._upload("facts.txt", b"Source-bound body", "text/plain")
+        source = uploaded["source"]
+        source_dir = self.host.sources_root / source["source_id"]
+        original = source_dir / source["storage_relpath"]
+        original.write_bytes(b"externally changed bytes")
+
+        listing = self.host.list_sources()
+        row = next(item for item in listing["sources"] if item["source_id"] == source["source_id"])
+        self.assertEqual("HOLD_SOURCE_CHANGED", row["source_revision_readback"]["status"])
+        self.assertFalse(row["derived_content_eligible"])
+        self.assertFalse(row["body_available"])
+        self.assertFalse(row["knowledge_draft_available"])
+        self.assertTrue(row["body_file_present"])
+
+        readback = self.host.read_knowledge_draft(source["source_id"])
+        self.assertEqual("HOLD_SOURCE_CHANGED", readback["status"])
+        self.assertIsNone(readback["body"])
+        self.assertIsNone(readback["knowledge_draft"])
+        self.assertIsNone(readback["media"])
 
     def test_project_discovery_reports_embedded_cases_as_candidates_only(self) -> None:
         result = host_module.discover_project_candidates()

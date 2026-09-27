@@ -73,8 +73,14 @@ def build_inventory() -> dict[str, Any]:
             "local_repository_revision": local_head,
             "local_repository_matches_split": bool(sha and local_head == sha),
             "local_repository_remotes": [] if not local_remotes_raw else local_remotes_raw.splitlines(),
-            "remote_repo_created": False,
-            "remote_repo_pushed": False,
+            # Local `git remote` state cannot prove whether a target repository
+            # already exists elsewhere or whether this split history was pushed
+            # from another clone. Keep external state explicitly unverified
+            # until an owner-authorized remote readback establishes it.
+            "remote_repo_created": None,
+            "remote_repo_pushed": None,
+            "remote_repository_verification": "UNVERIFIED",
+            "remote_history_verification": "UNVERIFIED",
             "old_duplicate_retained": source_path.is_dir(),
             "project_state_ref": None,
             "artifact_store_binding": "UNRESOLVED",
@@ -83,8 +89,10 @@ def build_inventory() -> dict[str, Any]:
             "next_actions": [
                 "VERIFY_OWNER_NATIVE_PROJECT_STATE",
                 "VERIFY_ARTIFACT_AND_KNOWLEDGE_BINDINGS",
-                "CREATE_TARGET_REMOTE_REPOSITORY_WITH_EXPLICIT_EXTERNAL_ACTION_AUTHORIZATION",
-                "PUSH_AND_READBACK_SPLIT_HISTORY",
+                "VERIFY_TARGET_REMOTE_EXISTENCE_AND_HISTORY",
+                "CREATE_TARGET_REMOTE_REPOSITORY_IF_VERIFIED_ABSENT_AND_EXPLICITLY_AUTHORIZED",
+                "PUSH_SPLIT_HISTORY_IF_REMOTE_ROUTE_VERIFIED_AND_EXPLICITLY_AUTHORIZED",
+                "READBACK_REMOTE_HISTORY_AFTER_ANY_REMOTE_MUTATION",
                 "BIND_PROJECT_MANIFEST",
                 "REMOVE_OLD_MONOREPO_DUPLICATE_ONLY_AFTER_VERIFIED_BINDING",
             ],
@@ -107,6 +115,7 @@ def build_inventory() -> dict[str, Any]:
         "projects": projects,
         "hard_invariants": [
             "GIT_SPLIT_BRANCH_NE_PROJECT_CURRENT",
+            "LOCAL_REMOTE_CONFIG_NE_REMOTE_REPOSITORY_EXISTENCE_OR_HISTORY",
             "REMOTE_REPOSITORY_CREATION_NE_PROJECT_PROMOTION",
             "OLD_DUPLICATE_REMOVAL_REQUIRES_VERIFIED_PROJECT_ARTIFACT_KNOWLEDGE_BINDING",
         ],

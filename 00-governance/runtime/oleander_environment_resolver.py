@@ -180,8 +180,13 @@ def machine_local_observations(snapshot: dict[str, Any] | None = None) -> dict[s
         for row in snapshot.get("cos_mcp_registry") or []:
             if not isinstance(row, dict):
                 continue
-            ready = bool(row.get("enabled")) and str(row.get("status") or "").lower() == "ready"
-            availability = "AVAILABLE" if state == "FRESH" and ready else ("UNAVAILABLE" if state == "FRESH" and not ready else "UNKNOWN")
+            declared_ready = bool(row.get("enabled")) and str(row.get("status") or "").lower() == "ready"
+            # Registry metadata can prove configured/declared state but not
+            # current tool callability. Even a fresh `enabled + ready` row
+            # stays UNKNOWN until a live capability/tool probe supplies R1-R4
+            # evidence. A fresh explicit non-ready row is valid negative
+            # evidence and may be marked UNAVAILABLE.
+            availability = "UNKNOWN" if declared_ready else ("UNAVAILABLE" if state == "FRESH" else "UNKNOWN")
             name = str(row.get("name") or "unnamed")
             surfaces.append({
                 "surface_id": f"cos_mcp:{_slug(name)}",
@@ -194,7 +199,7 @@ def machine_local_observations(snapshot: dict[str, Any] | None = None) -> dict[s
                 "external_disclosure": str(row.get("source_kind") or "").lower() == "remote",
                 "native_outputs": [],
                 "readback_support": "PROVIDER_DECLARED_OR_TOOL_SPECIFIC",
-                "reliability": "STALE_OBSERVATION" if state != "FRESH" else "CURRENT_SNAPSHOT_OBSERVATION",
+                "reliability": "STALE_OBSERVATION" if state != "FRESH" else "CURRENT_REGISTRY_METADATA_NOT_CALLABILITY",
                 "fallback_surface": None,
                 "version": row.get("version"),
                 "observed_at": snapshot.get("snapshot_at"),
@@ -202,6 +207,8 @@ def machine_local_observations(snapshot: dict[str, Any] | None = None) -> dict[s
                 "canonical_registry_entry": False,
                 "observation_source": "MACHINE_LOCAL_RUNTIME_READBACK",
                 "tool_count": row.get("tool_count"),
+                "declared_ready": declared_ready,
+                "requires_live_callability_probe": declared_ready,
                 "does_not_prove": ["CANONICAL_SURFACE_REGISTRATION", "PROJECT_AUTHORITY", "DESIGN_AUTHORITY", "PROMOTION"],
             })
     return {

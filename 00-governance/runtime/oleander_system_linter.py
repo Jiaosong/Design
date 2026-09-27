@@ -265,8 +265,11 @@ def run_lint() -> dict[str, Any]:
             and all(row.get("split_is_subdirectory_rooted") is True for row in migration_projects)
         ),
         "project_repository_migration_does_not_fake_remote_or_project_state": all(
-            row.get("remote_repo_created") is False
-            and row.get("remote_repo_pushed") is False
+            row.get("remote_repo_created") is None
+            and row.get("remote_repo_pushed") is None
+            and row.get("remote_repository_verification") == "UNVERIFIED"
+            and row.get("remote_history_verification") == "UNVERIFIED"
+            and "VERIFY_TARGET_REMOTE_EXISTENCE_AND_HISTORY" in set(row.get("next_actions") or [])
             and row.get("old_duplicate_retained") is True
             and row.get("project_state_ref") is None
             for row in migration_projects

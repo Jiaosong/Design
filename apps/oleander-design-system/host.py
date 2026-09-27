@@ -26,7 +26,7 @@ ROOT = APP_DIR.parents[1]
 RUNTIME_DIR = ROOT / "00-governance" / "runtime"
 sys.path.insert(0, str(RUNTIME_DIR))
 
-from oleander_design_system_runtime import admit_source, next_ingestion_state  # noqa: E402
+from oleander_design_system_runtime import admit_source, next_ingestion_state, validate_source_revision  # noqa: E402
 from oleander_environment_resolver import build_current_execution_view  # noqa: E402
 from oleander_host_runtime_probe import build_host_runtime_view  # noqa: E402
 from oleander_surface_view import build_surface_views, project_browser_profile  # noqa: E402
@@ -38,37 +38,40 @@ MAX_SOURCE_BYTES = 20 * 1024 * 1024 * 1024
 CHUNK_SIZE = 4 * 1024 * 1024
 
 
-def _local_host_reliability_observations(observed_at: str | None = None) -> list[dict[str, Any]]:
-    """Return strict R1-R4 facts for the in-process Design System Local Host.
+def _local_host_reliability_observations(health: dict[str, Any], observed_at: str | None = None) -> list[dict[str, Any]]:
+    """Return evidence-bounded R1-R4 facts for the in-process Local Host.
 
-    These are host-runtime observations only. They intentionally do not emit
-    R5 RESULT because no material action has happened during a health probe.
+    Host reachability and storage checks can prove only a subset of the full
+    Surface Reliability vector. Capability-specific execution/capacity and
+    side-effect certainty remain UNKNOWN until an actual action/probe supplies
+    that evidence. R5 is never emitted by a preflight health check.
     """
     stamp = observed_at or datetime.now(timezone.utc).isoformat()
     surface_id = "design_system_local_host"
+    host_healthy = health.get("status") == "PASS"
     dimensions = {
         "R1_ADMISSION": {
             "registered": "PASS",
-            "configured": "PASS",
-            "version_compatible": "PASS",
+            "configured": "PASS" if host_healthy else "DEGRADED",
+            "version_compatible": "NOT_APPLICABLE",
             "loaded": "PASS",
         },
         "R2_IDENTITY": {
             "authenticated": "NOT_APPLICABLE",
-            "identity_bound": "PASS",
-            "permission_scope_verified": "PASS",
+            "identity_bound": "NOT_APPLICABLE",
+            "permission_scope_verified": "NOT_APPLICABLE",
             "credential_freshness": "NOT_APPLICABLE",
         },
         "R3_CAPABILITY": {
             "catalog_valid": "PASS",
-            "capability_verified": "PASS",
-            "required_feature_present": "PASS",
+            "capability_verified": "UNKNOWN",
+            "required_feature_present": "UNKNOWN",
         },
         "R4_EXECUTION": {
-            "provider_health": "PASS",
-            "capacity_state": "PASS",
-            "request_admission": "PASS",
-            "side_effect_certainty": "PASS",
+            "provider_health": "PASS" if host_healthy else "DEGRADED",
+            "capacity_state": "UNKNOWN",
+            "request_admission": "UNKNOWN",
+            "side_effect_certainty": "UNKNOWN",
         },
     }
     rows: list[dict[str, Any]] = []
@@ -124,6 +127,41 @@ def _safe_filename(name: str) -> str:
     base = Path(str(name or "source.bin")).name.strip() or "source.bin"
     base = re.sub(r"[<>:\"/\\|?*\x00-\x1f]", "_", base)
     return base[:180]
+
+
+def _sha256_revision(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    digest = hashlib.sha256()
+    try:
+        with path.open("rb") as handle:
+            while True:
+                block = handle.read(1024 * 1024)
+                if not block:
+                    break
+                digest.update(block)
+    except OSError:
+        return None
+    return "sha256:" + digest.hexdigest()
+
+
+def _source_revision_readback(source_dir: Path, source: dict[str, Any]) -> dict[str, Any]:
+    storage_relpath = source.get("storage_relpath")
+    if not isinstance(storage_relpath, str) or not storage_relpath:
+        return {
+            "status": "HOLD_SOURCE_CHANGED",
+            "reason": "SOURCE_STORAGE_REF_MISSING",
+            "expected_revision": source.get("source_revision"),
+            "observed_revision": None,
+            "derived_body_may_remain_eligible": False,
+        }
+    original_path = source_dir / storage_relpath
+    observed = _sha256_revision(original_path)
+    result = validate_source_revision(source, observed or "")
+    if result.get("status") != "PASS":
+        result["reason"] = "PRESERVED_ORIGINAL_REVISION_MISMATCH_OR_MISSING"
+    result["source_path"] = storage_relpath
+    return result
 
 
 def _git_at(cwd: Path, *args: str) -> str | None:
@@ -506,8 +544,15 @@ class DesignSystemHost:
             capabilities.append("MEDIA_METADATA_EXTRACTION")
         if shutil.which("ffmpeg"):
             capabilities.append("VIDEO_KEYFRAME_EXTRACTION")
+        checks = {
+            "uploads_root_exists": self.uploads_root.is_dir(),
+            "sources_root_exists": self.sources_root.is_dir(),
+            "uploads_root_writable": self.uploads_root.is_dir() and os.access(self.uploads_root, os.W_OK),
+            "sources_root_writable": self.sources_root.is_dir() and os.access(self.sources_root, os.W_OK),
+        }
+        status = "PASS" if all(checks.values()) else "DEGRADED"
         return {
-            "status": "PASS",
+            "status": status,
             "host": "OLEANDER_DESIGN_SYSTEM_LOCAL_HOST",
             "semantic_class": "HOST_RUNTIME_STATUS_NOT_PROJECT_STATE",
             "authority_ceiling": "EXECUTION_CAPABILITY_AND_OBSERVABILITY_ONLY",
@@ -515,15 +560,17 @@ class DesignSystemHost:
             "max_chunk_bytes": MAX_CHUNK_BYTES,
             "max_source_bytes": MAX_SOURCE_BYTES,
             "capabilities": capabilities,
+            "checks": checks,
             "does_not_prove": ["PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"],
         }
 
     def current_execution_view(self) -> dict[str, Any]:
         observed_at = datetime.now(timezone.utc).isoformat()
+        health = self.health()
         view = build_current_execution_view(live_observations={
             "design_system_local_host": {
                 "provider_id": "design_system_local_host",
-                "availability": "AVAILABLE",
+                "availability": "AVAILABLE" if health.get("status") == "PASS" else "DEGRADED",
                 "capability_roles": ["PROJECT_DISCOVERY", "SOURCE_INGESTION_TRANSPORT", "RUNTIME_READBACK"],
                 "mutation_classes": ["READ_ONLY", "LOCAL_MUTATION"],
                 "external_disclosure": False,
@@ -532,7 +579,7 @@ class DesignSystemHost:
                 "reliability": "STRICT_R1_R4_LOCAL_HOST_OBSERVATIONS",
                 "observation_source": "DESIGN_SYSTEM_LOCAL_HOST_HEALTH",
                 "observed_at": observed_at,
-                "reliability_observations": _local_host_reliability_observations(observed_at),
+                "reliability_observations": _local_host_reliability_observations(health, observed_at),
             }
         })
         return {
@@ -563,16 +610,27 @@ class DesignSystemHost:
                 continue
             body_path = source_dir / "body.json"
             draft_path = source_dir / "knowledge_draft.json"
+            media_path = source_dir / "media.json"
+            revision_readback = _source_revision_readback(source_dir, source)
+            derived_eligible = revision_readback.get("status") == "PASS"
             row = dict(source)
-            row["body_available"] = body_path.is_file()
-            row["knowledge_draft_available"] = draft_path.is_file()
-            if body_path.is_file():
+            row["source_revision_readback"] = revision_readback
+            row["derived_content_eligible"] = derived_eligible
+            row["body_file_present"] = body_path.is_file()
+            row["knowledge_draft_file_present"] = draft_path.is_file()
+            row["media_file_present"] = media_path.is_file()
+            row["body_available"] = body_path.is_file() and derived_eligible
+            row["knowledge_draft_available"] = draft_path.is_file() and derived_eligible
+            row["media_available"] = media_path.is_file() and derived_eligible
+            if body_path.is_file() and derived_eligible:
                 try:
                     body = _read_json(body_path)
                     row["body_section_count"] = len(body.get("sections") or [])
                     row["body_preview"] = next((str(section.get("text") or "")[:240] for section in body.get("sections") or [] if section.get("text")), "")
                 except (OSError, ValueError, json.JSONDecodeError):
                     row["body_readback"] = "INVALID"
+            elif not derived_eligible:
+                row["ingestion_readback_state"] = "HOLD_SOURCE_CHANGED"
             rows.append(row)
         return {
             "schema": "oleander.design-system.sources-view.v0.1",
@@ -592,13 +650,29 @@ class DesignSystemHost:
         if not source_path.is_file():
             raise FileNotFoundError("SOURCE_NOT_FOUND")
         source = _read_json(source_path)
+        revision_readback = _source_revision_readback(source_dir, source)
+        if revision_readback.get("status") != "PASS":
+            return {
+                "status": "HOLD_SOURCE_CHANGED",
+                "source": source,
+                "source_revision_readback": revision_readback,
+                "body": None,
+                "knowledge_draft": None,
+                "media": None,
+                "authority_ceiling": "KNOWLEDGE_DRAFT_READBACK_ONLY",
+                "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS"],
+            }
         body = _read_json(body_path) if body_path.is_file() else None
         draft = _read_json(draft_path) if draft_path.is_file() else None
+        media_path = source_dir / "media.json"
+        media = _read_json(media_path) if media_path.is_file() else None
         return {
             "status": "PASS",
             "source": source,
+            "source_revision_readback": revision_readback,
             "body": body,
             "knowledge_draft": draft,
+            "media": media,
             "authority_ceiling": "KNOWLEDGE_DRAFT_READBACK_ONLY",
             "does_not_prove": ["KNOWLEDGE_CURRENT", "CLAIM_CORRECTNESS", "KI_PASS", "OE_PASS"],
         }
