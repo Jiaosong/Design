@@ -11,6 +11,7 @@ RUNTIME = ROOT / "00-governance" / "runtime"
 sys.path.insert(0, str(RUNTIME))
 
 from oleander_environment_resolver import build_current_execution_view, resolve_execution_surface  # noqa: E402
+from oleander_surface_view import build_surface_views  # noqa: E402
 from oleander_surface_reliability import (  # noqa: E402
     assess_result_reliability,
     build_preflight_reliability,
@@ -150,6 +151,11 @@ class SurfaceReliabilityBoundaryTests(unittest.TestCase):
             "candidate_surface_ids": ["github_connector"],
         }, view)
         self.assertEqual("HOLD_NO_VERIFIED_SURFACE", route["status"])
+        projected = build_surface_views(view)
+        github = next(row for row in projected["surface_views"] if row["surface_definition_id"] == "github_connector")
+        self.assertEqual("AVAILABLE", github["reported_availability"])
+        self.assertEqual("UNKNOWN", github["availability"])
+        self.assertEqual("NONCURRENT_EVIDENCE_SUPPRESSED", github["availability_evidence_state"])
 
 
 if __name__ == "__main__":

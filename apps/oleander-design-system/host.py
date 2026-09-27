@@ -596,7 +596,17 @@ class DesignSystemHost:
         return project_browser_profile(project_id=project_id)
 
     def host_runtime_view(self) -> dict[str, Any]:
-        return build_host_runtime_view(local_host_ready=True)
+        health = self.health()
+        current = self.current_execution_view()["view"]
+        local_surface = next(
+            (row for row in current.get("surfaces") or [] if row.get("surface_id") == "design_system_local_host"),
+            {},
+        )
+        reliability_status = str((local_surface.get("reliability_preflight") or {}).get("status") or "UNKNOWN")
+        return build_host_runtime_view(
+            local_host_health_status=str(health.get("status") or "UNKNOWN"),
+            local_host_reliability_status=reliability_status,
+        )
 
     def list_sources(self) -> dict[str, Any]:
         rows: list[dict[str, Any]] = []

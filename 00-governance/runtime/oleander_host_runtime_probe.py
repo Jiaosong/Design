@@ -127,18 +127,32 @@ def probe_cos_native(local_snapshot: dict[str, Any] | None = None) -> dict[str, 
 
 def build_host_runtime_view(
     *,
-    local_host_ready: bool,
+    local_host_ready: bool | None = None,
+    local_host_health_status: str | None = None,
+    local_host_reliability_status: str | None = None,
     local_snapshot: dict[str, Any] | None = None,
     dsh_binary_override: str | None = None,
 ) -> dict[str, Any]:
+    health = str(local_host_health_status or ("PASS" if local_host_ready else "UNAVAILABLE")).upper()
+    if health == "PASS":
+        local_status = "AVAILABLE"
+        local_availability = "AVAILABLE"
+    elif health == "DEGRADED":
+        local_status = "DEGRADED"
+        local_availability = "DEGRADED"
+    else:
+        local_status = "UNAVAILABLE"
+        local_availability = "UNAVAILABLE"
+    reliability_status = str(local_host_reliability_status or "UNKNOWN").upper()
     local_host = {
         "host_runtime_id": "design_system_local_host",
         "host_class": "DESIGN_SYSTEM_LOCAL_HOST",
-        "status": "AVAILABLE" if local_host_ready else "UNAVAILABLE",
-        "availability": "AVAILABLE" if local_host_ready else "UNAVAILABLE",
+        "status": local_status,
+        "availability": local_availability,
         "version": "v0.1",
         "capabilities": ["PROJECT_DISCOVERY", "SOURCE_INGESTION_TRANSPORT", "SURFACE_VIEW_PROJECTION", "RUNTIME_READBACK"],
-        "capabilities_runtime_verified": local_host_ready,
+        "surface_reliability_status": reliability_status,
+        "capabilities_runtime_verified": reliability_status == "READY",
         "observation_source": "IN_PROCESS_LOCAL_HOST",
         "authority_ceiling": "EXECUTION_HOST_AND_SURFACE_LIFECYCLE_ONLY",
         "does_not_prove": ["PROJECT_CURRENT", "KNOWLEDGE_CURRENT", "DESIGN_KEEP", "PROMOTION"],

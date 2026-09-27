@@ -51,15 +51,29 @@ class HostRuntimeProbeV01Tests(unittest.TestCase):
             "cos_mcp_registry": [],
         }
         result = build_host_runtime_view(
-            local_host_ready=True,
+            local_host_health_status="PASS",
+            local_host_reliability_status="UNKNOWN",
             local_snapshot=stale,
             dsh_binary_override="__oleander_missing_dsh_binary__",
         )
         hosts = {row["host_runtime_id"]: row for row in result["hosts"]}
         self.assertEqual("AVAILABLE", hosts["design_system_local_host"]["availability"])
+        self.assertEqual("UNKNOWN", hosts["design_system_local_host"]["surface_reliability_status"])
+        self.assertFalse(hosts["design_system_local_host"]["capabilities_runtime_verified"])
         self.assertEqual("UNAVAILABLE", hosts["dsh_host"]["availability"])
         self.assertEqual("UNKNOWN", hosts["cos_native"]["availability"])
         self.assertIn("PROJECT_CURRENT", result["does_not_prove"])
+
+    def test_local_host_degraded_health_cannot_be_presented_available(self) -> None:
+        result = build_host_runtime_view(
+            local_host_health_status="DEGRADED",
+            local_host_reliability_status="UNKNOWN",
+            dsh_binary_override="__oleander_missing_dsh_binary__",
+        )
+        local = next(row for row in result["hosts"] if row["host_runtime_id"] == "design_system_local_host")
+        self.assertEqual("DEGRADED", local["status"])
+        self.assertEqual("DEGRADED", local["availability"])
+        self.assertFalse(local["capabilities_runtime_verified"])
 
 
 if __name__ == "__main__":

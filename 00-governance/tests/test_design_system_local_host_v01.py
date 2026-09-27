@@ -54,6 +54,23 @@ class DesignSystemLocalHostV01Tests(unittest.TestCase):
         self.assertNotIn("R5_RESULT", local["reliability_preflight"]["stages"])
         self.assertIn("PROJECT_CURRENT", result["view"]["does_not_prove"])
 
+    def test_host_runtime_view_uses_health_and_surface_reliability_not_reachability_shortcut(self) -> None:
+        result = self.host.host_runtime_view()
+        local = next(row for row in result["hosts"] if row["host_runtime_id"] == "design_system_local_host")
+        self.assertEqual("AVAILABLE", local["availability"])
+        self.assertEqual("UNKNOWN", local["surface_reliability_status"])
+        self.assertFalse(local["capabilities_runtime_verified"])
+
+        original_health = self.host.health
+        self.host.health = lambda: {"status": "DEGRADED"}  # type: ignore[method-assign]
+        try:
+            degraded = self.host.host_runtime_view()
+        finally:
+            self.host.health = original_health  # type: ignore[method-assign]
+        degraded_local = next(row for row in degraded["hosts"] if row["host_runtime_id"] == "design_system_local_host")
+        self.assertEqual("DEGRADED", degraded_local["availability"])
+        self.assertFalse(degraded_local["capabilities_runtime_verified"])
+
     def test_surface_views_are_projection_only_and_keep_unavailable_surfaces_visible(self) -> None:
         result = self.host.surface_views()
         self.assertEqual("UI_PROJECTION_ONLY", result["authority_ceiling"])

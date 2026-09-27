@@ -25,6 +25,33 @@ def _definition_index() -> dict[str, dict[str, Any]]:
     }
 
 
+def _preflight_has_noncurrent_evidence(preflight: dict[str, Any]) -> bool:
+    if str(preflight.get("status") or "").upper() == "STALE":
+        return True
+    if str(preflight.get("observation_freshness") or "").upper() in {"STALE", "FUTURE", "INVALID"}:
+        return True
+    for stage in (preflight.get("stages") or {}).values():
+        if not isinstance(stage, dict):
+            continue
+        for invalid in stage.get("invalid_observations") or []:
+            if not isinstance(invalid, dict):
+                continue
+            errors = {str(error) for error in invalid.get("errors") or []}
+            if errors & {"STALE_OBSERVATION", "FUTURE_OBSERVATION", "INVALID_OBSERVED_AT"}:
+                return True
+    return False
+
+
+def _project_availability(runtime: dict[str, Any] | None) -> tuple[str, str, str]:
+    if runtime is None:
+        return "UNREGISTERED", "UNREGISTERED", "NO_CURRENT_SURFACE_OBSERVATION"
+    reported = str(runtime.get("availability") or "UNKNOWN").upper()
+    preflight = runtime.get("reliability_preflight") or {}
+    if reported in {"AVAILABLE", "DEGRADED"} and _preflight_has_noncurrent_evidence(preflight):
+        return "UNKNOWN", reported, "NONCURRENT_EVIDENCE_SUPPRESSED"
+    return reported, reported, "CURRENT_OR_UNPROVEN"
+
+
 def build_surface_views(current_execution_view: dict[str, Any]) -> dict[str, Any]:
     contract = _contract()
     definitions = _definition_index()
@@ -37,12 +64,15 @@ def build_surface_views(current_execution_view: dict[str, Any]) -> dict[str, Any
     rows: list[dict[str, Any]] = []
     for surface_id, definition in definitions.items():
         runtime = runtime_rows.get(surface_id)
+        availability, reported_availability, availability_evidence_state = _project_availability(runtime)
         rows.append({
             "surface_view_id": f"surface-view:{surface_id}",
             "surface_definition_id": surface_id,
             "display_name": definition["display_name"],
             "view_kind": definition["view_kind"],
-            "availability": str((runtime or {}).get("availability") or "UNREGISTERED").upper(),
+            "availability": availability,
+            "reported_availability": reported_availability,
+            "availability_evidence_state": availability_evidence_state,
             "reliability_preflight": (runtime or {}).get("reliability_preflight") or {
                 "status": "UNKNOWN",
                 "strict_vector": False,
@@ -62,12 +92,15 @@ def build_surface_views(current_execution_view: dict[str, Any]) -> dict[str, Any
     # remain visible as generic projections rather than disappearing.
     for surface_id in sorted(set(runtime_rows) - set(definitions)):
         runtime = runtime_rows[surface_id]
+        availability, reported_availability, availability_evidence_state = _project_availability(runtime)
         rows.append({
             "surface_view_id": f"surface-view:{surface_id}",
             "surface_definition_id": surface_id,
             "display_name": surface_id,
             "view_kind": "GENERIC_INTEGRATION",
-            "availability": str(runtime.get("availability") or "UNKNOWN").upper(),
+            "availability": availability,
+            "reported_availability": reported_availability,
+            "availability_evidence_state": availability_evidence_state,
             "reliability_preflight": runtime.get("reliability_preflight") or {},
             "observation_source": runtime.get("observation_source") or "UNKNOWN_SOURCE",
             "observed_at": runtime.get("observed_at"),

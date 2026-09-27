@@ -99,6 +99,22 @@ function compactSurfaceVector(surface) {
   return RELIABILITY.map(([id]) => `${id} ${vector[id]}`).join(' · ')
 }
 
+function surfaceStatusClass(surface) {
+  const availability = String(surface?.availability || 'UNKNOWN').toUpperCase()
+  const reliability = String(surface?.reliability_preflight?.status || 'UNKNOWN').toUpperCase()
+  const ready = ['READY', 'COMPATIBILITY_READY'].includes(reliability)
+  if (availability === 'AVAILABLE' && ready) return 'pass'
+  if (availability === 'DEGRADED' || ['DEGRADED_READY', 'COMPATIBILITY_DEGRADED', 'STALE', 'BLOCKED'].includes(reliability)) return 'staged'
+  return 'unknown'
+}
+
+function hostRuntimeStatusClass(host) {
+  const availability = String(host?.availability || 'UNKNOWN').toUpperCase()
+  if (availability === 'AVAILABLE' && host?.capabilities_runtime_verified === true) return 'pass'
+  if (availability === 'DEGRADED' || String(host?.status || '').toUpperCase() === 'STALE' || availability === 'AVAILABLE') return 'staged'
+  return 'unknown'
+}
+
 function header(title, lede, eyebrow = 'OLEANDER DESIGN SYSTEM') {
   return `<header class="workspace-header"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p class="lede">${lede}</p></div></header>`
 }
@@ -156,6 +172,7 @@ function knowledgeView() {
       name,
       status: surface ? String(surface.availability || 'UNKNOWN').toUpperCase() : 'UNREGISTERED',
       source: surface?.observation_source || 'NO_CURRENT_SURFACE',
+      surface,
     }
   })
   const draftRows = drafts.length ? drafts.map(item => `
@@ -183,7 +200,7 @@ function knowledgeView() {
       <section class="card span-4"><h2>Mounts</h2><div class="metric">—</div><div class="metric-label">Task-specific projection</div></section>
       <section class="card span-4"><h2>Review queue</h2><div class="metric">${state.sourceInbox.length}</div><div class="metric-label">仅 staged，不代表待 KI/OE</div></section>
       <section class="card span-12"><h2>Draft Library</h2><div class="object-list">${draftRows}</div></section>
-      <section class="card span-12"><h2>External Knowledge Surfaces</h2><div class="integration-grid">${knowledgeSurfaces.map(surface => `<div class="integration-card"><div class="integration-head"><span class="integration-name">${escapeHtml(surface.name)}</span><span class="state-label ${surface.status === 'AVAILABLE' ? 'pass' : 'unknown'}">${escapeHtml(surface.status)}</span></div><div class="integration-meta">Observation: ${escapeHtml(surface.source)}<br>Linked source/view ≠ OLEANDER Knowledge Current</div></div>`).join('')}</div></section>
+      <section class="card span-12"><h2>External Knowledge Surfaces</h2><div class="integration-grid">${knowledgeSurfaces.map(surface => `<div class="integration-card"><div class="integration-head"><span class="integration-name">${escapeHtml(surface.name)}</span><span class="state-label ${surfaceStatusClass(surface.surface)}">${escapeHtml(surface.status)}</span></div><div class="integration-meta">Reliability: ${escapeHtml(surface.surface?.reliability_preflight?.status || 'UNKNOWN')}<br>Observation: ${escapeHtml(surface.source)}<br>Linked source/view ≠ OLEANDER Knowledge Current</div></div>`).join('')}</div></section>
       ${bodyMarkup}
       <section class="card span-12"><h2>Knowledge boundary</h2><p>Original Source ≠ Extracted Body · Extracted ≠ Validated · Imported ≠ Knowledge Current · Vector Index ≠ Knowledge</p></section>
     </div>`
@@ -341,7 +358,7 @@ function browserView() {
   const browserRows = browserViews.length ? browserViews.map(view => `
     <div class="object-row">
       <div><div class="object-title">${escapeHtml(view.display_name)}</div><div class="object-meta">${escapeHtml(compactSurfaceVector(view))}<br>${escapeHtml(view.observation_source || 'NO_CURRENT_SURFACE_OBSERVATION')}</div></div>
-      <span class="state-label ${view.availability === 'AVAILABLE' ? 'pass' : view.availability === 'DEGRADED' ? 'staged' : 'unknown'}">${escapeHtml(view.availability)}</span>
+      <span class="state-label ${surfaceStatusClass(view)}">${escapeHtml(view.availability)}</span>
     </div>
   `).join('') : '<div class="object-row"><div><div class="object-title">没有 Browser SurfaceView</div></div><span class="state-label unknown">EMPTY</span></div>'
   return `${header('Browser', '项目级 Design Browser：Browse / Research / Compare / Capture / Clip / Ingest。Persistent capture 必须进入 Source Inbox。', 'BROWSER SURFACE')}
@@ -357,7 +374,7 @@ function integrationsView() {
   return `${header('Integrations', 'SurfaceDefinition 保持可见；是否能执行由 SurfaceInstance / Identity / CapabilityCatalog / Reliability 决定。', 'SURFACE KERNEL')}
     <div class="grid">
       <section class="card span-12"><h2>Surface Registry</h2><div class="integration-grid">${names.map(surface => {
-        const statusClass = surface.availability === 'AVAILABLE' ? 'pass' : surface.availability === 'DEGRADED' ? 'staged' : 'unknown'
+        const statusClass = surfaceStatusClass(surface)
         return `<div class="integration-card"><div class="integration-head"><span class="integration-name">${escapeHtml(surface.display_name)}</span><span class="state-label ${statusClass}">${escapeHtml(surface.availability)}</span></div><div class="integration-meta">${escapeHtml(surface.view_kind)} · Reliability: ${escapeHtml(surface.reliability_preflight?.status || 'UNKNOWN')}<br>${escapeHtml(compactSurfaceVector(surface))}<br>Observation: ${escapeHtml(surface.observation_source || 'NO_CURRENT_SURFACE_OBSERVATION')}<br>Authority ceiling: UI projection only</div></div>`
       }).join('') || '<div class="object-meta">SurfaceView projection unavailable.</div>'}</div></section>
       <section class="card span-12"><h2>Surface Reliability Boundary</h2>${reliabilityMarkup(false)}</section>
@@ -371,7 +388,7 @@ function reviewView() {
 
 function systemView() {
   const hostRows = state.hostRuntimes.length ? state.hostRuntimes.map(host => {
-    const statusClass = host.availability === 'AVAILABLE' ? 'pass' : host.status === 'STALE' || host.availability === 'DEGRADED' ? 'staged' : 'unknown'
+    const statusClass = hostRuntimeStatusClass(host)
     const detail = [
       host.host_class,
       host.version ? `version ${host.version}` : null,
@@ -473,7 +490,12 @@ function render() {
 
 function renderHostStatus() {
   if (state.hostBound) {
-    hostStatus.innerHTML = '<span class="status-dot pass"></span><span>Design System Local Host · READY</span>'
+    const localHost = state.hostRuntimes.find(host => host.host_runtime_id === 'design_system_local_host')
+    const localSurface = state.surfaceViews.find(view => view.surface_definition_id === 'design_system_local_host')
+    const reliability = localSurface?.reliability_preflight?.status || 'UNKNOWN'
+    const availability = localHost?.availability || state.hostHealth?.status || 'REACHABLE'
+    const dotClass = reliability === 'READY' ? 'pass' : 'unknown'
+    hostStatus.innerHTML = `<span class="status-dot ${dotClass}"></span><span>Design System Local Host · ${escapeHtml(availability)} · Surface ${escapeHtml(reliability)}</span>`
   } else {
     hostStatus.innerHTML = '<span class="status-dot unknown"></span><span>Host Runtime 未绑定</span>'
   }
@@ -482,7 +504,7 @@ function renderHostStatus() {
 async function bootstrapHost() {
   try {
     const health = await apiJson('/api/health')
-    if (health.status !== 'PASS') throw new Error('HOST_HEALTH_FAILED')
+    if (!['PASS', 'DEGRADED'].includes(health.status)) throw new Error('HOST_HEALTH_FAILED')
     state.hostBound = true
     state.hostHealth = health
     const [projects, sources, system, surfaceViews, browserProfile, hostRuntimes] = await Promise.all([
