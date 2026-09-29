@@ -1,0 +1,158 @@
+{
+  "schema_version": "0.1",
+  "status": "CANDIDATE_REGISTRY",
+  "owner": "oleander-visual-design/TYPOGRAPHY_SYSTEM_EXTENSION.md",
+  "policy": {
+    "purpose": "Reusable discovery pool for open-source typography candidates; not a house style or automatic selection authority.",
+    "selection": [
+      "resolve language/content/medium/reading duty",
+      "retrieve a materially diverse shortlist",
+      "render real-content specimens",
+      "check exact release/license/coverage/runtime/fallback",
+      "human select/modify/reopen",
+      "only then bind project Current"
+    ],
+    "exact_source_recheck_required": true,
+    "font_binaries_stored_here": false
+  },
+  "groups": [
+    {
+      "id": "cjk_sans_core",
+      "role": [
+        "CJK body",
+        "UI",
+        "technical"
+      ],
+      "families": [
+        "Noto Sans CJK",
+        "Source Han Sans",
+        "Sarasa Gothic"
+      ]
+    },
+    {
+      "id": "cjk_serif_editorial",
+      "role": [
+        "CJK long reading",
+        "editorial"
+      ],
+      "families": [
+        "Noto Serif CJK",
+        "Source Han Serif",
+        "LXGW ZhenKai",
+        "Zhuque Fangsong"
+      ]
+    },
+    {
+      "id": "cjk_expressive",
+      "role": [
+        "display",
+        "annotation",
+        "humanist/editorial accent"
+      ],
+      "families": [
+        "LXGW WenKai",
+        "LXGW Marker Gothic",
+        "Smiley Sans"
+      ]
+    },
+    {
+      "id": "latin_sans_core",
+      "role": [
+        "UI",
+        "document",
+        "brand system",
+        "data"
+      ],
+      "families": [
+        "Inter",
+        "IBM Plex Sans",
+        "Source Sans 3",
+        "Public Sans"
+      ]
+    },
+    {
+      "id": "latin_sans_extended",
+      "role": [
+        "UI",
+        "brand",
+        "display",
+        "general"
+      ],
+      "families": [
+        "Roboto",
+        "Manrope",
+        "DM Sans",
+        "Work Sans",
+        "Space Grotesk",
+        "Barlow",
+        "Archivo",
+        "Montserrat",
+        "Lexend",
+        "Atkinson Hyperlegible"
+      ]
+    },
+    {
+      "id": "latin_serif_editorial",
+      "role": [
+        "long reading",
+        "editorial",
+        "brand"
+      ],
+      "families": [
+        "Source Serif 4",
+        "Literata",
+        "Lora",
+        "Merriweather",
+        "Newsreader",
+        "EB Garamond",
+        "Crimson Pro",
+        "Libre Baskerville",
+        "Fraunces"
+      ]
+    },
+    {
+      "id": "mono_technical",
+      "role": [
+        "code",
+        "technical notation",
+        "tables",
+        "data"
+      ],
+      "families": [
+        "JetBrains Mono",
+        "Source Code Pro",
+        "IBM Plex Mono",
+        "Fira Code",
+        "Cascadia Code",
+        "Maple Mono CN",
+        "Sarasa Mono"
+      ]
+    },
+    {
+      "id": "regional_east_asia",
+      "role": [
+        "Japanese",
+        "Korean",
+        "regional CJK"
+      ],
+      "families": [
+        "Noto Sans CJK JP",
+        "Noto Serif CJK JP",
+        "Noto Sans CJK KR",
+        "Noto Serif CJK KR",
+        "M PLUS",
+        "BIZ UDPGothic",
+        "BIZ UDPMincho",
+        "Zen Kaku Gothic New",
+        "Zen Old Mincho",
+        "Pretendard"
+      ]
+    }
+  ],
+  "cautions": [
+    "No mood-keyword-to-font mapping is authoritative.",
+    "Family names do not prove exact license, glyph coverage, release status, embedding permission, or runtime behavior.",
+    "Preview/beta releases remain exploratory until exact-build verification.",
+    "Do not add a new Skill just to support another font family; update this registry or the existing typography extension."
+  ]
+}
