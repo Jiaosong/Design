@@ -1426,3 +1426,18 @@ Add to the existing Architecture readback/reopen contract when triggered:
 `SPECIFICATION COORDINATED ≠ CONTRACT INTERPRETATION ≠ CODE / PRODUCT COMPLIANCE`  
 `IN-USE READBACK ≠ CAUSAL PROOF`  
 `ARCHITECTURE CURRENT ≠ FIELD / OPERATION / PROFESSIONAL TRUTH WITHOUT THE REQUIRED OWNER EVIDENCE`.
+
+
+## 2026-09-21｜External Mature-KB Absorption Batch 03｜Maintainability / Operational Handover
+
+**Status effect:** additive source-bound strengthening of existing Architecture delivery / G8–G9 responsibilities only. No new `ADD-*` stage and no parallel FM / handover process.
+
+Canonical SOURCE:
+- `SRC-CIBSE-GUIDE-M-2023-001` — https://app.notion.com/p/3e2b86be5c4781f1be4dc212df5689a5
+
+Where Architecture owns spatial provision for maintainability, the actual-readback chain must extend beyond “access shown” to the applicable task:
+`ASSET / SYSTEM → SAFE APPROACH → WORKING / OPENING ENVELOPE → ISOLATION / SAFE STATE INTERFACE → INSPECTION / CLEANING / ADJUSTMENT TASK → TOOL / SPARE / CONSUMABLE → COMPONENT REMOVAL / REPLACEMENT PATH → LIFTING / HANDLING → FINISH / DOOR / CEILING / STRUCTURE / MEP INTERFACE → HANDOVER RECORD → OPERATIONAL CHANGE / REOPEN`.
+
+This complements the existing RIBA Plan for Use / in-use continuity delta: Plan for Use governs outcome/in-use continuity; CIBSE Guide M adds maintainability/operation evidence depth. Neither is imported as a universal OLEANDER stage system.
+
+**Boundary:** `ACCESS GRAPHIC EXISTS ≠ MAINTAINABLE`; `O&M FILE EXISTS ≠ CONFIGURATION CORRECT`; `HANDOVER COMPLETE ≠ OPERATIONAL PERFORMANCE`; specialist MEP/FM/safety responsibility and field truth remain separate.

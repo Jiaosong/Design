@@ -1190,3 +1190,38 @@ Programme/occupancy/process/design-condition change; load/diversity/redundancy a
 - Native carrier: point schedule, I/O map, sequence/interlock/fail-state, prefunctional/TAB baseline, FPT/fault-injection, issues/retest, as-built/system manual.
 - Readback: each sequence statement ↔ actual point/device; fail/manual/network/power states; prerequisites; measurable expected result ↔ test result; retest and as-built update.
 - Reopen: point/device/address/setpoint/sequence/interlock/system configuration, TAB prerequisite, FPT failure, site tuning or trend/in-use contradiction.
+
+
+## 2026-09-21｜External Mature-KB Absorption Batch 03｜TAB + Maintainability
+
+**Status effect:** additive source-bound execution strengthening only. No new `BSP-*` stage, no new MEP process owner, no professional promotion.
+
+### A｜TAB evidence normalization — NEBB 10th Edition
+
+Canonical SOURCE:
+- `SRC-NEBB-TAB-2026-001` — https://app.notion.com/p/3e2b86be5c478148982ed3db0d6ba91d
+
+NEBB announced the Tenth Edition of the *Procedural Standard for Testing, Adjusting and Balancing of Environmental Systems* on 2026-09-01. It remains consumed by existing `KN-METHOD-MEP-CONTROL-CX-001`; **no parallel TAB METHOD is created**.
+
+For any in-claim TAB result, preserve:
+`INSTRUMENT / CALIBRATION STATUS → METHOD → EXACT SYSTEM + OPERATING CONFIGURATION → DESIGN CRITERION / SOURCE → MEASURED VALUE → ADJUSTMENT / FINAL SETTING → REMAINING VARIANCE / DEFECT → REPORT IDENTITY → RETEST / REOPEN`.
+
+Contract requirements may exceed the source minimum and remain project authority.
+
+**Boundary:** `TAB REPORT EXISTS ≠ DESIGN CORRECTNESS ≠ FPT / IST PASS ≠ WHOLE-SYSTEM COMMISSIONING ≠ FIELD ACCEPTANCE OUTSIDE TESTED SCOPE`.
+
+### B｜Maintainability as design input — CIBSE Guide M 2023
+
+Canonical SOURCE:
+- `SRC-CIBSE-GUIDE-M-2023-001` — https://app.notion.com/p/3e2b86be5c4781f1be4dc212df5689a5
+
+Guide M / M01 strengthens the existing MEP lifecycle rather than creating a parallel FM process. Where material, BSP-BRIEF through BSP-HANDOVER must preserve:
+`ASSET / SYSTEM → ACCESS / WORKING SPACE → ISOLATION / SAFE STATE → SERVICE TASK → CONSUMABLE / SPARE / TOOL → REMOVAL + REPLACEMENT PATH → LIFTING / HANDLING → O&M / CONFIGURATION RECORD → OPERATOR TRAINING → DEFERRED / SEASONAL ACTION → OPERATIONAL OBSERVATION → REOPEN`.
+
+Actual dimensions, intervals, isolation procedures, component life and replacement strategy remain project/system/manufacturer/authority specific.
+
+**Boundary:** `O&M FILE RECEIVED ≠ MAINTAINABLE SYSTEM`; `ACCESS SPACE SHOWN ≠ SAFE MAINTENANCE`; `HANDOVER ≠ IN-USE PERFORMANCE`; `GUIDE M ALIGNMENT ≠ PROJECT / STATUTORY ACCEPTANCE`.
+
+### Reopen additions
+
+Reopen affected MEP claims when the TAB test configuration/instrument/method or design criterion changes; when field adjustment changes system/control settings; or when access, isolation, removal/replacement route, maintenance task, spare/tool requirement, operator handoff or lifecycle assumptions materially change.
