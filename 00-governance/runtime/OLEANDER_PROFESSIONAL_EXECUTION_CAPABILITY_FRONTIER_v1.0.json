@@ -1,0 +1,300 @@
+{
+  "schema": "oleander.runtime.professional-execution-capability-frontier.v1",
+  "version": "1.0",
+  "status": "ACTIVE_NON_AUTHORITY_RUNTIME_PROJECTION",
+  "observed_at": "2026-09-20",
+  "baseline_main": "5a205a2d574a50a7ce336673cfeb2349bd6c2d07",
+  "purpose": "Expose the real execution frontier for professional work: what OLEANDER can execute with Current owners, what requires a project-authorized specialist, what remains Candidate-only, and what is field-only. This projection does not promote a Skill, runtime, professional process, reviewer or evidence state.",
+  "canonical_plan_schema": "00-governance/schemas/professional-execution-capability-plan.v1.schema.json",
+  "current_installed_core_owners": [
+    "oleander-research",
+    "oleander-design-process",
+    "oleander-data-viz",
+    "oleander-3d-pipeline",
+    "oleander-story-and-board",
+    "oleander-delivery-qc",
+    "oleander-motion"
+  ],
+  "candidate_or_noncurrent_execution_routes": [
+    "oleander-web-ui",
+    "oleander-visual-design",
+    "oleander-image-art-direction",
+    "oleander-technical-drawing",
+    "00-governance/runtime/OLEANDER_PRO_DESIGN_TOOLCHAIN_RUNTIME_v0.1.json"
+  ],
+  "resolution_rule": "For every material professional Decision Object, compile a PROFESSIONAL_EXECUTION_CAPABILITY_PLAN from observed current owner/runtime state. Required native outputs may proceed only with a Current callable owner or project-authorized specialist. PROJECT_SPECIALIST_BOUND additionally requires a current non-stale PROJECT_SPECIALIST_OWNER_BINDING under the Current project-control contract. Candidate-only routes may support bounded experiments but cannot close an in-claim professional capability requirement.",
+  "domains": [
+    {
+      "domain": "Architecture",
+      "process_state": "CURRENT",
+      "process_ref": "00-governance/architecture-design-development-process-v1.0.md",
+      "immediately_executable": [
+        "source/evidence research and decision briefs",
+        "program/adjacency/flow data and analytical diagrams",
+        "GIS/site mapping when source data is available",
+        "bounded spatial/3D model development and exchange using Current 3D owner within its claim ceiling",
+        "architecture review/publication derivatives from authoritative native geometry"
+      ],
+      "project_specialist_or_current_gap": [
+        "authoritative construction/technical drawing execution when only the Technical Drawing Candidate is available",
+        "proprietary BIM/RVT-native authoring when required by claim",
+        "statutory/code approval",
+        "field survey/measurement truth"
+      ],
+      "next_real_capability_target": "Make a Current callable technical-drawing/CAD execution route available without widening field/statutory authority."
+    },
+    {
+      "domain": "Structural Engineering",
+      "process_state": "CURRENT",
+      "process_ref": "00-governance/structural-engineering-design-process-v1.0.md",
+      "immediately_executable": [
+        "structural evidence research and basis-of-design drafting support",
+        "geometry/interface visualization",
+        "load-path/system comparison diagrams",
+        "tabular schedules and calculation-input/result visualization when authoritative values are supplied"
+      ],
+      "project_specialist_or_current_gap": [
+        "authoritative structural analysis solver execution",
+        "code-based member/connection design",
+        "temporary-works design",
+        "independent structural checking",
+        "construction/field conformity"
+      ],
+      "next_real_capability_target": "Bind a verified structural solver/checker adapter or project structural specialist; do not treat generic Python/3D output as engineering calculation authority."
+    },
+    {
+      "domain": "Building Services / MEP",
+      "process_state": "CURRENT",
+      "process_ref": "00-governance/building-services-mep-design-process-v1.0.md",
+      "immediately_executable": [
+        "requirements/load-input schedules",
+        "system topology and control diagrams",
+        "spatial coordination visualizations",
+        "plant/distribution zoning studies",
+        "commissioning/acceptance evidence compilation"
+      ],
+      "project_specialist_or_current_gap": [
+        "authoritative HVAC/electrical/plumbing/fire sizing and code calculations",
+        "manufacturer selection approval",
+        "controls/BMS commissioning execution",
+        "integrated systems testing",
+        "measured operational performance"
+      ],
+      "next_real_capability_target": "Bind discipline solvers and commissioning evidence adapters per system track rather than create one generic MEP calculator."
+    },
+    {
+      "domain": "Interior Design",
+      "process_state": "CANDIDATE_NOT_CURRENT",
+      "process_ref": "00-governance/interior-design-process-v1.0-CANDIDATE.md",
+      "immediately_executable": [
+        "bounded programming/user/operations analysis",
+        "space-planning and furniture-layout studies",
+        "3D interior spatial studies",
+        "finish/FF&E/door schedule data structures and comparison",
+        "publication/review derivatives"
+      ],
+      "project_specialist_or_current_gap": [
+        "authoritative technical drawing/RCP package when no Current drawing owner is bound",
+        "life-safety/accessibility/code closure",
+        "MEP/acoustic specialist closure",
+        "submittal/mockup/construction administration",
+        "field closeout"
+      ],
+      "next_real_capability_target": "Exercise the Candidate on a project with real room geometry, RCP/FF&E native carriers and specialist interfaces before considering process adoption."
+    },
+    {
+      "domain": "Landscape Architecture",
+      "process_state": "CANDIDATE_NOT_CURRENT",
+      "process_ref": "00-governance/landscape-architecture-design-process-v0.1-CANDIDATE.md",
+      "immediately_executable": [
+        "GIS/site/evidence analysis",
+        "terrain/context visualization",
+        "route/open-space relation studies",
+        "planting/asset schedule structures",
+        "bounded grading/drainage concept diagrams from authoritative source data"
+      ],
+      "project_specialist_or_current_gap": [
+        "survey-authoritative grading",
+        "civil/stormwater calculations",
+        "soil/geotechnical verification",
+        "horticultural/planting establishment professional acceptance",
+        "field construction/maintenance readback"
+      ],
+      "next_real_capability_target": "Add a real terrain/grading/earthwork round-trip exercise and bind civil/drainage specialist evidence at interfaces."
+    },
+    {
+      "domain": "Lighting Design",
+      "process_state": "CANDIDATE_NOT_CURRENT",
+      "process_ref": "00-governance/lighting-design-process-v1.0-CANDIDATE.md",
+      "immediately_executable": [
+        "lighting intent/task/scene-state definition",
+        "geometry and luminaire-location studies",
+        "rendered visual comparisons within visualization claim ceiling",
+        "source-bound result maps when real photometric data is supplied"
+      ],
+      "project_specialist_or_current_gap": [
+        "verified photometric solver owner",
+        "IES/LDT-based calculation and compliance evidence",
+        "glare/daylight/electric-light specialist acceptance",
+        "commissioning and field measurements"
+      ],
+      "next_real_capability_target": "Bind a real photometric solver/runtime and require result-file reopen/readback; rendered brightness remains non-photometric."
+    },
+    {
+      "domain": "Digital Product / HCD",
+      "process_state": "CANDIDATE_NOT_CURRENT",
+      "process_ref": "00-governance/digital-product-hcd-design-process-v0.1-CANDIDATE.md",
+      "immediately_executable": [
+        "research synthesis and hypothesis framing",
+        "information/state architecture",
+        "repo-native interaction specifications",
+        "bounded browser prototypes when a project runtime is actually available",
+        "analytics/result visualization"
+      ],
+      "project_specialist_or_current_gap": [
+        "Current core Web/UI execution owner is not yet fully Current",
+        "real participant research/testing",
+        "assistive-technology validation",
+        "production backend/security/privacy evidence",
+        "live product outcome validation"
+      ],
+      "next_real_capability_target": "Currentize a proven browser execution/readback route only after independent review, while keeping human validation separate."
+    },
+    {
+      "domain": "Systems Engineering",
+      "process_state": "CANDIDATE_NOT_CURRENT",
+      "process_ref": "00-governance/systems-engineering-design-process-v1.0-CANDIDATE.md",
+      "immediately_executable": [
+        "requirements structuring",
+        "system/context/interface diagrams",
+        "trade-study data structures and sensitivity visualization",
+        "verification matrix scaffolding",
+        "change/dependency analysis"
+      ],
+      "project_specialist_or_current_gap": [
+        "domain-specific system simulation where no real runtime is bound",
+        "hardware/software integration evidence",
+        "verification/validation execution",
+        "operational mission evidence"
+      ],
+      "next_real_capability_target": "Exercise the Candidate on a real system-of-interest with executable verification evidence instead of repository-only verification."
+    },
+    {
+      "domain": "Physical Product / Industrial Design",
+      "process_state": "PROFESSIONAL_PROCESS_OPEN",
+      "process_ref": null,
+      "immediately_executable": [
+        "bounded form/CMF/ergonomic reasoning",
+        "3D product modeling within Current 3D claim ceiling",
+        "design-for-assembly/disassembly studies",
+        "parametric CAD/STEP experiments only when the candidate pro-design runtime is legally consumed"
+      ],
+      "project_specialist_or_current_gap": [
+        "controlled R-E professional process owner",
+        "Current parametric CAD/manufacturing execution owner",
+        "tolerance/GD&T/manufacturing approval",
+        "human-factors physical validation",
+        "supplier/tooling/production acceptance"
+      ],
+      "next_real_capability_target": "Create and validate a controlled Industrial Design process Candidate before whole-domain professional closure; separately promote proven CAD runtime only through its lifecycle."
+    },
+    {
+      "domain": "Visual Communication / Graphic Design",
+      "process_state": "PROFESSIONAL_PROCESS_OPEN",
+      "process_ref": null,
+      "immediately_executable": [
+        "story/board/editorial structure through Current story-and-board",
+        "data/evidence graphics",
+        "bounded repo-native vector/layout production",
+        "motion derivatives through Current motion owner where fit"
+      ],
+      "project_specialist_or_current_gap": [
+        "controlled R-E professional process owner",
+        "Current core visual-design owner remains Candidate",
+        "high-end layered retouching when required",
+        "press/prepress proof and production approval"
+      ],
+      "next_real_capability_target": "Validate Visual professional process Candidate separately from current bounded publication execution; do not infer Graphic Design Professional PASS from a board."
+    },
+    {
+      "domain": "Fire / Life Safety",
+      "process_state": "CANDIDATE_PR_OPEN",
+      "process_ref": "GitHub PR #641",
+      "immediately_executable": [
+        "architecture-side reserve/route/interface diagrams from authoritative inputs"
+      ],
+      "project_specialist_or_current_gap": [
+        "fire engineering analysis",
+        "code/jurisdiction acceptance",
+        "smoke/control calculations",
+        "field systems acceptance"
+      ],
+      "next_real_capability_target": "Fresh-validate the current Candidate head and bind project fire/life-safety specialist execution."
+    },
+    {
+      "domain": "Accessibility",
+      "process_state": "CANDIDATE_PR_OPEN",
+      "process_ref": "GitHub PR #642",
+      "immediately_executable": [
+        "source-bound route/clearance/state analysis when dimensions and requirements are authoritative"
+      ],
+      "project_specialist_or_current_gap": [
+        "jurisdictional accessibility approval",
+        "field dimensional verification",
+        "real assistive-technology/user validation when material"
+      ],
+      "next_real_capability_target": "Fresh-validate the Candidate and run real dimension-bound project exercises without treating drawn clearance as compliance."
+    },
+    {
+      "domain": "Facade / Building Envelope",
+      "process_state": "CANDIDATE_PR_OPEN",
+      "process_ref": "GitHub PR #643",
+      "immediately_executable": [
+        "interface/detail visualization",
+        "material/system evidence compilation",
+        "bounded geometry/model coordination"
+      ],
+      "project_specialist_or_current_gap": [
+        "thermal/moisture/air/water specialist simulation and testing",
+        "supplier/fabrication submittal acceptance",
+        "field mockup/performance testing"
+      ],
+      "next_real_capability_target": "Bind hygrothermal/performance test evidence and native detail/submittal carriers before any envelope PASS."
+    },
+    {
+      "domain": "Building Acoustics",
+      "process_state": "CANDIDATE_PR_OPEN",
+      "process_ref": "GitHub PR #644",
+      "immediately_executable": [
+        "source/evidence research",
+        "room/use/noise adjacency analysis",
+        "result visualization when authoritative acoustic values are supplied"
+      ],
+      "project_specialist_or_current_gap": [
+        "acoustic simulation/calculation runtime",
+        "measurement instrumentation",
+        "specialist review",
+        "field verification"
+      ],
+      "next_real_capability_target": "Bind an acoustic solver/measurement workflow and project specialist before closure claims."
+    }
+  ],
+  "global_priorities": [
+    "P0: compile PROFESSIONAL_EXECUTION_CAPABILITY_PLAN per material Decision Object instead of inferring callability from Skill/process existence",
+    "P1: advance Technical Drawing through its existing Candidate lifecycle; do not create a parallel drawing Skill",
+    "P1: bind real structural and MEP specialist/solver routes at project level",
+    "P1: add a photometric runtime before Lighting professional closure",
+    "P1: add terrain/grading/earthwork round-trip evidence for Landscape",
+    "P1: currentize browser UI execution only after real runtime readback and independent review",
+    "P2: exercise each Candidate domain on real project native artifacts before adoption",
+    "P2: require independent review and field/runtime evidence where the claim depends on them"
+  ],
+  "does_not_prove": [
+    "runtime availability in the current conversation",
+    "professional process PASS",
+    "professional licensure or statutory authority",
+    "Design KEEP",
+    "field truth",
+    "Candidate process or Skill promotion"
+  ]
+}

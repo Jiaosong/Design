@@ -347,6 +347,30 @@ Professional Requirement
 
 The live Skill Resolver selects the minimum sufficient owner set. A process definition must not hardcode a stale global Skill inventory.
 
+#### F2. Stage-side Professional Execution Capability Plan
+
+For a material professional Decision Object, owner/tool resolution must become an explicit runtime object when execution is non-trivial or any required native output depends on runtime availability, Candidate ownership, specialist authority, user-manual work or field execution.
+
+Compile `PROFESSIONAL_EXECUTION_CAPABILITY_PLAN` using:
+
+- `00-governance/schemas/professional-execution-capability-plan.v1.schema.json`;
+- `00-governance/schemas/professional-execution-capability-plan.v1.template.json`;
+- `00-governance/schemas/validate_professional_execution_capability_plan.py`.
+
+This plan is subordinate to `Required Capability Roles → Current Execution Owners / Skills`. It is not a new Professional Stage node, Process, Skill family, Gate or source of professional authority.
+
+For every in-claim capability/native output the plan resolves:
+
+`required capability role → required native output → native authority requirement → execution mode → owner authority → observed availability → selected owner → specialist binding when applicable → execution surface / adapter → actual readback method → independent-review obligation → fallback / HOLD boundary`.
+
+Canonical execution modes are `AGENT_EXECUTABLE / SHARED_RUNTIME_EXECUTABLE / PROJECT_SPECIALIST_BOUND / USER_MANUAL_BOUND / FIELD_ONLY / CANDIDATE_ONLY / CAPABILITY_HOLD / NOT_REQUIRED`.
+
+An `EXECUTABLE` plan may use only a Current owner on an observed available/degraded execution surface or an explicit project-authorized specialist binding for every in-claim requirement. `PROJECT_SPECIALIST_BOUND` additionally requires a current non-stale `PROJECT_SPECIALIST_OWNER_BINDING` under the Project Plane contract; free text, Candidate presence or a generic design/3D owner is not a specialist binding. `CANDIDATE_ONLY`, `UNKNOWN` runtime availability, file/document existence, historical installation, or a generic design owner cannot close the capability requirement.
+
+The live non-authority frontier view is `runtime/OLEANDER_PROFESSIONAL_EXECUTION_CAPABILITY_FRONTIER_v1.0.json`. Every project run must re-resolve actual runtime availability and project specialist bindings rather than copying that frontier as truth.
+
+`CAPABILITY PLAN EXECUTABLE ≠ ARTIFACT CREATED ≠ ACTUAL READBACK ≠ PROFESSIONAL STAGE PASS`.
+
 ### G. Assurance
 
 Resolve:

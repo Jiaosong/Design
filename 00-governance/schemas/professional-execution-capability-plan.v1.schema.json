@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oleander.professional-execution-capability-plan.v1",
+  "title": "OLEANDER Professional Execution Capability Plan v1",
+  "type": "object",
+  "required": [
+    "object_type","schema_version","plan_id","project_id","domain","process_ref",
+    "stage_id","decision_object_id","source_revision","claim_ceiling","runtime_observed_at",
+    "capabilities","blocking_capability_ids","plan_verdict","stale","does_not_prove"
+  ],
+  "properties": {
+    "object_type": {"const": "PROFESSIONAL_EXECUTION_CAPABILITY_PLAN"},
+    "schema_version": {"const": "1.0"},
+    "plan_id": {"type":"string","minLength":1},
+    "project_id": {"type":"string","minLength":1},
+    "workstream_id": {"type":["string","null"]},
+    "domain": {"type":"string","minLength":1},
+    "process_ref": {"type":"string","minLength":1},
+    "stage_id": {"type":"string","minLength":1},
+    "decision_object_id": {"type":"string","minLength":1},
+    "source_revision": {"type":"string","minLength":1},
+    "claim_ceiling": {"type":"string","minLength":1},
+    "runtime_observed_at": {"type":"string","minLength":1},
+    "capabilities": {
+      "type":"array",
+      "minItems":1,
+      "items":{"$ref":"#/$defs/capability"}
+    },
+    "blocking_capability_ids": {
+      "type":"array","uniqueItems":true,
+      "items":{"type":"string","minLength":1}
+    },
+    "plan_verdict": {"enum":["EXECUTABLE","PARTIAL","HOLD"]},
+    "stale": {"type":"boolean"},
+    "does_not_prove": {
+      "type":"array","minItems":1,
+      "items":{"type":"string","minLength":1}
+    }
+  },
+  "$defs": {
+    "capability": {
+      "type":"object",
+      "required":[
+        "capability_id","in_claim","required_capability_role","required_native_output",
+        "native_authority_required","execution_mode","authority_state","availability_state",
+        "selected_owner_ref","specialist_binding_ref","execution_surface_ref","tool_adapter_ref","actual_readback_method",
+        "independent_review_required","independent_review_owner_ref","fallback",
+        "open_items","does_not_prove"
+      ],
+      "properties":{
+        "capability_id":{"type":"string","minLength":1},
+        "in_claim":{"type":"boolean"},
+        "required_capability_role":{"type":"string","minLength":1},
+        "required_native_output":{"type":"string","minLength":1},
+        "native_authority_required":{"type":"string","minLength":1},
+        "execution_mode":{"enum":[
+          "AGENT_EXECUTABLE",
+          "SHARED_RUNTIME_EXECUTABLE",
+          "PROJECT_SPECIALIST_BOUND",
+          "USER_MANUAL_BOUND",
+          "FIELD_ONLY",
+          "CANDIDATE_ONLY",
+          "CAPABILITY_HOLD",
+          "NOT_REQUIRED"
+        ]},
+        "authority_state":{"enum":[
+          "CURRENT_OWNER",
+          "PROJECT_AUTHORIZED_SPECIALIST",
+          "CANDIDATE_OWNER",
+          "NO_OWNER",
+          "NOT_APPLICABLE"
+        ]},
+        "availability_state":{"enum":[
+          "AVAILABLE","DEGRADED","UNKNOWN","UNAVAILABLE","NOT_APPLICABLE"
+        ]},
+        "selected_owner_ref":{"type":["string","null"]},
+        "specialist_binding_ref":{"type":["string","null"]},
+        "execution_surface_ref":{"type":["string","null"]},
+        "tool_adapter_ref":{"type":["string","null"]},
+        "actual_readback_method":{"type":["string","null"]},
+        "independent_review_required":{"type":"boolean"},
+        "independent_review_owner_ref":{"type":["string","null"]},
+        "fallback":{"type":"string","minLength":1},
+        "open_items":{"type":"array","items":{"type":"string","minLength":1}},
+        "does_not_prove":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
