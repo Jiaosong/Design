@@ -57,6 +57,9 @@ jobs:
       - name: Validate Building Services MEP professional process definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/building-services-mep-design-process.v1.json
 
+      - name: Validate Facade / Building Envelope professional process definition
+        run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/facade-envelope-design-process.v1.json
+
       - name: Validate Landscape Architecture professional process candidate definition
         run: python 00-governance/schemas/validate_professional_domain_process.py 00-governance/schemas/landscape-architecture-design-process.v0.1.candidate.json
 

@@ -1,0 +1,109 @@
+{
+  "evolution_id": "EV-PROF-ENVELOPE-20260916",
+  "candidate_domain": "Facade / Building Envelope Engineering",
+  "candidate_state": "EV2_EVAL_READY",
+  "status": "CONTROLLED_EVOLUTION_CANDIDATE_NOT_CURRENT",
+  "authority_baseline": {
+    "ref": "main@76dbd8d16d09b2d5e57401453e39967b5aa36202",
+    "architecture": "OLEANDER_CURRENT_ARCHITECTURE_MAP_v2.1",
+    "professional_contract": "00-governance/professional-domain-process-contract-v1.0.md",
+    "integration_owner": "00-governance/cross-disciplinary-design-integration-v1.0.md"
+  },
+  "candidate_branch": "agent/v21-facade-envelope-evolution-20260916",
+  "ev2_input_head": "2454e4f8a76f8d298b8bf9f1229801b930d1d1bc",
+  "immutable_inputs": {
+    "professional_body": {
+      "path": "00-governance/facade-envelope-design-process-v1.0.md",
+      "blob_sha": "469343f336e63dc4cf494c3b4017f1ffc4f201b4"
+    },
+    "machine_definition": {
+      "path": "00-governance/schemas/facade-envelope-design-process.v1.json",
+      "blob_sha": "c713800ae3b8b3c1643882f39c99de67b53925bb"
+    },
+    "workflow_binding": {
+      "path": ".github/workflows/ai-governance-evals.yml",
+      "blob_sha": "63b45a9f3df382fadaf007d89e2c010a4f2567ca"
+    }
+  },
+  "domain_carriers": [
+    "ENV-BASIS",
+    "ENV-CONCEPT",
+    "ENV-PHYSICS",
+    "ENV-MOVEMENT",
+    "ENV-FIRE",
+    "ENV-DETAIL",
+    "ENV-MOCKUP",
+    "ENV-DELIVERY",
+    "ENV-INUSE"
+  ],
+  "knowledge_reuse": {
+    "notion_owner_id": "3acb86be-5c47-81c6-bf9f-e297f22a122c",
+    "canonical_id": "FW-ARCH-MATERIAL-SYSTEM-001",
+    "role": "THEORY",
+    "level": "L4 Integrating Framework / Cluster",
+    "maturity": "M5 AI-READY",
+    "evidence_state": "E1",
+    "governance_state": "ACTIVE",
+    "relation_state": "VALID",
+    "ev2_mutation": "NONE",
+    "boundary": "The existing Material-System-Interface framework and child facade/envelope system objects remain Knowledge owners. This candidate does not create a second Knowledge tree or turn the L4 THEORY object into Professional Process authority."
+  },
+  "professional_source_basis": [
+    {
+      "source": "ISO/TR 5863:2025",
+      "status": "PUBLISHED",
+      "use": "integrative building-envelope design principles across thermal, daylight/visual, ventilation, airtightness, watertightness, moisture, sound, sustainability and technical-system integration",
+      "boundary": "general principles; no universal project performance values inferred"
+    },
+    {
+      "source": "ISO 12631:2017",
+      "status": "PUBLISHED_CONFIRMED_2022",
+      "use": "curtain-wall thermal transmittance calculation context",
+      "boundary": "method scope/exclusions remain explicit; does not close solar, leakage, condensation, corner/edge or main-structure/fixing effects outside scope"
+    },
+    {
+      "source": "ISO 24084:2022",
+      "status": "PUBLISHED",
+      "use": "curtain-wall inter-storey displacement resistance test context",
+      "boundary": "tested specimen/configuration and imposed displacement regime do not generalize automatically to every project detail"
+    },
+    {
+      "source": "Society of Facade Engineering / CIBSE",
+      "status": "CURRENT_PROFESSIONAL_CONTEXT",
+      "use": "multidisciplinary facade-engineering professional context across design, supply, installation, testing and operation",
+      "boundary": "not treated as a universal OLEANDER stage authority"
+    }
+  ],
+  "machine_evaluation": {
+    "state": "PENDING_PR_CI",
+    "required_checks": [
+      "AI Governance Evals",
+      "OLEANDER Project Anti-Pollution Gate",
+      "OLEANDER Blender Runtime Contract"
+    ],
+    "meaning": "Schema/regression evaluation only; success does not award professional quality, statutory approval, Design KEEP or Promotion."
+  },
+  "hard_boundaries": [
+    "COMPONENT_EVIDENCE != ASSEMBLY_PASS",
+    "ASSEMBLY_TEST != PROJECT_CONFIGURATION_PASS",
+    "PROJECT_MOCKUP_PASS != PRODUCTION_PASS",
+    "FIELD_SAMPLE_PASS != COMPLETE_BUILDING_PASS",
+    "MODEL_PASS != FIELD_TRUTH",
+    "ENVELOPE_COORDINATION != R_F_INTEGRATION_PASS",
+    "ENVELOPE_PROCESS_PASS != ARCHITECTURE_DESIGN_KEEP",
+    "ENVELOPE_PROCESS_PASS != STRUCTURAL_OR_FLS_PASS",
+    "CI_PASS != PROFESSIONAL_PASS",
+    "CANDIDATE != CURRENT",
+    "EV2 != EV3_EV4_EV5",
+    "PR_OR_SYNC != PROMOTION"
+  ],
+  "blocked_until_further_evidence": [
+    "EV3 machine-evaluation receipt",
+    "Independent Review packet on an exact fresh EV3 input",
+    "eligible independent reviewer verdict",
+    "bounded Notion candidate-routing sync after EV3 packet-head freshness",
+    "authorized Current owner-native adoption",
+    "EV4/EV5 and Promotion"
+  ],
+  "created_on": "2026-09-16"
+}
