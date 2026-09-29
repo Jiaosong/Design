@@ -88,6 +88,9 @@ Current Landscape Institute technical materials continue to support the professi
 - concept → technical/construction → implementation responsibilities;
 - management / long-term landscape stewardship.
 
+#### U.S. EPA bioretention lifecycle evidence
+U.S. EPA *Bioretention Design Handbook: Designing Holistic Bioretention for Performance and Longevity* (EPA 841-B-23-002, November 2023) is used as bounded practitioner evidence for treating bioretention as a connected drainage-area / inflow / pretreatment / storage-media-vegetation / outflow-overflow / construction / inspection / O&M / adaptive-management object. It does not install U.S. permitting, hydrology, sizing or acceptance rules into non-applicable projects.
+
 ### Source rule
 
 `PROFESSIONAL TASK EVIDENCE ≠ UNIVERSAL STAGE AUTHORITY`.
@@ -244,7 +247,11 @@ Track:
 - civil/hydraulic responsibility;
 - authority/permit requirements.
 
+When bioretention / rain-garden / similar GI is materially in claim, retain the connected object through `CONTRIBUTING DRAINAGE AREA / GRADE → INFLOW → PRETREATMENT / ENERGY DISSIPATION → STORAGE / GEOMETRY → MEDIA / SOIL → VEGETATION → UNDERDRAIN / OUTFLOW / OVERFLOW → ADJACENT ROUTE / SAFETY → CONSTRUCTION / QC → INSPECTION + O&M ACCESS / OWNER → EVENT / SEASONAL READBACK → DEFECT / REPAIR / REINSPECTION`. Landscape may own the spatial/water-soil-planting/maintenance design relation within appointment; consequential hydrology/hydraulics, civil drainage, permits, geotechnical and field acceptance remain with their actual owners.
+
 `RAIN GARDEN DRAWN ≠ STORMWATER PERFORMANCE VERIFIED`.
+
+`MAINTENANCE PLAN EXISTS ≠ MAINTENANCE PERFORMED ≠ LONG-TERM PERFORMANCE VERIFIED`.
 
 ### LT-04 Soil / Planting / Ecology
 
@@ -327,6 +334,9 @@ Track:
 - litter/cleaning;
 - hardscape repair;
 - drainage/SuDS maintenance;
+- bioretention / GI inspection state, clogging/sediment/erosion/bypass/vegetation/outflow defects where applicable;
+- responsible maintenance party, access and performed-work evidence where consequential;
+- event/seasonal observation → diagnosis → repair/retrofit → reinspection/adaptive-management loop where performance is in claim;
 - tree establishment;
 - defects;
 - establishment success criteria;
