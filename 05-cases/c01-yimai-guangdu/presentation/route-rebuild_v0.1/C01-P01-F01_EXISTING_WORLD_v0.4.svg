@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" role="img" aria-labelledby="title desc">
+<title id="title">C01 P01｜广渡村 Existing World｜v0.4</title>
+<desc id="desc">UTF-8-safe editable vector carrier. Geometry remains source-bound; FIELD_OBSERVED=0; FIELD_MEASURED=0.</desc>
+<defs><clipPath id="mapClip"><rect x="20" y="58" width="380" height="188" rx="2"/></clipPath></defs>
+<rect width="420" height="297" fill="#f5f2ea"/>
+<g id="L01_title" font-family="Noto Sans CJK SC,Source Han Sans SC,sans-serif" fill="#171717">
+<text x="20" y="27" font-size="13" font-weight="700">P01｜村庄本身</text><text x="20" y="43" font-size="5.2">广渡村 Existing World · source-bound village focus</text>
+</g>
+<g id="L02_map_window" clip-path="url(#mapClip)">
+<rect x="20" y="58" width="380" height="188" fill="#ebe7dc"/>
+<g id="L03_water" fill="none" stroke="#63757c" stroke-width="3.4" stroke-linecap="round"><path d="M26 201 C82 183 111 196 158 172 S252 136 305 145 S365 121 397 108"/></g>
+<g id="L04_roads" fill="none" stroke="#6e6b64" stroke-linecap="round"><path stroke-width="2.7" d="M28 113 C96 120 139 111 195 125 S306 157 395 163"/><path stroke-width="1.25" stroke-dasharray="3 2" d="M122 230 C151 191 181 169 221 144 S279 101 326 73"/><path stroke-width="1.25" stroke-dasharray="3 2" d="M72 84 C123 108 164 133 205 162 S278 204 345 226"/></g>
+<g id="L05_buildings" fill="#a7a095" stroke="#393733" stroke-width="1.2"><path d="M238 132 l22 -5 9 18 -24 8 z"/><path d="M265 151 l15 -3 8 12 -18 7 z"/><path d="M222 156 l16 -4 6 12 -17 5 z"/><path d="M248 169 l14 -3 7 10 -16 6 z"/></g>
+<g id="L06_anchor" font-family="Noto Sans CJK SC,Source Han Sans SC,sans-serif"><circle cx="253" cy="142" r="15" fill="none" stroke="#9b3d2d" stroke-width="1.2"/><circle cx="253" cy="142" r="2.5" fill="#9b3d2d"/><path d="M264 132 L304 105" stroke="#9b3d2d" stroke-width="0.8"/><text x="307" y="104" font-size="5.5" font-weight="700" fill="#7e2f23">大公殿</text><text x="307" y="112" font-size="3.8" fill="#514d47">remote anchor / 非测绘控制点</text></g>
+</g>
+<g id="L07_reading" font-family="Noto Sans CJK SC,Source Han Sans SC,sans-serif" fill="#252421"><text x="20" y="260" font-size="4.4" font-weight="700">FIRST READ</text><text x="20" y="269" font-size="4">溪流 → 道路网络 → 建筑组团 → 大公殿锚点</text><text x="20" y="281" font-size="3.7">证据边界：OSM / 公开来源的远程关系载体；FIELD_OBSERVED=0；FIELD_MEASURED=0。</text><text x="20" y="288" font-size="3.7">不证明：现场可达性、测绘精度、文保边界、排水性能、产权或实施许可。</text></g>
+</svg>
