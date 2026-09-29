@@ -1,0 +1,20 @@
+{
+  "name": "oleander-candidates",
+  "interface": {
+    "displayName": "OLEANDER 候选插件"
+  },
+  "plugins": [
+    {
+      "name": "oleander-design",
+      "source": {
+        "source": "local",
+        "path": "./plugins/oleander-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
