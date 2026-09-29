@@ -54,7 +54,9 @@ Current IES professional-practice evidence reviewed for this Candidate includes:
 - `ANSI/IES LP-16-22` — control intent narratives and sequences of operation;
 - `ANSI/IES TM-30-24` — color rendition evaluation method;
 - `ANSI/IES LP-30-26` — phase-aware color-rendition specification;
-- `ANSI/IES LP-42-26` — dimming/control method designations.
+- `ANSI/IES LP-42-26` — dimming/control method designations;
+- `ANSI/IES LM-63-19(R25)` — standard file format for electronic transfer of photometric data and related information;
+- `ANSI/IES LM-79-24` — controlled optical/electrical measurement of solid-state lighting products, including intensity distribution, color quantities/spectrum, uncertainty and reporting.
 
 The current IES Lighting Library also identifies commissioning, maintenance, source/luminaire/control, daylight, outdoor/night and sustainability as lighting-practice scope.
 
@@ -73,6 +75,10 @@ Project-specific standards, codes, owner criteria, electrical/fire/accessibility
 `STANDARD EXISTS ≠ APPLICABLE PROJECT CRITERION`.
 
 `PHOTOMETRIC RESULT ≠ DESIGN QUALITY ≠ FIELD PERFORMANCE`.
+
+Task-scoped photometric-data source: Notion `SRC-IES-PHOTOMETRIC-DATA-001` (`3e2b86be-5c47-8152-aa64-e2dc17fe8704`). It governs input/test provenance only; it does not create universal criteria or product approval.
+
+`LM-63 FILE EXISTS ≠ LM-79 TEST IDENTITY CONFIRMED ≠ EXACT SUPPLIED LUMINAIRE CONFIRMED`.
 
 ---
 
@@ -124,9 +130,11 @@ When daylight evidence is consequential, bind:
 ### 1A.4 Photometric Model Configuration Record
 
 Bind:
-`MODEL ID → SPACE/GEOMETRY REVISION → LUMINAIRE/PHOTOMETRIC FILE REVISION → OUTPUT FACTOR → MOUNTING/AIMING → SURFACE PROPERTIES → CALCULATION PLANE/VIEWPOINT → SCENE/CONTROL STATE → MAINTENANCE BASIS → ENGINE/VERSION → RESULT SET → UNCERTAINTY/ASSUMPTION`.
+`MODEL ID → SPACE/GEOMETRY REVISION → LUMINAIRE/PRODUCT CONFIGURATION → PHOTOMETRIC FILE FORMAT/ID/REVISION/HASH WHEN MATERIAL → TEST/REPORT IDENTITY WHEN AVAILABLE → OUTPUT FACTOR → MOUNTING/AIMING → SURFACE PROPERTIES → CALCULATION PLANE/VIEWPOINT → SCENE/CONTROL STATE → MAINTENANCE BASIS → ENGINE/VERSION/IMPORT-CONVERSION PATH → RESULT SET → UNCERTAINTY/ASSUMPTION`.
 
-A false photometric file, aiming angle, reflectance or geometry revision invalidates the bounded result.
+An LM-63 file is a transport carrier, not product approval. If a file is converted, edited, prorated, combined or derived, preserve source file identity plus the transformation and resulting artifact identity. Near-field use of far-field photometric data must remain explicit where working distance/luminous geometry could materially change accuracy.
+
+A false or stale photometric file, wrong optic/output configuration, aiming angle, reflectance, geometry revision or conversion invalidates the bounded result.
 
 ### 1A.5 Luminaire / Optical / Product Register
 
@@ -150,7 +158,9 @@ A control narrative without exact groups/triggers/recovery/test logic is not imp
 
 ### 1A.8 Luminaire Submittal / Substitution Release Register
 
-`SUBMITTAL → GOVERNING TAG/SPEC/CALC/MOCKUP → PROPOSED PRODUCT/OPTIC/DRIVER/CONTROL → DECLARED DEVIATIONS → PHOTOMETRIC/COLOR/GLARE/DIMENSION/THERMAL/MAINTENANCE/CONTROL IMPACT → RECALC/RE-MOCKUP REQUIRED? → INTERFACE IMPACT → DISPOSITION → UPDATED CURRENT REFS`.
+`SUBMITTAL → GOVERNING TAG/SPEC/CALC/MOCKUP → PROPOSED PRODUCT/OPTIC/DRIVER/CONTROL → LM-63/OTHER PHOTOMETRY ID + TEST/REPORT IDENTITY WHEN RELEVANT → DECLARED DEVIATIONS → PHOTOMETRIC/COLOR/GLARE/DIMENSION/THERMAL/MAINTENANCE/CONTROL IMPACT → RECALC/RE-MOCKUP/RE-MEASURE REQUIRED? → INTERFACE IMPACT → DISPOSITION → UPDATED CURRENT REFS`.
+
+A substitution that changes the photometry file, optic/output setting, luminous opening, driver/current, color/spectral state or control behavior reopens affected calculation/mockup/aiming/field-readback evidence.
 
 “Same lumen output” is not optical equivalence.
 
