@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+<title>C01 ACQ-TILE-NE spatial evidence acquisition board</title>
+<desc>Editable NTS vector workface derived from ACQ-TILE-NE. No road or water alignment is asserted.</desc>
+<rect width="420" height="297" fill="white"/>
+<g id="L00-FRAME" font-family="sans-serif" fill="#111">
+<text x="22" y="25" font-size="8">C01 / ACQ-TILE-NE / SPATIAL EVIDENCE WORKFACE</text>
+<text x="22" y="36" font-size="3.4">source-bound acquisition representation · NTS · geometry authority: ANALYTICAL_SEARCH_EXTENT_ONLY</text>
+<line x1="22" y1="45" x2="398" y2="45" stroke="#222" stroke-width=".5"/>
+</g>
+<g id="L10-TILE" font-family="sans-serif">
+<rect id="ACQ-TILE-NE" x="28" y="64" width="188" height="142" fill="none" stroke="#111" stroke-width="1.2"/>
+<text x="36" y="77" font-size="4">ACQ-TILE-NE</text>
+<text x="36" y="87" font-size="3">W 118.460507 · E 118.470507</text>
+<text x="36" y="95" font-size="3">S 28.428230 · N 28.438230</text>
+<line x1="28" y1="206" x2="216" y2="64" stroke="#aaa" stroke-width=".35" stroke-dasharray="2 3"/>
+<line x1="28" y1="64" x2="216" y2="206" stroke="#aaa" stroke-width=".35" stroke-dasharray="2 3"/>
+<circle id="ANCHOR-DAGONGDIAN-CAMERA" cx="28" cy="206" r="4" fill="#111"/>
+<text x="36" y="202" font-size="3">published camera POV</text>
+<text x="36" y="210" font-size="2.7">118.460507, 28.428230</text>
+</g>
+<g id="L20-SOURCE-SLOTS" font-family="sans-serif">
+<rect id="SOURCE-SLOT-X425" x="242" y="64" width="150" height="48" fill="none" stroke="#555" stroke-width=".8"/>
+<text x="250" y="77" font-size="4">X425 ROAD SOURCE</text><text x="250" y="88" font-size="3">RAW COORDINATE SOURCE: HOLD</text><text x="250" y="98" font-size="2.8">identity + alignment not released</text>
+<rect id="SOURCE-SLOT-WATER" x="242" y="124" width="150" height="48" fill="none" stroke="#555" stroke-width=".8"/>
+<text x="250" y="137" font-size="4">WATER SOURCE</text><text x="250" y="148" font-size="3">RAW COORDINATE SOURCE: HOLD</text><text x="250" y="158" font-size="2.8">identity + alignment not released</text>
+<rect id="RELEASE-GATE" x="242" y="184" width="150" height="44" fill="none" stroke="#111" stroke-width="1"/>
+<text x="250" y="197" font-size="4">SELECTIVE RELEASE GATE</text><text x="250" y="208" font-size="2.8">raw source → provenance → identity match</text><text x="250" y="217" font-size="2.8">only matched feature may enter mother world</text>
+</g>
+<g id="L30-CLAIM-CEILING" font-family="sans-serif">
+<rect x="22" y="242" width="376" height="34" fill="none" stroke="#777" stroke-width=".6"/>
+<text x="30" y="253" font-size="3.6">CLAIM CEILING</text>
+<text x="30" y="263" font-size="3">Tile rectangle is an analytical search extent only. No road/water/site boundary, width, survey geometry, rights or implementation permission.</text>
+<text x="30" y="271" font-size="3">REL-X425-NETWORK-01.geometry = NULL · REL-WATER-01.geometry = NULL until independent identity match.</text>
+</g>
+<metadata>{"decision_object_id":"C01-WORLD-REMOTE-RELATION-v0.1","representation_id":"C01-WORLD-REMOTE-RELATION_v0.1_ACQ-TILE-NE","source_carrier":"C01-WORLD-REMOTE-RELATION_v0.1_spatial-acquisition-window.geojson","source_blob":"ab0d4d4f2148a3aabc6ecea7575afb2a488adfb0","stable_refs":["ACQ-TILE-NE","ANCHOR-DAGONGDIAN-CAMERA","REL-X425-NETWORK-01","REL-WATER-01"],"geometry_authority":"ANALYTICAL_SEARCH_EXTENT_ONLY","source_geometry_asserted":0,"field_observed":0,"field_measured":0,"claim_ceiling":"NTS evidence-acquisition workface only; no factual road/water alignment or survey geometry asserted"}</metadata>
+</svg>

@@ -1,0 +1,252 @@
+{
+  "type": "FeatureCollection",
+  "name": "C01-WORLD-REMOTE-RELATION-v0.1 spatial acquisition window",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC::CRS84"
+    }
+  },
+  "oleander": {
+    "decision_object_id": "C01-WORLD-REMOTE-RELATION-v0.1",
+    "operation_id": "ACQ-WINDOW-01",
+    "operation": "BOUNDED_SPATIAL_EVIDENCE_SEARCH",
+    "derived_from": "ANCHOR-DAGONGDIAN-CAMERA",
+    "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+    "metric_scale_asserted": 0,
+    "site_boundary_asserted": 0,
+    "source_geometry_asserted": 0,
+    "claim_ceiling": "Search extent only. It is not a site, village, parcel, heritage, road or water boundary and proves no alignment, width, survey geometry, rights or implementation permission.",
+    "revision": "v0.2",
+    "redraw_operation": "SUBDIVIDE_ACQ_WINDOW_INTO_FOUR_SEARCH_TILES",
+    "tile_geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "ANCHOR-DAGONGDIAN-CAMERA",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.460507,
+          28.42823
+        ]
+      },
+      "properties": {
+        "stable_id": "ANCHOR-DAGONGDIAN-CAMERA",
+        "role": "REMOTE_CAMERA_ANCHOR",
+        "source_ref": "SRC-COMMONS-DAGONGDIAN-20180623",
+        "coordinate_semantics": "point_of_view"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-WINDOW-01",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.450507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.41823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-WINDOW-01",
+        "role": "SPATIAL_EVIDENCE_SEARCH_EXTENT",
+        "derived_from": "ANCHOR-DAGONGDIAN-CAMERA",
+        "target": [
+          "coordinate-bearing road source",
+          "coordinate-bearing water source"
+        ],
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-SW",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.450507,
+              28.41823
+            ],
+            [
+              118.460507,
+              28.41823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.450507,
+              28.42823
+            ],
+            [
+              118.450507,
+              28.41823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-SW",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-SE",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.460507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.41823
+            ],
+            [
+              118.470507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.41823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-SE",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-NW",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.450507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.460507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.43823
+            ],
+            [
+              118.450507,
+              28.42823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-NW",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ACQ-TILE-NE",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118.460507,
+              28.42823
+            ],
+            [
+              118.470507,
+              28.42823
+            ],
+            [
+              118.470507,
+              28.43823
+            ],
+            [
+              118.460507,
+              28.43823
+            ],
+            [
+              118.460507,
+              28.42823
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "stable_id": "ACQ-TILE-NE",
+        "role": "SPATIAL_EVIDENCE_SEARCH_TILE",
+        "parent": "ACQ-WINDOW-01",
+        "geometry_authority": "ANALYTICAL_SEARCH_EXTENT_ONLY",
+        "source_geometry_asserted": 0,
+        "target": [
+          "road raw source",
+          "water raw source"
+        ]
+      }
+    }
+  ]
+}
